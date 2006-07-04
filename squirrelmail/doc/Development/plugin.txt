@@ -125,77 +125,34 @@ the main SquirrelMail directory.  This constant is always available
 for you to use when including other files from the SquirrelMail core,
 your own plugin, or other plugins, should the need arise.  If any of
 your plugin files are requested directly from the client browser,
-you will need to include the SquirrelMail initialization file which is present
-since SquirrelMail 1.5.2.
+you will need to define this constant before you do anything else:
 
-The SquirrelMail initialization file which is located in include/init.php does
-take care of setting up the session, defining the constants like SM_PATH and
-it take care of including a minimum set of required files.
+  define('SM_PATH', '../../');
 
-The files which are included depends on which file the hook operates on.
-For all hook locations the following files are included:
+Files are included like this:
 
-    require(SM_PATH . 'functions/global.php');
-    require(SM_PATH . 'config/config.php');
-    require(SM_PATH . 'functions/plugin.php');
-    require(SM_PATH . 'include/constants.php');
-    require(SM_PATH . 'include/languages.php');
-    require(SM_PATH . 'functions/display_messages.php' );
-    require(SM_PATH . 'functions/page_header.php');
-    require(SM_PATH . 'functions/html.php');
-
-Except login.php also the following files are included:
-    require(SM_PATH . 'functions/prefs.php');
-
-    require(SM_PATH . 'functions/db_prefs.php');
-OR
-    require(SM_PATH . 'functions/file_prefs.php');
-(dependent of the configured preference backend)
-
-For all files except login.php and redirect.php also the following files are
-included:
-    require(SM_PATH . 'functions/strings.php');
-    require(SM_PATH . 'functions/auth.php');
-
-Because the use of "require" in include/init.php your plugin will fail if it
-tries to include the file in the plugin as well.
-Be aware of that.
-
-To include the init.php file add the following in your plugin:
-
-    /**
-     * Include the SquirrelMail initialization file.
-     */
-    require('../../include/init.php');
-
-Other files then the files mentioned above can be included by your plugin
-like this:
-
-    include_once(SM_PATH . 'functions/imap_general.php');
+  include_once(SM_PATH . 'include/validate.php');
 
 When including files, please make sure to use the include_once() function
-and NOT include(), require() because they can cause fatal errors when other
-plugins or SquirrelMail files include the same file.
-If you use require_once() instead of include_once() then if something cause
-wrong with the include then php will raise a fatal error. That's the reason
-plugins MUST use include_once() instead of require_once().
+and NOT include(), require(), or require_once(), since these all are much
+less efficient than include_once() and can have a cumulative effect on
+SquirrelMail performance.
 
 The files that you may need to include in a plugin will vary greatly
 depending upon what the plugin is designed to do.  For files that are
-requested directly by the client browser, you MUST includey the file
-    include/init.php
-, since it will set up the SquirrelMail environment automatically.
-It will ensure the the user has been authenticated and is currently logged in,
-load all user preferences, include internationalization support,
-call stripslashes() on all incoming data (if magic_quotes_gpc is on), and
-initialize and include all other basic SquirrelMail resources and functions.
-You may see other plugins that directly include other SquirrelMail files, but
+requested directly by the client browser, we strongly recommend that
+you include the file include/validate.php, since it will set up the
+SquirrelMail environment automatically.  It will ensure the the user
+has been authenticated and is currently logged in, load all user
+preferences, include internationalization support, call stripslashes()
+on all incoming data (if magic_quotes_gpc is on), and initialize and
+include all other basic SquirrelMail resources and functions.  You may
+see other plugins that directly include other SquirrelMail files, but
 that is no longer necessary and is a hold-over from older SquirrelMail
 versions.
 
 List of files, that are included by include/validate.php (If SquirrelMail
-version is not listed, files are included from v.1.3.2.). This table is
-specific to SquirrelMail 1.3.2 - 1.5.1. Script layout was changed in 1.5.2.
+version is not listed, files are included from v.1.3.2.):
    1. class/mime.class.php
       1.1. class/mime/Rfc822Header.class.php
       1.2. class/mime/MessageHeader.class.php
@@ -206,7 +163,7 @@ specific to SquirrelMail 1.3.2 - 1.5.1. Script layout was changed in 1.5.2.
       1.7. class/mime/Language.class.php
       1.8. class/mime/ContentType.class.php
    2. functions/global.php
-      * fixes differences between php 4.0.x and 4.1+ globals (only in 1.4.x).
+      * fixes differences between php 4.0.x and 4.1+ globals (only in 1.4.x).  
       * undoes magic_quotes_gpc=on sanitizing
       * sets $PHP_SELF (since 1.5.1)
       * starts session
@@ -229,7 +186,7 @@ specific to SquirrelMail 1.3.2 - 1.5.1. Script layout was changed in 1.5.2.
       7.1. include/validate.php
       7.2. functions/prefs.php
          7.2.1. functions/global.php (sqgetGlobalVar() function)
-         7.2.2. functions/plugin.php (do_hook_function() function,,
+         7.2.2. functions/plugin.php (do_hook_function() function,, 
                 since 1.4.4 and 1.5.1, see 7.3)
          7.2.3. $prefs_backend (only in 1.4.3 and 1.5.0)
                 do_hook_function('prefs_backend') (since 1.4.4 and 1.5.1)
@@ -241,7 +198,7 @@ specific to SquirrelMail 1.3.2 - 1.5.1. Script layout was changed in 1.5.2.
       7.3. functions/plugin.php
          7.3.1. functions/global.php (from 1.4.0 and 1.5.0)
          7.3.2. functions/prefs.php (from 1.5.1)
-         7.3.3. plugins/*/setup.php files for enabled plugins.
+         7.3.3. plugins/*/setup.php files for enabled plugins. 
          * starts all squirrelmail_plugin_init_pluginname functions
       7.4. functions/constants.php
       7.5. do_hook('loading_prefs')
@@ -253,11 +210,6 @@ specific to SquirrelMail 1.3.2 - 1.5.1. Script layout was changed in 1.5.2.
          8.3.1. functions/imap_utf7_local.php
       8.4. functions/global.php
    9. functions/prefs.php (already loaded. see 7.2)
-
-Since SquirrelMail 1.5.1 functions/global.php file must be loaded before
-setting any own global variables. If variables are set before loading
-functions/global.php library, they can be corrupted in PHP register_globals=On
-setups.
 
 
 Hook Types:  Parameters and Return Values
@@ -352,18 +304,14 @@ but may be out of date soon thereafter.  You never know.  ;-)
 &% options_identities_renumber   functions/identity.php          do_hook
   special_mailbox                functions/imap_mailbox.php      hook_func
 % rename_or_delete_folder        functions/imap_mailbox.php      hook_func
-  folder_status (since 1.5.1)    functions/imap_mailbox.php      hook_func
-                                 functions/imap_general.php      hook_func
+  msg_envelope                   functions/mailbox_display.php   do_hook
   mailbox_index_before           functions/mailbox_display.php   do_hook
   mailbox_form_before            functions/mailbox_display.php   do_hook
   mailbox_index_after            functions/mailbox_display.php   do_hook
   check_handleAsSent_result      functions/mailbox_display.php   do_hook
   subject_link                   functions/mailbox_display.php   concat_hook
-  mailbox_display_buttons        functions/mailbox_display.php   do_hook
-  mailbox_display_button_action  functions/mailbox_display.php   hook_func
   message_body                   functions/mime.php              do_hook
 ^ attachment $type0/$type1       functions/mime.php              do_hook
-  attachments_bottom             functions/mime.php              hook_func
   decode_body                    functions/mime.php              hook_func
   generic_header                 functions/page_header.php       do_hook
   menuline                       functions/page_header.php       do_hook
@@ -371,12 +319,11 @@ but may be out of date soon thereafter.  You never know.  ;-)
   loading_prefs                  include/load_prefs.php          do_hook
   addrbook_html_search_below     src/addrbook_search_html.php    do_hook
   addressbook_bottom             src/addressbook.php             do_hook
-! compose_form                   src/compose.php                 do_hook
+  compose_form                   src/compose.php                 do_hook
   compose_bottom                 src/compose.php                 do_hook
   compose_button_row             src/compose.php                 do_hook
   compose_send                   src/compose.php                 do_hook
   compose_send_after             src/compose.php                 do_hook
-  configtest (since 1.5.2)       src/configtest.php              boolean_hook
   folders_bottom                 src/folders.php                 do_hook
   help_top                       src/help.php                    do_hook
   help_chapter                   src/help.php                    do_hook
@@ -386,9 +333,9 @@ but may be out of date soon thereafter.  You never know.  ;-)
   left_main_after                src/left_main.php               do_hook
   login_cookie                   src/login.php                   do_hook
   login_top                      src/login.php                   do_hook
-  login_form                     src/login.php                   concat_hook
-    (was do_hook before 1.5.1)
+  login_form                     src/login.php                   do_hook
   login_bottom                   src/login.php                   do_hook
+  move_before_move               src/move_messages.php           do_hook
 * optpage_set_loadinfo           src/options.php                 do_hook
 * optpage_loadhook_personal      src/options.php                 do_hook
 * optpage_loadhook_display       src/options.php                 do_hook
@@ -417,11 +364,13 @@ but may be out of date soon thereafter.  You never know.  ;-)
 & options_identities_buttons     src/options_identities.php      concat_hook
   message_body                   src/printer_friendly_bottom.php do_hook
   read_body_header               src/read_body.php               do_hook
-  read_body_menu_top             src/read_body.php               hook_func
+  read_body_menu_top             src/read_body.php               concat_hook
   read_body_menu_bottom          src/read_body.php               do_hook
   read_body_header_right         src/read_body.php               do_hook
+  html_top                       src/read_body.php               do_hook
   read_body_top                  src/read_body.php               do_hook
   read_body_bottom               src/read_body.php               do_hook
+  html_bottom                    src/read_body.php               do_hook
   login_before                   src/redirect.php                do_hook
   login_verified                 src/redirect.php                do_hook
   right_main_after_header        src/right_main.php              do_hook
@@ -430,8 +379,6 @@ but may be out of date soon thereafter.  You never know.  ;-)
   search_after_form              src/search.php                  do_hook
   search_bottom                  src/search.php                  do_hook
   logout                         src/signout.php                 do_hook
-  message_body (since 1.5.2)     src/view_html.php               do_hook
-  message_body (since 1.5.2)     src/view_text.php               do_hook
   webmail_top                    src/webmail.php                 do_hook
   webmail_bottom                 src/webmail.php                 concat_hook
   logout_above_text              src/signout.php                 concat_hook
@@ -443,7 +390,6 @@ O info_bottom                    plugins/info/options.php        do_hook
 ^ = Special attachments hook (see below)
 * = Special options hooks (see below)
 O = Optional hook provided by a particular plugin
-! = See below for notes about working with the compose page's <form> tag
 
 
 (#) Called With
@@ -452,35 +398,6 @@ Each hook is called using the hook type specified in the list above:
    do_hook       do_hook()
    hook_func     do_hook_function()
    concat_hook   concat_hook_function()
-
-
-(!) Compose Form
-----------------
-The compose_form hook allows plugins to insert their own code into
-the form tag for the main message composition HTML form.  Usually
-plugins will want to insert some kind of code in an onsubmit event
-handler.  In order to allow more than one plugin to do so, all plugins
-using this hook to add some onsubmit code need to add that code (without
-the enclosing attribute name and quotes) as a new array entry to the
-global $compose_onsubmit array.  The code should use "return false"
-if the plugin has found a reason to stop form submission, otherwise,
-it should DO NOTHING (that is, please do not use "return true", as that
-will prevent other plugins from using the onsubmit handler).  SquirrelMail
-itself will insert a final "return true".  All onsubmit code will be
-enclosed in double quotes by SquirrelMail, so plugins need to quote
-accordingly if needed.  For example:
-
-   global $compose_onsubmit;
-   $compose_onsubmit[] = ' if (somevar == \'no\') return false; ';
-
-Note the escaped single quotes.  If you use double quotes, they would have
-to be escaped as such:
-
-   global $compose_onsubmit;
-   $compose_onsubmit[] = ' if (somevar == \'no\') { alert(\\"Sorry\\"); return false; }';
-
-Any other form tag additions by a plugin (beside onsubmit event code) can
-currently be echoed directly to the browser.
 
 
 (&) Identity Hooks
@@ -505,8 +422,8 @@ options_identities_process
 
     (SquirrelMail 1.4.6+ or 1.5.1+)
       [0] = hook name (always "options_identities_process")
-      [1] = action (hook is used only in 'update' action and any custom
-            action added to form with option_identities_table and
+      [1] = action (hook is used only in 'update' action and any custom 
+            action added to form with option_identities_table and 
             option_identities_buttons hooks)
       [2] = processed identity number
 
@@ -547,8 +464,8 @@ options_identities_table
               . 'YOUR CODE HERE' . '</td></tr>' . "\n";
       }
 
-   First hook argument was modified in 1.4.5/1.5.1. In SquirrelMail 1.4.1-1.4.4
-   and 1.5.0 argument contains only background color. You should use
+   First hook argument was modified in 1.4.5/1.5.1. In SquirrelMail 1.4.1-1.4.4 
+   and 1.5.0 argument contains only background color. You should use 
    <tr bgcolor="<?php echo $args[0]; ?>"> in these SquirrelMail versions.
 
 options_identities_buttons
@@ -568,7 +485,7 @@ options_identities_buttons
               . '" value="Press Me" />';
       }
 
-   Input element should use 'smaction[action_name][identity_no]' value in
+   Input element should use 'smaction[action_name][identity_no]' value in 
    'name' attribute, if you want to process your button actions in
    SquirrelMail 1.4.6+ and 1.5.1+ options_identity_process hook.
 
@@ -607,14 +524,9 @@ To set up links for actions, you assign them like this:
 
   $Args[1]['<plugin_name>']['href'] = 'URL to link to';
   $Args[1]['<plugin_name>']['text'] = _("What to display");
-  $Args[1]['<plugin_name>']['extra'] = 'extra stuff, such as an <img ...> tag';
 
 Note: _("What to display") is explained in the section about
 internationalization.
-
-You can leave the 'text' empty and put an image tag in 'extra' to show an
-image-only link for the attachment, or do the opposite (leave 'extra' empty)
-to display a text-only link.
 
 It's also possible to specify a hook as "attachment type0/*",
 for example "attachment text/*". This hook will be executed whenever there's
@@ -777,9 +689,6 @@ for you.  This is the preferred method of building options lists going forward.
                         setting in the user's preferences
          caption        The text that prefaces this setting on the preferences
                         page
-         trailing_text  Text that follows a text input or select list input on
-                        the preferences page (useful for indicating units,
-                        meanings of special values, etc.)
          type           The type of INPUT element, which should be one of:
                            SMOPT_TYPE_STRING     String/text input
                            SMOPT_TYPE_STRLIST    Select list input
@@ -827,12 +736,6 @@ for you.  This is the preferred method of building options lists going forward.
                         or other code to the user input
          post_script    You may specify some script (usually Javascript) that
                         will be placed after (outside of) the INPUT tag.
-         htmlencoded    disables html sanitizing. WARNING - don't use it, if user
-                        input is possible in option or use own sanitizing functions.
-                        Currently works only with SMOPT_TYPE_STRLIST.
-         folder_filter  Controls folder list limits in SMOPT_TYPE_FLDRLIST widget.
-                        See $flag argument in sqimap_mailbox_option_list()
-                        function. Available since 1.5.1.
 
       Note that you do not have to create a whole new section on the options
       page if you merely want to add a simple input item or two to an options
@@ -1326,41 +1229,6 @@ files.
       and change your Language setting to see the translations in action!
 
 
-
-Documenting the Code (Optional)
--------------------------------
-
-If you wish, you can use phpdoc (Javadoc-style) comments, when documenting your
-code.
-
-If you follow the standards that are followed between SquirrelMail core &
-plugin developers, the resulted documentation can be included with the rest of
-the SquirrelMail code & API documentation. Specifically, in the page-level
-docblock, declare the package to be 'plugins', and the subpackage to be the
-name of your plugin. For instance:
-
-/**
- * demo.php
- *
- * Copyright (c) 2005 My Name <my-email-address>
- * Licensed under the GNU GPL. For full terms see the file COPYING.
- *
- * @package plugins
- * @subpackage demo
- */
-
-The rest is up to you. Try to follow some common sense and document what is
-really needed. Documenting the code properly can be a big help not only to
-yourself, but to those who will take a look at your code, fix the bugs and even
-improve it, in the true open-source spirit that SquirrelMail was built upon.
-
-For more information about phpdocumentor and how to write proper-tagged
-comments, you are directed at:
-
-http://phpdocu.sourceforge.net/
-
-
-
 PLUGIN STANDARDS AND REQUIREMENTS
 =================================
 
@@ -1443,10 +1311,6 @@ scope automatically.  There is nothing more to do than this:
 
    global $favorite_color;
    sqgetGlobalVar('favorite_color', $favorite_color, SQ_FORM);
-
-SquirrelMail 1.5.1+ cleans globals in functions/global.php library. If
-plugin depends on PHP register_globals=On and loads this library, it will
-be broken.
 
 
 Security considerations

@@ -1,12 +1,12 @@
 /**
  * crypto_settings.js
- *
+ * -------------------
  * Some client-side checks. Nothing fancy.
  *
- * @author Konstantin Riabitsev <icon at duke.edu>
- * @copyright &copy; 2001-2006 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
- * @version $Id$
+ * $Id$
+ *
+ * @author Konstantin Riabitsev <icon@duke.edu> ($Author$)
+ * @version $Date$
  */
 
 /**

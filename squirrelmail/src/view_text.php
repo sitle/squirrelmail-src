@@ -13,33 +13,43 @@
  * @package squirrelmail
  */
 
-/** SquirrelMail required files. */
-include('../include/init.php');
-include(SM_PATH . 'functions/imap_general.php');
-include(SM_PATH . 'functions/imap_messages.php');
-include(SM_PATH . 'functions/mime.php');
-include(SM_PATH . 'functions/date.php');
-include(SM_PATH . 'functions/url_parser.php');
+/**
+ * Path for SquirrelMail required files.
+ * @ignore
+ */
+define('SM_PATH','../');
+
+/* SquirrelMail required files. */
+require_once(SM_PATH . 'include/validate.php');
+require_once(SM_PATH . 'functions/global.php');
+require_once(SM_PATH . 'functions/imap.php');
+require_once(SM_PATH . 'functions/mime.php');
+require_once(SM_PATH . 'functions/html.php');
 
 sqgetGlobalVar('key',        $key,          SQ_COOKIE);
 sqgetGlobalVar('username',   $username,     SQ_SESSION);
 sqgetGlobalVar('onetimepad', $onetimepad,   SQ_SESSION);
-sqgetGlobalVar('messages',   $messages,     SQ_SESSION);
-sqgetGlobalVar('mailbox',    $mailbox,      SQ_GET);
-sqgetGlobalVar('ent_id',     $ent_id,       SQ_GET);
-sqgetGlobalVar('passed_ent_id', $passed_ent_id, SQ_GET);
+sqgetGlobalVar('delimiter',  $delimiter,    SQ_SESSION);
 sqgetGlobalVar('QUERY_STRING', $QUERY_STRING, SQ_SERVER);
-if (sqgetGlobalVar('passed_id', $temp, SQ_GET)) {
-    $passed_id = (int) $temp;
+sqgetGlobalVar('messages', $messages);
+sqgetGlobalVar('passed_id', $passed_id, SQ_GET);
+
+if ( sqgetGlobalVar('mailbox', $temp, SQ_GET) ) {
+  $mailbox = $temp;
 }
+if ( !sqgetGlobalVar('ent_id', $ent_id, SQ_GET) ) {
+  $ent_id = '';
+}
+if ( !sqgetGlobalVar('passed_ent_id', $passed_ent_id, SQ_GET) ) {
+  $passed_ent_id = '';
+} 
+
+
 
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
 $mbx_response = sqimap_mailbox_select($imapConnection, $mailbox);
 
 $message = &$messages[$mbx_response['UIDVALIDITY']][$passed_id];
-if (!is_object($message)) {
-    $message = sqimap_get_message($imapConnection, $passed_id, $mailbox);
-}
 $message_ent = $message->getEntity($ent_id);
 if ($passed_ent_id) {
     $message = &$message->getEntity($passed_ent_id);
@@ -56,13 +66,11 @@ $dwnld_url = '../src/download.php?' . $QUERY_STRING . '&amp;absolute_dl=true';
 
 $body = mime_fetch_body($imapConnection, $passed_id, $ent_id);
 $body = decodeBody($body, $encoding);
-$hookResults = do_hook('message_body', $body);
-$body = $hookResults[1];
 
 if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-    function_exists($languages[$squirrelmail_language]['XTRA_CODE'].'_decode')) {
+    function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
     if (mb_detect_encoding($body) != 'ASCII') {
-        $body = call_user_func($languages[$squirrelmail_language]['XTRA_CODE'] . '_decode', $body);
+        $body = $languages[$squirrelmail_language]['XTRA_CODE']('decode', $body);
     }
 }
 
@@ -78,22 +86,20 @@ if ($type1 == 'html' || (isset($override_type1) &&  $override_type1 == 'html')) 
 displayPageHeader($color, 'None');
 ?>
 <br /><table width="100%" border="0" cellspacing="0" cellpadding="2" align="center"><tr><td bgcolor="<?php echo $color[0]; ?>">
-<b><div style="text-align: center;">
+<b><center>
 <?php
 echo _("Viewing a text attachment") . ' - ' .
     '<a href="'.$msg_url.'">' . _("View message") . '</a>';
 ?>
-</b></td><tr><tr><td><div style="text-align: center;">
+</b></td><tr><tr><td><center>
 <?php
 echo '<a href="' . $dwnld_url . '">' . _("Download this as a file") . '</a>';
 ?>
-</div><br />
-</div></b>
+</center><br />
+</center></b>
 </td></tr></table>
 <table width="98%" border="0" cellspacing="0" cellpadding="2" align="center"><tr><td bgcolor="<?php echo $color[0]; ?>">
 <tr><td bgcolor="<?php echo $color[4]; ?>"><tt>
 <?php echo $body; ?>
 </tt></td></tr></table>
-<?php
-$oTemplate->display('footer.tpl');
-?>
+</body></html>

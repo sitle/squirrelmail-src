@@ -9,7 +9,6 @@ Table of Contents:
   4.  (RUN)      Running SquirrelMail
   5.  (CHARSETS) Russian Charsets
   6.  (LOCALES)  Translations of SquirrelMail
-  7.  (PLUGINS)  Installation of included plugins
 
 
 0. QUICK INSTALL GUIDE
@@ -17,7 +16,7 @@ Table of Contents:
 
 Each of these steps is covered in detail below.
 
-- Install webserver and PHP (at least 4.1.0).
+- Install webserver and PHP (at least 4.0.6).
 - Install IMAP server (see docs of that server).
 - Unpack the SquirrelMail package in a web-accessible location.
 - Select a data-dir and attachment dir, outside the webtree (e.g. in /var).
@@ -37,7 +36,7 @@ Each of these steps is covered in detail below.
 --------------------------------------------
 
   If your webserver does not already have PHP you must configure it
-  to work with PHP. You need at least PHP v4.1.0. SquirrelMail uses
+  to work with PHP. You need at least PHP v4.0.6. SquirrelMail uses
   the standard suffix .php for all PHP files.
 
   You can find PHP at http://www.php.net. See the documentation that
@@ -110,14 +109,12 @@ b. Setting up directories
   directories outside of your web tree.
 
   The data directory is used for storing user preferences, like
-  signature, name and theme. You need to create this directory yourself.
-  Recommended location is under /var, for example:
-  /var/local/squirrelmail/data
-  This directory must be writable by the webserver. If your webserver is
-  running as the user "nobody" and group "nobody" you can fix this by
-  running:
+  signature, name and theme. When unpacking the sources this directory
+  is created as data/ in your SquirrelMail directory. This directory
+  must be writable by the webserver. If your webserver is running as
+  the user "nobody" you can fix this by running:
 
-    $ chown -R nobody:nobody /var/local/squirrelmail/data
+    $ chown -R nobody:nobody data
 
   Keep in mind that with different installations, the web server could
   typically run as userid/groupid of nobody/nobody, nobody/nogroup,
@@ -228,22 +225,3 @@ c. Setting up SquirrelMail
   NOTE No.2: You might need to restart your webserver before using translations.
   If you can't do that, install your translations _before_ you use SquirrelMail.
 
-
-7. PLUGINS
-----------
-
-  The SquirrelMail package includes some standard plugins. These plugins can be
-  enabled in the SquirrelMail configuration script.
-
-  Included plugins can use additional configuration files:
-  * change_password
-    configuration file is required. Without it plugin defaults to invalid
-    backend. See plugins/change_password/README
-  * filters, fortune, mail_fetch, newmail, translate
-    configuration files are optional. See README files in plugin directories.
-  * squirrelspell
-    configuration is stored in plugins/squirrelspell/sqspell_config.php
-    The default configuration might not work at your server.
-  * administrator
-    plugin must be setup correctly in order to detect administrative user.
-    See plugins/administrator/INSTALL

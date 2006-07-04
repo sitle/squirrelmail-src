@@ -12,14 +12,20 @@
  */
 
 /**
- * Include the SquirrelMail initialization file.
+ * Path for SquirrelMail required files.
+ * @ignore
  */
-require('../include/init.php');
+define('SM_PATH','../');
+
+require_once(SM_PATH . 'include/validate.php');
+require_once(SM_PATH . 'functions/prefs.php');
+require_once(SM_PATH . 'functions/plugin.php');
+require_once(SM_PATH . 'functions/strings.php');
+require_once(SM_PATH . 'functions/html.php');
 
 /* Erase any lingering attachments */
 sqgetGlobalVar('compose_messages',  $compose_messages,  SQ_SESSION);
-
-if (!empty($compose_message) && is_array($compose_messages)) {
+if (!empty($compose_messages) && is_array($compose_messages)) {
     foreach($compose_messages as $composeMessage) {
         $composeMessage->purgeAttachments();
     }
@@ -32,6 +38,7 @@ if (!isset($frame_top)) {
 /* If a user hits reload on the last page, $base_uri isn't set
  * because it was deleted with the session. */
 if (! sqgetGlobalVar('base_uri', $base_uri, SQ_SESSION) ) {
+    require_once(SM_PATH . 'functions/display_messages.php');
     $base_uri = sqm_baseuri();
 }
 
@@ -48,10 +55,10 @@ if ($signout_page) {
 /* internal gettext functions will fail, if language is not set */
 set_up_language($squirrelmail_language, true, true);
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-  "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
+   <meta name="robots" content="noindex,nofollow">
 <?php
     if ($theme_css != '') {
 ?>
@@ -59,7 +66,6 @@ set_up_language($squirrelmail_language, true, true);
 <?php
     }
 ?>
-   <meta name="robots" content="noindex,nofollow">
    <title><?php echo $org_title . ' - ' . _("Signout"); ?></title>
 </head>
 <body text="<?php echo $color[8]; ?>" bgcolor="<?php echo $color[4]; ?>"
@@ -72,18 +78,18 @@ echo
 html_tag( 'table',
     html_tag( 'tr',
          html_tag( 'th', _("Sign Out"), 'center' ) ,
-    '', $color[0] ) .
+    '', $color[0], 'width="100%"' ) .
     $plugin_message .
     html_tag( 'tr',
          html_tag( 'td', _("You have been successfully signed out.") .
              '<br /><a href="login.php" target="' . $frame_top . '">' .
              _("Click here to log back in.") . '</a><br />' ,
          'center' ) ,
-    '', $color[4] ) .
+    '', $color[4], 'width="100%"' ) .
     html_tag( 'tr',
          html_tag( 'td', '<br />', 'center' ) ,
-    '', $color[0] ) ,
-'center', $color[4], 'width="50%" cellpadding="2" cellspacing="0" border="0"' );
-
-$oTemplate->display('footer.tpl');
+    '', $color[0], 'width="100%"' ) ,
+'center', $color[4], 'width="50%" cols="1" cellpadding="2" cellspacing="0" border="0"' )
 ?>
+</body>
+</html>

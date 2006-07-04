@@ -13,13 +13,16 @@
  */
 
 /**
- * Include the SquirrelMail initialization file.
+ * Path for SquirrelMail required files.
+ * @ignore
  */
-require('../include/init.php');
+define('SM_PATH','../');
 
-require(SM_PATH . 'functions/imap_general.php');
-require(SM_PATH . 'functions/imap_messages.php');
-require(SM_PATH . 'functions/tree.php');
+/* SquirrelMail required files. */
+require_once(SM_PATH . 'include/validate.php');
+require_once(SM_PATH . 'functions/display_messages.php');
+require_once(SM_PATH . 'functions/imap.php');
+require_once(SM_PATH . 'functions/tree.php');
 
 /* get those globals */
 
@@ -31,6 +34,8 @@ sqgetGlobalVar('onetimepad', $onetimepad, SQ_SESSION);
 /* finished globals */
 
 $imap_stream = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
+
+sqimap_mailbox_list($imap_stream);
 
 $mailbox = $trash_folder;
 $boxes = sqimap_mailbox_list($imap_stream);
@@ -64,14 +69,13 @@ for ($i = 0; $i < $numboxes; $i++) {
 
 // now lets go through the tree and delete the folders
 walkTreeInPreOrderEmptyTrash(0, $imap_stream, $foldersTree);
-// update mailbox cache
-$mailboxes=sqimap_get_mailboxes($imap_stream,true,$show_only_subscribed_folders);
 sqimap_logout($imap_stream);
 
 // close session properly before redirecting
 session_write_close();
 
 $location = get_location();
-header ("Location: $location/left_main.php");
+// force_refresh = 1 in case trash contains deleted mailboxes
+header ("Location: $location/left_main.php?force_refresh=1");
 
 ?>

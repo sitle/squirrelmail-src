@@ -1,17 +1,17 @@
 <?php
-
 /**
  * check_me.mod
- *
+ * -------------
  * Squirrelspell module.
+ *
+ * Copyright (c) 1999-2006 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This module is the main workhorse of SquirrelSpell. It submits
  * the message to the spell-checker, parses the output, and loads
  * the interface window.
  *
- * @author Konstantin Riabitsev <icon at duke.edu>
- * @copyright &copy; 1999-2006 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @author Konstantin Riabitsev <icon@duke.edu>
  * @version $Id$
  * @package plugins
  * @subpackage squirrelspell
@@ -36,14 +36,10 @@ function SpellLink($jscode, $title, $link) {
 /**
  * Declaring globals for users with E_ALL set.
  */
-global $SQSPELL_APP_DEFAULT, $SQSPELL_APP, $attachment_dir, $color;
+global $SQSPELL_APP, $attachment_dir, $SQSPELL_EREG, $color;
 
-if (! sqgetGlobalVar('sqspell_text',$sqspell_text,SQ_POST)) {
-  $sqspell_text = '';
-}
-if (! sqgetGlobalVar('sqspell_use_app',$sqspell_use_app,SQ_POST)) {
-  $sqspell_use_app = $SQSPELL_APP_DEFAULT;
-}
+$sqspell_text = $_POST['sqspell_text'];
+$sqspell_use_app = $_POST['sqspell_use_app'];
 
 /**
  * Now we explode the lines for three reasons:
@@ -98,23 +94,21 @@ if( check_php_version ( 4, 3 ) ) {
     );
     $spell_proc = @proc_open($sqspell_command, $descriptorspec, $pipes);
     if ( ! is_resource ( $spell_proc ) ) {
-        // TODO: replace error_box() with sqspell_makeWindow()
         error_box ( sprintf(_("Could not run the spellchecker command (%s)."),
-            htmlspecialchars($sqspell_command) ) );
-        // display footer (closes html tags) and stop script execution
-        $oTemplate->display('footer.tpl');
+            htmlspecialchars($sqspell_command) ) , $color );
+        // close html tags and abort script.
+        echo "</body></html>";
         exit();
     }
     if ( ! @fwrite($pipes[0], $sqspell_new_text) ) {
-        // TODO: replace error_box() with sqspell_makeWindow()
-        error_box ( _("Error while writing to pipe.") );
-        // close all three $pipes here.
+        error_box ( _("Error while writing to pipe.") , $color );
+        // close all three pipes here.
         for($i=0; $i<=2; $i++) {
             // disable all fclose error messages
             @fclose($pipes[$i]);
         }
         // close html tags and abort script.
-        $oTemplate->display('footer.tpl');
+        echo "</body></html>";
         exit();
     }
     fclose($pipes[0]);
@@ -127,7 +121,7 @@ if( check_php_version ( 4, 3 ) ) {
     }
     $sqspell_exitcode=proc_close($spell_proc);
 } else {
-    // add slash to attachment directory, if it does not end with slash. 
+    // add slash to attachment directory, if it does not end with slash.
     if (substr($attachment_dir, -1) != '/')
         $attachment_dir = $attachment_dir . '/';
 
@@ -138,21 +132,19 @@ if( check_php_version ( 4, 3 ) ) {
 
     $fp = @fopen($floc, 'w');
     if ( ! is_resource ($fp) ) {
-        // TODO: replace error_box() with sqspell_makeWindow()
         error_box ( sprintf(_("Could not open temporary file '%s'."),
-            htmlspecialchars($floc) ) );
+            htmlspecialchars($floc) ) , $color );
         // failed to open temp file. abort script.
-        $oTemplate->display('footer.tpl');
+        echo "</body></html>";
         exit();
     }
     if ( ! @fwrite($fp, $sqspell_new_text) ) {
-        // TODO: replace error_box() with sqspell_makeWindow()
         error_box ( sprintf(_("Error while writing to temporary file '%s'."),
-            htmlspecialchars($floc) ) );
+            htmlspecialchars($floc) ) , $color );
         // close file descriptor
         fclose($fp);
         // failed writing to temp file. abort script.
-        $oTemplate->display('footer.tpl');
+        echo "</body></html>";
         exit();
     }
     fclose($fp);
@@ -164,7 +156,7 @@ if( check_php_version ( 4, 3 ) ) {
  * Check if the execution was successful. Bail out if it wasn't.
  */
 if ($sqspell_exitcode){
-  $msg= '<div style="text-align: center;">'
+  $msg= "<div align='center'>"
      . sprintf(_("I tried to execute '%s', but it returned:"),
                $sqspell_command) . "<pre>"
      . htmlspecialchars(join("\n", $sqspell_output)) . '</pre>'
@@ -178,7 +170,7 @@ if ($sqspell_exitcode){
 /**
  * Load the user dictionary.
  */
-$words=sqspell_getLang($sqspell_use_app);
+$words=sqspell_getLang(sqspell_getWords(), $sqspell_use_app);
 /**
  * Define some variables to be used during the processing.
  */
@@ -214,7 +206,7 @@ for ($i=0; $i<sizeof($sqspell_output); $i++){
     /**
      * Check if the word is in user dictionary.
      */
-    if (! in_array($sqspell_word,$words)){
+    if (!$SQSPELL_EREG("\n$sqspell_word\n", $words)){
       $sqspell_symb=intval($tmparray[3])-1;
       if (!isset($misses[$sqspell_word])) {
         $misses[$sqspell_word] = $right;
@@ -240,7 +232,7 @@ for ($i=0; $i<sizeof($sqspell_output); $i++){
      *
      * Check if the word is in user dictionary.
      */
-    if (!in_array($sqspell_word,$words)){
+    if (!$SQSPELL_EREG("\n$sqspell_word\n", $words)){
       $sqspell_symb=intval($tmparray[2])-1;
       if (!isset($misses[$sqspell_word])) {
           $misses[$sqspell_word] = '_NONE';
@@ -339,7 +331,7 @@ if ($errors){
    <tr>
     <td bgcolor="<?php echo $color[9] ?>" align="center">
      <b>
-      <?php printf( ngettext("Found %d error","Found %d errors",$errors), $errors ) ?>
+      <?php printf( _("Found %s errors"), $errors ) ?>
      </b>
     </td>
    </tr>
@@ -469,7 +461,7 @@ if ($errors){
   /**
    * AREN'T YOU SUCH A KNOW-IT-ALL!
    */
-  $msg='<form onsubmit="return false"><div style="text-align: center;">' .
+  $msg='<form onsubmit="return false"><div align="center">' .
        '<input type="submit" value="  ' . _("Close") .
        '  " onclick="self.close()" /></div></form>';
   sqspell_makeWindow(null, _("No errors found"), null, $msg);
@@ -480,6 +472,6 @@ if ($errors){
  * Local variables:
  * mode: php
  * End:
- * vim: syntax=php et ts=4
+ * vim: syntax=php
  */
 ?>

@@ -53,8 +53,7 @@ function hex2ip($hex) {
 /** create page headers */
 header('Content-Type: text/html');
 
-echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"'."\n"
-    .'  "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">'
+echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">'
     ."\n<head>\n<meta name=\"robots\" content=\"noindex,nofollow\">\n"
     ."</head><body>";
 

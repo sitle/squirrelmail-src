@@ -13,14 +13,15 @@
  */
 
 /**
- * Include the SquirrelMail initialization file.
+ * Path for SquirrelMail required files.
+ * @ignore
  */
-require('../include/init.php');
+define('SM_PATH','../');
 
 /* SquirrelMail required files. */
-require(SM_PATH . 'functions/imap_general.php');
-require(SM_PATH . 'functions/mailbox_display.php');
-require(SM_PATH . 'functions/mime.php');
+require_once(SM_PATH . 'include/validate.php');
+require_once(SM_PATH . 'functions/imap.php');
+require_once(SM_PATH . 'functions/mime.php');
 
 header('Pragma: ');
 header('Cache-Control: cache');
@@ -29,7 +30,6 @@ header('Cache-Control: cache');
 sqgetGlobalVar('key',        $key,          SQ_COOKIE);
 sqgetGlobalVar('username',   $username,     SQ_SESSION);
 sqgetGlobalVar('onetimepad', $onetimepad,   SQ_SESSION);
-sqgetGlobalVar('mailbox_cache',$mailbox_cache,SQ_SESSION);
 sqgetGlobalVar('messages',   $messages,     SQ_SESSION);
 sqgetGlobalVar('mailbox',    $mailbox,      SQ_GET);
 sqgetGlobalVar('ent_id',     $ent_id,       SQ_GET);
@@ -37,35 +37,23 @@ sqgetGlobalVar('absolute_dl',$absolute_dl,  SQ_GET);
 if ( sqgetGlobalVar('passed_id', $temp, SQ_GET) ) {
     $passed_id = (int) $temp;
 }
-if (!sqgetGlobalVar('account', $account, SQ_GET) ) {
-    $account = 0;
-}
 
 global $default_charset;
 set_my_charset();
 
 /* end globals */
 
+global $uid_support;
+
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
-$aMailbox = sqm_api_mailbox_select($imapConnection, $account, $mailbox,array(),array());
+$mbx_response =  sqimap_mailbox_select($imapConnection, $mailbox);
 
-if (isset($aMailbox['MSG_HEADERS'][$passed_id]['MESSAGE_OBJECT']) &&
-    is_object($aMailbox['MSG_HEADERS'][$passed_id]['MESSAGE_OBJECT']) ) {
-    $message = $aMailbox['MSG_HEADERS'][$passed_id]['MESSAGE_OBJECT'];
-} else {
-   $message = sqimap_get_message($imapConnection, $passed_id, $mailbox);
-   $aMailbox['MSG_HEADERS'][$passed_id]['MESSAGE_OBJECT'] = $message;
+$message = $messages[$mbx_response['UIDVALIDITY']]["$passed_id"];
+if (!is_object($message)) {
+    $message = sqimap_get_message($imapConnection,$passed_id, $mailbox);
 }
-
-//$mbx_response =  sqimap_mailbox_select($imapConnection, $mailbox);
-
-//$message = &$messages[$mbx_response['UIDVALIDITY']]["$passed_id"];
-//if (!is_object($message)) {
-//    $message = sqimap_get_message($imapConnection,$passed_id, $mailbox);
-//}
 $subject = $message->rfc822_header->subject;
 if ($ent_id) {
-    // replace message with message part, if message part is requested.
     $message = $message->getEntity($ent_id);
     $header = $message->header;
 
@@ -134,15 +122,12 @@ if (strlen($filename) < 1) {
 }
 
 /**
- * Update mailbox_cache and close session in order to prevent
- * script locking on larger downloads. SendDownloadHeaders() and 
- * mime_print_body_lines() don't write information to session.
- * mime_print_body_lines() call duration depends on size of 
- * attachment and script can cause interface lockups, if session 
- * is not closed.
+ * Close session in order to prevent script locking on larger 
+ * downloads. SendDownloadHeaders() and mime_print_body_lines() 
+ * don't write information to session. mime_print_body_lines() 
+ * call duration depends on size of attachment and script can 
+ * cause interface lockups, if session is not closed.
  */
-$mailbox_cache[$aMailbox['NAME']] = $aMailbox;
-sqsession_register($mailbox_cache,'mailbox_cache');
 session_write_close();
 
 /*
@@ -157,7 +142,7 @@ session_write_close();
  *    most likely display the attachment inline inside the browser.
  *      And finally, the third one will be used by default.  If it
  *    is displayable (text or html), it will load them up in a text
- *    viewer (built in to SquirrelMail).  Otherwise, it sets the
+ *    viewer (built in to squirrelmail).  Otherwise, it sets the
  *    content-type as application/octet-stream
  */
 if (isset($absolute_dl) && $absolute_dl) {
@@ -168,5 +153,4 @@ if (isset($absolute_dl) && $absolute_dl) {
 /* be aware that any warning caused by download.php will corrupt the
  * attachment in case of ERROR reporting = E_ALL and the output is the screen */
 mime_print_body_lines ($imapConnection, $passed_id, $ent_id, $encoding);
-
 ?>

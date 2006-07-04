@@ -17,13 +17,16 @@
  * @package squirrelmail
  */
 
-// reduce the included files in int.php
-$bLogin = true;
-
 /**
- * Include the SquirrelMail initialization file.
+ * Path for SquirrelMail required files.
+ * @ignore
  */
-require('../include/init.php');
+define('SM_PATH','../');
+
+/* SquirrelMail required files. */
+require_once(SM_PATH . 'functions/global.php');
+require_once(SM_PATH . 'functions/strings.php');
+require_once(SM_PATH . 'config/config.php');
 
 /* Force users to login each time? */
 $force_login  = true;
@@ -62,6 +65,7 @@ if(sqgetGlobalVar('emailaddress', $emailaddress)) {
     }
     $url = substr($url, 0, -1);
 }
+sqsession_is_active();
 
 if($force_login == false && sqsession_is_registered('user_is_logged_in')) {
     if($compose_only == true) {
@@ -75,5 +79,4 @@ if($force_login == false && sqsession_is_registered('user_is_logged_in')) {
 
 session_write_close();
 header('Location: ' . get_location() . '/' . $redirect);
-
 ?>

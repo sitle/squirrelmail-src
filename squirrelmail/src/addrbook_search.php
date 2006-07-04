@@ -17,12 +17,28 @@
  */
 
 /**
- * Include the SquirrelMail initialization file.
+ * Path for SquirrelMail required files.
+ * @ignore
  */
-require('../include/init.php');
+define('SM_PATH','../');
 
-include_once(SM_PATH . 'functions/forms.php');
-include_once(SM_PATH . 'functions/addressbook.php');
+/** SquirrelMail required files. */
+require_once(SM_PATH . 'include/validate.php');
+require_once(SM_PATH . 'functions/strings.php');
+require_once(SM_PATH . 'functions/global.php');
+require_once(SM_PATH . 'functions/html.php');
+require_once(SM_PATH . 'functions/forms.php');
+
+/** lets get the global vars we may need */
+sqgetGlobalVar('key',       $key,           SQ_COOKIE);
+sqgetGlobalVar('username',  $username,      SQ_SESSION);
+sqgetGlobalVar('onetimepad',$onetimepad,    SQ_SESSION);
+sqgetGlobalVar('base_uri',  $base_uri,      SQ_SESSION);
+
+sqgetGlobalVar('show' ,   $show);
+sqgetGlobalVar('query',   $query,   SQ_POST);
+sqgetGlobalVar('listall', $listall, SQ_POST);
+sqgetGlobalVar('backend', $backend, SQ_POST);
 
 /**
  * Function to include JavaScript code
@@ -30,7 +46,7 @@ include_once(SM_PATH . 'functions/addressbook.php');
  */
 function insert_javascript() {
     ?>
-    <script type="text/javascript"><!--
+    <script language="Javascript"><!--
 
     function to_and_close($addr) {
         to_address($addr);
@@ -101,11 +117,11 @@ function insert_javascript() {
  */
 function display_result($res, $includesource = true) {
     global $color;
-
+        
     if(sizeof($res) <= 0) return;
-
+        
     insert_javascript();
-
+        
     $line = 0;
     echo html_tag( 'table', '', 'center', '', 'border="0" width="98%"' ) .
     html_tag( 'tr', '', '', $color[9] ) .
@@ -116,33 +132,33 @@ function display_result($res, $includesource = true) {
 
     if ($includesource) {
         echo html_tag( 'th', '&nbsp;' . _("Source"), 'left', '', 'width="10%"' );
-    }
+    }    
     echo "</tr>\n";
-
+    
     while (list($undef, $row) = each($res)) {
         $email = htmlspecialchars(addcslashes(AddressBook::full_address($row), "'"), ENT_QUOTES);
-        if ($line % 2) {
+        if ($line % 2) { 
             $tr_bgcolor = $color[12];
         } else {
             $tr_bgcolor = $color[4];
         }
-        echo html_tag( 'tr', '', '', $tr_bgcolor, 'style="white-space: nowrap;"' ) .
+        echo html_tag( 'tr', '', '', $tr_bgcolor, 'nowrap' ) .
         html_tag( 'td',
-             '<small><a href="javascript:to_address(' .
+             '<small><a href="javascript:to_address(' . 
                                        "'" . $email . "');\">"._("To")."</a> | " .
-             '<a href="javascript:cc_address(' .
+             '<a href="javascript:cc_address(' . 
                                        "'" . $email . "');\">"._("Cc")."</a> | " .
-             '<a href="javascript:bcc_address(' .
+             '<a href="javascript:bcc_address(' . 
                                  "'" . $email . "');\">"._("Bcc")."</a></small>",
-        'center', '', 'valign="top" width="5%" style="white-space: nowrap;"' ) .
-        html_tag( 'td', '&nbsp;' . htmlspecialchars($row['name']), 'left', '', 'valign="top" style="white-space: nowrap;"' ) .
+        'center', '', 'valign="top" width="5%" nowrap' ) .
+        html_tag( 'td', '&nbsp;' . htmlspecialchars($row['name']), 'left', '', 'valign="top" nowrap' ) .
         html_tag( 'td', '&nbsp;' .
              '<a href="javascript:to_and_close(' .
                  "'" . $email . "');\">" . htmlspecialchars($row['email']) . '</a>'
         , 'left', '', 'valign="top"' ) .
-        html_tag( 'td', htmlspecialchars($row['label']), 'left', '', 'valign="top" style="white-space: nowrap;"' );
+        html_tag( 'td', htmlspecialchars($row['label']), 'left', '', 'valign="top" nowrap' );
         if ($includesource) {
-            echo html_tag( 'td', '&nbsp;' . $row['source'], 'left', '', 'valign="top" style="white-space: nowrap;"' );
+            echo html_tag( 'td', '&nbsp;' . $row['source'], 'left', '', 'valign="top" nowrap' );
         }
 
         echo "</tr>\n";
@@ -152,31 +168,16 @@ function display_result($res, $includesource = true) {
 }
 
 /* ================= End of functions ================= */
-
-/** lets get the global vars we may need */
-sqgetGlobalVar('key',       $key,           SQ_COOKIE);
-sqgetGlobalVar('username',  $username,      SQ_SESSION);
-sqgetGlobalVar('onetimepad',$onetimepad,    SQ_SESSION);
-sqgetGlobalVar('base_uri',  $base_uri,      SQ_SESSION);
-
-if (! sqgetGlobalVar('show' , $show)) {
-    $show = '';
-}
-if (! sqgetGlobalVar('query', $query, SQ_POST)) {
-    $query = '';
-}
-if (! sqgetGlobalVar('listall', $listall, SQ_POST)) {
-    unset($listall);
-}
-if (! sqgetGlobalVar('backend', $backend, SQ_POST)) {
-    $backend = '';
-}
-
+    
+require_once('../functions/strings.php');
+require_once('../functions/addressbook.php');
+    
 displayHtmlHeader();
-
-/** set correct value of $default_charset */
-global $default_charset;
-set_my_charset();
+    
+/* Initialize vars */
+if (!isset($query)) { $query = ''; }
+if (!isset($show))  { $show  = ''; }
+if (!isset($backend)) { $backend = ''; }
 
 /* Choose correct colors for top and bottom frame */
 if ($show == 'form' && !isset($listall)) {
@@ -191,7 +192,7 @@ if ($show == 'form' && !isset($listall)) {
 }
 
 /* Empty search */
-if (empty($query) && empty($show) && !isset($listall)) {
+if (empty($query) && empty($show) && empty($listall)) {
     echo html_tag( 'p', '<br />' .
                       _("No persons matching your search were found"),
             'center' ) .
@@ -199,17 +200,16 @@ if (empty($query) && empty($show) && !isset($listall)) {
     exit;
 }
 
-/* Initialize addressbook, show init errors only in bottom frame */
-$showerr=($show=='form' ? false : true);
-$abook = addressbook_init($showerr);
+/* Initialize addressbook */
+$abook = addressbook_init();
 
-/* Create search form (top frame) */
-if ($show == 'form' && ! isset($listall)) {
-    echo '<form name="sform" target="abookres" action="addrbook_search.php'.
+/* Create search form */
+if ($show == 'form' && empty($listall)) {
+    echo '<form name="sform" target="abookres" action="addrbook_search.php'. 
             '" method="post">' . "\n" .
          html_tag( 'table', '', '', '', 'border="0" width="100%" height="100%"' ) .
          html_tag( 'tr' ) .
-         html_tag( 'td', '  <strong>' . _("Search for") . "</strong>\n", 'left', '', 'style="white-space: nowrap;" valign="middle" width="10%"' ) .
+         html_tag( 'td', '  <strong>' . _("Search for") . "</strong>\n", 'left', '', 'nowrap valign="middle" width="10%"' ) .
          html_tag( 'td', '', 'left', '', '' ) .
          addInput('query', $query, 28);
 
@@ -227,7 +227,7 @@ if ($show == 'form' && ! isset($listall)) {
     } else {
         echo addHidden('backend', '-1');
     }
-
+        
     echo '</td></tr>' .
     html_tag( 'tr',
                     html_tag( 'td', '', 'left' ) .
@@ -241,13 +241,9 @@ if ($show == 'form' && ! isset($listall)) {
             ) .
          '</table></form>' . "\n";
 } else {
-    /**
-     * List addresses (bottom frame)
-     * If listall is set, list all entries in selected backend.
-     * If $show is 'blank' (initial call of address book popup) - list
-     * personal address book.
-     */
-    if ($show == 'blank' || isset($listall)) {
+
+    /* Show personal addressbook */
+    if ($show == 'blank' && empty($listall)) {
 
         if($backend != -1 || $show == 'blank') {
             if ($show == 'blank') {
@@ -260,9 +256,9 @@ if ($show == 'form' && ! isset($listall)) {
                 display_result($res, false);
             } else {
                 echo html_tag( 'p', '<strong>' .
-                               sprintf(_("Unable to list addresses from %s"),
-                                       $abook->backends[$backend]->sname) . '</strong>' ,
-                               'center' ) . "\n";
+                                 sprintf(_("Unable to list addresses from %s"),
+                                     $abook->backends[$backend]->sname) . '</strong>' ,
+                       'center' ) . "\n";
             }
         } else {
             $res = $abook->list_addr();
@@ -270,34 +266,41 @@ if ($show == 'form' && ! isset($listall)) {
             display_result($res, true);
         }
 
-    } elseif (!empty($query)) {
-        /* Do the search (listall is not set. query is set.)*/
-
-        if($backend == -1) {
-            $res = $abook->s_search($query);
-        } else {
-            $res = $abook->s_search($query, $backend);
+    } else {
+        if( !empty( $listall ) ){
+          $query = '*';
         }
 
-        if (!is_array($res)) {
-            echo html_tag( 'p', '<b><br />' .
-                           _("Your search failed with the following error(s)") .
-                           ':<br />' . nl2br(htmlspecialchars($abook->error)) . "</b>\n" ,
-                           'center' );
-        } elseif (sizeof($res) == 0) {
-            echo html_tag( 'p', '<br /><b>' .
-                           _("No persons matching your search were found") . "</b>\n" ,
-                           'center' );
-        } else {
+        /* Do the search */
+        if (!empty($query)) {
+    
+            if($backend == -1) {
+                $res = $abook->s_search($query);
+            } else {
+                $res = $abook->s_search($query, $backend);
+            }
+        
+            if (!is_array($res)) {
+                echo html_tag( 'p', '<b><br />' .
+                                 _("Your search failed with the following error(s)") .
+                                 ':<br />' . $abook->error . "</b>\n" ,
+                       'center' ) .
+                "\n</body></html>\n";
+                exit;
+            }
+        
+            if (sizeof($res) == 0) {
+                echo html_tag( 'p', '<br /><b>' .
+                                 _("No persons matching your search were found") . "</b>\n" ,
+                       'center' ) .
+                "\n</body></html>\n";
+                exit;
+            }
+        
             display_result($res);
         }
-    } else {
-        /**
-         * listall is not set, query is not set or empty.
-         * User hit search button without entering search expression.
-         */
-        echo html_tag( 'p', '<br /><b>' . _("Nothing to search") . "</b>\n",'center' );
     }
+   
 }
-$oTemplate->display('footer.tpl');
 ?>
+</body></html>
