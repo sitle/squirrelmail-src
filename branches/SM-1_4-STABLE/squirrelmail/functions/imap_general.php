@@ -737,7 +737,7 @@ function parseAddress($address, $max=0) {
             break;
         case '(':
             $iEnd = strrpos($address,')');
-            if (!$iEnd) {
+            if (!$iEnd || $iEnd < $i) {
                 $sToken = substr($address,$i);
                 $i = $iCnt;
             } else {
