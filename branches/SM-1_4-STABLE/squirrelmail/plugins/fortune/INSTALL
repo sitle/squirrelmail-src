@@ -11,8 +11,7 @@ directory:
 You may have to edit plugins/fortune/setup.php and change the location
 of fortune on your system. Simply modify the $fortune_location variable
 This script was written on RedHat 6.2 as such fortune is expected in 
-/usr/games/fortune also if safe mode is enabled your going to have to 
-copy fortune into your safe_mode bin directory.
+/usr/games/fortune. Plugin works only when PHP safe mode is disabled.
 
 Then go to your config directory and run conf.pl.  Choose option
 8 and add the plugin (+).  Save and exit, then that should be all
