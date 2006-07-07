@@ -44,7 +44,7 @@ function fortune() {
     }
 
     $fortune_location = '/usr/games/fortune';
-    $exist = file_exists($fortune_location);
+    $exist = is_file($fortune_location);
     echo "<center><table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" bgcolor=\"$color[10]\">\n".
         "<tr><td><table width=\"100%\" cellpadding=\"2\" cellspacing=\"1\" border=\"0\" bgcolor=\"$color[5]\">\n".
         "<tr><td align=\"center\">\n";
@@ -52,8 +52,10 @@ function fortune() {
     if (!$exist) {
         printf(_("%s is not found."),$fortune_location);
     } else {
+        // display only short fortune cookies
+        $fortune_command = $fortune_location . ' -s';
         echo '<center><em>' . _("Today's Fortune") . '</em></center><br /><pre>' .
-            htmlspecialchars(shell_exec($fortune_location)) .
+            htmlspecialchars(shell_exec($fortune_command)) .
             '</pre>';
     }
 
