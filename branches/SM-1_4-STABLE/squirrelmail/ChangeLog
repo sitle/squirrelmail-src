@@ -8,6 +8,7 @@ Version 1.4.8 - CVS
   - Fixed endless loop when trying to parse "From: )(" (#1517867).
   - Using is_file() instead of file_exists() in fortune plugin (#1499134).
   - Add manual page for conf.pl under contrib.
+  - Don't allow selecting INBOX as Sent, Draft or Trash folder (#1242346).
   
 Version 1.4.7 - 4th July 2006
 -----------------------------
