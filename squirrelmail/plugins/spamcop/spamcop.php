@@ -169,15 +169,14 @@ echo "</p>";
       $spam_message = substr($spam_message, 0, 50000 - strlen($Warning)) . $Warning;
    }
    if (isset($js_web) && $js_web) {
-?>  <form method="post" action="http://www.spamcop.net/sc" name="submitspam"
+?>  <form method="post" action="http://members.spamcop.net/sc" name="submitspam"
     enctype="multipart/form-data"><?PHP
    } else {
-?>  <form method="post" action="http://www.spamcop.net/sc" name="submitspam"
+?>  <form method="post" action="http://members.spamcop.net/sc" name="submitspam"
     enctype="multipart/form-data" target="_top"><?PHP
    } ?>
   <input type="hidden" name="action" value="submit" />
   <input type="hidden" name="oldverbose" value="1" />
-  <input type="hidden" name="code" value="<?PHP echo htmlspecialchars($spamcop_id) ?>" />
   <input type="hidden" name="spam" value="<?PHP echo htmlspecialchars($spam_message); ?>" />
 <?PHP
   echo '<input type="submit" name="x1" value="' . _("Send Spam Report") . "\" />";
