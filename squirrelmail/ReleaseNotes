@@ -49,12 +49,17 @@ but they have of course been fixed:
   register_globals enabled, and magic_quotes disabled. However, running with
   register_globals enabled is completely unnecessary and a well-known security
   hazzard. We've now changed the code such that when register_globals is enabled,
-  all globals are deregistered. Reported by Denix Solutions, thanks!
+  all globals are deregistered. Reported by Denix Solutions, thanks! This is
+  CVE-2006-2842.
 
 - It was possible to steal a cookie of a user that ran on the same base domain.
   Since this setup is already inherently insecure we don't think the impact is
   big, but the code was of course fixed to also incorporate the path to
   SquirrelMail.
+
+- There's a disputed report of search.php being vulnerable to cross site scripting.
+  We don't believe this is the case and haven't seen any evidence, but the code is
+  tightened to be very sure. This is CVE-2006-3174.
 
 
 Major updates
