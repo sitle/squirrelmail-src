@@ -31,6 +31,18 @@ if(isset($session_name) && $session_name) {
  */
 ini_set('magic_quotes_runtime','0');
 
+/**
+ * [#1518885] session.use_cookies = off breaks SquirrelMail
+ *
+ * When session cookies are not used, all http redirects, meta refreshes,
+ * src/download.php and javascript URLs are broken. Setting must be set
+ * before session is started.
+ */
+if (!(bool)ini_get('session.use_cookies') ||
+    ini_get('session.use_cookies') == 'off') {
+    ini_set('session.use_cookies','1');
+}
+
 /* convert old-style superglobals to current method
  * this is executed if you are running PHP 4.0.x.
  * it is run via a require_once directive in validate.php
