@@ -1,34 +1,31 @@
 <!doctype linuxdoc system>
 <!--
- $Id$
+  $Id$
 
- Copyright (c) 2005-2006 The SquirrelMail Project Team
- This file is part of SquirrelMail webmail interface documentation.
+  Copyright (c) 2005-2006 The SquirrelMail Project Team
+  This file is part of SquirrelMail webmail interface documentation.
 
- SquirrelMail is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 2 of the License, or
- (at your option) any later version.
+  SquirrelMail is free software; you can redistribute it and/or modify it under
+  the terms of the GNU General Public License as published by the Free Software
+  Foundation; either version 2 of the License, or (at your option) any later
+  version.
 
- SquirrelMail is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- GNU General Public License for more details.
+  SquirrelMail is distributed in the hope that it will be useful, but WITHOUT
+  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+  FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
- You should have received a copy of the GNU General Public License
- along with SquirrelMail; if not, write to the Free Software
- Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
- 02110-1301, USA
+  You should have received a copy of the GNU General Public License along with
+  SquirrelMail; if not, write to the Free Software Foundation, Inc., 51 Franklin
+  Street, Fifth Floor, Boston, MA 02110-1301, USA
 -->
 <article>
 
 <title>SquirrelMail Developer's Manual
-<author>The SquirrelMail Project Team:
-<!-- put your name here -->
-</author>
+<author>The SquirrelMail Project Team</author>
 <date>$Date$
 <abstract>
-This document provides information for developers of SquirrelMail webmail interface.
+This document provides information for the developers of the SquirrelMail
+webmail interface.
 </abstract>
 
 <toc>
@@ -38,7 +35,7 @@ Document version: $Revision$
 
 <sect>SquirrelMail overview
 <p>
-SquirrelMail is a standards-based webmail package written in PHP4. It includes
+SquirrelMail is a standards-based webmail package written in PHP. It includes
 built-in pure PHP support for the IMAP and SMTP protocols, and all pages render
 in pure HTML 4.0 (with no JavaScript required) for maximum compatibility across
 browsers. It has very few requirements and is very easy to configure and
@@ -51,19 +48,215 @@ This section should provide some generic information.
 
 <sect1>Coding guidelines
 <p>
-Import wiki page
+To ensure that the SquirrelMail affects the logs as little as possible, executes
+as quickly as possible and stays readable to the developers, please follow these
+rules when coding.
+
+<descrip>
+<tag>Code with secure global variables
+<p>
+All code must work with the PHP setting <tt>register_globals</tt> set to
+<tt>off</tt>. This isn't hard, but you'll have to let go the idea that any
+variable that is passed via GET, POST, sessions or cookies is available right
+away. <url url="http://php.net/manual/en/ini.core.php#ini.register-globals"
+name="The PHP manual"> has a chapter on the subject, explaining the problem
+more in detail.
+
+Be conscious of variable names and how they might interfere with one another for
+SquirrelMail installations with <tt>register_globals</tt> set to <tt>on</tt>.
+That is, if you use a variable called <tt>$username</tt> (and do not declare it
+as global), it will have a local scope and have no effect outside of the current
+function with <tt>register_globals</tt> set to <tt>off</tt>, but it would have
+potentially disastrous effects in an environment where <tt>register_globals</tt>
+is set to <tt>on</tt>.
+
+There's a special function in SquirrelMail, <tt>sqGetGlobalVar()</tt>, designed
+to retrieve variables in a safe way. Use this function instead of accessing
+<tt>$_GET</tt> etc. directly. Read more about it in the SquirrelMail API
+Documentation for the <url
+url="http://www.squirrelmail.org/docs/phpdoc14/squirrelmail/_squirrelmail_functions_global_php.html#functionsqgetGlobalVar"
+name="stable"> and <url
+url="http://www.squirrelmail.org/docs/phpdoc/squirrelmail/_functions_global_php.html#functionsqgetGlobalVar"
+name="development"> versions.
+
+Also use the SquirrelMail function <tt>sqsession_register($var, 'var')</tt>
+instead of <tt>session_register('var')</tt> and
+<tt>sqsession_unregister('var')</tt> instead of
+<tt>session_unregister('var')</tt>. Read more about it in the SquirrelMail API
+Documentation for <tt>sqsession_register()</tt> (<url
+url="http://www.squirrelmail.org/docs/phpdoc14/squirrelmail/_squirrelmail_functions_global_php.html#functionsqsession_register"
+name="stable"> and <url
+url="http://www.squirrelmail.org/docs/phpdoc/squirrelmail/_functions_global_php.html#functionsqsession_register"
+name="development">) and <tt>sqsession_unregister()</tt> (<url
+url="http://www.squirrelmail.org/docs/phpdoc14/squirrelmail/_squirrelmail_functions_global_php.html#functionsqsession_unregister"
+name="stable"> and <url
+url="http://www.squirrelmail.org/docs/phpdoc/squirrelmail/_functions_global_php.html#functionsqsession_unregister"
+name="development">).
+
+<tag>Keep the code log safe
+<p>
+SquirrelMail code must be log safe code, i.e. do everything to avoid PHP notices
+and other error messages. This includes to initialize variables (just
+<tt>$a = 0</tt> is initialization) and to use <tt>isset()</tt> in tests. Use
+<tt>ini_get("safe_mode")</tt> to determine if you can use <tt>putenv()</tt>.
+
+<tag>Group statements with braces
+<p>
+There shouldn't be a space between functions etc. and the brackets when using
+them, except when writing <url
+url="http://php.net/manual/en/language.control-structures.php" name="control
+structures">. The use of braces, i.e. "{" and "}" is mandatory, even when
+grouping just one statement. The indentation is done using spaces, never
+tabulators, using four spaces per indentation level.
+
+<bf>Examples:</bf>
+
+<tscreen><verb>
+if ($result > 5) {
+    return TRUE;
+} else {
+    return FALSE;
+}
+
+function severeTesting() {
+    ...
+}
+</verb></tscreen>
+
+<tag>Use Single quotes when possible
+<p>
+Use single quotes (') instead of double quotes (") as much as possible because
+it's faster to execute, but remember that you must use double quotes (") with
+the <tt>gettext()</tt> strings (e.g. <tt>_("Translatable string")</tt>) Use
+single quotes (') to refer an index between brackets of an array (example:
+<tt>$foo['name']</tt> and not <tt>$foo[name]</tt>).
+
+<tag>Use UNIX style line breaks
+<p>
+Use UNIX style line breaks when coding (i.e. line feeds only - no carriage
+returns) and keep lines no longer than 80 characters when possible.  Remember
+that it isn't allowed to have a break in the middle of a <tt>gettext()</tt>
+string.
+
+<tag>Write useful documentation
+<p>
+We use <url url="http://phpdocu.sf.net" name="phpDocumentor"> to document our
+code. Anyone who adds or modifies a function, must add basic documentation about
+what it does. In short, that looks like this for the following fantasy function:
+
+<tscreen><verb>
+/**
+ * This function sends an IMAP query to the server and checks for
+ * errors.
+ * @param string servername The hostname of the IMAP server.
+ * @param string query The IMAP query to send.
+ * @param bool silent True if errors should be ignored silently.
+ * @return array An array containing the results of the query.
+ */
+function sqimap_query($servername, $query, $silent = false) {
+...
+</verb></tscreen>
+
+Every PHP file must have a general description of its content, like the example
+below.
+
+<tscreen><verb>
+/**
+ * about.php
+ *
+ * An "about box" detailing SquirrelMail info.
+ *
+ * @copyright &copy; 1999-2006 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @version &#36;Id: about.php,v 1.12 2006/04/05 00:22:11 stekkel Exp $
+ * @package squirrelmail
+ */
+</verb></tscreen>
+
+Extended phpDocumentor documentation can be found in the <url
+url="http://phpdoc.org/docs/HTMLSmartyConverter/default/phpDocumentor/tutorial_phpDocumentor.pkg.html"
+name="phpDocumentor Guide to Creating Fantastic Documentation">.
+
+<tag>Output larger chunks of HTML outside PHP
+<p>
+When echoing chunks of HTML code it is better/faster to do it outside of PHP
+mode and embed the occasional <tt>&lt;?php echo $variable; ?&gt;</tt> than to
+put the whole lot in one or more PHP echo statements.
+
+</descrip>
+
+<sect1>Version numbering
+<sect2>The version number format
+<p>
+The approach we take for version numbering is very similar to the way the Linux
+kernel handles it. With this approach, it is easy to tell what's going on just
+by looking at the three-part version number. The <it>full version number</it> is
+a three-part number, using the format <tt>x.y.z</tt>, indicating a specific
+implementation of SquirrelMail. Our examples will be <tt>1.0.6</tt> and
+<tt>1.1.2</tt>.
+
+The first number is the <it>major release number</it> (that's the <tt>x</tt>).
+At first, this was <tt>0</tt> which meant we hadn't had any major releases yet.
+In January of 2001, we released <tt>1.0.0</tt> which was our first major stable
+release, and everything since then has been in the <tt>1</tt> family.
+
+A major release of SquirrelMail should have a high-level set of specific goals
+that it is meeting. For SquirrelMail 1.0, this was the reaching of a stable
+release. For later versions, this may include implementation of more modular
+libraries and API behind the code, a templating system for the user-interface,
+and so forth.
+
+The second number is the <it>minor release number</it> (that's the <tt>y</tt>).
+The minor release number will tell you whether a release is a <it>stable</it> or
+<it>development</it> branch of SquirrelMail. Even numbers (<tt>0</tt>,
+<tt>2</tt>, <tt>4</tt>...) mean that it's a <it>stable</it> release, and odd
+numbers (<tt>1</tt>, <tt>3</tt>, <tt>5</tt>...) mean it's a <it>development</it>
+release.
+
+A minor release of SquirrelMail should have a lower-level set of specific goals
+that it is meeting. These goals should, somehow or another :), be a subset of
+the goals for the major release of which it is a part. Basically, the minor
+releases allow for the major goals of a major release to be broken into a more
+discrete, attainable set of objectives.
+
+Lastly, the final number is a <it>release incrementor</it> (that's the
+<tt>z</tt>). In a stable branch, new versions of SquirrelMail will be release as
+bugs are found and squished. In a development branch, new versions of
+SquirrelMail will be released as progress is made toward the goals set for the
+next major and minor release. New releases will happen <it>as needed</it> in a
+stable branch. In a development branch, however, they should happen
+<it>frequently</it>, as more progress is made toward the next minor release.
+
+<sect2>Important points
+<p>
+
+<itemize>
+  <item>Versions with a even minor release number are stable.
+  <item>Versions with a odd minor release number are development.
+  <item>New incremental releases in a stable branch should ONLY CONTAIN bug
+        fixes. New features should always be implemented in the current
+        development branch.
+</itemize>
+
+<sect2>The release timeline
+<p>
+The goals and objectives for each minor release should be carefully chosen so
+that a new minor release can take place every three to four months. This is so
+that our users can see actual improvements and will stick with us as we work to
+make SquirrelMail a better web mail application.
 
 <sect1>SM_PATH
 <p>
-Information about SM_PATH constant
+TODO: Add information about the SM_PATH constant and base URI funcion.
 
-<sect1><tt>includes/validate.php</tt>
+<sect1>Including files
 <p>
-Information about files included by <tt>validate.php</tt>
+TODO: Add information about files included by <tt>include/validate.php</tt> or
+newer.
 
 <sect1>Compatibility
 <p>
-Information about compatibility plugin.
+TODO: Add information about the compatibility plugin.
 
 <sect>Developing plugins
 <p>
@@ -635,6 +828,7 @@ stores only English entry. Other languages are loaded automatically from
 <tt>locale/&lt;language_code&gt;/setup.php</tt> files.
 
 Format of array:
+
 <tscreen><verb>
     $languages['language_code']['key'] = 'value'
 </verb></tscreen>
@@ -681,15 +875,15 @@ Requires mbstring support.
  <tag/_encodeheader/ Used in <tt>functions/mime.php</tt>. Should accept one string
  argument and return correctly encoded MIME header string.
 
- <tag/_decodeheader/ Used in <tt>functions/mime.php</tt>. Returning function
+ <tag/_decodeheader/ Used in <tt>functions/mime.php</tt>. Returning function.
 
  <tag/_downloadfilename/ Used in <tt>functions/mime.php</tt>.
 
- <tag/_utf7_imap_encode/ Used in <tt>functions/imap_utf7_local.php</tt>. Returning function
+ <tag/_utf7_imap_encode/ Used in <tt>functions/imap_utf7_local.php</tt>. Returning function.
 
- <tag/_utf7_imap_decode/ Used in <tt>functions/imap_utf7_local.php</tt>. Returning function
+ <tag/_utf7_imap_decode/ Used in <tt>functions/imap_utf7_local.php</tt>. Returning function.
 
- <tag/_strimwidth/ Used in <tt>functions/mailbox_display.php</tt>. Returning function
+ <tag/_strimwidth/ Used in <tt>functions/mailbox_display.php</tt>. Returning function.
 
  <tag/_wordwrap/ Used in <tt>functions/strings.php</tt> (sqWordWrap).
 </descrip>
@@ -728,7 +922,7 @@ TODO: write independent implementation of charset to UTF7-IMAP conversion.
 
 <sect1>Plural forms
 <p>
-Since 1.5.1 SquirrelMail includes support of plural forms. It allows to use
+Since 1.5.1, SquirrelMail includes support of plural forms. It allows to use
 correct translation forms with numbers. For example. "We have %s squirrel on
 the roof." and "We have %s squirrels on the roof." can be written in one
 function call without checking actual number for squirrels. Gettext functions
@@ -771,8 +965,8 @@ translation.
 
 <sect1>Time zones
 <p>
-If the PHP install allows modifying environment variable TZ, SquirrelMail allows
-end users to select different time zone in their preferences. It can be set in
+If the PHP installation allows modifying environment variable TZ, SquirrelMail allows
+the end users to select different time zone in their preferences. It can be set in
 Options -> Personal Information -> Your current timezone. Time zone is
 setup automatically when <tt>include/validate.php</tt> is loaded.
 
@@ -884,41 +1078,66 @@ Please note, that use of auto_append_file provides only temporally workaround
 and does not fix your PHP setup. Script that runs as unprivileged user, should
 be unable to affect webserver's logging system.
 
-<sect1><tt>htmlspecialchars()</tt> vs <tt>htmlentities()</tt>
+<sect1>Sanitizing HTML strings
 <p>
-PHP provides <url
-url="http://www.php.net/htmlspecialchars" name="htmlspecialchars()"> and <url
-url="http://www.php.net/htmlentities" name="htmlentities()"> functions for HTML string
-sanitizing. If developers want to sanitize HTML formating symbols, they should
-use <tt>htmlspecialchars()</tt> and avoid using <tt>htmlentities()</tt>.
+PHP provides the functions <tt><url url="http://www.php.net/htmlspecialchars"
+name="htmlspecialchars()"></tt> and <tt><url
+url="http://www.php.net/htmlentities" name="htmlentities()"></tt> for HTML
+string sanitizing. When SquirrelMail developers want to sanitize HTML formating
+symbols, they should use <tt>htmlspecialchars()</tt> and avoid using
+<tt>htmlentities()</tt>.
 
-<tt>htmlentities()</tt> by default uses ISO-8859-1 charset. It sanitizes 8bit
-ISO-8859-1 symbols. Other charsets use same 8bit ranges to store different
-symbols.
+<tt>htmlentities()</tt> uses the ISO-8859-1 charset by default, sanitizing the
+ISO-8859-1 eight bit symbols. Other charsets use the same eight bit ranges to
+store different symbols, so this will break all translations not using
+ISO-8859-1.
 
-<tt>htmlspecialchars()</tt> sanitizes only three, four or five 7bit symbols
-(&amp;, &dquot;, ', &lt; and &gt;). <tt>htmlspecialchars()</tt> breaks only
-<url url="http://en.wikipedia.org/wiki/ISO_2022" name="ISO-2022">
-charsets and HTML encoded strings.
+Depending on the parameters, <tt>htmlspecialchars()</tt> only sanitizes three,
+four or five seven bit symbols (&ero;, &dquot;, ', &lt; and &gt;).
+<tt>htmlspecialchars()</tt> only breaks HTML encoded strings using the <url
+url="http://en.wikipedia.org/wiki/ISO_2022" name="ISO-2022"> charsets. ISO-2022
+charsets use seven bit ranges to store different symbols. The used encoding
+table depends on escape sequences present in ISO-2022 text.
 
-ISO-2022 charsets use 7bit ranges to store different symbols. Used
-encoding table depends on escape sequences present in ISO-2022 text.
+A charset option is added to <tt>htmlentities()</tt> and
+<tt>htmlspecialchars()</tt> since PHP 4.1.0 but list of supported charsets is
+limited. The fallback charset is same good old and dangerous ISO-8859-1.
 
-charset option is added to <tt>htmlentities()</tt> and <tt>htmlspecialchars()</tt> only in
-PHP v.4.1.0 and list of supported charsets is limited. Fallback charset is same
-good old and dangerous ISO-8859-1.
-
-Differences between two functions can be examined in <url
+Differences between two functions can be examined with the <tt><url
 url="http://www.php.net/get-html-translation-table"
-name="get_html_translation_table()"> function.
+name="get_html_translation_table()"></tt> function.
 
 If SquirrelMail charset decoding functions are used, they should apply
-<tt>htmlspecialchars()</tt> to decoded string automatically. Second use of
-<tt>htmlspecialchars()</tt> might break decoded strings.
+<tt>htmlspecialchars()</tt> to the decoded string automatically. Don't try to
+use <tt>htmlspecialchars()</tt> twince on the same string, since that might
+break the decoded string.
 
 <sect>Links
 <p>
-This chapter should provide links to external sources of information. RFCs, PHP
+TODO: This chapter should provide links to external sources of information. PHP
 manuals, SquirrelMail API documentation, etc.
+
+<sect1>RFC standardization documents
+<p>
+SquirrelMail "talks" several protocols. To make sure that we are
+standards-compatible, we need to refer to RFC documents. Here's a list of the
+ones we use a lot:
+
+<itemize>
+  <item><url url="http://www.faqs.org/rfcs/rfc3501.html" name="RFC 3501"> -
+        IMAP version 4rev1 (obsoletes RFC 2060)
+  <item><url url="http://www.faqs.org/rfcs/rfc2183.html" name="RFC 2183"> -
+        Content-Disposition MIME header
+  <item><url url="http://www.faqs.org/rfcs/rfc2298.html" name="RFC 2298"> -
+        Details return receipts
+  <item><url url="http://www.faqs.org/rfcs/rfc2342.html" name="RFC 2342"> -
+        The IMAP4 NAMESPACE command
+  <item><url url="http://www.faqs.org/rfcs/rfc2616.html" name="RFC 2616"> -
+        HTTP/1.1
+  <item><url url="http://www.faqs.org/rfcs/rfc2683.html" name="RFC 2683"> -
+        IMAP4 Implementation Recommendations
+  <item><url url="http://www.faqs.org/rfcs/rfc2822.html" name="RFC 2822"> -
+        Format of an email message (sendmail) (obsoletes RFC 822)
+</itemize>
 
 </article>
