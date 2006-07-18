@@ -191,8 +191,16 @@ function soupNazi(){
 
 /* On startup, register all plugins configured for use. */
 if (isset($plugins) && is_array($plugins)) {
+    // turn on output buffering in order to prevent output of new lines
+    ob_start();
     foreach ($plugins as $name) {
         use_plugin($name);
+    }
+    $output = trim(ob_get_contents());
+    ob_end_clean();
+    // if plugins output more than newlines and spacing, stop script execution.
+    if (!empty($output)) {
+        die($output);
     }
 }
 
