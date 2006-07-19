@@ -2,7 +2,7 @@
 /**
  * Language configuration file
  *
- * Copyright (c) 2005 The SquirrelMail Project Team
+ * Copyright (c) 2005-2006 The SquirrelMail Project Team
  *
  * This file is part of SquirrelMail webmail interface. It is distributed
  * together with other translation files and is used to enable 
@@ -31,5 +31,3 @@ $languages['fr_FR']['ALTNAME'] = 'Fran&#231;ais';
 $languages['fr_FR']['CHARSET'] = 'iso-8859-1';
 $languages['fr_FR']['LOCALE']  = array('fr_FR.ISO8859-1','fr_FR.ISO-8859-1','fr_FR');
 $languages['fr']['ALIAS'] = 'fr_FR';
-
-?>

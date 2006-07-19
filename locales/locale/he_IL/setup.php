@@ -2,7 +2,7 @@
 /**
  * Language configuration file
  *
- * Copyright (c) 2005 The SquirrelMail Project Team
+ * Copyright (c) 2005-2006 The SquirrelMail Project Team
  *
  * This file is part of SquirrelMail webmail interface. It is distributed
  * together with other translation files and is used to enable 
@@ -31,5 +31,3 @@ $languages['he_IL']['CHARSET'] = 'windows-1255';
 $languages['he_IL']['LOCALE']  = array('he_IL.CP1255','he_IL');
 $languages['he_IL']['DIR']     = 'rtl';
 $languages['he']['ALIAS']      = 'he_IL';
-
-?>
