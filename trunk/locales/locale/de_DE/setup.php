@@ -2,7 +2,7 @@
 /**
  * Language configuration file
  *
- * Copyright (c) 2005 The SquirrelMail Project Team
+ * Copyright (c) 2005-2006 The SquirrelMail Project Team
  *
  * This file is part of SquirrelMail webmail interface. It is distributed
  * together with other translation files and is used to enable 
@@ -31,5 +31,3 @@ $languages['de_DE']['ALTNAME'] = 'Deutsch';
 $languages['de_DE']['CHARSET'] = 'iso-8859-1';
 $languages['de_DE']['LOCALE']  = array('de_DE.ISO8859-1','de_DE.ISO-8859-1','de_DE');
 $languages['de']['ALIAS'] = 'de_DE';
-
-?>

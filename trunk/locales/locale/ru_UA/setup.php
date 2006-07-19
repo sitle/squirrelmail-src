@@ -2,7 +2,7 @@
 /**
  * Language configuration file
  *
- * Copyright (c) 2005 The SquirrelMail Project Team
+ * Copyright (c) 2005-2006 The SquirrelMail Project Team
  *
  * This file is part of SquirrelMail webmail interface. It is distributed
  * together with other translation files and is used to enable 
@@ -29,5 +29,3 @@
 $languages['ru_UA']['NAME']    = 'Russian (Ukrainian)';
 $languages['ru_UA']['CHARSET'] = 'koi8-r';
 $languages['ru_UA']['LOCALE']  = 'ru_UA.KOI8-R';
-
-?>

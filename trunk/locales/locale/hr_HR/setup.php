@@ -2,7 +2,7 @@
 /**
  * Language configuration file
  *
- * Copyright (c) 2005 The SquirrelMail Project Team
+ * Copyright (c) 2005-2006 The SquirrelMail Project Team
  *
  * This file is part of SquirrelMail webmail interface. It is distributed
  * together with other translation files and is used to enable 
@@ -30,5 +30,3 @@ $languages['hr_HR']['NAME']    = 'Croatian';
 $languages['hr_HR']['CHARSET'] = 'iso-8859-2';
 $languages['hr_HR']['LOCALE']  = array('hr_HR.ISO8859-2','hr_HR.ISO-8859-2','hr_HR');
 $languages['hr']['ALIAS'] = 'hr_HR';
-
-?>

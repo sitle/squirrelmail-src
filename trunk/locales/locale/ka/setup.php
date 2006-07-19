@@ -30,5 +30,3 @@ $languages['ka']['NAME']     = 'Georgian';
 $languages['ka']['CHARSET']  = 'utf-8';
 $languages['ka']['LOCALE']   = array('ka_GE.UTF-8','ka_GE','ka');
 $languages['ka_GE']['ALIAS'] = 'ka';
-
-?>

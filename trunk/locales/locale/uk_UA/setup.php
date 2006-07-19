@@ -30,5 +30,3 @@ $languages['uk_UA']['NAME']    = 'Ukrainian';
 $languages['uk_UA']['CHARSET'] = 'utf-8';
 $languages['uk_UA']['LOCALE']  = array('uk_UA.UTF-8','uk_UA','uk');
 $languages['uk']['ALIAS'] = 'uk_UA';
-
-?>

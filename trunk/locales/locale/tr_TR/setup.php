@@ -2,7 +2,7 @@
 /**
  * Language configuration file
  *
- * Copyright (c) 2005 The SquirrelMail Project Team
+ * Copyright (c) 2005-2006 The SquirrelMail Project Team
  *
  * This file is part of SquirrelMail webmail interface. It is distributed
  * together with other translation files and is used to enable 
@@ -30,5 +30,3 @@ $languages['tr_TR']['NAME']    = 'Turkish';
 $languages['tr_TR']['CHARSET'] = 'iso-8859-9';
 $languages['tr_TR']['LOCALE']  = array('tr_TR.ISO8859-9','tr_TR.ISO-8859-9','tr_TR');
 $languages['tr']['ALIAS'] = 'tr_TR';
-
-?>

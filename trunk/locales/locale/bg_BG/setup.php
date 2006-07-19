@@ -2,7 +2,7 @@
 /**
  * Language configuration file
  *
- * Copyright (c) 2005 The SquirrelMail Project Team
+ * Copyright (c) 2005-2006 The SquirrelMail Project Team
  *
  * This file is part of SquirrelMail webmail interface. It is distributed
  * together with other translation files and is used to enable 
@@ -31,5 +31,3 @@ $languages['bg_BG']['ALTNAME'] = '&#1041;&#1098;&#1083;&#1075;&#1072;&#1088;&#10
 $languages['bg_BG']['CHARSET'] = 'windows-1251';
 $languages['bg_BG']['LOCALE']  = 'bg_BG.CP1251';
 $languages['bg']['ALIAS'] = 'bg_BG';
-
-?>

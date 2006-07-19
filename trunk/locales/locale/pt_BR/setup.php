@@ -2,7 +2,7 @@
 /**
  * Language configuration file
  *
- * Copyright (c) 2005 The SquirrelMail Project Team
+ * Copyright (c) 2005-2006 The SquirrelMail Project Team
  *
  * This file is part of SquirrelMail webmail interface. It is distributed
  * together with other translation files and is used to enable 
@@ -30,5 +30,3 @@ $languages['pt_BR']['NAME']    = 'Portuguese (Brazil)';
 $languages['pt_BR']['ALTNAME'] = 'Portugu&ecirc;s do Brasil';
 $languages['pt_BR']['CHARSET'] = 'iso-8859-1';
 $languages['pt_BR']['LOCALE']  = array('pt_BR.ISO8859-1','pt_BR.ISO-8859-1','pt_BR');
-
-?>

@@ -2,7 +2,7 @@
 /**
  * Language configuration file
  *
- * Copyright (c) 2005 The SquirrelMail Project Team
+ * Copyright (c) 2005-2006 The SquirrelMail Project Team
  *
  * This file is part of SquirrelMail webmail interface. It is distributed
  * together with other translation files and is used to enable 
@@ -31,5 +31,3 @@ $languages['el_GR']['ALTNAME'] = '&Epsilon;&lambda;&lambda;&eta;&nu;&iota;&kappa
 $languages['el_GR']['CHARSET'] = 'iso-8859-7';
 $languages['el_GR']['LOCALE']  = array('el_GR.ISO8859-7','el_GR.ISO-8859-7','el_GR');
 $languages['el']['ALIAS'] = 'el_GR';
-
-?>

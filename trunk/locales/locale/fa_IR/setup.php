@@ -2,7 +2,7 @@
 /**
  * Language configuration file
  *
- * Copyright (c) 2005 The SquirrelMail Project Team
+ * Copyright (c) 2005-2006 The SquirrelMail Project Team
  *
  * This file is part of SquirrelMail webmail interface. It is distributed
  * together with other translation files and is used to enable 
@@ -31,5 +31,3 @@ $languages['fa_IR']['CHARSET'] = 'utf-8';
 $languages['fa_IR']['DIR']     = 'rtl';
 $languages['fa_IR']['LOCALE']  = array('fa_IR.UTF-8','fa_IR');
 $languages['fa']['ALIAS']      = 'fa_IR';
-
-?>

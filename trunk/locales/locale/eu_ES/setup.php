@@ -2,7 +2,7 @@
 /**
  * Language configuration file
  *
- * Copyright (c) 2005 The SquirrelMail Project Team
+ * Copyright (c) 2005-2006 The SquirrelMail Project Team
  *
  * This file is part of SquirrelMail webmail interface. It is distributed
  * together with other translation files and is used to enable 
@@ -30,5 +30,3 @@ $languages['eu_ES']['NAME']    = 'Basque';
 $languages['eu_ES']['CHARSET'] = 'iso-8859-1';
 $languages['eu_ES']['LOCALE']  = array('eu_ES.ISO8859-1','eu_ES.ISO-8859-1','eu_ES');
 $languages['eu']['ALIAS'] = 'eu_ES';
-
-?>

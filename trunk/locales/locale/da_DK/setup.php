@@ -2,7 +2,7 @@
 /**
  * Language configuration file
  *
- * Copyright (c) 2005 The SquirrelMail Project Team
+ * Copyright (c) 2005-2006 The SquirrelMail Project Team
  *
  * This file is part of SquirrelMail webmail interface. It is distributed
  * together with other translation files and is used to enable 
@@ -31,5 +31,3 @@ $languages['da_DK']['ALTNAME'] = 'Dansk';
 $languages['da_DK']['CHARSET'] = 'iso-8859-1';
 $languages['da_DK']['LOCALE']  = array('da_DK.ISO8859-1','da_DK.ISO-8859-1','da_DK');
 $languages['da']['ALIAS'] = 'da_DK';
-
-?>
