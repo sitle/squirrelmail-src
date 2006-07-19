@@ -42,6 +42,39 @@ browsers. It has very few requirements and is very easy to configure and
 install. SquirrelMail has all the functionality you would want from an email
 client, including strong MIME support, address books, and folder manipulation.
 
+<sect1>The project goals
+<p>
+The founding principles of the SquirrelMail Project were aimed at an audience
+that was looking for a webmail application that would run on low end servers for
+clients with simple browsers and a small set of expectations. Well, the
+SquirrelMail user base has swollen greatly beyond the expectations of the
+original SquirrelMail developers. Much of this new audience often wants and
+needs a webmail client that will be much, much more.
+
+In order to meet adequately the expanded needs of our current client base, the
+basic principles of the SquirrelMail Project must be expanded to include several
+additional items. The SquirrelMail Project goals are:
+
+<itemize>
+  <item>SquirrelMail must be <it/very easy/ to install and configure.
+  <item>SquirrelMail must have low server <it/requirements/, allowing it to be
+        run on low-end hardware with just a basic Apache and PHP installation.
+  <item>SquirrelMail must have low client <it/requirements/, allowing it to be
+        used on low end browsers without <it/requiring/ any fancy Javascript, or
+        so forth.
+  <item>SquirrelMail will provide a <it/complete/ webmail application that can
+        be used as an individual's primary access point to email.
+  <item>SquirrelMail will maintain an architecture that will <it/flex/ to the
+        needs of a variety of system administrators, server configurations, and
+        web browsers while maintaining <it/efficiency/ and <it/speed/.
+</itemize>
+
+An important note is that the principles should be expanded and not replaced.
+This means that the original, founding requirements of the SquirrelMail project
+must never be overlooked as new and cool things are developed. Rather, special
+care should be taken to assure that both the new and the old is respected as
+development progresses and the capabilities of SquirrelMail are extended.
+
 <sect>General guidelines
 <p>
 This section should provide some generic information.
