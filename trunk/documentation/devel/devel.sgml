@@ -130,7 +130,7 @@ name="development">).
 <p>
 SquirrelMail code must be log safe code, i.e. do everything to avoid PHP notices
 and other error messages. This includes to initialize variables (just
-<tt>$a = 0</tt> is initialization) and to use <tt>isset()</tt> in tests. Use
+<tt>$a = 0</tt> is initialization) and to use <tt>isset()</tt> or <tt>empty()</tt> in tests. Use
 <tt>ini_get("safe_mode")</tt> to determine if you can use <tt>putenv()</tt>.
 
 <tag>Group statements with braces
@@ -160,7 +160,7 @@ function severeTesting() {
 <p>
 Use single quotes (') instead of double quotes (") as much as possible because
 it's faster to execute, but remember that you must use double quotes (") with
-the <tt>gettext()</tt> strings (e.g. <tt>_("Translatable string")</tt>) Use
+the <tt>gettext()</tt> strings (e.g. <tt>_("Translatable string")</tt>). Use
 single quotes (') to refer an index between brackets of an array (example:
 <tt>$foo['name']</tt> and not <tt>$foo[name]</tt>).
 
@@ -209,6 +209,12 @@ below.
 Extended phpDocumentor documentation can be found in the <url
 url="http://phpdoc.org/docs/HTMLSmartyConverter/default/phpDocumentor/tutorial_phpDocumentor.pkg.html"
 name="phpDocumentor Guide to Creating Fantastic Documentation">.
+
+<tag>Do not close the file with ?&gt;
+<p>
+At the very end of the file, do not use an ?&gt; to close off the file. This doesn't
+add value but more importantly can cause problems if someone accidentally inserts some
+whitespace after it.
 
 <tag>Output larger chunks of HTML outside PHP
 <p>
