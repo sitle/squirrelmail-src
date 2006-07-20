@@ -159,6 +159,27 @@ project members are supposed to help out with the various tasks.
 <p>
 This section should provide some generic information.
 
+<sect1>Submitting a patch
+<p>
+If you do not have commit access to SquirrelMail, you can provide a patch for
+bugs or features that you want to add. The developers will then decide whether
+or not it can be applied to SquirrelMail. You can submit your patch through
+the patches tracker on SourceForge.net, or you can attach it to an existing
+bugreport or feature request.
+<p>
+Important points when writing a patch, to improve the chances that it will
+be committed:
+<itemize>
+  <item>Patch against the latest version (released or even better, CVS);
+  <item>Always use <tt>diff -u</tt>. Do not submit entire changed files
+     or use different patch options. Make sure you do not reverse it;
+  <item>Take care to follow the guidelines in the rest of this chapter.
+</itemize>
+
+<p>
+Do you feel that your patch is ignored? Feel free to ask on the squirrelmail-devel
+mailinglist or on the #squirrelmail IRC channel.
+
 <sect1>Coding guidelines
 <p>
 To ensure that the SquirrelMail affects the logs as little as possible, executes
