@@ -55,7 +55,7 @@ In order to meet adequately the expanded needs of our current client base, the
 basic principles of the SquirrelMail Project must be expanded to include several
 additional items. The SquirrelMail Project goals are:
 
-<itemize>
+<enum>
   <item>SquirrelMail must be <it/very easy/ to install and configure.
   <item>SquirrelMail must have low server <it/requirements/, allowing it to be
         run on low-end hardware with just a basic Apache and PHP installation.
@@ -67,13 +67,93 @@ additional items. The SquirrelMail Project goals are:
   <item>SquirrelMail will maintain an architecture that will <it/flex/ to the
         needs of a variety of system administrators, server configurations, and
         web browsers while maintaining <it/efficiency/ and <it/speed/.
-</itemize>
+</enum>
 
 An important note is that the principles should be expanded and not replaced.
 This means that the original, founding requirements of the SquirrelMail project
 must never be overlooked as new and cool things are developed. Rather, special
 care should be taken to assure that both the new and the old is respected as
 development progresses and the capabilities of SquirrelMail are extended.
+
+<sect1>Project management
+<p>
+The SquirrelMail Project Team is organized as four subteams, in order to get
+more good stuff done in a more organized fashion. There is no official project
+leader. Major decisions are more of a concensus between the team leaders. Each
+subteam has a leader (or two), who is responsible for coordinating the
+activities of their team, answering questions, and helping new
+developers/contributors get started. Even though we have team leaders, all
+project members are supposed to help out with the various tasks.
+
+<sect2>The stable branch team
+<p>
+<bf/Team leaders:/
+<quote/Jonathan Angliss &lt;jon@squirrelmail.org&gt;/
+<quote/Chris Hilts &lt;tassium@squirrelmail.org&gt;/
+
+<bf/Team responsibilites:/
+
+<enum>
+  <item>Manage, prioritize, and fix submitted bugs regarding the stable branch.
+  <item>Prepare and maintain the stable branch road map.
+  <item>Decide when to make a new stable branch release.
+  <item>Preparing, releasing, and announcing the stable branch releases.
+  <item>Give input to the development team regarding the development branch
+        going stable.
+  <item>Giving approval to a development version going stable.
+</enum>
+
+<sect2>The development branch team
+<p>
+<bf/Team leaders:/
+<quote/Marc Groot Koerkamp &lt;marc@squirrelmail.org&gt; /
+
+<bf/Team responsibilites:/
+
+<enum>
+  <item>Manage, prioritize, and fix submitted bugs regarding the development branch.
+  <item>Manage, prioritize, and implement submitted feature requests.
+  <item>Design and develop a clean, modular, and scalable architecture, and
+        refactor the existing code to fit into it.
+  <item>Prepare and maintain the development branch road map.
+  <item>Decide when to make a new development branch release.
+  <item>Preparing, releasing, and announcing the development branch releases.
+  <item>Give input to the stable team regarding the development branch going
+        stable.
+</enum>
+
+<sect2>The internationalization team
+<p>
+<bf/Team leader:/
+<quote/Tomas Kuliavas &lt;tokul@users.sourceforge.net&gt;/
+
+<bf/Team responsibilites:/
+
+<enum>
+  <item>Organize the SquirrelMail tranlsation collection.
+  <item>Validate plugins for compliance with the development guidelines
+        regarding tranlsations.
+  <item>Keep an eye on the licenses of various tranlsations.
+  <item>Recruit new translators and add new languages.
+  <item>Try finding new maintainers for abandoned tranlsations..
+</enum>
+
+<sect2>The plugin team
+<p>
+<bf/Team leaders:/
+<quote/Jimmy Conner &lt;jimmy@sqmail.org&gt;/
+<quote/Paul Lesneiwski &lt;paul@squirrelmail.org&gt;/
+
+<bf/Team responsibilites:/
+
+<enum>
+  <item>Organize the SquirrelMail third party plugin collection.
+  <item>Validate plugins for compliance with the development guidelines.
+  <item>Keep an eye on the licenses of various plugins.
+  <item>Try finding new maintainers for abandoned plugins.
+  <item>Suggest plugins to be integrated in the core, or to become official
+        plugins.
+</enum>
 
 <sect>General guidelines
 <p>
