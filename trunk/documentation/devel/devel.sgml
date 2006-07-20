@@ -60,7 +60,7 @@ additional items. The SquirrelMail Project goals are:
   <item>SquirrelMail must have low server <it/requirements/, allowing it to be
         run on low-end hardware with just a basic Apache and PHP installation.
   <item>SquirrelMail must have low client <it/requirements/, allowing it to be
-        used on low end browsers without <it/requiring/ any fancy Javascript, or
+        used on low end browsers without <it/requiring/ any fancy JavaScript, or
         so forth.
   <item>SquirrelMail will provide a <it/complete/ webmail application that can
         be used as an individual's primary access point to email.
@@ -199,7 +199,7 @@ below.
  *
  * An "about box" detailing SquirrelMail info.
  *
- * @copyright &copy; 1999-2006 The SquirrelMail Project Team
+ * @copyright &ero;copy; 1999-2006 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version &#36;Id: about.php,v 1.12 2006/04/05 00:22:11 stekkel Exp $
  * @package squirrelmail
@@ -210,9 +210,9 @@ Extended phpDocumentor documentation can be found in the <url
 url="http://phpdoc.org/docs/HTMLSmartyConverter/default/phpDocumentor/tutorial_phpDocumentor.pkg.html"
 name="phpDocumentor Guide to Creating Fantastic Documentation">.
 
-<tag>Do not close the file with ?&gt;
+<tag>Do not close the file with <tt/?&gt;/
 <p>
-At the very end of the file, do not use an ?&gt; to close off the file. This doesn't
+At the very end of the file, do not use an <tt/?&gt;/ to close off the file. This doesn't
 add value but more importantly can cause problems if someone accidentally inserts some
 whitespace after it.
 
@@ -299,17 +299,18 @@ TODO: Add information about the compatibility plugin.
 
 <sect>Developing plugins
 <p>
-In addition to this document, please check out the SquirrelMail
-development FAQ for more information. Also, help writing plugins
-is easily obtained by posting to the squirrelmail-plugins mailing
-list.
+Due to the large number and wide range of functions plugins can cover it is
+impractical to add all but the most popular to the SquirrelMail core project.
+There is a separate <url url="http://sourceforge.net/projects/sm-plugins/"
+name="SM Plugins"> project registered on SourceForge to house plugin code,
+developers should consider joining this project.
 
-Useful links:
-<itemize>
-<item><url url="http://www.squirrelmail.org/wiki/DeveloperFAQ" name="FAQ">
-<item><url url="http://www.squirrelmail.org/wiki/DevelopingPlugins" name="Plugin Development wiki">
-<item><url url="http://www.squirrelmail.org/wiki/MailingLists" name="SquirrelMail mailing lists">
-</itemize>
+In addition to this document, help writing plugins is easily obtained by posting
+to the <url url="http://www.squirrelmail.org/wiki/MailingLists"
+name="SquirrelMail plugins mailing list">. There is also some information to be
+found in the document <tt><url
+url="http://squirrelmail.cvs.sourceforge.net/squirrelmail/squirrelmail/doc/Development/plugin.txt?view=markup"
+name="doc/Development/plugin.txt"></tt>.
 
 <sect1>The plugin architecture
 <p>
@@ -318,35 +319,35 @@ to add new features without having to patch SquirrelMail itself.
 Functionality like password changing, displaying ads and calendars should
 be possible to add as plugins.
 
-<sect2>The Idea
+<sect2>The idea
 <p>
-The idea is to be able to run random code at given places in the
-SquirrelMail code. This random code should then be able to do whatever
-needed to enhance the functionality of SquirrelMail. The places where
-code can be executed are called "hooks".
+The idea is to be able to run random code at given places in the SquirrelMail
+code. This random code should then be able to do whatever needed to enhance the
+functionality of SquirrelMail. The places where code can be executed are called
+"hooks".
 
-There are some limitations in what these hooks can do. It is difficult
-to use them to change the layout and to change functionality that
-already is in SquirrelMail.
+There are some limitations in what these hooks can do. It is difficult to use
+them to change the layout and to change functionality that already is in
+SquirrelMail.
 
-Some way for the plugins to interact with the help subsystem and
-translations will be provided.
+Some way for the plugins to interact with the help subsystem and translations
+will be provided.
 
-<sect2>The Implementation
+<sect2>The implementation
 <p>
-The plugin jumping off point in the main SquirrelMail code is in the
-file <tt>functions/plugin.php</tt>. In places where hooks are made available,
-they are executed by calling the function <tt>do_hook('hookname')</tt>. The
-<tt>do_hook</tt> function then traverses the array
+The plugin jumping off point in the main SquirrelMail code is in the file
+<tt>functions/plugin.php</tt>. In places where hooks are made available, they
+are executed by calling the function <tt>do_hook('hookname')</tt>. The
+<tt>do_hook()</tt> function then traverses the array
 <tt>$squirrelmail_plugin_hooks['hookname']</tt> and executes all the functions
-that are named in that array. Those functions are placed there when
-plugins register themselves with SquirrelMail as discussed below. A
-plugin may add its own internal functions to this array under any
-hook name provided by the SquirrelMail developers.
+that are named in that array. Those functions are placed there when plugins
+register themselves with SquirrelMail as discussed below. A plugin may add its
+own internal functions to this array under any hook name provided by the
+SquirrelMail developers.
 
 A plugin must reside in a subdirectory in the <tt>plugins/</tt> directory. The
-name of the subdirectory is considered to be the name of the plugin.
-(The plugin will not function correctly if this is not the case.)
+name of the subdirectory is considered to be the name of the plugin. (The plugin
+will not function correctly if this is not the case.)
 
 To start using a plugin, its name must be added to the <tt>$plugins</tt> array
 in <tt>config.php</tt> like this:
@@ -357,54 +358,55 @@ $plugins[0] = 'plugin_name';
 
 When a plugin is registered, the file <tt>plugins/plugin_name/setup.php</tt> is
 included and the function <tt>squirrelmail_plugin_init_plugin_name()</tt> is
-called with no parameters. That function is where the plugin may
-register itself against any hooks it wishes to take advantage of.
+called with no parameters. That function is where the plugin may register itself
+against any hooks it wishes to take advantage of.
 
-<sect1>Writing plugins
+<sect1>The starting point
 <p>
 All plugins must contain a file called <tt>setup.php</tt> and must include a
 function called <tt>squirrelmail_plugin_init_plugin_name()</tt> therein. Since
-including numerous plugins can slow SquirrelMail performance
-considerably, the <tt>setup.php</tt> file should contain little else. Any
-functions that are registered against plugin hooks should do little
-more than call another function in a different file.
+including numerous plugins can slow SquirrelMail performance considerably, the
+<tt>setup.php</tt> file should contain little else. Any functions that are
+registered against plugin hooks should do little more than call another function
+in a different file.
 
-Any other files used by the plugin should also be placed in the
-plugin directory (or subdirectory thereof) and should contain the
-bulk of the plugin logic.
+Any other files used by the plugin should also be placed in the plugin directory
+(or subdirectory thereof) and should contain the bulk of the plugin logic.
 
 The function <tt>squirrelmail_plugin_init_plugin_name()</tt> is called to
-initalize a plugin. This function could look something like this (if
-the plugin was named "demo" and resided in the directory <tt>plugins/demo/</tt>):
+initalize a plugin. This function could look something like this (if the plugin
+was named "demo" and resided in the directory <tt>plugins/demo/</tt>):
 
 <tscreen><verb>
-function squirrelmail_plugin_init_demo () {
-   global $squirrelmail_plugin_hooks;
+function squirrelmail_plugin_init_demo() {
+    global $squirrelmail_plugin_hooks;
 
-   $squirrelmail_plugin_hooks['generic_header']['demo'] = 'plugin_demo_header';
-   $squirrelmail_plugin_hooks['menuline']['demo'] = 'plugin_demo_menuline';
+    $squirrelmail_plugin_hooks['generic_header']['demo']
+        = 'plugin_demo_header';
+    $squirrelmail_plugin_hooks['menuline']['demo'] = 'plugin_demo_menuline';
 }
 </verb></tscreen>
 
-Please note that as of SquirrelMail 1.5.0, this function will no longer
-be called at run time and will instead be called only once at configuration
-time. Thus, the inclusion of any dynamic code (anything except hook
-registration) here is strongly discouraged.
+Please note that as of SquirrelMail 1.5.0, this function will no longer be
+called at run time and will instead be called only once at configuration time.
+Thus, the inclusion of any dynamic code (anything except hook registration) here
+is strongly discouraged.
 
-In this example, the "demo" plugin should also have two other functions
-in its <tt>setup.php</tt> file called <tt>plugin_demo_header()</tt> and <tt>plugin_demo_menuline()</tt>.
-The first of these might look something like this:
+In this example, the "demo" plugin should also have two other functions in its
+<tt>setup.php</tt> file called <tt>plugin_demo_header()</tt> and
+<tt>plugin_demo_menuline()</tt>.  The first of these might look something like
+this:
+
 <tscreen><verb>
-function plugin_demo_header()
-{
-   include_once(SM_PATH . 'plugins/demo/functions.php');
-   plugin_demo_header_do();
+function plugin_demo_header() {
+    include_once(SM_PATH . 'plugins/demo/functions.php');
+    plugin_demo_header_do();
 }
 </verb></tscreen>
 
 The function called <tt>plugin_demo_header_do()</tt> would be in the file called
-<tt>functions.php</tt> in the <tt>demo</tt> plugin directory and would contain the plugin's
-core logic for the <tt>generic_header</tt> hook.
+<tt>functions.php</tt> in the <tt>demo</tt> plugin directory and would contain
+the plugin's core logic for the <tt>generic_header</tt> hook.
 
 <sect1>Hooks
 <p>
