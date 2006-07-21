@@ -159,27 +159,6 @@ project members are supposed to help out with the various tasks.
 <p>
 This section should provide some generic information.
 
-<sect1>Submitting a patch
-<p>
-If you do not have commit access to SquirrelMail, you can provide a patch for
-bugs or features that you want to add. The developers will then decide whether
-or not it can be applied to SquirrelMail. You can submit your patch through
-the patches tracker on SourceForge.net, or you can attach it to an existing
-bugreport or feature request.
-<p>
-Important points when writing a patch, to improve the chances that it will
-be committed:
-<itemize>
-  <item>Patch against the latest version (released or even better, CVS);
-  <item>Always use <tt>diff -u</tt>. Do not submit entire changed files
-     or use different patch options. Make sure you do not reverse it;
-  <item>Take care to follow the guidelines in the rest of this chapter.
-</itemize>
-
-<p>
-Do you feel that your patch is ignored? Feel free to ask on the squirrelmail-devel
-mailinglist or on the #squirrelmail IRC channel.
-
 <sect1>Coding guidelines
 <p>
 To ensure that the SquirrelMail affects the logs as little as possible, executes
@@ -268,7 +247,7 @@ single quotes (') to refer an index between brackets of an array (example:
 <tag>Use UNIX style line breaks
 <p>
 Use UNIX style line breaks when coding (i.e. line feeds only - no carriage
-returns) and keep lines no longer than 80 characters when possible.  Remember
+returns) and keep lines no longer than 80 characters when possible. Remember
 that it isn't allowed to have a break in the middle of a <tt>gettext()</tt>
 string.
 
@@ -398,6 +377,29 @@ newer.
 <p>
 TODO: Add information about the compatibility plugin.
 
+<sect1>Submitting a patch
+<p>
+If you do not have commit access to the SquirrelMail Project CVS, you can
+provide a patch for bugs or features that you want to add. The developers will
+then decide whether or not it can be applied to SquirrelMail. You can submit
+your patch through the patches tracker on SourceForge.net, or you can attach it
+to an existing bug report or feature request.
+
+Important points when writing a patch, to improve the chances that it will be
+committed:
+
+<itemize>
+  <item>Patch against the latest CVS version (prefered) or the latest released
+        version.
+  <item>Always use <tt/diff -u/. Do not submit entire changed files or use
+        different patch options. Make sure you don't reverse the patch.
+  <item>Take care to follow the SquirrelMail coding guidelines.
+</itemize>
+
+Do you feel that your patch is ignored? Feel free to ask on the <url
+url="http://www.squirrelmail.org/wiki/MailingLists" name="SquirrelMail
+development mailing list">.
+
 <sect>Developing plugins
 <p>
 Due to the large number and wide range of functions plugins can cover it is
@@ -495,7 +497,7 @@ is strongly discouraged.
 
 In this example, the "demo" plugin should also have two other functions in its
 <tt>setup.php</tt> file called <tt>plugin_demo_header()</tt> and
-<tt>plugin_demo_menuline()</tt>.  The first of these might look something like
+<tt>plugin_demo_menuline()</tt>. The first of these might look something like
 this:
 
 <tscreen><verb>
@@ -881,6 +883,81 @@ function, which is used to print error messages. If plugin uses do_err()
 function, it is recommended to set second function argument to false even on
 fatal error. Configuration testing will stop with fatal error, if hook call
 returns boolean true.
+
+<sect1>Compatibility with older versions of SquirrelMail
+<p>
+Whenever new versions of SquirrelMail are released, there is always a
+considerable lag time before it is widely adopted. During that transitional
+time, especially when the new SquirrelMail version contains any architectural
+and/or functional changes, plugin developers are put in a unique and very
+difficult position. That is, there will be people running both the old and new
+versions of SquirrelMail who want to use your plugin, and you will probably want
+to accommodate them both.
+
+The easiest way to keep both sides happy is to keep two different versions of
+your plugin up to date, one that runs under the older SquirrelMail, and one that
+requires the newest SquirrelMail. This is inconvenient, however, especially if
+you are continuing to develop the plugin. Depending on the changes implemented
+in the new SquirrelMail version, you may be able to include code that can
+auto-sense the SquirrelMail version and make adjustments on the fly. There is a
+function called <tt/check_sm_version()/ available which does that. Read more
+about it in the <url
+url="http://www.squirrelmail.org/docs/phpdoc14/squirrelmail/_functions---global.php.html#functioncheck_sm_version"
+name="stable"> and <url
+url="http://www.squirrelmail.org/docs/phpdoc/squirrelmail/_functions---global.php.html#functioncheck_sm_version"
+name="development"> API documentation.
+
+There is a plugin called "Compatibility" that is intended for use by plugin
+authors so they can develop one version of their plugin and seamlessly support
+both 1.2.x and 1.4.x SquirrelMail installations. For more information about how
+to use the "Compatibility" plugin, download it and read its README file.
+
+<sect1>Requesting new hooks
+<p>
+It's impossible to foresee all of the places where hooks might be useful and
+it's also impossible to put in hooks everywhere, so you might need to negotiate
+the insertion of a new hook to make your plugin work. Start by writing a patch
+which will insert the hook you want to add, and mail your request (with the
+patch attached) to the SquirrelMail plugins mailing list. Don't forget to
+motivate the need for a new hook in your mail.
+
+<sect1>How to release your plugin
+<p>
+As long as you've consulted the list of plugin standards and done your best to
+follow them, there's little standing in the way of great fame as an official
+SquirrelMail plugin developer.
+
+First you have to make a distribution file. The file should be named
+<tt/demo-1.0-1.4.0.tar.gz/, where "demo" is the name of your plugin, "1.0" is
+the version of your plugin, and "1.4.0" is the version of SquirrelMail required
+to use your plugin.
+
+There is a convenient Perl script in the plugins directory that will help you do
+this:
+
+<tscreen><verb>
+make_archive.pl -v demo 1.0 1.4.0
+</verb></tscreen>
+
+The parameter "-v" is optional and indicates that the script should run in
+verbose mode.
+
+You can also create the distribution file manually in most *nix environments by
+running this command from the plugins directory (NOT your plugin directory):
+
+<tscreen><verb>
+tar -czvf demo-1.0-1.4.0.tar.gz demo
+</verb></tscreen>
+
+When the plugin is ready to be reviewed by the SquirrelMail plugin team, mail it
+to the SquirrelMail plugins mailing list. If you don't have access to upload
+your plugin to the <url url="http://squirrelmail.org/plugins.php" name="official
+third party plugin list">, state that in your mail. Access will be granted when
+the plugin is approved.
+
+When the plugin is approved and you're granted access to upload it, all you have
+to do is the actual uploading. You also need to write a plugin description and a
+release note.
 
 <sect>Internationalization
 <p>
