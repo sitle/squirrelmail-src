@@ -670,7 +670,7 @@ other plugins or SquirrelMail files include the same file. If you use
 error if something goes wrong with the inclusion. That's the reason plugins
 <it/must/ use <tt/include_once()/ instead of <tt/require_once()/.
 
-Since SquirrelMail 1.5.1, the file <tt>functions/global.php</tt> must be loaded
+In SquirrelMail 1.4.7+ and 1.5.1 <tt>functions/global.php</tt> must be loaded
 before setting any own global variables. If variables are set before loading
 <tt>functions/global.php</tt>, they can be corrupted in PHP
 <tt/register_globals=on/ setups.
