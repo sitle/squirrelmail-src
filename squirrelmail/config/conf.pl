@@ -1186,7 +1186,7 @@ sub command112a {
 sub command112b {
     if ($use_smtp_tls =~ /^true\b/i) {
         print "Auto-detection of login methods is unavailable when using TLS.\n";
-    } else {
+    } elsif (eval ("use IO::Socket; 1")) {
         print "If you have already set the hostname and port number, I can try to\n";
         print "automatically detect the mechanisms your SMTP server supports.\n";
         print "Auto-detection is *optional* - you can safely say \"n\" here.\n";
@@ -1200,7 +1200,6 @@ sub command112b {
             # Special case!
             # Check none by trying to relay to junk@microsoft.com
             $host = $smtpServerAddress . ':' . $smtpPort;
-            use IO::Socket;
             my $sock = IO::Socket::INET->new($host);
             print "Testing none:\t\t$WHT";
             if (!defined($sock)) {
@@ -3477,13 +3476,17 @@ sub change_to_rel_path() {
     return $new_path;
 }
 
-sub detect_auth_support {
 # Attempts to auto-detect if a specific auth mechanism is supported.
 # Called by 'command112a' and 'command112b'
 # ARGS: service-name (IMAP or SMTP), host:port, mech-name (ie. CRAM-MD5)
+sub detect_auth_support {
+    # Try loading IO::Socket
+    unless (eval("use IO::Socket; 1")) {
+        print "Perl IO::Socket module is not available.";
+        return undef;
+    }
 
     # Misc setup
-    use IO::Socket;
     my $service = shift;
     my $host = shift;
     my $mech = shift;
