@@ -79,7 +79,7 @@ development progresses and the capabilities of SquirrelMail are extended.
 <p>
 The SquirrelMail Project Team is organized as four subteams, in order to get
 more good stuff done in a more organized fashion. There is no official project
-leader. Major decisions are more of a concensus between the team leaders. Each
+leader. Major decisions are more of a consensus between the team leaders. Each
 subteam has a leader (or two), who is responsible for coordinating the
 activities of their team, answering questions, and helping new
 developers/contributors get started. Even though we have team leaders, all
@@ -91,7 +91,7 @@ project members are supposed to help out with the various tasks.
 <quote/Jonathan Angliss &lt;jon@squirrelmail.org&gt;/
 <quote/Chris Hilts &lt;tassium@squirrelmail.org&gt;/
 
-<bf/Team responsibilites:/
+<bf/Team responsibilities:/
 
 <enum>
   <item>Manage, prioritize, and fix submitted bugs regarding the stable branch.
@@ -108,7 +108,7 @@ project members are supposed to help out with the various tasks.
 <bf/Team leaders:/
 <quote/Marc Groot Koerkamp &lt;marc@squirrelmail.org&gt; /
 
-<bf/Team responsibilites:/
+<bf/Team responsibilities:/
 
 <enum>
   <item>Manage, prioritize, and fix submitted bugs regarding the development branch.
@@ -127,15 +127,15 @@ project members are supposed to help out with the various tasks.
 <bf/Team leader:/
 <quote/Tomas Kuliavas &lt;tokul@users.sourceforge.net&gt;/
 
-<bf/Team responsibilites:/
+<bf/Team responsibilities:/
 
 <enum>
-  <item>Organize the SquirrelMail tranlsation collection.
+  <item>Organize the SquirrelMail translation collection.
   <item>Validate plugins for compliance with the development guidelines
-        regarding tranlsations.
-  <item>Keep an eye on the licenses of various tranlsations.
+        regarding translations.
+  <item>Keep an eye on the licenses of various translations.
   <item>Recruit new translators and add new languages.
-  <item>Try finding new maintainers for abandoned tranlsations..
+  <item>Try finding new maintainers for abandoned translations.
 </enum>
 
 <sect2>The plugin team
@@ -144,7 +144,7 @@ project members are supposed to help out with the various tasks.
 <quote/Jimmy Conner &lt;jimmy@sqmail.org&gt;/
 <quote/Paul Lesneiwski &lt;paul@squirrelmail.org&gt;/
 
-<bf/Team responsibilites:/
+<bf/Team responsibilities:/
 
 <enum>
   <item>Organize the SquirrelMail third party plugin collection.
@@ -168,57 +168,141 @@ rules when coding.
 <descrip>
 <tag>Code with secure global variables
 <p>
-All code must work with the PHP setting <tt>register_globals</tt> set to
-<tt>off</tt>. This isn't hard, but you'll have to let go the idea that any
-variable that is passed via GET, POST, sessions or cookies is available right
-away. <url url="http://php.net/manual/en/ini.core.php#ini.register-globals"
-name="The PHP manual"> has a chapter on the subject, explaining the problem
-more in detail.
+All code must work with the PHP setting <tt/register_globals/ set to <tt/off/.
+This isn't hard, but you'll have to let go the idea that any variable that is
+passed via GET, POST, sessions or cookies is available right away. <url
+url="http://php.net/manual/en/ini.core.php#ini.register-globals" name="The PHP
+manual"> has a chapter on the subject, explaining the problem more in detail.
+
+There's a special function in SquirrelMail, <tt/sqGetGlobalVar()/, designed to
+retrieve variables in a safe way. Use this function instead of accessing
+<tt/$_GET/ etc. directly. Here's an example:
+
+<tscreen><verb>
+global $favorite_color;
+sqgetGlobalVar('favorite_color', $favorite_color, SQ_FORM);
+</verb></tscreen>
+
+In the past, there have been some rather serious issues with PHP sessions and
+SquirrelMail. Thus, if you need to place any values into the user's session,
+there are some built-in SquirrelMail functions that you are strongly encouraged
+to make use of. Using them also makes your job easier.
+
+Strictly speaking, globalizing the variable shouldn't be necessary for the
+SquirrelMail session functions, but certain versions of PHP seem to behave more
+predictably if you do.
+
+<tscreen><verb>
+function demo_session($favorite_color = 'green') {
+    global $favorite_color;
+
+    // Placing a variable into the session:
+    sqsession_register($favorite_color, 'favorite_color');
+
+    // Retrieving a variable from the session:
+    sqgetGlobalVar('favorite_color', $favorite_color, SQ_SESSION);
+
+    // Checking for the presence of a variable in the session:
+    if (sqsession_is_registered('favorite_color')) {
+        // do something important
+    }
+
+    // Removing a variable from the session:
+    sqsession_unregister('favorite_color');
+}
+</verb></tscreen>
+
+Don't use the standard PHP functions <tt/session_register()/ and
+<tt/session_unregister()/.
 
 Be conscious of variable names and how they might interfere with one another for
-SquirrelMail installations with <tt>register_globals</tt> set to <tt>on</tt>.
-That is, if you use a variable called <tt>$username</tt> (and do not declare it
-as global), it will have a local scope and have no effect outside of the current
-function with <tt>register_globals</tt> set to <tt>off</tt>, but it would have
-potentially disastrous effects in an environment where <tt>register_globals</tt>
-is set to <tt>on</tt>.
+SquirrelMail installations with <tt/register_globals/ set to <tt/on/. That is,
+if you use a variable called <tt/$username/ (and do not declare it as global),
+it will have a local scope and have no effect outside of the current function
+with <tt/register_globals/ set to <tt/off/, but it would have potentially
+disastrous effects in an environment where <tt/register_globals/ is set to
+<tt/on/.
 
-There's a special function in SquirrelMail, <tt>sqGetGlobalVar()</tt>, designed
-to retrieve variables in a safe way. Use this function instead of accessing
-<tt>$_GET</tt> etc. directly. Read more about it in the SquirrelMail API
-Documentation for the <url
-url="http://www.squirrelmail.org/docs/phpdoc14/squirrelmail/_squirrelmail_functions_global_php.html#functionsqgetGlobalVar"
-name="stable"> and <url
-url="http://www.squirrelmail.org/docs/phpdoc/squirrelmail/_functions_global_php.html#functionsqgetGlobalVar"
-name="development"> versions.
+Since SquirrelMail 1.4.7 and 1.5.1, globals are cleaned in
+<tt>functions/global.php</tt>. Make sure to include that file before setting any
+own global variables. If variables are set before loading
+<tt>functions/global.php</tt>, they can be corrupted in setups with
+<tt/register_globals/ set to <tt/on/.
 
-Also use the SquirrelMail function <tt>sqsession_register($var, 'var')</tt>
-instead of <tt>session_register('var')</tt> and
-<tt>sqsession_unregister('var')</tt> instead of
-<tt>session_unregister('var')</tt>. Read more about it in the SquirrelMail API
-Documentation for <tt>sqsession_register()</tt> (<url
-url="http://www.squirrelmail.org/docs/phpdoc14/squirrelmail/_squirrelmail_functions_global_php.html#functionsqsession_register"
-name="stable"> and <url
-url="http://www.squirrelmail.org/docs/phpdoc/squirrelmail/_functions_global_php.html#functionsqsession_register"
-name="development">) and <tt>sqsession_unregister()</tt> (<url
-url="http://www.squirrelmail.org/docs/phpdoc14/squirrelmail/_squirrelmail_functions_global_php.html#functionsqsession_unregister"
-name="stable"> and <url
-url="http://www.squirrelmail.org/docs/phpdoc/squirrelmail/_functions_global_php.html#functionsqsession_unregister"
-name="development">).
+Read more about the functions in the SquirrelMail API Documentation.
+
+<itemize>
+  <item><tt/sqGetGlobalVar()/ (<url
+        url="http://www.squirrelmail.org/docs/phpdoc14/squirrelmail/_squirrelmail_functions_global_php.html#functionsqgetGlobalVar"
+        name="stable"> and <url
+        url="http://www.squirrelmail.org/docs/phpdoc/squirrelmail/_functions_global_php.html#functionsqgetGlobalVar"
+        name="development">)
+  <item><tt/sqsession_register()/ (<url
+        url="http://www.squirrelmail.org/docs/phpdoc14/squirrelmail/_functions---global.php.html#functionsqsession_register"
+        name="stable"> and <url
+        url="http://www.squirrelmail.org/docs/phpdoc/squirrelmail/_functions---global.php.html#functionsqsession_register"
+        name="development">)
+  <item><tt/sqsession_is_registered()/ (<url
+        url="http://www.squirrelmail.org/docs/phpdoc14/squirrelmail/_functions---global.php.html#functionsqsession_is_registered"
+        name="stable"> and <url
+        url="http://www.squirrelmail.org/docs/phpdoc/squirrelmail/_functions---global.php.html#functionsqsession_is_registered"
+        name="development">)
+  <item><tt/sqsession_unregister()/ (<url
+        url="http://www.squirrelmail.org/docs/phpdoc14/squirrelmail/_functions---global.php.html#functionsqsession_unregister"
+        name="stable"> and <url
+        url="http://www.squirrelmail.org/docs/phpdoc/squirrelmail/_functions---global.php.html#functionsqsession_unregister"
+        name="development">)
+</itemize>
+
+<tag>Protect incoming and outgoing data
+<p>
+Any untrusted data must be escaped before output. This is to prevent cross site
+scripting attacks. Pass every variable that comes in through the URL, a mail
+message, or other external factors, through <tt/htmlspecialchars()/ before
+outputting it. Test incoming data to see if it's the right format. If, for
+instance, an integer is expected; test it with <tt/is_int()/. If the data is
+expected to be within a certain range, make sure that it's really within that
+range before using it.
 
 <tag>Keep the code log safe
 <p>
 SquirrelMail code must be log safe code, i.e. do everything to avoid PHP notices
-and other error messages. This includes to initialize variables (just
-<tt>$a = 0</tt> is initialization) and to use <tt>isset()</tt> or <tt>empty()</tt> in tests. Use
-<tt>ini_get("safe_mode")</tt> to determine if you can use <tt>putenv()</tt>.
+and other error messages, so SquirrelMail developers should always have error
+reporting turned all the way up. You can do this by changing two settings in
+your <tt/php.ini/ and restarting your web server:
+
+<tscreen><verb>
+display_errors = On
+error_reporting = E_ALL
+</verb></tscreen>
+
+This way, you'll be sure to see all notices, warnings, and errors that your code
+might generate. Please make sure to fix them all before you releasing your code.
+This includes to initialize variables (just <tt/$a = 0/ is initialization) and
+to use <tt/isset()/ or <tt/empty()/ in tests. Use <tt>ini_get("safe_mode")</tt>
+to determine if you can use <tt>putenv()</tt>.
+
+<tag>Do not end a file with a PHP end tag
+<p>
+At the very end of the file, do not use the PHP end tag <tt/?&gt;/ to close off
+the file. It may seem innocuous, but if you have any blank lines either before
+the first <tt/&lt;?php/ tag or after the last <tt/?&gt;/ tag in any of your
+plugin files, you will break SquirrelMail in ways that may seem entirely
+unrelated. For instance, this will often cause a line feed character to be
+included with email attachments when they are viewed or downloaded, rendering
+them useless! Files which aren't included by other files, for instance the files
+in the directory <tt>src/</tt>, may of course end with HTML whereas included
+files may not.
+
+To ensure compability with all PHP installations, SquirrelMail code uses the
+recommended PHP start tag <tt/&lt;?php/.
 
 <tag>Group statements with braces
 <p>
 There shouldn't be a space between functions etc. and the brackets when using
 them, except when writing <url
 url="http://php.net/manual/en/language.control-structures.php" name="control
-structures">. The use of braces, i.e. "{" and "}" is mandatory, even when
+structures">. The use of braces, i.e. "{" and "}", is mandatory, even when
 grouping just one statement. The indentation is done using spaces, never
 tabulators, using four spaces per indentation level.
 
@@ -235,6 +319,12 @@ function severeTesting() {
     ...
 }
 </verb></tscreen>
+
+<tag>Keep the code internationalized
+<p>
+All SquirrelMail strings, but those in the configuration tools
+<tt>config/conf.pl</tt> and <tt>src/configtest.php</tt>, must be
+internationalized.
 
 <tag>Use Single quotes when possible
 <p>
@@ -253,9 +343,13 @@ string.
 
 <tag>Write useful documentation
 <p>
-We use <url url="http://phpdocu.sf.net" name="phpDocumentor"> to document our
-code. Anyone who adds or modifies a function, must add basic documentation about
-what it does. In short, that looks like this for the following fantasy function:
+The SquirrelMail Project use <url url="http://phpdocu.sf.net"
+name="phpDocumentor"> to document the source code. Try to follow some common
+sense and document what is really needed. Documenting the code properly can be a
+big help for those who will take a look at your code, fix the bugs and even
+improve it, in the true open-source spirit that SquirrelMail was built upon.
+Anyone who adds or modifies a function, must add basic documentation about what
+it does. In short, that looks like this for the following fantasy function:
 
 <tscreen><verb>
 /**
@@ -286,15 +380,17 @@ below.
  */
 </verb></tscreen>
 
+Plugins must have the package "plugins" and a subpackage tag with the name of
+the plugin, which is "demo" in this example:
+
+<tscreen><verb>
+ * @package plugins
+ * @subpackage demo
+</verb></tscreen>
+
 Extended phpDocumentor documentation can be found in the <url
 url="http://phpdoc.org/docs/HTMLSmartyConverter/default/phpDocumentor/tutorial_phpDocumentor.pkg.html"
 name="phpDocumentor Guide to Creating Fantastic Documentation">.
-
-<tag>Do not close the file with <tt/?&gt;/
-<p>
-At the very end of the file, do not use an <tt/?&gt;/ to close off the file. This doesn't
-add value but more importantly can cause problems if someone accidentally inserts some
-whitespace after it.
 
 <tag>Output larger chunks of HTML outside PHP
 <p>
@@ -302,7 +398,21 @@ When echoing chunks of HTML code it is better/faster to do it outside of PHP
 mode and embed the occasional <tt>&lt;?php echo $variable; ?&gt;</tt> than to
 put the whole lot in one or more PHP echo statements.
 
+<tag>Refer peekers to the top level
+<p>
+Every subdirectory of SquirrelMail, including the plugin directories, must
+contain an index file. In the documentation directory, the index file displays
+the various documents, but in all other directories it's a reference to the
+parent directory. At the root directory there's a reference to the login page.
+
+Plugins developers can accomplish may copy the file <tt/index.php/ from the main
+plugins directory and then modify the documentation in it as mentioned above.
+
 </descrip>
+
+If you have any questions about security or are unsure, please contact the mailing
+list or IRC channel, because security is very important for a widely used
+application like SquirrelMail!
 
 <sect1>Version numbering
 <sect2>The version number format
