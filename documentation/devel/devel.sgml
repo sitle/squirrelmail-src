@@ -662,6 +662,378 @@ Do you feel that your patch is ignored? Feel free to ask on the <url
 url="http://www.squirrelmail.org/wiki/MailingLists" name="SquirrelMail
 development mailing list">.
 
+<sect>Internationalization
+<p>
+This chapter should explain how SquirrelMail internationalization works and
+provide information about some aspects of implementation.
+
+<sect1>Supported languages
+<p>
+Valid language codes are (<em>list depends on SquirrelMail version</em>):
+<itemize>
+  <item>ar    - Arabic, windows-1256 charset
+  <item>bg_BG - Bulgarian, windows-1251 charset
+  <item>bn_IN - Bengali, utf-8 charset
+  <item>ca_ES - Catalan, iso-8859-1 charset
+  <item>cs_CZ - Czech, iso-8859-2 charset
+  <item>cy_GB - Welsh, iso-8859-1 charset
+  <item>da_DK - Danish, iso-8859-1 charset
+  <item>de_DE - German, iso-8859-1 charset
+  <item>el_GR - Greek, iso-8859-7 charset
+  <item>en_GB - British, iso-8859-15 charset
+  <item>en_US - English, charset depends on $default_charset
+  <item>es_ES - Spanish, iso-8859-1 charset
+  <item>et_EE - Estonian, iso-8859-15 charset
+  <item>eu_ES - Basque, iso-8859-1 charset
+  <item>fa_IR - Farsi, utf-8 charset
+  <item>fi_FI - Finnish, iso-8859-1 charset
+  <item>fo_FO - Faroese, iso-8859-1 charset
+  <item>fr_FR - French, iso-8859-1 charset
+  <item>he_IL - Hebrew, windows-1255 charset
+  <item>hr_HR - Croatian, iso-8859-2 charset
+  <item>hu_HU - Hungarian, iso-8859-2 charset
+  <item>id_ID - Indonesian, iso-8859-1 charset
+  <item>is_IS - Icelandic, iso-8859-1 charset
+  <item>it_IT - Italian, iso-8859-1 charset
+  <item>ja_JP - Japanese, euc-jp charset (emails are created in iso-2022-jp)
+  <item>ka - Georgian, utf-8 charset (since 1.5.1 and 1.4.6)
+  <item>ko_KR - Korean, euc-kr charset
+  <item>lt_LT - Lithuanian, utf-8 charset
+  <item>ms_MY - Malay, iso-8859-1 charset
+  <item>nb_NO - Norwegian (Bokmal), iso-8859-1 charset
+  <item>nl_NL - Dutch, iso-8859-1 charset
+  <item>nn_NO - Norwegian (Nynorsk), iso-8859-1 charset
+  <item>pl_PL - Polish, iso-8859-2 charset
+  <item>pt_BR - Portuguese (Brazil), iso-8859-1 charset
+  <item>pt_PT - Portuguese (Portugal), iso-8859-1 charset
+  <item>ro_RO - Romanian, iso-8859-2 charset
+  <item>ru_UA - Ukrainian Russian, koi8-r charset
+  <item>ru_RU - Russian, utf-8 charset
+  <item>sk_SK - Slovak, iso-8859-2 charset
+  <item>sl_SI - Slovenian, iso-8859-2 charset
+  <item>sr_YU - Serbian, iso-8859-2 charset
+  <item>sv_SE - Swedish, iso-8859-1 charset
+  <item>ug    - Uighur, utf-8 charset (some systems don't support Uighur system locale)
+  <item>th_TH - Thai, tis-620 charset
+  <item>tl_PH - Tagalog, iso-8859-1 charset (main translation is missing, only some plugins are translated)
+  <item>tr_TR - Turkish, iso-8859-9 charset
+  <item>uk_UA - Ukrainian, koi8-u charset
+  <item>zh_CN - Chinese Simplified, gb2312 charset
+  <item>zh_TW - Chinese Traditional, big5 charset
+</itemize>
+
+Charset totals:
+<itemize>
+  <item>iso-8859-1   = 21
+  <item>iso-8859-2   = 8
+  <item>utf-8        = 6
+  <item>iso-8859-15  = 2
+  <item>iso-8859-7   = 1
+  <item>iso-8859-9   = 1
+  <item>koi8-r       = 1
+  <item>koi8-u       = 1
+  <item>windows-1251 = 1
+  <item>windows-1255 = 1
+  <item>windows-1256 = 1
+  <item>tis-620      = 1
+  <item>gb2312       = 1
+  <item>big5         = 1
+  <item>euc-jp       = 1
+  <item>euc-kr       = 1
+</itemize>
+
+<sect1>The <tt>$languages</tt> array
+<p>
+The <tt>$languages</tt> array is stored in <tt>functions/i18n.php</tt> and defines translations
+that are enabled in SquirrelMail. Since SquirrelMail 1.5.1 <tt>functions/i18n.php</tt>
+stores only English entry. Other languages are loaded automatically from
+<tt>locale/&lt;language_code&gt;/setup.php</tt> files.
+
+Format of array:
+
+<tscreen><verb>
+    $languages['language_code']['key'] = 'value'
+</verb></tscreen>
+
+Possible array key names:
+<descrip>
+  <tag/NAME/ Translation name in English. Any 8bit symbols must be HTML encoded.
+  <tag/CHARSET/ Charset used by translation
+  <tag/ALIAS/ 'language_code' should contain short language name
+              (ISO-639). 'value' should contain name of other 'language_code'
+              that defines translation with NAME and CHARSET keys.
+              Entry links short language form with long form (language+country).
+              See: http://www.loc.gov/standards/iso639-2/langhome.html and
+              http://www.iso.org/iso/en/prods-services/iso3166ma/02iso-3166-code-lists/list-en1.html
+  <tag/ALTNAME/ Native translation name. Any 8bit symbols must be HTML encoded.
+              Name is visible when $show_alternative_names is enabled.
+  <tag/LOCALE/ Full locale name (in xx_XX.charset format or other format required
+              by PHP gettext functions). From 1.4.4/1.5.1 'value' can contain
+              array. If PHP version is older than 4.3.0, system uses only first
+              locale name listed in array. First locale name must be compatible
+              with FreeBSD system locale names.
+  <tag/DIR/ Text direction. Used to define Right-to-Left languages. Possible
+              values 'rtl' or 'ltr'. If undefined - defaults to 'ltr'.
+  <tag/XTRA_CODE/ translation uses special functions. (see chapter about XTRA_CODE functions)
+</descrip>
+
+Each 'language_code' definition requires NAME+CHARSET or ALIAS keys. Other keys are
+optional.
+
+<sect1>XTRA_CODE functions
+<p>
+XTRA_CODE functions provide way to change interface behavior, when translation
+requires special handling of some SquirrelMail functions. Functions are enabled
+by setting XTRA_CODE option in $languages array and including appropriate
+functions in <tt>functions/i18n.php</tt>. First part of function name is word listed in
+$languages['language_code']['XTRA_CODE'] value. Second part is one of special
+keywords. Possible keywords:
+<descrip>
+ <tag/_decode/ Used in <tt>src/compose.php</tt>, <tt>src/i18n.php</tt>, <tt>src/view_text.php</tt>, and <tt>functions/mime.php</tt>.
+Requires mbstring support.
+
+ <tag/_encode/ Used in <tt>src/compose.php</tt>, and <tt>src/read_body.php</tt>.
+
+ <tag/_encodeheader/ Used in <tt>functions/mime.php</tt>. Should accept one string
+ argument and return correctly encoded MIME header string.
+
+ <tag/_decodeheader/ Used in <tt>functions/mime.php</tt>. Returning function.
+
+ <tag/_downloadfilename/ Used in <tt>functions/mime.php</tt>.
+
+ <tag/_utf7_imap_encode/ Used in <tt>functions/imap_utf7_local.php</tt>. Returning function.
+
+ <tag/_utf7_imap_decode/ Used in <tt>functions/imap_utf7_local.php</tt>. Returning function.
+
+ <tag/_strimwidth/ Used in <tt>functions/mailbox_display.php</tt>. Returning function.
+
+ <tag/_wordwrap/ Used in <tt>functions/strings.php</tt> (sqWordWrap).
+</descrip>
+
+<sect1>Display of different charsets
+<p>
+When SquirrelMail generates HTML pages, it uses charset defined in translation
+selected by end user. Interface can display emails encoded in different
+charsets. In order to display characters that might be unsupported by user's
+charset, SquirrelMail uses decoding functions that convert non us-ascii symbols
+into HTML entities. All decoding functions are stored in functions/decode/
+directory.
+
+By default SquirrelMail includes decoding functions that support iso-8859-x,
+windows-125x, utf-8, us-ascii, koi8-r, koi8-u, tis-620, ns-4551_1, iso-ir-111,
+cp855 and cp866 charsets. Other decoding functions are distributed in separate
+packages. Separate packaging of decoding functions is supported from
+SquirrelMail 1.4.4 and 1.5.0. us-ascii decoding replaces all 8bit symbols with
+question marks. UTF-8 decoding function does not enable decoding of five and six
+byte UTF-8 symbols by default (code is commented) and replaces all incorrectly
+formated 8bit symbols with question marks.
+
+Some decoding functions might require PHP recode extension or PHP 4.3+ mbstring
+extension. If your PHP installation does not support them, you might be using
+slower and cpu/memory intensive functions.
+
+<sect1>IMAP folder names
+<p>
+IMAP folder names use UTF7-IMAP charset. Folder names that are stored in
+conf.pl must be encoded in UTF7-IMAP charset. SquirrelMail uses internal
+functions that convert folder names from/to UTF7-IMAP charset. By default those
+functions work with ISO-8859-1 charset. Other charsets are supported only
+when PHP mbstring extension supports them.
+
+TODO: write independent implementation of charset to UTF7-IMAP conversion.
+
+<sect1>Plural forms
+<p>
+Since 1.5.1, SquirrelMail includes support of plural forms. It allows to use
+correct translation forms with numbers. For example. "We have %s squirrel on
+the roof." and "We have %s squirrels on the roof." can be written in one
+function call without checking actual number for squirrels. Gettext functions
+also deal with non English languages that might use different word forms for
+two, five, ten or more units.
+
+Support is provided by ngettext functions that exist in PHP gettext extension
+from PHP 4.2.0 and by ngettext function replacements from php-gettext classes
+(http://savannah.nongnu.org/projects/php-gettext). In order to use it correctly
+when PHP gettext extension does not have ngettext support, SquirrelMail uses
+bindtextdomain and textdomain wrappers that load missing functions.
+
+If plugins want to use ngettext functions without increasing PHP requirements
+to 4.2.0 with gettext support, they should require SquirrelMail 1.5.1, use
+sq_bindtextdomain function instead of bindtextdomain and use sq_textdomain
+function instead of textdomain function. If SquirrelMail wrapper functions
+are used, there is no need to issue sq_bindtextdomain when plugins reverts to
+SquirrelMail domain.
+
+More information about ngettext and plural forms can be found at:
+http://www.gnu.org/software/gettext/manual/html_chapter/gettext_10.html#SEC150
+
+<sect1>Language setup
+<p>
+SquirrelMail uses <tt>set_up_language()</tt> function to setup language environment.
+Environment is setup automatically when <tt>include/validate.php</tt> is loaded.
+
+SquirrelMail gets interface language from three places:
+ a) user preference. It is set in Options -> Display Preferences -> Language.
+    preference uses language key. If user's preferences are not available (user
+    is not logged in), system tries to extract language value from
+    'squirrelmail_language' cookie.
+ b) default SquirrelMail language that is set in configuration
+    ($squirrelmail_default_language variable).
+ c) preferred language setting provided by browser. It is used only when default
+    SquirrelMail language is set to empty string
+
+If language information is not available, SquirrelMail falls back to US English
+translation.
+
+<sect1>Time zones
+<p>
+If the PHP installation allows modifying environment variable TZ, SquirrelMail allows
+the end users to select different time zone in their preferences. It can be set in
+Options -> Personal Information -> Your current timezone. Time zone is
+setup automatically when <tt>include/validate.php</tt> is loaded.
+
+If TZ variable can't be modified (PHP is running is safe mode and variable
+is not listed in PHP safe_mode_allowed_env_vars), user's time zone options are
+not visible and interface use default webserver's time zone.
+
+SquirrelMail 1.5.0 and older store list of available time zones in
+<tt>locale/timezones.cfg</tt>. Since 1.5.1 standard times zones are moved to
+<tt>include/timezones/standard.php</tt> and time zone handling differs from older
+SquirrelMail versions. Time zone configuration is controlled in SquirrelMail
+configuration utility (<tt/conf.pl/), 4. General Options &gt; 15. Time zone
+configuration menu option. Administrator can select standard, strict, custom
+and custom strict time zone handling.
+
+Standard handling does not differ from previous SquirrelMail versions and
+SquirrelMail uses GNU C geographical location based time zone names. Strict
+handling uses time zone codes with offset from GMT. Strict time zones should
+work on systems that don't support GNU C time zone naming. Custom and custom
+strict handling uses <tt>config/timezones.php</tt> file instead of
+<tt>include/timezones/standard.php</tt>.
+
+<tt>config/timezones.php</tt> file should store $aTimeZones array with different set of
+time zones. See default time zone set in <tt>include/timezones/standard.php</tt>. For
+example:
+
+<tscreen><verb>
+&lt;?php
+// World outside US border is a mirage
+
+$aTimeZones=array();
+$aTimeZones['America/New_York']['NAME']='US Eastern standard time';
+$aTimeZones['America/New_York']['TZ']='EST5EDT';
+
+$aTimeZones['America/Chicago']['NAME']='US Central standard time';
+$aTimeZones['America/Chicago']['TZ']='CST6CDT';
+
+// Oliver County, ND
+$aTimeZones['America/North_Dakota/Center']['NAME']='US, Oliver County [ND]';
+$aTimeZones['America/North_Dakota/Center']['TZ']='CST6CDT'; // CST since 1992
+
+$aTimeZones['America/Denver']['NAME']='US Mountain standard time';
+$aTimeZones['America/Denver']['TZ']='MST7MDT';
+
+$aTimeZones['America/Los_Angeles']['NAME']='US Pacific standard time';
+$aTimeZones['America/Los_Angeles']['TZ']='PST8PDT';
+
+// Aliaska
+$aTimeZones['America/Juneau']['NAME']='Aliaska, Juneau';
+$aTimeZones['America/Juneau']['TZ']='NAST9NADT';
+$aTimeZones['America/Yakutat']['NAME']='Aliaska, Yakutat';
+$aTimeZones['America/Yakutat']['TZ']='NAST9NADT';
+$aTimeZones['America/Anchorage']['NAME']='Aliaska, Anchorage';
+$aTimeZones['America/Anchorage']['TZ']='NAST9NADT';
+$aTimeZones['America/Nome']['NAME']='Aliaska, Nome';
+$aTimeZones['America/Nome']['TZ']='NAST9NADT';
+$aTimeZones['America/Adak']['NAME']='US, Aleutian Islands';
+$aTimeZones['America/Adak']['TZ']='AST10ADT';
+
+$aTimeZones['Pacific/Honolulu']['NAME']='US, Hawaii';
+$aTimeZones['Pacific/Honolulu']['TZ']='UCT10';
+$aTimeZones['America/Phoenix']['NAME']='US, Arizona';
+$aTimeZones['America/Phoenix']['TZ']='MST7'; // gmt-7
+$aTimeZones['America/Shiprock']['LINK']='America/Denver';
+
+$aTimeZones['America/Boise']['NAME']='US, South Idaho';
+$aTimeZones['America/Boise']['TZ']='MST7MDT';
+$aTimeZones['America/Indianapolis']['NAME']='US, Indiana';
+$aTimeZones['America/Indianapolis']['TZ']='EST5';
+$aTimeZones['America/Indiana/Indianapolis']['LINK']='America/Indianapolis';
+// Crawford County, Indiana
+$aTimeZones['America/Indiana/Marengo']['NAME']='US, Crawford County [IN]';
+$aTimeZones['America/Indiana/Marengo']['TZ']='EST5';
+// Starke County, Indiana
+$aTimeZones['America/Indiana/Knox']['NAME']='US, Starke County [IN]';
+$aTimeZones['America/Indiana/Knox']['TZ']='EST5';
+// Switzerland County, Indiana
+$aTimeZones['America/Indiana/Vevay']['NAME']='US, Switzerland County [IN]';
+$aTimeZones['America/Indiana/Vevay']['TZ']='EST5';
+$aTimeZones['America/Louisville']['NAME']='US, Louisville [KY]';
+$aTimeZones['America/Louisville']['TZ']='EST5EDT';
+$aTimeZones['America/Kentucky/Louisville']['LINK']='America/Louisville';
+// Wayne, Clinton, and Russell Counties, Kentucky
+$aTimeZones['America/Kentucky/Monticello']['NAME']='US, Wayne, Clinton, and Russell Counties [KY]';
+$aTimeZones['America/Kentucky/Monticello']['TZ']='EST5EDT';
+// Michigan
+$aTimeZones['America/Detroit']['NAME']='US, Michigan';
+$aTimeZones['America/Detroit']['TZ']='EST5EDT';
+// The Michigan border with Wisconsin switched from EST to CST/CDT in 1973.
+$aTimeZones['America/Menominee']['NAME']='US, Menominee [MI]';
+$aTimeZones['America/Menominee']['TZ']='CST6CDT';
+?&gt;
+</verb></tscreen>
+
+GNU C time zone naming should be supported by many Unix OSes. It is recommended
+way of setting time zone, because it handles historical changes and daylight
+savings specific to selected geographical location. Strict time zones might
+provide inaccurate or outdated time zone settings.
+
+If modifications in TZ environment are visible in your webserver's logs (time
+offset is changed), make sure that you can reproduce such behavior in latest PHP
+version and report bug to PHP developers. Issue can be fixed by blocking use of
+time zone (PHP safe mode and TZ is not listed in safe_mode_allowed_env_vars
+setting or forced_prefs plugin) or by attaching special PHP script with
+putenv('TZ=some time zone') call in PHP auto_append_file setting (suggestion is
+not tested and you might have to fix all SquirrelMail exit calls).
+
+Please note, that use of auto_append_file provides only temporally workaround
+and does not fix your PHP setup. Script that runs as unprivileged user, should
+be unable to affect webserver's logging system.
+
+<sect1>Sanitizing HTML strings
+<p>
+PHP provides the functions <tt><url url="http://www.php.net/htmlspecialchars"
+name="htmlspecialchars()"></tt> and <tt><url
+url="http://www.php.net/htmlentities" name="htmlentities()"></tt> for HTML
+string sanitizing. When SquirrelMail developers want to sanitize HTML formating
+symbols, they should use <tt>htmlspecialchars()</tt> and avoid using
+<tt>htmlentities()</tt>.
+
+<tt>htmlentities()</tt> uses the ISO-8859-1 charset by default, sanitizing the
+ISO-8859-1 eight bit symbols. Other charsets use the same eight bit ranges to
+store different symbols, so this will break all translations not using
+ISO-8859-1.
+
+Depending on the parameters, <tt>htmlspecialchars()</tt> only sanitizes three,
+four or five seven bit symbols (&ero;, &dquot;, ', &lt; and &gt;).
+<tt>htmlspecialchars()</tt> only breaks HTML encoded strings using the <url
+url="http://en.wikipedia.org/wiki/ISO_2022" name="ISO-2022"> charsets. ISO-2022
+charsets use seven bit ranges to store different symbols. The used encoding
+table depends on escape sequences present in ISO-2022 text.
+
+A charset option is added to <tt>htmlentities()</tt> and
+<tt>htmlspecialchars()</tt> since PHP 4.1.0 but list of supported charsets is
+limited. The fallback charset is same good old and dangerous ISO-8859-1.
+
+Differences between two functions can be examined with the <tt><url
+url="http://www.php.net/get-html-translation-table"
+name="get_html_translation_table()"></tt> function.
+
+If SquirrelMail charset decoding functions are used, they should apply
+<tt>htmlspecialchars()</tt> to the decoded string automatically. Don't try to
+use <tt>htmlspecialchars()</tt> twince on the same string, since that might
+break the decoded string.
+
 <sect>Developing plugins
 <p>
 Due to the large number and wide range of functions plugins can cover it is
@@ -1245,378 +1617,6 @@ When the plugin is approved and you're granted access to upload it, all you have
 to do is the actual uploading. You also need to write a plugin description and a
 release note.
 
-<sect>Internationalization
-<p>
-This chapter should explain how SquirrelMail internationalization works and
-provide information about some aspects of implementation.
-
-<sect1>Supported languages
-<p>
-Valid language codes are (<em>list depends on SquirrelMail version</em>):
-<itemize>
-  <item>ar    - Arabic, windows-1256 charset
-  <item>bg_BG - Bulgarian, windows-1251 charset
-  <item>bn_IN - Bengali, utf-8 charset
-  <item>ca_ES - Catalan, iso-8859-1 charset
-  <item>cs_CZ - Czech, iso-8859-2 charset
-  <item>cy_GB - Welsh, iso-8859-1 charset
-  <item>da_DK - Danish, iso-8859-1 charset
-  <item>de_DE - German, iso-8859-1 charset
-  <item>el_GR - Greek, iso-8859-7 charset
-  <item>en_GB - British, iso-8859-15 charset
-  <item>en_US - English, charset depends on $default_charset
-  <item>es_ES - Spanish, iso-8859-1 charset
-  <item>et_EE - Estonian, iso-8859-15 charset
-  <item>eu_ES - Basque, iso-8859-1 charset
-  <item>fa_IR - Farsi, utf-8 charset
-  <item>fi_FI - Finnish, iso-8859-1 charset
-  <item>fo_FO - Faroese, iso-8859-1 charset
-  <item>fr_FR - French, iso-8859-1 charset
-  <item>he_IL - Hebrew, windows-1255 charset
-  <item>hr_HR - Croatian, iso-8859-2 charset
-  <item>hu_HU - Hungarian, iso-8859-2 charset
-  <item>id_ID - Indonesian, iso-8859-1 charset
-  <item>is_IS - Icelandic, iso-8859-1 charset
-  <item>it_IT - Italian, iso-8859-1 charset
-  <item>ja_JP - Japanese, euc-jp charset (emails are created in iso-2022-jp)
-  <item>ka - Georgian, utf-8 charset (since 1.5.1 and 1.4.6)
-  <item>ko_KR - Korean, euc-kr charset
-  <item>lt_LT - Lithuanian, utf-8 charset
-  <item>ms_MY - Malay, iso-8859-1 charset
-  <item>nb_NO - Norwegian (Bokmal), iso-8859-1 charset
-  <item>nl_NL - Dutch, iso-8859-1 charset
-  <item>nn_NO - Norwegian (Nynorsk), iso-8859-1 charset
-  <item>pl_PL - Polish, iso-8859-2 charset
-  <item>pt_BR - Portuguese (Brazil), iso-8859-1 charset
-  <item>pt_PT - Portuguese (Portugal), iso-8859-1 charset
-  <item>ro_RO - Romanian, iso-8859-2 charset
-  <item>ru_UA - Ukrainian Russian, koi8-r charset
-  <item>ru_RU - Russian, utf-8 charset
-  <item>sk_SK - Slovak, iso-8859-2 charset
-  <item>sl_SI - Slovenian, iso-8859-2 charset
-  <item>sr_YU - Serbian, iso-8859-2 charset
-  <item>sv_SE - Swedish, iso-8859-1 charset
-  <item>ug    - Uighur, utf-8 charset (some systems don't support Uighur system locale)
-  <item>th_TH - Thai, tis-620 charset
-  <item>tl_PH - Tagalog, iso-8859-1 charset (main translation is missing, only some plugins are translated)
-  <item>tr_TR - Turkish, iso-8859-9 charset
-  <item>uk_UA - Ukrainian, koi8-u charset
-  <item>zh_CN - Chinese Simplified, gb2312 charset
-  <item>zh_TW - Chinese Traditional, big5 charset
-</itemize>
-
-Charset totals:
-<itemize>
-  <item>iso-8859-1   = 21
-  <item>iso-8859-2   = 8
-  <item>utf-8        = 6
-  <item>iso-8859-15  = 2
-  <item>iso-8859-7   = 1
-  <item>iso-8859-9   = 1
-  <item>koi8-r       = 1
-  <item>koi8-u       = 1
-  <item>windows-1251 = 1
-  <item>windows-1255 = 1
-  <item>windows-1256 = 1
-  <item>tis-620      = 1
-  <item>gb2312       = 1
-  <item>big5         = 1
-  <item>euc-jp       = 1
-  <item>euc-kr       = 1
-</itemize>
-
-<sect1>The <tt>$languages</tt> array
-<p>
-The <tt>$languages</tt> array is stored in <tt>functions/i18n.php</tt> and defines translations
-that are enabled in SquirrelMail. Since SquirrelMail 1.5.1 <tt>functions/i18n.php</tt>
-stores only English entry. Other languages are loaded automatically from
-<tt>locale/&lt;language_code&gt;/setup.php</tt> files.
-
-Format of array:
-
-<tscreen><verb>
-    $languages['language_code']['key'] = 'value'
-</verb></tscreen>
-
-Possible array key names:
-<descrip>
-  <tag/NAME/ Translation name in English. Any 8bit symbols must be HTML encoded.
-  <tag/CHARSET/ Charset used by translation
-  <tag/ALIAS/ 'language_code' should contain short language name
-              (ISO-639). 'value' should contain name of other 'language_code'
-              that defines translation with NAME and CHARSET keys.
-              Entry links short language form with long form (language+country).
-              See: http://www.loc.gov/standards/iso639-2/langhome.html and
-              http://www.iso.org/iso/en/prods-services/iso3166ma/02iso-3166-code-lists/list-en1.html
-  <tag/ALTNAME/ Native translation name. Any 8bit symbols must be HTML encoded.
-              Name is visible when $show_alternative_names is enabled.
-  <tag/LOCALE/ Full locale name (in xx_XX.charset format or other format required
-              by PHP gettext functions). From 1.4.4/1.5.1 'value' can contain
-              array. If PHP version is older than 4.3.0, system uses only first
-              locale name listed in array. First locale name must be compatible
-              with FreeBSD system locale names.
-  <tag/DIR/ Text direction. Used to define Right-to-Left languages. Possible
-              values 'rtl' or 'ltr'. If undefined - defaults to 'ltr'.
-  <tag/XTRA_CODE/ translation uses special functions. (see chapter about XTRA_CODE functions)
-</descrip>
-
-Each 'language_code' definition requires NAME+CHARSET or ALIAS keys. Other keys are
-optional.
-
-<sect1>XTRA_CODE functions
-<p>
-XTRA_CODE functions provide way to change interface behavior, when translation
-requires special handling of some SquirrelMail functions. Functions are enabled
-by setting XTRA_CODE option in $languages array and including appropriate
-functions in <tt>functions/i18n.php</tt>. First part of function name is word listed in
-$languages['language_code']['XTRA_CODE'] value. Second part is one of special
-keywords. Possible keywords:
-<descrip>
- <tag/_decode/ Used in <tt>src/compose.php</tt>, <tt>src/i18n.php</tt>, <tt>src/view_text.php</tt>, and <tt>functions/mime.php</tt>.
-Requires mbstring support.
-
- <tag/_encode/ Used in <tt>src/compose.php</tt>, and <tt>src/read_body.php</tt>.
-
- <tag/_encodeheader/ Used in <tt>functions/mime.php</tt>. Should accept one string
- argument and return correctly encoded MIME header string.
-
- <tag/_decodeheader/ Used in <tt>functions/mime.php</tt>. Returning function.
-
- <tag/_downloadfilename/ Used in <tt>functions/mime.php</tt>.
-
- <tag/_utf7_imap_encode/ Used in <tt>functions/imap_utf7_local.php</tt>. Returning function.
-
- <tag/_utf7_imap_decode/ Used in <tt>functions/imap_utf7_local.php</tt>. Returning function.
-
- <tag/_strimwidth/ Used in <tt>functions/mailbox_display.php</tt>. Returning function.
-
- <tag/_wordwrap/ Used in <tt>functions/strings.php</tt> (sqWordWrap).
-</descrip>
-
-<sect1>Display of different charsets
-<p>
-When SquirrelMail generates HTML pages, it uses charset defined in translation
-selected by end user. Interface can display emails encoded in different
-charsets. In order to display characters that might be unsupported by user's
-charset, SquirrelMail uses decoding functions that convert non us-ascii symbols
-into HTML entities. All decoding functions are stored in functions/decode/
-directory.
-
-By default SquirrelMail includes decoding functions that support iso-8859-x,
-windows-125x, utf-8, us-ascii, koi8-r, koi8-u, tis-620, ns-4551_1, iso-ir-111,
-cp855 and cp866 charsets. Other decoding functions are distributed in separate
-packages. Separate packaging of decoding functions is supported from
-SquirrelMail 1.4.4 and 1.5.0. us-ascii decoding replaces all 8bit symbols with
-question marks. UTF-8 decoding function does not enable decoding of five and six
-byte UTF-8 symbols by default (code is commented) and replaces all incorrectly
-formated 8bit symbols with question marks.
-
-Some decoding functions might require PHP recode extension or PHP 4.3+ mbstring
-extension. If your PHP installation does not support them, you might be using
-slower and cpu/memory intensive functions.
-
-<sect1>IMAP folder names
-<p>
-IMAP folder names use UTF7-IMAP charset. Folder names that are stored in
-conf.pl must be encoded in UTF7-IMAP charset. SquirrelMail uses internal
-functions that convert folder names from/to UTF7-IMAP charset. By default those
-functions work with ISO-8859-1 charset. Other charsets are supported only
-when PHP mbstring extension supports them.
-
-TODO: write independent implementation of charset to UTF7-IMAP conversion.
-
-<sect1>Plural forms
-<p>
-Since 1.5.1, SquirrelMail includes support of plural forms. It allows to use
-correct translation forms with numbers. For example. "We have %s squirrel on
-the roof." and "We have %s squirrels on the roof." can be written in one
-function call without checking actual number for squirrels. Gettext functions
-also deal with non English languages that might use different word forms for
-two, five, ten or more units.
-
-Support is provided by ngettext functions that exist in PHP gettext extension
-from PHP 4.2.0 and by ngettext function replacements from php-gettext classes
-(http://savannah.nongnu.org/projects/php-gettext). In order to use it correctly
-when PHP gettext extension does not have ngettext support, SquirrelMail uses
-bindtextdomain and textdomain wrappers that load missing functions.
-
-If plugins want to use ngettext functions without increasing PHP requirements
-to 4.2.0 with gettext support, they should require SquirrelMail 1.5.1, use
-sq_bindtextdomain function instead of bindtextdomain and use sq_textdomain
-function instead of textdomain function. If SquirrelMail wrapper functions
-are used, there is no need to issue sq_bindtextdomain when plugins reverts to
-SquirrelMail domain.
-
-More information about ngettext and plural forms can be found at:
-http://www.gnu.org/software/gettext/manual/html_chapter/gettext_10.html#SEC150
-
-<sect1>Language setup
-<p>
-SquirrelMail uses <tt>set_up_language()</tt> function to setup language environment.
-Environment is setup automatically when <tt>include/validate.php</tt> is loaded.
-
-SquirrelMail gets interface language from three places:
- a) user preference. It is set in Options -> Display Preferences -> Language.
-    preference uses language key. If user's preferences are not available (user
-    is not logged in), system tries to extract language value from
-    'squirrelmail_language' cookie.
- b) default SquirrelMail language that is set in configuration
-    ($squirrelmail_default_language variable).
- c) preferred language setting provided by browser. It is used only when default
-    SquirrelMail language is set to empty string
-
-If language information is not available, SquirrelMail falls back to US English
-translation.
-
-<sect1>Time zones
-<p>
-If the PHP installation allows modifying environment variable TZ, SquirrelMail allows
-the end users to select different time zone in their preferences. It can be set in
-Options -> Personal Information -> Your current timezone. Time zone is
-setup automatically when <tt>include/validate.php</tt> is loaded.
-
-If TZ variable can't be modified (PHP is running is safe mode and variable
-is not listed in PHP safe_mode_allowed_env_vars), user's time zone options are
-not visible and interface use default webserver's time zone.
-
-SquirrelMail 1.5.0 and older store list of available time zones in
-<tt>locale/timezones.cfg</tt>. Since 1.5.1 standard times zones are moved to
-<tt>include/timezones/standard.php</tt> and time zone handling differs from older
-SquirrelMail versions. Time zone configuration is controlled in SquirrelMail
-configuration utility (<tt/conf.pl/), 4. General Options &gt; 15. Time zone
-configuration menu option. Administrator can select standard, strict, custom
-and custom strict time zone handling.
-
-Standard handling does not differ from previous SquirrelMail versions and
-SquirrelMail uses GNU C geographical location based time zone names. Strict
-handling uses time zone codes with offset from GMT. Strict time zones should
-work on systems that don't support GNU C time zone naming. Custom and custom
-strict handling uses <tt>config/timezones.php</tt> file instead of
-<tt>include/timezones/standard.php</tt>.
-
-<tt>config/timezones.php</tt> file should store $aTimeZones array with different set of
-time zones. See default time zone set in <tt>include/timezones/standard.php</tt>. For
-example:
-
-<tscreen><verb>
-&lt;?php
-// World outside US border is a mirage
-
-$aTimeZones=array();
-$aTimeZones['America/New_York']['NAME']='US Eastern standard time';
-$aTimeZones['America/New_York']['TZ']='EST5EDT';
-
-$aTimeZones['America/Chicago']['NAME']='US Central standard time';
-$aTimeZones['America/Chicago']['TZ']='CST6CDT';
-
-// Oliver County, ND
-$aTimeZones['America/North_Dakota/Center']['NAME']='US, Oliver County [ND]';
-$aTimeZones['America/North_Dakota/Center']['TZ']='CST6CDT'; // CST since 1992
-
-$aTimeZones['America/Denver']['NAME']='US Mountain standard time';
-$aTimeZones['America/Denver']['TZ']='MST7MDT';
-
-$aTimeZones['America/Los_Angeles']['NAME']='US Pacific standard time';
-$aTimeZones['America/Los_Angeles']['TZ']='PST8PDT';
-
-// Aliaska
-$aTimeZones['America/Juneau']['NAME']='Aliaska, Juneau';
-$aTimeZones['America/Juneau']['TZ']='NAST9NADT';
-$aTimeZones['America/Yakutat']['NAME']='Aliaska, Yakutat';
-$aTimeZones['America/Yakutat']['TZ']='NAST9NADT';
-$aTimeZones['America/Anchorage']['NAME']='Aliaska, Anchorage';
-$aTimeZones['America/Anchorage']['TZ']='NAST9NADT';
-$aTimeZones['America/Nome']['NAME']='Aliaska, Nome';
-$aTimeZones['America/Nome']['TZ']='NAST9NADT';
-$aTimeZones['America/Adak']['NAME']='US, Aleutian Islands';
-$aTimeZones['America/Adak']['TZ']='AST10ADT';
-
-$aTimeZones['Pacific/Honolulu']['NAME']='US, Hawaii';
-$aTimeZones['Pacific/Honolulu']['TZ']='UCT10';
-$aTimeZones['America/Phoenix']['NAME']='US, Arizona';
-$aTimeZones['America/Phoenix']['TZ']='MST7'; // gmt-7
-$aTimeZones['America/Shiprock']['LINK']='America/Denver';
-
-$aTimeZones['America/Boise']['NAME']='US, South Idaho';
-$aTimeZones['America/Boise']['TZ']='MST7MDT';
-$aTimeZones['America/Indianapolis']['NAME']='US, Indiana';
-$aTimeZones['America/Indianapolis']['TZ']='EST5';
-$aTimeZones['America/Indiana/Indianapolis']['LINK']='America/Indianapolis';
-// Crawford County, Indiana
-$aTimeZones['America/Indiana/Marengo']['NAME']='US, Crawford County [IN]';
-$aTimeZones['America/Indiana/Marengo']['TZ']='EST5';
-// Starke County, Indiana
-$aTimeZones['America/Indiana/Knox']['NAME']='US, Starke County [IN]';
-$aTimeZones['America/Indiana/Knox']['TZ']='EST5';
-// Switzerland County, Indiana
-$aTimeZones['America/Indiana/Vevay']['NAME']='US, Switzerland County [IN]';
-$aTimeZones['America/Indiana/Vevay']['TZ']='EST5';
-$aTimeZones['America/Louisville']['NAME']='US, Louisville [KY]';
-$aTimeZones['America/Louisville']['TZ']='EST5EDT';
-$aTimeZones['America/Kentucky/Louisville']['LINK']='America/Louisville';
-// Wayne, Clinton, and Russell Counties, Kentucky
-$aTimeZones['America/Kentucky/Monticello']['NAME']='US, Wayne, Clinton, and Russell Counties [KY]';
-$aTimeZones['America/Kentucky/Monticello']['TZ']='EST5EDT';
-// Michigan
-$aTimeZones['America/Detroit']['NAME']='US, Michigan';
-$aTimeZones['America/Detroit']['TZ']='EST5EDT';
-// The Michigan border with Wisconsin switched from EST to CST/CDT in 1973.
-$aTimeZones['America/Menominee']['NAME']='US, Menominee [MI]';
-$aTimeZones['America/Menominee']['TZ']='CST6CDT';
-?&gt;
-</verb></tscreen>
-
-GNU C time zone naming should be supported by many Unix OSes. It is recommended
-way of setting time zone, because it handles historical changes and daylight
-savings specific to selected geographical location. Strict time zones might
-provide inaccurate or outdated time zone settings.
-
-If modifications in TZ environment are visible in your webserver's logs (time
-offset is changed), make sure that you can reproduce such behavior in latest PHP
-version and report bug to PHP developers. Issue can be fixed by blocking use of
-time zone (PHP safe mode and TZ is not listed in safe_mode_allowed_env_vars
-setting or forced_prefs plugin) or by attaching special PHP script with
-putenv('TZ=some time zone') call in PHP auto_append_file setting (suggestion is
-not tested and you might have to fix all SquirrelMail exit calls).
-
-Please note, that use of auto_append_file provides only temporally workaround
-and does not fix your PHP setup. Script that runs as unprivileged user, should
-be unable to affect webserver's logging system.
-
-<sect1>Sanitizing HTML strings
-<p>
-PHP provides the functions <tt><url url="http://www.php.net/htmlspecialchars"
-name="htmlspecialchars()"></tt> and <tt><url
-url="http://www.php.net/htmlentities" name="htmlentities()"></tt> for HTML
-string sanitizing. When SquirrelMail developers want to sanitize HTML formating
-symbols, they should use <tt>htmlspecialchars()</tt> and avoid using
-<tt>htmlentities()</tt>.
-
-<tt>htmlentities()</tt> uses the ISO-8859-1 charset by default, sanitizing the
-ISO-8859-1 eight bit symbols. Other charsets use the same eight bit ranges to
-store different symbols, so this will break all translations not using
-ISO-8859-1.
-
-Depending on the parameters, <tt>htmlspecialchars()</tt> only sanitizes three,
-four or five seven bit symbols (&ero;, &dquot;, ', &lt; and &gt;).
-<tt>htmlspecialchars()</tt> only breaks HTML encoded strings using the <url
-url="http://en.wikipedia.org/wiki/ISO_2022" name="ISO-2022"> charsets. ISO-2022
-charsets use seven bit ranges to store different symbols. The used encoding
-table depends on escape sequences present in ISO-2022 text.
-
-A charset option is added to <tt>htmlentities()</tt> and
-<tt>htmlspecialchars()</tt> since PHP 4.1.0 but list of supported charsets is
-limited. The fallback charset is same good old and dangerous ISO-8859-1.
-
-Differences between two functions can be examined with the <tt><url
-url="http://www.php.net/get-html-translation-table"
-name="get_html_translation_table()"></tt> function.
-
-If SquirrelMail charset decoding functions are used, they should apply
-<tt>htmlspecialchars()</tt> to the decoded string automatically. Don't try to
-use <tt>htmlspecialchars()</tt> twince on the same string, since that might
-break the decoded string.
-
 <sect>Links
 <p>
 TODO: This chapter should provide links to external sources of information. PHP
@@ -1629,20 +1629,34 @@ standards-compatible, we need to refer to RFC documents. Here's a list of the
 ones we use a lot:
 
 <itemize>
-  <item><url url="http://www.faqs.org/rfcs/rfc3501.html" name="RFC 3501"> -
-        IMAP version 4rev1 (obsoletes RFC 2060)
+  <item><url url="http://www.faqs.org/rfcs/rfc2045.html" name="RFC 2045"> -
+        MIME Part One: Format of Internet Message Bodies
+  <item><url url="http://www.faqs.org/rfcs/rfc2046.html" name="RFC 2046"> -
+        MIME Part Two: Media Types
+  <item><url url="http://www.faqs.org/rfcs/rfc2047.html" name="RFC 2047"> -
+        MIME Part Three: Message Header Extensions for Non-ASCII Text
   <item><url url="http://www.faqs.org/rfcs/rfc2183.html" name="RFC 2183"> -
         Content-Disposition MIME header
+  <item><url url="http://www.faqs.org/rfcs/rfc2195.html" name="RFC 2195"> -
+        IMAP/POP AUTHorize Extension for Simple Challenge/Response
+  <item><url url="http://www.faqs.org/rfcs/rfc2221.html" name="RFC 2221"> -
+        IMAP4 Login Referrals
   <item><url url="http://www.faqs.org/rfcs/rfc2298.html" name="RFC 2298"> -
         Details return receipts
   <item><url url="http://www.faqs.org/rfcs/rfc2342.html" name="RFC 2342"> -
         The IMAP4 NAMESPACE command
+  <item><url url="http://www.faqs.org/rfcs/rfc2369.html" name="RFC 2369"> -
+        The Use of URLs as Meta-Syntax for Core Mail List Commands and their Transport through Message Header Fields (implemented in listcommands plugin)
   <item><url url="http://www.faqs.org/rfcs/rfc2616.html" name="RFC 2616"> -
         HTTP/1.1
   <item><url url="http://www.faqs.org/rfcs/rfc2683.html" name="RFC 2683"> -
         IMAP4 Implementation Recommendations
   <item><url url="http://www.faqs.org/rfcs/rfc2822.html" name="RFC 2822"> -
         Format of an email message (sendmail) (obsoletes RFC 822)
+  <item><url url="http://www.faqs.org/rfcs/rfc2831.html" name="RFC 2831"> -
+        Using Digest Authentication as a SASL Mechanism (digest-md5)
+  <item><url url="http://www.faqs.org/rfcs/rfc3501.html" name="RFC 3501"> -
+        IMAP version 4rev1 (obsoletes RFC 1730 and RFC 2060)
 </itemize>
 
 </article>
