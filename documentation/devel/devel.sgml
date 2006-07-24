@@ -414,6 +414,171 @@ If you have any questions about security or are unsure, please contact the maili
 list or IRC channel, because security is very important for a widely used
 application like SquirrelMail!
 
+<sect1>Including files
+<p>
+It's sometimes needed to reference functionality provided in other files, and
+therefore those files need to be included. Files that are included by
+SquirrelMail, such as <tt>functions/global.php</tt> or a plugin's
+<tt/setup.php/, already have much of the functionality available, but files that
+are requested directly by the client browser, such as files in <tt>src/</tt> or
+a plugin's custom options page, <it/must/ have the initialization file included.
+
+The initialization file will set up the SquirrelMail environment automatically
+to ensure that the user has been authenticated and is currently logged in, all
+user preferences are loaded, internationalization support is included, that
+<tt/stripslashes()/ is used on all incoming data (if <tt/magic_quotes_gpc/ is
+on), and that all other basic SquirrelMail resources and functions are
+initialized and included.
+
+Note that as of SquirrelMail 1.4.0, all files are accessed using a constant
+called <tt/SM_PATH/ that always contains the relative path to the main
+SquirrelMail directory. This constant is always available for use when including
+other files from the SquirrelMail core or any plugins. For files that are
+requested directly by the client browser, it needs to be set.
+
+<sect2>Including the initialization file (before SquirrelMail 1.5.2)
+<p>
+Before you do anything else, you need to define the constant <tt/SM_PATH/ and
+include the initialization file. Make sure that <tt/SM_PATH/ points at the top
+level of the SquirrelMail installation. Here's an example for a plugin:
+
+<tscreen><verb>
+/** @ignore */
+define('SM_PATH', '../../');
+
+/* Including the SquirrelMail initialization file. */
+include_once(SM_PATH . 'include/validate.php');
+</verb></tscreen>
+
+The list below contains the files that are included by
+<tt>include/validate.php</tt>. If the SquirrelMail version isn't listed, files
+are included from v.1.3.2.
+
+<tscreen><verb>
+1. class/mime.class.php
+   1.1. class/mime/Rfc822Header.class.php
+   1.2. class/mime/MessageHeader.class.php
+   1.3. class/mime/AddressStructure.class.php
+   1.4. class/mime/Message.class.php
+   1.5. class/mime/SMimeMessage.class.php
+   1.6. class/mime/Disposition.class.php
+   1.7. class/mime/Language.class.php
+   1.8. class/mime/ContentType.class.php
+2. functions/global.php
+   * Fixes differences between PHP 4.0.x and 4.1+ globals (only in 1.4.x).
+   * Undoes magic_quotes_gpc=on sanitizing
+   * Sets $PHP_SELF (since 1.5.1)
+   * Starts session
+3. functions/strings.php
+   3.1. functions/global.php
+   3.2. plugins/compatibility/functions.php (compatibility v.2.0.4+, requires
+        code patching)
+   * Sets squirrelmail version variable and constant.
+   * Sets $PHP_SELF (before 1.5.1)
+4. config/config.php
+   4.1. config/config_local.php (from 1.4.0rc1)
+5. functions/i18n.php
+   5.1. functions/global.php (from 1.4.0)
+   * Reads 'squirrelmail_language' cookie
+   * Loads $languages (since 1.5.1 $languages array is built from
+     locale/*/setup.php files)
+   * Loads own gettext functions, if PHP gettext is unavailable
+6. functions/auth.php
+7. include/load_prefs.php
+   7.1. include/validate.php
+   7.2. functions/prefs.php
+      7.2.1. functions/global.php (sqgetGlobalVar() function)
+      7.2.2. functions/plugin.php (do_hook_function() function,,
+             since 1.4.4 and 1.5.1, see 7.3)
+      7.2.3. $prefs_backend (only in 1.4.3 and 1.5.0)
+             do_hook_function('prefs_backend') (since 1.4.4 and 1.5.1)
+             functions/db_prefs.php
+             functions/file_prefs.php
+        7.2.3.1. functions/display_messages.php
+                 (loaded only by file_prefs.php)
+        7.2.3.2. files loaded by plugin that uses 'prefs_backend' hook
+   7.3. functions/plugin.php
+      7.3.1. functions/global.php (from 1.4.0 and 1.5.0)
+      7.3.2. functions/prefs.php (from 1.5.1)
+      7.3.3. plugins/*/setup.php files for enabled plugins.
+      * Starts all squirrelmail_plugin_init_pluginname functions
+   7.4. functions/constants.php
+   7.5. do_hook('loading_prefs')
+      7.5.1. files loaded by plugins that use the 'loading_prefs' hook
+8. functions/page_header.php
+   8.1. functions/strings.php
+   8.2. functions/html.php
+   8.3. functions/imap_mailbox.php
+      8.3.1. functions/imap_utf7_local.php
+   8.4. functions/global.php
+9. functions/prefs.php (already loaded. see 7.2)
+</verb></tscreen>
+
+<sect2>Including the initialization file (since SquirrelMail 1.5.2)
+<p>
+Before you do anything else, you need to include the initialization file. Here's
+an example for a plugin:
+
+<tscreen><verb>
+/* Include the SquirrelMail initialization file. */
+require('../../include/init.php');
+</verb></tscreen>
+
+This takes care of setting up the session, defining the constants like
+<tt/SM_PATH/, and includes a minimum set of required files.
+
+The files which are included by <tt>include/init.php</tt> depends on which file
+the client browser requested. All files in <tt>src/</tt> include the following
+files:
+
+<itemize>
+  <item><tt>config/config.php</tt>
+  <item><tt>functions/display_messages.php</tt>
+  <item><tt>functions/global.php</tt>
+  <item><tt>functions/html.php</tt>
+  <item><tt>functions/page_header.php</tt>
+  <item><tt>functions/plugin.php</tt>
+  <item><tt>include/constants.php</tt>
+  <item><tt>include/languages.php</tt>
+</itemize>
+
+Except for <tt/login.php/ and <tt/redirect.php/, they also include:
+
+<itemize>
+  <item><tt>functions/strings.php</tt>
+  <item><tt>functions/auth.php</tt>
+</itemize>
+
+<tt/login.php/ also includes:
+
+<itemize>
+  <item><tt>functions/prefs.php</tt>
+  <item><tt>functions/db_prefs.php</tt> or <tt>functions/file_prefs.php</tt>
+        depending of the configured preference backend.
+</itemize>
+
+Because the use of <tt/require()/ in <tt>include/init.php</tt>, a plugin will fail if it
+tries to include already included files. Be aware of that.
+
+<sect2>Including other files
+<p>
+When including files, please make sure to use the <tt/include_once()/ function
+and <it/not/ <tt/include()/ or <tt/require()/. They can cause fatal errors when
+other plugins or SquirrelMail files include the same file. If you use
+<tt/require_once()/ instead of <tt/include_once()/, PHP will raise a fatal
+error if something goes wrong with the inclusion. That's the reason plugins
+<it/must/ use <tt/include_once()/ instead of <tt/require_once()/.
+
+Files that aren't included by the initialization file can be included like this:
+
+<tscreen><verb>
+include_once(SM_PATH . 'functions/imap_general.php');
+</verb></tscreen>
+
+<sect1>The base URI funcion
+<p>
+TODO: Add information about the base URI funcion.
+
 <sect1>Version numbering
 <sect2>The version number format
 <p>
@@ -473,19 +638,6 @@ The goals and objectives for each minor release should be carefully chosen so
 that a new minor release can take place every three to four months. This is so
 that our users can see actual improvements and will stick with us as we work to
 make SquirrelMail a better web mail application.
-
-<sect1>SM_PATH
-<p>
-TODO: Add information about the SM_PATH constant and base URI funcion.
-
-<sect1>Including files
-<p>
-TODO: Add information about files included by <tt>include/validate.php</tt> or
-newer.
-
-<sect1>Compatibility
-<p>
-TODO: Add information about the compatibility plugin.
 
 <sect1>Submitting a patch
 <p>
@@ -620,177 +772,6 @@ function plugin_demo_header() {
 The function called <tt>plugin_demo_header_do()</tt> would be in the file called
 <tt>functions.php</tt> in the <tt>demo</tt> plugin directory and would contain
 the plugin's core logic for the <tt>generic_header</tt> hook.
-
-<sect1>Including files
-<p>
-A plugin may need to reference functionality provided in other files, and
-therefore need to include those files. Most of the core SquirrelMail functions
-are already available to your plugin but not for plugin files, such as custom
-options pages, that are requested directly by the client browser. In the latter
-case, you'll need to make sure that the initialization file, and any other files
-your plugin may need, are included.
-
-The files that you may need to include in a plugin will vary greatly depending
-upon what the plugin is designed to do. For files that are requested directly by
-the client browser, you <it/must/ include the initialization file, since it will
-set up the SquirrelMail environment automatically. It will ensure that the user
-has been authenticated and is currently logged in, load all user preferences,
-include internationalization support, call <tt/stripslashes()/ on all incoming
-data (if <tt/magic_quotes_gpc/ is on), and initialize and include all other
-basic SquirrelMail resources and functions. You may see other plugins that
-directly include other SquirrelMail files, but that is no longer necessary and
-is a hold-over from older SquirrelMail versions.
-
-Note that as of SquirrelMail 1.4.0, all files are accessed using a constant
-called <tt/SM_PATH/ that always contains the relative path to the main
-SquirrelMail directory. This constant is always available for you to use when
-including other files from the SquirrelMail core, your own plugin, or other
-plugins, should the need arise. If any of your plugin files are requested
-directly from the client browser, it needs to be set.
-
-<sect2>Including the initialization file (before SquirrelMail 1.5.2)
-<p>
-Before you do anything else, you need to define the constant <tt/SM_PATH/ and
-include the initialization file like this:
-
-<tscreen><verb>
-/** @ignore */
-define('SM_PATH', '../../');
-
-/* Including the SquirrelMail initialization file. */
-include_once(SM_PATH . 'include/validate.php');
-</verb></tscreen>
-
-The list below contains the files that are included by
-<tt>include/validate.php</tt>. If the SquirrelMail version isn't listed, files
-are included from v.1.3.2.
-
-<tscreen><verb>
-   1. class/mime.class.php
-      1.1. class/mime/Rfc822Header.class.php
-      1.2. class/mime/MessageHeader.class.php
-      1.3. class/mime/AddressStructure.class.php
-      1.4. class/mime/Message.class.php
-      1.5. class/mime/SMimeMessage.class.php
-      1.6. class/mime/Disposition.class.php
-      1.7. class/mime/Language.class.php
-      1.8. class/mime/ContentType.class.php
-   2. functions/global.php
-      * Fixes differences between PHP 4.0.x and 4.1+ globals (only in 1.4.x).
-      * Undoes magic_quotes_gpc=on sanitizing
-      * Sets $PHP_SELF (since 1.5.1)
-      * Starts session
-   3. functions/strings.php
-      3.1. functions/global.php
-      3.2. plugins/compatibility/functions.php (compatibility v.2.0.4+, requires
-           code patching)
-      * Sets squirrelmail version variable and constant.
-      * Sets $PHP_SELF (before 1.5.1)
-   4. config/config.php
-      4.1. config/config_local.php (from 1.4.0rc1)
-   5. functions/i18n.php
-      5.1. functions/global.php (from 1.4.0)
-      * Reads 'squirrelmail_language' cookie
-      * Loads $languages (since 1.5.1 $languages array is built from
-        locale/*/setup.php files)
-      * Loads own gettext functions, if PHP gettext is unavailable
-   6. functions/auth.php
-   7. include/load_prefs.php
-      7.1. include/validate.php
-      7.2. functions/prefs.php
-         7.2.1. functions/global.php (sqgetGlobalVar() function)
-         7.2.2. functions/plugin.php (do_hook_function() function,,
-                since 1.4.4 and 1.5.1, see 7.3)
-         7.2.3. $prefs_backend (only in 1.4.3 and 1.5.0)
-                do_hook_function('prefs_backend') (since 1.4.4 and 1.5.1)
-                functions/db_prefs.php
-                functions/file_prefs.php
-           7.2.3.1. functions/display_messages.php
-                    (loaded only by file_prefs.php)
-           7.2.3.2. files loaded by plugin that uses 'prefs_backend' hook
-      7.3. functions/plugin.php
-         7.3.1. functions/global.php (from 1.4.0 and 1.5.0)
-         7.3.2. functions/prefs.php (from 1.5.1)
-         7.3.3. plugins/*/setup.php files for enabled plugins.
-         * Starts all squirrelmail_plugin_init_pluginname functions
-      7.4. functions/constants.php
-      7.5. do_hook('loading_prefs')
-         7.5.1. files loaded by plugins that use the 'loading_prefs' hook
-   8. functions/page_header.php
-      8.1. functions/strings.php
-      8.2. functions/html.php
-      8.3. functions/imap_mailbox.php
-         8.3.1. functions/imap_utf7_local.php
-      8.4. functions/global.php
-   9. functions/prefs.php (already loaded. see 7.2)
-</verb></tscreen>
-
-<sect2>Including the initialization file (since SquirrelMail 1.5.2)
-<p>
-Before you do anything else, you need to include the initialization file like
-this:
-
-<tscreen><verb>
-/* Include the SquirrelMail initialization file. */
-require('../../include/init.php');
-</verb></tscreen>
-
-This takes care of setting up the session, defining the constants like
-<tt/SM_PATH/, and includes a minimum set of required files.
-
-The files which are included by <tt>include/init.php</tt> depends on which file
-the hook operates on. All hooks include the following files:
-
-<itemize>
-  <item><tt>config/config.php</tt>
-  <item><tt>functions/display_messages.php</tt>
-  <item><tt>functions/global.php</tt>
-  <item><tt>functions/html.php</tt>
-  <item><tt>functions/page_header.php</tt>
-  <item><tt>functions/plugin.php</tt>
-  <item><tt>include/constants.php</tt>
-  <item><tt>include/languages.php</tt>
-</itemize>
-
-All hooks, except those in <tt/login.php/ and <tt/redirect.php/, also includes
-the following files:
-
-<itemize>
-  <item><tt>functions/strings.php</tt>
-  <item><tt>functions/auth.php</tt>
-</itemize>
-
-<tt/login.php/ also includes the following files:
-
-<itemize>
-  <item><tt>functions/prefs.php</tt>
-  <item><tt>functions/db_prefs.php</tt> or <tt>functions/file_prefs.php</tt>
-        depending of the configured preference backend.
-</itemize>
-
-Because the use of <tt/require()/ in <tt>include/init.php</tt>, a plugin will fail if it
-tries to include already included files. Be aware of that.
-
-<sect2>Including other files
-<p>
-When including files, please make sure to use the <tt/include_once()/ function
-and <it/not/ <tt/include()/ or <tt/require()/. They can cause fatal errors when
-other plugins or SquirrelMail files include the same file. If you use
-<tt/require_once()/ instead of <tt/include_once()/, PHP will raise a fatal
-error if something goes wrong with the inclusion. That's the reason plugins
-<it/must/ use <tt/include_once()/ instead of <tt/require_once()/.
-
-In SquirrelMail 1.4.7+ and 1.5.1 <tt>functions/global.php</tt> must be loaded
-before setting any own global variables. If variables are set before loading
-<tt>functions/global.php</tt>, they can be corrupted in PHP
-<tt/register_globals=on/ setups.
-
-Files that aren't included by the initialization file can be included by your
-plugin like this:
-
-<tscreen><verb>
-include_once(SM_PATH . 'functions/imap_general.php');
-</verb></tscreen>
 
 <sect1>Hooks
 <p>
