@@ -258,17 +258,15 @@ function sqm_baseuri(){
  *
  * Determines the location to forward to, relative to your server.
  * This is used in HTTP Location: redirects.
- * If this doesnt work correctly for you (although it should), you can
- * remove all this code except the last two lines, and have it return
- * the right URL for your site, something like:
- *
- *   http://www.example.com/squirrelmail/
+ * If set, it uses $config_location_base as the first part of the URL,
+ * specifically, the protocol, hostname and port parts. The path is
+ * always autodetected.
  *
  * @return string the base url for this SquirrelMail installation
  */
 function get_location () {
 
-    global $imap_server_type;
+    global $imap_server_type, $config_location_base;
 
     /* Get the path, handle virtual directories */
     if(strpos(php_self(), '?')) {
@@ -277,9 +275,18 @@ function get_location () {
         $path = php_self();
     }
     $path = substr($path, 0, strrpos($path, '/'));
-    if ( sqgetGlobalVar('sq_base_url', $full_url, SQ_SESSION) ) {
-      return $full_url . $path;
+
+    // proto+host+port are already set in config:
+    if ( !empty($config_location_base) ) {
+        // register it in the session just in case some plugin depends on this
+        sqsession_register($config_location_base . $path, 'sq_base_url');
+        return $config_location_base . $path ;
     }
+    // we computed it before, get it from the session:
+    if ( sqgetGlobalVar('sq_base_url', $full_url, SQ_SESSION) ) {
+        return $full_url . $path;
+    }
+    // else: autodetect
 
     /* Check if this is a HTTPS or regular HTTP request. */
     $proto = 'http://';

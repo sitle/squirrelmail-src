@@ -324,6 +324,9 @@ $abook_global_file_writeable = 'false'  if ( !$abook_global_file_writeable);
 $hide_auth_header = "false"             if ( !$hide_auth_header );
 $encode_header_key = ''                 if ( !$encode_header_key );
 
+# Added in 1.4.8
+$config_location_base = ''              if ( !$config_location_base );
+
 if ( $ARGV[0] eq '--install-plugin' ) {
     print "Activating plugin " . $ARGV[1] . "\n";
     push @plugins, $ARGV[1];
@@ -493,6 +496,7 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
         print "12. Allow server charset search : $WHT$allow_charset_search$NRM\n";
         print "13. Enable UID support          : $WHT$uid_support$NRM\n";
         print "14. PHP session name            : $WHT$session_name$NRM\n";
+        print "15. Location base               : $WHT$config_location_base$NRM\n";
         print "\n";
         print "R   Return to Main Menu\n";
     } elsif ( $menu == 5 ) {
@@ -705,6 +709,7 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
             elsif ( $command == 12 ) { $allow_charset_search     = command312(); }
             elsif ( $command == 13 ) { $uid_support              = command313(); }
             elsif ( $command == 14 ) { $session_name             = command314(); }
+            elsif ( $command == 15 ) { $config_location_base     = command_config_location_base(); }
         } elsif ( $menu == 5 ) {
             if ( $command == 1 ) { command41(); }
             elsif ( $command == 2 ) { $theme_css = command42(); }
@@ -2205,6 +2210,25 @@ sub command314 {
     return $new_session_name;
 }
 
+# set the location base for redirects (since 1.4.8)
+sub command_config_location_base {
+    print "Here you can set the base part of the SquirrelMail URL.\n";
+    print "It is normally autodetected but if that fails, use this\n";
+    print "option to override.\n";
+    print "It should contain only the protocol and hostname/port parts\n";
+    print "of the URL; the full path will be appended automatically.\n\n";
+    print "Examples:\nhttp://webmail.example.org\nhttp://webmail.example.com:8080\nhttps://webmail.example.com:6691\n\n";
+    print "Do not add any path elements.\n";
+
+    print "URL base? [" .$WHT."autodetect$NRM]: $WHT";
+    $new_config_location_base = <STDIN>;
+    chomp($new_config_location_base);
+    $config_location_base = $new_config_location_base;
+    
+    return $config_location_base;
+}
+
+
 ####################################################################################
 #### THEMES ####
 sub command41 {
@@ -3175,6 +3199,9 @@ sub save_data {
         print CF "\$use_smtp_tls = $use_smtp_tls;\n";
 
         print CF "\$session_name = '$session_name';\n";
+
+        print CF "\n";
+        print CF "\$config_location_base     = '$config_location_base';\n";
 
         print CF "\n";
         print CF "\@include SM_PATH . 'config/config_local.php';\n";
