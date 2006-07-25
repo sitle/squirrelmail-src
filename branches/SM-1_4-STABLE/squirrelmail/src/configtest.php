@@ -40,6 +40,10 @@ if (file_exists(SM_PATH . 'config/config.php')) {
     include(SM_PATH . 'config/config.php');
     include(SM_PATH . 'functions/strings.php');
 }
+
+// this must be done before the output is started because it may use the
+// session
+$test_location = get_location();
 ?><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -195,8 +199,10 @@ if ( $squirrelmail_default_language != 'en_US' ) {
     echo $IND . "Default language OK.<br />\n";
 }
 
-echo $IND . "Base URL detected as: <tt>" . htmlspecialchars(get_location()) . "</tt><br />\n";
 
+echo $IND . "Base URL detected as: <tt>" . htmlspecialchars($test_location) .
+    "</tt> (location base " . (empty($config_location_base) ? 'autodetected' : 'set to <tt>' .
+    htmlspecialchars($config_location_base)."</tt>") . ")<br />\n";
 
 /* check outgoing mail */
 
