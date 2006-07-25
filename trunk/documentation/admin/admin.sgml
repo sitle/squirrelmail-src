@@ -47,6 +47,10 @@ browsers. It has very few requirements and is very easy to configure and
 install. SquirrelMail has all the functionality you would want from an email
 client, including strong MIME support, address books, and folder manipulation.
 
+<p>
+This manual supports SquirrelMail 1.4.0 and up. The 1.2.x series has been
+obsoleted, and is only referenced in the upgrading notes of this manual.
+
 <sect1>SquirrelMail Requirements
 <sect2>Requirements for running SquirrelMail:
 <p>
@@ -60,7 +64,7 @@ client, including strong MIME support, address books, and folder manipulation.
   <item>Perl installed on the system. (If you don't have Perl, SquirrelMail will
     work fine but it's very helpful for the initial configuration.
     Alternatively, you can manually edit the configuration files.)
-  <item>Unlike many PHP applications, SquirrelMail does not require MySQL or
+  <item>Unlike many PHP applications, SquirrelMail does not <em>require</em> MySQL or
     other database type.
   <item>If you use MySQL for the address book or for preferences, note that Pear DB
     library is required to be installed and available in the include path.
@@ -271,7 +275,7 @@ address book plugins on SquirrelMail site.
 <sect>Installing SquirrelMail
 <sect1>Quick and Dirty install
 <p>
-In order to use SquirrelMail, you should
+In order to use SquirrelMail, you should take the following steps.
 
 <sect2>Download all required software
 <p>
@@ -521,11 +525,11 @@ install squirrelmail</tt>. If you use Debian stable and SquirrelMail package is
 a little bit outdated, you might be able to install newer SquirrelMail package
 from testing or unstable. This is not guaranteed to work though.
 
-FreeBSD includes two different SquirrelMail packages in ports collection.
+FreeBSD includes two different SquirrelMail packages in their ports collection.
 
 <sect>Upgrading SquirrelMail
 <p>
-This chapter talks about upgrading existing SquirrelMail install.
+This chapter talks about upgrading an existing SquirrelMail install.
 
 <sect1>Backup old install
 <p>
@@ -746,9 +750,8 @@ specific settings.
 
 <sect1>Authentication
 <p>
-Prior to SquirrelMail 1.4.0, only plain text logins for IMAP and SMTP were
-supported.  With the release of SquirrelMail 1.4.0, support for the
-CRAM-MD5 and DIGEST-MD5 authentication mechanisms has been added. It is possible
+Next to plain text logins for IMAP and SMTP, SquirrelMail supports the
+CRAM-MD5 and DIGEST-MD5 authentication mechanisms. It is possible
 to use different methods for both IMAP and SMTP. Unless the administrator
 changes the authentication methods, SquirrelMail will default to the "classic"
 plain text methods.
@@ -757,17 +760,16 @@ plain text methods.
 <p>
 <verb>
 CRAM/DIGEST-MD5
-* SquirrelMail 1.4.0 or higher
 * If you have the mhash extension to PHP, it will automatically
   be used, which may help performance on heavily loaded servers.
-  ** NOTE: mhash is optional and no longer a requirement **
+  ** NOTE: mhash is optional and no longer a requirement **  (SINCE WHEN?)
 * PHP XML extension needed for digest-md5 authentication.
 </verb>
 
 <sect2>POP before SMTP
 <p>
 Some SMTP servers require POP3 authentication before accepting messages to
-external recipients. SquirrelMail supports POP before SMTP since 1.2.6. You can
+external recipients. SquirrelMail supports POP before SMTP. You can
 enable it in SMTP server settings <tt/"POP before SMTP"/ option. SquirrelMail
 uses same username and password that was used for IMAP authentication.
 
@@ -785,14 +787,13 @@ other SMTP server.
 
 <sect1>StartTLS, IMAPS, SSMTP
 <p>
-Since 1.4.0 version SquirrelMail is able to connect to IMAP and SMTP servers
-that use TLS. Since 1.5.1 version SquirrelMail is able to connect to IMAP and
-SMTP servers that use STARTTLS.
+SquirrelMail is able to connect to IMAP and SMTP servers that use TLS.
+Since 1.5.1 version SquirrelMail is able to connect to IMAP and SMTP
+servers that use STARTTLS (which is different from TLS).
 
 <sect2>TLS requirements
 <p>
 <itemize>
-  <item>SquirrelMail 1.4.0 or higher
   <item>PHP 4.3.0 or higher
   <item>The server you wish to use TLS on must have a dedicated port listening
   for TLS connections.
@@ -850,10 +851,10 @@ need to do to accomplish that.
   <item>Copy those settings into the "default_pref" file in the data directory.
 </itemize>
 
-Note that <tt/default_pref/ file works only for users that don't have own
-preference file. If you want to add preferences to existing user accounts, you
-should add them to their preference files. You can do that by editing user .pref
-files or use Forced Preferences plugin.
+Note that <tt/default_pref/ file works only for users that don't have an existing
+preference file (i.e.: new users). If you want to add preferences to existing user
+accounts, you should add them to their preference files. You can do that by editing
+user .pref files or use the Forced Preferences plugin.
 
 If you use database based setup, default settings are stored in
 <tt>functions/db_prefs.php</tt> file, <tt/$default/ parameter in dbPrefs class.
@@ -1037,7 +1038,7 @@ Add short info about multilogin here.
 
 <sect2>sqimap_get_user_server
 <p>
-Since v.1.3.0 SquirrelMail allows to use mapping to user defined function
+SquirrelMail can use mapping by a user defined function
 instead of IMAP server's address. If IMAP server's address is set to
 <tt/map:some_function_name/, SquirrelMail functions should use provided username
 as first function argument and replace  mapping with address returned by
@@ -1284,7 +1285,6 @@ $color[14]  = '#xxxxxx';
 $color[15]  = '#xxxxxx';
 $color[16]  = '#xxxxxx';
 
-?>
 ---<END>---
 </verb></tscreen>
 
@@ -1346,39 +1346,39 @@ Stock SquirrelMail installation supports following charset decoding
 functions:
 <itemize>
   <item>cp1250 (windows-1250) - since 1.4.3 and 1.5.0
-  <item>cp1251 (windows-1251) - since 1.2.1
+  <item>cp1251 (windows-1251)
   <item>cp1252 (windows-1252) - since 1.4.3 and 1.5.0
-  <item>cp1253 (windows-1253) - since 1.2.11 and 1.4.0
-  <item>cp1254 (windows-1254) - since 1.2.10 and 1.4.0
+  <item>cp1253 (windows-1253)
+  <item>cp1254 (windows-1254)
   <item>cp1255 (windows-1255) - since 1.4.3 and 1.5.0
   <item>cp1256 (windows-1256) - since 1.4.3 and 1.5.0
-  <item>cp1257 (windows-1257) - since 1.2.10 and 1.4.0
+  <item>cp1257 (windows-1257)
   <item>cp1258 (windows-1258) - since 1.4.3 and 1.5.0
   <item>cp855 (ibm855) - since 1.4.3 and 1.5.0
   <item>cp866 (ibm866) - since 1.4.3 and 1.5.0
-  <item>iso-8859-1 - since 1.0
-  <item>iso-8859-2 - since 1.0
+  <item>iso-8859-1
+  <item>iso-8859-2
   <item>iso-8859-3 - since 1.4.3 and 1.5.0
-  <item>iso-8859-4 - since 1.2.10 and 1.3.2
-  <item>iso-8859-5 - since 1.2.11 and 1.4.0
+  <item>iso-8859-4
+  <item>iso-8859-5
   <item>iso-8859-6 - since 1.4.3 and 1.5.0
-  <item>iso-8859-7 - since 1.0
+  <item>iso-8859-7
   <item>iso-8859-8 - since 1.4.3 and 1.5.0
-  <item>iso-8859-9 - since 1.2.10 and 1.4.0
+  <item>iso-8859-9
   <item>iso-8859-10 - since 1.4.3 and 1.5.0
   <item>iso-8859-11 - since 1.4.3 and 1.5.0
-  <item>iso-8859-13 - since 1.2.10 and 1.3.2
+  <item>iso-8859-13
   <item>iso-8859-14 - since 1.4.3 and 1.5.0
-  <item>iso-8859-15 - since 1.0
+  <item>iso-8859-15
   <item>iso-8859-16 - since 1.4.3 and 1.5.0
   <item>iso-ir-111 - since 1.4.3 and 1.5.0
-  <item>koi8-r - since 1.2.1
-  <item>koi8-u - since 1.2.11 and 1.4.1
-  <item>ns-4551_1 - since 1.0
+  <item>koi8-r
+  <item>koi8-u - since 1.4.1 and 1.5.0
+  <item>ns-4551_1
   <item>tis-620 - since 1.4.3 and 1.5.0
   <item>us-ascii - since 1.4.4
-  <item>utf-8 - two and three byte characters are supported since 1.2.11 and
-  1.4.0. Four byte characters are supported since 1.4.4 and 1.5.1. Five and six
+  <item>utf-8 - two and three byte characters are supported since 1.4.0.
+  Four byte characters are supported since 1.4.4 and 1.5.1. Five and six
   byte character decoding is available since 1.4.4 and 1.5.1, but not enabled
   by default.
 </itemize>
