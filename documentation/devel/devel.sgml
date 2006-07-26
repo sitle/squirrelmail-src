@@ -1044,10 +1044,7 @@ developers should consider joining this project.
 
 In addition to this document, help writing plugins is easily obtained by posting
 to the <url url="http://www.squirrelmail.org/wiki/MailingLists"
-name="SquirrelMail plugins mailing list">. There is also some information to be
-found in the document <tt><url
-url="http://squirrelmail.cvs.sourceforge.net/squirrelmail/squirrelmail/doc/Development/plugin.txt?view=markup"
-name="doc/Development/plugin.txt"></tt>.
+name="SquirrelMail plugins mailing list">.
 
 <sect1>The plugin architecture
 <p>
@@ -1099,28 +1096,28 @@ called with no parameters. That function is where the plugin may register itself
 against any hooks it wishes to take advantage of.
 
 <sect1>The starting point
+<sect2>Plugin initialization
 <p>
-All plugins must contain a file called <tt>setup.php</tt> and must include a
-function called <tt>squirrelmail_plugin_init_plugin_name()</tt> therein. Since
-including numerous plugins can slow SquirrelMail performance considerably, the
-<tt>setup.php</tt> file should contain little else. Any functions that are
-registered against plugin hooks should do little more than call another function
-in a different file.
+All plugins must contain a file called <tt/setup.php/ and must include a
+function called <tt/squirrelmail_plugin_init_&lt;plugin_name&gt;()/ therein.
+Since including numerous plugins can slow SquirrelMail's performance down
+considerably, the <tt/setup.php/ file should contain little else. Any functions
+that are registered against plugin hooks should do little more than call another
+function in a different file.
 
 Any other files used by the plugin should also be placed in the plugin directory
 (or subdirectory thereof) and should contain the bulk of the plugin logic.
 
-The function <tt>squirrelmail_plugin_init_plugin_name()</tt> is called to
+The function <tt/squirrelmail_plugin_init_&lt;plugin_name&gt;()/ is called to
 initalize a plugin. This function could look something like this (if the plugin
 was named "demo" and resided in the directory <tt>plugins/demo/</tt>):
 
 <tscreen><verb>
 function squirrelmail_plugin_init_demo() {
-    global $squirrelmail_plugin_hooks;
+global $squirrelmail_plugin_hooks;
 
-    $squirrelmail_plugin_hooks['generic_header']['demo']
-        = 'plugin_demo_header';
-    $squirrelmail_plugin_hooks['menuline']['demo'] = 'plugin_demo_menuline';
+$squirrelmail_plugin_hooks['generic_header']['demo'] = 'plugin_demo_header';
+$squirrelmail_plugin_hooks['menuline']['demo'] = 'plugin_demo_menuline';
 }
 </verb></tscreen>
 
@@ -1129,10 +1126,11 @@ called at run time and will instead be called only once at configuration time.
 Thus, the inclusion of any dynamic code (anything except hook registration) here
 is strongly discouraged.
 
+<sect2>Adding functionality
+<p>
 In this example, the "demo" plugin should also have two other functions in its
-<tt>setup.php</tt> file called <tt>plugin_demo_header()</tt> and
-<tt>plugin_demo_menuline()</tt>. The first of these might look something like
-this:
+<tt/setup.php/ file called <tt/plugin_demo_header()/ and
+<tt/plugin_demo_menuline()/. The first of these might look something like this:
 
 <tscreen><verb>
 function plugin_demo_header() {
@@ -1141,9 +1139,90 @@ function plugin_demo_header() {
 }
 </verb></tscreen>
 
-The function called <tt>plugin_demo_header_do()</tt> would be in the file called
-<tt>functions.php</tt> in the <tt>demo</tt> plugin directory and would contain
-the plugin's core logic for the <tt>generic_header</tt> hook.
+The function called <tt/plugin_demo_header_do()/ would be in the file called
+<tt/functions.php/ in the <tt/demo/ plugin directory and would contain the
+plugin's core logic for the <tt/generic_header/ hook.
+
+<sect2>Version reporting
+<p>
+In order for systems administrators to keep better track of your plugin and
+get upgrades more efficiently, you are requested to make version information
+available to SquirrelMail in a format that it understands. To do this, a
+function called <tt/&lt;plugin name&gt;_version()/ must be included in
+<tt/setup.php/:
+
+<tscreen><verb>
+function demo_version() {
+return '1.0';
+}
+</verb></tscreen>
+
+There is also a legacy way to do this. Presently, plugins should do both, since
+we are still in a transition period between the two. The legacy is to create a
+file called <tt/version/ in the plugin directory. That file should have only two
+lines: the first line should have the name of the plugin as named on the
+SquirrelMail web site (this is often a prettified version of the plugin
+directory name), and the second line must have the version and nothing more. So
+for our "demo" plugin, whose name on the web site might be something like "Demo
+Favorite Colors", the file <tt>plugins/demo/version</tt> should have these two
+lines:
+
+<tscreen><verb>
+Demo Favorite Colors
+1.0
+</verb></tscreen>
+
+<sect1>Configuration
+<p>
+It is common to need a configuration file that holds some variables that are set
+up at install time. For ease of installation and maintenance, you should place
+all behavioral settings in a config file, isolated from the rest of your plugin
+code. A typical file name to use is <tt/config.php/. If you are using such a
+file, you should <it/not/ include a file called <tt/config.php/ in your plugin
+distribution, but instead a copy of that file called <tt/config.php.sample/.
+This helps systems administrators avoid overwriting the <tt/config.php/ files
+and losing all of their setup information when they upgrade your plugin.
+
+<sect1>Security considerations
+<sect2>Disallowing access for diabled plugins
+<p>
+All plugin authors should consider the security implications of their plugin. Of
+course, if you call external programs you have to use great care, but you also
+have to make sure that the plugin doesn't perform its function when it's not
+enabled. Hooks aren't called for disabled plugins, so a plugin which only call
+hooks is safe. If files that are accessed directly perform any function when
+being accessed, they must begin with checking whether the plugin is enabled in
+the configuration. If it isn't, the script must exit. Naturally, the check must
+be placed before any other functionality. Here's an example:
+
+<tscreen><verb>
+global $plugins;
+if ( !in_array('mypluginname', $plugins) ) {
+exit('The plugin mypluginname isn't enabled in the SquirrelMail configuration.');
+}
+</verb></tscreen>
+
+<sect2>Storing sensitive data
+<p>
+If a plugin needs to store sensitive configuration files or other such data,
+it's recommended to do it in the already defined <tt/$data/ directory. The
+reason for this is that all system administrators (at least those who have read
+the installation instructions) knows that the <tt/$data/ directory needs to be
+protected and (hopefully) made sure that it was. Never put such files in your
+main plugin directory!
+
+If you decide to have such a directory for your plugin only, you <tt/must/
+inform the system administrators about the possible security implications that
+might have. Just shipping a distributed configuration file for Apache
+(<tt/.htaccess/) isn't enough. Not every system use Apache as its web server.
+
+If you <tt/do/ include <tt/.htaccess/, its should contain "Deny From All" thus
+will disallowing access to that directory entirely (when the target system is
+running the Apache web server).
+
+Keep in mind that not all web servers
+will honor an <tt/.htaccess/ file, so don't depend on it for security. Make sure
+not to put such a file in your main plugin directory!
 
 <sect1>Hooks
 <p>
@@ -1579,6 +1658,76 @@ which will insert the hook you want to add, and mail your request (with the
 patch attached) to the SquirrelMail plugins mailing list. Don't forget to
 motivate the need for a new hook in your mail.
 
+<sect1>Documentation files
+<p>
+Two more files are needed in your plugin directory. One file shall describes
+your plugin and offers detailed instructions for configuration or help with
+troubleshooting, etc. This file is usually entitled <tt/README/. Some useful
+sections to include might be:
+
+There are a few files that you should make sure to include when you build your
+final plugin distribution.
+
+<itemize>
+  <item>Plugin name and author
+  <item>Current version
+  <item>Plugin features
+  <item>Detailed plugin description
+  <item>How-to for plugin configuration
+  <item>Change log
+  <item>Future ideas/enhancements/to do list
+</itemize>
+
+The other files shall explain how to install your plugin. This file is typically
+called <tt/INSTALL/. If you do not require any special installation actions, you
+can probably copy one from another plugin or use this as a template:
+
+<tscreen><verb>
+Installing the Demo plugin
+==========================
+
+1) Start with untaring the file into the plugins directory. Here is an example
+   for the 1.0 version of the Demo plugin.
+
+  cd plugins
+  tar -zxvf demo-1.0-1.4.0.tar.gz
+
+2) Change into the demo directory, copy "config.php.sample" to "config.php" and
+   edit "config.php", making adjustments as you deem necessary. For more
+   detailed explanations about each of these parameters, consult the README
+   file.
+
+      cd demo
+      cp config.php.sample config.php
+      vi config.php
+
+3) Then go to your config directory and run "conf.pl". Choose option 8 and move
+   the plugin from the "Available Plugins" category to the "Installed Plugins"
+   category. Save and exit.
+
+      cd ../../config/
+      ./conf.pl
+
+Upgrading the Demo plugin
+=========================
+
+1) Start with untaring the file into the plugins directory. Here is a example
+   for the 3.1 version of the demo plugin.
+
+  cd plugins
+  tar -zxvf demo-3.1-1.4.0.tar.gz
+
+2) Change into the demo directory, check your "config.php" file against the new
+   version, to see if there are any new settings that you must add to your
+   "config.php" file.
+
+      diff -Nau config.php config.php.sample
+
+   Or simply replace your "config.php" file with the provided sample and
+   reconfigure the plugin from scratch (see step 2 under the installation
+   procedure above).
+</verb></tscreen>
+
 <sect1>How to release your plugin
 <p>
 As long as you've consulted the list of plugin standards and done your best to
@@ -1615,7 +1764,7 @@ the plugin is approved.
 
 When the plugin is approved and you're granted access to upload it, all you have
 to do is the actual uploading. You also need to write a plugin description and a
-release note.
+release note for the web site.
 
 <sect>Links
 <p>
