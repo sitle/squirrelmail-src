@@ -618,7 +618,7 @@ $session_name = 'SQMSESSID';
  * SquirrelMail is at http://www.example.net/web/mail/src/login.php, you
  * write: http://www.example.net
  *
- * @global string $config_location_base;
+ * @global string $config_location_base
  * @since 1.4.8
  */
 $config_location_base = '';
