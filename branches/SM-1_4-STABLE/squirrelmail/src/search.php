@@ -37,23 +37,28 @@ sqgetGlobalVar('onetimepad', $onetimepad, SQ_SESSION);
 sqgetGlobalVar('composenew' , $composenew, SQ_FORM);
 sqgetGlobalVar('composesession' , $composesession , SQ_SESSION);
 
-if (isset($_GET['mailbox'])) {
-    $mailbox = strip_tags($_GET['mailbox']);
+if (!sqgetGlobalVar('mailbox',$mailbox,SQ_GET)) {
+    unset($mailbox);
 }
-if (isset($_GET['submit'])) {
-    $submit = strip_tags($_GET['submit']);
+if (!sqgetGlobalVar('submit',$submit,SQ_GET)) {
+    $submit = '';
 }
-if (isset($_GET['what'])) {
-    $what = $_GET['what'];
+if (!sqgetGlobalVar('what',$what,SQ_GET)) {
+    $what='';
 }
-if (isset($_GET['where'])) {
-    $where = strip_tags($_GET['where']);
+if (! sqgetGlobalVar('where',$where,SQ_GET) ||
+    ! in_array( $where, array('BODY','TEXT','SUBJECT','FROM','CC','TO'))) {
+    // make sure that 'where' is one if standard IMAP SEARCH keywords
+    $where = 'FROM';
 }
-if (isset($_GET['checkall'])) {
-    $checkall = strip_tags($_GET['checkall']);
+// FIXME: what is this?
+if (!sqgetGlobalVar('checkall',$checkall,SQ_GET)) {
+    unset($checkall);
 }
-if (isset($_GET['count'])) {
-    $count = strip_tags($_GET['count']);
+if (sqgetGlobalVar('count',$count,SQ_GET)) {
+    $count = (int) $count;
+} else {
+    unset($count);
 }
 /* end of get globals */
 
@@ -187,7 +192,12 @@ function save_recent($save_index, $username, $data_dir) {
     $saved_types = array(0 => 'saved_what', 1 => 'saved_where', 2 => 'saved_folder');
     $saved_array = get_saved($username, $data_dir);
     $save_index = $save_index -1;
-    $saved_count = (count($saved_array['saved_what']) + 1);
+    if (isset($saved_array['saved_what'])) {
+        $saved_count = (count($saved_array['saved_what']) + 1);
+    } else {
+        // there are no saved searches. Function is used to save first search
+        $saved_count = 1;
+    }
     $attributes = get_recent ($username, $data_dir);
     $n = 0;
     foreach ($types as $key) {
@@ -274,23 +284,22 @@ if (isset($composenew) && $composenew) {
     displayPageHeader($color, $mailbox);
 }
 /*  See how the page was called and fire off correct function  */
-if ((!isset($submit) || empty($submit)) && !empty($what)) {
+if (empty($submit) && !empty($what)) {
     $submit = _("Search");
 }
-if ( !isset( $submit ) ) {
-    $submit = '';
-} else if ($submit == _("Search") && !empty($what)) {
+
+if ($submit == _("Search") && !empty($what)) {
     if ($recent_count > 0) {
         update_recent($what, $where, $mailbox, $username, $data_dir);
     }
 }
-elseif ($submit == 'forget') {
+elseif ($submit == 'forget' && isset($count)) {
     forget_recent($count, $username, $data_dir);
 }
-elseif ($submit == 'save') {
+elseif ($submit == 'save' && isset($count)) {
     save_recent($count, $username, $data_dir);
 }
-elseif ($submit == 'delete') {
+elseif ($submit == 'delete' && isset($count)) {
     delete_saved($count, $username, $data_dir);
 }
 
@@ -317,7 +326,7 @@ if ($saved_count > 0) {
     echo "<br />\n"
     . html_tag( 'table', '', 'center', $color[9], 'width="95%" cellpadding="1" cellspacing="1" border="0"' )
     . html_tag( 'tr',
-          html_tag( 'td', '<b>Saved Searches</b>', 'center' )
+          html_tag( 'td', '<b>'._("Saved Searches") . '</b>', 'center' )
       )
     . html_tag( 'tr' )
     . html_tag( 'td' )
@@ -328,9 +337,9 @@ if ($saved_count > 0) {
         } else {
             echo html_tag( 'tr', '', '', $color[4] );
         }
-        echo html_tag( 'td', imap_utf7_decode_local($saved_attributes['saved_folder'][$i + 1]), 'left', '', 'width="35%"' )
-        . html_tag( 'td', $saved_attributes['saved_what'][$i + 1], 'left' )
-        . html_tag( 'td', $saved_attributes['saved_where'][$i + 1], 'center' )
+        echo html_tag( 'td', htmlspecialchars(imap_utf7_decode_local($saved_attributes['saved_folder'][$i + 1])), 'left', '', 'width="35%"' )
+        . html_tag( 'td', htmlspecialchars($saved_attributes['saved_what'][$i + 1]), 'left' )
+        . html_tag( 'td', htmlspecialchars($saved_attributes['saved_where'][$i + 1]), 'center' )
         . html_tag( 'td', '', 'right' )
         .   '<a href="search.php'
         .     '?mailbox=' . urlencode($saved_attributes['saved_folder'][$i + 1])
@@ -375,9 +384,9 @@ if ($recent_count > 0) {
             }
             if (isset($attributes['search_what'][$i]) &&
                 !empty($attributes['search_what'][$i])) {
-            echo html_tag( 'td', imap_utf7_decode_local($attributes['search_folder'][$i]), 'left', '', 'width="35%"' )
+            echo html_tag( 'td', htmlspecialchars(imap_utf7_decode_local($attributes['search_folder'][$i])), 'left', '', 'width="35%"' )
                . html_tag( 'td', htmlspecialchars($attributes['search_what'][$i]), 'left' )
-               . html_tag( 'td', $attributes['search_where'][$i], 'center' )
+               . html_tag( 'td', htmlspecialchars($attributes['search_where'][$i]), 'center' )
                . html_tag( 'td', '', 'right' )
                .   "<a href=\"search.php?count=$i&amp;submit=save\">"
                .     _("save")
@@ -399,11 +408,11 @@ if ($recent_count > 0) {
     echo '</table></td></tr></table><br />';
 }
 
-
+/** FIXME: remove or fix it. $newsort is not set and not extracted from request
 if (isset($newsort)) {
     $sort = $newsort;
     sqsession_register($sort, 'sort');
-}
+}*/
 
 /*********************************************************************
  * Check to see if we can use cache or not. Currently the only time  *
@@ -411,9 +420,11 @@ if (isset($newsort)) {
  * used. Also check to make sure we actually have the array in the   *
  * registered session data.  :)                                      *
  *********************************************************************/
+
+/** FIXME: remove or fix it. $use_mailbox_cache is not set and not extracted from request
 if (! isset($use_mailbox_cache)) {
     $use_mailbox_cache = 0;
-}
+}*/
 
 /* There is a problem with registered vars in 4.1 */
 /*
@@ -440,14 +451,8 @@ echo html_tag( 'div', '<b>' . _("Current Search") . '</b>', 'left' ) . "\n"
 
    echo '         </select>'.
         "       </td>\n";
-if ( !isset( $what ) ) {
-    $what = '';
-}
-if ( !isset( $where ) ) {
-    $where = 'FROM';
-}
 
-
+// FIXME: explain all str_replace calls.
 $what_disp = str_replace(',', ' ', $what);
 $what_disp = str_replace('\\\\', '\\', $what_disp);
 $what_disp = str_replace('\\"', '"', $what_disp);
@@ -534,7 +539,7 @@ else {
 /*  must have search terms to search  */
 if ($submit == _("Search") && empty($what)) {
         echo '<br />'
-        . html_tag( 'div', '<b>Please enter something to search for</b>', 'center' ) . "\n";
+        . html_tag( 'div', '<b>' . _("Please enter something to search for") . '</b>', 'center' ) . "\n";
 }
 
 $allow_thread_sort = $old_value;
