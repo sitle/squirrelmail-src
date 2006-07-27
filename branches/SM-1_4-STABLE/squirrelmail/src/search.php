@@ -333,9 +333,9 @@ if ($saved_count > 0) {
         . html_tag( 'td', $saved_attributes['saved_where'][$i + 1], 'center' )
         . html_tag( 'td', '', 'right' )
         .   '<a href="search.php'
-        .     '?mailbox=' . htmlspecialchars($saved_attributes['saved_folder'][$i + 1])
-        .     '&amp;what=' . htmlspecialchars($saved_attributes['saved_what'][$i + 1])
-        .     '&amp;where=' . htmlspecialchars($saved_attributes['saved_where'][$i + 1])
+        .     '?mailbox=' . urlencode($saved_attributes['saved_folder'][$i + 1])
+        .     '&amp;what=' . urlencode($saved_attributes['saved_what'][$i + 1])
+        .     '&amp;where=' . urlencode($saved_attributes['saved_where'][$i + 1])
         .   '">' . _("edit") . '</a>'
         .   '&nbsp;|&nbsp;'
         .   '<a href="search.php'
