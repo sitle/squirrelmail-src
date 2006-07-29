@@ -23,6 +23,9 @@ Version 1.4.8 - CVS
   - Fixed mailbox and header sanitizing in src/search.php.
   - Handle IMAP copy errors in filters plugin. Added $handle_errors option
     and boolean return in sqimap_messages_copy() function (#1520437).
+  - Improved register_globals=on handling code in order to prevent possible
+    variable corruption.
+  - Fixed use of $version in config.php file (#1527870).
 
 Version 1.4.7 - 4th July 2006
 -----------------------------
