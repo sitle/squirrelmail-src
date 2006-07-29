@@ -13,7 +13,82 @@
  * @package squirrelmail
  */
 
-/** Bring in the config file. */
+/**
+ * Set constants
+ */
+define('SQ_INORDER',0);
+define('SQ_GET',1);
+define('SQ_POST',2);
+define('SQ_SESSION',3);
+define('SQ_COOKIE',4);
+define('SQ_SERVER',5);
+define('SQ_FORM',6);
+
+/** First code that should be executed before other files are loaded */
+
+/**
+ * Must be executed before any other scripts are loaded.
+ *
+ * If register_globals are on, unregister globals.
+ * Second test covers boolean set as string (php_value register_globals off).
+ */
+if ((bool) ini_get('register_globals') &&
+    strtolower(ini_get('register_globals'))!='off') {
+    /**
+     * Remove all globals that are not reserved by PHP
+     * 'value' and 'key' are used by foreach. Don't unset them inside foreach.
+     */
+    foreach ($GLOBALS as $key => $value) {
+        switch($key) {
+        case 'HTTP_POST_VARS':
+        case '_POST':
+        case 'HTTP_GET_VARS':
+        case '_GET':
+        case 'HTTP_COOKIE_VARS':
+        case '_COOKIE':
+        case 'HTTP_SERVER_VARS':
+        case '_SERVER':
+        case 'HTTP_ENV_VARS':
+        case '_ENV':
+        case 'HTTP_POST_FILES':
+        case '_FILES':
+        case '_REQUEST':
+        case 'HTTP_SESSION_VARS':
+        case '_SESSION':
+        case 'GLOBALS':
+        case 'key':
+        case 'value':
+            break;
+        default:
+            unset($GLOBALS[$key]);
+        }
+    }
+    // Unset variables used in foreach
+    unset($GLOBALS['key']);
+    unset($GLOBALS['value']);
+}
+
+/*
+ * strip any tags added to the url from PHP_SELF.
+ * This fixes hand crafted url XXS expoits for any
+ * page that uses PHP_SELF as the FORM action
+ * Must be executed before strings.php is loaded (php_self() call in strings.php).
+ */
+if (isset($_SERVER['PHP_SELF'])) {
+    // php 4.1+
+    $_SERVER['PHP_SELF'] = strip_tags($_SERVER['PHP_SELF']);
+} elseif (isset($HTTP_SERVER_VARS['PHP_SELF'])) {
+    // php 4.0.6
+    $HTTP_SERVER_VARS['PHP_SELF'] = strip_tags($HTTP_SERVER_VARS['PHP_SELF']);
+}
+
+/**
+ * Bring in the config file
+ * We need $session_name
+ * config.php $version depends on strings.php.
+ * strings.php sets $PHP_SELF.
+ */
+require_once(SM_PATH . 'functions/strings.php');
 require_once(SM_PATH . 'config/config.php');
 
 /** set the name of the session cookie */
@@ -72,53 +147,6 @@ if (get_magic_quotes_gpc()) {
     sqstripslashes($_GET);
     sqstripslashes($_POST);
 }
-
-/**
- * If register_globals are on, unregister globals.
- * Code requires PHP 4.1.0 or newer.
- * Second test covers boolean set as string (php_value register_globals off).
- */
-if ((bool) @ini_get('register_globals') &&
-    strtolower(ini_get('register_globals'))!='off') {
-    /**
-     * Remove all globals from $_GET, $_POST, and $_COOKIE.
-     */
-    foreach ($_REQUEST as $key => $value) {
-        unset($GLOBALS[$key]);
-    }
-    /**
-     * Remove globalized $_FILES variables
-     * Before 4.3.0 $_FILES are included in $_REQUEST.
-     * Unglobalize them in separate call in order to remove dependency
-     * on PHP version.
-     */
-    foreach ($_FILES as $key => $value) {
-        unset($GLOBALS[$key]);
-        // there are three undocumented $_FILES globals.
-        unset($GLOBALS[$key.'_type']);
-        unset($GLOBALS[$key.'_name']);
-        unset($GLOBALS[$key.'_size']);
-    }
-    /**
-     * Remove globalized environment variables.
-     */
-    foreach ($_ENV as $key => $value) {
-        unset($GLOBALS[$key]);
-    }
-    /**
-     * Remove globalized server variables.
-     */
-    foreach ($_SERVER as $key => $value) {
-        unset($GLOBALS[$key]);
-    }
-}
-
-
-/* strip any tags added to the url from PHP_SELF.
-   This fixes hand crafted url XXS expoits for any
-   page that uses PHP_SELF as the FORM action */
-
-$_SERVER['PHP_SELF'] = strip_tags($_SERVER['PHP_SELF']);
 
 /**
  * returns true if current php version is at mimimum a.b.c
@@ -243,15 +271,6 @@ function sqsession_is_registered ($name) {
 
     return $result;
 }
-
-
-define('SQ_INORDER',0);
-define('SQ_GET',1);
-define('SQ_POST',2);
-define('SQ_SESSION',3);
-define('SQ_COOKIE',4);
-define('SQ_SERVER',5);
-define('SQ_FORM',6);
 
 /**
  * Search for the var $name in $_SESSION, $_POST, $_GET,
