@@ -333,11 +333,17 @@ function filter_search_and_delete($imap, $where, $what, $where_to, $user_scan,
     if ($response == 'OK') {
         $ids = explode(' ', $read[$r]);
         if (sqimap_mailbox_exists($imap, $where_to)) {
+            /*
+             * why we do n calls instead of just one. It is safer to copy 
+             * messages one by one, but code does not call expunge after 
+             * message is copied and quota limits are not resolved.
+             */
             for ($j=2, $num = count($ids); $j < $num; $j++) {
                 $id = trim($ids[$j]);
-                $del_id[] = $id;
-                sqimap_messages_copy ($imap, $id, $id, $where_to);
-                sqimap_messages_flag ($imap, $id, $id, 'Deleted',false);
+                if (sqimap_messages_copy ($imap, $id, $id, $where_to, false)) {
+                    $del_id[] = $id;
+                    sqimap_messages_flag ($imap, $id, $id, 'Deleted', false);
+                }
             }
         }
     }
@@ -463,10 +469,12 @@ function spam_filters($imap_stream) {
         // Lookie!  It's spam!  Yum!
         if ($IsSpam) {
             if (sqimap_mailbox_exists($imap_stream, $filters_spam_folder)) {
-                sqimap_messages_copy ($imap_stream, $MsgNum, $MsgNum,
-                                    $filters_spam_folder);
-                sqimap_messages_flag ($imap_stream, $MsgNum, $MsgNum,
-                                    'Deleted', false);
+                // check if message copy was successful
+                if (sqimap_messages_copy ($imap_stream, $MsgNum, $MsgNum,
+                                          $filters_spam_folder, false)) {
+                    sqimap_messages_flag ($imap_stream, $MsgNum, $MsgNum,
+                                          'Deleted', false);
+                }
             }
         } else {
         }

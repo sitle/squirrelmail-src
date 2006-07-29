@@ -872,11 +872,22 @@ function sqimap_get_mime_ent_header($imap_stream, $id, $mailbox, $ent) {
 
 /**
  * Copies specified messages to specified folder
- * Obsolete
+ *
+ * This function is removed from SquirrelMail 1.5.1 and later versions.
+ * @param stream $imap_stream IMAP connection resource
+ * @param string $start starting message id or uid.
+ * @param string $end end message id or uid
+ * @param string $mailbox target mailbox
+ * @param boolean $handle_errors (since 1.4.8) handle errors 
+ * @return boolean (since 1.4.8) true, if message copy command was successful.
+ *  false on error.
+ * @since 0.4
+ * @deprecated Use sqimap_msgs_list_copy() instead.
  */
-function sqimap_messages_copy($imap_stream, $start, $end, $mailbox) {
+function sqimap_messages_copy($imap_stream, $start, $end, $mailbox, $handle_errors=true) {
     global $uid_support;
-    $read = sqimap_run_command ($imap_stream, "COPY $start:$end \"$mailbox\"", true, $response, $message, $uid_support);
+    $read = sqimap_run_command ($imap_stream, "COPY $start:$end \"$mailbox\"", $handle_errors, $response, $message, $uid_support);
+    return ($response == 'OK');
 }
 
 
