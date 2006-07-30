@@ -26,6 +26,8 @@ Version 1.4.8 - CVS
   - Improved register_globals=on handling code in order to prevent possible
     variable corruption.
   - Fixed use of $version in config.php file (#1527870).
+  - Fixed IMAP folder creation in euc-kr, big5 and gb2312 translations 
+    (#1005353).
 
 Version 1.4.7 - 4th July 2006
 -----------------------------
