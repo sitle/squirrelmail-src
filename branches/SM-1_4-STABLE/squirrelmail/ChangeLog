@@ -28,6 +28,8 @@ Version 1.4.8 - CVS
   - Fixed use of $version in config.php file (#1527870).
   - Fixed IMAP folder creation in euc-kr, big5 and gb2312 translations 
     (#1005353).
+  - Configuration utility does not allow 8bit symbols in IMAP folder names
+    (#1485501).
 
 Version 1.4.7 - 4th July 2006
 -----------------------------
