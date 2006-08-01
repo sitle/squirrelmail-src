@@ -27,7 +27,7 @@ class Deliver_SMTP extends Deliver {
         }
     }
 
-    // TODO merge 1.5.1 changes regarding system wide pop username
+    // TODO merge 1.5.1 changes regarding system wide SMTP username
 
     function initStream($message, $domain, $length=0, $host='', $port='', $user='', $pass='', $authpop=false) {
         global $use_smtp_tls,$smtp_auth_mech,$username,$key,$onetimepad;
@@ -66,8 +66,7 @@ class Deliver_SMTP extends Deliver {
         if (!$stream) {
             $this->dlv_msg = $errorString;
             $this->dlv_ret_nr = $errorNumber;
-            // TODO: gettext it.
-            $this->dlv_server_msg = "Can't open SMTP stream.";
+            $this->dlv_server_msg = _("Can't open SMTP stream.");
             return(0);
         }
         $tmp = fgets($stream, 1024);
