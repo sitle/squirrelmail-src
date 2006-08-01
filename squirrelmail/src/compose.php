@@ -1541,8 +1541,16 @@ function deliverMessage($composeMessage, $draft=false) {
                 $smtpServerAddress, $smtpPort, $user, $pass, $authPop);
     } elseif (!$draft) {
         require_once(SM_PATH . 'class/deliver/Deliver_SendMail.class.php');
-        global $sendmail_path;
-        $deliver = new Deliver_SendMail();
+        global $sendmail_path, $sendmail_args;
+        // Check for outdated configuration
+        if (!isset($sendmail_args)) {
+            if ($sendmail_path=='/var/qmail/bin/qmail-inject') {
+                $sendmail_args = '';
+            } else {
+                $sendmail_args = '-i -t';
+            }
+        }
+        $deliver = new Deliver_SendMail(array('sendmail_args'=>$sendmail_args));
         $stream = $deliver->initStream($composeMessage,$sendmail_path);
     } elseif ($draft) {
         global $draft_folder;

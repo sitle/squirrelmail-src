@@ -326,6 +326,12 @@ $encode_header_key = ''                 if ( !$encode_header_key );
 
 # Added in 1.4.8
 $config_location_base = ''              if ( !$config_location_base );
+# add qmail-inject test here for backwards compatibility
+if ( !$sendmail_args && $sendmail_path =~ /qmail-inject/ ) {
+    $sendmail_args = '';
+} elsif ( !$sendmail_args ) {
+    $sendmail_args = '-i -t';
+}
 
 if ( $ARGV[0] eq '--install-plugin' ) {
     print "Activating plugin " . $ARGV[1] . "\n";
@@ -418,7 +424,8 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
           if ( lc($useSendmail) eq "true" ) {
             print $WHT . "Sendmail" . $NRM . "\n--------\n";
             print "4.   Sendmail Path         : $WHT$sendmail_path$NRM\n";
-            print "5.   Header encryption key : $WHT$encode_header_key$NRM\n";
+            print "5.   Sendmail arguments    : $WHT$sendmail_args$NRM\n";
+            print "6.   Header encryption key : $WHT$encode_header_key$NRM\n";
             print "\n";
           } else {
             print $WHT . "SMTP Settings" . $NRM . "\n-------------\n";
@@ -666,7 +673,8 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
               elsif ( $command == 9 )  { $optional_delimiter     = command111(); }
             } elsif ( $show_smtp_settings && lc($useSendmail) eq "true" ) {
               if ( $command == 4 )  { $sendmail_path          = command15(); }
-              elsif ( $command == 5 )  { $encode_header_key      = command114(); }
+              elsif ( $command == 5 )  { $sendmail_args          = command_sendmail_args(); }
+              elsif ( $command == 6 )  { $encode_header_key      = command114(); }
             } elsif ( $show_smtp_settings ) {
               if    ( $command == 4 )  { $smtpServerAddress      = command16(); }
               elsif ( $command == 5 )  { $smtpPort               = command17(); }
@@ -990,6 +998,27 @@ sub command15 {
         $new_sendmail_path =~ s/[\r|\n]//g;
     }
     return $new_sendmail_path;
+}
+
+# Extra sendmail arguments
+sub command_sendmail_args {
+    print "Specify additional sendmail program arguments.\n";
+    print "\n";
+    print "Make sure that arguments are supported by your sendmail program. -f argument \n";
+    print "is added automatically by SquirrelMail scripts. Variable defaults to standard\n";
+    print "/usr/sbin/sendmail arguments. If you use qmail-inject, nbsmtp or any other \n";
+    print "sendmail wrapper, which does not support -i and -t arguments, set variable to\n";
+    print "empty string or use arguments suitable for your mailer.\n";
+    print "\n";
+    print "[$WHT$sendmail_args$NRM]: $WHT";
+    $new_sendmail_args = <STDIN>;
+    if ( $new_sendmail_args eq "\n" ) {
+        $new_sendmail_args = $sendmail_args;
+    } else {
+        # strip linefeeds and crs.
+        $new_sendmail_args =~ s/[\r\n]//g;
+    }
+    return trim($new_sendmail_args);
 }
 
 # smtpServerAddress
@@ -3015,8 +3044,10 @@ sub save_data {
         print CF "\$smtpServerAddress      = '$smtpServerAddress';\n";
     # integer
         print CF "\$smtpPort               = $smtpPort;\n";
-    # string
+        # string
         print CF "\$sendmail_path          = '$sendmail_path';\n";
+        # string
+        print CF "\$sendmail_args          = '$sendmail_args';\n";
     # boolean
 #        print CF "\$use_authenticated_smtp = $use_authenticated_smtp;\n";
     # boolean
