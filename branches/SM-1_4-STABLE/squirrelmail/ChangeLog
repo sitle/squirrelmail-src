@@ -31,6 +31,8 @@ Version 1.4.8 - CVS
   - Configuration utility does not allow 8bit symbols in IMAP folder names
     (#1485501).
   - Removed HTTP Status header from signout page (#1424748).
+  - Added command execution status check in SendMail delivery class (#1374174).
+  - Added $sendmail_args configuration option (#1365779).
 
 Version 1.4.7 - 4th July 2006
 -----------------------------
