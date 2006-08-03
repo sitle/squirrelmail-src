@@ -146,7 +146,6 @@ $redirect_url = 'webmail.php';
 
 if ( sqgetGlobalVar('session_expired_location', $session_expired_location, SQ_SESSION) ) {
     sqsession_unregister('session_expired_location');
-    $session_expired_location = urldecode($session_expired_location);
     if ( strpos($session_expired_location, 'compose.php') !== FALSE ) {
         $compose_new_win = getPref($data_dir, $username, 'compose_new_win', 0);
         if ($compose_new_win) {
