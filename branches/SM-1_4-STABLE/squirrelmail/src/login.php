@@ -43,13 +43,24 @@ if (!function_exists('sqm_baseuri')){
 }
 $base_uri = sqm_baseuri();
 
-/*
+/**
  * In case the last session was not terminated properly, make sure
- * we get a new one.
+ * we get a new one, but make sure we preserve session_expired_*
  */
 
-sqsession_destroy();
- 
+if ( !empty($_SESSION['session_expired_post']) && !empty($_SESSION['session_expired_location']) ) {
+    $sep = $_SESSION['session_expired_post'];
+    $sel = $_SESSION['session_expired_location'];
+
+    sqsession_destroy();
+
+    sqsession_is_active();
+    sqsession_register($sep, 'session_expired_post');
+    sqsession_register($sel, 'session_expired_location');
+} else {
+    sqsession_destroy();
+}
+
 header('Pragma: no-cache');
 
 do_hook('login_cookie');

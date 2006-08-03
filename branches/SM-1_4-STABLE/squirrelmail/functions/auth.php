@@ -60,6 +60,8 @@ function is_logged_in() {
             sqsession_register($session_expired_location,'session_expired_location');
         }
 
+        session_write_close();
+
         // signout page will deal with users who aren't logged 
         // in on its own; don't show error here
         //
