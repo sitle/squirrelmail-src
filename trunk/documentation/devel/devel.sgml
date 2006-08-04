@@ -1316,16 +1316,22 @@ name="development"> API documentation.
 This is a list of all hooks currently available in SquirrelMail, ordered
 by file.
 
-TODO: reduce list of hooks by grouping them into separate chapters.
+TODO: Update this list.
+
+TODO: Reduce list of hooks by grouping them into separate chapters.
 
 <tscreen><verb>
   Hook Name                      Found In                        Called With(#)
   ---------                      --------                        --------------
+  abook_init                     functions/addressbook.php       do_hook
+  abook_add_class                functions/addressbook.php       do_hook
   loading_constants              functions/constants.php         do_hook
   logout_error                   functions/display_messages.php  do_hook
   error_box                      functions/display_messages.php  concat_hook
   get_pref_override              functions/file_prefs.php        hook_func
   get_pref                       functions/file_prefs.php        hook_func
+&ero; options_identities_process     functions/identity.php          do_hook
+&ero;% options_identities_renumber   functions/identity.php          do_hook
   special_mailbox                functions/imap_mailbox.php      hook_func
 % rename_or_delete_folder        functions/imap_mailbox.php      hook_func
   folder_status (since 1.5.1)    functions/imap_mailbox.php      hook_func
@@ -1352,6 +1358,7 @@ TODO: reduce list of hooks by grouping them into separate chapters.
   compose_button_row             src/compose.php                 do_hook
   compose_send                   src/compose.php                 do_hook
   compose_send_after             src/compose.php                 do_hook
+  configtest (since 1.5.2)       src/configtest.php              boolean_hook
   folders_bottom                 src/folders.php                 do_hook
   help_top                       src/help.php                    do_hook
   help_chapter                   src/help.php                    do_hook
@@ -1387,7 +1394,9 @@ TODO: reduce list of hooks by grouping them into separate chapters.
 * options_folder_bottom          src/options.php                 do_hook
 * options_order_bottom           src/options.php                 do_hook
 * options_highlight_bottom       src/options_highlight.php       do_hook
-& options_identities_top         src/options_identities.php      do_hook
+&ero; options_identities_top         src/options_identities.php      do_hook
+&ero; options_identities_table       src/options_identities.php      concat_hook
+&ero; options_identities_buttons     src/options_identities.php      concat_hook
   message_body                   src/printer_friendly_bottom.php do_hook
   read_body_header               src/read_body.php               do_hook
   read_body_menu_top             src/read_body.php               hook_func
@@ -1409,6 +1418,14 @@ TODO: reduce list of hooks by grouping them into separate chapters.
   webmail_bottom                 src/webmail.php                 concat_hook
   logout_above_text              src/signout.php                 concat_hook
 O info_bottom                    plugins/info/options.php        do_hook
+
+% = This hook is used in multiple places in the given file
+# = Called with hook type (see below)
+&ero; = Special identity hooks (see below)
+^ = Special attachments hook (see below)
+* = Special options hooks (see below)
+O = Optional hook provided by a particular plugin
+! = See below for notes about working with the compose page's &lt;form&gt; tag
 </verb></tscreen>
 
 <sect2>Address book hooks
@@ -1422,7 +1439,7 @@ initiation of local address book backends (file and DB based ones) and before
 remote (LDAP) backend init. Second abook_init argument stores address book
 object, third argument stores return value of <tt/$abook-&gt;add_backend/ method.
 
-<sect2>Identity Hooks
+<sect2>Identity hooks
 <p>
 This set of hooks allows to add plugin options to SquirrelMail identity
 preferences.
@@ -1529,96 +1546,96 @@ See sample implementation of identity hooks in SquirrelMail demo plugin.
     co plugins/demo
 </verb></tscreen>
 
-<sect2>Attachment Hooks
+<sect2>Attachment hooks
 <p>
 When a message has attachments, this hook is called with the MIME types. For
-instance, a .zip file hook is "attachment application/x-zip". The hook should
+instance, a ZIP file hook is "attachment application/x-zip". The hook should
 probably show a link to do a specific action, such as "Verify" or "View" for a
-.zip file. Thus, to register your plugin for .zip attachments, you'd do this
-in <tt>setup.php</tt> (assuming your plugin is called "demo"):
+ZIP file. Thus, to register your plugin for ZIP attachments, you'd do this in
+<tt/setup.php/ (assuming your plugin is called "demo"):
 
 <tscreen><verb>
-   $squirrelmail_plugin_hooks['attachment application/x-zip']['demo']
-      = 'demo_handle_zip_attachment';
+$squirrelmail_plugin_hooks['attachment application/x-zip']['demo'] =
+    'demo_handle_zip_attachment';
 </verb></tscreen>
 
 This is a breakdown of the data passed in the array to the hook that is called:
 
 <tscreen><verb>
-  [0] = Hook's name ('attachment text/plain')
-  [1] = Array of links of actions (see below) (alterable)
-  [2] = Used for returning to mail message (startMessage)
-  [3] = Used for finding message to display (id)
-  [4] = Mailbox name, urlencode()'d (urlMailbox)
-  [5] = Entity ID inside mail message (ent)
-  [6] = Default URL to go to when filename is clicked on (alterable)
-  [7] = Filename that is displayed for the attachment
-  [8] = Sent if message was found from a search (where)
-  [9] = Sent if message was found from a search (what)
+[0] = Hook's name ('attachment text/plain').
+[1] = Array of links of actions (see below) (alterable).
+[2] = Used for returning to mail message (startMessage).
+[3] = Used for finding message to display (id).
+[4] = Mailbox name, encoded with <tt/urlencode()/ (i.e. $urlMailbox).
+[5] = Entity ID inside mail message (ent).
+[6] = Default URL to go to when filename is clicked on (alterable).
+[7] = Filename that is displayed for the attachment.
+[8] = Sent if message was found from a search (where).
+[9] = Sent if message was found from a search (what).
 </verb></tscreen>
 
 To set up links for actions, you assign them like this:
+
 <tscreen><verb>
-  $Args[1]['<plugin_name>']['href'] = 'URL to link to';
-  $Args[1]['<plugin_name>']['text'] = _("What to display");
-  $Args[1]['<plugin_name>']['extra'] = 'extra stuff, such as an <img ...> tag';
+$Args[1]['&lt;plugin_name&gt;']['href'] = 'URL to link to';
+$Args[1]['&lt;plugin_name&gt;']['text'] = _("What to display");
+$Args[1]['&lt;plugin_name&gt;']['extra'] =
+    'extra stuff, such as an &lt;img ...&gt; tag';
 </verb></tscreen>
 
 Note: _("What to display") is explained in the section about
 internationalization.
 
 You can leave the 'text' empty and put an image tag in 'extra' to show an
-image-only link for the attachment, or do the opposite (leave 'extra' empty)
-to display a text-only link.
+image-only link for the attachment, or do the opposite (leave 'extra' empty) to
+display a text-only link.
 
-It's also possible to specify a hook as "attachment type0/*",
-for example "attachment text/*". This hook will be executed whenever there's
-no more specific rule available for that type.
+It's also possible to specify a hook as "attachment type0/*", for example
+"attachment text/*". This hook will be executed whenever there's no more
+specific rule available for that type.
 
-Putting all this together, the <tt>demo_handle_zip_attachment()</tt> function should
+Putting all this together, the <tt/demo_handle_zip_attachment()/ function should
 look like this (note the argument being passed):
 
 <tscreen><verb>
-   function demo_handle_zip_attachment(&$Args)
-   {
-      include_once(SM_PATH . 'plugins/demo/functions.php');
-      demo_handle_zip_attachment_do($Args);
-   }
+function demo_handle_zip_attachment(&ero;$Args) {
+    include_once(SM_PATH . 'plugins/demo/functions.php');
+    demo_handle_zip_attachment_do($Args);
+}
 </verb></tscreen>
 
-And the <tt>demo_handle_zip_attachment_do()</tt> function in the
+And the <tt/demo_handle_zip_attachment_do()/ function in the
 <tt>plugins/demo/functions.php</tt> file would typically (but not necessarily)
 display a custom link:
 
 <tscreen><verb>
-   function demo_handle_zip_attachment_do(&ero;$Args)
-   {
-      $Args[1]['demo']['href'] = SM_PATH . 'plugins/demo/zip_handler.php?'
-         . 'passed_id=' . $Args[3] . '&ero;mailbox=' . $Args[4]
-         . '&ero;passed_ent_id=' . $Args[5];
-      $Args[1]['demo']['text'] = _("Show zip contents");
-   }
+function demo_handle_zip_attachment_do(&ero;$Args) {
+    $Args[1]['demo']['href'] = SM_PATH . 'plugins/demo/zip_handler.php?' .
+        'passed_id=' . $Args[3] . '&ero;mailbox=' . $Args[4] .
+        '&ero;passed_ent_id=' . $Args[5];
+    $Args[1]['demo']['text'] = _("Show zip contents");
+}
 </verb></tscreen>
 
-The file plugins/demo/zip_handler.php can now do whatever it needs with the
-attachment (note that this will hand information about how to retrieve the
+The file <tt>plugins/demo/zip_handler.php</tt> can now do whatever it needs with
+the attachment (note that this will hand information about how to retrieve the
 source message from the IMAP server as GET varibles).
 
 <sect2>Hook for configuration testing
 <p>
-SquirrelMail has configtest.php script which can be used to test SquirrelMail
-configuration. Since SquirrelMail 1.5.2 configtest script includes 'configtest' 
-hook. Hook uses boolean hook function call. Plugins that are attached to this
-hook should return boolean true, if they detect some error in plugin's 
-configuration. Verbose messages can be printed with <tt/do_err('error
+SquirrelMail has <tt/configtest.php/ script which can be used to test
+SquirrelMail configuration. Since SquirrelMail 1.5.2 configtest script includes
+'configtest' hook. Hook uses boolean hook function call. Plugins that are
+attached to this hook should return boolean true, if they detect some error in
+plugin's configuration. Verbose messages can be printed with <tt/do_err('error
 message',false)/ function call or with any standard PHP inline output function.
 
-configtest script is executed in anonymous, unauthenticated
-environment. username and password information is not available. Only limited
-set of functions is loaded. do_err() function is a special configtest script
-function, which is used to print error messages. If plugin uses do_err()
+configtest script is executed in anonymous, unauthenticated environment.
+username and password information is not available. Only limited set of
+functions is loaded. <tt/do_err()/ function is a special configtest script
+function, which is used to print error messages. If plugin uses <tt/do_err()/
 function, it is recommended to set second function argument to false even on
-fatal error. Configuration testing will stop with fatal error, if hook call
+fatal error.  Configuration testing will stop with fatal error, if hook call
 returns boolean true.
 
 <sect1>Compatibility with older versions of SquirrelMail
