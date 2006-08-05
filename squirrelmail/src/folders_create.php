@@ -32,7 +32,9 @@ sqgetGlobalVar('onetimepad',   $onetimepad,    SQ_SESSION);
 sqgetGlobalVar('delimiter',    $delimiter,     SQ_SESSION);
 sqgetGlobalVar('folder_name',  $folder_name,   SQ_POST);
 sqgetGlobalVar('subfolder',    $subfolder,     SQ_POST);
-sqgetGlobalVar('contain_subs', $contain_subs,  SQ_POST);
+if (! sqgetGlobalVar('contain_subs', $contain_subs,  SQ_POST)) {
+    unset($contains_subs);
+}
 /* end of get globals */
 
 $folder_name = trim($folder_name);
@@ -50,7 +52,9 @@ if (substr_count($folder_name, '"') || substr_count($folder_name, "\\") ||
 $folder_name = imap_utf7_encode_local($folder_name);
 
 if (isset($contain_subs) && $contain_subs ) {
-    $folder_name = $folder_name . $delimiter;
+    $folder_type = 'noselect';
+} else {
+    $folder_type = '';
 }
 
 if ($folder_prefix && (substr($folder_prefix, -1) != $delimiter)) {
@@ -66,9 +70,9 @@ if ($folder_prefix && (substr($subfolder, 0, strlen($folder_prefix)) != $folder_
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
 
 if (trim($subfolder_orig) == '') {
-    sqimap_mailbox_create ($imapConnection, $folder_prefix.$folder_name, '');
+    sqimap_mailbox_create ($imapConnection, $folder_prefix.$folder_name, $folder_type);
 } else {
-    sqimap_mailbox_create ($imapConnection, $subfolder.$delimiter.$folder_name, '');
+    sqimap_mailbox_create ($imapConnection, $subfolder.$delimiter.$folder_name, $folder_type);
 }
 
 sqimap_logout($imapConnection);
