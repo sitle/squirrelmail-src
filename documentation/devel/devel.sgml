@@ -1782,6 +1782,670 @@ When the plugin is approved and you're granted access to upload it, all you have
 to do is the actual uploading. You also need to write a plugin description and a
 release note for the web site.
 
+<sect>Miscellaneous
+<p>
+TODO: This is a quick and dirty import of the documents in "/doc/Development".
+They all need to be cleand up and in the LinuxDoc format.
+
+<sect1>Addressbook internals
+<p>
+
+<tscreen><verb>
+This document describes how the SquirrelMail address book works. It is
+primarily intended for developers.
+
+
+1. The Basics
+-------------
+
+The address book is written using PHP classes, with one class,
+AddressBook, that use one or more "backend" classes to access
+different address books.
+
+All operations, such as search, lookup, add etc., are performed by
+calling the appropriate methods from the AddressBook object. The
+operation will then be distributed by calling the correct method in
+the appropriate backend(s).
+
+To initialize the address book, the function addressbook_init() from
+functions/addressbook.php is called. This function will create an
+AddressBook object, add one backend for a personal address book (file
+based storage), and add the LDAP backends defined in the $ldap_server
+configuration directive (if any).
+
+An addressbook can also be initialized like this if you want to:
+
+  $abook = new AddressBook;
+
+  // Add one file based backend (personal address book)
+  $abook->add_backend("local_file", Array("filename" => $filename,
+                                          "create"   => true));
+
+  $abook->add_backend("ldap_server", <array with parameters>);
+
+  $res = $abook->search("John Doe");
+
+  echo $res[0]["name"] . " " . $res[0]["email"];
+
+
+
+2. The AddressBook class
+------------------------
+
+This class acts as the glue for the address book. The following public
+methods are provided:
+
+  add_backend(NAME, PARAMETERS)
+
+     NAME - The name of the backend to add. A file with a 
+     class abook_NAME must be included before this can
+     be done.
+
+     PARAMETERS - A mixed variable that is passed on to 
+     the backend class constructor. See each backend 
+     for docs.
+
+   This method will return a backend ID number (not usable at the
+   moment), or false if it failed.
+
+
+  search(QUERY, [BNUM])
+
+     QUERY - Something to search for. At the moment, only 
+     a string is allowed here, but advanced expressions
+     will be supported through an array of parameters.
+
+     BNUM  - Optional backend number to search.
+
+   This method will return an array of result arrays (see below), an
+   empty array if nothing was found, or false if the search failed.
+
+
+  s_search(QUERY, [BNUM])
+
+   The same as search(), but the result array is sorted by backend and
+   fullname before it is returned.
+
+
+  lookup(NICKNAME, [BNUM])  
+
+     NICKNAME - Return the user identified by NICKNAME in
+     the addressbook.
+
+     BNUM - ID of the backend to look in (optional).
+
+   This method will return one result array (see below), an empty
+   array if nothing was found, or false if the search failed. The
+   lookup is only performed in "local" type backends.
+ 
+
+  list_addr()  
+
+   This method will return an array of result arrays (see below) for
+   all addresses in the addressbook, or false if it failed. Only
+   addresses in "local" type backends are returned.
+ 
+
+  add(USERDATA, BNUM)
+
+     USERDATA - An array with user data. Must contain the following
+     keys: nickname, firstname, lastname, email, label
+     See below for information about the keys.
+
+     BNUM - ID of the backend, as returned by add_backend, to add this
+     data to.
+
+   This method will return the backend ID of the backend where data
+   was added, or false if it failed.
+
+
+  remove(NICKNAME, BNUM)
+
+     NICKNAME - Delete the user identified by NICKNAME in the
+     addressbook or, if NICKNAME is an array, all users indentified by
+     nthe nicknames in the array.
+
+     BNUM - ID of the backend, as returned by add_backend, to remove
+     the user(s) from.
+
+   This method will retrun true if the user(s) was removed, or false
+   if removal failed.
+
+
+  modify(NICKNAME, USERDATA, BNUM)
+
+     NICKNAME - Update the user identified by NICKNAME in the
+     addressbook.
+
+     USERDATA - Array with user data. The exisiting data for the user
+     will be replaced with this.
+
+     BNUM - ID of the backend, as returned by add_backend, to update
+     the user in.
+
+   This method will retrun true if the user was modified, or false if
+   something failed.
+
+
+If one of the above methods fail, an error message is available in the
+AddressBook->error variable. Feel free to ignore it.
+
+
+For the result of a search, lookup or list_addr, one or more result
+arrays are used. These arrays contain the following keys: 
+
+  nickname:  Unique identifier for this name in this backend. Only
+             usable for the local_file backend, and possibly LDAP.
+  name:      Person's full name.
+  email:     Person's e-mail address.
+  backend:   Backend ID where this was found
+  source:    Name of the backend where this was found
+
+In addition, the following keys may exist for some backends:
+
+  label:     Additional information about the person
+  firstname: Person's first name
+  lastname:  Person's last name
+
+
+3. The backend classes
+----------------------
+
+... more later ...
+
+Ask pallo@squirrelmail.org if you have any questions on how to build
+new address book backends.
+</verb></tscreen>
+
+<sect1>Creating compose links easily
+<p>
+
+<tscreen><verb>
+makeComposeLink() PHP function helps to create links to the compose page
+easily, taking into account the user's settings, "Compose in new window" and
+"Use javascript". Here's how to use it:
+
+1) Build the last part of the URL as follows:
+   $comp_uri = 'src/compose.php?mailbox='.$mailboxbox.'&amp;send_to='.urlencode($usermail);
+
+2) The display part of the link can be anything you like (such the name of the user):
+   $disp = 'The user's name';
+
+3) Print it:
+   echo makeComposeLink($comp_uri, $disp);
+
+makeComposeLink() has been available since SquirrelMail 1.4.2.
+
+
+
+Using the comp_in_new javascript function
+=========================================
+
+comp_in_new is the javascript function to popup a new compose window.
+
+the function needs one argument:
+1) url with arguments to the compose window.
+
+example 1:
+<a href="javascript:void(0)" onclick="comp_in_new("")>
+
+example 2:
+<a href="javascript:void(0)" onclick="comp_in_new("../../src/compose.php?argument1=true&amp;argument2=test")>
+</verb></tscreen>
+
+<sect1>Collected information about IMAP servers
+<p>
+
+<tscreen><verb>
+-----------
+Cyrus IMAPD
+-----------
+An IMAP server developed at Carnegie Mellon University
+
+Tested Cyrus IMAP4 v2.2.12-Invoca-RPM-2.2.12-6.fc4
+CAPABILITY IMAP4 IMAP4rev1 ACL QUOTA LITERAL+ MAILBOX-REFERRALS NAMESPACE
+ UIDPLUS ID NO_ATOMIC_RENAME UNSELECT CHILDREN MULTIAPPEND BINARY SORT
+ THREAD=ORDEREDSUBJECT THREAD=REFERENCES ANNOTATEMORE IDLE LISTEXT
+ LIST-SUBSCRIBED X-NETSCAPE
+
+PERMANENTFLAGS (\Answered \Flagged \Draft \Deleted \Seen $MDNSent \*)
+
+NAMESPACE (("INBOX." ".")) (("user." ".")) (("shared." "."))
+
+Server supports server side sorting since 2.0.4 version. euc-jp, euc-kr, 
+tis-620, cp1251, cp1255 character sets are not supported by sorting functions 
+(v.2.2.12).
+
+Site URL: http://asg.web.cmu.edu/cyrus/
+
+
+--------
+UW IMAPD
+--------
+Part of University of Washington IMAP toolkit.
+
+Tested 2002e (2003.339)
+CAPABILITY IMAP4REV1 IDLE NAMESPACE MAILBOX-REFERRALS BINARY UNSELECT SCAN SORT
+ THREAD=REFERENCES THREAD=ORDEREDSUBJECT MULTIAPPEND LOGIN-REFERRALS STARTTLS
+ AUTH=LOGIN
+
+PERMANENTFLAGS (Seen \* \Answered \Flagged \Deleted \Draft \Seen)
+
+NAMESPACE (("" "/")("#mhinbox" NIL)("#mh/" "/")) (("~" "/")) (("#shared/" "/")("#ftp/" "/")("#news." ".")("#public/" "/"))
+
+Server supports server side sorting. Plain text logins are disabled by default.
+Version visible in IMAP greeting can be used by more than one packaged version.
+
+Site URL: http://www.washington.edu/imap/
+
+
+------------
+Courier IMAP
+------------
+Fast, scalable, enterprise IMAP server that uses Maildirs
+
+CAPABILITY IMAP4rev1 UIDPLUS CHILDREN NAMESPACE THREAD=ORDEREDSUBJECT
+ THREAD=REFERENCES SORT QUOTA IDLE ACL ACL2=UNION
+
+PERMANENTFLAGS (\* \Draft \Answered \Flagged \Deleted \Seen)
+
+NAMESPACE (("INBOX." ".")) NIL (("#shared." ".")("shared." "."))
+
+Recent (3.0.0+) versions support most of character sets used by SquirrelMail, 
+if courier-imap is compiled with --enable-unicode option. Only koi8-u 
+is not supported. Server can be compiled with custom number of supported
+character sets. Sorting can be disabled in imapd configuration. Capability
+string can be set in configuration. Supports CRAM-MD5, CRAM-SHA1 and 
+CRAM-SHA256, if userdb or other backend stores passwords in plain text. Does 
+not handle traditional mailbox files.
+
+Site URL: http://www.courier-mta.org/
+
+
+-----------
+hMailServer
+-----------
+Open source email server for WinNT and later.
+
+Tested 4.1.1 (Build 140).
+CAPABILITY IMAP4 IMAP4rev1 QUOTA
+
+PERMANENTFLAGS (\Deleted \Seen \Draft \Answered \Flagged)
+
+Site URL: http://www.hmailserver.com/
+
+
+---------
+Mercury32
+---------
+Mercury Mail Transport System. Free email server for Win32 and Netware.
+
+Tested Win32 v.4.01b
+CAPABILITY IMAP4rev1 X-MERCURY
+PERMANENTFLAGS (\Deleted \Draft \Seen \Answered)
+
+Comments:
+* Server side sorting and threading are not supported.
+* Message flags are not supported.
+* IMAP folders can store messages _or_ other folders.
+* Supports STARTTLS, if configured.
+* May have issues with 8bit IMAP folder names.
+
+Site URL: http://www.pmail.com
+
+
+-------
+Dovecot
+-------
+Dovecot Secure IMAP server.
+
+Tested v.0.99.14
+
+CAPABILITY IMAP4rev1 SORT THREAD=REFERENCES MULTIAPPEND UNSELECT LITERAL+ IDLE 
+  CHILDREN LISTEXT LIST-SUBSCRIBED NAMESPACE
+
+PERMANENTFLAGS (\Answered \Flagged \Deleted \Seen \Draft \*)
+
+IMAP server supports server side sorting and threading. 1.0alpha1-5 versions
+violate syntax of responses to UID commands. NAMESPACE is supported in 1.0alpha.
+Remote plain text logins are disabled by default.
+
+Site URL: http://www.dovecot.org
+
+
+---------
+Binc IMAP
+---------
+Simple, lightweight IMAP server.
+
+Tested v.1.2.13 and 1.3.4
+
+CAPABILITY IMAP4rev1 STARTTLS AUTH=LOGIN AUTH=PLAIN (1.2.13)
+CAPABILITY IMAP4rev1 STARTTLS AUTH=LOGIN AUTH=PLAIN IDLE LITERAL+ NAMESPACE
+ CHILDREN (1.3.4)
+
+PERMANENTFLAGS (\Answered \Flagged \Deleted \Seen \Draft) - 1.2.13
+PERMANENTFLAGS (\Answered \Flagged \Deleted \Seen \Draft \*) - 1.3.4
+
+IMAP server does not support server side sorting and threading. Plain text 
+logins are disabled by default. Due to available storage backend configuration 
+options it is impossible to create single preset, which covers all setups.
+
+Site URL: http://www.bincimap.org
+
+
+-------------------
+GNU Mailutils IMAPD
+-------------------
+Part of GNU mail utility collection
+
+Tested v.0.6.1 (Debian Sarge) and v.0.6.90
+
+CAPABILITY IMAP4rev1 NAMESPACE IDLE X-VERSION AUTH=GSSAPI AUTH=ANONYMOUS
+ AUTH=EXTERNAL AUTH=PLAIN AUTH=LOGIN AUTH=SECURID AUTH=DIGEST-MD5 AUTH=CRAM-MD5
+
+PERMANENTFLAGS (\Answered \Deleted \Seen)
+
+NAMESPACE (("" "/")) NIL NIL
+
+Can use UW preset. Server side sorting is not supported. IMAP folders can 
+store messages or subfolders. Can't create second level (mail/Folder/Subfolder/)
+subfolders. Invalid unseen message count, when \Seen flag is toggled manually. 
+Folder listing with non-default sort order issues are fixed in cvs version. 
+Use of server with SquirrelMail is not recommended and not supported.
+
+Site URL: http://savannah.gnu.org/projects/mailutils
+
+
+------------
+DBMail IMAPD
+------------
+IMAP server that is part of DBMail email suite. DBMail provides local delivery 
+agent, pop3 and imap servers. User information and emails are stored in
+database.
+
+Tested v.2.0.7
+Information provided by Muhd Zamri
+
+CAPABILITY IMAP4 IMAP4rev1 AUTH=LOGIN ACL NAMESPACE SORT
+
+PERMANENTFLAGS (\Seen \Answered \Deleted \Flagged \Draft \Recent)
+
+NAMESPACE (("" "/")) (("#Users" "/")) (("#Public" "/"))
+
+IMAP server provides partial support of IMAP QUOTA extension. setquota command
+is not supported and QUOTA extension is not advertised in CAPABILITY. SORT 
+extension is broken in tested version.
+
+> A05 UID SORT (FROM) US-ASCII ALL
+A05 BAD syntax error in sort keys
+
+> A06 UID SORT (FROM) ISO-8859-1 ALL
+A06 BAD UID command received in invalid state
+
+Site URL: http://www.dbmail.org
+
+
+----
+Bejy
+----
+HTTP and email server written in Java. User information is stored in database. 
+SELECT response is in rfc 2060 format.
+
+Tested v.1.4.1.58b
+
+CAPABILITY IMAP4rev1
+
+PERMANENTFLAGS - missing
+FLAGS (\Answered \Flagged \Deleted \Seen \Draft)
+
+Site URL: http://www.bejy.net
+
+--------
+Mac OS X
+--------
+No clear information about used software. Some OS X versions might use Eudora
+Internet Messaging Suite (EIMS, http://www.eudora.com/eims/), some - Apple IMAP 
+server, some - Cyrus.
+
+
+---------------------
+Exchange IMAP service
+---------------------
+IMAP server included in proprietary Exchange Server, Microsoft messaging and 
+collaboration server.
+
+Server does not support server side sorting.
+
+
+----
+PMDF
+----
+PMDF is a proprietary, high performance, standards-based Internet messaging 
+product suite for Windows, OpenVMS, Tru64 UNIX, and Solaris.
+
+Tested IMAP4rev1 Server PMDF V6.2-X29.1
+CAPABILITY IMAP4 IMAP4REV1 NAMESPACE X-NON-HIERARCHICAL-RENAME AUTH=LOGIN
+ AUTH=PLAIN
+
+PERMANENTFLAGS (\Answered \Flagged \Deleted \Seen)
+
+NAMESPACE (("" "/")) NIL NIL
+
+Supports TLS and SSL encryption, SASL CRAM-MD5 and DIGEST-MD5 authentication. 
+Includes SIEVE (rfc3028) support.
+
+Site URL: http://www.process.com/tcpip/pmdf.html
+
+-----------------
+Merak IMAP server
+-----------------
+Proprietary IMAP server included in Merak Email Server Suite.
+
+Tested 8.3.0.r and 8.3.1 beta.
+
+CAPABILITY IMAP4rev1 AUTH=CRAM-MD5 AUTH=DIGEST-MD5 AUTH=LOGIN AUTH=PLAIN SORT
+ THREAD-ORDEREDSUBJECT UIDPLUS QUOTA ACL NAMESPACE STARTTLS
+
+PERMANENTFLAGS (\Seen \Answered \Flagged \Draft \Deleted)
+
+NAMESPACE (("" "/")) NIL NIL 
+
+INBOX folder is lowercased. IMAP folder names are case insensitive. Possible 
+issue with IMAP SORT extension.
+
+-----
+TEST_5 
+
+Request: 
+A005 UID SORT (DATE) ISO-8859-1 ALL  
+Response: 
+* UID SORT 1 2 
+UID SORT Completed
+-----
+SquirrelMail expects '* SORT 1 2'
+
+Site URL: http://www.icewarp.com
+
+
+--------------------
+MailSite IMAP server
+--------------------
+Commercial email server for Windows.
+
+Tested 6.1.22.1 version.
+
+CAPABILITY IMAP4rev1 ACL NAMESPACE UIDPLUS AUTH=NTLM AUTH=SCRAM-MD5
+ AUTH=CRAM-MD5 
+
+PERMANENTFLAGS (\Answered \Flagged \Deleted \Seen \Draft \*)
+
+NAMESPACE (("" "/")) (("#shared/" "/")) NIL 
+
+FETCH response to UID STORE command violates RFC 3501.
+
+Site URL: http://www.rockliffe.com/
+
+
+-----------------------------
+IMAP server ready H mproxyus4
+-----------------------------
+Unidentified IMAP server or IMAP proxy used by 1&1 Internet Inc.
+(http://www.1and1.com and http://www.1und1.de)
+
+CAPABILITY CHILDREN ID IDLE IMAP4 IMAP4rev1 LITERAL+ LOGIN-REFERRALS
+ MAILBOX-REFERRALS NAMESPACE UIDPLUS QUOTA STARTTLS AUTH=PLAIN AUTH=LOGIN
+
+http://thread.gmane.org/gmane.mail.squirrelmail.user/26433
+</verb></tscreen>
+
+<sect1>MIME support introduction
+<p>
+
+<tscreen><verb>
+The intended audience for this document are people who want to understand how
+the MIME code works.  This is a technical documentation of how mime.php 
+works and how it parses a MIME encoded message.
+
+
+Object Structure
+----------------
+There are two objects that are used: "message" and "msg_header".  Here is a
+brief overview of what each object contains.
+
+msg_header
+   Contains variables for all the necessary parts of the header of a
+   message.  This includes (but is not limited to) the following:  to, from,
+   subject, type (type0), subtype (type1), filename ...
+      
+message
+   This contains the structure for the message.  It contains two parts:
+   $header and $entities[].  $header is of type msg_header, and $entities[]
+   is an array of type $message.  The $entities[] array is optional.  If
+   it does not exist, then we are at a leaf node, and have an actual
+   attachment (entity) that can be displayed.  Here is a tree view of how
+   this object functions.
+
+   header
+   entities
+      |
+      +--- header
+      |
+      +--- header
+      |    entities
+      |       |
+      |       +--- header
+      |       |
+      |       +--- header
+      |
+      +--- header
+
+
+Getting the Structure
+---------------------
+Previously (version 0.4 and below), SquirrelMail handled all the parsing of
+the email message.  It would read the entire message in, search for 
+boundaries, and create an array similar to the $message object described
+above.  This was very inefficient.
+
+Currently, all the parsing of the body of the message takes place on the
+IMAP server itself.  According to RFC 2060 section 7.4.2, we can use the
+BODYSTRUCTURE function which will return the structure of the body (imagine
+that).  It goes into detail of how the bodystructure should be formatted,
+and we have based our new MIME support on this specification.  
+
+A simple text/plain message would have a BODYSTRUCTURE similar to the 
+following:
+
+   ("TEXT" "PLAIN" ("CHARSET" "US-ASCII") NIL NIL "7BIT" 1152 23)
+
+A more complicated multipart message with an attachment would look like:   
+
+   (("TEXT" "PLAIN" ("CHARSET" "US-ASCII") NIL NIL "7BIT" 1152 23)("TEXT" 
+   "PLAIN" ("CHARSET" "US-ASCII" "NAME" "cc.diff") 
+   "<960723163407.20117h@cac.washington.edu>" "Compiler diff" "BASE64" 
+   4554 73) "MIXED"))
+   
+Our MIME functionality implements different functions that recursively
+run through this text and parses out the structure of the message.  If you
+want to learn more about how the structure of a message is returned with
+the BODYSTRUCTURE function, please see RFC 2060 section 7.4.2.
+
+NOTE:  SquirrelMail passes the MIME Torture Test written by Mark
+       Crispin (author of the IMAP protocol).  This message is crazy!  It
+       has about 30 parts nested inside each other.  A very good test, 
+       and SquirrelMail passed it.  It can be found here:
+
+       ftp://ftp.lysator.liu.se/mirror/unix/imapd/mime/torture-test.mbox
+
+Getting the Body
+----------------
+Once all the structure of the message has been read into the $message
+object, we then need to display the body of one entity.  There are a number
+of ways we decide which entity to display at a certain time, and I won't go
+into that here.  
+
+Each entity has its own ID.  Entity IDs look something like "1.2.1", or 
+"4.1", or just "2".  You can find a detailed description of how entities
+should be identified by reading RFC 2060 section 6.4.5.  To fetch the body
+of a particular entity, we use the function "BODY[<section>]".  For 
+instance, if we were wanting to return entity 1.2.1, we would send the
+IMAP server the command: "a001 FETCH <msg_id> BODY[1.2.1]".
+
+This returns a string of the entire body.  Based upon what is in the header,
+we may need to decode it or do other things to it.
+
+
+Closing Notes  
+-------------
+That is basically how it works.  There is a variable in mime.php called
+$debug_mime that is defined at the top of that file.  If you set it to true,
+it will output all kinds of valuable information while it tries to decode
+the MIME message.
+
+The code in mime.php is pretty well documented, so you might want to poke
+around there as well to find out more details of how this works.
+
+If you have questions about this, please direct them to our mailing list:
+squirrelmail-users@lists.sourceforge.net
+</verb></tscreen>
+
+<sect1>So what is this tree stuff?
+<p>
+
+<tscreen><verb>
+In order to get correct folder deletion across the board for all
+different RFC2060 compliant IMAP servers, deleting of folders 
+needed to work by deleting subfolders (inferiors) first, working
+up to the top folder that is desired to be deleted.
+
+The best way to do this was to use a tree, and walk the thing in
+preorder to get subfolders first (leaves), working our way up the 
+tree.  I chose to use an array for the tree structure.
+
+The array has the following elements:
+$tree[0]["value"]             = <full folder name>
+$tree[0]["doIHaveChildren"]   = boolean
+$tree[0]["subNodes"]          = indexes of the array that are
+                                  child nodes of this node
+
+The trickiest part was finding the correct parent node when creating
+a new node in the tree.  Check the documentation in the code for
+more info on this.
+
+Basically all we had to do was loop through each of the items that
+need to be in the tree (folders, subfolders), find their parent,
+let their parent know it has a new child, and insert the values
+into the child.
+
+Once the tree is generated, a simple preorder or postorder walk
+of the tree can be done doing whatever function you desire (delete,
+create, etc).
+
+Preorder walking gives you the tree from the leaves up.  Postorder
+walks the tree from the root node down to the leaves.
+</verb></tscreen>
+
 <sect>Links
 <p>
 TODO: This chapter should provide links to external sources of information. PHP
