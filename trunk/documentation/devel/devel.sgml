@@ -1039,7 +1039,7 @@ break the decoded string.
 Due to the large number and wide range of functions plugins can cover it is
 impractical to add all but the most popular to the SquirrelMail core project.
 There is a separate <url url="http://sourceforge.net/projects/sm-plugins/"
-name="SM Plugins"> project registered on SourceForge to house plugin code,
+name="SM Plugins"> project registered at SourceForge to house plugin code,
 developers should consider joining this project.
 
 In addition to this document, help writing plugins is easily obtained by posting
@@ -1048,10 +1048,10 @@ name="SquirrelMail plugins mailing list">.
 
 <sect1>The plugin architecture
 <p>
-The plugin architecture of SquirrelMail is designed to make it possible
-to add new features without having to patch SquirrelMail itself.
-Functionality like password changing, displaying ads and calendars should
-be possible to add as plugins.
+The plugin architecture of SquirrelMail is designed to make it possible to add
+new features without having to patch SquirrelMail itself. Functionality like
+password changing, displaying ads and calendars should be possible to add as
+plugins.
 
 <sect2>The idea
 <p>
@@ -1069,30 +1069,29 @@ will be provided.
 
 <sect2>The implementation
 <p>
-The plugin jumping off point in the main SquirrelMail code is in the file
+The plugin start point in the main SquirrelMail code is in the file
 <tt>functions/plugin.php</tt>. In places where hooks are made available, they
-are executed by calling the function <tt>do_hook('hookname')</tt>. The
-<tt>do_hook()</tt> function then traverses the array
-<tt>$squirrelmail_plugin_hooks['hookname']</tt> and executes all the functions
-that are named in that array. Those functions are placed there when plugins
-register themselves with SquirrelMail as discussed below. A plugin may add its
-own internal functions to this array under any hook name provided by the
-SquirrelMail developers.
+are executed by calling one of the hook functions. The hook function then
+traverses the array <tt/$squirrelmail_plugin_hooks['hookname']/ and executes all
+the functions that are named in that array. Those functions are placed there
+when plugins register themselves with SquirrelMail as discussed below. A plugin
+may add its own internal functions to this array under any hook name provided by
+the SquirrelMail developers.
 
 A plugin must reside in a subdirectory of the <tt>plugins/</tt> directory. The
-name of the subdirectory is considered to be the name of the plugin. (The plugin
-will not function correctly if this is not the case.)
+name of the subdirectory is considered to be the name of the plugin. Note that
+the plugin will not function correctly if this is not the case.
 
-To start using a plugin, its name must be added to the <tt>$plugins</tt> array
-in <tt>config.php</tt> like this:
+To start using a plugin, its name must be added to the <tt/$plugins/> array in
+<tt/config.php/ like this:
 
 <tscreen><verb>
 $plugins[0] = 'plugin_name';
 </verb></tscreen>
 
 When a plugin is registered, the file <tt>plugins/plugin_name/setup.php</tt> is
-included and the function <tt>squirrelmail_plugin_init_plugin_name()</tt> is
-called with no parameters. That function is where the plugin may register itself
+included and the function <tt/squirrelmail_plugin_init_plugin_name()/ is called
+with no parameters. That function is where the plugin may register itself
 against any hooks it wishes to take advantage of.
 
 <sect1>The starting point
@@ -1114,10 +1113,10 @@ was named "demo" and resided in the directory <tt>plugins/demo/</tt>):
 
 <tscreen><verb>
 function squirrelmail_plugin_init_demo() {
-global $squirrelmail_plugin_hooks;
+    global $squirrelmail_plugin_hooks;
 
-$squirrelmail_plugin_hooks['generic_header']['demo'] = 'plugin_demo_header';
-$squirrelmail_plugin_hooks['menuline']['demo'] = 'plugin_demo_menuline';
+    $squirrelmail_plugin_hooks['generic_header']['demo'] = 'plugin_demo_header';
+    $squirrelmail_plugin_hooks['menuline']['demo'] = 'plugin_demo_menuline';
 }
 </verb></tscreen>
 
@@ -1139,21 +1138,21 @@ function plugin_demo_header() {
 }
 </verb></tscreen>
 
-The function called <tt/plugin_demo_header_do()/ would be in the file called
-<tt/functions.php/ in the <tt/demo/ plugin directory and would contain the
-plugin's core logic for the <tt/generic_header/ hook.
+The function called <tt/plugin_demo_header_do()/ in the file
+<tt>plugins/demo/functions.php</tt> contains the plugin's core logic for the
+<tt/generic_header/ hook.
 
 <sect2>Version reporting
 <p>
-In order for systems administrators to keep better track of your plugin and
-get upgrades more efficiently, you are requested to make version information
+In order for systems administrators to keep better track of plugins and get
+upgrades more efficiently, you are requested to make version information
 available to SquirrelMail in a format that it understands. To do this, a
 function called <tt/&lt;plugin name&gt;_version()/ must be included in
 <tt/setup.php/:
 
 <tscreen><verb>
 function demo_version() {
-return '1.0';
+    return '1.0';
 }
 </verb></tscreen>
 
@@ -1186,19 +1185,19 @@ and losing all of their setup information when they upgrade your plugin.
 <sect1>Security considerations
 <sect2>Disallowing access for diabled plugins
 <p>
-All plugin authors should consider the security implications of their plugin. Of
-course, if you call external programs you have to use great care, but you also
-have to make sure that the plugin doesn't perform its function when it's not
-enabled. Hooks aren't called for disabled plugins, so a plugin which only call
-hooks is safe. If files that are accessed directly perform any function when
-being accessed, they must begin with checking whether the plugin is enabled in
-the configuration. If it isn't, the script must exit. Naturally, the check must
-be placed before any other functionality. Here's an example:
+All plugin authors should consider the security implications of their plugin.
+Great care must always be taken if the plugin calls external programs, and it's
+also a must to make sure that the plugin doesn't perform its function when it's
+not enabled. Hooks aren't called for disabled plugins, so a plugin which only
+call hooks is safe. If files that are accessed directly perform any function
+when being accessed, they must begin with checking whether the plugin is enabled
+in the configuration. If it isn't, the script must exit. Naturally, the check
+must be placed before any other functionality. Here's an example:
 
 <tscreen><verb>
 global $plugins;
 if ( !in_array('mypluginname', $plugins) ) {
-exit('The plugin mypluginname isn't enabled in the SquirrelMail configuration.');
+    exit('The plugin mypluginname isn't enabled in the SquirrelMail configuration.');
 }
 </verb></tscreen>
 
@@ -1216,13 +1215,13 @@ inform the system administrators about the possible security implications that
 might have. Just shipping a distributed configuration file for Apache
 (<tt/.htaccess/) isn't enough. Not every system use Apache as its web server.
 
-If you <tt/do/ include <tt/.htaccess/, its should contain "Deny From All" thus
-will disallowing access to that directory entirely (when the target system is
-running the Apache web server).
+If you <tt/do/ include <tt/.htaccess/, it should contain a "Deny From All" thus
+disallowing access to that directory entirely (when the target system is running
+the Apache web server).
 
-Keep in mind that not all web servers
-will honor an <tt/.htaccess/ file, so don't depend on it for security. Make sure
-not to put such a file in your main plugin directory!
+Keep in mind that not all web servers will honor an <tt/.htaccess/ file, so
+don't depend on it for security. Make sure not to put such a file in your main
+plugin directory!
 
 <sect1>Hooks
 <p>
@@ -1290,20 +1289,21 @@ name="development"> API documentation.
 
 The <tt/boolean_hook_function()/ allows plugins to vote for a specified action.
 What that action is is entirely dependent on how the hook is used in the source
-(look for yourself). Plugins make their vote by returning boolean <tt/TRUE/ or
+(look for yourself). Plugins make their vote by returning a boolean <tt/TRUE/ or
 <tt/FALSE/ values. This hook may be configured to tally votes in one of three
 ways. This configuration is done with the third parameter in the hook call in
 the source:
 
 <itemize>
   <item>&gt; 0 -- At least one <tt/TRUE/ will override all <tt/FALSE/.
-  <item>&lt; 0 -- At least one <tt/FALSE/s will override all <tt/TRUE/s.
+  <item>&lt; 0 -- At least one <tt/FALSE/ will override all <tt/TRUE/.
   <item>= 0 -- Majority wins. Any ties are broken with the last parameter in the
         hook call.
 </itemize>
 
-Your hook function will get the second paramter in the hook call in the source
-as its parameter (this might be an array if multiple values need to be passed).
+The plugin's hook function will get the second paramter in the hook call in the
+source as its parameter (this might be an array if multiple values need to be
+passed).
 
 Read more about the <tt/boolean_hook_function()/ function in the <url
 url="http://www.squirrelmail.org/docs/phpdoc14/squirrelmail/_functions---plugin.php.html#functionboolean_hook_function"
@@ -1313,8 +1313,8 @@ name="development"> API documentation.
 
 <sect2>List of hooks
 <p>
-This is a list of all hooks currently available in SquirrelMail, ordered
-by file.
+This is a list of all hooks currently available in SquirrelMail, ordered by
+file.
 
 TODO: Update this list.
 
@@ -1420,132 +1420,27 @@ TODO: Reduce list of hooks by grouping them into separate chapters.
 <tscreen><verb>
 % = This hook is used in multiple places in the given file
 # = Called with hook type (see below)
-&ero; = Special identity hooks (see below)
-^ = Special attachments hook (see below)
-* = Special options hooks (see below)
 O = Optional hook provided by a particular plugin
-! = See below for notes about working with the compose page's &lt;form&gt; tag
+
+&ero; = See "Identity hooks" below
+^ = See "Attachment hooks" below
+* = See "Options" below
+! = See "Compose form hook" below
 </verb></tscreen>
 
-<sect2>Address book hooks
+<sect2>The address book hooks
 <p>
 SquirrelMail 1.4.5 and 1.5.1 introduced two hooks that allow custom address book
 backends. These hooks are placed in <tt>functions/addressbook.php</tt> file.
-<tt/abook_add_class/ hook is simple hook designed to load custom address book
-classes before any other code is loaded. abook_init hook allows to modify <tt/$abook/
-object that represents configured address books. Hook is executed after
-initiation of local address book backends (file and DB based ones) and before
-remote (LDAP) backend init. Second abook_init argument stores address book
-object, third argument stores return value of <tt/$abook-&gt;add_backend/ method.
+The <tt/abook_add_class/ hook is a simple hook designed to load custom address
+book classes before any other code is loaded. The <tt/abook_init/ hook allows to
+modify the <tt/$abook/ object that represents the configured address books. The
+hook is executed after the initiation of the local address book backends (file
+and DB based ones) and before the remote (LDAP) backend init. The second
+<tt/abook_init/ argument stores the address book object, and the third argument
+stores the return value of the <tt/$abook-&gt;add_backend()/ method.
 
-<sect2>Identity hooks
-<p>
-This set of hooks allows to add plugin options to SquirrelMail identity
-preferences.
-
-<descrip>
-  <tag/options_identities_process/
-   This hook is called at the top of the Identities page, which is
-   most useful when the user has changed any identity settings - this
-   is where you'll want to save any custom information you are keeping
-   for each identity or catch any custom submit buttons that you may
-   have added to the identities page. The arguments to this hook are:
-
-   <tscreen><verb>
-    (SquirrelMail 1.4.4 or older and 1.5.0)
-      [0] = hook name (always "options_identities_process")
-      [1] = should I run the SaveUpdateFunction() (alterable)
-   </verb></tscreen>
-
-   Obviously, set the second array element to 1/true if you want to
-   trigger SaveUpdateFunction() after the hook is finished - by default,
-   it will not be called.
-
-   <tscreen><verb>
-    (SquirrelMail 1.4.6+ or 1.5.1+)
-      [0] = hook name (always "options_identities_process")
-      [1] = action (hook is used only in 'update' action and any custom
-            action added to form with option_identities_table and
-            option_identities_buttons hooks)
-      [2] = processed identity number
-   </verb></tscreen>
-
-   Hook is not available in SquirrelMail 1.4.5.
-
-  <tag/options_identities_renumber/
-   This hook is called when one of the identities is being renumbered,
-   such as if the user had three identities and deletes the second -
-   this hook would be called with an array that looks like this:
-   ('options_identities_renumber', 2, 1). The arguments to this hook
-   are:
-
-   <tscreen><verb>
-      [0] = hook name (always "options_identities_renumber")
-      [1] = being renumbered from ('default' or 1 through (# idents) - 1)
-      [2] = being renumbered to ('default' or 1 through (# idents) - 1)
-   </verb></tscreen>
-
-   Hook is not available in SquirrelMail 1.4.5. Renumbering order differs
-   in 1.4.5+ and 1.5.1+.
-
-  <tag/options_identities_table/
-   This hook allows you to insert additional rows into the table that
-   holds each identity. The arguments to this hook are:
-
-   <tscreen><verb>
-      [0] = additional HTML attributes applied to table row.
-            use it like this in your plugin:
-               <tr "<?php echo $args[0]; ?>">
-      [1] = is this an empty section (the one at the end of the list)?
-      [2] = what is the 'post' value? (ident # or empty string if default)
-   </verb></tscreen>
-
-   You need to return any HTML you would like to add to the table.
-   You could add a table row with code similar to this:
-
-   <tscreen><verb>
-      function demo_identities_table(&ero;$args) {
-         return '<tr bgcolor="' . $args[0] . '"><td>&ero;nbsp;&etago;td><td>'
-              . 'YOUR CODE HERE' . '&etago;td>&etago;tr>' . "\n";
-      }
-   </verb></tscreen>
-
-   First hook argument was modified in 1.4.5/1.5.1. In SquirrelMail 1.4.1-1.4.4
-   and 1.5.0 argument contains only background color. You should use
-   <tt>&lt;tr bgcolor="&lt;?php echo $args[0]; ?&gt;"&gt;</tt> in these SquirrelMail versions.
-
-   <tag/options_identities_buttons/
-   This hook allows you to add a button (or other HTML) to the row of
-   buttons under each identity. The arguments to this hook are:
-
-   <tscreen><verb>
-      [0] = is this an empty section (the one at the end of the list)?
-      [1] = what is the 'post' value? (ident # or empty string if default)
-   </verb></tscreen>
-
-   You need to return any HTML you would like to add here. You could add
-   a button with code similar to this:
-
-   <tscreen><verb>
-      function demo_identities_button(&ero;$args) {
-         return '<input type="submit" name="demo_button_' . $args[1]
-              . '" value="Press Me" />';
-      }
-   </verb></tscreen>
-
-   Input element should use 'smaction[action_name][identity_no]' value in
-   'name' attribute, if you want to process your button actions in
-   SquirrelMail 1.4.6+ and 1.5.1+ options_identity_process hook.
-</descrip>
-
-See sample implementation of identity hooks in SquirrelMail demo plugin.
-
-<tscreen><verb>
-  cvs -d:pserver:anonymous@squirrelmail.cvs.sourceforge.net:/cvsroot/squirrelmail \
-    co plugins/demo
-</verb></tscreen>
-
-<sect2>Attachment hooks
+<sect2>The attachment hooks
 <p>
 When a message has attachments, this hook is called with the MIME types. For
 instance, a ZIP file hook is "attachment application/x-zip". The hook should
@@ -1565,7 +1460,7 @@ This is a breakdown of the data passed in the array to the hook that is called:
 [1] = Array of links of actions (see below) (alterable).
 [2] = Used for returning to mail message (startMessage).
 [3] = Used for finding message to display (id).
-[4] = Mailbox name, encoded with <tt/urlencode()/ (i.e. $urlMailbox).
+[4] = Mailbox name, encoded with urlencode() (i.e. $urlMailbox).
 [5] = Entity ID inside mail message (ent).
 [6] = Default URL to go to when filename is clicked on (alterable).
 [7] = Filename that is displayed for the attachment.
@@ -1573,7 +1468,7 @@ This is a breakdown of the data passed in the array to the hook that is called:
 [9] = Sent if message was found from a search (what).
 </verb></tscreen>
 
-To set up links for actions, you assign them like this:
+To set up links for actions, assign them like this:
 
 <tscreen><verb>
 $Args[1]['&lt;plugin_name&gt;']['href'] = 'URL to link to';
@@ -1582,15 +1477,15 @@ $Args[1]['&lt;plugin_name&gt;']['extra'] =
     'extra stuff, such as an &lt;img ...&gt; tag';
 </verb></tscreen>
 
-Note: _("What to display") is explained in the section about
+Note: <tt/_("What to display")/ is explained in the section about
 internationalization.
 
-You can leave the 'text' empty and put an image tag in 'extra' to show an
-image-only link for the attachment, or do the opposite (leave 'extra' empty) to
-display a text-only link.
+You can leave the <tt/text/ empty and put an image tag in <tt/extra/ to show an
+image-only link for the attachment, or do the opposite (leave <tt/extra/ empty)
+to display a text-only link.
 
-It's also possible to specify a hook as "attachment type0/*", for example
-"attachment text/*". This hook will be executed whenever there's no more
+It's also possible to specify a hook as <tt>attachment type0/*</tt>, for example
+<tt>attachment text/*</tt>. This hook will be executed whenever there's no more
 specific rule available for that type.
 
 Putting all this together, the <tt/demo_handle_zip_attachment()/ function should
@@ -1620,22 +1515,182 @@ The file <tt>plugins/demo/zip_handler.php</tt> can now do whatever it needs with
 the attachment (note that this will hand information about how to retrieve the
 source message from the IMAP server as GET varibles).
 
-<sect2>Hook for configuration testing
+<sect2>The compose form hook
 <p>
-SquirrelMail has <tt/configtest.php/ script which can be used to test
-SquirrelMail configuration. Since SquirrelMail 1.5.2 configtest script includes
-'configtest' hook. Hook uses boolean hook function call. Plugins that are
-attached to this hook should return boolean true, if they detect some error in
-plugin's configuration. Verbose messages can be printed with <tt/do_err('error
-message',false)/ function call or with any standard PHP inline output function.
+The <tt/compose_form/ hook allows plugins to insert their own code into the form
+tag for the main message composition HTML form. Usually plugins will want to
+insert some kind of code in an <tt/onsubmit/ event handler. In order to allow
+more than one plugin to do so, all plugins using this hook to add some
+<tt/onsubmit/ code need to add that code (without the enclosing attribute name
+and quotes) as a new array entry to the global <tt/$compose_onsubmit/ array. The
+code should use "return false" if the plugin has found a reason to stop form
+submission, otherwise it should <it/do nothing/ (that is, please do not use
+"return true", as that will prevent other plugins from using the <tt/onsubmit/
+handler). SquirrelMail itself will insert a final "return true". All
+<tt/onsubmit/ code will be enclosed in double quotes by SquirrelMail, so plugins
+need to quote accordingly if needed. For example:
 
-configtest script is executed in anonymous, unauthenticated environment.
-username and password information is not available. Only limited set of
-functions is loaded. <tt/do_err()/ function is a special configtest script
-function, which is used to print error messages. If plugin uses <tt/do_err()/
-function, it is recommended to set second function argument to false even on
-fatal error.  Configuration testing will stop with fatal error, if hook call
-returns boolean true.
+<tscreen><verb>
+global $compose_onsubmit;
+$compose_onsubmit[] = ' if (somevar == \'no\') return false; ';
+</verb></tscreen>
+
+Note the escaped single quotes. If you use double quotes, they would have to be
+escaped as such:
+
+<tscreen><verb>
+global $compose_onsubmit;
+$compose_onsubmit[] = ' if (somevar == \'no\') { alert(\\"Sorry\\"); return false; }';
+</verb></tscreen>
+
+Any other form tag additions by a plugin (beside <tt/onsubmit/ event code) can
+currently be echoed directly to the browser.
+
+<sect2>The configuration testing hook
+<p>
+SquirrelMail has a script called <tt/configtest.php/ which can be used to test
+the SquirrelMail configuration. Since SquirrelMail 1.5.2, the configtest script
+includes the <tt/configtest/ hook. The hook uses the boolean hook function call.
+Plugins that are attached to this hook should return a boolean <tt/TRUE/, if
+they detect some error in the plugin's configuration. Verbose messages can be
+printed with a <tt/do_err('error message', FALSE)/ function call or with any
+standard PHP inline output function.
+
+The configtest script is executed in anonymous, unauthenticated environment, so
+the username and password information isn't available. Only a limited set of
+functions is loaded. The <tt/do_err()/ function is a special configtest script
+function, which is used to print error messages. If a plugin uses the
+<tt/do_err()/ function, it is recommended to set second the function argument to
+<tt/FALSE/ even on fatal errors. The configuration testing will stop on a fatal
+error, if the hook call returns a boolean <tt/TRUE/.
+
+<sect2>The identity hooks
+<p>
+This set of hooks allows plugins to add options to the SquirrelMail identity
+preferences.
+
+This set of hooks is passed special information in the array of arguments:
+
+<descrip>
+
+<tag/options_identities_process/
+This hook is called at the top of the "Identities" page, which is most useful
+when the user has changed any identity settings. This is where you'll want to
+save any custom information you are keeping for each identity or catch any
+custom submit buttons that you may have added to the identities page. In
+SquirrelMail 1.4.4 or older, and in 1.5.0, the arguments to this hook are:
+
+<tscreen><verb>
+[0] = hook name (always "options_identities_process")
+[1] = should I run the <tt/SaveUpdateFunction()/ (alterable)
+</verb></tscreen>
+
+By default, <tt/SaveUpdateFunction()/ isn't called. If you want to trigger it,
+you have to set the second array element to <tt/1/ or <tt/TRUE/.
+
+Since SquirrelMail 1.4.6 and 1.5.1, the arguments to this hook are:
+
+<tscreen><verb>
+[0] = hook name (always "options_identities_process")
+[1] = action (hook is used only in 'update' action and any custom
+      action added to form with option_identities_table and
+      option_identities_buttons hooks)
+[2] = processed identity number
+</verb></tscreen>
+
+This hook isn't available in SquirrelMail 1.4.5.
+
+<tag/options_identities_renumber/
+This hook is called when one of the identities is being renumbered. If a user
+has three identities and deletes the second, this hook would be called with an
+array that looks like this: <tt/('options_identities_renumber', 2, 1)/. The
+arguments to this hook are:
+
+<tscreen><verb>
+[0] = hook name (always "options_identities_renumber")
+[1] = being renumbered from ('default' or 1 through (# idents) - 1)
+[2] = being renumbered to ('default' or 1 through (# idents) - 1)
+</verb></tscreen>
+
+This hook isn't available in SquirrelMail 1.4.5, and the renumbering order
+differs since 1.4.5 and 1.5.1.
+
+<tag/options_identities_table/
+This hook allows you to insert additional rows into the table that holds each
+identity. The arguments to this hook are:
+
+<tscreen><verb>
+[0] = additional HTML attributes applied to table row.
+      use it like this in your plugin:
+         &lt;tr "&lt;?php echo $args[0]; ?&gt;"&gt;
+[1] = is this an empty section (the one at the end of the list)?
+[2] = what is the 'post' value? (ident # or empty string if default)
+</verb></tscreen>
+
+You need to return any HTML you would like to add to the table. You could add a
+table row with code similar to this:
+
+<tscreen><verb>
+function demo_identities_table(&ero;$args) {
+    return '&lt;tr bgcolor="' . $args[0] . '"&gt;&lt;td&gt;&ero;nbsp;&etago;td&gt;&lt;td&gt;' .
+        'YOUR CODE HERE' . '&etago;td&gt;&etago;tr&gt;' . "\n";
+}
+</verb></tscreen>
+
+The first hook argument was modified in 1.4.5 and 1.5.1. In SquirrelMail
+1.4.1-1.4.4 and 1.5.0i, the argument only contains the background color. You
+should use <tt/&lt;tr bgcolor="&lt;?php echo $args[0]; ?&gt;"&gt;/ in these
+SquirrelMail versions.
+
+<tag/options_identities_buttons/
+This hook allows you to add a button (or other HTML) to the row of buttons under
+each identity. The arguments to this hook are:
+
+<tscreen><verb>
+[0] = is this an empty section (the one at the end of the list)?
+[1] = what is the 'post' value? (ident # or empty string if default)
+</verb></tscreen>
+
+You need to return any HTML you would like to add here. You could add a button
+with code similar to this:
+
+<tscreen><verb>
+function demo_identities_button(&ero;$args) {
+    return '&lt;input type="submit" name="demo_button_' . $args[1] .
+        '" value="Press Me" /&gt;';
+}
+</verb></tscreen>
+
+Since SquirrelMail 1.4.6 and 1.5.1, the <tt/input/ element should use a
+<tt/smaction[action_name][identity_no]/ value in the <tt/name/ attribute if you
+want to process your button actions in the <tt/options_identity_process/ hook.
+
+</descrip>
+
+See sample implementation of identity hooks in the SquirrelMail demo plugin.
+
+<tscreen><verb>
+cvs -d:pserver:anonymous@squirrelmail.cvs.sourceforge.net:/cvsroot/squirrelmail \
+    co plugins/demo
+</verb></tscreen>
+
+<sect2>The preference hooks
+<p>
+These hooks are used when you want to add preferences to existing preference
+pages. See <ref id="preferences" name="Preferences">.
+
+<sect2>Requesting new hooks
+<p>
+It's impossible to foresee all of the places where hooks might be useful and
+it's also impossible to put in hooks everywhere, so you might need to negotiate
+the insertion of a new hook to make your plugin work. Start by writing a patch
+which will insert the hook you want to add, and mail your request (with the
+patch attached) to the SquirrelMail plugins mailing list. Don't forget to
+motivate the need for a new hook in your mail.
+
+<sect1>Preferences <label id="preferences">
+<p>
+TODO: Add this section.
 
 <sect1>Compatibility with older versions of SquirrelMail
 <p>
@@ -1664,15 +1719,6 @@ There is a plugin called "Compatibility" that is intended for use by plugin
 authors so they can develop one version of their plugin and seamlessly support
 both 1.2.x and 1.4.x SquirrelMail installations. For more information about how
 to use the "Compatibility" plugin, download it and read its README file.
-
-<sect1>Requesting new hooks
-<p>
-It's impossible to foresee all of the places where hooks might be useful and
-it's also impossible to put in hooks everywhere, so you might need to negotiate
-the insertion of a new hook to make your plugin work. Start by writing a patch
-which will insert the hook you want to add, and mail your request (with the
-patch attached) to the SquirrelMail plugins mailing list. Don't forget to
-motivate the need for a new hook in your mail.
 
 <sect1>Documentation files
 <p>
