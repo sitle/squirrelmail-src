@@ -57,28 +57,6 @@ require_once(SM_PATH . 'functions/auth.php');
 
 is_logged_in();
 
-/**
- * Auto-detection
- *
- * if $send (the form button's name) contains "\n" as the first char
- * and the script is compose.php, then trim everything. Otherwise, we
- * don't have to worry.
- *
- * This is for a RedHat package bug and a Konqueror (pre 2.1.1?) bug
- */
-global $send, $PHP_SELF;
-if (isset($send)
-    && (substr($send, 0, 1) == "\n")
-    && (substr($PHP_SELF, -12) == '/compose.php')) {
-    if ($REQUEST_METHOD == 'POST') {
-        global $HTTP_POST_VARS;
-        TrimArray($HTTP_POST_VARS);
-    } else {
-        global $HTTP_GET_VARS;
-        TrimArray($HTTP_GET_VARS);
-    }
-}
-
 require_once(SM_PATH . 'include/load_prefs.php');
 require_once(SM_PATH . 'functions/page_header.php');
 require_once(SM_PATH . 'functions/prefs.php');
