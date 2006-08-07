@@ -573,7 +573,9 @@ function quoteimap($str) {
  * Trims array
  *
  * Trims every element in the array, ie. remove the first char of each element
+ * Obsolete: will probably removed soon
  * @param array array the array to trim
+ * @obsolete
  */
 function TrimArray(&$array) {
     foreach ($array as $k => $v) {
