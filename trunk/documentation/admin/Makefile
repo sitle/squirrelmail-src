@@ -61,6 +61,9 @@ lyx:
 rtf:
 	$(COMMAND)$@ $(SOURCE)
 
+site:
+	$(COMMAND)html -H ../site_header.html -F ../site_footer.html $(SOURCE)
+
 clean:
 	rm -f *.txt *.html *.tex *.dvi *.ps *.pdf *.info *.lyx *.rtf
 
