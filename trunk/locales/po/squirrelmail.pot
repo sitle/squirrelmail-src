@@ -1,18 +1,17 @@
-# LANGUAGE (xx_XX) SquirrelMail Translation
-# Copyright (c) 1999-2006 The SquirrelMail Project Team
-# This file is distributed under the same license as the SquirrelMail package.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# $Id$
+#
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: SquirrelMail HEAD\n"
-"Report-Msgid-Bugs-To: SquirrelMail Internationalization <squirrelmail-"
-"i18n@lists.sourceforge.net>\n"
-"POT-Creation-Date: 2006-06-28 12:49+0200\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-08-08 23:25+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <squirrelmail-i18n@lists.sourceforge.net>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -743,6 +742,9 @@ msgstr ""
 msgid "Folder:"
 msgstr ""
 
+msgid "Saved Searches"
+msgstr ""
+
 msgid "edit"
 msgstr ""
 
@@ -774,6 +776,9 @@ msgid "Everywhere"
 msgstr ""
 
 msgid "No Messages Found"
+msgstr ""
+
+msgid "Please enter something to search for"
 msgstr ""
 
 msgid "Signout"
@@ -1333,6 +1338,16 @@ msgstr ""
 msgid "Could not create hashed directory structure!"
 msgstr ""
 
+msgid "Email delivery error"
+msgstr ""
+
+#, php-format
+msgid "Can't execute command '%s'."
+msgstr ""
+
+msgid "Can't open SMTP stream."
+msgstr ""
+
 msgid "Service not available, closing channel"
 msgstr ""
 
@@ -1678,6 +1693,15 @@ msgstr ""
 msgid "Delimited:"
 msgstr ""
 
+msgid "You can't select INBOX as Trash folder."
+msgstr ""
+
+msgid "You can't select INBOX as Sent folder."
+msgstr ""
+
+msgid "You can't select INBOX as Draft folder."
+msgstr ""
+
 msgid "Name and Address Options"
 msgstr ""
 
@@ -1852,6 +1876,9 @@ msgstr ""
 msgid "Choose &quot;no&quot; for SMTP"
 msgstr ""
 
+msgid "Sendmail Arguments"
+msgstr ""
+
 msgid "Sendmail Path"
 msgstr ""
 
@@ -1991,6 +2018,9 @@ msgid "UID support"
 msgstr ""
 
 msgid "PHP session name"
+msgstr ""
+
+msgid "Location base"
 msgstr ""
 
 msgid "Message of the Day"
@@ -3800,12 +3830,6 @@ msgstr ""
 msgid "Nothing to search"
 msgstr ""
 
-msgid "No folders were found to unsubscribe from."
-msgstr ""
-
-msgid "No folders were found to subscribe to."
-msgstr ""
-
 msgid "SquirrelMail Webmail Application"
 msgstr ""
 
@@ -3835,9 +3859,6 @@ msgstr ""
 msgid "Copy"
 msgstr ""
 
-msgid "Please enter something to search for"
-msgstr ""
-
 msgid "There must be at least one criteria to search for"
 msgstr ""
 
@@ -3863,9 +3884,6 @@ msgid "Fold"
 msgstr ""
 
 msgid "Unfold"
-msgstr ""
-
-msgid "Saved Searches"
 msgstr ""
 
 msgid "Missing"
@@ -3976,9 +3994,6 @@ msgstr ""
 msgid "Advanced search"
 msgstr ""
 
-msgid "Folder List"
-msgstr ""
-
 msgid "Address book is read-only"
 msgstr ""
 
@@ -4025,6 +4040,9 @@ msgid "Error initializing global address book."
 msgstr ""
 
 msgid "Error initializing other address books."
+msgstr ""
+
+msgid "Unknown address book backend"
 msgstr ""
 
 msgid "Illegal folder name."
@@ -4105,19 +4123,9 @@ msgstr ""
 msgid "Terminating SquirrelMail due to a fatal error"
 msgstr ""
 
-msgid "Email delivery error"
-msgstr ""
-
-#, php-format
-msgid "Can't execute command '%s'."
-msgstr ""
-
 msgid ""
 "Secure SMTP (TLS) is enabled in SquirrelMail configuration, but used PHP "
 "version does not support it."
-msgstr ""
-
-msgid "Can't open SMTP stream."
 msgstr ""
 
 msgid "TLS session is already activated."
@@ -4256,10 +4264,13 @@ msgid ""
 "documentation."
 msgstr ""
 
-msgid "Sendmail Arguments"
+msgid "SMTP Connection Security"
 msgstr ""
 
-msgid "SMTP Connection Security"
+msgid "Custom SMTP AUTH username"
+msgstr ""
+
+msgid "Custom SMTP AUTH password"
 msgstr ""
 
 msgid "Disable server-side sorting"
@@ -4592,6 +4603,10 @@ msgstr ""
 msgid "Empty new password"
 msgstr ""
 
+#, php-format
+msgid "Unable to execute \"%s\"."
+msgstr ""
+
 msgid "Server Capability response:"
 msgstr ""
 
@@ -4718,18 +4733,6 @@ msgstr ""
 msgid "Save emails submitted to SpamCop:"
 msgstr ""
 
-msgid "Spam Service Type:"
-msgstr ""
-
-msgid "Free reporting"
-msgstr ""
-
-msgid "Member services"
-msgstr ""
-
-msgid "Save Service Type"
-msgstr ""
-
 msgid "SpamCop reporting"
 msgstr ""
 
@@ -4796,6 +4799,12 @@ msgstr ""
 msgid "More info:"
 msgstr ""
 
+msgid "No folders were found to unsubscribe from."
+msgstr ""
+
+msgid "No folders were found to subscribe to."
+msgstr ""
+
 msgid "Message Flags"
 msgstr ""
 
@@ -4803,6 +4812,9 @@ msgid "Attachment"
 msgstr ""
 
 msgid "Click here to change the sorting of the message list"
+msgstr ""
+
+msgid "Folder List"
 msgstr ""
 
 msgid "Delivery error report"
