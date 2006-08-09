@@ -14,13 +14,6 @@
  */
 
 /**
- * Set a couple of constants and defaults. Don't change these,
- * the configurable stuff is in sqspell_config.php
- */
-$SQSPELL_DIR='plugins/squirrelspell/';
-$SQSPELL_CRYPTO=FALSE;
-
-/**
  * Load some necessary stuff from SquirrelMail.
  * @ignore
  */
@@ -31,6 +24,14 @@ require_once(SM_PATH . 'include/validate.php');
 require_once(SM_PATH . 'include/load_prefs.php');
 require_once(SM_PATH . 'functions/strings.php');
 require_once(SM_PATH . 'functions/page_header.php');
+
+/**
+ * Set a couple of constants and defaults. Don't change these,
+ * the configurable stuff is in sqspell_config.php
+ */
+$SQSPELL_DIR='plugins/squirrelspell/';
+$SQSPELL_CRYPTO=FALSE;
+
 require_once(SM_PATH . $SQSPELL_DIR . 'sqspell_config.php');
 require_once(SM_PATH . $SQSPELL_DIR . 'sqspell_functions.php');
 
