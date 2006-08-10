@@ -1,14 +1,11 @@
-# translation of compatibility.po to Bahasa Indonesia
-# translation of compatibility.po to
-# Copyright (c) 2004-2005 SquirrelMail Project Team
-# , 2004.
-# Arief S Fitrianto <arief@gurame.fisika.ui.ac.id>, 2004.
-#
+# Translation of compatibility.po to Bahasa Indonesia
+# Copyright (c) 2004-2006 SquirrelMail Project Team.
+# Arief S Fitrianto <arief@gurame.fisika.ui.ac.id>, 2004-2006.
 msgid ""
 msgstr ""
 "Project-Id-Version: compatibility\n"
-"POT-Creation-Date: 2005-06-22 16:03-0700\n"
-"PO-Revision-Date: 2004-08-25 19:03+0700\n"
+"POT-Creation-Date: 2005-11-12 16:51+0200\n"
+"PO-Revision-Date: 2006-08-10 16:42+0700\n"
 "Last-Translator: Arief S Fitrianto <arief@gurame.fisika.ui.ac.id>\n"
 "Language-Team: Bahasa Indonesia <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -16,26 +13,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.3.1\n"
 
-#: functions.php:211
 msgid "Administrative error:"
 msgstr "Kesalahan administratif:"
 
-#: functions.php:212
-#, fuzzy, php-format
+#, c-format
 msgid "The plugin %s has not been set up correctly."
-msgstr "tidak diseting secara benar."
+msgstr "Plugin %s tidak disetel secara benar."
 
-#: functions.php:214
-#, php-format
-msgid "The configuration file %s is missing."
-msgstr ""
-
-#: functions.php:216
 msgid "Please read the README or INSTALL files that came with the plugin."
 msgstr "Silakan baca berkas README atau INSTALL yang ada pada plugin."
 
-#~ msgid "The plugin"
-#~ msgstr "Plugin"
-
-#~ msgid "Missing "
-#~ msgstr "Hilang "
+#, c-format
+msgid "The file %s is missing."
+msgstr "Berkas %s tidak ada."

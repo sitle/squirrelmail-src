@@ -1,15 +1,13 @@
-# translation of quota_usage.po to Bahasa Indonesia
-# translation of quota_usage.po to
+# Translation of quota_usage.po to Bahasa Indonesia
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (c) 2004-2005 SquirrelMail Project Team
-# Arief S Fitrianto <arief@gurame.fisika.ui.ac.id>, 2004.
-#
+# Arief S Fitrianto <arief@gurame.fisika.ui.ac.id>, 2004-2006.
 msgid ""
 msgstr ""
 "Project-Id-Version: quota_usage\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-12-24 10:27+0200\n"
-"PO-Revision-Date: 2004-08-25 19:12+0700\n"
+"POT-Creation-Date: 2004-11-09 18:47-0800\n"
+"PO-Revision-Date: 2006-08-10 16:35+0700\n"
 "Last-Translator: Arief S Fitrianto <arief@gurame.fisika.ui.ac.id>\n"
 "Language-Team: Bahasa Indonesia <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -17,11 +15,36 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.3.1\n"
 
-#: functions.php:60
-msgid "of"
-msgstr "dari"
+msgid "current usage:"
+msgstr "Kuota terpakai:"
 
-#: functions.php:69
+#, c-format
+msgid "%s%% of %sM"
+msgstr "%s%% dari %sM"
+
 msgid "Over Quota!"
 msgstr "Kuota Terlampaui!"
 
+#, c-format
+msgid "%s%% of %s messages"
+msgstr "%s%% dari %s pesan"
+
+msgid ""
+"<strong>Warning:</strong> Your quota usage is currently ###PERCENT_USED###.  "
+"To avoid losing any email, you should immediately empty out your Trash and "
+"Sent folders and delete any emails with large attachments."
+msgstr ""
+"<strong>Peringatan:</strong> Kuota Anda telah terpakai ###PERCENT_USED###. \n"
+"Agar surate Anda tidak hilang, Anda harus segera mengosongkan folder Sampah \n"
+"dan folder Kirim serta menghapus surate dengan lampiran besar."
+
+msgid ""
+"<strong>Warning:</strong> Your quota usage is currently ###PERCENT_USED###.  "
+"You may want to make sure you empty out your Trash and clean your Sent "
+"folder."
+msgstr ""
+"<strong>Peringatan:</stron> Kuota Anda telah terpakai ###PERCENT_USED###. \n"
+"Anda sebaiknya memastikan telah mengosongkan folder Sampah dan folder Kirim. "
+
+#~ msgid "of"
+#~ msgstr "dari"
