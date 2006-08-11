@@ -1,20 +1,61 @@
 # translation of ldapquery.po to Nynorsk
 # This file is distributed under the same license as the ldapquery plugin.
-# Copyright (c) 2004-2005 The Squirrelmail Project Team
-# Ola Ketil Siqveland <olaketil@hotmail.com>, 2004,2005
+# Copyright (c) 2004-2006 The Squirrelmail Project Team
 # $Id$
+# Ola Ketil Siqveland <olaketil@hotmail.com>, 2004,2005,2006
 msgid ""
 msgstr ""
-"Project-Id-Version: ldapquery 2.0\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-03-17 19:32+0200\n"
-"PO-Revision-Date: 2005-08-03 11:27+0200\n"
+"Project-Id-Version: ldapquery\n"
+"Report-Msgid-Bugs-To: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
+"POT-Creation-Date: 2006-03-26 17:23+0300\n"
+"PO-Revision-Date: 2006-08-09 12:36+0200\n"
 "Last-Translator: Ola Ketil Siqveland <olaketil@hotmail.com>\n"
 "Language-Team: Nynorsk <nn@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.0.1\n"
+
+msgid "Personal address book is not available."
+msgstr "Personleg adressebok er ikkje tilgjengeleg."
+
+#. checked email field
+msgid "Email address is not set or empty."
+msgstr "E-postadresse er ikkje valgt eller mangler."
+
+#. checked both name fields
+msgid "Name is not set or empty."
+msgstr "Namn er ikkje valgt eller mangler."
+
+msgid "Nickname %s is already in use."
+msgstr "Kallenam %s er allereie i bruk."
+
+msgid "Can't create address book entry."
+msgstr "Can ikkje lage ny oppføring i adresseboka."
+
+msgid "Nickname: "
+msgstr "Kallenamn: "
+
+msgid "First name: "
+msgstr "Førenamn: "
+
+msgid "Last name: "
+msgstr "Etternamn: "
+
+msgid "E-mail: "
+msgstr "E-post: "
+
+msgid "Info: "
+msgstr "Informasjon: "
+
+msgid "Add address"
+msgstr "Legg til adresse"
+
+msgid "Address book entry is saved."
+msgstr "Adressebokoppføringa er lagra."
+
+msgid "Return to search results"
+msgstr "Returner til søkjeresultatet"
 
 msgid "Dublicate ldap attribute definition: %s."
 msgstr "Dupliser ldap eigenskap definisjonen %s."
@@ -47,6 +88,12 @@ msgstr "Lagre"
 msgid "Add to address book"
 msgstr "Legg til adressebok"
 
+msgid "Plugin requires PHP with LDAP support."
+msgstr "Programtillegg krev PHP med LDAP støtte."
+
+msgid "LDAP address books are not configured in SquirrelMail configuration."
+msgstr "LDAP adressebøker er ikkje set opp i SquirrelMail oppsettet."
+
 #. Get the userdn to authenticate with
 msgid "User DN:"
 msgstr "Brukar DN:"
@@ -72,6 +119,12 @@ msgstr "Er"
 #. Sort By menu
 msgid "Sort By:"
 msgstr "Sorter etter:"
+
+msgid "Search in:"
+msgstr "Søk i:"
+
+msgid "All LDAP address books"
+msgstr "Alle LDAP adressebøker"
 
 msgid "Search"
 msgstr "Søk"
@@ -601,4 +654,3 @@ msgstr "Bruk PKCS12"
 
 msgid "Internet Organizational Person"
 msgstr "Internett organisatorisk person"
-
