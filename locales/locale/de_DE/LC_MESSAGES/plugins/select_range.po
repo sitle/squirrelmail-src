@@ -1,61 +1,86 @@
-# German language for select_range plugin
-# Copyright (c) 2004-2005 SquirrelMail Project Team
-# Simon Matter <simon.matter@invoca.ch>, 2004.
+# German translation of SquirrelMail select_range plugin.
+# Copyright (C) 2006 The SquirrelMail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
+# Florian Daeumling <jam@qv90.de>, 2006.
 # $Id$
 msgid ""
 msgstr ""
-"Project-Id-Version: select_range 2.8\n"
-"POT-Creation-Date: 2004-03-25 13:27-0500\n"
-"PO-Revision-Date: 2004-03-26 13:30+0100\n"
-"Last-Translator: Simon Matter <simon.matter@invoca.ch>\n"
-"Language-Team: Simon Matter <simon.matter@invoca.ch>\n"
+"Project-Id-Version: select_range 3.5\n"
+"Report-Msgid-Bugs-To: Florian Daeumling <jam@qv90.de>\n"
+"POT-Creation-Date: 2006-08-10 10:49+0200\n"
+"PO-Revision-Date: 2006-08-10 10:49+0200\n"
+"Last-Translator: Florian Daeumling <jam@qv90.de>\n"
+"Language-Team: German <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: /var/www/sm-1.4.7/plugins/select_range/functions.php:106
 msgid "Toggle All"
 msgstr "Markierung umkehren"
 
-msgid "Select Range Options"
-msgstr "Bereich markieren Optionen"
-
+#: /var/www/sm-1.4.7/plugins/select_range/functions.php:143
 msgid "Number of list items before showing link"
-msgstr "Anzahl Eintr&auml;ge bevor der Link zum Bereich markieren erscheint"
+msgstr "Anzahl Einträge, bevor der Link zum Bereich markieren erscheint"
 
+#: /var/www/sm-1.4.7/plugins/select_range/functions.php:153
 msgid "Show link never or always?"
-msgstr "Link nie oder immer anzeigen?"
+msgstr "Link immer oder nie anzeigen?"
 
+#: /var/www/sm-1.4.7/plugins/select_range/functions.php:159
 msgid "Obey previous configuration option"
-msgstr "Vorherige Einstellungen &uuml;bernehmen"
+msgstr "Vorherige EInstellungen übernehmen"
 
+#: /var/www/sm-1.4.7/plugins/select_range/functions.php:160
 msgid "Always"
 msgstr "Immer"
 
+#: /var/www/sm-1.4.7/plugins/select_range/functions.php:161
 msgid "Never"
 msgstr "Nie"
 
-msgid "If errors, show popup window"
-msgstr "Zeige Popup Fenster bei Fehlern"
+#: /var/www/sm-1.4.7/plugins/select_range/functions.php:168
+msgid "When filling multiple gaps"
+msgstr "Beim Füllen mehrerer Bereiche"
 
+#: /var/www/sm-1.4.7/plugins/select_range/functions.php:174
+msgid "Fill all gaps"
+msgstr "Alle Bereiche füllen"
+
+#: /var/www/sm-1.4.7/plugins/select_range/functions.php:175
+msgid "Fill gaps from bottom up"
+msgstr "Bereiche von unten nach oben füllen"
+
+#: /var/www/sm-1.4.7/plugins/select_range/functions.php:176
+msgid "Fill gaps from top down"
+msgstr "Bereiche von oben nach unten füllen"
+
+#: /var/www/sm-1.4.7/plugins/select_range/functions.php:187
+msgid "If errors, show popup window"
+msgstr "Zeige PopUp Fenster bei Fehlern"
+
+#: /var/www/sm-1.4.7/plugins/select_range/functions.php:198
+msgid "Select Range Options"
+msgstr "Optionen für \"Bereich markieren\""
+
+#: /var/www/sm-1.4.7/plugins/select_range/functions.php:322
 msgid ""
 "Please leave at least one un-selected address between the first and last "
 "selected addresses"
-msgstr ""
-"Bitte lasse mindestens eine unmarkierte Adresse zwischen der ersten und "
-"der letzten markierten Adresse"
+msgstr "Bitte lassen Sie mindestens eine unmarkierte Adresse zwischen "
+"der ersten und letzten markierten Adresse"
 
+#: /var/www/sm-1.4.7/plugins/select_range/functions.php:323
 msgid "Please select at least two addresses"
-msgstr "Bitte markiere mindestens zwei Adressen"
+msgstr "Bitte markieren Sie mindestens zwei Adressen"
 
+#: /var/www/sm-1.4.7/plugins/select_range/functions.php:328
 msgid ""
 "Please leave at least one un-selected message between the first and last "
 "selected messages"
-msgstr ""
-"Bitte lasse mindestens eine unmarkierte Nachricht zwischen der ersten und "
-"der letzten markierten Nachricht"
+msgstr "Bitte lassen Sie mindestens eine unmarkierte Nachricht zwischen "
+"der ersten und letzten markierten Nachricht"
 
+#: /var/www/sm-1.4.7/plugins/select_range/functions.php:329
 msgid "Please select at least two messages"
-msgstr "Bitte markiere mindestens zwei Nachrichten"
-
-msgid "Select Range"
-msgstr "Bereich markieren"
+msgstr "Bitte markieren Sie mindestens zwei Nachrichten"
