@@ -2,11 +2,12 @@
 *** SquirrelMail Stable Series 1.4 ***
 **************************************
 
-Version 1.4.8 - CVS
--------------------
+Version 1.4.8 - 11th August 2006
+--------------------------------
   - Fixed URL for Read Receipts being incorrect in some cases (#1177518).
   - Fixed endless loop when trying to parse "From: )(" (#1517867).
-  - Using is_file() instead of file_exists() in fortune plugin (#1499134).
+  - Using is_file() instead of file_exists() in fortune plugin, which
+    correctly fails if the specified location is a directory (#1499134).
   - Add manual page for conf.pl under contrib.
   - Don't allow selecting INBOX as Sent, Draft or Trash folder (#1242346).
   - Fixed spamcop web based reporting form (#1519673).
@@ -24,21 +25,24 @@ Version 1.4.8 - CVS
   - Handle IMAP copy errors in filters plugin. Added $handle_errors option
     and boolean return in sqimap_messages_copy() function (#1520437).
   - Improved register_globals=on handling code in order to prevent possible
-    variable corruption.
+    variable corruption. This also effectively rules out future attack vectors
+    that require register_globals to be on.
   - Fixed use of $version in config.php file (#1527870).
   - Fixed IMAP folder creation in euc-kr, big5 and gb2312 translations 
     (#1005353).
   - Configuration utility does not allow 8bit symbols in IMAP folder names
     (#1485501).
-  - Removed HTTP Status header from signout page (#1424748).
+  - Removed HTTP Status header from signout page to work around a bug in
+    fastcgi (#1424748).
   - Added command execution status check in SendMail delivery class (#1374174).
   - Added $sendmail_args configuration option (#1365779).
-  - Fixed resuming of compose when session expired while writing, and make
-    sure the code only sets those variables that are needed in compose and
-    are not already set. Thanks James Bercegay from GulfTech for pointing
-    this out.
+  - Fixed resuming of compose when session expired while writing.
+  - Security: Make sure that code only sets those variables that are needed in
+    compose and are not already set. Thanks James Bercegay from GulfTech for
+    pointing this out. [CVE-2006-4019]
   - Fixed subscription of new 'noselect' folders (#1315912).
-  - Moving the development documentation to the documentation module.
+  - Moving the developers documentation to the documentation module; it's
+    no longer shipped in the tarballs.
   - Drop dead code in validate.php once used for some old obscure bug.
 
 Version 1.4.7 - 4th July 2006
