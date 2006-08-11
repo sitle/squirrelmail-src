@@ -71,6 +71,6 @@ done
 
 # md5sum and sha1sum them
 cd ../packages/
-md5sum *-${date}.* > all_locales-${STABLE_VERSION}-${date}.md5
-sha1sum *-${date}.* > all_locales-${STABLE_VERSION}-${date}.sha1
+md5sum *-${date}.* *-${date}-* > all_locales-${STABLE_VERSION}-${date}.md5
+sha1sum *-${date}.* *-${date}-* > all_locales-${STABLE_VERSION}-${date}.sha1
 
