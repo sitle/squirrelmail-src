@@ -1,20 +1,24 @@
+# translation of squirrelmail.po to Nynorsk
 # Norwegian Nynorsk (nn_NO) SquirrelMail Translation
 # Copyright (c) 1999-2006 The SquirrelMail Project Team
 # This file is distributed under the same license as the SquirrelMail package.
+# $Id$
 # Magni Onsøien <magnio-squirrel@initio.no>, 2000.
 # Ola Ketil Siqveland <olaketil@hotmail.com>, 2002-2006.
-# $Id$
 msgid ""
 msgstr ""
-"Project-Id-Version: SquirrelMail HEAD\n"
-"POT-Creation-Date: 2006-02-21 06:50+0100\n"
-"PO-Revision-Date: 2006-03-03 23:24+0100\n"
+"Project-Id-Version: squirrelmail\n"
+"Report-Msgid-Bugs-To: SquirrelMail Internationalization <squirrelmail-"
+"i18n@lists.sourceforge.net>\n"
+"POT-Creation-Date: 2006-06-15 14:14+0200\n"
+"PO-Revision-Date: 2006-08-09 12:52+0200\n"
 "Last-Translator: Ola Ketil Siqveland <olaketil@hotmail.com>\n"
-"Language-Team: Norwegian Nynorsk <squirrelmail-i18n@lists.sourceforge.net>\n"
+"Language-Team: Nynorsk <nn@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: KBabel 1.0.1\n"
 
 msgid "Address Book"
 msgstr "Adressebok"
@@ -67,7 +71,6 @@ msgstr "Søk"
 msgid "List all"
 msgstr "List alle"
 
-#, php-format
 msgid "Unable to list addresses from %s"
 msgstr "Klarte ikkje å lista adresser frå %s"
 
@@ -140,11 +143,9 @@ msgstr "sortert etter e-post"
 msgid "sort by info"
 msgstr "sortert etter info"
 
-#, php-format
 msgid "Add to %s"
 msgstr "Legg til %s"
 
-#, php-format
 msgid "%s wrote:"
 msgstr "%s skreiv:"
 
@@ -154,7 +155,6 @@ msgstr "sitat"
 msgid "who"
 msgstr "kven"
 
-#, php-format
 msgid "On %s, %s wrote:"
 msgstr "På %s, %s skreiv:"
 
@@ -237,7 +237,6 @@ msgstr "Lagra kladd"
 msgid "You have not filled in the \"To:\" field."
 msgstr "Du har ikkje fylt ut \"Til:\"-feltet"
 
-#, php-format
 msgid "Error: Draft folder %s does not exist."
 msgstr "Feil: Kladdmappa '%s' finst ikkje"
 
@@ -256,7 +255,6 @@ msgstr "Vel mappe som skal slettast."
 msgid "Delete Folder"
 msgstr "Slett mappe"
 
-#, php-format
 msgid "Are you sure you want to delete %s?"
 msgstr "Vil du verkeleg sletta %s?"
 
@@ -354,14 +352,30 @@ msgid "Help"
 msgstr "Hjelp"
 
 msgid ""
-"The help has not been translated to the selected language. It will be "
-"displayed in English instead."
+"Help is not available in the selected language. It will be displayed in "
+"English instead."
 msgstr ""
 "Hjelpa er enno ikkje omsett til valg språk. Den vil difor verta synt på "
 "engelsk."
 
-msgid "Some or all of the help documents are not present!"
-msgstr "Nokre eller alle hjelpefilene mangler."
+msgid ""
+"Help is not available. Please contact your system administrator for "
+"assistance."
+msgstr ""
+"Hjelp er ikkje tilgjengeleg Kontakt systemadministrator for assistanse."
+
+msgid ""
+"This chapter is not available in the selected language. It will be displayed "
+"in English instead."
+msgstr ""
+"Dette kapittlet er enno ikkje omsett til valg språk. Det vil difor verta "
+"synt på engelsk."
+
+msgid "This chapter is missing"
+msgstr "Dette kaptil manglar"
+
+msgid "For some reason, chapter %s is not available."
+msgstr "Av ein eller anna grunn, er kapitel %s ikkje tilgjengelegt"
 
 msgid "Table of Contents"
 msgstr "Innhaldsliste"
@@ -399,18 +413,15 @@ msgstr "Sjekk e-posten"
 msgid "Login"
 msgstr "Logg inn"
 
-#, php-format
 msgid "%s Logo"
 msgstr "%s Logo"
 
-#, php-format
 msgid "SquirrelMail version %s"
 msgstr "SquirrelMail versjon %s"
 
 msgid "By the SquirrelMail Project Team"
 msgstr "Av SquirrelMail-utviklingsgruppa"
 
-#, php-format
 msgid "%s Login"
 msgstr "%s innlogging"
 
@@ -510,10 +521,12 @@ msgstr "Døme: 63aa7f"
 msgid "Matches"
 msgstr "Treff"
 
+msgid "Editing identities is disabled."
+msgstr "Redigering av identitetar er av."
+
 msgid "Default Identity"
 msgstr "Standard identitet"
 
-#, php-format
 msgid "Alternate Identity %d"
 msgstr "Alternativ identitet %d"
 
@@ -670,7 +683,6 @@ msgstr "Din melding"
 msgid "Sent"
 msgstr "Send"
 
-#, php-format
 msgid "Was displayed on %s"
 msgstr "Vist på %s"
 
@@ -789,7 +801,6 @@ msgstr "Klikk her for å prøva på nytt."
 msgid "Viewing a Business Card"
 msgstr "Viser visittkort"
 
-#, php-format
 msgid ""
 "vCard Version %s is not supported. Some information might not be converted "
 "correctly."
@@ -827,8 +838,8 @@ msgstr "Notat"
 msgid "Add to address book"
 msgstr "Legg til i adresseboka"
 
-msgid "Title & Org. / Dept."
-msgstr "Tittel & Org. / Avd."
+msgid "Title &amp; Org. / Dept."
+msgstr "Tittel &amp; Org. / Avd."
 
 msgid "Viewing Full Header"
 msgstr "Viser fulle meldingshovud"
@@ -842,7 +853,6 @@ msgstr ""
 "Klarte ikkje inkludera PEAR krev databasefunksjonar til "
 "databasebakgrunnsløysinga."
 
-#, php-format
 msgid "Is PEAR installed, and is the include path set correctly to find %s?"
 msgstr "Er PEAR installert, og er mappestien korrekt for å finna %s?"
 
@@ -852,18 +862,15 @@ msgstr "Kontakt systemadministrator og rapporter feilen"
 msgid "Personal address book"
 msgstr "Personleg adressebok"
 
-#, php-format
 msgid "Database error: %s"
 msgstr "Database feil %s"
 
 msgid "Addressbook is read-only"
 msgstr "Adresseboka er ikkje skrivbar"
 
-#, php-format
 msgid "User \"%s\" already exists"
 msgstr "Brukaren \"%s\" finst alt"
 
-#, php-format
 msgid "User \"%s\" does not exist"
 msgstr "Brukaren \"%s\" finst ikkje"
 
@@ -891,7 +898,6 @@ msgstr "Feila ved skriving til adressebok"
 msgid "Error initializing addressbook database."
 msgstr "Feil ved initialisering av adressebokdatabasen"
 
-#, php-format
 msgid "Error opening file %s"
 msgstr "Feila ved opning av %s"
 
@@ -901,7 +907,6 @@ msgstr "Global adressebok"
 msgid "Error initializing global addressbook."
 msgstr "Feil ved initialiseringa av global adressebok"
 
-#, php-format
 msgid "Error initializing LDAP server %s:"
 msgstr "Feil ved tilkobling til LDAP-serveren %s"
 
@@ -1061,18 +1066,15 @@ msgstr "D, g:i a"
 msgid "D, H:i"
 msgstr "D, H:i"
 
-#, php-format
 msgid "Preference database error (%s). Exiting abnormally"
 msgstr "Database instillingsfeil (%s) Avsluttar unormalt."
 
-#, php-format
 msgid "Click here to return to %s"
 msgstr "Klikk her for å gå tilbake til %s"
 
 msgid "Go to the login page"
 msgstr "Til innloggingssida"
 
-#, php-format
 msgid ""
 "Preference file, %s, does not exist. Log out, and log back in to create a "
 "default preference file."
@@ -1080,7 +1082,6 @@ msgstr ""
 "Fil for lagring av val (%s) vart ikkje funne. Logg ut og innatt for å "
 "oppretta fila."
 
-#, php-format
 msgid ""
 "Preference file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
@@ -1088,7 +1089,6 @@ msgstr ""
 "Innstillingsfila %s kunne ikkje opnast. Ta kontakt med systemadministrator "
 "for hjelp"
 
-#, php-format
 msgid ""
 "Preference file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
@@ -1096,7 +1096,6 @@ msgstr ""
 "Innstillingsfila %s kunne ikkje skrivast. Ta kontakt med systemadministrator "
 "for hjelp"
 
-#, php-format
 msgid ""
 "Preference file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
@@ -1104,7 +1103,6 @@ msgstr ""
 "Innstillingsfila %s kunne ikkje kopierast frå midlertidig fil %s. Ta kontakt "
 "med systemadministrator for hjelp"
 
-#, php-format
 msgid "Error opening %s"
 msgstr "Feil ved opning av %s"
 
@@ -1114,14 +1112,12 @@ msgstr "Standard innstillingsfil finst ikkje eller er ikkje lesbar!"
 msgid "Could not create initial preference file!"
 msgstr "Kan ikkje oppretta opphavelege innstillingsfil"
 
-#, php-format
 msgid "%s should be writable by user %s"
 msgstr "%s skulle vert skrivbar for brukar %s"
 
 msgid "Signature is too big."
 msgstr "Signatur er for stor."
 
-#, php-format
 msgid ""
 "Signature file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
@@ -1129,7 +1125,6 @@ msgstr ""
 "Signatur fila %s kan ikkje opnast. Kontakt systemadministartor for å løysa "
 "problemet"
 
-#, php-format
 msgid ""
 "Signature file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
@@ -1137,7 +1132,6 @@ msgstr ""
 "Signatur fila %s kan ikkje skrivast. Kontakt systemadministartor for å løysa "
 "problemet"
 
-#, php-format
 msgid ""
 "Signature file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
@@ -1179,7 +1173,6 @@ msgstr "FEIL : IMAP tenar lukka sambandet"
 msgid "ERROR: Unknown IMAP response."
 msgstr "FEIL : Ukjent IMAP svar."
 
-#, php-format
 msgid "Error connecting to IMAP server: %s."
 msgstr "Kunne ikkje koble til IMAP-tenaren: %s"
 
@@ -1193,11 +1186,9 @@ msgstr ""
 msgid "Also, the use of TLS may allow SquirrelMail to login."
 msgstr "Også, bruk av TLS kan tillate SquirrelMail å logge inn."
 
-#, php-format
 msgid "Bad request: %s"
 msgstr "Feil i førespurnaden: %s"
 
-#, php-format
 msgid "Unknown error: %s"
 msgstr "Ukjend feil: %s"
 
@@ -1214,9 +1205,8 @@ msgid "Solution:"
 msgstr "Løysing:"
 
 msgid ""
-"Remove unneccessary messages from your folder and start with your Trash "
-"folder."
-msgstr "Fjern uønska meldingar og start med søppelbøtta."
+"Remove unneccessary messages from your folders. Start with your Trash folder."
+msgstr "Fjern uønska meldingar frå mappene. Start med søppelbøtta."
 
 msgid "(no subject)"
 msgstr "(utan emne)"
@@ -1265,9 +1255,6 @@ msgstr "Flytt"
 msgid "Expunge"
 msgstr "Tøm"
 
-msgid "mailbox"
-msgstr "postkasse"
-
 msgid "Read"
 msgstr "Lesen"
 
@@ -1289,11 +1276,9 @@ msgstr "Merk ingen"
 msgid "Select All"
 msgstr "Vel alt"
 
-#, php-format
 msgid "Viewing Messages: %s to %s (%s total)"
 msgstr "Viser melding %s til %s (av totalt %s)"
 
-#, php-format
 msgid "Viewing Message: %s (%s total)"
 msgstr "Syner melding %s (%s totalt)"
 
@@ -1342,7 +1327,6 @@ msgstr "sec_remove_nn_NO.png"
 msgid "This external link will open in a new window"
 msgstr "Opna ekstern link i eit nytt vindauge"
 
-#, php-format
 msgid "Option Type '%s' Not Found"
 msgstr "Valt type '%s' ikkje funnen"
 
@@ -1352,7 +1336,6 @@ msgstr "Vald mappe"
 msgid "Compose"
 msgstr "Skriv ny"
 
-#, php-format
 msgid "Error creating directory %s."
 msgstr "Feila ved laging av katalog %s"
 
@@ -1539,7 +1522,7 @@ msgstr "Breidde på skriveområdet"
 msgid "Height of Compose Window"
 msgstr "Høgd på skriveområdet"
 
-msgid "Append Signature before Reply/Forward Text"
+msgid "Prepend Signature before Reply/Forward Text"
 msgstr "Legg til signatur før svar/vidaresend tekst"
 
 msgid "Prefix for Original Message when Replying"
@@ -2122,7 +2105,6 @@ msgstr "Temasti"
 msgid "Plugins"
 msgstr "Tilleggsmodular"
 
-#, php-format
 msgid "Plugin directory could not be found: %s"
 msgstr "Programtilleggmappe finn ein ikkje: %s"
 
@@ -2154,13 +2136,11 @@ msgstr ""
 "Før du sender ein feilrapport, gå etter denne sjekklista for eventuelle "
 "vanlege problem."
 
-#, php-format
 msgid ""
 "Make sure that you are running the most recent copy of %s. You are currently "
 "using version %s."
 msgstr "Sjekk at du kjøre siste versjon av %s. Noverande versjon er %s."
 
-#, php-format
 msgid ""
 "Check to see if your bug is already listed in the %sBug List%s on "
 "SourceForge. If it is, we already know about it and are trying to fix it."
@@ -2178,7 +2158,6 @@ msgstr ""
 "kjem når du ser på ei spesiell  melding, lagra meldinga slik at vi kanskje "
 "kan sjå den."
 
-#, php-format
 msgid ""
 "If there were warnings displayed above, try to resolve them yourself. Read "
 "the guides in the %s directory where SquirrelMail was installed."
@@ -2231,7 +2210,6 @@ msgstr "Feilrapport"
 msgid "Show button in toolbar"
 msgstr "Syn knapp i verktøylinje"
 
-#, php-format
 msgid "Could not write calendar file %s"
 msgstr "Kan ikkje skrive kalender fil %s"
 
@@ -2273,6 +2251,9 @@ msgstr "Hendinga er lagt til!"
 
 msgid "Date:"
 msgstr "Dato:"
+
+msgid "m/d/Y"
+msgstr "m/d/Y"
 
 msgid "Time:"
 msgstr "Tid:"
@@ -2346,14 +2327,14 @@ msgstr "6 t."
 msgid "Calendar"
 msgstr "Kalender"
 
-msgid "Delete & Prev"
-msgstr "Slett & Førre"
+msgid "Delete &amp; Prev"
+msgstr "Slett &amp; Førre"
 
-msgid "Delete & Next"
-msgstr "Slett  & Følgjande"
+msgid "Delete &amp; Next"
+msgstr "Slett  &amp; Følgjande"
 
 msgid "Move to:"
-msgstr "Flytt til"
+msgstr "Flytt til:"
 
 msgid "Delete/Move/Next Buttons:"
 msgstr "Slett/Flytt/Neste Knappar"
@@ -2579,7 +2560,6 @@ msgstr "Topptekst"
 msgid "Contains:"
 msgstr "Inneheld:"
 
-#, php-format
 msgid "If %s contains %s then move to %s"
 msgstr "Viss %s inneheld %s, så flytt til %s"
 
@@ -2613,7 +2593,6 @@ msgstr "Ein må velja ein skanetype."
 msgid "Spam Filtering"
 msgstr "Søppelpost filtrering"
 
-#, php-format
 msgid "WARNING! Tell the administrator to set the %s variable."
 msgstr "ADVARSEL! Fortel systemadministratoren om å setja %s variablen."
 
@@ -2649,14 +2628,12 @@ msgstr ""
 "skanna nye meldingar. På den måten vil dine nye filtre også skanna dei e-"
 "postane du allereie har liggjande i innboksen."
 
-#, php-format
 msgid "Spam is sent to %s."
 msgstr "Spam vert send til %s"
 
 msgid "not set yet"
 msgstr "ikkje instilla enno"
 
-#, php-format
 msgid "Spam scan is limited to %s."
 msgstr "Spam skan er avgrensa til %s."
 
@@ -2666,7 +2643,6 @@ msgstr "PÅ"
 msgid "OFF"
 msgstr "AV"
 
-#, php-format
 msgid "%s is not found."
 msgstr "%s finst ikkje"
 
@@ -2694,7 +2670,6 @@ msgstr ""
 "brukar Squirrelimail sine IMAP kommandoar og ditt noverande Squirrelmail "
 "oppsett. Kan også bruka eigendefinerte kommandoar."
 
-#, php-format
 msgid ""
 "This will send a message to %s requesting help for this list. You will "
 "receive an emailed response at the address below."
@@ -2702,7 +2677,6 @@ msgstr ""
 "Dette vil senda ei melding til %s for å spør  om hjelp til denne lista. Du "
 "vil motta ein e-post på adressen nedanfor."
 
-#, php-format
 msgid ""
 "This will send a message to %s requesting that you will be subscribed to "
 "this list. You will be subscribed with the address below."
@@ -2710,7 +2684,6 @@ msgstr ""
 "Dette vil senda ei melding til %s om å abonnera på denne lista. Du vil motta "
 "meldinger på adressa under."
 
-#, php-format
 msgid ""
 "This will send a message to %s requesting that you will be unsubscribed from "
 "this list. It will try to unsubscribe the adress below."
@@ -2718,7 +2691,6 @@ msgstr ""
 "Dette vil senda ei melding til %s om å sei opp abonnementet på denne lista. "
 "Det er adressa under som vert oppsagt."
 
-#, php-format
 msgid "Unknown action: %s"
 msgstr "Ukjend handling: %s"
 
@@ -2863,7 +2835,6 @@ msgstr "Innlogging OK Inga ny e-post"
 msgid "Login OK: Inbox EMPTY"
 msgstr "Innlogging OK Innboks er tom"
 
-#, php-format
 msgid "Login OK: Inbox contains %s messages"
 msgstr "Innlogging OK: Innboks inneheld %s meldinger"
 
@@ -2906,7 +2877,6 @@ msgstr "Loggar ut av IMAP"
 msgid "Message appended to mailbox"
 msgstr "Melding lagt til postboksen"
 
-#, php-format
 msgid "Message %d deleted from remote server!"
 msgstr "Melding %d  sletta frå nettverkstenar!"
 
@@ -3047,7 +3017,6 @@ msgstr "Vis meldingsdetaljar"
 msgid "New Mail Notification"
 msgstr "Varsling ved ny e-post"
 
-#, php-format
 msgid ""
 "The %s option will check ALL of your folders for unseen mail, not just the "
 "inbox for notification."
@@ -3057,7 +3026,6 @@ msgstr ""
 msgid "Check all boxes, not just INBOX"
 msgstr "Kryss av alle boksar, ikkje berre INNBOKS"
 
-#, php-format
 msgid ""
 "Selecting the %s option will enable the showing of a popup window when "
 "unseen mail is in your folders (requires JavaScript)."
@@ -3068,7 +3036,6 @@ msgstr ""
 msgid "Show popup window on new mail"
 msgstr "Syn sprettoppvindauge ved ny e-post"
 
-#, php-format
 msgid ""
 "Use the %s option to only check for messages that are recent. Recent "
 "messages are those that have just recently showed up and have not been "
@@ -3083,7 +3050,6 @@ msgstr ""
 msgid "Count only messages that are RECENT"
 msgstr "Kontroller berre nye meldinger "
 
-#, php-format
 msgid ""
 "Selecting the %s option will change the title in some browsers to let you "
 "know when you have new mail (requires JavaScript, and only works in IE but "
@@ -3097,7 +3063,6 @@ msgstr ""
 msgid "Change title on supported browsers"
 msgstr "Skift titel på støtta nettlesarar."
 
-#, php-format
 msgid ""
 "Select %s to turn on playing a media file when unseen mail is in your "
 "folders. When enabled, you can specify the media file to play in the "
@@ -3109,7 +3074,6 @@ msgstr ""
 msgid "Enable Media Playing"
 msgstr "Slå på mediespelaren"
 
-#, php-format
 msgid ""
 "Select from the list of %s the media file to play when new mail arrives. If "
 "no file is specified, %s, no sound will be used."
@@ -3138,15 +3102,11 @@ msgstr "Ny e-post"
 msgid "SquirrelMail Notice:"
 msgstr "SquirrelMail beskjed:"
 
-#, php-format
 msgid "You have %s new message"
-msgid_plural "You have %s new messages"
-msgstr[0] "%s ny melding"
-msgstr[1] "%s nye meldingar"
+msgstr "Har %s ny melding"
 
-#, php-format
 msgid "You have %s new messages"
-msgstr "%s nye meldingar"
+msgstr "Har %s nye meldingar"
 
 msgid "NewMail Options"
 msgstr "Ny e-postval"
@@ -3158,15 +3118,11 @@ msgstr ""
 "Val for avspeling av lyd og/eller vising av sprettoppvindauge når det kjen "
 "my e-post."
 
-#, php-format
 msgid "%s New Messages"
 msgstr "%s nye meldingar"
 
-#, php-format
 msgid "%s New Message"
-msgid_plural "%s New Messages"
-msgstr[0] "%s ny melding"
-msgstr[1] "%s nye meldingar"
+msgstr "%s ny melding"
 
 msgid "Test Sound"
 msgstr "Test lyd"
@@ -3250,7 +3206,6 @@ msgstr ""
 "SpamCop er ein gratis teneste som sterkt medvirker til å finna den rette "
 "kjelda til reklamen og lar dei riktige personane kjenna til misbruket."
 
-#, php-format
 msgid ""
 "To use it, you must get a SpamCop authorization code. There is a free %ssign "
 "up page%s so you can use SpamCop."
@@ -3261,7 +3216,6 @@ msgstr ""
 msgid "Before you sign up, be warned"
 msgstr "Før du registrerer deg, åtvaring"
 
-#, php-format
 msgid ""
 "Some users have reported that the email addresses used with SpamCop find "
 "their way onto spam lists. To be safe, you can just create an email "
@@ -3365,7 +3319,6 @@ msgstr ""
 msgid "More information"
 msgstr "Meir informasjon"
 
-#, php-format
 msgid ""
 "For more information about SpamCop, it's services, spam in general, and many "
 "related topics, try reading through SpamCop's %sHelp and Feedback%s section."
@@ -3470,22 +3423,18 @@ msgstr "Feil under dekryptering av ordbok"
 msgid "Cute."
 msgstr "Søt"
 
-#, php-format
 msgid "Could not run the spellchecker command (%s)."
 msgstr "Kan ikkje kjøra stavekontrollen (%s)."
 
 msgid "Error while writing to pipe."
 msgstr "Feil ved skriving til pipe."
 
-#, php-format
 msgid "Could not open temporary file '%s'."
 msgstr "Kan ikkje opne midlertidig fil '%s'"
 
-#, php-format
 msgid "Error while writing to temporary file '%s'."
 msgstr "Feil ved skriving til midlertidig fil '%s'."
 
-#, php-format
 msgid "I tried to execute '%s', but it returned:"
 msgstr "Eg forsøkte programmet: '%s', men det returnerte:"
 
@@ -3504,7 +3453,6 @@ msgstr "Personleg ordbok blir lagra... Vent litt."
 msgid "SquirrelSpell Results"
 msgstr "SquirrelSpell resultat"
 
-#, php-format
 msgid "Found %s errors"
 msgstr "Fant %s feil"
 
@@ -3636,7 +3584,6 @@ msgstr "Der er ingen ord i personleg ordbok"
 msgid "Please check any words you wish to delete from your dictionary."
 msgstr "Marker dei orda du ønsker å sletta frå ordboka."
 
-#, php-format
 msgid "%s dictionary"
 msgstr "%s ordbok"
 
@@ -3725,7 +3672,6 @@ msgid ""
 "Please encrypt my personal dictionary and store it in an encrypted format."
 msgstr "Krypter mi personlege ordbok, og lagra ho som krypteret tekst."
 
-#, php-format
 msgid "Deleting the following entries from %s dictionary:"
 msgstr "Slett følgjande postar fra %s ordboka:"
 
@@ -3749,11 +3695,9 @@ msgstr "Vel kvafor ei ordbok du ønsker å bruka til stavekontrollen:"
 msgid "SquirrelSpell Initiating"
 msgstr "SquirrelSpell starter"
 
-#, php-format
 msgid "Settings adjusted to: %s with %s as default dictionary."
 msgstr "Instillingane er endra til: %s med %s som standard ordbok."
 
-#, php-format
 msgid "Using %s dictionary (system default) for spellcheck."
 msgstr "Brukar %s ordbok (systemstandard) til stavekontroll."
 
@@ -3806,7 +3750,6 @@ msgstr "Tenarinstillingane er følgjande:"
 msgid "Maximum of 150 words translated, powered by Systran"
 msgstr "Maksimalt 150 ord oversatt, levert av Systran"
 
-#, php-format
 msgid "Number of supported language pairs: %s"
 msgstr "Tallet på støtta språk par: %s"
 
@@ -3816,7 +3759,6 @@ msgstr "Inga kjent grense, Levert av Systran"
 msgid "No known limits, powered by Translation Experts' InterTran"
 msgstr "Inga kjent grense, Drevet av Translation Expert's InterTran"
 
-#, php-format
 msgid "Number of supported languages: %s"
 msgstr "Tallet på støtta språk: %s"
 
@@ -3863,7 +3805,6 @@ msgid ""
 msgstr ""
 "Kvafor ein oversetjar skal brukast når du mottar meldingar på eit anna språk?"
 
-#, php-format
 msgid "%s to %s"
 msgstr " %s til %s"
 
@@ -3981,1048 +3922,6 @@ msgstr "Grensesnitt språk"
 msgid "Translation direction"
 msgstr "Omsetjingsretning"
 
-#, php-format
-msgid "About SquirrelMail %s"
-msgstr "Om SquirrelMail %s"
-
-msgid ""
-"SquirrelMail is the name of the program that provides access to your email "
-"via the web."
-msgstr ""
-"Squirrelmail er namnet på programmet som ger tilgang til din epost via veven."
-
-#, php-format
-msgid ""
-"If you have questions about or problems with your mail account, passwords, "
-"abuse etc, please refer to your system administrator or provider%s."
-msgstr ""
-"Viss du har spørsmål om problem med epostkontoen, passord,  misbruk ol, "
-"referer ril systemadministratoren eller leveradør %s."
-
-#, php-format
-msgid ""
-"They can assist you adequately with these issues. The SquirrelMail Project "
-"Team cannot help you with that. The %shelp system%s provides answers to "
-"frequently asked questions."
-msgstr ""
-"Dei kan gi deg assistanse med desse spørsmåla. Squirrelmail Prosjekt teamet "
-"kan ikkje hjelpa med dette. %shjelp system %s gir svar på ofte spurte "
-"spørsmål OSS."
-
-#, php-format
-msgid ""
-"SquirrelMail is a feature rich, standards compliant webmail application "
-"written in PHP. It was made by a group of volunteers united in the "
-"SquirrelMail Project Team and is released as open source, free software "
-"under the %sGNU General Public License%s."
-msgstr ""
-"Squirrelmail er ein funksjons rik standard føyeleg vevepostprogram skriven i "
-"PHP. Den er laga av ei gruppe frivillege samla i Squirrelmail Prosjekt "
-"gruppa og er utgitt som open kildekode, gratis program under %sGNU General "
-"Public License%s"
-
-#, php-format
-msgid ""
-"For more information about SquirrelMail and the SquirrelMail Project Team, "
-"see %sthe SquirrelMail website%s."
-msgstr ""
-"For informasjon om Squirrelmail og Squirrelmail prosjekt gruppa, sjå %s "
-"Squirrelmail vevsida %s"
-
-msgid "System information"
-msgstr "System informasjon"
-
-#, php-format
-msgid "You are using SquirrelMail version: %s"
-msgstr "Brukar SquirrelMail versjon %s"
-
-msgid "The administrator installed the following plugins:"
-msgstr "Administratoren har instalert fyljande programtillegg:"
-
-msgid "none installed"
-msgstr "ingenting er installert"
-
-msgid "Nothing to search"
-msgstr "Ingenting å søkje ette"
-
-msgid "No folders were found to unsubscribe from."
-msgstr "Fann ingen mapper å stoppa abonnement på."
-
-msgid "No folders were found to subscribe to."
-msgstr "Fann ingen mappe å abonnere på"
-
-msgid "Save folder tree"
-msgstr "Lagra mappetre"
-
-msgid "SquirrelMail Webmail Application"
-msgstr "SquirrelMail Vevepostprogram"
-
-msgid "Received"
-msgstr "Kvittering:"
-
-msgid "Compose Preferences"
-msgstr "Val for skriving"
-
-msgid ""
-"Control the behaviour and layout of writing new mail messages, replying to "
-"and forwarding messages."
-msgstr ""
-"Kontroll adferd og utsjånad ved skriving av ny e-postmeldingar, svar til og "
-"vidaresending av meldingar."
-
-msgid "View as plain text"
-msgstr "Syn som rein tekst"
-
-msgid "View as HTML"
-msgstr "Syn som HTML"
-
-msgid "As Attachment"
-msgstr "Som vedlegg"
-
-msgid "Bypass Trash"
-msgstr "Ikkje bruk søppelbøtta"
-
-msgid "Please enter something to search for"
-msgstr "Skriv inn noko å søkje etter"
-
-msgid "There must be at least one criteria to search for"
-msgstr "Det må vera minst eit søkjevilkår"
-
-msgid "Error in criteria argument"
-msgstr "Feil i vilkårsgrunnen"
-
-msgid "(Illegal date)"
-msgstr "(ulovleg dato)"
-
-msgid "(Wrong date)"
-msgstr "(Feil dato)"
-
-msgid "In"
-msgstr "I"
-
-msgid "(Missing argument)"
-msgstr "(Manglar argument)"
-
-msgid "(Spurious argument)"
-msgstr "(Falskt argument)"
-
-msgid "Fold"
-msgstr "Brett"
-
-msgid "Unfold"
-msgstr "Brett opp"
-
-msgid "Saved Searches"
-msgstr "Lagra søk"
-
-msgid "Missing"
-msgstr "Manglar"
-
-msgid "and&nbsp;subfolders:"
-msgstr "og&nbsp;undermapper:"
-
-msgid "Exclude Criteria:"
-msgstr "Ikkje ta med vilkåret"
-
-msgid "Search Criteria"
-msgstr "Vilkår for søk"
-
-msgid "Add New Criteria"
-msgstr "Legg til nytt vilkår"
-
-msgid "Remove Excluded Criteria"
-msgstr "Fjern utelukka vilkår"
-
-msgid "Remove All Criteria"
-msgstr "Fjern alle vilkår"
-
-msgid "Not"
-msgstr "Ikkje"
-
-msgid "Answered"
-msgstr "Svart"
-
-msgid "Before"
-msgstr "Før"
-
-msgid "Message Body"
-msgstr "Meldingskropp"
-
-msgid "Deleted"
-msgstr "Sletta"
-
-msgid "Draft"
-msgstr "Kladd"
-
-msgid "Flagged"
-msgstr "Flagg"
-
-msgid "Sent By"
-msgstr "Sendt av"
-
-msgid "Header Field"
-msgstr "Topptekst felt"
-
-msgid "Keyword"
-msgstr "Nøkkelord"
-
-msgid "Larger Than"
-msgstr "Større enn"
-
-msgid "Old"
-msgstr "Gamal"
-
-msgid "On"
-msgstr "På"
-
-msgid "Recent"
-msgstr "Nyleg"
-
-msgid "Seen"
-msgstr "Sett"
-
-msgid "Sent Before"
-msgstr "Sendt før"
-
-msgid "Sent On"
-msgstr "Sendt På"
-
-msgid "Sent Since"
-msgstr "send sidan"
-
-msgid "Since"
-msgstr "Sidan"
-
-msgid "Smaller Than"
-msgstr "Mindre enn"
-
-msgid "Subject Contains"
-msgstr "Emne inneheld"
-
-msgid "Header and Body"
-msgstr "Topptekst og kropp"
-
-msgid "Sent To"
-msgstr "Sendt til"
-
-msgid "And In"
-msgstr "Og i"
-
-msgid "Or In"
-msgstr "Eller i"
-
-msgid "And"
-msgstr "Og"
-
-msgid "Or"
-msgstr "Eller"
-
-msgid "Standard search"
-msgstr "Standard søk"
-
-msgid "Advanced search"
-msgstr "Avansert søk"
-
-msgid "Folder List"
-msgstr "Mappeliste"
-
-msgid "PHP install does not have LDAP support."
-msgstr "PHP installasjon har ikkje LDAP støtte."
-
-msgid "Illegal folder name."
-msgstr "Ulovleg mappe namn."
-
-#, php-format
-msgid "The name may not contain any of the following: %s"
-msgstr "Namnet må ikkje innehalda noko av: %s"
-
-msgid "Please select a different name."
-msgstr "Velj eit anna namn."
-
-msgid "You have not selected a folder to subscribe. Please do so."
-msgstr "Vel mappe til å abonnera på."
-
-msgid "You have not selected a folder to unsubscribe. Please do so."
-msgstr "Vel mappe til å avbryte abonnementet på"
-
-msgid "Possible reason:"
-msgstr "Mogleg årsak:"
-
-msgid "ERROR: Bad function call."
-msgstr "FEIL : Feil funksjonskall"
-
-msgid "Reason:"
-msgstr "Grunn:"
-
-msgid ""
-"TLS is enabled, but this version of PHP does not support TLS sockets, or is "
-"missing the openssl extension."
-msgstr ""
-"TLS er slåt på, men denne versjonen av PHP støttar ikkje TLS tilkopling, "
-"eller manglar &quote;openssl&quote; tillegget."
-
-msgid ""
-"IMAP STARTTLS is enabled in SquirrelMail configuration, but used IMAP server "
-"does not support STARTTLS."
-msgstr ""
-"IMAP STARTTLS er på i Squirrelmail konfigurasjonen, men brukt IMAP tenar "
-"støttar ikkje STARTTLS."
-
-msgid "Unable to start TLS."
-msgstr "Klarte ikkje å starta TLS."
-
-msgid ""
-"IMAP STARTTLS is enabled in SquirrelMail configuration, but used PHP version "
-"does not support functions that allow to enable encryption on open socket."
-msgstr ""
-"IMAP STARTTLS er på i Squirrelmail konfigurasjonen, men PHP versjonen "
-"støttar ikkje funksjonar som tillet å krypterer på opne kontaktar."
-
-msgid ""
-"Your mailbox is not located at this server. Try a different server or "
-"consult your system administrator"
-msgstr ""
-"Finn ikkje epostkontoen på denne tenaren. Prøv ein anna tenar eller ta "
-"kontakt med systemadministratoren"
-
-msgid "Unknown recipient"
-msgstr "Ukjend mottakar"
-
-msgid "Unflag"
-msgstr "Fjerna flagget"
-
-msgid "Flag"
-msgstr "Flagg"
-
-msgid "Undelete"
-msgstr "Gjenopprett"
-
-msgid "Viewing HTML formatted email"
-msgstr "Syn HTML formatert epost"
-
-msgid "unavailable"
-msgstr "ikkje tilgjengeleg"
-
-msgid "Error"
-msgstr "Feil"
-
-msgid "Terminating SquirrelMail due to a fatal error"
-msgstr "Avslutter Sqiurrelmail på grunn av ein fatal feil"
-
-msgid "Email delivery error"
-msgstr "Feil ved levering av eposten"
-
-#, php-format
-msgid "Can't execute command '%s'."
-msgstr "Kan ikkje utføra kommandoen '%s'."
-
-msgid ""
-"Secure SMTP (TLS) is enabled in SquirrelMail configuration, but used PHP "
-"version does not support it."
-msgstr ""
-"Sikker SMTP (TLS) er slått på i Squirrelmail oppsettet, men PHP versjonen "
-"støttar ikkje dette."
-
-msgid "Can't open SMTP stream."
-msgstr "Kan ikkje opne SMTP dataflyt."
-
-msgid "TLS session is already activated."
-msgstr "TLS sesjonen er allereie aktivert."
-
-msgid ""
-"SMTP STARTTLS is enabled in SquirrelMail configuration, but used SMTP server "
-"does not support it"
-msgstr ""
-"SMTP STARTTLS er slått på i Squirrelmail oppsettet, men SMTP tenaren støttar "
-"ikkje dette"
-
-msgid ""
-"SMTP STARTTLS is enabled in SquirrelMail configuration, but used PHP version "
-"does not support functions that allow to enable encryption on open socket."
-msgstr ""
-"SMTP STARTTLS er slått på i Squirrelmail oppsettet, men PHP versjonen "
-"støttar ikkje funksjonar som tillet kryptering på opne kontaktar."
-
-msgid ""
-"Run \"configure\", choose option 4 (General options) and set option 10 "
-"(Disable server thread sort) to true)."
-msgstr ""
-"Utfør \"konfigurasjon\" vel opsjon 4 ( Generelle val) og set opsjon 10 "
-"(Kople ut tenar trådsortering) til sann."
-
-msgid ""
-"Run \"configure\", choose option 4 (General options) and set option 11 "
-"(Disable server-side sorting) to true."
-msgstr ""
-"Utfør \"konfigurasjon\" vel opsjon 4 ( Generelle val) og set opsjon 11 "
-"(Kople ut tenar-side sortering) til sann."
-
-msgid "Your used charset is not supported by your IMAP server."
-msgstr "IMAP tenaren støttar ikkje brukt teikn"
-
-msgid ""
-"Run \"configure\", choose option 4 (General options) and set option 12 "
-"(Allow server charset search) to false) or choose option 10 (Language "
-"settings) and set option 2 (Default charset) to a charset supported by your "
-"IMAP server."
-msgstr ""
-"Utfør \"konfigurasjon\" vel opsjon 4 ( Generelle val) og set opsjon 12 "
-"(Tillet tenar teikn søk) til usann) eller vel opsjon 10 ( Språk oppsett) og "
-"set opsjon 2 (Standard teiknset) til teiknset støtta av din IMAP tenar."
-
-msgid "Out of quota error."
-msgstr "Feil ved ute av kvote."
-
-msgid ""
-"An error occured when SquirrelMail appended a message to the mailbox as "
-"listed in this message."
-msgstr ""
-"Ein feil oppstod når Squirrelmail la til ei melding til postboksen som "
-"opplista i denne meldinga."
-
-msgid "Your IMAP server returned an error."
-msgstr "IMAP tenar returnerte ein feil."
-
-msgid "IMAP server closed the connection."
-msgstr "Imap tenar lukka sambandet"
-
-msgid "General Message Composition"
-msgstr "Generell meldingsvising og ny melding"
-
-msgid "Replying and Forwarding Messages"
-msgstr "Svar og vidaresending melding"
-
-msgid "Strip signature when replying"
-msgstr "Fjern signatur ved svar"
-
-msgid "Template"
-msgstr "Mal"
-
-msgid "Default font style"
-msgstr "Standard fontstil"
-
-msgid "Font style"
-msgstr "Fontstil"
-
-msgid "Font size"
-msgstr "Fontstorleik"
-
-msgid "Default font size"
-msgstr "Standard fontstorleik"
-
-msgid "Icon Theme"
-msgstr "Ikondrakt"
-
-msgid "Enable Fancy Row Mouseover Highlighting"
-msgstr "Slå på fansy rullmusover framheving"
-
-msgid "Show Flag / Unflag Buttons"
-msgstr "Syn flagg / Uflagg knappar"
-
-msgid "Use Compact Page Selector"
-msgstr "Bruk pilar for fram/tilbake"
-
-msgid "Message Display Options"
-msgstr "Generelle visingsval"
-
-msgid "Height of inline frame"
-msgstr "Høyde på innebygd ramme"
-
-msgid "Show 'Delete & Prev/Next' Links"
-msgstr "Syn 'slett og førre/følgjande' lenkjer"
-
-msgid "Save Replies with Original Message"
-msgstr "Lagre svar med opphavleg melding"
-
-#, php-format
-msgid "%d Minute"
-msgid_plural "%d Minutes"
-msgstr[0] "%d Minutt"
-msgstr[1] "%d Minutt"
-
-msgid "Show only subscribed folders"
-msgstr "Syn bare mappar med abonnement"
-
-msgid "Template Default"
-msgstr "Standard mal"
-
-msgid "XP"
-msgstr "XP"
-
-msgid "Mercury/32 IMAP server"
-msgstr "Mercury/32 IMAP tenar"
-
-msgid "IMAP Connection Security"
-msgstr "IMAP tilkoplingtryggleik"
-
-msgid "Plain text connection"
-msgstr "Rein tekstkopling"
-
-msgid "Secure IMAP (TLS) connection"
-msgstr "Trygg IMAP (TLS) kopling"
-
-msgid "IMAP STARTTLS connection"
-msgstr "IMAP STARTTLS kopling"
-
-msgid ""
-"Requires higher PHP version and special functions. See SquirrelMail "
-"documentation."
-msgstr ""
-"Krev ein nyare PHP versjon og spesielle funksjonar. Sjå Squirrelmail "
-"dokumentasjonen"
-
-msgid "Sendmail Arguments"
-msgstr "Sendmail argument"
-
-msgid "SMTP Connection Security"
-msgstr "SMTP tilkoplingtryggleik"
-
-msgid "Disable server-side sorting"
-msgstr "Slå av sortering på tenar"
-
-msgid "Disable server-side thread sorting"
-msgstr "Slå av trådsortering på tenar"
-
-msgid "Search functions"
-msgstr "Funksjonssøk "
-
-msgid "Only basic search"
-msgstr "Kun basis søk"
-
-msgid "Only advanced search"
-msgstr "Kun avansert søk"
-
-msgid "Both search functions"
-msgstr "Begge søkefunksjonane"
-
-msgid "Time Zone Configuration"
-msgstr "Tidssone innstillingar"
-
-msgid "Standard GNU C time zones"
-msgstr "Standard GNU C tidssone"
-
-msgid "Strict time zones"
-msgstr "Nøyaktig tidssone"
-
-msgid "Custom GNU C time zones"
-msgstr "Tilpassa GNU C tidssone"
-
-msgid "Custom strict time zones"
-msgstr "Tilpassa nøyaktig tidssone"
-
-msgid "Size of username field"
-msgstr "Storleik på brukarnamnfeltet"
-
-msgid "Size of key field"
-msgstr "Storleik på nøkkelfeltet"
-
-msgid "Size of value field"
-msgstr "Storleik på verdifeltet"
-
-msgid "Show alternative language names"
-msgstr "Syn alternative språknamn"
-
-msgid "Enable aggressive decoding"
-msgstr "Slå på agresiv dekoding"
-
-msgid "Tweaks"
-msgstr "Tilleggsval"
-
-msgid "Use advanced tree folder listing"
-msgstr "Bruk avansert tremappelister"
-
-msgid "Use icons"
-msgstr "Bruk ikona"
-
-msgid "Use inline frames with HTML mails"
-msgstr "Bruk innebygd rammer med HTML epost"
-
-msgid "Use PHP recode functions"
-msgstr "Bruk php recode funksjonar"
-
-msgid "Use PHP iconv functions"
-msgstr "Bruk php iconv funksjonar"
-
-msgid "Allow remote configuration test"
-msgstr "Tillat fjernkontrolltest av oppsettet"
-
-msgid "Templates"
-msgstr "Tema"
-
-msgid "Default font set"
-msgstr "Standard fontset"
-
-msgid "Default template"
-msgstr "Standard tema"
-
-msgid "Show System Specifications"
-msgstr "Syn systemspesifikasjon"
-
-msgid "my email account"
-msgstr "min epostkonto"
-
-msgid "Bug Reports"
-msgstr "Feilrapport"
-
-msgid "m/d/Y"
-msgstr "m/d/Y"
-
-msgid "You must type in a new password."
-msgstr "Ein må skriva inn eit nytt passord."
-
-msgid "You must also type in your new password in the verify box."
-msgstr "Ein må også skriva inn passordet i stadfestboksen."
-
-msgid "Your new password does not match the verify password."
-msgstr "Nytt passord passar ikkje med passoredet i stafestboksen."
-
-msgid "You must type in your current password."
-msgstr "Skriv inn nåverande passord."
-
-msgid "Your current password is not correct."
-msgstr "Gitt passord er feil."
-
-#, php-format
-msgid "Your new password should be %s to %s characters long."
-msgstr "Nytt passord skulle vert %s til %s teiken langt."
-
-msgid "Your new password contains invalid characters."
-msgstr "Passordet inneheld ugyldige teikn."
-
-msgid "Change Password"
-msgstr "Endra passordet"
-
-msgid "Current Password:"
-msgstr "Noverande passord:"
-
-msgid "New Password:"
-msgstr "Nytt passord:"
-
-msgid "Verify New Password:"
-msgstr "Stadfest nytt passord:"
-
-msgid "Use this to change your email password."
-msgstr "Bruk dette til å endra e-post passordet-"
-
-msgid "User's Password"
-msgstr "Brukarpassord"
-
-msgid "Current configuration requires LDAP support in PHP."
-msgstr "Nåverande oppsett krev LDAP støtte i PHP."
-
-msgid "Plugin is not configured correctly."
-msgstr "Tillegsprogram er ikkje satopp rett."
-
-#, php-format
-msgid "Setting of LDAP connection option %s to value %s failed."
-msgstr "Oppsett av LDAP tilkoplingsval %s til verdi %s mislukka"
-
-#, php-format
-msgid "Incorrect LDAP connection option: %s"
-msgstr "Feil LDAP tilkoplingsval %s"
-
-msgid ""
-"Current PHP LDAP extension does not allow use of ldap_set_option() function."
-msgstr ""
-"Nåværande PHP LDAP utviding tillet ikke bruk av ldap_set_option() funksjonen-"
-
-msgid "Unable to use TLS."
-msgstr "Klarte ikkje å bruka TLS"
-
-#, php-format
-msgid "Error: %s"
-msgstr "Feil: %s"
-
-msgid "Unable to use LDAP TLS in current setup."
-msgstr "Klarte ikkje å brukar LDAP TLS i nåverande oppsett."
-
-msgid "Unable to bind to LDAP server."
-msgstr "Klarte ikkje å kople til LDAp tenar."
-
-#, php-format
-msgid "Server replied: %s"
-msgstr "Tenaren svarte:%s"
-
-msgid "Unable to find user's password attribute."
-msgstr "Klarte ikkje å finna kjenneteikna til brukarpassordet"
-
-msgid "Unable to rebind to LDAP server."
-msgstr "Klarte ikkje å kople pånytt til LDAP tenaren"
-
-msgid "LDAP server uses different attribute to store user's password."
-msgstr ""
-"LDAP tenaren brukar forskjellege kjenneteikn for å lagre brukarpassordet."
-
-msgid "Unable to connect to LDAP server."
-msgstr "Kunne ikkje koble til LDAP tenaren"
-
-msgid "Unable to find user's DN."
-msgstr "Klarte ikkje finna brukaren sin DN."
-
-msgid "Search error."
-msgstr "Søke feil."
-
-msgid "Multiple userid matches found."
-msgstr "Fant fleire treff på brukaridentiteten"
-
-msgid "ldap_get_dn error."
-msgstr "ldap_get_dn feil."
-
-#, php-format
-msgid "Unsupported crypto: %s"
-msgstr "Ikkje støtta kryptering: %s"
-
-msgid "PHP mhash extension is missing or does not support selected crypto."
-msgstr "PHP mhash utviding manglar eller støttar ikkje valt kryptering."
-
-msgid "System crypt library doesn't support standard DES crypt."
-msgstr "System krypteringsbibliotek støttar ikkje standard DES kryptering."
-
-msgid "System crypt library doesn't have MD5 support."
-msgstr "System krypteringsbibliotek har ikkje MD5 støtte."
-
-msgid "System crypt library doesn't support extended DES crypt."
-msgstr "System krypteringsbibliotek støttar ikkje utvida DES kryptering."
-
-msgid "System crypt library doesn't have Blowfish support."
-msgstr "System krypteringsbibliotek har ikkje Blowfish støtte."
-
-msgid "unknown"
-msgstr "ukjend"
-
-msgid "Unable to validate user's password."
-msgstr "Klarte ikkje sjekka brukarpassordet."
-
-msgid "Blowfish is not supported by webserver's system crypt library."
-msgstr "Blowfish er ikkje støtta av vevtenaren sitt sytemkryteringsbibliotek."
-
-msgid "MD5 is not supported by webserver's system crypt library."
-msgstr "MD5 er ikkje støtta av vevtenaren sitt sytemkryteringsbibliotek."
-
-msgid ""
-"Extended DES crypt is not supported by webserver's system crypt library."
-msgstr ""
-"Utvida DES kryptering er ikkje støtta av vevtenaren sitt "
-"sytemkryteringsbibliotek."
-
-msgid ""
-"Standard DES crypt is not supported by webserver's system crypt library."
-msgstr ""
-"Stadard DES krypteing er ikkje støtta av vevtenaren sitt "
-"sytemkryteringsbibliotek."
-
-msgid "PHP Curl extension is NOT available! Unable to change password!"
-msgstr "PHP Curl modul IKKJE tilgjengeleg. Kan ikkje endra passordet!"
-
-msgid "Cannot change password! (Is user 'Self Configurable User' ?) (401)"
-msgstr "Kan ikkje endra pasordet! (Er brukar Sjølvkonfigurerbar ?)(401)"
-
-msgid "Cannot change password!"
-msgstr "Kan ikkje endra passordet!"
-
-msgid "Cannot connect to Database Server, please try later!"
-msgstr "Kan ikkje kopla til databasetenaren, prøv seinare!"
-
-msgid "Database not found on server"
-msgstr "Fant ikkje databasen på tenaren"
-
-msgid "SQL call failed, try again later."
-msgstr "SQL kallet feila, prøv seinare."
-
-msgid "Duplicate login entries detected, cannot change password!"
-msgstr "Fleire pålogginger finst, kan ikkje endra passordet!"
-
-msgid "Password change was not successful!"
-msgstr "Vellukka endring av passordet!"
-
-msgid ""
-"Plugin is unable to use PHP Pear DB libraries. PHP Pear includes must be "
-"available in your PHP include_path setting."
-msgstr ""
-"Tilleggsprogramet kalrer ikkje å bruka PHP Pear DB biblioteka. PHP Pear "
-"innehaldet må vera i PHP include_path oppsettet."
-
-msgid "Required change password backend configuration options are missing."
-msgstr "Krevd endra passord bakstykke oppsettvala er ikkje tilgjengelege."
-
-#, php-format
-msgid "Connection error: %s"
-msgstr "Tilkoplingsfeil: %s"
-
-#, php-format
-msgid "Invalid table name: %s"
-msgstr "Ugyldig tabellnamn: %s"
-
-msgid "User table is empty."
-msgstr "Brukar tabell er tom."
-
-msgid "Invalid uid field."
-msgstr "Ugyldig uid felt."
-
-msgid "Invalid password field"
-msgstr "Ugyldig passordfelt"
-
-msgid "Invalid domain field"
-msgstr "Ugyldige domenefelt"
-
-#, php-format
-msgid "Query failed: %s"
-msgstr "Spørjing mislukka: %s"
-
-msgid "Unable to find user in user table."
-msgstr "Klarte ikkje å finna brukar i brukartabellen."
-
-msgid "Too many matches found in user table."
-msgstr "For mange treff i brukartabellen."
-
-msgid "Unable to detect password crypto algorithm."
-msgstr "Klarte ikkje å detektera passordkrypteringsalgoritmen."
-
-msgid "Unable to encrypt new password."
-msgstr "Klarte ikkje å kryptere nytt passord."
-
-#, php-format
-msgid "Unable to set new password: %s"
-msgstr "Klarte ikkje å setja nytt adresser: %s"
-
-msgid "Unable to use digest-md5 crypto."
-msgstr "Klarte ikkje å bruka digest-md5 kryptering."
-
-msgid "Closing Connection"
-msgstr "Koplar ifrå"
-
-msgid "Connecting to Password Server"
-msgstr "Koplar til passordtenar"
-
-msgid "No valid backend defined."
-msgstr "Inga gyldig bakstykke definert."
-
-msgid "Incorrent path to vmail.inc file."
-msgstr "Ugyldig sti til vmail.inc fila."
-
-msgid "Invalid or corrupted vmail.inc file."
-msgstr "Ugyldig eller skada vmail.inc fil."
-
-msgid "Invalid user."
-msgstr "Ugyldig brukar."
-
-msgid "Empty domain"
-msgstr "Tom domene"
-
-msgid "Empty domain password"
-msgstr "Tom domenepassord"
-
-msgid "Empty username"
-msgstr "Tomt brukarnamn"
-
-msgid "Empty new password"
-msgstr "Tomt nytt passord"
-
-msgid "Server Capability response:"
-msgstr "Tenaren svarte:"
-
-msgid ""
-"Select the IMAP commands you would like to run. Most commands require a "
-"selected mailbox so the select command is already setup. You can clear all "
-"the commands and test your own IMAP command strings. The commands are "
-"executed in order. The default values are simple IMAP commands using your "
-"default_charset and folder_prefix from SquirrelMail when needed."
-msgstr ""
-"Vel IMAP-kommando ein vil kjøyra. Dei fleste kommandoar treng ein valgt "
-"postboks slik at valg kommando er alt oppsatt. Ein kan sletta alle "
-"kommandoane og testa sine eigne IMAP kommandostrenger. Kommandoane vert "
-"utført i rekkjefølge. Standard verdiar er enkle IMAP kommandoar som når det "
-"trengs brukar standard karakter-set og mappe-prefix frå Squirrelmail."
-
-msgid ""
-"NOTE: These commands are live, any changes made will effect your current "
-"email account."
-msgstr ""
-"MERK: Desse kommandoane vert brukt, einkvar endring vil påvirka noverande e-"
-"postkonto."
-
-msgid "Select"
-msgstr "Vel"
-
-msgid "Test Name"
-msgstr "Test namn"
-
-msgid "IMAP command string"
-msgstr "IMAP kommando streng"
-
-msgid "Request:"
-msgstr "Spør:"
-
-msgid "Execution time:"
-msgstr "Kjøretid:"
-
-#, php-format
-msgid "%s ms"
-msgstr "%s ms"
-
-msgid "Command failed"
-msgstr "Kommando feila"
-
-msgid "No POP3 servers configured yet."
-msgstr "Inga POP3 tenar konfigurert ennå"
-
-msgid "Click here to go to the options page."
-msgstr "Klikk her for å gå til innstillings sida"
-
-#, php-format
-msgid "Fetching from %s"
-msgstr "Hent frå %s"
-
-#, php-format
-msgid "Login OK: Inbox contains %s message"
-msgid_plural "Login OK: Inbox contains %s messages"
-msgstr[0] "Innlogging OK Innboks inneheld %s melding"
-msgstr[1] "Innlogging OK Innboks inneheld %s meldinger"
-
-#, php-format
-msgid "Fetching message %s."
-msgstr "Hentar melding %s."
-
-#, php-format
-msgid "Refetching message %s."
-msgstr "Hentar melding på nytt %s."
-
-msgid "Warning:"
-msgstr "Åtvaring:"
-
-msgid ""
-"The NewMail plugin will follow the Folder Preferences option &quot;Enable "
-"Unread Message Notification&quot;"
-msgstr ""
-"Nyepost tillegsprogramet vil fygja Mappeinnstillingarvala &quote; Slå på "
-"varsling av uleste meldingar&quote;"
-
-msgid "Width of popup window:"
-msgstr "Breidde på skriveområdet"
-
-msgid "If set to 0, reverts to default value"
-msgstr "Viss satt til 0, tilbakestill til standard verdi"
-
-msgid "Height of popup window:"
-msgstr "Høgd på skriveområdet"
-
-msgid "uploaded media file"
-msgstr "last opp mediafila"
-
-msgid "none"
-msgstr "Inga"
-
-msgid "Upload Media File:"
-msgstr "Last opp mediafila:"
-
-msgid "Uploaded Media File:"
-msgstr "Last opp mediafila:"
-
-#, php-format
-msgid "Media file %s will be removed, if you upload other media file."
-msgstr "Mediafila %s vil verta fjerna, viss ein lastar opp andre mediafiler."
-
-msgid "Warning"
-msgstr "Åtvaring"
-
-msgid "There are some restrictions in Sent Subfolder options."
-msgstr "Det er nokre restriksjonar i Sent undermappevala."
-
-msgid "Sent Subfolders plugin is misconfigured."
-msgstr "Sent undermapper programtillegg er ikkje konfigurert korrekt"
-
-msgid "Save emails submitted to SpamCop:"
-msgstr "Lagre epost sent inn til SpamCop:"
-
-msgid "Spam Service Type:"
-msgstr "Type reklameteneste"
-
-msgid "Free reporting"
-msgstr "Fri raportering"
-
-msgid "Member services"
-msgstr "Medlemstenester"
-
-msgid "Save Service Type"
-msgstr "Lagra tenestetype"
-
-msgid "SpamCop reporting"
-msgstr "SpamCop raportering"
-
-#, php-format
-msgid ""
-"Your %s dictionary is encrypted with password that differs from your current "
-"password."
-msgstr ""
-"Di %s ordbok er kryptert med eit passord som er forskjelleg frå nåverande "
-"passord."
-
-msgid "Invalid SquirrelSpell module."
-msgstr "Ugyldig SquirrelSpell modul."
-
-#, php-format
-msgid "Found %d error"
-msgid_plural "Found %d errors"
-msgstr[0] "Fant %d feil"
-msgstr[1] "Fant %d feil"
-
-#, php-format
-msgid "Using %s dictionary for spellcheck."
-msgstr "Brukar %s ordbok til stavekontroll."
-
-msgid "Translation Theme:"
-msgstr "Omsetjingstema"
-
-msgid ""
-"Selected translation engine is disabled. Please update your translation "
-"preferences."
-msgstr "Vald omsetjingsmåte er av. Oppdater omsetjingsinnstillingane."
-
-msgid "Translation Preferences"
-msgstr "Omsetjingsinnstillingar"
-
-msgid "Maximum of 25 kilobytes translated, powered by Systran"
-msgstr "Maksimalt 25 kilobyte oversatt, drevet av Systran"
-
-msgid "No known limits, powered by GPLTrans (free, open source)"
-msgstr "Inga kjent grense,dreven av GPLTrans (gratis open kjeldekode)"
-
-msgid "Transliterate unknown words:"
-msgstr "Omset ukjende ord:"
-
-msgid "When composing:"
-msgstr "Ved skriving"
-
-msgid "Not yet functional, currently does nothing"
-msgstr "Ennå ikkje i bruk"
-
-msgid "D"
-msgstr "D"
-
-msgid "F"
-msgstr "F"
-
-msgid "SquirrelMail notice messages"
-msgstr "SquirrelMail beskjed:"
-
-msgid "Category:"
-msgstr "Katrgori:"
-
-msgid "Tip:"
-msgstr "Tips:"
-
-msgid "More info:"
-msgstr "Meir informasjon:"
-
-msgid "Message Flags"
-msgstr "Meldingsflagg"
-
-msgid "Attachment"
-msgstr "Vedlegg"
-
-msgid "Click here to change the sorting of the message list"
-msgstr "Klikk her for å endra sorteringa av meldingslista"
-
 msgid "Delivery error report"
 msgstr "Lever feilrapport "
 
@@ -5031,3 +3930,1028 @@ msgstr "Meldigshovud frå medlingar som ikkje vart levert"
 
 msgid "This image has been removed for security reasons"
 msgstr "Dette bilete er fjerna av tryggleiksgrunnar"
+
+#~ msgid "Some or all of the help documents are not present!"
+#~ msgstr "Nokre eller alle hjelpefilene mangler."
+
+#~ msgid "mailbox"
+#~ msgstr "postkasse"
+
+#~ msgid "About SquirrelMail %s"
+#~ msgstr "Om SquirrelMail %s"
+
+#~ msgid ""
+#~ "SquirrelMail is the name of the program that provides access to your "
+#~ "email via the web."
+#~ msgstr ""
+#~ "Squirrelmail er namnet på programmet som ger tilgang til din epost via "
+#~ "veven."
+
+#~ msgid ""
+#~ "If you have questions about or problems with your mail account, "
+#~ "passwords, abuse etc, please refer to your system administrator or "
+#~ "provider%s."
+#~ msgstr ""
+#~ "Viss du har spørsmål om problem med epostkontoen, passord,  misbruk ol, "
+#~ "referer ril systemadministratoren eller leveradør %s."
+
+#~ msgid ""
+#~ "They can assist you adequately with these issues. The SquirrelMail "
+#~ "Project Team cannot help you with that. The %shelp system%s provides "
+#~ "answers to frequently asked questions."
+#~ msgstr ""
+#~ "Dei kan gi deg assistanse med desse spørsmåla. Squirrelmail Prosjekt "
+#~ "teamet kan ikkje hjelpa med dette. %shjelp system %s gir svar på ofte "
+#~ "spurte spørsmål OSS."
+
+#~ msgid ""
+#~ "SquirrelMail is a feature rich, standards compliant webmail application "
+#~ "written in PHP. It was made by a group of volunteers united in the "
+#~ "SquirrelMail Project Team and is released as open source, free software "
+#~ "under the %sGNU General Public License%s."
+#~ msgstr ""
+#~ "Squirrelmail er ein funksjons rik standard føyeleg vevepostprogram "
+#~ "skriven i PHP. Den er laga av ei gruppe frivillege samla i Squirrelmail "
+#~ "Prosjekt gruppa og er utgitt som open kildekode, gratis program under %"
+#~ "sGNU General Public License%s"
+
+#~ msgid ""
+#~ "For more information about SquirrelMail and the SquirrelMail Project "
+#~ "Team, see %sthe SquirrelMail website%s."
+#~ msgstr ""
+#~ "For informasjon om Squirrelmail og Squirrelmail prosjekt gruppa, sjå %s "
+#~ "Squirrelmail vevsida %s"
+
+#~ msgid "System information"
+#~ msgstr "System informasjon"
+
+#~ msgid "You are using SquirrelMail version: %s"
+#~ msgstr "Brukar SquirrelMail versjon %s"
+
+#~ msgid "The administrator installed the following plugins:"
+#~ msgstr "Administratoren har instalert fyljande programtillegg:"
+
+#~ msgid "none installed"
+#~ msgstr "ingenting er installert"
+
+#~ msgid "Nothing to search"
+#~ msgstr "Ingenting å søkje ette"
+
+#~ msgid "No folders were found to unsubscribe from."
+#~ msgstr "Fann ingen mapper å stoppa abonnement på."
+
+#~ msgid "No folders were found to subscribe to."
+#~ msgstr "Fann ingen mappe å abonnere på"
+
+#~ msgid "Save folder tree"
+#~ msgstr "Lagra mappetre"
+
+#~ msgid "SquirrelMail Webmail Application"
+#~ msgstr "SquirrelMail Vevepostprogram"
+
+#~ msgid "Received"
+#~ msgstr "Kvittering:"
+
+#~ msgid "Compose Preferences"
+#~ msgstr "Val for skriving"
+
+#~ msgid ""
+#~ "Control the behaviour and layout of writing new mail messages, replying "
+#~ "to and forwarding messages."
+#~ msgstr ""
+#~ "Kontroll adferd og utsjånad ved skriving av ny e-postmeldingar, svar til "
+#~ "og vidaresending av meldingar."
+
+#~ msgid "View as plain text"
+#~ msgstr "Syn som rein tekst"
+
+#~ msgid "View as HTML"
+#~ msgstr "Syn som HTML"
+
+#~ msgid "As Attachment"
+#~ msgstr "Som vedlegg"
+
+#~ msgid "Bypass Trash"
+#~ msgstr "Ikkje bruk søppelbøtta"
+
+#~ msgid "Please enter something to search for"
+#~ msgstr "Skriv inn noko å søkje etter"
+
+#~ msgid "There must be at least one criteria to search for"
+#~ msgstr "Det må vera minst eit søkjevilkår"
+
+#~ msgid "Error in criteria argument"
+#~ msgstr "Feil i vilkårsgrunnen"
+
+#~ msgid "(Illegal date)"
+#~ msgstr "(ulovleg dato)"
+
+#~ msgid "(Wrong date)"
+#~ msgstr "(Feil dato)"
+
+#~ msgid "In"
+#~ msgstr "I"
+
+#~ msgid "(Missing argument)"
+#~ msgstr "(Manglar argument)"
+
+#~ msgid "(Spurious argument)"
+#~ msgstr "(Falskt argument)"
+
+#~ msgid "Fold"
+#~ msgstr "Brett"
+
+#~ msgid "Unfold"
+#~ msgstr "Brett opp"
+
+#~ msgid "Saved Searches"
+#~ msgstr "Lagra søk"
+
+#~ msgid "Missing"
+#~ msgstr "Manglar"
+
+#~ msgid "and&nbsp;subfolders:"
+#~ msgstr "og&nbsp;undermapper:"
+
+#~ msgid "Exclude Criteria:"
+#~ msgstr "Ikkje ta med vilkåret"
+
+#~ msgid "Search Criteria"
+#~ msgstr "Vilkår for søk"
+
+#~ msgid "Add New Criteria"
+#~ msgstr "Legg til nytt vilkår"
+
+#~ msgid "Remove Excluded Criteria"
+#~ msgstr "Fjern utelukka vilkår"
+
+#~ msgid "Remove All Criteria"
+#~ msgstr "Fjern alle vilkår"
+
+#~ msgid "Not"
+#~ msgstr "Ikkje"
+
+#~ msgid "Answered"
+#~ msgstr "Svart"
+
+#~ msgid "Before"
+#~ msgstr "Før"
+
+#~ msgid "Message Body"
+#~ msgstr "Meldingskropp"
+
+#~ msgid "Deleted"
+#~ msgstr "Sletta"
+
+#~ msgid "Draft"
+#~ msgstr "Kladd"
+
+#~ msgid "Flagged"
+#~ msgstr "Flagg"
+
+#~ msgid "Sent By"
+#~ msgstr "Sendt av"
+
+#~ msgid "Header Field"
+#~ msgstr "Topptekst felt"
+
+#~ msgid "Keyword"
+#~ msgstr "Nøkkelord"
+
+#~ msgid "Larger Than"
+#~ msgstr "Større enn"
+
+#~ msgid "Old"
+#~ msgstr "Gamal"
+
+#~ msgid "On"
+#~ msgstr "På"
+
+#~ msgid "Recent"
+#~ msgstr "Nyleg"
+
+#~ msgid "Seen"
+#~ msgstr "Sett"
+
+#~ msgid "Sent Before"
+#~ msgstr "Sendt før"
+
+#~ msgid "Sent On"
+#~ msgstr "Sendt På"
+
+#~ msgid "Sent Since"
+#~ msgstr "send sidan"
+
+#~ msgid "Since"
+#~ msgstr "Sidan"
+
+#~ msgid "Smaller Than"
+#~ msgstr "Mindre enn"
+
+#~ msgid "Subject Contains"
+#~ msgstr "Emne inneheld"
+
+#~ msgid "Header and Body"
+#~ msgstr "Topptekst og kropp"
+
+#~ msgid "Sent To"
+#~ msgstr "Sendt til"
+
+#~ msgid "And In"
+#~ msgstr "Og i"
+
+#~ msgid "Or In"
+#~ msgstr "Eller i"
+
+#~ msgid "And"
+#~ msgstr "Og"
+
+#~ msgid "Or"
+#~ msgstr "Eller"
+
+#~ msgid "Standard search"
+#~ msgstr "Standard søk"
+
+#~ msgid "Advanced search"
+#~ msgstr "Avansert søk"
+
+#~ msgid "Folder List"
+#~ msgstr "Mappeliste"
+
+#~ msgid "PHP install does not have LDAP support."
+#~ msgstr "PHP installasjon har ikkje LDAP støtte."
+
+#~ msgid "Illegal folder name."
+#~ msgstr "Ulovleg mappe namn."
+
+#~ msgid "The name may not contain any of the following: %s"
+#~ msgstr "Namnet må ikkje innehalda noko av: %s"
+
+#~ msgid "Please select a different name."
+#~ msgstr "Velj eit anna namn."
+
+#~ msgid "You have not selected a folder to subscribe. Please do so."
+#~ msgstr "Vel mappe til å abonnera på."
+
+#~ msgid "You have not selected a folder to unsubscribe. Please do so."
+#~ msgstr "Vel mappe til å avbryte abonnementet på"
+
+#~ msgid "Possible reason:"
+#~ msgstr "Mogleg årsak:"
+
+#~ msgid "ERROR: Bad function call."
+#~ msgstr "FEIL : Feil funksjonskall"
+
+#~ msgid "Reason:"
+#~ msgstr "Grunn:"
+
+#~ msgid ""
+#~ "TLS is enabled, but this version of PHP does not support TLS sockets, or "
+#~ "is missing the openssl extension."
+#~ msgstr ""
+#~ "TLS er slåt på, men denne versjonen av PHP støttar ikkje TLS tilkopling, "
+#~ "eller manglar &quote;openssl&quote; tillegget."
+
+#~ msgid ""
+#~ "IMAP STARTTLS is enabled in SquirrelMail configuration, but used IMAP "
+#~ "server does not support STARTTLS."
+#~ msgstr ""
+#~ "IMAP STARTTLS er på i Squirrelmail konfigurasjonen, men brukt IMAP tenar "
+#~ "støttar ikkje STARTTLS."
+
+#~ msgid "Unable to start TLS."
+#~ msgstr "Klarte ikkje å starta TLS."
+
+#~ msgid ""
+#~ "IMAP STARTTLS is enabled in SquirrelMail configuration, but used PHP "
+#~ "version does not support functions that allow to enable encryption on "
+#~ "open socket."
+#~ msgstr ""
+#~ "IMAP STARTTLS er på i Squirrelmail konfigurasjonen, men PHP versjonen "
+#~ "støttar ikkje funksjonar som tillet å krypterer på opne kontaktar."
+
+#~ msgid ""
+#~ "Your mailbox is not located at this server. Try a different server or "
+#~ "consult your system administrator"
+#~ msgstr ""
+#~ "Finn ikkje epostkontoen på denne tenaren. Prøv ein anna tenar eller ta "
+#~ "kontakt med systemadministratoren"
+
+#~ msgid "Unknown recipient"
+#~ msgstr "Ukjend mottakar"
+
+#~ msgid "Unflag"
+#~ msgstr "Fjerna flagget"
+
+#~ msgid "Flag"
+#~ msgstr "Flagg"
+
+#~ msgid "Undelete"
+#~ msgstr "Gjenopprett"
+
+#~ msgid "Viewing HTML formatted email"
+#~ msgstr "Syn HTML formatert epost"
+
+#~ msgid "unavailable"
+#~ msgstr "ikkje tilgjengeleg"
+
+#~ msgid "Error"
+#~ msgstr "Feil"
+
+#~ msgid "Terminating SquirrelMail due to a fatal error"
+#~ msgstr "Avslutter Sqiurrelmail på grunn av ein fatal feil"
+
+#~ msgid "Email delivery error"
+#~ msgstr "Feil ved levering av eposten"
+
+#~ msgid "Can't execute command '%s'."
+#~ msgstr "Kan ikkje utføra kommandoen '%s'."
+
+#~ msgid ""
+#~ "Secure SMTP (TLS) is enabled in SquirrelMail configuration, but used PHP "
+#~ "version does not support it."
+#~ msgstr ""
+#~ "Sikker SMTP (TLS) er slått på i Squirrelmail oppsettet, men PHP versjonen "
+#~ "støttar ikkje dette."
+
+#~ msgid "Can't open SMTP stream."
+#~ msgstr "Kan ikkje opne SMTP dataflyt."
+
+#~ msgid "TLS session is already activated."
+#~ msgstr "TLS sesjonen er allereie aktivert."
+
+#~ msgid ""
+#~ "SMTP STARTTLS is enabled in SquirrelMail configuration, but used SMTP "
+#~ "server does not support it"
+#~ msgstr ""
+#~ "SMTP STARTTLS er slått på i Squirrelmail oppsettet, men SMTP tenaren "
+#~ "støttar ikkje dette"
+
+#~ msgid ""
+#~ "SMTP STARTTLS is enabled in SquirrelMail configuration, but used PHP "
+#~ "version does not support functions that allow to enable encryption on "
+#~ "open socket."
+#~ msgstr ""
+#~ "SMTP STARTTLS er slått på i Squirrelmail oppsettet, men PHP versjonen "
+#~ "støttar ikkje funksjonar som tillet kryptering på opne kontaktar."
+
+#~ msgid ""
+#~ "Run \"configure\", choose option 4 (General options) and set option 10 "
+#~ "(Disable server thread sort) to true)."
+#~ msgstr ""
+#~ "Utfør \"konfigurasjon\" vel opsjon 4 ( Generelle val) og set opsjon 10 "
+#~ "(Kople ut tenar trådsortering) til sann."
+
+#~ msgid ""
+#~ "Run \"configure\", choose option 4 (General options) and set option 11 "
+#~ "(Disable server-side sorting) to true."
+#~ msgstr ""
+#~ "Utfør \"konfigurasjon\" vel opsjon 4 ( Generelle val) og set opsjon 11 "
+#~ "(Kople ut tenar-side sortering) til sann."
+
+#~ msgid "Your used charset is not supported by your IMAP server."
+#~ msgstr "IMAP tenaren støttar ikkje brukt teikn"
+
+#~ msgid ""
+#~ "Run \"configure\", choose option 4 (General options) and set option 12 "
+#~ "(Allow server charset search) to false) or choose option 10 (Language "
+#~ "settings) and set option 2 (Default charset) to a charset supported by "
+#~ "your IMAP server."
+#~ msgstr ""
+#~ "Utfør \"konfigurasjon\" vel opsjon 4 ( Generelle val) og set opsjon 12 "
+#~ "(Tillet tenar teikn søk) til usann) eller vel opsjon 10 ( Språk oppsett) "
+#~ "og set opsjon 2 (Standard teiknset) til teiknset støtta av din IMAP tenar."
+
+#~ msgid "Out of quota error."
+#~ msgstr "Feil ved ute av kvote."
+
+#~ msgid ""
+#~ "An error occured when SquirrelMail appended a message to the mailbox as "
+#~ "listed in this message."
+#~ msgstr ""
+#~ "Ein feil oppstod når Squirrelmail la til ei melding til postboksen som "
+#~ "opplista i denne meldinga."
+
+#~ msgid "Your IMAP server returned an error."
+#~ msgstr "IMAP tenar returnerte ein feil."
+
+#~ msgid "IMAP server closed the connection."
+#~ msgstr "Imap tenar lukka sambandet"
+
+#~ msgid "General Message Composition"
+#~ msgstr "Generell meldingsvising og ny melding"
+
+#~ msgid "Replying and Forwarding Messages"
+#~ msgstr "Svar og vidaresending melding"
+
+#~ msgid "Strip signature when replying"
+#~ msgstr "Fjern signatur ved svar"
+
+#~ msgid "Template"
+#~ msgstr "Mal"
+
+#~ msgid "Default font style"
+#~ msgstr "Standard fontstil"
+
+#~ msgid "Font style"
+#~ msgstr "Fontstil"
+
+#~ msgid "Font size"
+#~ msgstr "Fontstorleik"
+
+#~ msgid "Default font size"
+#~ msgstr "Standard fontstorleik"
+
+#~ msgid "Icon Theme"
+#~ msgstr "Ikondrakt"
+
+#~ msgid "Enable Fancy Row Mouseover Highlighting"
+#~ msgstr "Slå på fansy rullmusover framheving"
+
+#~ msgid "Show Flag / Unflag Buttons"
+#~ msgstr "Syn flagg / Uflagg knappar"
+
+#~ msgid "Use Compact Page Selector"
+#~ msgstr "Bruk pilar for fram/tilbake"
+
+#~ msgid "Message Display Options"
+#~ msgstr "Generelle visingsval"
+
+#~ msgid "Height of inline frame"
+#~ msgstr "Høyde på innebygd ramme"
+
+#~ msgid "Show 'Delete & Prev/Next' Links"
+#~ msgstr "Syn 'slett og førre/følgjande' lenkjer"
+
+#~ msgid "Save Replies with Original Message"
+#~ msgstr "Lagre svar med opphavleg melding"
+
+#~ msgid "%d Minute"
+#~ msgid_plural "%d Minutes"
+#~ msgstr[0] "%d Minutt"
+#~ msgstr[1] "%d Minutt"
+
+#~ msgid "Show only subscribed folders"
+#~ msgstr "Syn bare mappar med abonnement"
+
+#~ msgid "Template Default"
+#~ msgstr "Standard mal"
+
+#~ msgid "XP"
+#~ msgstr "XP"
+
+#~ msgid "Mercury/32 IMAP server"
+#~ msgstr "Mercury/32 IMAP tenar"
+
+#~ msgid "IMAP Connection Security"
+#~ msgstr "IMAP tilkoplingtryggleik"
+
+#~ msgid "Plain text connection"
+#~ msgstr "Rein tekstkopling"
+
+#~ msgid "Secure IMAP (TLS) connection"
+#~ msgstr "Trygg IMAP (TLS) kopling"
+
+#~ msgid "IMAP STARTTLS connection"
+#~ msgstr "IMAP STARTTLS kopling"
+
+#~ msgid ""
+#~ "Requires higher PHP version and special functions. See SquirrelMail "
+#~ "documentation."
+#~ msgstr ""
+#~ "Krev ein nyare PHP versjon og spesielle funksjonar. Sjå Squirrelmail "
+#~ "dokumentasjonen"
+
+#~ msgid "Sendmail Arguments"
+#~ msgstr "Sendmail argument"
+
+#~ msgid "SMTP Connection Security"
+#~ msgstr "SMTP tilkoplingtryggleik"
+
+#~ msgid "Disable server-side sorting"
+#~ msgstr "Slå av sortering på tenar"
+
+#~ msgid "Disable server-side thread sorting"
+#~ msgstr "Slå av trådsortering på tenar"
+
+#~ msgid "Search functions"
+#~ msgstr "Funksjonssøk "
+
+#~ msgid "Only basic search"
+#~ msgstr "Kun basis søk"
+
+#~ msgid "Only advanced search"
+#~ msgstr "Kun avansert søk"
+
+#~ msgid "Both search functions"
+#~ msgstr "Begge søkefunksjonane"
+
+#~ msgid "Time Zone Configuration"
+#~ msgstr "Tidssone innstillingar"
+
+#~ msgid "Standard GNU C time zones"
+#~ msgstr "Standard GNU C tidssone"
+
+#~ msgid "Strict time zones"
+#~ msgstr "Nøyaktig tidssone"
+
+#~ msgid "Custom GNU C time zones"
+#~ msgstr "Tilpassa GNU C tidssone"
+
+#~ msgid "Custom strict time zones"
+#~ msgstr "Tilpassa nøyaktig tidssone"
+
+#~ msgid "Size of username field"
+#~ msgstr "Storleik på brukarnamnfeltet"
+
+#~ msgid "Size of key field"
+#~ msgstr "Storleik på nøkkelfeltet"
+
+#~ msgid "Size of value field"
+#~ msgstr "Storleik på verdifeltet"
+
+#~ msgid "Show alternative language names"
+#~ msgstr "Syn alternative språknamn"
+
+#~ msgid "Enable aggressive decoding"
+#~ msgstr "Slå på agresiv dekoding"
+
+#~ msgid "Tweaks"
+#~ msgstr "Tilleggsval"
+
+#~ msgid "Use advanced tree folder listing"
+#~ msgstr "Bruk avansert tremappelister"
+
+#~ msgid "Use icons"
+#~ msgstr "Bruk ikona"
+
+#~ msgid "Use inline frames with HTML mails"
+#~ msgstr "Bruk innebygd rammer med HTML epost"
+
+#~ msgid "Use PHP recode functions"
+#~ msgstr "Bruk php recode funksjonar"
+
+#~ msgid "Use PHP iconv functions"
+#~ msgstr "Bruk php iconv funksjonar"
+
+#~ msgid "Allow remote configuration test"
+#~ msgstr "Tillat fjernkontrolltest av oppsettet"
+
+#~ msgid "Templates"
+#~ msgstr "Tema"
+
+#~ msgid "Default font set"
+#~ msgstr "Standard fontset"
+
+#~ msgid "Default template"
+#~ msgstr "Standard tema"
+
+#~ msgid "Show System Specifications"
+#~ msgstr "Syn systemspesifikasjon"
+
+#~ msgid "my email account"
+#~ msgstr "min epostkonto"
+
+#~ msgid "Bug Reports"
+#~ msgstr "Feilrapport"
+
+#~ msgid "You must type in a new password."
+#~ msgstr "Ein må skriva inn eit nytt passord."
+
+#~ msgid "You must also type in your new password in the verify box."
+#~ msgstr "Ein må også skriva inn passordet i stadfestboksen."
+
+#~ msgid "Your new password does not match the verify password."
+#~ msgstr "Nytt passord passar ikkje med passoredet i stafestboksen."
+
+#~ msgid "You must type in your current password."
+#~ msgstr "Skriv inn nåverande passord."
+
+#~ msgid "Your current password is not correct."
+#~ msgstr "Gitt passord er feil."
+
+#~ msgid "Your new password should be %s to %s characters long."
+#~ msgstr "Nytt passord skulle vert %s til %s teiken langt."
+
+#~ msgid "Your new password contains invalid characters."
+#~ msgstr "Passordet inneheld ugyldige teikn."
+
+#~ msgid "Change Password"
+#~ msgstr "Endra passordet"
+
+#~ msgid "Current Password:"
+#~ msgstr "Noverande passord:"
+
+#~ msgid "New Password:"
+#~ msgstr "Nytt passord:"
+
+#~ msgid "Verify New Password:"
+#~ msgstr "Stadfest nytt passord:"
+
+#~ msgid "Use this to change your email password."
+#~ msgstr "Bruk dette til å endra e-post passordet-"
+
+#~ msgid "User's Password"
+#~ msgstr "Brukarpassord"
+
+#~ msgid "Current configuration requires LDAP support in PHP."
+#~ msgstr "Nåverande oppsett krev LDAP støtte i PHP."
+
+#~ msgid "Plugin is not configured correctly."
+#~ msgstr "Tillegsprogram er ikkje satopp rett."
+
+#~ msgid "Setting of LDAP connection option %s to value %s failed."
+#~ msgstr "Oppsett av LDAP tilkoplingsval %s til verdi %s mislukka"
+
+#~ msgid "Incorrect LDAP connection option: %s"
+#~ msgstr "Feil LDAP tilkoplingsval %s"
+
+#~ msgid ""
+#~ "Current PHP LDAP extension does not allow use of ldap_set_option() "
+#~ "function."
+#~ msgstr ""
+#~ "Nåværande PHP LDAP utviding tillet ikke bruk av ldap_set_option() "
+#~ "funksjonen-"
+
+#~ msgid "Unable to use TLS."
+#~ msgstr "Klarte ikkje å bruka TLS"
+
+#~ msgid "Error: %s"
+#~ msgstr "Feil: %s"
+
+#~ msgid "Unable to use LDAP TLS in current setup."
+#~ msgstr "Klarte ikkje å brukar LDAP TLS i nåverande oppsett."
+
+#~ msgid "Unable to bind to LDAP server."
+#~ msgstr "Klarte ikkje å kople til LDAp tenar."
+
+#~ msgid "Server replied: %s"
+#~ msgstr "Tenaren svarte:%s"
+
+#~ msgid "Unable to find user's password attribute."
+#~ msgstr "Klarte ikkje å finna kjenneteikna til brukarpassordet"
+
+#~ msgid "Unable to rebind to LDAP server."
+#~ msgstr "Klarte ikkje å kople pånytt til LDAP tenaren"
+
+#~ msgid "LDAP server uses different attribute to store user's password."
+#~ msgstr ""
+#~ "LDAP tenaren brukar forskjellege kjenneteikn for å lagre brukarpassordet."
+
+#~ msgid "Unable to connect to LDAP server."
+#~ msgstr "Kunne ikkje koble til LDAP tenaren"
+
+#~ msgid "Unable to find user's DN."
+#~ msgstr "Klarte ikkje finna brukaren sin DN."
+
+#~ msgid "Search error."
+#~ msgstr "Søke feil."
+
+#~ msgid "Multiple userid matches found."
+#~ msgstr "Fant fleire treff på brukaridentiteten"
+
+#~ msgid "ldap_get_dn error."
+#~ msgstr "ldap_get_dn feil."
+
+#~ msgid "Unsupported crypto: %s"
+#~ msgstr "Ikkje støtta kryptering: %s"
+
+#~ msgid "PHP mhash extension is missing or does not support selected crypto."
+#~ msgstr "PHP mhash utviding manglar eller støttar ikkje valt kryptering."
+
+#~ msgid "System crypt library doesn't support standard DES crypt."
+#~ msgstr "System krypteringsbibliotek støttar ikkje standard DES kryptering."
+
+#~ msgid "System crypt library doesn't have MD5 support."
+#~ msgstr "System krypteringsbibliotek har ikkje MD5 støtte."
+
+#~ msgid "System crypt library doesn't support extended DES crypt."
+#~ msgstr "System krypteringsbibliotek støttar ikkje utvida DES kryptering."
+
+#~ msgid "System crypt library doesn't have Blowfish support."
+#~ msgstr "System krypteringsbibliotek har ikkje Blowfish støtte."
+
+#~ msgid "unknown"
+#~ msgstr "ukjend"
+
+#~ msgid "Unable to validate user's password."
+#~ msgstr "Klarte ikkje sjekka brukarpassordet."
+
+#~ msgid "Blowfish is not supported by webserver's system crypt library."
+#~ msgstr ""
+#~ "Blowfish er ikkje støtta av vevtenaren sitt sytemkryteringsbibliotek."
+
+#~ msgid "MD5 is not supported by webserver's system crypt library."
+#~ msgstr "MD5 er ikkje støtta av vevtenaren sitt sytemkryteringsbibliotek."
+
+#~ msgid ""
+#~ "Extended DES crypt is not supported by webserver's system crypt library."
+#~ msgstr ""
+#~ "Utvida DES kryptering er ikkje støtta av vevtenaren sitt "
+#~ "sytemkryteringsbibliotek."
+
+#~ msgid ""
+#~ "Standard DES crypt is not supported by webserver's system crypt library."
+#~ msgstr ""
+#~ "Stadard DES krypteing er ikkje støtta av vevtenaren sitt "
+#~ "sytemkryteringsbibliotek."
+
+#~ msgid "PHP Curl extension is NOT available! Unable to change password!"
+#~ msgstr "PHP Curl modul IKKJE tilgjengeleg. Kan ikkje endra passordet!"
+
+#~ msgid "Cannot change password! (Is user 'Self Configurable User' ?) (401)"
+#~ msgstr "Kan ikkje endra pasordet! (Er brukar Sjølvkonfigurerbar ?)(401)"
+
+#~ msgid "Cannot change password!"
+#~ msgstr "Kan ikkje endra passordet!"
+
+#~ msgid "Cannot connect to Database Server, please try later!"
+#~ msgstr "Kan ikkje kopla til databasetenaren, prøv seinare!"
+
+#~ msgid "Database not found on server"
+#~ msgstr "Fant ikkje databasen på tenaren"
+
+#~ msgid "SQL call failed, try again later."
+#~ msgstr "SQL kallet feila, prøv seinare."
+
+#~ msgid "Duplicate login entries detected, cannot change password!"
+#~ msgstr "Fleire pålogginger finst, kan ikkje endra passordet!"
+
+#~ msgid "Password change was not successful!"
+#~ msgstr "Vellukka endring av passordet!"
+
+#~ msgid ""
+#~ "Plugin is unable to use PHP Pear DB libraries. PHP Pear includes must be "
+#~ "available in your PHP include_path setting."
+#~ msgstr ""
+#~ "Tilleggsprogramet kalrer ikkje å bruka PHP Pear DB biblioteka. PHP Pear "
+#~ "innehaldet må vera i PHP include_path oppsettet."
+
+#~ msgid "Required change password backend configuration options are missing."
+#~ msgstr "Krevd endra passord bakstykke oppsettvala er ikkje tilgjengelege."
+
+#~ msgid "Connection error: %s"
+#~ msgstr "Tilkoplingsfeil: %s"
+
+#~ msgid "Invalid table name: %s"
+#~ msgstr "Ugyldig tabellnamn: %s"
+
+#~ msgid "User table is empty."
+#~ msgstr "Brukar tabell er tom."
+
+#~ msgid "Invalid uid field."
+#~ msgstr "Ugyldig uid felt."
+
+#~ msgid "Invalid password field"
+#~ msgstr "Ugyldig passordfelt"
+
+#~ msgid "Invalid domain field"
+#~ msgstr "Ugyldige domenefelt"
+
+#~ msgid "Query failed: %s"
+#~ msgstr "Spørjing mislukka: %s"
+
+#~ msgid "Unable to find user in user table."
+#~ msgstr "Klarte ikkje å finna brukar i brukartabellen."
+
+#~ msgid "Too many matches found in user table."
+#~ msgstr "For mange treff i brukartabellen."
+
+#~ msgid "Unable to detect password crypto algorithm."
+#~ msgstr "Klarte ikkje å detektera passordkrypteringsalgoritmen."
+
+#~ msgid "Unable to encrypt new password."
+#~ msgstr "Klarte ikkje å kryptere nytt passord."
+
+#~ msgid "Unable to set new password: %s"
+#~ msgstr "Klarte ikkje å setja nytt adresser: %s"
+
+#~ msgid "Unable to use digest-md5 crypto."
+#~ msgstr "Klarte ikkje å bruka digest-md5 kryptering."
+
+#~ msgid "Closing Connection"
+#~ msgstr "Koplar ifrå"
+
+#~ msgid "Connecting to Password Server"
+#~ msgstr "Koplar til passordtenar"
+
+#~ msgid "No valid backend defined."
+#~ msgstr "Inga gyldig bakstykke definert."
+
+#~ msgid "Incorrent path to vmail.inc file."
+#~ msgstr "Ugyldig sti til vmail.inc fila."
+
+#~ msgid "Invalid or corrupted vmail.inc file."
+#~ msgstr "Ugyldig eller skada vmail.inc fil."
+
+#~ msgid "Invalid user."
+#~ msgstr "Ugyldig brukar."
+
+#~ msgid "Empty domain"
+#~ msgstr "Tom domene"
+
+#~ msgid "Empty domain password"
+#~ msgstr "Tom domenepassord"
+
+#~ msgid "Empty username"
+#~ msgstr "Tomt brukarnamn"
+
+#~ msgid "Empty new password"
+#~ msgstr "Tomt nytt passord"
+
+#~ msgid "Server Capability response:"
+#~ msgstr "Tenaren svarte:"
+
+#~ msgid ""
+#~ "Select the IMAP commands you would like to run. Most commands require a "
+#~ "selected mailbox so the select command is already setup. You can clear "
+#~ "all the commands and test your own IMAP command strings. The commands are "
+#~ "executed in order. The default values are simple IMAP commands using your "
+#~ "default_charset and folder_prefix from SquirrelMail when needed."
+#~ msgstr ""
+#~ "Vel IMAP-kommando ein vil kjøyra. Dei fleste kommandoar treng ein valgt "
+#~ "postboks slik at valg kommando er alt oppsatt. Ein kan sletta alle "
+#~ "kommandoane og testa sine eigne IMAP kommandostrenger. Kommandoane vert "
+#~ "utført i rekkjefølge. Standard verdiar er enkle IMAP kommandoar som når "
+#~ "det trengs brukar standard karakter-set og mappe-prefix frå Squirrelmail."
+
+#~ msgid ""
+#~ "NOTE: These commands are live, any changes made will effect your current "
+#~ "email account."
+#~ msgstr ""
+#~ "MERK: Desse kommandoane vert brukt, einkvar endring vil påvirka noverande "
+#~ "e-postkonto."
+
+#~ msgid "Select"
+#~ msgstr "Vel"
+
+#~ msgid "Test Name"
+#~ msgstr "Test namn"
+
+#~ msgid "IMAP command string"
+#~ msgstr "IMAP kommando streng"
+
+#~ msgid "Request:"
+#~ msgstr "Spør:"
+
+#~ msgid "Execution time:"
+#~ msgstr "Kjøretid:"
+
+#~ msgid "%s ms"
+#~ msgstr "%s ms"
+
+#~ msgid "Command failed"
+#~ msgstr "Kommando feila"
+
+#~ msgid "No POP3 servers configured yet."
+#~ msgstr "Inga POP3 tenar konfigurert ennå"
+
+#~ msgid "Click here to go to the options page."
+#~ msgstr "Klikk her for å gå til innstillings sida"
+
+#~ msgid "Fetching from %s"
+#~ msgstr "Hent frå %s"
+
+#~ msgid "Login OK: Inbox contains %s message"
+#~ msgid_plural "Login OK: Inbox contains %s messages"
+#~ msgstr[0] "Innlogging OK Innboks inneheld %s melding"
+#~ msgstr[1] "Innlogging OK Innboks inneheld %s meldinger"
+
+#~ msgid "Fetching message %s."
+#~ msgstr "Hentar melding %s."
+
+#~ msgid "Refetching message %s."
+#~ msgstr "Hentar melding på nytt %s."
+
+#~ msgid "Warning:"
+#~ msgstr "Åtvaring:"
+
+#~ msgid ""
+#~ "The NewMail plugin will follow the Folder Preferences option &quot;Enable "
+#~ "Unread Message Notification&quot;"
+#~ msgstr ""
+#~ "Nyepost tillegsprogramet vil fygja Mappeinnstillingarvala &quote; Slå på "
+#~ "varsling av uleste meldingar&quote;"
+
+#~ msgid "Width of popup window:"
+#~ msgstr "Breidde på skriveområdet"
+
+#~ msgid "If set to 0, reverts to default value"
+#~ msgstr "Viss satt til 0, tilbakestill til standard verdi"
+
+#~ msgid "Height of popup window:"
+#~ msgstr "Høgd på skriveområdet"
+
+#~ msgid "uploaded media file"
+#~ msgstr "last opp mediafila"
+
+#~ msgid "none"
+#~ msgstr "Inga"
+
+#~ msgid "Upload Media File:"
+#~ msgstr "Last opp mediafila:"
+
+#~ msgid "Uploaded Media File:"
+#~ msgstr "Last opp mediafila:"
+
+#~ msgid "Media file %s will be removed, if you upload other media file."
+#~ msgstr ""
+#~ "Mediafila %s vil verta fjerna, viss ein lastar opp andre mediafiler."
+
+#~ msgid "Warning"
+#~ msgstr "Åtvaring"
+
+#~ msgid "There are some restrictions in Sent Subfolder options."
+#~ msgstr "Det er nokre restriksjonar i Sent undermappevala."
+
+#~ msgid "Sent Subfolders plugin is misconfigured."
+#~ msgstr "Sent undermapper programtillegg er ikkje konfigurert korrekt"
+
+#~ msgid "Save emails submitted to SpamCop:"
+#~ msgstr "Lagre epost sent inn til SpamCop:"
+
+#~ msgid "Spam Service Type:"
+#~ msgstr "Type reklameteneste"
+
+#~ msgid "Free reporting"
+#~ msgstr "Fri raportering"
+
+#~ msgid "Member services"
+#~ msgstr "Medlemstenester"
+
+#~ msgid "Save Service Type"
+#~ msgstr "Lagra tenestetype"
+
+#~ msgid "SpamCop reporting"
+#~ msgstr "SpamCop raportering"
+
+#~ msgid ""
+#~ "Your %s dictionary is encrypted with password that differs from your "
+#~ "current password."
+#~ msgstr ""
+#~ "Di %s ordbok er kryptert med eit passord som er forskjelleg frå nåverande "
+#~ "passord."
+
+#~ msgid "Invalid SquirrelSpell module."
+#~ msgstr "Ugyldig SquirrelSpell modul."
+
+#~ msgid "Found %d error"
+#~ msgid_plural "Found %d errors"
+#~ msgstr[0] "Fant %d feil"
+#~ msgstr[1] "Fant %d feil"
+
+#~ msgid "Using %s dictionary for spellcheck."
+#~ msgstr "Brukar %s ordbok til stavekontroll."
+
+#~ msgid "Translation Theme:"
+#~ msgstr "Omsetjingstema"
+
+#~ msgid ""
+#~ "Selected translation engine is disabled. Please update your translation "
+#~ "preferences."
+#~ msgstr "Vald omsetjingsmåte er av. Oppdater omsetjingsinnstillingane."
+
+#~ msgid "Translation Preferences"
+#~ msgstr "Omsetjingsinnstillingar"
+
+#~ msgid "Maximum of 25 kilobytes translated, powered by Systran"
+#~ msgstr "Maksimalt 25 kilobyte oversatt, drevet av Systran"
+
+#~ msgid "No known limits, powered by GPLTrans (free, open source)"
+#~ msgstr "Inga kjent grense,dreven av GPLTrans (gratis open kjeldekode)"
+
+#~ msgid "Transliterate unknown words:"
+#~ msgstr "Omset ukjende ord:"
+
+#~ msgid "When composing:"
+#~ msgstr "Ved skriving"
+
+#~ msgid "Not yet functional, currently does nothing"
+#~ msgstr "Ennå ikkje i bruk"
+
+#~ msgid "D"
+#~ msgstr "D"
+
+#~ msgid "F"
+#~ msgstr "F"
+
+#~ msgid "SquirrelMail notice messages"
+#~ msgstr "SquirrelMail beskjed:"
+
+#~ msgid "Category:"
+#~ msgstr "Katrgori:"
+
+#~ msgid "Tip:"
+#~ msgstr "Tips:"
+
+#~ msgid "More info:"
+#~ msgstr "Meir informasjon:"
+
+#~ msgid "Message Flags"
+#~ msgstr "Meldingsflagg"
+
+#~ msgid "Attachment"
+#~ msgstr "Vedlegg"
+
+#~ msgid "Click here to change the sorting of the message list"
+#~ msgstr "Klikk her for å endra sorteringa av meldingslista"
