@@ -1,16 +1,16 @@
 <?php
-
 /**
  * enc_setup.mod
- *
+ * --------------
  * Squirrelspell module
+ *
+ * Copyright (c) 1999-2006 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This module shows the user a nice invitation to encrypt or decypt
  * his/her personal dictionary and explains the caveats of such a decision.
  *
- * @author Konstantin Riabitsev <icon at duke.edu>
- * @copyright &copy; 1999-2006 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @author Konstantin Riabitsev <icon@duke.edu>
  * @version $Id$
  * @package plugins
  * @subpackage squirrelspell
@@ -31,19 +31,13 @@ $msg = '<script type="text/javascript"><!--'."\n"
     . "\";\n"
     . "//-->\n</script>";
 
-$crypted=false;
-$langs=sqspell_getSettings();
-foreach ($langs as $lang) {
-    $words=sqspell_getLang($lang);
-    if ($SQSPELL_CRYPTO) $crypted = true;
-}
-
+$words=sqspell_getWords();
 /**
  * When getting the user dictionary, the SQSPELL_CRYPTO flag will be
  * set to "true" if the dictionary is encrypted, or "false" if it is
  * in plain text.
  */
-if ($crypted){
+if ($SQSPELL_CRYPTO){
     /**
      * Current format is encrypted.
      * Unfortunately, the following text needs to be all on one line,
@@ -103,3 +97,5 @@ sqspell_makePage(_("Personal Dictionary Crypto Settings"),
  * End:
  * vim: syntax=php
  */
+
+?>

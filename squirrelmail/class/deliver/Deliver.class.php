@@ -154,8 +154,6 @@ class Deliver {
                 $filename = $message->att_local_name;
                 $file = fopen ($filename, 'rb');
                 while ($body_part = fgets($file, 4096)) {
-                    // remove NUL characters
-                    $body_part = str_replace("\0",'',$body_part);
                     $length += $this->clean_crlf($body_part);
                     if ($stream) {
                         $this->preWriteToStream($body_part);
@@ -169,8 +167,6 @@ class Deliver {
         default:
             if ($message->body_part) {
                 $body_part = $message->body_part;
-                // remove NUL characters
-                $body_part = str_replace("\0",'',$body_part);
                 $length += $this->clean_crlf($body_part);
                 if ($stream) {
                     $this->writeToStream($stream, $body_part);
@@ -178,6 +174,7 @@ class Deliver {
             } elseif ($message->att_local_name) {
                 $filename = $message->att_local_name;
                 $file = fopen ($filename, 'rb');
+                $encoded = '';
                 while ($tmp = fread($file, 570)) {
                     $body_part = chunk_split(base64_encode($tmp));
                     // Up to 4.3.10 chunk_split always appends a newline,
@@ -327,6 +324,7 @@ class Deliver {
             $header[] = 'Content-Description: ' . $mime_header->description . $rn;
         }
         if ($mime_header->encoding) {
+            $encoding = $mime_header->encoding;
             $header[] = 'Content-Transfer-Encoding: ' . $mime_header->encoding . $rn;
         } else {
             if ($mime_header->type0 == 'text' || $mime_header->type0 == 'message') {
@@ -378,8 +376,9 @@ class Deliver {
      * @return string $header
      */
     function prepareRFC822_Header($rfc822_header, $reply_rfc822_header, &$raw_length) {
-        global $domain, $version, $username, $encode_header_key, 
-               $edit_identity, $hide_auth_header;
+        global $domain, $version, $username, $encode_header_key, $edit_identity, $hide_auth_header;
+
+        if (! isset($hide_auth_header)) $hide_auth_header=false;
 
         /* if server var SERVER_NAME not available, use $domain */
         if(!sqGetGlobalVar('SERVER_NAME', $SERVER_NAME, SQ_SERVER)) {
@@ -427,31 +426,21 @@ class Deliver {
          * unless you understand all possible forging issues or your
          * webmail installation does not prevent changes in user's email address.
          * See SquirrelMail bug tracker #847107 for more details about it.
-         *
-         * Add $hide_squirrelmail_header as a candidate for config_local.php
-         * to allow completely hiding SquirrelMail participation in message
-         * processing; This is dangerous, especially if users can modify their 
-         * account information, as it makes mapping a sent message back to the
-         * original sender almost impossible.
          */
-        $show_sm_header = ( defined('hide_squirrelmail_header') ? ! hide_squirrelmail_header : 1 );
-
-        if ( $show_sm_header ) {
-          if (isset($encode_header_key) &&
+        if (isset($encode_header_key) &&
             trim($encode_header_key)!='') {
             // use encoded headers, if encryption key is set and not empty
             $header[] = 'X-Squirrel-UserHash: '.OneTimePadEncrypt($username,base64_encode($encode_header_key)).$rn;
             $header[] = 'X-Squirrel-FromHash: '.OneTimePadEncrypt($this->ip2hex($REMOTE_ADDR),base64_encode($encode_header_key)).$rn;
             if (isset($HTTP_X_FORWARDED_FOR))
                 $header[] = 'X-Squirrel-ProxyHash:'.OneTimePadEncrypt($this->ip2hex($HTTP_X_FORWARDED_FOR),base64_encode($encode_header_key)).$rn;
-          } else {
+        } else {
             // use default received headers
             $header[] = "Received: from $received_from" . $rn;
             if ($edit_identity || ! isset($hide_auth_header) || ! $hide_auth_header)
                 $header[] = "        (SquirrelMail authenticated user $username)" . $rn;
             $header[] = "        by $SERVER_NAME with HTTP;" . $rn;
             $header[] = "        $date" . $rn;
-          }
         }
 
         /* Insert the rest of the header fields */
@@ -459,6 +448,7 @@ class Deliver {
         if (is_object($reply_rfc822_header) &&
             isset($reply_rfc822_header->message_id) &&
             $reply_rfc822_header->message_id) {
+            //if ($reply_rfc822_header->message_id) {
             $rep_message_id = $reply_rfc822_header->message_id;
         //        $this->strip_crlf($message_id);
             $header[] = 'In-Reply-To: '.$rep_message_id . $rn;
@@ -467,11 +457,12 @@ class Deliver {
         }
         $header[] = "Date: $date" . $rn;
         $header[] = 'Subject: '.encodeHeader($rfc822_header->subject) . $rn;
-        $header[] = 'From: '. $rfc822_header->getAddr_s('from',",$rn ",true) . $rn;
 
         // folding address list [From|To|Cc|Bcc] happens by using ",$rn<space>"
         // as delimiter
         // Do not use foldLine for that.
+
+        $header[] = 'From: '. $rfc822_header->getAddr_s('from',",$rn ",true) . $rn;
 
         // RFC2822 if from contains more then 1 address
         if (count($rfc822_header->from) > 1) {
@@ -526,6 +517,9 @@ class Deliver {
             case 1:
                 $header[] = 'X-Priority: 1 (Highest)'.$rn;
                 $header[] = 'Importance: High'. $rn; break;
+            case 3:
+                $header[] = 'X-Priority: 3 (Normal)'.$rn;
+                $header[] = 'Importance: Normal'. $rn; break;
             case 5:
                 $header[] = 'X-Priority: 5 (Lowest)'.$rn;
                 $header[] = 'Importance: Low'. $rn; break;
@@ -812,3 +806,5 @@ class Deliver {
         return $ret;
     }
 }
+
+?>

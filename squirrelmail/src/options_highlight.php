@@ -13,11 +13,18 @@
  */
 
 /**
- * Include the SquirrelMail initialization file.
+ * Path for SquirrelMail required files.
+ * @ignore
  */
-require('../include/init.php');
+define('SM_PATH','../');
 
-// include_once(SM_PATH . 'functions/imap.php');
+/* SquirrelMail required files. */
+require_once(SM_PATH . 'include/validate.php');
+require_once(SM_PATH . 'functions/display_messages.php');
+require_once(SM_PATH . 'functions/imap.php');
+require_once(SM_PATH . 'functions/plugin.php');
+require_once(SM_PATH . 'functions/strings.php');
+require_once(SM_PATH . 'functions/html.php');
 require_once(SM_PATH . 'functions/forms.php');
 
 /* get globals */
@@ -31,7 +38,7 @@ sqGetGlobalVar('match_type', $match_type);
 sqGetGlobalVar('value', $value);
 
 /* end of get globals */
-
+ 
 function oh_opt( $val, $sel, $tit ) {
     echo "<option value=\"$val\"";
     if ( $sel )
@@ -79,7 +86,7 @@ if (isset($theid) && ($action == 'delete') ||
 
     setPref($data_dir, $username, 'hililist', serialize($message_highlight_list));
 
-    header( 'Location: ' .get_location(). '/options_highlight.php' );
+    header( 'Location: options_highlight.php' );
     exit;
 } else if ($action == 'save') {
 
@@ -93,11 +100,11 @@ if (isset($theid) && ($action == 'delete') ||
     $value = str_replace(',', ' ', $value);
 
     if(isset($theid)) {
-        $message_highlight_list[$theid] =
+        $message_highlight_list[$theid] = 
             array( 'name' => $identname, 'color' => $newcolor,
                    'value' => $value, 'match_type' => $match_type );
     } else {
-        $message_highlight_list[] =
+        $message_highlight_list[] = 
             array( 'name' => $identname, 'color' => $newcolor,
                    'value' => $value, 'match_type' => $match_type );
     }
@@ -109,15 +116,15 @@ displayPageHeader($color, 'None');
 echo
 html_tag( 'table', "\n" .
     html_tag( 'tr', "\n" .
-        html_tag( 'td', '<div style="text-align: center;"><b>' . _("Options") . ' - ' . _("Message Highlighting") . '</b></div>', 'left')
+        html_tag( 'td', '<center><b>' . _("Options") . ' - ' . _("Message Highlighting") . '</b></center>', 'left')
     ),
     'center', $color[9], 'width="95%" border="0" cellpadding="1" cellspacing="0"' ) . "<br />\n" .
-html_tag( 'table', '', '', '', 'width="100%" border="0" cellpadding="1" cellspacing="0"' ) .
+html_tag( 'table', '', '', '', 'width="100%" border="0" cellpadding="1" cellspacing="0"' ) . 
      html_tag( 'tr' ) . "\n" .
          html_tag( 'td', '', 'left' );
 
-echo '<div style="text-align: center;">[<a href="options_highlight.php?action=add">' . _("New") . '</a>]'.
-        ' - [<a href="options.php">'._("Done").'</a>]</div><br />'."\n";
+echo '<center>[<a href="options_highlight.php?action=add">' . _("New") . '</a>]'.
+        ' - [<a href="options.php">'._("Done").'</a>]</center><br />'."\n";
 $mhl_count = count($message_highlight_list);
 if ($mhl_count > 0) {
     echo html_tag( 'table', '', 'center', '', 'width="80%" border="0" cellpadding="3" cellspacing="0"' ) . "\n";
@@ -156,7 +163,7 @@ if ($mhl_count > 0) {
         echo html_tag( 'tr',
                     html_tag( 'td',
                         $links,
-                    'left', $color[4], 'width="20%" style="white-space: nowrap;"' ) .
+                    'left', $color[4], 'width="20%" nowrap' ) .
                     html_tag( 'td',
                         htmlspecialchars($message_highlight_list[$i]['name']) ,
                     'left' ) .
@@ -164,12 +171,12 @@ if ($mhl_count > 0) {
                         $match_type . ' = ' .
                         htmlspecialchars($message_highlight_list[$i]['value']) ,
                     'left' ) ,
-                '', '#'.$message_highlight_list[$i]['color'] ) . "\n";
+                '', '#' . $message_highlight_list[$i]['color'] ) . "\n";
     }
     echo "</table>\n".
         "<br />\n";
 } else {
-    echo '<div style="text-align: center;">' . _("No highlighting is defined") . "</div><br />\n".
+    echo '<center>' . _("No highlighting is defined") . "</center><br />\n".
         "<br />\n";
 }
 if ($action == 'edit' || $action == 'add') {
@@ -354,14 +361,14 @@ if ($action == 'edit' || $action == 'add') {
     else if ($selected_choose == '')
         $selected_input = TRUE;
 
-    echo addForm('options_highlight.php', 'post', 'f').
+    echo addForm('options_highlight.php', 'POST', 'f').
          addHidden('action', 'save');
     if($action == 'edit') {
         echo addHidden('theid', (isset($theid)?$theid:''));
     }
     echo html_tag( 'table', '', 'center', '', 'width="80%" cellpadding="3" cellspacing="0" border="0"' ) . "\n";
     echo html_tag( 'tr', '', '', $color[0] ) . "\n";
-    echo html_tag( 'td', '', 'right', '', 'style="white-space: nowrap;"' ) . "<b>\n";
+    echo html_tag( 'td', '', 'right', '', 'nowrap' ) . "<b>\n";
     echo _("Identifying name") . ":";
     echo '      </b></td>' . "\n";
     echo html_tag( 'td', '', 'left' ) . "\n";
@@ -417,7 +424,7 @@ if ($action == 'edit' || $action == 'add') {
         $gridindex = "$y,$x";
         $gridcolor = $new_color_list[$gridindex];
         echo html_tag( 'td', addRadioBox('color_type', ($gridcolor == $current_color), '#'.$gridcolor),
-            'left', '#'.$gridcolor, 'colspan="2"' );
+            'left', '#' . $gridcolor, 'colspan="2"' );
         }
         echo "</tr>\n";
     }
@@ -453,13 +460,9 @@ if ($action == 'edit' || $action == 'add') {
     echo "        </td>\n";
     echo "   </tr>\n";
     echo "</table>\n";
-    echo '<div style="text-align: center;"><input type="submit" value="' . _("Submit") . "\" /></div>\n";
+    echo '<center><input type="submit" value="' . _("Submit") . "\" /></center>\n";
     echo "</form>\n";
 }
 do_hook('options_highlight_bottom');
-
 ?>
-</table>
-<?php
-$oTemplate->display('footer.tpl');
-?>
+</table></body></html>

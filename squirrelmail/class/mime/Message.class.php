@@ -146,41 +146,16 @@ class Message {
      * @since 1.3.2
      */
     function getFilename() {
-         $filename = '';
-         $header = $this->header;
-         if (is_object($header->disposition)) {
-              $filename = $header->disposition->getProperty('filename');
-              if (trim($filename) == '') {
-                  $name = decodeHeader($header->disposition->getProperty('name'));
-                  if (!trim($name)) {
-                      $name = $header->getParameter('name');
-                      if(!trim($name)) {
-                          if (!trim( $header->id )) {
-                              $filename = 'untitled-[' . $this->entity_id . ']' ;
-                          } else {
-                              $filename = 'cid: ' . $header->id;
-                          }
-                      } else {
-                          $filename = $name;
-                      }
-                  } else {
-                      $filename = $name;
-                  }
-              }
-         } else {
-              $filename = $header->getParameter('filename');
-              if (!trim($filename)) {
-                  $filename = $header->getParameter('name');
-                  if (!trim($filename)) {
-                      if (!trim( $header->id )) {
-                          $filename = 'untitled-[' . $this->entity_id . ']' ;
-                      } else {
-                          $filename = 'cid: ' . $header->id;
-                      }
-                  }
-              }
-         }
-         return $filename;
+        $filename = '';
+        $filename = $this->header->getParameter('filename');
+        if (!$filename) {
+            $filename = $this->header->getParameter('name');
+        }
+
+        if (!$filename) {
+            $filename = 'untitled-'.$this->entity_id;
+        }
+        return $filename;
     }
 
     /**
@@ -911,8 +886,8 @@ class Message {
                     if ((count($this->entities) == 0) &&
                             (!isset($this->header->parameters['filename'])) &&
                             (!isset($this->header->parameters['name'])) &&
-                            isset($this->header->disposition) && is_object($this->header->disposition) &&
-                            !(is_object($this->header->disposition) && strtolower($this->header->disposition->name) == 'attachment')) {
+                            (isset($this->header->disposition) && is_object($this->header->disposition) &&
+                             strtolower($this->header->disposition->name) != 'attachment')) {
                         $entity[] = $this->entity_id;
                         $found = true;
                     }
@@ -1041,7 +1016,6 @@ class Message {
         $attachment = new Message();
         $mime_header = new MessageHeader();
         $mime_header->setParameter('name', $name);
-        // FIXME: duplicate code. see ContentType class
         $pos = strpos($type, '/');
         if ($pos > 0) {
             $mime_header->type0 = substr($type, 0, $pos);
@@ -1056,10 +1030,10 @@ class Message {
         $attachment->mime_header = $mime_header;
         $this->entities[]=$attachment;
     }
-
+    
     /**
      * Delete all attachments from this object from disk.
-     * @since 1.5.1
+     * @since 1.4.6
      */
     function purgeAttachments() {
         if ($this->att_local_name && file_exists($this->att_local_name)) {
@@ -1071,3 +1045,5 @@ class Message {
         }
     }
 }
+
+?>

@@ -92,3 +92,4 @@ function charset_decode_utf_8 ($string) {
 
     return $string;
 }
+?>

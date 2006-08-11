@@ -1,4 +1,5 @@
 <?php
+
 /**
  * bug_report.php
  *
@@ -7,38 +8,52 @@
  * a button to show the bug report mail message in order to actually
  * send it.
  *
- * @copyright &copy; 1999-2006 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * Copyright (c) 1999-2006 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
+ *
+ * This is a standard Squirrelmail-1.2 API for plugins.
+ *
  * @version $Id$
  * @package plugins
  * @subpackage bug_report
  */
 
-
 /**
- * Include the SquirrelMail initialization file.
+ * @ignore
  */
-require('../../include/init.php');
-/** load form functions */
+define('SM_PATH','../../');
+
+require_once(SM_PATH . 'include/validate.php');
+/* load sqimap_get_user_server() */
+include_once(SM_PATH . 'functions/imap_general.php');
+// loading form functions
 require_once(SM_PATH . 'functions/forms.php');
-/** load plugin functions */
-require_once(SM_PATH . 'plugins/bug_report/functions.php');
 
 displayPageHeader($color, 'None');
 
-/** is bug_report plugin disabled or called by wrong user */
-if (! is_plugin_enabled('bug_report') || ! bug_report_check_user()) {
-    error_box(_("Plugin is disabled."));
-    $oTemplate->display('footer.tpl');
-    exit();
+function Show_Array($array) {
+    $str = '';
+    foreach ($array as $key => $value) {
+        if ($key != 0 || $value != '') {
+        $str .= "    * $key = $value\n";
+        }
+    }
+    if ($str == '') {
+        return "    * Nothing listed\n";
+    }
+    return $str;
 }
 
-/** get system specs */
-require_once(SM_PATH . 'plugins/bug_report/system_specs.php');
-global $body;
+$browscap = ini_get('browscap');
+if(!empty($browscap)) {
+    $browser = get_browser();
+}
 
-$body_top = "I am subscribed to the this mailing list.\n" .
-            " (applies when you are sending email to SquirrelMail mailing list)\n".
+sqgetGlobalVar('HTTP_USER_AGENT', $HTTP_USER_AGENT, SQ_SERVER);
+if ( ! sqgetGlobalVar('HTTP_USER_AGENT', $HTTP_USER_AGENT, SQ_SERVER) )
+    $HTTP_USER_AGENT="Browser information is not available.";
+
+$body_top = "I subscribe to the squirrelmail-users mailing list.\n" .
             "  [ ]  True - No need to CC me when replying\n" .
             "  [ ]  False - Please CC me when replying\n" .
             "\n" .
@@ -51,9 +66,92 @@ $body_top = "I am subscribed to the this mailing list.\n" .
             "I can reproduce the bug by:\n\n\n" .
             "(Optional) I got bored and found the bug occurs in:\n\n\n" .
             "(Optional) I got really bored and here's a fix:\n\n\n" .
-            "----------------------------------------------\n\n";
+            "----------------------------------------------\n" .
+            "\nMy browser information:\n" .
+            '  '.$HTTP_USER_AGENT . "\n" ;
+	    if(isset($browser)) {
+                $body_top .= "  get_browser() information (List)\n" .
+                Show_Array((array) $browser);
+            }
+            $body_top .= "\nMy web server information:\n" .
+            "  PHP Version " . phpversion() . "\n" .
+            "  PHP Extensions (List)\n" .
+            Show_Array(get_loaded_extensions()) .
+            "\nSquirrelMail-specific information:\n" .
+            "  Version:  $version\n" .
+            "  Plugins (List)\n" .
+            Show_Array($plugins);
+if (isset($ldap_server) && $ldap_server[0] && ! extension_loaded('ldap')) {
+    $warning = 1;
+    $warnings['ldap'] = "LDAP server defined in SquirrelMail config, " .
+        "but the module is not loaded in PHP";
+    $corrections['ldap'][] = "Reconfigure PHP with the option '--with-ldap'";
+    $corrections['ldap'][] = "Then recompile PHP and reinstall";
+    $corrections['ldap'][] = "-- OR --";
+    $corrections['ldap'][] = "Reconfigure SquirrelMail to not use LDAP";
+}
 
-$body = htmlspecialchars($body_top) . $body;
+$body = "\nMy IMAP server information:\n" .
+            "  Server type:  $imap_server_type\n";
+
+/* check imap server's mapping */
+$imapServerAddress = sqimap_get_user_server($imapServerAddress, $username);
+
+/*
+ * add tls:// prefix, if tls is used.
+ * No need to check for openssl.
+ * User can't use SquirrelMail if this part is misconfigured
+ */
+if ($use_imap_tls == true) $imapServerAddress = 'tls://' . $imapServerAddress;
+
+$imap_stream = fsockopen ($imapServerAddress, $imapPort, $error_number, $error_string);
+$server_info = fgets ($imap_stream, 1024);
+if ($imap_stream) {
+    // SUPRESS HOST NAME
+    $list = explode(' ', $server_info);
+    $list[2] = '[HIDDEN]';
+    $server_info = implode(' ', $list);
+    $body .=  "  Server info:  $server_info";
+    fputs ($imap_stream, "a001 CAPABILITY\r\n");
+    $read = fgets($imap_stream, 1024);
+    $list = explode(' ', $read);
+    array_shift($list);
+    array_shift($list);
+    $read = implode(' ', $list);
+    $body .= "  Capabilities:  $read";
+    fputs ($imap_stream, "a002 LOGOUT\r\n");
+    fclose($imap_stream);
+} else {
+    $body .= "  Unable to connect to IMAP server to get information.\n";
+    $warning = 1;
+    $warnings['imap'] = "Unable to connect to IMAP server";
+    $corrections['imap'][] = "Make sure you specified the correct mail server";
+    $corrections['imap'][] = "Make sure the mail server is running IMAP, not POP";
+    $corrections['imap'][] = "Make sure the server responds to port $imapPort";
+}
+$warning_html = '';
+$warning_num = 0;
+if (isset($warning) && $warning) {
+    foreach ($warnings as $key => $value) {
+        if ($warning_num == 0) {
+            $body_top .= "WARNINGS WERE REPORTED WITH YOUR SETUP:\n";
+            $body_top = "WARNINGS WERE REPORTED WITH YOUR SETUP -- SEE BELOW\n\n$body_top";
+            $warning_html = "<h1>Warnings were reported with your setup:</h1>\n<dl>\n";
+        }
+        $warning_num ++;
+        $warning_html .= "<dt><b>$value</b></dt>\n";
+        $body_top .= "\n$value\n";
+        foreach ($corrections[$key] as $corr_val) {
+            $body_top .= "  * $corr_val\n";
+            $warning_html .= "<dd>* $corr_val</dd>\n";
+        }
+    }
+    $warning_html .= "</dl>\n<p>$warning_num warning(s) reported.</p>\n<hr />\n";
+    $body_top .= "\n$warning_num warning(s) reported.\n";
+    $body_top .= "----------------------------------------------\n";
+}
+
+$body = htmlspecialchars($body_top . $body);
 
 ?>
     <br />
@@ -62,11 +160,8 @@ $body = htmlspecialchars($body_top) . $body;
     </tr></table>
 
 <?php
-echo $warning_html;
+echo $warning_html; 
 
-echo '<p><a href="show_system_specs.php" target="_blank">';
-echo _("Show System Specifications");
-echo "</a></p>\n\n";
 echo '<p><big>';
 echo _("Before you send your bug report, please make sure to check this checklist for any common problems.");
 echo "</big></p>\n";
@@ -79,7 +174,7 @@ echo "</li>\n";
 echo '<li>';
 printf(_("Check to see if your bug is already listed in the %sBug List%s on SourceForge. If it is, we already know about it and are trying to fix it."), '<a href="http://sourceforge.net/bugs/?group_id=311" target="_blank">', '</a>');
 echo "</li>\n";
-
+   
 echo '<li>';
 echo _("Try to make sure that you can repeat it. If the bug happens sporatically, try to document what you did when it happened. If it always occurs when you view a specific message, keep that message around so maybe we can see it.");
 echo "</li>\n";
@@ -101,14 +196,7 @@ echo "</p>\n";
       <table align="center" border="0">
         <tr>
           <td>
-            <?php echo _("This bug involves:")
-                      .' <select name="send_to">';
-            if (! empty($bug_report_admin_email)) {
-                // if admin's email is set - add 'report to admin' option and make it default one
-                echo '<option value="' . htmlspecialchars($bug_report_admin_email) .'" selected="selected">'
-                    ._("my email account") .'</option>';
-            }
-            ?>
+            <?php echo _("This bug involves:"); ?> <select name="send_to">
               <option value="squirrelmail-users@lists.sourceforge.net"><?php
                   echo _("the general program"); ?></option>
               <option value="squirrelmail-plugins@lists.sourceforge.net"><?php
@@ -129,6 +217,5 @@ echo addSubmit(_("Start Bug Report Form"));
         </tr>
       </table>
     </form>
-    <br />
   </body>
 </html>
