@@ -5,14 +5,16 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: change_sqlpass 3.3\n"
-"POT-Creation-Date: 2005-11-11 23:06-0800\n"
-"PO-Revision-Date: 2006-03-03 23:53+0100\n"
+"Project-Id-Version: change_sqlpass\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-05-28 11:18+0200\n"
+"PO-Revision-Date: 2006-08-09 12:23+0200\n"
 "Last-Translator: Ola Ketil Siqveland <olaketil@hotmail.com>\n"
 "Language-Team: Nynorsk <nn@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.0.1\n"
 
 msgid "Could not find Pear DB library"
 msgstr "Kan ikkje finna Pear DB biblioteket"
@@ -20,11 +22,9 @@ msgstr "Kan ikkje finna Pear DB biblioteket"
 msgid "Could not make database connection"
 msgstr "Kan ikkje kople til databasen"
 
-#, php-format
 msgid "DATABASE ERROR: could not lookup force change password flag: %s"
 msgstr "DATABASE FEIL: kan ikkje slå opp endra passord flag: %s"
 
-#, php-format
 msgid ""
 "Force change password query result is: %s<br />Query was: %s<br /><br />"
 msgstr ""
@@ -64,14 +64,15 @@ msgstr "Nytt passord"
 msgid "Verify New Password"
 msgstr "Stadfest nytt passord"
 
+msgid "Submit"
+msgstr "Send"
+
 msgid "Cancel"
 msgstr "Avbryt"
 
-#, php-format
 msgid "DATABASE ERROR: could not lookup salt: %s"
 msgstr "DATABASE FEIL: Kan ikkje finna salt: %s"
 
-#, php-format
 msgid "Password query result is: %s<br />Query was: %s<br /><br />"
 msgstr "Passord oppslag resultat: %s<br/> Oppslag var %s<br/><br/>"
 
@@ -81,7 +82,6 @@ msgstr "Skriv inn gammalt passord."
 msgid "Your old password is not correct"
 msgstr "Gammalt passord er ikkje korrekt."
 
-#, php-format
 msgid "DATABASE ERROR: could not lookup old password: %s"
 msgstr "DATABASE FEIL: Kan ikkje slåopp gamalt passord: %s"
 
@@ -91,11 +91,9 @@ msgstr "Gammalt passord er passar ikkje"
 msgid "You must type in a new password"
 msgstr "Skriv in eit nytt passord."
 
-#, php-format
 msgid "Your new password is too short.  It must be at least %s characters long"
 msgstr "Nytt passord er for kort. Det må minst vera %s karakterar langt"
 
-#, php-format
 msgid ""
 "Your new password is too long.  It must be no more than %s characters long"
 msgstr "Nytt passord er for langt. Det må ikkje vera lengre enn %s teikn"
@@ -125,6 +123,5 @@ msgstr "Nytt passord og kontroll passord er ikkje like."
 msgid "Your new password must be different than your old password"
 msgstr "Nytt passord må vera forskjelleg frå gammalt passord."
 
-#, php-format
 msgid "DATABASE ERROR: could not update password: %s"
 msgstr "DATABASE FEIL: kan ikkje opdatera passordet: %s"
