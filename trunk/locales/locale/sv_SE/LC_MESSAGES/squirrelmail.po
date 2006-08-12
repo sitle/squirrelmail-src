@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: SquirrelMail HEAD\n"
 "Report-Msgid-Bugs-To: SquirrelMail Internationalization <squirrelmail-"
 "i18n@lists.sourceforge.net>\n"
-"POT-Creation-Date: 2006-06-28 12:49+0200\n"
-"PO-Revision-Date: 2006-06-28 12:59+0200\n"
+"POT-Creation-Date: 2006-08-08 23:25+0300\n"
+"PO-Revision-Date: 2006-08-12 23:09+0200\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -759,6 +759,9 @@ msgstr "Du måste vara inloggad för att nå denna sida."
 msgid "Folder:"
 msgstr "Mapp:"
 
+msgid "Saved Searches"
+msgstr "Sparade sökningar"
+
 msgid "edit"
 msgstr "redigera"
 
@@ -791,6 +794,9 @@ msgstr "Överallt"
 
 msgid "No Messages Found"
 msgstr "Inga brev hittades"
+
+msgid "Please enter something to search for"
+msgstr "Ange något att söka efter"
 
 msgid "Signout"
 msgstr "Utloggning"
@@ -1372,6 +1378,16 @@ msgstr "Kunde inte skapa katalogen %s."
 msgid "Could not create hashed directory structure!"
 msgstr "Kunde inte skapa katalogstruktur!"
 
+msgid "Email delivery error"
+msgstr "E-postleveransfel"
+
+#, php-format
+msgid "Can't execute command '%s'."
+msgstr "Kan inte exekvera kommandot '%s'."
+
+msgid "Can't open SMTP stream."
+msgstr "Kan inte öppna SMTP-strömmen."
+
 msgid "Service not available, closing channel"
 msgstr "Tjänsten är inte tillgänglig. Stänger kanalen."
 
@@ -1721,6 +1737,15 @@ msgstr "Indragen:"
 msgid "Delimited:"
 msgstr "Begränsad:"
 
+msgid "You can't select INBOX as Trash folder."
+msgstr "Inkorgen kan inte användas som en mapp för kastade brev."
+
+msgid "You can't select INBOX as Sent folder."
+msgstr "Inkorgen kan inte användas som en mapp för skickade brev."
+
+msgid "You can't select INBOX as Draft folder."
+msgstr "Inkorgen kan inte användas som en mapp för sparade utkast."
+
 msgid "Name and Address Options"
 msgstr "Namn och adress"
 
@@ -1895,6 +1920,9 @@ msgstr "Använd Sendmail-programmet"
 msgid "Choose &quot;no&quot; for SMTP"
 msgstr "Välj &quot;Nej&quot; för SMTP"
 
+msgid "Sendmail Arguments"
+msgstr "Sendmailparametrar"
+
 msgid "Sendmail Path"
 msgstr "Sökväg till Sendmail"
 
@@ -2035,6 +2063,9 @@ msgstr "Stöd för UID"
 
 msgid "PHP session name"
 msgstr "Sessionsnamn i PHP"
+
+msgid "Location base"
+msgstr "Installationens baskatalog"
 
 msgid "Message of the Day"
 msgstr "Dagens meddelande"
@@ -4065,12 +4096,6 @@ msgstr "inga installerade"
 msgid "Nothing to search"
 msgstr "Inget att söka efter"
 
-msgid "No folders were found to unsubscribe from."
-msgstr "Inga mappar att avaktivera."
-
-msgid "No folders were found to subscribe to."
-msgstr "Inga mappar att aktivera."
-
 msgid "SquirrelMail Webmail Application"
 msgstr "SquirrelMail - en webbpostklient"
 
@@ -4100,9 +4125,6 @@ msgstr "Kringgå papperskorgen"
 msgid "Copy"
 msgstr "Kopiera"
 
-msgid "Please enter something to search for"
-msgstr "Ange något att söka efter"
-
 msgid "There must be at least one criteria to search for"
 msgstr "Det måste finnas minst ett sökkriterium"
 
@@ -4129,9 +4151,6 @@ msgstr "Dölj"
 
 msgid "Unfold"
 msgstr "Visa"
-
-msgid "Saved Searches"
-msgstr "Sparade sökningar"
 
 msgid "Missing"
 msgstr "Saknas"
@@ -4241,9 +4260,6 @@ msgstr "Standardsökning"
 msgid "Advanced search"
 msgstr "Avancerad sökning"
 
-msgid "Folder List"
-msgstr "Lista över mappar"
-
 msgid "Address book is read-only"
 msgstr "Adressboken är skrivskyddad"
 
@@ -4291,6 +4307,9 @@ msgstr "Fel vid initiering av den globala adressboken."
 
 msgid "Error initializing other address books."
 msgstr "Fel vid initiering av andra adressböcker."
+
+msgid "Unknown address book backend"
+msgstr "Okänd bakände för adressboken"
 
 msgid "Illegal folder name."
 msgstr "Otillåtet mappnamn."
@@ -4379,22 +4398,12 @@ msgstr "Fel"
 msgid "Terminating SquirrelMail due to a fatal error"
 msgstr "SquirrelMail avslutas på grund av ett fatalt fel"
 
-msgid "Email delivery error"
-msgstr "E-postleveransfel"
-
-#, php-format
-msgid "Can't execute command '%s'."
-msgstr "Kan inte exekvera kommandot '%s'."
-
 msgid ""
 "Secure SMTP (TLS) is enabled in SquirrelMail configuration, but used PHP "
 "version does not support it."
 msgstr ""
 "Säker SMTP (TLS) är aktiverat i SquirrelMails konfiguration, men den PHP-"
 "version som används saknar stöd för detta."
-
-msgid "Can't open SMTP stream."
-msgstr "Kan inte öppna SMTP-strömmen."
 
 msgid "TLS session is already activated."
 msgstr "TLS-sessionen är redan aktiverad."
@@ -4549,11 +4558,14 @@ msgstr ""
 "Kräver högre PHP-version och speciella funktioner. Se SquirrelMails "
 "dokumentation."
 
-msgid "Sendmail Arguments"
-msgstr "Sendmailparametrar"
-
 msgid "SMTP Connection Security"
 msgstr "Anslutningssäkerhet för SMTP-servern"
+
+msgid "Custom SMTP AUTH username"
+msgstr "Anpassat SMTP AUTH-användarnamn"
+
+msgid "Custom SMTP AUTH password"
+msgstr "Anpassat SMTP AUTH-lösenord"
 
 msgid "Disable server-side sorting"
 msgstr "Inaktivera sortering på server-sidan"
@@ -4822,7 +4834,7 @@ msgstr ""
 
 msgid "Required change password backend configuration options are missing."
 msgstr ""
-"Erfordrade konfigureringsinställningar för lösenordsbytesmodulen saknas."
+"Erfordrade konfigureringsinställningar för lösenordsbytesmodulens bakände saknas."
 
 #, php-format
 msgid "Connection error: %s"
@@ -4874,7 +4886,7 @@ msgid "Connecting to Password Server"
 msgstr "Ansluter till lösenordsservern"
 
 msgid "No valid backend defined."
-msgstr "Det finns inte någon giltig lösenordsmodul definierad."
+msgstr "Det finns inte någon giltig bakände definierad."
 
 msgid "Incorrent path to vmail.inc file."
 msgstr "Felaktig sökväg till \"vmail.inc\"."
@@ -4896,6 +4908,10 @@ msgstr "Användarnamn saknas"
 
 msgid "Empty new password"
 msgstr "Lösenord saknas"
+
+#, php-format
+msgid "Unable to execute \"%s\"."
+msgstr "Kunde inte exekvera \"%s\"."
 
 msgid "Server Capability response:"
 msgstr "Serverns kapabilitetssvar:"
@@ -5033,18 +5049,6 @@ msgstr "Arkiveringen av skickade brev är felkonfigurerad."
 msgid "Save emails submitted to SpamCop:"
 msgstr "Spara brev skickade till SpamCop:"
 
-msgid "Spam Service Type:"
-msgstr "Typ av skräpposttjänst:"
-
-msgid "Free reporting"
-msgstr "Gratis rapportering"
-
-msgid "Member services"
-msgstr "Medlemstjänster"
-
-msgid "Save Service Type"
-msgstr "Spara tjänstetyp"
-
 msgid "SpamCop reporting"
 msgstr "Skräppostrapportering till SpamCop"
 
@@ -5115,6 +5119,12 @@ msgstr "Tips:"
 msgid "More info:"
 msgstr "Mer information:"
 
+msgid "No folders were found to unsubscribe from."
+msgstr "Inga mappar att avaktivera."
+
+msgid "No folders were found to subscribe to."
+msgstr "Inga mappar att aktivera."
+
 msgid "Message Flags"
 msgstr "Ikoner"
 
@@ -5123,6 +5133,9 @@ msgstr "Bilaga"
 
 msgid "Click here to change the sorting of the message list"
 msgstr "Ändra sorteringen av index"
+
+msgid "Folder List"
+msgstr "Lista över mappar"
 
 msgid "Delivery error report"
 msgstr "Rapport om leveransfel"
