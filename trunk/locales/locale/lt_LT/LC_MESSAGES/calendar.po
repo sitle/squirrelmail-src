@@ -1,13 +1,16 @@
 # Lithuanian Translation of SquirrelMail shared_calendar plugin.
-# Copyright (c) 2005 The SquirrelMail Project Team
+# Copyright (c) 2005-2006 The SquirrelMail Project Team
 # Tomas Kuliavas <tokul@users.sourceforge.net>, 2005.
+# Tomas Kuliavas <tokul@users.sourceforge.net>, 2006.
 # $Id$
+# 
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: shared_calendar 2.0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-06-07 15:56+0300\n"
-"PO-Revision-Date: 2005-06-10 17:56+0300\n"
+"PO-Revision-Date: 2006-06-21 09:34+0300\n"
 "Last-Translator: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
 "Language-Team: Lithuanian <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -16,19 +19,19 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);"
 
 msgid "Badly formatted header color"
-msgstr ""
+msgstr "Nurodyta klaidinga antraštės spalva"
 
 msgid "Badly formatted today color"
-msgstr ""
+msgstr "Nurodyta klaidinga šiandienos spalva"
 
 msgid "Badly formatted event color"
-msgstr ""
+msgstr "Nurodyta klaidinga įvykio spalva"
 
 msgid "Badly formatted day color"
-msgstr ""
+msgstr "Nurodyta klaidinga dienos spalva"
 
 msgid "Day view start time must come before end time"
-msgstr ""
+msgstr "Dienos peržiūroje pradžios laikas turi būti ankstesnis už pabaigos laiką"
 
 msgid "Unknown"
 msgstr "Nežinoma"
@@ -167,7 +170,7 @@ msgstr "Konvertuojamas senasis kalendorius. . ."
 
 #, php-format
 msgid "Problem converting old calendar; please contact your administrator (%s)"
-msgstr ""
+msgstr "Nepavyko konvertuoti senojo kalendoriaus. Susisiekite su sistemos administratoriumi (%s)"
 
 #, php-format
 msgid "Can't rename %s to %s"
@@ -183,9 +186,9 @@ msgstr ""
 msgid "Can't find old personal calendar: %s"
 msgstr "Nepavyko rasti senojo asmeninio kalendoriaus: %s"
 
-#, fuzzy, php-format
+#, php-format
 msgid "Successfully merged calendar into \"%s\""
-msgstr "Nustatymai sėkmingai išsaugoti"
+msgstr "Sėkmingai įkeltas kalendorius į \"%s\""
 
 msgid ""
 "You already have a calendar with the same ID.  Are you sure you don't want "
@@ -195,15 +198,14 @@ msgstr ""
 msgid "..."
 msgstr "..."
 
-#, fuzzy
 msgid "Must have domain information"
-msgstr "Sisteminė informacija"
+msgstr "Reikia nurodyti domeno informaciją"
 
 msgid "Valid event type must be specified"
-msgstr ""
+msgstr "Reikia nurodyti tinkamą įvykio tipą"
 
 msgid "Must specify valid recurrence type"
-msgstr ""
+msgstr "Reikia nurodyti tinkamą pasikartojimo tipą"
 
 msgid ""
 "Overall end of recurrence for recurring events must come after end of "
@@ -211,13 +213,13 @@ msgid ""
 msgstr ""
 
 msgid "Must specify valid recurrence interval"
-msgstr ""
+msgstr "Reikia nurodyti tinkamą pasikartojimo intervalą"
 
 msgid "Event must have a summary/title"
 msgstr ""
 
 msgid "Must specify valid event priority"
-msgstr ""
+msgstr "Reikia nurodyti tinkamą įvykio prioritetą"
 
 msgid "Event must have a valid start date/time"
 msgstr ""
@@ -237,9 +239,8 @@ msgstr ""
 msgid "Event must have a creation date"
 msgstr ""
 
-#, fuzzy
 msgid "Event must have at least one owner"
-msgstr "Turi būti bent viena paieškos sąlyga"
+msgstr "Įvykyje turi būti nurodytas bent vienas savininkas"
 
 msgid "Error:"
 msgstr "Klaida:"
@@ -287,9 +288,8 @@ msgstr "Bendri kalendoriai"
 msgid "Shared calendars"
 msgstr "Bendri kalendoriai"
 
-#, fuzzy
 msgid "No Shared Calendars Defined"
-msgstr "Nenurodyta tinkama posistemė."
+msgstr "Nenustatyti jokie bendri kalendoriai"
 
 msgid "Public Calendars"
 msgstr "Vieši kalendoriai"
@@ -297,9 +297,8 @@ msgstr "Vieši kalendoriai"
 msgid "Public calendars"
 msgstr "Vieši kalendoriai"
 
-#, fuzzy
 msgid "No Public Calendars Defined"
-msgstr "Nenurodyta tinkama posistemė."
+msgstr "Nenustatyti jokie vieši kalendoriai"
 
 msgid "Delete"
 msgstr "Ištrinti"
@@ -393,9 +392,8 @@ msgid ""
 "'Blah' button below that calendar."
 msgstr ""
 
-#, fuzzy
 msgid "No Holidays Have Been Defined"
-msgstr "Nenurodyta tinkama posistemė."
+msgstr "Nenustatytos švenčių dienos"
 
 msgid "General Calendar Options"
 msgstr "Bendriniai kalendoriaus nustatymai"
@@ -497,7 +495,7 @@ msgid "Show Today Link Above Small Calendar:"
 msgstr ""
 
 msgid "Show Day Headers Above Small Calendar:"
-msgstr ""
+msgstr "Rodyti dienų antraštes virš mini kalendoriaus:"
 
 msgid "Use Same Background Colors for Days as Regular Calendar:"
 msgstr ""
@@ -678,9 +676,8 @@ msgstr "Pridėti išorinį kalendorių"
 msgid "Address:"
 msgstr "Adresas:"
 
-#, fuzzy
 msgid "Override Name:"
-msgstr "Serverio vardas:"
+msgstr "Pakeitimo vardas:"
 
 msgid "Import Calendar"
 msgstr "Įkelti kalendorių"
