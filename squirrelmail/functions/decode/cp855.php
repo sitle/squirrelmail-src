@@ -168,3 +168,5 @@ function charset_decode_cp855 ($string) {
 
     return $string;
 }
+
+?>

@@ -12,9 +12,18 @@
  */
 
 /**
- * Include the SquirrelMail initialization file.
+ * Path for SquirrelMail required files.
+ * @ignore
  */
-require('../include/init.php');
+define('SM_PATH','../');
+
+/* SquirrelMail required files. */
+require_once(SM_PATH . 'include/validate.php');
+require_once(SM_PATH . 'functions/global.php');
+require_once(SM_PATH . 'functions/date.php');
+require_once(SM_PATH . 'functions/page_header.php');
+require_once(SM_PATH . 'functions/html.php');
+require_once(SM_PATH . 'include/load_prefs.php');
 
 displayPageHeader($color, 'None');
 
@@ -27,11 +36,11 @@ sqgetGlobalVar('ent_id',        $ent_id,        SQ_GET);
 sqgetGlobalVar('QUERY_STRING',  $QUERY_STRING,  SQ_SERVER);
 /* end globals */
 
-echo '<br />' .
+echo '<br />' . 
     '<table width="100%" border="0" cellspacing="0" cellpadding="2" align="center">' .
     "\n" .
     '<tr><td bgcolor="' . $color[0] . '">' .
-    '<div style="text-align: center;"><b>' .
+    '<b><center>' .
     _("Viewing an image attachment") . " - ";
 
 $msg_url = 'read_body.php?' . $QUERY_STRING;
@@ -40,11 +49,10 @@ echo '<a href="'.$msg_url.'">'. _("View message") . '</a>';
 
 
 $DownloadLink = '../src/download.php?passed_id=' . $passed_id .
-               '&amp;mailbox=' . urlencode($mailbox) .
+               '&amp;mailbox=' . urlencode($mailbox) . 
                '&amp;ent_id=' . urlencode($ent_id) . '&amp;absolute_dl=true';
-
 ?>
-</b></div></td></tr>
+</b></td></tr>
 <tr><td align="center">
 <a href="<?php echo $DownloadLink; ?>"><?php echo _("Download this as a file"); ?></a>
 <br />&nbsp;</td></tr></table>
@@ -54,5 +62,4 @@ $DownloadLink = '../src/download.php?passed_id=' . $passed_id .
 <img src="<?php echo $DownloadLink; ?>" />
 
 </td></tr></table>
-<?php
-$oTemplate->display('footer.tpl');
+</body></html>

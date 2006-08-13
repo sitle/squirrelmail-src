@@ -13,6 +13,12 @@
  * @package squirrelmail
  */
 
+/** Everything needs global.. */
+require_once(SM_PATH . 'functions/global.php');
+
+global $squirrelmail_plugin_hooks;
+$squirrelmail_plugin_hooks = array();
+
 /**
  * This function adds a plugin.
  * @param string $name Internal plugin name (ie. delete_move_next)
@@ -34,9 +40,9 @@ function use_plugin ($name) {
  * @return mixed $data
  */
 function do_hook ($name) {
-    global $squirrelmail_plugin_hooks, $currentHookName;
+    global $squirrelmail_plugin_hooks;
     $data = func_get_args();
-    $currentHookName = $name;
+    $ret = '';
 
     if (isset($squirrelmail_plugin_hooks[$name])
           && is_array($squirrelmail_plugin_hooks[$name])) {
@@ -47,8 +53,6 @@ function do_hook ($name) {
             }
         }
     }
-
-    $currentHookName = '';
 
     /* Variable-length argument lists have a slight problem when */
     /* passing values by reference. Pity. This is a workaround.  */
@@ -63,9 +67,8 @@ function do_hook ($name) {
  * @return mixed the return value of the hook function
  */
 function do_hook_function($name,$parm=NULL) {
-    global $squirrelmail_plugin_hooks, $currentHookName;
+    global $squirrelmail_plugin_hooks;
     $ret = '';
-    $currentHookName = $name;
 
     if (isset($squirrelmail_plugin_hooks[$name])
           && is_array($squirrelmail_plugin_hooks[$name])) {
@@ -76,8 +79,6 @@ function do_hook_function($name,$parm=NULL) {
             }
         }
     }
-
-    $currentHookName = '';
 
     /* Variable-length argument lists have a slight problem when */
     /* passing values by reference. Pity. This is a workaround.  */
@@ -93,9 +94,8 @@ function do_hook_function($name,$parm=NULL) {
  * @return string a concatenation of the results of each plugin function
  */
 function concat_hook_function($name,$parm=NULL) {
-    global $squirrelmail_plugin_hooks, $currentHookName;
+    global $squirrelmail_plugin_hooks;
     $ret = '';
-    $currentHookName = $name;
 
     if (isset($squirrelmail_plugin_hooks[$name])
           && is_array($squirrelmail_plugin_hooks[$name])) {
@@ -106,8 +106,6 @@ function concat_hook_function($name,$parm=NULL) {
             }
         }
     }
-
-    $currentHookName = '';
 
     /* Variable-length argument lists have a slight problem when */
     /* passing values by reference. Pity. This is a workaround.  */
@@ -128,7 +126,7 @@ function concat_hook_function($name,$parm=NULL) {
  * @return bool the result of the function
  */
 function boolean_hook_function($name,$parm=NULL,$priority=0,$tie=false) {
-    global $squirrelmail_plugin_hooks, $currentHookName;
+    global $squirrelmail_plugin_hooks;
     $yea = 0;
     $nay = 0;
     $ret = $tie;
@@ -137,7 +135,6 @@ function boolean_hook_function($name,$parm=NULL,$priority=0,$tie=false) {
         is_array($squirrelmail_plugin_hooks[$name])) {
 
         /* Loop over the plugins that registered the hook */
-        $currentHookName = $name;
         foreach ($squirrelmail_plugin_hooks[$name] as $function) {
             if (function_exists($function)) {
                 $ret = $function($parm);
@@ -148,7 +145,6 @@ function boolean_hook_function($name,$parm=NULL,$priority=0,$tie=false) {
                 }
             }
         }
-        $currentHookName = '';
 
         /* Examine the aftermath and assign the return value appropriately */
         if (($priority > 0) && ($yea)) {
@@ -176,33 +172,36 @@ function boolean_hook_function($name,$parm=NULL,$priority=0,$tie=false) {
  * FIXME: This function needs to have its name changed!
  *
  * @return bool whether this browser properly supports JavaScript
- * @deprecated use checkForJavascript() since 1.5.1
  */
 function soupNazi(){
-    return !checkForJavascript();
+
+    $soup_menu = array('Mozilla/3','Mozilla/2','Mozilla/1', 'Opera 4',
+                       'Opera/4', 'OmniWeb', 'Lynx');
+    sqgetGlobalVar('HTTP_USER_AGENT', $user_agent, SQ_SERVER);
+    foreach($soup_menu as $browser) {
+        if(stristr($user_agent, $browser)) {
+            return 1;
+        }
+    }
+    return 0;
+}
+/*************************************/
+/*** MAIN PLUGIN LOADING CODE HERE ***/
+/*************************************/
+
+/* On startup, register all plugins configured for use. */
+if (isset($plugins) && is_array($plugins)) {
+    // turn on output buffering in order to prevent output of new lines
+    ob_start();
+    foreach ($plugins as $name) {
+        use_plugin($name);
+    }
+    $output = trim(ob_get_contents());
+    ob_end_clean();
+    // if plugins output more than newlines and spacing, stop script execution.
+    if (!empty($output)) {
+        die($output);
+    }
 }
 
-/**
- * Check if plugin is enabled
- * @param string $plugin_name plugin name
- * @since 1.5.1
- * @return boolean
- */
-function is_plugin_enabled($plugin_name) {
-  global $plugins;
-
-  /**
-   * check if variable is empty. if var is not set, php empty
-   * returns true without error notice.
-   *
-   * then check if it is an array
-   */
-  if (empty($plugins) || ! is_array($plugins))
-    return false;
-
-  if ( in_array($plugin_name,$plugins) ) {
-    return true;
-  } else {
-    return false;
-  }
-}
+?>

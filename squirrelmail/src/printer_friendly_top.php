@@ -13,13 +13,16 @@
  */
 
 /**
- * Include the SquirrelMail initialization file.
+ * Path for SquirrelMail required files.
+ * @ignore
  */
-include('../include/init.php');
+define('SM_PATH','../');
 
+/* SquirrelMail required files. */
+require_once(SM_PATH . 'include/validate.php');
 
 displayHtmlHeader( _("Printer Friendly"),
-             "<script type=\"text/javascript\">\n".
+             "<script language=\"javascript\" type=\"text/javascript\">\n".
              "<!--\n".
              "function printPopup() {\n".
                 "parent.frames[1].focus();\n".
@@ -31,11 +34,12 @@ displayHtmlHeader( _("Printer Friendly"),
 
 echo '<body text="'.$color[8].'" bgcolor="'.$color[3].'" link="'.$color[7].'" vlink="'.$color[7].'" alink="'.$color[7]."\">\n" .
      html_tag( 'div',
+         '<b>'.
          '<form>'.
          '<input type="button" value="' . _("Print") . '" onclick="printPopup()" /> '.
          '<input type="button" value="' . _("Close") . '" onclick="window.parent.close()" />'.
-         '</form>',
+         '</form>'.
+         '</b>',
      'right' );
-
-$oTemplate->display('footer.tpl');
 ?>
+</body></html>

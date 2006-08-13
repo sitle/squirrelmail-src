@@ -13,12 +13,8 @@
  * @since 1.2.5
  */
 
-
 /**
  * Check the preferences into the session cache.
- * @param string $data_dir
- * @param string $username
- * @since 1.1.3
  */
 function cachePrefValues($data_dir, $username) {
     global $prefs_are_cached, $prefs_cache;
@@ -26,8 +22,6 @@ function cachePrefValues($data_dir, $username) {
     sqgetGlobalVar('prefs_are_cached', $prefs_are_cached, SQ_SESSION );
     if ( isset($prefs_are_cached) && $prefs_are_cached) {
         sqgetGlobalVar('prefs_cache', $prefs_cache, SQ_SESSION );
-//        sm_print_r($prefs_cache);
-//        exit;
         return;
     }
 
@@ -91,11 +85,6 @@ function cachePrefValues($data_dir, $username) {
 
 /**
  * Return the value for the preference given by $string.
- * @param string $data_dir data directory
- * @param string $username user name
- * @param string $string preference name
- * @param string $default (since 1.2.0) default preference value
- * @return mixed
  */
 function getPref($data_dir, $username, $string, $default = '') {
     global $prefs_cache;
@@ -117,9 +106,6 @@ function getPref($data_dir, $username, $string, $default = '') {
 
 /**
  * Save the preferences for this user.
- * @param string $data_dir data directory
- * @param string $username user name
- * @since 1.1.3
  */
 function savePrefValues($data_dir, $username) {
     global $prefs_cache;
@@ -152,9 +138,6 @@ function savePrefValues($data_dir, $username) {
 
 /**
  * Remove a preference for the current user.
- * @param string $data_dir data directory
- * @param string $username user name
- * @param string $string preference name
  */
 function removePref($data_dir, $username, $string) {
     global $prefs_cache;
@@ -170,10 +153,6 @@ function removePref($data_dir, $username, $string) {
 
 /**
  * Set a there preference $string to $value.
- * @param string $data_dir data directory
- * @param string $username user name
- * @param string $string preference name
- * @param mixed $value preference value
  */
 function setPref($data_dir, $username, $string, $value) {
     global $prefs_cache;
@@ -194,10 +173,6 @@ function setPref($data_dir, $username, $string, $value) {
 
 /**
  * Check for a preferences file. If one can not be found, create it.
- * @param string $data_dir data directory
- * @param string $username user name
- * @param string $filename (since 1.2.0) preference file name.
- *  detects file name, if set to empty string.
  */
 function checkForPrefs($data_dir, $username, $filename = '') {
     /* First, make sure we have the filename. */
@@ -207,42 +182,35 @@ function checkForPrefs($data_dir, $username, $filename = '') {
 
     /* Then, check if the file exists. */
     if (!@file_exists($filename) ) {
-
-        /* If it does not exist, check for default_prefs */
-
-        /* First, check legacy locations: data dir */
+        /* First, check the $data_dir for the default preference file. */
         if(substr($data_dir,-1) != '/') {
             $data_dir .= '/';
         }
         $default_pref = $data_dir . 'default_pref';
 
-        /* or legacy location: internal data dir */
+        /* If it is not there, check the internal data directory. */
         if (!@file_exists($default_pref)) {
             $default_pref = SM_PATH . 'data/default_pref';
         }
 
-        /* If no legacies, check where we'd expect it to be located:
-         * under config/ */
-        if (!@file_exists($default_pref)) {
-            $default_pref = SM_PATH . 'config/default_pref';
-        }
-
-        /* If a default_pref file found, try to copy it, if none found,
-         * try to create an empty one. If that fails, report an error.
-         */
-        if (
-            ( is_readable($default_pref) && !@copy($default_pref, $filename) ) ||
-            !@touch($filename)
-        ) {
+        /* Otherwise, report an error. */
+        $errTitle = sprintf( _("Error opening %s"), $default_pref );
+        if (!is_readable($default_pref)) {
+            $errString = $errTitle . "<br />\n" .
+                         _("Default preference file not found or not readable!") . "<br />\n" .
+                         _("Please contact your system administrator and report this error.") . "<br />\n";
+            logout_error( $errString, $errTitle );
+            exit;
+        } else if (!@copy($default_pref, $filename)) {
             $uid = 'httpd';
             if (function_exists('posix_getuid')){
                 $user_data = posix_getpwuid(posix_getuid());
                 $uid = $user_data['name'];
             }
-            $errTitle = _("Could not create initial preference file!");
-            $errString = $errTitle . "<br />\n" .
-                       sprintf( _("%s should be writable by user %s"), $data_dir, $uid ) . "<br />\n" .
-                       _("Please contact your system administrator and report this error.") . "<br />\n";
+            $errString = $errTitle . '<br />' .
+                       _("Could not create initial preference file!") . "<br />\n" .
+                       sprintf( _("%s should be writable by user %s"), $data_dir, $uid ) .
+                       "<br />\n" . _("Please contact your system administrator and report this error.") . "<br />\n";
             logout_error( $errString, $errTitle );
             exit;
         }
@@ -251,11 +219,6 @@ function checkForPrefs($data_dir, $username, $filename = '') {
 
 /**
  * Write the User Signature.
- * @param string $data_dir data directory
- * @param string $username user name
- * @param integer $number (since 1.2.5) identity number.
- *  parameter was used for signature text before 1.2.5.
- * @param string $value (since 1.2.5) signature text
  */
 function setSig($data_dir, $username, $number, $value) {
     // Limit signature size to 64KB (database BLOB limit)
@@ -285,10 +248,6 @@ function setSig($data_dir, $username, $number, $value) {
 
 /**
  * Get the signature.
- * @param string $data_dir data directory
- * @param string $username user name
- * @param integer $number (since 1.2.5) identity number
- * @return string signature
  */
 function getSig($data_dir, $username, $number) {
     $filename = getHashedFile($username, $data_dir, "$username.si$number");
@@ -309,3 +268,4 @@ function getSig($data_dir, $username, $number) {
 }
 
 // vim: et ts=4
+?>

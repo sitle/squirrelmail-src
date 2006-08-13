@@ -184,3 +184,4 @@ function charset_decode_koi8_r ($string) {
 
     return $string;
 }
+?>

@@ -1,15 +1,14 @@
 <?php
-
 /**
  * options_main.mod
- *
+ * ----------------
  * Squirrelspell module
+ * Copyright (c) 1999-2006 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * Default page called when accessing SquirrelSpell's options.
  *
- * @author Konstantin Riabitsev <icon at duke.edu>
- * @copyright &copy; 1999-2006 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @author Konstantin Riabitsev <icon@duke.edu>
  * @version $Id$
  * @package plugins
  * @subpackage squirrelspell
@@ -55,3 +54,4 @@ sqspell_makePage( _("SquirrelSpell Options Menu"), null, $msg);
  * End:
  * vim: syntax=php
  */
+?>

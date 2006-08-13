@@ -1,16 +1,16 @@
 <?php
-
 /**
  * lang_setup.mod
- *
+ * ---------------
  * Squirrelspell module
+ *
+ * Copyright (c) 1999-2006 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This module displays available dictionaries to the user and lets
  * him/her choose which ones s/he wants to check messages with.
  *
- * @author Konstantin Riabitsev <icon at duke.edu>
- * @copyright &copy; 1999-2006 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @author Konstantin Riabitsev <icon@duke.edu>
  * @version $Id$
  * @package plugins
  * @subpackage squirrelspell
@@ -27,7 +27,7 @@ $msg = '<p>'
 /**
  * Present a nice listing.
  */
-$langs = sqspell_getSettings();
+$langs = sqspell_getSettings(null);
 $add = '<p>'
   . _("Make this dictionary my default selection:")
   . " <select name=\"lang_default\">\n";
@@ -56,3 +56,5 @@ sqspell_makePage(_("Add International Dictionaries"), null, $msg);
  * End:
  * vim: syntax=php
  */
+
+?>

@@ -3,12 +3,12 @@ Themes
 SquirrelMail users are able to customize the look of the interface by selecting
 a custom theme and the font style.
 
-SquirrelMail themes define interface colors. Each theme is a set of 17 or more
+SquirrelMail themes define interface colors. Each theme is a set of 16 or more
 colors.
 
 You can easily create your own theme. It is very simple. Just go into the
 themes/ directory and create a file called yourtheme_theme.php.
-You then need to create an array with 17 elements (0-16). Below is a blank theme
+You then need to create an array with 16 elements (0-15). Below is a blank theme
 sample followed by a description of what the different entries are for.
 
 ---<START>--- 
@@ -40,7 +40,6 @@ $color[12]  = '#xxxxxx';
 $color[13]  = '#xxxxxx';
 $color[14]  = '#xxxxxx';
 $color[15]  = '#xxxxxx';
-$color[16]  = '#xxxxxx';
 
 ---<END>---
 
@@ -64,7 +63,6 @@ b 12: Alternate color for message list [alters between #4 and this one]
 f 13: Color for single-quoted text ('> text') when reading (default: #800000)
 f 14: Color for text with more than one quote (default: #ff0000)
 f 15: Non-selectable folders in the left frame (default: $color[6])
-b 16: Highlight color (default: $color[2])
 
 Next all you have to do is run SquirrelMail configuration utility and add the
 theme to the list of themes available to you.

@@ -12,7 +12,8 @@
  */
 
 /** SquirrelMail required files. */
-include(SM_PATH . 'functions/imap_general.php');
+require_once(SM_PATH . 'functions/imap.php');
+require_once(SM_PATH . 'functions/imap_general.php');
 
 /* Define the group constants for the folder options page. */
 define('SMOPT_GRP_SPCFOLDER', 0);
@@ -33,11 +34,12 @@ define('SMOPT_GRP_FOLDERSELECT', 2);
  * @return array all option information
  */
 function load_optpage_data_folder() {
-    global $username, $imapServerAddress, $imapPort;
+    global $username, $key, $imapServerAddress, $imapPort;
     global $folder_prefix, $default_folder_prefix, $show_prefix_option;
 
     /* Get some imap data we need later. */
-    $imapConnection = sqimap_login($username, false, $imapServerAddress, $imapPort, 0);
+    $imapConnection =
+        sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
     $boxes = sqimap_mailbox_list($imapConnection);
 
     /* Build a simple array into which we will build options. */
@@ -96,20 +98,6 @@ function load_optpage_data_folder() {
         'save'    => 'save_option_sent_folder'
     );
 
-    $optvals[SMOPT_GRP_SPCFOLDER][] = array(
-        'name'    => 'translate_special_folders',
-        'caption' => _("Translate Special Folders"),
-        'type'    => SMOPT_TYPE_BOOLEAN,
-        'refresh' => SMOPT_REFRESH_FOLDERLIST
-    );
-
-    $optvals[SMOPT_GRP_SPCFOLDER][] = array(
-        'name'    => 'save_reply_with_orig',
-        'caption' => _("Save Replies with Original Message"),
-        'type'    => SMOPT_TYPE_BOOLEAN,
-        'refresh' => SMOPT_REFRESH_FOLDERLIST
-    );
-
     /*** Load the General Options into the array ***/
     $optgrps[SMOPT_GRP_FOLDERLIST] = _("Folder List Options");
     $optvals[SMOPT_GRP_FOLDERLIST] = array();
@@ -135,12 +123,15 @@ function load_optpage_data_folder() {
         'posvals' => $left_size_values
     );
 
+    $minute_str = _("Minutes");
     $left_refresh_values = array(SMPREF_NONE => _("Never"));
     foreach (array(30,60,120,180,300,600,1200) as $lr_val) {
         if ($lr_val < 60) {
             $left_refresh_values[$lr_val] = "$lr_val " . _("Seconds");
+        } else if ($lr_val == 60) {
+            $left_refresh_values[$lr_val] = "1 " . _("Minute");
         } else {
-            $left_refresh_values[$lr_val] = sprintf(ngettext("%d Minute","%d Minutes",($lr_val/60)),($lr_val/60));
+            $left_refresh_values[$lr_val] = ($lr_val/60) . " $minute_str";
         }
     }
     $optvals[SMOPT_GRP_FOLDERLIST][] = array(
@@ -200,6 +191,15 @@ function load_optpage_data_folder() {
     );
 
     $optvals[SMOPT_GRP_FOLDERLIST][] = array(
+        'name'    => 'hour_format',
+        'caption' => _("Hour Format"),
+        'type'    => SMOPT_TYPE_STRLIST,
+        'refresh' => SMOPT_REFRESH_FOLDERLIST,
+        'posvals' => array(SMPREF_TIME_12HR => _("12-hour clock"),
+                           SMPREF_TIME_24HR => _("24-hour clock"))
+    );
+
+    $optvals[SMOPT_GRP_FOLDERLIST][] = array(
         'name'    => 'search_memory',
         'caption' => _("Memory Search"),
         'type'    => SMOPT_TYPE_STRLIST,
@@ -216,12 +216,6 @@ function load_optpage_data_folder() {
                             9 => '9')
     );
 
-    $optvals[SMOPT_GRP_FOLDERLIST][] = array(
-        'name'    => 'show_only_subscribed_folders',
-        'caption' => _("Show only subscribed folders"),
-        'type'    => SMOPT_TYPE_BOOLEAN,
-        'refresh' => SMOPT_REFRESH_FOLDERLIST
-    );
 
     /*** Load the General Options into the array ***/
     $optgrps[SMOPT_GRP_FOLDERSELECT] = _("Folder Selection Options");
@@ -309,8 +303,10 @@ function save_option_draft_folder($option) {
         /* Set move to draft on or off. */
         $draft_on = ($option->new_value == SMPREF_NONE ? SMPREF_OFF : SMPREF_ON);
         setPref($data_dir, $username, 'save_as_draft', $draft_on);
-        
+
         /* Now just save the option as normal. */
         save_option($option);
     }
 }
+
+?>
