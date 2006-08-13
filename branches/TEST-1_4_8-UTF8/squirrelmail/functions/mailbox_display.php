@@ -1210,7 +1210,6 @@ function get_paginator_str($box, $start_msg, $end_msg, $num_msgs,
 }
 
 function processSubject($subject, $threadlevel = 0) {
-    global $languages, $squirrelmail_language;
     /* Shouldn't ever happen -- caught too many times in the IMAP functions */
     if ($subject == '') {
         return _("(no subject)");
@@ -1252,11 +1251,6 @@ function processSubject($subject, $threadlevel = 0) {
     }
     if ($ent_strlen <= $trim_at){
         return $subject;
-    }
-
-    if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-        function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
-        return $languages[$squirrelmail_language]['XTRA_CODE']('strimwidth', $subject, $trim_val);
     }
 
     // only print '...' when we're actually dropping part of the subject

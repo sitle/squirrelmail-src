@@ -156,9 +156,8 @@ function ServerMDNSupport($read) {
 }
 
 function SendMDN ( $mailbox, $passed_id, $sender, $message, $imapConnection) {
-    global $username, $attachment_dir, $color,
-           $version, $attachments, $squirrelmail_language, $default_charset,
-           $languages, $useSendmail, $domain, $sent_folder,
+    global $username, $attachment_dir, $color, $version, $attachments, 
+           $default_charset, $useSendmail, $domain, $sent_folder,
            $popuser, $data_dir, $username;
 
     sqgetGlobalVar('SERVER_NAME', $SERVER_NAME, SQ_SERVER);
@@ -234,18 +233,7 @@ function SendMDN ( $mailbox, $passed_id, $sender, $message, $imapConnection) {
             sprintf( _("Was displayed on %s"), $now );
 
     $special_encoding = '';
-    if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-        function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
-        $body = $languages[$squirrelmail_language]['XTRA_CODE']('encode', $body);
-        if (strtolower($default_charset) == 'iso-2022-jp') {
-            if (mb_detect_encoding($body) == 'ASCII') {
-                $special_encoding = '8bit';
-            } else {
-                $body = mb_convert_encoding($body, 'JIS');
-                $special_encoding = '7bit';
-            }
-        }
-    } elseif (sq_is8bit($body)) {
+    if (sq_is8bit($body)) {
         // detect 8bit symbols added by translations
         $special_encoding = '8bit';
     }
@@ -408,8 +396,7 @@ function formatRecipientString($recipients, $item ) {
 function formatEnvheader($mailbox, $passed_id, $passed_ent_id, $message,
                          $color, $FirstTimeSee) {
     global $msn_user_support, $default_use_mdn, $default_use_priority,
-           $show_xmailer_default, $mdn_user_support, $PHP_SELF, $javascript_on,
-           $squirrelmail_language;
+           $show_xmailer_default, $mdn_user_support, $PHP_SELF, $javascript_on;
 
     $header = $message->rfc822_header;
     $env = array();

@@ -19,8 +19,6 @@ require_once(SM_PATH . 'functions/global.php');
 
 /* Always set up the language before calling these functions */
 function displayHtmlHeader( $title = 'SquirrelMail', $xtra = '', $do_hook = TRUE ) {
-    global $squirrelmail_language;
-
     if ( !sqgetGlobalVar('base_uri', $base_uri, SQ_SESSION) ) {
         global $base_uri;
     }
@@ -37,12 +35,6 @@ function displayHtmlHeader( $title = 'SquirrelMail', $xtra = '', $do_hook = TRUE
     } else {
         echo '<link rel="stylesheet" type="text/css" href="' .
              $base_uri . 'themes/css/'.$custom_css.'" />';
-    }
-
-    if ($squirrelmail_language == 'ja_JP') {
-        // Why is it added here? Header ('Content-Type:..) is used in i18n.php
-        echo "<!-- \xfd\xfe -->\n";
-        echo '<meta http-equiv="Content-type" content="text/html; charset=euc-jp" />' . "\n";
     }
 
     if ($do_hook) {

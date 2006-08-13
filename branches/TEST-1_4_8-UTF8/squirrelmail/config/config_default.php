@@ -962,7 +962,7 @@ $squirrelmail_default_language = 'en_US';
  *
  * @global string $default_charset
  */
-$default_charset = 'iso-8859-1';
+$default_charset = 'utf-8';
 
 /**
  * Lossy Encoding Control

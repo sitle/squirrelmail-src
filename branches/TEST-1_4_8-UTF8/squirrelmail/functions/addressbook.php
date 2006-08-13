@@ -664,6 +664,24 @@ class addressbook_backend {
         return false;
     }
 
+    /**
+     * Creates full name from given name and surname
+     *
+     * Handles name order differences
+     * @param string $firstname given name
+     * @param string $lastname surname
+     * @return string full name
+     * @since 1.5.2
+     */
+    function fullname($firstname,$lastname) {
+        global $squirrelmail_language;
+        if ($squirrelmail_language=='ja_JP') {
+            return trim($lastname . ' ' . $firstname);
+        } else {
+            return trim($firstname . ' ' . $lastname);
+        }
+    }
+
 }
 
 /*

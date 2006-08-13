@@ -94,17 +94,19 @@ function load_optpage_data_display() {
     }
 
     asort($language_values);
-    $language_values =
-        array_merge(array('' => _("Default")), $language_values);
-    $language = $squirrelmail_language;
-    $optvals[SMOPT_GRP_GENERAL][] = array(
-        'name'    => 'language',
-        'caption' => _("Language"),
-        'type'    => SMOPT_TYPE_STRLIST,
-        'refresh' => SMOPT_REFRESH_ALL,
-        'posvals' => $language_values,
-        'htmlencoded' => true
-    );
+    if (count($language_values) > 1) {
+        $language_values =
+            array_merge(array('' => _("Default")), $language_values);
+        $language = $squirrelmail_language;
+        $optvals[SMOPT_GRP_GENERAL][] = array(
+            'name'    => 'language',
+            'caption' => _("Language"),
+            'type'    => SMOPT_TYPE_STRLIST,
+            'refresh' => SMOPT_REFRESH_ALL,
+            'posvals' => $language_values,
+            'htmlencoded' => true
+        );
+    }
 
     /* Set values for the "use javascript" option. */
     $optvals[SMOPT_GRP_GENERAL][] = array(

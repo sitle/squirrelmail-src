@@ -33,13 +33,6 @@ function sqimap_mb_convert_encoding($str, $to_encoding, $from_encoding, $default
 }
 
 function imap_utf7_encode_local($s) {
-    global $languages, $squirrelmail_language;
-
-    if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-        function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
-        return $languages[$squirrelmail_language]['XTRA_CODE']('utf7-imap_encode', $s);
-    }
-
     if ($s == '')  //If empty, don't bother
       return '';
 
@@ -86,13 +79,6 @@ function imap_utf7_encode_local($s) {
 }
 
 function imap_utf7_decode_local($s) {
-    global $languages, $squirrelmail_language;
-
-    if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-        function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
-        return $languages[$squirrelmail_language]['XTRA_CODE']('utf7-imap_decode', $s);
-    }
-
     if ($s == '')  //If empty, don't bother
       return '';
 

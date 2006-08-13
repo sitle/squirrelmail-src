@@ -265,7 +265,7 @@ class abook_local_file extends addressbook_backend {
             $line = join(' ', $row);
             if(eregi($expr, $line)) {
                 array_push($res, array('nickname'  => $row[0],
-                    'name'      => $row[1] . ' ' . $row[2],
+                    'name'      => $this->fullname($row[1],$row[2]),
                     'firstname' => $row[1],
                     'lastname'  => $row[2],
                     'email'     => $row[3],
@@ -296,7 +296,7 @@ class abook_local_file extends addressbook_backend {
         while ($row = @fgetcsv($this->filehandle, 2048, '|')) {
             if(strtolower($row[0]) == $alias) {
                 return array('nickname'  => $row[0],
-                  'name'      => $row[1] . ' ' . $row[2],
+                  'name'      => $this->fullname($row[1],$row[2]),
                   'firstname' => $row[1],
                   'lastname'  => $row[2],
                   'email'     => $row[3],
@@ -320,7 +320,7 @@ class abook_local_file extends addressbook_backend {
 
         while ($row = @fgetcsv($this->filehandle, 2048, '|')) {
             array_push($res, array('nickname'  => $row[0],
-                'name'      => $row[1] . ' ' . $row[2],
+                'name'      => $this->fullname($row[1],$row[2]),
                 'firstname' => $row[1],
                 'lastname'  => $row[2],
                 'email'     => $row[3],

@@ -420,39 +420,23 @@ if ($showaddrlist) {
             } else {
                 $tr_bgcolor = $color[4];
             }
-            if ($squirrelmail_language == 'ja_JP') {
-                echo html_tag( 'tr', '', '', $tr_bgcolor);
-                if ($abook->backends[$row['backend']]->writeable) {
-                    echo html_tag( 'td',
-                            '<small>' .
-                            addCheckBox('sel[]', $selected, $row['backend'].':'.$row['nickname']).
-                            '</small>' ,
-                            'center', '', 'valign="top" width="1%"' );
-                } else {
-                    echo html_tag( 'td',
-                            '&nbsp;' ,
-                            'center', '', 'valign="top" width="1%"' );
-                }
-                echo html_tag( 'td', '&nbsp;' . htmlspecialchars($row['nickname']) . '&nbsp;', 'left', '', 'valign="top" width="1%" nowrap' ) . 
-                    html_tag( 'td', '&nbsp;' . htmlspecialchars($row['lastname']) . ' ' . htmlspecialchars($row['firstname']) . '&nbsp;', 'left', '', 'valign="top" width="1%" nowrap' ) .
-                    html_tag( 'td', '', 'left', '', 'valign="top" width="1%" nowrap' ) . '&nbsp;';
+
+            echo html_tag( 'tr', '', '', $tr_bgcolor);
+            if ($abook->backends[$row['backend']]->writeable) {
+                echo html_tag( 'td',
+                               '<small>' .
+                               addCheckBox('sel[]', $selected, $row['backend'] . ':' . $row['nickname']).
+                               '</small>' ,
+                               'center', '', 'valign="top" width="1%"' );
             } else {
-                echo html_tag( 'tr', '', '', $tr_bgcolor);
-                if ($abook->backends[$row['backend']]->writeable) {
-                    echo html_tag( 'td',
-                            '<small>' .
-                            addCheckBox('sel[]', $selected, $row['backend'] . ':' . $row['nickname']).
-                            '</small>' ,
-                            'center', '', 'valign="top" width="1%"' );
-                } else {
-                    echo html_tag( 'td',
-                            '&nbsp;' ,
-                            'center', '', 'valign="top" width="1%"' );
-                }
-                echo html_tag( 'td', '&nbsp;' . htmlspecialchars($row['nickname']) . '&nbsp;', 'left', '', 'valign="top" width="1%" nowrap' ) .
-                    html_tag( 'td', '&nbsp;' . htmlspecialchars($row['name']) . '&nbsp;', 'left', '', 'valign="top" width="1%" nowrap' ) .
-                    html_tag( 'td', '', 'left', '', 'valign="top" width="1%" nowrap' ) . '&nbsp;';
+                echo html_tag( 'td',
+                               '&nbsp;' ,
+                               'center', '', 'valign="top" width="1%"' );
             }
+            echo html_tag( 'td', '&nbsp;' . htmlspecialchars($row['nickname']) . '&nbsp;', 'left', '', 'valign="top" width="1%" nowrap' ) .
+                html_tag( 'td', '&nbsp;' . htmlspecialchars($row['name']) . '&nbsp;', 'left', '', 'valign="top" width="1%" nowrap' ) .
+                html_tag( 'td', '', 'left', '', 'valign="top" width="1%" nowrap' ) . '&nbsp;';
+
             $email = $abook->full_address($row);
             echo makeComposeLink('src/compose.php?send_to='.rawurlencode($email),
                     htmlspecialchars($row['email'])).

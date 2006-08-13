@@ -617,7 +617,7 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
         $use_signature, $composesession, $data_dir, $username,
         $username, $key, $imapServerAddress, $imapPort, $compose_messages,
         $composeMessage, $body_quote;
-    global $languages, $squirrelmail_language, $default_charset;
+    global $default_charset;
 
     /*
      * Set $default_charset to correspond with the user's selection
@@ -676,12 +676,6 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
                 $bodypart = preg_replace(array('/<p>/i','/<br\s*(\/)*>/i'), "\n", $bodypart);
                 $bodypart = str_replace(array('&nbsp;','&gt;','&lt;'),array(' ','>','<'),$bodypart);
                 $bodypart = strip_tags($bodypart);
-            }
-            if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-                    function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
-                if (mb_detect_encoding($bodypart) != 'ASCII') {
-                    $bodypart = $languages[$squirrelmail_language]['XTRA_CODE']('decode', $bodypart);
-                }
             }
 
             // charset encoding in compose form stuff
@@ -858,7 +852,7 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
 } /* function newMail() */
 
 function getAttachments($message, &$composeMessage, $passed_id, $entities, $imapConnection) {
-    global $attachment_dir, $username, $data_dir, $squirrelmail_language, $languages;
+    global $attachment_dir, $username, $data_dir;
     $hashed_attachment_dir = getHashedDir($username, $attachment_dir);
     if (!count($message->entities) ||
             ($message->type0 == 'message' && $message->type1 == 'rfc822')) {
@@ -883,10 +877,6 @@ function getAttachments($message, &$composeMessage, $passed_id, $entities, $imap
                     break;
             }
             $filename = decodeHeader($filename, false, false);
-            if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-                    function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
-                $filename =  $languages[$squirrelmail_language]['XTRA_CODE']('encode', $filename);
-            }
             $localfilename = GenerateRandomString(32, '', 7);
             $full_localfilename = "$hashed_attachment_dir/$localfilename";
             while (file_exists($full_localfilename)) {
@@ -1131,20 +1121,13 @@ function showInputForm ($session, $values=false) {
         }
 
         if ($sig_first == '1') {
-            if ($default_charset == 'iso-2022-jp') {
-                echo "\n\n".($prefix_sig==true? "-- \n":'').mb_convert_encoding($signature, 'EUC-JP');
-            } else {
-                echo "\n\n".($prefix_sig==true? "-- \n":'').decodeHeader($signature,false,false,true);
-            }
+            echo "\n\n".($prefix_sig==true? "-- \n":'').decodeHeader($signature,false,false,true);
+            
             echo "\n\n".htmlspecialchars(decodeHeader($body,false,false,true));
-        }
-        else {
+        } else {
             echo "\n\n".htmlspecialchars(decodeHeader($body,false,false,true));
-            if ($default_charset == 'iso-2022-jp') {
-                echo "\n\n".($prefix_sig==true? "-- \n":'').mb_convert_encoding($signature, 'EUC-JP');
-            }else{
-                echo "\n\n".($prefix_sig==true? "-- \n":'').decodeHeader($signature,false,false,true);
-            }
+
+            echo "\n\n".($prefix_sig==true? "-- \n":'').decodeHeader($signature,false,false,true);
         }
     } else {
         echo htmlspecialchars(decodeHeader($body,false,false,true));
@@ -1432,14 +1415,6 @@ function deliverMessage($composeMessage, $draft=false) {
     $rfc822_header->subject = $subject;
 
     $special_encoding='';
-    if (strtolower($default_charset) == 'iso-2022-jp') {
-        if (mb_detect_encoding($body) == 'ASCII') {
-            $special_encoding = '8bit';
-        } else {
-            $body = mb_convert_encoding($body, 'JIS');
-            $special_encoding = '7bit';
-        }
-    }
     $composeMessage->setBody($body);
 
     if (ereg("^([^@%/]+)[@%/](.+)$", $username, $usernamedata)) {

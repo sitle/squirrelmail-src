@@ -70,7 +70,6 @@ function sq_setlocale($category,$locale) {
  * Converts string from given charset to charset, that can be displayed by user translation.
  *
  * Function by default returns html encoded strings, if translation uses different encoding.
- * If Japanese translation is used - function returns string converted to euc-jp
  * If $charset is not supported - function returns unconverted string.
  *
  * sanitizing of html tags is also done by this function.
@@ -84,12 +83,7 @@ function sq_setlocale($category,$locale) {
  * @return string decoded string
  */
 function charset_decode ($charset, $string, $force_decode=false, $save_html=false) {
-    global $languages, $squirrelmail_language, $default_charset;
-
-    if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-        function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
-        $string = $languages[$squirrelmail_language]['XTRA_CODE']('decode', $string);
-    }
+    global $default_charset;
 
     /* All HTML special characters are 7 bit and can be replaced first */
     if (! $save_html) $string = htmlspecialchars ($string);
@@ -172,6 +166,7 @@ function charset_encode($string,$charset,$htmlencode=true) {
  */
 function charset_convert($in_charset,$string,$out_charset,$htmlencode=true) {
     $string=charset_decode($in_charset,$string,true);
+    $string=sqi18n_convert_entities($string);
     $string=charset_encode($string,$out_charset,$htmlencode);
     return $string;
 }
@@ -208,6 +203,288 @@ function fixcharset($charset) {
     $charset=str_replace('iso_8859_8_i','iso_8859_8',$charset);
 
     return $charset;
+}
+
+/**
+ * Converts html character entities to numeric entities
+ *
+ * SquirrelMail encoding functions work only with numeric entities.
+ * This function fixes issues with decoding functions that might convert
+ * some symbols to character entities. Issue is specific to PHP recode
+ * extension decoding. Function is used internally in charset_convert()
+ * function.
+ * @param string $str string that might contain html character entities
+ * @return string string with character entities converted to decimals.
+ * @since 1.5.2
+ */
+function sqi18n_convert_entities($str) {
+
+    $entities = array(
+        // Latin 1
+        '&nbsp;'   => '&#160;',
+        '&iexcl;'  => '&#161;',
+        '&cent;'   => '&#162;',
+        '&pound;'  => '&#163;',
+        '&curren;' => '&#164;',
+        '&yen;'    => '&#165;',
+        '&brvbar;' => '&#166;',
+        '&sect;'   => '&#167;',
+        '&uml;'    => '&#168;',
+        '&copy;'   => '&#169;',
+        '&ordf;'   => '&#170;',
+        '&laquo;'  => '&#171;',
+        '&not;'    => '&#172;',
+        '&shy;'    => '&#173;',
+        '&reg;'    => '&#174;',
+        '&macr;'   => '&#175;',
+        '&deg;'    => '&#176;',
+        '&plusmn;' => '&#177;',
+        '&sup2;'   => '&#178;',
+        '&sup3;'   => '&#179;',
+        '&acute;'  => '&#180;',
+        '&micro;'  => '&#181;',
+        '&para;'   => '&#182;',
+        '&middot;' => '&#183;',
+        '&cedil;'  => '&#184;',
+        '&sup1;'   => '&#185;',
+        '&ordm;'   => '&#186;',
+        '&raquo;'  => '&#187;',
+        '&frac14;' => '&#188;',
+        '&frac12;' => '&#189;',
+        '&frac34;' => '&#190;',
+        '&iquest;' => '&#191;',
+        '&Agrave;' => '&#192;',
+        '&Aacute;' => '&#193;',
+        '&Acirc;'  => '&#194;',
+        '&Atilde;' => '&#195;',
+        '&Auml;'   => '&#196;',
+        '&Aring;'  => '&#197;',
+        '&AElig;'  => '&#198;',
+        '&Ccedil;' => '&#199;',
+        '&Egrave;' => '&#200;',
+        '&Eacute;' => '&#201;',
+        '&Ecirc;'  => '&#202;',
+        '&Euml;'   => '&#203;',
+        '&Igrave;' => '&#204;',
+        '&Iacute;' => '&#205;',
+        '&Icirc;'  => '&#206;',
+        '&Iuml;'   => '&#207;',
+        '&ETH;'    => '&#208;',
+        '&Ntilde;' => '&#209;',
+        '&Ograve;' => '&#210;',
+        '&Oacute;' => '&#211;',
+        '&Ocirc;'  => '&#212;',
+        '&Otilde;' => '&#213;',
+        '&Ouml;'   => '&#214;',
+        '&times;'  => '&#215;',
+        '&Oslash;' => '&#216;',
+        '&Ugrave;' => '&#217;',
+        '&Uacute;' => '&#218;',
+        '&Ucirc;'  => '&#219;',
+        '&Uuml;'   => '&#220;',
+        '&Yacute;' => '&#221;',
+        '&THORN;'  => '&#222;',
+        '&szlig;'  => '&#223;',
+        '&agrave;' => '&#224;',
+        '&aacute;' => '&#225;',
+        '&acirc;'  => '&#226;',
+        '&atilde;' => '&#227;',
+        '&auml;'   => '&#228;',
+        '&aring;'  => '&#229;',
+        '&aelig;'  => '&#230;',
+        '&ccedil;' => '&#231;',
+        '&egrave;' => '&#232;',
+        '&eacute;' => '&#233;',
+        '&ecirc;'  => '&#234;',
+        '&euml;'   => '&#235;',
+        '&igrave;' => '&#236;',
+        '&iacute;' => '&#237;',
+        '&icirc;'  => '&#238;',
+        '&iuml;'   => '&#239;',
+        '&eth;'    => '&#240;',
+        '&ntilde;' => '&#241;',
+        '&ograve;' => '&#242;',
+        '&oacute;' => '&#243;',
+        '&ocirc;'  => '&#244;',
+        '&otilde;' => '&#245;',
+        '&ouml;'   => '&#246;',
+        '&divide;' => '&#247;',
+        '&oslash;' => '&#248;',
+        '&ugrave;' => '&#249;',
+        '&uacute;' => '&#250;',
+        '&ucirc;'  => '&#251;',
+        '&uuml;'   => '&#252;',
+        '&yacute;' => '&#253;',
+        '&thorn;'  => '&#254;',
+        '&yuml;'   => '&#255;',
+        // Latin Extended-A
+        '&OElig;'  => '&#338;',
+        '&oelig;'  => '&#339;',
+        '&Scaron;' => '&#352;',
+        '&scaron;' => '&#353;',
+        '&Yuml;'   => '&#376;',
+        // Spacing Modifier Letters
+        '&circ;'   => '&#710;',
+        '&tilde;'  => '&#732;',
+        // General Punctuation
+        '&ensp;'   => '&#8194;',
+        '&emsp;'   => '&#8195;',
+        '&thinsp;' => '&#8201;',
+        '&zwnj;'   => '&#8204;',
+        '&zwj;'    => '&#8205;',
+        '&lrm;'    => '&#8206;',
+        '&rlm;'    => '&#8207;',
+        '&ndash;'  => '&#8211;',
+        '&mdash;'  => '&#8212;',
+        '&lsquo;'  => '&#8216;',
+        '&rsquo;'  => '&#8217;',
+        '&sbquo;'  => '&#8218;',
+        '&ldquo;'  => '&#8220;',
+        '&rdquo;'  => '&#8221;',
+        '&bdquo;'  => '&#8222;',
+        '&dagger;' => '&#8224;',
+        '&Dagger;' => '&#8225;',
+        '&permil;' => '&#8240;',
+        '&lsaquo;' => '&#8249;',
+        '&rsaquo;' => '&#8250;',
+        '&euro;'   => '&#8364;',
+        // Latin Extended-B
+        '&fnof;' => '&#402;',
+        // Greek
+        '&Alpha;'  => '&#913;',
+        '&Beta;'   => '&#914;',
+        '&Gamma;'  => '&#915;',
+        '&Delta;'  => '&#916;',
+        '&Epsilon;' => '&#917;',
+        '&Zeta;'   => '&#918;',
+        '&Eta;'    => '&#919;',
+        '&Theta;'  => '&#920;',
+        '&Iota;'   => '&#921;',
+        '&Kappa;'  => '&#922;',
+        '&Lambda;' => '&#923;',
+        '&Mu;'     => '&#924;',
+        '&Nu;'     => '&#925;',
+        '&Xi;'     => '&#926;',
+        '&Omicron;' => '&#927;',
+        '&Pi;'     => '&#928;',
+        '&Rho;'    => '&#929;',
+        '&Sigma;'  => '&#931;',
+        '&Tau;'    => '&#932;',
+        '&Upsilon;' => '&#933;',
+        '&Phi;'    => '&#934;',
+        '&Chi;'    => '&#935;',
+        '&Psi;'    => '&#936;',
+        '&Omega;'  => '&#937;',
+        '&alpha;'  => '&#945;',
+        '&beta;'   => '&#946;',
+        '&gamma;'  => '&#947;',
+        '&delta;'  => '&#948;',
+        '&epsilon;' => '&#949;',
+        '&zeta;'   => '&#950;',
+        '&eta;'    => '&#951;',
+        '&theta;'  => '&#952;',
+        '&iota;'   => '&#953;',
+        '&kappa;'  => '&#954;',
+        '&lambda;' => '&#955;',
+        '&mu;'     => '&#956;',
+        '&nu;'     => '&#957;',
+        '&xi;'     => '&#958;',
+        '&omicron;' => '&#959;',
+        '&pi;'     => '&#960;',
+        '&rho;'    => '&#961;',
+        '&sigmaf;' => '&#962;',
+        '&sigma;'  => '&#963;',
+        '&tau;'    => '&#964;',
+        '&upsilon;' => '&#965;',
+        '&phi;'    => '&#966;',
+        '&chi;'    => '&#967;',
+        '&psi;'    => '&#968;',
+        '&omega;'  => '&#969;',
+        '&thetasym;' => '&#977;',
+        '&upsih;'  => '&#978;',
+        '&piv;'    => '&#982;',
+        // General Punctuation
+        '&bull;'   => '&#8226;',
+        '&hellip;' => '&#8230;',
+        '&prime;'  => '&#8242;',
+        '&Prime;'  => '&#8243;',
+        '&oline;'  => '&#8254;',
+        '&frasl;'  => '&#8260;',
+        // Letterlike Symbols
+        '&weierp;' => '&#8472;',
+        '&image;'  => '&#8465;',
+        '&real;'   => '&#8476;',
+        '&trade;'  => '&#8482;',
+        '&alefsym;' => '&#8501;',
+        // Arrows
+        '&larr;'   => '&#8592;',
+        '&uarr;'   => '&#8593;',
+        '&rarr;'   => '&#8594;',
+        '&darr;'   => '&#8595;',
+        '&harr;'   => '&#8596;',
+        '&crarr;'  => '&#8629;',
+        '&lArr;'   => '&#8656;',
+        '&uArr;'   => '&#8657;',
+        '&rArr;'   => '&#8658;',
+        '&dArr;'   => '&#8659;',
+        '&hArr;'   => '&#8660;',
+        // Mathematical Operators
+        '&forall;' => '&#8704;',
+        '&part;'   => '&#8706;',
+        '&exist;'  => '&#8707;',
+        '&empty;'  => '&#8709;',
+        '&nabla;'  => '&#8711;',
+        '&isin;'   => '&#8712;',
+        '&notin;'  => '&#8713;',
+        '&ni;'     => '&#8715;',
+        '&prod;'   => '&#8719;',
+        '&sum;'    => '&#8721;',
+        '&minus;'  => '&#8722;',
+        '&lowast;' => '&#8727;',
+        '&radic;'  => '&#8730;',
+        '&prop;'   => '&#8733;',
+        '&infin;'  => '&#8734;',
+        '&ang;'    => '&#8736;',
+        '&and;'    => '&#8743;',
+        '&or;'     => '&#8744;',
+        '&cap;'    => '&#8745;',
+        '&cup;'    => '&#8746;',
+        '&int;'    => '&#8747;',
+        '&there4;' => '&#8756;',
+        '&sim;'    => '&#8764;',
+        '&cong;'   => '&#8773;',
+        '&asymp;'  => '&#8776;',
+        '&ne;'     => '&#8800;',
+        '&equiv;'  => '&#8801;',
+        '&le;'     => '&#8804;',
+        '&ge;'     => '&#8805;',
+        '&sub;'    => '&#8834;',
+        '&sup;'    => '&#8835;',
+        '&nsub;'   => '&#8836;',
+        '&sube;'   => '&#8838;',
+        '&supe;'   => '&#8839;',
+        '&oplus;'  => '&#8853;',
+        '&otimes;' => '&#8855;',
+        '&perp;'   => '&#8869;',
+        '&sdot;'   => '&#8901;',
+        // Miscellaneous Technical
+        '&lceil;'  => '&#8968;',
+        '&rceil;'  => '&#8969;',
+        '&lfloor;' => '&#8970;',
+        '&rfloor;' => '&#8971;',
+        '&lang;'   => '&#9001;',
+        '&rang;'   => '&#9002;',
+        // Geometric Shapes
+        '&loz;'    => '&#9674;',
+        // Miscellaneous Symbols
+        '&spades;' => '&#9824;',
+        '&clubs;'  => '&#9827;',
+        '&hearts;' => '&#9829;',
+        '&diams;'  => '&#9830;');
+
+    $str = str_replace(array_keys($entities), array_values($entities), $str);
+
+    return $str;
 }
 
 /*
@@ -274,11 +551,7 @@ function set_up_language($sm_language, $do_search = false, $default = false) {
         bindtextdomain( 'squirrelmail', SM_PATH . 'locale/' );
         textdomain( 'squirrelmail' );
         if (function_exists('bind_textdomain_codeset')) {
-            if ($sm_notAlias == 'ja_JP') {
-                bind_textdomain_codeset ("squirrelmail", 'EUC-JP');
-            } else {
-                bind_textdomain_codeset ("squirrelmail", $languages[$sm_notAlias]['CHARSET'] );
-            }
+            bind_textdomain_codeset ("squirrelmail", $languages[$sm_notAlias]['CHARSET'] );
         }
 
         // Use LOCALE key, if it is set.
@@ -318,27 +591,13 @@ function set_up_language($sm_language, $do_search = false, $default = false) {
         if ($sm_notAlias=='tr_TR') setlocale(LC_CTYPE,'C');
 
         $squirrelmail_language = $sm_notAlias;
-        if ($squirrelmail_language == 'ja_JP') {
-            header ('Content-Type: text/html; charset=EUC-JP');
-            if (!function_exists('mb_internal_encoding')) {
-                echo _("You need to have PHP installed with the multibyte string function enabled (using configure option --enable-mbstring).");
-                // Revert to English link has to be added.
-                // stop further execution in order not to get php errors on mb_internal_encoding().
-                return;
-            }
-            if (function_exists('mb_language')) {
-                mb_language('Japanese');
-            }
-            mb_internal_encoding('EUC-JP');
-            mb_http_output('pass');
-        } elseif ($squirrelmail_language == 'en_US') {
+        if ($squirrelmail_language == 'en_US') {
             header( 'Content-Type: text/html; charset=' . $default_charset );
         } else {
             header( 'Content-Type: text/html; charset=' . $languages[$sm_notAlias]['CHARSET'] );
         }
         // mbstring.func_overload<>0 fix. See cvs HEAD comments.
-        if ($squirrelmail_language != 'ja_JP' && 
-            function_exists('mb_internal_encoding') &&
+        if (function_exists('mb_internal_encoding') &&
             check_php_version(4,2,0) &&
             (int)ini_get('mbstring.func_overload')!=0) {
             mb_internal_encoding('pass');
@@ -464,165 +723,6 @@ function is_conversion_safe($input_charset) {
     }
 }
 
-/* ---- extra code functions ----*/
-/**
- * Japanese charset extra function
- */
-function japanese_charset_xtra() {
-    $ret = func_get_arg(1);  /* default return value */
-    if (function_exists('mb_detect_encoding')) {
-        switch (func_get_arg(0)) { /* action */
-        case 'decode':
-            $detect_encoding = @mb_detect_encoding($ret);
-            if ($detect_encoding == 'JIS' ||
-                $detect_encoding == 'EUC-JP' ||
-                $detect_encoding == 'SJIS' ||
-                $detect_encoding == 'UTF-8') {
-
-                $ret = mb_convert_kana(mb_convert_encoding($ret, 'EUC-JP', 'AUTO'), "KV");
-            }
-            break;
-        case 'encode':
-            $detect_encoding = @mb_detect_encoding($ret);
-            if ($detect_encoding == 'JIS' ||
-                $detect_encoding == 'EUC-JP' ||
-                $detect_encoding == 'SJIS' ||
-                $detect_encoding == 'UTF-8') {
-
-                $ret = mb_convert_encoding(mb_convert_kana($ret, "KV"), 'JIS', 'AUTO');
-            }
-            break;
-        case 'strimwidth':
-            $width = func_get_arg(2);
-            $ret = mb_strimwidth($ret, 0, $width, '...');
-            break;
-        case 'encodeheader':
-            $result = '';
-            if (strlen($ret) > 0) {
-                $tmpstr = mb_substr($ret, 0, 1);
-                $prevcsize = strlen($tmpstr);
-                for ($i = 1; $i < mb_strlen($ret); $i++) {
-                    $tmp = mb_substr($ret, $i, 1);
-                    if (strlen($tmp) == $prevcsize) {
-                        $tmpstr .= $tmp;
-                    } else {
-                        if ($prevcsize == 1) {
-                            $result .= $tmpstr;
-                        } else {
-                            $result .= str_replace(' ', '',
-                                                   mb_encode_mimeheader($tmpstr,'iso-2022-jp','B',''));
-                        }
-                        $tmpstr = $tmp;
-                        $prevcsize = strlen($tmp);
-                    }
-                }
-                if (strlen($tmpstr)) {
-                    if (strlen(mb_substr($tmpstr, 0, 1)) == 1)
-                        $result .= $tmpstr;
-                    else
-                        $result .= str_replace(' ', '',
-                                               mb_encode_mimeheader($tmpstr,'iso-2022-jp','B',''));
-                }
-            }
-            $ret = $result;
-            break;
-        case 'decodeheader':
-            $ret = str_replace("\t", "", $ret);
-            if (eregi('=\\?([^?]+)\\?(q|b)\\?([^?]+)\\?=', $ret))
-                $ret = @mb_decode_mimeheader($ret);
-            $ret = @mb_convert_encoding($ret, 'EUC-JP', 'AUTO');
-            break;
-        case 'downloadfilename':
-            $useragent = func_get_arg(2);
-            if (strstr($useragent, 'Windows') !== false ||
-                strstr($useragent, 'Mac_') !== false) {
-                $ret = mb_convert_encoding($ret, 'SJIS', 'AUTO');
-            } else {
-                $ret = mb_convert_encoding($ret, 'EUC-JP', 'AUTO');
-}
-            break;
-        case 'wordwrap':
-            $no_begin = "\x21\x25\x29\x2c\x2e\x3a\x3b\x3f\x5d\x7d\xa1\xf1\xa1\xeb\xa1" .
-                "\xc7\xa1\xc9\xa2\xf3\xa1\xec\xa1\xed\xa1\xee\xa1\xa2\xa1\xa3\xa1\xb9" .
-                "\xa1\xd3\xa1\xd5\xa1\xd7\xa1\xd9\xa1\xdb\xa1\xcd\xa4\xa1\xa4\xa3\xa4" .
-                "\xa5\xa4\xa7\xa4\xa9\xa4\xc3\xa4\xe3\xa4\xe5\xa4\xe7\xa4\xee\xa1\xab" .
-                "\xa1\xac\xa1\xb5\xa1\xb6\xa5\xa1\xa5\xa3\xa5\xa5\xa5\xa7\xa5\xa9\xa5" .
-                "\xc3\xa5\xe3\xa5\xe5\xa5\xe7\xa5\xee\xa5\xf5\xa5\xf6\xa1\xa6\xa1\xbc" .
-                "\xa1\xb3\xa1\xb4\xa1\xaa\xa1\xf3\xa1\xcb\xa1\xa4\xa1\xa5\xa1\xa7\xa1" .
-                "\xa8\xa1\xa9\xa1\xcf\xa1\xd1";
-            $no_end = "\x5c\x24\x28\x5b\x7b\xa1\xf2\x5c\xa1\xc6\xa1\xc8\xa1\xd2\xa1" .
-                "\xd4\xa1\xd6\xa1\xd8\xa1\xda\xa1\xcc\xa1\xf0\xa1\xca\xa1\xce\xa1\xd0\xa1\xef";
-            $wrap = func_get_arg(2);
-
-            if (strlen($ret) >= $wrap &&
-                substr($ret, 0, 1) != '>' &&
-                strpos($ret, 'http://') === FALSE &&
-                strpos($ret, 'https://') === FALSE &&
-                strpos($ret, 'ftp://') === FALSE) {
-
-                $ret = mb_convert_kana($ret, "KV");
-
-                $line_new = '';
-                $ptr = 0;
-
-                while ($ptr < strlen($ret) - 1) {
-                    $l = mb_strcut($ret, $ptr, $wrap);
-                    $ptr += strlen($l);
-                    $tmp = $l;
-
-                    $l = mb_strcut($ret, $ptr, 2);
-                    while (strlen($l) != 0 && mb_strpos($no_begin, $l) !== FALSE ) {
-                        $tmp .= $l;
-                        $ptr += strlen($l);
-                        $l = mb_strcut($ret, $ptr, 1);
-                    }
-                    $line_new .= $tmp;
-                    if ($ptr < strlen($ret) - 1)
-                        $line_new .= "\n";
-                }
-                $ret = $line_new;
-            }
-            break;
-        case 'utf7-imap_encode':
-            $ret = mb_convert_encoding($ret, 'UTF7-IMAP', 'EUC-JP');
-            break;
-        case 'utf7-imap_decode':
-            $ret = mb_convert_encoding($ret, 'EUC-JP', 'UTF7-IMAP');
-            break;
-        }
-    }
-    return $ret;
-}
-
-
-/*
- * Korean charset extra function
- * Hangul(Korean Character) Attached File Name Fix.
- */
-function korean_charset_xtra() {
-
-    $ret = func_get_arg(1);  /* default return value */
-    if (func_get_arg(0) == 'downloadfilename') { /* action */
-        $ret = str_replace("\x0D\x0A", '', $ret);  /* Hanmail's CR/LF Clear */
-        for ($i=0;$i<strlen($ret);$i++) {
-            if ($ret[$i] >= "\xA1" && $ret[$i] <= "\xFE") {   /* 0xA1 - 0XFE are Valid */
-                $i++;
-                continue;
-            } else if (($ret[$i] >= 'a' && $ret[$i] <= 'z') || /* From Original ereg_replace in download.php */
-                       ($ret[$i] >= 'A' && $ret[$i] <= 'Z') ||
-                       ($ret[$i] == '.') || ($ret[$i] == '-')) {
-                continue;
-            } else {
-                $ret[$i] = '_';
-            }
-        }
-
-    }
-
-    return $ret;
-}
-
-
 /* ------------------------------ main --------------------------- */
 
 global $squirrelmail_language, $languages, $use_gettext;
@@ -632,250 +732,32 @@ if (! sqgetGlobalVar('squirrelmail_language',$squirrelmail_language,SQ_COOKIE)) 
 }
 
 /* This array specifies the available languages. */
-
-$languages['bg_BG']['NAME']    = 'Bulgarian';
-$languages['bg_BG']['CHARSET'] = 'windows-1251';
-$languages['bg_BG']['LOCALE']  = 'bg_BG.CP1251';
-$languages['bg']['ALIAS']      = 'bg_BG';
-
-$languages['bn_IN']['NAME']    = 'Bengali';
-$languages['bn_IN']['CHARSET'] = 'utf-8';
-$languages['bn_IN']['LOCALE']  = 'bn_IN.UTF-8';
-$languages['bn_BD']['ALIAS'] = 'bn_IN';
-$languages['bn']['ALIAS'] = 'bn_IN';
-
-$languages['ca_ES']['NAME']    = 'Catalan';
-$languages['ca_ES']['CHARSET'] = 'iso-8859-1';
-$languages['ca_ES']['LOCALE']  = array('ca_ES.ISO8859-1','ca_ES.ISO-8859-1','ca_ES');
-$languages['ca']['ALIAS']      = 'ca_ES';
-
-$languages['cs_CZ']['NAME']    = 'Czech';
-$languages['cs_CZ']['CHARSET'] = 'iso-8859-2';
-$languages['cs_CZ']['LOCALE']  = array('cs_CZ.ISO8859-2','cs_CZ.ISO-8859-2','cs_CZ');
-$languages['cs']['ALIAS']      = 'cs_CZ';
-
-$languages['cy_GB']['NAME']    = 'Welsh';
-$languages['cy_GB']['CHARSET'] = 'iso-8859-1';
-$languages['cy_GB']['LOCALE']  = array('cy_GB.ISO8859-1','cy_GB.ISO-8859-1','cy_GB');
-$languages['cy']['ALIAS'] = 'cy_GB';
-
-$languages['da_DK']['NAME']    = 'Danish';
-$languages['da_DK']['CHARSET'] = 'iso-8859-1';
-$languages['da_DK']['LOCALE']  = array('da_DK.ISO8859-1','da_DK.ISO-8859-1','da_DK');
-$languages['da']['ALIAS']      = 'da_DK';
-
-$languages['de_DE']['NAME']    = 'Deutsch';
-$languages['de_DE']['CHARSET'] = 'iso-8859-1';
-$languages['de_DE']['LOCALE']  = array('de_DE.ISO8859-1','de_DE.ISO-8859-1','de_DE');
-$languages['de']['ALIAS']      = 'de_DE';
-
-$languages['el_GR']['NAME']    = 'Greek';
-$languages['el_GR']['CHARSET'] = 'iso-8859-7';
-$languages['el_GR']['LOCALE']  = array('el_GR.ISO8859-7','el_GR.ISO-8859-7','el_GR');
-$languages['el']['ALIAS']      = 'el_GR';
-
-$languages['en_GB']['NAME']    = 'British';
-$languages['en_GB']['CHARSET'] = 'iso-8859-15';
-$languages['en_GB']['LOCALE']  = array('en_GB.ISO8859-15','en_GB.ISO-8859-15','en_GB');
-
 $languages['en_US']['NAME']    = 'English';
-$languages['en_US']['CHARSET'] = 'iso-8859-1';
-$languages['en_US']['LOCALE']  = 'en_US.ISO8859-1';
+$languages['en_US']['CHARSET'] = 'utf-8';
+$languages['en_US']['LOCALE']  = 'en_US.UTF8';
 $languages['en']['ALIAS']      = 'en_US';
 
-$languages['es_ES']['NAME']    = 'Spanish';
-$languages['es_ES']['CHARSET'] = 'iso-8859-1';
-$languages['es_ES']['LOCALE']  = array('es_ES.ISO8859-1','es_ES.ISO-8859-1','es_ES');
-$languages['es']['ALIAS']      = 'es_ES';
-
-$languages['et_EE']['NAME']    = 'Estonian';
-$languages['et_EE']['CHARSET'] = 'iso-8859-15';
-$languages['et_EE']['LOCALE']  = array('et_EE.ISO8859-15','et_EE.ISO-8859-15','et_EE');
-$languages['et']['ALIAS']      = 'et_EE';
-
-$languages['eu_ES']['NAME']    = 'Basque';
-$languages['eu_ES']['CHARSET'] = 'iso-8859-1';
-$languages['eu_ES']['LOCALE']  = array('eu_ES.ISO8859-1','eu_ES.ISO-8859-1','eu_ES');
-$languages['eu']['ALIAS']      = 'eu_ES';
-
-$languages['fi_FI']['NAME']    = 'Finnish';
-$languages['fi_FI']['CHARSET'] = 'iso-8859-1';
-$languages['fi_FI']['LOCALE']  = array('fi_FI.ISO8859-1','fi_FI.ISO-8859-1','fi_FI');
-$languages['fi']['ALIAS']      = 'fi_FI';
-
-$languages['fo_FO']['NAME']    = 'Faroese';
-$languages['fo_FO']['CHARSET'] = 'iso-8859-1';
-$languages['fo_FO']['LOCALE']  = array('fo_FO.ISO8859-1','fo_FO.ISO-8859-1','fo_FO');
-$languages['fo']['ALIAS']      = 'fo_FO';
-
-$languages['fr_FR']['NAME']    = 'French';
-$languages['fr_FR']['CHARSET'] = 'iso-8859-1';
-$languages['fr_FR']['LOCALE']  = array('fr_FR.ISO8859-1','fr_FR.ISO-8859-1','fr_FR');
-$languages['fr']['ALIAS']      = 'fr_FR';
-
-$languages['hr_HR']['NAME']    = 'Croatian';
-$languages['hr_HR']['CHARSET'] = 'iso-8859-2';
-$languages['hr_HR']['LOCALE']  = array('hr_HR.ISO8859-2','hr_HR.ISO-8859-2','hr_HR');
-$languages['hr']['ALIAS']      = 'hr_HR';
-
-$languages['hu_HU']['NAME']    = 'Hungarian';
-$languages['hu_HU']['CHARSET'] = 'iso-8859-2';
-$languages['hu_HU']['LOCALE']  = array('hu_HU.ISO8859-2','hu_HU.ISO-8859-2','hu_HU');
-$languages['hu']['ALIAS']      = 'hu_HU';
-
-$languages['id_ID']['NAME']    = 'Bahasa Indonesia';
-$languages['id_ID']['CHARSET'] = 'iso-8859-1';
-$languages['id_ID']['LOCALE']  = array('id_ID.ISO8859-1','id_ID.ISO-8859-1','id_ID');
-$languages['id']['ALIAS']      = 'id_ID';
-
-$languages['is_IS']['NAME']    = 'Icelandic';
-$languages['is_IS']['CHARSET'] = 'iso-8859-1';
-$languages['is_IS']['LOCALE']  = array('is_IS.ISO8859-1','is_IS.ISO-8859-1','is_IS');
-$languages['is']['ALIAS']      = 'is_IS';
-
-$languages['it_IT']['NAME']    = 'Italian';
-$languages['it_IT']['CHARSET'] = 'iso-8859-1';
-$languages['it_IT']['LOCALE']  = array('it_IT.ISO8859-1','it_IT.ISO-8859-1','it_IT');
-$languages['it']['ALIAS']      = 'it_IT';
-
-$languages['ja_JP']['NAME']    = 'Japanese';
-$languages['ja_JP']['CHARSET'] = 'iso-2022-jp';
-$languages['ja_JP']['XTRA_CODE'] = 'japanese_charset_xtra';
-$languages['ja']['ALIAS']      = 'ja_JP';
-
-$languages['ka']['NAME']       = 'Georgian';
-$languages['ka']['CHARSET']    = 'utf-8';
-$languages['ka']['LOCALE']     = array('ka_GE.UTF-8','ka_GE','ka');
-$languages['ka_GE']['ALIAS']   = 'ka';
-
-$languages['ko_KR']['NAME']    = 'Korean';
-$languages['ko_KR']['CHARSET'] = 'euc-KR';
-// Function does not provide all needed options
-// $languages['ko_KR']['XTRA_CODE'] = 'korean_charset_xtra';
-$languages['ko']['ALIAS']      = 'ko_KR';
-
-$languages['lt_LT']['NAME']    = 'Lithuanian';
-$languages['lt_LT']['CHARSET'] = 'utf-8';
-$languages['lt_LT']['LOCALE']  = 'lt_LT.UTF-8';
-$languages['lt']['ALIAS']      = 'lt_LT';
-
-$languages['ms_MY']['NAME']    = 'Bahasa Melayu';
-$languages['ms_MY']['CHARSET'] = 'iso-8859-1';
-$languages['ms_MY']['LOCALE']  = array('ms_MY.ISO8859-1','ms_MY.ISO-8859-1','ms_MY');
-$languages['my']['ALIAS'] = 'ms_MY';
-
-$languages['nl_NL']['NAME']    = 'Dutch';
-$languages['nl_NL']['CHARSET'] = 'iso-8859-1';
-$languages['nl_NL']['LOCALE']  = array('nl_NL.ISO8859-1','nl_NL.ISO-8859-1','nl_NL');
-$languages['nl']['ALIAS']      = 'nl_NL';
-
-$languages['nb_NO']['NAME']    = 'Norwegian (Bokm&aring;l)';
-$languages['nb_NO']['CHARSET'] = 'iso-8859-1';
-$languages['nb_NO']['LOCALE']  = array('nb_NO.ISO8859-1','nb_NO.ISO-8859-1','nb_NO');
-$languages['nb']['ALIAS']      = 'nb_NO';
-
-$languages['nn_NO']['NAME']    = 'Norwegian (Nynorsk)';
-$languages['nn_NO']['CHARSET'] = 'iso-8859-1';
-$languages['nn_NO']['LOCALE']  = array('nn_NO.ISO8859-1','nn_NO.ISO-8859-1','nn_NO');
-
-$languages['pl_PL']['NAME']    = 'Polish';
-$languages['pl_PL']['CHARSET'] = 'iso-8859-2';
-$languages['pl_PL']['LOCALE']  = array('pl_PL.ISO8859-2','pl_PL.ISO-8859-2','pl_PL');
-$languages['pl']['ALIAS']      = 'pl_PL';
-
-$languages['pt_PT']['NAME'] = 'Portuguese (Portugal)';
-$languages['pt_PT']['CHARSET'] = 'iso-8859-1';
-$languages['pt_PT']['LOCALE']  = array('pt_PT.ISO8859-1','pt_PT.ISO-8859-1','pt_PT');
-$languages['pt']['ALIAS']      = 'pt_PT';
-
-$languages['pt_BR']['NAME']    = 'Portuguese (Brazil)';
-$languages['pt_BR']['CHARSET'] = 'iso-8859-1';
-$languages['pt_BR']['LOCALE']  = array('pt_BR.ISO8859-1','pt_BR.ISO-8859-1','pt_BR');
-
-$languages['ro_RO']['NAME']    = 'Romanian';
-$languages['ro_RO']['CHARSET'] = 'iso-8859-2';
-$languages['ro_RO']['LOCALE']  = array('ro_RO.ISO8859-2','ro_RO.ISO-8859-2','ro_RO');
-$languages['ro']['ALIAS']      = 'ro_RO';
-
-$languages['ru_RU']['NAME']    = 'Russian';
-$languages['ru_RU']['CHARSET'] = 'utf-8';
-$languages['ru_RU']['LOCALE']  = 'ru_RU.UTF-8';
-$languages['ru']['ALIAS']      = 'ru_RU';
-
-$languages['sk_SK']['NAME']     = 'Slovak';
-$languages['sk_SK']['CHARSET']  = 'iso-8859-2';
-$languages['sk_SK']['LOCALE']   = array('sk_SK.ISO8859-2','sk_SK.ISO-8859-2','sk_SK');
-$languages['sk']['ALIAS']       = 'sk_SK';
-
-$languages['sl_SI']['NAME']    = 'Slovenian';
-$languages['sl_SI']['CHARSET'] = 'iso-8859-2';
-$languages['sl_SI']['LOCALE']  = array('sl_SI.ISO8859-2','sl_SI.ISO-8859-2','sl_SI');
-$languages['sl']['ALIAS']      = 'sl_SI';
-
-$languages['sr_YU']['NAME']    = 'Serbian';
-$languages['sr_YU']['CHARSET'] = 'iso-8859-2';
-$languages['sr_YU']['LOCALE']  = array('sr_YU.ISO8859-2','sr_YU.ISO-8859-2','sr_YU');
-$languages['sr']['ALIAS']      = 'sr_YU';
-
-$languages['sv_SE']['NAME']    = 'Swedish';
-$languages['sv_SE']['CHARSET'] = 'iso-8859-1';
-$languages['sv_SE']['LOCALE']  = array('sv_SE.ISO8859-1','sv_SE.ISO-8859-1','sv_SE');
-$languages['sv']['ALIAS']      = 'sv_SE';
-
-/* translation is disabled because it contains less than 50%
- * translated strings
-$languages['th_TH']['NAME']    = 'Thai';
-$languages['th_TH']['CHARSET'] = 'tis-620';
-$languages['th_TH']['LOCALE']  = 'th_TH.TIS-620';
-$languages['th']['ALIAS'] = 'th_TH';
-*/
-
-$languages['tr_TR']['NAME']    = 'Turkish';
-$languages['tr_TR']['CHARSET'] = 'iso-8859-9';
-$languages['tr_TR']['LOCALE']  = array('tr_TR.ISO8859-9','tr_TR.ISO-8859-9','tr_TR');
-$languages['tr']['ALIAS']      = 'tr_TR';
-
-$languages['zh_TW']['NAME']    = 'Chinese Trad';
-$languages['zh_TW']['CHARSET'] = 'big5';
-$languages['zh_TW']['LOCALE']  = 'zh_TW.BIG5';
-$languages['tw']['ALIAS']      = 'zh_TW';
-
-$languages['zh_CN']['NAME']    = 'Chinese Simp';
-$languages['zh_CN']['CHARSET'] = 'gb2312';
-$languages['zh_CN']['LOCALE']  = 'zh_CN.GB2312';
-$languages['cn']['ALIAS']      = 'zh_CN';
-
-$languages['uk_UA']['NAME']    = 'Ukrainian';
-$languages['uk_UA']['CHARSET'] = 'utf-8';
-$languages['uk_UA']['LOCALE']  = array('uk_UA.UTF-8','uk_UA','uk');
-$languages['uk']['ALIAS'] = 'uk_UA';
-
-/*
-$languages['vi_VN']['NAME']    = 'Vietnamese';
-$languages['vi_VN']['CHARSET'] = 'utf-8';
-$languages['vi']['ALIAS'] = 'vi_VN';
-*/
-
-// Right to left languages
-
-$languages['ar']['NAME']    = 'Arabic';
-$languages['ar']['CHARSET'] = 'windows-1256';
-$languages['ar']['DIR']     = 'rtl';
-
-$languages['fa_IR']['NAME']    = 'Farsi';
-$languages['fa_IR']['CHARSET'] = 'utf-8';
-$languages['fa_IR']['DIR']     = 'rtl';
-$languages['fa_IR']['LOCALE']  = 'fa_IR.UTF-8';
-$languages['fa']['ALIAS']      = 'fa_IR';
-
-$languages['he_IL']['NAME']    = 'Hebrew';
-$languages['he_IL']['CHARSET'] = 'windows-1255';
-$languages['he_IL']['DIR']     = 'rtl';
-$languages['he']['ALIAS']      = 'he_IL';
-
-$languages['ug']['NAME']    = 'Uighur';
-$languages['ug']['CHARSET'] = 'utf-8';
-$languages['ug']['DIR']     = 'rtl';
+/**
+ * Automatic translation loading from setup.php files.
+ * Solution for bug. 1240889.
+ * setup.php file can contain $languages array entries.
+ */
+if (is_dir(SM_PATH . 'locale') &&
+    is_readable(SM_PATH . 'locale')) {
+    $localedir = dir(SM_PATH . 'locale');
+    while($lang_dir=$localedir->read()) {
+        // remove trailing slash, if present
+        if (substr($lang_dir,-1)=='/') {
+            $lang_dir = substr($lang_dir,0,-1);
+        }
+        if ($lang_dir != '..' && $lang_dir != '.' && $lang_dir != 'CVS' &&
+            is_dir(SM_PATH.'locale/'.$lang_dir) &&
+            file_exists(SM_PATH.'locale/'.$lang_dir.'/setup.php')) {
+            include_once(SM_PATH.'locale/'.$lang_dir.'/setup.php');
+        }
+    }
+    $localedir->close();
+}
 
 /* Detect whether gettext is installed. */
 $gettext_flags = 0;

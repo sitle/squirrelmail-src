@@ -89,7 +89,7 @@ if(!check_php_version(4,0,6)) {
 
 echo $IND . 'PHP version ' . PHP_VERSION . " OK.<br />\n";
 
-$php_exts = array('session','pcre');
+$php_exts = array('session','pcre','mbstring');
 $diff = array_diff($php_exts, get_loaded_extensions());
 if(count($diff)) {
     do_err('Required PHP extensions missing: '.implode(', ',$diff) );
@@ -310,33 +310,65 @@ echo "Checking internationalization (i18n) settings...<br />\n";
 echo "$IND gettext - ";
 if (function_exists('gettext')) {
     echo "Gettext functions are available. You must have appropriate system locales compiled.<br />\n";
+
+    /* optional setlocale() tests. Should work only on glibc systems. */
+    if (sqgetGlobalVar('testlocales',$testlocales,SQ_GET)) {
+        include_once(SM_PATH . 'functions/i18n.php');
+        echo $IND . $IND . 'Testing translations:<br>';
+        foreach ($languages as $lang_code => $lang_data) {
+            /* don't test aliases */
+            if (isset($lang_data['NAME'])) {
+                /* locale can be $lang_code or $lang_data['LOCALE'] */
+                if (isset($lang_data['LOCALE'])) {
+                    $setlocale = $lang_data['LOCALE'];
+                } else {
+                    $setlocale = $lang_code;
+                }
+                /* prepare information about tested locales */
+                if (is_array($setlocale)) {
+                    $display_locale = implode(', ',$setlocale);
+                    $locale_count = count($setlocale);
+                } else {
+                    $display_locale = $setlocale;
+                    $locale_count = 1;
+                }
+                $tested_locales_msg = 'Tested '.htmlspecialchars($display_locale).' '
+                    .($locale_count>1 ? 'locales':'locale'). '.';
+
+                echo $IND . $IND .$IND . $lang_data['NAME'].' (' .$lang_code. ') - ';
+                $retlocale = sq_setlocale(LC_ALL,$setlocale);
+                if (is_bool($retlocale)) {
+                    echo '<font color="red">unsupported</font>. ';
+                    echo $tested_locales_msg;
+                } else {
+                    echo 'supported. '
+                        .$tested_locales_msg
+                        .' setlocale() returned "'.htmlspecialchars($retlocale).'"';
+                }
+                echo "<br />\n";
+            }
+        }
+        echo $IND . $IND . '<a href="configtest.php">Don\'t test translations</a>';
+    } else {
+        echo $IND . $IND . '<a href="configtest.php?testlocales=1">Test translations</a>. '
+            .'This test is not accurate and might work only on some systems.'
+            ."\n";
+    }
+    echo "<br />\n";
+    /* end of translation tests */
 } else {
     echo "Gettext functions are unavailable. SquirrelMail will use slower internal gettext functions.<br />\n";
 }
-echo "$IND mbstring - ";
-if (function_exists('mb_detect_encoding')) {
-    echo "Mbstring functions are available.<br />\n";
-} else {
-    echo "Mbstring functions are unavailable. Japanese translation won't work.<br />\n";
-}
-echo "$IND recode - ";
+/* recode and iconv checks */
+echo "$IND recode/iconv - ";
 if (function_exists('recode')) {
     echo "Recode functions are available.<br />\n";
-} elseif (isset($use_php_recode) && $use_php_recode) {
-    echo "Recode functions are unavailable.<br />\n";
-    do_err('Your configuration requires recode support, but recode support is missing.');
-} else {
-    echo "Recode functions are unavailable.<br />\n";
-}
-echo "$IND iconv - ";
-if (function_exists('iconv')) {
+} elseif (function_exists('iconv')) {
     echo "Iconv functions are available.<br />\n";
-} elseif (isset($use_php_iconv) && $use_php_iconv) {
-    echo "Iconv functions are unavailable.<br />\n";
-    do_err('Your configuration requires iconv support, but iconv support is missing.');
 } else {
-    echo "Iconv functions are unavailable.<br />\n";
-}
+    echo "Recode and iconv extensions are unavailable.<br />\n";
+    do_err('If you use extra decoding library with CJK character sets, make sure that recode or iconv extension is enabled in your PHP installation.',false);}
+
 // same test as in include/validate.php
 echo "$IND timezone - ";
 if ( (!ini_get('safe_mode')) ||

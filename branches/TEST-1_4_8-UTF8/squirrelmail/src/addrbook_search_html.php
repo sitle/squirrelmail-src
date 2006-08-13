@@ -68,7 +68,7 @@ function addr_insert_hidden() {
  * @param bool $includesource If true, adds backend column to address listing
  */
 function addr_display_result($res, $includesource = true) {
-    global $color, $javascript_on, $PHP_SELF, $squirrelmail_language;
+    global $color, $javascript_on, $PHP_SELF;
 
     if (sizeof($res) <= 0) return;
 
@@ -120,21 +120,7 @@ function addr_display_result($res, $includesource = true) {
         } else {
             $tr_bgcolor = $color[4];
         }
-        if ($squirrelmail_language == 'ja_JP')
-            {
-        echo html_tag( 'tr', '', '', $tr_bgcolor, 'nowrap' ) .
-        html_tag( 'td',
-             '<input type="checkbox" name="send_to_search[T' . $line . ']" value = "' .
-             htmlspecialchars($email) . '" />&nbsp;' . _("To") . '&nbsp;' .
-             '<input type="checkbox" name="send_to_search[C' . $line . ']" value = "' .
-             htmlspecialchars($email) . '" />&nbsp;' . _("Cc") . '&nbsp;' .
-             '<input type="checkbox" name="send_to_search[B' . $line . ']" value = "' .
-             htmlspecialchars($email) . '" />&nbsp;' . _("Bcc") . '&nbsp;' ,
-        'center', '', 'width="5%" nowrap' ) .
-        html_tag( 'td', '&nbsp;' . htmlspecialchars($row['lastname']) . ' ' . htmlspecialchars($row['firstname']) . '&nbsp;', 'left', '', 'nowrap' ) .
-        html_tag( 'td', '&nbsp;' . htmlspecialchars($row['email']) . '&nbsp;', 'left', '', 'nowrap' ) .
-        html_tag( 'td', '&nbsp;' . htmlspecialchars($row['label']) . '&nbsp;', 'left', '', 'nowrap' );
-            } else {
+
         echo html_tag( 'tr', '', '', $tr_bgcolor, 'nowrap' ) .
         html_tag( 'td',
             addCheckBox('send_to_search[T'.$line.']', FALSE, $email).
@@ -147,7 +133,6 @@ function addr_display_result($res, $includesource = true) {
         html_tag( 'td', '&nbsp;' . htmlspecialchars($row['name']) . '&nbsp;', 'left', '', 'nowrap' ) .
         html_tag( 'td', '&nbsp;' . htmlspecialchars($row['email']) . '&nbsp;', 'left', '', 'nowrap' ) .
         html_tag( 'td', '&nbsp;' . htmlspecialchars($row['label']) . '&nbsp;', 'left', '', 'nowrap' );
-            }
 
          if ($includesource) {
              echo html_tag( 'td', '&nbsp;' . $row['source'] . '&nbsp;', 'left', '', 'nowrap' );
