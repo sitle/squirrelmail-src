@@ -42,16 +42,6 @@ require_once(SM_PATH . 'functions/global.php');
  * This should not add newlines to the end of lines.
  */
 function sqWordWrap(&$line, $wrap, $charset=null) {
-    global $languages, $squirrelmail_language;
-
-    if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-        function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
-        if (mb_detect_encoding($line) != 'ASCII') {
-            $line = $languages[$squirrelmail_language]['XTRA_CODE']('wordwrap', $line, $wrap);
-            return;
-        }
-    }
-
     ereg("^([\t >]*)([^\t >].*)?$", $line, $regs);
     $beginning_spaces = $regs[1];
     if (isset($regs[2])) {
@@ -99,12 +89,6 @@ function sqWordWrap(&$line, $wrap, $charset=null) {
  * @return void
  */
 function sqUnWordWrap(&$body) {
-    global $squirrelmail_language;
-
-    if ($squirrelmail_language == 'ja_JP') {
-        return;
-    }
-
     $lines = explode("\n", $body);
     $body = '';
     $PreviousSpaces = '';
@@ -141,42 +125,35 @@ function sqUnWordWrap(&$body) {
  * @return string  Trimmed string
  */
 function truncateWithEntities($s, $iTrimAt) {
-    global $languages, $squirrelmail_language;
-
     $ent_strlen = strlen($s);
     if (($iTrimAt <= 0) || ($ent_strlen <= $iTrimAt))
         return $s;
 
 
-    if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-        function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
-            return $languages[$squirrelmail_language]['XTRA_CODE']('strimwidth', $s, $iTrimAt);
-    } else {
-        /*
-         * see if this is entities-encoded string
-         * If so, Iterate through the whole string, find out
-         * the real number of characters, and if more
-         * than $iTrimAt, substr with an updated trim value.
-         */
-        $trim_val = $iTrimAt;
-        $ent_offset = 0;
-        $ent_loc = 0;
-        while ( $ent_loc < $trim_val && (($ent_loc = strpos($s, '&', $ent_offset)) !== false) &&
-                (($ent_loc_end = strpos($s, ';', $ent_loc+3)) !== false) ) {
-            $trim_val += ($ent_loc_end-$ent_loc);
-            $ent_offset  = $ent_loc_end+1;
-        }
-
-        if (($trim_val > $iTrimAt) && ($ent_strlen > $trim_val) && (strpos($s,';',$trim_val) < ($trim_val + 6))) {
-            $i = strpos($s,';',$trim_val);
-            if ($i !== false) {
-                $trim_val = strpos($s,';',$trim_val)+1;
-            }
-        }
-        // only print '...' when we're actually dropping part of the subject
-        if ($ent_strlen <= $trim_val)
-            return $s;
+    /*
+     * see if this is entities-encoded string
+     * If so, Iterate through the whole string, find out
+     * the real number of characters, and if more
+     * than $iTrimAt, substr with an updated trim value.
+     */
+    $trim_val = $iTrimAt;
+    $ent_offset = 0;
+    $ent_loc = 0;
+    while ( $ent_loc < $trim_val && (($ent_loc = strpos($s, '&', $ent_offset)) !== false) &&
+            (($ent_loc_end = strpos($s, ';', $ent_loc+3)) !== false) ) {
+        $trim_val += ($ent_loc_end-$ent_loc);
+        $ent_offset  = $ent_loc_end+1;
     }
+
+    if (($trim_val > $iTrimAt) && ($ent_strlen > $trim_val) && (strpos($s,';',$trim_val) < ($trim_val + 6))) {
+        $i = strpos($s,';',$trim_val);
+        if ($i !== false) {
+            $trim_val = strpos($s,';',$trim_val)+1;
+        }
+    }
+    // only print '...' when we're actually dropping part of the subject
+    if ($ent_strlen <= $trim_val)
+        return $s;
 
     return substr_replace($s, '...', $trim_val);
 }

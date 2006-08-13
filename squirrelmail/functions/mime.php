@@ -302,9 +302,8 @@ function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num, $id, $ma
      * primary message. To add more of them, just put them in the
      * order that is their priority.
      */
-    global $startMessage, $languages, $squirrelmail_language,
-           $show_html_default, $sort, $has_unsafe_images, $passed_ent_id,
-           $username, $key, $imapServerAddress, $imapPort,
+    global $startMessage, $show_html_default, $sort, $has_unsafe_images,
+           $passed_ent_id, $username, $key, $imapServerAddress, $imapPort,
            $download_and_unsafe_link;
 
     if( !sqgetGlobalVar('view_unsafe_images', $view_unsafe_images, SQ_GET) ) {
@@ -319,12 +318,6 @@ function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num, $id, $ma
         $body = mime_fetch_body ($imap_stream, $id, $ent_num);
         $body = decodeBody($body, $body_message->header->encoding);
 
-        if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-                function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
-            if (mb_detect_encoding($body) != 'ASCII') {
-                $body = $languages[$squirrelmail_language]['XTRA_CODE']('decode', $body);
-            }
-        }
         $hookResults = do_hook("message_body", $body);
         $body = $hookResults[1];
 
@@ -589,17 +582,11 @@ function decodeBody($body, $encoding) {
  * Patched by Christian Schmidt <christian@ostenfeld.dk>  23/03/2002
  */
 function decodeHeader ($string, $utfencode=true,$htmlsave=true,$decide=false) {
-    global $languages, $squirrelmail_language,$default_charset;
+    global $default_charset;
     if (is_array($string)) {
         $string = implode("\n", $string);
     }
 
-    if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-            function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
-        $string = $languages[$squirrelmail_language]['XTRA_CODE']('decodeheader', $string);
-        // Do we need to return at this point?
-        // return $string;
-    }
     $i = 0;
     $iLastMatch = -2;
     $encoded = false;
@@ -715,15 +702,10 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true,$decide=false) {
  * be encoded.
  */
 function encodeHeader ($string) {
-    global $default_charset, $languages, $squirrelmail_language;
-
-    if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-            function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
-        return  $languages[$squirrelmail_language]['XTRA_CODE']('encodeheader', $string);
-    }
+    global $default_charset;
 
     // Use B encoding for multibyte charsets
-    $mb_charsets = array('utf-8','big5','gb2313','euc-kr');
+    $mb_charsets = array('utf-8','big5','gb2312','gb18030','euc-jp','euc-cn','euc-tw','euc-kr');
     if (in_array($default_charset,$mb_charsets) &&
         in_array($default_charset,sq_mb_list_encodings()) &&
         sq_is8bit($string)) {
@@ -2116,7 +2098,6 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX') {
  * @return void
  */
 function SendDownloadHeaders($type0, $type1, $filename, $force, $filesize=0) {
-    global $languages, $squirrelmail_language;
     $isIE = $isIE6plus = false;
 
     sqgetGlobalVar('HTTP_USER_AGENT', $HTTP_USER_AGENT, SQ_SERVER);
@@ -2131,13 +2112,7 @@ function SendDownloadHeaders($type0, $type1, $filename, $force, $filesize=0) {
         $isIE6plus = true;
     }
 
-    if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-            function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
-        $filename =
-            $languages[$squirrelmail_language]['XTRA_CODE']('downloadfilename', $filename, $HTTP_USER_AGENT);
-    } else {
-        $filename = ereg_replace('[\\/:\*\?"<>\|;]', '_', str_replace('&#32;', ' ', $filename));
-    }
+    $filename = ereg_replace('[\\/:\*\?"<>\|;]', '_', str_replace('&#32;', ' ', $filename));
 
     // A Pox on Microsoft and it's Internet Explorer!
     //

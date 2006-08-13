@@ -48,12 +48,6 @@
  * @return string Decoded string
  */
 function charset_decode_utf_8 ($string) {
-    global $squirrelmail_language;
-
-    // Japanese translation uses mbstring function to read utf-8
-    if ($squirrelmail_language == 'ja_JP')
-        return $string;
-
     // don't do decoding when there are no 8bit symbols
     if (! sq_is8bit($string,'utf-8'))
         return $string;

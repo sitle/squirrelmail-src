@@ -208,7 +208,7 @@ class abook_database extends addressbook_backend {
 
         while ($row = $res->fetchRow(DB_FETCHMODE_ASSOC)) {
             array_push($ret, array('nickname'  => $row['nickname'],
-                                   'name'      => "$row[firstname] $row[lastname]",
+                                   'name'      => $this->fullname($row['firstname'],$row['lastname']),
                                    'firstname' => $row['firstname'],
                                    'lastname'  => $row['lastname'],
                                    'email'     => $row['email'],
@@ -247,7 +247,7 @@ class abook_database extends addressbook_backend {
 
         if ($row = $res->fetchRow(DB_FETCHMODE_ASSOC)) {
             return array('nickname'  => $row['nickname'],
-                         'name'      => "$row[firstname] $row[lastname]",
+                         'name'      => $this->fullname($row['firstname'],$row['lastname']),
                          'firstname' => $row['firstname'],
                          'lastname'  => $row['lastname'],
                          'email'     => $row['email'],
@@ -285,7 +285,7 @@ class abook_database extends addressbook_backend {
 
         while ($row = $res->fetchRow(DB_FETCHMODE_ASSOC)) {
             array_push($ret, array('nickname'  => $row['nickname'],
-                                   'name'      => "$row[firstname] $row[lastname]",
+                                   'name'      => $this->fullname($row['firstname'],$row['lastname']),
                                    'firstname' => $row['firstname'],
                                    'lastname'  => $row['lastname'],
                                    'email'     => $row['email'],
