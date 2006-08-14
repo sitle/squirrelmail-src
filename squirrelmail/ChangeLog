@@ -2,6 +2,12 @@
 *** SquirrelMail Stable Series 1.4 ***
 **************************************
 
+Version 1.4.8.utf8-1 - 14th August 2006
+  - Removed XTRA_CODE support and some code specific to ja_JP translation
+  - Added fixes for recode decoding.
+  - Added mbstring requirement to configtest.php.
+  - Added fullname() method to address book backend class.
+
 Version 1.4.8 - 11th August 2006
 --------------------------------
   - Fixed URL for Read Receipts being incorrect in some cases (#1177518).

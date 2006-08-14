@@ -59,7 +59,7 @@ echo '<form action="../../src/addressbook.php" name="f_add" method="post">' ."\n
 	      '">FAIL - ' . htmlspecialchars($Val) . "</option>\n";
         }
     }
-    if ($squirrelmail_language == 'ja_JP') {
+    if ($squirrelmail_language == 'ja_JP' || $squirrelmail_language == 'ja') {
         echo '</select></td></tr>' . "\n" . 
             
             html_tag( 'tr', "\n" .

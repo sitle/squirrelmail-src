@@ -76,7 +76,7 @@ function addressbook_inp_field($label, $field, $name, $size, $values, $add) {
 function address_form($name, $submittext, $values = array()) {
     global $color, $squirrelmail_language;
 
-    if ($squirrelmail_language == 'ja_JP') {
+    if ($squirrelmail_language == 'ja_JP' || $squirrelmail_language == 'ja') {
         echo html_tag( 'table',
                 addressbook_inp_field(_("Nickname"),     'nickname', $name, 15, $values,
                     ' <small>' . _("Must be unique") . '</small>') .
