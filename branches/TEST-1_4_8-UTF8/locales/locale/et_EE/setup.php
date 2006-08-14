@@ -2,7 +2,7 @@
 /**
  * Language configuration file
  *
- * Copyright (c) 2005-2006 The SquirrelMail Project Team
+ * Copyright (c) 2005 The SquirrelMail Project Team
  *
  * This file is part of SquirrelMail webmail interface. It is distributed
  * together with other translation files and is used to enable 
@@ -26,7 +26,7 @@
  * @package locales
  */
 
-$languages['et_EE']['NAME']    = 'Estonian';
-$languages['et_EE']['CHARSET'] = 'iso-8859-15';
-$languages['et_EE']['LOCALE']  = array('et_EE.ISO8859-15','et_EE.ISO-8859-15','et_EE');
-$languages['et']['ALIAS'] = 'et_EE';
+$languages['et']['NAME']    = 'Estonian';
+$languages['et']['CHARSET'] = 'utf-8';
+$languages['et']['LOCALE']  = array('et_EE.UTF8','et_EE.UTF-8','et_EE','et');
+$languages['et_EE']['ALIAS'] = 'et';

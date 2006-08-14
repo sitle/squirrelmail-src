@@ -2,7 +2,7 @@
 /**
  * Language configuration file
  *
- * Copyright (c) 2005-2006 The SquirrelMail Project Team
+ * Copyright (c) 2005 The SquirrelMail Project Team
  *
  * This file is part of SquirrelMail webmail interface. It is distributed
  * together with other translation files and is used to enable 
@@ -26,8 +26,8 @@
  * @package locales
  */
 
-$languages['fi_FI']['NAME']    = 'Finnish';
-$languages['fi_FI']['ALTNAME'] = 'Suomi';
-$languages['fi_FI']['CHARSET'] = 'iso-8859-1';
-$languages['fi_FI']['LOCALE']  = array('fi_FI.ISO8859-1','fi_FI.ISO-8859-1','fi_FI');
-$languages['fi']['ALIAS'] = 'fi_FI';
+$languages['fi']['NAME']    = 'Finnish';
+$languages['fi']['ALTNAME'] = 'Suomi';
+$languages['fi']['CHARSET'] = 'utf-8';
+$languages['fi']['LOCALE']  = array('fi_FI.UTF8','fi_FI.UTF-8','fi_FI','fi');
+$languages['fi_FI']['ALIAS'] = 'fi';

@@ -12,7 +12,7 @@ msgstr ""
 "Last-Translator: Mikael <pub@grizzli.org>\n"
 "Language-Team: French <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-15\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "Badly formatted header color"
@@ -40,7 +40,7 @@ msgid "Urgent"
 msgstr "Urgent"
 
 msgid "Serious"
-msgstr "Sérieux"
+msgstr "SÃ©rieux"
 
 msgid "Important"
 msgstr "Important"
@@ -70,13 +70,13 @@ msgid "Months"
 msgstr "Mois"
 
 msgid "Years"
-msgstr "Années"
+msgstr "AnnÃ©es"
 
 msgid "Event Created Successfully"
-msgstr "Evènement crée"
+msgstr "EvÃ¨nement crÃ©e"
 
 msgid "Event Updated Successfully"
-msgstr "Mise à jour réussie"
+msgstr "Mise Ã  jour rÃ©ussie"
 
 #, c-format
 msgid "Personal Calendar for %s"
@@ -86,22 +86,30 @@ msgid "Today"
 msgstr "Aujourd'hui"
 
 msgid "All Day"
-msgstr "Toute la journée"
+msgstr "Toute la journÃ©e"
 
 msgid "Calendar"
 msgstr "Calendrier"
 
 msgid "Calendar Preferences"
-msgstr "Préférences de Calendrier"
+msgstr "PrÃ©fÃ©rences de Calendrier"
 
-msgid "Change the way your calendars behave and are displayed, including the miniature calendar beneath the folder list."
-msgstr "Modification de l'apparence et du comportement de vos calendriers, y compris le mini calendrier sous la liste des dossiers"
+msgid ""
+"Change the way your calendars behave and are displayed, including the "
+"miniature calendar beneath the folder list."
+msgstr ""
+"Modification de l'apparence et du comportement de vos calendriers, y compris "
+"le mini calendrier sous la liste des dossiers"
 
 msgid "Calendar Administration"
 msgstr "Administration des calendriers"
 
-msgid "Create and maintain shared calendars. Edit holidays, assign calendar access by user, or create publicly available calendars."
-msgstr "Création et gestion de calendriers partagés. Edition des vacances, gestion des accès aux utilisateurs ou création de calendriers publics"
+msgid ""
+"Create and maintain shared calendars. Edit holidays, assign calendar access "
+"by user, or create publicly available calendars."
+msgstr ""
+"CrÃ©ation et gestion de calendriers partagÃ©s. Edition des vacances, gestion "
+"des accÃ¨s aux utilisateurs ou crÃ©ation de calendriers publics"
 
 msgid "Sunday"
 msgstr "Dimanche"
@@ -160,10 +168,14 @@ msgstr "Echec d'ouverture de calendrier externe; mauvaise adresse"
 
 #, c-format
 msgid "Successfully merged calendar into \"%s\""
-msgstr "Fusion réussie de calendrier dans \"%s\""
+msgstr "Fusion rÃ©ussie de calendrier dans \"%s\""
 
-msgid "You already have a calendar with the same ID.  Are you sure you don't want to merge/synch the calendar you are uploading?"
-msgstr "Vous avez déjà un calendrier avec le même ID. Etes vous sûr de ne pas vouloir fusionner/synchroniser le calendrier que vous chargez"
+msgid ""
+"You already have a calendar with the same ID.  Are you sure you don't want "
+"to merge/synch the calendar you are uploading?"
+msgstr ""
+"Vous avez dÃ©jÃ  un calendrier avec le mÃªme ID. Etes vous sÃ»r de ne pas "
+"vouloir fusionner/synchroniser le calendrier que vous chargez"
 
 msgid "..."
 msgstr "..."
@@ -172,12 +184,14 @@ msgid "Must have domain information"
 msgstr "Doit avoir des informations de domaine"
 
 msgid "Valid event type must be specified"
-msgstr "Un type d'évènement valide doît être spécifié"
+msgstr "Un type d'Ã©vÃ¨nement valide doÃ®t Ãªtre spÃ©cifiÃ©"
 
 msgid "Must specify valid recurrence type"
-msgstr "Doit préciser un type de récurrence valide"
+msgstr "Doit prÃ©ciser un type de rÃ©currence valide"
 
-msgid "Overall end of recurrence for recurring events must come after end of initial occurrence"
+msgid ""
+"Overall end of recurrence for recurring events must come after end of "
+"initial occurrence"
 msgstr ""
 
 msgid "Must specify valid recurrence interval"
@@ -225,7 +239,9 @@ msgstr ""
 msgid "Calendar Setup"
 msgstr ""
 
-msgid "Create shared access calendars for select users\n or public calendars for all users.\n"
+msgid ""
+"Create shared access calendars for select users\n"
+" or public calendars for all users.\n"
 msgstr ""
 
 msgid "Manage user permissions for your shared calendars.\n"
@@ -237,10 +253,15 @@ msgstr ""
 msgid "Users"
 msgstr ""
 
-msgid "<b>Shared</b> calendars can be assigned to users with read only or read/write access. To manage user access to your shared calendars, use the \"Users\" button."
+msgid ""
+"<b>Shared</b> calendars can be assigned to users with read only or read/"
+"write access. To manage user access to your shared calendars, use the \"Users"
+"\" button."
 msgstr ""
 
-msgid "<b>Public</b> calendars are available to all users in addition to their private personal calendar."
+msgid ""
+"<b>Public</b> calendars are available to all users in addition to their "
+"private personal calendar."
 msgstr ""
 
 msgid "Shared Calendars"
@@ -273,19 +294,31 @@ msgstr ""
 msgid "Add"
 msgstr ""
 
-msgid "<b>To delete one or more users</b> from a calendar, check the box next to each username and click the 'Delete Users' button."
+msgid ""
+"<b>To delete one or more users</b> from a calendar, check the box next to "
+"each username and click the 'Delete Users' button."
 msgstr ""
 
-msgid "<b>To add a user</b> to a calendar, type in the username below the calendar, choose the user's access level, and click the 'Add User' button."
+msgid ""
+"<b>To add a user</b> to a calendar, type in the username below the calendar, "
+"choose the user's access level, and click the 'Add User' button."
 msgstr ""
 
-msgid "Note that you may use wildcards in user names: * means \"zero or more characters\" and ? means \"exactly one alphanumeric character\". For example, \"*@mydomain.com\" will give everyone in \"mydomain.com\" access to the calendars you assign to that username.\n"
+msgid ""
+"Note that you may use wildcards in user names: * means \"zero or more "
+"characters\" and ? means \"exactly one alphanumeric character\". For "
+"example, \"*@mydomain.com\" will give everyone in \"mydomain.com\" access to "
+"the calendars you assign to that username.\n"
 msgstr ""
 
-msgid "<b>To update user access levels</b> for a calendar, adjust the 'Access Level' selections, then click the 'Save' button below that calendar."
+msgid ""
+"<b>To update user access levels</b> for a calendar, adjust the 'Access "
+"Level' selections, then click the 'Save' button below that calendar."
 msgstr ""
 
-msgid "Note that only owners of public calendars will have write access to those calendars.\n"
+msgid ""
+"Note that only owners of public calendars will have write access to those "
+"calendars.\n"
 msgstr ""
 
 msgid "No Shared Calendars Have Been Defined"
@@ -327,13 +360,18 @@ msgstr ""
 msgid "<b>To create a holiday,</b> blah blah and click the 'Blah Blah' button."
 msgstr ""
 
-msgid "Note that you must also add the new holiday to your calendar if desired.\n"
+msgid ""
+"Note that you must also add the new holiday to your calendar if desired.\n"
 msgstr ""
 
-msgid "<b>To add a holiday</b> to a calendar, blah blah blah and click the 'Blah Blah' button."
+msgid ""
+"<b>To add a holiday</b> to a calendar, blah blah blah and click the 'Blah "
+"Blah' button."
 msgstr ""
 
-msgid "<b>To remove a holiday</b> from a calendar, blah blah blah, then click the 'Blah' button below that calendar."
+msgid ""
+"<b>To remove a holiday</b> from a calendar, blah blah blah, then click the "
+"'Blah' button below that calendar."
 msgstr ""
 
 msgid "No Holidays Have Been Defined"
@@ -346,7 +384,7 @@ msgid "First Day of Week:"
 msgstr "Premier jour de la semaine"
 
 msgid "Priority at which Events Are Highlighted:"
-msgstr "Priorité à partir de laquelle les évènements sont surlignés"
+msgstr "PrioritÃ© Ã  partir de laquelle les Ã©vÃ¨nements sont surlignÃ©s"
 
 msgid "Show Daily Add Event Buttons in Month View:"
 msgstr "Afficher un bouton d'ajout sur chaque jour dans la vue mensuelle"
@@ -358,19 +396,19 @@ msgid "No"
 msgstr "Non"
 
 msgid "Show Week Numbers in Month View:"
-msgstr "Affiche les numéros de semaine dans la vue mensuelle"
+msgstr "Affiche les numÃ©ros de semaine dans la vue mensuelle"
 
 msgid "Show Event Start Times in Month View:"
-msgstr "Affiche les heures de début dans la vue mensuelle"
+msgstr "Affiche les heures de dÃ©but dans la vue mensuelle"
 
 msgid "Maximum Number Events Shown Per Day in Month View:"
-msgstr "Nombre maximum d'évènements affichés par jour dans la vue mensuelle"
+msgstr "Nombre maximum d'Ã©vÃ¨nements affichÃ©s par jour dans la vue mensuelle"
 
 msgid "Click on Event in Month View Goes To:"
-msgstr "Cliquer sur un évènement envoie vers:"
+msgstr "Cliquer sur un Ã©vÃ¨nement envoie vers:"
 
 msgid "Event View"
-msgstr "Vue de l'évènement"
+msgstr "Vue de l'Ã©vÃ¨nement"
 
 msgid "Day View"
 msgstr "vue du jour"
@@ -382,13 +420,13 @@ msgid "Show Hourly Add Event Buttons in Day View:"
 msgstr "Affiche un bouton d'ajout pour chaque heure dans la vue du jour"
 
 msgid "Day View Start Time:"
-msgstr "Heure de début dans la vue du jour"
+msgstr "Heure de dÃ©but dans la vue du jour"
 
 msgid "Day View End Time:"
 msgstr "Heure de fin dans la vue du jour"
 
 msgid "Clock Skew To Remotely Hosted Calendars:"
-msgstr "Décalage horaire entre calendriers distants"
+msgstr "DÃ©calage horaire entre calendriers distants"
 
 msgid "Small Calendar"
 msgstr "Petit calendrier"
@@ -406,7 +444,7 @@ msgid "Small Calendar Size:"
 msgstr "Taille du petit calendrier"
 
 msgid "Default"
-msgstr "Défaut"
+msgstr "DÃ©faut"
 
 msgid "10px"
 msgstr ""
@@ -421,7 +459,7 @@ msgid "16px"
 msgstr ""
 
 msgid "Small Calendar Separator:"
-msgstr "Séparateur de petit calendrier"
+msgstr "SÃ©parateur de petit calendrier"
 
 msgid "None"
 msgstr "Aucun"
@@ -430,10 +468,10 @@ msgid "Horizontal rule"
 msgstr "Barre horizontale"
 
 msgid "Box"
-msgstr "boîte"
+msgstr "boÃ®te"
 
 msgid "Show Year Title Above Small Calendar:"
-msgstr "Affiche l'année au dessus du petit calendrier"
+msgstr "Affiche l'annÃ©e au dessus du petit calendrier"
 
 msgid "Show Today Link Above Small Calendar:"
 msgstr "Affiche un lien vers le jour courant au dessus du petit calendrier"
@@ -442,22 +480,22 @@ msgid "Show Day Headers Above Small Calendar:"
 msgstr "Affiche les jours au dessus du petit calendrier"
 
 msgid "Use Same Background Colors for Days as Regular Calendar:"
-msgstr "Utiliser le même fond pour les jours que pour le calendrier normal"
+msgstr "Utiliser le mÃªme fond pour les jours que pour le calendrier normal"
 
 msgid "Header Color:"
-msgstr "Couleur d'en-tête"
+msgstr "Couleur d'en-tÃªte"
 
 msgid "Today Color:"
 msgstr "Couleur pour Aujourd'hui"
 
 msgid "Event Color:"
-msgstr "Couleur d'évènement"
+msgstr "Couleur d'Ã©vÃ¨nement"
 
 msgid "Day Color:"
 msgstr "Couleur de jour"
 
 msgid "Event Text Style:"
-msgstr "Style de texte pour les évènements"
+msgstr "Style de texte pour les Ã©vÃ¨nements"
 
 msgid "normal"
 msgstr "normal"
@@ -472,16 +510,20 @@ msgid "Month View"
 msgstr "Vue Mensuelle"
 
 msgid "Tasks"
-msgstr "Tâches"
+msgstr "TÃ¢ches"
 
 msgid "Color Picker"
-msgstr "Sélectionneur de couleur"
+msgstr "SÃ©lectionneur de couleur"
 
-msgid "Click a box and the hexadecimal color will be shown below.  Use these hex values for color box settings."
-msgstr "Cliquez sur un carré et la valeur héxadécimale de la couleur sera affichée en dessous. Utilisez ce code pour le choix de la couleur de boîte."
+msgid ""
+"Click a box and the hexadecimal color will be shown below.  Use these hex "
+"values for color box settings."
+msgstr ""
+"Cliquez sur un carrÃ© et la valeur hÃ©xadÃ©cimale de la couleur sera affichÃ©e "
+"en dessous. Utilisez ce code pour le choix de la couleur de boÃ®te."
 
 msgid "Hex Value"
-msgstr "Valeur hexadécimale"
+msgstr "Valeur hexadÃ©cimale"
 
 msgid "More"
 msgstr "Plus"
@@ -490,37 +532,37 @@ msgid "Go"
 msgstr "Aller"
 
 msgid "Add Event"
-msgstr "Ajouter évènement"
+msgstr "Ajouter Ã©vÃ¨nement"
 
 msgid "Edit Calendar"
-msgstr "Edition évènement"
+msgstr "Edition Ã©vÃ¨nement"
 
 msgid "Update Event"
-msgstr "Mettre à jour évènement"
+msgstr "Mettre Ã  jour Ã©vÃ¨nement"
 
 msgid "Create Event"
-msgstr "Créer évènement"
+msgstr "CrÃ©er Ã©vÃ¨nement"
 
 msgid "Summary:"
-msgstr "Résumé:"
+msgstr "RÃ©sumÃ©:"
 
 msgid "Start:"
-msgstr "Début:"
+msgstr "DÃ©but:"
 
 msgid "End:"
 msgstr "Fin:"
 
 msgid "Duration:"
-msgstr "Durée:"
+msgstr "DurÃ©e:"
 
 msgid "Recurrence:"
-msgstr "Répétition"
+msgstr "RÃ©pÃ©tition"
 
 msgid "One Time"
 msgstr "Une fois"
 
 msgid "Recurring Every"
-msgstr "Répété tous les"
+msgstr "RÃ©pÃ©tÃ© tous les"
 
 msgid "Help"
 msgstr "Aide"
@@ -550,13 +592,13 @@ msgid "Sat"
 msgstr "Sam"
 
 msgid "End Recurrence:"
-msgstr "Dernière répétition"
+msgstr "DerniÃ¨re rÃ©pÃ©tition"
 
 msgid "Recurrence Count:"
-msgstr "Nombre de répétitions"
+msgstr "Nombre de rÃ©pÃ©titions"
 
 msgid "Priority:"
-msgstr "Priorité:"
+msgstr "PrioritÃ©:"
 
 msgid "Reminder:"
 msgstr "Rappel"
@@ -568,16 +610,16 @@ msgid "Description:"
 msgstr ""
 
 msgid "Delete Event"
-msgstr "Supprimer évènement"
+msgstr "Supprimer Ã©vÃ¨nement"
 
 msgid "Last Updated:"
-msgstr "Mis à jour:"
+msgstr "Mis Ã  jour:"
 
 msgid "Created:"
-msgstr "Crée le:"
+msgstr "CrÃ©e le:"
 
 msgid "Reminder not set"
-msgstr "Rappel non paramétré"
+msgstr "Rappel non paramÃ©trÃ©"
 
 msgid "Occurrences"
 msgstr "Occurences"
@@ -601,7 +643,7 @@ msgid "remove"
 msgstr "supprimer"
 
 msgid "edit"
-msgstr "éditer"
+msgstr "Ã©diter"
 
 msgid "export"
 msgstr "exporter"
@@ -648,7 +690,9 @@ msgstr ""
 msgid "Problem converting old calendar; please contact your administrator (%s)"
 msgstr ""
 
-msgid "Problem converting old calendar; please contact your administrator (cannot execute %s)"
+msgid ""
+"Problem converting old calendar; please contact your administrator (cannot "
+"execute %s)"
 msgstr ""
 
 msgid "cont'd"

@@ -2,7 +2,7 @@
 /**
  * Language configuration file
  *
- * Copyright (c) 2005-2006 The SquirrelMail Project Team
+ * Copyright (c) 2005 The SquirrelMail Project Team
  *
  * This file is part of SquirrelMail webmail interface. It is distributed
  * together with other translation files and is used to enable 
@@ -26,7 +26,7 @@
  * @package locales
  */
 
-$languages['fo_FO']['NAME']    = 'Faroese';
-$languages['fo_FO']['CHARSET'] = 'iso-8859-1';
-$languages['fo_FO']['LOCALE']  = array('fo_FO.ISO8859-1','fo_FO.ISO-8859-1','fo_FO');
-$languages['fo']['ALIAS'] = 'fo_FO';
+$languages['fo']['NAME']    = 'Faroese';
+$languages['fo']['CHARSET'] = 'utf-8';
+$languages['fo']['LOCALE']  = array('fo_FO.UTF8','fo_FO.UTF-8','fo_FO','fo');
+$languages['fo_FO']['ALIAS'] = 'fo';

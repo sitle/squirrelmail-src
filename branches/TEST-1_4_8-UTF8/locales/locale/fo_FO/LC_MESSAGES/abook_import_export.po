@@ -12,7 +12,7 @@ msgstr ""
 "Last-Translator: Danial Olsen <danial@com-data.fo>\n"
 "Language-Team: Faroese <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11\n"
 
@@ -23,8 +23,8 @@ msgid ""
 "Please select a file for uploading. You can do this by clicking on the "
 "browse button on the %sAddress Book%s page."
 msgstr ""
-"Vinarliga vel eina fílu at senda upp. Hetta kann gerast viğ at klikkja á "
-"kaga knøttin á %sAdressubók%s síğuni."
+"Vinarliga vel eina fÃ­lu at senda upp. Hetta kann gerast viÃ° at klikkja Ã¡ "
+"kaga knÃ¸ttin Ã¡ %sAdressubÃ³k%s sÃ­Ã°uni."
 
 #. i18n: %s displays 'somenumber B', 'somenumber KB' or 'somenumber MB'.
 #: address_book_import.php:73
@@ -33,12 +33,12 @@ msgid ""
 "Imported CSV file is too big. Contact your system administrator, if you want "
 "to import files, that are bigger than %s."
 msgstr ""
-"Innlisna CSV fílan er ov stór. Set teg í samband viğ umsitaran, um tú vilt "
-"innlesa fílur, iğ eru størri enn %s."
+"Innlisna CSV fÃ­lan er ov stÃ³r. Set teg Ã­ samband viÃ° umsitaran, um tÃº vilt "
+"innlesa fÃ­lur, iÃ° eru stÃ¸rri enn %s."
 
 #: address_book_import.php:94
 msgid "Error, could not open address file."
-msgstr "Villa, kundi ikki opna adressufílu."
+msgstr "Villa, kundi ikki opna adressufÃ­lu."
 
 #. Title of column with row numbers
 #: address_book_import.php:130
@@ -57,34 +57,34 @@ msgstr "Enda"
 
 #: address_book_import.php:186
 msgid "Add to addressbook:"
-msgstr "Legg afturat adressubók:"
+msgstr "Legg afturat adressubÃ³k:"
 
 #: address_book_import.php:203
 msgid "The following rows have errors"
-msgstr "Hesar røğir hava villur"
+msgstr "Hesar rÃ¸Ã°ir hava villur"
 
 #. displays row number that can't be imported. SquirrelMail
 #. address book backend error message is displayed after it.
 #: address_book_import.php:279
 #, php-format
 msgid "Row %d:"
-msgstr "Rağ %d:"
+msgstr "RaÃ° %d:"
 
 #: address_book_import.php:300
 msgid ""
 "There were errors uploading the data, as listed below. Entries not listed "
 "here were uploaded."
 msgstr ""
-"Sum sæst niğanfyri, hendu villur, tá dáta vórğu send upp. Innlegg iğ ikki "
-"standa her, vórğu send upp."
+"Sum sÃ¦st niÃ°anfyri, hendu villur, tÃ¡ dÃ¡ta vÃ³rÃ°u send upp. Innlegg iÃ° ikki "
+"standa her, vÃ³rÃ°u send upp."
 
 #: address_book_import.php:304
 msgid "Upload Completed!"
-msgstr "Liğugt at senda upp!"
+msgstr "LiÃ°ugt at senda upp!"
 
 #: address_book_import.php:306
 msgid "Click on the link below to verify your work."
-msgstr "Trıst á slóğina niğanfyri fyri at vátta títt arbeiği."
+msgstr "TrÃ½st Ã¡ slÃ³Ã°ina niÃ°anfyri fyri at vÃ¡tta tÃ­tt arbeiÃ°i."
 
 #: address_book_import.php:310
 msgid "Addresses"
@@ -92,23 +92,23 @@ msgstr "Adressur"
 
 #: functions.php:71
 msgid "Import Address Book:"
-msgstr "Innles adressubók:"
+msgstr "Innles adressubÃ³k:"
 
 #: functions.php:73
 msgid "Max: "
-msgstr "Hægst: "
+msgstr "HÃ¦gst: "
 
 #: functions.php:74
 msgid "Import CSV File"
-msgstr "Innles CSV fílu"
+msgstr "Innles CSV fÃ­lu"
 
 #: functions.php:84
 msgid "Export Address Book:"
-msgstr "Útles adressubók:"
+msgstr "Ãštles adressubÃ³k:"
 
 #: functions.php:86
 msgid "Export to CSV File"
-msgstr "Útles til CSV fílu"
+msgstr "Ãštles til CSV fÃ­lu"
 
 #: functions.php:111
 #, php-format
@@ -143,15 +143,15 @@ msgstr "T-post"
 
 #: functions.php:149
 msgid "Additional Info"
-msgstr "Fleiri upplısingar"
+msgstr "Fleiri upplÃ½singar"
 
 #: functions.php:151
 msgid "Do Not Include"
-msgstr "Tak ikki viğ"
+msgstr "Tak ikki viÃ°"
 
 #. i18n: %s contains data from imported row.
 #: functions.php:164
 #, php-format
 msgid "Row '%s' contains LDIF email address. This is not currently supported."
-msgstr "Rağ '%s' inniheldur LDIF t-post adressur. Hetta er ikki stuğlağ, sum nú er."
-
+msgstr ""
+"RaÃ° '%s' inniheldur LDIF t-post adressur. Hetta er ikki stuÃ°laÃ°, sum nÃº er."

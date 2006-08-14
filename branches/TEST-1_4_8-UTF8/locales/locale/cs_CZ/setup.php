@@ -2,7 +2,7 @@
 /**
  * Language configuration file
  *
- * Copyright (c) 2005-2006 The SquirrelMail Project Team
+ * Copyright (c) 2005 The SquirrelMail Project Team
  *
  * This file is part of SquirrelMail webmail interface. It is distributed
  * together with other translation files and is used to enable 
@@ -26,8 +26,8 @@
  * @package locales
  */
 
-$languages['cs_CZ']['NAME']    = 'Czech';
-$languages['cs_CZ']['ALTNAME'] = '&#268;e&scaron;tina';
-$languages['cs_CZ']['CHARSET'] = 'iso-8859-2';
-$languages['cs_CZ']['LOCALE']  = array('cs_CZ.ISO8859-2','cs_CZ.ISO-8859-2','cs_CZ');
-$languages['cs']['ALIAS']      = 'cs_CZ';
+$languages['cs']['NAME']    = 'Czech';
+$languages['cs']['ALTNAME'] = '&#268;e&scaron;tina';
+$languages['cs']['CHARSET'] = 'utf-8';
+$languages['cs']['LOCALE']  = array('cs_CZ.UTF8','cs_CZ.UTF-8','cs_CZ','cs');
+$languages['cs_CZ']['ALIAS']      = 'cs';

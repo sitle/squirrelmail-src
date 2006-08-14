@@ -11,12 +11,12 @@ msgstr ""
 "Last-Translator: Andre Nicholson <andre@neo-anime.org>\n"
 "Language-Team: Japanese <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=euc-jp\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #, php-format
 msgid "ERROR (%s): can't load config file"
-msgstr "¥¨¥é¡¼¡Ê%s¡Ë¡§ÀßÄê¥Õ¥¡¥¤¥ë¤ò¥í¡¼¥É¤¹¤ë¤³¤È¤Ç¤­¤Ş¤»¤ó"
+msgstr "ã‚¨ãƒ©ãƒ¼ï¼ˆ%sï¼‰ï¼šè¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã“ã¨ã§ãã¾ã›ã‚“"
 
 msgid "HTML"
 msgstr "HTML"
@@ -25,59 +25,58 @@ msgid ""
 "Warning: all special formatting will be lost.  Are you sure you want to send "
 "your message in plain text format?"
 msgstr ""
-"·Ù¹ğ¡£¥¹¥Ú¥·¥ã¥ë½ĞÎÏ½ñ¼°¤Ï¤¹¤Ù¤Æ¼º¤ï¤ì¤Æ¤·¤Ş¤¹¡£¥Æ¥­¥¹¥È·Á¼°¤Ç¥á¥Ã¥»¡¼¥¸¤ò"
-"Á÷¤Ã¤Æ¤â¤¤¤¤¤Ç¤¹¤«¡£"
+"è­¦å‘Šã€‚ã‚¹ãƒšã‚·ãƒ£ãƒ«å‡ºåŠ›æ›¸å¼ã¯ã™ã¹ã¦å¤±ã‚ã‚Œã¦ã—ã¾ã™ã€‚ãƒ†ã‚­ã‚¹ãƒˆå½¢å¼ã§ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’"
+"é€ã£ã¦ã‚‚ã„ã„ã§ã™ã‹ã€‚"
 
 msgid "Plain Text"
-msgstr "¥Æ¥­¥¹¥È·Á¼°"
+msgstr "ãƒ†ã‚­ã‚¹ãƒˆå½¢å¼"
 
 msgid "Compose in HTML"
-msgstr "HTML ¤ÇºîÀ®¤¹¤ë"
+msgstr "HTML ã§ä½œæˆã™ã‚‹"
 
-#, fuzzy
 #, php-format
 msgid ""
 "FATAL: HTML_Mail plugin must come AFTER %s in plugins array.  Please modify "
 "plugin order using conf.pl or by editing config/config.php"
 msgstr ""
-"·èÄêÅª¡§¥×¥é¥°¥¤¥ó¥¢¥ì¡¼¤ÇÉ¬¤º HTML_Mail ¥×¥é¥°¥¤¥ó¤Ï %s ¤Î¸å¤¬¤¢¤ê¤Ş¤¹¡£"
-"conf.pl ¤ò»È¤Ã¤Æ¤«¡¢config/config.php ¤òÊÔ½¸¤·¤Æ¡¢¥×¥é¥°¥¤¥ó¤Î½çÈÖ¤ò½¤Àµ¤·¤Æ"
-"¤¯¤À¤µ¤¤¡£"
+"æ±ºå®šçš„ï¼šãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã‚¢ãƒ¬ãƒ¼ã§å¿…ãš HTML_Mail ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã¯ %s ã®å¾ŒãŒã‚ã‚Šã¾ã™ã€‚"
+"conf.pl ã‚’ä½¿ã£ã¦ã‹ã€config/config.php ã‚’ç·¨é›†ã—ã¦ã€ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã®é †ç•ªã‚’ä¿®æ­£ã—ã¦"
+"ãã ã•ã„ã€‚"
 
 msgid "Subject"
-msgstr "·ïÌ¾"
+msgstr "ä»¶å"
 
 msgid "From"
-msgstr "º¹½Ğ¿Í"
+msgstr "å·®å‡ºäºº"
 
 msgid "Default Email Composition Format:"
-msgstr "¥Ç¥Õ¥©¥ë¥È¤Î¥á¡¼¥ë¹½À®¤Î·Á¼°¡§"
+msgstr "ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒ¡ãƒ¼ãƒ«æ§‹æˆã®å½¢å¼ï¼š"
 
 msgid "Use Emoticons:"
-msgstr "¥¨¥â¡¼¥Æ¥£¥³¥ó¤ò»È¤¦¡§"
+msgstr "ã‚¨ãƒ¢ãƒ¼ãƒ†ã‚£ã‚³ãƒ³ã‚’ä½¿ã†ï¼š"
 
 msgid "Yes"
-msgstr "¤Ï¤¤"
+msgstr "ã¯ã„"
 
 msgid "No"
-msgstr "¤¤¤¤¤¨"
+msgstr "ã„ã„ãˆ"
 
 msgid "Only Reply In HTML When Viewing HTML Format:"
-msgstr "HTML ·Á¼°¤òÉ½¼¨¤¹¤ë»ş¤Ë¤·¤« HTML ¤ÇÊÖ¿®¤¹¤ë¡§"
+msgstr "HTML å½¢å¼ã‚’è¡¨ç¤ºã™ã‚‹æ™‚ã«ã—ã‹ HTML ã§è¿”ä¿¡ã™ã‚‹ï¼š"
 
 msgid "(Always Attempt To Reply In HTML)"
-msgstr "¡Ê¤¤¤Ä¤â HTML ¤ÇÊÖ¿®¤¹¤ë¤è¤¦¤Ë¤¹¤ë¡Ë"
+msgstr "ï¼ˆã„ã¤ã‚‚ HTML ã§è¿”ä¿¡ã™ã‚‹ã‚ˆã†ã«ã™ã‚‹ï¼‰"
 
 msgid "Only Allow Unsafe Images In HTML Replies When Viewing Unsafe Images:"
 msgstr ""
-"°ÂÁ´¤Ç¤Ê¤¤¥¤¥á¡¼¥¸¤òÉ½¼¨¤¹¤ë»ş¤Ë¤·¤« HTML ÊÖ»ö¤Ë°ÂÁ´¤Ç¤Ê¤¤¥¤¥á¡¼¥¸¤ò²ÄÇ½¤Ë"
-"¤¹¤ë"
+"å®‰å…¨ã§ãªã„ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚’è¡¨ç¤ºã™ã‚‹æ™‚ã«ã—ã‹ HTML è¿”äº‹ã«å®‰å…¨ã§ãªã„ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚’å¯èƒ½ã«ã™"
+"ã‚‹"
 
 msgid "(Always Include Unsafe Images)"
-msgstr "¡Ê¤¤¤Ä¤â°ÂÁ´¤Ç¤Ê¤¤¥¤¥á¡¼¥¸¤òÊ»µ­¤¹¤ë¡Ë"
+msgstr "ï¼ˆã„ã¤ã‚‚å®‰å…¨ã§ãªã„ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚’ä½µè¨˜ã™ã‚‹ï¼‰"
 
 msgid "HTML Editor Type:"
-msgstr "HTML ¥¨¥Ç¥£¥¿¤Î·¿¡§"
+msgstr "HTML ã‚¨ãƒ‡ã‚£ã‚¿ã®å‹ï¼š"
 
 msgid "FCKeditor"
 msgstr "FCKeditor"
