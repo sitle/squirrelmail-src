@@ -118,3 +118,4 @@ function unicodetoutf8($var) {
     }
     return $ret;
 }
+?>

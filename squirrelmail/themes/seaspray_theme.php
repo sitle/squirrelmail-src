@@ -26,3 +26,5 @@ $color[9]   = '#78a0a0';
 $color[10]  = '#386060';
 $color[11]  = '#ffffb0';
 $color[15]  = '#b0ffff';
+
+?>

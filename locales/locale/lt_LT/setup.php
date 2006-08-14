@@ -26,8 +26,8 @@
  * @package locales
  */
 
-$languages['lt_LT']['NAME']    = 'Lithuanian';
-$languages['lt_LT']['ALTNAME'] = 'Lietuvi&#371;';
-$languages['lt_LT']['CHARSET'] = 'utf-8';
-$languages['lt_LT']['LOCALE'] = 'lt_LT.UTF-8';
-$languages['lt']['ALIAS'] = 'lt_LT';
+$languages['lt']['NAME']    = 'Lithuanian';
+$languages['lt']['ALTNAME'] = 'Lietuvi&#371;';
+$languages['lt']['CHARSET'] = 'utf-8';
+$languages['lt']['LOCALE'] = array('lt_LT.UTF-8','lt_LT','lt');
+$languages['lt_LT']['ALIAS'] = 'lt';

@@ -2,7 +2,7 @@
 /**
  * Language configuration file
  *
- * Copyright (c) 2005-2006 The SquirrelMail Project Team
+ * Copyright (c) 2005 The SquirrelMail Project Team
  *
  * This file is part of SquirrelMail webmail interface. It is distributed
  * together with other translation files and is used to enable 
@@ -26,36 +26,7 @@
  * @package locales
  */
 
-$languages['ko_KR']['NAME']    = 'Korean';
-$languages['ko_KR']['CHARSET'] = 'euc-KR';
-$languages['ko_KR']['LOCALE']  = 'ko_KR.EUC-KR';
-$languages['ko_KR']['XTRA_CODE'] = 'korean_xtra';
-$languages['ko']['ALIAS'] = 'ko_KR';
-
-/********************************
- * Korean charset extra functions
- ********************************/
-
-/**
- * Korean downloaded filename processing functions
- *
- * @param string default return value
- * @return string
- * @since 1.5.1
- */
-function korean_xtra_downloadfilename($ret) {
-    $ret = str_replace("\x0D\x0A", '', $ret);  /* Hanmail's CR/LF Clear */
-    for ($i=0;$i<strlen($ret);$i++) {
-        if ($ret[$i] >= "\xA1" && $ret[$i] <= "\xFE") {   /* 0xA1 - 0XFE are Valid */
-            $i++;
-            continue;
-        } else if (($ret[$i] >= 'a' && $ret[$i] <= 'z') || /* From Original ereg_replace in download.php */
-                   ($ret[$i] >= 'A' && $ret[$i] <= 'Z') ||
-                   ($ret[$i] == '.') || ($ret[$i] == '-')) {
-            continue;
-        } else {
-            $ret[$i] = '_';
-        }
-    }
-    return $ret;
-}
+$languages['ko']['NAME']    = 'Korean';
+$languages['ko']['CHARSET'] = 'utf-8';
+$languages['ko']['LOCALE']  = array('ko_KR.UTF-8','ko_KR','ko');
+$languages['ko_KR']['ALIAS'] = 'ko';

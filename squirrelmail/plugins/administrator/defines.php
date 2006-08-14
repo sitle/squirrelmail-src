@@ -1,17 +1,19 @@
 <?php
-
 /**
  * Administrator plugin - Option definitions
  *
- * @author Philippe Mingo
- * @copyright &copy; 1999-2006 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
+ * @author Philippe Mingo
+ * @copyright (c) 1999-2006 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package plugins
  * @subpackage administrator
  */
 
-/** Define constants for the various option types. */
+/** */
+require_once( SM_PATH . 'functions/constants.php' );
+
+/* Define constants for the various option types. */
 define('SMOPT_TYPE_UNDEFINED', -1);
 define('SMOPT_TYPE_STRING', 0);
 define('SMOPT_TYPE_STRLIST', 1);
@@ -26,25 +28,10 @@ define('SMOPT_TYPE_TITLE', 9);
 define('SMOPT_TYPE_THEME', 10);
 define('SMOPT_TYPE_PLUGINS', 11);
 define('SMOPT_TYPE_LDAP', 12);
-define('SMOPT_TYPE_CUSTOM', 13);
 define('SMOPT_TYPE_EXTERNAL', 32);
 define('SMOPT_TYPE_PATH',33);
 
-/**
- * Returns reformated aTemplateSet array data for option selection
- * @return array template selection options
- * @since 1.5.1
- */
-function adm_template_options() {
-    global $aTemplateSet;
-    $ret = array();
-    foreach ($aTemplateSet as $iTemplateID => $aTemplate) {
-        $ret[$iTemplateID] = $aTemplate['NAME'];
-    }
-    return $ret;
-}
-
-global $languages, $version;
+global $languages;
 
 $language_values = array( );
 foreach ($languages as $lang_key => $lang_attributes) {
@@ -119,7 +106,6 @@ $defcfg = array( '$config_version' => array( 'name' => _("Config File Version"),
                                                                    'courier' => _("Courier IMAP server"),
                                                                    'macosx' => _("Mac OS X Mailserver"),
                                                                    'hmailserver' => _("hMailServer IMAP server"),
-                                                                   'mercury32' => _("Mercury/32 IMAP server"),
                                                                    'bincimap' => _("Binc IMAP server"),
                                                                    'other' => _("Not one of the above servers") ) ),
                  '$optional_delimiter' => array( 'name' => _("IMAP Folder Delimiter"),
@@ -127,13 +113,10 @@ $defcfg = array( '$config_version' => array( 'name' => _("Config File Version"),
                                                  'comment' => _("Use &quot;detect&quot; to auto-detect."),
                                                  'size' => 10,
                                                  'default' => 'detect' ),
-                 '$use_imap_tls' => array( 'name' => _("IMAP Connection Security"),
-                                           'type' => SMOPT_TYPE_STRLIST,
-                                           'posvals' => array( 0 => _("Plain text connection"),
-                                                               1 => _("Secure IMAP (TLS) connection"),
-                                                               2 => _("IMAP STARTTLS connection")),
-                                           'comment' => _("Requires higher PHP version and special functions. See SquirrelMail documentation."),
-                                           'default' => 0 ),
+                 '$use_imap_tls' => array( 'name' => _("Use TLS for IMAP Connections"),
+                                           'type' => SMOPT_TYPE_BOOLEAN,
+                                           'comment' => _("Requires PHP 4.3.x! Experimental."),
+                                           'default' => false ),
                  '$imap_auth_mech' => array( 'name' => _("IMAP Authentication Type"),
                                              'type' => SMOPT_TYPE_STRLIST,
                                              'posvals' => array('login' => _("IMAP login"),
@@ -143,10 +126,10 @@ $defcfg = array( '$config_version' => array( 'name' => _("Config File Version"),
                  '$useSendmail' => array( 'name' => _("Use Sendmail Binary"),
                                           'type' => SMOPT_TYPE_BOOLEAN,
                                           'comment' => _("Choose &quot;no&quot; for SMTP") ),
-                 '$sendmail_path' => array( 'name' => _("Sendmail Path"),
+                 '$sendmail_args' => array( 'name' => _("Sendmail Arguments"),
                                             'type' => SMOPT_TYPE_STRING,
                                             'size' => 40 ),
-                 '$sendmail_args' => array( 'name' => _("Sendmail Arguments"),
+                 '$sendmail_path' => array( 'name' => _("Sendmail Path"),
                                             'type' => SMOPT_TYPE_STRING,
                                             'size' => 40 ),
                  '$smtpServerAddress' => array( 'name' => _("SMTP Server Address"),
@@ -154,13 +137,10 @@ $defcfg = array( '$config_version' => array( 'name' => _("Config File Version"),
                                                 'size' => 40 ),
                  '$smtpPort' => array( 'name' => _("SMTP Server Port"),
                                        'type' => SMOPT_TYPE_INTEGER ),
-                 '$use_smtp_tls' => array( 'name' => _("SMTP Connection Security"),
-                                           'type' => SMOPT_TYPE_STRLIST,
-                                           'posvals' => array( 0 => _("Plain text connection"),
-                                                               1 => _("Secure IMAP (TLS) connection"),
-                                                               2 => _("IMAP STARTTLS connection")),
-                                           'comment' => _("Requires higher PHP version and special functions. See SquirrelMail documentation."),
-                                           'default' => 0 ),
+                 '$use_smtp_tls' => array( 'name' => _("Use TLS for SMTP Connections"),
+                                           'type' => SMOPT_TYPE_BOOLEAN,
+                                           'comment' => _("Requires PHP 4.3.x! Experimental."),
+                                           'default' => false ),
                  '$smtp_auth_mech' => array( 'name' => _("SMTP Authentication Type"),
                                              'type' => SMOPT_TYPE_STRLIST,
                                              'posvals' => array('none' => _("No SMTP auth"),
@@ -168,17 +148,11 @@ $defcfg = array( '$config_version' => array( 'name' => _("Config File Version"),
                                                                 'cram-md5' => 'CRAM-MD5',
                                                                 'digest-md5' => 'DIGEST-MD5'),
                                              'default' => 'none'),
-                 '$smtp_sitewide_user' => array( 'name' => _("Custom SMTP AUTH username"),
-                                                 'type' => SMOPT_TYPE_STRING,
-                                                 'size' => 40 ),
-                 '$smtp_sitewide_pass' => array( 'name' => _("Custom SMTP AUTH password"),
-                                                 'type' => SMOPT_TYPE_STRING,
-                                                 'size' => 40 ),
                  '$pop_before_smtp' => array( 'name' => _("POP3 Before SMTP?"),
                                               'type' => SMOPT_TYPE_BOOLEAN,
                                               'default' => false ),
                  '$encode_header_key' => array( 'name' => _("Header Encryption Key"),
-                                          'type' => SMOPT_TYPE_STRING ),
+                                                'type' => SMOPT_TYPE_STRING ),
                  '$invert_time' => array( 'name' => _("Invert Time"),
                                           'type' => SMOPT_TYPE_BOOLEAN ),
                  /* --------------------------------------------------------*/
@@ -264,33 +238,23 @@ $defcfg = array( '$config_version' => array( 'name' => _("Config File Version"),
                  '$hide_auth_header' => array( 'name' => _("Remove username from headers"),
                                                'comment' => _("Used only when identities can't be modified"),
                                                'type' => SMOPT_TYPE_BOOLEAN ),
-                 '$disable_server_sort' => array( 'name' => _("Disable server-side sorting"),
+                 '$allow_server_sort' => array( 'name' => _("Use server-side sorting"),
                                                 'type' => SMOPT_TYPE_BOOLEAN,
                                                 'default' => false ),
-                 '$disable_thread_sort' => array( 'name' => _("Disable server-side thread sorting"),
+                 '$allow_thread_sort' => array( 'name' => _("Use server-side thread sorting"),
                                                 'type' => SMOPT_TYPE_BOOLEAN,
                                                 'default' => false ),
                  '$allow_charset_search' => array( 'name' => _("Allow server charset search"),
                                                    'type' => SMOPT_TYPE_BOOLEAN,
                                                    'default' => false ),
-                 '$allow_advanced_search' => array( 'name' => _("Search functions"),
-                                                    'type' => SMOPT_TYPE_NUMLIST,
-                                                    'posvals' => array( 0 => _("Only basic search"),
-                                                                        1 => _("Only advanced search"),
-                                                                        2 => _("Both search functions") ),
-                                                    'default' => 0 ),
+                 '$uid_support' => array( 'name' => _("UID support"),
+                                          'type' => SMOPT_TYPE_BOOLEAN,
+                                          'default' => false ),
                  '$session_name' => array( 'name' => _("PHP session name"),
                                            'type' => SMOPT_TYPE_HIDDEN ),
-                 '$time_zone_type' => array( 'name' => _("Time Zone Configuration"),
-                                             'type' => SMOPT_TYPE_NUMLIST,
-                                             'posvals' => array( 0 => _("Standard GNU C time zones"),
-                                                                 1 => _("Strict time zones"),
-                                                                 2 => _("Custom GNU C time zones"),
-                                                                 3 => _("Custom strict time zones")),
-                                             'default' => 0 ),
                  '$config_location_base' => array( 'name' => _("Location base"),
                                                    'type' => SMOPT_TYPE_STRING,
-                                                   'size' => 40,
+                                                   'size' => 40,				
                                                    'default' => '' ),
                  /* --------------------------------------------------------*/
                  'Group5' => array( 'name' => _("Message of the Day"),
@@ -298,7 +262,7 @@ $defcfg = array( '$config_version' => array( 'name' => _("Config File Version"),
                  '$motd' => array( 'name' => _("Message of the Day"),
                                    'type' => SMOPT_TYPE_TEXTAREA,
                                    'size' => 40 ),
-                 /* ---- Database settings ---- */
+                 /* --------------------------------------------------------*/
                  'Group6' => array( 'name' => _("Database"),
                                     'type' => SMOPT_TYPE_TITLE ),
                  '$addrbook_dsn' => array( 'name' => _("Address book DSN"),
@@ -319,20 +283,14 @@ $defcfg = array( '$config_version' => array( 'name' => _("Config File Version"),
                                               'type' => SMOPT_TYPE_STRING,
                                               'size' => 40,
                                               'default' => 'user' ),
-                 '$prefs_user_size' => array( 'name' => _("Size of username field"),
-                                              'type' => SMOPT_TYPE_INTEGER ),
                  '$prefs_key_field' => array('name' => _("Preferences key field"),
                                              'type' => SMOPT_TYPE_STRING,
                                              'size' => 40,
                                              'default' => 'prefkey' ),
-                 '$prefs_key_size' => array( 'name' => _("Size of key field"),
-                                             'type' => SMOPT_TYPE_INTEGER ),
                  '$prefs_val_field' => array('name' => _("Preferences value field"),
                                              'type' => SMOPT_TYPE_STRING,
                                              'size' => 40,
                                              'default' => 'prefval' ),
-                 '$prefs_val_size' => array( 'name' => _("Size of value field"),
-                                             'type' => SMOPT_TYPE_INTEGER ),
                  '$addrbook_global_dsn' => array( 'name' => _("Global address book DSN"),
                                            'type' => SMOPT_TYPE_STRING,
                                            'size' => 40 ),
@@ -368,57 +326,28 @@ $defcfg = array( '$config_version' => array( 'name' => _("Config File Version"),
                                                                   'windows-1255' => 'windows-1255',
                                                                   'windows-1256' => 'windows-1256',
                                                                   'iso-2022-jp' => 'iso-2022-jp' ) ),
-                 '$show_alternative_names'  => array( 'name' => _("Show alternative language names"),
-                                                      'type' => SMOPT_TYPE_BOOLEAN ),
-                 '$aggressive_decoding'  => array( 'name' => _("Enable aggressive decoding"),
-                                                 'type' => SMOPT_TYPE_BOOLEAN ),
-                 '$lossy_encoding'  => array( 'name' => _("Enable lossy encoding"),
-                                                 'type' => SMOPT_TYPE_BOOLEAN ),
-                 /* ---- Tweaks ---- */
-                 'Group10' => array( 'name' => _("Tweaks"),
-                                     'type' => SMOPT_TYPE_TITLE ),
-                 '$use_icons'  => array( 'name' => _("Use icons"),
-                                         'type' => SMOPT_TYPE_BOOLEAN ),
-                 '$use_iframe' => array( 'name' => _("Use inline frames with HTML mails"),
-                                         'type' => SMOPT_TYPE_BOOLEAN ),
-                 '$use_php_recode'  => array( 'name' => _("Use PHP recode functions"),
-                                              'type' => SMOPT_TYPE_BOOLEAN ),
-                 '$use_php_iconv'  => array( 'name' => _("Use PHP iconv functions"),
-                                             'type' => SMOPT_TYPE_BOOLEAN ),
-                 '$allow_remote_configtest' => array( 'name' => _("Allow remote configuration test"),
-                                                      'type' => SMOPT_TYPE_BOOLEAN ),
+                  '$lossy_encoding'  => array( 'name' => _("Enable lossy encoding"),
+                                               'type' => SMOPT_TYPE_BOOLEAN ),
                  /* ---- Settings of address books ---- */
-                 'Group11' => array( 'name' => _("Address Books"),
+                 'Group10' => array( 'name' => _("Address Books"),
                                      'type' => SMOPT_TYPE_TITLE ),
                  '$default_use_javascript_addr_book' => array( 'name' => _("Default Javascript Addressbook"),
                                                   'type' => SMOPT_TYPE_BOOLEAN ),
-                 '$abook_global_file'           => array( 'name' => _("Global address book file"),
-                                                          'type' => SMOPT_TYPE_STRING ),
+                 '$abook_global_file' => array( 'name' => _("Global address book file"),
+                                                  'type' => SMOPT_TYPE_STRING ),
                  '$abook_global_file_writeable' => array( 'name' => _("Allow writing into global address book file"),
-                                                          'type' => SMOPT_TYPE_BOOLEAN ),
-                 '$abook_global_file_listing'   => array( 'name' => _("Allow listing of global address book"),
-                                                          'type' => SMOPT_TYPE_BOOLEAN ),
-                 '$abook_file_line_length' => array( 'name' => _("Address book file line length"),
-                                                     'type' => SMOPT_TYPE_INTEGER ),
+                                                  'type' => SMOPT_TYPE_BOOLEAN ),
                  /* --------------------------------------------------------*/
-                 'Group7' => array( 'name' => _("Templates"),
+                 'Group7' => array( 'name' => _("Themes"),
                                     'type' => SMOPT_TYPE_TITLE ),
                  '$theme_css' => array( 'name' => _("Style Sheet URL (css)"),
                                         'type' => SMOPT_TYPE_PATH,
                                         'size' => 40 ),
-                 '$default_fontsize' => array( 'name' => _("Default font size"),
-                                               'type' => SMOPT_TYPE_STRING,
-                                               'default' => ''),
-                 '$default_fontset' => array( 'name' => _("Default font set"),
-                                              'type' => SMOPT_TYPE_STRLIST,
-                                              'posvals' => $fontsets),
-                 '$templateset_default' => array( 'name' => _("Default template"),
-                                                  'type' => SMOPT_TYPE_STRLIST,
-                                                  'posvals' => adm_template_options()),
                  '$theme_default' => array( 'name' => _("Default theme"),
                                             'type' => SMOPT_TYPE_INTEGER,
                                             'default' => 0,
                                             'comment' => _("Use index number of theme") ),
+                 /* ---- Group8 is for plugins ---- */
                  /* --------------------------------------------------------*/
                  '$config_use_color' => array( 'name' => '',
                                                'type' => SMOPT_TYPE_HIDDEN ),
@@ -428,3 +357,4 @@ $defcfg = array( '$config_version' => array( 'name' => _("Config File Version"),
 
                );
 
+?>

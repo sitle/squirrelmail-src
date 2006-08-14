@@ -2,7 +2,7 @@
 /**
  * Language configuration file
  *
- * Copyright (c) 2005-2006 The SquirrelMail Project Team
+ * Copyright (c) 2005 The SquirrelMail Project Team
  *
  * This file is part of SquirrelMail webmail interface. It is distributed
  * together with other translation files and is used to enable 
@@ -27,5 +27,5 @@
  */
 
 $languages['en_GB']['NAME']    = 'British';
-$languages['en_GB']['CHARSET'] = 'iso-8859-15';
-$languages['en_GB']['LOCALE']  = array('en_GB.ISO8859-15','en_GB.ISO-8859-15','en_GB');
+$languages['en_GB']['CHARSET'] = 'utf-8';
+$languages['en_GB']['LOCALE']  = array('en_GB.UTF8','en_GB.UTF-8','en_GB');

@@ -1,6 +1,6 @@
 $Date$
 
-This file lists SquirrelMail options set by D option in conf.pl
+This file lists squirrelmail options set by D option in conf.pl
 
 It can be used if user can't run conf.pl and changes options manually.
 Settings can be different if IMAP server uses shared folders.
@@ -21,7 +21,7 @@ default settings:
 -----------------
 
               imap_server_type = other
-         default_folder_prefix = <none> (is set to empty string)
+         default_folder_prefix =
                   trash_folder = INBOX.Trash
                    sent_folder = INBOX.Sent
                   draft_folder = INBOX.Drafts
@@ -35,12 +35,8 @@ show_contain_subfolders_option = false
 -----------------
 'cyrus' settings:
 -----------------
-Server supports server side sorting since 2.0.4 version. euc-jp, euc-kr, 
-tis-620, cp1251, cp1255 character sets are not supported by sorting functions 
-(v.2.2.12).
-
               imap_server_type = cyrus
-         default_folder_prefix = <none> (is set to empty string)
+         default_folder_prefix = <none> (is not set)
                   trash_folder = INBOX.Trash
                    sent_folder = INBOX.Sent
                   draft_folder = INBOX.Drafts
@@ -54,8 +50,6 @@ show_contain_subfolders_option = false
 --------------
 'uw' settings:
 --------------
-Server supports server side sorting. Plain text logins are disabled by default.
-
               imap_server_type = uw
          default_folder_prefix = mail/
                   trash_folder = Trash
@@ -71,10 +65,8 @@ show_contain_subfolders_option = true
 --------------------
 'exchange' settings:
 --------------------
-Server does not support server side sorting.
-
               imap_server_type = exchange
-         default_folder_prefix = <none> (is set to empty string)
+         default_folder_prefix = <none>  (is not set)
                   trash_folder = INBOX/Deleted Items
                    sent_folder = INBOX/Sent Items
                   draft_folder = Drafts
@@ -88,12 +80,6 @@ show_contain_subfolders_option = false
 -------------------
 'courier' settings:
 -------------------
-Fast, scalable, enterprise IMAP server that uses Maildirs
-
-Server supports server side sorting. SquirrelMail can issue IMAP commands
-that are supported only when courier-imap is compiled with --enable-unicode
-option.
-
               imap_server_type = courier
          default_folder_prefix = INBOX.
                   trash_folder = Trash
@@ -124,11 +110,8 @@ show_contain_subfolders_option = false
 -----------------------
 'hmailserver' settings:
 -----------------------
-Preset is used with hMailServer IMAP server. Available since SquirrelMail 1.5.1 
-and 1.4.4. Open source email server for WinNT and later.
-
               imap_server_type = hmailserver   (used in imap_search.php)
-         default_folder_prefix = <none> (is set to empty string)
+         default_folder_prefix =
                   trash_folder = INBOX.Trash
                    sent_folder = INBOX.Sent
                   draft_folder = INBOX.Drafts
@@ -142,8 +125,11 @@ show_contain_subfolders_option = false
 ---------------------
 'mercury32' settings:
 ---------------------
-Preset is used for Mercury Mail Transport System. Available since 1.5.0 and 1.4.6.
+Preset is used for Mercury Mail Transport System. Available since 1.5.0 and 1.4.6
 Free email server for Win32 and Netware.
+Tested Win32 v.4.01b
+CAPABILITY IMAP4rev1 X-MERCURY
+PERMANENTFLAGS (\Deleted \Draft \Seen \Answered)
 
 Comments:
 * Server side sorting and threading are not supported.
@@ -152,8 +138,7 @@ Comments:
 * Supports STARTTLS, if configured.
 * May have issues with 8bit IMAP folder names.
 
-$imap_server_type variable is used to handle imap folder subscription
-differences.
+Site URL: http://www.pmail.com
 
               imap_server_type = mercury32
          default_folder_prefix = <none> (is set to empty string)
@@ -173,11 +158,18 @@ show_contain_subfolders_option = true
 Preset used for Dovecot Secure IMAP server. Available since 1.5.1 and 1.4.6.
 
 There is no code specific to Dovecot IMAP server. Preset provides only a quick
-way to set correct folder settings. Preset works with any IMAP server that does 
-not store IMAP folders under INBOX and IMAP folders can store messages and other
-folders. Preset can also be used with Bejy IMAP server.
+way to set correct folder settings.
+
+Tested v.0.99.14
+
+CAPABILITY IMAP4rev1 SORT THREAD=REFERENCES MULTIAPPEND UNSELECT LITERAL+ IDLE 
+  CHILDREN LISTEXT LIST-SUBSCRIBED NAMESPACE
+
+PERMANENTFLAGS (\Answered \Flagged \Deleted \Seen \Draft \*)
 
 IMAP server supports server side sorting and threading.
+
+Site URL: http://www.dovecot.org
 
               imap_server_type = dovecot
          default_folder_prefix = <none> (is set to empty string)
@@ -196,10 +188,19 @@ show_contain_subfolders_option = false
 'bincimap' settings:
 --------------------
 Preset is used with Binc IMAP server. Available since 1.5.1 and 1.4.6.
+Tested v.1.2.13 and 1.3.4
+
+CAPABILITY IMAP4rev1 STARTTLS AUTH=LOGIN AUTH=PLAIN (1.2.13)
+CAPABILITY IMAP4rev1 STARTTLS AUTH=LOGIN AUTH=PLAIN IDLE LITERAL+ NAMESPACE CHILDREN (1.3.4)
+
+PERMANENTFLAGS (\Answered \Flagged \Deleted \Seen \Draft) - 1.2.13
+PERMANENTFLAGS (\Answered \Flagged \Deleted \Seen \Draft \*) - 1.3.4
 
 IMAP server does not support server side sorting and threading. Plain text 
 logins are disabled by default. Due to available storage backend configuration 
 options it is impossible to create single preset, which covers all setups.
+
+Site URL: http://www.bincimap.org
 
 * Default (1.2.13) configuration with Maildir++ depot and / delimiter
               imap_server_type = bincimap (is used to handle INBOX in folder management)

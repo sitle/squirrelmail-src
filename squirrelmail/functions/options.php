@@ -44,122 +44,37 @@ define('SMOPT_SAVE_DEFAULT', 'save_option');
 define('SMOPT_SAVE_NOOP', 'save_option_noop');
 
 /**
- * SquirrelOption: An option for SquirrelMail.
+ * SquirrelOption: An option for Squirrelmail.
  *
+ * This class is a work in progress. When complete, it will handle
+ * presentation and saving of Squirrelmail user options in a simple,
+ * streamline manner. Stay tuned for more stuff.
+ *
+ * Also, I'd like to ask that people leave this alone (mostly :) until
+ * I get it a little further along. That should only be a day or two or
+ * three. I will remove this message when it is ready for primetime usage.
  * @package squirrelmail
- * @subpackage prefs
  */
 class SquirrelOption {
-    /**
-     * The name of this setting
-     * @var string
-     */
+    /* The basic stuff. */
     var $name;
-    /**
-     * The text that prefaces setting on the preferences page
-     * @var string
-     */
     var $caption;
-    /**
-     * The type of INPUT element
-     *
-     * See SMOPT_TYPE_* defines
-     * @var integer
-     */
     var $type;
-    /**
-     * Indicates if a link should be shown to refresh part
-     * or all of the window
-     *
-     * See SMOPT_REFRESH_* defines
-     * @var integer
-     */
     var $refresh_level;
-    /**
-     * Specifies the size of certain input items
-     *
-     * See SMOPT_SIZE_* defines
-     * @var integer
-     */
     var $size;
-    /**
-     * Text that follows a text input or
-     * select list input on the preferences page
-     *
-     * useful for indicating units, meanings of special values, etc.
-     * @var string
-     */
-    var $trailing_text;
-    /**
-     * text displayed to the user
-     *
-     * Used with SMOPT_TYPE_COMMENT options
-     * @var string
-     */
     var $comment;
-    /**
-     * additional javascript or other code added to the user input
-     * @var string
-     */
     var $script;
-    /**
-     * script (usually Javascript) that will be placed after (outside of)
-     * the INPUT tag
-     * @var string
-     */
     var $post_script;
 
-    /**
-     * The name of the Save Function for this option.
-     * @var string
-     */
+    /* The name of the Save Function for this option. */
     var $save_function;
 
     /* The various 'values' for this options. */
-    /**
-     * default/preselected value for this option
-     * @var mixed
-     */
     var $value;
-    /**
-     * new option value
-     * @var mixed
-     */
     var $new_value;
-    /**
-     * associative array, where each key is an actual input value
-     * and the corresponding value is what is displayed to the user
-     * for that list item in the drop-down list
-     * @var array
-     */
     var $possible_values;
-    /**
-     * disables html sanitizing.
-     *
-     * WARNING - don't use it, if user input is possible in option
-     * or use own sanitizing functions. Currently works only with
-     * SMOPT_TYPE_STRLIST.
-     * @var bool
-     */
     var $htmlencoded=false;
-    /**
-     * Controls folder list limits in SMOPT_TYPE_FLDRLIST widget.
-     * See $flag argument in sqimap_mailbox_option_list() function.
-     * @var string
-     * @since 1.5.1
-     */
-    var $folder_filter='noselect';
 
-    /**
-     * Constructor function
-     * @param string $name
-     * @param string $caption
-     * @param integer $type
-     * @param integer $refresh_level
-     * @param mixed $initial_value
-     * @param array $possible_values
-     * @param bool $htmlencoded
-     */
     function SquirrelOption
     ($name, $caption, $type, $refresh_level, $initial_value = '', $possible_values = '', $htmlencoded = false) {
         /* Set the basic stuff. */
@@ -170,7 +85,6 @@ class SquirrelOption {
         $this->possible_values = $possible_values;
         $this->htmlencoded = $htmlencoded;
         $this->size = SMOPT_SIZE_MEDIUM;
-        $this->trailing_text = '';
         $this->comment = '';
         $this->script = '';
         $this->post_script = '';
@@ -185,7 +99,7 @@ class SquirrelOption {
         }
 
         /* Check for a new value. */
-        if ( !sqgetGlobalVar("new_$name", $this->new_value, SQ_POST ) ) {
+    if ( !sqgetGlobalVar("new_$name", $this->new_value, SQ_POST ) ) {
             $this->new_value = '';
         }
 
@@ -197,87 +111,43 @@ class SquirrelOption {
         }
     }
 
-    /**
-     * Set the value for this option.
-     * @param mixed $value
-     */
+    /* Set the value for this option. */
     function setValue($value) {
         $this->value = $value;
     }
 
-    /**
-     * Set the new value for this option.
-     * @param mixed $new_value
-     */
+    /* Set the new value for this option. */
     function setNewValue($new_value) {
         $this->new_value = $new_value;
     }
 
-    /**
-     * Set the size for this option.
-     * @param integer $size
-     */
+    /* Set the size for this option. */
     function setSize($size) {
         $this->size = $size;
     }
 
-    /**
-     * Set the trailing_text for this option.
-     * @param string $trailing_text
-     */
-    function setTrailingText($trailing_text) {
-        $this->trailing_text = $trailing_text;
-    }
-
-    /**
-     * Set the comment for this option.
-     * @param string $comment
-     */
+    /* Set the comment for this option. */
     function setComment($comment) {
         $this->comment = $comment;
     }
 
-    /**
-     * Set the script for this option.
-     * @param string $script
-     */
+    /* Set the script for this option. */
     function setScript($script) {
         $this->script = $script;
     }
 
-    /**
-     * Set the "post script" for this option.
-     * @param string $post_script
-     */
+    /* Set the "post script" for this option. */
     function setPostScript($post_script) {
         $this->post_script = $post_script;
     }
 
-    /**
-     * Set the save function for this option.
-     * @param string $save_function
-     */
+    /* Set the save function for this option. */
     function setSaveFunction($save_function) {
         $this->save_function = $save_function;
     }
 
-    /**
-     * Set the trailing_text for this option.
-     * @param string $folder_filter
-     * @since 1.5.1
-     */
-    function setFolderFilter($folder_filter) {
-        $this->folder_filter = $folder_filter;
-    }
-
-    /**
-     * Creates fields on option pages according to option type
-     *
-     * Function that calls other createWidget* functions.
-     * @return string html formated option field
-     */
     function createHTMLWidget() {
-        global $color;
+        global $javascript_on, $color;
 
         // Use new value if available
         if (!empty($this->new_value)) {
@@ -332,10 +202,6 @@ class SquirrelOption {
         return ($result);
     }
 
-    /**
-     * Create string field
-     * @return string html formated option field
-     */
     function createWidget_String() {
         switch ($this->size) {
             case SMOPT_SIZE_TINY:
@@ -357,14 +223,10 @@ class SquirrelOption {
 
         $result = "<input type=\"text\" name=\"new_$this->name\" value=\"" .
             htmlspecialchars($this->value) .
-            "\" size=\"$width\" $this->script />$this->trailing_text\n";
+            "\" size=\"$width\" $this->script />\n";
         return ($result);
     }
 
-    /**
-     * Create selection box
-     * @return string html formated selection box
-     */
     function createWidget_StrList() {
         /* Begin the select tag. */
         $result = "<select name=\"new_$this->name\" $this->script>\n";
@@ -382,31 +244,26 @@ class SquirrelOption {
 
             /* Add the display value to our option string. */
             $new_option .= '>' . ($this->htmlencoded ? $disp_value : htmlspecialchars($disp_value)) . "</option>\n";
-
             /* And add the new option string to our select tag. */
             $result .= $new_option;
         }
 
         /* Close the select tag and return our happy result. */
-        $result .= "</select>$this->trailing_text\n";
+        $result .= "</select>\n";
         return ($result);
     }
 
-    /**
-     * Create folder selection box
-     * @return string html formated selection box
-     */
     function createWidget_FolderList() {
         $selected = array(strtolower($this->value));
 
-        /* set initial value */
-        $result = '';
+        /* Begin the select tag. */
+        $result = "<select name=\"new_$this->name\" $this->script>\n";
 
         /* Add each possible value to the select list. */
         foreach ($this->possible_values as $real_value => $disp_value) {
             if ( is_array($disp_value) ) {
               /* For folder list, we passed in the array of boxes.. */
-              $new_option = sqimap_mailbox_option_list(0, $selected, 0, $disp_value, $this->folder_filter);
+              $new_option = sqimap_mailbox_option_list(0, $selected, 0, $disp_value);
             } else {
               /* Start the next new option string. */
               $new_option = '<option value="' . htmlspecialchars($real_value) . '"';
@@ -422,25 +279,12 @@ class SquirrelOption {
             /* And add the new option string to our select tag. */
             $result .= $new_option;
         }
-
-
-        if (empty($result)) {
-            // string is displayed when interface can't build folder selection box
-            return _("unavailable");
-        } else {
-            /* Begin the select tag. */
-            $ret = "<select name=\"new_$this->name\" $this->script>\n";
-            $ret.= $result;
-            /* Close the select tag and return our happy result. */
-            $ret.= "</select>\n";
-            return ($ret);
-        }
+        /* Close the select tag and return our happy result. */
+        $result .= "</select>\n";
+        return ($result);
     }
 
-    /**
-     * Creates textarea
-     * @return string html formated textarea field
-     */
+
     function createWidget_TextArea() {
         switch ($this->size) {
             case SMOPT_SIZE_TINY:  $rows = 3; $cols =  10; break;
@@ -456,13 +300,8 @@ class SquirrelOption {
         return ($result);
     }
 
-    /**
-     * Creates field for integer
-     *
-     * Difference from createWidget_String is visible only when javascript is enabled
-     * @return string html formated option field
-     */
     function createWidget_Integer() {
+
         global $javascript_on;
 
         // add onChange javascript handler to a regular string widget
@@ -476,12 +315,8 @@ class SquirrelOption {
            return $this->createWidget_String();
     }
 
-    /**
-     * Creates field for floating number
-     * Difference from createWidget_String is visible only when javascript is enabled
-     * @return string html formated option field
-     */
     function createWidget_Float() {
+
         global $javascript_on;
 
         // add onChange javascript handler to a regular string widget
@@ -496,10 +331,6 @@ class SquirrelOption {
            return $this->createWidget_String();
     }
 
-    /**
-     * Creates radio field (yes/no)
-     * @return string html formated radio field
-     */
     function createWidget_Boolean() {
         /* Do the whole current value thing. */
         if ($this->value != SMPREF_NO) {
@@ -511,26 +342,20 @@ class SquirrelOption {
         }
 
         /* Build the yes choice. */
-        $yes_option = '<input type="radio" id="new_' . $this->name . '_yes" '
-                    . 'name="new_' . $this->name . '" value="' . SMPREF_YES . '"'
-                    . $yes_chk . ' ' . $this->script . ' />&nbsp;'
-                    . '<label for="new_'.$this->name.'_yes">' . _("Yes") . '</label>';
+        $yes_option = '<input type="radio" name="new_' . $this->name
+                    . '" value="' . SMPREF_YES . "\"$yes_chk $this->script />&nbsp;"
+                    . _("Yes");
 
         /* Build the no choice. */
-        $no_option = '<input type="radio" id="new_' . $this->name . '_no" '
-                   . 'name="new_' . $this->name . '" value="' . SMPREF_NO . '"'
-                   . $no_chk . ' ' . $this->script . ' />&nbsp;'
-                    . '<label for="new_'.$this->name.'_no">' . _("No") . '</label>';
+        $no_option = '<input type="radio" name="new_' . $this->name
+                   . '" value="' . SMPREF_NO . "\"$no_chk $this->script />&nbsp;"
+                   . _("No");
 
         /* Build and return the combined "boolean widget". */
         $result = "$yes_option&nbsp;&nbsp;&nbsp;&nbsp;$no_option";
         return ($result);
     }
 
-    /**
-     * Creates hidden field
-     * @return string html formated hidden input field
-     */
     function createWidget_Hidden() {
         $result = '<input type="hidden" name="new_' . $this->name
                 . '" value="' . htmlspecialchars($this->value)
@@ -538,35 +363,21 @@ class SquirrelOption {
         return ($result);
     }
 
-    /**
-     * Creates comment
-     * @return string comment
-     */
     function createWidget_Comment() {
         $result = $this->comment;
         return ($result);
     }
 
-    /**
-     *
-     */
     function save() {
         $function = $this->save_function;
         $function($this);
     }
 
-    /**
-     *
-     */
     function changed() {
         return ($this->value != $this->new_value);
     }
-} /* End of SquirrelOption class*/
+}
 
-/**
- * Saves option
- * @param object $option object that holds option name and new_value
- */
 function save_option($option) {
     if ( !sqgetGlobalVar('username', $username, SQ_SESSION ) ) {
         /* Can't save the pref if we don't have the username */
@@ -576,38 +387,18 @@ function save_option($option) {
     setPref($data_dir, $username, $option->name, $option->new_value);
 }
 
-/**
- * save function that does not save
- * @param object $option
- */
 function save_option_noop($option) {
     /* Do nothing here... */
 }
 
-/**
- * Create hidden 'optpage' input field with value set by argument
- * @param string $optpage identification of option page
- * @return string html formated hidden input field
- */
 function create_optpage_element($optpage) {
     return create_hidden_element('optpage', $optpage);
 }
 
-/**
- * Create hidden 'optmode' input field with value set by argument
- * @param string $optmode
- * @return string html formated hidden input field
- */
 function create_optmode_element($optmode) {
     return create_hidden_element('optmode', $optmode);
 }
 
-/**
- * Create hidden field.
- * @param string $name field name
- * @param string $value field value
- * @return string html formated hidden input field
- */
 function create_hidden_element($name, $value) {
     $result = '<input type="hidden" '
             . 'name="' . $name . '" '
@@ -615,11 +406,6 @@ function create_hidden_element($name, $value) {
     return ($result);
 }
 
-/**
- * @param array $optgrps
- * @param array $optvals
- * @return array
- */
 function create_option_groups($optgrps, $optvals) {
     /* Build a simple array with which to start. */
     $result = array();
@@ -636,23 +422,18 @@ function create_option_groups($optgrps, $optvals) {
         foreach ($grpopts as $optset) {
             /* Create a new option with all values given. */
             $next_option = new SquirrelOption(
-                    $optset['name'],
-                    $optset['caption'],
-                    $optset['type'],
-                    (isset($optset['refresh']) ? $optset['refresh'] : SMOPT_REFRESH_NONE),
-                    (isset($optset['initial_value']) ? $optset['initial_value'] : ''),
-                    (isset($optset['posvals']) ? $optset['posvals'] : ''),
-                    (isset($optset['htmlencoded']) ? $optset['htmlencoded'] : false)
-                    );
+                $optset['name'],
+                $optset['caption'],
+                $optset['type'],
+                (isset($optset['refresh']) ? $optset['refresh'] : SMOPT_REFRESH_NONE),
+                (isset($optset['initial_value']) ? $optset['initial_value'] : ''),
+                (isset($optset['posvals']) ? $optset['posvals'] : ''),
+                (isset($optset['htmlencoded']) ? $optset['htmlencoded'] : false)
+                );
 
             /* If provided, set the size for this option. */
             if (isset($optset['size'])) {
                 $next_option->setSize($optset['size']);
-            }
-
-            /* If provided, set the trailing_text for this option. */
-            if (isset($optset['trailing_text'])) {
-                $next_option->setTrailingText($optset['trailing_text']);
             }
 
             /* If provided, set the comment for this option. */
@@ -675,11 +456,6 @@ function create_option_groups($optgrps, $optvals) {
                 $next_option->setPostScript($optset['post_script']);
             }
 
-            /* If provided, set the folder_filter for this option. */
-            if (isset($optset['folder_filter'])) {
-                $next_option->setFolderFilter($optset['folder_filter']);
-            }
-
             /* Add this option to the option array. */
             $result[$grpkey]['options'][] = $next_option;
         }
@@ -689,9 +465,6 @@ function create_option_groups($optgrps, $optvals) {
     return ($result);
 }
 
-/**
- * @param array $option_groups
- */
 function print_option_groups($option_groups) {
     /* Print each option group. */
     foreach ($option_groups as $next_optgrp) {
@@ -700,7 +473,7 @@ function print_option_groups($option_groups) {
             echo html_tag( 'tr', "\n".
                         html_tag( 'td',
                             '<b>' . $next_optgrp['name'] . '</b>' ,
-                        'center' ,'', 'valign="middle" colspan="2" style="white-space: nowrap;"' )
+                        'center' ,'', 'valign="middle" colspan="2" nowrap' )
                     ) ."\n";
         }
 
@@ -723,10 +496,6 @@ function print_option_groups($option_groups) {
     }
 }
 
-/**
- * Create submit button inside table row.
- * @param string $name
- */
 function OptionSubmit( $name ) {
         echo html_tag( 'tr',
                    html_tag( 'td', '<input type="submit" value="' . _("Submit") . '" name="' . $name . '" />&nbsp;&nbsp;&nbsp;&nbsp;', 'right', '', 'colspan="2"' )
@@ -734,3 +503,4 @@ function OptionSubmit( $name ) {
 }
 
 // vim: et ts=4
+?>

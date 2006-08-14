@@ -11,23 +11,25 @@ msgstr ""
 "Last-Translator: Aldo <aldo@placenet.org>\n"
 "Language-Team: French <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit"
 
 msgid "Could not find Pear DB library"
 msgstr "Library Pear-DB-Manquante"
 
 msgid "Could not make database connection"
-msgstr "La connection à la base de données a échouée"
+msgstr "La connection Ã  la base de donnÃ©es a Ã©chouÃ©e"
 
 #, c-format
 msgid "DATABASE ERROR: could not lookup force change password flag: %s"
-msgstr "DATABASE ERROR: Ne peut vérifier force change password flag: %s"
+msgstr "DATABASE ERROR: Ne peut vÃ©rifier force change password flag: %s"
 
 #, c-format
 msgid ""
 "Force change password query result is: %s<br />Query was: %s<br /><br />"
-msgstr "Le résultat de la requète Force change password est: %s<br />La requète etait: %s<br /><br />"
+msgstr ""
+"Le rÃ©sultat de la requÃ¨te Force change password est: %s<br />La requÃ¨te "
+"etait: %s<br /><br />"
 
 msgid "Change Password"
 msgstr "Changez le mot de passe"
@@ -38,18 +40,24 @@ msgstr "Utilisez cette option pour changer votre mot de passe"
 msgid ""
 "Password changed successfully.<br />Please use your new password to log in "
 "from now on."
-msgstr "Le changement de passe est réussi.<BR/>Reconnectez vous maintenant avec votre nouveau mot de passe."
+msgstr ""
+"Le changement de passe est rÃ©ussi.<BR/>Reconnectez vous maintenant avec "
+"votre nouveau mot de passe."
 
 msgid "Password change cancelled.<br />Your password has NOT been changed."
-msgstr "Changement du mot de passe annulé.<br/>Votre mot de passe n'a pas été remplacé."
+msgstr ""
+"Changement du mot de passe annulÃ©.<br/>Votre mot de passe n'a pas Ã©tÃ© "
+"remplacÃ©."
 
 msgid ""
 "Periodically, we ask that you change your password.  This is done to help "
 "maintain good security for your email account."
-msgstr "Regulièrement, nous vous demandons de changer votre mot de passe.  Cela permet d'améliorer la sécurité de votre compte mail."
+msgstr ""
+"ReguliÃ¨rement, nous vous demandons de changer votre mot de passe.  Cela "
+"permet d'amÃ©liorer la sÃ©curitÃ© de votre compte mail."
 
 msgid "Change Password - Secure"
-msgstr "Changez le mot de passe·-·Protéger"
+msgstr "Changez le mot de passeÂ·-Â·ProtÃ©ger"
 
 msgid "Old Password"
 msgstr "Ancien Mot de Passe"
@@ -65,11 +73,12 @@ msgstr "Annuler"
 
 #, c-format
 msgid "DATABASE ERROR: could not lookup salt: %s"
-msgstr "DATABASE-ERROR: Ne peut vérifier le Sals: %s"
+msgstr "DATABASE-ERROR: Ne peut vÃ©rifier le Sals: %s"
 
 #, c-format
 msgid "Password query result is: %s<br />Query was: %s<br /><br />"
-msgstr "La requete Password·query·result est: %s<br/>La requète etait: %s<br·/><br·/>"
+msgstr ""
+"La requete PasswordÂ·queryÂ·result est: %s<br/>La requÃ¨te etait: %s<brÂ·/><brÂ·/>"
 
 msgid "You must type in your old password"
 msgstr "Vous devez retaper votre ancien mot de passe"
@@ -79,7 +88,7 @@ msgstr "Votre ancien mot de passe est incorrect."
 
 #, c-format
 msgid "DATABASE ERROR: could not lookup old password: %s"
-msgstr "DATABASE·ERROR:·Impossible de vérifier l'ancien mot de passe:·%s"
+msgstr "DATABASEÂ·ERROR:Â·Impossible de vÃ©rifier l'ancien mot de passe:Â·%s"
 
 msgid "Your old password does not match"
 msgstr "Votre ancien mot de passe ne correspond pas."
@@ -89,35 +98,45 @@ msgstr "Vous devez retaper votre nouveau mot de passe"
 
 #, c-format
 msgid "Your new password is too short.  It must be at least %s characters long"
-msgstr "Votre nouveau mot de passe est trop court.  Il doit avoir au moins %s caractères"
+msgstr ""
+"Votre nouveau mot de passe est trop court.  Il doit avoir au moins %s "
+"caractÃ¨res"
 
 #, c-format
 msgid ""
 "Your new password is too long.  It must be no more than %s characters long"
-msgstr "Votre nouveau mot de passe est trop long, il doit avoir au plus %s caractères de long."
+msgstr ""
+"Votre nouveau mot de passe est trop long, il doit avoir au plus %s "
+"caractÃ¨res de long."
 
 msgid "Please include at least one digit in your new password"
 msgstr "SVP, incluez au moins un chiffre dans votre nouveau mot de passe"
 
 msgid "Please include at least one upper-case letter in your new password"
-msgstr "SVP, incluez au moins un caractère majuscule dans votre nouveau mot de passe"
+msgstr ""
+"SVP, incluez au moins un caractÃ¨re majuscule dans votre nouveau mot de passe"
 
 msgid "Please include at least one lower-case letter in your new password"
-msgstr "SVP,·incluez·au·moins·une minuscule·dans·votre·nouveau·mot·de·passe"
+msgstr "SVP,Â·incluezÂ·auÂ·moinsÂ·une minusculeÂ·dansÂ·votreÂ·nouveauÂ·motÂ·deÂ·passe"
 
 msgid ""
 "Please include at least one non-alphanumeric character (such as @, - or _) "
 "in your new password"
-msgstr "SVP,·incluez·au·moins·un·caractère·non alphanumérique (comme un @, - ou _) dans·votre·nouveau·mot·de·passe"
+msgstr ""
+"SVP,Â·incluezÂ·auÂ·moinsÂ·unÂ·caractÃ¨reÂ·non alphanumÃ©rique (comme un @, - ou _) "
+"dansÂ·votreÂ·nouveauÂ·motÂ·deÂ·passe"
 
 msgid "You must also type in your new password in the verify box"
-msgstr "Vous devez aussi le taper dans le champs vérification de votre nouveau mot de passe"
+msgstr ""
+"Vous devez aussi le taper dans le champs vÃ©rification de votre nouveau mot "
+"de passe"
 
 msgid "Your new password does not match the verify password"
-msgstr "Votre nouveau passe n'ai identique avec celui dans le champs vérification."
+msgstr ""
+"Votre nouveau passe n'ai identique avec celui dans le champs vÃ©rification."
 
 msgid "Your new password must be different than your old password"
-msgstr "Votre nouveau mot de passe ne doit pas etre identique à l'ancien"
+msgstr "Votre nouveau mot de passe ne doit pas etre identique Ã  l'ancien"
 
 #, c-format
 msgid "DATABASE ERROR: could not update password: %s"

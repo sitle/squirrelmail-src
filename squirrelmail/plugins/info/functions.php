@@ -1,61 +1,68 @@
-<?php
+<?PHP
 
-/**
- * functions for info plugin
+/* functions for info plugin
+ * Copyright (c) 1999-2006 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * Here are two functions for the info plugin
  * The first gets the CAPABILITY response from your IMAP server.
- * The second runs the passed IMAP test and returns the results
+ * The second runs the passed IMAP test and returns the results 
  * The third prints the results of the IMAP command
  * to options.php.
+ * by: Jason Munro jason@stdbev.com
  *
- * @author Jason Munro <jason at stdbev.com>
- * @copyright &copy; 1999-2006 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
- * @version $Id$
- * @package plugins
- * @subpackage info
+ * $Id$ 
+ *
  */
 
-/**
- * Get the IMAP capabilities
- *
- * @param mixed $imap_stream
- * @return array
- * @access private
- */
 function get_caps($imap_stream) {
-    return sqimap_run_command_list($imap_stream, 'CAPABILITY',false, $responses, $message,false);
+    $sid = sqimap_session_id();
+    $query = "$sid CAPABILITY\r\n";
+    fputs ($imap_stream, $query);
+    $responses = sqimap_read_data_list($imap_stream, $sid, true, $responses, $message);
+    return $responses;
 }
 
-/**
- * Run an IMAP test and return the results
- *
- * @param mixed $imap_stream
- * @param string $string imap command
- * @return array Response from the IMAP server
- * @access private
- */
 function imap_test($imap_stream, $string) {
-    print "<tr><td>".htmlspecialchars($string)."</td></tr>";
-    $response = sqimap_run_command_list($imap_stream, trim($string),false, $responses, $message,false);
-    array_push($response, $responses . ' ' .$message);
+    global $default_charset;
+    $message = '';
+    $responses = array ();
+    $sid = sqimap_session_id();
+    $results = array();
+    $query = "$sid ".trim($string)."\r\n";
+    print "<tr><td>".htmlspecialchars($query)."</td></tr>";
+    fputs ($imap_stream, $query);
+    $response = sqimap_read_data_list($imap_stream, $sid, false, $responses, $message);
+    array_push($response, $message);
     return $response;
 }
 
-/**
- * Print the IMAP response to options.php
- *
- * @param array $response results of imap command
- * @access private
- */
 function print_response($response) {
     foreach($response as $index=>$value) {
         if (is_array($value)) {
             print_response($value);
         }
         else {
-            print htmlspecialchars($value)."<br />\n";
+            print htmlspecialchars($value)."<br>\n";
         }
     }
 }
+
+/**
+ * Check if plugin is enabled
+ * @param string $plugin_name plugin name
+ * @return boolean
+ */
+function info_is_plugin_enabled($plugin_name) {
+    global $plugins;
+
+    if (empty($plugins) || ! is_array($plugins))
+        return false;
+    
+    if ( in_array($plugin_name,$plugins) ) {
+        return true;
+    } else {
+        return false;
+    }
+}
+?>

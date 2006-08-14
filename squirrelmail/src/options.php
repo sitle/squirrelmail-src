@@ -14,14 +14,19 @@
  */
 
 /**
- * Include the SquirrelMail initialization file.
+ * Path for SquirrelMail required files.
+ * @ignore
  */
-require('../include/init.php');
+define('SM_PATH','../');
 
 /* SquirrelMail required files. */
-
-//include(SM_PATH . 'functions/imap_general.php');
+require_once(SM_PATH . 'include/validate.php');
+require_once(SM_PATH . 'functions/global.php');
+require_once(SM_PATH . 'functions/display_messages.php');
+require_once(SM_PATH . 'functions/imap.php');
 require_once(SM_PATH . 'functions/options.php');
+require_once(SM_PATH . 'functions/strings.php');
+require_once(SM_PATH . 'functions/html.php');
 require_once(SM_PATH . 'functions/forms.php');
 
 /*********************************/
@@ -35,7 +40,6 @@ define('SMOPT_MODE_LINK', 'link');
 define('SMOPT_PAGE_MAIN', 'main');
 define('SMOPT_PAGE_PERSONAL', 'personal');
 define('SMOPT_PAGE_DISPLAY', 'display');
-define('SMOPT_PAGE_COMPOSE', 'compose');
 define('SMOPT_PAGE_HIGHLIGHT', 'highlight');
 define('SMOPT_PAGE_FOLDER', 'folder');
 define('SMOPT_PAGE_ORDER', 'order');
@@ -69,10 +73,57 @@ function process_optionmode_link($optpage) {
 }
 
 
+/**
+ * This function prints out an option page row.
+ */
+function print_optionpages_row($leftopt, $rightopt = false) {
+    global $color;
+
+    if ($rightopt) {
+        $rightopt_name = html_tag( 'td', '<a href="' . $rightopt['url'] . '">' . $rightopt['name'] . '</a>', 'left', $color[9], 'valign="top" width="49%"' );
+        $rightopt_desc = html_tag( 'td', $rightopt['desc'], 'left', $color[0], 'valign="top" width="49%"' );
+    } else {
+        $rightopt_name = html_tag( 'td', '&nbsp;', 'left', $color[4], 'valign="top" width="49%"' );
+        $rightopt_desc = html_tag( 'td', '&nbsp;', 'left', $color[4], 'valign="top" width="49%"' );
+    }
+
+    echo
+    html_tag( 'table', "\n" .
+        html_tag( 'tr', "\n" .
+            html_tag( 'td', "\n" .
+                html_tag( 'table', "\n" .
+                    html_tag( 'tr', "\n" .
+                        html_tag( 'td',
+                            '<a href="' . $leftopt['url'] . '">' . $leftopt['name'] . '</a>' ,
+                        'left', $color[9], 'valign="top" width="49%"' ) .
+                        html_tag( 'td',
+                            '&nbsp;' ,
+                        'left', $color[4], 'valign="top" width="2%"' ) . "\n" .
+                        $rightopt_name
+                    ) . "\n" .
+                    html_tag( 'tr', "\n" .
+                        html_tag( 'td',
+                            $leftopt['desc'] ,
+                        'left', $color[0], 'valign="top" width="49%"' ) .
+                        html_tag( 'td',
+                            '&nbsp;' ,
+                        'left', $color[4], 'valign="top" width="2%"' ) . "\n" .
+                        $rightopt_desc
+                    ) ,
+                '', '', 'width="100%" cellpadding="2" cellspacing="0" border="0"' ) ,
+            'left', '', 'valign="top"' )
+        ) ,
+    '', $color[4], 'width="100%" cellpadding="0" cellspacing="5" border="0"' );
+}
 
 /* ---------------------------- main ---------------------------- */
 
 /* get the globals that we may need */
+sqgetGlobalVar('key',       $key,           SQ_COOKIE);
+sqgetGlobalVar('username',  $username,      SQ_SESSION);
+sqgetGlobalVar('onetimepad',$onetimepad,    SQ_SESSION);
+sqgetGlobalVar('delimiter', $delimiter,     SQ_SESSION);
+
 sqgetGlobalVar('optpage',     $optpage);
 sqgetGlobalVar('optmode',     $optmode,      SQ_FORM);
 sqgetGlobalVar('optpage_data',$optpage_data, SQ_POST);
@@ -91,7 +142,7 @@ if (!isset($optmode)) {
 }
 
 /*
- * First, set the load information for each option page.
+ * First, set the load information for each option page.   
  */
 
 /* Initialize load information variables. */
@@ -101,7 +152,7 @@ $optpage_loader = '';
 
 /* Set the load information for each page. */
 switch ($optpage) {
-    case SMOPT_PAGE_MAIN:
+    case SMOPT_PAGE_MAIN: 
         break;
     case SMOPT_PAGE_PERSONAL:
         $optpage_name     = _("Personal Information");
@@ -114,12 +165,6 @@ switch ($optpage) {
         $optpage_file   = SM_PATH . 'include/options/display.php';
         $optpage_loader = 'load_optpage_data_display';
         $optpage_loadhook = 'optpage_loadhook_display';
-        break;
-    case SMOPT_PAGE_COMPOSE:
-        $optpage_name   = _("Compose Preferences");
-        $optpage_file   = SM_PATH . 'include/options/compose.php';
-        $optpage_loader = 'load_optpage_data_compose';
-        $optpage_loadhook = 'optpage_loadhook_compose';
         break;
     case SMOPT_PAGE_HIGHLIGHT:
         $optpage_name   = _("Message Highlighting");
@@ -150,7 +195,7 @@ if ( !@is_file( $optpage_file ) ) {
     $optpage = SMOPT_PAGE_MAIN;
 } else if ($optpage != SMOPT_PAGE_MAIN ) {
     /* Include the file for this optionpage. */
-
+    
     require_once($optpage_file);
 
     /* Assemble the data for this option page. */
@@ -165,6 +210,7 @@ if ( !@is_file( $optpage_file ) ) {
 /*** Next, process anything that needs to be processed. ***/
 /***********************************************************/
 
+// set empty error message
 $optpage_save_error=array();
 
 if ( isset( $optpage_data ) ) {
@@ -197,13 +243,10 @@ if ($optmode == SMOPT_MODE_SUBMIT) {
         case SMOPT_PAGE_DISPLAY:
             $save_hook_name = 'options_display_save';
             break;
-        case SMOPT_PAGE_COMPOSE:
-            $save_hook_name = 'options_compose_save';
-            break;
         case SMOPT_PAGE_FOLDER:
             $save_hook_name = 'options_folder_save';
             break;
-        default:
+        default: 
             $save_hook_name = 'options_save';
             break;
     }
@@ -245,35 +288,32 @@ if ($optpage == SMOPT_PAGE_MAIN) {
     /**********************************************************/
     /* First, display the results of a submission, if needed. */
     /**********************************************************/
-    $notice = '';
     if ($optmode == SMOPT_MODE_SUBMIT) {
         if (!isset($frame_top)) {
             $frame_top = '_top';
         }
 
         if (isset($optpage_save_error) && $optpage_save_error!=array()) {
-            $notice = "<font color=\"$color[2]\"><b>" . _("Error(s) occurred while saving your options") . "</b></font><br />\n"
-                ."<ul>\n";
+            echo "<font color=\"$color[2]\"><b>" . _("Error(s) occurred while saving your options") . "</b></font><br />\n";
+            echo "<ul>\n";
             foreach ($optpage_save_error as $error_message) {
-                $notice.= '<li><small>' . $error_message . "</small></li>\n";
+                echo '<li><small>' . $error_message . "</small></li>\n";
             }
-            $notice.= "</ul>\n"
-                . '<b>' . _("Some of your preference changes were not applied.") . "</b><br />\n";
+            echo "</ul>\n";
+            echo '<b>' . _("Some of your preference changes were not applied.") . "</b><br />\n";
         } else {
             /* Display a message indicating a successful save. */
-            $notice = '<b>' . _("Successfully Saved Options") . ": $optpage_name</b><br />\n";
+            echo '<b>' . _("Successfully Saved Options") . ": $optpage_name</b><br />\n";
         }
 
         /* If $max_refresh != SMOPT_REFRESH_NONE, provide a refresh link. */
         if ( !isset( $max_refresh ) ) {
         } else if ($max_refresh == SMOPT_REFRESH_FOLDERLIST) {
-            $notice .= '<a href="../src/left_main.php" target="left">' . _("Refresh Folder List") . '</a><br />';
+            echo '<a href="../src/left_main.php" target="left">' . _("Refresh Folder List") . '</a><br />';
         } else if ($max_refresh) {
-            $notice .= '<a href="../src/webmail.php?right_frame=options.php" target="' . $frame_top . '">' . _("Refresh Page") . '</a><br />';
+            echo '<a href="../src/webmail.php?right_frame=options.php" target="' . $frame_top . '">' . _("Refresh Page") . '</a><br />';
         }
     }
-    $oTemplate->assign('notice',$notice);
-
     /******************************************/
     /* Build our array of Option Page Blocks. */
     /******************************************/
@@ -319,14 +359,6 @@ if ($optpage == SMOPT_PAGE_MAIN) {
         'js'   => false
     );
 
-    /* Build a section for Compose Options. */
-    $optpage_blocks[] = array(
-        'name' => _("Compose Preferences"),
-        'url'  => 'options.php?optpage=' . SMOPT_PAGE_COMPOSE,
-        'desc' => _("Control the behaviour and layout of writing new mail messages, replying to and forwarding messages."),
-        'js'   => false
-    );
-
     /* Build a section for plugins wanting to register an optionpage. */
     do_hook('optpage_register_block');
 
@@ -347,10 +379,27 @@ if ($optpage == SMOPT_PAGE_MAIN) {
     /********************************************/
     /* Now, print out each option page section. */
     /********************************************/
+    $first_optpage = false;
+    echo html_tag( 'table', '', '', $color[4], 'width="100%" cellpadding="0" cellspacing="5" border="0"' ) . "\n" .
+                html_tag( 'tr' ) . "\n" .
+                    html_tag( 'td', '', 'left', '', 'valign="top"' ) .
+                        html_tag( 'table', '', '', $color[4], 'width="100%" cellpadding="3" cellspacing="0" border="0"' ) . "\n" .
+                            html_tag( 'tr' ) . "\n" .
+                                html_tag( 'td', '', 'left' );
+    foreach ($optpage_blocks as $next_optpage) {
+        if ($first_optpage == false) {
+            $first_optpage = $next_optpage;
+        } else {
+            print_optionpages_row($first_optpage, $next_optpage);
+            $first_optpage = false;
+        }
+    }
 
-    $oTemplate->assign('color',$color);
-    $oTemplate->assign('optpage_blocks',$optpage_blocks);
-    $oTemplate->display('option_groups.tpl');
+    if ($first_optpage != false) {
+        print_optionpages_row($first_optpage);
+    }
+
+    echo "</td></tr></table></td></tr></table>\n";
 
     do_hook('options_link_and_description');
 
@@ -359,10 +408,12 @@ if ($optpage == SMOPT_PAGE_MAIN) {
 /* If we are not looking at the main option page, display the page here. */
 /*************************************************************************/
 } else {
-    echo addForm('options.php', 'post', 'f')
+    echo addForm('options.php', 'POST', 'f')
        . create_optpage_element($optpage)
        . create_optmode_element(SMOPT_MODE_SUBMIT)
-       . html_tag( 'table', '', '', '', 'width="100%" cellpadding="2" cellspacing="0" border="0"' ) . "\n";
+       . html_tag( 'table', '', '', '', 'width="100%" cellpadding="2" cellspacing="0" border="0"' ) . "\n"
+       . html_tag( 'tr' ) . "\n"
+       . html_tag( 'td', '', 'left' ) . "\n";
 
     /* Output the option groups for this page. */
     print_option_groups($optpage_data['options']);
@@ -378,11 +429,6 @@ if ($optpage == SMOPT_PAGE_MAIN) {
             $inside_hook_name = 'options_display_inside';
             $bottom_hook_name = 'options_display_bottom';
             $submit_name = 'submit_display';
-            break;
-        case SMOPT_PAGE_COMPOSE:
-            $inside_hook_name = 'options_compose_inside';
-            $bottom_hook_name = 'options_compose_bottom';
-            $submit_name = 'submit_compose';
             break;
         case SMOPT_PAGE_HIGHLIGHT:
             $inside_hook_name = 'options_highlight_inside';
@@ -407,24 +453,21 @@ if ($optpage == SMOPT_PAGE_MAIN) {
 
     /* If it is not empty, trigger the inside hook. */
     if ($inside_hook_name != '') {
-        do_hook($inside_hook_name);
+        do_hook($inside_hook_name);    
     }
 
     /* Spit out a submit button. */
     OptionSubmit($submit_name);
-    echo '</table></form>';
+    echo '</td></tr></table></form>';
 
     /* If it is not empty, trigger the bottom hook. */
     if ($bottom_hook_name != '') {
-        do_hook($bottom_hook_name);
+        do_hook($bottom_hook_name);    
     }
-    if (isset($max_refresh)) $oTemplate->assign('max_refresh',$max_refresh);
-    $oTemplate->assign('color',$color);
-    $oTemplate->assign('optpage',$optpage);
-    $oTemplate->assign('optpage_name',$optpage_name);
-    $oTemplate->assign('optpage_data',$optpage_data);
-    $oTemplate->assign('optmode',$optmode);
-    $oTemplate->display('options.tpl');
 }
-
-$oTemplate->display('footer.tpl');
+?>
+</td></tr>
+</table>
+</td></tr>
+</table>
+</body></html>

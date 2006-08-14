@@ -9,11 +9,12 @@
  * @package plugins
  * @subpackage calendar
  */
-/**
- * Include the SquirrelMail initialization file.
- */
-require('../../include/init.php');
 
+/** @ignore */
+define('SM_PATH','../../');
+
+/* SquirrelMail required files. */
+include_once(SM_PATH . 'include/validate.php');
 /* date_intl() */
 include_once(SM_PATH . 'functions/date.php');
 
@@ -93,7 +94,7 @@ function show_event_form() {
          "      </td></tr>\n".
          html_tag( 'tr',
              html_tag( 'td',
-                 "<textarea name=\"event_text\" rows=\"5\" cols=\"$editor_size\"></textarea>" ,
+                 "<textarea name=\"event_text\" rows=\"5\" cols=\"$editor_size\" wrap=\"hard\"></textarea>" ,
              'left', $color[4], 'colspan="2"' )
          ) ."\n" .
          html_tag( 'tr',

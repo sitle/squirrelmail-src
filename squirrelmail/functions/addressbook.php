@@ -12,26 +12,28 @@
  * @subpackage addressbook
  */
 
-/** required includes */
-// FIXME, NO display code in functions files
-include_once(SM_PATH . 'templates/util_global.php');
+/**
+ * If SM_PATH isn't defined, define it.  Required to include files.
+ * @ignore
+ */
+if (!defined('SM_PATH'))  {
+    define('SM_PATH','../');
+}
+
+/* make sure that display_messages.php is loaded */
+include_once(SM_PATH . 'functions/display_messages.php');
+
+global $addrbook_dsn, $addrbook_global_dsn;
 
 /**
- * Create and initialize an addressbook object.
- * @param boolean $showerr display any address book init errors. html page header
- * must be created before calling addressbook_init() with $showerr enabled.
- * @param boolean $onlylocal enable only local address book backends. Should 
- *  be used when code does not need access to remote backends. Backends
- *  that provide read only address books with limited listing options can be
- *  tagged as remote.
- * @return object address book object.
- */
+   Create and initialize an addressbook object.
+   Returns the created object
+*/
 function addressbook_init($showerr = true, $onlylocal = false) {
-    global $data_dir, $username, $ldap_server, $address_book_global_filename;
+    global $data_dir, $username, $color, $ldap_server, $address_book_global_filename;
     global $addrbook_dsn, $addrbook_table;
-    global $abook_global_file, $abook_global_file_writeable, $abook_global_file_listing;
+    global $abook_global_file, $abook_global_file_writeable;
     global $addrbook_global_dsn, $addrbook_global_table, $addrbook_global_writeable, $addrbook_global_listing;
-    global $abook_file_line_length;
 
     /* Create a new addressbook object */
     $abook = new AddressBook;
@@ -53,26 +55,21 @@ function addressbook_init($showerr = true, $onlylocal = false) {
                             'owner' => $username,
                             'table' => $addrbook_table));
         if (!$r && $showerr) {
-            $abook_init_error.=_("Error initializing address book database.") . "\n" . $abook->error;
+            $abook_init_error.=_("Error initializing addressbook database.") .' '. $abook->error;
         }
     } else {
         /* File */
         $filename = getHashedFile($username, $data_dir, "$username.abook");
         $r = $abook->add_backend('local_file', Array('filename' => $filename,
-                                                     'line_length' => $abook_file_line_length,
-                                                     'create'   => true));
+                              'create'   => true));
         if(!$r && $showerr) {
-            // no need to use $abook->error, because message explains error.
             $abook_init_error.=sprintf( _("Error opening file %s"), $filename );
         }
     }
 
-    /* Global file based addressbook */
-    if (isset($abook_global_file) &&
-        isset($abook_global_file_writeable) &&
-        isset($abook_global_file_listing) &&
-        trim($abook_global_file)!=''){
-
+    /* This would be for the global addressbook */
+    if (isset($abook_global_file) && isset($abook_global_file_writeable)
+        && trim($abook_global_file)!=''){
         // Detect place of address book
         if (! preg_match("/[\/\\\]/",$abook_global_file)) {
             /* no path chars, address book stored in data directory
@@ -88,117 +85,79 @@ function addressbook_init($showerr = true, $onlylocal = false) {
         } else {
             $abook_global_filename=SM_PATH . $abook_global_file;
         }
-
         $r = $abook->add_backend('local_file',array('filename'=>$abook_global_filename,
                                                     'name' => _("Global address book"),
                                                     'detect_writeable' => false,
-                                                    'line_length' => $abook_file_line_length,
-                                                    'writeable'=> $abook_global_file_writeable,
-                                                    'listing' => $abook_global_file_listing));
-
-        /* global abook init error is not fatal. add error message and continue */
+                                                    'writeable'=> $abook_global_file_writeable));
         if (!$r && $showerr) {
             if ($abook_init_error!='') $abook_init_error.="\n";
-            $abook_init_error.=_("Error initializing global address book.") . "\n" . $abook->error;
+            $abook_init_error.=_("Error initializing global addressbook.") . "\n" . $abook->error;
         }
     }
 
     /* Load global addressbook from SQL if configured */
     if (isset($addrbook_global_dsn) && !empty($addrbook_global_dsn)) {
-      /* Database configured */
-      if (!isset($addrbook_global_table) || empty($addrbook_global_table)) {
-          $addrbook_global_table = 'global_abook';
-      }
-      $r = $abook->add_backend('database',
-                               Array('dsn' => $addrbook_global_dsn,
-                                     'owner' => 'global',
-                                     'name' => _("Global address book"),
-                                     'writeable' => $addrbook_global_writeable,
-                                     'listing' => $addrbook_global_listing,
-                                     'table' => $addrbook_global_table));
-      /* global abook init error is not fatal. add error message and continue */
-      if (!$r && $showerr) {
-          if ($abook_init_error!='') $abook_init_error.="\n";
-          $abook_init_error.=_("Error initializing global address book.") . "\n" . $abook->error;
-      }
+        /* Database configured */
+        if (!isset($addrbook_global_table) || empty($addrbook_global_table)) {
+            $addrbook_global_table = 'global_abook';
+        }
+        $r = $abook->add_backend('database',
+                                 Array('dsn' => $addrbook_global_dsn,
+                                       'owner' => 'global',
+                                       'name' => _("Global address book"),
+                                       'writeable' => $addrbook_global_writeable,
+                                       'listing' => $addrbook_global_listing,
+                                       'table' => $addrbook_global_table));
+        if (!$r && $showerr) {
+            if ($abook_init_error!='') $abook_init_error.="\n";
+            $abook_init_error.=_("Error initializing global addressbook.") . "\n" . $abook->error;
+    }
     }
 
     /*
      * hook allows to include different address book backends.
      * plugins should extract $abook and $r from arguments
      * and use same add_backend commands as above functions.
-     * Since 1.5.2 hook sends third ($onlylocal) argument to address book
-     * plugins in order to allow detection of local address book init.
      * @since 1.5.1 and 1.4.5
      */
-    $hookReturn = do_hook('abook_init', $abook, $r, $onlylocal);
+    $hookReturn = do_hook('abook_init', $abook, $r);
     $abook = $hookReturn[1];
     $r = $hookReturn[2];
-    if (!$r && $showerr) {
-        if ($abook_init_error!='') $abook_init_error.="\n";
-        $abook_init_error.=_("Error initializing other address books.") . "\n" . $abook->error;
-    }
 
+    if (! $onlylocal) {
     /* Load configured LDAP servers (if PHP has LDAP support) */
-    if (isset($ldap_server) && is_array($ldap_server)) {
+    if (isset($ldap_server) && is_array($ldap_server) && function_exists('ldap_connect')) {
         reset($ldap_server);
         while (list($undef,$param) = each($ldap_server)) {
-            if (!is_array($param))
-                continue;
-
-            /* if onlylocal is true, we only add writeable ldap servers */
-            if ($onlylocal && (!isset($param['writeable']) || $param['writeable'] != true))
-                continue;
-
-            $r = $abook->add_backend('ldap_server', $param);
-            if (!$r && $showerr) {
-                if ($abook_init_error!='') $abook_init_error.="\n";
-                $abook_init_error.=sprintf(_("Error initializing LDAP server %s:"), $param['host'])."\n";
-                $abook_init_error.= $abook->error;
+            if (is_array($param)) {
+                $r = $abook->add_backend('ldap_server', $param);
+                if (!$r && $showerr) {
+                        if ($abook_init_error!='') $abook_init_error.="\n";
+                        $abook_init_error.=sprintf(_("Error initializing LDAP server %s:") .
+                            "\n", $param['host']);
+                        $abook_init_error.= $abook->error;
+                    }
+                }
             }
         }
-    } // end of ldap server init
+    } // end of remote abook backends init
 
     /**
      * display address book init errors.
      */
     if ($abook_init_error!='' && $showerr) {
-        error_box(nl2br(htmlspecialchars($abook_init_error)));
+        $abook_init_error = htmlspecialchars($abook_init_error);
+        error_box($abook_init_error,$color);
     }
 
     /* Return the initialized object */
     return $abook;
 }
 
-/**
- * Display the "new address" form
- *
- * Form is not closed and you must add closing form tag.
- * @since 1.5.1
- * @param string $form_url form action url
- * @param string $name form name
- * @param string $title form title
- * @param string $button form button name
- * @param array $defdata values of form fields
- */
-function abook_create_form($form_url,$name,$title,$button,$defdata=array()) {
-    global $color;
-    echo addForm($form_url, 'post', 'f_add').
-        html_tag( 'table',
-                  html_tag( 'tr',
-                            html_tag( 'td', "\n". '<strong>' . $title . '</strong>' . "\n",
-                                      'center', $color[0]
-                                      )
-                            )
-                  , 'center', '', 'width="90%"' ) ."\n";
-    address_form($name, $button, $defdata);
-}
 
-
-/**
+/*
  *   Had to move this function outside of the Addressbook Class
  *   PHP 4.0.4 Seemed to be having problems with inline functions.
- *   Note: this can return now since we don't support 4.0.4 anymore.
  */
 function addressbook_cmp($a,$b) {
 
@@ -210,109 +169,6 @@ function addressbook_cmp($a,$b) {
 
     return (strtolower($a['name']) > strtolower($b['name'])) ? 1 : -1;
 
-}
-
-/**
- * Make an input field
- * @param string $label
- * @param string $field
- * @param string $name
- * @param string $size
- * @param array $values
- * @param string $add
- */
-function addressbook_inp_field($label, $field, $name, $size, $values, $add='') {
-    global $color;
-    $value = ( isset($values[$field]) ? $values[$field] : '');
-
-    if (is_array($value)) {
-        $td_str = addSelect($name.'['.$field.']', $value);
-    } else {
-        $td_str = addInput($name.'['.$field.']', $value, $size);
-    }
-    $td_str .= $add ;
-
-    return html_tag( 'tr' ,
-            html_tag( 'td', '<label for="'.$name.'_'.$field.'_'.'">' .
-                $label . '</label>:', 'right', $color[4]) .
-            html_tag( 'td', $td_str, 'left', $color[4])
-            )
-        . "\n";
-}
-
-/**
- * Output form to add and modify address data
- */
-function address_form($name, $submittext, $values = array()) {
-    global $color, $squirrelmail_language;
-
-    if ($squirrelmail_language == 'ja_JP') {
-        echo html_tag( 'table',
-                addressbook_inp_field(_("Nickname"),     'nickname', $name, 15, $values,
-                    ' <small>' . _("Must be unique") . '</small>') .
-                addressbook_inp_field(_("E-mail address"),  'email', $name, 45, $values, '') .
-                addressbook_inp_field(_("Last name"),    'lastname', $name, 45, $values, '') .
-                addressbook_inp_field(_("First name"),  'firstname', $name, 45, $values, '') .
-                addressbook_inp_field(_("Additional info"), 'label', $name, 45, $values, '') .
-                list_writable_backends($name) .
-                html_tag( 'tr',
-                    html_tag( 'td',
-                        addSubmit($submittext, $name.'[SUBMIT]'),
-                        'center', $color[4], 'colspan="2"')
-                    )
-                , 'center', '', 'border="0" cellpadding="1" width="90%"') ."\n";
-    } else {
-        echo html_tag( 'table',
-                addressbook_inp_field(_("Nickname"),     'nickname', $name, 15, $values,
-                    ' <small>' . _("Must be unique") . '</small>') .
-                addressbook_inp_field(_("E-mail address"),  'email', $name, 45, $values, '') .
-                addressbook_inp_field(_("First name"),  'firstname', $name, 45, $values, '') .
-                addressbook_inp_field(_("Last name"),    'lastname', $name, 45, $values, '') .
-                addressbook_inp_field(_("Additional info"), 'label', $name, 45, $values, '') .
-                list_writable_backends($name) .
-                html_tag( 'tr',
-                    html_tag( 'td',
-                        addSubmit($submittext, $name.'[SUBMIT]') ,
-                        'center', $color[4], 'colspan="2"')
-                    )
-                , 'center', '', 'border="0" cellpadding="1" width="90%"') ."\n";
-    }
-}
-
-/**
- * Provides list of writeable backends.
- * Works only when address is added ($name='addaddr')
- * @param string $name name of form
- * @return string html formated backend field (select or hidden)
- */
-function list_writable_backends($name) {
-    global $color, $abook;
-    if ( $name != 'addaddr' ) { return; }
-    $writeable_abook = 1;
-    if ( $abook->numbackends > 1 ) {
-        $backends = $abook->get_backend_list();
-        $writeable_abooks=array();
-        while (list($undef,$v) = each($backends)) {
-            if ($v->writeable) {
-                // add each backend to array
-                $writeable_abooks[$v->bnum]=$v->sname;
-                // save backend number
-                $writeable_abook=$v->bnum;
-            }
-        }
-        if (count($writeable_abooks)>1) {
-            // we have more than one writeable backend
-            $ret=addSelect('backend',$writeable_abooks,null,true);
-            return html_tag( 'tr',
-                             html_tag( 'td', _("Add to:"),'right', $color[4] ) .
-                             html_tag( 'td', $ret, 'left', $color[4] )) . "\n";
-        }
-    }
-    // Only one backend exists or is writeable.
-    return html_tag( 'tr',
-                     html_tag( 'td',
-                               addHidden('backend', $writeable_abook),
-                               'center', $color[4], 'colspan="2"')) . "\n";
 }
 
 /**
@@ -389,30 +245,28 @@ function get_abook_sort() {
  * @param integer $Down sort value when list is sorted ascending
  * @param integer $Up sort value when list is sorted descending
  * @return string html code with sorting images and urls
+ * @since 1.5.1 and 1.4.6
  */
 function show_abook_sort_button($abook_sort_order, $alt_tag, $Down, $Up ) {
-    global $form_url, $icon_theme_path;
+    global $form_url;
 
      /* Figure out which image we want to use. */
     if ($abook_sort_order != $Up && $abook_sort_order != $Down) {
         $img = 'sort_none.png';
-        $text_icon = '&#9723;'; // U+25FB WHITE MEDIUM SQUARE
         $which = $Up;
     } elseif ($abook_sort_order == $Up) {
         $img = 'up_pointer.png';
-        $text_icon = '&#8679;'; // U+21E7 UPWARDS WHITE ARROW
         $which = $Down;
     } else {
         $img = 'down_pointer.png';
-        $text_icon = '&#8681;'; // U+21E9 DOWNWARDS WHITE ARROW
         $which = 8;
     }
 
-    /* Now that we have everything figured out, show the actual button. */
-    return '&nbsp;<a href="' . $form_url .'?abook_sort_order=' . $which .
-           '" style="text-decoration:none" title="'.$alt_tag.'">' .
-           getIcon($icon_theme_path, $img, $text_icon, $alt_tag) .
-           '</a>';
+      /* Now that we have everything figured out, show the actual button. */
+    return ' <a href="' . $form_url .'?abook_sort_order=' . $which
+         . '"><img src="../images/' . $img
+         . '" border="0" width="12" height="10" alt="' . $alt_tag . '" title="'
+         . _("Click here to change the sorting of the address list") .'" /></a>';
 }
 
 
@@ -420,61 +274,24 @@ function show_abook_sort_button($abook_sort_order, $alt_tag, $Down, $Up ) {
  * This is the main address book class that connect all the
  * backends and provide services to the functions above.
  * @package squirrelmail
- * @subpackage addressbook
  */
-class AddressBook {
-    /**
-     * Enabled address book backends
-     * @var array
-     */
-    var $backends    = array();
-    /**
-     * Number of enabled backends
-     * @var integer
-     */
-    var $numbackends = 0;
-    /**
-     * Error messages
-     * @var string
-     */
-    var $error       = '';
-    /**
-     * id of backend with personal address book
-     * @var integer
-     */
-    var $localbackend = 0;
-    /**
-     * Name of backend with personal address book
-     * @var string
-     */
-    var $localbackendname = '';
-    /**
-     * Controls use of 'extra' field
-     *
-     * Extra field can be used to add link to form, which allows
-     * to modify all fields supported by backend. This is the only field
-     * that is not sanitized with htmlspecialchars. Backends MUST make
-     * sure that field data is sanitized and displayed correctly inside
-     * table cell. Use of html formating in other address book fields is
-     * not allowed. Backends that don't return 'extra' row in address book
-     * data should not modify this object property.
-     * @var boolean
-     * @since 1.5.1
-     */
-    var $add_extra_field = false;
 
-    /**
-     * Constructor function.
-     */
+class AddressBook {
+
+    var $backends    = array();
+    var $numbackends = 0;
+    var $error       = '';
+    var $localbackend = 0;
+    var $localbackendname = '';
+
+      // Constructor function.
     function AddressBook() {
         $this->localbackendname = _("Personal address book");
     }
 
-    /**
+    /*
      * Return an array of backends of a given type,
      * or all backends if no type is specified.
-     * @param string $type backend type
-     * @return array list of backends
      */
     function get_backend_list($type = '') {
         $ret = array();
@@ -487,42 +304,17 @@ class AddressBook {
     }
 
 
-    /* ========================== Public ======================== */
+    /*
+       ========================== Public ========================
 
-    /**
-     * Add a new backend.
-     *
-     * @param string $backend backend name (without the abook_ prefix)
-     * @param mixed optional variable that is passed to the backend constructor.
-     * See each of the backend classes for valid parameters
-     * @return integer number of backends
+        Add a new backend. $backend is the name of a backend
+        (without the abook_ prefix), and $param is an optional
+        mixed variable that is passed to the backend constructor.
+        See each of the backend classes for valid parameters.
      */
     function add_backend($backend, $param = '') {
-        static $backend_classes;
-        if (!isset($backend_classes)) {
-            $backend_classes = array();
-        }
-        if (!isset($backend_classes[$backend])) {
-            /**
-              * Support backend provided by plugins. Plugin function must
-              * return an associative array with as key the backend name ($backend)
-              * and as value the file including the path containing the backend class.
-              * i.e.: $aBackend = array('backend_template' => SM_PATH . 'plugins/abook_backend_template/functions.php')
-              *
-              * NB: Because the backend files are included from within this function they DO NOT have access to
-              * vars in the global scope. This function is the global scope for the included backend !!!
-              */
-            $aBackend = do_hook('abook_add_class');
-            if (isset($aBackend) && is_array($aBackend) && isset($aBackend[$backend])) {
-                require_once($aBackend[$backend]);
-            } else {
-                require_once(SM_PATH . 'functions/abook_'.$backend.'.php');
-            }
-            $backend_classes[$backend] = true;
-        }
         $backend_name = 'abook_' . $backend;
-        $newback = new $backend_name($param);
-        //eval('$newback = new ' . $backend_name . '($param);');
+        eval('$newback = new ' . $backend_name . '($param);');
         if(!empty($newback->error)) {
             $this->error = $newback->error;
             return false;
@@ -543,15 +335,12 @@ class AddressBook {
     }
 
 
-    /**
-     * create string with name and email address
-     *
+    /*
      * This function takes a $row array as returned by the addressbook
      * search and returns an e-mail address with the full name or
      * nickname optionally prepended.
-     * @param array $row address book entry
-     * @return string email address with real name prepended
      */
+
     function full_address($row) {
         global $addrsrch_fullname, $data_dir, $username;
         $prefix = getPref($data_dir, $username, 'addrsrch_fullname');
@@ -564,15 +353,10 @@ class AddressBook {
         }
     }
 
-    /**
-     * Search for entries in address books
-     *
-     * Return a list of addresses matching expression in
-     * all backends of a given type.
-     * @param string $expression search expression
-     * @param integer $bnum backend number. default to search in all backends
-     * @return array search results
-     */
+    /*
+        Return a list of addresses matching expression in
+        all backends of a given type.
+    */
     function search($expression, $bnum = -1) {
         $ret = array();
         $this->error = '';
@@ -598,11 +382,7 @@ class AddressBook {
                 $ret = FALSE;
             }
 
-        } elseif (! isset($this->backends[$bnum])) {
-            /* make sure that backend exists */
-            $this->error = _("Unknown address book backend");
-            $ret = false;
-        } else {
+        }  else {
 
             /* Search only one backend */
 
@@ -617,12 +397,7 @@ class AddressBook {
     }
 
 
-    /**
-     * Sorted search
-     * @param string $expression search expression
-     * @param integer $bnum backend number. default to search in all backends
-     * @return array search results
-     */
+    /* Return a sorted search */
     function s_search($expression, $bnum = -1) {
 
         $ret = $this->search($expression, $bnum);
@@ -633,22 +408,15 @@ class AddressBook {
     }
 
 
-    /**
-     * Lookup an address by alias.
-     * Only possible in local backends.
-     * @param string $alias
-     * @param integer backend number
-     * @return array lookup results. False, if not found.
+    /*
+     *  Lookup an address by alias. Only possible in
+     *  local backends.
      */
     function lookup($alias, $bnum = -1) {
 
         $ret = array();
 
         if ($bnum > -1) {
-            if (!isset($this->backends[$bnum])) {
-                $this->error = _("Unknown address book backend");
-                return false;
-            }
             $res = $this->backends[$bnum]->lookup($alias);
             if (is_array($res)) {
                return $res;
@@ -676,20 +444,12 @@ class AddressBook {
     }
 
 
-    /**
-     * Return all addresses
-     * @param integer $bnum backend number
-     * @return array search results
-     */
+    /* Return all addresses */
     function list_addr($bnum = -1) {
         $ret = array();
 
         if ($bnum == -1) {
             $sel = $this->get_backend_list('');
-        } elseif (! isset($this->backends[$bnum])) {
-            /* make sure that backend exists */
-            $this->error = _("Unknown address book backend");
-            $ret = false;
         } else {
             $sel = array(0 => &$this->backends[$bnum]);
         }
@@ -709,11 +469,9 @@ class AddressBook {
         return $ret;
     }
 
-    /**
-     * Create a new address
-     * @param array $userdata added address record
-     * @param integer $bnum backend number
-     * @return integer the backend number that the/ address was added
+    /*
+     * Create a new address from $userdata, in backend $bnum.
+     * Return the backend number that the/ address was added
      * to, or false if it failed.
      */
     function add($userdata, $bnum) {
@@ -735,21 +493,14 @@ class AddressBook {
             $userdata['nickname'] = $userdata['email'];
         }
 
-        /* Blocks use of space, :, |, #, " and ! in nickname */
         if (eregi('[ \\:\\|\\#\\"\\!]', $userdata['nickname'])) {
             $this->error = _("Nickname contains illegal characters");
             return false;
         }
 
-        /* make sure that backend exists */
-        if (! isset($this->backends[$bnum])) {
-            $this->error = _("Unknown address book backend");
-            return false;
-        }
-
         /* Check that specified backend accept new entries */
         if (!$this->backends[$bnum]->writeable) {
-            $this->error = _("Address book is read-only");
+            $this->error = _("Addressbook is read-only");
             return false;
         }
 
@@ -766,11 +517,9 @@ class AddressBook {
     } /* end of add() */
 
 
-    /**
-     * Remove the entries from address book
-     * @param mixed $alias entries that have to be removed. Can be string with nickname or array with list of nicknames
-     * @param integer $bnum backend number
-     * @return bool true if removed successfully. false if there s an error. $this->error contains error message
+    /*
+     * Remove the user identified by $alias from backend $bnum
+     * If $alias is an array, all users in the array are removed.
      */
     function remove($alias, $bnum) {
 
@@ -784,15 +533,9 @@ class AddressBook {
             $alias = array(0 => $alias);
         }
 
-        /* make sure that backend exists */
-        if (! isset($this->backends[$bnum])) {
-            $this->error = _("Unknown address book backend");
-            return false;
-        }
-
         /* Check that specified backend is writable */
         if (!$this->backends[$bnum]->writeable) {
-            $this->error = _("Address book is read-only");
+            $this->error = _("Addressbook is read-only");
             return false;
         }
 
@@ -809,11 +552,9 @@ class AddressBook {
     } /* end of remove() */
 
 
-    /**
-     * Modify entry in address book
-     * @param string $alias nickname
-     * @param array $userdata newdata
-     * @param integer $bnum backend number
+    /*
+     * Remove the user identified by $alias from backend $bnum
+     * If $alias is an array, all users in the array are removed.
      */
     function modify($alias, $userdata, $bnum) {
 
@@ -845,15 +586,9 @@ class AddressBook {
             $userdata['nickname'] = $userdata['email'];
         }
 
-        /* make sure that backend exists */
-        if (! isset($this->backends[$bnum])) {
-            $this->error = _("Unknown address book backend");
-            return false;
-        }
-
         /* Check that specified backend is writable */
         if (!$this->backends[$bnum]->writeable) {
-            $this->error = _("Address book is read-only");;
+            $this->error = _("Addressbook is read-only");;
             return false;
         }
 
@@ -875,54 +610,22 @@ class AddressBook {
 /**
  * Generic backend that all other backends extend
  * @package squirrelmail
- * @subpackage addressbook
  */
 class addressbook_backend {
 
     /* Variables that all backends must provide. */
-    /**
-     * Backend type
-     *
-     * Can be 'local' or 'remote'
-     * @var string backend type
-     */
     var $btype      = 'dummy';
-    /**
-     * Internal backend name
-     * @var string
-     */
     var $bname      = 'dummy';
-    /**
-     * Displayed backend name
-     * @var string
-     */
     var $sname      = 'Dummy backend';
 
     /*
      * Variables common for all backends, but that
      * should not be changed by the backends.
      */
-    /**
-     * Backend number
-     * @var integer
-     */
     var $bnum       = -1;
-    /**
-     * Error messages
-     * @var string
-     */
     var $error      = '';
-    /**
-     * Writeable flag
-     * @var bool
-     */
     var $writeable  = false;
 
-    /**
-     * Set error message
-     * @param string $string error message
-     * @return bool
-     */
     function set_error($string) {
         $this->error = '[' . $this->sname . '] ' . $string;
         return false;
@@ -931,70 +634,33 @@ class addressbook_backend {
 
     /* ========================== Public ======================== */
 
-    /**
-     * Search for entries in backend
-     *
-     * Working backend should support use of wildcards. * symbol
-     * should match one or more symbols. ? symbol should match any
-     * single symbol.
-     * @param string $expression
-     * @return bool
-     */
     function search($expression) {
-        $this->set_error('search is not implemented');
+        $this->set_error('search not implemented');
         return false;
     }
 
-    /**
-     * Find entry in backend by alias
-     * @param string $alias name used for id
-     * @return bool
-     */
     function lookup($alias) {
-        $this->set_error('lookup is not implemented');
+        $this->set_error('lookup not implemented');
         return false;
     }
 
-    /**
-     * List all entries in backend
-     *
-     * Working backend should provide this function or at least
-     * dummy function that returns empty array.
-     * @return bool
-     */
     function list_addr() {
-        $this->set_error('list_addr is not implemented');
+        $this->set_error('list_addr not implemented');
         return false;
     }
 
-    /**
-     * Add entry to backend
-     * @param array userdata
-     * @return bool
-     */
     function add($userdata) {
-        $this->set_error('add is not implemented');
+        $this->set_error('add not implemented');
         return false;
     }
 
-    /**
-     * Remove entry from backend
-     * @param string $alias name used for id
-     * @return bool
-     */
     function remove($alias) {
-        $this->set_error('delete is not implemented');
+        $this->set_error('delete not implemented');
         return false;
     }
 
-    /**
-     * Modify entry in backend
-     * @param string $alias name used for id
-     * @param array $newuserdata new data
-     * @return bool
-     */
     function modify($alias, $newuserdata) {
-        $this->set_error('modify is not implemented');
+        $this->set_error('modify not implemented');
         return false;
     }
 
@@ -1009,10 +675,35 @@ class addressbook_backend {
      */
     function fullname($firstname,$lastname) {
         global $squirrelmail_language;
-        if ($squirrelmail_language=='ja_JP') {
+        if ($squirrelmail_language=='ja_JP' || $squirrelmail_language=='ja') {
             return trim($lastname . ' ' . $firstname);
         } else {
             return trim($firstname . ' ' . $lastname);
         }
     }
+
 }
+
+/*
+  PHP 5 requires that the class be made first, which seems rather
+  logical, and should have been the way it was generated the first time.
+*/
+
+require_once(SM_PATH . 'functions/abook_local_file.php');
+require_once(SM_PATH . 'functions/abook_ldap_server.php');
+
+/* Only load database backend if database is configured */
+if((isset($addrbook_dsn) && !empty($addrbook_dsn)) ||
+ (isset($addrbook_global_dsn) && !empty($addrbook_global_dsn))) {
+  include_once(SM_PATH . 'functions/abook_database.php');
+}
+
+/*
+ * hook allows adding different address book classes.
+ * class must follow address book class coding standards.
+ *
+ * see addressbook_backend class and functions/abook_*.php files.
+ * @since 1.5.1 and 1.4.5
+ */
+do_hook('abook_add_class');
+?>

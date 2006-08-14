@@ -18,11 +18,7 @@
  * @return string html encoded text
  */
 function charset_decode_iso_2022_jp_2 ($string, $save_html=false) {
-    global $squirrelmail_language, $aggressive_decoding;
-    
-    // ja_JP uses own functions
-    if ($squirrelmail_language=='ja_JP')
-        return $string;
+    global $aggressive_decoding;
 
     // undo htmlspecial chars (they can break iso-2022-jp-2)
     if (! $save_html)

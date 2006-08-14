@@ -2,7 +2,7 @@
 /**
  * Language configuration file
  *
- * Copyright (c) 2005-2006 The SquirrelMail Project Team
+ * Copyright (c) 2005 The SquirrelMail Project Team
  *
  * This file is part of SquirrelMail webmail interface. It is distributed
  * together with other translation files and is used to enable 
@@ -26,7 +26,8 @@
  * @package locales
  */
 
-$languages['nn_NO']['NAME']    = 'Norwegian (Nynorsk)';
-$languages['nn_NO']['ALTNAME'] = 'Norsk (Nynorsk)';
-$languages['nn_NO']['CHARSET'] = 'iso-8859-1';
-$languages['nn_NO']['LOCALE']  = array('nn_NO.ISO8859-1','nn_NO.ISO-8859-1','nn_NO');
+$languages['nn']['NAME']    = 'Norwegian (Nynorsk)';
+$languages['nn']['ALTNAME'] = 'Norsk (Nynorsk)';
+$languages['nn']['CHARSET'] = 'utf-8';
+$languages['nn']['LOCALE']  = array('nn_NO.UTF8','nn_NO.UTF-8','nn_NO','nn');
+$languages['nn_NO']['ALIAS'] = 'nn';

@@ -146,3 +146,4 @@ function unicodetoiso88592($var) {
     }
     return $ret;
 }
+?>

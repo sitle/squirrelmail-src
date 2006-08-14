@@ -13,7 +13,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.10\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Language: Ukrainian\n"
 "X-Poedit-Country: UKRAINE\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -70,8 +71,7 @@ msgstr "Регулярний вираз"
 msgid "Options"
 msgstr "Параметри"
 
-#: options.php:201
-#: setup.php:29
+#: options.php:201 setup.php:29
 msgid "Mail Filters"
 msgstr "Фільтри на сервері"
 
@@ -79,71 +79,47 @@ msgstr "Фільтри на сервері"
 msgid "Enter A New Filter:"
 msgstr "Створити новий фільтр:"
 
-#: options.php:213
-#: recipie_functions.php:247
+#: options.php:213 recipie_functions.php:247
 msgid "If"
 msgstr "Якщо"
 
-#: options.php:216
-#: options.php:248
-#: options.php:271
-#: recipie_functions.php:241
-#: recipie_functions.php:244
-#: recipie_functions.php:250
+#: options.php:216 options.php:248 options.php:271 recipie_functions.php:241
+#: recipie_functions.php:244 recipie_functions.php:250
 msgid "then"
 msgstr "то"
 
-#: options.php:219
-#: options.php:250
-#: recipie_functions.php:255
-#: recipie_functions.php:257
-#: recipie_functions.php:259
+#: options.php:219 options.php:250 recipie_functions.php:255
+#: recipie_functions.php:257 recipie_functions.php:259
 msgid "move"
 msgstr "перемістити"
 
-#: options.php:220
-#: options.php:251
-#: recipie_functions.php:255
-#: recipie_functions.php:257
-#: recipie_functions.php:259
+#: options.php:220 options.php:251 recipie_functions.php:255
+#: recipie_functions.php:257 recipie_functions.php:259
 msgid "copy"
 msgstr "скопіювати"
 
-#: options.php:221
-#: options.php:252
-#: recipie_functions.php:255
-#: recipie_functions.php:257
-#: recipie_functions.php:259
+#: options.php:221 options.php:252 recipie_functions.php:255
+#: recipie_functions.php:257 recipie_functions.php:259
 msgid "delete"
 msgstr "видалити"
 
-#: options.php:226
-#: options.php:255
-#: options.php:277
-#: recipie_functions.php:264
+#: options.php:226 options.php:255 options.php:277 recipie_functions.php:264
 msgid "Folder"
 msgstr "Тека"
 
-#: options.php:230
-#: options.php:258
-#: options.php:280
-#: recipie_functions.php:267
+#: options.php:230 options.php:258 options.php:280 recipie_functions.php:267
 msgid "Email"
 msgstr "Адреса"
 
-#: options.php:248
-#: options.php:271
+#: options.php:248 options.php:271
 msgid "if message is marked as"
 msgstr "якщо лист позначений як"
 
-#: options.php:248
-#: recipie_functions.php:244
+#: options.php:248 recipie_functions.php:244
 msgid "SPAM"
 msgstr "СПАМ"
 
-#: options.php:254
-#: options.php:276
-#: recipie_functions.php:261
+#: options.php:254 options.php:276 recipie_functions.php:261
 msgid "to"
 msgstr "до"
 
@@ -151,8 +127,7 @@ msgstr "до"
 msgid "save new"
 msgstr "зберегти як нове"
 
-#: options.php:271
-#: recipie_functions.php:241
+#: options.php:271 recipie_functions.php:241
 msgid "UNSURE"
 msgstr "НЕВПЕВНЕНИЙ"
 
@@ -165,19 +140,23 @@ msgid "Notice:"
 msgstr "Примітка:"
 
 #: options.php:295
-msgid "Use of these filters may prevent the reading of mail in non-IMAP mail clients."
-msgstr "Використання цих фільтрів може привести до того, що листи можна буде читати тільки в програмі, підтримуючій IMAP."
+msgid ""
+"Use of these filters may prevent the reading of mail in non-IMAP mail "
+"clients."
+msgstr ""
+"Використання цих фільтрів може привести до того, що листи можна буде читати "
+"тільки в програмі, підтримуючій IMAP."
 
 #: recipie_functions.php:36
 msgid "To or Cc"
 msgstr "Кому або Копія"
 
-#: recipie_functions.php:241
-#: recipie_functions.php:244
+#: recipie_functions.php:241 recipie_functions.php:244
 msgid "If message is marked as"
 msgstr "Якщо повідомлення позначене як"
 
 #: setup.php:31
 msgid "Here you may set up server-side filters on all of your incoming mail."
-msgstr "Тут налаштовуються параметри фільтрів, які застосовуватимуться поштовим сервером до усіх вхідних листів."
-
+msgstr ""
+"Тут налаштовуються параметри фільтрів, які застосовуватимуться поштовим "
+"сервером до усіх вхідних листів."

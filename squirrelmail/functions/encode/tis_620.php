@@ -136,3 +136,4 @@ function unicodetotis620($var) {
     }
     return $ret;
 }
+?>

@@ -2,7 +2,7 @@
 /**
  * Language configuration file
  *
- * Copyright (c) 2005-2006 The SquirrelMail Project Team
+ * Copyright (c) 2005 The SquirrelMail Project Team
  *
  * This file is part of SquirrelMail webmail interface. It is distributed
  * together with other translation files and is used to enable 
@@ -26,8 +26,8 @@
  * @package locales
  */
 
-$languages['de_DE']['NAME']    = 'German';
-$languages['de_DE']['ALTNAME'] = 'Deutsch';
-$languages['de_DE']['CHARSET'] = 'iso-8859-1';
-$languages['de_DE']['LOCALE']  = array('de_DE.ISO8859-1','de_DE.ISO-8859-1','de_DE');
-$languages['de']['ALIAS'] = 'de_DE';
+$languages['de']['NAME']    = 'German';
+$languages['de']['ALTNAME'] = 'Deutsch';
+$languages['de']['CHARSET'] = 'utf-8';
+$languages['de']['LOCALE']  = array('de_DE.UTF8','de_DE.UTF-8','de_DE','de');
+$languages['de_DE']['ALIAS'] = 'de';

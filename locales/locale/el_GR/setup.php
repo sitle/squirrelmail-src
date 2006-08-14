@@ -2,7 +2,7 @@
 /**
  * Language configuration file
  *
- * Copyright (c) 2005-2006 The SquirrelMail Project Team
+ * Copyright (c) 2005 The SquirrelMail Project Team
  *
  * This file is part of SquirrelMail webmail interface. It is distributed
  * together with other translation files and is used to enable 
@@ -26,8 +26,8 @@
  * @package locales
  */
 
-$languages['el_GR']['NAME']    = 'Greek';
-$languages['el_GR']['ALTNAME'] = '&Epsilon;&lambda;&lambda;&eta;&nu;&iota;&kappa;&#940;';
-$languages['el_GR']['CHARSET'] = 'iso-8859-7';
-$languages['el_GR']['LOCALE']  = array('el_GR.ISO8859-7','el_GR.ISO-8859-7','el_GR');
-$languages['el']['ALIAS'] = 'el_GR';
+$languages['el']['NAME']    = 'Greek';
+$languages['el']['ALTNAME'] = '&Epsilon;&lambda;&lambda;&eta;&nu;&iota;&kappa;&#940;';
+$languages['el']['CHARSET'] = 'utf-8';
+$languages['el']['LOCALE']  = array('el_GR.UTF8','el_GR.UTF-8','el_GR','el');
+$languages['el_GR']['ALIAS'] = 'el';

@@ -2,7 +2,7 @@
 /**
  * Language configuration file
  *
- * Copyright (c) 2005-2006 The SquirrelMail Project Team
+ * Copyright (c) 2005 The SquirrelMail Project Team
  *
  * This file is part of SquirrelMail webmail interface. It is distributed
  * together with other translation files and is used to enable 
@@ -26,8 +26,8 @@
  * @package locales
  */
 
-$languages['id_ID']['NAME']    = 'Indonesian';
-$languages['id_ID']['ALTNAME'] = 'Bahasa Indonesia';
-$languages['id_ID']['CHARSET'] = 'iso-8859-1';
-$languages['id_ID']['LOCALE']  = array('id_ID.ISO8859-1','id_ID.ISO-8859-1','id_ID');
-$languages['id']['ALIAS'] = 'id_ID';
+$languages['id']['NAME']    = 'Indonesian';
+$languages['id']['ALTNAME'] = 'Bahasa Indonesia';
+$languages['id']['CHARSET'] = 'utf-8';
+$languages['id']['LOCALE']  = array('id_ID.UTF8','id_ID.UTF-8','id_ID','id');
+$languages['id_ID']['ALIAS'] = 'id';

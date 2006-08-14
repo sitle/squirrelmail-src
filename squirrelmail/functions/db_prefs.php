@@ -29,9 +29,6 @@
  * @since 1.1.3
  */
 
-/** @ignore */
-if (!defined('SM_PATH')) define('SM_PATH','../');
-
 /** Unknown database */
 define('SMDB_UNKNOWN', 0);
 /** MySQL */
@@ -39,11 +36,17 @@ define('SMDB_MYSQL', 1);
 /** PostgreSQL */
 define('SMDB_PGSQL', 2);
 
-/**
- * don't display errors (no code execution in functions/*.php).
- * will handle error in dbPrefs class.
- */
-@include_once('DB.php');
+require_once(SM_PATH . 'config/config.php');
+if (!include_once('DB.php')) {
+    // same error also in abook_database.php
+    require_once(SM_PATH . 'functions/display_messages.php');
+    $error  = _("Could not include PEAR database functions required for the database backend.") . "<br />\n";
+    $error .= sprintf(_("Is PEAR installed, and is the include path set correctly to find %s?"),
+                        '<tt>DB.php</tt>') . "<br />\n";
+    $error .= _("Please contact your system administrator and report this error.");
+    error_box($error, $color);
+    exit;
+}
 
 global $prefs_are_cached, $prefs_cache;
 
@@ -83,94 +86,25 @@ function cachePrefValues($username) {
 }
 
 /**
- * Class used to handle connections to prefs database and operations with preferences
+ * Completely undocumented class - someone document it!
  * @package squirrelmail
- * @subpackage prefs
- * @since 1.1.3
  */
 class dbPrefs {
-    /**
-     * Table used to store preferences
-     * @var string
-     */
     var $table = 'userprefs';
-    /**
-     * Field used to store owner of preference
-     * @var string
-     */
     var $user_field = 'user';
-    /**
-     * Field used to store preference name
-     * @var string
-     */
     var $key_field = 'prefkey';
-    /**
-     * Field used to store preference value
-     * @var string
-     */
     var $val_field = 'prefval';
 
-    /**
-     * Database connection object
-     * @var object
-     */
     var $dbh   = NULL;
-    /**
-     * Error messages
-     * @var string
-     */
     var $error = NULL;
-    /**
-     * Database type (SMDB_* constants)
-     * Is used in setKey().
-     * @var integer
-     */
     var $db_type = SMDB_UNKNOWN;
 
-    /**
-     * Default preferences
-     * @var array
-     */
     var $default = Array('theme_default' => 0,
                          'show_html_default' => '0');
 
-    /**
-     * Preference owner field size
-     * @var integer
-     * @since 1.5.1
-     */
-    var $user_size = 128;
-    /**
-     * Preference key field size
-     * @var integer
-     * @since 1.5.1
-     */
-    var $key_size = 64;
-    /**
-     * Preference value field size
-     * @var integer
-     * @since 1.5.1
-     */
-    var $val_size = 65536;
-
-    /**
-     * initialize DB connection object
-     * @return boolean true, if object is initialized
-     */
     function open() {
         global $prefs_dsn, $prefs_table;
         global $prefs_user_field, $prefs_key_field, $prefs_val_field;
-        global $prefs_user_size, $prefs_key_size, $prefs_val_size;
-
-        /* test if Pear DB class is available and freak out if it is not */
-        if (! class_exists('DB')) {
-            // same error also in abook_database.php
-            $this->error  = _("Could not include PEAR database functions required for the database backend.") . "<br />\n";
-            $this->error .= sprintf(_("Is PEAR installed, and is the include path set correctly to find %s?"),
-                              '<tt>DB.php</tt>') . "<br />\n";
-            $this->error .= _("Please contact your system administrator and report this error.");
-            return false;
-        }
 
         if(isset($this->dbh)) {
             return true;
@@ -194,15 +128,6 @@ class dbPrefs {
         if (!empty($prefs_val_field)) {
             $this->val_field = $prefs_val_field;
         }
-        if (!empty($prefs_user_size)) {
-            $this->user_size = (int) $prefs_user_size;
-        }
-        if (!empty($prefs_key_size)) {
-            $this->key_size = (int) $prefs_key_size;
-        }
-        if (!empty($prefs_val_size)) {
-            $this->val_size = (int) $prefs_val_size;
-        }
         $dbh = DB::connect($prefs_dsn, true);
 
         if(DB::isError($dbh)) {
@@ -214,10 +139,6 @@ class dbPrefs {
         return true;
     }
 
-    /**
-     * Function used to handle database connection errors
-     * @param object PEAR Error object
-     */
     function failQuery($res = NULL) {
         if($res == NULL) {
             printf(_("Preference database error (%s). Exiting abnormally"),
@@ -229,13 +150,7 @@ class dbPrefs {
         exit;
     }
 
-    /**
-     * Get user's prefs setting
-     * @param string $user user name
-     * @param string $key preference name
-     * @param mixed $default (since 1.2.5) default value
-     * @return mixed preference value
-     */
+
     function getKey($user, $key, $default = '') {
         global $prefs_cache;
 
@@ -252,12 +167,6 @@ class dbPrefs {
         }
     }
 
-    /**
-     * Delete user's prefs setting
-     * @param string $user user name
-     * @param string $key preference name
-     * @return boolean
-     */
     function deleteKey($user, $key) {
         global $prefs_cache;
 
@@ -281,60 +190,10 @@ class dbPrefs {
         return true;
     }
 
-    /**
-     * Set user's preference
-     * @param string $user user name
-     * @param string $key preference name
-     * @param mixed $value preference value
-     * @return boolean
-     */
     function setKey($user, $key, $value) {
         if (!$this->open()) {
             return false;
         }
-
-        /**
-         * Check if username fits into db field
-         */
-        if (strlen($user) > $this->user_size) {
-            $this->error = "Oversized username value."
-                ." Your preferences can't be saved."
-                ." See doc/db-backend.txt or contact your system administrator.";
-
-            /**
-             * Debugging function. Can be used to log all issues that trigger
-             * oversized field errors. Function should be enabled in all three
-             * strlen checks. See http://www.php.net/error-log
-             */
-            // error_log($user.'|'.$key.'|'.$value."\n",3,'/tmp/oversized_log');
-
-            // error is fatal
-            $this->failQuery(null);
-        }
-        /**
-         * Check if preference key fits into db field
-         */
-        if (strlen($key) > $this->key_size) {
-            $err_msg = "Oversized user's preference key."
-                ." Some preferences were not saved."
-                ." See doc/db-backend.txt or contact your system administrator.";
-            // error is not fatal. Only some preference is not saved.
-            trigger_error($err_msg,E_USER_WARNING);
-            return false;
-        }
-        /**
-         * Check if preference value fits into db field
-         */
-        if (strlen($value) > $this->val_size) {
-            $err_msg = "Oversized user's preference value."
-                ." Some preferences were not saved."
-                ." See doc/db-backend.txt or contact your system administrator.";
-            // error is not fatal. Only some preference is not saved.
-            trigger_error($err_msg,E_USER_WARNING);
-            return false;
-        }
-
-
         if ($this->db_type == SMDB_MYSQL) {
             $query = sprintf("REPLACE INTO %s (%s, %s, %s) ".
                              "VALUES('%s','%s','%s')",
@@ -405,11 +264,6 @@ class dbPrefs {
         return true;
     }
 
-    /**
-     * Fill preference cache array
-     * @param string $user user name
-     * @since 1.2.3
-     */
     function fillPrefsCache($user) {
         global $prefs_cache;
 
@@ -543,3 +397,4 @@ function getSig($data_dir, $username, $number) {
 }
 
 // vim: et ts=4
+?>
