@@ -11,16 +11,16 @@ msgstr ""
 "Last-Translator: Andre Nicholson <andre@neo-anime.org>\n"
 "Language-Team: Japanese <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=euc-jp\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: dspam.inc.php:82
 msgid "DSPAM Settings"
-msgstr "DSPAM ¤ÎÀßÄê"
+msgstr "DSPAM ã®è¨­å®š"
 
 #: dspam.inc.php:89
 msgid "Warning"
-msgstr "·Ù¹ğ"
+msgstr "è­¦å‘Š"
 
 #: dspam.inc.php:91
 msgid "Enabling DSPAM will disable SpamAssassin scanning of your email."
@@ -29,7 +29,7 @@ msgstr ""
 #: dspam.inc.php:94
 msgid "SpamAssassin settings and white/blacklists will not be used by dspam."
 msgstr ""
-"DSPAM ¤Ï SpamAssassin ¤ÎÊİÂ¸¤È¥Û¥ï¥¤¥È¥ê¥¹¥È¡¦¥Ö¥é¥Ã¥¯¥ê¥¹¥È¤òÍøÍÑ¤·¤Ş¤»¤ó¡£"
+"DSPAM ã¯ SpamAssassin ã®ä¿å­˜ã¨ãƒ›ãƒ¯ã‚¤ãƒˆãƒªã‚¹ãƒˆãƒ»ãƒ–ãƒ©ãƒƒã‚¯ãƒªã‚¹ãƒˆã‚’åˆ©ç”¨ã—ã¾ã›ã‚“ã€‚"
 
 #. *
 #. * To translators: %s's will be replaced with <a ..> and </a>
@@ -53,7 +53,7 @@ msgstr ""
 
 #: dspam.inc.php:117
 msgid "Reporting Spam"
-msgstr "¥¹¥Ñ¥à¤òÆÏ¤±½Ğ¤ë¤¿¤³¤È"
+msgstr "ã‚¹ãƒ‘ãƒ ã‚’å±Šã‘å‡ºã‚‹ãŸã“ã¨"
 
 #: dspam.inc.php:120
 msgid ""
@@ -74,7 +74,7 @@ msgstr ""
 
 #: dspam.inc.php:131
 msgid "Reporting False Positives"
-msgstr "µ¶ÍÛÀ­¤òÆÏ¤±½Ğ¤ë¤¿¤³¤È"
+msgstr "å½é™½æ€§ã‚’å±Šã‘å‡ºã‚‹ãŸã“ã¨"
 
 #: dspam.inc.php:134
 msgid ""
@@ -96,7 +96,7 @@ msgstr ""
 
 #: dspam.inc.php:145
 msgid "Disclaimer"
-msgstr "ÌÈÀÕ¾ò¹à"
+msgstr "å…è²¬æ¡é …"
 
 #: dspam.inc.php:148
 msgid ""
@@ -114,11 +114,11 @@ msgstr ""
 #: dspam.inc.php:162
 #, php-format
 msgid "Please read the %sDSPAM Primer%s before enabling DSPAM."
-msgstr "DSPAM ¤òÍ­¸ú¤Ë¤¹¤ë¤ÎÁ°¤Ë¡¢%sDSPAM ¼ê°ú½ñ%s ¤òÆÉ¤ó¤Ç¤¯¤À¤µ¤¤¡£"
+msgstr "DSPAM ã‚’æœ‰åŠ¹ã«ã™ã‚‹ã®å‰ã«ã€%sDSPAM æ‰‹å¼•æ›¸%s ã‚’èª­ã‚“ã§ãã ã•ã„ã€‚"
 
 #: dspam.inc.php:183
 msgid "Use DSPAM"
-msgstr "DSPAM ¤ò»È¤¦"
+msgstr "DSPAM ã‚’ä½¿ã†"
 
 #. *
 #. * To translators: %s is the name of the spam folder.
@@ -130,7 +130,7 @@ msgstr ""
 
 #: dspam.inc.php:200 purge.inc.php:37
 msgid "Note"
-msgstr "¤ªÃÎ¤é¤»"
+msgstr "ãŠçŸ¥ã‚‰ã›"
 
 #. *
 #. * To translators: %s is the name of the spam folder.
@@ -144,28 +144,28 @@ msgstr ""
 
 #: dspam.inc.php:214
 msgid "Update"
-msgstr "¹¹¿·"
+msgstr "æ›´æ–°"
 
 #: move_to.php:98
 msgid "No messages were selected."
-msgstr "¥á¥Ã¥»¡¼¥¸¤¬ÁªÂò¤µ¤ì¤Æ¤¤¤Ş¤»¤ó"
+msgstr "ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒé¸æŠã•ã‚Œã¦ã„ã¾ã›ã‚“"
 
 #: purge.inc.php:30
 msgid "Purge"
-msgstr "¶õ¤Ë¤¹¤ë"
+msgstr "ç©ºã«ã™ã‚‹"
 
 #: purge.inc.php:33
 #, php-format
 msgid "Delete all messages from your %s folder."
-msgstr "¤¹¤Ù¤Æ¥á¥Ã¥»¡¼¥¸¤ò %s ¥Õ¥©¥ë¥À¡¼¤«¤éºï½ü¤·¤Ş¤¹¡£"
+msgstr "ã™ã¹ã¦ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ %s ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã‹ã‚‰å‰Šé™¤ã—ã¾ã™ã€‚"
 
 #: sa_abooksync.inc.php:20
 msgid "Allow Senders from Address Book"
-msgstr "¥¢¥É¥ì¥¹Ä¢¤ÇÁ÷¿®¼Ô¤òµö²Ä¤·¤Ş¤¹"
+msgstr "ã‚¢ãƒ‰ãƒ¬ã‚¹å¸³ã§é€ä¿¡è€…ã‚’è¨±å¯ã—ã¾ã™"
 
 #: sa_abooksync.inc.php:26
 msgid "Allow"
-msgstr "²ÄÇ½¤Ë¤¹¤ë"
+msgstr "å¯èƒ½ã«ã™ã‚‹"
 
 #: sa_abooksync.inc.php:27
 msgid "Allow all address in the address book."
@@ -174,7 +174,7 @@ msgstr ""
 #. required_hists
 #: sa_opts-dist.php:19
 msgid "Spam Score"
-msgstr "¥¹¥Ñ¥à¥¹¥³¥¢"
+msgstr "ã‚¹ãƒ‘ãƒ ã‚¹ã‚³ã‚¢"
 
 #: sa_opts-dist.php:20
 msgid ""
@@ -185,7 +185,7 @@ msgstr ""
 
 #: sa_opts-dist.php:22
 msgid "0 - Very Aggressive"
-msgstr "0 - ¤â¤Ã¤È¹¶·âÅª"
+msgstr "0 - ã‚‚ã£ã¨æ”»æ’ƒçš„"
 
 #: sa_opts-dist.php:23
 msgid "1"
@@ -193,7 +193,7 @@ msgstr "1"
 
 #: sa_opts-dist.php:24
 msgid "2 - Aggressive"
-msgstr "2 - ¹¶·âÅª"
+msgstr "2 - æ”»æ’ƒçš„"
 
 #: sa_opts-dist.php:25
 msgid "3"
@@ -205,7 +205,7 @@ msgstr "4"
 
 #: sa_opts-dist.php:27
 msgid "5 - Recommended"
-msgstr "5 - ¿äÁ¦"
+msgstr "5 - æ¨è–¦"
 
 #: sa_opts-dist.php:28
 msgid "6"
@@ -217,7 +217,7 @@ msgstr "7"
 
 #: sa_opts-dist.php:30
 msgid "8 - Lenient"
-msgstr "8 - ´²Âç"
+msgstr "8 - å¯›å¤§"
 
 #: sa_opts-dist.php:31
 msgid "9"
@@ -225,18 +225,18 @@ msgstr "9"
 
 #: sa_opts-dist.php:32
 msgid "10 - Very Lenient"
-msgstr "10 - ¤â¤Ã¤È´²Âç"
+msgstr "10 - ã‚‚ã£ã¨å¯›å¤§"
 
 #: sa_opts-dist.php:33
 msgid "Don't Filter"
-msgstr "¥Õ¥£¥ë¥¿¡¼¤·¤Æ¤Ê¤¤"
+msgstr "ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼ã—ã¦ãªã„"
 
 #. NOTE: The ordering here is a little odd to allow some inclusion of
 #. other option names.
 #. subject_tag
 #: sa_opts-dist.php:43
 msgid "Spam Subject Tag"
-msgstr "¥¹¥Ñ¥à·ïÌ¾¤Î¥¿¥°"
+msgstr "ã‚¹ãƒ‘ãƒ ä»¶åã®ã‚¿ã‚°"
 
 #: sa_opts-dist.php:45
 msgid "*****SPAM*****"
@@ -245,7 +245,7 @@ msgstr "*****SPAM*****"
 #. rewrite_subject
 #: sa_opts-dist.php:48 sa_opts-dist.php:63
 msgid "Rewrite Subject Line"
-msgstr "·ïÌ¾¤ò½ñ¤­Ä¾¤·¤Ş¤¹"
+msgstr "ä»¶åã‚’æ›¸ãç›´ã—ã¾ã™"
 
 #. To translators: %s is the default from subject_tag
 #: sa_opts-dist.php:50
@@ -276,7 +276,7 @@ msgstr ""
 #. use_terse_report
 #: sa_opts-dist.php:70
 msgid "Short Report"
-msgstr "Ã»¤¤¥ì¥İ¡¼¥È"
+msgstr "çŸ­ã„ãƒ¬ãƒãƒ¼ãƒˆ"
 
 #: sa_opts-dist.php:71
 msgid ""
@@ -287,7 +287,7 @@ msgstr ""
 #. use_dcc
 #: sa_opts-dist.php:77
 msgid "Use DCC"
-msgstr "DCC ¤ò»È¤¦"
+msgstr "DCC ã‚’ä½¿ã†"
 
 #: sa_opts-dist.php:78
 msgid ""
@@ -298,7 +298,7 @@ msgstr ""
 #. use_razor1
 #: sa_opts-dist.php:84
 msgid "Use SpamNet (version 1)"
-msgstr "SpamNet ¥Ğ¡¼¥¸¥ç¥ó 1 ¤ò»È¤¦"
+msgstr "SpamNet ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 1 ã‚’ä½¿ã†"
 
 #: sa_opts-dist.php:85 sa_opts-dist.php:92
 msgid ""
@@ -308,12 +308,12 @@ msgstr ""
 #. use_razor2
 #: sa_opts-dist.php:91
 msgid "Use SpamNet (version 2)"
-msgstr "SpamNet ¥Ğ¡¼¥¸¥ç¥ó 2 ¤ò»È¤¦"
+msgstr "SpamNet ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 2 ã‚’ä½¿ã†"
 
 #. always_add_headers
 #: sa_opts-dist.php:98
 msgid "Always Add Headers"
-msgstr "¤¤¤Ä¤â¥Ø¥Ã¥À¤òÄÉ²Ã¤¹¤ë"
+msgstr "ã„ã¤ã‚‚ãƒ˜ãƒƒãƒ€ã‚’è¿½åŠ ã™ã‚‹"
 
 #: sa_opts-dist.php:99
 msgid "Uncheck if you do not want to add the headers to non-spam."
@@ -322,7 +322,7 @@ msgstr ""
 #. ok_languages
 #: sa_opts-dist.php:105
 msgid "Acceptable Languages"
-msgstr "Å¬ÀÚ¤Ê¸À¸ì"
+msgstr "é©åˆ‡ãªè¨€èª"
 
 #: sa_opts-dist.php:106
 msgid "Select all the languages you expect to receive e-mail in."
@@ -330,268 +330,268 @@ msgstr ""
 
 #: sa_opts-dist.php:112
 msgid "All"
-msgstr "¤¹¤Ù¤Æ"
+msgstr "ã™ã¹ã¦"
 
 #: sa_opts-dist.php:113
 msgid "Afrikaans"
-msgstr "¥¢¥Õ¥ê¥«¡¼¥ó¥¹¸ì"
+msgstr "ã‚¢ãƒ•ãƒªã‚«ãƒ¼ãƒ³ã‚¹èª"
 
 #: sa_opts-dist.php:114
 msgid "Albanian"
-msgstr "¥¢¥ë¥Ğ¥Ë¥¢¸ì"
+msgstr "ã‚¢ãƒ«ãƒãƒ‹ã‚¢èª"
 
 #: sa_opts-dist.php:115
 msgid "Amharic"
-msgstr "¥¢¥à¥Ï¥é¸ì"
+msgstr "ã‚¢ãƒ ãƒãƒ©èª"
 
 #: sa_opts-dist.php:116
 msgid "Arabic"
-msgstr "¥¢¥é¥Ó¥¢¸ì"
+msgstr "ã‚¢ãƒ©ãƒ“ã‚¢èª"
 
 #: sa_opts-dist.php:117
 msgid "Armenian"
-msgstr "¥¢¥ë¥á¥Ë¥¢¸ì"
+msgstr "ã‚¢ãƒ«ãƒ¡ãƒ‹ã‚¢èª"
 
 #: sa_opts-dist.php:118
 msgid "Basque"
-msgstr "¥Ğ¥¹¥¯¸ì"
+msgstr "ãƒã‚¹ã‚¯èª"
 
 #: sa_opts-dist.php:119
 msgid "Bosnian"
-msgstr "¥Ü¥¹¥Ë¥¢¸ì"
+msgstr "ãƒœã‚¹ãƒ‹ã‚¢èª"
 
 #: sa_opts-dist.php:120
 msgid "Bulgarian"
-msgstr "¥Ö¥ë¥¬¥ê¥¢¸ì"
+msgstr "ãƒ–ãƒ«ã‚¬ãƒªã‚¢èª"
 
 #: sa_opts-dist.php:121
 msgid "Byelorussian"
-msgstr "¥Ù¥é¥ë¡¼¥·¸ì"
+msgstr "ãƒ™ãƒ©ãƒ«ãƒ¼ã‚·èª"
 
 #: sa_opts-dist.php:122
 msgid "Catalan"
-msgstr "¥«¥¿¥í¥Ë¥¢¸ì"
+msgstr "ã‚«ã‚¿ãƒ­ãƒ‹ã‚¢èª"
 
 #: sa_opts-dist.php:123
 msgid "Chinese"
-msgstr "Ãæ¹ñ¸ì"
+msgstr "ä¸­å›½èª"
 
 #: sa_opts-dist.php:124
 msgid "Croatian"
-msgstr "¥¯¥í¥¢¥Á¥¢¸ì"
+msgstr "ã‚¯ãƒ­ã‚¢ãƒã‚¢èª"
 
 #: sa_opts-dist.php:125
 msgid "Czech"
-msgstr "¥Á¥§¥³¸ì"
+msgstr "ãƒã‚§ã‚³èª"
 
 #: sa_opts-dist.php:126
 msgid "Danish"
-msgstr "¥Ç¥ó¥Ş¡¼¥¯¸ì"
+msgstr "ãƒ‡ãƒ³ãƒãƒ¼ã‚¯èª"
 
 #: sa_opts-dist.php:127
 msgid "Dutch"
-msgstr "¥ª¥é¥ó¥À¸ì"
+msgstr "ã‚ªãƒ©ãƒ³ãƒ€èª"
 
 #: sa_opts-dist.php:128
 msgid "English"
-msgstr "±Ñ¸ì"
+msgstr "è‹±èª"
 
 #: sa_opts-dist.php:129
 msgid "Esperanto"
-msgstr "¥¨¥¹¥Ú¥é¥ó¥È¸ì"
+msgstr "ã‚¨ã‚¹ãƒšãƒ©ãƒ³ãƒˆèª"
 
 #: sa_opts-dist.php:130
 msgid "Estonian"
-msgstr "¥¨¥¹¥È¥Ë¥¢¸ì"
+msgstr "ã‚¨ã‚¹ãƒˆãƒ‹ã‚¢èª"
 
 #: sa_opts-dist.php:131
 msgid "Finnish"
-msgstr "¥Õ¥£¥ó¥é¥ó¥É¸ì"
+msgstr "ãƒ•ã‚£ãƒ³ãƒ©ãƒ³ãƒ‰èª"
 
 #: sa_opts-dist.php:132
 msgid "French"
-msgstr "¥Õ¥é¥ó¥¹¸ì"
+msgstr "ãƒ•ãƒ©ãƒ³ã‚¹èª"
 
 #: sa_opts-dist.php:133
 msgid "Frisian"
-msgstr "¥Õ¥ê¡¼¥¹¥é¥ó¥É¸ì"
+msgstr "ãƒ•ãƒªãƒ¼ã‚¹ãƒ©ãƒ³ãƒ‰èª"
 
 #: sa_opts-dist.php:134
 msgid "Georgian"
-msgstr "¥°¥ë¥¸¥¢¸ì"
+msgstr "ã‚°ãƒ«ã‚¸ã‚¢èª"
 
 #: sa_opts-dist.php:135
 msgid "German"
-msgstr "¥É¥¤¥Ä¸ì"
+msgstr "ãƒ‰ã‚¤ãƒ„èª"
 
 #: sa_opts-dist.php:136
 msgid "Greek"
-msgstr "¥®¥ê¥·¥ã¸ì"
+msgstr "ã‚®ãƒªã‚·ãƒ£èª"
 
 #: sa_opts-dist.php:137
 msgid "Hebrew"
-msgstr "¥Ø¥Ö¥é¥¤¸ì"
+msgstr "ãƒ˜ãƒ–ãƒ©ã‚¤èª"
 
 #: sa_opts-dist.php:138
 msgid "Hindi"
-msgstr "¥Ò¥ó¥Ç¥£¡¼¸ì"
+msgstr "ãƒ’ãƒ³ãƒ‡ã‚£ãƒ¼èª"
 
 #: sa_opts-dist.php:139
 msgid "Hungarian"
-msgstr "¥Ï¥ó¥¬¥ê¡¼¸ì"
+msgstr "ãƒãƒ³ã‚¬ãƒªãƒ¼èª"
 
 #: sa_opts-dist.php:140
 msgid "Icelandic"
-msgstr "¥¢¥¤¥¹¥é¥ó¥É¸ì"
+msgstr "ã‚¢ã‚¤ã‚¹ãƒ©ãƒ³ãƒ‰èª"
 
 #: sa_opts-dist.php:141
 msgid "Indonesian"
-msgstr "¥¤¥ó¥É¥Í¥·¥¢¸ì"
+msgstr "ã‚¤ãƒ³ãƒ‰ãƒã‚·ã‚¢èª"
 
 #: sa_opts-dist.php:142
 msgid "Irish Gaelic"
-msgstr "¥¢¥¤¥ë¥é¥ó¥É¤Î¥²¡¼¥ë¸ì"
+msgstr "ã‚¢ã‚¤ãƒ«ãƒ©ãƒ³ãƒ‰ã®ã‚²ãƒ¼ãƒ«èª"
 
 #: sa_opts-dist.php:143
 msgid "Italian"
-msgstr "¥¤¥¿¥ê¥¢¸ì"
+msgstr "ã‚¤ã‚¿ãƒªã‚¢èª"
 
 #: sa_opts-dist.php:144
 msgid "Japanese"
-msgstr "ÆüËÜ¸ì"
+msgstr "æ—¥æœ¬èª"
 
 #: sa_opts-dist.php:145
 msgid "Korean"
-msgstr "´Ú¹ñ¸ì"
+msgstr "éŸ“å›½èª"
 
 #: sa_opts-dist.php:146
 msgid "Latin"
-msgstr "¥é¥Æ¥ó¸ì"
+msgstr "ãƒ©ãƒ†ãƒ³èª"
 
 #: sa_opts-dist.php:147
 msgid "Latvian"
-msgstr "¥é¥È¥Ó¥¢¸ì"
+msgstr "ãƒ©ãƒˆãƒ“ã‚¢èª"
 
 #: sa_opts-dist.php:148
 msgid "Lithuanian"
-msgstr "¥ê¥È¥¢¥Ë¥¢¸ì"
+msgstr "ãƒªãƒˆã‚¢ãƒ‹ã‚¢èª"
 
 #: sa_opts-dist.php:149
 msgid "Malay"
-msgstr "¥Ş¥ì¡¼¸ì"
+msgstr "ãƒãƒ¬ãƒ¼èª"
 
 #: sa_opts-dist.php:150
 msgid "Marathi"
-msgstr "¥Ş¥é¡¼¥Æ¥£¡¼¸ì"
+msgstr "ãƒãƒ©ãƒ¼ãƒ†ã‚£ãƒ¼èª"
 
 #: sa_opts-dist.php:151
 msgid "Nepali"
-msgstr "¥Í¥Ñ¡¼¥ë¸ì"
+msgstr "ãƒãƒ‘ãƒ¼ãƒ«èª"
 
 #: sa_opts-dist.php:152
 msgid "Norwegian"
-msgstr "¥Î¥ë¥¦¥§¡¼¸ì"
+msgstr "ãƒãƒ«ã‚¦ã‚§ãƒ¼èª"
 
 #: sa_opts-dist.php:153
 msgid "Persian"
-msgstr "¥Ú¥ë¥·¥¢¸ì"
+msgstr "ãƒšãƒ«ã‚·ã‚¢èª"
 
 #: sa_opts-dist.php:154
 msgid "Polish"
-msgstr "¥İ¡¼¥é¥ó¥É¸ì"
+msgstr "ãƒãƒ¼ãƒ©ãƒ³ãƒ‰èª"
 
 #: sa_opts-dist.php:155
 msgid "Portuguese"
-msgstr "¥İ¥ë¥È¥¬¥ë¸ì"
+msgstr "ãƒãƒ«ãƒˆã‚¬ãƒ«èª"
 
 #: sa_opts-dist.php:156
 msgid "Quechua"
-msgstr "¥±¥Á¥å¥¢¸ì"
+msgstr "ã‚±ãƒãƒ¥ã‚¢èª"
 
 #: sa_opts-dist.php:157
 msgid "Rhaeto-Romance"
-msgstr "¥ì¡¼¥È¡İ¥í¥Ş¥ó¸ì"
+msgstr "ãƒ¬ãƒ¼ãƒˆâˆ’ãƒ­ãƒãƒ³èª"
 
 #: sa_opts-dist.php:158
 msgid "Romanian"
-msgstr "¥ë¡¼¥Ş¥Ë¥¢¸ì"
+msgstr "ãƒ«ãƒ¼ãƒãƒ‹ã‚¢èª"
 
 #: sa_opts-dist.php:159
 msgid "Russian"
-msgstr "¥í¥·¥¢¸ì"
+msgstr "ãƒ­ã‚·ã‚¢èª"
 
 #: sa_opts-dist.php:160
 msgid "Sanskrit"
-msgstr "Ûğ¸ì"
+msgstr "æ¢µèª"
 
 #: sa_opts-dist.php:161
 msgid "Scots"
-msgstr "¥¹¥³¥Ã¥È¥é¥ó¥É¸ì"
+msgstr "ã‚¹ã‚³ãƒƒãƒˆãƒ©ãƒ³ãƒ‰èª"
 
 #: sa_opts-dist.php:162
 msgid "Scottish Gaelic"
-msgstr "¥¹¥³¥Ã¥È¥é¥ó¥É¤Î¥²¡¼¥ë¸ì"
+msgstr "ã‚¹ã‚³ãƒƒãƒˆãƒ©ãƒ³ãƒ‰ã®ã‚²ãƒ¼ãƒ«èª"
 
 #: sa_opts-dist.php:163
 msgid "Serbian"
-msgstr "¥»¥ë¥Ó¥¢¸ì"
+msgstr "ã‚»ãƒ«ãƒ“ã‚¢èª"
 
 #: sa_opts-dist.php:164
 msgid "Slovak"
-msgstr "¥¹¥í¥Ğ¥­¥¢¸ì"
+msgstr "ã‚¹ãƒ­ãƒã‚­ã‚¢èª"
 
 #: sa_opts-dist.php:165
 msgid "Slovenian"
-msgstr "¥¹¥í¥Ù¥Ë¥¢¸ì"
+msgstr "ã‚¹ãƒ­ãƒ™ãƒ‹ã‚¢èª"
 
 #: sa_opts-dist.php:166
 msgid "Spanish"
-msgstr "¥¹¥Ú¥¤¥ó¸ì"
+msgstr "ã‚¹ãƒšã‚¤ãƒ³èª"
 
 #: sa_opts-dist.php:167
 msgid "Swahili"
-msgstr "¥¹¥ï¥Ò¥ê¸ì"
+msgstr "ã‚¹ãƒ¯ãƒ’ãƒªèª"
 
 #: sa_opts-dist.php:168
 msgid "Swedish"
-msgstr "¥¹¥¦¥§¡¼¥Ç¥ó¸ì"
+msgstr "ã‚¹ã‚¦ã‚§ãƒ¼ãƒ‡ãƒ³èª"
 
 #: sa_opts-dist.php:169
 msgid "Tagalog"
-msgstr "¥¿¥¬¥í¥°¸ì"
+msgstr "ã‚¿ã‚¬ãƒ­ã‚°èª"
 
 #: sa_opts-dist.php:170
 msgid "Tamil"
-msgstr "¥¿¥ß¥ë¸ì"
+msgstr "ã‚¿ãƒŸãƒ«èª"
 
 #: sa_opts-dist.php:171
 msgid "Thai"
-msgstr "¥¿¥¤¸ì"
+msgstr "ã‚¿ã‚¤èª"
 
 #: sa_opts-dist.php:172
 msgid "Turkish"
-msgstr "¥È¥ë¥³¸ì"
+msgstr "ãƒˆãƒ«ã‚³èª"
 
 #: sa_opts-dist.php:173
 msgid "Ukrainian"
-msgstr "¥¦¥¯¥é¥¤¥Ê¸ì"
+msgstr "ã‚¦ã‚¯ãƒ©ã‚¤ãƒŠèª"
 
 #: sa_opts-dist.php:174
 msgid "Vietnamese"
-msgstr "¥Ù¥È¥Ê¥à¸ì"
+msgstr "ãƒ™ãƒˆãƒŠãƒ èª"
 
 #: sa_opts-dist.php:175
 msgid "Welsh"
-msgstr "¥¦¥§¡¼¥ë¥º¸ì"
+msgstr "ã‚¦ã‚§ãƒ¼ãƒ«ã‚ºèª"
 
 #: sa_opts-dist.php:176
 msgid "Yiddish"
-msgstr "¥¤¥Ç¥£¥Ã¥·¥å¸ì"
+msgstr "ã‚¤ãƒ‡ã‚£ãƒƒã‚·ãƒ¥èª"
 
 #. use_bayes
 #: sa_opts-dist.php:179
 msgid "Use Bayesian Filter"
-msgstr "¥Ù¥¤¥º¥Õ¥£¥ë¥¿¤ò»È¤¦"
+msgstr "ãƒ™ã‚¤ã‚ºãƒ•ã‚£ãƒ«ã‚¿ã‚’ä½¿ã†"
 
 #: sa_opts-dist.php:180
 msgid ""
@@ -613,7 +613,7 @@ msgstr ""
 #. report_safe
 #: sa_opts-dist.php:193
 msgid "Spam Encapsulation"
-msgstr "¥¹¥Ñ¥à¥«¥×¥»¥ëÉõ¤¸"
+msgstr "ã‚¹ãƒ‘ãƒ ã‚«ãƒ—ã‚»ãƒ«å°ã˜"
 
 #: sa_opts-dist.php:194
 msgid ""
@@ -623,22 +623,22 @@ msgstr ""
 
 #: sa_opts-dist.php:196
 msgid "Disabled"
-msgstr "Ìµ¸ú"
+msgstr "ç„¡åŠ¹"
 
 #: sa_opts-dist.php:197
 msgid "MIME Attachment"
-msgstr "MIME ·Á¼°¤ÎÅºÉÕ¥Õ¥¡¥¤¥ë"
+msgstr "MIME å½¢å¼ã®æ·»ä»˜ãƒ•ã‚¡ã‚¤ãƒ«"
 
 #: sa_opts-dist.php:198
 msgid "Text Attachment"
-msgstr "¥Æ¥­¥¹¥È·Á¼°¤ÎÅºÉÕ¥Õ¥¡¥¤¥ë"
+msgstr "ãƒ†ã‚­ã‚¹ãƒˆå½¢å¼ã®æ·»ä»˜ãƒ•ã‚¡ã‚¤ãƒ«"
 
 #. These options were removed as of SpamAssassin 2.50-ish
 #. They are here for those running older versions of SA.
 #. report_header
 #: sa_opts-dist.php:205
 msgid "Report in Header"
-msgstr "¥Ø¥Ã¥À¤Ë¥ì¥İ¡¼¥È"
+msgstr "ãƒ˜ãƒƒãƒ€ã«ãƒ¬ãƒãƒ¼ãƒˆ"
 
 #: sa_opts-dist.php:206
 msgid ""
@@ -650,7 +650,7 @@ msgstr ""
 #. defang_mime
 #: sa_opts-dist.php:212
 msgid "Reformat HTML Spam"
-msgstr "HTML ¤Ç¥¹¥Ñ¥à¤òºÆ¥Õ¥©¡¼¥Ş¥Ã¥È¤·¤Ş¤¹"
+msgstr "HTML ã§ã‚¹ãƒ‘ãƒ ã‚’å†ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã—ã¾ã™"
 
 #: sa_opts-dist.php:213
 msgid ""
@@ -661,7 +661,7 @@ msgstr ""
 #. White/black list info
 #: sa_opts-dist.php:243
 msgid "Whitelist From"
-msgstr "¥Û¥ï¥¤¥È¥ê¥¹¥È¤ËºÜ¤»¤é¤ì¤ëº¹½Ğ¿Í"
+msgstr "ãƒ›ãƒ¯ã‚¤ãƒˆãƒªã‚¹ãƒˆã«è¼‰ã›ã‚‰ã‚Œã‚‹å·®å‡ºäºº"
 
 #: sa_opts-dist.php:244
 msgid ""
@@ -673,7 +673,7 @@ msgstr ""
 
 #: sa_opts-dist.php:246
 msgid "Don't Whitelist From"
-msgstr "º¹½Ğ¿Í¤ò¥Û¥ï¥¤¥È¥ê¥¹¥È¤ËºÜ¤»¤¢¤ê¤Ş¤»¤ó"
+msgstr "å·®å‡ºäººã‚’ãƒ›ãƒ¯ã‚¤ãƒˆãƒªã‚¹ãƒˆã«è¼‰ã›ã‚ã‚Šã¾ã›ã‚“"
 
 #: sa_opts-dist.php:247
 msgid ""
@@ -683,7 +683,7 @@ msgstr ""
 
 #: sa_opts-dist.php:249
 msgid "Blacklist From"
-msgstr "º¹½Ğ¿Í¤ò¥Ö¥é¥Ã¥¯¥ê¥¹¥È¤ËºÜ¤»¤é¤ì¤Ş¤¹"
+msgstr "å·®å‡ºäººã‚’ãƒ–ãƒ©ãƒƒã‚¯ãƒªã‚¹ãƒˆã«è¼‰ã›ã‚‰ã‚Œã¾ã™"
 
 #: sa_opts-dist.php:250
 msgid ""
@@ -695,7 +695,7 @@ msgstr ""
 
 #: sa_opts-dist.php:252
 msgid "Don't Blacklist From"
-msgstr "º¹½Ğ¿Í¤ò¥Ö¥é¥Ã¥¯¥ê¥¹¥È¤ËºÜ¤»¤¢¤ê¤Ş¤»¤ó"
+msgstr "å·®å‡ºäººã‚’ãƒ–ãƒ©ãƒƒã‚¯ãƒªã‚¹ãƒˆã«è¼‰ã›ã‚ã‚Šã¾ã›ã‚“"
 
 #: sa_opts-dist.php:253
 msgid ""
@@ -705,7 +705,7 @@ msgstr ""
 
 #: sa_opts-dist.php:255
 msgid "Whitelist To"
-msgstr "°¸Àè¤ò¥Û¥ï¥¤¥È¥ê¥¹¥È¤ËºÜ¤»¤é¤ì¤Ş¤¹"
+msgstr "å®›å…ˆã‚’ãƒ›ãƒ¯ã‚¤ãƒˆãƒªã‚¹ãƒˆã«è¼‰ã›ã‚‰ã‚Œã¾ã™"
 
 #: sa_opts-dist.php:256
 msgid ""
@@ -719,7 +719,7 @@ msgstr ""
 
 #: sa_opts-dist.php:258
 msgid "Blacklist To"
-msgstr "°¸Àè¤ò¥Ö¥é¥Ã¥¯¥ê¥¹¥È¤ËºÜ¤»¤é¤ì¤ë¤Ş¤¹"
+msgstr "å®›å…ˆã‚’ãƒ–ãƒ©ãƒƒã‚¯ãƒªã‚¹ãƒˆã«è¼‰ã›ã‚‰ã‚Œã‚‹ã¾ã™"
 
 #: sa_opts-dist.php:259
 msgid ""
@@ -730,19 +730,19 @@ msgstr ""
 
 #: sa_settings.inc.php:114
 msgid "General Settings"
-msgstr "°ìÈÌÊİÂ¸"
+msgstr "ä¸€èˆ¬ä¿å­˜"
 
 #: sa_settings.inc.php:173
 msgid "Save Settings"
-msgstr "ÀßÄê¤òÊİÂ¸"
+msgstr "è¨­å®šã‚’ä¿å­˜"
 
 #: sa_whitelist.inc.php:43 sasql_wblist.php:41
 msgid "Error: You must include an e-mail address."
-msgstr "¥¨¥é¡¼¡§É¬¤º¥á¡¼¥ë¥¢¥É¥ì¥¹¤ò´Ş¤ß¤Ş¤¹¡£"
+msgstr "ã‚¨ãƒ©ãƒ¼ï¼šå¿…ãšãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å«ã¿ã¾ã™ã€‚"
 
 #: sa_whitelist.inc.php:49 sasql_wblist.php:48
 msgid "Error: You have entered an invalid e-mail address."
-msgstr "¥¨¥é¡¼¡§ÆşÎÏ¤·¤¿¥á¡¼¥ë¥¢¥É¥ì¥¹¤¬Ìµ¸ú¤Ç¤¹¡£"
+msgstr "ã‚¨ãƒ©ãƒ¼ï¼šå…¥åŠ›ã—ãŸãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ãŒç„¡åŠ¹ã§ã™ã€‚"
 
 #: sa_whitelist.inc.php:53
 msgid "Error: You must select Allow or Deny."
@@ -754,11 +754,11 @@ msgstr ""
 
 #: sa_whitelist.inc.php:83 sa_whitelist.inc.php:125
 msgid "Address"
-msgstr "¥¢¥É¥ì¥¹"
+msgstr "ã‚¢ãƒ‰ãƒ¬ã‚¹"
 
 #: sa_whitelist.inc.php:84 sa_whitelist.inc.php:126
 msgid "Type"
-msgstr "¥¿¥¤¥×"
+msgstr "ã‚¿ã‚¤ãƒ—"
 
 #: sa_whitelist.inc.php:118
 msgid "Personal Allow / Deny Address List"
@@ -766,47 +766,47 @@ msgstr ""
 
 #: sa_whitelist.inc.php:127
 msgid "Action"
-msgstr "Æ°ºî"
+msgstr "å‹•ä½œ"
 
 #: sa_whitelist.inc.php:134
 msgid "Address Removed"
-msgstr "¥¢¥É¥ì¥¹¤òºï½ü¤·¤Ş¤·¤¿"
+msgstr "ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å‰Šé™¤ã—ã¾ã—ãŸ"
 
 #: sa_whitelist.inc.php:160
 #, php-format
 msgid "Unknown option: %s"
-msgstr "ÃÎ¤é¤Ê¤¤¥ª¥×¥·¥ç¥ó¡§%s"
+msgstr "çŸ¥ã‚‰ãªã„ã‚ªãƒ—ã‚·ãƒ§ãƒ³ï¼š%s"
 
 #: sa_whitelist.inc.php:168
 msgid "Delete"
-msgstr "ºï½ü"
+msgstr "å‰Šé™¤"
 
 #: sa_whitelist.inc.php:174
 msgid "Edit"
-msgstr "ÊÔ½¸"
+msgstr "ç·¨é›†"
 
 #. echo $edit;
 #: sa_whitelist.inc.php:188
 msgid "Edit Address"
-msgstr "¥¢¥É¥ì¥¹¤òÊÔ½¸"
+msgstr "ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’ç·¨é›†"
 
 #: sa_whitelist.inc.php:194
 msgid "Add New Address"
-msgstr "¿·¤·¤¤¥¢¥É¥ì¥¹¤òÄÉ²Ã"
+msgstr "æ–°ã—ã„ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è¿½åŠ "
 
 #: sa_whitelist.inc.php:220
 msgid "Address:"
-msgstr "¥¢¥É¥ì¥¹¡§"
+msgstr "ã‚¢ãƒ‰ãƒ¬ã‚¹ï¼š"
 
 #: sa_whitelist.inc.php:224
 msgid "Type:"
-msgstr "¥¿¥¤¥×¡§"
+msgstr "ã‚¿ã‚¤ãƒ—ï¼š"
 
 #. End Form
 #. Help
 #: sa_whitelist.inc.php:245
 msgid "Legend"
-msgstr "ËŞÎã"
+msgstr "å‡¡ä¾‹"
 
 #. To translators: %s's are the function name
 #. and PEAR generated error message.
@@ -816,7 +816,7 @@ msgstr "ËŞÎã"
 #: sasql_db.php:326
 #, php-format
 msgid "Database error in %s: %s"
-msgstr "%s ¤Ë¥Ç¡¼¥¿¥Ù¡¼¥¹¥¨¥é¡¼¡§%s"
+msgstr "%s ã«ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‚¨ãƒ©ãƒ¼ï¼š%s"
 
 #. To translators: %s's are the function name
 #. and PEAR generated error message.
@@ -824,12 +824,12 @@ msgstr "%s ¤Ë¥Ç¡¼¥¿¥Ù¡¼¥¹¥¨¥é¡¼¡§%s"
 #: sasql_db.php:188
 #, php-format
 msgid "Database error: %s"
-msgstr "¥Ç¡¼¥¿¥Ù¡¼¥¹¥¨¥é¡¼¡§%s"
+msgstr "ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‚¨ãƒ©ãƒ¼ï¼š%s"
 
 #: sasql_db.php:227
 #, php-format
 msgid "sasql_AddPref_multiple Database error: %s"
-msgstr "sasql_AddPref_multiple ¥Ç¡¼¥¿¥Ù¡¼¥¹¥¨¥é¡¼¡§%s"
+msgstr "sasql_AddPref_multiple ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‚¨ãƒ©ãƒ¼ï¼š%s"
 
 #. To translators: %s's are the function name
 #. and PEAR generated error message.
@@ -837,11 +837,11 @@ msgstr "sasql_AddPref_multiple ¥Ç¡¼¥¿¥Ù¡¼¥¹¥¨¥é¡¼¡§%s"
 #: sasql_db.php:280
 #, php-format
 msgid "Database error %s: %s"
-msgstr "¥Ç¡¼¥¿¥Ù¡¼¥¹¥¨¥é¡¼ %s¡§%s"
+msgstr "ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‚¨ãƒ©ãƒ¼ %sï¼š%s"
 
 #: sasql_hooks.php:104 sasql_options.php:62
 msgid "Spam Filters"
-msgstr "¥¹¥Ñ¥à¥Õ¥£¥ë¥¿¡¼"
+msgstr "ã‚¹ãƒ‘ãƒ ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼"
 
 #: sasql_hooks.php:106
 msgid "Configure the behavior of your spam filters."
@@ -849,77 +849,77 @@ msgstr ""
 
 #: sasql_hooks.php:199
 msgid "Add Email to Whitelist"
-msgstr "¥Û¥ï¥¤¥È¥ê¥¹¥È¤Ë¥á¡¼¥ë¤òÄÉ²Ã¤·¤Ş¤¹"
+msgstr "ãƒ›ãƒ¯ã‚¤ãƒˆãƒªã‚¹ãƒˆã«ãƒ¡ãƒ¼ãƒ«ã‚’è¿½åŠ ã—ã¾ã™"
 
 #: sasql_hooks.php:200
 msgid "Allow Sender"
-msgstr "Á÷¿®¼Ô¤òµö²Ä¤·¤Ş¤¹"
+msgstr "é€ä¿¡è€…ã‚’è¨±å¯ã—ã¾ã™"
 
 #: sasql_hooks.php:201
 msgid "Remove Email from Whitelist"
-msgstr "¥Û¥ï¥¤¥È¥ê¥¹¥È¤Ë¥á¡¼¥ë¤òºï½ü¤·¤Ş¤¹"
+msgstr "ãƒ›ãƒ¯ã‚¤ãƒˆãƒªã‚¹ãƒˆã«ãƒ¡ãƒ¼ãƒ«ã‚’å‰Šé™¤ã—ã¾ã™"
 
 #: sasql_hooks.php:202 sasql_hooks.php:204 sasql_hooks.php:209
 #: sasql_hooks.php:211
 msgid "remove"
-msgstr "ºï½ü"
+msgstr "å‰Šé™¤"
 
 #: sasql_hooks.php:203
 msgid "Remove Domain from Whitelist"
-msgstr "¥Û¥ï¥¤¥È¥ê¥¹¥È¤Ë¥É¥á¥¤¥ó¤òºï½ü¤·¤Ş¤¹"
+msgstr "ãƒ›ãƒ¯ã‚¤ãƒˆãƒªã‚¹ãƒˆã«ãƒ‰ãƒ¡ã‚¤ãƒ³ã‚’å‰Šé™¤ã—ã¾ã™"
 
 #: sasql_hooks.php:206
 msgid "Add Email to Blacklist"
-msgstr "¥Ö¥é¥Ã¥¯¥ê¥¹¥È¤Ë¥á¡¼¥ë¤òÄÉ²Ã¤·¤Ş¤¹"
+msgstr "ãƒ–ãƒ©ãƒƒã‚¯ãƒªã‚¹ãƒˆã«ãƒ¡ãƒ¼ãƒ«ã‚’è¿½åŠ ã—ã¾ã™"
 
 #: sasql_hooks.php:207
 msgid "Block Sender"
-msgstr "Á÷¿®¼Ô¤ò¥Ö¥í¥Ã¥¯¤·¤Ş¤¹"
+msgstr "é€ä¿¡è€…ã‚’ãƒ–ãƒ­ãƒƒã‚¯ã—ã¾ã™"
 
 #: sasql_hooks.php:208
 msgid "Remove Email from Blacklist"
-msgstr "¥Ö¥é¥Ã¥¯¥ê¥¹¥È¤Ç¥á¡¼¥ë¤òºï½ü¤·¤Ş¤¹"
+msgstr "ãƒ–ãƒ©ãƒƒã‚¯ãƒªã‚¹ãƒˆã§ãƒ¡ãƒ¼ãƒ«ã‚’å‰Šé™¤ã—ã¾ã™"
 
 #: sasql_hooks.php:210
 msgid "Remove Domain from Blacklist"
-msgstr "¥Ö¥é¥Ã¥¯¥ê¥¹¥È¤Ç¥É¥á¥¤¥ó¤òºï½ü¤·¤Ş¤¹"
+msgstr "ãƒ–ãƒ©ãƒƒã‚¯ãƒªã‚¹ãƒˆã§ãƒ‰ãƒ¡ã‚¤ãƒ³ã‚’å‰Šé™¤ã—ã¾ã™"
 
 #: sasql_hooks.php:217
 msgid "Address is already in your whitelist"
-msgstr "¤¹¤Ç¤Ë¥¢¥É¥ì¥¹¤Ï¥Û¥ï¥¤¥È¥ê¥¹¥È¤Ë·ÇºÜ¤µ¤ì¤Ş¤·¤¿"
+msgstr "ã™ã§ã«ã‚¢ãƒ‰ãƒ¬ã‚¹ã¯ãƒ›ãƒ¯ã‚¤ãƒˆãƒªã‚¹ãƒˆã«æ²è¼‰ã•ã‚Œã¾ã—ãŸ"
 
 #: sasql_hooks.php:218 sasql_hooks.php:226
 msgid "Whitelisted"
-msgstr "¥Û¥ï¥¤¥È¥ê¥¹¥È¤ËºÜ¤»¤é¤ì¤ë"
+msgstr "ãƒ›ãƒ¯ã‚¤ãƒˆãƒªã‚¹ãƒˆã«è¼‰ã›ã‚‰ã‚Œã‚‹"
 
 #: sasql_hooks.php:225
 msgid "Domain is already in your whitelist"
-msgstr "¤¹¤Ç¤Ë¥É¥á¥¤¥ó¤Ï¥Û¥ï¥¤¥È¥ê¥¹¥È¤Ë·ÇºÜ¤µ¤ì¤Ş¤·¤¿"
+msgstr "ã™ã§ã«ãƒ‰ãƒ¡ã‚¤ãƒ³ã¯ãƒ›ãƒ¯ã‚¤ãƒˆãƒªã‚¹ãƒˆã«æ²è¼‰ã•ã‚Œã¾ã—ãŸ"
 
 #: sasql_hooks.php:239
 msgid "Address is already in your blacklist"
-msgstr "¤¹¤Ç¤Ë¥¢¥É¥ì¥¹¤Ï¥Ö¥é¥Ã¥¯¥ê¥¹¥È¤Ë·ÇºÜ¤µ¤ì¤Ş¤·¤¿"
+msgstr "ã™ã§ã«ã‚¢ãƒ‰ãƒ¬ã‚¹ã¯ãƒ–ãƒ©ãƒƒã‚¯ãƒªã‚¹ãƒˆã«æ²è¼‰ã•ã‚Œã¾ã—ãŸ"
 
 #: sasql_hooks.php:240 sasql_hooks.php:248
 msgid "Blacklisted"
-msgstr "¥Ö¥é¥Ã¥¯¥ê¥¹¥È¤ËºÜ¤»¤é¤ì¤ë"
+msgstr "ãƒ–ãƒ©ãƒƒã‚¯ãƒªã‚¹ãƒˆã«è¼‰ã›ã‚‰ã‚Œã‚‹"
 
 #: sasql_hooks.php:247
 msgid "Domain is already in your blacklist"
-msgstr "¤¹¤Ç¤Ë¥É¥á¥¤¥ó¤Ï¥Ö¥é¥Ã¥¯¥ê¥¹¥È¤Ë·ÇºÜ¤µ¤ì¤Ş¤·¤¿"
+msgstr "ã™ã§ã«ãƒ‰ãƒ¡ã‚¤ãƒ³ã¯ãƒ–ãƒ©ãƒƒã‚¯ãƒªã‚¹ãƒˆã«æ²è¼‰ã•ã‚Œã¾ã—ãŸ"
 
 #: sasql_hooks.php:291 sasql_hooks.php:349
 msgid "Learn as False Positive"
-msgstr "µ¶ÍÛÀ­¤È¤·¤Æ³Ø½¬¤¹¤ë"
+msgstr "å½é™½æ€§ã¨ã—ã¦å­¦ç¿’ã™ã‚‹"
 
 #: sasql_hooks.php:295 sasql_hooks.php:353
 msgid "Learn as Spam"
-msgstr "¥¹¥Ñ¥à¤È¤·¤Æ³Ø½¬¤¹¤ë"
+msgstr "ã‚¹ãƒ‘ãƒ ã¨ã—ã¦å­¦ç¿’ã™ã‚‹"
 
 #: sasql_options.php:62
 msgid "Options"
-msgstr "¥ª¥×¥·¥ç¥ó"
+msgstr "ã‚ªãƒ—ã‚·ãƒ§ãƒ³"
 
 #: sasql_wblist.php:53
 msgid "Error: Missing option."
-msgstr "¥¨¥é¡¼¡§¥ª¥×¥·¥ç¥ó¤òÊ¶¼º¤·¤Ş¤·¤¿¡£"
+msgstr "ã‚¨ãƒ©ãƒ¼ï¼šã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’ç´›å¤±ã—ã¾ã—ãŸã€‚"

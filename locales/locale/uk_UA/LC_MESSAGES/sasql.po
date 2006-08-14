@@ -14,7 +14,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.10\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Language: Ukrainian\n"
 "X-Poedit-Country: UKRAINE\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -30,37 +31,73 @@ msgstr "Попередження"
 #: dspam.inc.php:91
 #, fuzzy
 msgid "Enabling DSPAM will disable SpamAssassin scanning of your email."
-msgstr "Если включить dspam, то обработка писем с помощью SpamAssassin будет отключена."
+msgstr ""
+"Если включить dspam, то обработка писем с помощью SpamAssassin будет "
+"отключена."
 
 #: dspam.inc.php:94
 msgid "SpamAssassin settings and white/blacklists will not be used by dspam."
-msgstr "dspam не використовує параметри Spamassassin і його чорні і білі списки."
+msgstr ""
+"dspam не використовує параметри Spamassassin і його чорні і білі списки."
 
 #. *
 #. * To translators: %s's will be replaced with <a ..> and </a>
 #.
 #: dspam.inc.php:102
 #, fuzzy, php-format
-msgid "This %sFAQ%s from the DSPAM web site explains the differences between SpamAssassin and DSPAM and why you might want to use dspam instead of SpamAssassin."
-msgstr "На странице <a href='http://www.nuclearelephant.com/projects/dspam/faq.html#1.7' target='_blank'>Вопросов и ответов</a> сайта dspam объясняется разница между SpamAssassin и dspam и в каких случаях предпочтительнее использовать dspam."
+msgid ""
+"This %sFAQ%s from the DSPAM web site explains the differences between "
+"SpamAssassin and DSPAM and why you might want to use dspam instead of "
+"SpamAssassin."
+msgstr ""
+"На странице <a href='http://www.nuclearelephant.com/projects/dspam/faq."
+"html#1.7' target='_blank'>Вопросов и ответов</a> сайта dspam объясняется "
+"разница между SpamAssassin и dspam и в каких случаях предпочтительнее "
+"использовать dspam."
 
 #: dspam.inc.php:113
 #, fuzzy
-msgid "DSPAM is a learning system that filters spam based on what <i>you</i> tell it is spam and what isn't. Messages are analyzed as they are delivered and are assigned a spam probability between 0 and 1. The more messages you receive, both spam and innocent, the better DSPAM learns what <i>you</i> think is spam and what is not."
-msgstr "dspam - это обучаемая система, которой <i>вы сами</i> говорите, какие письма - это спам, а какие - нет. Поступающим сообщениям присваивается вероятностный рейтинг спама (в пределах от 0 до 1). Чем больше будет обработано писем, и обычных, и спама, тем лучше dspam будет знать, что именно <i>вы сами</i> считаете спамом."
+msgid ""
+"DSPAM is a learning system that filters spam based on what <i>you</i> tell "
+"it is spam and what isn't. Messages are analyzed as they are delivered and "
+"are assigned a spam probability between 0 and 1. The more messages you "
+"receive, both spam and innocent, the better DSPAM learns what <i>you</i> "
+"think is spam and what is not."
+msgstr ""
+"dspam - это обучаемая система, которой <i>вы сами</i> говорите, какие письма "
+"- это спам, а какие - нет. Поступающим сообщениям присваивается "
+"вероятностный рейтинг спама (в пределах от 0 до 1). Чем больше будет "
+"обработано писем, и обычных, и спама, тем лучше dspam будет знать, что "
+"именно <i>вы сами</i> считаете спамом."
 
 #: dspam.inc.php:117
 msgid "Reporting Spam"
 msgstr "Повідомлення про спам"
 
 #: dspam.inc.php:120
-msgid "If you receive a spam message in your Inbox, forward the message to <nobr>username-spam@domain</nobr> and it will be learned as spam. For example, if your address is joe@example.com, you would forward the message to <nobr>joe-spam@example.com</nobr>."
-msgstr "Якщо вам прийшов спам, перешліть цей лист на адресу <nobr>username-spam@domain</nobr>, щоб програма внесла його до своєї бази спаму. Наприклад, якщо ваша адреса - це  joe@example.com, повідомлення слід переслати на адресу <nobr>joe-spam@example.com</nobr>."
+msgid ""
+"If you receive a spam message in your Inbox, forward the message to "
+"<nobr>username-spam@domain</nobr> and it will be learned as spam. For "
+"example, if your address is joe@example.com, you would forward the message "
+"to <nobr>joe-spam@example.com</nobr>."
+msgstr ""
+"Якщо вам прийшов спам, перешліть цей лист на адресу <nobr>username-"
+"spam@domain</nobr>, щоб програма внесла його до своєї бази спаму. Наприклад, "
+"якщо ваша адреса - це  joe@example.com, повідомлення слід переслати на "
+"адресу <nobr>joe-spam@example.com</nobr>."
 
 #: dspam.inc.php:126
 #, php-format
-msgid "You can also move your spam messages to the <i>%s</i> folder. This folder is periodically checked for messages which are then learned as spam and deleted. You do not need to move messages from your %s folder here because they have already been learned as spam."
-msgstr "Можна також помістити спам в теку <i>%s</i>. Ця тека періодично перевірятиметься на наявність листів, і все нові листи в ній заноситимуться в базу даних програми як спам і видалятимуться. Листи з теки %s зараз переміщати не потрібно, оскільки вони вже були занесені в базу спаму."
+msgid ""
+"You can also move your spam messages to the <i>%s</i> folder. This folder is "
+"periodically checked for messages which are then learned as spam and "
+"deleted. You do not need to move messages from your %s folder here because "
+"they have already been learned as spam."
+msgstr ""
+"Можна також помістити спам в теку <i>%s</i>. Ця тека періодично "
+"перевірятиметься на наявність листів, і все нові листи в ній заноситимуться "
+"в базу даних програми як спам і видалятимуться. Листи з теки %s зараз "
+"переміщати не потрібно, оскільки вони вже були занесені в базу спаму."
 
 #: dspam.inc.php:131
 msgid "Reporting False Positives"
@@ -68,21 +105,52 @@ msgstr "Повідомлення про помилкові спрацьовув�
 
 #: dspam.inc.php:134
 #, fuzzy
-msgid "From time to time, DSPAM will catch an innocent messages as spam. These messages are called \"false positives\". There is no way to prevent false positives entirely. If you find a false positive, forward the message to <nobr>username-fp@domain</nobr> and it will be learned as an innocent message. For example, if your email address is joe@example.com, you would forward the message to <nobr>joe-fp@example.com</nobr>."
-msgstr "Изредка dspam принимает за спам обычные сообщения. Это называется ложным срабатыванием. Полностью этого избежать практически невозможно. Если это случилось, перешлите письмо на адрес <nobr>username-fp@domain</nobr>, и оно будет занесено в базу как не спам. Например, если ваш адрес - это  joe@example.com, сообщение следует переслать на адрес <nobr>joe-fp@example.com</nobr>."
+msgid ""
+"From time to time, DSPAM will catch an innocent messages as spam. These "
+"messages are called \"false positives\". There is no way to prevent false "
+"positives entirely. If you find a false positive, forward the message to "
+"<nobr>username-fp@domain</nobr> and it will be learned as an innocent "
+"message. For example, if your email address is joe@example.com, you would "
+"forward the message to <nobr>joe-fp@example.com</nobr>."
+msgstr ""
+"Изредка dspam принимает за спам обычные сообщения. Это называется ложным "
+"срабатыванием. Полностью этого избежать практически невозможно. Если это "
+"случилось, перешлите письмо на адрес <nobr>username-fp@domain</nobr>, и оно "
+"будет занесено в базу как не спам. Например, если ваш адрес - это  "
+"joe@example.com, сообщение следует переслать на адрес <nobr>joe-fp@example."
+"com</nobr>."
 
 #: dspam.inc.php:140
 #, php-format
-msgid "You can also move your false positives to the <i>%s</i> folder from the %s folder. This folder is periodically checked for messages which are then learned as false positives and deleted."
-msgstr "Можна також переміщати такі ні в чому не повинні листи з теки %s у теку <i>%s</i>. Ця тека періодично перевірятиметься на наявність листів, і все нові листи в ній заноситимуться в базу даних програми як помилкові спрацьовування і видалятимуться."
+msgid ""
+"You can also move your false positives to the <i>%s</i> folder from the %s "
+"folder. This folder is periodically checked for messages which are then "
+"learned as false positives and deleted."
+msgstr ""
+"Можна також переміщати такі ні в чому не повинні листи з теки %s у теку <i>%"
+"s</i>. Ця тека періодично перевірятиметься на наявність листів, і все нові "
+"листи в ній заноситимуться в базу даних програми як помилкові спрацьовування "
+"і видалятимуться."
 
 #: dspam.inc.php:145
 msgid "Disclaimer"
 msgstr "Увага"
 
 #: dspam.inc.php:148
-msgid "DSPAM is a learning system. It only knows what is spam based on what you teach it is spam and what is not. Due to DSPAM's nature, you are more likely to see errors in spam detection until it is trained on your email. If you do not report a message as spam within ten days, the message will be permanently learned as innocent and you will be more likely to receive more spam."
-msgstr "dspam - це програма з навчаням. Вона дізнається про те, що таке спам, і що таке не спам від вас. Програма влаштована так, що помилок в розпізнаванні спаму буде все менше і менше у міру того, як програма навчається на вашій кореспонденції. Якщо протягом десяти днів ви не повідомили програму про те, що лист, що прийшов, - це спам, воно автоматично вважатиметься звичайним листом, і таким чином шанси того, що спам пройде через фільтри, збільшаться."
+msgid ""
+"DSPAM is a learning system. It only knows what is spam based on what you "
+"teach it is spam and what is not. Due to DSPAM's nature, you are more likely "
+"to see errors in spam detection until it is trained on your email. If you do "
+"not report a message as spam within ten days, the message will be "
+"permanently learned as innocent and you will be more likely to receive more "
+"spam."
+msgstr ""
+"dspam - це програма з навчаням. Вона дізнається про те, що таке спам, і що "
+"таке не спам від вас. Програма влаштована так, що помилок в розпізнаванні "
+"спаму буде все менше і менше у міру того, як програма навчається на вашій "
+"кореспонденції. Якщо протягом десяти днів ви не повідомили програму про те, "
+"що лист, що прийшов, - це спам, воно автоматично вважатиметься звичайним "
+"листом, і таким чином шанси того, що спам пройде через фільтри, збільшаться."
 
 #. *
 #. * To translators: %s's will be replaced by <a ..> and </a>
@@ -104,19 +172,21 @@ msgstr "Використовувати DSPAM"
 msgid "Clean out your %s folder on opt-in?"
 msgstr "Очищати теку %s після обробки?"
 
-#: dspam.inc.php:200
-#: purge.inc.php:37
+#: dspam.inc.php:200 purge.inc.php:37
 msgid "Note"
 msgstr "Примітка"
 
 #. *
 #. * To translators: %s is the name of the spam folder.
 #.
-#: dspam.inc.php:205
-#: purge.inc.php:38
+#: dspam.inc.php:205 purge.inc.php:38
 #, php-format
-msgid "Your %s folder may be unavailable during the purge. It will become available again when the purge is complete."
-msgstr "Під час очищення тека %s буде недоступна. Вона знов стане доступна після закінчення очищення."
+msgid ""
+"Your %s folder may be unavailable during the purge. It will become available "
+"again when the purge is complete."
+msgstr ""
+"Під час очищення тека %s буде недоступна. Вона знов стане доступна після "
+"закінчення очищення."
 
 #: dspam.inc.php:214
 msgid "Update"
@@ -153,7 +223,10 @@ msgid "Spam Score"
 msgstr ""
 
 #: sa_opts-dist.php:20
-msgid "Once all SpamAssassin tests have been run, the resulting score is matched against this value, and if greater than this value, the e-mail message is marked as spam. We recommend a value of '5'."
+msgid ""
+"Once all SpamAssassin tests have been run, the resulting score is matched "
+"against this value, and if greater than this value, the e-mail message is "
+"marked as spam. We recommend a value of '5'."
 msgstr ""
 
 #: sa_opts-dist.php:22
@@ -216,15 +289,17 @@ msgid "*****SPAM*****"
 msgstr ""
 
 #. rewrite_subject
-#: sa_opts-dist.php:48
-#: sa_opts-dist.php:63
+#: sa_opts-dist.php:48 sa_opts-dist.php:63
 msgid "Rewrite Subject Line"
 msgstr ""
 
 #. To translators: %s is the default from subject_tag
 #: sa_opts-dist.php:50
 #, php-format
-msgid "SpamAssassin can re-write the subject line of e-mail that has been determined to be spam by prefixing the original subject with: %s.  To turn on this feature, select this option."
+msgid ""
+"SpamAssassin can re-write the subject line of e-mail that has been "
+"determined to be spam by prefixing the original subject with: %s.  To turn "
+"on this feature, select this option."
 msgstr ""
 
 #. This is here to allow me to include the rewrite_subject title
@@ -233,11 +308,15 @@ msgstr ""
 #.
 #: sa_opts-dist.php:60
 #, php-format
-msgid "The text to prefix to the subject of messages determined to be spam. %s must be turned on."
+msgid ""
+"The text to prefix to the subject of messages determined to be spam. %s must "
+"be turned on."
 msgstr ""
 
 #: sa_opts-dist.php:64
-msgid "SpamAssassin can re-write the subject line of e-mail that has been determined to be spam by prefixing the original subject with this value."
+msgid ""
+"SpamAssassin can re-write the subject line of e-mail that has been "
+"determined to be spam by prefixing the original subject with this value."
 msgstr ""
 
 #. use_terse_report
@@ -246,7 +325,9 @@ msgid "Short Report"
 msgstr ""
 
 #: sa_opts-dist.php:71
-msgid "This option will tell SpamAssassin to use a shorter spam report once the message has been found to be spam."
+msgid ""
+"This option will tell SpamAssassin to use a shorter spam report once the "
+"message has been found to be spam."
 msgstr ""
 
 #. use_dcc
@@ -255,7 +336,9 @@ msgid "Use DCC"
 msgstr ""
 
 #: sa_opts-dist.php:78
-msgid "Checks messages against the DCC (Distrubuted Checksum Clearinghouse) to see if a message matches a known spam message."
+msgid ""
+"Checks messages against the DCC (Distrubuted Checksum Clearinghouse) to see "
+"if a message matches a known spam message."
 msgstr ""
 
 #. use_razor1
@@ -263,9 +346,9 @@ msgstr ""
 msgid "Use SpamNet (version 1)"
 msgstr ""
 
-#: sa_opts-dist.php:85
-#: sa_opts-dist.php:92
-msgid "Checks messages against SpamNet to see if a message is a known spam message."
+#: sa_opts-dist.php:85 sa_opts-dist.php:92
+msgid ""
+"Checks messages against SpamNet to see if a message is a known spam message."
 msgstr ""
 
 #. use_razor2
@@ -557,7 +640,9 @@ msgid "Use Bayesian Filter"
 msgstr ""
 
 #: sa_opts-dist.php:180
-msgid "The Baysian Filter will learn what is spam and what isn't to become a better filter."
+msgid ""
+"The Baysian Filter will learn what is spam and what isn't to become a better "
+"filter."
 msgstr ""
 
 #. auto_learn
@@ -566,7 +651,9 @@ msgid "Auto-learn"
 msgstr ""
 
 #: sa_opts-dist.php:187
-msgid "Automatically feed high and low scoring mails into SpamAssassin's learning systems. (Currently, only Bayesian filtering is supported.)"
+msgid ""
+"Automatically feed high and low scoring mails into SpamAssassin's learning "
+"systems. (Currently, only Bayesian filtering is supported.)"
 msgstr ""
 
 #. report_safe
@@ -575,7 +662,9 @@ msgid "Spam Encapsulation"
 msgstr ""
 
 #: sa_opts-dist.php:194
-msgid "Encapsulate spam messages into a MIME or plain-text attachment, or you can disable it altogether."
+msgid ""
+"Encapsulate spam messages into a MIME or plain-text attachment, or you can "
+"disable it altogether."
 msgstr ""
 
 #: sa_opts-dist.php:196
@@ -598,7 +687,10 @@ msgid "Report in Header"
 msgstr ""
 
 #: sa_opts-dist.php:206
-msgid "SpamAssassin will create a report when it determines an e-mail message to be spam.  This report is normally prepended to the e-mail message.  To have the report written as part of the e-mail header, select this option."
+msgid ""
+"SpamAssassin will create a report when it determines an e-mail message to be "
+"spam.  This report is normally prepended to the e-mail message.  To have the "
+"report written as part of the e-mail header, select this option."
 msgstr ""
 
 #. defang_mime
@@ -607,7 +699,9 @@ msgid "Reformat HTML Spam"
 msgstr ""
 
 #: sa_opts-dist.php:213
-msgid "When an e-mail in HTML format is determined to be spam, SpamAssassin can convert the message to text. To allow this, select this option."
+msgid ""
+"When an e-mail in HTML format is determined to be spam, SpamAssassin can "
+"convert the message to text. To allow this, select this option."
 msgstr ""
 
 #. White/black list info
@@ -616,7 +710,11 @@ msgid "Whitelist From"
 msgstr "Білий список - Від"
 
 #: sa_opts-dist.php:244
-msgid "E-mail from these addresses will not be marked as spam. You may use '*' as a wildcard to allow a large number of addresses at one time. E.g. Whitelist From '*@aol.com' will not mark any message that claims to be from aol.com as spam."
+msgid ""
+"E-mail from these addresses will not be marked as spam. You may use '*' as a "
+"wildcard to allow a large number of addresses at one time. E.g. Whitelist "
+"From '*@aol.com' will not mark any message that claims to be from aol.com as "
+"spam."
 msgstr ""
 
 #: sa_opts-dist.php:246
@@ -624,7 +722,9 @@ msgid "Don't Whitelist From"
 msgstr ""
 
 #: sa_opts-dist.php:247
-msgid "This address will be excluded from a previous whitelist and will be treated as a normal address, i.e. it will not be automatically allowed."
+msgid ""
+"This address will be excluded from a previous whitelist and will be treated "
+"as a normal address, i.e. it will not be automatically allowed."
 msgstr ""
 
 #: sa_opts-dist.php:249
@@ -632,7 +732,11 @@ msgid "Blacklist From"
 msgstr "Чорний список - Від"
 
 #: sa_opts-dist.php:250
-msgid "E-mail from these addresses will always be marked as spam. You may use '*' as a wildcard to block a large number of addresses at one time. E.g. Blacklist From '*@aol.com' will mark all messages that claims to be from aol.com as spam."
+msgid ""
+"E-mail from these addresses will always be marked as spam. You may use '*' "
+"as a wildcard to block a large number of addresses at one time. E.g. "
+"Blacklist From '*@aol.com' will mark all messages that claims to be from aol."
+"com as spam."
 msgstr ""
 
 #: sa_opts-dist.php:252
@@ -640,7 +744,9 @@ msgid "Don't Blacklist From"
 msgstr ""
 
 #: sa_opts-dist.php:253
-msgid "This address will be excluded from a previous blacklist and will be treated as a normal address, i.e. it will not be automatically denied."
+msgid ""
+"This address will be excluded from a previous blacklist and will be treated "
+"as a normal address, i.e. it will not be automatically denied."
 msgstr ""
 
 #: sa_opts-dist.php:255
@@ -648,7 +754,13 @@ msgid "Whitelist To"
 msgstr "Білий список - Кому"
 
 #: sa_opts-dist.php:256
-msgid "E-mail to these addresses will not be marked as spam. This is useful for allowing e-mail lists. For example, you can allow all messages from an e-mail list that sends to 'Tofu-Support-List@beeflovers.com'. You may use '*' as a wildcard to allow a large number of addresses at one time. E.g. Whitelist To '*@aol.com' will not mark any message that claims to be to aol.com as spam."
+msgid ""
+"E-mail to these addresses will not be marked as spam. This is useful for "
+"allowing e-mail lists. For example, you can allow all messages from an e-"
+"mail list that sends to 'Tofu-Support-List@beeflovers.com'. You may use '*' "
+"as a wildcard to allow a large number of addresses at one time. E.g. "
+"Whitelist To '*@aol.com' will not mark any message that claims to be to aol."
+"com as spam."
 msgstr ""
 
 #: sa_opts-dist.php:258
@@ -656,7 +768,10 @@ msgid "Blacklist To"
 msgstr "Чорний Список - До"
 
 #: sa_opts-dist.php:259
-msgid "E-mail to these addresses will be marked as spam. You may use '*' as a wildcard to reject a large number of addresses at one time. E.g. Blacklist To '*@aol.com' will mark all messages that claims to be to aol.com as spam."
+msgid ""
+"E-mail to these addresses will be marked as spam. You may use '*' as a "
+"wildcard to reject a large number of addresses at one time. E.g. Blacklist "
+"To '*@aol.com' will mark all messages that claims to be to aol.com as spam."
 msgstr ""
 
 #: sa_settings.inc.php:114
@@ -667,13 +782,11 @@ msgstr "Загальні параметри"
 msgid "Save Settings"
 msgstr "Зберегти параметри"
 
-#: sa_whitelist.inc.php:43
-#: sasql_wblist.php:41
+#: sa_whitelist.inc.php:43 sasql_wblist.php:41
 msgid "Error: You must include an e-mail address."
 msgstr "Слід вказати електронну адресу."
 
-#: sa_whitelist.inc.php:49
-#: sasql_wblist.php:48
+#: sa_whitelist.inc.php:49 sasql_wblist.php:48
 msgid "Error: You have entered an invalid e-mail address."
 msgstr "Вказана невірна електронна адреса."
 
@@ -685,13 +798,11 @@ msgstr "Слід вибрати Дозволити або Заборонити."
 msgid "Global Allow / Deny Address List"
 msgstr "Список глобально дозволених або заборонених адрес"
 
-#: sa_whitelist.inc.php:83
-#: sa_whitelist.inc.php:125
+#: sa_whitelist.inc.php:83 sa_whitelist.inc.php:125
 msgid "Address"
 msgstr "Адреса"
 
-#: sa_whitelist.inc.php:84
-#: sa_whitelist.inc.php:126
+#: sa_whitelist.inc.php:84 sa_whitelist.inc.php:126
 msgid "Type"
 msgstr "Тип"
 
@@ -746,14 +857,8 @@ msgstr ""
 #. To translators: %s's are the function name
 #. and PEAR generated error message.
 #.
-#: sasql_db.php:14
-#: sasql_db.php:37
-#: sasql_db.php:121
-#: sasql_db.php:165
-#: sasql_db.php:206
-#: sasql_db.php:246
-#: sasql_db.php:263
-#: sasql_db.php:296
+#: sasql_db.php:14 sasql_db.php:37 sasql_db.php:121 sasql_db.php:165
+#: sasql_db.php:206 sasql_db.php:246 sasql_db.php:263 sasql_db.php:296
 #: sasql_db.php:326
 #, php-format
 msgid "Database error in %s: %s"
@@ -780,8 +885,7 @@ msgstr "Помилка бази даних sasql_AddPref_multiple: %s"
 msgid "Database error %s: %s"
 msgstr "Помилка бази даних %s: %s"
 
-#: sasql_hooks.php:104
-#: sasql_options.php:62
+#: sasql_hooks.php:104 sasql_options.php:62
 msgid "Spam Filters"
 msgstr ""
 
@@ -801,9 +905,7 @@ msgstr "Дозволити відправника"
 msgid "Remove Email from Whitelist"
 msgstr ""
 
-#: sasql_hooks.php:202
-#: sasql_hooks.php:204
-#: sasql_hooks.php:209
+#: sasql_hooks.php:202 sasql_hooks.php:204 sasql_hooks.php:209
 #: sasql_hooks.php:211
 msgid "remove"
 msgstr "видалити"
@@ -832,8 +934,7 @@ msgstr ""
 msgid "Address is already in your whitelist"
 msgstr ""
 
-#: sasql_hooks.php:218
-#: sasql_hooks.php:226
+#: sasql_hooks.php:218 sasql_hooks.php:226
 msgid "Whitelisted"
 msgstr "У білому списку"
 
@@ -845,8 +946,7 @@ msgstr ""
 msgid "Address is already in your blacklist"
 msgstr "Адреса знаходиться вже у вашому чорному списку"
 
-#: sasql_hooks.php:240
-#: sasql_hooks.php:248
+#: sasql_hooks.php:240 sasql_hooks.php:248
 msgid "Blacklisted"
 msgstr "У чорному списку"
 
@@ -854,13 +954,11 @@ msgstr "У чорному списку"
 msgid "Domain is already in your blacklist"
 msgstr "Домен знаходиться вже у вашому чорному списку"
 
-#: sasql_hooks.php:291
-#: sasql_hooks.php:349
+#: sasql_hooks.php:291 sasql_hooks.php:349
 msgid "Learn as False Positive"
 msgstr ""
 
-#: sasql_hooks.php:295
-#: sasql_hooks.php:353
+#: sasql_hooks.php:295 sasql_hooks.php:353
 msgid "Learn as Spam"
 msgstr ""
 
@@ -871,4 +969,3 @@ msgstr "Параметри"
 #: sasql_wblist.php:53
 msgid "Error: Missing option."
 msgstr "Параметр не вказаний."
-

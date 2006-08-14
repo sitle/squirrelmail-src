@@ -2,7 +2,7 @@
 /**
  * Language configuration file
  *
- * Copyright (c) 2005-2006 The SquirrelMail Project Team
+ * Copyright (c) 2005 The SquirrelMail Project Team
  *
  * This file is part of SquirrelMail webmail interface. It is distributed
  * together with other translation files and is used to enable 
@@ -26,7 +26,7 @@
  * @package locales
  */
 
-$languages['pt_PT']['NAME'] = 'Portuguese (Portugal)';
-$languages['pt_PT']['CHARSET'] = 'iso-8859-1';
-$languages['pt_PT']['LOCALE']  = array('pt_PT.ISO8859-1','pt_PT.ISO-8859-1','pt_PT');
-$languages['pt']['ALIAS'] = 'pt_PT';
+$languages['pt']['NAME'] = 'Portuguese (Portugal)';
+$languages['pt']['CHARSET'] = 'utf-8';
+$languages['pt']['LOCALE']  = array('pt_PT.UTF8','pt_PT.UTF-8','pt_PT','pt');
+$languages['pt_PT']['ALIAS'] = 'pt';

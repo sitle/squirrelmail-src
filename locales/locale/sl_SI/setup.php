@@ -2,7 +2,7 @@
 /**
  * Language configuration file
  *
- * Copyright (c) 2005-2006 The SquirrelMail Project Team
+ * Copyright (c) 2005 The SquirrelMail Project Team
  *
  * This file is part of SquirrelMail webmail interface. It is distributed
  * together with other translation files and is used to enable 
@@ -26,8 +26,8 @@
  * @package locales
  */
 
-$languages['sl_SI']['NAME']    = 'Slovenian';
-$languages['sl_SI']['ALTNAME'] = 'Sloven&scaron;&#269;ina';
-$languages['sl_SI']['CHARSET'] = 'iso-8859-2';
-$languages['sl_SI']['LOCALE']  = array('sl_SI.ISO8859-2','sl_SI.ISO-8859-2','sl_SI');
-$languages['sl']['ALIAS'] = 'sl_SI';
+$languages['sl']['NAME']    = 'Slovenian';
+$languages['sl']['ALTNAME'] = 'Sloven&scaron;&#269;ina';
+$languages['sl']['CHARSET'] = 'utf-8';
+$languages['sl']['LOCALE']  = array('sl_SI.UTF8','sl_SI.UTF-8','sl_SI','sl');
+$languages['sl_SI']['ALIAS'] = 'sl';
