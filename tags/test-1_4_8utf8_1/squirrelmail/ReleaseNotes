@@ -1,0 +1,93 @@
+/*****************************************************************
+ * Release Notes: SquirrelMail 1.4.8.utf8-1                      *
+ * The "Solidarnost" Release                                     *
+ * 14th August 2006                                              *
+ *****************************************************************/
+
+In this edition of SquirrelMail Release Notes:
+   * All about this Release!
+   * Locales / Translations / Charsets
+   * A note on plugins
+   * About release name
+   * Reporting my favorite SquirrelMail 1.4 bug
+
+
+All about this release
+======================
+
+This version, 1.4.8.utf8-1 is a experimental release, that switches
+all translations to utf-8 and removes some hacks specific only to 
+Japanese translation.
+
+WARNING: Minimal PHP requirements are increased in this SquirrelMail
+version. PHP mbstring extension is required. Interface won't display
+errors, if mbstring extension is missing, but 8bit email headers and
+IMAP folder names will be broken. Please test your configuration with
+included configtest.php utility and make sure that you pass all tests.
+
+Locales / Translations / Charsets
+=================================
+
+This SquirrelMail release loads language definitions from 
+locale/*/setup.php files. Only US English translation is enabled by 
+default. If other translations are not available, language options 
+are not visible in Display Preferences. This release can use standard 
+1.4.8 translation packages or 1.4.8.utf8 translation packages. Use of 
+1.4.8.utf8 translations is strongly recommended.
+
+Due to changes in character set decoding, this package should use
+special extra decoding library version. Standard squirrelmail_decode 
+1.1 scripts might have issues in Japanese translation.
+
+
+A note on plugins
+=================
+
+All plugins that store their translations in own locale directory or
+use non-standard translation method, must convert translation files
+to utf-8. Gettext translations can be converted with gettext msgconv
+utility. Other translations can be converted with recode, iconv or
+some other character set conversion utility.
+
+
+About release name
+==================
+
+This SquirrelMail release is labeled "Solidarnost". 26 years ago
+Polish shipyard workers started strike actions in Gdansk. Workers
+have founded "Solidarnost" trade union. In the 1980s union 
+constituted a broad anti-communist social movement. In 1989 
+"Solidarnost" delegates won elections in Poland and their 
+leader Lech Valesa was elected president.
+
+
+Reporting my favorite SquirrelMail 1.4 bug
+==========================================
+
+We constantly aim to make SquirrelMail even better. So we need you to
+submit any bug you come across! Also, please mention that the bug is
+in this release, and list your IMAP server and webserver details.
+
+   http://www.squirrelmail.org/bugs
+
+Thanks for your cooperation with this. That helps us to make
+sure nothing slips through the cracks. Also, it would help if
+people would check existing tracker items for a bug before reporting
+it again. This would help to eliminate duplicate reports, and
+increase the time we can spend CODING by DECREASING the time we
+spend sorting through bug reports. And remember, check not only OPEN
+bug reports, but also closed ones as a bug that you report MAY have
+been fixed in CVS already.
+
+Any questions about installing or using SquirrelMail can be directed
+to our user support list:
+
+    squirrelmail-users@lists.sourceforge.net
+
+If you want to join us in coding SquirrelMail, or have other
+things to share with the developers, join the development mailinglist:
+
+   squirrelmail-devel@lists.sourceforge.net
+
+                  Happy SquirrelMailing!
+                    - The SquirrelMail Project Team

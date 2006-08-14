@@ -1,0 +1,608 @@
+# Lithuanian translation of
+# SquirrelMail's ldapquery plugin.
+# Copyright (c) 2003-2005 SquirrelMail Project Team
+# Tomas Kuliavas <tokul@users.sourceforge.net>, 2003.
+# $Id$
+msgid ""
+msgstr ""
+"Project-Id-Version: ldapquery\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-03-17 19:32+0200\n"
+"PO-Revision-Date: 2005-06-10 18:21+0300\n"
+"Last-Translator: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
+"Language-Team: Lithuanian <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit"
+
+#, php-format
+msgid "Dublicate ldap attribute definition: %s."
+msgstr ""
+
+#, php-format
+msgid "Dublicate ldap object definition: %s."
+msgstr ""
+
+msgid "Any"
+msgstr "Bet koks"
+
+msgid "Directory"
+msgstr "Katalogas"
+
+msgid "Directory Preferences"
+msgstr "Katalogo Nustatymai"
+
+msgid ""
+"These settings control what type of output you will see when you use the "
+"Directory link to search Directory Services."
+msgstr ""
+
+msgid "No records found"
+msgstr "Nerasta jokių įrašų"
+
+msgid "Save"
+msgstr "Išsaugoti"
+
+msgid "Add to address book"
+msgstr "Įtraukti į adresų knygą"
+
+#. Get the userdn to authenticate with
+msgid "User DN:"
+msgstr "Vartotojo DN:"
+
+#. Get the user password
+msgid "Password:"
+msgstr "Slaptažodis:"
+
+#. Get the objectclass the user wants to search for
+msgid "Search For:"
+msgstr "Ieškoti:"
+
+#. Get the attribute the user wants to search by
+msgid "Where:"
+msgstr "Tarp:"
+
+msgid "Contains"
+msgstr "Turi"
+
+msgid "Is"
+msgstr "Yra"
+
+#. Sort By menu
+msgid "Sort By:"
+msgstr "Rūšiuoti pagal:"
+
+msgid "Search"
+msgstr "Ieškoti"
+
+msgid "Search Results"
+msgstr "Paieškos Rezultatai"
+
+#, php-format
+msgid "Comparetype is %s"
+msgstr ""
+
+#, php-format
+msgid "QUERY is %s"
+msgstr "Užklausa yra %s"
+
+#.
+#. * Used in debug mode
+#. * Example output "Querying: ldap-server-address on port some-port with base ldap-base-dn"
+#. * See http://www.php.net/sprintf if you want to rearrange order of arguments
+#.
+#, php-format
+msgid "Querying: %s on port %d with base %s"
+msgstr ""
+
+#, php-format
+msgid "Could not connect to LDAP server %s"
+msgstr "Nepavyko prisijungti prie LDAP serverio %s"
+
+msgid "Unable to bind to LDAP server"
+msgstr "Nepavyko užsiregistruoti LDAP serveryje"
+
+msgid "Nothing found!"
+msgstr "Nerasta jokių įrašų!"
+
+#, php-format
+msgid "output type is %s"
+msgstr ""
+
+#, php-format
+msgid "output sorted by %s"
+msgstr ""
+
+msgid "Options - Directory Preferences"
+msgstr "Nustatymai - Katalogo Nustatymai"
+
+msgid "Output types can be:"
+msgstr "Galimi išvedimo tipai:"
+
+msgid "One Table"
+msgstr "Viena Lentelė"
+
+msgid ""
+"One big table with one row per record found and each selected attribute as a "
+"separate column."
+msgstr ""
+"Rezultatai rodomi vienoje didelėje lentelėje. Kiekvienam įrašui skiriama po "
+"vieną eilutę ir kiekvienam atributui skiriamas atskiras stulpelis."
+
+msgid "Multiple Tables"
+msgstr "Kelios Lentelės"
+
+msgid ""
+"One table per record found with 2 columns for each table. One column "
+"contains attribute names and the 2nd column shows values for each "
+"attribute.  This format is best if you have many attributes selected or if "
+"the values for some of the attributes you have selected can be very long "
+"with no spaces (like labeledurl)."
+msgstr ""
+"Viena lentelė įrašui su dviem stulpeliais. Pirmame stulpelyje surašyti "
+"atributų vardai, o antrame jų reikšmės. Šis formatas yra priimtinesnis, jei "
+"Jūs pasirinkote didesnį išvedamų atributų skaičių arba kai dalis reikšmių "
+"yra ilgi žodžiai be tarpų."
+
+msgid "Select Output Type:"
+msgstr "Pasirinkite išvedimo tipą:"
+
+msgid "Select Displayed Fields"
+msgstr "Pasirinkite išvedamus laukus"
+
+msgid "Submit"
+msgstr "Nustatyti"
+
+#. openldap system schemas
+msgid "Common Name"
+msgstr "Bendras Vardas"
+
+msgid "Knowledge Information"
+msgstr ""
+
+msgid "Surname"
+msgstr "Pavardė"
+
+msgid "Serial Number"
+msgstr "Serijos Numeris"
+
+msgid "Country Name"
+msgstr "Šalis"
+
+msgid "Locality Name"
+msgstr "Vietovės Pavadinimas"
+
+msgid "State or Province Name"
+msgstr "Valstija ar apygarda"
+
+msgid "Street Address"
+msgstr "Gatvės Adresas"
+
+msgid "Organisation Name"
+msgstr "Organizacijos Pavadinimas"
+
+msgid "Organisational Unit Name"
+msgstr ""
+
+msgid "Title"
+msgstr "Pareigos"
+
+msgid "Description"
+msgstr "Aprašymas"
+
+msgid "Search Guide"
+msgstr "Paieškos vadovas"
+
+msgid "Business Category"
+msgstr "Verslo Kategorija"
+
+msgid "Postal Address"
+msgstr "Pašto Adresas"
+
+msgid "Postal Code"
+msgstr "Pašto Kodas"
+
+msgid "Post Office Box"
+msgstr "Pašto Dėžutė"
+
+msgid "Physical Delivery Office Name"
+msgstr ""
+
+msgid "Telephone Number"
+msgstr "Telefono Numeris"
+
+msgid "Telex Number"
+msgstr "Teleksas"
+
+msgid "Teletex Terminal Identifier"
+msgstr "Telekso Terminalo ID"
+
+msgid "Facsimile (Fax) Telephone Number"
+msgstr "Fakso Numeris"
+
+msgid "X.121 Address"
+msgstr "X.121 Adresas"
+
+msgid "International ISDN Number"
+msgstr "Tarptautinis ISDN Numeris"
+
+msgid "Registered Postal Address"
+msgstr "Registruotas Pašto Adresas"
+
+msgid "Destination Indicator"
+msgstr ""
+
+msgid "Preferred Delivery Method"
+msgstr "Pageidaujamas Pristatymo Būdas"
+
+msgid "Presentation Address"
+msgstr "Viešasis Adresas"
+
+msgid "Supported Application Context"
+msgstr ""
+
+msgid "Member of a group"
+msgstr "Grupės narys"
+
+msgid "Owner"
+msgstr "Savininkas"
+
+msgid "Occupant of role"
+msgstr "Užsiėmimas"
+
+msgid "See also"
+msgstr "Taip pat žr,"
+
+msgid "User Certificate"
+msgstr "Vartotojo sertifikatas"
+
+msgid "CA Certificate"
+msgstr "CA Sertifikatas"
+
+msgid "Authority Revocation List"
+msgstr ""
+
+msgid "Certificate Revocation List"
+msgstr ""
+
+msgid "Cross Certificate Pair"
+msgstr ""
+
+msgid "First Name"
+msgstr "Vardas"
+
+msgid "Initials"
+msgstr "Inicialai"
+
+msgid "Generation Qualifier"
+msgstr ""
+
+msgid "X.500 unique identifier"
+msgstr ""
+
+msgid "DN qualifier"
+msgstr ""
+
+msgid "Enhanced Search Guide"
+msgstr ""
+
+msgid "Protocol Information"
+msgstr ""
+
+msgid "unique member of a group"
+msgstr ""
+
+msgid "House Identifier"
+msgstr ""
+
+msgid "Supported Algorithms"
+msgstr "Palaikomi Algoritmai"
+
+msgid "Delta Revocation List"
+msgstr ""
+
+#. Attribute specifies a directory management domain (DMD),
+#. the administrative authority which operates the directory server.
+msgid "Name of DMD"
+msgstr ""
+
+msgid "Labelled URI"
+msgstr "Internetinis adresas"
+
+msgid "User ID"
+msgstr "Vartotojo ID"
+
+msgid "Mail"
+msgstr "Paštas"
+
+msgid "Domain Component"
+msgstr ""
+
+msgid "Associated Domain"
+msgstr ""
+
+msgid "Email Address"
+msgstr "E-pašto Adresas"
+
+#. * Object Classes
+msgid "Country"
+msgstr "Šalis"
+
+msgid "Locality"
+msgstr "Vietovė"
+
+msgid "Organisation"
+msgstr "Organizacija"
+
+msgid "Organisational Unit"
+msgstr "Organizacijos Padalinys"
+
+msgid "Person"
+msgstr "Asmuo"
+
+msgid "Organisational Person"
+msgstr ""
+
+msgid "Organisational Role"
+msgstr ""
+
+msgid "Group of Names"
+msgstr ""
+
+msgid "Residential Person"
+msgstr ""
+
+msgid "Application Process"
+msgstr ""
+
+msgid "Application Entity"
+msgstr ""
+
+#. RFC2256: a directory system agent (a server)
+msgid "DSA"
+msgstr "DSA"
+
+msgid "Device"
+msgstr "Įrenginys"
+
+msgid "Strong Authentication User"
+msgstr ""
+
+msgid "Certificate Authority"
+msgstr ""
+
+msgid "Group of Unique Names"
+msgstr ""
+
+msgid "User Security Information"
+msgstr ""
+
+msgid "Certificate Authority V2"
+msgstr ""
+
+msgid "CRL Distribution Point"
+msgstr ""
+
+#. a directory management domain object
+msgid "dmd"
+msgstr "dmd"
+
+msgid "PKI User"
+msgstr "PKI Vartotojas"
+
+msgid "PKI CA"
+msgstr "PKI CA"
+
+msgid "Delta CRL"
+msgstr ""
+
+msgid "Labeled URI Object"
+msgstr "Internetinio Adreso Objektas"
+
+msgid "Simple Security Object"
+msgstr "Paprastas Saugumo Objektas"
+
+msgid "DC Object"
+msgstr "DC Objektas"
+
+msgid "UID Object"
+msgstr "UID Objektas"
+
+msgid "Encoded Text or Address"
+msgstr "Koduotas tekstas ar adresas"
+
+msgid "Info"
+msgstr "Info"
+
+#. Favorite drink (noun)
+msgid "Drink"
+msgstr "Gėrimas"
+
+msgid "Room Number"
+msgstr "Kambario Numeris"
+
+msgid "Photo"
+msgstr "Foto"
+
+msgid "Category of user"
+msgstr "Vartotojo kategorija"
+
+msgid "Host"
+msgstr "Mazgas"
+
+msgid "Manager"
+msgstr "Valdytojas"
+
+msgid "Document identifier"
+msgstr "Dokumento Identifikatorius"
+
+msgid "Document Title"
+msgstr "Dokumento Antraštė"
+
+msgid "Document version"
+msgstr "Dokumento versija"
+
+msgid "Document author"
+msgstr "Dokumento autorius"
+
+msgid "Location of document"
+msgstr "Dokumento vieta"
+
+msgid "Home Phone"
+msgstr "Namų Telefonas"
+
+msgid "Secretary"
+msgstr "Sekretorius"
+
+msgid "Other Mailbox"
+msgstr "Kita pašto dėžė"
+
+#. DNS A record entries
+msgid "A Record"
+msgstr "A Įrašas"
+
+#. DNS MD record entries
+msgid "MD Record"
+msgstr "MD Įrašas"
+
+#. DNS MX record entries
+msgid "MX Record"
+msgstr "MX Įrašas"
+
+#. DNS NS record entries
+msgid "NS Record"
+msgstr "NS Įrašas"
+
+#. DNS SOA record entries
+msgid "SOA Record"
+msgstr "SOA Įrašas"
+
+#. DNS CNAME record entries
+msgid "CNAME Record"
+msgstr "CNAME Įrašas"
+
+msgid "Associated Name"
+msgstr ""
+
+msgid "Home Postal Address"
+msgstr "Namų Pašto Adresas"
+
+msgid "Personal Title"
+msgstr ""
+
+msgid "Mobile Phone Number"
+msgstr "Mobilaus telefono numeris"
+
+msgid "Pager"
+msgstr "Pranešimų gaviklis"
+
+msgid "Unique Identifier"
+msgstr "Unikalus identifikatorius"
+
+msgid "Organizational status"
+msgstr ""
+
+#. Mail address in rfc733 format
+msgid "Janet mailbox"
+msgstr "RFC733 adresas"
+
+msgid "Mail Preference Option"
+msgstr ""
+
+msgid "Name of building"
+msgstr "Pastato pavadinimas"
+
+msgid "DSA Quality"
+msgstr ""
+
+msgid "Single Level Quality"
+msgstr ""
+
+msgid "Subtree Minimum Quality"
+msgstr ""
+
+msgid "Subtree Maximum Quality"
+msgstr ""
+
+msgid "Personal Signature"
+msgstr "Asmens parašas"
+
+#. Redirection to other entry in directory
+msgid "DIT Redirect"
+msgstr "DIT Nukreipimas"
+
+msgid "Audio"
+msgstr "Audio"
+
+msgid "Publisher of document"
+msgstr "Dokumento išleidėjas"
+
+msgid "Pilot Person"
+msgstr ""
+
+msgid "Account"
+msgstr "Sąskaita"
+
+msgid "Document"
+msgstr "Dokumentas"
+
+msgid "Room"
+msgstr "Kambarys"
+
+msgid "Document Series"
+msgstr "Dokumento serija"
+
+#. can represent dns and nrs domain objects
+msgid "Domain"
+msgstr "Domenas"
+
+msgid "RFC822 Local Part"
+msgstr ""
+
+msgid "DNS Domain"
+msgstr "DNS Domenas"
+
+msgid "Object related to domain"
+msgstr "Objektas susijęs su domenu"
+
+msgid "Friendly Country"
+msgstr "Draugiška šalis"
+
+msgid "Pilot Organisation"
+msgstr ""
+
+msgid "Pilot DSA"
+msgstr ""
+
+msgid "Quality Labelled Data"
+msgstr ""
+
+msgid "Car License"
+msgstr "Vairuotojo teisės"
+
+msgid "Department Number"
+msgstr "Skyriaus Numeris"
+
+msgid "Displayed Name"
+msgstr "Išvedamas vardas"
+
+msgid "Employee Number"
+msgstr "Darbuotojo Numeris"
+
+msgid "Employee Type"
+msgstr "Darbuotojo tipas"
+
+msgid "JPEG Photo"
+msgstr "JPEG Foto"
+
+msgid "Preferred Language"
+msgstr "Pasirinkta Kalba"
+
+msgid "User SMIME Certificate"
+msgstr "Vartotojo SMIME Sertifikatas"
+
+msgid "User PKCS12"
+msgstr "Vartotojo PKCS12"
+
+msgid "Internet Organizational Person"
+msgstr ""

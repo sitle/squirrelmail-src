@@ -1,0 +1,171 @@
+#!/bin/sh
+source version
+install -d ../packages
+# Make source
+tar -cf ../packages/squirrelmail-locales-${LOCALE_VERSION}-src.tar *
+gzip ../packages/squirrelmail-locales-${LOCALE_VERSION}-src.tar -c \
+ > ../packages/squirrelmail-locales-${LOCALE_VERSION}-src.tar.gz
+bzip2 ../packages/squirrelmail-locales-${LOCALE_VERSION}-src.tar
+zip -q -r ../packages/squirrelmail-locales-${LOCALE_VERSION}-src.zip *
+
+# move locales to short names
+mv locale/bg_BG locale/bg
+mv locale/bn_IN locale/bn
+mv locale/ca_ES locale/ca
+mv locale/cy_GB locale/cy
+mv locale/cs_CZ locale/cs
+mv locale/da_DK locale/da
+mv locale/de_DE locale/de
+mv locale/el_GR locale/el
+mv locale/es_ES locale/es
+mv locale/et_EE locale/et
+mv locale/eu_ES locale/eu
+mv locale/fa_IR locale/fa
+mv locale/fi_FI locale/fi
+mv locale/fo_FO locale/fo
+mv locale/fr_FR locale/fr
+mv locale/he_IL locale/he
+mv locale/hr_HR locale/hr
+mv locale/hu_HU locale/hu
+mv locale/id_ID locale/id
+mv locale/is_IS locale/is
+mv locale/it_IT locale/it
+mv locale/ja_JP locale/ja
+mv locale/ko_KR locale/ko
+mv locale/lt_LT locale/lt
+mv locale/ms_MY locale/ms
+mv locale/nb_NO locale/nb
+mv locale/nl_NL locale/nl
+mv locale/nn_NO locale/nn
+mv locale/pl_PL locale/pl
+mv locale/pt_PT locale/pt
+mv locale/ro_RO locale/ro
+mv locale/ru_RU locale/ru
+mv locale/sk_SK locale/sk
+mv locale/sl_SI locale/sl
+mv locale/sr_YU locale/sr
+mv locale/sv_SE locale/sv
+mv locale/tr_TR locale/tr
+mv locale/uk_UA locale/uk
+
+mv help/bg_BG help/bg
+mv help/ca_ES help/ca
+mv help/cy_GB help/cy
+mv help/cs_CZ help/cs
+mv help/da_DK help/da
+mv help/de_DE help/de
+mv help/en_US help/en
+mv help/es_ES help/es
+mv help/fi_FI help/fi
+mv help/fr_FR help/fr
+mv help/id_ID help/id
+mv help/it_IT help/it
+mv help/ja_JP help/ja
+mv help/lt_LT help/lt
+mv help/nl_NL help/nl
+mv help/pl_PL help/pl
+mv help/pt_PT help/pt
+mv help/ru_RU help/ru
+mv help/sk_SK help/sk
+mv help/sl_SI help/sl
+mv help/sr_YU help/sr
+mv help/sv_SE help/sv
+mv help/uk_UA help/uk
+
+mv images/sec_remove_bn_IN.png images/sec_remove_bn.png
+mv images/sec_remove_cs_CZ.png images/sec_remove_cs.png
+mv images/sec_remove_da_DK.png images/sec_remove_da.png
+mv images/sec_remove_de_DE.png images/sec_remove_de.png
+mv images/sec_remove_el_GR.png images/sec_remove_el.png
+mv images/sec_remove_es_ES.png images/sec_remove_es.png
+mv images/sec_remove_et_EE.png images/sec_remove_et.png
+mv images/sec_remove_fi_FI.png images/sec_remove_fi.png
+mv images/sec_remove_fo_FO.png images/sec_remove_fo.png
+mv images/sec_remove_fr_FR.png images/sec_remove_fr.png
+mv images/sec_remove_he_IL.png images/sec_remove_he.png
+mv images/sec_remove_hr_HR.png images/sec_remove_hr.png
+mv images/sec_remove_hu_HU.png images/sec_remove_hu.png
+mv images/sec_remove_id_ID.png images/sec_remove_id.png
+mv images/sec_remove_it_IT.png images/sec_remove_it.png
+mv images/sec_remove_ja_JP.png images/sec_remove_ja.png
+mv images/sec_remove_ko_KR.png images/sec_remove_ko.png
+mv images/sec_remove_lt_LT.png images/sec_remove_lt.png
+mv images/sec_remove_nb_NO.png images/sec_remove_nb.png
+mv images/sec_remove_nl_NL.png images/sec_remove_nl.png
+mv images/sec_remove_nn_NO.png images/sec_remove_nn.png
+mv images/sec_remove_pt_PT.png images/sec_remove_pt.png
+mv images/sec_remove_ru_RU.png images/sec_remove_ru.png
+mv images/sec_remove_sk_SK.png images/sec_remove_sk.png
+mv images/sec_remove_sl_SI.png images/sec_remove_sl.png
+mv images/sec_remove_sr_YU.png images/sec_remove_sr.png
+mv images/sec_remove_sv_SE.png images/sec_remove_sv.png
+mv images/sec_remove_tr_TR.png images/sec_remove_tr.png
+mv images/sec_remove_uk_UA.png images/sec_remove_uk.png
+
+
+# Compile locales
+for trans in `ls locale/`; do
+    for string in `ls po/*.pot | sed 's/^po\///' | sed 's/.pot$//'` ; do
+    if [ -f locale/${trans}/LC_MESSAGES/${string}.po ]; then
+	msgfmt locale/${trans}/LC_MESSAGES/${string}.po \
+	    -c -o locale/${trans}/LC_MESSAGES/${string}.mo
+    fi
+    done
+done
+# Build separate locale package
+for trans in `ls locale/`; do
+    if [ -f locale/${trans}/LC_MESSAGES/squirrelmail.po ]; then
+	tar -cf ../packages/squirrelmail-${trans}-${LOCALE_VERSION}.tar \
+	    locale/${trans}/LC_MESSAGES/*.po \
+	    locale/${trans}/LC_MESSAGES/*.mo \
+	    locale/${trans}/setup.php \
+	    install version ReleaseNotes.locales COPYING.locales ChangeLog.locales
+	zip -q ../packages/squirrelmail-${trans}-${LOCALE_VERSION}.zip \
+	    locale/${trans}/LC_MESSAGES/*.po \
+	    locale/${trans}/LC_MESSAGES/*.mo \
+	    locale/${trans}/setup.php \
+	    install version ReleaseNotes.locales COPYING.locales ChangeLog.locales
+	# sec_remove images
+	if [ -f images/sec_remove_${trans}.png ]; then
+	    tar -rf ../packages/squirrelmail-${trans}-${LOCALE_VERSION}.tar \
+		images/sec_remove_${trans}*.png
+	    zip -q -g ../packages/squirrelmail-${trans}-${LOCALE_VERSION}.zip \
+		images/sec_remove_${trans}*.png
+	fi
+	# Help
+	if [ -d help/${trans} ]; then
+	    tar -rf ../packages/squirrelmail-${trans}-${LOCALE_VERSION}.tar \
+		help/${trans}/*.hlp
+	    zip -q -g ../packages/squirrelmail-${trans}-${LOCALE_VERSION}.zip \
+		help/${trans}/*.hlp
+	fi
+    fi
+done
+
+# Build full locale package
+tar -cf ../packages/squirrelmail-locales-${LOCALE_VERSION}.tar \
+    locale/*/LC_MESSAGES/*.po \
+    locale/*/LC_MESSAGES/*.mo \
+    locale/*/setup.php \
+    images/sec_remove_*.png \
+    help/*/*.hlp install version \
+    ReleaseNotes.locales COPYING.locales ChangeLog.locales
+zip -q ../packages/squirrelmail-locales-${LOCALE_VERSION}.zip \
+    locale/*/LC_MESSAGES/*.po \
+    locale/*/LC_MESSAGES/*.mo \
+    locale/*/setup.php \
+    images/sec_remove_*.png \
+    help/*/*.hlp install version \
+    ReleaseNotes.locales COPYING.locales ChangeLog.locales
+
+# Pack them
+for package in `ls ../packages/*-${LOCALE_VERSION}.tar`; do
+    gzip ${package} -c > ${package}.gz
+    bzip2 ${package}
+done
+
+# md5sum and sha1sum them
+cd ../packages/
+md5sum *.tar.gz *.tar.bz2 *.zip > squirrelmail-locales-${LOCALE_VERSION}.md5
+sha1sum *.tar.gz *.tar.bz2 *.zip > squirrelmail-locales-${LOCALE_VERSION}.sha1
+
