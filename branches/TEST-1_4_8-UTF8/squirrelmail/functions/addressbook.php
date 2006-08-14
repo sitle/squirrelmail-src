@@ -675,7 +675,7 @@ class addressbook_backend {
      */
     function fullname($firstname,$lastname) {
         global $squirrelmail_language;
-        if ($squirrelmail_language=='ja_JP') {
+        if ($squirrelmail_language=='ja_JP' || $squirrelmail_language=='ja') {
             return trim($lastname . ' ' . $firstname);
         } else {
             return trim($firstname . ' ' . $lastname);

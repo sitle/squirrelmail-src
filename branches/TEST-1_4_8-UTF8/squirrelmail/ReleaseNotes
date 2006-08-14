@@ -1,90 +1,64 @@
 /*****************************************************************
- * Release Notes: SquirrelMail 1.4.8                             *
- * The "F is for Furry Friends" Release                          *
- * 11th August 2006                                              *
+ * Release Notes: SquirrelMail 1.4.8.utf8-1                      *
+ * The "Solidarnost" Release                                     *
+ * 14th August 2006                                              *
  *****************************************************************/
 
 In this edition of SquirrelMail Release Notes:
    * All about this Release!
    * Locales / Translations / Charsets
-   * Security issues
-   * Major updates
    * A note on plugins
+   * About release name
    * Reporting my favorite SquirrelMail 1.4 bug
 
 
 All about this release
 ======================
 
-This version, 1.4.8 is a maintenance release, addressing
-the following problems since 1.4.7:
-- A security fix (see below)
-- A collection of bugfixes
-(see ChangeLog for a full list)
+This version, 1.4.8.utf8-1 is a experimental release, that switches
+all translations to utf-8 and removes some hacks specific only to 
+Japanese translation.
 
+WARNING: Minimal PHP requirements are increased in this SquirrelMail
+version. PHP mbstring extension is required. Interface won't display
+errors, if mbstring extension is missing, but 8bit email headers and
+IMAP folder names will be broken. Please test your configuration with
+included configtest.php utility and make sure that you pass all tests.
 
 Locales / Translations / Charsets
 =================================
 
-Since the release of 1.4.4, the the translations for SquirrelMail are
-no longer part of the main package but have to be downloaded separately;
-either in one large file or an individual language. You can find these
-packages through our homepage. They also contain instructions on how
-to install.
+This SquirrelMail release loads language definitions from 
+locale/*/setup.php files. Only US English translation is enabled by 
+default. If other translations are not available, language options 
+are not visible in Display Preferences. This release can use standard 
+1.4.8 translation packages or 1.4.8.utf8 translation packages. Use of 
+1.4.8.utf8 translations is strongly recommended.
 
-That release also introduced a backport of the new Character set
-decoding functions from the development branch, vastly increasing the
-number of supported character sets and decoding performance.
-
-
-Security issues
-===============
-
-This release addresses a security issue found since the release of 1.4.7:
-
-compose.php allowed a logged in attacker to overwrite random variables
-in that script. This could possibly be used to modify or read the preferences
-of other users or write arbitrary files. It must be noted that the requirement
-of being logged in mitigates the attack possibilities, unless your users have
-weak passwords. This was found by James Bercegay of Gulftech Security, thanks!
-This is CVE-2006-4019.
-
-Also, in 1.4.7 we put code to address CVE-2006-3174. On further investigation,
-we've further tightened that code in 1.4.7 to close off some rare corner cases.
-We do not believe this to be anything more than a minor fix.
-
-
-Major updates
-==============
-
-The 1.4.x series (as a result of 1.3 developent series) brings:
-
-* A complete rewrite of the way we send mail (Deliver-class),
-  and of the way we parse mail (MIME-bodystructure parsing).
-  This makes SquirrelMail more reliable and more efficient
-  at the same time!
-* Support for IMAP UID which makes SquirrelMail more reliable.
-* Optimizations to code and the number of IMAP calls; SquirrelMail
-  is now a very scalable webmail solution.
-* Support for a wider range of authentication mechanisms.
-* Lots of bugfixes, some new features and a couple of UI-tweaks.
+Due to changes in character set decoding, this package should use
+special extra decoding library version. Standard squirrelmail_decode 
+1.1 scripts might have issues in Japanese translation.
 
 
 A note on plugins
 =================
 
-There have been major plugin architecture improvements since 1.2.x. Lots
-of plugins have not yet been adapted to this. Plugins which are
-distributed with this release (eg. in the same .tar.gz file) should work.
-Plugin authors will need some time to adapt their plugins, so quite a few
-plugins that did work with 1.2.x might not work with 1.4.x.
+All plugins that store their translations in own locale directory or
+use non-standard translation method, must convert translation files
+to utf-8. Gettext translations can be converted with gettext msgconv
+utility. Other translations can be converted with recode, iconv or
+some other character set conversion utility.
 
-So if you have ANY problem at all, first try turning off all plugins.
-If one plugin seems to be the culprit, contact the author to see if
-a 1.4.x version is underway.
 
-Plugins that worked with previous 1.4.x versions should continue to work
-without changes with this version.
+About release name
+==================
+
+This SquirrelMail release is labeled "Solidarnost". 26 years ago
+Polish shipyard workers started strike actions in Gdansk. Workers
+have founded "Solidarnost" trade union. In the 1980s union 
+constituted a broad anti-communist social movement. In 1989 
+"Solidarnost" delegates won elections in Poland and their 
+leader Lech Valesa was elected president.
 
 
 Reporting my favorite SquirrelMail 1.4 bug
@@ -92,7 +66,7 @@ Reporting my favorite SquirrelMail 1.4 bug
 
 We constantly aim to make SquirrelMail even better. So we need you to
 submit any bug you come across! Also, please mention that the bug is
-in this 1.4.8 release, and list your IMAP server and webserver details.
+in this release, and list your IMAP server and webserver details.
 
    http://www.squirrelmail.org/bugs
 

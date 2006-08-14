@@ -580,7 +580,7 @@ function set_up_language($sm_language, $do_search = false, $default = false) {
             putenv( "LANG=$longlocale" );
             putenv( "LANGUAGE=$longlocale" );
             putenv( "LC_NUMERIC=C" );
-            if ($sm_notAlias=='tr_TR') putenv( "LC_CTYPE=C" );
+            if ($sm_notAlias=='tr_TR' || $sm_notAlias=='tr') putenv( "LC_CTYPE=C" );
         }
         // Workaround for plugins that use numbers with floating point
         // It might be removed if plugins use correct decimal delimiters
@@ -588,7 +588,7 @@ function set_up_language($sm_language, $do_search = false, $default = false) {
         setlocale(LC_NUMERIC, 'C');
         // Workaround for specific Turkish strtolower/strtoupper rules.
         // Many functions expect English conversion rules.
-        if ($sm_notAlias=='tr_TR') setlocale(LC_CTYPE,'C');
+        if ($sm_notAlias=='tr_TR' || $sm_notAlias=='tr') setlocale(LC_CTYPE,'C');
 
         $squirrelmail_language = $sm_notAlias;
         if ($squirrelmail_language == 'en_US') {
