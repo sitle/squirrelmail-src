@@ -44,11 +44,7 @@
  * @return string $string Decoded string
  */
 function charset_decode_euc_jp($string,$save_html=false) {
-    global $aggressive_decoding, $squirrelmail_language;
-
-    // ja_JP uses own functions
-    if ($squirrelmail_language=='ja_JP')
-        return $string;
+    global $aggressive_decoding;
 
     // don't do decoding when there are no 8bit symbols
     if (! sq_is8bit($string,'euc-jp'))

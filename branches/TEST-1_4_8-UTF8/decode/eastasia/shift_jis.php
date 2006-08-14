@@ -19,13 +19,6 @@
  * @return string $string decoded string
  */
 function charset_decode_shift_jis ($string,$save_html=false) {
-    global $squirrelmail_language;
-    // global $aggressive_decoding;
-
-    // ja_JP uses own functions
-    if ($squirrelmail_language=='ja_JP')
-        return $string;
-
     // don't do decoding when there are no 8bit symbols
     if (! sq_is8bit($string,'shift_jis'))
         return $string;
