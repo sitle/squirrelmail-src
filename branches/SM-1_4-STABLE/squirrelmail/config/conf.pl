@@ -1828,17 +1828,7 @@ sub command214 {
 
 # Automatically delete folders 
 sub command215 {
-    if ( $imap_server_type == "courier" ) {
-        print "Courier(or Courier-IMAP) IMAP servers do not support ";
-        print "subfolders of Trash. \n";
-        print "Deleting folders will bypass the trash folder and ";
-        print "be immediately deleted.\n\n";
-        print "If this is not the correct value for your server,\n";
-        print "please use option D on the Main Menu to configure your server correctly.\n\n";
-        print "Press any key to continue...\n";
-        $new_delete = <STDIN>;
-        $delete_folder = "true";
-    } elsif ( $imap_server_type == "uw" ) {
+    if ( $imap_server_type == "uw" ) {
         print "UW IMAP servers will not allow folders containing";
         print "mail to also contain folders.\n";
         print "Deleting folders will bypass the trash folder and";

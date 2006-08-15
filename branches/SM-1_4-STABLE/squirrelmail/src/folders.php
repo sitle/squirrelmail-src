@@ -109,7 +109,6 @@ $show_selected = array();
 $skip_folders = array();
 $server_type = strtolower($imap_server_type);
 if ( $server_type == 'courier' ) {
-  array_push($skip_folders, 'inbox.trash');
   if ( $default_folder_prefix == 'INBOX.' ) {
     array_push($skip_folders, 'INBOX');
   }
@@ -150,7 +149,7 @@ echo html_tag( 'tr',
 /** count special folders **/
 $count_special_folders = 0;
 $num_max = 1;
-if (strtolower($imap_server_type) == "courier" || $move_to_trash) {
+if ($move_to_trash) {
     $num_max++;
 }
 if ($move_to_sent) {
@@ -166,12 +165,6 @@ for ($p = 0, $cnt = count($boxes); $p < $cnt && $count_special_folders < $num_ma
         case (strtoupper($boxes[$p]['unformatted']) == 'INBOX'):
             ++$count_special_folders;
             $skip_folders[] = $boxes[$p]['unformatted'];
-            break;
-        // FIX ME inbox.trash should be set in conf.pl
-        case 'inbox.trash':
-            if (strtolower($imap_server_type) == 'courier') {
-                ++$count_special_folders;
-            }
             break;
         case $trash_folder:
             ++$count_special_folders;
