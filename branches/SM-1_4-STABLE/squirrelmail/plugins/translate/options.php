@@ -138,7 +138,7 @@ ShowTrad( 'PROMT',
           'http://www.online-translator.com/' );
 ShowTrad( 'Google Translate',
           _("No known limits, powered by Systran").
-          '<br />'.sprintf(_("Number of supported language pairs: %s"),'12').' ' ,
+          '<br />'.sprintf(_("Number of supported language pairs: %s"),'20').' ' ,
           'http://www.google.com/translate' );
 ?>
 </ul>
