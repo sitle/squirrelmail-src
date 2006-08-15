@@ -199,8 +199,15 @@ function translate_lang_opt($from, $to, $value, $text) {
     return( $ret );
 }
 
-/** starts translation engine form */
-function translate_new_form($action) {
+/**
+ * Starts translation box
+ *
+ * @param string $action url that has to recieve message for translation
+ * @param string $charset (since sm 1.5.1 and 1.4.9) character set, that 
+ * should be used to submit 8bit information.
+ * @access private
+ */
+function translate_new_form($action,$charset=null) {
     global $translate_dir, $translate_new_window, $translate_location;
     global $color, $translate_same_window;
 
@@ -217,6 +224,9 @@ function translate_new_form($action) {
     if (!$translate_same_window) {
         echo ' target="_blank"';
     }
+
+    if (! is_null($charset))
+        echo ' accept-charset="'.htmlspecialchars($charset).'"';
 
     echo ">\n";
 
@@ -681,11 +691,8 @@ function translate_form_promt($message) {
  * @access private
  */
 function translate_form_google($message) {
-    translate_new_form('http://www.google.com/translate_t');
-    echo '<input type="hidden" name="ie" value="Unknown" />' .
-         '<input type="hidden" name="oe" value="ASCII" />' .
-         '<input type="hidden" name="hl" value="en" />' .
-         '<input type="hidden" name="text" value="' . $message . '" />';
+    translate_new_form('http://www.google.com/translate_t','utf-8');
+    echo '<input type="hidden" name="text" value="' . $message . '" />';
     echo '<select name="langpair">'.
          translate_lang_opt('en_US', 'de_DE', 'en|de',
                             sprintf( _("%s to %s"),_("English"),_("German"))) .
@@ -697,6 +704,14 @@ function translate_form_google($message) {
                             sprintf( _("%s to %s"),_("English"),_("Italian"))) .
          translate_lang_opt('en_US', 'pt*',   'en|pt',
                             sprintf( _("%s to %s"),_("English"),_("Portuguese"))) .
+         translate_lang_opt('en_US', 'ar',    'en|ar',
+                            sprintf( _("%s to %s"),_("English"),_("Arabic"))) .
+         translate_lang_opt('en_US', 'ja_JP', 'en|ja',
+                            sprintf( _("%s to %s"),_("English"),_("Japanese"))) .
+         translate_lang_opt('en_US', 'ko_KR', 'en|ko',
+                            sprintf( _("%s to %s"),_("English"),_("Korean"))) .
+         translate_lang_opt('en_US', 'zh_CN', 'en|zh-CN',
+                            sprintf( _("%s to %s"),_("English"),_("Chinese (Simplified)"))) .
          translate_lang_opt('de_DE', 'en_US', 'de|en',
                             sprintf( _("%s to %s"),_("German"),_("English"))) .
          translate_lang_opt('de_DE', '', 'de|fr',
@@ -710,10 +725,20 @@ function translate_form_google($message) {
          translate_lang_opt('it_IT', '', 'it|en',
                             sprintf( _("%s to %s"),_("Italian"),_("English"))) .
          translate_lang_opt('pt*',   '', 'pt|en',
-                            sprintf( _("%s to %s"),_("Portuguese"),_("English")));
+                            sprintf( _("%s to %s"),_("Portuguese"),_("English"))).
+         translate_lang_opt('ar',    '', 'ar|en',
+                            sprintf( _("%s to %s"),_("Arabic"),_("English"))).
+         translate_lang_opt('ja_JP', '', 'ja|en',
+                            sprintf( _("%s to %s"),_("Japanese"),_("English"))).
+         translate_lang_opt('ko_KR', '', 'ko|en',
+                            sprintf( _("%s to %s"),_("Korean"),_("English"))).
+         translate_lang_opt('zh_CN', '', 'zh-CN|en',
+                            sprintf( _("%s to %s"),_("Chinese (Simplified)"),_("English")));
     echo '</select>'.
-         'Google: <input type="submit" value="' . _("Translate") . '" />';
+        '<input type="hidden" name="hl" value="en" />' .
+        '<input type="hidden" name="ie" value="UTF8" />' .
+        '<input type="hidden" name="oe" value="UTF8" />' .
+        'Google: <input type="submit" value="' . _("Translate") . '" />';
 
     translate_table_end();
 }
-?>
