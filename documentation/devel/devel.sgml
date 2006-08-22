@@ -140,8 +140,7 @@ project members are supposed to help out with the various tasks.
 
 <sect2>The plugin team
 <p>
-<bf/Team leaders:/
-<quote/Jimmy Conner &lt;jimmy@sqmail.org&gt;/
+<bf/Team leader:/
 <quote/Paul Lesneiwski &lt;paul@squirrelmail.org&gt;/
 
 <bf/Team responsibilities:/
@@ -669,6 +668,9 @@ provide information about some aspects of implementation.
 
 <sect1>Supported languages
 <p>
+TODO: Remove statistics and add them dynamically to the i18n stat's page, using
+a script.
+
 Valid language codes are (<em>list depends on SquirrelMail version</em>):
 <itemize>
   <item>ar    - Arabic, windows-1256 charset
@@ -840,7 +842,7 @@ functions that convert folder names from/to UTF7-IMAP charset. By default those
 functions work with ISO-8859-1 charset. Other charsets are supported only
 when PHP mbstring extension supports them.
 
-TODO: write independent implementation of charset to UTF7-IMAP conversion.
+TODO: Write independent implementation of charset to UTF7-IMAP conversion.
 
 <sect1>Plural forms
 <p>
@@ -1688,9 +1690,333 @@ which will insert the hook you want to add, and mail your request (with the
 patch attached) to the SquirrelMail plugins mailing list. Don't forget to
 motivate the need for a new hook in your mail.
 
-<sect1>Preferences <label id="preferences">
+<sect1>Preferences<label id="preferences">
 <p>
-TODO: Add this section.
+Before you start adding user preferences to your plugin, please take a moment to
+think about it: in some cases, more preferences may not be a good thing. Having
+too many preferences can be confusing. Thinking from the user's perspective,
+will the proposed preferences actually be used? Will users understand what these
+preferences are for? Consider this carefully.
+
+If you decide that more preferences really are needed for your plugin, there are
+two ways to add them. When there's only a few preferences that doesn't merit an
+entirely new preferences page, you can incorporate them as a section in an
+existing SquirrelMail preference section ("Personal Information", "Display
+Preferences", "Message Highlighting", "Folder Preferences", or "Index Order").
+If there's an extensive number of preferences, a separate page might be needed.
+There may also be other reasons to create a separate page for the user to
+interact with.
+
+<sect2>Adding preferences to an existing page
+<p>
+There are two ways to accomplish the integration of your plugin's settings into
+another preferences page. The first, and preferred, way to add preferences to an
+existing preference page is to use one of the <tt/"optpage_loadhook_&lt;pref
+page&gt;/ hooks. The <tt/sent_subfolders/ plugin has an excellent example of
+this method. Briefly, this way of adding preferences consists of adding some
+plugin-specific information to a predefined data structure which SquirrelMail
+then uses to build the HTML input forms for you.
+
+As an example, we'll use the <tt/optpage_loadhook_display/ hook to add a new
+group of preferences to the display preferences page. First, we inform
+SquirrelMail that we want to use this hook by adding a line to the
+<tt/squirrelmail_plugin_init_demo()/ function in
+<tt>plugins/demo/setup.php</tt>:
+
+<tscreen><verb>
+$squirrelmail_plugin_hooks['optpage_loadhook_display']['demo'] = 'demo_options';
+</verb></tscreen>
+
+Make sure that the function <tt/demo_options()/ calls another function, located
+elsewhere, called <tt/demo_options_do()/. The <tt/demo_options()/ function needs
+to add a new key to two arrays: <tt/$optpage_data['grps']/ and
+<tt/$optpage_data['vals']/. The value associated with the key in
+<tt/$optpage_data['grps']/ should simply be the plugin's section heading at the
+preferences page, and the value associated with the key in
+<tt/$optpage_data['vals']/ an array with all the plugin's preferences. (Yes,
+that's four levels of nested arrays.) The specified preference attributes are
+used by SquirrelMail to build the HTML input elements automatically. This
+example includes just one input element, a <tt/select/ (drop-down) list:
+
+<tscreen><verb>
+function demo_options_do() {
+    global $optpage_data;
+    $optpage_data['grps']['demo'] = _("Demo Options");
+    $optionValues = array();
+    $optionValues[] = array(
+        'name'    =&gt; 'plugin_demo_favorite_color',
+        'caption' =&gt; _("Please choose your favorite color"),
+        'type'    =&gt; SMOPT_TYPE_STRLIST,
+        'refresh' =&gt; SMOPT_REFRESH_ALL,
+        'posvals' =&gt; array(0 =&gt; _("red"),
+                           1 =&gt; _("blue"),
+                           2 =&gt; _("green"),
+                           3 =&gt; _("orange")),
+        'save'    =&gt; 'save_plugin_demo_favorite_color'
+    );
+    $optpage_data['vals']['demo'] = $optionValues;
+}
+</verb></tscreen>
+
+The array used to specify each plugin preference has the following possible
+attributes:
+
+<descrip>
+
+<tag><tt/name/</tag>
+The preference name, used both as a key when saving the preferences and as the
+input element name.
+
+<tag><tt/caption/</tag>
+The text that prefaces this preference.
+
+<tag><tt/trailing_text/ (optional)</tag>
+A text that follows a text input or a select list. This is useful for
+indicating units, meanings of special values, etc.
+
+<tag><tt/type/</tag>
+The type of input element, which should be one of:
+<itemize>
+  <item><tt><bf/SMOPT_TYPE_STRING/</tt> for a string/text.
+  <item><tt><bf/SMOPT_TYPE_STRLIST/</tt> for a select list.
+  <item><tt><bf/SMOPT_TYPE_TEXTAREA/</tt> for a text area.
+  <item><tt><bf/SMOPT_TYPE_INTEGER/</tt> for an integer.
+  <item><tt><bf/SMOPT_TYPE_FLOAT/</tt> for a floating point number.
+  <item><tt><bf/SMOPT_TYPE_BOOLEAN/</tt> for a boolean (yes/no) radio buttons.
+  <item><tt><bf/SMOPT_TYPE_HIDDEN/</tt> for a hidden input (not actually shown on preferences page).
+  <item><tt><bf/SMOPT_TYPE_COMMENT/</tt> for a showing the text specified by the <tt/comment/ attribute, but no user input is needed.
+  <item><tt><bf/SMOPT_TYPE_FLDRLIST/</tt> for a select list of IMAP folders.
+</itemize>
+
+<tag><tt/refresh/ (optional)</tag>
+Indicates if a link should be shown to refresh part or all of the window after
+saving. Possible values are:
+<itemize>
+  <item><tt><bf/SMOPT_REFRESH_NONE/</tt> doesn't show a refresh link.
+  <item><tt><bf/SMOPT_REFRESH_FOLDERLIST/</tt> shows a link for refreshing the folder list.
+  <item><tt><bf/SMOPT_REFRESH_ALL/</tt> shows a link for refreshing the entire window.
+</itemize>
+
+<tag><tt/initial_value/</tag>
+The value that should initially be placed in this input element.
+
+<tag><tt/posvals/</tag>
+For select lists, this should be an associative array where each key is an
+actual input value and the corresponding value is what is displayed to the user
+for that list item in the drop-down list.
+
+<tag><tt/save/</tag>
+You may indicate that special functionality needs to be used instead of just
+saving this setting by giving the name of a function to call when this value
+would otherwise just be saved in the user's preferences.
+
+<tag><tt/size/</tag>
+Specifies the size of certain input elements (typically textual inputs).
+Possible values are:
+<itemize>
+  <item><tt><bf/SMOPT_SIZE_TINY/</tt>
+  <item><tt><bf/SMOPT_SIZE_SMALL/</tt>
+  <item><tt><bf/SMOPT_SIZE_MEDIUM/</tt>
+  <item><tt><bf/SMOPT_SIZE_LARGE/</tt>
+  <item><tt><bf/SMOPT_SIZE_HUGE/</tt>
+  <item><tt><bf/SMOPT_SIZE_NORMAL/</tt>
+</itemize>
+
+<tag><tt/comment/</tag>
+For <tt/SMOPT_TYPE_COMMENT/ type preferences, this is the text displayed to the
+user.
+
+<tag><tt/script/</tag>
+This is where you may add any additional JavaScript or other code to the user
+input.
+
+<tag><tt/post_script/</tag>
+You may specify some script (usually JavaScript) that will be placed after
+(outside of) the input element.
+
+<tag><tt/htmlencoded/</tag>
+Disables HTML sanitizing. Don't disable the sanitizing if user input is
+possible, unless your plugin uses its own sanitizing functions. Currently only
+works with <tt/SMOPT_TYPE_STRLIST/.
+
+<tag><tt/folder_filter/</tag>
+Controls folder list limits in <tt/SMOPT_TYPE_FLDRLIST/ widget. See the
+<tt/$flag/ argument in the <tt/sqimap_mailbox_option_list()/ function.
+Available since 1.5.1.
+
+</descrip>
+
+Note that you do not have to create a whole new section at the preferences page
+if you merely want to add a simple input item or two to a preferences section
+that already exists. For example, the "Display Options" page has these groups:
+
+<tscreen><verb>
+0 - "General Display Options"
+1 - "Mailbox Display Options"
+2 - "Message Display and Composition"
+</verb></tscreen>
+
+To add our previous input drop-down to the "Mailbox Display Options", don't
+create your own group - just add it to the existing one.
+
+<tscreen><verb>
+function demo_options_do() {
+    global $optpage_data;
+    $optpage_data['vals'][1][] = array(
+        'name'    =&gt; 'plugin_demo_favorite_color',
+        'caption' =&gt; _("Please choose your favorite color"),
+        'type'    =&gt; SMOPT_TYPE_STRLIST,
+        'refresh' =&gt; SMOPT_REFRESH_ALL,
+        'posvals' =&gt; array(0 =&gt; _("red"),
+                           1 =&gt; _("blue"),
+                           2 =&gt; _("green"),
+                           3 =&gt; _("orange")),
+        'save'    =&gt; 'save_plugin_demo_favorite_color'
+    );
+}
+
+</verb></tscreen>
+
+If you indicated a <tt/save/ attribute for any of your preferences, you must
+create that function (you'll only need to do this if you need to do some special
+processing for one of your settings). The function gets one parameter, which is
+an object with mostly the same attributes you defined when you made the
+preference above. The <tt/new_value/ (and possibly <tt/value/, which is the
+current value for this setting) is the most useful attribute in this context:
+
+<tscreen><verb>
+function save_plugin_demo_favorite_color($option) {
+    // if user chose orange, make note that they are really dumb
+    if ($option-&gt;new_value == 3) {
+        // more code here as needed
+    }
+
+    // don't even save this setting if user chose green (old setting will remain)
+    if ($option-&gt;new_value == 2) {
+        return;
+    }
+
+    // for all other colors, save as normal
+    save_option($option);
+}
+</verb></tscreen>
+
+The second, deprecated, legacy method is to add the HTML code for your
+preferences directly to the preferences page of your choice. Although currently
+very popular, avoid it if you can. That said, here is how it works. Look for any
+of the hooks named as <tt/options_&lt;pref page&gt;_inside/, where &lt;pref
+page&gt; is "display", "personal", etc. For this example, we'll use
+<tt/options_display_inside/ and, as above, "demo" as our plugin name:
+
+Inform SquirrelMail that we want to use this hook by adding a line to the
+<tt/squirrelmail_plugin_init_demo()/ function in
+<tt>plugins/demo/setup.php</tt>:
+
+<tscreen><verb>
+$squirrelmail_plugin_hooks['options_display_inside']['demo'] = 'demo_show_options';
+</verb></tscreen>
+
+Note that there are also hooks such as <tt/options_display_bottom/, however,
+they place your preferences at the bottom of the preferences page, which is
+usually not desirable (mostly because they also come <it/after/ the closure of
+the HTML <tt/form/ element). It is possible to use these hooks if you want to
+create your own form with custom submission logic.
+
+The function <tt/demo_show_options_do()/ should have output similar to this
+(note that you will be inserting code into a table that is already defined with
+two columns, so please be sure to keep this framework in your plugin):
+
+<tscreen><verb>
+     ------cut here-------
+     &lt;tr&gt;
+        &lt;td&gt;
+           OPTION_NAME
+        &etago;td&gt;
+        &lt;td&gt;
+           OPTION_INPUT
+        &etago;td&gt;
+     &etago;tr&gt;
+     ------cut here-------
+</verb></tscreen>
+
+Of course, you can place any text where "OPTION_NAME" is and any input tags
+where "OPTION_INPUT" is.
+
+You will want to use the <tt/options_&lt;pref page&gt;_save/ hook (in this case,
+<tt/options_display_save/) to save the user's settings after they have pressed
+the "Submit" button. Again, inform SquirrelMail that we want to use this hook by
+adding a line to the <tt/squirrelmail_plugin_init_demo()/ function in
+<tt>plugins/demo/setup.php</tt>:
+
+<tscreen><verb>
+$squirrelmail_plugin_hooks['options_display_save']['demo'] = 'demo_save_options';
+</verb></tscreen>
+
+The function <tt/demo_save_options_do()/ should put the user's settings into
+permanent storage (see <ref id="savepref" name="Saving and retrieving
+preferences"> below for more information). This example assumes that in the
+preferences page, the input element's <tt/name/ attribute was set to
+"demo_option":
+
+<tscreen><verb>
+global $data_dir, $username;
+sqgetGlobalVar('demo_option', $demo_option);
+setPref($data_dir, $username, 'demo_option', $demo_option);
+</verb></tscreen>
+
+<sect2>Creating a custom preference page
+<p>
+It is also possible to create a custom preference page for a plugin. This is
+particularly useful when the plugin has numerous preferences or needs to offer
+special interaction with the user (for things such as changing password, etc.).
+Here is an outline of how to do so (again, using the "demo" plugin name):
+
+First of all you have to add a new listing to the main "Options page". Always
+use the <tt/optpage_register_block/ hook where you create a simple array that
+lets SquirrelMail build the HTML to add the plugin preferences entry
+automatically. Inform SquirrelMail that we want to use this hook by adding a
+line to the <tt/squirrelmail_plugin_init_demo()/ function in
+<tt>plugins/demo/setup.php</tt>:
+
+<tscreen><verb>
+$squirrelmail_plugin_hooks['optpage_register_block']['demo'] = 'demo_options_block';
+</verb></tscreen>
+
+Assuming the function <tt/demo_options_block()/ calls another function elsewhere
+called <tt/demo_options_block_do()/, that function only needs to create a simple
+array and add it to the <tt/$optpage_blocks/ array:
+
+<tscreen><verb>
+global $optpage_blocks;
+$optpage_blocks[] = array(
+    'name' =&gt; _("Favorite Color Settings"),
+    'url'  =&gt; SM_PATH . 'plugins/demo/options.php',
+    'desc' =&gt; _("Change your favorite color and find new exciting colors"),
+    'js'   =&gt; FALSE
+);
+</verb></tscreen>
+
+The array must have four elements:
+
+<descrip>
+<tag/name/
+The title of the plugin's preference page as it will be displayed at the Options
+page.
+<tag/url/
+The URI that points to your plugin's custom preferences page.
+<tag/desc/
+A description of what the preferences page offers the user. This is displayed at
+the Options page below the title.
+<tag/js/
+Indicates if this preference page requires the client browser to be
+JavaScript-capable. Should be <tt/TRUE/ or <tt/FALSE/.
+</descrip>
+
+TODO: Complete this section.
+
+<sect2>Saving and retrieving preferences<label id="savepref">
+<p>
+TODO: Complete this section.
 
 <sect1>Compatibility with older versions of SquirrelMail
 <p>
@@ -1883,12 +2209,12 @@ methods are provided:
 
   add_backend(NAME, PARAMETERS)
 
-     NAME - The name of the backend to add. A file with a 
+     NAME - The name of the backend to add. A file with a
      class abook_NAME must be included before this can
      be done.
 
-     PARAMETERS - A mixed variable that is passed on to 
-     the backend class constructor. See each backend 
+     PARAMETERS - A mixed variable that is passed on to
+     the backend class constructor. See each backend
      for docs.
 
    This method will return a backend ID number (not usable at the
@@ -1897,7 +2223,7 @@ methods are provided:
 
   search(QUERY, [BNUM])
 
-     QUERY - Something to search for. At the moment, only 
+     QUERY - Something to search for. At the moment, only
      a string is allowed here, but advanced expressions
      will be supported through an array of parameters.
 
@@ -1913,7 +2239,7 @@ methods are provided:
    fullname before it is returned.
 
 
-  lookup(NICKNAME, [BNUM])  
+  lookup(NICKNAME, [BNUM])
 
      NICKNAME - Return the user identified by NICKNAME in
      the addressbook.
@@ -1923,14 +2249,14 @@ methods are provided:
    This method will return one result array (see below), an empty
    array if nothing was found, or false if the search failed. The
    lookup is only performed in "local" type backends.
- 
 
-  list_addr()  
+
+  list_addr()
 
    This method will return an array of result arrays (see below) for
    all addresses in the addressbook, or false if it failed. Only
    addresses in "local" type backends are returned.
- 
+
 
   add(USERDATA, BNUM)
 
@@ -1978,7 +2304,7 @@ AddressBook->error variable. Feel free to ignore it.
 
 
 For the result of a search, lookup or list_addr, one or more result
-arrays are used. These arrays contain the following keys: 
+arrays are used. These arrays contain the following keys:
 
   nickname:  Unique identifier for this name in this backend. Only
              usable for the local_file backend, and possibly LDAP.
@@ -2009,7 +2335,7 @@ new address book backends.
 <tscreen><verb>
 makeComposeLink() PHP function helps to create links to the compose page
 easily, taking into account the user's settings, "Compose in new window" and
-"Use javascript". Here's how to use it:
+"Use JavaScript". Here's how to use it:
 
 1) Build the last part of the URL as follows:
    $comp_uri = 'src/compose.php?mailbox='.$mailboxbox.'&amp;send_to='.urlencode($usermail);
@@ -2024,10 +2350,10 @@ makeComposeLink() has been available since SquirrelMail 1.4.2.
 
 
 
-Using the comp_in_new javascript function
+Using the comp_in_new JavaScript function
 =========================================
 
-comp_in_new is the javascript function to popup a new compose window.
+comp_in_new is the JavaScript function to popup a new compose window.
 
 the function needs one argument:
 1) url with arguments to the compose window.
@@ -2058,8 +2384,8 @@ PERMANENTFLAGS (\Answered \Flagged \Draft \Deleted \Seen $MDNSent \*)
 
 NAMESPACE (("INBOX." ".")) (("user." ".")) (("shared." "."))
 
-Server supports server side sorting since 2.0.4 version. euc-jp, euc-kr, 
-tis-620, cp1251, cp1255 character sets are not supported by sorting functions 
+Server supports server side sorting since 2.0.4 version. euc-jp, euc-kr,
+tis-620, cp1251, cp1255 character sets are not supported by sorting functions
 (v.2.2.12).
 
 Site URL: http://asg.web.cmu.edu/cyrus/
@@ -2097,12 +2423,12 @@ PERMANENTFLAGS (\* \Draft \Answered \Flagged \Deleted \Seen)
 
 NAMESPACE (("INBOX." ".")) NIL (("#shared." ".")("shared." "."))
 
-Recent (3.0.0+) versions support most of character sets used by SquirrelMail, 
-if courier-imap is compiled with --enable-unicode option. Only koi8-u 
+Recent (3.0.0+) versions support most of character sets used by SquirrelMail,
+if courier-imap is compiled with --enable-unicode option. Only koi8-u
 is not supported. Server can be compiled with custom number of supported
 character sets. Sorting can be disabled in imapd configuration. Capability
-string can be set in configuration. Supports CRAM-MD5, CRAM-SHA1 and 
-CRAM-SHA256, if userdb or other backend stores passwords in plain text. Does 
+string can be set in configuration. Supports CRAM-MD5, CRAM-SHA1 and
+CRAM-SHA256, if userdb or other backend stores passwords in plain text. Does
 not handle traditional mailbox files.
 
 Site URL: http://www.courier-mta.org/
@@ -2147,7 +2473,7 @@ Dovecot Secure IMAP server.
 
 Tested v.0.99.14
 
-CAPABILITY IMAP4rev1 SORT THREAD=REFERENCES MULTIAPPEND UNSELECT LITERAL+ IDLE 
+CAPABILITY IMAP4rev1 SORT THREAD=REFERENCES MULTIAPPEND UNSELECT LITERAL+ IDLE
   CHILDREN LISTEXT LIST-SUBSCRIBED NAMESPACE
 
 PERMANENTFLAGS (\Answered \Flagged \Deleted \Seen \Draft \*)
@@ -2173,8 +2499,8 @@ CAPABILITY IMAP4rev1 STARTTLS AUTH=LOGIN AUTH=PLAIN IDLE LITERAL+ NAMESPACE
 PERMANENTFLAGS (\Answered \Flagged \Deleted \Seen \Draft) - 1.2.13
 PERMANENTFLAGS (\Answered \Flagged \Deleted \Seen \Draft \*) - 1.3.4
 
-IMAP server does not support server side sorting and threading. Plain text 
-logins are disabled by default. Due to available storage backend configuration 
+IMAP server does not support server side sorting and threading. Plain text
+logins are disabled by default. Due to available storage backend configuration
 options it is impossible to create single preset, which covers all setups.
 
 Site URL: http://www.bincimap.org
@@ -2194,10 +2520,10 @@ PERMANENTFLAGS (\Answered \Deleted \Seen)
 
 NAMESPACE (("" "/")) NIL NIL
 
-Can use UW preset. Server side sorting is not supported. IMAP folders can 
+Can use UW preset. Server side sorting is not supported. IMAP folders can
 store messages or subfolders. Can't create second level (mail/Folder/Subfolder/)
-subfolders. Invalid unseen message count, when \Seen flag is toggled manually. 
-Folder listing with non-default sort order issues are fixed in cvs version. 
+subfolders. Invalid unseen message count, when \Seen flag is toggled manually.
+Folder listing with non-default sort order issues are fixed in cvs version.
 Use of server with SquirrelMail is not recommended and not supported.
 
 Site URL: http://savannah.gnu.org/projects/mailutils
@@ -2206,7 +2532,7 @@ Site URL: http://savannah.gnu.org/projects/mailutils
 ------------
 DBMail IMAPD
 ------------
-IMAP server that is part of DBMail email suite. DBMail provides local delivery 
+IMAP server that is part of DBMail email suite. DBMail provides local delivery
 agent, pop3 and imap servers. User information and emails are stored in
 database.
 
@@ -2220,7 +2546,7 @@ PERMANENTFLAGS (\Seen \Answered \Deleted \Flagged \Draft \Recent)
 NAMESPACE (("" "/")) (("#Users" "/")) (("#Public" "/"))
 
 IMAP server provides partial support of IMAP QUOTA extension. setquota command
-is not supported and QUOTA extension is not advertised in CAPABILITY. SORT 
+is not supported and QUOTA extension is not advertised in CAPABILITY. SORT
 extension is broken in tested version.
 
 > A05 UID SORT (FROM) US-ASCII ALL
@@ -2235,7 +2561,7 @@ Site URL: http://www.dbmail.org
 ----
 Bejy
 ----
-HTTP and email server written in Java. User information is stored in database. 
+HTTP and email server written in Java. User information is stored in database.
 SELECT response is in rfc 2060 format.
 
 Tested v.1.4.1.58b
@@ -2251,14 +2577,14 @@ Site URL: http://www.bejy.net
 Mac OS X
 --------
 No clear information about used software. Some OS X versions might use Eudora
-Internet Messaging Suite (EIMS, http://www.eudora.com/eims/), some - Apple IMAP 
+Internet Messaging Suite (EIMS, http://www.eudora.com/eims/), some - Apple IMAP
 server, some - Cyrus.
 
 
 ---------------------
 Exchange IMAP service
 ---------------------
-IMAP server included in proprietary Exchange Server, Microsoft messaging and 
+IMAP server included in proprietary Exchange Server, Microsoft messaging and
 collaboration server.
 
 Server does not support server side sorting.
@@ -2267,7 +2593,7 @@ Server does not support server side sorting.
 ----
 PMDF
 ----
-PMDF is a proprietary, high performance, standards-based Internet messaging 
+PMDF is a proprietary, high performance, standards-based Internet messaging
 product suite for Windows, OpenVMS, Tru64 UNIX, and Solaris.
 
 Tested IMAP4rev1 Server PMDF V6.2-X29.1
@@ -2278,7 +2604,7 @@ PERMANENTFLAGS (\Answered \Flagged \Deleted \Seen)
 
 NAMESPACE (("" "/")) NIL NIL
 
-Supports TLS and SSL encryption, SASL CRAM-MD5 and DIGEST-MD5 authentication. 
+Supports TLS and SSL encryption, SASL CRAM-MD5 and DIGEST-MD5 authentication.
 Includes SIEVE (rfc3028) support.
 
 Site URL: http://www.process.com/tcpip/pmdf.html
@@ -2295,18 +2621,18 @@ CAPABILITY IMAP4rev1 AUTH=CRAM-MD5 AUTH=DIGEST-MD5 AUTH=LOGIN AUTH=PLAIN SORT
 
 PERMANENTFLAGS (\Seen \Answered \Flagged \Draft \Deleted)
 
-NAMESPACE (("" "/")) NIL NIL 
+NAMESPACE (("" "/")) NIL NIL
 
-INBOX folder is lowercased. IMAP folder names are case insensitive. Possible 
+INBOX folder is lowercased. IMAP folder names are case insensitive. Possible
 issue with IMAP SORT extension.
 
 -----
-TEST_5 
+TEST_5
 
-Request: 
-A005 UID SORT (DATE) ISO-8859-1 ALL  
-Response: 
-* UID SORT 1 2 
+Request:
+A005 UID SORT (DATE) ISO-8859-1 ALL
+Response:
+* UID SORT 1 2
 UID SORT Completed
 -----
 SquirrelMail expects '* SORT 1 2'
@@ -2322,11 +2648,11 @@ Commercial email server for Windows.
 Tested 6.1.22.1 version.
 
 CAPABILITY IMAP4rev1 ACL NAMESPACE UIDPLUS AUTH=NTLM AUTH=SCRAM-MD5
- AUTH=CRAM-MD5 
+ AUTH=CRAM-MD5
 
 PERMANENTFLAGS (\Answered \Flagged \Deleted \Seen \Draft \*)
 
-NAMESPACE (("" "/")) (("#shared/" "/")) NIL 
+NAMESPACE (("" "/")) (("#shared/" "/")) NIL
 
 FETCH response to UID STORE command violates RFC 3501.
 
@@ -2350,26 +2676,26 @@ http://thread.gmane.org/gmane.mail.squirrelmail.user/26433
 
 <tscreen><verb>
 The intended audience for this document are people who want to understand how
-the MIME code works.  This is a technical documentation of how mime.php 
+the MIME code works. This is a technical documentation of how mime.php
 works and how it parses a MIME encoded message.
 
 
 Object Structure
 ----------------
-There are two objects that are used: "message" and "msg_header".  Here is a
+There are two objects that are used: "message" and "msg_header". Here is a
 brief overview of what each object contains.
 
 msg_header
    Contains variables for all the necessary parts of the header of a
-   message.  This includes (but is not limited to) the following:  to, from,
+   message. This includes (but is not limited to) the following:  to, from,
    subject, type (type0), subtype (type1), filename ...
-      
+
 message
-   This contains the structure for the message.  It contains two parts:
-   $header and $entities[].  $header is of type msg_header, and $entities[]
-   is an array of type $message.  The $entities[] array is optional.  If
+   This contains the structure for the message. It contains two parts:
+   $header and $entities[]. $header is of type msg_header, and $entities[]
+   is an array of type $message. The $entities[] array is optional. If
    it does not exist, then we are at a leaf node, and have an actual
-   attachment (entity) that can be displayed.  Here is a tree view of how
+   attachment (entity) that can be displayed. Here is a tree view of how
    this object functions.
 
    header
@@ -2390,62 +2716,62 @@ message
 Getting the Structure
 ---------------------
 Previously (version 0.4 and below), SquirrelMail handled all the parsing of
-the email message.  It would read the entire message in, search for 
+the email message. It would read the entire message in, search for
 boundaries, and create an array similar to the $message object described
-above.  This was very inefficient.
+above. This was very inefficient.
 
 Currently, all the parsing of the body of the message takes place on the
-IMAP server itself.  According to RFC 2060 section 7.4.2, we can use the
+IMAP server itself. According to RFC 2060 section 7.4.2, we can use the
 BODYSTRUCTURE function which will return the structure of the body (imagine
-that).  It goes into detail of how the bodystructure should be formatted,
-and we have based our new MIME support on this specification.  
+that). It goes into detail of how the bodystructure should be formatted,
+and we have based our new MIME support on this specification.
 
-A simple text/plain message would have a BODYSTRUCTURE similar to the 
+A simple text/plain message would have a BODYSTRUCTURE similar to the
 following:
 
    ("TEXT" "PLAIN" ("CHARSET" "US-ASCII") NIL NIL "7BIT" 1152 23)
 
-A more complicated multipart message with an attachment would look like:   
+A more complicated multipart message with an attachment would look like:
 
-   (("TEXT" "PLAIN" ("CHARSET" "US-ASCII") NIL NIL "7BIT" 1152 23)("TEXT" 
-   "PLAIN" ("CHARSET" "US-ASCII" "NAME" "cc.diff") 
-   "<960723163407.20117h@cac.washington.edu>" "Compiler diff" "BASE64" 
+   (("TEXT" "PLAIN" ("CHARSET" "US-ASCII") NIL NIL "7BIT" 1152 23)("TEXT"
+   "PLAIN" ("CHARSET" "US-ASCII" "NAME" "cc.diff")
+   "<960723163407.20117h@cac.washington.edu>" "Compiler diff" "BASE64"
    4554 73) "MIXED"))
-   
+
 Our MIME functionality implements different functions that recursively
-run through this text and parses out the structure of the message.  If you
+run through this text and parses out the structure of the message. If you
 want to learn more about how the structure of a message is returned with
 the BODYSTRUCTURE function, please see RFC 2060 section 7.4.2.
 
 NOTE:  SquirrelMail passes the MIME Torture Test written by Mark
-       Crispin (author of the IMAP protocol).  This message is crazy!  It
-       has about 30 parts nested inside each other.  A very good test, 
-       and SquirrelMail passed it.  It can be found here:
+       Crispin (author of the IMAP protocol). This message is crazy! It
+       has about 30 parts nested inside each other. A very good test,
+       and SquirrelMail passed it. It can be found here:
 
        ftp://ftp.lysator.liu.se/mirror/unix/imapd/mime/torture-test.mbox
 
 Getting the Body
 ----------------
 Once all the structure of the message has been read into the $message
-object, we then need to display the body of one entity.  There are a number
+object, we then need to display the body of one entity. There are a number
 of ways we decide which entity to display at a certain time, and I won't go
-into that here.  
+into that here.
 
-Each entity has its own ID.  Entity IDs look something like "1.2.1", or 
-"4.1", or just "2".  You can find a detailed description of how entities
-should be identified by reading RFC 2060 section 6.4.5.  To fetch the body
-of a particular entity, we use the function "BODY[<section>]".  For 
+Each entity has its own ID. Entity IDs look something like "1.2.1", or
+"4.1", or just "2". You can find a detailed description of how entities
+should be identified by reading RFC 2060 section 6.4.5. To fetch the body
+of a particular entity, we use the function "BODY[<section>]". For
 instance, if we were wanting to return entity 1.2.1, we would send the
 IMAP server the command: "a001 FETCH <msg_id> BODY[1.2.1]".
 
-This returns a string of the entire body.  Based upon what is in the header,
+This returns a string of the entire body. Based upon what is in the header,
 we may need to decode it or do other things to it.
 
 
-Closing Notes  
+Closing Notes
 -------------
-That is basically how it works.  There is a variable in mime.php called
-$debug_mime that is defined at the top of that file.  If you set it to true,
+That is basically how it works. There is a variable in mime.php called
+$debug_mime that is defined at the top of that file. If you set it to true,
 it will output all kinds of valuable information while it tries to decode
 the MIME message.
 
@@ -2461,13 +2787,13 @@ squirrelmail-users@lists.sourceforge.net
 
 <tscreen><verb>
 In order to get correct folder deletion across the board for all
-different RFC2060 compliant IMAP servers, deleting of folders 
+different RFC2060 compliant IMAP servers, deleting of folders
 needed to work by deleting subfolders (inferiors) first, working
 up to the top folder that is desired to be deleted.
 
 The best way to do this was to use a tree, and walk the thing in
-preorder to get subfolders first (leaves), working our way up the 
-tree.  I chose to use an array for the tree structure.
+preorder to get subfolders first (leaves), working our way up the
+tree. I chose to use an array for the tree structure.
 
 The array has the following elements:
 $tree[0]["value"]             = <full folder name>
@@ -2476,7 +2802,7 @@ $tree[0]["subNodes"]          = indexes of the array that are
                                   child nodes of this node
 
 The trickiest part was finding the correct parent node when creating
-a new node in the tree.  Check the documentation in the code for
+a new node in the tree. Check the documentation in the code for
 more info on this.
 
 Basically all we had to do was loop through each of the items that
@@ -2488,7 +2814,7 @@ Once the tree is generated, a simple preorder or postorder walk
 of the tree can be done doing whatever function you desire (delete,
 create, etc).
 
-Preorder walking gives you the tree from the leaves up.  Postorder
+Preorder walking gives you the tree from the leaves up. Postorder
 walks the tree from the root node down to the leaves.
 </verb></tscreen>
 
