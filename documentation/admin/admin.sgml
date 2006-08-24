@@ -1139,17 +1139,13 @@ IMAP server. It keeps server connections alive for reuse avoiding a new IMAP
 connection for each SquirrelMail transaction. You run the proxy on your
 webserver (SquirrelMail connects to localhost) and the Proxy connects to your
 IMAP server. A side benefit is your logs are not full of IMAP logins. The
-following caching IMAP proxies have worked well for other people with
+following caching IMAP proxy has worked well for other people with
 SquirrelMail.
 
 <url url="http://www.imapproxy.org/" name="Up-imapproxy"> is a caching IMAP
 proxy server. It is open source and free. The package is written in C. Tested on
 Solaris, Linux, IRIX and FreeBSD. The latest version allows log levels to be
 configured at runtime from the config file.
-
-<url url="http://www.horde.org/imapproxy/" name="other imapproxy project">
-designed for use with Horde. Licensed under GPL and also works with
-SquirrelMail.
 
 <sect1>PHP cache
 <p>
