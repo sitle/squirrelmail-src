@@ -33,7 +33,7 @@ sqgetGlobalVar('delimiter',    $delimiter,     SQ_SESSION);
 sqgetGlobalVar('folder_name',  $folder_name,   SQ_POST);
 sqgetGlobalVar('subfolder',    $subfolder,     SQ_POST);
 if (! sqgetGlobalVar('contain_subs', $contain_subs,  SQ_POST)) {
-    unset($contains_subs);
+    unset($contain_subs);
 }
 /* end of get globals */
 
