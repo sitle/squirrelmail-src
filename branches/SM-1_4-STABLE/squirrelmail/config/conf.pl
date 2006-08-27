@@ -914,7 +914,7 @@ sub command8 {
     } else {
         $new_provider_name =~ s/[\r|\n]//g;
         $new_provider_name =~ s/^\s+$//g;
-	$new_provider_name =~ s/\'/\\'/g;
+        $new_provider_name =~ s/\'/\\'/g;
     }
     return $new_provider_name;
 }
@@ -2479,6 +2479,9 @@ sub command61 {
 
             print "First, we need to have the hostname or the IP address where\n";
             print "this LDAP server resides.  Example: ldap.bigfoot.com\n";
+            print "\n";
+            print "You can use any URI compatible with your LDAP library. ldaps\n";
+            print "and ldapi URIs can be used to create secure LDAP connections.\n";
             print "hostname: ";
             $name = <STDIN>;
             $name =~ s/[\r|\n]//g;
