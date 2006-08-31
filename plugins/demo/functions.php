@@ -1,7 +1,7 @@
 <?php
 /**
  * Demo plugin functions
- * Copyright (c) 2005 The SquirrelMail Project Team
+ * Copyright (c) 2005-2006 The SquirrelMail Project Team
  * This file is part of SquirrelMail Demo plugin.
  *
  * Demo plugin is free software; you can redistribute it and/or
@@ -276,4 +276,16 @@ function demo_loading_prefs_do() {
     global $demo_id, $data_dir, $username;
     $demo_id = getPref($data_dir, $username, 'demo_id', SMPREF_NONE);
 }
-?>
+
+/**
+ * Adds menu line.
+ */
+function demo_menuline_do() {
+    bindtextdomain('demo',SM_PATH . 'locale');
+    textdomain('demo');
+    displayInternalLink('plugins/demo/demo.php', _("Demo"), '');
+    echo "&nbsp;&nbsp;\n";
+    // revert gettext domain
+    bindtextdomain('squirrelmail',SM_PATH . 'locale');
+    textdomain('squirrelmail');
+}

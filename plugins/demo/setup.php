@@ -2,7 +2,7 @@
 /**
  * Plugin init file
  *
- * Copyright (c) 2005 The SquirrelMail Project Team
+ * Copyright (c) 2005-2006 The SquirrelMail Project Team
  * This file is part of SquirrelMail Demo plugin.
  *
  * Demo plugin is free software; you can redistribute it and/or
@@ -39,6 +39,9 @@ function squirrelmail_plugin_init_demo() {
     $squirrelmail_plugin_hooks['options_identities_buttons']['demo']='demo_options_identities_buttons';
 
     $squirrelmail_plugin_hooks['loading_prefs']['demo']='demo_loading_prefs';
+    $squirrelmail_plugin_hooks['loading_constants']['demo']='demo_loading_constants';
+
+    $squirrelmail_plugin_hooks['menuline']['demo']='demo_menuline';
 }
 
 /**
@@ -101,10 +104,24 @@ function demo_loading_prefs() {
 }
 
 /**
+ * Main function attached to loading_prefs hook
+ */
+function demo_loading_constants() {
+    include_once(SM_PATH.'plugins/demo/constants.php');
+}
+
+/**
+ * Main function attached to loading_prefs hook
+ */
+function demo_menuline() {
+    include_once(SM_PATH.'plugins/demo/functions.php');
+    demo_menuline_do();
+}
+
+/**
  * Show plugin version
  * @return string plugin version
  */
 function demo_version() {
     return '1.0cvs';
 }
-?>
