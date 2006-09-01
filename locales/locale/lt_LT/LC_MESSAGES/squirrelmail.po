@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: squirrelmail HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-06-12 19:58+0300\n"
-"PO-Revision-Date: 2006-07-02 19:34+0300\n"
+"POT-Creation-Date: 2006-08-08 23:25+0300\n"
+"PO-Revision-Date: 2006-09-01 12:51+0300\n"
 "Last-Translator: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
 "Language-Team: Lithuanian <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -67,7 +67,7 @@ msgstr "Ieškoti"
 msgid "List all"
 msgstr "Rodyti visus"
 
-#, c-format
+#, php-format
 msgid "Unable to list addresses from %s"
 msgstr "Nepavyko gauti adresų iš %s"
 
@@ -141,11 +141,11 @@ msgstr "rūšiuoti pagal paštą"
 msgid "sort by info"
 msgstr "rūšiuoti pagal pastabas"
 
-#, c-format
+#, php-format
 msgid "Add to %s"
 msgstr "Įtraukti į adresų knygą (%s)"
 
-#, c-format
+#, php-format
 msgid "%s wrote:"
 msgstr "%s rašė:"
 
@@ -155,7 +155,7 @@ msgstr "citata"
 msgid "who"
 msgstr "kas"
 
-#, c-format
+#, php-format
 msgid "On %s, %s wrote:"
 msgstr "%s %s rašė:"
 
@@ -239,7 +239,7 @@ msgstr "Išsaugoti juodraštį"
 msgid "You have not filled in the \"To:\" field."
 msgstr "Jūs neužpildėte gavėjo lauko (Kam:)."
 
-#, c-format
+#, php-format
 msgid "Error: Draft folder %s does not exist."
 msgstr "Klaida: Juodraščių aplankas %s neegzistuoja."
 
@@ -258,7 +258,7 @@ msgstr "Bandant trinti buvo nepasirinktas joks aplankas."
 msgid "Delete Folder"
 msgstr "Ištrinti aplanką"
 
-#, c-format
+#, php-format
 msgid "Are you sure you want to delete %s?"
 msgstr "Ar tikrai norite ištrinti %s?"
 
@@ -365,30 +365,25 @@ msgid ""
 "Help is not available. Please contact your system administrator for "
 "assistance."
 msgstr ""
-"Pagalbos·sistema·yra·neprieinama.·Susisiekite·su·administratoriumi·ir·"
-"praneškite·apie·šią·klaidą."
+"Pagalbos·sistema·yra·neprieinama."
+"·Susisiekite·su·administratoriumi·ir·praneškite·apie·šią·klaidą."
 
 msgid ""
 "This chapter is not available in the selected language. It will be displayed "
 "in English instead."
 msgstr ""
-"Šis pagalbos sistemos skyrius neišverstas į pasirinktą kalbą. Jis bus tik anglų kalba."
+"Šis pagalbos sistemos skyrius neišverstas į pasirinktą kalbą. Jis bus tik "
+"anglų kalba."
 
 msgid "This chapter is missing"
 msgstr "Trūksta pagalbos sistemos skyriaus"
 
-#, c-format
+#, php-format
 msgid "For some reason, chapter %s is not available."
 msgstr "Dėl·nežinomų·priežaščių·skyrius·%s·yra·neprieinamas."
 
 msgid "Table of Contents"
 msgstr "Turinys"
-
-msgid ""
-"This chapter in not available in the selected language. It will be displayed "
-"in English instead."
-msgstr ""
-"Šis pagalbos sistemos skyrius neišverstas į pasirinktą kalbą. Jis bus tik anglų kalba."
 
 msgid "Previous"
 msgstr "Ankstesnis"
@@ -423,18 +418,18 @@ msgstr "Patikrinti paštą"
 msgid "Login"
 msgstr "Prisijungti"
 
-#, c-format
+#, php-format
 msgid "%s Logo"
 msgstr "%s logo"
 
-#, c-format
+#, php-format
 msgid "SquirrelMail version %s"
 msgstr "SquirrelMail versija %s"
 
 msgid "By the SquirrelMail Project Team"
 msgstr "Sukurta SquirrelMail programuotojų"
 
-#, c-format
+#, php-format
 msgid "%s Login"
 msgstr "%s paštas"
 
@@ -534,10 +529,13 @@ msgstr "Pvz: 63aa7f"
 msgid "Matches"
 msgstr "Atitinka"
 
+msgid "Editing identities is disabled."
+msgstr "Specialių ID redagavimas yra atjungtas."
+
 msgid "Default Identity"
 msgstr "Standartinis ID"
 
-#, c-format
+#, php-format
 msgid "Alternate Identity %d"
 msgstr "Specialus ID %d"
 
@@ -692,7 +690,7 @@ msgstr "Jūsų žinutė"
 msgid "Sent"
 msgstr "Išsiųsta"
 
-#, c-format
+#, php-format
 msgid "Was displayed on %s"
 msgstr "Buvo perskaityta %s"
 
@@ -765,6 +763,9 @@ msgstr ""
 msgid "Folder:"
 msgstr "Aplankas:"
 
+msgid "Saved Searches"
+msgstr "Išsaugotos Paieškos"
+
 msgid "edit"
 msgstr "taisyti"
 
@@ -798,6 +799,9 @@ msgstr "Visur"
 msgid "No Messages Found"
 msgstr "Jokių žinučių nerasta"
 
+msgid "Please enter something to search for"
+msgstr "Įveskite kokią nors paieškos sąlygą"
+
 msgid "Signout"
 msgstr "Atsijungti"
 
@@ -813,7 +817,7 @@ msgstr "Spragtelėkite ant nuorodos norėdami vėl prisijungti"
 msgid "Viewing a Business Card"
 msgstr "Vizitinės kortelės peržiūra"
 
-#, c-format
+#, php-format
 msgid ""
 "vCard Version %s is not supported. Some information might not be converted "
 "correctly."
@@ -865,7 +869,7 @@ msgid ""
 msgstr ""
 "Nepavyko įkelti PEAR duomenų bazių funkcijų būtinų duomenų bazės posistemei."
 
-#, c-format
+#, php-format
 msgid "Is PEAR installed, and is the include path set correctly to find %s?"
 msgstr ""
 "Jei PEAR yra įdiegtas, ar php include_path nustatymai leidžia įkelti %s?"
@@ -876,18 +880,18 @@ msgstr "Susisiekite su administratoriumi ir praneškite apie šią klaidą."
 msgid "Personal address book"
 msgstr "Asmeninė adresų knyga"
 
-#, c-format
+#, php-format
 msgid "Database error: %s"
 msgstr "Duomenų bazės klaida: %s"
 
 msgid "Addressbook is read-only"
 msgstr "Adresų knyga yra skirta tik skaitymui"
 
-#, c-format
+#, php-format
 msgid "User \"%s\" already exists"
 msgstr "Jau yra vartotojas \"%s\""
 
-#, c-format
+#, php-format
 msgid "User \"%s\" does not exist"
 msgstr "Vartotojo \"%s\" nėra"
 
@@ -915,7 +919,7 @@ msgstr "Nepavyko rašyti į adresų knygą"
 msgid "Error initializing addressbook database."
 msgstr "Nepavyko prisijungti prie adresų knygos duomenų bazės."
 
-#, c-format
+#, php-format
 msgid "Error opening file %s"
 msgstr "Įvyko klaida atidarant bylą %s"
 
@@ -925,7 +929,7 @@ msgstr "Bendra adresų knyga"
 msgid "Error initializing global addressbook."
 msgstr "Nepavyko aktyvuoti bendros adresų knygos."
 
-#, c-format
+#, php-format
 msgid "Error initializing LDAP server %s:"
 msgstr "Nepavyko aktyvuoti LDAP serverio %s:"
 
@@ -1085,18 +1089,18 @@ msgstr "g:i a, D"
 msgid "D, H:i"
 msgstr "H:i, D"
 
-#, c-format
+#, php-format
 msgid "Preference database error (%s). Exiting abnormally"
 msgstr "Nustatymų bazės klaida (%s). Programos klaida."
 
-#, c-format
+#, php-format
 msgid "Click here to return to %s"
 msgstr "Spragtelėkite čia norėdami grįžti į %s"
 
 msgid "Go to the login page"
 msgstr "Grįžti į prisijungimo puslapį"
 
-#, c-format
+#, php-format
 msgid ""
 "Preference file, %s, does not exist. Log out, and log back in to create a "
 "default preference file."
@@ -1104,7 +1108,7 @@ msgstr ""
 "Nustatymų byla %s neegzistuoja. Prisijunkite iš naujo, kad sukurti "
 "standartinę nustatymų bylą."
 
-#, c-format
+#, php-format
 msgid ""
 "Preference file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
@@ -1112,7 +1116,7 @@ msgstr ""
 "Nepavyko atidaryti nustatymų bylos %s. Susisiekite su administratoriumi ir "
 "praneškite apie šią klaidą."
 
-#, c-format
+#, php-format
 msgid ""
 "Preference file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
@@ -1120,7 +1124,7 @@ msgstr ""
 "Nepavyko įrašyti į nustatymų bylą %s. Susisiekite su administratoriumi ir "
 "praneškite apie šią klaidą."
 
-#, c-format
+#, php-format
 msgid ""
 "Preference file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
@@ -1128,7 +1132,7 @@ msgstr ""
 "Nepavyko nukopijuoti nustatymų bylos %s iš laikinos bylos %s. Susisiekite su "
 "administratoriumi ir praneškite apie šią klaidą."
 
-#, c-format
+#, php-format
 msgid "Error opening %s"
 msgstr "Klaida atidarant %s"
 
@@ -1138,14 +1142,14 @@ msgstr "Standartinė nustatymų byla nerasta arba neperskaitoma!"
 msgid "Could not create initial preference file!"
 msgstr "Nepavyko sukurti pradinės nustatymų bylos!"
 
-#, c-format
+#, php-format
 msgid "%s should be writable by user %s"
 msgstr "%s turi būti prieinama vartotojui %s rašyti"
 
 msgid "Signature is too big."
 msgstr "Parašas yra per didelis."
 
-#, c-format
+#, php-format
 msgid ""
 "Signature file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
@@ -1153,7 +1157,7 @@ msgstr ""
 "Nepavyko atidaryti parašo bylos %s. Susisiekite su administratoriumi ir "
 "praneškite apie šią klaidą."
 
-#, c-format
+#, php-format
 msgid ""
 "Signature file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
@@ -1161,7 +1165,7 @@ msgstr ""
 "Nepavyko rašyti į parašo bylą %s. Susisiekite su administratoriumi ir "
 "praneškite apie šią klaidą."
 
-#, c-format
+#, php-format
 msgid ""
 "Signature file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
@@ -1203,7 +1207,7 @@ msgstr "KLAIDA: IMAP serveris uždarė jungtį."
 msgid "ERROR: Unknown IMAP response."
 msgstr "KLAIDA: Nesuprantamas IMAP atsakymas."
 
-#, c-format
+#, php-format
 msgid "Error connecting to IMAP server: %s."
 msgstr "Įvyko klaida jungiantis prie IMAP serverio: %s."
 
@@ -1216,11 +1220,11 @@ msgstr "CRAM-MD5 arba DIGEST-MD5 autentifikacija gali suveikti."
 msgid "Also, the use of TLS may allow SquirrelMail to login."
 msgstr "Dar prisijungimo metu galima bandyti panaudoti TLS."
 
-#, c-format
+#, php-format
 msgid "Bad request: %s"
 msgstr "Klaidinga užklausa: %s"
 
-#, c-format
+#, php-format
 msgid "Unknown error: %s"
 msgstr "Neaiški klaida: %s"
 
@@ -1310,11 +1314,11 @@ msgstr "Atšaukti pažymėjimus"
 msgid "Select All"
 msgstr "Pažymėti visus"
 
-#, c-format
+#, php-format
 msgid "Viewing Messages: %s to %s (%s total)"
 msgstr "Žinučių peržiūra: nuo %s iki %s (%s iš viso)"
 
-#, c-format
+#, php-format
 msgid "Viewing Message: %s (%s total)"
 msgstr "Žinutės peržiūra: %s (%s iš viso)"
 
@@ -1364,7 +1368,7 @@ msgstr "sec_remove_lt_LT.png"
 msgid "This external link will open in a new window"
 msgstr "Ši išorinė nuoroda bus atverta naujame lange"
 
-#, c-format
+#, php-format
 msgid "Option Type '%s' Not Found"
 msgstr "Nustatymo tipas '%s' nerastas"
 
@@ -1374,12 +1378,22 @@ msgstr "Dabartinis aplankas"
 msgid "Compose"
 msgstr "Rašyti"
 
-#, c-format
+#, php-format
 msgid "Error creating directory %s."
 msgstr "Įvyko klaida kuriant katalogą %s."
 
 msgid "Could not create hashed directory structure!"
 msgstr "Nepavyko sukurti išskaidytų katalogų struktūros!"
+
+msgid "Email delivery error"
+msgstr "Pašto siuntimo klaida"
+
+#, php-format
+msgid "Can't execute command '%s'."
+msgstr "Nepavyko įvykti komandos '%s'."
+
+msgid "Can't open SMTP stream."
+msgstr "Nepavyko atidaryti SMTP jungties."
 
 msgid "Service not available, closing channel"
 msgstr "Paslauga nepasiekiama, uždaromas kanalas"
@@ -1726,6 +1740,15 @@ msgstr "Su paraštėmis:"
 msgid "Delimited:"
 msgstr "Su skirtukais:"
 
+msgid "You can't select INBOX as Trash folder."
+msgstr "Gaunamų laiškų aplanko negalima nustatyti kaip šiukšlių aplanko."
+
+msgid "You can't select INBOX as Sent folder."
+msgstr "Gaunamų laiškų aplanko negalima nustatyti kaip siunčiamų aplanko."
+
+msgid "You can't select INBOX as Draft folder."
+msgstr "Gaunamų laiškų aplanko negalima nustatyti kaip juodraščių aplanko."
+
 msgid "Name and Address Options"
 msgstr "Vardo ir adreso nustatymai"
 
@@ -1901,6 +1924,9 @@ msgstr "Naudoti serverio sendmail programą"
 msgid "Choose &quot;no&quot; for SMTP"
 msgstr "Pasirinkite \"ne\", kad naudoti SMTP"
 
+msgid "Sendmail Arguments"
+msgstr "Sendmail parametrai"
+
 msgid "Sendmail Path"
 msgstr "Kelias iki sendmail"
 
@@ -2043,6 +2069,9 @@ msgstr "UID palaikymas"
 msgid "PHP session name"
 msgstr "PHP sesijos vardas"
 
+msgid "Location base"
+msgstr "Bazinis adresas"
+
 msgid "Message of the Day"
 msgstr "Standartinis pranešimas"
 
@@ -2148,7 +2177,7 @@ msgstr "Kelias iki temos"
 msgid "Plugins"
 msgstr "Priedai"
 
-#, c-format
+#, php-format
 msgid "Plugin directory could not be found: %s"
 msgstr "Priedų katalogas nerastas: %s"
 
@@ -2179,7 +2208,7 @@ msgstr ""
 "Prieš siusdami pranešimą apie klaidą, patikrinkite žemiau išvardintus "
 "punktus."
 
-#, c-format
+#, php-format
 msgid ""
 "Make sure that you are running the most recent copy of %s. You are currently "
 "using version %s."
@@ -2187,7 +2216,7 @@ msgstr ""
 "Įsitikinkite, kad Jūs naudojate paskutinę %s versiją. Jūs dabar naudojate %s "
 "versiją."
 
-#, c-format
+#, php-format
 msgid ""
 "Check to see if your bug is already listed in the %sBug List%s on "
 "SourceForge. If it is, we already know about it and are trying to fix it."
@@ -2206,7 +2235,7 @@ msgstr ""
 "Jei klaida susijusi su tam tikra žinute, išsaugokite pilną tos žinutės "
 "kopiją. Programuotojams žinutės tekstas gali padėti."
 
-#, c-format
+#, php-format
 msgid ""
 "If there were warnings displayed above, try to resolve them yourself. Read "
 "the guides in the %s directory where SquirrelMail was installed."
@@ -2260,7 +2289,7 @@ msgstr "Klaidų pranešimai:"
 msgid "Show button in toolbar"
 msgstr "Rodyti mygtuką įrankių juostoje"
 
-#, c-format
+#, php-format
 msgid "Could not write calendar file %s"
 msgstr "Nepavyko įrašyti į kalendoriaus bylą %s!"
 
@@ -2604,7 +2633,7 @@ msgstr "Antraštė"
 msgid "Contains:"
 msgstr "Turi:"
 
-#, c-format
+#, php-format
 msgid "If %s contains %s then move to %s"
 msgstr "Jei %s turi %s, tada perkelti žinutę į %s"
 
@@ -2637,7 +2666,7 @@ msgstr "Jūs turite pasirinkti tikrinimo tipą."
 msgid "Spam Filtering"
 msgstr "Spamo filtravimas"
 
-#, c-format
+#, php-format
 msgid "WARNING! Tell the administrator to set the %s variable."
 msgstr ""
 "DĖMESIO! Paprašykite Jūsų pašto administratorių nustatyti %s kintamąjį."
@@ -2674,14 +2703,14 @@ msgstr ""
 "aplanke ir vėl grąžinkite tik naujų žinučių skanavimą. Taip Jūsų nauji spamo "
 "filtrai bus pritaikyti senosioms žinutėms."
 
-#, c-format
+#, php-format
 msgid "Spam is sent to %s."
 msgstr "Spamas nukreipiamas į %s"
 
 msgid "not set yet"
 msgstr "dar nenustatyta"
 
-#, c-format
+#, php-format
 msgid "Spam scan is limited to %s."
 msgstr "Spamo tikrinimas ribojamas iki %s žinučių"
 
@@ -2691,7 +2720,7 @@ msgstr "Įjungta"
 msgid "OFF"
 msgstr "Išjungta"
 
-#, c-format
+#, php-format
 msgid "%s is not found."
 msgstr "%s nerasta."
 
@@ -2719,7 +2748,7 @@ msgstr ""
 "Paprastai testai naudoja IMAP komandas atitinkančias dabartinę SquirrelMail "
 "konfiguraciją. Galima naudoti ir kitas komandas."
 
-#, c-format
+#, php-format
 msgid ""
 "This will send a message to %s requesting help for this list. You will "
 "receive an emailed response at the address below."
@@ -2727,7 +2756,7 @@ msgstr ""
 "Ši komanda nusiųs žinutę į %s, prašydama pagalbos. Atsakymai turėtų grįžti į "
 "žemiau esantį adresą"
 
-#, c-format
+#, php-format
 msgid ""
 "This will send a message to %s requesting that you will be subscribed to "
 "this list. You will be subscribed with the address below."
@@ -2735,7 +2764,7 @@ msgstr ""
 "Ši komanda nusiųs žinutę į %s, prašydama jus įtraukti į šį susirašinėjimo "
 "sąrašą. Bandoma bus įtraukti žemiau esantį adresą."
 
-#, c-format
+#, php-format
 msgid ""
 "This will send a message to %s requesting that you will be unsubscribed from "
 "this list. It will try to unsubscribe the adress below."
@@ -2743,7 +2772,7 @@ msgstr ""
 "Ši komanda nusiųs žinutę į %s, prašydama jus pašalinti iš šio susirašinėjimo "
 "sąrašo. Bandoma bus nurašyti žemiau esantį adresą."
 
-#, c-format
+#, php-format
 msgid "Unknown action: %s"
 msgstr "Nežinomas veiksmas: %s"
 
@@ -2888,7 +2917,7 @@ msgstr "Prisijungti pavyko: Nėra naujų žinučių"
 msgid "Login OK: Inbox EMPTY"
 msgstr "Prisijungti pavyko. Dėžė tuščia"
 
-#, c-format
+#, php-format
 msgid "Login OK: Inbox contains %s messages"
 msgstr "Prisijungti pavyko: Dėžėje yra %s žinučių(tės)"
 
@@ -2931,7 +2960,7 @@ msgstr "Atsijungiam nuo IMAP serverio"
 msgid "Message appended to mailbox"
 msgstr "Žinutė padėta į esamą pašto dėžę"
 
-#, c-format
+#, php-format
 msgid "Message %d deleted from remote server!"
 msgstr "Žinutė %d ištrinta nutolusiame serveryje!"
 
@@ -3074,7 +3103,7 @@ msgstr "Peržiūrėti žinutės detales"
 msgid "New Mail Notification"
 msgstr "Perspėjimai apie naujas žinutes"
 
-#, c-format
+#, php-format
 msgid ""
 "The %s option will check ALL of your folders for unseen mail, not just the "
 "inbox for notification."
@@ -3085,7 +3114,7 @@ msgstr ""
 msgid "Check all boxes, not just INBOX"
 msgstr "Tikrinti visus aplankus, ne tik gautas žinutes"
 
-#, c-format
+#, php-format
 msgid ""
 "Selecting the %s option will enable the showing of a popup window when "
 "unseen mail is in your folders (requires JavaScript)."
@@ -3096,7 +3125,7 @@ msgstr ""
 msgid "Show popup window on new mail"
 msgstr "Iškviesti naują langą pasirodžius naujoms žinutėms"
 
-#, c-format
+#, php-format
 msgid ""
 "Use the %s option to only check for messages that are recent. Recent "
 "messages are those that have just recently showed up and have not been "
@@ -3111,7 +3140,7 @@ msgstr ""
 msgid "Count only messages that are RECENT"
 msgstr "Įvertinti tik paskutines žinutes"
 
-#, c-format
+#, php-format
 msgid ""
 "Selecting the %s option will change the title in some browsers to let you "
 "know when you have new mail (requires JavaScript, and only works in IE but "
@@ -3126,7 +3155,7 @@ msgstr ""
 msgid "Change title on supported browsers"
 msgstr "Pakeisti antraštę, jei naršyklė tai palaiko"
 
-#, c-format
+#, php-format
 msgid ""
 "Select %s to turn on playing a media file when unseen mail is in your "
 "folders. When enabled, you can specify the media file to play in the "
@@ -3139,7 +3168,7 @@ msgstr ""
 msgid "Enable Media Playing"
 msgstr "Groti garsus"
 
-#, c-format
+#, php-format
 msgid ""
 "Select from the list of %s the media file to play when new mail arrives. If "
 "no file is specified, %s, no sound will be used."
@@ -3168,14 +3197,14 @@ msgstr "Naujas paštas"
 msgid "SquirrelMail Notice:"
 msgstr "SquirrelMail informacija:"
 
-#, c-format
+#, php-format
 msgid "You have %s new message"
 msgid_plural "You have %s new messages"
 msgstr[0] "Jūs turite %s naują žinutę"
 msgstr[1] "Jūs turite %s naujas žinutes"
 msgstr[2] "Jūs turite %s naujų žinučių"
 
-#, c-format
+#, php-format
 msgid "You have %s new messages"
 msgstr "Jūs turite %s naujų(as) žinučių(tes)"
 
@@ -3189,11 +3218,11 @@ msgstr ""
 "Čia Jūs nustatote, kaip Jus reikia informuoti (išleisti kokį nors garsą ar "
 "atidaryti iššokantį langą) apie atėjusias naujas žinutes."
 
-#, c-format
+#, php-format
 msgid "%s New Messages"
 msgstr "%s naujų žinučių"
 
-#, c-format
+#, php-format
 msgid "%s New Message"
 msgid_plural "%s New Messages"
 msgstr[0] "%s nauja žinutė"
@@ -3282,7 +3311,7 @@ msgstr ""
 "SpamCop yra nemokama tarnyba, kuri palengvina tikrųjų spamo siuntėjų "
 "aptikimą bei atsakingų asmenų informavimą apie Jūsų sistemų išnaudojimą."
 
-#, c-format
+#, php-format
 msgid ""
 "To use it, you must get a SpamCop authorization code. There is a free %ssign "
 "up page%s so you can use SpamCop."
@@ -3293,7 +3322,7 @@ msgstr ""
 msgid "Before you sign up, be warned"
 msgstr "Prieš užsiregistruodami atkreipkite dėmesį"
 
-#, c-format
+#, php-format
 msgid ""
 "Some users have reported that the email addresses used with SpamCop find "
 "their way onto spam lists. To be safe, you can just create an email "
@@ -3402,7 +3431,7 @@ msgstr ""
 msgid "More information"
 msgstr "Kita informacija"
 
-#, c-format
+#, php-format
 msgid ""
 "For more information about SpamCop, it's services, spam in general, and many "
 "related topics, try reading through SpamCop's %sHelp and Feedback%s section."
@@ -3506,22 +3535,22 @@ msgstr "Įvyko klaida atkoduojant žodyną"
 msgid "Cute."
 msgstr "Gražu."
 
-#, c-format
+#, php-format
 msgid "Could not run the spellchecker command (%s)."
 msgstr "Nepavyko paleisti rašybos tikrinimo komandos (%s)."
 
 msgid "Error while writing to pipe."
 msgstr "Duomenų nukreipimo į programą metu įvyko klaida."
 
-#, c-format
+#, php-format
 msgid "Could not open temporary file '%s'."
 msgstr "Nepavyko atverti laikinos bylos %s."
 
-#, c-format
+#, php-format
 msgid "Error while writing to temporary file '%s'."
 msgstr "Rašant į laikiną bylą %s įvyko klaida."
 
-#, c-format
+#, php-format
 msgid "I tried to execute '%s', but it returned:"
 msgstr "Bandant vykdyti '%s', buvo išvesta"
 
@@ -3540,7 +3569,7 @@ msgstr "Asmeninis žodynas saugomas... Laukite."
 msgid "SquirrelSpell Results"
 msgstr "Rašybos tikrinimo rezultatai"
 
-#, c-format
+#, php-format
 msgid "Found %s errors"
 msgstr "Rasta %s klaidų(os/a)"
 
@@ -3676,7 +3705,7 @@ msgstr "Asmeninis žodynas tuščias."
 msgid "Please check any words you wish to delete from your dictionary."
 msgstr "Pažymėkite žodžius, kuriuos norite ištrinti iš žodyno."
 
-#, c-format
+#, php-format
 msgid "%s dictionary"
 msgstr "%s žodynas"
 
@@ -3766,7 +3795,7 @@ msgid ""
 "Please encrypt my personal dictionary and store it in an encrypted format."
 msgstr "Prašau užkoduoti mano asmeninį žodyną."
 
-#, c-format
+#, php-format
 msgid "Deleting the following entries from %s dictionary:"
 msgstr "Triname nurodytus įrašus iš %s žodyno:"
 
@@ -3790,11 +3819,11 @@ msgstr "Pasirinkite žodyną, kurį naudosite žinutės tikrinimui:"
 msgid "SquirrelSpell Initiating"
 msgstr "Pasileidžia rašybos tikrinimas"
 
-#, c-format
+#, php-format
 msgid "Settings adjusted to: %s with %s as default dictionary."
 msgstr "Nustatymai pakeisti į: %s su %s pagrindiniu žodynu."
 
-#, c-format
+#, php-format
 msgid "Using %s dictionary (system default) for spellcheck."
 msgstr "Rašybos tikrinimui naudojamas %s žodynas (įprastas)."
 
@@ -3845,7 +3874,7 @@ msgstr "Jūsų serverio nustatymai yra:"
 msgid "Maximum of 150 words translated, powered by Systran"
 msgstr "Verčiama iki 150 žodžių, naudojamas Systran vertėjas"
 
-#, c-format
+#, php-format
 msgid "Number of supported language pairs: %s"
 msgstr "Palaikomų kalbų porų skaičius: %s"
 
@@ -3856,7 +3885,7 @@ msgid "No known limits, powered by Translation Experts' InterTran"
 msgstr ""
 "Jokių žinomų apribojimų, naudojamas Translation Experts InterTran vertėjas"
 
-#, c-format
+#, php-format
 msgid "Number of supported languages: %s"
 msgstr "Palaikomų kalbų skaičius: %s"
 
@@ -3903,7 +3932,7 @@ msgid ""
 "language?"
 msgstr "Kurį vertėją naudoti gavus žinutes kita kalba?"
 
-#, c-format
+#, php-format
 msgid "%s to %s"
 msgstr "iš %s į %s"
 
@@ -4021,7 +4050,7 @@ msgstr "Interfeiso kalba"
 msgid "Translation direction"
 msgstr "Vertimo kryptis"
 
-#, c-format
+#, php-format
 msgid "About SquirrelMail %s"
 msgstr "Apie SquirrelMail %s"
 
@@ -4031,7 +4060,7 @@ msgid ""
 msgstr ""
 "SquirrelMail yra vadinama programa, kuri leidžia pasiekti Jūsų paštą per WWW."
 
-#, c-format
+#, php-format
 msgid ""
 "If you have questions about or problems with your mail account, passwords, "
 "abuse etc, please refer to your system administrator or provider%s."
@@ -4040,7 +4069,7 @@ msgstr ""
 "slaptažodžiais ar pažeidimais, susisiekite su savo pašto administratoriumi "
 "arba tiekėju%s."
 
-#, c-format
+#, php-format
 msgid ""
 "They can assist you adequately with these issues. The SquirrelMail Project "
 "Team cannot help you with that. The %shelp system%s provides answers to "
@@ -4050,7 +4079,7 @@ msgstr ""
 "programuotojai greičiausiai negalės Jums padėti. %sPagalbos sistema%s gali "
 "pateikti atsakymus į dažniausiai užduodamus klausimus."
 
-#, c-format
+#, php-format
 msgid ""
 "SquirrelMail is a feature rich, standards compliant webmail application "
 "written in PHP. It was made by a group of volunteers united in the "
@@ -4062,7 +4091,7 @@ msgstr ""
 "SquirrelMail projekte. Pašto sąsaja yra platinama remiantis atviro kodo "
 "principais su %sGNU·General·Public·License%s apribojimais."
 
-#, c-format
+#, php-format
 msgid ""
 "For more information about SquirrelMail and the SquirrelMail Project Team, "
 "see %sthe SquirrelMail website%s."
@@ -4073,7 +4102,7 @@ msgstr ""
 msgid "System information"
 msgstr "Sisteminė informacija"
 
-#, c-format
+#, php-format
 msgid "You are using SquirrelMail version: %s"
 msgstr "Jūsų naudojama SquirrelMail versija: %s"
 
@@ -4085,12 +4114,6 @@ msgstr "nieko neįdiegta"
 
 msgid "Nothing to search"
 msgstr "Nėra ko ieškoti"
-
-msgid "No folders were found to unsubscribe from."
-msgstr "Nerasta aplankų, kurių prenumeratą galima būti atšaukti."
-
-msgid "No folders were found to subscribe to."
-msgstr "Nerasta aplankų, kuriuos galima būtų užsiprenumeruoti."
 
 msgid "SquirrelMail Webmail Application"
 msgstr "SquirrelMail internetinio pašto programa"
@@ -4122,9 +4145,6 @@ msgstr "Nesaugoti"
 msgid "Copy"
 msgstr "Kopijuoti"
 
-msgid "Please enter something to search for"
-msgstr "Įveskite kokią nors paieškos sąlygą"
-
 msgid "There must be at least one criteria to search for"
 msgstr "Turi būti bent viena paieškos sąlyga"
 
@@ -4151,9 +4171,6 @@ msgstr "Sutraukti"
 
 msgid "Unfold"
 msgstr "Išskleisti"
-
-msgid "Saved Searches"
-msgstr "Išsaugotos Paieškos"
 
 msgid "Missing"
 msgstr "Trūksta"
@@ -4263,13 +4280,10 @@ msgstr "Įprasta paieška"
 msgid "Advanced search"
 msgstr "Sudėtinga paieška"
 
-msgid "Folder List"
-msgstr "Aplankų Sąrašas"
-
 msgid "Address book is read-only"
 msgstr "Adresų knyga yra skirta tik skaitymui"
 
-#, c-format
+#, php-format
 msgid "User '%s' already exist."
 msgstr "Jau yra vartotojas \"%s\"."
 
@@ -4288,7 +4302,8 @@ msgstr "Naudojama LDAP protokolo versija nepalaiko pervardinimo operacijos"
 msgid ""
 "LDAP rename is not supported by used LDAP library. You can't change nickname"
 msgstr ""
-"Naudojama LDAP biblioteka nepalaiko pervardinimo operacijos. Jūs negalite keisti trumpo vardo"
+"Naudojama LDAP biblioteka nepalaiko pervardinimo operacijos. Jūs negalite "
+"keisti trumpo vardo"
 
 msgid "LDAP rename failed"
 msgstr "LDAP pervardinimo klaida"
@@ -4296,9 +4311,15 @@ msgstr "LDAP pervardinimo klaida"
 msgid "Unable to remove some field values"
 msgstr "Nepavyko pašalinti dalies laukų reikšmių"
 
-#, c-format
+#, php-format
 msgid "Unable to rename user \"%s\" to \"%s\""
 msgstr "Nepavyko pervardinti įrašo \"%s\" į \"%s\""
+
+msgid "Address book is corrupted. Required fields are missing."
+msgstr "Adresų knyga yra sugadinta. Trūksta būtinų laukų."
+
+msgid "Address book entry is too big"
+msgstr "Adresų knygos įrašas yra per didelis"
 
 msgid "Error initializing address book database."
 msgstr "Nepavyko prisijungti prie adresų knygos duomenų bazės."
@@ -4309,10 +4330,13 @@ msgstr "Nepavyko aktyvuoti bendros adresų knygos."
 msgid "Error initializing other address books."
 msgstr "Nepavyko aktyvuoti kitų adresų knygų."
 
+msgid "Unknown address book backend"
+msgstr "Nežinoma adresų knygos posistemė"
+
 msgid "Illegal folder name."
 msgstr "Neleistinas aplanko vardas."
 
-#, c-format
+#, php-format
 msgid "The name may not contain any of the following: %s"
 msgstr "Varde negali būti šių simbolių: %s"
 
@@ -4349,8 +4373,8 @@ msgid ""
 "IMAP STARTTLS is enabled in SquirrelMail configuration, but used IMAP server "
 "does not support STARTTLS."
 msgstr ""
-"IMAP STARTTLS panaudojimas yra įjungtas SquirrelMail konfigūracijoje, tačiau"
-"naudojamas IMAP serveris nepalaiko STARTTLS išplėtimo."
+"IMAP STARTTLS panaudojimas yra įjungtas SquirrelMail konfigūracijoje, "
+"tačiaunaudojamas IMAP serveris nepalaiko STARTTLS išplėtimo."
 
 msgid "Unable to start TLS."
 msgstr "Nepavyko įjungti TLS."
@@ -4400,22 +4424,12 @@ msgstr "Klaida"
 msgid "Terminating SquirrelMail due to a fatal error"
 msgstr "SquirrelMail užduoties vykdymas nutrūko įvykus kritinei klaidai"
 
-msgid "Email delivery error"
-msgstr "Pašto siuntimo klaida"
-
-#, c-format
-msgid "Can't execute command '%s'."
-msgstr "Nepavyko įvykti komandos '%s'."
-
 msgid ""
 "Secure SMTP (TLS) is enabled in SquirrelMail configuration, but used PHP "
 "version does not support it."
 msgstr ""
-"Saugus SMTP (TLS) yra įjungtas SquirrelMail konfigūracijoje, tačiau naudojama "
-"PHP versija nepalaiko tam būtinų funkcijų."
-
-msgid "Can't open SMTP stream."
-msgstr "Nepavyko atidaryti SMTP jungties."
+"Saugus SMTP (TLS) yra įjungtas SquirrelMail konfigūracijoje, tačiau "
+"naudojama PHP versija nepalaiko tam būtinų funkcijų."
 
 msgid "TLS session is already activated."
 msgstr "TLS sesija jau aktyvuota."
@@ -4424,8 +4438,8 @@ msgid ""
 "SMTP STARTTLS is enabled in SquirrelMail configuration, but used SMTP server "
 "does not support it"
 msgstr ""
-"SMTP STARTTLS panaudojimas yra įjungtas SquirrelMail konfigūracijoje, tačiau"
-"naudojamas SMTP serveris nepalaiko STARTTLS išplėtimo."
+"SMTP STARTTLS panaudojimas yra įjungtas SquirrelMail konfigūracijoje, "
+"tačiaunaudojamas SMTP serveris nepalaiko STARTTLS išplėtimo."
 
 msgid ""
 "SMTP STARTTLS is enabled in SquirrelMail configuration, but used PHP version "
@@ -4439,15 +4453,15 @@ msgid ""
 "Run \"configure\", choose option 4 (General options) and set option 10 "
 "(Disable server thread sort) to true)."
 msgstr ""
-"Paleiskite \"configure\", pasirinkite 4 (General options) punktą ir "
-"įjunkite 10 opciją (nustatykite \"Disable server thread sort\" į \"true\")."
+"Paleiskite \"configure\", pasirinkite 4 (General options) punktą ir įjunkite "
+"10 opciją (nustatykite \"Disable server thread sort\" į \"true\")."
 
 msgid ""
 "Run \"configure\", choose option 4 (General options) and set option 11 "
 "(Disable server-side sorting) to true."
 msgstr ""
-"Paleiskite \"configure\", pasirinkite 4 (General options) punktą ir "
-"įjunkite 11 opciją (nustatykite \"Disable server-side sorting\" į \"true\")."
+"Paleiskite \"configure\", pasirinkite 4 (General options) punktą ir įjunkite "
+"11 opciją (nustatykite \"Disable server-side sorting\" į \"true\")."
 
 msgid "Your used charset is not supported by your IMAP server."
 msgstr "Naudojamas IMAP serveris nepalaiko pasirinktos simbolių koduotės."
@@ -4459,24 +4473,17 @@ msgid ""
 "IMAP server."
 msgstr ""
 "Paleiskite \"configure\", pasirinkite 4 (General options) punktą ir "
-"atjunkite 12 opciją (nustatykite \"Allow server charset search\" į \"false\") arba"
-"tarp 10 (Language settings) punkto nustatykite koduotę, kurią palaiko "
-"Jūsų naudojamas IMAP serveris."
+"atjunkite 12 opciją (nustatykite \"Allow server charset search\" į \"false"
+"\") arbatarp 10 (Language settings) punkto nustatykite koduotę, kurią "
+"palaiko Jūsų naudojamas IMAP serveris."
 
 msgid "Out of quota error."
 msgstr "Kvotų perviršio klaida."
 
 msgid ""
-"Remove unneccessary messages from your folder. Start with your Trash folder."
-msgstr ""
-"Pašalinkite nereikalingas žinutes iš savo aplankų. Pradėti valymą reiktų nuo "
-"šiukšlyno (Trash aplankas)."
-
-msgid ""
 "An error occured when SquirrelMail appended a message to the mailbox as "
 "listed in this message."
-msgstr ""
-"Saugant žinutę į pašto aplanką įvyko šiame pranešime nurodyta klaida."
+msgstr "Saugant žinutę į pašto aplanką įvyko šiame pranešime nurodyta klaida."
 
 msgid "Your IMAP server returned an error."
 msgstr "Jūsų IMAP serveris parodė klaidą."
@@ -4538,7 +4545,7 @@ msgstr "Išversti specialių aplankų vardus"
 msgid "Save Replies with Original Message"
 msgstr "Išsaugoti atsakymus kartu su originalia žinute"
 
-#, c-format
+#, php-format
 msgid "%d Minute"
 msgid_plural "%d Minutes"
 msgstr[0] "%d minutė"
@@ -4576,11 +4583,14 @@ msgstr ""
 "Būtina naujesnė PHP versija ir specialios funkcijos. Patikrinkite "
 "SquirrelMail dokumentaciją."
 
-msgid "Sendmail Arguments"
-msgstr "Sendmail parametrai"
-
 msgid "SMTP Connection Security"
 msgstr "SMTP jungties saugumas"
+
+msgid "Custom SMTP AUTH username"
+msgstr "Specialus SMTP AUTH vartotojo vardas"
+
+msgid "Custom SMTP AUTH password"
+msgstr "Specialus SMTP AUTH vartotojo slaptažodis"
 
 msgid "Disable server-side sorting"
 msgstr "Išjungti rūšiavimą serverio pusėje"
@@ -4648,6 +4658,9 @@ msgstr "Naudoti PHP iconv funkcijas"
 msgid "Allow remote configuration test"
 msgstr "Leisti tikrinti konfiguraciją per atstumą"
 
+msgid "Address book file line length"
+msgstr "Adresų knygos bylos eilutės ilgis"
+
 msgid "Templates"
 msgstr "Šablonai"
 
@@ -4681,7 +4694,7 @@ msgstr "Jūs turite įvesti savo esamą slaptažodį."
 msgid "Your current password is not correct."
 msgstr "Jūsų esamas slaptažodis yra neteisingas."
 
-#, c-format
+#, php-format
 msgid "Your new password should be %s to %s characters long."
 msgstr "Jūsų naują slaptažodį turi sudaryti nuo %s iki %s simbolių."
 
@@ -4712,11 +4725,11 @@ msgstr "Naudojama konfiguracija reikalauja LDAP palaikymo tarp PHP."
 msgid "Plugin is not configured correctly."
 msgstr "Priedas yra neteisingai sukonfiguruotas."
 
-#, c-format
+#, php-format
 msgid "Setting of LDAP connection option %s to value %s failed."
 msgstr "Nepavyko prilyginti LDAP jungties nustatymo %s reikšmei \"%s\"."
 
-#, c-format
+#, php-format
 msgid "Incorrect LDAP connection option: %s"
 msgstr "Klaidingas LDAP jungties nustatymas: %s"
 
@@ -4727,7 +4740,7 @@ msgstr "Esamas PHP LDAP modulis neleidžia naudoti ldap_set_option() funkcijos."
 msgid "Unable to use TLS."
 msgstr "Nepavyko įjungti TLS."
 
-#, c-format
+#, php-format
 msgid "Error: %s"
 msgstr "Klaida: %s"
 
@@ -4737,7 +4750,7 @@ msgstr "Šiuo metu negalima pasinaudoti LDAP TLS."
 msgid "Unable to bind to LDAP server."
 msgstr "Nepavyko prisiregistruoti LDAP serveryje."
 
-#, c-format
+#, php-format
 msgid "Server replied: %s"
 msgstr "Serveris atsakė: %s"
 
@@ -4765,7 +4778,7 @@ msgstr "Aptikti keli sutampantys vartotojo id."
 msgid "ldap_get_dn error."
 msgstr "ldap_get_dn klaida."
 
-#, c-format
+#, php-format
 msgid "Unsupported crypto: %s"
 msgstr "Nepalaikomas kodavimas: %s"
 
@@ -4844,11 +4857,11 @@ msgid "Required change password backend configuration options are missing."
 msgstr ""
 "Nenustatyti būtini slaptažodžių keitimo posistemės konfiguracijos nustatymai."
 
-#, c-format
+#, php-format
 msgid "Connection error: %s"
 msgstr "Susijungimo klaida: %s"
 
-#, c-format
+#, php-format
 msgid "Invalid table name: %s"
 msgstr "Klaidingas lentelės vardas: %s"
 
@@ -4864,7 +4877,7 @@ msgstr "Klaidingas slaptažodžio laukas"
 msgid "Invalid domain field"
 msgstr "Klaidingas domeno laukas"
 
-#, c-format
+#, php-format
 msgid "Query failed: %s"
 msgstr "Užklausa nepavyko: %s"
 
@@ -4880,7 +4893,7 @@ msgstr "Nepavyko atpažinti slaptažodžių kodavimo algoritmo."
 msgid "Unable to encrypt new password."
 msgstr "Nepavyko užkoduoti naujo slaptažodžio."
 
-#, c-format
+#, php-format
 msgid "Unable to set new password: %s"
 msgstr "Nepavyko nustatyti naujo slaptažodžio: %s"
 
@@ -4916,6 +4929,10 @@ msgstr "Nenurodytas vartotjo vardas"
 
 msgid "Empty new password"
 msgstr "Nenurodytas naujas slaptažodis"
+
+#, php-format
+msgid "Unable to execute \"%s\"."
+msgstr "Nepavyko paleisti \"%s\"."
 
 msgid "Server Capability response:"
 msgstr "Serverio galimybių atsakas:"
@@ -4954,7 +4971,7 @@ msgstr "Užklausa:"
 msgid "Execution time:"
 msgstr "Vykdymo laikas:"
 
-#, c-format
+#, php-format
 msgid "%s ms"
 msgstr "%s ms"
 
@@ -4967,22 +4984,22 @@ msgstr "Neaprašyti jokie POP3 serveriai."
 msgid "Click here to go to the options page."
 msgstr "Spragtelėkite čia, kad pasiekti nustatymų puslapį."
 
-#, c-format
+#, php-format
 msgid "Fetching from %s"
 msgstr "Atsiunčiame iš %s"
 
-#, c-format
+#, php-format
 msgid "Login OK: Inbox contains %s message"
 msgid_plural "Login OK: Inbox contains %s messages"
 msgstr[0] "Prisijungti pavyko: Dėžėje yra %s žinutė)"
 msgstr[1] "Prisijungti pavyko: Dėžėje yra %s žinutės"
 msgstr[2] "Prisijungti pavyko: Dėžėje yra %s žinučių"
 
-#, c-format
+#, php-format
 msgid "Fetching message %s."
 msgstr "Atsiunčiama žinutė %s."
 
-#, c-format
+#, php-format
 msgid "Refetching message %s."
 msgstr "Persiunčiama žinutė  %s."
 
@@ -5032,9 +5049,13 @@ msgstr "Įkelti garso bylą:"
 msgid "Uploaded Media File:"
 msgstr "Įkelta garso byla:"
 
-#, c-format
+#, php-format
 msgid "Media file %s will be removed, if you upload other media file."
 msgstr "Jei Jūs įkelsite naują garso bylą, %s byla bus pašalinta."
+
+#, php-format
+msgid "%s notice:"
+msgstr "%s pranešimas:"
 
 msgid "Warning"
 msgstr "Perspėjimas"
@@ -5048,22 +5069,10 @@ msgstr "Sent Subfolders priedas yra klaidingai sukonfiguruotas."
 msgid "Save emails submitted to SpamCop:"
 msgstr "Išsaugoti žinutes siunčiamas SpamCop:"
 
-msgid "Spam Service Type:"
-msgstr "SpamCop tarnybos tipas:"
-
-msgid "Free reporting"
-msgstr "Nemokami pranešimai"
-
-msgid "Member services"
-msgstr "Komercinė tarnyba"
-
-msgid "Save Service Type"
-msgstr "Išsaugoti tarnybos tipą"
-
 msgid "SpamCop reporting"
 msgstr "SpamCop pranešimai"
 
-#, c-format
+#, php-format
 msgid ""
 "Your %s dictionary is encrypted with password that differs from your current "
 "password."
@@ -5074,14 +5083,14 @@ msgstr ""
 msgid "Invalid SquirrelSpell module."
 msgstr "Klaidingas SquirrelSpell modulis."
 
-#, c-format
+#, php-format
 msgid "Found %d error"
 msgid_plural "Found %d errors"
 msgstr[0] "Rasta %d klaida"
 msgstr[1] "Rasta %d klaidos"
 msgstr[2] "Rasta %d klaidų"
 
-#, c-format
+#, php-format
 msgid "Using %s dictionary for spellcheck."
 msgstr "Rašybos tikrinimui naudojamas %s žodynas."
 
@@ -5133,6 +5142,12 @@ msgstr "Patarimas:"
 msgid "More info:"
 msgstr "Kita informacija:"
 
+msgid "No folders were found to unsubscribe from."
+msgstr "Nerasta aplankų, kurių prenumeratą galima būti atšaukti."
+
+msgid "No folders were found to subscribe to."
+msgstr "Nerasta aplankų, kuriuos galima būtų užsiprenumeruoti."
+
 msgid "Message Flags"
 msgstr "Žinučių požymiai"
 
@@ -5141,6 +5156,9 @@ msgstr "Priedas"
 
 msgid "Click here to change the sorting of the message list"
 msgstr "Spragtelėkite norėdami pakeisti žinučių sąrašo rūšiavimo tvarką"
+
+msgid "Folder List"
+msgstr "Aplankų Sąrašas"
 
 msgid "Delivery error report"
 msgstr "Ataskaita apie pristatymo klaidą"
