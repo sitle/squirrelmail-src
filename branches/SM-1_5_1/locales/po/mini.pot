@@ -6,8 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: mini 0.3rc1\n"
-"POT-Creation-Date: 2005-07-27 15:22+0300\n"
+"Project-Id-Version: mini 0.3\n"
+"Report-Msgid-Bugs-To: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
+"POT-Creation-Date: 2006-09-10 01:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -20,10 +21,6 @@ msgstr ""
 msgid "mini window"
 msgstr ""
 
-#. *
-#. * FIXME: try html page header functions.
-#. * html goodness
-#.
 #: functions.php:49 mini.php:85 mini.php:96
 msgid "Mini SquirrelMail"
 msgstr ""
@@ -41,14 +38,14 @@ msgid "never"
 msgstr ""
 
 #: functions.php:70
-#, c-format
+#, php-format
 msgid "%s second"
 msgid_plural "%s seconds"
 msgstr[0] ""
 msgstr[1] ""
 
 #: functions.php:73
-#, c-format
+#, php-format
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""
@@ -86,15 +83,15 @@ msgid ""
 "this message"
 msgstr ""
 
-#: functions.php:296 mini.php:121
+#: functions.php:302 mini.php:123
 msgid "No subject"
 msgstr ""
 
-#: functions.php:304 functions.php:305 mini.php:126
+#: functions.php:314 functions.php:315 mini.php:130
 msgid "No sender"
 msgstr ""
 
-#: mini.php:75 mini.php:135
+#: mini.php:75 mini.php:139
 msgid "Back"
 msgstr ""
 
@@ -102,35 +99,34 @@ msgstr ""
 msgid "Refresh"
 msgstr ""
 
-#: mini.php:129 mini.php:170
+#: mini.php:133 mini.php:174
 msgid "Subject"
 msgstr ""
 
-#: mini.php:130 mini.php:172
+#: mini.php:134 mini.php:176
 msgid "From"
 msgstr ""
 
-#: mini.php:137
+#: mini.php:141
 msgid "Keep as new"
 msgstr ""
 
-#. finish all the tables.
-#: mini.php:144
+#: mini.php:148
 msgid "Folder"
 msgstr ""
 
-#: mini.php:146
+#: mini.php:150
 msgid "New Mail"
 msgstr ""
 
-#: mini.php:156
+#: mini.php:160
 msgid "INBOX"
 msgstr ""
 
-#: mini.php:189
+#: mini.php:193
 msgid "No New Messages"
 msgstr ""
 
-#: mini.php:205
+#: mini.php:209
 msgid "Close"
 msgstr ""
