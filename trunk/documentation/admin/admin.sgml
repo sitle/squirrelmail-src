@@ -56,25 +56,28 @@ obsoleted, and is only referenced in the upgrading notes of this manual.
 <p>
 <itemize>
   <item>UNIX/Linux or Windows (UNIX/Linux version may be more functional)
-  <item>IMAP4rev1 server (e.g. uw-imap, courier-imap, cyrus-imap, hMailServer,
-    Binc IMAP, CommuniGate, MS Exchange Server, MercuryMail 32, Dovecot)
+  <item>An IMAP server which supports IMAP 4 rev 1.
   <item>Web server with PHP installed (for example <url
-    url="http://httpd.apache.org/" name="Apache httpd">)
-  <item>You need at least PHP 4.1.0.
+        url="http://httpd.apache.org/" name="Apache httpd">)
+  <item>You need at least PHP 4.1.2. If you are using PHP 4.1.2 or 4.1.4,
+        please upgrade to the latest version ( >= 4.1.2.11, >= 4.1.4.1 final).
   <item>Perl installed on the system. (If you don't have Perl, SquirrelMail will
-    work fine but it's very helpful for the initial configuration.
-    Alternatively, you can manually edit the configuration files.)
-  <item>Unlike many PHP applications, SquirrelMail does not <em>require</em> MySQL or
-    other database type.
-  <item>If you use MySQL for the address book or for preferences, note that Pear DB
-    library is required to be installed and available in the include path.
-  <item>Aspell or ispell installed if using the SquirrelSpell plugin, For UNIX/Linux see:
-    <url url="http://aspell.sourceforge.net/" name="http://aspell.sourceforge.net/">
-    or for Windows, see: <url url="http://aspell.net/win32/"
-    name="http://aspell.net/win32/">
+        work fine but it's very helpful for the initial configuration.
+        Alternatively, you can manually edit the configuration files.)
+  <item>Unlike many PHP applications, SquirrelMail does not <em>require</em>
+        MySQL or other database type.
+  <item>If you use MySQL for the address book or for preferences, note that Pear
+        DB library is required to be installed and available in the include path.
+  <item>Aspell or ispell installed if using the SquirrelSpell plugin, For
+        UNIX/Linux see: <url url="http://aspell.sourceforge.net/"
+        name="http://aspell.sourceforge.net/"> or for Windows, see: <url
+        url="http://aspell.net/win32/" name="http://aspell.net/win32/">
   <item>Japanese language support: PHP must be compiled with the
-    <tt/--enable-mbstring/ option for SquirrelMail to read and write Japanese
-    emails. Each user must also set their language option to Japanese.
+        <tt/--enable-mbstring/ option for SquirrelMail to read and write Japanese
+        emails. Each user must also set their language option to Japanese.
+  <item>PHP mbstring extension is required for translations that use multibyte
+        or not ISO-8859-1 character sets. Without mbstring extension interface will
+        remain usable, but some i18n features and fixes won't be enabled.
   <item>PHP XML extension is required, if digest-md5 authentication is used.
 </itemize>
 
@@ -84,11 +87,11 @@ obsoleted, and is only referenced in the upgrading notes of this manual.
   <item>PHP with gettext and mbstring support. Without gettext you lose in
     performance. mbstring is actually required if you want a good internationalised
     webmail system.
-  <item>IMAP server that supports sort and thread IMAP extensions. Without these
-    extensions you lose in performance.
-  <item>IMAP server should support Unicode. Courier IMAP must be compiled with
-    <tt/--enable-unicode/ option. Without it some translations might be unable
-    to use sorting and threading.
+  <item>An IMAP server that supports sort and thread IMAP extensions. Without
+        these extensions you lose in performance.
+  <item>The IMAP server should support Unicode. Courier IMAP must be compiled
+        with <tt/--enable-unicode/ option. Without it some translations might be
+        unable to use sorting and threading.
 </itemize>
 
 <sect2>Client Requirements:
