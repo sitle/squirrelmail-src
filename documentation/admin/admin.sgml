@@ -1152,32 +1152,33 @@ configured at runtime from the config file.
 
 <sect1>PHP cache
 <p>
-<url url="http://turck-mmcache.sf.net" name="Turck MMCache"> (Discontinued) is
-an opcode cache that works on both *NIX and Win32. It speeds up PHP's
-performance significantly. It's open source and is under active
-development. Note: turck-mmcache is rumored to be dead. The developer was
-supposedly hired by Zend, and the project looks abandoned with many open bug
-reports. However, it still seems to be working for everyone and is possibly the
-fastest of the three we list here. Software is licensed under GPL.
+A PHP cache is a tool that might speed up PHP scripts. The general idea is to
+check if a PHP script is modified since it was cached, and use the cached copy
+if it wasn't. If the script is new or modifed, it's compiled and cached. The
+benefit is that using precomplied, cached copies of the script are quicker then
+compiling the script every time it's requested. Here are some examples of
+products to try:
 
-<url url="http://www.php-accelerator.co.uk/" name="PHP Accelerator"> is quite
-similar to turck, but it also seems a bit stalled. However, the parent
-company still exists, and so far it is running SquirrelMail with no
-problems. Closed source, binary only accelerator.
+<url url="http://pecl.php.net/package/APC" name="Alternative PHP Cache"> is a
+"free, open, and robust framework for caching and optimizing PHP intermediate
+code". It's released under the PHP License.
 
-<url url="http://eaccelerator.sourceforge.net/" name="EAccelerator"> is a fork
-of the old Turck MMCache project. Improvements have been made so this is more
-stable and also supports PHP5 now. Software is licensed under GPL.
+<url url="http://eaccelerator.net/" name="eAccelerator"> is a fork of the old,
+discontinued <url url="http://sourceforge.net/projects/turck-mmcache"
+name="Turck MMCache for PHP"> project. It's described as a "free open-source
+PHP accelerator, optimizer, encoder and dynamic content cache", and is released
+under the GNU LGPL.
+
+<url url="http://www.php-accelerator.co.uk/" name="PHP Accelerator"> is an
+"easily installed PHP Zend engine extension that provides a PHP cache, and is
+capable of delivering a substantial acceleration of PHP scripts without
+requiring any script changes, loss of dynamic content, or other application
+compromises". There is no official license for PHPA, and it's free for use.
 
 <url url="http://www.zend.com/store/products/zend-optimizer.php" name="Zend
-Optimizer"> is closed source product that runs on Windows, Linux, *BSD, and
-Solaris. Works not only with Apache 1.3.x/2 but also IIS 4/5, Zeus and the
-standalone CGI version of PHP.
-
-See also:
-<itemize>
-  <item><url url="http://pecl.php.net/package/APC" name="PHP APC">
-</itemize>
+Optimizer"> is a "free application that runs the files encoded by the Zend
+Guard, while enhancing the performance of PHP applications." It's released under
+the Zend License Agreement.
 
 <sect>Customizing SquirrelMail
 <sect1>Plugins
