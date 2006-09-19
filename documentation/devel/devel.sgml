@@ -579,7 +579,7 @@ include_once(SM_PATH . 'functions/imap_general.php');
 TODO: Add information about the base URI funcion.
 
 <sect1>Version numbering
-<sect2>The version number format
+<sect2>The version number format<label id="versionformat">
 <p>
 The approach we take for version numbering is very similar to the way the Linux
 kernel handles it. With this approach, it is easy to tell what's going on just
@@ -1144,25 +1144,81 @@ The function called <tt/plugin_demo_header_do()/ in the file
 <tt>plugins/demo/functions.php</tt> contains the plugin's core logic for the
 <tt/generic_header/ hook.
 
+<sect1>Versioning
+<sect2>Version numbering
+<p>
+In order to facilitate easier (and possibly automated) plugin management by 
+system administrators as well as in-SquirrelMail functionality that enables
+cross-plugin compatibility and communication, plugin versioning should remain 
+consistent with that of SquirrelMail itself.  While SquirrelMail does its
+best to work with non-standard version strings, versioning such as that
+explained in <ref id="versionformat" name="Version numbering">, with the 
+possible addition of an applicable SquirrelMail version, is the best way 
+to track your plugin's development (i.e., "1.0.4-1.4.5" or just "1.0.4").  
+Versions with only two digits ("1.0-1.4.5" or just "1.0") are also acceptable
+(a third digit of zero is implied).
+
 <sect2>Version reporting
 <p>
-In order for systems administrators to keep better track of plugins and get
-upgrades more efficiently, you are requested to make version information
-available to SquirrelMail in a format that it understands. To do this, a
-function called <tt/&lt;plugin name&gt;_version()/ must be included in
-<tt/setup.php/:
+The way any automated process gets its hands on the plugin version string
+depends on the SquirrelMail version being used.  As of SqruirrelMail 1.5.2,
+plugins should include an administrative function in <tt/setup.php/ that 
+returns an array of details that describe the plugin, including its version 
+number.  The function must be named <tt/&lt;plugin name&gt;_info()/ and 
+should return an associative array of version and requirements information.  
+Currently, only the version is required, but the more information available 
+to SquirrelMail, the more useful and cooperative a plugin will be.  Suggested 
+returned array elements:
+
+<itemize>
+  <item><bf/version/: plugin version number
+  <item><bf/minimum_sm_version/: required version of SquirrelMail for this plugin
+  <item><bf/minimum_php_version/: required version of PHP for this plugin
+  <item><bf/requirements/: English description of this plugin's requirements
+</itemize>
+
+TODO: expand this list, possibly coordinated with the plugin attributes described in the new website plugin tool
+
+TODO: might be nice to see something like this for templates too (version/language(HTML,XML,XHTML,CHTML,WML,etc)/engine(Smarty,PHP,etc)/intended interface...
+
+Prior to SquirrelMail 1.5.2, a function called <tt/&lt;plugin name&gt;_version()/ 
+was required.  For the sake of compatibility, it can be piggy-backed on top of
+the <tt/&lt;plugin name&gt;_info()/ function, such that <tt/setup.php/ looks like:
 
 <tscreen><verb>
-function demo_version() {
-    return '1.0';
+/**
+  * Returns info about this plugin
+  *
+  */
+function demo_info()
+{
+
+   return array(
+                  'version' => '1.0-1.4.0',
+               );
+
+}
+
+
+/**
+  * Returns version info about this plugin
+  *
+  */
+function demo_version() 
+{
+
+   $info = demo_info();
+   return $info['version'];
+
 }
 </verb></tscreen>
 
-There is also a legacy way to do this. Presently, plugins should do both, since
-we are still in a transition period between the two. The legacy is to create a
-file called <tt/version/ in the plugin directory. That file should have only two
-lines: the first line should have the name of the plugin as named on the
-SquirrelMail web site (this is often a prettified version of the plugin
+There is also a legacy version reporting mechanism that we would like plugin
+authors to implement, since we are still in a transition period between the 
+older and newer reporting usages. The now deprecated reporting mechanism  is to 
+create a file called <tt/version/ in the plugin directory. That file should 
+have only two lines: the first line should have the name of the plugin as 
+named on the SquirrelMail web site (this is often a prettified version of the plugin
 directory name), and the second line must have the version and nothing more. So
 for our "demo" plugin, whose name on the web site might be something like "Demo
 Favorite Colors", the file <tt>plugins/demo/version</tt> should have these two
@@ -1180,13 +1236,15 @@ up at install time. For ease of installation and maintenance, you should place
 all behavioral settings in a config file, isolated from the rest of your plugin
 code. A typical file name to use is <tt/config.php/. If you are using such a
 file, you should <it/not/ include a file called <tt/config.php/ in your plugin
-distribution, but instead a copy of that file called <tt/config.php.sample/.
+distribution, but instead a copy of that file called <tt/config.sample.php/.
 This helps systems administrators avoid overwriting the <tt/config.php/ files
 and losing all of their setup information when they upgrade your plugin.
 
 <sect1>Security considerations
 <sect2>Disallowing access for diabled plugins
 <p>
+FIXME: This paragraph is vague (hard to understand) and disagreeable.  Some plugins are intentionally called by others, even if the called plugin is not enabled.  Why is this a security problem?  There are other security concerns of graver danger that could be enumerated.  (also note, 1.5.1+ has a function called s_plugin_enabled())  
+
 All plugin authors should consider the security implications of their plugin.
 Great care must always be taken if the plugin calls external programs, and it's
 also a must to make sure that the plugin doesn't perform its function when it's
@@ -1205,7 +1263,9 @@ if ( !in_array('mypluginname', $plugins) ) {
 
 <sect2>Storing sensitive data
 <p>
-If a plugin needs to store sensitive configuration files or other such data,
+FIXME: also hard to understand.  user data goes in data dir, plugin config should typically not be stored in the data dir (although that could work) -- instead all plugin config files should be null-output php files.  even if not PHP code, they should be wrapped in PHP tags and c-style block comments.
+
+If a plugin needs to store sensitive user configuration files or other such data,
 it's recommended to do it in the already defined <tt/$data/ directory. The
 reason for this is that all system administrators (at least those who have read
 the installation instructions) knows that the <tt/$data/ directory needs to be
@@ -2016,7 +2076,8 @@ TODO: Complete this section.
 
 <sect2>Saving and retrieving preferences<label id="savepref">
 <p>
-TODO: Complete this section.
+TODO: Complete this section. (What happened to the text for this section from
+plugin.txt?)
 
 <sect1>Compatibility with older versions of SquirrelMail
 <p>
@@ -2028,23 +2089,28 @@ difficult position. That is, there will be people running both the old and new
 versions of SquirrelMail who want to use your plugin, and you will probably want
 to accommodate them both.
 
-The easiest way to keep both sides happy is to keep two different versions of
+One way to keep both sides happy is to keep two different versions of
 your plugin up to date, one that runs under the older SquirrelMail, and one that
 requires the newest SquirrelMail. This is inconvenient, however, especially if
-you are continuing to develop the plugin. Depending on the changes implemented
-in the new SquirrelMail version, you may be able to include code that can
-auto-sense the SquirrelMail version and make adjustments on the fly. There is a
-function called <tt/check_sm_version()/ available which does that. Read more
-about it in the <url
+you are continuing to develop the plugin. 
+
+Depending on the changes implemented in the new SquirrelMail version, another
+approach you may be able to use is to include code that can auto-sense the 
+SquirrelMail version and make adjustments on the fly. There is a function called 
+<tt/check_sm_version()/ available which does that. Read more about it in the 
+<url
 url="http://www.squirrelmail.org/docs/phpdoc14/squirrelmail/_functions---global.php.html#functioncheck_sm_version"
 name="stable"> and <url
 url="http://www.squirrelmail.org/docs/phpdoc/squirrelmail/_functions---global.php.html#functioncheck_sm_version"
 name="development"> API documentation.
 
-There is a plugin called "Compatibility" that is intended for use by plugin
-authors so they can develop one version of their plugin and seamlessly support
-both 1.2.x and 1.4.x SquirrelMail installations. For more information about how
-to use the "Compatibility" plugin, download it and read its README file.
+Finally, there is a plugin called "Compatibility" that is intended to solve 
+this problem without requiring any special coding on the part of plugin authors.  
+Authors can develop one version of their plugin and seamlessly support any 
+SquirrelMail version.  Plugin code is typically developed against the newest 
+SquirrelMail release, and users running older versions of SquirrelMail can 
+use said plugin as long as they also have the "Compatibility" plugin.  For 
+more inforamtion, please download "Compatibility" and read its README file.
 
 <sect1>Documentation files
 <p>
