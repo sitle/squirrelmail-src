@@ -83,6 +83,7 @@ if ($type1 == 'html' || (isset($override_type1) &&  $override_type1 == 'html')) 
     if (! empty($charset))
         $body = charset_decode($charset,$body,false,true);
 } else {
+    $ishtml = FALSE;
     translateText($body, $wrap_at, $charset);
 }
 
