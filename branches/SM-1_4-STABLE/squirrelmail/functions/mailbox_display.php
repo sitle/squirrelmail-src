@@ -342,9 +342,9 @@ function getSelfSortMessages($imapConnection, $start_msg, $show_num,
         if ($sort < 6 ) {
             $end = $num_msgs;
             $end_loop = $end;
-	    /* set shownum to 999999 to fool sqimap_get_small_header_list
-	       and rebuild the msgs_str to 1:* */
-	    $show_num = 999999;
+            /* set shownum to 999999 to fool sqimap_get_small_header_list
+               and rebuild the msgs_str to 1:* */
+            $show_num = 999999;
         } else {
             /* if it's not sorted */
             if ($start_msg + ($show_num - 1) < $num_msgs) {
@@ -436,13 +436,13 @@ function showMessagesForMailbox($imapConnection, $mailbox, $num_msgs,
             $mode = '';
         }
 
-	if ($use_cache) {
-	    sqgetGlobalVar('msgs', $msgs, SQ_SESSION);
-	    sqgetGlobalVar('msort', $msort, SQ_SESSION);
-	} else {
-    	    sqsession_unregister('msort');
-    	    sqsession_unregister('msgs');
-	}
+        if ($use_cache) {
+            sqgetGlobalVar('msgs', $msgs, SQ_SESSION);
+            sqgetGlobalVar('msort', $msort, SQ_SESSION);
+        } else {
+            sqsession_unregister('msort');
+            sqsession_unregister('msgs');
+        }
         switch ($mode) {
             case 'thread':
                 $id   = get_thread_sort($imapConnection);
@@ -520,7 +520,7 @@ function showMessagesForMailbox($imapConnection, $mailbox, $num_msgs,
     printHeader($mailbox, $srt, $color, !$thread_sort_messages);
 
     displayMessageArray($imapConnection, $num_msgs, $start_msg,
-		      $msort, $mailbox, $sort, $color, $show_num,0,0);
+                        $msort, $mailbox, $sort, $color, $show_num,0,0);
     echo '</td></tr></table></td></tr></table>';
 
     mail_message_listing_end($num_msgs, $paginator_str, $msg_cnt_str, $color);
@@ -694,8 +694,8 @@ function mail_message_listing_beginning ($imapConnection,
         $msg = '';
     }
     $moveFields = '<input type="hidden" name="msg" value="'.htmlspecialchars($msg).'">' . "\n" .
-		  '<input type="hidden" name="mailbox" value="'.htmlspecialchars($mailbox).'">' . "\n" .
-		  '<input type="hidden" name="startMessage" value="'.htmlspecialchars($start_msg).'">' . "\n";
+        '<input type="hidden" name="mailbox" value="'.htmlspecialchars($mailbox).'">' . "\n" .
+        '<input type="hidden" name="startMessage" value="'.htmlspecialchars($start_msg).'">' . "\n";
 
     /*
      * This is the beginning of the message list table.
@@ -719,20 +719,20 @@ function mail_message_listing_beginning ($imapConnection,
                     , '', $color[4], 'border="0" width="100%" cellpadding="1"  cellspacing="0"' )
                 , 'left', '', '' )
             , '', $color[0] )
-	    , '', '', 'border="0" width="100%" cellpadding="1"  cellspacing="0"' );
+         , '', '', 'border="0" width="100%" cellpadding="1"  cellspacing="0"' );
     }
-	/* line between header and button area */
+    /* line between header and button area */
         echo '</td></tr><tr><td height="5" bgcolor="'.$color[4].'"></td></tr>';
 
         echo '<tr><td>';
         echo html_tag( 'tr' ) . "\n"
         . html_tag( 'td' ,'' , 'left', '', '' )
          . html_tag( 'table' ,'' , '', $color[9], 'border="0" width="100%" cellpadding="1"  cellspacing="0"' )
-	  . '<tr><td>'
+          . '<tr><td>'
            . html_tag( 'table' ,'' , '', $color[0], 'border="0" width="100%" cellpadding="1"  cellspacing="0"' )
             . html_tag( 'tr',
-	        getSmallStringCell(_("Move Selected To"), 'left', 'nowrap') .
-	        getSmallStringCell(_("Transform Selected Messages"), 'right')
+             getSmallStringCell(_("Move Selected To"), 'left', 'nowrap') .
+             getSmallStringCell(_("Transform Selected Messages"), 'right')
             )
             . html_tag( 'tr' ) ."\n"
             . html_tag( 'td', '', 'left', '', 'valign="middle" nowrap' );
@@ -1125,7 +1125,7 @@ function get_paginator_str($box, $start_msg, $end_msg, $num_msgs,
         /*
          * I am leaving this debug code here, commented out, because
          * it is a really nice way to see what the above code is doing.
-	 */
+         */
          // echo "qts =  $q1_pgs/$q2_pgs/$q3_pgs/$q4_pgs = "
          //     . ($q1_pgs + $q2_pgs + $q3_pgs + $q4_pgs) . '<br>';
 
