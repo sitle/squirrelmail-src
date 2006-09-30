@@ -15,6 +15,8 @@ Version 1.4.9 - CVS
   - Provide View Unsafe Images link on viewing a text/html attachment.
   - Fix variable typo in folders_create.php (#1545316).
   - Added Courier IMAP OUTBOX check to configtest utility.
+  - If mailbox name starts with slash or contains ../, error message is 
+    generated. Safety check for insecure default UW IMAP setup (#1557078).
 
 Version 1.4.8 - 11th August 2006
 --------------------------------

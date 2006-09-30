@@ -124,12 +124,6 @@ if (!isset($startMessage) || ($startMessage == '')) {
     $startMessage = 1;
 }
 
-/* compensate for the UW vulnerability. */
-if ($imap_server_type == 'uw' && (strstr($mailbox, '../') ||
-                                  substr($mailbox, 0, 1) == '/')) {
-   $mailbox = 'INBOX';
-}
-
 /* decide if we are thread sorting or not */
 if (!empty($allow_thread_sort) && ($allow_thread_sort == TRUE)) {
     if (isset($set_thread)) {
