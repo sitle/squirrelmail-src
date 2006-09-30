@@ -188,6 +188,23 @@ function sqimap_mailbox_select ($imap_stream, $mailbox) {
         return;
     }
 
+    /**
+     * Default UW IMAP server configuration allows to access other files
+     * on server. $imap_server_type is not checked because interface can
+     * be used with 'other' or any other server type setting. $mailbox
+     * variable can be modified in any script that uses variable from GET 
+     * or POST. This code blocks all standard SquirrelMail IMAP API requests 
+     * that use mailbox with full path (/etc/passwd) or with ../ characters 
+     * in path (../../etc/passwd)
+     */
+    if (strstr($mailbox, '../') || substr($mailbox, 0, 1) == '/') {
+        global $color;
+        include_once(SM_PATH . 'functions/display_messages.php');
+        error_box(sprintf(_("Invalid mailbox name: %s"),htmlspecialchars($mailbox)),$color);
+        sqimap_logout($imap_stream);
+        die('</body></html>');
+    }
+
     // cleanup $mailbox in order to prevent IMAP injection attacks
     $mailbox = str_replace(array("\r","\n"), array("",""),$mailbox);
 
