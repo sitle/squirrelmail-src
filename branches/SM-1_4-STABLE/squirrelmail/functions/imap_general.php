@@ -278,14 +278,21 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
                     if ($s === "}\r\n") {
                         $j = strrpos($read,'{');
                         $iLit = substr($read,$j+1,-3);
-                        $data[] = $read;
-                        $sLiteral = fread($imap_stream,$iLit);
-                        if ($sLiteral === false) { /* error */
-                            $read = false;
-                            break 3; /* while switch while */
+                        // check for numeric value to avoid that untagged responses like:
+                        // * OK [PARSE] Unexpected characters at end of address: {SET:debug=51}
+                        // will trigger literal fetching  ({SET:debug=51} !== int )
+                        if (is_numeric($iLit)) {
+                            $data[] = $read;
+                            $sLiteral = fread($imap_stream,$iLit);
+                            if ($sLiteral === false) { /* error */
+                                $read = false;
+                                break 3; /* while switch while */
+                            }
+                            $data[] = $sLiteral;
+                            $data[] = sqimap_fgets($imap_stream);
+                        } else {
+                            $data[] = $read;
                         }
-                        $data[] = $sLiteral;
-                        $data[] = sqimap_fgets($imap_stream);
                     } else {
                          $data[] = $read;
                     }
