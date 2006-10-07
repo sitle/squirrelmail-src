@@ -46,6 +46,17 @@ $dir = cwd();
 # First, lets read in the data already in there...
 ############################################################              
 if ( -e "config.php" ) {
+    # Make sure that file is readable
+    if (! -r "config.php") {
+        clear_screen();
+        print "WARNING:\n";
+        print "The file \"config/config.php\" was found, but you don't\n";
+        print "have rights to read it.\n";
+        print "\n";
+        print "Press any key to continue";
+        $ctu = <STDIN>;
+        exit;
+    }
     open( FILE, "config.php" );
     while ( $line = <FILE> ) {
         $line =~ s/^\s+//;
@@ -70,7 +81,7 @@ if ( -e "config.php" ) {
 
     if ( $config_version ne $conf_pl_version ) {
         clear_screen();
-        print $WHT. "WARNING:\n" . $NRM;
+        print "WARNING:\n";
         print "  The file \"config/config.php\" was found, but it is for\n";
         print "  an older version of SquirrelMail. It is possible to still\n";
         print "  read the defaults from this file but be warned that many\n";
@@ -123,7 +134,7 @@ if ( -e "config.php" ) {
 
     if ( $config_version ne $conf_pl_version ) {
         clear_screen();
-        print $WHT. "WARNING:\n" . $NRM;
+        print "WARNING:\n";
         print "  You are trying to use a 'config_default.php' from an older\n";
         print "  version of SquirrelMail. This is HIGHLY unrecommended. You\n";
         print "  should get the 'config_default.php' that matches the version\n";
@@ -333,6 +344,10 @@ if ( !$sendmail_args && $sendmail_path =~ /qmail-inject/ ) {
     $sendmail_args = '-i -t';
 }
 
+# Added in 1.4.9
+$abook_global_file_listing = 'true'     if ( !$abook_global_file_listing );
+$abook_file_line_length = 2048          if ( !$abook_file_line_length );
+
 if ( $ARGV[0] eq '--install-plugin' ) {
     print "Activating plugin " . $ARGV[1] . "\n";
     push @plugins, $ARGV[1];
@@ -527,6 +542,8 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
         print "2.  Use Javascript Address Book Search          : $WHT$default_use_javascript_addr_book$NRM\n";
         print "3.  Global file address book                    : $WHT$abook_global_file$NRM\n";
         print "4.  Allow writing into global file address book : $WHT$abook_global_file_writeable$NRM\n";
+        print "5.  Allow listing of global file address book   : $WHT$abook_global_file_listing$NRM\n";
+        print "6.  Allowed address book line length            : $WHT$abook_file_line_length$NRM\n";
         print "\n";
         print "R   Return to Main Menu\n";
     } elsif ( $menu == 7 ) {
@@ -726,6 +743,8 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
             elsif ( $command == 2 ) { command62(); }
             elsif ( $command == 3 ) { $abook_global_file=command63(); }
             elsif ( $command == 4 ) { command64(); }
+            elsif ( $command == 5 ) { command_abook_global_file_listing(); }
+            elsif ( $command == 6 ) { command_abook_file_line_length(); }
         } elsif ( $menu == 7 ) {
             if ( $command == 1 ) { $motd = command71(); }
         } elsif ( $menu == 8 ) {
@@ -2692,6 +2711,58 @@ sub command64 {
     return $abook_global_file_writeable;
 }
 
+# listing of global filebased abook control
+sub command_abook_global_file_listing {
+    print "This setting controls listing of global file address book.\n";
+    print "\n";
+
+    if ( lc($abook_global_file_listing) eq 'true' ) {
+        $default_value = "y";
+    } else {
+        $abook_global_file_listing = 'false';
+        $default_value = "n";
+    }
+    print "Allow listing of global file address book (y/n) [$WHT$default_value$NRM]: $WHT";
+    $new_show = <STDIN>;
+    if ( ( $new_show =~ /^y\n/i ) || ( ( $new_show =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
+        $abook_global_file_listing = 'true';
+    } else {
+        $abook_global_file_listing = 'false';
+    }
+    return $abook_global_file_listing;
+}
+
+# controls $abook_file_line_length setting
+sub command_abook_file_line_length {
+    print "This setting controls space allocated to file based address book records.\n";
+    print "End users will be unable to save address book entry, if total entry size \n";
+    print "(quoted address book fields + 4 delimiters + linefeed) exceeds allowed \n";
+    print "address book length size.\n";
+    print "\n";
+    print "Same setting is applied to personal and global file based address books.\n";
+    print "\n";
+    print "It is strongly recommended to keep default setting value. Change it only\n";
+    print "if you really want to store address book entries that are bigger than two\n";
+    print "kilobytes (2048).\n";
+    print "\n";
+
+    print "Enter allowed address book line length [$abook_file_line_length]: ";
+    my $tmp = <STDIN>;
+    $tmp = trim($tmp);
+    # value is not modified, if user hits Enter or enters space
+    if ($tmp ne '') {
+        # make sure that input is numeric
+        if ($tmp =~ /^\d+$/) {
+            $abook_file_line_length = $tmp;
+        } else {
+            print "If you want to change this setting, you must enter number.\n";
+            print "If you want to keep original setting - enter space.\n\n";
+            print "Press Enter to continue...";
+            $tmp = <STDIN>;
+        }
+    }
+}
+
 ####################################################################################
 #### Database ####
 sub command91 {
@@ -3196,10 +3267,16 @@ sub save_data {
             print CF ");\n";
             print CF "\n";
         }
-    # string
+
+        # Global file based address book
+        # string
         print CF "\$abook_global_file = '$abook_global_file';\n";
-    # boolean
-        print CF "\$abook_global_file_writeable = $abook_global_file_writeable;\n\n";
+        # boolean
+        print CF "\$abook_global_file_writeable = $abook_global_file_writeable;\n";
+        # boolean
+        print CF "\$abook_global_file_listing = $abook_global_file_listing;\n";
+        # integer
+        print CF "\$abook_file_line_length = $abook_file_line_length;\n\n";
 
     ## Database
     # string

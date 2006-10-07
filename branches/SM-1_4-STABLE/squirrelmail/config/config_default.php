@@ -863,6 +863,31 @@ $abook_global_file = '';
 $abook_global_file_writeable = false;
 
 /**
+ * Listing of shared address book control
+ * @global bool $abook_global_file_listing
+ * @since 1.5.1 and 1.4.9
+ */
+$abook_global_file_listing = true;
+
+/**
+ * Controls file based address book entry size
+ * 
+ * This setting controls space allocated to file based address book records.
+ * End users will be unable to save address book entry, if total entry size 
+ * (quoted address book fields + 4 delimiters + linefeed) exceeds allowed
+ * address book length size.
+ *
+ * Same setting is applied to personal and global file based address books.
+ *
+ * It is strongly recommended to keep default setting value. Change it only
+ * if you really want to store address book entries that are bigger than two
+ * kilobytes (2048).
+ * @global integer $abook_file_line_length
+ * @since 1.5.2 and 1.4.9
+ */
+$abook_file_line_length = 2048;
+
+/**
  * MOTD
  *
  * This is a message that is displayed immediately after a user logs in. 

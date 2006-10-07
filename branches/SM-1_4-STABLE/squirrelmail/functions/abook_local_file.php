@@ -26,6 +26,8 @@
  *                checking file permissions.
  * ? writeable => allow writing into address book. Used only when
  *                detect_writeable is set to false.
+ * ? listing   => enable/disable listing
+ * ? line_length => allowed address book record size
  *</pre>
  * NOTE. This class should not be used directly. Use the
  *       "AddressBook" class instead.
@@ -71,10 +73,23 @@ class abook_local_file extends addressbook_backend {
      */
     var $writeable = false;
     /**
+     * controls listing of address book
+     * @var bool
+     * @since 1.5.1 and 1.4.9
+     */
+    var $listing = true;
+    /**
      * Umask of the file
      * @var string
      */
     var $umask;
+    /**
+     * Sets max entry size (number of bytes used for all address book fields
+     * (including escapes) + 4 delimiters + 1 linefeed)
+     * @var integer
+     * @since 1.5.2 and 1.4.9
+     */
+    var $line_length = 2048;
 
     /* ========================== Private ======================= */
 
@@ -112,6 +127,12 @@ class abook_local_file extends addressbook_backend {
             }
             if(!empty($param['writeable'])) {
                 $this->writeable = $param['writeable'];
+            }
+            if(isset($param['listing'])) {
+                $this->listing = $param['listing'];
+            }
+            if(isset($param['line_length']) && ! empty($param['line_length'])) {
+                $this->line_length = (int) $param['line_length'];
             }
 
             $this->open(true);
@@ -250,6 +271,10 @@ class abook_local_file extends addressbook_backend {
         /* To be replaced by advanded search expression parsing */
         if(is_array($expr)) { return; }
 
+        // don't allow wide search when listing is disabled.
+        if ($expr=='*' && ! $this->listing)
+            return array();
+
         /* Make regexp from glob'ed expression
          * May want to quote other special characters like (, ), -, [, ], etc. */
         $expr = str_replace('?', '.', $expr);
@@ -261,20 +286,27 @@ class abook_local_file extends addressbook_backend {
         }
         @rewind($this->filehandle);
 
-        while ($row = @fgetcsv($this->filehandle, 2048, '|')) {
-            $line = join(' ', $row);
-            if(eregi($expr, $line)) {
-                array_push($res, array('nickname'  => $row[0],
-                    'name'      => $row[1] . ' ' . $row[2],
-                    'firstname' => $row[1],
-                    'lastname'  => $row[2],
-                    'email'     => $row[3],
-                    'label'     => $row[4],
-                    'backend'   => $this->bnum,
-                    'source'    => &$this->sname));
+        while ($row = @fgetcsv($this->filehandle, $this->line_length, '|')) {
+            if (count($row)<5) {
+                /** address book is corrupted. */
+                global $color;
+                error_box(_("Address book is corrupted. Required fields are missing."),$color);
+                die('</body></html>');
+            } else {
+                $line = join(' ', $row);
+                // errors on eregi call are suppressed in order to prevent display of regexp compilation errors
+                if(@eregi($expr, $line)) {
+                    array_push($res, array('nickname'  => $row[0],
+                                           'name'      => $row[1] . ' ' . $row[2],
+                                           'firstname' => $row[1],
+                                           'lastname'  => $row[2],
+                                           'email'     => $row[3],
+                                           'label'     => $row[4],
+                                           'backend'   => $this->bnum,
+                                           'source'    => &$this->sname));
+                }
             }
         }
-
         return $res;
     }
 
@@ -293,16 +325,23 @@ class abook_local_file extends addressbook_backend {
         $this->open();
         @rewind($this->filehandle);
 
-        while ($row = @fgetcsv($this->filehandle, 2048, '|')) {
-            if(strtolower($row[0]) == $alias) {
-                return array('nickname'  => $row[0],
-                  'name'      => $row[1] . ' ' . $row[2],
-                  'firstname' => $row[1],
-                  'lastname'  => $row[2],
-                  'email'     => $row[3],
-                  'label'     => $row[4],
-                  'backend'   => $this->bnum,
-                  'source'    => &$this->sname);
+        while ($row = @fgetcsv($this->filehandle, $this->line_length, '|')) {
+            if (count($row)<5) {
+                /** address book is corrupted. */
+                global $color;
+                error_box(_("Address book is corrupted. Required fields are missing."),$color);
+                die('</body></html>');
+            } else {
+                if(strtolower($row[0]) == $alias) {
+                    return array('nickname'  => $row[0],
+                                 'name'      => $row[1] . ' ' . $row[2],
+                                 'firstname' => $row[1],
+                                 'lastname'  => $row[2],
+                                 'email'     => $row[3],
+                                 'label'     => $row[4],
+                                 'backend'   => $this->bnum,
+                                 'source'    => &$this->sname);
+                }
             }
         }
 
@@ -314,19 +353,31 @@ class abook_local_file extends addressbook_backend {
      * @return array list of all addresses
      */
     function list_addr() {
+        // check if listing is not disabled
+        if(isset($this->listing) && !$this->listing) {
+            return array();
+        }
+
         $res = array();
         $this->open();
         @rewind($this->filehandle);
 
-        while ($row = @fgetcsv($this->filehandle, 2048, '|')) {
-            array_push($res, array('nickname'  => $row[0],
-                'name'      => $row[1] . ' ' . $row[2],
-                'firstname' => $row[1],
-                'lastname'  => $row[2],
-                'email'     => $row[3],
-                'label'     => $row[4],
-                'backend'   => $this->bnum,
-                'source'    => &$this->sname));
+        while ($row = @fgetcsv($this->filehandle, $this->line_length, '|')) {
+            if (count($row)<5) {
+                /** address book is corrupted. */
+                global $color;
+                error_box(_("Address book is corrupted. Required fields are missing."),$color);
+                die('</body></html>');
+            } else {
+                array_push($res, array('nickname'  => $row[0],
+                                       'name'      => $row[1] . ' ' . $row[2],
+                                       'firstname' => $row[1],
+                                       'lastname'  => $row[2],
+                                       'email'     => $row[3],
+                                       'label'     => $row[4],
+                                       'backend'   => $this->bnum,
+                                       'source'    => &$this->sname));
+            }
         }
         return $res;
     }
@@ -338,7 +389,7 @@ class abook_local_file extends addressbook_backend {
      */
     function add($userdata) {
         if(!$this->writeable) {
-            return $this->set_error(_("Addressbook is read-only"));
+            return $this->set_error(_("Address book is read-only"));
         }
         /* See if user exists already */
         $ret = $this->lookup($userdata['nickname']);
@@ -356,13 +407,22 @@ class abook_local_file extends addressbook_backend {
 
         /* Strip linefeeds */
         $data = ereg_replace("[\r\n]", ' ', $data);
+
+        /**
+         * Make sure that entry fits into allocated record space.
+         * One byte is reserved for linefeed
+         */
+        if (strlen($data) >= $this->line_length) {
+            return $this->set_error(_("Address book entry is too big"));
+        }
+
         /* Add linefeed at end */
         $data = $data . "\n";
 
         /* Reopen file, just to be sure */
         $this->open(true);
         if(!$this->writeable) {
-            return $this->set_error(_("Addressbook is read-only"));
+            return $this->set_error(_("Address book is read-only"));
         }
 
         /* Lock the file */
@@ -379,7 +439,7 @@ class abook_local_file extends addressbook_backend {
         /* Test write result */
         if($r === FALSE) {
             /* Fail */
-            $this->set_error(_("Write to addressbook failed"));
+            $this->set_error(_("Write to address book failed"));
             return FALSE;
         }
 
@@ -393,7 +453,7 @@ class abook_local_file extends addressbook_backend {
      */
     function remove($alias) {
         if(!$this->writeable) {
-            return $this->set_error(_("Addressbook is read-only"));
+            return $this->set_error(_("Address book is read-only"));
         }
 
         /* Lock the file to make sure we're the only process working
@@ -406,7 +466,7 @@ class abook_local_file extends addressbook_backend {
         @rewind($this->filehandle);
         $i = 0;
         $rows = array();
-        while($row = @fgetcsv($this->filehandle, 2048, '|')) {
+        while($row = @fgetcsv($this->filehandle, $this->line_length, '|')) {
             if(!in_array($row[0], $alias)) {
                 $rows[$i++] = $row;
             }
@@ -430,7 +490,7 @@ class abook_local_file extends addressbook_backend {
      */
     function modify($alias, $userdata) {
         if(!$this->writeable) {
-            return $this->set_error(_("Addressbook is read-only"));
+            return $this->set_error(_("Address book is read-only"));
         }
 
         /* See if user exists */
@@ -438,6 +498,25 @@ class abook_local_file extends addressbook_backend {
         if(empty($ret)) {
             // i18n: don't use html formating in translation
             return $this->set_error(sprintf(_("User \"%s\" does not exist"), $alias));
+        }
+
+        /* If the alias changed, see if the new alias exists */
+        if (strtolower($alias) != strtolower($userdata['nickname'])) {
+            $ret = $this->lookup($userdata['nickname']);
+            if (!empty($ret)) {
+                return $this->set_error(sprintf(_("User \"%s\" already exists"), $userdata['nickname']));
+            }
+        }
+
+        /* calculate userdata size */
+        $data = $this->quotevalue($userdata['nickname']) . '|'
+            . $this->quotevalue($userdata['firstname']) . '|'
+            . $this->quotevalue((!empty($userdata['lastname'])?$userdata['lastname']:'')) . '|'
+            . $this->quotevalue($userdata['email']) . '|'
+            . $this->quotevalue((!empty($userdata['label'])?$userdata['label']:''));
+        /* make sure that it fits into allocated space */
+        if (strlen($data) >= $this->line_length) {
+            return $this->set_error(_("Address book entry is too big"));
         }
 
         /* Lock the file to make sure we're the only process working
@@ -452,7 +531,7 @@ class abook_local_file extends addressbook_backend {
         @rewind($this->filehandle);
         $i = 0;
         $rows = array();
-        while($row = @fgetcsv($this->filehandle, 2048, '|')) {
+        while($row = @fgetcsv($this->filehandle, $this->line_length, '|')) {
             if(strtolower($row[0]) != strtolower($alias)) {
                 $rows[$i++] = $row;
             } else {
@@ -489,4 +568,3 @@ class abook_local_file extends addressbook_backend {
     }
 
 } /* End of class abook_local_file */
-?>
