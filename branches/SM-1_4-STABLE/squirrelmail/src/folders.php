@@ -147,40 +147,12 @@ echo html_tag( 'tr',
         ) ."\n";
 
 /** count special folders **/
-$count_special_folders = 0;
-$num_max = 1;
-if ($move_to_trash) {
-    $num_max++;
-}
-if ($move_to_sent) {
-    $num_max++;
-}
-if ($save_as_draft) {
-    $num_max++;
-}
-
-// determine which folders the user shouldn't be able to rename/delete
-for ($p = 0, $cnt = count($boxes); $p < $cnt && $count_special_folders < $num_max; $p++) {
-    switch ($boxes[$p]['unformatted']) {
-        case (strtoupper($boxes[$p]['unformatted']) == 'INBOX'):
-            ++$count_special_folders;
-            $skip_folders[] = $boxes[$p]['unformatted'];
-            break;
-        case $trash_folder:
-            ++$count_special_folders;
-            $skip_folders[] = $trash_folder;
-            break;
-        case $sent_folder:
-            ++$count_special_folders;
-            $skip_folders[] = $sent_folder;
-            break;
-        case $draft_folder:
-            ++$count_special_folders;
-            $skip_folders[] = $draft_folder;
-            break;
+foreach ($boxes as $index => $aBoxData) {
+    if (! in_array($aBoxData['unformatted'],$skip_folders) && 
+        isSpecialMailbox($aBoxData['unformatted'],false) ) {
+        $skip_folders[] = $aBoxData['unformatted'];
     }
 }
-
 
 /** RENAMING FOLDERS **/
 echo html_tag( 'tr',
@@ -189,7 +161,7 @@ echo html_tag( 'tr',
         html_tag( 'tr' ) .
         html_tag( 'td', '', 'center', $color[0] );
 
-if ($count_special_folders < count($boxes)) {
+if (count($skip_folders) < count($boxes)) {
     echo addForm('folders_rename_getname.php')
        . "<tt><select name=\"old\">\n"
        . '         <option value="">[ ' . _("Select a folder") . " ]</option>\n";
@@ -221,7 +193,7 @@ echo html_tag( 'tr',
         html_tag( 'tr' ) .
         html_tag( 'td', '', 'center', $color[0] );
 
-if ($count_special_folders < count($boxes)) {
+if (count($skip_folders) < count($boxes)) {
     echo addForm('folders_delete.php')
        . "<tt><select name=\"mailbox\">\n"
        . '         <option value="">[ ' . _("Select a folder") . " ]</option>\n";
@@ -252,15 +224,12 @@ echo html_tag( 'table', '', 'center', '', 'width="70%" cellpadding="4" cellspaci
             html_tag( 'tr' ) .
                 html_tag( 'td', '', 'center', $color[0], 'width="50%"' );
 
-if ($count_special_folders < count($boxes)) {
+if (count($skip_folders) < count($boxes)) {
     echo addForm('folders_subscribe.php?method=unsub')
        . "<tt><select name=\"mailbox[]\" multiple=\"multiple\" size=\"8\">\n";
     for ($i = 0; $i < count($boxes); $i++) {
         $use_folder = true;
-        if ((strtolower($boxes[$i]["unformatted"]) != "inbox") &&
-            ($boxes[$i]["unformatted"] != $trash_folder) &&
-            ($boxes[$i]["unformatted"] != $sent_folder) &&
-            ($boxes[$i]["unformatted"] != $draft_folder)) {
+        if (! isSpecialMailbox($boxes[$i]["unformatted"],false)) {
             $box = $boxes[$i]["unformatted-dm"];
             $box2 = str_replace(array(' ','<','>'), array('&nbsp;','&lt;','&gt;'),
                                 imap_utf7_decode_local($boxes[$i]["unformatted-disp"]));

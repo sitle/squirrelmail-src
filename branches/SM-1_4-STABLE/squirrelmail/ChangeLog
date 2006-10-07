@@ -29,6 +29,8 @@ Version 1.4.9 - CVS
   - Fixed variable corruption in configtest utility.
   - Checked if configuration file is readable in configuration utility
     (#1568355).
+  - Special mailboxes marked in special_mailbox hook are no longer listed
+    in folder delete, rename and subscription options.
 
 Version 1.4.8 - 11th August 2006
 --------------------------------
