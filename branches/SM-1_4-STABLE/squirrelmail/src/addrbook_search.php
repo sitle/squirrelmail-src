@@ -24,10 +24,9 @@ define('SM_PATH','../');
 
 /** SquirrelMail required files. */
 require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/strings.php');
-require_once(SM_PATH . 'functions/global.php');
 require_once(SM_PATH . 'functions/html.php');
 require_once(SM_PATH . 'functions/forms.php');
+require_once(SM_PATH . 'functions/addressbook.php');
 
 /** lets get the global vars we may need */
 sqgetGlobalVar('key',       $key,           SQ_COOKIE);
@@ -169,8 +168,6 @@ function display_result($res, $includesource = true) {
 
 /* ================= End of functions ================= */
     
-require_once('../functions/strings.php');
-require_once('../functions/addressbook.php');
     
 displayHtmlHeader();
     
