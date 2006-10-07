@@ -18,8 +18,17 @@ Version 1.4.9 - CVS
   - If mailbox name starts with slash or contains ../, error message is 
     generated. Safety check for insecure default UW IMAP setup (#1557078).
   - Ignore message copy errors when messages are deleted. Allows to delete
-    messages when quota is exceeded. (#614887) (#646386) (#1446026)
+    messages when quota is exceeded (#614887) (#646386) (#1446026).
   - Fixed unintended literal fetching (#1562271).
+  - Added global file based address book listing controls. Added line 
+    length configuration option for local_file address book backend 
+    (#1181561). Added address book data integrity checks in local_file 
+    address book backend. Fixed eregi and object notices in local_file 
+    and database address book backends. Added additional address book 
+    field support.
+  - Fixed variable corruption in configtest utility.
+  - Checked if configuration file is readable in configuration utility
+    (#1568355).
 
 Version 1.4.8 - 11th August 2006
 --------------------------------

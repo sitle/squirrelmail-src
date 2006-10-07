@@ -32,8 +32,12 @@ global $addrbook_dsn, $addrbook_global_dsn;
 function addressbook_init($showerr = true, $onlylocal = false) {
     global $data_dir, $username, $color, $ldap_server, $address_book_global_filename;
     global $addrbook_dsn, $addrbook_table;
-    global $abook_global_file, $abook_global_file_writeable;
+    // Shared file based address book globals
+    global $abook_global_file, $abook_global_file_writeable, $abook_global_file_listing;
+    // Shared DB based address book globals
     global $addrbook_global_dsn, $addrbook_global_table, $addrbook_global_writeable, $addrbook_global_listing;
+    // Record size restriction in file based address books
+    global $abook_file_line_length;
 
     /* Create a new addressbook object */
     $abook = new AddressBook;
@@ -55,13 +59,14 @@ function addressbook_init($showerr = true, $onlylocal = false) {
                             'owner' => $username,
                             'table' => $addrbook_table));
         if (!$r && $showerr) {
-            $abook_init_error.=_("Error initializing addressbook database.") .' '. $abook->error;
+            $abook_init_error.=_("Error initializing address book database.") .' '. $abook->error;
         }
     } else {
         /* File */
         $filename = getHashedFile($username, $data_dir, "$username.abook");
         $r = $abook->add_backend('local_file', Array('filename' => $filename,
-                              'create'   => true));
+                                                     'line_length' => $abook_file_line_length,
+                                                     'create'   => true));
         if(!$r && $showerr) {
             $abook_init_error.=sprintf( _("Error opening file %s"), $filename );
         }
@@ -88,10 +93,12 @@ function addressbook_init($showerr = true, $onlylocal = false) {
         $r = $abook->add_backend('local_file',array('filename'=>$abook_global_filename,
                                                     'name' => _("Global address book"),
                                                     'detect_writeable' => false,
-                                                    'writeable'=> $abook_global_file_writeable));
+                                                    'line_length' => $abook_file_line_length,
+                                                    'writeable'=> $abook_global_file_writeable,
+                                                    'listing' => $abook_global_file_listing));
         if (!$r && $showerr) {
             if ($abook_init_error!='') $abook_init_error.="\n";
-            $abook_init_error.=_("Error initializing global addressbook.") . "\n" . $abook->error;
+            $abook_init_error.=_("Error initializing global address book.") . "\n" . $abook->error;
         }
     }
 
@@ -110,7 +117,7 @@ function addressbook_init($showerr = true, $onlylocal = false) {
                                        'table' => $addrbook_global_table));
         if (!$r && $showerr) {
             if ($abook_init_error!='') $abook_init_error.="\n";
-            $abook_init_error.=_("Error initializing global addressbook.") . "\n" . $abook->error;
+            $abook_init_error.=_("Error initializing global address book.") . "\n" . $abook->error;
     }
     }
 
@@ -283,6 +290,7 @@ class AddressBook {
     var $error       = '';
     var $localbackend = 0;
     var $localbackendname = '';
+    var $add_extra_field = false;
 
       // Constructor function.
     function AddressBook() {
@@ -500,7 +508,7 @@ class AddressBook {
 
         /* Check that specified backend accept new entries */
         if (!$this->backends[$bnum]->writeable) {
-            $this->error = _("Addressbook is read-only");
+            $this->error = _("Address book is read-only");
             return false;
         }
 
@@ -535,7 +543,7 @@ class AddressBook {
 
         /* Check that specified backend is writable */
         if (!$this->backends[$bnum]->writeable) {
-            $this->error = _("Addressbook is read-only");
+            $this->error = _("Address book is read-only");
             return false;
         }
 
@@ -588,7 +596,7 @@ class AddressBook {
 
         /* Check that specified backend is writable */
         if (!$this->backends[$bnum]->writeable) {
-            $this->error = _("Addressbook is read-only");;
+            $this->error = _("Address book is read-only");;
             return false;
         }
 

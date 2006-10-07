@@ -24,22 +24,19 @@ function do_err($str, $exit = TRUE) {
     }
 }
 
-$IND = str_repeat('&nbsp;',4);
-
 ob_implicit_flush();
 /** @ignore */
 define('SM_PATH', '../');
 
 /*
- * Load config before output begins. functions/strings.php depends on 
- * functions/globals.php. functions/global.php needs to be run before
- * any html output starts. If config.php is missing, error will be displayed 
- * later.
+ * Load config before output begins.
+ * functions/global.php cleans environment, then loads
+ * functions/strings.php and config/config.php
  */
 if (file_exists(SM_PATH . 'config/config.php')) {
-    include(SM_PATH . 'config/config.php');
-    include(SM_PATH . 'functions/strings.php');
+    include(SM_PATH . 'functions/global.php');
 }
+$IND = str_repeat('&nbsp;',4);
 
 // this must be done before the output is started because it may use the
 // session

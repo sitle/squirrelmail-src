@@ -365,6 +365,11 @@ if ($showaddrlist) {
     /* List addresses */
     if (count($alist) > 0) {
         echo addForm($form_url, 'post');
+        if ($abook->add_extra_field) {
+            $abook_fields = 6;
+        } else {
+            $abook_fields = 5;
+        }
         while(list($undef,$row) = each($alist)) {
 
             /* New table header for each backend */
@@ -375,7 +380,7 @@ if ($showaddrlist) {
                                 html_tag( 'td',
                                     addSubmit(_("Edit selected"), 'editaddr').
                                     addSubmit(_("Delete selected"), 'deladdr'),
-                                    'center', '', 'colspan="5"' )
+                                    'center', '', "colspan=\"$abook_fields\"" )
                                 ) .
                             html_tag( 'tr',
                                 html_tag( 'td', '&nbsp;<br />', 'center', '', 'colspan="5"' )
@@ -402,7 +407,8 @@ if ($showaddrlist) {
                                       'left', '', 'width="1%"' ) .
                             html_tag( 'th', _("Info").
                                       show_abook_sort_button($abook_sort_order, _("sort by info"), 6, 7),
-                                      'left', '', 'width="1%"' ),
+                                      'left', '', 'width="1%"' ) .
+                            ($abook->add_extra_field ? html_tag( 'th', '&nbsp;','left', '', 'width="1%"'): ''),
                             '', $color[9] ) . "\n";
 
                 $line = 0;
@@ -457,8 +463,16 @@ if ($showaddrlist) {
             echo makeComposeLink('src/compose.php?send_to='.rawurlencode($email),
                     htmlspecialchars($row['email'])).
                 '&nbsp;</td>'."\n".
-                html_tag( 'td', '&nbsp;' . htmlspecialchars($row['label']) . '&nbsp;', 'left', '', 'valign="top" width="1%"' ) .
-                "</tr>\n";
+                html_tag( 'td', '&nbsp;' . htmlspecialchars($row['label']) . '&nbsp;', 'left', '', 'valign="top" width="1%"' );
+
+            // add extra column if third party backend needs it
+            if ($abook->add_extra_field) {
+                echo html_tag( 'td',
+                               '&nbsp;' . (isset($row['extra']) ? $row['extra'] : '') . '&nbsp;',
+                               'left', '', 'valign="top" width="1%"' );
+            }
+
+            echo "</tr>\n";
             $line++;
         }
 
@@ -468,7 +482,7 @@ if ($showaddrlist) {
                     html_tag( 'td',
                         addSubmit(_("Edit selected"), 'editaddr') .
                         addSubmit(_("Delete selected"), 'deladdr'),
-                        'center', '', 'colspan="5"' )
+                        'center', '', "colspan=\"$abook_fields\"" )
                     );
         }
         echo '</table></form>';
