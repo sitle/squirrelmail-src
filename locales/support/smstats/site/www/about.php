@@ -31,7 +31,7 @@ echo "</ul>\n";
 echo "</p>\n";
 
 echo "<hr>\n";
-echo "<p>Tomas Kuliavas</p>\n";
+echo "<p></p>\n";
 ?>
 <table cellpadding="2" cellspacing="0" border="0" width="100%" bgcolor="#ececec">
 <tr align="center"><td><font size="2">

@@ -5,7 +5,6 @@ echo "<h2>Help information about SquirrelMail statistics</h2>\n";
 
 echo "<p>under construction</p>";
 
-echo "<p>contact tokul at users.sourceforge.net</p>";
 ?>
 
 <table cellpadding="2" cellspacing="0" border="0" width="100%" bgcolor="#ececec">
