@@ -1283,18 +1283,56 @@ This helps systems administrators avoid overwriting the <tt/config.php/ files
 and losing all of their setup information when they upgrade your plugin.
 
 <sect1>Security considerations
+<sect2>Calling external programs
+<p>
+All plugin authors should consider the security implications of their plugin.
+Great care must always be taken if the plugin calls external programs, especially
+ones that require set-uid permissions.
+
+FIXME: more here about how to secure exec() calls with escapeshellarg() and named pipes method vs exec()
+
+
+<sect2>Storing sensitive data
+<p>
+If a plugin needs to store sensitive user configuration files or other such data,
+please consider extra steps to secure such files.  One very easy way to do so is
+to wrap all configuration files in PHP tags (and C-style block comments if the
+configuration data is not PHP code itself):
+
+<tscreen><verb>
+<?php /*
+
+# below is example non-PHP configuration 
+# data that is secured from prying eyes
+
+username_1 = admin
+username_2 = super_admin
+
+*/ ?>
+</verb></tscreen>
+
+Another approach is to store sensitive configuration data in SquirrelMail's 
+own <tt/$data/ directory, since most system administrators (at least those who 
+have read the installation instructions) know that the <tt/$data/ directory 
+needs to be protected and (hopefully) have made sure that it has been.
+
+Never store unsecured configuration data that contains any user or system-specific 
+information in your plugin directory.  Even the above suggestions
+may not be sufficient depending on how sensitive the data is that you are 
+storing.  In such a situation, you might think about a more complex encryption
+scheme such as the one provided by the <bf/vadmin/ plugin.
+
+Note that just shipping unsecured configuration files along with a 
+configuration file for Apache (<tt/.htaccess/) is not sufficient because 
+not every system uses Apache as its web server.
+
 <sect2>Disallowing access for diabled plugins
 <p>
-FIXME: This paragraph is vague (hard to understand) and disagreeable.  Some plugins are intentionally called by others, even if the called plugin is not enabled.  Why is this a security problem?  There are other security concerns of graver danger that could be enumerated.  (also note, 1.5.1+ has a function called s_plugin_enabled())  
 
-All plugin authors should consider the security implications of their plugin.
-Great care must always be taken if the plugin calls external programs, and it's
-also a must to make sure that the plugin doesn't perform its function when it's
-not enabled. Hooks aren't called for disabled plugins, so a plugin which only
-call hooks is safe. If files that are accessed directly perform any function
-when being accessed, they must begin with checking whether the plugin is enabled
-in the configuration. If it isn't, the script must exit. Naturally, the check
-must be placed before any other functionality. Here's an example:
+In some cases, it is also prudent to make sure that the plugin doesn't perform 
+its function when it is not enabled. Any functions or files that contain PHP
+code that is <tt/not/ wrapped inside a function can be protected from being
+executed when the plugin is not activated by adding code similar to this:
 
 <tscreen><verb>
 global $plugins;
@@ -1303,29 +1341,9 @@ if ( !in_array('mypluginname', $plugins) ) {
 }
 </verb></tscreen>
 
-<sect2>Storing sensitive data
-<p>
-FIXME: also hard to understand.  user data goes in data dir, plugin config should typically not be stored in the data dir (although that could work) -- instead all plugin config files should be null-output php files.  even if not PHP code, they should be wrapped in PHP tags and c-style block comments.
+Note, however, that sometimes <tt/other/ plugins can legitimately access a 
+disabled plugin, so don't shoot yourself in the foot with too much protection.
 
-If a plugin needs to store sensitive user configuration files or other such data,
-it's recommended to do it in the already defined <tt/$data/ directory. The
-reason for this is that all system administrators (at least those who have read
-the installation instructions) knows that the <tt/$data/ directory needs to be
-protected and (hopefully) made sure that it was. Never put such files in your
-main plugin directory!
-
-If you decide to have such a directory for your plugin only, you <tt/must/
-inform the system administrators about the possible security implications that
-might have. Just shipping a distributed configuration file for Apache
-(<tt/.htaccess/) isn't enough. Not every system use Apache as its web server.
-
-If you <tt/do/ include <tt/.htaccess/, it should contain a "Deny From All" thus
-disallowing access to that directory entirely (when the target system is running
-the Apache web server).
-
-Keep in mind that not all web servers will honor an <tt/.htaccess/ file, so
-don't depend on it for security. Make sure not to put such a file in your main
-plugin directory!
 
 <sect1>Hooks
 <p>
@@ -1420,7 +1438,7 @@ name="development"> API documentation.
 This is a list of all hooks currently available in SquirrelMail, ordered by
 file.
 
-TODO: Update this list.
+TODO: Update this list. (especially in 1.5.2, we are removing a great number of hooks to be replaced with the template_construct_<template> hook)
 
 TODO: Reduce list of hooks by grouping them into separate chapters.
 
@@ -1655,18 +1673,20 @@ currently be echoed directly to the browser.
 SquirrelMail has a script called <tt/configtest.php/ which can be used to test
 the SquirrelMail configuration. Since SquirrelMail 1.5.2, the configtest script
 includes the <tt/configtest/ hook. The hook uses the boolean hook function call.
-Plugins that are attached to this hook should return a boolean <tt/TRUE/, if
-they detect some error in the plugin's configuration. Verbose messages can be
+Plugins that are attached to this hook should return a boolean <tt/TRUE/ if
+they detect any errors in the plugin's configuration. Verbose messages can be
 printed with a <tt/do_err('error message', FALSE)/ function call or with any
 standard PHP inline output function.
 
-The configtest script is executed in anonymous, unauthenticated environment, so
-the username and password information isn't available. Only a limited set of
-functions is loaded. The <tt/do_err()/ function is a special configtest script
+The configtest script is executed in an anonymous, unauthenticated environment, so
+username and password information isn't available as it would be in all other 
+SquirrelMail scripts. Only a limited set of functions are loaded. The 
+<tt/do_err()/ function is a special configtest script
 function, which is used to print error messages. If a plugin uses the
-<tt/do_err()/ function, it is recommended to set second the function argument to
+<tt/do_err()/ function, it is recommended to set the second function argument to
 <tt/FALSE/ even on fatal errors. The configuration testing will stop on a fatal
-error, if the hook call returns a boolean <tt/TRUE/.
+error, that is, if the hook call returns a boolean <tt/TRUE/, and it's best to
+let the script continue checking for other system configuration problems.
 
 <sect2>The identity hooks
 <p>
@@ -2253,14 +2273,14 @@ tar -czvf demo-1.0-1.4.0.tar.gz demo
 </verb></tscreen>
 
 When the plugin is ready to be reviewed by the SquirrelMail plugin team, mail it
-to the SquirrelMail plugins mailing list. If you don't have access to upload
-your plugin to the <url url="http://squirrelmail.org/plugins.php" name="official
-third party plugin list">, state that in your mail. Access will be granted when
-the plugin is approved.
+to the SquirrelMail plugins team members.  Also consider asking on the SquirrelMail
+plugins mailing list for access to upload your plugin to the 
+<url url="http://squirrelmail.org/plugins.php" name="official third party plugin 
+list"> after your plugin is approved.
 
 When the plugin is approved and you're granted access to upload it, all you have
-to do is the actual uploading. You also need to write a plugin description and a
-release note for the web site.
+to do is the actual uploading along with filling out some general information 
+about the plugin and what it does.
 
 <sect>Miscellaneous
 <p>
