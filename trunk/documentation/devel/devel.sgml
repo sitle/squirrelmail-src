@@ -1335,9 +1335,8 @@ code that is <tt/not/ wrapped inside a function can be protected from being
 executed when the plugin is not activated by adding code similar to this:
 
 <tscreen><verb>
-global $plugins;
-if ( !in_array('mypluginname', $plugins) ) {
-    exit('The plugin mypluginname isn't enabled in the SquirrelMail configuration.');
+if ( !is_plugin_enabled('my_plugin_name') ) {
+    exit('The plugin my_plugin_name isn't enabled in the SquirrelMail configuration.');
 }
 </verb></tscreen>
 
