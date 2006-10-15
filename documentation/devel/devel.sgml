@@ -1192,7 +1192,7 @@ array(
    'summary' => 'This is the short plugin description',
    'details' => 'This is the long, detailed plugin description',
    'requires_configuration' => 1,  // can be 0 if no config file required
-   'requires_source_patch' => 0,
+   'requires_source_patch' => 0,   // set to 2 if depends on SM version
    'required_plugins' => array(    // plugin name and version sub-array
                                       'compatibility' => '2.0.3',
                                ),
