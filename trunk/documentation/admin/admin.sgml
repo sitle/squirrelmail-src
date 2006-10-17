@@ -179,10 +179,11 @@ The <tt/images/ directory stores various image files that can be used in interfa
 The <tt/locale/ directory stores SquirrelMail translations. A user can select
 their preferred translation in SquirrelMail Display Options.
 
-The <tt/plugins/ directory stores plugins that can be used to extend interface
-functionality. Plugins are controlled through the SquirrelMail configuration
-utility. Some plugins might use own configuration files or functions provided by
-other plugins. See README and INSTALL files in each plugin's directory.
+The <tt/plugins/ directory stores plugins that can be used to extend 
+SquirrelMail functionality. Activation of plugins is controlled 
+through the SquirrelMail configuration utility. Some plugins might 
+also use their own configuration files or functions provided by other 
+plugins. See README and INSTALL files in each plugin's directory.
 
 The <tt/po/ directory stores scripts that are used to work with SquirrelMail
 translation files. <tt/xgetpo/ script extracts translatable strings from
@@ -203,25 +204,26 @@ sheet files available to end user.
 <sect1>User data storage
 <p>
 SquirrelMail stores users' preferences and address books in simple text
-files. Location of the files is set in SquirrelMail configuration, data
-directory setting. SquirrelMail can also use <ref id="db-backend"
-name="database"> or other other storage facility, if required preference
-functions are provided by plugin.
+files. The location of these files is set with the data directory setting
+in the SquirrelMail configuration. SquirrelMail can also use a <ref id="db-backend"
+name="database"> or some other storage facility (if the required backend
+is provided by a plugin) for managing user preferences.
 
 Users' preferences are stored in <tt/.pref/ files. Address books are stored in
 <tt/.abook/ files. <tt/.sig/ and <tt/.si&lt;somenumber&gt;/ files store users'
 signatures. Some plugins might use other files to store users' data.
 
-When data directory stores many files, directory access time can be
-affected. Administrator can split preference files into subdirectories, if
-directory hashing is enabled in SquirrelMail configuration.
+When the number of files in the data directory becomes somewhat large, directory 
+access time can be affected. In such cases, the administrator can split 
+preference files into subdirectories by enabling directory hashing in 
+the SquirrelMail configuration.
 
 <sect1>Configuration utility
 <p>
-SquirrelMail can be configured with <tt/conf.pl/, Perl script that is stored in
-<tt>config/</tt> directory. You can start it by running <tt>configure</tt>
-script in SquirrelMail base directory or by running <tt>conf.pl</tt> script in
-<tt>config</tt> directory.
+SquirrelMail can be configured with <tt/conf.pl/, a Perl script that is stored in
+the <tt>config/</tt> directory. You can start it by running the <tt>configure</tt>
+script in the SquirrelMail base directory or by running the <tt>conf.pl</tt> script in
+the <tt>config</tt> directory.
 
 <tscreen><verb>
 # cd /path/to/squirrelmail
@@ -229,7 +231,7 @@ script in SquirrelMail base directory or by running <tt>conf.pl</tt> script in
 # ./conf.pl
 </verb></tscreen>
 
-Script provides menu based configuration options.
+This configuration utility provides menu based configuration options:
 <tscreen><verb>
 SquirrelMail Configuration : Read: config_default.php (1.4.0)
 ---------------------------------------------------------
@@ -598,12 +600,14 @@ that you download new versions of your plugins at the same time you download
 your SquirrelMail install, and that you install your plugins fresh (it's
 easy, don't panic!).
 
-You should not try replacing plugins that are already included in SquirrelMail
-package. Download latest versions of plugins that are not included in new
-SquirrelMail package or copy them from older SquirrelMail install.
+You should not try replacing plugins that are already included in the SquirrelMail
+package. Download latest versions of plugins that are not included in the new
+SquirrelMail package or copy them from your older SquirrelMail install.
 
 <sect2>Copy themes
 <p>
+TODO: this changes in 1.5.2
+
 If you've created or modified themes, you should copy just those to the new
 SquirrelMail themes directory. To just copy them all over to the new
 SquirrelMail installation, you can run one command.
@@ -833,7 +837,7 @@ having the loopback interface sniffed.
 
 <sect1>Default user preferences<label id="default_pref">
 <p>
-If SquirrelMail interface uses file-based preferences, default preferences are
+If SquirrelMail is configured to use file-based preferences, default preferences are
 stored in your data directory in a file called "default_pref". As you add
 plugins to your SquirrelMail installation, you might want to configure some of
 them on your own account and then propagate those settings to all of your
@@ -990,9 +994,9 @@ that you tighten the permissions on config.php accordingly, so
 untrusted users can't read it.
 
 Once configuration settings are saved, users' personal preferences will be
-stored in a database. Some SquirrelMail plugins are designed to use different
-files for users' data storage and won't be able to use database to store users'
-data.
+stored in a database. Please note, however, that some SquirrelMail plugins 
+are designed to use different files for users' data storage and won't be 
+able to use database to store users' data.
 
 <sect2>Primary keys
 <p>
@@ -1020,24 +1024,28 @@ in dbPrefs class. Class is stored in functions/db_prefs.php
 
 <sect1>Using more than one IMAP server
 <p>
-SquirrelMail is designed to work with one IMAP server. If you want to use same
+SquirrelMail is designed to work with one IMAP server. If you want to use the same
 SquirrelMail installation with multiple IMAP servers, you should be able to
-implement it with Perdition mail proxy, vlogin or multilogin plugins, or write
-custom server mapping function. These tools allow transparently redirect users
-to their mail servers.
+implement this with Perdition mail proxy, or with the Vlogin or Multilogin plugins, 
+or write your own custom server mapping function. These tools allow users to
+be transparently redirected to their correct mail servers.
 
 <sect2>Perdition proxy
 <p>
 <url url="http://www.vergenet.net/linux/perdition/" name="Perdition"> is POP and
 IMAP proxy server, that can redirect users to appropriate mail servers.
 
-<sect2>vlogin plugin
+<sect2>Vlogin plugin
 <p>
-Add short info about vlogin here.
+Found in the main SquirrelMail plugins repository, this plugin helps manage 
+and manipulate usernames given at login time, and allows the use of different 
+SquirrelMail settings (such as login page image, or IMAP server) for each 
+domain, each user, or each user group. 
 
-<sect2>multilogin plugin
+<sect2>Multilogin plugin
 <p>
-Add short info about multilogin here.
+Found in the main SquirrelMail plugins repository, this plugin allows the 
+manual selection of login server on the login page.
 
 <sect2>sqimap_get_user_server
 <p>
@@ -1128,11 +1136,15 @@ than formats that store entire mail folder in one file.
 
 <sect1>Filtering
 <p>
-SquirrelMail package includes filters plugin, that can be used to sort
-messages. It is a bit of an option of last resort when you can't provide
-other means of filtering. This plugin is implemented in PHP and works on active
-mailbox. Server side filtering performed by procmail, maildrop or sieve provides
-more options and is faster.
+The SquirrelMail package includes the filters plugin, which can be used to sort
+messages. It should be the last resort when you can't provide other means of 
+filtering. This plugin is implemented in PHP and works only when users actively
+log in to their mail accounts. Server side filtering performed by applications
+such as procmail, maildrop or sieve provide more options, work even when users
+do not actively log into their accounts, and are much faster and more efficient.
+Also be aware that when using PHP-based message filtering against accounts with a
+large amount of mail in them, login times can go through the roof.
+
 
 <sect1>IMAP Proxy
 <p>
@@ -1183,25 +1195,25 @@ the Zend License Agreement.
 <sect>Customizing SquirrelMail
 <sect1>Plugins
 <p>
-SquirrelMail is modular system. Interface can be extended with extra features
-provided by various plugins.
+SquirrelMail is a modular system, wherein its functionality can be extended 
+with extra features provided by various plugins.
 
 <sect2>Installing plugins
 <p>
-Plugins are installed by unpacking them into SquirrelMail plugins
-directory. Each plugin uses own directory.
+Plugins are installed by unpacking them into the SquirrelMail plugins
+directory. Each plugin uses its own directory therein.
 
-After unpacking plugin you should check plugin's installation documentation and
-requirements. Some plugins need special plugin libraries, some need
-configuration files, some might need modifications in SquirrelMail
-scripts.
+After unpacking a plugin, you should check its installation documentation 
+and requirements. Some plugins need special plugin libraries, some need
+configuration files, and some might need modifications in the main 
+SquirrelMail scripts.
 
-After plugin is configured, you should start SquirrelMail configuration utility,
-select <tt/8. Plugins/ menu option.
+After the plugin is configured, you should start the SquirrelMail configuration 
+utility, and select <tt/8. Plugins/ menu option.
 
-Option displays two plugin categories. Installed and available. Installed
-category lists plugins that are enabled. Available category lists plugins are
-not enabled.
+This option displays two plugin categories: installed and available. The installed
+category lists plugins that are currently enabled. The a available category lists 
+plugins that are not currently enabled but are available for use.
 
 <tscreen><verb>
 SquirrelMail Configuration : Read: config.php (1.4.0)
@@ -1235,13 +1247,18 @@ Q   Quit
 Command &gt;&gt;
 </verb></tscreen>
 
-Each plugin has number written next to plugin's name. If you enter that number
-in command line, you enable or disable plugin.
+Each plugin has a number written next to its name. If you enter that number
+on the command line, you enable or disable the corresponding plugin.
 
-Configuration utility should display any plugin present in plugins/ directory.
+The configuration utility should display any plugin present in plugins/ directory.
+
+TODO: Add information about manually activating plugins?  See the bottom of this page:
+http://www.squirrelmail.org/wiki/InstallingPlugins
 
 <sect1>Themes and Styles<label id="themes">
 <p>
+TODO: As of 1.5.2, this changes....
+
 SquirrelMail users are able to customize the look of the interface by selecting
 a custom theme and the font style.
 
@@ -1318,7 +1335,8 @@ theme to the list of themes available to you.
 
 <sect1>Site customizations
 <p>
-Own login page. Site control with vlogin plugin.
+TODO:
+Custom login page. Site control with the vlogin plugin.
 
 <sect1>Internationalization
 <p>
@@ -1406,7 +1424,7 @@ set or html entities instead of entered characters.
 Different character set can be used only with US English
 translation. Administrator can set that character set in SquirrelMail
 1.4.5/1.5.1 configuration utility. Users can also select different character
-set, if Custom Charset plugin is installed.
+set, if the Custom Charset plugin is installed.
 
 <sect1>Personal and shared address books
 <p>
@@ -1430,7 +1448,7 @@ name="http://www.squirrelmail.org/wiki/KnownBugs">
 
 If admin wants to use different backend for address book storage (IMSP,
 personal LDAP address books, sticky notes attached to server),
-SquirrelMail 1.4.5 and 1.5.1 provides hooks that allow plugins to attach
+SquirrelMail 1.4.5 and 1.5.1 provide hooks that allow plugins to attach their
 own functions during address book initiation and admin needs only a plugin that
 can interact with used data storage system. Older SquirrelMail versions
 need two extra hooks in functions/addressbook.php. Current backend implementation
@@ -1618,10 +1636,10 @@ encryption. Check your web server documentation about SSL support.
 
 If you have SquirrelMail install in unsecured HTTP and secured HTTPS servers,
 SquirrelMail secure_login and show_ssl_link plugins can be used to warn users
-about insecure connection and provide redirection to secured server.
+about insecure connections and/or provide automatic redirection to a secured server.
 
-In Apache webserver redirection can be implemented with Redirect directives and
-mod_rewrite module. For example:
+In the Apache webserver, redirection can be implemented with Redirect directives and
+the mod_rewrite module. For example:
 
 <tscreen><verb>
 # Redirect /squirrelmail link to secured server
