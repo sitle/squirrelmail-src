@@ -57,7 +57,7 @@ function translate_read_form() {
 
     $trans_ar = $message->findDisplayEntity(array(), array('text/plain'));
     $body = '';
-    if ($trans_ar[0] != '') {
+    if ( !empty($trans_ar[0]) ) {
         for ($i = 0; $i < count($trans_ar); $i++) {
             $body .= formatBody($imapConnection, $message, $color, $wrap_at, $trans_ar[$i], $passed_id, $mailbox, true);
         }
