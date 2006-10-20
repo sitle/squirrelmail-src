@@ -204,7 +204,8 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
             switch ($index_order_part) {
             case 1: /* checkbox */
                 echo html_tag( 'td',
-                               "<input type=checkbox name=\"msg[$t]\" value=\"".$msg['ID']."\"$checked>",
+                               "<input type=\"checkbox\" name=\"msg[$t]\" id=\"msg".$msg['ID'].
+                                   "\" value=\"".$msg['ID']."\"$checked>",
                                'center',
                                $hlt_color );
                 break;
@@ -212,10 +213,12 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
                 $from_xtra = '';
                 $from_xtra = 'title="' . $senderFrom . '"';
                 echo html_tag( 'td',
+                    html_tag('label',
                                $italic . $bold . $flag . $fontstr . truncateWithEntities($senderName, $truncate_sender) .
                                $fontstr_end . $flag_end . $bold_end . $italic_end,
-                               'left',
-                               $hlt_color, $from_xtra );
+                           '','','for="msg'.$msg['ID'].'"'),
+                           'left',
+                           $hlt_color, $from_xtra );
                 break;
             case 3: /* date */
                 $date_string = $msg['DATE_STRING'] . '';
