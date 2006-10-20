@@ -67,6 +67,8 @@ function getGMTSeconds($stamp, $tzc) {
         case 'IST':
         case 'MET DST':
         case 'METDST':
+	case 'CEST':
+	case 'MEST':
             $tzc = '+0200';
             break;
         case 'HKT':
