@@ -2289,18 +2289,8 @@ First you have to make a distribution file. The file should be named
 the version of your plugin, and "1.4.0" is the version of SquirrelMail required
 to use your plugin.
 
-There is a convenient Perl script in the plugins directory that will help you do
-this:
-
-<tscreen><verb>
-make_archive.pl -v demo 1.0 1.4.0
-</verb></tscreen>
-
-The parameter "-v" is optional and indicates that the script should run in
-verbose mode.
-
-You can also create the distribution file manually in most *nix environments by
-running this command from the plugins directory (NOT your plugin directory):
+You can create the distribution file in most *nix environments by running this
+command from the plugins directory (NOT your plugin directory):
 
 <tscreen><verb>
 tar -czvf demo-1.0-1.4.0.tar.gz demo
