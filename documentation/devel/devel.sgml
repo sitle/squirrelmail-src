@@ -1084,11 +1084,11 @@ A plugin must reside in a subdirectory of the <tt>plugins/</tt> directory. The
 name of the subdirectory is considered to be the name of the plugin. Note that
 the plugin will not function correctly if this is not the case.
 
-To start using a plugin, its name must be added to the <tt/$plugins/> array in
+To start using a plugin, its name must be added to the <tt/$plugins/ array in
 <tt/config.php/ like this:
 
 <tscreen><verb>
-$plugins[0] = 'plugin_name';
+$plugins[] = 'plugin_name';
 </verb></tscreen>
 
 When a plugin is registered, the file <tt>plugins/plugin_name/setup.php</tt> is
@@ -1122,10 +1122,10 @@ function squirrelmail_plugin_init_demo() {
 }
 </verb></tscreen>
 
-Please note that as of SquirrelMail 1.5.0, this function will no longer be
-called at run time and will instead be called only once at configuration time.
-Thus, the inclusion of any dynamic code (anything except hook registration) here
-is strongly discouraged.
+Please note that as of SquirrelMail 1.5.2, this function is no longer 
+called at run time and is instead called (actually, just parsed) only 
+once at configuration time.  Thus, the inclusion of any dynamic code 
+(anything except hook registration) here is strongly discouraged.
 
 <sect2>Adding functionality
 <p>
@@ -1805,12 +1805,12 @@ pages. See <ref id="preferences" name="Preferences">.
 
 <sect2>Requesting new hooks
 <p>
-It's impossible to foresee all of the places where hooks might be useful and
-it's also impossible to put in hooks everywhere, so you might need to negotiate
-the insertion of a new hook to make your plugin work. Start by writing a patch
-which will insert the hook you want to add, and mail your request (with the
-patch attached) to the SquirrelMail plugins mailing list. Don't forget to
-motivate the need for a new hook in your mail.
+It's impossible for the SquirrelMail team to foresee all of the places where 
+hooks might be useful, so you might need to negotiate the insertion of a new 
+hook to make your plugin work. Start by writing a patch which will insert the 
+hook you want to add, and mail your request (with the patch attached) to the 
+SquirrelMail development mailing list. Don't forget to explain the need for the 
+new hook in your message.
 
 <sect1>Preferences<label id="preferences">
 <p>
@@ -2110,12 +2110,16 @@ array and add it to the <tt/$optpage_blocks/ array:
 
 <tscreen><verb>
 global $optpage_blocks;
+bindtextdomain('demo', SM_PATH . 'locale');
+textdomain('demo');
 $optpage_blocks[] = array(
     'name' =&gt; _("Favorite Color Settings"),
     'url'  =&gt; SM_PATH . 'plugins/demo/options.php',
     'desc' =&gt; _("Change your favorite color and find new exciting colors"),
     'js'   =&gt; FALSE
 );
+bindtextdomain('squirrelmail', SM_PATH . 'locale');
+textdomain('squirrelmail');
 </verb></tscreen>
 
 The array must have four elements:
@@ -2123,23 +2127,53 @@ The array must have four elements:
 <descrip>
 <tag/name/
 The title of the plugin's preference page as it will be displayed at the Options
-page.
+page. Note that the text domain has to be changed to properly translate this text.
 <tag/url/
 The URI that points to your plugin's custom preferences page.
 <tag/desc/
 A description of what the preferences page offers the user. This is displayed at
-the Options page below the title.
+the Options page below the title. Note that the text domain has to be changed to 
+properly translate this text.
 <tag/js/
 Indicates if this preference page requires the client browser to be
 JavaScript-capable. Should be <tt/TRUE/ or <tt/FALSE/.
 </descrip>
 
-TODO: Complete this section.
+The next step is to create your custom options page, keeping in mind the guidelines
+in <ref id="pagescalleddirectly" name="pages called directly"> and possibly using 
+the techniques described in <ref id="savepref" name="Saving and retrieving
+preferences"> below. 
 
 <sect2>Saving and retrieving preferences<label id="savepref">
 <p>
 TODO: Complete this section. (What happened to the text for this section from
 plugin.txt?)
+
+<sect1>Plugin pages called directly by the client browser<label id="pagescalleddirectly">
+<p>
+There are a few places in a plugin, such as when hooking into the "menuline" or 
+"optpage_register_block" hooks, where you can provide a link to a file that is
+called directly by the client browser.  No matter what that page does, it should 
+always validate that the calling client has a current login session. Thus, all
+such pages should start with the following code:
+
+<tscreen><verb>
+if (file_exists('../../include/init.php'))
+   include_once('../../include/init.php');
+else if (file_exists('../../include/validate.php'))
+{
+   define('SM_PATH', '../../');
+   include_once(SM_PATH . 'include/validate.php');
+}
+else
+{
+   chdir('..');
+   define('SM_PATH', '../');
+   include_once(SM_PATH . 'src/validate.php');
+}
+</verb></tscreen>
+
+TODO: Possibly provide link to the include hierarchy provided by init.php/validate.php
 
 <sect1>Compatibility with older versions of SquirrelMail
 <p>
