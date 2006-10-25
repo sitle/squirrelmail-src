@@ -1463,7 +1463,9 @@ TODO: Reduce list of hooks by grouping them into separate chapters.
 <tt/mailbox&lowbar;display&lowbar;buttons/|<tt>functions/mailbox&lowbar;display.php</tt>|<tt/do&lowbar;hook()/|&nbsp;@
 <tt/mailbox&lowbar;display&lowbar;button&lowbar;action/|<tt>functions/mailbox&lowbar;display.php</tt>|<tt/do&lowbar;hook&lowbar;function()/|&nbsp;@
 <tt/message&lowbar;body/|<tt>functions/mime.php</tt>|<tt/do&lowbar;hook()/|&nbsp;@
-<tt/attachment $type0/$type1/|<tt>functions/mime.php</tt>|<tt/do&lowbar;hook()/|^@
+<tt>attachment $type0/$type1</tt>|<tt>functions/mime.php</tt>|<tt/do&lowbar;hook()/|^@
+<tt>attachment $type0/*</tt>|<tt>functions/mime.php</tt>|<tt/do&lowbar;hook()/|^@
+<tt>attachment */*</tt>|<tt>functions/mime.php</tt>|<tt/do&lowbar;hook()/|^@
 <tt/attachments&lowbar;bottom/|<tt>functions/mime.php</tt>|<tt/do&lowbar;hook&lowbar;function()/|&nbsp;@
 <tt/decode&lowbar;body/|<tt>functions/mime.php</tt>|<tt/do&lowbar;hook&lowbar;function()/|&nbsp;@
 <tt/generic&lowbar;header/|<tt>functions/page&lowbar;header.php</tt>|<tt/do&lowbar;hook()/|&nbsp;@
@@ -1564,11 +1566,12 @@ stores the return value of the <tt/$abook-&gt;add_backend()/ method.
 
 <sect2>The attachment hooks
 <p>
-When a message has attachments, this hook is called with the MIME types. For
-instance, a ZIP file hook is "attachment application/x-zip". The hook should
-probably show a link to do a specific action, such as "Verify" or "View" for a
-ZIP file. Thus, to register your plugin for ZIP attachments, you'd do this in
-<tt/setup.php/ (assuming your plugin is called "demo"):
+When a message has attachments, this hook is called for each attachment according
+to its MIME type. For instance, a ZIP file will trigger a hook call to a hook
+named "attachment application/x-zip". A plugin registered on such a hook typically 
+will show a link to do a specific action, such as "Verify" or "View" for a ZIP 
+file. Thus, to register your plugin for ZIP attachments, you'd do this in
+<tt>setup.php</tt> (assuming your plugin is called "demo"):
 
 <tscreen><verb>
 $squirrelmail_plugin_hooks['attachment application/x-zip']['demo'] =
@@ -1578,45 +1581,63 @@ $squirrelmail_plugin_hooks['attachment application/x-zip']['demo'] =
 This is a breakdown of the data passed in the array to the hook that is called:
 
 <tscreen><verb>
-[0] = Hook's name ('attachment text/plain').
-[1] = Array of links of actions (see below) (alterable).
-[2] = Used for returning to mail message (startMessage).
-[3] = Used for finding message to display (id).
-[4] = Mailbox name, encoded with urlencode() (i.e. $urlMailbox).
-[5] = Entity ID inside mail message (ent).
-[6] = Default URL to go to when filename is clicked on (alterable).
-[7] = Filename that is displayed for the attachment.
-[8] = Sent if message was found from a search (where).
-[9] = Sent if message was found from a search (what).
+[0] = The current hook name (e.g., 'attachment text/plain').
+[1] = An array of links for actions (see below) (alterable).
+[2] = The message index of the first message on the message list page within 
+      which the current message is found (startMessage).  Can be used herein 
+      for building URLs that point to the correct message list page.
+[3] = The ID of the current message (id).  Can be used herein to build URLs 
+      that point to the correct message.
+[4] = The mailbox name, encoded with urlencode() (urlMailbox).  Can be used
+      herein to build URLs that point to the correct message list page.
+[5] = The entity ID of the attachment inside the mail message (ent).  Can 
+      be used herein to build URLs that point to the correct attachment.
+[6] = The default URL to go to when the filename is clicked upon (alterable,
+      but only one URL is allowed, thus, the last plugin to execute for
+      the current attachment wins out - usually it's better to just add a
+      new action to array element 1 above).
+[7] = The filename that is displayed for the attachment.
+[8] = The "where" criteria that was used to find the current message (where)
+      (only applicable when the message was in fact found using a search).  
+      Can be used herein to build URLs that point to the correct message list 
+      page.
+[9] = The "what" criteria that was used to find the current message (what) 
+      (only applicable when the message was in fact found using a search).
+      Can be used herein to build URLs that point to the correct message list
+      page.
 </verb></tscreen>
 
-To set up links for actions, assign them like this:
+To set up links for actions, add them to the array data passed in to the hook
+like this:
 
 <tscreen><verb>
-$Args[1]['&lt;plugin_name&gt;']['href'] = 'URL to link to';
-$Args[1]['&lt;plugin_name&gt;']['text'] = _("What to display");
-$Args[1]['&lt;plugin_name&gt;']['extra'] =
-    'extra stuff, such as an &lt;img ...&gt; tag';
+$args[1]['&lt;plugin_name&gt;']['href'] = 'link URL';
+$args[1]['&lt;plugin_name&gt;']['text'] = _("Text to display");
+$args[1]['&lt;plugin_name&gt;']['extra'] =
+    'extra stuff, such as an &lt;img ...&gt; tag (will be part of the clickable link)';
 </verb></tscreen>
 
-Note: <tt/_("What to display")/ is explained in the section about
+Note: The syntax of <tt/_("Text to display")/ is explained in the section about
 internationalization.
 
 You can leave the <tt/text/ empty and put an image tag in <tt/extra/ to show an
 image-only link for the attachment, or do the opposite (leave <tt/extra/ empty)
 to display a text-only link.
 
-It's also possible to specify a hook as <tt>attachment type0/*</tt>, for example
-<tt>attachment text/*</tt>. This hook will be executed whenever there's no more
+It's also possible to specify a hook as "attachment type0/*", for example
+"attachment text/*". This hook will be executed whenever there's no more
 specific rule available for that type.
 
+There is also an "attachment */*" hook for plugins that want to handle any
+and all attachments, regardless of their mime types.  Please use conservatively.
+
 Putting all this together, the <tt/demo_handle_zip_attachment()/ function should
-look like this (note the argument being passed):
+look like this (note how the argument is being passed):
 
 <tscreen><verb>
-function demo_handle_zip_attachment(&ero;$Args) {
+function demo_handle_zip_attachment(&ero;$args) {
     include_once(SM_PATH . 'plugins/demo/functions.php');
-    demo_handle_zip_attachment_do($Args);
+    demo_handle_zip_attachment_do($args);
 }
 </verb></tscreen>
 
@@ -1625,16 +1646,24 @@ And the <tt/demo_handle_zip_attachment_do()/ function in the
 display a custom link:
 
 <tscreen><verb>
-function demo_handle_zip_attachment_do(&ero;$Args) {
-    $Args[1]['demo']['href'] = SM_PATH . 'plugins/demo/zip_handler.php?' .
-        'passed_id=' . $Args[3] . '&ero;mailbox=' . $Args[4] .
-        '&ero;passed_ent_id=' . $Args[5];
-    $Args[1]['demo']['text'] = _("Show zip contents");
+function demo_handle_zip_attachment_do(&ero;$args) {
+    bindtextdomain('demo', SM_PATH . 'locale');
+    textdomain('demo');
+
+    $args[1]['demo']['href'] = SM_PATH . 'plugins/demo/zip_handler.php?' .
+        'passed_id=' . $args[3] . '&ero;mailbox=' . $args[4] .
+        '&ero;passed_ent_id=' . $args[5];
+    $args[1]['demo']['text'] = _("Show zip contents");
+
+    bindtextdomain('squirrelmail', SM_PATH . 'locale');
+    textdomain('squirrelmail');
 }
 </verb></tscreen>
 
+Note that the text domain has to be changed to properly translate the link text.
+
 The file <tt>plugins/demo/zip_handler.php</tt> can now do whatever it needs with
-the attachment (note that this will hand information about how to retrieve the
+the attachment (note that the link will hand information about how to retrieve the
 source message from the IMAP server as GET varibles).
 
 <sect2>The compose form hook
