@@ -1112,20 +1112,26 @@ Options can be enabled in SquirrelMail configuration utility:
   12. Allow server-side sorting: false (default) &gt; true
 </verb></tscreen>
 
-SquirrelMail also allows to turn on server side threading support. This option 
-allows end users to use threaded sorting. Threaded sorting requires more system
-resources and you should enable it only if you want to provide such option to
-end users.
+In general, always enable this option if your server supports it. It's faster
+than sorting in SquirrelMail, and may prevent problems with users with very
+large mailboxes. When not using server side sorting, these users may get
+an empty page upon viewing the large mailbox, because the PHP sorting times
+out.
 
 SquirrelMail 1.5.1 and newer versions automatically turn on server side sorting
-if SORT or THREAD extension is declared in IMAP CAPABILITY response.
+if the SORT or THREAD extension is declared in the IMAP CAPABILITY response.
 
 Server side sorting can cause problems in SquirrelMail only when IMAP server
 does not support charset used by selected SquirrelMail translation. SquirrelMail
 can use more than 15 charsets in server side sorting and threading
-commands. Courier IMAP server supports them only when compiled with
+commands. Courier IMAP server supports them only when compiled with the
 <tt/--enable-unicode/ option. Cyrus IMAP (v.2.2.12) does not support some
 multibyte charsets used by SquirrelMail.
+
+SquirrelMail also allows to turn on server side threading support. This option 
+allows end users to use threaded sorting. Threaded sorting requires more system
+resources and you should enable it only if you want to provide such an option to
+end users.
 
 <sect1>Mailbox format
 <p>
