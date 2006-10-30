@@ -43,7 +43,7 @@ Document version: $Revision$
 SquirrelMail is a standards-based webmail package written in PHP. It includes
 built-in pure PHP support for the IMAP and SMTP protocols, and all pages render
 in pure HTML 4.0 (with no JavaScript required) for maximum compatibility across
-browsers. It has very few requirements and is very easy to configure and
+browsers. It has few requirements and is easy to configure and
 install. SquirrelMail has all the functionality you would want from an email
 client, including strong MIME support, address books, and folder manipulation.
 
@@ -55,7 +55,7 @@ obsoleted, and is only referenced in the upgrading notes of this manual.
 <sect2>Requirements for running SquirrelMail:
 <p>
 <itemize>
-  <item>UNIX/Linux or Windows (UNIX/Linux version may be more functional)
+  <item>UNIX/Linux or Windows
   <item>An IMAP server which supports IMAP 4 rev 1.
   <item>Web server with PHP installed (for example <url
         url="http://httpd.apache.org/" name="Apache httpd">)
@@ -64,9 +64,15 @@ obsoleted, and is only referenced in the upgrading notes of this manual.
   <item>Perl installed on the system. (If you don't have Perl, SquirrelMail will
         work fine but it's very helpful for the initial configuration.
         Alternatively, you can manually edit the configuration files.)
-  <item>Unlike many PHP applications, SquirrelMail does not <em>require</em>
-        MySQL or other database type.
-  <item>If you use MySQL for the address book or for preferences, note that Pear
+</itemize>
+
+<sect2>Optional:
+<p>
+
+<itemize>
+  <item>Unlike many PHP applications, SquirrelMail does <em>not require</em>
+        MySQL or another database type.
+  <item>If you use MySQL for the address book or for preferences, note that the Pear
         DB library is required to be installed and available in the include path.
   <item>Aspell or ispell installed if using the SquirrelSpell plugin, For
         UNIX/Linux see: <url url="http://aspell.sourceforge.net/"
