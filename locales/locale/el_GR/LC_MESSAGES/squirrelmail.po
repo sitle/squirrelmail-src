@@ -8,17 +8,26 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SquirrelMail HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-04-16 19:47+0200\n"
-"PO-Revision-Date: 2005-04-11 16:15+0200\n"
+"POT-Creation-Date: 2006-08-08 23:25+0300\n"
+"PO-Revision-Date: 2006-11-03 19:11+0200\n"
 "Last-Translator: Alexandros Vellis <avel@noc.uoa.gr>\n"
 "Language-Team: Greek <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-7\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=2; plural=n != 1;"
 
 msgid "Address Book"
 msgstr "Βιβλίο Διευθύνσεων"
+
+msgid "All"
+msgstr "Όλοι"
+
+msgid "To"
+msgstr "Προς"
+
+msgid "Cc"
+msgstr "Κοινοποίηση"
 
 msgid "Name"
 msgstr "Όνομα"
@@ -32,17 +41,17 @@ msgstr "Πληροφορίες"
 msgid "Source"
 msgstr "Πηγή"
 
-msgid "To"
-msgstr "Προς"
-
-msgid "Cc"
-msgstr "Κοινοποίηση"
-
 msgid "Bcc"
 msgstr "Κρυφή Κοινοπ."
 
-msgid "No persons matching your search were found"
-msgstr "Δεν βρέθηκαν άτομα που να ταιριάζουν με την αναζήτηση σας"
+msgid "Use Addresses"
+msgstr "Χρήση Διευθύνσεων"
+
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+msgid "Address Book Search"
+msgstr "Αναζήτηση Βιβλίου Διευθύνσεων"
 
 msgid "Search for"
 msgstr "Αναζήτηση για"
@@ -59,9 +68,6 @@ msgstr "Αναζήτηση"
 msgid "List all"
 msgstr "Παρουσίαση όλων"
 
-msgid "Close"
-msgstr "Κλείσιμο"
-
 #, php-format
 msgid "Unable to list addresses from %s"
 msgstr "Αδύνατον να παρουσιαστούν διευθύνσεις από %s"
@@ -69,20 +75,14 @@ msgstr "Αδύνατον να παρουσιαστούν διευθύνσεις από %s"
 msgid "Your search failed with the following error(s)"
 msgstr "Η αναζήτηση σας απέτυχε με τα ακόλουθο(-α) σφάλμα(τα)"
 
-msgid "All"
-msgstr "Όλοι"
-
-msgid "Use Addresses"
-msgstr "Χρήση Διευθύνσεων"
-
-msgid "Cancel"
-msgstr "Ακύρωση"
-
-msgid "Address Book Search"
-msgstr "Αναζήτηση Βιβλίου Διευθύνσεων"
+msgid "No persons matching your search were found"
+msgstr "Δεν βρέθηκαν άτομα που να ταιριάζουν με την αναζήτηση σας"
 
 msgid "Return"
 msgstr "Επιστροφή"
+
+msgid "Close"
+msgstr "Κλείσιμο"
 
 msgid "Nickname"
 msgstr "Ψευδώνυμο"
@@ -131,6 +131,18 @@ msgstr "Τροποποίηση επιλεγμένων"
 msgid "Delete selected"
 msgstr "Διαγραφή επιλεγμένων"
 
+msgid "sort by nickname"
+msgstr ""
+
+msgid "sort by name"
+msgstr "ταξινόμηση ανά όνομα"
+
+msgid "sort by email"
+msgstr "ταξινόμηση ανά διεύθυνση"
+
+msgid "sort by info"
+msgstr "ταξινόμηση ανά πληροφορίες"
+
 #, php-format
 msgid "Add to %s"
 msgstr "Προσθήκη στο %s"
@@ -145,9 +157,9 @@ msgstr "ανέφερε"
 msgid "who"
 msgstr "ποιός"
 
-#, fuzzy, php-format
+#, php-format
 msgid "On %s, %s wrote:"
-msgstr "Στις %s, ο/η %s είπε:"
+msgstr "Στις %s, ο/η %s έγραψε::"
 
 msgid "Subject"
 msgstr "Θέμα"
@@ -190,6 +202,11 @@ msgstr "Προσθήκη"
 msgid "Delete selected attachments"
 msgstr "Διαγραφή επιλεγμένων συνημμένων"
 
+msgid ""
+"Because PHP file uploads are turned off, you can not attach files to this "
+"message. Please see your system administrator for details."
+msgstr ""
+
 msgid "Priority"
 msgstr "Προτεραιότητα"
 
@@ -227,9 +244,30 @@ msgstr "Δεν έχετε συμπληρώσει το πεδίο \"Προς:\"."
 msgid "Error: Draft folder %s does not exist."
 msgstr "Λάθος: Ο φάκελος προχείρων %s δεν υπάρχει."
 
-#, fuzzy
 msgid "Server replied:"
 msgstr "Απόκριση εξυπηρετητή:"
+
+msgid "Illegal folder name. Please select a different name."
+msgstr "Μη έγκυρο όνομα φακέλου.  Παρακαλώ επιλέξτε ένα διαφορετικό όνομα."
+
+msgid "Click here to go back"
+msgstr "Κάντε κλικ εδώ για να επιστρέψετε πίσω."
+
+msgid "You have not selected a folder to delete. Please do so."
+msgstr "Δεν έχετε επιλέξει κάποιον φάκελο για διαγραφή. Παρακαλώ κάντε το."
+
+msgid "Delete Folder"
+msgstr "Διαγραφή Φακέλου"
+
+#, php-format
+msgid "Are you sure you want to delete %s?"
+msgstr "Θέλετε πράγματι να διαγράψετε αυτό το συμβάν %s;"
+
+msgid "Yes"
+msgstr "Ναι"
+
+msgid "No"
+msgstr "Όχι"
 
 msgid "Folders"
 msgstr "Φάκελοι"
@@ -282,9 +320,6 @@ msgstr "Μετονομασία"
 msgid "No folders found"
 msgstr "Δεν βρέθηκαν φάκελοι"
 
-msgid "Delete Folder"
-msgstr "Διαγραφή Φακέλου"
-
 msgid "Delete"
 msgstr "Διαγραφή"
 
@@ -302,25 +337,6 @@ msgstr "Δεν βρέθηκαν φάκελοι για να γίνει η εγγραφή!"
 
 msgid "Subscribe to:"
 msgstr "Εγγραφή:"
-
-msgid "Illegal folder name. Please select a different name."
-msgstr "Μη έγκυρο όνομα φακέλου.  Παρακαλώ επιλέξτε ένα διαφορετικό όνομα."
-
-msgid "Click here to go back"
-msgstr "Κάντε κλικ εδώ για να επιστρέψετε πίσω."
-
-msgid "You have not selected a folder to delete. Please do so."
-msgstr "Δεν έχετε επιλέξει κάποιον φάκελο για διαγραφή. Παρακαλώ κάντε το."
-
-#, php-format
-msgid "Are you sure you want to delete %s?"
-msgstr "Θέλετε πράγματι να διαγράψετε αυτό το συμβάν %s;"
-
-msgid "Yes"
-msgstr "Ναι"
-
-msgid "No"
-msgstr "Όχι"
 
 msgid "You have not selected a folder to rename. Please do so."
 msgstr "Δεν έχετε επιλέξει φάκελο για μετονομασία. Παρακαλώ κάντε το."
@@ -340,15 +356,30 @@ msgstr "ΣΦΑΛΜΑ: Τα αρχεία βοήθειας δεν είναι στην σωστή μορφή!"
 msgid "Help"
 msgstr "Βοήθεια"
 
-#, php-format
 msgid ""
-"The help has not been translated to %s. It will be displayed in English "
-"instead."
+"Help is not available in the selected language. It will be displayed in "
+"English instead."
 msgstr ""
-"Η βοήθεια δεν έχει μεταφραστεί στη γλώσσα %s. Θα εμφανιστεί στα Αγγλικά."
+"Η βοήθεια δεν έχει μεταφραστεί στην επιλεγμένη γλώσσα.. Θα εμφανιστεί στα Αγγλικά."
 
-msgid "Some or all of the help documents are not present!"
-msgstr "Κάποια ή όλα τα έγγραφα βοήθειας δεν υπάρχουν!"
+msgid ""
+"Help is not available. Please contact your system administrator for "
+"assistance."
+msgstr ""
+"Η βοήθεια δεν είναι διαθέσιμη. Παρακαλώ επικοινωνήστε με τον διαχειριστή του συστήματος για εξυπηρέτηση."
+
+msgid ""
+"This chapter is not available in the selected language. It will be displayed "
+"in English instead."
+msgstr ""
+"Η βοήθεια δεν έχει μεταφραστεί στην επιλεγμένη γλώσσα. Θα εμφανιστεί στα Αγγλικά."
+
+msgid "This chapter is missing"
+msgstr "Αυτό το κεφάλαιο λείπει"
+
+#, php-format
+msgid "For some reason, chapter %s is not available."
+msgstr "Για κάποιον λόγο, το κεφάλαιο %s δεν είναι διαθέσιμο."
 
 msgid "Table of Contents"
 msgstr "Πίνακας Περιεχομένων"
@@ -377,6 +408,12 @@ msgstr "ΕΙΣΕΡΧΟΜΕΝΑ"
 msgid "Purge"
 msgstr "Εκκαθάριση"
 
+msgid "Last Refresh"
+msgstr "Τελευταία Ενημέρωση"
+
+msgid "Check mail"
+msgstr "Έλεγχος Ταχυδρομείου"
+
 msgid "Login"
 msgstr "Σύνδεση"
 
@@ -404,76 +441,11 @@ msgstr "Κωδικός:"
 msgid "No messages were selected."
 msgstr "Δεν επελέγησαν μηνύματα."
 
-msgid "Personal Information"
-msgstr "Προσωπικές Πληροφορίες"
-
-msgid "Display Preferences"
-msgstr "Προτιμήσεις Εμφάνισης"
-
-msgid "Message Highlighting"
-msgstr "Μαρκάρισμα Μηνυμάτων"
-
-msgid "Folder Preferences"
-msgstr "Προτιμήσεις Φακέλων"
-
-msgid "Index Order"
-msgstr "Σειρά Καταλόγου"
-
 msgid "Options"
 msgstr "Επιλογές"
 
-msgid "Error(s) occurred while saving your options"
-msgstr "Παρουσιάστηκε σφάλμα (σφάλματα) κατά την αποθήκευση των επιλογών σας"
-
-msgid "Some of your preference changes were not applied."
-msgstr "Μερικές από τις αλλαγές στις προτιμήσεις σας δεν ενεργοποιήθηκαν."
-
-msgid "Successfully Saved Options"
-msgstr "Επιτυχής Αποθήκευση Επιλογών"
-
-msgid "Refresh Folder List"
-msgstr "Ανανέωση Λίστας Φακέλων"
-
-msgid "Refresh Page"
-msgstr "Ανανέωση Σελίδας"
-
-msgid ""
-"This contains personal information about yourself such as your name, your "
-"email address, etc."
-msgstr ""
-"Περιέχει προσωπικές πληροφορίες για εσάς όπως το όνομα σας, η ηλεκτρονική "
-"σας διεύθυνση κλπ."
-
-msgid ""
-"You can change the way that SquirrelMail looks and displays information to "
-"you, such as the colors, the language, and other settings."
-msgstr ""
-"Μπορείτε να αλλάξετε τον τρόπο εμφάνισης του SquirrelMail και του πως "
-"παρουσιάζει πληροφορίες προς εσάς, όπως χρώματα, τη γλώσσα και άλλες "
-"ρυθμίσεις."
-
-msgid ""
-"Based upon given criteria, incoming messages can have different background "
-"colors in the message list. This helps to easily distinguish who the "
-"messages are from, especially for mailing lists."
-msgstr ""
-"Με βάση δεδομένα κριτήρια, τα εισερχόμενα μηνύματα μπορούν να έχουν "
-"διαφορετικά χρώματα φόντου στην λίστα μηνυμάτων. Αυτό βοηθάει στο να "
-"διακρίνεται από ποιον είναι το μήνυμα, ιδιαίτερα για λίστες μηνυμάτων "
-"(mailing lists)."
-
-msgid ""
-"These settings change the way your folders are displayed and manipulated."
-msgstr ""
-"Αυτές οι ρυθμίσεις αλλάζουν τον τρόπο με τον οποίο γίνεται η εμφάνιση και η "
-"μεταχείριση των φακέλων σας."
-
-msgid ""
-"The order of the message index can be rearranged and changed to contain the "
-"headers in any order you want."
-msgstr ""
-"Η σειρά του καταλόγου μηνυμάτων μπορεί να επαναδιαταχθεί και να αλλάξει ώστε "
-"να περιέχει κεφαλίδες με οποιαδήποτε σειρά θέλετε."
+msgid "Message Highlighting"
+msgstr "Μαρκάρισμα Μηνυμάτων"
 
 msgid "New"
 msgstr "Νέο"
@@ -556,18 +528,21 @@ msgstr "Πχ: 63aa7f"
 msgid "Matches"
 msgstr "Εγγραφές που ταιριάζουν"
 
-#, php-format
-msgid "Alternate Identity %d"
-msgstr "Εναλλακτική Ταυτότητα %d"
-
-msgid "Advanced Identities"
-msgstr "Προχωρημένες Ταυτότητες"
+msgid "Editing identities is disabled."
+msgstr "Η επεξεργασία ταυτοτήτων είναι απενεργοποιημένη."
 
 msgid "Default Identity"
 msgstr "Εξ ορισμού ταυτότητα"
 
+#, php-format
+msgid "Alternate Identity %d"
+msgstr "Εναλλακτική Ταυτότητα %d"
+
 msgid "Add a New Identity"
 msgstr "Προσθήκη Νέας Ταυτότητας"
+
+msgid "Advanced Identities"
+msgstr "Προχωρημένες Ταυτότητες"
 
 msgid "Full Name"
 msgstr "Πλήρες Όνομα"
@@ -586,6 +561,9 @@ msgstr "Να Γίνει Εξ ορισμού"
 
 msgid "Move Up"
 msgstr "Μετακίνηση Επάνω"
+
+msgid "Index Order"
+msgstr "Σειρά Καταλόγου"
 
 msgid "Checkbox"
 msgstr "Τετράγωνο Επιλογής"
@@ -617,8 +595,85 @@ msgstr "αφαίρεση"
 msgid "Return to options page"
 msgstr "Επιστροφή στην σελίδα επιλογών"
 
+msgid "Personal Information"
+msgstr "Προσωπικές Πληροφορίες"
+
+msgid "Display Preferences"
+msgstr "Προτιμήσεις Εμφάνισης"
+
+msgid "Folder Preferences"
+msgstr "Προτιμήσεις Φακέλων"
+
+msgid "Error(s) occurred while saving your options"
+msgstr "Παρουσιάστηκε σφάλμα (σφάλματα) κατά την αποθήκευση των επιλογών σας"
+
+msgid "Some of your preference changes were not applied."
+msgstr "Μερικές από τις αλλαγές στις προτιμήσεις σας δεν ενεργοποιήθηκαν."
+
+msgid "Successfully Saved Options"
+msgstr "Επιτυχής Αποθήκευση Επιλογών"
+
+msgid "Refresh Folder List"
+msgstr "Ανανέωση Λίστας Φακέλων"
+
+msgid "Refresh Page"
+msgstr "Ανανέωση Σελίδας"
+
+msgid ""
+"This contains personal information about yourself such as your name, your "
+"email address, etc."
+msgstr ""
+"Περιέχει προσωπικές πληροφορίες για εσάς όπως το όνομα σας, η ηλεκτρονική "
+"σας διεύθυνση κλπ."
+
+msgid ""
+"You can change the way that SquirrelMail looks and displays information to "
+"you, such as the colors, the language, and other settings."
+msgstr ""
+"Μπορείτε να αλλάξετε τον τρόπο εμφάνισης του SquirrelMail και του πως "
+"παρουσιάζει πληροφορίες προς εσάς, όπως χρώματα, τη γλώσσα και άλλες "
+"ρυθμίσεις."
+
+msgid ""
+"Based upon given criteria, incoming messages can have different background "
+"colors in the message list. This helps to easily distinguish who the "
+"messages are from, especially for mailing lists."
+msgstr ""
+"Με βάση δεδομένα κριτήρια, τα εισερχόμενα μηνύματα μπορούν να έχουν "
+"διαφορετικά χρώματα φόντου στην λίστα μηνυμάτων. Αυτό βοηθάει στο να "
+"διακρίνεται από ποιον είναι το μήνυμα, ιδιαίτερα για λίστες μηνυμάτων "
+"(mailing lists)."
+
+msgid ""
+"These settings change the way your folders are displayed and manipulated."
+msgstr ""
+"Αυτές οι ρυθμίσεις αλλάζουν τον τρόπο με τον οποίο γίνεται η εμφάνιση και η "
+"μεταχείριση των φακέλων σας."
+
+msgid ""
+"The order of the message index can be rearranged and changed to contain the "
+"headers in any order you want."
+msgstr ""
+"Η σειρά του καταλόγου μηνυμάτων μπορεί να επαναδιαταχθεί και να αλλάξει ώστε "
+"να περιέχει κεφαλίδες με οποιαδήποτε σειρά θέλετε."
+
 msgid "Message not printable"
 msgstr "Μη εκτυπώσιμο μήνυμα"
+
+msgid "Attachments:"
+msgstr "Συνημμένα:"
+
+msgid "Unknown sender"
+msgstr "Άγνωστος αποστολέας"
+
+msgid "Info:"
+msgstr "Πληροφορίες:"
+
+msgid "Size:"
+msgstr "Μέγεθος:"
+
+msgid "Type:"
+msgstr "Τύπος:"
 
 msgid "Invalid URL"
 msgstr "Λανθασμένο URL"
@@ -650,9 +705,6 @@ msgstr "λιγότερα"
 
 msgid "more"
 msgstr "περισσότερα"
-
-msgid "Unknown sender"
-msgstr "Άγνωστος αποστολέας"
 
 msgid "Mailer"
 msgstr "Mailer"
@@ -715,6 +767,9 @@ msgstr "Πρέπει να έχετε συνδεθεί για να έχετε πρόσβαση σε αυτή τη σελίδα."
 msgid "Folder:"
 msgstr "Φάκελος:"
 
+msgid "Saved Searches"
+msgstr "Αποθηκευμένες Αναζητήσεις"
+
 msgid "edit"
 msgstr "επεξεργασία"
 
@@ -748,6 +803,9 @@ msgstr "Παντού"
 msgid "No Messages Found"
 msgstr "Δεν Βρέθηκαν Μηνύματα"
 
+msgid "Please enter something to search for"
+msgstr "Παρακαλώ εισάγετε κάτι για το οποίο θέλετε να κάνετε αναζήτηση"
+
 msgid "Signout"
 msgstr "Αποσύνδεση"
 
@@ -774,9 +832,6 @@ msgstr ""
 msgid "Title"
 msgstr "Τίτλος"
 
-msgid "Email"
-msgstr "Email"
-
 msgid "Web Page"
 msgstr "Ιστοσελίδα"
 
@@ -801,14 +856,11 @@ msgstr "Φαξ"
 msgid "Note"
 msgstr "Σημείωση"
 
-msgid "Add to Addressbook"
+msgid "Add to address book"
 msgstr "Προσθήκη στο Βιβλίο Διευθύνσεων"
 
-msgid "Title & Org. / Dept."
-msgstr "Τίτλος & Οργ. / Τμήμα"
-
-msgid "Add to Address Book"
-msgstr "Προσθήκη στο Βιβλίο Διευθύνσεων"
+msgid "Title &amp; Org. / Dept."
+msgstr "Τίτλος &amp; Οργ. / Τμήμα"
 
 msgid "Viewing Full Header"
 msgstr "Εμφάνιση Πλήρους Κεφαλίδας"
@@ -840,12 +892,12 @@ msgid "Addressbook is read-only"
 msgstr "Το βιβλίο διευθύνσεων είναι μόνο για ανάγνωση"
 
 #, php-format
-msgid "User '%s' already exist"
+msgid "User \"%s\" already exists"
 msgstr "Ο χρήστης '%s' υπάρχει ήδη"
 
 #, php-format
-msgid "User '%s' does not exist"
-msgstr "Ο χρήστης '%s' δεν υπάρχει"
+msgid "User \"%s\" does not exist"
+msgstr "Ο χρήστης \"%s\" δεν υπάρχει"
 
 msgid "Not a file name"
 msgstr "Δεν είναι όνομα αρχείου"
@@ -884,6 +936,9 @@ msgstr "Σφάλμα στην αρχικοποίηση του συνολικού βιβλίου διευθύνσεων."
 #, php-format
 msgid "Error initializing LDAP server %s:"
 msgstr "Σφάλμα στην αρχικοποίηση του εξυπηρετητή LDAP %s:"
+
+msgid "Click here to change the sorting of the address list"
+msgstr ""
 
 msgid "Invalid input data"
 msgstr "Μη έγκυρα δεδομένα εισόδου"
@@ -1125,45 +1180,38 @@ msgstr ""
 "αυτό το θέμα."
 
 msgid ""
-"You need to have php4 installed with the multibyte string function enabled "
+"You need to have PHP installed with the multibyte string function enabled "
 "(using configure option --enable-mbstring)."
 msgstr ""
-"Πρέπει να έχετε εγκαταστήσει php4 με ενεργοποιημένες τις λειτουργίες "
-"multibyte string (χρήση επιλογής ρυθμίσεων --with-mbstring)"
+"Πρέπει να έχετε εγκαταστήσει PHP με ενεργοποιημένες τις λειτουργίες "
+"multibyte string (μέσω της επιλογής ρυθμίσεων --enable-mbstring)."
 
-#, fuzzy
 msgid "ERROR: No available IMAP stream."
-msgstr "ΣΦΑΛΜΑ : Μη διαθέσιμο imapstream."
+msgstr "ΣΦΑΛΜΑ : Μη διαθέσιμο IMAP stream."
 
-#, fuzzy
 msgid "ERROR: Connection dropped by IMAP server."
-msgstr "ΣΦΑΛΜΑ : Η σύνδεση διακόπηκε από τον εξυπηρετητή imap."
+msgstr "ΣΦΑΛΜΑ : Η σύνδεση διακόπηκε από τον εξυπηρετητή IMAP.."
 
-#, fuzzy
 msgid "ERROR: Could not complete request."
 msgstr "ΣΦΑΛΜΑ: Δεν ήταν δυνατό να ολοκληρωθεί το αίτημα."
 
 msgid "Query:"
 msgstr "Εξερεύνηση:"
 
-#, fuzzy
 msgid "Reason Given:"
 msgstr "Αιτιολογία που Δόθηκε:"
 
-#, fuzzy
 msgid "ERROR: Bad or malformed request."
-msgstr "ΣΦΑΛΜΑ: Κακό η κακώς διαμορφωμένο."
+msgstr "ΣΦΑΛΜΑ: Κακό η κακώς διαμορφωμένο αίτημα."
 
 msgid "Server responded:"
 msgstr "Απόκριση του εξυπηρετητή:"
 
-#, fuzzy
 msgid "ERROR: IMAP server closed the connection."
-msgstr "ΣΦΑΛΜΑ : Ο Imap εξυπηρετητής έκλεισε τη σύνδεση."
+msgstr "ΣΦΑΛΜΑ : Ο εξυπηρετητής IMAP έκλεισε τη σύνδεση."
 
-#, fuzzy
 msgid "ERROR: Unknown IMAP response."
-msgstr "ΣΦΑΛΜΑ : Άγνωστη Απόκριση imap."
+msgstr "ΣΦΑΛΜΑ : Άγνωστη Απόκριση IMAP.."
 
 #, php-format
 msgid "Error connecting to IMAP server: %s."
@@ -1192,19 +1240,16 @@ msgstr "Ανάγνωση δεδομένων:"
 msgid "Unknown user or password incorrect."
 msgstr "Άγνωστος χρήστης η εσφαλμένος κωδικός."
 
-#, fuzzy
 msgid "ERROR: Could not append message to"
-msgstr "ΣΦΑΛΜΑ: Δεν ήταν δυνατό να προσαρτηθεί το μήνυμα"
+msgstr "ΣΦΑΛΜΑ: Δεν ήταν δυνατό να προσαρτηθεί το μήνυμα στο"
 
-#, fuzzy
 msgid "Solution:"
 msgstr "Λύση:"
 
 msgid ""
-"Remove unneccessary messages from your folder and start with your Trash "
-"folder."
+"Remove unneccessary messages from your folders. Start with your Trash folder."
 msgstr ""
-"Αφαιρέστε τα μη απαραίτητα μηνύματα από τον φάκελο σας και ξεκινήστε με τον "
+"Αφαιρέστε τα μη απαραίτητα μηνύματα από τον φάκελο σας. Ξεκινήστε από τον "
 "φάκελο Διαγραμμένα."
 
 msgid "(no subject)"
@@ -1213,9 +1258,8 @@ msgstr "(κανένα θέμα)"
 msgid "Unknown Sender"
 msgstr "Άγνωστος Αποστολέας"
 
-#, fuzzy
 msgid "Unknown response from IMAP server:"
-msgstr "Άγνωστη απόκριση από τον εξυπηρετητή IMAP: "
+msgstr "Άγνωστη απόκριση από τον εξυπηρετητή IMAP:"
 
 msgid "The server couldn't find the message you requested."
 msgstr "Ο εξυπηρετητής δε μπόρεσε να βρει το μήνυμα που ζητήσατε."
@@ -1260,11 +1304,8 @@ msgstr "Μετακίνηση"
 msgid "Expunge"
 msgstr "Εκκαθάριση"
 
-msgid "mailbox"
-msgstr "γραμματοκιβώτιο"
-
 msgid "Read"
-msgstr "Ανάγν."
+msgstr "Αναγν."
 
 msgid "Unread"
 msgstr "Μη αναγν."
@@ -1303,8 +1344,8 @@ msgstr ""
 "Το SquirrelMail δεν μπόρεσε να αποκωδικοποιήσει την δομή του σώματος του "
 "μηνύματος"
 
-msgid "the provided bodystructure by your imap-server"
-msgstr "η παρεχόμενη δομή σώματος από τον εξυπηρετητή σας IMAP"
+msgid "The bodystructure provided by your IMAP server:"
+msgstr "Η παρεχόμενη δομή σώματος από τον εξυπηρετητή σας IMAP:"
 
 msgid ""
 "Body retrieval error. The reason for this is most probably that the message "
@@ -1356,6 +1397,16 @@ msgstr "Σφάλμα στη δημιουργία του φακέλου %s."
 
 msgid "Could not create hashed directory structure!"
 msgstr "Δεν ήταν δυνατή η δημιουργία hashed δομής φακέλου!"
+
+msgid "Email delivery error"
+msgstr "Σφάλμα στην παράδοση του μηνύματος"
+
+#, php-format
+msgid "Can't execute command '%s'."
+msgstr ""
+
+msgid "Can't open SMTP stream."
+msgstr ""
 
 msgid "Service not available, closing channel"
 msgstr "Μη διαθέσιμη υπηρεσία, κλείσιμο διαύλου"
@@ -1473,6 +1524,12 @@ msgstr "Μέγιστος Αριθμός Σελίδων για Εμφάνιση"
 msgid "Always Show Full Date"
 msgstr "Πάντοτε Εμφάνιση ολόκληρης της Ημερομηνίας"
 
+msgid "Length of From/To Field (0 for full)"
+msgstr ""
+
+msgid "Length of Subject Field (0 for full)"
+msgstr ""
+
 msgid "Message Display and Composition"
 msgstr "Εμφάνιση Μηνύματος και Συγγραφής"
 
@@ -1539,7 +1596,8 @@ msgstr "Πλάτος Παραθύρου Σύνθεσης"
 msgid "Height of Compose Window"
 msgstr "Ύψος Παραθύρου Σύνθεσης"
 
-msgid "Append Signature before Reply/Forward Text"
+#, fuzzy
+msgid "Prepend Signature before Reply/Forward Text"
 msgstr "Προσάρτηση υπογραφής πριν το Κείμενο Απάντησης/Προώθησης"
 
 msgid "Prefix for Original Message when Replying"
@@ -1689,7 +1747,6 @@ msgstr "Προτιμήσεις Επιλογής Φακέλων"
 msgid "Selection List Style"
 msgstr "Στυλ Λίστας Επιλογής"
 
-#, fuzzy
 msgid "Long:"
 msgstr "Μακρύ:"
 
@@ -1699,19 +1756,26 @@ msgstr "Φάκελος"
 msgid "Subfolder"
 msgstr "Υποφάκελος"
 
-#, fuzzy
 msgid "Indented:"
-msgstr "Με κενό:"
+msgstr "Στοιχισμένο:"
 
-#, fuzzy
 msgid "Delimited:"
 msgstr "Διαχωρισμένο:"
+
+msgid "You can't select INBOX as Trash folder."
+msgstr "Δεν μπορείτε να επιλέξετε τα ΕΙΣΕΡΧΟΜΕΝΑ ως τον φάκελο Διαγραμμένων"
+
+msgid "You can't select INBOX as Sent folder."
+msgstr "Δε μπορείτε να επιλέξετε τα ΕΙΣΕΡΧΟΜΕΝΑ ως τον φάκελο απεσταλμένων"
+
+msgid "You can't select INBOX as Draft folder."
+msgstr "Δε μπορείτε να επιλέξετε τα ΕΙΣΕΡΧΟΜΕΝΑ ως φάκελο προχείρων"
 
 msgid "Name and Address Options"
 msgstr "Επιλογές Ονόματος και Διεύθυνσης"
 
-msgid "Email Address"
-msgstr "Διεύθυνση Email"
+msgid "E-mail Address"
+msgstr "Διεύθυνση E-mail"
 
 msgid "Edit Advanced Identities"
 msgstr "Επεξεργασία Προχωρημένων Ταυτοτήτων"
@@ -1745,13 +1809,11 @@ msgstr "Στυλ Αναφοράς Απάντησης"
 msgid "No Citation"
 msgstr "Καμία Αναφορά"
 
-#, fuzzy
 msgid "AUTHOR Wrote"
-msgstr "Ο ΣΥΓΓΡΑΦΕΑΣ Είπε"
+msgstr "Ο ΣΥΓΓΡΑΦΕΑΣ έγραψε"
 
-#, fuzzy
 msgid "On DATE, AUTHOR Wrote"
-msgstr "Στην ΗΜΕΡΟΜΗΝΙΑ, ο ΣΥΓΓΡΑΦΕΑΣ Είπε"
+msgstr "Στην ΗΜΕΡΟΜΗΝΙΑ, ο ΣΥΓΓΡΑΦΕΑΣ έγραψε"
 
 msgid "Quote Who XML"
 msgstr "Ανέφερε Ποιός XML"
@@ -1855,6 +1917,9 @@ msgstr ""
 msgid "hMailServer IMAP server"
 msgstr "Εξυπηρετητής IMAP hMailServer"
 
+msgid "Binc IMAP server"
+msgstr "Binc εξυπηρετητής IMAP"
+
 msgid "Not one of the above servers"
 msgstr "Όχι κάποιος από τους παραπάνω εξυπηρετητές"
 
@@ -1882,6 +1947,9 @@ msgstr "Χρήση Sendmail Binary"
 msgid "Choose &quot;no&quot; for SMTP"
 msgstr ""
 
+msgid "Sendmail Arguments"
+msgstr "Παράμετροι Sendmail"
+
 msgid "Sendmail Path"
 msgstr "Διαδρομή του Sendmail"
 
@@ -1905,6 +1973,9 @@ msgstr ""
 
 msgid "POP3 Before SMTP?"
 msgstr "POP3 πριν SMTP;"
+
+msgid "Header Encryption Key"
+msgstr ""
 
 msgid "Invert Time"
 msgstr "Αναστροφή Χρόνου"
@@ -1999,6 +2070,12 @@ msgstr "Επέτρεψε επεξεργασία ταυτοτήτων"
 msgid "Allow editing of full name"
 msgstr "Επέτρεψε επεξεργασία πλήρους ονόματος"
 
+msgid "Remove username from headers"
+msgstr ""
+
+msgid "Used only when identities can't be modified"
+msgstr ""
+
 msgid "Use server-side sorting"
 msgstr "Χρήση ταξινόμησης από τον εξυπηρετητή"
 
@@ -2013,6 +2090,10 @@ msgstr "Υποστήριξη UID"
 
 msgid "PHP session name"
 msgstr "Όνομα συνεδρίας PHP"
+
+#, fuzzy
+msgid "Location base"
+msgstr "Λεξικό Διαγράφηκε"
 
 msgid "Message of the Day"
 msgstr "Μήνυμα της Ημέρας"
@@ -2209,7 +2290,8 @@ msgstr ""
 "προστεθεί στη λίστα προβλημάτων στο SourceForge, αλλά κάποιος που θα λάβει "
 "το μήνυμά σας μπορεί να το προσθέσει για εσάς."
 
-msgid "This bug involves"
+#, fuzzy
+msgid "This bug involves:"
 msgstr "Αυτό το πρόβλημα έχει να κάνει"
 
 msgid "the general program"
@@ -2230,15 +2312,15 @@ msgstr "Αναφορές Σφαλμάτων (bug):"
 msgid "Show button in toolbar"
 msgstr "Εμφάνιση button στη γραμμή εργαλείων"
 
+#, php-format
+msgid "Could not write calendar file %s"
+msgstr "Δεν ήταν εφικτή η εγγραφή του αρχείου ημερολογίου %s"
+
 msgid "TODAY"
 msgstr "ΣΗΜΕΡΑ"
 
 msgid "Go"
 msgstr "Πήγαινε"
-
-#, php-format
-msgid "Could not write calendar file %s"
-msgstr "Δεν ήταν εφικτή η εγγραφή του αρχείου ημερολογίου %s"
 
 msgid "l, F j Y"
 msgstr "l, F j Y"
@@ -2272,6 +2354,9 @@ msgstr "Το συμβάν προστέθηκε!"
 
 msgid "Date:"
 msgstr "Ημερομηνία:"
+
+msgid "m/d/Y"
+msgstr ""
 
 msgid "Time:"
 msgstr "Ώρα:"
@@ -2345,10 +2430,12 @@ msgstr "6 ώρες"
 msgid "Calendar"
 msgstr "Ημερολόγιο"
 
-msgid "Delete & Prev"
+#, fuzzy
+msgid "Delete &amp; Prev"
 msgstr "Διαγραφή & Προηγ."
 
-msgid "Delete & Next"
+#, fuzzy
+msgid "Delete &amp; Next"
 msgstr "Διαγραφή & Επόμενο"
 
 msgid "Move to:"
@@ -2715,9 +2802,6 @@ msgstr ""
 "Squirrelmail και την τρέχουσα ρύθμιση του Squirrelmail. Μπορούν να "
 "χρησιμοποιηθούν προσαρμοσμένες γραμμές εντολών."
 
-msgid "Mailinglist"
-msgstr "ΤαχυδρομικήΛίστα"
-
 #, php-format
 msgid ""
 "This will send a message to %s requesting help for this list. You will "
@@ -2742,6 +2826,13 @@ msgstr ""
 "Θα στείλει ένα μήνυμα προς %s που θα ζητάει να ακυρωθεί η εγγραφή σας σε "
 "αυτή τη λίστα. Θα προσπαθήσει να ακυρώσει την εγγραφή για την παρακάτω "
 "διεύθυνση."
+
+#, fuzzy, php-format
+msgid "Unknown action: %s"
+msgstr "Άγνωστο σφάλμα: %s"
+
+msgid "Mailinglist"
+msgstr "ΤαχυδρομικήΛίστα"
 
 msgid "Send Mail"
 msgstr "Αποστολή Μηνύματος"
@@ -2784,9 +2875,6 @@ msgstr "POP3 κωδικός:"
 
 msgid "No password submitted"
 msgstr "Δεν υποβλήθηκε κωδικός πρόσβασης"
-
-msgid "authentication failed "
-msgstr "αποτυχία πιστοποίησης ταυτότητας"
 
 msgid "POP3 apop:"
 msgstr "POP3 apop:"
@@ -3065,22 +3153,6 @@ msgstr "Αποθήκευση Μηνύματος"
 msgid "View Message details"
 msgstr "Εμφάνιση λεπτομερειών μηνύματος"
 
-msgid "New Mail"
-msgstr "Νέο Ταχυδρομείο"
-
-msgid "SquirrelMail Notice:"
-msgstr "Σημείωση SquirrelMail:"
-
-#, php-format
-msgid "You have %s new message"
-msgid_plural "You have %s new messages"
-msgstr[0] "Έχετε %s νέο μήνυμα"
-msgstr[1] "Έχετε %s νέα μηνύματα"
-
-#, php-format
-msgid "You have %s new messages"
-msgstr "Έχετε %s νέα μηνύματα"
-
 msgid "New Mail Notification"
 msgstr "Ειδοποίηση Νέου Ταχυδρομείου"
 
@@ -3176,6 +3248,22 @@ msgstr "Δοκιμή"
 
 msgid "Current File:"
 msgstr "Τρέχον Αρχείο:"
+
+msgid "New Mail"
+msgstr "Νέο Ταχυδρομείο"
+
+msgid "SquirrelMail Notice:"
+msgstr "Σημείωση SquirrelMail:"
+
+#, php-format
+msgid "You have %s new message"
+msgid_plural "You have %s new messages"
+msgstr[0] "Έχετε %s νέο μήνυμα"
+msgstr[1] "Έχετε %s νέα μηνύματα"
+
+#, php-format
+msgid "You have %s new messages"
+msgstr "Έχετε %s νέα μηνύματα"
 
 msgid "NewMail Options"
 msgstr "Επιλογές Νέου Ταχυδρομείου"
@@ -3578,22 +3666,6 @@ msgstr ""
 msgid "No errors found"
 msgstr "Δεν βρέθηκαν σφάλματα"
 
-msgid ""
-"Your personal dictionary has been encrypted and is now stored in an "
-"encrypted format."
-msgstr ""
-"Το προσωπικό σας λεξικό έχει κρυπτογραφηθεί και είναι πλέον αποθηκευμένο σε "
-"κρυπτογραφημένη μορφή."
-
-msgid ""
-"Your personal dictionary has been decrypted and is now stored as plain text."
-msgstr ""
-"Το προσωπικό σας λεξικό έχει  αποκρυπτογραφηθεί και είναι πλέον αποθηκευμένο "
-"ως απλό κείμενο."
-
-msgid "Personal Dictionary Crypto Settings"
-msgstr "Κρυπτογραφικές Ρυθμίσεις Προσωπικού Λεξικού"
-
 msgid "Your personal dictionary was erased."
 msgstr "Το προσωπικό σας λεξικό διαγράφηκε."
 
@@ -3633,6 +3705,26 @@ msgstr ""
 
 msgid "Dictionary re-encrypted"
 msgstr "Λεξικό επανα-κρυπτογραφήθηκε"
+
+msgid ""
+"Your personal dictionary has been encrypted and is now stored in an "
+"encrypted format."
+msgstr ""
+"Το προσωπικό σας λεξικό έχει κρυπτογραφηθεί και είναι πλέον αποθηκευμένο σε "
+"κρυπτογραφημένη μορφή."
+
+msgid ""
+"Your personal dictionary has been decrypted and is now stored as plain text."
+msgstr ""
+"Το προσωπικό σας λεξικό έχει  αποκρυπτογραφηθεί και είναι πλέον αποθηκευμένο "
+"ως απλό κείμενο."
+
+#, fuzzy
+msgid "No action requested."
+msgstr "Δεν ζητήθηκε καμία αλλαγή."
+
+msgid "Personal Dictionary Crypto Settings"
+msgstr "Κρυπτογραφικές Ρυθμίσεις Προσωπικού Λεξικού"
 
 msgid "Personal Dictionary"
 msgstr "Προσωπικό Λεξικό"
@@ -3796,8 +3888,9 @@ msgstr "Ρυθμίσεις διεθνών λεξικών"
 msgid "Encrypt or decrypt your personal dictionary"
 msgstr "Κρυπτογράφηση ή αποκρυπτογράφηση του προσωπικού σας λεξικού"
 
-msgid "not available"
-msgstr "μη διαθέσιμο"
+#, fuzzy
+msgid "Personal dictionary encryption options are not available"
+msgstr "Κρυπτογραφικές Ρυθμίσεις Προσωπικού Λεξικού"
 
 msgid "SquirrelSpell Options Menu"
 msgstr "Μενού Επιλογών Διορθωτής-Squirrel"
@@ -4040,43 +4133,15 @@ msgstr ""
 msgid "none installed"
 msgstr ""
 
-msgid "sort by nickname"
-msgstr ""
-
-msgid "sort by name"
-msgstr "ταξινόμηση ανά όνομα"
-
-msgid "sort by email"
-msgstr "ταξινόμηση ανά διεύθυνση"
-
-msgid "sort by info"
-msgstr "ταξινόμηση ανά πληροφορίες"
-
-msgid "Add to address book"
-msgstr "Προσθήκη στο Βιβλίο Διευθύνσεων"
-
-msgid ""
-"Because PHP file uploads are turned off, you can not attach files to this "
-"message. Please see your system administrator for details."
-msgstr ""
-
-msgid "No folders were found to unsubscribe from."
-msgstr "Δεν βρέθηκαν φάκελοι για τους οποίους να ακυρωθεί η εγγραφή."
-
-msgid "No folders were found to subscribe to."
-msgstr "Δεν βρέθηκαν φάκελοι για να γίνει η εγγραφή."
-
-msgid "Last Refresh"
-msgstr "Τελευταία Ενημέρωση"
-
-msgid "Check mail"
-msgstr "Έλεγχος Ταχυδρομείου"
-
-msgid "Save folder tree"
-msgstr "Αποθήκευση δέντρου φακέλων"
+#, fuzzy
+msgid "Nothing to search"
+msgstr "Τίποτα προς διαγραφή!"
 
 msgid "SquirrelMail Webmail Application"
 msgstr "Εφαρμογή Webmail SquirrelMail"
+
+msgid "Received"
+msgstr "Ελήφθη"
 
 msgid "Compose Preferences"
 msgstr "Προτιμήσεις Σύνθεσης"
@@ -4086,9 +4151,11 @@ msgid ""
 "and forwarding messages."
 msgstr ""
 
-#, fuzzy
-msgid "Received"
-msgstr "Απόδειξη"
+msgid "View as plain text"
+msgstr "Εμφάνιση ως απλό κείμενο"
+
+msgid "View as HTML"
+msgstr "Εμφάνιση ως HTML"
 
 msgid "As Attachment"
 msgstr "Ως Συνημμένο"
@@ -4096,8 +4163,8 @@ msgstr "Ως Συνημμένο"
 msgid "Bypass Trash"
 msgstr "Παράκαμψη Διεγραμμένων"
 
-msgid "Please enter something to search for"
-msgstr "Παρακαλώ εισάγετε κάτι για το οποίο θέλετε να κάνετε αναζήτηση"
+msgid "Copy"
+msgstr "Αντιγραφή"
 
 msgid "There must be at least one criteria to search for"
 msgstr "Πρέπει να υπάρχει τουλάχιστον ένα κριτήριο για αναζήτηση"
@@ -4125,9 +4192,6 @@ msgstr "Δίπλωμα"
 
 msgid "Unfold"
 msgstr "Ξεδίπλωμα"
-
-msgid "Saved Searches"
-msgstr "Αποθηκευμένες Αναζητήσεις"
 
 msgid "Missing"
 msgstr "Λείπει"
@@ -4237,14 +4301,64 @@ msgstr ""
 msgid "Advanced search"
 msgstr ""
 
-msgid "Folder List"
-msgstr "Λίστα Φακέλων"
+msgid "Address book is read-only"
+msgstr "Το βιβλίο διευθύνσεων είναι μόνο για ανάγνωση"
+
+#, php-format
+msgid "User '%s' already exist."
+msgstr "Ο χρήστης '%s' υπάρχει ήδη"
 
 msgid "PHP install does not have LDAP support."
 msgstr ""
 
-msgid "Click here to change the sorting of the address list"
+#, fuzzy
+msgid "Write to address book failed"
+msgstr "Η εγγραφή στο βιβλίο διευθύνσεων απέτυχε"
+
+#, fuzzy
+msgid "Removing entry from address book failed"
+msgstr "Η εγγραφή στο βιβλίο διευθύνσεων απέτυχε"
+
+msgid "LDAP rename is not supported by used protocol version"
 msgstr ""
+
+msgid ""
+"LDAP rename is not supported by used LDAP library. You can't change nickname"
+msgstr ""
+
+#, fuzzy
+msgid "LDAP rename failed"
+msgstr "Αποτυχία διαγραφής:"
+
+msgid "Unable to remove some field values"
+msgstr ""
+
+#, fuzzy, php-format
+msgid "Unable to rename user \"%s\" to \"%s\""
+msgstr "Αδύνατον να παρουσιαστούν διευθύνσεις από %s"
+
+msgid "Address book is corrupted. Required fields are missing."
+msgstr ""
+
+#, fuzzy
+msgid "Address book entry is too big"
+msgstr "Πίνακας βιβλίου διευθύνσεων"
+
+#, fuzzy
+msgid "Error initializing address book database."
+msgstr "Σφάλμα στην αρχικοποίηση της βάσης δεδομένων βιβλίου διευθύνσεων."
+
+#, fuzzy
+msgid "Error initializing global address book."
+msgstr "Σφάλμα στην αρχικοποίηση του συνολικού βιβλίου διευθύνσεων."
+
+#, fuzzy
+msgid "Error initializing other address books."
+msgstr "Σφάλμα στην αρχικοποίηση του συνολικού βιβλίου διευθύνσεων."
+
+#, fuzzy
+msgid "Unknown address book backend"
+msgstr "Πίνακας Γενικού βιβλίου διευθύνσεων"
 
 #, fuzzy
 msgid "Illegal folder name."
@@ -4264,11 +4378,9 @@ msgstr "Δεν έχετε επιλέξει φάκελο για εγγραφή. Παρακαλώ κάντε το."
 msgid "You have not selected a folder to unsubscribe. Please do so."
 msgstr "Δεν έχετε επιλέξει φάκελο για ακύρωση εγγραφής. Παρακαλώ κάντε το."
 
-#, fuzzy
 msgid "Possible reason:"
-msgstr "Πιθανή αιτία: "
+msgstr "Πιθανή αιτία:"
 
-#, fuzzy
 msgid "ERROR: Bad function call."
 msgstr "ΣΦΑΛΜΑ: Κακή κλήση λειτουργίας."
 
@@ -4281,9 +4393,28 @@ msgid ""
 msgstr ""
 
 msgid ""
+"IMAP STARTTLS is enabled in SquirrelMail configuration, but used IMAP server "
+"does not support STARTTLS."
+msgstr ""
+
+msgid "Unable to start TLS."
+msgstr "Αδυναμία εκκίνησης TLS."
+
+msgid ""
+"IMAP STARTTLS is enabled in SquirrelMail configuration, but used PHP version "
+"does not support functions that allow to enable encryption on open socket."
+msgstr ""
+
+msgid ""
 "Your mailbox is not located at this server. Try a different server or "
 "consult your system administrator"
 msgstr ""
+
+msgid "Trash"
+msgstr "Διαγραμμένα"
+
+msgid "Drafts"
+msgstr "Πρόχειρα"
 
 msgid "Unknown recipient"
 msgstr "Άγνωστος παραλήπτης"
@@ -4294,9 +4425,76 @@ msgstr "Αφαίρ.Σήμανσης"
 msgid "Flag"
 msgstr "Σήμανση"
 
-#, fuzzy
 msgid "Undelete"
-msgstr "διαγραφή"
+msgstr "Ακύρωση διαγραφής"
+
+msgid "Viewing HTML formatted email"
+msgstr ""
+
+msgid "unavailable"
+msgstr "μη διαθέσιμο"
+
+msgid "Error"
+msgstr "Σφάλμα"
+
+msgid "Terminating SquirrelMail due to a fatal error"
+msgstr ""
+
+msgid ""
+"Secure SMTP (TLS) is enabled in SquirrelMail configuration, but used PHP "
+"version does not support it."
+msgstr ""
+
+msgid "TLS session is already activated."
+msgstr ""
+
+msgid ""
+"SMTP STARTTLS is enabled in SquirrelMail configuration, but used SMTP server "
+"does not support it"
+msgstr ""
+
+msgid ""
+"SMTP STARTTLS is enabled in SquirrelMail configuration, but used PHP version "
+"does not support functions that allow to enable encryption on open socket."
+msgstr ""
+
+msgid ""
+"Run \"configure\", choose option 4 (General options) and set option 10 "
+"(Disable server thread sort) to true)."
+msgstr ""
+
+msgid ""
+"Run \"configure\", choose option 4 (General options) and set option 11 "
+"(Disable server-side sorting) to true."
+msgstr ""
+
+#, fuzzy
+msgid "Your used charset is not supported by your IMAP server."
+msgstr ""
+"Ταξινόμηση σύμφωνα με το νήμα (thread) δεν υποστηρίζεται από τον εξυπηρετητή "
+"σας IMAP."
+
+msgid ""
+"Run \"configure\", choose option 4 (General options) and set option 12 "
+"(Allow server charset search) to false) or choose option 10 (Language "
+"settings) and set option 2 (Default charset) to a charset supported by your "
+"IMAP server."
+msgstr ""
+
+msgid "Out of quota error."
+msgstr ""
+
+msgid ""
+"An error occured when SquirrelMail appended a message to the mailbox as "
+"listed in this message."
+msgstr ""
+
+msgid "Your IMAP server returned an error."
+msgstr ""
+
+#, fuzzy
+msgid "IMAP server closed the connection."
+msgstr "ΣΦΑΛΜΑ : Ο Imap εξυπηρετητής έκλεισε τη σύνδεση."
 
 msgid "General Message Composition"
 msgstr "Γενικά για Σύνθεση Μηνύματος"
@@ -4307,29 +4505,50 @@ msgstr "Απαντήσεις και Προωθήσεις Μηνυμάτων"
 msgid "Strip signature when replying"
 msgstr "Αφαίρεση Υπογραφής κατά την Απάντηση"
 
+msgid "Template"
+msgstr "Θέμα Παρουσίασης"
+
+msgid "Default font style"
+msgstr "Εξ ορισμού στυλ γραμματοσειράς"
+
+msgid "Font style"
+msgstr "Στυλ Γραμματοσειράς"
+
+msgid "Font size"
+msgstr "Μέγεθος γραμματοσειράς"
+
+#, fuzzy
+msgid "Default font size"
+msgstr "Εξ ορισμού Αριστερό Μέγεθος"
+
+#, fuzzy
+msgid "Icon Theme"
+msgstr "Θέμα Παρουσίασης"
+
 msgid "Enable Fancy Row Mouseover Highlighting"
 msgstr ""
-
-msgid "Message Flags Icon Theme"
-msgstr "Θέμα Παρουσίασης των Εικονιδίων των Σημάνσεων Μηνυμάτων"
 
 msgid "Show Flag / Unflag Buttons"
 msgstr "Εμφάνιση Κουμπιών για Σήμανση / Αφαίρεση Σήμανσης"
 
+msgid "Enable Message Copy Buttons"
+msgstr "Ενεργοποίηση Κουμπιών Αντιγραφής Μηνύματος"
+
 msgid "Use Compact Page Selector"
 msgstr "Χρήση Μικρού Επιλογέα Σελίδων"
-
-msgid "Length of From/To Field (0 for full)"
-msgstr ""
-
-msgid "Length of Subject Field (0 for full)"
-msgstr ""
 
 msgid "Message Display Options"
 msgstr "Επιλογές Εμφάνισης Μηνυμάτων"
 
-msgid "Show 'Delete & Prev/Next' Links"
+msgid "Height of inline frame"
 msgstr ""
+
+msgid "Show 'Delete &amp; Prev/Next' Links"
+msgstr ""
+
+#, fuzzy
+msgid "Translate Special Folders"
+msgstr "Αυτόματη Δημιουργία Ειδικών Φακέλων"
 
 msgid "Save Replies with Original Message"
 msgstr "Αποθήκευση Απαντήσεων με το Αρχικό Μήνυμα"
@@ -4343,11 +4562,51 @@ msgstr[1] "%d Λεπτά"
 msgid "Show only subscribed folders"
 msgstr "Εμφάνιση μόνο φακέλων στους οποίους έχει γίνει εγγραφή"
 
+#, fuzzy
+msgid "Template Default"
+msgstr "Να Γίνει Εξ ορισμού"
+
 msgid "XP"
 msgstr "XP"
 
-msgid "Hide SquirrelMail Header"
-msgstr "Κρύψιμο του Squirrelmail Header"
+#, fuzzy
+msgid "Mercury/32 IMAP server"
+msgstr "Εξυπηρετητής Cyrus IMAP"
+
+msgid "IMAP Connection Security"
+msgstr ""
+
+msgid "Plain text connection"
+msgstr ""
+
+#, fuzzy
+msgid "Secure IMAP (TLS) connection"
+msgstr "Χρήση TLS για IMAP Συνδέσεις"
+
+msgid "IMAP STARTTLS connection"
+msgstr ""
+
+msgid ""
+"Requires higher PHP version and special functions. See SquirrelMail "
+"documentation."
+msgstr ""
+
+msgid "SMTP Connection Security"
+msgstr ""
+
+msgid "Custom SMTP AUTH username"
+msgstr ""
+
+msgid "Custom SMTP AUTH password"
+msgstr ""
+
+#, fuzzy
+msgid "Disable server-side sorting"
+msgstr "Χρήση ταξινόμησης από τον εξυπηρετητή"
+
+#, fuzzy
+msgid "Disable server-side thread sorting"
+msgstr "Χρήση ταξινόμησης thread από τον εξυπηρετητή"
 
 msgid "Search functions"
 msgstr "Λειτουργίες Αναζήτησης"
@@ -4361,11 +4620,37 @@ msgstr "Μόνο προχωρημένη αναζήτηση"
 msgid "Both search functions"
 msgstr "Και οι δύο λειτουργίες αναζήτησης"
 
-msgid "Show alternative language names"
+#, fuzzy
+msgid "Time Zone Configuration"
+msgstr "Επιλογές Ζώνης Ώρας"
+
+msgid "Standard GNU C time zones"
 msgstr ""
 
-msgid "Available languages"
-msgstr "Διαθέσιμες γλώσσες"
+#, fuzzy
+msgid "Strict time zones"
+msgstr "Χρόνος έναρξης:"
+
+msgid "Custom GNU C time zones"
+msgstr ""
+
+msgid "Custom strict time zones"
+msgstr ""
+
+#, fuzzy
+msgid "Size of username field"
+msgstr "Πεδίο ονόματος χρήστη προτιμήσεων"
+
+#, fuzzy
+msgid "Size of key field"
+msgstr "Πεδίο κλειδιών προτιμήσεων"
+
+#, fuzzy
+msgid "Size of value field"
+msgstr "Πεδίο τιμής προτιμήσεων"
+
+msgid "Show alternative language names"
+msgstr ""
 
 msgid "Enable aggressive decoding"
 msgstr ""
@@ -4373,11 +4658,11 @@ msgstr ""
 msgid "Tweaks"
 msgstr ""
 
-msgid "Use advanced tree folder listing"
-msgstr ""
-
 msgid "Use icons"
 msgstr "Χρήση εικονιδίων"
+
+msgid "Use inline frames with HTML mails"
+msgstr ""
 
 msgid "Use PHP recode functions"
 msgstr ""
@@ -4388,86 +4673,30 @@ msgstr ""
 msgid "Allow remote configuration test"
 msgstr ""
 
+#, fuzzy
+msgid "Address book file line length"
+msgstr "Πίνακας βιβλίου διευθύνσεων"
+
+msgid "Templates"
+msgstr "Θέματα"
+
+#, fuzzy
+msgid "Default font set"
+msgstr "Εξ ορισμού Αριστερό Μέγεθος"
+
+#, fuzzy
+msgid "Default template"
+msgstr "Εξ ορισμού Θέμα"
+
 msgid "Show System Specifications"
 msgstr ""
 
-msgid "Search Mailing List Archives"
-msgstr "Αναζήτηση Αρχείων Ταχυδρομικής Λίστας"
-
-msgid "Search SourceForge Bugtracker"
+msgid "my email account"
 msgstr ""
 
-msgid "Search for words:"
-msgstr "Αναζήτηση για λέξεις:"
-
-msgid "Written by:"
-msgstr "Γραμμένο από:"
-
-msgid "Email addresses only"
-msgstr "Διευθύνσεις E-mail μόνο"
-
-msgid "Mailing list:"
-msgstr "Ταχυδρομική Λίστα:"
-
-msgid "SquirrelMail users list"
-msgstr "Λίστα χρηστών του SquirrelMail"
-
-msgid "SquirrelMail plugins list"
-msgstr "Λίστα των plugins του SquirrelMail"
-
-msgid "SquirrelMail developers list"
-msgstr "Λίστα Προγραμματιστών του SquirrelMail"
-
-msgid "SquirrelMail internationalization list"
-msgstr "Λίστα διεθνοποίησης του SquirrelMail"
-
-msgid "Sort by:"
-msgstr "Ταξινόμηση με:"
-
-msgid "Relevance"
-msgstr ""
-
-msgid "Search Archives"
-msgstr "Αναζήτηση Αρχείων"
-
-msgid "Reset Form"
-msgstr "Επαναφορά Φόρμας"
-
-msgid "Summary keyword:"
-msgstr "Λέξη-κλειδί περίληψης:"
-
-msgid "Sort By:"
-msgstr "Ταξινόμηση Με:"
-
-msgid "ID"
-msgstr "ID"
-
-msgid "Summary"
-msgstr "Περίληψη"
-
-msgid "Open Date"
-msgstr "Ανοιχτή Ημερομηνία"
-
-msgid "Close Date"
-msgstr "Κλείσε Ημερομηνία"
-
-msgid "Submitter"
-msgstr "Υποβολέας"
-
-msgid "Assignee"
-msgstr ""
-
-msgid "Order:"
-msgstr "Σειρά:"
-
-msgid "Ascending"
-msgstr ""
-
-msgid "Descending"
-msgstr ""
-
-msgid "Search Bugtracker"
-msgstr ""
+#, fuzzy
+msgid "Bug Reports"
+msgstr "Αναφορές Σφαλμάτων (bug):"
 
 msgid "You must type in a new password."
 msgstr ""
@@ -4572,7 +4801,7 @@ msgstr ""
 msgid "Unsupported crypto: %s"
 msgstr ""
 
-msgid "PHP mhash extension is missing."
+msgid "PHP mhash extension is missing or does not support selected crypto."
 msgstr ""
 
 msgid "System crypt library doesn't support standard DES crypt."
@@ -4631,6 +4860,62 @@ msgstr ""
 msgid "Password change was not successful!"
 msgstr ""
 
+msgid ""
+"Plugin is unable to use PHP Pear DB libraries. PHP Pear includes must be "
+"available in your PHP include_path setting."
+msgstr ""
+
+msgid "Required change password backend configuration options are missing."
+msgstr ""
+
+#, php-format
+msgid "Connection error: %s"
+msgstr "Σφάλμα κατά τη διάρκεια της σύνδεσης: %s"
+
+#, php-format
+msgid "Invalid table name: %s"
+msgstr ""
+
+msgid "User table is empty."
+msgstr ""
+
+#, fuzzy
+msgid "Invalid uid field."
+msgstr "Μη έγκυρος χρήστης."
+
+#, fuzzy
+msgid "Invalid password field"
+msgstr "Δεν υποβλήθηκε κωδικός πρόσβασης"
+
+#, fuzzy
+msgid "Invalid domain field"
+msgstr "Μη έγκυρα δεδομένα εισόδου"
+
+#, php-format
+msgid "Query failed: %s"
+msgstr "Το επερώτημα απέτυχε: %s"
+
+msgid "Unable to find user in user table."
+msgstr ""
+
+msgid "Too many matches found in user table."
+msgstr ""
+
+msgid "Unable to detect password crypto algorithm."
+msgstr ""
+
+#, fuzzy
+msgid "Unable to encrypt new password."
+msgstr "Άδειος νέος κωδικός"
+
+#, fuzzy, php-format
+msgid "Unable to set new password: %s"
+msgstr "Αδύνατον να παρουσιαστούν διευθύνσεις από %s"
+
+#, fuzzy
+msgid "Unable to use digest-md5 crypto."
+msgstr "Αδυναμία χρήσης TLS."
+
 msgid "Closing Connection"
 msgstr ""
 
@@ -4661,6 +4946,10 @@ msgstr "Άδειο όνομα χρήστη"
 msgid "Empty new password"
 msgstr "Άδειος νέος κωδικός"
 
+#, fuzzy, php-format
+msgid "Unable to execute \"%s\"."
+msgstr "Αδυναμία χρήσης TLS."
+
 msgid "Server Capability response:"
 msgstr "Απόκριση ικανοντήτων εξυπηρετητή:"
 
@@ -4689,6 +4978,17 @@ msgstr "Αλφαριθμητικό Εντολής IMAP"
 msgid "Request:"
 msgstr "Αίτηση:"
 
+msgid "Execution time:"
+msgstr "Χρόνος εκτέλεσης:"
+
+#, php-format
+msgid "%s ms"
+msgstr "%s ms"
+
+#, fuzzy
+msgid "Command failed"
+msgstr "Αποτυχία εντολής"
+
 msgid "No POP3 servers configured yet."
 msgstr "Δεν έχουν καθοριστεί POP3 εξυπηρετητές ακόμα."
 
@@ -4696,10 +4996,45 @@ msgid "Click here to go to the options page."
 msgstr "Κάντε κλικ εδώ για να πάτε στη σελίδα επιλογών."
 
 #, php-format
+msgid "Fetching from %s"
+msgstr "Λήψη από %s"
+
+#, php-format
 msgid "Login OK: Inbox contains %s message"
 msgid_plural "Login OK: Inbox contains %s messages"
-msgstr[0] "Σύνδεση OK: Το γραμματοκιβώτιο περιέχει %s μηνύματα"
+msgstr[0] "Σύνδεση OK: Το γραμματοκιβώτιο περιέχει %s μήνυμα"
 msgstr[1] "Σύνδεση OK: Το γραμματοκιβώτιο περιέχει %s μηνύματα"
+
+#, php-format
+msgid "Fetching message %s."
+msgstr "Λήψη μηνύματος %s."
+
+#, php-format
+msgid "Refetching message %s."
+msgstr "Επανάληψη Λήψης μηνύματος %s."
+
+msgid "Warning:"
+msgstr "Προειδοποίηση:"
+
+msgid ""
+"The NewMail plugin will follow the Folder Preferences option &quot;Enable "
+"Unread Message Notification&quot;"
+msgstr ""
+
+msgid "Follow folder preferences"
+msgstr "Εμφάνιση προτιμήσεων φακέλου"
+
+msgid "All folders"
+msgstr "Όλοι οι Φάκελοι"
+
+msgid "Special folders"
+msgstr "Ειδικοί Φάκελοι"
+
+msgid "Regular folders"
+msgstr "Κανονικοί φάκελοι"
+
+msgid "Check for new messages in:"
+msgstr "Έλεγχος για νέα μηνύματα σε:"
 
 msgid "Width of popup window:"
 msgstr "Πλάτος Αναδυόμενου Παραθύρου:"
@@ -4722,27 +5057,48 @@ msgstr ""
 msgid "Uploaded Media File:"
 msgstr ""
 
-msgid "unavailable"
-msgstr "μη διαθέσιμο"
-
 #, php-format
 msgid "Media file %s will be removed, if you upload other media file."
 msgstr ""
 
-msgid "Spam Service Type:"
-msgstr "Τύπος Υπηρεσίας SPAM:"
-
-msgid "Free reporting"
-msgstr "Ελέυθερη Αναφορά"
-
-msgid "Member services"
+#, php-format
+msgid "%s notice:"
 msgstr ""
 
-msgid "Save Service Type"
-msgstr "Αποθήκευση Τύπου Υπηρεσίας"
+msgid "Warning"
+msgstr "Προειδοποίηση"
+
+msgid "There are some restrictions in Sent Subfolder options."
+msgstr ""
+
+#, fuzzy
+msgid "Sent Subfolders plugin is misconfigured."
+msgstr "Ο Διορθωτής-Squirrel δεν έχει ρυθμιστεί καλά"
+
+msgid "Save emails submitted to SpamCop:"
+msgstr ""
 
 msgid "SpamCop reporting"
 msgstr "Αναφορά SpamCop"
+
+#, php-format
+msgid ""
+"Your %s dictionary is encrypted with password that differs from your current "
+"password."
+msgstr ""
+
+msgid "Invalid SquirrelSpell module."
+msgstr ""
+
+#, php-format
+msgid "Found %d error"
+msgid_plural "Found %d errors"
+msgstr[0] "Βρέθηκε %d σφάλμα"
+msgstr[1] "Βρέθηκαν %d σφάλματα"
+
+#, php-format
+msgid "Using %s dictionary for spellcheck."
+msgstr "Χρήση του λεξικού %s για έλεγχο ορθογραφίας."
 
 msgid "Translation Theme:"
 msgstr "Θέμα Μετάφρασης:"
@@ -4766,10 +5122,46 @@ msgid "Transliterate unknown words:"
 msgstr ""
 
 msgid "When composing:"
-msgstr "Κατά την ανάγνωση:"
+msgstr "Κατά τη σύνταξη:"
 
 msgid "Not yet functional, currently does nothing"
 msgstr ""
+
+msgid "D"
+msgstr "D"
+
+msgid "F"
+msgstr "F"
+
+msgid "SquirrelMail notice messages"
+msgstr "Μηνύματα παρατηρήσεων του SquirrelMail"
+
+msgid "Category:"
+msgstr "Κατηγορία:"
+
+msgid "Tip:"
+msgstr "Κόλπο:"
+
+msgid "More info:"
+msgstr "Περισσότερες Πληροφορίες:"
+
+msgid "No folders were found to unsubscribe from."
+msgstr "Δεν βρέθηκαν φάκελοι για τους οποίους να ακυρωθεί η εγγραφή."
+
+msgid "No folders were found to subscribe to."
+msgstr "Δεν βρέθηκαν φάκελοι για να γίνει η εγγραφή."
+
+msgid "Message Flags"
+msgstr "Σημαίες Μηνυμάτων"
+
+msgid "Attachment"
+msgstr "Συνημμένο"
+
+msgid "Click here to change the sorting of the message list"
+msgstr "Κάντε κλικ εδώ για να αλλάξετε την ταξινόμηση της λίστας μηνυμάτων."
+
+msgid "Folder List"
+msgstr "Λίστα Φακέλων"
 
 msgid "Delivery error report"
 msgstr "Αναφορά σφάλματος παράδοσης"
@@ -4780,20 +5172,3 @@ msgstr "Κεφαλίδες Μη-Απεσταλμένων Μηνυμάτων"
 msgid "This image has been removed for security reasons"
 msgstr "Αυτή η εικόνα αφαιρέθηκε για λόγους ασφαλείας"
 
-#~ msgid "%s said:"
-#~ msgstr "%s είπε:"
-
-#~ msgid "Server responded: "
-#~ msgstr "Απόκριση του εξυπηρετητή:"
-
-#~ msgid "Click here to change the sorting of the message list"
-#~ msgstr "Κάντε κλικ εδώ για να αλλάξετε την ταξινόμηση της λίστας μηνυμάτων."
-
-#~ msgid "Message "
-#~ msgstr "Μήνυμα"
-
-#~ msgid "No-one server in use. Try to add."
-#~ msgstr "Κανένας εξυπηρετητής σε χρήση. Προσπαθήστε να προσθέσετε έναν."
-
-#~ msgid "Hey! Wath do You are looking for?"
-#~ msgstr "Έεε! Για τι ψάχνεις;"
