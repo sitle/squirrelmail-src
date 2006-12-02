@@ -52,10 +52,11 @@ if (!sqgetGlobalVar('mailbox', $mailbox)) {
     $mailbox = 'INBOX';
 }
 
-if(!sqgetGlobalVar('mailto', $mailto)) {
-    $mailto = '';
+if(sqgetGlobalVar('mailtodata', $mailtodata)) {
+    $mailtourl = 'mailtodata='.urlencode($mailtodata);
+} else {
+    $mailtourl = '';
 }
-
 
 is_logged_in();
 
@@ -151,7 +152,7 @@ switch($right_frame_file) {
         $right_frame_url = 'folders.php';
         break;
     case 'compose.php':
-        $right_frame_url = 'compose.php?' . $mailto;
+        $right_frame_url = 'compose.php?' . $mailtourl;
         break;
     case '':
         $right_frame_url = 'right_main.php';

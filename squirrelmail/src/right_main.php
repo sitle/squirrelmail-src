@@ -148,7 +148,7 @@ sqimap_mailbox_select($imapConnection, $mailbox);
 
 if ($composenew) {
     $comp_uri = SM_PATH . 'src/compose.php?mailbox='. urlencode($mailbox).
-        "&session=$session";
+        "&session=" .urlencode($session);
     displayPageHeader($color, $mailbox, "comp_in_new('$comp_uri');", false);
 } else {
     displayPageHeader($color, $mailbox);
