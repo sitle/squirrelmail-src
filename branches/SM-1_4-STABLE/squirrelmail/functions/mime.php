@@ -480,7 +480,8 @@ function formatAttachments($message, $exclude_id, $mailbox, $id) {
 
         /* This executes the attachment hook with a specific MIME-type.
          * If that doesn't have results, it tries if there's a rule
-         * for a more generic type.
+         * for a more generic type. Finally, a hook for ALL attachment
+         * types is run as well.
          */
         $hookresults = do_hook("attachment $type0/$type1", $links,
                 $startMessage, $id, $urlMailbox, $ent, $defaultlink,
@@ -490,6 +491,9 @@ function formatAttachments($message, $exclude_id, $mailbox, $id) {
                     $startMessage, $id, $urlMailbox, $ent, $defaultlink,
                     $display_filename, $where, $what);
         }
+        $hookresults = do_hook("attachment */*", $hookresults[1],
+                $startMessage, $id, $urlMailbox, $ent, $hookresults[6],
+                $display_filename, $where, $what);
 
         $links = $hookresults[1];
         $defaultlink = $hookresults[6];
