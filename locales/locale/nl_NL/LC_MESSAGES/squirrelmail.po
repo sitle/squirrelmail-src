@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: squirrelmail HEAD\n"
-"Report-Msgid-Bugs-To: <squirrelmail-i18n@lists.sourceforge.net>\n"
-"POT-Creation-Date: 2006-06-28 12:49+0200\n"
+"Report-Msgid-Bugs-To: squirrelmail-i18n@lists.sourceforge.net\n"
+"POT-Creation-Date: 2006-12-02 18:21+0100\n"
 "PO-Revision-Date: 2006-06-28 18:11+0200\n"
 "Last-Translator: Thijs Kinkhorst <kink@squirrelmail.org>\n"
 "Language-Team: Dutch <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -369,8 +369,8 @@ msgid ""
 "Help is not available. Please contact your system administrator for "
 "assistance."
 msgstr ""
-"De helppagina's zijn niet beschikbaar. "
-"Neem contact op met uw systeembeheerder en rapporteer deze fout."
+"De helppagina's zijn niet beschikbaar. Neem contact op met uw "
+"systeembeheerder en rapporteer deze fout."
 
 msgid ""
 "This chapter is not available in the selected language. It will be displayed "
@@ -407,6 +407,7 @@ msgstr "Bekijk bericht"
 msgid "Download this as a file"
 msgstr "Download dit als een bestand"
 
+#, php-format
 msgid "INBOX"
 msgstr "INBOX"
 
@@ -766,6 +767,9 @@ msgstr ""
 msgid "Folder:"
 msgstr "Map:"
 
+msgid "Saved Searches"
+msgstr "Opgeslagen zoekopdrachten"
+
 msgid "edit"
 msgstr "Wijzig"
 
@@ -798,6 +802,9 @@ msgstr "Overal"
 
 msgid "No Messages Found"
 msgstr "Bekijk bericht"
+
+msgid "Please enter something to search for"
+msgstr "Vul a.u.b. iets in om te zoeken"
 
 msgid "Signout"
 msgstr "Afmelden"
@@ -861,6 +868,9 @@ msgstr "Bekijk volledige berichtinformatie"
 msgid "Viewing a text attachment"
 msgstr "Bekijk een tekst bijlage"
 
+msgid "View Unsafe Images"
+msgstr "Bekijk onveilige figuren"
+
 msgid ""
 "Could not include PEAR database functions required for the database backend."
 msgstr ""
@@ -881,7 +891,7 @@ msgstr "Persoonlijk adresboek"
 msgid "Database error: %s"
 msgstr "Databasefout: %s"
 
-msgid "Addressbook is read-only"
+msgid "Address book is read-only"
 msgstr "Adresboek is alleen-lezen"
 
 #, php-format
@@ -891,6 +901,10 @@ msgstr "Gebruiker \"%s\" bestaat al"
 #, php-format
 msgid "User \"%s\" does not exist"
 msgstr "Gebruiker \"%s\" bestaat niet"
+
+#, php-format
+msgid "User '%s' already exist."
+msgstr "Gebruiker \"%s\" bestaat al."
 
 msgid "Not a file name"
 msgstr "Geen bestandsnaam"
@@ -907,14 +921,20 @@ msgstr "Schrijven mislukt"
 msgid "Unable to update"
 msgstr "Onmogelijk om te vernieuwen"
 
+msgid "Address book is corrupted. Required fields are missing."
+msgstr "Adresboek is beschadigd. Veplichte velden ontbreken."
+
+msgid "Address book entry is too big"
+msgstr "Adresboekingang is te groot"
+
 msgid "Could not lock datafile"
 msgstr "Kan databestand niet beveiligen"
 
-msgid "Write to addressbook failed"
+msgid "Write to address book failed"
 msgstr "Schrijven naar adresboek mislukt"
 
-msgid "Error initializing addressbook database."
-msgstr "Fout: kan adresboek database %s niet initialiseren."
+msgid "Error initializing address book database."
+msgstr "Fout bij initialiseren van adresboek-database."
 
 #, php-format
 msgid "Error opening file %s"
@@ -923,8 +943,8 @@ msgstr "Fout: Kan bestand %s niet openen"
 msgid "Global address book"
 msgstr "Globaal adresboek"
 
-msgid "Error initializing global addressbook."
-msgstr "Fout: kan globale adresboek niet initialiseren."
+msgid "Error initializing global address book."
+msgstr "Fout bij initialiseren van overkoepelend adresboek."
 
 #, php-format
 msgid "Error initializing LDAP server %s:"
@@ -1244,8 +1264,12 @@ msgstr "Oplossing:"
 msgid ""
 "Remove unneccessary messages from your folders. Start with your Trash folder."
 msgstr ""
-"Verwijder onnodige berichten uit uw mappen. Begin in uw Verwijderde "
-"Items map."
+"Verwijder onnodige berichten uit uw mappen. Begin in uw Verwijderde Items "
+"map."
+
+#, php-format
+msgid "Invalid mailbox name: %s"
+msgstr "Ongeldige mailboxnaam: %s"
 
 msgid "(no subject)"
 msgstr "(geen onderwerp)"
@@ -1358,9 +1382,6 @@ msgstr "FETCH regel:"
 msgid "Hide Unsafe Images"
 msgstr "Verberg onveilige figuren"
 
-msgid "View Unsafe Images"
-msgstr "Bekijk onveilige figuren"
-
 msgid "Download"
 msgstr "Download"
 
@@ -1386,6 +1407,16 @@ msgstr "Fout bij aanmaken directory %s."
 
 msgid "Could not create hashed directory structure!"
 msgstr "Kan geen hashed directory structuur aanmaken!"
+
+msgid "Email delivery error"
+msgstr "Bezorgingsfout rapportage"
+
+#, php-format
+msgid "Can't execute command '%s'."
+msgstr "Kan commando '%s' niet uitvoeren."
+
+msgid "Can't open SMTP stream."
+msgstr "Kan SMTP-verbinding niet openen."
 
 msgid "Service not available, closing channel"
 msgstr "Service niet beschikbaar, kanaal wordt afgesloten"
@@ -1734,6 +1765,15 @@ msgstr "Ingesprongen:"
 msgid "Delimited:"
 msgstr "Gescheiden:"
 
+msgid "You can't select INBOX as Trash folder."
+msgstr "U kunt INBOX niet als map voor Verwijderde Items selecteren."
+
+msgid "You can't select INBOX as Sent folder."
+msgstr "U kunt INBOX niet als map voor Verzonden Items selecteren."
+
+msgid "You can't select INBOX as Draft folder."
+msgstr "U kunt INBOX niet als map voor Concepten selecteren."
+
 msgid "Name and Address Options"
 msgstr "Naam en adres opties"
 
@@ -1910,6 +1950,9 @@ msgstr "Gebruik Sendmail"
 msgid "Choose &quot;no&quot; for SMTP"
 msgstr "Kies &quot;no&quot; voor SMTP"
 
+msgid "Sendmail Arguments"
+msgstr "Sendmail Parameters"
+
 msgid "Sendmail Path"
 msgstr "Sendmail Path"
 
@@ -2050,6 +2093,9 @@ msgstr "UID ondersteuning"
 
 msgid "PHP session name"
 msgstr "PHP sessie naam"
+
+msgid "Location base"
+msgstr "Locatie-basis"
 
 msgid "Message of the Day"
 msgstr "Bericht van de dag"
@@ -3088,6 +3134,7 @@ msgstr ""
 "De optie %s zal ALLE mappen op nieuwe berichten controleren en niet alleen "
 "de INBOX."
 
+#, php-format
 msgid "Check all boxes, not just INBOX"
 msgstr "Controleer alle mappen, niet alleen INBOX"
 
@@ -3099,6 +3146,7 @@ msgstr ""
 "Selectie van %s zorgt voor activering van een popup indien er een nieuw "
 "berichtin een van uw mappen verschijnt (Javascript is nodig!)."
 
+#, php-format
 msgid "Show popup window on new mail"
 msgstr "Toon popupvenster bij nieuw bericht"
 
@@ -3114,6 +3162,7 @@ msgstr ""
 "bekeken of gecontroleerd zijn. Dit voorkomt dat u continu door popups of "
 "geluid wordt lastig gevallen bij een nieuw bericht."
 
+#, php-format
 msgid "Count only messages that are RECENT"
 msgstr "Controleer alleen RECENT"
 
@@ -3130,6 +3179,7 @@ msgstr ""
 "Deze optie zal u altijd vertellen of u nieuwe berichten hebt, zelfs al heeft "
 "u de optie %s geactiveerd."
 
+#, php-format
 msgid "Change title on supported browsers"
 msgstr "Verander titelaanduiding"
 
@@ -3142,6 +3192,7 @@ msgstr ""
 "Selecteer %s om een geluid te laten horen als er een nieuw bericht in uw "
 "mappen verschijnt. U kunt het geluid dat te horen zal zijn zelf specificeren."
 
+#, php-format
 msgid "Enable Media Playing"
 msgstr "Activeer afspelen geluid"
 
@@ -3154,6 +3205,7 @@ msgstr ""
 "met %s. Indien er geen bestand wordt gespecificeerd, %s, zal geen geluid "
 "worden gebruikt."
 
+#, php-format
 msgid "Select server file"
 msgstr "Selecteer bestand van server"
 
@@ -3917,42 +3969,55 @@ msgstr ""
 msgid "%s to %s"
 msgstr "%s in %s"
 
+#, php-format
 msgid "Chinese, Simplified"
 msgstr "Chinees, Simplified"
 
+#, php-format
 msgid "English"
 msgstr "Engels"
 
+#, php-format
 msgid "Chinese, Traditional"
 msgstr "Chinees, Traditional"
 
+#, php-format
 msgid "Dutch"
 msgstr "Nederlands"
 
+#, php-format
 msgid "French"
 msgstr "Frans"
 
+#, php-format
 msgid "German"
 msgstr "Duits"
 
+#, php-format
 msgid "Greek"
 msgstr "Grieks"
 
+#, php-format
 msgid "Italian"
 msgstr "Italiaans"
 
+#, php-format
 msgid "Japanese"
 msgstr "Japans"
 
+#, php-format
 msgid "Korean"
 msgstr "Koreaans"
 
+#, php-format
 msgid "Portuguese"
 msgstr "Portugees"
 
+#, php-format
 msgid "Russian"
 msgstr "Russisch"
 
+#, php-format
 msgid "Spanish"
 msgstr "Spaans"
 
@@ -4032,6 +4097,14 @@ msgid "Translation direction"
 msgstr "Vertaalrichting"
 
 #, php-format
+msgid "Arabic"
+msgstr "Arabisch"
+
+#, php-format
+msgid "Chinese (Simplified)"
+msgstr "Chinees (Simplified)"
+
+#, php-format
 msgid "About SquirrelMail %s"
 msgstr "Over SquirrelMail %s"
 
@@ -4094,17 +4167,20 @@ msgstr "De systeembeheerder heeft de volgende plugins geinstalleerd:"
 msgid "none installed"
 msgstr "niet geinstalleerd"
 
+msgid "AddressBook"
+msgstr "Adresboek"
+
 msgid "Nothing to search"
 msgstr "Niets te zoeken"
 
-msgid "No folders were found to unsubscribe from."
-msgstr "Geen mappen gevonden om bij af te melden."
-
-msgid "No folders were found to subscribe to."
-msgstr "Geen mappen gevonden om bij aan te melden"
+msgid "Your message has been sent."
+msgstr "Uw bericht is verzonden."
 
 msgid "SquirrelMail Webmail Application"
 msgstr "SquirrelMail webmail applicatie"
+
+msgid "Add New Identity"
+msgstr "Voeg een nieuwe identiteit toe"
 
 msgid "Received"
 msgstr "Ontvangen"
@@ -4119,23 +4195,14 @@ msgstr ""
 "Stelt de voorkeuren in voor de layout en het schrijven van nieuwe berichten, "
 "alsmede van te beantwoorden en door te sturen berichten."
 
+msgid "Read Receipt"
+msgstr "Leesbevestiging"
+
 msgid "View as plain text"
 msgstr "Weergeven als platte text"
 
 msgid "View as HTML"
 msgstr "Weergeven als HTML"
-
-msgid "As Attachment"
-msgstr "Als bijlage"
-
-msgid "Bypass Trash"
-msgstr "Omzeil Verwijderde Items"
-
-msgid "Copy"
-msgstr "Kopie"
-
-msgid "Please enter something to search for"
-msgstr "Vul a.u.b. iets in om te zoeken"
 
 msgid "There must be at least one criteria to search for"
 msgstr "Er moet ten minste een criterium zijn om naar te zoeken"
@@ -4158,26 +4225,14 @@ msgstr "(Ontbrekend argument)"
 msgid "(Spurious argument)"
 msgstr "(Vals argument)"
 
-msgid "Fold"
-msgstr "Inklappen"
-
-msgid "Unfold"
-msgstr "Uitklappen"
-
-msgid "Saved Searches"
-msgstr "Opgeslagen zoekopdrachten"
-
 msgid "Missing"
 msgstr "Ontbrekende"
 
-msgid "and&nbsp;subfolders:"
-msgstr "en&nbsp;submappen:"
+msgid "Standard Search"
+msgstr "Standaard zoekopdrachten"
 
-msgid "Exclude Criteria:"
-msgstr "Uitsluitende criteria:"
-
-msgid "Search Criteria"
-msgstr "Zoekcriteria"
+msgid "Advanced search"
+msgstr "Geavanceerde zoekopdrachten"
 
 msgid "Add New Criteria"
 msgstr "Voeg nieuwe criteria toe"
@@ -4269,27 +4324,8 @@ msgstr "En"
 msgid "Or"
 msgstr "Of"
 
-msgid "Standard search"
-msgstr "Standaard zoekopdrachten"
-
-msgid "Advanced search"
-msgstr "Geavanceerde zoekopdrachten"
-
-msgid "Folder List"
-msgstr "Mappenlijst"
-
-msgid "Address book is read-only"
-msgstr "Adresboek is alleen-lezen"
-
-#, php-format
-msgid "User '%s' already exist."
-msgstr "Gebruiker \"%s\" bestaat al."
-
 msgid "PHP install does not have LDAP support."
 msgstr "PHP installatie heeft geen LDAP ondersteuning."
-
-msgid "Write to address book failed"
-msgstr "Schrijven naar adresboek mislukt"
 
 msgid "Removing entry from address book failed"
 msgstr "Adresboekingang verwijderen mislukt"
@@ -4313,20 +4349,14 @@ msgstr "Niet mogelijk sommige veldwaarden te verwijderen"
 msgid "Unable to rename user \"%s\" to \"%s\""
 msgstr "Kan gebruiker \"%s\" niet hernoemen naar \"%s\""
 
-msgid "Address book is corrupted. Required fields are missing."
-msgstr "Adresboek is beschadigd. Veplichte velden ontbreken."
-
-msgid "Address book entry is too big"
-msgstr "Adresboekingang is te groot"
-
-msgid "Error initializing address book database."
-msgstr "Fout bij initialiseren van adresboek-database."
-
-msgid "Error initializing global address book."
-msgstr "Fout bij initialiseren van overkoepelend adresboek."
-
 msgid "Error initializing other address books."
 msgstr "Fout bij initialiseren van andere adresboeken."
+
+msgid "Unknown address book backend"
+msgstr "Onbekend adresboek backend"
+
+msgid "%s %s"
+msgstr "%s %s"
 
 msgid "Illegal folder name."
 msgstr "Illegale mapnaam."
@@ -4374,9 +4404,9 @@ msgid ""
 "IMAP STARTTLS is enabled in SquirrelMail configuration, but used PHP version "
 "does not support functions that allow to enable encryption on open socket."
 msgstr ""
-"IMAP STARTTLS is ingeschakeld in de SquirrelMail-configuratie, maar uw "
-"PHP-versie ondersteunt geen functies die het versleutelen op een "
-"open socket toestaan."
+"IMAP STARTTLS is ingeschakeld in de SquirrelMail-configuratie, maar uw PHP-"
+"versie ondersteunt geen functies die het versleutelen op een open socket "
+"toestaan."
 
 msgid ""
 "Your mailbox is not located at this server. Try a different server or "
@@ -4403,8 +4433,11 @@ msgstr "Vlag"
 msgid "Undelete"
 msgstr "Maak verwijdering ongedaan"
 
-msgid "Viewing HTML formatted email"
-msgstr "Bekijk e-mail in HTML"
+msgid "Bypass Trash"
+msgstr "Omzeil Verwijderde Items"
+
+msgid "Copy"
+msgstr "Kopie"
 
 msgid "unavailable"
 msgstr "niet beschikbaar"
@@ -4415,22 +4448,12 @@ msgstr "Fout"
 msgid "Terminating SquirrelMail due to a fatal error"
 msgstr "SquirrelMail beeindigt vanwege een fatale fout"
 
-msgid "Email delivery error"
-msgstr "Bezorgingsfout rapportage"
-
-#, php-format
-msgid "Can't execute command '%s'."
-msgstr "Kan commando '%s' niet uitvoeren."
-
 msgid ""
 "Secure SMTP (TLS) is enabled in SquirrelMail configuration, but used PHP "
 "version does not support it."
 msgstr ""
-"Beveiligde SMTP (TLS) is ingeschakeld in de SquirrelMail-configuratie, "
-"maar uw PHP-versie ondersteunt het niet."
-
-msgid "Can't open SMTP stream."
-msgstr "Kan SMTP-verbinding niet openen."
+"Beveiligde SMTP (TLS) is ingeschakeld in de SquirrelMail-configuratie, maar "
+"uw PHP-versie ondersteunt het niet."
 
 msgid "TLS session is already activated."
 msgstr "TLS-sessie is reeds ingeschakeld."
@@ -4439,16 +4462,16 @@ msgid ""
 "SMTP STARTTLS is enabled in SquirrelMail configuration, but used SMTP server "
 "does not support it"
 msgstr ""
-"SMTP STARTTLS is ingeschakeld in de SquirrelMail-configuratie, maar "
-"uw SMTP-server ondersteunt het niet"
+"SMTP STARTTLS is ingeschakeld in de SquirrelMail-configuratie, maar uw SMTP-"
+"server ondersteunt het niet"
 
 msgid ""
 "SMTP STARTTLS is enabled in SquirrelMail configuration, but used PHP version "
 "does not support functions that allow to enable encryption on open socket."
 msgstr ""
-"SMTP STARTTLS is ingeschakeld in de SquirrelMail-configuratie, maar "
-"uw PHP-versie ondersteunt geen functies die het versleutelen op een "
-"open socket toestaan."
+"SMTP STARTTLS is ingeschakeld in de SquirrelMail-configuratie, maar uw PHP-"
+"versie ondersteunt geen functies die het versleutelen op een open socket "
+"toestaan."
 
 msgid ""
 "Run \"configure\", choose option 4 (General options) and set option 10 "
@@ -4474,9 +4497,9 @@ msgid ""
 "IMAP server."
 msgstr ""
 "Type \"configure\", kies optie 4 (General options) en activeer optie 12 "
-"(Allow server charset search) of kies optie 10 (Language settings) en "
-"stel onder optie 2 (Default charset) een tekenset in die ondersteund "
-"wordt door uw IMAP server."
+"(Allow server charset search) of kies optie 10 (Language settings) en stel "
+"onder optie 2 (Default charset) een tekenset in die ondersteund wordt door "
+"uw IMAP server."
 
 msgid "Out of quota error."
 msgstr "Fout: over quota."
@@ -4484,8 +4507,9 @@ msgstr "Fout: over quota."
 msgid ""
 "An error occured when SquirrelMail appended a message to the mailbox as "
 "listed in this message."
-msgstr "Er is een fout opgetreden bij het toevoegen van een bericht aan "
-"de mailbox zoals beschreven in dit bericht."
+msgstr ""
+"Er is een fout opgetreden bij het toevoegen van een bericht aan de mailbox "
+"zoals beschreven in dit bericht."
 
 msgid "Your IMAP server returned an error."
 msgstr "Uw IMAP server retourneerde een fout."
@@ -4502,8 +4526,11 @@ msgstr "Te beantwoorden en door te sturen berichten"
 msgid "Strip signature when replying"
 msgstr "Verwijder handtekening bij beantwoorden"
 
-msgid "Template"
-msgstr "Stijl"
+msgid "Skin"
+msgstr "Skin"
+
+msgid "Icon Theme"
+msgstr "Pictogrammen-thema"
 
 msgid "Default font style"
 msgstr "Standaard lettertype"
@@ -4516,9 +4543,6 @@ msgstr "Lettergrootte"
 
 msgid "Default font size"
 msgstr "Standaard lettergrootte"
-
-msgid "Icon Theme"
-msgstr "Pictogrammen-thema"
 
 msgid "Enable Fancy Row Mouseover Highlighting"
 msgstr "Activeer het oplichten van de regel bij muisbeweging"
@@ -4556,9 +4580,6 @@ msgstr[1] "%d Minuten"
 msgid "Show only subscribed folders"
 msgstr "Toon alleen aangemelde mappen"
 
-msgid "Template Default"
-msgstr "Standaard-stijl"
-
 msgid "XP"
 msgstr "XP"
 
@@ -4581,14 +4602,17 @@ msgid ""
 "Requires higher PHP version and special functions. See SquirrelMail "
 "documentation."
 msgstr ""
-"Hiervoor is een hogere PHP-versie en speciale functies vereist. "
-"Zie de SquirrelMail-documentatie."
-
-msgid "Sendmail Arguments"
-msgstr "Sendmail Parameters"
+"Hiervoor is een hogere PHP-versie en speciale functies vereist. Zie de "
+"SquirrelMail-documentatie."
 
 msgid "SMTP Connection Security"
 msgstr "SMTP verbindingsbeveiliging"
+
+msgid "Custom SMTP AUTH username"
+msgstr "Specifieke SMTP AUTH gebruikersnaam"
+
+msgid "Custom SMTP AUTH password"
+msgstr "Specifiek SMTP AUTH wachtwoord"
 
 msgid "Disable server-side sorting"
 msgstr "Sorteren door server uitschakelen"
@@ -4667,6 +4691,9 @@ msgstr "Standaard lettertypen"
 
 msgid "Default template"
 msgstr "Standaard-stijl"
+
+msgid "Fallback template"
+msgstr "Backup-stijl"
 
 msgid "Show System Specifications"
 msgstr "Toon systeemspecificaties"
@@ -4799,6 +4826,7 @@ msgstr "Systeem crypt library ondersteunt geen extended DES crypt."
 msgid "System crypt library doesn't have Blowfish support."
 msgstr "Systeem crypt library heeft geen Blowfish ondersteuning."
 
+#, php-format
 msgid "unknown"
 msgstr "onbekend"
 
@@ -4938,8 +4966,12 @@ msgstr "Lege gebruikersnaam"
 msgid "Empty new password"
 msgstr "Leeg nieuw wachtwoord"
 
+#, php-format
+msgid "Unable to execute \"%s\"."
+msgstr "Kan \"%s\" niet uivoeren."
+
 msgid "Server Capability response:"
-msgstr "Server reageert: "
+msgstr "Server Capability: "
 
 msgid ""
 "Select the IMAP commands you would like to run. Most commands require a "
@@ -4981,9 +5013,6 @@ msgstr "Uitvoertijd:"
 msgid "%s ms"
 msgstr "%s ms"
 
-msgid "Command failed"
-msgstr "Commando mislukt"
-
 msgid "No POP3 servers configured yet."
 msgstr "Nog geen POP3-servers geconfigureerd."
 
@@ -4993,6 +5022,12 @@ msgstr "Klik hier om naar de opties pagina te gaan."
 #, php-format
 msgid "Fetching from %s"
 msgstr "Ophalen van %s"
+
+msgid "Can't get mailbox status:"
+msgstr "Kan mailbox status niet opvragen:"
+
+msgid "Fetching list of messages..."
+msgstr "Berichtenlijst ophalen...."
 
 #, php-format
 msgid "Login OK: Inbox contains %s message"
@@ -5004,19 +5039,39 @@ msgstr[1] "Aanmelden OK: Inbox bevat %s berichten"
 msgid "Fetching message %s."
 msgstr "Ophalen bericht %s."
 
-#, php-format
-msgid "Refetching message %s."
-msgstr "Opnieuw ophalen bericht %s."
-
 msgid "Warning:"
 msgstr "Waarschuwing:"
+
+msgid "Authentication type:"
+msgstr "Authenticatietype:"
+
+msgid "USER"
+msgstr "USER"
+
+msgid "APOP"
+msgstr "APOP"
+
+msgid "APOP or USER"
+msgstr "APOP of USER"
+
+msgid "Connection type:"
+msgstr "Verbindingstype:"
+
+msgid "Plain text"
+msgstr "Platte tekst"
+
+msgid "Use TLS"
+msgstr "TLS gebruiken"
+
+msgid "Use StartTLS"
+msgstr "StartTLS gebruiken"
 
 msgid ""
 "The NewMail plugin will follow the Folder Preferences option &quot;Enable "
 "Unread Message Notification&quot;"
 msgstr ""
-"De NewMail plugin volgt de Mapvoorkeuren-optie &quot;Inschakelen "
-"ongelezen berichtnotificatie&quot;"
+"De NewMail plugin volgt de Mapvoorkeuren-optie &quot;Inschakelen ongelezen "
+"berichtnotificatie&quot;"
 
 msgid "Follow folder preferences"
 msgstr "Mapvoorkeuren volgen"
@@ -5075,18 +5130,6 @@ msgstr "Plugin voor submappen Verzonden Items is onjuist geconfigureerd."
 msgid "Save emails submitted to SpamCop:"
 msgstr "Bewaar e-mails toegezonden aan SpamCop:"
 
-msgid "Spam Service Type:"
-msgstr "Spam Service Type:"
-
-msgid "Free reporting"
-msgstr "Gratis spamrapportage"
-
-msgid "Member services"
-msgstr "Gebruikers services"
-
-msgid "Save Service Type"
-msgstr "Sla Service Type op"
-
 msgid "SpamCop reporting"
 msgstr "SpamCop rapportage"
 
@@ -5100,6 +5143,12 @@ msgstr ""
 
 msgid "Invalid SquirrelSpell module."
 msgstr "Ongeldige SquirrelSpell module."
+
+msgid "Unknown error"
+msgstr "Onbekende fout"
+
+msgid "SquirrelSpell error."
+msgstr "SquirrelSpell fout."
 
 #, php-format
 msgid "Found %d error"
@@ -5145,6 +5194,21 @@ msgstr "D"
 msgid "F"
 msgstr "F"
 
+msgid "Address book is empty"
+msgstr "Adresboek is leeg"
+
+msgid "Address book search"
+msgstr "Zoek in adresboek"
+
+msgid "Attachment"
+msgstr "Bijlage"
+
+msgid "Max."
+msgstr "Max."
+
+msgid "Receipts"
+msgstr "Bevestiging"
+
 msgid "SquirrelMail notice messages"
 msgstr "SquirrelMail notificatie berichten"
 
@@ -5157,15 +5221,78 @@ msgstr "Tip:"
 msgid "More info:"
 msgstr "Meer informatie:"
 
+msgid "No folders were found to unsubscribe from."
+msgstr "Geen mappen gevonden om bij af te melden."
+
+msgid "No folders were found to subscribe to."
+msgstr "Geen mappen gevonden om bij aan te melden"
+
 msgid "Message Flags"
 msgstr "Berichtvlaggen"
-
-msgid "Attachment"
-msgstr "Bijlage"
 
 msgid "Click here to change the sorting of the message list"
 msgstr ""
 "Klik hier om de volgorde van sortering van de berichtenlijst te veranderen"
+
+msgid "Add/Edit"
+msgstr "Voeg Toe/Wijzig"
+
+msgid "Rule Conditions"
+msgstr "Regelcondities"
+
+msgid "Identifying Name"
+msgstr "Omschrijving"
+
+msgid "To or cc"
+msgstr "To of CC"
+
+msgid "Other"
+msgstr "Anders"
+
+msgid "Type"
+msgstr "Type"
+
+msgid "Requested"
+msgstr "Gevraagd"
+
+msgid "Send Read Receipt Now"
+msgstr "Verzend leesbevestiging nu"
+
+msgid "Viewing HTML formatted email"
+msgstr "Bekijk e-mail in HTML"
+
+msgid "As Attachment"
+msgstr "Als bijlage"
+
+msgid "Move To"
+msgstr "Verplaats naar"
+
+msgid "Delete &amp; Previous"
+msgstr "Verwijder &amp; Vorige"
+
+msgid "and subfolders"
+msgstr "en submappen"
+
+msgid "Exclude"
+msgstr "Uitsluiten"
+
+msgid "Fold"
+msgstr "Inklappen"
+
+msgid "Unfold"
+msgstr "Uitklappen"
+
+msgid "Forget"
+msgstr "Vergeet"
+
+msgid "Email"
+msgstr "E-mail"
+
+msgid "Additional Info"
+msgstr "Meer informatie"
+
+msgid "Folder List"
+msgstr "Mappenlijst"
 
 msgid "Delivery error report"
 msgstr "Bezorgingsfout rapportage"
