@@ -1,15 +1,14 @@
 <?php
-
 /**
  * Administrator plugin - Authentication routines
  *
  * This function tell other modules what users have access
  * to the plugin.
  *
- * @author Philippe Mingo
- * @copyright &copy; 1999-2006 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
+ * @author Philippe Mingo
+ * @copyright (c) 1999-2006 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package plugins
  * @subpackage administrator
  */
@@ -21,12 +20,12 @@
  */
 function adm_check_user() {
     global $PHP_SELF, $plugins;
-
-    /* fail if the plugin is not enabled */
+    require_once(SM_PATH . 'functions/global.php');
+    
     if ( !in_array('administrator', $plugins) ) {
         return FALSE;
     }
-
+    
     if ( !sqgetGlobalVar('username',$username,SQ_SESSION) ) {
         $username = '';
     }
@@ -63,3 +62,4 @@ function adm_check_user() {
 function adm_array_trim(&$value,$key) {
     $value=trim($value);
 }
+?>

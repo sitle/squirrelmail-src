@@ -31,3 +31,5 @@ function charset_decode_iso_8859_1 ($string) {
     $string = preg_replace("/([\241-\377])/e","'&#' . ord('\\1') . ';'",$string);
     return $string;
 }
+
+?>

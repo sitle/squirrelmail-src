@@ -13,11 +13,18 @@
  */
 
 /**
- * Include the SquirrelMail initialization file.
+ * Path for SquirrelMail required files.
+ * @ignore
  */
-require('../include/init.php');
+define('SM_PATH','../');
 
-// include_once(SM_PATH . 'functions/imap.php');
+/* SquirrelMail required files. */
+require_once(SM_PATH . 'include/validate.php');
+require_once(SM_PATH . 'functions/display_messages.php');
+require_once(SM_PATH . 'functions/imap.php');
+require_once(SM_PATH . 'functions/plugin.php');
+require_once(SM_PATH . 'functions/strings.php');
+require_once(SM_PATH . 'functions/html.php');
 require_once(SM_PATH . 'functions/forms.php');
 
 /* get globals */
@@ -31,7 +38,7 @@ sqGetGlobalVar('match_type', $match_type);
 sqGetGlobalVar('value', $value);
 
 /* end of get globals */
-
+ 
 function oh_opt( $val, $sel, $tit ) {
     echo "<option value=\"$val\"";
     if ( $sel )
@@ -79,7 +86,7 @@ if (isset($theid) && ($action == 'delete') ||
 
     setPref($data_dir, $username, 'hililist', serialize($message_highlight_list));
 
-    header( 'Location: ' .get_location(). '/options_highlight.php' );
+    header( 'Location: options_highlight.php' );
     exit;
 } else if ($action == 'save') {
 
@@ -93,11 +100,11 @@ if (isset($theid) && ($action == 'delete') ||
     $value = str_replace(',', ' ', $value);
 
     if(isset($theid)) {
-        $message_highlight_list[$theid] =
+        $message_highlight_list[$theid] = 
             array( 'name' => $identname, 'color' => $newcolor,
                    'value' => $value, 'match_type' => $match_type );
     } else {
-        $message_highlight_list[] =
+        $message_highlight_list[] = 
             array( 'name' => $identname, 'color' => $newcolor,
                    'value' => $value, 'match_type' => $match_type );
     }
@@ -106,51 +113,72 @@ if (isset($theid) && ($action == 'delete') ||
 }
 displayPageHeader($color, 'None');
 
-/**
- * Display the current rule list
- */
-$rules = array();
-foreach($message_highlight_list as $index=>$rule) {
-    $a = array();
-    
-    $a['Name'] = htmlspecialchars($rule['name']);
-    $a['Color'] = $rule['color'];
-    $a['MatchField'] = '';
-    $a['MatchValue'] = htmlspecialchars($rule['value']);
-    switch ($rule['match_type']) {
+echo
+html_tag( 'table', "\n" .
+    html_tag( 'tr', "\n" .
+        html_tag( 'td', '<center><b>' . _("Options") . ' - ' . _("Message Highlighting") . '</b></center>', 'left')
+    ),
+    'center', $color[9], 'width="95%" border="0" cellpadding="1" cellspacing="0"' ) . "<br />\n" .
+html_tag( 'table', '', '', '', 'width="100%" border="0" cellpadding="1" cellspacing="0"' ) . 
+     html_tag( 'tr' ) . "\n" .
+         html_tag( 'td', '', 'left' );
+
+echo '<center>[<a href="options_highlight.php?action=add">' . _("New") . '</a>]'.
+        ' - [<a href="options.php">'._("Done").'</a>]</center><br />'."\n";
+$mhl_count = count($message_highlight_list);
+if ($mhl_count > 0) {
+    echo html_tag( 'table', '', 'center', '', 'width="80%" border="0" cellpadding="3" cellspacing="0"' ) . "\n";
+    for ($i=0; $i < $mhl_count; $i++) {
+        $match_type = '';
+        switch ($message_highlight_list[$i]['match_type'] ) {
             case 'from' :
-                $a['MatchField'] = _("From");
-                break;
+                $match_type = _("From");
+            break;
             case 'to' :
-                $a['MatchField'] = _("To");
-                break;
+                $match_type = _("To");
+            break;
             case 'cc' :
-                $a['MatchField'] = _("Cc");
-                break;
+                $match_type = _("Cc");
+            break;
             case 'to_cc' :
-                $a['MatchField'] = _("To or Cc");
-                break;
+                $match_type = _("To or Cc");
+            break;
             case 'subject' :
-                $a['MatchField'] = _("subject");
-                break;
+                $match_type = _("subject");
+            break;
+        }
+
+        $links = '<small>[<a href="options_highlight.php?action=edit&amp;theid=' . $i . '">' .
+                 _("Edit") .
+                 '</a>]&nbsp;[<a href="options_highlight.php?action=delete&amp;theid='.  $i . '">' .
+                 _("Delete");
+        if($i > 0) {
+            $links .= '</a>]&nbsp;[<a href="options_highlight.php?action=up&amp;theid='.  $i . '">' .  _("Up");
+        }
+        if($i+1 < $mhl_count) {
+            $links .= '</a>]&nbsp;[<a href="options_highlight.php?action=down&amp;theid='.  $i . '">' .  _("Down");
+        }
+        $links .= '</a>]</small>';
+
+        echo html_tag( 'tr',
+                    html_tag( 'td',
+                        $links,
+                    'left', $color[4], 'width="20%" nowrap' ) .
+                    html_tag( 'td',
+                        htmlspecialchars($message_highlight_list[$i]['name']) ,
+                    'left' ) .
+                    html_tag( 'td',
+                        $match_type . ' = ' .
+                        htmlspecialchars($message_highlight_list[$i]['value']) ,
+                    'left' ) ,
+                '', '#' . $message_highlight_list[$i]['color'] ) . "\n";
     }
-    
-    $rules[$index] = $a;
+    echo "</table>\n".
+        "<br />\n";
+} else {
+    echo '<center>' . _("No highlighting is defined") . "</center><br />\n".
+        "<br />\n";
 }
-
-$oTemplate->assign('current_rules', $rules);
-
-$oTemplate->assign('add_rule', 'options_highlight.php?action=add');
-$oTemplate->assign('edit_rule', 'options_highlight.php?action=edit&amp;theid=');
-$oTemplate->assign('delete_rule', 'options_highlight.php?action=delete&amp;theid=');
-$oTemplate->assign('move_up', 'options_highlight.php?action=up&amp;theid=');
-$oTemplate->assign('move_down', 'options_highlight.php?action=down&amp;theid=');
-
-$oTemplate->display('options_highlight_list.tpl');
-
-/**
- * Optionally, display the add/edit dialog
- */
 if ($action == 'edit' || $action == 'add') {
 
     $color_list[0] = '4444aa';
@@ -290,21 +318,28 @@ if ($action == 'edit' || $action == 'add') {
     $new_color_list["18,4"] = 'ff00ff';
 
     $selected_input = FALSE;
+    $selected_i = null;
     $selected_choose = FALSE;
     $selected_predefined = FALSE;
 
-    $name = $action=='edit' && isset($theid) && isset($message_highlight_list[$theid]['name']) ? $message_highlight_list[$theid]['name'] : '';
-    $field = $action=='edit' && isset($theid) && isset($message_highlight_list[$theid]['match_type']) ? $message_highlight_list[$theid]['match_type'] : '';
-    $value = $action=='edit' && isset($theid) && isset($message_highlight_list[$theid]['value']) ? $message_highlight_list[$theid]['value'] : '';
-    $color = $action=='edit' && isset($theid) && isset($message_highlight_list[$theid]['color']) ? $message_highlight_list[$theid]['color'] : '';
-    
+    for ($i=0; $i < 14; $i++) {
+        ${"selected".$i} = '';
+    }
     if ($action == 'edit' && isset($theid) && isset($message_highlight_list[$theid]['color'])) {
         for ($i=0; $i < 14; $i++) {
             if ($color_list[$i] == $message_highlight_list[$theid]['color']) {
                 $selected_choose = TRUE;
+                $selected_i = $color_list[$i];
                 continue;
             }
         }
+    }
+
+    if ($action == 'edit' && isset($theid) && isset($message_highlight_list[$theid]['color'])) {
+        $current_color = $message_highlight_list[$theid]['color'];
+    }
+    else {
+        $current_color = '63aa7f';
     }
 
     $pre_defined_color = 0;
@@ -312,7 +347,7 @@ if ($action == 'edit' || $action == 'add') {
         for($y = 0; $y < 19; $y++) {
             $gridindex = "$y,$x";
             $gridcolor = $new_color_list[$gridindex];
-            if ($gridcolor == $color) {
+            if ($gridcolor == $current_color) {
                 $pre_defined_color = 1;
                 break;
             }
@@ -325,25 +360,109 @@ if ($action == 'edit' || $action == 'add') {
         $selected_predefined = TRUE;
     else if ($selected_choose == '')
         $selected_input = TRUE;
-        
-    $oTemplate->assign('rule_name', $name);
-    $oTemplate->assign('rule_value', $value);
-    $oTemplate->assign('rule_field', $field);
-    $oTemplate->assign('rule_color', $color);
-    $oTemplate->assign('color_radio', ($selected_choose ? 1 : ($selected_input ? 2 : 0)));
-    $oTemplate->assign('color_input', ($selected_input ? $color : ''));
-    
-    echo addForm('options_highlight.php', 'post', 'f').
+
+    echo addForm('options_highlight.php', 'POST', 'f').
          addHidden('action', 'save');
     if($action == 'edit') {
         echo addHidden('theid', (isset($theid)?$theid:''));
     }
-    
-    $oTemplate->display('options_highlight_addedit.tpl');
-    
+    echo html_tag( 'table', '', 'center', '', 'width="80%" cellpadding="3" cellspacing="0" border="0"' ) . "\n";
+    echo html_tag( 'tr', '', '', $color[0] ) . "\n";
+    echo html_tag( 'td', '', 'right', '', 'nowrap' ) . "<b>\n";
+    echo _("Identifying name") . ":";
+    echo '      </b></td>' . "\n";
+    echo html_tag( 'td', '', 'left' ) . "\n";
+    if ($action == 'edit' && isset($theid) && isset($message_highlight_list[$theid]['name']))
+        $disp = $message_highlight_list[$theid]['name'];
+    else
+        $disp = '';
+    echo "         ".addInput('identname', $disp);
+    echo "      </td>\n";
+    echo "   </tr>\n";
+    echo html_tag( 'tr', html_tag( 'td', '<small><small>&nbsp;</small></small>', 'left' ) ) ."\n";
+    echo html_tag( 'tr', '', '', $color[0] ) . "\n";
+    echo html_tag( 'td', '<b>'. _("Color") . ':</b>', 'right' );
+    echo html_tag( 'td', '', 'left' );
+    echo '         '.addRadioBox('color_type', $selected_choose, '1');
+
+    $selops = array (
+        $color_list[0] => _("Dark Blue"),
+        $color_list[1] => _("Dark Green"),
+        $color_list[2] => _("Dark Yellow"),
+        $color_list[3] => _("Dark Cyan"),
+        $color_list[4] => _("Dark Magenta"),
+        $color_list[5] => _("Light Blue"),
+        $color_list[6] => _("Light Green"),
+        $color_list[7] => _("Light Yellow"),
+        $color_list[8] => _("Light Cyan"),
+        $color_list[9] => _("Light Magenta"),
+        $color_list[10] => _("Dark Gray"),
+        $color_list[11] => _("Medium Gray"),
+        $color_list[12] => _("Light Gray"),
+        $color_list[13] => _("White") );
+
+    echo addSelect('newcolor_choose', $selops, $selected_i, TRUE);
+    echo "<br />\n";
+
+    echo '         '.addRadioBox('color_type', $selected_input, 2).
+        ' &nbsp;'. _("Other:") .
+        addInput('newcolor_input',
+            (($selected_input && isset($theid)) ? $message_highlight_list[$theid]['color'] : ''),
+            '7');
+    echo _("Ex: 63aa7f")."<br />\n";
+    echo "      </td>\n";
+    echo "   </tr>\n";
+
+    # Show grid of color choices
+    echo html_tag( 'tr', '', '', $color[0] ) . "\n";
+    echo html_tag( 'td', '', 'left', '', 'colspan="2"' );
+    echo html_tag( 'table', '', 'center', '', 'border="0" cellpadding="2" cellspacing="1"' ) . "\n";
+
+    for($x = 0; $x < 5; $x++) {
+        echo html_tag( 'tr' ) . "\n";
+        for($y = 0; $y < 19; $y++) {
+        $gridindex = "$y,$x";
+        $gridcolor = $new_color_list[$gridindex];
+        echo html_tag( 'td', addRadioBox('color_type', ($gridcolor == $current_color), '#'.$gridcolor),
+            'left', '#' . $gridcolor, 'colspan="2"' );
+        }
+        echo "</tr>\n";
+    }
+    echo "</table>\n";
+    echo "</td></tr>\n";
+
+    echo html_tag( 'tr', html_tag( 'td', '<small><small>&nbsp;</small></small>', 'left' ) ) . "\n";
+    echo html_tag( 'tr', '', '', $color[0] ) . "\n";
+    echo html_tag( 'td', '', 'center', '', 'colspan="2"' ) . "\n";
+    echo "         <select name=\"match_type\">\n";
+    oh_opt( 'from',
+            (isset($theid)?$message_highlight_list[$theid]['match_type'] == 'from':1),
+            _("From") );
+    oh_opt( 'to',
+            (isset($theid)?$message_highlight_list[$theid]['match_type'] == 'to':0),
+            _("To") );
+    oh_opt( 'cc',
+            (isset($theid)?$message_highlight_list[$theid]['match_type'] == 'cc':0),
+            _("Cc") );
+    oh_opt( 'to_cc',
+            (isset($theid)?$message_highlight_list[$theid]['match_type'] == 'to_cc':0),
+            _("To or Cc") );
+    oh_opt( 'subject',
+            (isset($theid)?$message_highlight_list[$theid]['match_type'] == 'subject':0),
+            _("Subject") );
+    echo "         </select>\n";
+    echo '<b>' . _("Matches") . ':</b> ';
+    if ($action == 'edit' && isset($theid) && isset($message_highlight_list[$theid]['value']))
+        $disp = $message_highlight_list[$theid]['value'];
+    else
+        $disp = '';
+    echo '         '.addInput('value', $disp, 40);
+    echo "        </td>\n";
+    echo "   </tr>\n";
+    echo "</table>\n";
+    echo '<center><input type="submit" value="' . _("Submit") . "\" /></center>\n";
     echo "</form>\n";
 }
 do_hook('options_highlight_bottom');
-
-$oTemplate->display('footer.tpl');
 ?>
+</table></body></html>

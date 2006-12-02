@@ -12,9 +12,15 @@
  */
 
 /**
- * Include the SquirrelMail initialization file.
+ * Path for SquirrelMail required files.
+ * @ignore
  */
-require('../include/init.php');
+define('SM_PATH','../');
+
+/* SquirrelMail required files. */
+require_once(SM_PATH . 'include/validate.php');
+require_once(SM_PATH . 'functions/global.php');
+require_once(SM_PATH . 'functions/display_messages.php');
 
 displayPageHeader($color, 'None' );
 
@@ -92,7 +98,17 @@ function get_info($doc, $pos) {
 
 /**************[ END HELP FUNCTIONS ]******************/
 
+echo html_tag( 'table',
+        html_tag( 'tr',
+            html_tag( 'td','<div style="text-align: center;"><b>' . _("Help") .'</b></div>', 'center', $color[0] )
+        ) ,
+    'center', '', 'width="95%" cellpadding="1" cellspacing="2" border="0"' );
+
 do_hook('help_top');
+
+echo html_tag( 'table', '', 'center', '', 'width="90%" cellpadding="0" cellspacing="10" border="0"' ) .
+        html_tag( 'tr' ) .
+            html_tag( 'td' );
 
 if (!isset($squirrelmail_language)) {
     $squirrelmail_language = 'en_US';
@@ -101,14 +117,12 @@ if (!isset($squirrelmail_language)) {
 if (file_exists("../help/$squirrelmail_language")) {
     $user_language = $squirrelmail_language;
 } else if (file_exists('../help/en_US')) {
-    error_box(_("Help is not available in the selected language. It will be displayed in English instead."));
+    error_box(_("Help is not available in the selected language. It will be displayed in English instead."), $color);
     echo '<br />';
     $user_language = 'en_US';
 } else {
-    error_box( _("Help is not available. Please contact your system administrator for assistance."));
+    error_box( _("Help is not available. Please contact your system administrator for assistance."), $color );
     echo '</td></tr></table>';
-    // Display footer (closes HTML tags) and stop script execution.
-    $oTemplate->display('footer.tpl');
     exit;
 }
 
@@ -159,21 +173,25 @@ if ( $chapter == 0 || !isset( $helpdir[$chapter-1] ) ) {
         }
     }
 
+    // Write the TOC header
+    echo html_tag( 'table', '', 'center', '', 'cellpadding="0" cellspacing="0" border="0"' ) .
+         html_tag( 'tr' ) .
+         html_tag( 'td' ) .
+         '<div style="text-align: center;"><b>' . _("Table of Contents") . '</b></div><br />';
+    echo html_tag( 'ol' );
+
+    // Write the TOC chapters.
+    // FIXME: HTML code is not compliant.
+    for ($i=0, $cnt = count($toc); $i < $cnt; $i++) {
+        echo '<li><a href="../src/help.php?chapter=' . $toc[$i][0]. '">' .
+            $toc[$i][1] . '</a>' . html_tag( 'ul', $toc[$i][2] );
+    }
+
     // Provide hook for external help scripts.
     do_hook('help_chapter');
- 
-    $new_toc = array();
-    foreach ($toc as $ch) {
-        $a = array();
-        $a['Chapter'] = $ch[0];
-        $a['Title'] = $ch[1];
-        $a['Summary'] = trim($ch[2]);
-        $new_toc[] = $a;
-    }
-    
-    $oTemplate->assign('toc', $new_toc);
-    
-    $oTemplate->display('help_toc.tpl');
+
+    // Write the TOC footer.
+    echo '</ol></td></tr></table>';
 } else {
     // Initialise the needed variables.
     $display_chapter = TRUE;
@@ -185,56 +203,65 @@ if ( $chapter == 0 || !isset( $helpdir[$chapter-1] ) ) {
     } elseif (file_exists("../help/en_US/" . $helpdir[$chapter-1])) {
         // If the selected language can't be found, try English.
         $doc = file("../help/en_US/" . $helpdir[$chapter-1]);
-        error_box(_("This chapter is not available in the selected language. It will be displayed in English instead."));
+        error_box(_("This chapter is not available in the selected language. It will be displayed in English instead."), $color);
         echo '<br />';
     } else {
         // If English can't be found, the chapter went MIA.
         $display_chapter = FALSE;
     }
 
+    // Write the chpater header.
+    echo '<div style="text-align: center;"><small>';
+    if ($chapter <= 1){
+        echo '<font color="' . $color[9] . '">' . _("Previous")
+             . '</font> | ';
+    } else {
+        echo '<a href="../src/help.php?chapter=' . ($chapter-1)
+             . '">' . _("Previous") . '</a> | ';
+    }
+    echo '<a href="../src/help.php">' . _("Table of Contents") . '</a>';
+    if ($chapter >= count($helpdir)){
+        echo ' | <font color="' . $color[9] . '">' . _("Next") . '</font>';
+    } else {
+        echo ' | <a href="../src/help.php?chapter=' . ($chapter+1)
+             . '">' . _("Next") . '</a>';
+    }
+    echo '</small></div><br />';
+
     // Write the chapter.
     if ($display_chapter) {
         // If there is a valid chapter, display it.
         $help_info = get_info($doc, 0);
-        $ch = array();
-        $ch['Chapter'] = $chapter;
-        $ch['Title'] = $help_info[0];
-        $ch['Summary'] = isset($help_info[1]) && $help_info[1] ? trim($help_info[1]) : $help_info[2];
-        $ch['Sections'] = array();
+        echo '<font size="5"><b>' . $chapter . ' - ' . $help_info[0]
+            . '</b></font><br /><br />';
+
+        if (isset($help_info[1]) && $help_info[1]) {
+            echo $help_info[1];
+        } else {
+            echo html_tag( 'p', $help_info[2], 'left' );
+        }
+
         $section = 0;
         for ($n = $help_info[3], $cnt = count($doc); $n < $cnt; $n++) {
             $section++;
             $help_info = get_info($doc, $n);
+            echo "<b>$chapter.$section - $help_info[0]</b>" .
+                $help_info[1];
             $n = $help_info[3];
-
-            $a = array();
-            $a['SectionNumber'] = $section;
-            $a['SectionTitle'] = $help_info[0];
-            $a['SectionText'] = isset($help_info[1]) ? trim($help_info[1]) : '';;
-            
-            $ch['Sections'][] = $a;
         }
-        
-        $oTemplate->assign('chapter_number', $chapter);
-        $oTemplate->assign('chapter_count', count($helpdir));
-        $oTemplate->assign('chapter_title', $ch['Title']);
-        $oTemplate->assign('chapter_summary', $ch['Summary']);
-        $oTemplate->assign('sections', $ch['Sections']);
-        $oTemplate->assign('error_msg', NULL);
+
+        echo '<br /><div style="text-align: center;"><a href="#pagetop">' . _("Top") . '</a></div>';
     } else {
-        // If the help file went MIA, trigger an error message.
-        $oTemplate->assign('chapter_number', $chapter);
-        $oTemplate->assign('chapter_count', count($helpdir));
-        $oTemplate->assign('chapter_title', '');
-        $oTemplate->assign('chapter_summary', '');
-        $oTemplate->assign('sections', array());
-        $oTemplate->assign('error_msg', sprintf(_("For some reason, chapter %s is not available."), $chapter));
+        // If the help file went MIA, display an error message.
+        error_box(sprintf(_("For some reason, chapter %s is not available."), $chapter), $color);
     }
-    
-    $oTemplate->display('help_chapter.tpl');
 }
 
 do_hook('help_bottom');
 
-$oTemplate->display('footer.tpl');
+echo html_tag( 'tr',
+            html_tag( 'td', '&nbsp;', 'left', $color[0] )
+        );
+
 ?>
+</table></body></html>

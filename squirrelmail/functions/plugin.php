@@ -13,6 +13,12 @@
  * @package squirrelmail
  */
 
+/** Everything needs global.. */
+require_once(SM_PATH . 'functions/global.php');
+
+global $squirrelmail_plugin_hooks;
+$squirrelmail_plugin_hooks = array();
+
 /**
  * This function adds a plugin.
  * @param string $name Internal plugin name (ie. delete_move_next)
@@ -21,18 +27,10 @@
 function use_plugin ($name) {
     if (file_exists(SM_PATH . "plugins/$name/setup.php")) {
         include_once(SM_PATH . "plugins/$name/setup.php");
-
-        /**
-          * As of SM 1.5.2, plugin hook registration is statically
-          * accomplished using the configuration utility (config/conf.pl).
-          * And this code is deprecated (but let's keep it until 
-          * the new registration system is proven).
-          *
-          */
-        //$function = "squirrelmail_plugin_init_$name";
-        //if (function_exists($function)) {
-        //    $function();
-        //}
+        $function = "squirrelmail_plugin_init_$name";
+        if (function_exists($function)) {
+            $function();
+        }
     }
 }
 
@@ -42,14 +40,13 @@ function use_plugin ($name) {
  * @return mixed $data
  */
 function do_hook ($name) {
-    global $squirrelmail_plugin_hooks, $currentHookName;
+    global $squirrelmail_plugin_hooks;
     $data = func_get_args();
-    $currentHookName = $name;
+    $ret = '';
 
     if (isset($squirrelmail_plugin_hooks[$name])
           && is_array($squirrelmail_plugin_hooks[$name])) {
-        foreach ($squirrelmail_plugin_hooks[$name] as $plugin_name => $function) {
-            use_plugin($plugin_name);
+        foreach ($squirrelmail_plugin_hooks[$name] as $function) {
             /* Add something to set correct gettext domain for plugin. */
             if (function_exists($function)) {
                 $function($data);
@@ -57,44 +54,9 @@ function do_hook ($name) {
         }
     }
 
-    $currentHookName = '';
-
     /* Variable-length argument lists have a slight problem when */
     /* passing values by reference. Pity. This is a workaround.  */
     return $data;
-}
-
-/**
- * This function executes a hook and allows for parameters to be 
- * passed, wherein each plugin can modify the parameters before 
- * they are passed to the next funciton. Whether or not the 
- * parameters are modified, plugins on this hook should always
- * return the given parameters.
- *
- * @param string name the name of the hook
- * @param mixed param the parameters to pass to the hook function
- * @return mixed the possibly modified hook parameters
- */
-function filter_hook_function($name,$parm=NULL) {
-    global $squirrelmail_plugin_hooks, $currentHookName;
-    $currentHookName = $name;
-
-    if (isset($squirrelmail_plugin_hooks[$name])
-          && is_array($squirrelmail_plugin_hooks[$name])) {
-        foreach ($squirrelmail_plugin_hooks[$name] as $plugin_name => $function) {
-            use_plugin($plugin_name);
-            /* Add something to set correct gettext domain for plugin. */
-            if (function_exists($function)) {
-                $parm = $function($parm);
-            }
-        }
-    }
-
-    $currentHookName = '';
-
-    /* Variable-length argument lists have a slight problem when */
-    /* passing values by reference. Pity. This is a workaround.  */
-    return $parm;
 }
 
 /**
@@ -105,14 +67,12 @@ function filter_hook_function($name,$parm=NULL) {
  * @return mixed the return value of the hook function
  */
 function do_hook_function($name,$parm=NULL) {
-    global $squirrelmail_plugin_hooks, $currentHookName;
+    global $squirrelmail_plugin_hooks;
     $ret = '';
-    $currentHookName = $name;
 
     if (isset($squirrelmail_plugin_hooks[$name])
           && is_array($squirrelmail_plugin_hooks[$name])) {
-        foreach ($squirrelmail_plugin_hooks[$name] as $plugin_name => $function) {
-            use_plugin($plugin_name);
+        foreach ($squirrelmail_plugin_hooks[$name] as $function) {
             /* Add something to set correct gettext domain for plugin. */
             if (function_exists($function)) {
                 $ret = $function($parm);
@@ -120,55 +80,32 @@ function do_hook_function($name,$parm=NULL) {
         }
     }
 
-    $currentHookName = '';
-
     /* Variable-length argument lists have a slight problem when */
     /* passing values by reference. Pity. This is a workaround.  */
     return $ret;
 }
 
 /**
- * This function executes a hook, allows for parameters to be passed,
- * and looks for an array returned from each plugin: each array is 
- * then merged into one and returned to the core hook location.
- *
- * Note that unlike PHP's array_merge function, matching array keys
- * will not overwrite each other, instead, values under such keys
- * will be concatenated if they are both strings, or merged if they
- * are arrays (in the same (non-overwrite) manner recursively).
- *
- * Plugins returning non-arrays (strings, objects, etc) will have 
- * their output added to the end of the ultimate return array, 
- * unless ALL values returned are strings, in which case one string
- * with all returned strings concatenated together is returned.
+ * This function executes a hook, concatenating the results of each
+ * plugin that has the hook defined.
  *
  * @param string name the name of the hook
- * @param mixed param the parameters to pass to the hook function
- *
- * @return mixed the merged return arrays or strings of each
- *               plugin on this hook
- *
+ * @param mixed parm optional hook function parameters
+ * @return string a concatenation of the results of each plugin function
  */
 function concat_hook_function($name,$parm=NULL) {
-    global $squirrelmail_plugin_hooks, $currentHookName;
+    global $squirrelmail_plugin_hooks;
     $ret = '';
-    $currentHookName = $name;
 
     if (isset($squirrelmail_plugin_hooks[$name])
           && is_array($squirrelmail_plugin_hooks[$name])) {
-        foreach ($squirrelmail_plugin_hooks[$name] as $plugin_name => $function) {
-            use_plugin($plugin_name);
-            /* Add something to set correct gettext domain for plugin. */
+        foreach ($squirrelmail_plugin_hooks[$name] as $function) {
+            /* Concatenate results from hook. */
             if (function_exists($function)) {
-                $plugin_ret = $function($parm);
-                if (!empty($plugin_ret)) {
-                    $ret = sqm_array_merge($ret, $plugin_ret);
-                }
+                $ret .= $function($parm);
             }
         }
     }
-
-    $currentHookName = '';
 
     /* Variable-length argument lists have a slight problem when */
     /* passing values by reference. Pity. This is a workaround.  */
@@ -189,7 +126,7 @@ function concat_hook_function($name,$parm=NULL) {
  * @return bool the result of the function
  */
 function boolean_hook_function($name,$parm=NULL,$priority=0,$tie=false) {
-    global $squirrelmail_plugin_hooks, $currentHookName;
+    global $squirrelmail_plugin_hooks;
     $yea = 0;
     $nay = 0;
     $ret = $tie;
@@ -198,9 +135,7 @@ function boolean_hook_function($name,$parm=NULL,$priority=0,$tie=false) {
         is_array($squirrelmail_plugin_hooks[$name])) {
 
         /* Loop over the plugins that registered the hook */
-        $currentHookName = $name;
-        foreach ($squirrelmail_plugin_hooks[$name] as $plugin_name => $function) {
-            use_plugin($plugin_name);
+        foreach ($squirrelmail_plugin_hooks[$name] as $function) {
             if (function_exists($function)) {
                 $ret = $function($parm);
                 if ($ret) {
@@ -210,7 +145,6 @@ function boolean_hook_function($name,$parm=NULL,$priority=0,$tie=false) {
                 }
             }
         }
-        $currentHookName = '';
 
         /* Examine the aftermath and assign the return value appropriately */
         if (($priority > 0) && ($yea)) {
@@ -238,142 +172,36 @@ function boolean_hook_function($name,$parm=NULL,$priority=0,$tie=false) {
  * FIXME: This function needs to have its name changed!
  *
  * @return bool whether this browser properly supports JavaScript
- * @deprecated use checkForJavascript() since 1.5.1
  */
 function soupNazi(){
-    return !checkForJavascript();
+
+    $soup_menu = array('Mozilla/3','Mozilla/2','Mozilla/1', 'Opera 4',
+                       'Opera/4', 'OmniWeb', 'Lynx');
+    sqgetGlobalVar('HTTP_USER_AGENT', $user_agent, SQ_SERVER);
+    foreach($soup_menu as $browser) {
+        if(stristr($user_agent, $browser)) {
+            return 1;
+        }
+    }
+    return 0;
+}
+/*************************************/
+/*** MAIN PLUGIN LOADING CODE HERE ***/
+/*************************************/
+
+/* On startup, register all plugins configured for use. */
+if (isset($plugins) && is_array($plugins)) {
+    // turn on output buffering in order to prevent output of new lines
+    ob_start();
+    foreach ($plugins as $name) {
+        use_plugin($name);
+    }
+    $output = trim(ob_get_contents());
+    ob_end_clean();
+    // if plugins output more than newlines and spacing, stop script execution.
+    if (!empty($output)) {
+        die($output);
+    }
 }
 
-/**
- * Check if plugin is enabled
- * @param string $plugin_name plugin name
- * @since 1.5.1
- * @return boolean
- */
-function is_plugin_enabled($plugin_name) {
-  global $plugins;
-
-  /**
-   * check if variable is empty. if var is not set, php empty
-   * returns true without error notice.
-   *
-   * then check if it is an array
-   */
-  if (empty($plugins) || ! is_array($plugins))
-    return false;
-
-  if ( in_array($plugin_name,$plugins) ) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-/**
-  * Check a plugin's version.
-  *
-  * Returns TRUE if the given plugin is installed, 
-  * activated and is at minimum version $a.$b.$c.
-  * If any one of those conditions fails, FALSE
-  * will be returned (careful of plugins that are
-  * sufficiently versioned but are not activated).
-  *
-  * By overriding the default value of $force_inclusion,
-  * this function will attempt to grab versioning
-  * information from the given plugin even if it
-  * is not activated (plugin still has to be 
-  * unpackaged and set in place in the plugins 
-  * directory).  Use with care - some plugins
-  * might break SquirrelMail when this is used.
-  *
-  * Note that this function assumes plugin 
-  * versioning is consistently applied in the same 
-  * fashion that SquirrelMail versions are, with the 
-  * exception that an applicable SquirrelMail 
-  * version may be appended to the version number 
-  * (which will be ignored herein).  That is, plugin 
-  * version number schemes are expected in the following
-  * format:  1.2.3, or 1.2.3-1.4.0.  
-  *
-  * Any characters after the third number are discarded, 
-  * so formats such as the following will also work, 
-  * although extra information about beta versions can 
-  * possibly confuse the desired results of the version 
-  * check:  1.2.3-beta4, 1.2.3.RC2, and so forth.
-  * 
-  * @since 1.5.2
-  *
-  * @param string plugin_name   name of the plugin to
-  *                             check; must precisely
-  *                             match the plugin
-  *                             directory name
-  * @param int  a               major version number
-  * @param int  b               minor version number
-  * @param int  c               release number
-  * @param bool force_inclusion try to get version info
-  *                             for plugins not activated?
-  *                             (default FALSE)
-  *
-  * @return bool
-  *
-  */
-function check_plugin_version($plugin_name, 
-                              $a = 0, $b = 0, $c = 0, 
-                              $force_inclusion = FALSE)
-{
-
-   $info_function = $plugin_name . '_info';
-   $version_function = $plugin_name . '_version';
-   $plugin_info = array();
-   $plugin_version = FALSE;
-
-
-   // first attempt to find the plugin info function, wherein
-   // the plugin version should be available
-   //
-   if (function_exists($info_function))
-      $plugin_info = $info_function();
-   else if ($force_inclusion 
-    && file_exists(SM_PATH . 'plugins/' . $plugin_name . '/setup.php'))
-   {
-      include_once(SM_PATH . 'plugins/' . $plugin_name . '/setup.php');
-      if (function_exists($info_function))
-         $plugin_info = $info_function();
-   }
-   if (!empty($plugin_info['version']))
-      $plugin_version = $plugin_info['version'];
-
-
-   // otherwise, look for older version function 
-   //
-   if (!$plugin_version && function_exists($version_function))
-         $plugin_version = $version_function();
-
-
-   if (!$plugin_version) return FALSE;
-
-
-   // now massage version number into something we understand
-   //
-   $plugin_version = trim(preg_replace(array('/[^0-9.]+.*$/', '/[^0-9.]/'), 
-                                       '', $plugin_version), 
-                          '.');
-   $plugin_version = explode('.', $plugin_version);
-   if (!isset($plugin_version[0])) $plugin_version[0] = 0;
-   if (!isset($plugin_version[1])) $plugin_version[1] = 0;
-   if (!isset($plugin_version[2])) $plugin_version[2] = 0;
-//   sm_print_r($plugin_version);
-
-
-   // now test the version number
-   //
-   if ($plugin_version[0] < $a ||
-      ($plugin_version[0] == $a && $plugin_version[1] < $b) ||
-      ($plugin_version[0] == $a && $plugin_version[1] == $b && $plugin_version[2] < $c))
-         return FALSE;
-
-
-   return TRUE;
-
-}
-
+?>

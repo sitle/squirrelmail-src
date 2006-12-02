@@ -1,37 +1,36 @@
 <?php
-/**
- * Bug Report plugin - setup script
- *
- * @copyright &copy; 1999-2006 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
- * @version $Id$
- * @package plugins
- * @subpackage bug_report
- */
 
 /**
- * Initialize the bug report plugin
- * @return void
- * @access private
+ * setup.php
+ *
+ * Copyright (c) 1999-2006 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
+ *
+ * This is a standard Squirrelmail-1.2 API for plugins.
+ *
+ * $Id$
  */
+
+/* This button fills out a form with your setup information already
+   gathered -- all you have to do is type. */
+
+
+/* Initialize the bug report plugin */
 function squirrelmail_plugin_init_bug_report() {
     global $squirrelmail_plugin_hooks;
 
     $squirrelmail_plugin_hooks['menuline']['bug_report'] = 'bug_report_button';
+    $squirrelmail_plugin_hooks['options_display_inside']['bug_report'] = 'bug_report_options';
+    $squirrelmail_plugin_hooks['options_display_save']['bug_report'] = 'bug_report_save';
     $squirrelmail_plugin_hooks['loading_prefs']['bug_report'] = 'bug_report_load';
-    $squirrelmail_plugin_hooks['optpage_loadhook_display']['bug_report'] = 'bug_report_block';
 }
 
 
-/**
- * Show the button in the main bar
- * @access private
- */
+/* Show the button in the main bar */
 function bug_report_button() {
-    include_once(SM_PATH.'plugins/bug_report/functions.php');
-    global $bug_report_visible;
+    global $color, $bug_report_visible;
 
-    if (! $bug_report_visible || ! bug_report_check_user()) {
+    if (! $bug_report_visible) {
         return;
     }
 
@@ -39,37 +38,35 @@ function bug_report_button() {
     echo "&nbsp;&nbsp;\n";
 }
 
-/**
- * Loads bug report options
- * @access private
- */
+
+function bug_report_save() {
+    global $username,$data_dir;
+
+    if( sqgetGlobalVar('bug_report_bug_report_visible', $vis, SQ_POST) ) {
+        setPref($data_dir, $username, 'bug_report_visible', '1');
+    } else {
+        setPref($data_dir, $username, 'bug_report_visible', '');
+    }
+}
+
+
 function bug_report_load() {
     global $username, $data_dir;
     global $bug_report_visible;
 
-    $bug_report_visible = (bool) getPref($data_dir, $username, 'bug_report_visible',false);
+    $bug_report_visible = getPref($data_dir, $username, 'bug_report_visible');
 }
 
-/**
- * Register bug report option block
- * @since 1.5.1
- * @access private
- */
-function bug_report_block() {
-    include_once(SM_PATH.'plugins/bug_report/functions.php');
-    if (bug_report_check_user()) {
-        global $optpage_data;
-        $optpage_data['grps']['bug_report'] = _("Bug Reports");
-        $optionValues = array();
-        // FIXME: option needs refresh in SMOPT_REFRESH_RIGHT 
-        // (menulink is processed before options are saved/loaded)
-        $optionValues[] = array(
-            'name'    => 'bug_report_visible',
-            'caption' => _("Show button in toolbar"),
-            'type'    => SMOPT_TYPE_BOOLEAN,
-            'refresh' => SMOPT_REFRESH_ALL,
-            'initial_value' => false
-            );
-        $optpage_data['vals']['bug_report'] = $optionValues;
+
+function bug_report_options() {
+    global $bug_report_visible;
+
+    echo '<tr>' . html_tag('td',_("Bug Reports:"),'right','','nowrap') . "\n" .
+         '<td><input name="bug_report_bug_report_visible" type=checkbox';
+    if ($bug_report_visible) {
+        echo ' checked';
     }
+    echo ' /> ' . _("Show button in toolbar") . "</td></tr>\n";
 }
+
+?>

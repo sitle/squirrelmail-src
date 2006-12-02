@@ -12,7 +12,37 @@
  * @subpackage prefs
  */
 
+/** Include global.php */
+require_once(SM_PATH . 'functions/global.php');
+require_once(SM_PATH . 'functions/plugin.php');
 
+/** include this for error messages */
+include_once(SM_PATH . 'functions/display_messages.php');
+
+sqgetGlobalVar('prefs_cache', $prefs_cache, SQ_SESSION );
+sqgetGlobalVar('prefs_are_cached', $prefs_are_cached, SQ_SESSION );
+
+$rg = ini_get('register_globals');
+
+/* if php version >= 4.1 OR (4.0 AND $rg = off) */
+if ( !sqsession_is_registered('prefs_are_cached') ||
+     !isset( $prefs_cache) ||
+     !is_array( $prefs_cache) ||
+     check_php_version(4,1) ||
+     empty($rg)
+   ) {
+    $prefs_are_cached = false;
+    $prefs_cache = array();
+}
+
+$prefs_backend = do_hook_function('prefs_backend');
+if (isset($prefs_backend) && !empty($prefs_backend) && file_exists(SM_PATH . $prefs_backend)) {
+    require_once(SM_PATH . $prefs_backend);
+} elseif (isset($prefs_dsn) && !empty($prefs_dsn)) {
+    require_once(SM_PATH . 'functions/db_prefs.php');
+} else {
+    require_once(SM_PATH . 'functions/file_prefs.php');
+}
 
 /* Hashing functions */
 
@@ -21,13 +51,13 @@
  * hashed location of that datafile.
  *
  * @param string username the username of the current user
- * @param string dir the SquirrelMail datadir
+ * @param string dir the squirrelmail datadir
  * @param string datafile the name of the file to open
  * @param bool hash_seach default true
  * @return string the hashed location of datafile
- * @since 1.2.0
  */
 function getHashedFile($username, $dir, $datafile, $hash_search = true) {
+    global $dir_hash_level;
 
     /* Remove trailing slash from $dir if found */
     if (substr($dir, -1) == '/') {
@@ -72,10 +102,9 @@ function getHashedFile($username, $dir, $datafile, $hash_search = true) {
  * dir for that username.
  *
  * @param string username the username of the current user
- * @param string dir the SquirrelMail datadir
+ * @param string dir the squirrelmail datadir
  * @param string hash_dirs default ''
  * @return the path to the hash dir for username
- * @since 1.2.0
  */
 function getHashedDir($username, $dir, $hash_dirs = '') {
     global $dir_hash_level;
@@ -113,7 +142,6 @@ function getHashedDir($username, $dir, $hash_dirs = '') {
  *
  * @param string username the username to calculate the hash dir for
  * @return array a list of hash dirs for this username
- * @since 1.2.0
  */
 function computeHashDirs($username) {
     /* Compute the hash for this user and extract the hash directories. */
@@ -126,3 +154,5 @@ function computeHashDirs($username) {
     /* Return our array of hash directories. */
     return ($hash_dirs);
 }
+
+?>

@@ -29,7 +29,7 @@ $calendardata = array();
  * @param string $string calendar string
  * @return string calendar string converted to multiline text
  * @access private
- * @since 1.5.1
+ * @since 1.5.1 and 1.4.7
  */
 function calendar_readmultiline($string) {
     /**
@@ -45,7 +45,7 @@ function calendar_readmultiline($string) {
  * @param string $sValue array value 
  * @param string $sKey array key
  * @access private
- * @since 1.5.1
+ * @since 1.5.1 and 1.4.7
  */
 function calendar_encodedata(&$sValue, $sKey) {
     /**
@@ -116,7 +116,7 @@ function writecalendardata() {
 
                 $calstr = "$calfoo[key]|$calbar[key]|$calfoobar[length]|$calfoobar[priority]|$calfoobar[title]|$calfoobar[message]|$calfoobar[reminder]\n";
                 if(sq_fwrite($fp, $calstr, 4096) === FALSE) {
-                    error_box(_("Could not write calendar file %s", "$username.$year.cal.tmp"));
+                    error_box(_("Could not write calendar file %s", "$username.$year.cal.tmp"), $color);
                 }
             }
 
@@ -181,3 +181,5 @@ function update_event($date, $time) {
         fclose ($fp);
     }
 }
+
+?>

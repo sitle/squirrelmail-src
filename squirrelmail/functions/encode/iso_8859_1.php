@@ -48,3 +48,4 @@ function unicodetoiso88591($var) {
     }
     return $ret;
 }
+?>

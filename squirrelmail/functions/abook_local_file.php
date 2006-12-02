@@ -27,6 +27,7 @@
  * ? writeable => allow writing into address book. Used only when
  *                detect_writeable is set to false.
  * ? listing   => enable/disable listing
+ * ? line_length => allowed address book record size
  *</pre>
  * NOTE. This class should not be used directly. Use the
  *       "AddressBook" class instead.
@@ -74,6 +75,7 @@ class abook_local_file extends addressbook_backend {
     /**
      * controls listing of address book
      * @var bool
+     * @since 1.5.1 and 1.4.9
      */
     var $listing = true;
     /**
@@ -82,10 +84,10 @@ class abook_local_file extends addressbook_backend {
      */
     var $umask;
     /**
-     * Sets max entry size (number of bytes used for all address book fields 
+     * Sets max entry size (number of bytes used for all address book fields
      * (including escapes) + 4 delimiters + 1 linefeed)
      * @var integer
-     * @since 1.5.2
+     * @since 1.5.2 and 1.4.9
      */
     var $line_length = 2048;
 
@@ -286,33 +288,25 @@ class abook_local_file extends addressbook_backend {
 
         while ($row = @fgetcsv($this->filehandle, $this->line_length, '|')) {
             if (count($row)<5) {
-                /**
-                 * address book is corrupted.
-                 */
-                global $oTemplate;
-                error_box(_("Address book is corrupted. Required fields are missing."));
-                $oTemplate->display('footer.tpl');
-                die();
+                /** address book is corrupted. */
+                global $color;
+                error_box(_("Address book is corrupted. Required fields are missing."),$color);
+                die('</body></html>');
             } else {
                 $line = join(' ', $row);
-                /**
-                 * TODO: regexp search is supported only in local_file backend.
-                 * Do we check format of regexp or ignore errors?
-                 */
                 // errors on eregi call are suppressed in order to prevent display of regexp compilation errors
                 if(@eregi($expr, $line)) {
                     array_push($res, array('nickname'  => $row[0],
-                        'name'      => $this->fullname($row[1], $row[2]),
-                        'firstname' => $row[1],
-                        'lastname'  => $row[2],
-                        'email'     => $row[3],
-                        'label'     => $row[4],
-                        'backend'   => $this->bnum,
-                        'source'    => &$this->sname));
+                                           'name'      => $row[1] . ' ' . $row[2],
+                                           'firstname' => $row[1],
+                                           'lastname'  => $row[2],
+                                           'email'     => $row[3],
+                                           'label'     => $row[4],
+                                           'backend'   => $this->bnum,
+                                           'source'    => &$this->sname));
                 }
             }
         }
-
         return $res;
     }
 
@@ -333,23 +327,20 @@ class abook_local_file extends addressbook_backend {
 
         while ($row = @fgetcsv($this->filehandle, $this->line_length, '|')) {
             if (count($row)<5) {
-                /**
-                 * address book is corrupted.
-                 */
-                global $oTemplate;
-                error_box(_("Address book is corrupted. Required fields are missing."));
-                $oTemplate->display('footer.tpl');
-                die();
+                /** address book is corrupted. */
+                global $color;
+                error_box(_("Address book is corrupted. Required fields are missing."),$color);
+                die('</body></html>');
             } else {
                 if(strtolower($row[0]) == $alias) {
-                   return array('nickname'  => $row[0],
-                      'name'      => $this->fullname($row[1], $row[2]),
-                      'firstname' => $row[1],
-                      'lastname'  => $row[2],
-                      'email'     => $row[3],
-                      'label'     => $row[4],
-                      'backend'   => $this->bnum,
-                      'source'    => &$this->sname);
+                    return array('nickname'  => $row[0],
+                                 'name'      => $row[1] . ' ' . $row[2],
+                                 'firstname' => $row[1],
+                                 'lastname'  => $row[2],
+                                 'email'     => $row[3],
+                                 'label'     => $row[4],
+                                 'backend'   => $this->bnum,
+                                 'source'    => &$this->sname);
                 }
             }
         }
@@ -362,34 +353,30 @@ class abook_local_file extends addressbook_backend {
      * @return array list of all addresses
      */
     function list_addr() {
-        $res = array();
-
+        // check if listing is not disabled
         if(isset($this->listing) && !$this->listing) {
             return array();
         }
 
+        $res = array();
         $this->open();
         @rewind($this->filehandle);
 
         while ($row = @fgetcsv($this->filehandle, $this->line_length, '|')) {
             if (count($row)<5) {
-                /**
-                 * address book is corrupted. Don't be nice to people that 
-                 * violate address book formating.
-                 */
-                global $oTemplate;
-                error_box(_("Address book is corrupted. Required fields are missing."));
-                $oTemplate->display('footer.tpl');
-                die();
+                /** address book is corrupted. */
+                global $color;
+                error_box(_("Address book is corrupted. Required fields are missing."),$color);
+                die('</body></html>');
             } else {
                 array_push($res, array('nickname'  => $row[0],
-                    'name'      => $this->fullname($row[1], $row[2]),
-                    'firstname' => $row[1],
-                    'lastname'  => $row[2],
-                    'email'     => $row[3],
-                    'label'     => $row[4],
-                    'backend'   => $this->bnum,
-                    'source'    => &$this->sname));
+                                       'name'      => $row[1] . ' ' . $row[2],
+                                       'firstname' => $row[1],
+                                       'lastname'  => $row[2],
+                                       'email'     => $row[3],
+                                       'label'     => $row[4],
+                                       'backend'   => $this->bnum,
+                                       'source'    => &$this->sname));
             }
         }
         return $res;
@@ -408,7 +395,7 @@ class abook_local_file extends addressbook_backend {
         $ret = $this->lookup($userdata['nickname']);
         if(!empty($ret)) {
             // i18n: don't use html formating in translation
-            return $this->set_error(sprintf(_("User \"%s\" already exists"),$ret['nickname']));
+            return $this->set_error(sprintf(_("User \"%s\" already exists"), $ret['nickname']));
         }
 
         /* Here is the data to write */
@@ -510,21 +497,15 @@ class abook_local_file extends addressbook_backend {
         $ret = $this->lookup($alias);
         if(empty($ret)) {
             // i18n: don't use html formating in translation
-            return $this->set_error(sprintf(_("User \"%s\" does not exist"),$alias));
+            return $this->set_error(sprintf(_("User \"%s\" does not exist"), $alias));
         }
-        
+
         /* If the alias changed, see if the new alias exists */
         if (strtolower($alias) != strtolower($userdata['nickname'])) {
             $ret = $this->lookup($userdata['nickname']);
             if (!empty($ret)) {
                 return $this->set_error(sprintf(_("User \"%s\" already exists"), $userdata['nickname']));
             }
-        }
-        
-        /* Lock the file to make sure we're the only process working
-         * on it. */
-        if(!$this->lock()) {
-            return $this->set_error(_("Could not lock datafile"));
         }
 
         /* calculate userdata size */
@@ -537,7 +518,13 @@ class abook_local_file extends addressbook_backend {
         if (strlen($data) >= $this->line_length) {
             return $this->set_error(_("Address book entry is too big"));
         }
-        
+
+        /* Lock the file to make sure we're the only process working
+         * on it. */
+        if(!$this->lock()) {
+            return $this->set_error(_("Could not lock datafile"));
+        }
+
         /* Read file into memory, modifying the data for the
          * user identified by $alias */
         $this->open(true);
@@ -579,4 +566,5 @@ class abook_local_file extends addressbook_backend {
         }
         return $value;
     }
-}
+
+} /* End of class abook_local_file */

@@ -157,3 +157,4 @@ function charset_decode_iso_ir_111 ($string) {
 
     return $string;
 }
+?>

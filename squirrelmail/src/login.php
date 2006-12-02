@@ -12,17 +12,21 @@
  * @package squirrelmail
  */
 
-// reduces the files included in init.php
-$sInitLocation = 'login';
-
 /**
- * Include the SquirrelMail initialization file.
+ * Path for SquirrelMail required files.
+ * @ignore
  */
-require('../include/init.php');
-
+define('SM_PATH','../');
 
 /* SquirrelMail required files. */
-require_once(SM_PATH . 'functions/imap_general.php');
+require_once(SM_PATH . 'functions/global.php');
+require_once(SM_PATH . 'functions/strings.php');
+require_once(SM_PATH . 'config/config.php');
+require_once(SM_PATH . 'functions/i18n.php');
+require_once(SM_PATH . 'functions/plugin.php');
+require_once(SM_PATH . 'functions/constants.php');
+require_once(SM_PATH . 'functions/page_header.php');
+require_once(SM_PATH . 'functions/html.php');
 require_once(SM_PATH . 'functions/forms.php');
 
 /**
@@ -32,61 +36,43 @@ require_once(SM_PATH . 'functions/forms.php');
 set_up_language($squirrelmail_language, TRUE, TRUE);
 
 /**
+ * Find out the base URI to set cookies.
+ */
+if (!function_exists('sqm_baseuri')){
+    require_once(SM_PATH . 'functions/display_messages.php');
+}
+$base_uri = sqm_baseuri();
+
+/**
  * In case the last session was not terminated properly, make sure
  * we get a new one, but make sure we preserve session_expired_*
  */
+
 if ( !empty($_SESSION['session_expired_post']) && !empty($_SESSION['session_expired_location']) ) {
     $sep = $_SESSION['session_expired_post'];
     $sel = $_SESSION['session_expired_location'];
 
     sqsession_destroy();
-    @sqsession_is_active();
-    $_SESSION=array();
+
+    sqsession_is_active();
     sqsession_register($sep, 'session_expired_post');
     sqsession_register($sel, 'session_expired_location');
 } else {
     sqsession_destroy();
-    @sqsession_is_active();
-    $_SESSION=array();
 }
 
-/**
- * This detects if the IMAP server has logins disabled, and if so,
- * squelches the display of the login form and puts up a message
- * explaining the situation.
- */
-if($imap_auth_mech == 'login') {
-    /**
-     * detect disabled login, only when imapServerAddress contains
-     * server address and not mapping. See sqimap_get_user_server()
-     */
-    if (substr($imapServerAddress, 0, 4) != "map:") {
-        $imap = sqimap_create_stream($imapServerAddress, $imapPort, $use_imap_tls);
-        $logindisabled = sqimap_capability($imap,'LOGINDISABLED');
-        sqimap_logout($imap);
-        if ($logindisabled) {
-            $string = _("The IMAP server is reporting that plain text logins are disabled.").'<br />'.
-                _("Using CRAM-MD5 or DIGEST-MD5 authentication instead may work.").'<br />';
-            if (!$use_imap_tls) {
-                $string .= _("Also, the use of TLS may allow SquirrelMail to login.").'<br />';
-            }
-            $string .= _("Please contact your system administrator and report this error.");
-            error_box($string);
-            // display footer (closes html tags) and stop script execution
-            $oTemplate->display('footer.tpl');
-            exit;
-        }
-    }
-}
+header('Pragma: no-cache');
 
 do_hook('login_cookie');
 
 $loginname_value = (sqGetGlobalVar('loginname', $loginname) ? htmlspecialchars($loginname) : '');
 
 /* Output the javascript onload function. */
-$header = "<script type=\"text/javascript\">\n" .
+
+$header = "<script language=\"JavaScript\" type=\"text/javascript\">\n" .
           "<!--\n".
           "  function squirrelmail_loginpage_onload() {\n".
+          "    document.forms[0].js_autodetect_results.value = '" . SMPREF_JS_ON . "';\n".
           "    var textElements = 0;\n".
           "    for (i = 0; i < document.forms[0].elements.length; i++) {\n".
           "      if (document.forms[0].elements[i].type == \"text\" || document.forms[0].elements[i].type == \"password\") {\n".
@@ -100,7 +86,9 @@ $header = "<script type=\"text/javascript\">\n" .
           "  }\n".
           "// -->\n".
           "</script>\n";
+$custom_css = 'none';
 
+// Load default theme if possible
 if (@file_exists($theme[$theme_default]['PATH']))
    @include ($theme[$theme_default]['PATH']);
 
@@ -114,39 +102,16 @@ if (! isset($color) || ! is_array($color)) {
     $color[7]  = '#0000cc';  /* blue          Links                  */
     $color[8]  = '#000000';  /* black         Normal text            */
 }
-/**
- * send out all the cookies
- */
-sqsetcookieflush();
 
 displayHtmlHeader( "$org_name - " . _("Login"), $header, FALSE );
 
+echo "<body text=\"$color[8]\" bgcolor=\"$color[4]\" link=\"$color[7]\" vlink=\"$color[7]\" alink=\"$color[7]\" onLoad=\"squirrelmail_loginpage_onload();\">" .
+     "\n" . addForm('redirect.php', 'post');
 
-/* If they don't have a logo, don't bother.. */
-$logo_str = '';
-if (isset($org_logo) && $org_logo) {
-    /* Display width and height like good little people */
-    $width_and_height = '';
-    if (isset($org_logo_width) && is_numeric($org_logo_width) &&
-     $org_logo_width>0) {
-        $width_and_height = "width=\"$org_logo_width\" ";
-    }
-    if (isset($org_logo_height) && is_numeric($org_logo_height) &&
-     $org_logo_height>0) {
-        $width_and_height .= "height=\"$org_logo_height\" ";
-    }
-    
-    $logo_str = '<img src="'.$org_logo.'" ' .
-                'alt="'. sprintf(_("%s Logo"), $org_name).'" ' .
-                $width_and_height .
-                'class="sqm_loginImage" /><br />'."\n";
-}
+$username_form_name = 'login_username';
+$password_form_name = 'secretkey';
+do_hook('login_top');
 
-$sm_attribute_str = '';
-if (isset($hide_sm_attributions) && !$hide_sm_attributions) {
-    $sm_attribute_str = _("SquirrelMail Webmail Application")."<br />\n" .
-                        _("By the SquirrelMail Project Team")."<br />\n";
-}
 
 if(sqgetGlobalVar('mailtodata', $mailtodata)) {
     $mailtofield = addHidden('mailtodata', $mailtodata);
@@ -154,31 +119,75 @@ if(sqgetGlobalVar('mailtodata', $mailtodata)) {
     $mailtofield = '';
 }
 
-$password_field = addPwField('secretkey');
-$login_extra = addHidden('js_autodetect_results', SMPREF_JS_OFF).
-               $mailtofield .
-               addHidden('just_logged_in', '1');
+/* If they don't have a logo, don't bother.. */
+if (isset($org_logo) && $org_logo) {
+    /* Display width and height like good little people */
+    $width_and_height = '';
+    if (isset($org_logo_width) && is_numeric($org_logo_width) &&
+     $org_logo_width>0) {
+        $width_and_height = " width=\"$org_logo_width\"";
+    }
+    if (isset($org_logo_height) && is_numeric($org_logo_height) &&
+     $org_logo_height>0) {
+        $width_and_height .= " height=\"$org_logo_height\"";
+    }
+}
 
-session_write_close();
+echo html_tag( 'table',
+    html_tag( 'tr',
+        html_tag( 'td',
+            '<center>'.
+            ( isset($org_logo) && $org_logo
+              ? '<img src="' . $org_logo . '" alt="' .
+                sprintf(_("%s Logo"), $org_name) .'"' . $width_and_height .
+                ' /><br />' . "\n"
+              : '' ).
+            ( (isset($hide_sm_attributions) && $hide_sm_attributions) ? '' :
+            '<small>' . sprintf (_("SquirrelMail version %s"), $version) . '<br />' ."\n".
+            '  ' . _("By the SquirrelMail Project Team") . '<br /></small>' . "\n" ) .
+            html_tag( 'table',
+                html_tag( 'tr',
+                    html_tag( 'td',
+                        '<b>' . sprintf (_("%s Login"), $org_name) . "</b>\n",
+                    'center', $color[0] )
+                ) .
+                html_tag( 'tr',
+                    html_tag( 'td',  "\n" .
+                        html_tag( 'table',
+                            html_tag( 'tr',
+                                html_tag( 'td',
+                                    _("Name:") ,
+                                'right', '', 'width="30%"' ) .
+                                html_tag( 'td',
+				    addInput($username_form_name, $loginname_value),
+                                'left', '', 'width="*"' )
+                                ) . "\n" .
+                            html_tag( 'tr',
+                                html_tag( 'td',
+                                    _("Password:") ,
+                                'right', '', 'width="30%"' ) .
+                                html_tag( 'td',
+				    addPwField($password_form_name).
+				    addHidden('js_autodetect_results', SMPREF_JS_OFF).
+                    $mailtofield . 
+				    addHidden('just_logged_in', '1'),
+                                'left', '', 'width="*"' )
+                            ) ,
+                        'center', $color[4], 'border="0" width="100%"' ) ,
+                    'left',$color[4] )
+                ) . 
+                html_tag( 'tr',
+                    html_tag( 'td',
+                        '<center>'. addSubmit(_("Login")) .'</center>',
+                    'left' )
+                ),
+            '', $color[4], 'border="0" width="350"' ) . '</center>',
+        'center' )
+    ) ,
+'', $color[4], 'border="0" cellspacing="0" cellpadding="0" width="100%"' );
+do_hook('login_form');
+echo '</form>' . "\n";
 
-$oTemplate->assign('logo_str', $logo_str);
-$oTemplate->assign('logo_path', $org_logo);
-$oTemplate->assign('sm_attribute_str', $sm_attribute_str);
-$oTemplate->assign('org_name_str', sprintf (_("%s Login"), $org_name));
-$oTemplate->assign('login_field_value', $loginname_value);
-$oTemplate->assign('login_extra', $login_extra);
-
-echo '<body onLoad="squirrelmail_loginpage_onload()">'."\n";
-echo '<form action="redirect.php" method="post" onSubmit="document.forms[0].js_autodetect_results.value='. SMPREF_JS_ON .'">'."\n";
-do_hook('login_top');
-
-$oTemplate->display('login.tpl');
-
-echo "</form>\n";
 do_hook('login_bottom');
-
-// Turn off delayed error handling to make sure all errors are dumped.
-$oErrorHandler->setDelayedErrors(false);
-
-$oTemplate->display('footer.tpl');
 ?>
+</body></html>

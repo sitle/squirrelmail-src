@@ -12,25 +12,22 @@
  */
 
 /**
- * Include the SquirrelMail initialization file.
+ * Path for SquirrelMail required files.
+ * @ignore
  */
-require('../include/init.php');
+Define('SM_PATH','../');
 
 /* SquirrelMail required files. */
-
-/** imap functions depend on date functions */
-include_once(SM_PATH . 'functions/date.php');
-/** form functions */
-include_once(SM_PATH . 'functions/forms.php');
-/** mime decoding */
-include_once(SM_PATH . 'functions/mime.php');
-/** url parser */
-include_once(SM_PATH . 'functions/url_parser.php');
-/** imap functions used to retrieve vcard */
-include_once(SM_PATH . 'functions/imap_general.php');
-include_once(SM_PATH . 'functions/imap_messages.php');
+require_once(SM_PATH . 'include/validate.php');
+require_once(SM_PATH . 'functions/date.php');
+require_once(SM_PATH . 'functions/page_header.php');
+require_once(SM_PATH . 'functions/mime.php');
+require_once(SM_PATH . 'include/load_prefs.php');
 
 /* globals */
+sqgetGlobalVar('username', $username, SQ_SESSION);
+sqgetGlobalVar('key', $key, SQ_COOKIE);
+sqgetGlobalVar('onetimepad', $onetimepad, SQ_SESSION);
 
 sqgetGlobalVar('passed_id', $passed_id, SQ_GET);
 sqgetGlobalVar('mailbox', $mailbox, SQ_GET);
@@ -38,21 +35,33 @@ sqgetGlobalVar('ent_id', $ent_id, SQ_GET);
 sqgetGlobalVar('startMessage', $startMessage, SQ_GET);
 /* end globals */
 
-$imapConnection = sqimap_login($username, false, $imapServerAddress, $imapPort, 0);
+$imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
 sqimap_mailbox_select($imapConnection, $mailbox);
 
+
 displayPageHeader($color, 'None');
+
+echo '<br /><table width="100%" border="0" cellspacing="0" cellpadding="2" ' .
+        'align="center">' . "\n" .
+     '<tr><td bgcolor="' . $color[0] . '">' .
+     '<b><center>' .
+     _("Viewing a Business Card") . " - ";
 
 $msg_url = 'read_body.php?mailbox='.urlencode($mailbox).
     '&amp;startMessage='.urlencode($startMessage).
     '&amp;passed_id='.urlencode($passed_id);
+
 $msg_url = set_url_var($msg_url, 'ent_id', 0);
+
+echo '<a href="'.$msg_url.'">'. _("View message") . '</a>';
+
+echo '</center></b></td></tr>';
 
 $message = sqimap_get_message($imapConnection, $passed_id, $mailbox);
 
 $entity_vcard = getEntity($message,$ent_id);
 
-$vcard = mime_fetch_body($imapConnection, $passed_id, $ent_id);
+$vcard = mime_fetch_body ($imapConnection, $passed_id, $ent_id);
 $vcard = decodeBody($vcard, $entity_vcard->header->encoding);
 $vcard = explode ("\n",$vcard);
 foreach ($vcard as $l) {
@@ -83,9 +92,10 @@ if ($vcard_nice['version'] == '2.1') {
        $vcard_nice['email;internet'] = $vcard_nice['email;pref;internet'];
     }
 } else {
-    $oTemplate->assign('note', sprintf(_("vCard Version %s is not supported. Some information might not be converted correctly."), htmlspecialchars($vcard_nice['version'])));
-    $oTemplate->display('note.tpl');
-
+    echo '<tr><td align="center">' .
+         sprintf(_("vCard Version %s is not supported. Some information might not be converted correctly."),
+                 htmlspecialchars($vcard_nice['version'])) .
+         "</td></tr>\n";
     $vcard_nice['firstname'] = '';
     $vcard_nice['lastname'] = '';
 }
@@ -109,80 +119,118 @@ $ShowValues = array(
     'tel;fax' =>        _("Fax"),
     'note' =>           _("Note"));
 
+echo '<tr><td><br />' .
+     '<table border="0" cellpadding="2" cellspacing="0" align="center">' . "\n";
+
 if (isset($vcard_safe['email;internet'])) {
-    $vcard_safe['email;internet'] = makeComposeLink('src/compose.php?send_to='.urlencode($vcard_safe['email;internet']),
-        $vcard_safe['email;internet']);
+    $vcard_safe['email;internet'] = '<a href="../src/compose.php?send_to=' .
+        $vcard_safe['email;internet'] . '">' . $vcard_safe['email;internet'] .
+        '</a>';
 }
 
 if (isset($vcard_safe['url'])) {
-    $vcard_safe['url'] = '<a href="' . $vcard_safe['url'] . '" target="_blank">' .
+    $vcard_safe['url'] = '<a href="' . $vcard_safe['url'] . '">' .
         $vcard_safe['url'] . '</a>';
 }
 
-$vcard = array();
 foreach ($ShowValues as $k => $v) {
-    if (isset($vcard_safe[$k]) && $vcard_safe[$k]) {
-        $vcard[$v] = $vcard_safe[$k];
+    if (isset($vcard_safe[$k]) && $vcard_safe[$k])     {
+        echo "<tr><td align=\"right\"><b>$v:</b></td><td>" . $vcard_safe[$k] .
+                "</td><tr>\n";
     }
 }
 
-$dl = '../src/download.php?absolute_dl=true&amp;passed_id=' .
-     urlencode($passed_id) . '&amp;mailbox=' . urlencode($mailbox) .
-     '&amp;ent_id=' . urlencode($ent_id);
+echo '</table>' .
+     '<br />' .
+     '</td></tr></table>' .
+     '<table width="100%" border="0" cellspacing="0" cellpadding="2" ' .
+        'align="center">' .
+     '<tr>' .
+     '<td bgcolor="' . $color[0] . '">' .
+     '<b><center>' .
+     _("Add to address book") .
+     '</td></tr>' .
+     '<tr><td align="center">' .
+     '<form action="../src/addressbook.php" method="post" name="f_add">' .
+     '<table border="0" cellpadding="2" cellspacing="0" align="center">' .
+     '<tr><td align="right"><b>' . _("Nickname") . ':</b></td>' .
+     '<td>' .
+     '<input type="text" name="addaddr[nickname]" size="20" value="' .
+     $vcard_safe['firstname'] . '-' . $vcard_safe['lastname'] . '" />' .
+     '</td></tr>' .
+     '<tr><td align="right"><b>' . _("Additional info") . ':</b></td><td>' .
+     '<select name="addaddr[label]">';
 
-if (isset($vcard_nice['email;internet'])) {
-    $email = $vcard_nice['email;internet'];
-} else {
-    $message = sqimap_get_message($imapConnection, $passed_id, $mailbox);
-    $header = $message->rfc822_header;
-    $from_name = $header->getAddr_s('from');
-
-    $email = getEmail(decodeHeader($from_name));
-}
-
-$opts = array();
 if (isset($vcard_nice['url'])) {
-    $opts[$vcard_nice['url']] = _("Web Page");
+    echo '<option value="' . htmlspecialchars($vcard_nice['url']) .
+        '">' . _("Web Page") . "</option>\n";
 }
 if (isset($vcard_nice['adr'])) {
-    $opts[$vcard_nice['adr']] = _("Address");
+    echo '<option value="' . htmlspecialchars($vcard_nice['adr']) .
+        '">' . _("Address") . "</option>\n";
 }
 if (isset($vcard_nice['title'])) {
-    $opts[$vcard_nice['title']] = _("Title");
+    echo '<option value="' . htmlspecialchars($vcard_nice['title']) .
+        '">' . _("Title") . "</option>\n";
 }
 if (isset($vcard_nice['org'])) {
-    $opts[$vcard_nice['org']] = _("Organization / Department");
+    echo '<option value="' . htmlspecialchars($vcard_nice['org']) .
+        '">' . _("Organization / Department") . "</option>\n";
 }
 if (isset($vcard_nice['title'])) {
-    $opts[$vcard_nice['title'].'; '.$vcard_nice['org']] = _("Title &amp; Org. / Dept.");
+    echo '<option value="' . htmlspecialchars($vcard_nice['title']) .
+        '; ' . htmlspecialchars($vcard_nice['org']) .
+        '">' . _("Title &amp; Org. / Dept.") . "</option>\n";
 }
 if (isset($vcard_nice['tel;work'])) {
-    $opts[$vcard_nice['tel;work']] = _("Work Phone");
+    echo '<option value="' . htmlspecialchars($vcard_nice['tel;work']) .
+        '">' . _("Work Phone") . "</option>\n";
 }
 if (isset($vcard_nice['tel;home'])) {
-    $opts[$vcard_nice['tel;home']] = _("Home Phone");
+    echo '<option value="' . htmlspecialchars($vcard_nice['tel;home']) .
+        '">' . _("Home Phone") . "</option>\n";
 }
 if (isset($vcard_nice['tel;cell'])) {
-    $opts[$vcard_nice['tel;cell']] = _("Cellular Phone");
+    echo '<option value="' . htmlspecialchars($vcard_nice['tel;cell']) .
+        '">' . _("Cellular Phone") . "</option>\n";
 }
 if (isset($vcard_nice['tel;fax'])) {
-    $opts[$vcard_nice['tel;fax']] = _("Fax");
+    echo '<option value="' . htmlspecialchars($vcard_nice['tel;fax']) .
+        '">' . _("Fax") . "</option>\n";
 }
 if (isset($vcard_nice['note'])) {
-    $opts[$vcard_nice['note']] = _("Note");
+    echo '<option value="' . htmlspecialchars($vcard_nice['note']) .
+        '">' . _("Note") . "</option>\n";
 }
-
-$oTemplate->assign('view_message_link', $msg_url);
-$oTemplate->assign('download_link', $dl);
-$oTemplate->assign('vcard', $vcard);
-
-$oTemplate->assign('nickname', $vcard_nice['firstname'].'-'.$vcard_safe['lastname']);
-$oTemplate->assign('firstname', $vcard_safe['firstname']);
-$oTemplate->assign('lastname', $vcard_safe['lastname']);
-$oTemplate->assign('email', $email);
-$oTemplate->assign('info', $opts);
-
-$oTemplate->display('vcard.tpl');
-
-$oTemplate->display('footer.tpl');
+echo '</select>';
 ?>
+</td></tr>
+<tr><td colspan="2" align="center">
+<?php
+echo '<input name="addaddr[email]" type="hidden" value="' .
+        htmlspecialchars(!empty($vcard_nice['email;internet'])?$vcard_nice['email;internet']:'') . '" />' .
+     '<input name="addaddr[firstname]" type="hidden" value="' .
+        $vcard_safe['firstname'] . '" />' .
+     '<input name="addaddr[lastname]" type="hidden" value="' .
+        $vcard_safe['lastname'] . '" />' .
+     '<input type="submit" name="addaddr[SUBMIT]" ' .
+        'value="'._("Add to address book").'" />';
+
+?>
+</td></tr>
+</table>
+</form>
+</td></tr>
+<tr><td align="center">
+<?php
+echo '<a href="../src/download.php?absolute_dl=true&amp;passed_id='.
+     urlencode($passed_id) . '&amp;mailbox=' . urlencode($mailbox) .
+     '&amp;ent_id=' . urlencode($ent_id) .'">'.
+     _("Download this as a file") . '</a>';
+?>
+</td></tr></table>
+
+<table border="0" cellspacing="0" cellpadding="2" align="center">
+<tr><td bgcolor="<?php echo $color[4]; ?>">
+</td></tr></table>
+</body></html>

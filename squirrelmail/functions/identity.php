@@ -12,13 +12,18 @@
  * @since 1.4.2
  */
 
+/** Used to simplify includes */
+if (!defined('SM_PATH')) {
+    define('SM_PATH','../');
+}
+
+include_once(SM_PATH . 'include/load_prefs.php');
 
 /**
- * Returns an array of all the identities.
- * Array is keyed: full_name, reply_to, email_address, index, signature
- * @return array full_name,reply_to,email_address,index,signature
- * @since 1.4.2
- */
+* Returns an array of all the identities.
+* Array is keyed: full_name, reply_to, email_address, index, signature
+* @return array full_name,reply_to,email_address,index,signature
+*/
 function get_identities() {
 
     global $username, $data_dir, $domain;
@@ -58,7 +63,6 @@ function get_identities() {
  * Function to save the identities array
  *
  * @param  array     $identities     Array of identities
- * @since 1.5.1 and 1.4.5
  */
 function save_identities($identities) {
 
@@ -70,7 +74,7 @@ function save_identities($identities) {
 
 
     $num_cur = getPref($data_dir, $username, 'identities');
-
+    
     $cnt = count($identities);
 
     // Remove any additional identities in prefs //
@@ -108,7 +112,6 @@ function save_identities($identities) {
  * @param   int         $id             Identity to modify
  * @param   string      $action         Action to perform
  * @return  array
- * @since 1.5.1 and 1.4.5
  */
 function sqfixidentities( $identities, $id, $action ) {
 
@@ -176,9 +179,9 @@ function sqfixidentities( $identities, $id, $action ) {
             // Process actions from plugins and save/update action //
             default:
                 /**
-                 * send action and id information. number of hook arguments
-                 * differs from 1.4.4 or older and 1.5.0. count($args) can
-                 * be used to detect modified hook. Older hook does not
+                 * send action and id information. number of hook arguments 
+                 * differs from 1.4.4 or older and 1.5.0. count($args) can 
+                 * be used to detect modified hook. Older hook does not 
                  * provide information that can be useful for plugins.
                  */
                 do_hook('options_identities_process', $action, $id);
@@ -201,7 +204,6 @@ function sqfixidentities( $identities, $id, $action ) {
  *
  * @param   array   $identity   Identitiy Array
  * @return  boolean
- * @since 1.5.1 and 1.4.5
  */
 function empty_identity($ident) {
     if (empty($ident['full_name']) && empty($ident['email_address']) && empty($ident['signature']) && empty($ident['reply_to'])) {
@@ -210,3 +212,5 @@ function empty_identity($ident) {
         return false;
     }
 }
+
+?>
