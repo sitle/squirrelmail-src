@@ -37,6 +37,9 @@ Version 1.4.9 - CVS
   - Add support for parsing SpamAssassin's X-Spam-Status header (#1589520).
   - Fix in bodystructure parser code related to strings ending with an
     escape character.
+  - Added "attachment */*" hook
+  - Added third parameter $logout_link to logout_error hook that allows
+    plugin control over login page URI displayed on login error page
 
 Version 1.4.8 - 11th August 2006
 --------------------------------

@@ -71,7 +71,10 @@ function logout_error( $errString, $errTitle = '' ) {
         $color[8]  = '#000000';  /* black         Normal text            */
     }
 
-    list($junk, $errString, $errTitle) = do_hook('logout_error', $errString, $errTitle);
+    $logout_link = $base_uri . 'src/login.php';
+
+    list($junk, $errString, $errTitle, $logout_link) 
+        = do_hook('logout_error', $errString, $errTitle, $logout_link);
 
     if ( $errTitle == '' ) {
         $errTitle = $errString;
@@ -99,7 +102,7 @@ function logout_error( $errString, $errTitle = '' ) {
          '<tr><td align="center">' . $errString . '</td></tr>'.
          '<tr><td bgcolor="'.$color[0].'" align="center">'.
          '<font color="'.$color[2].'"><b>'.
-         '<a href="'.$base_uri.'src/login.php" target="'.$frame_top.'">'.
+         '<a href="'.$logout_link.'" target="'.$frame_top.'">'.
          _("Go to the login page") . '</a></b></font></td></tr>'.
          '</table></td></tr></table></center></body></html>';
 }
