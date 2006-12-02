@@ -1,17 +1,17 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# LANGUAGE (xx_XX) SquirrelMail Translation
+# Copyright (c) 1999-2006 The SquirrelMail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-08-08 23:25+0300\n"
+"Project-Id-Version: SquirrelMail VERSION\n"
+"Report-Msgid-Bugs-To: squirrelmail-i18n@lists.sourceforge.net\n"
+"POT-Creation-Date: 2006-12-02 18:21+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: LANGUAGE <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -395,6 +395,7 @@ msgstr ""
 msgid "Download this as a file"
 msgstr ""
 
+#, php-format
 msgid "INBOX"
 msgstr ""
 
@@ -841,6 +842,9 @@ msgstr ""
 msgid "Viewing a text attachment"
 msgstr ""
 
+msgid "View Unsafe Images"
+msgstr ""
+
 msgid ""
 "Could not include PEAR database functions required for the database backend."
 msgstr ""
@@ -859,7 +863,7 @@ msgstr ""
 msgid "Database error: %s"
 msgstr ""
 
-msgid "Addressbook is read-only"
+msgid "Address book is read-only"
 msgstr ""
 
 #, php-format
@@ -868,6 +872,10 @@ msgstr ""
 
 #, php-format
 msgid "User \"%s\" does not exist"
+msgstr ""
+
+#, php-format
+msgid "User '%s' already exist."
 msgstr ""
 
 msgid "Not a file name"
@@ -885,13 +893,19 @@ msgstr ""
 msgid "Unable to update"
 msgstr ""
 
+msgid "Address book is corrupted. Required fields are missing."
+msgstr ""
+
+msgid "Address book entry is too big"
+msgstr ""
+
 msgid "Could not lock datafile"
 msgstr ""
 
-msgid "Write to addressbook failed"
+msgid "Write to address book failed"
 msgstr ""
 
-msgid "Error initializing addressbook database."
+msgid "Error initializing address book database."
 msgstr ""
 
 #, php-format
@@ -901,7 +915,7 @@ msgstr ""
 msgid "Global address book"
 msgstr ""
 
-msgid "Error initializing global addressbook."
+msgid "Error initializing global address book."
 msgstr ""
 
 #, php-format
@@ -1203,6 +1217,10 @@ msgid ""
 "Remove unneccessary messages from your folders. Start with your Trash folder."
 msgstr ""
 
+#, php-format
+msgid "Invalid mailbox name: %s"
+msgstr ""
+
 msgid "(no subject)"
 msgstr ""
 
@@ -1307,9 +1325,6 @@ msgid "FETCH line:"
 msgstr ""
 
 msgid "Hide Unsafe Images"
-msgstr ""
-
-msgid "View Unsafe Images"
 msgstr ""
 
 msgid "Download"
@@ -2958,6 +2973,7 @@ msgid ""
 "inbox for notification."
 msgstr ""
 
+#, php-format
 msgid "Check all boxes, not just INBOX"
 msgstr ""
 
@@ -2967,6 +2983,7 @@ msgid ""
 "unseen mail is in your folders (requires JavaScript)."
 msgstr ""
 
+#, php-format
 msgid "Show popup window on new mail"
 msgstr ""
 
@@ -2978,6 +2995,7 @@ msgid ""
 "sounds or popups for unseen mail."
 msgstr ""
 
+#, php-format
 msgid "Count only messages that are RECENT"
 msgstr ""
 
@@ -2989,6 +3007,7 @@ msgid ""
 "have new mail, even if you have %s enabled."
 msgstr ""
 
+#, php-format
 msgid "Change title on supported browsers"
 msgstr ""
 
@@ -2999,6 +3018,7 @@ msgid ""
 "provided file box."
 msgstr ""
 
+#, php-format
 msgid "Enable Media Playing"
 msgstr ""
 
@@ -3008,6 +3028,7 @@ msgid ""
 "no file is specified, %s, no sound will be used."
 msgstr ""
 
+#, php-format
 msgid "Select server file"
 msgstr ""
 
@@ -3664,42 +3685,55 @@ msgstr ""
 msgid "%s to %s"
 msgstr ""
 
+#, php-format
 msgid "Chinese, Simplified"
 msgstr ""
 
+#, php-format
 msgid "English"
 msgstr ""
 
+#, php-format
 msgid "Chinese, Traditional"
 msgstr ""
 
+#, php-format
 msgid "Dutch"
 msgstr ""
 
+#, php-format
 msgid "French"
 msgstr ""
 
+#, php-format
 msgid "German"
 msgstr ""
 
+#, php-format
 msgid "Greek"
 msgstr ""
 
+#, php-format
 msgid "Italian"
 msgstr ""
 
+#, php-format
 msgid "Japanese"
 msgstr ""
 
+#, php-format
 msgid "Korean"
 msgstr ""
 
+#, php-format
 msgid "Portuguese"
 msgstr ""
 
+#, php-format
 msgid "Russian"
 msgstr ""
 
+#, php-format
 msgid "Spanish"
 msgstr ""
 
@@ -3779,6 +3813,14 @@ msgid "Translation direction"
 msgstr ""
 
 #, php-format
+msgid "Arabic"
+msgstr ""
+
+#, php-format
+msgid "Chinese (Simplified)"
+msgstr ""
+
+#, php-format
 msgid "About SquirrelMail %s"
 msgstr ""
 
@@ -3827,10 +3869,19 @@ msgstr ""
 msgid "none installed"
 msgstr ""
 
+msgid "AddressBook"
+msgstr ""
+
 msgid "Nothing to search"
 msgstr ""
 
+msgid "Your message has been sent."
+msgstr ""
+
 msgid "SquirrelMail Webmail Application"
+msgstr ""
+
+msgid "Add New Identity"
 msgstr ""
 
 msgid "Received"
@@ -3844,19 +3895,13 @@ msgid ""
 "and forwarding messages."
 msgstr ""
 
+msgid "Read Receipt"
+msgstr ""
+
 msgid "View as plain text"
 msgstr ""
 
 msgid "View as HTML"
-msgstr ""
-
-msgid "As Attachment"
-msgstr ""
-
-msgid "Bypass Trash"
-msgstr ""
-
-msgid "Copy"
 msgstr ""
 
 msgid "There must be at least one criteria to search for"
@@ -3880,22 +3925,13 @@ msgstr ""
 msgid "(Spurious argument)"
 msgstr ""
 
-msgid "Fold"
-msgstr ""
-
-msgid "Unfold"
-msgstr ""
-
 msgid "Missing"
 msgstr ""
 
-msgid "and&nbsp;subfolders:"
+msgid "Standard Search"
 msgstr ""
 
-msgid "Exclude Criteria:"
-msgstr ""
-
-msgid "Search Criteria"
+msgid "Advanced search"
 msgstr ""
 
 msgid "Add New Criteria"
@@ -3988,23 +4024,7 @@ msgstr ""
 msgid "Or"
 msgstr ""
 
-msgid "Standard search"
-msgstr ""
-
-msgid "Advanced search"
-msgstr ""
-
-msgid "Address book is read-only"
-msgstr ""
-
-#, php-format
-msgid "User '%s' already exist."
-msgstr ""
-
 msgid "PHP install does not have LDAP support."
-msgstr ""
-
-msgid "Write to address book failed"
 msgstr ""
 
 msgid "Removing entry from address book failed"
@@ -4027,22 +4047,14 @@ msgstr ""
 msgid "Unable to rename user \"%s\" to \"%s\""
 msgstr ""
 
-msgid "Address book is corrupted. Required fields are missing."
-msgstr ""
-
-msgid "Address book entry is too big"
-msgstr ""
-
-msgid "Error initializing address book database."
-msgstr ""
-
-msgid "Error initializing global address book."
-msgstr ""
-
 msgid "Error initializing other address books."
 msgstr ""
 
 msgid "Unknown address book backend"
+msgstr ""
+
+#, php-format
+msgid "%s %s"
 msgstr ""
 
 msgid "Illegal folder name."
@@ -4111,7 +4123,10 @@ msgstr ""
 msgid "Undelete"
 msgstr ""
 
-msgid "Viewing HTML formatted email"
+msgid "Bypass Trash"
+msgstr ""
+
+msgid "Copy"
 msgstr ""
 
 msgid "unavailable"
@@ -4184,7 +4199,10 @@ msgstr ""
 msgid "Strip signature when replying"
 msgstr ""
 
-msgid "Template"
+msgid "Skin"
+msgstr ""
+
+msgid "Icon Theme"
 msgstr ""
 
 msgid "Default font style"
@@ -4197,9 +4215,6 @@ msgid "Font size"
 msgstr ""
 
 msgid "Default font size"
-msgstr ""
-
-msgid "Icon Theme"
 msgstr ""
 
 msgid "Enable Fancy Row Mouseover Highlighting"
@@ -4236,9 +4251,6 @@ msgstr[0] ""
 msgstr[1] ""
 
 msgid "Show only subscribed folders"
-msgstr ""
-
-msgid "Template Default"
 msgstr ""
 
 msgid "XP"
@@ -4349,6 +4361,9 @@ msgid "Default font set"
 msgstr ""
 
 msgid "Default template"
+msgstr ""
+
+msgid "Fallback template"
 msgstr ""
 
 msgid "Show System Specifications"
@@ -4478,6 +4493,7 @@ msgstr ""
 msgid "System crypt library doesn't have Blowfish support."
 msgstr ""
 
+#, php-format
 msgid "unknown"
 msgstr ""
 
@@ -4642,9 +4658,6 @@ msgstr ""
 msgid "%s ms"
 msgstr ""
 
-msgid "Command failed"
-msgstr ""
-
 msgid "No POP3 servers configured yet."
 msgstr ""
 
@@ -4653,6 +4666,12 @@ msgstr ""
 
 #, php-format
 msgid "Fetching from %s"
+msgstr ""
+
+msgid "Can't get mailbox status:"
+msgstr ""
+
+msgid "Fetching list of messages..."
 msgstr ""
 
 #, php-format
@@ -4665,11 +4684,31 @@ msgstr[1] ""
 msgid "Fetching message %s."
 msgstr ""
 
-#, php-format
-msgid "Refetching message %s."
+msgid "Warning:"
 msgstr ""
 
-msgid "Warning:"
+msgid "Authentication type:"
+msgstr ""
+
+msgid "USER"
+msgstr ""
+
+msgid "APOP"
+msgstr ""
+
+msgid "APOP or USER"
+msgstr ""
+
+msgid "Connection type:"
+msgstr ""
+
+msgid "Plain text"
+msgstr ""
+
+msgid "Use TLS"
+msgstr ""
+
+msgid "Use StartTLS"
 msgstr ""
 
 msgid ""
@@ -4745,6 +4784,12 @@ msgstr ""
 msgid "Invalid SquirrelSpell module."
 msgstr ""
 
+msgid "Unknown error"
+msgstr ""
+
+msgid "SquirrelSpell error."
+msgstr ""
+
 #, php-format
 msgid "Found %d error"
 msgid_plural "Found %d errors"
@@ -4787,6 +4832,21 @@ msgstr ""
 msgid "F"
 msgstr ""
 
+msgid "Address book is empty"
+msgstr ""
+
+msgid "Address book search"
+msgstr ""
+
+msgid "Attachment"
+msgstr ""
+
+msgid "Max."
+msgstr ""
+
+msgid "Receipts"
+msgstr ""
+
 msgid "SquirrelMail notice messages"
 msgstr ""
 
@@ -4808,10 +4868,64 @@ msgstr ""
 msgid "Message Flags"
 msgstr ""
 
-msgid "Attachment"
+msgid "Click here to change the sorting of the message list"
 msgstr ""
 
-msgid "Click here to change the sorting of the message list"
+msgid "Add/Edit"
+msgstr ""
+
+msgid "Rule Conditions"
+msgstr ""
+
+msgid "Identifying Name"
+msgstr ""
+
+msgid "To or cc"
+msgstr ""
+
+msgid "Other"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "Requested"
+msgstr ""
+
+msgid "Send Read Receipt Now"
+msgstr ""
+
+msgid "Viewing HTML formatted email"
+msgstr ""
+
+msgid "As Attachment"
+msgstr ""
+
+msgid "Move To"
+msgstr ""
+
+msgid "Delete &amp; Previous"
+msgstr ""
+
+msgid "and subfolders"
+msgstr ""
+
+msgid "Exclude"
+msgstr ""
+
+msgid "Fold"
+msgstr ""
+
+msgid "Unfold"
+msgstr ""
+
+msgid "Forget"
+msgstr ""
+
+msgid "Email"
+msgstr ""
+
+msgid "Additional Info"
 msgstr ""
 
 msgid "Folder List"
