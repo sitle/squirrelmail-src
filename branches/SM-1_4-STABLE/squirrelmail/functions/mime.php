@@ -477,7 +477,11 @@ function formatAttachments($message, $exclude_id, $mailbox, $id) {
         if ($where && $what) {
            $defaultlink .= '&amp;where='. urlencode($where).'&amp;what='.urlencode($what);
         }
-
+        // IE does make use of mime content sniffing. Forcing a download
+        // prohibit execution of XSS inside an application/octet-stream attachment
+        if ($type0 == 'application' && $type1 == 'octet-stream') {
+            $defaultlink .= '&amp;absolute_dl=true';
+        }
         /* This executes the attachment hook with a specific MIME-type.
          * If that doesn't have results, it tries if there's a rule
          * for a more generic type. Finally, a hook for ALL attachment
@@ -855,27 +859,27 @@ function encodeHeader ($string) {
 /**
  * Encodes string according to rfc2047 B encoding header formating rules
  *
- * It is recommended way to encode headers with character sets that store 
+ * It is recommended way to encode headers with character sets that store
  * symbols in more than one byte.
  *
  * Function requires mbstring support. If required mbstring functions are missing,
  * function returns false and sets E_USER_WARNING level error message.
  *
- * Minimal requirements - php 4.0.6 with mbstring extension. Please note, 
- * that mbstring functions will generate E_WARNING errors, if unsupported 
+ * Minimal requirements - php 4.0.6 with mbstring extension. Please note,
+ * that mbstring functions will generate E_WARNING errors, if unsupported
  * character set is used. mb_encode_mimeheader function provided by php
  * mbstring extension is not used in order to get better control of header
  * encoding.
  *
- * Used php code functions - function_exists(), trigger_error(), strlen() 
- * (is used with charset names and base64 strings). Used php mbstring 
+ * Used php code functions - function_exists(), trigger_error(), strlen()
+ * (is used with charset names and base64 strings). Used php mbstring
  * functions - mb_strlen and mb_substr.
  *
- * Related documents: rfc 2045 (BASE64 encoding), rfc 2047 (mime header 
+ * Related documents: rfc 2045 (BASE64 encoding), rfc 2047 (mime header
  * encoding), rfc 2822 (header folding)
  *
  * @param string $string header string that must be encoded
- * @param string $charset character set. Must be supported by mbstring extension. 
+ * @param string $charset character set. Must be supported by mbstring extension.
  * Use sq_mb_list_encodings() to detect supported charsets.
  * @return string string encoded according to rfc2047 B encoding formating rules
  * @since 1.5.1 and 1.4.6
@@ -1571,12 +1575,66 @@ function sq_fixatts($tagname,
 function sq_fixstyle($body, $pos, $message, $id, $mailbox){
     global $view_unsafe_images;
     $me = 'sq_fixstyle';
-    $ret = sq_findnxreg($body, $pos, '</\s*style\s*>');
-    if ($ret == FALSE){
+
+    // workaround for </style> in between comments
+    $iCurrentPos = $pos;
+    $content = '';
+    $sToken = '';
+    $bSucces = false;
+    $bEndTag = false;
+    for ($i=$pos,$iCount=strlen($body);$i<$iCount;++$i) {
+        $char = $body{$i};
+        switch ($char) {
+            case '<':
+                $sToken .= $char;
+                break;
+            case '/':
+                 if ($sToken == '<') {
+                    $sToken .= $char;
+                    $bEndTag = true;
+                 } else {
+                    $content .= $char;
+                 }
+                 break;
+            case '>':
+                 if ($bEndTag) {
+                    $sToken .= $char;
+                    if (preg_match('/\<\/\s*style\s*\>/i',$sToken,$aMatch)) {
+                        $newpos = $i + 1;
+                        $bSucces = true;
+                        break 2;
+                    } else {
+                        $content .= $sToken;
+                    }
+                    $bEndTag = false;
+                 } else {
+                    $content .= $char;
+                 }
+                 break;
+            case '!':
+                if ($sToken == '<') {
+                    // possible comment
+                    if (isset($body{$i+2}) && substr($body,$i,3) == '!--') {
+                        $i = strpos($body,'-->',$i+3);
+                        $sToken = '';
+                    }
+                } else {
+                    $content .= $char;
+                }
+                break;
+            default:
+                if ($bEndTag) {
+                    $sToken .= $char;
+                } else {
+                    $content .= $char;
+                }
+                break;
+        }
+    }
+    if ($bSucces == FALSE){
         return array(FALSE, strlen($body));
     }
-    $newpos = $ret[0] + strlen($ret[2]);
-    $content = $ret[1];
+
     /**
      * First look for general BODY style declaration, which would be
      * like so:
@@ -2195,11 +2253,15 @@ function SendDownloadHeaders($type0, $type1, $filename, $force, $filesize=0) {
 
             // This works for most types, but doesn't work with Word files
             header ("Content-Type: application/download; name=\"$filename\"");
-
+            // This is to prevent IE for MIME sniffing and auto open a file in IE
+            header ("Content-Type: application/force-download; name=\"$filename\"");
             // These are spares, just in case.  :-)
             //header("Content-Type: $type0/$type1; name=\"$filename\"");
             //header("Content-Type: application/x-msdownload; name=\"$filename\"");
             //header("Content-Type: application/octet-stream; name=\"$filename\"");
+        } else if ($isIE) {
+             // This is to prevent IE for MIME sniffing and auto open a file in IE
+             header ("Content-Type: application/force-download; name=\"$filename\"");
         } else {
             // another application/octet-stream forces download for Netscape
             header ("Content-Type: application/octet-stream; name=\"$filename\"");

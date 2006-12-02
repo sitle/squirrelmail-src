@@ -113,10 +113,10 @@ $password_form_name = 'secretkey';
 do_hook('login_top');
 
 
-if(sqgetGlobalVar('mailto', $mailto)) {
-    $rcptaddress = addHidden('mailto', $mailto);
+if(sqgetGlobalVar('mailtodata', $mailtodata)) {
+    $mailtofield = addHidden('mailtodata', $mailtodata);
 } else {
-    $rcptaddress = '';
+    $mailtofield = '';
 }
 
 /* If they don't have a logo, don't bother.. */
@@ -169,7 +169,7 @@ echo html_tag( 'table',
                                 html_tag( 'td',
 				    addPwField($password_form_name).
 				    addHidden('js_autodetect_results', SMPREF_JS_OFF).
-                    $rcptaddress . 
+                    $mailtofield . 
 				    addHidden('just_logged_in', '1'),
                                 'left', '', 'width="*"' )
                             ) ,
