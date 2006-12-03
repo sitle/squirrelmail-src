@@ -1,15 +1,15 @@
 <?php
-
 /**
  * init.mod
- *
+ * ---------
  * Squirrelspell module
+ *
+ * Copyright (c) 1999-2006 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * Initial loading of the popup window interface.
  *
- * @author Konstantin Riabitsev <icon at duke.edu>
- * @copyright &copy; 1999-2006 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @author Konstantin Riabitsev <icon@duke.edu>
  * @version $Id$
  * @package plugins
  * @subpackage squirrelspell
@@ -19,7 +19,7 @@
  * See if we need to give user the option of choosing which dictionary
  * s/he wants to use to spellcheck his message.
  */
-$langs=sqspell_getSettings();
+$langs=sqspell_getSettings(null);
 $msg = '<form method="post">'
   . '<input type="hidden" name="MOD" value="check_me" />'
   . '<input type="hidden" name="sqspell_text" />'
@@ -63,3 +63,5 @@ sqspell_makeWindow($onload, _("SquirrelSpell Initiating"), "init.js", $msg);
  * End:
  * vim: syntax=php
  */
+
+?>

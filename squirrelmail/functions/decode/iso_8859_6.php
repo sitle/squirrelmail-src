@@ -108,3 +108,4 @@ function charset_decode_iso_8859_6 ($string) {
 
     return $string;
 }
+?>

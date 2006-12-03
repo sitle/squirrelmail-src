@@ -88,8 +88,7 @@ class Rfc822Header {
      */
     var $mime = false;
     /**
-     * Content Type object
-     * @var object
+     * @var mixed
      */
     var $content_type = '';
     /**
@@ -107,27 +106,13 @@ class Rfc822Header {
      */
     var $priority = 3;
     /**
-     * Disposition notification for requesting message delivery notification (MDN)
      * @var mixed
      */
     var $dnt = '';
     /**
-     * Delivery notification (DR)
-     * @var mixed
-     */
-    var $drnt = '';
-    /**
      * @var mixed
      */
     var $encoding = '';
-    /**
-     * @var mixed
-     */
-    var $content_id = '';
-    /**
-     * @var mixed
-     */
-    var $content_desc = '';
     /**
      * @var mixed
      */
@@ -191,9 +176,7 @@ class Rfc822Header {
                         }
                         $result .= $value{$i};
                     }
-                    if($i < $cnt) {
-                        $result .= $value{$i};
-                    }
+                    $result .= $value{$i};
                     break;
                 case '(':
                     $depth = 1;
@@ -271,13 +254,10 @@ class Rfc822Header {
                 $this->references = $value;
                 break;
             case 'x-confirm-reading-to':
+            case 'return-receipt-to':
             case 'disposition-notification-to':
                 $value = $this->stripComments($value);
                 $this->dnt = $this->parseAddress($value);
-                break;
-            case 'return-receipt-to':
-                $value = $this->stripComments($value);
-                $this->drnt = $this->parseAddress($value);
                 break;
             case 'mime-version':
                 $value = $this->stripComments($value);
@@ -291,16 +271,6 @@ class Rfc822Header {
             case 'content-disposition':
                 $value = $this->stripComments($value);
                 $this->parseDisposition($value);
-                break;
-            case 'content-transfer-encoding':
-                $this->encoding = $value;
-                break;
-            case 'content-description':
-                $this->content_desc = $value;
-                break;
-            case 'content-id':
-                $value = $this->stripComments($value);
-                $this->content_id = $value;
                 break;
             case 'user-agent':
             case 'x-mailer':
@@ -357,6 +327,7 @@ class Rfc822Header {
      */
     function getAddressTokens($address) {
         $aTokens = array();
+        $aAddress = array();
         $aSpecials = array('(' ,'<' ,',' ,';' ,':');
         $aReplace =  array(' (',' <',' ,',' ;',' :');
         $address = str_replace($aSpecials,$aReplace,$address);
@@ -542,7 +513,7 @@ class Rfc822Header {
      */
     function parseAddress($address,$ar=false,$aAddress=array(),$sGroup='',$sHost='',$lookup=false) {
         $aTokens = $this->getAddressTokens($address);
-        $sPersonal = $sEmail = $sGroup = '';
+        $sPersonal = $sEmail = $sComment = $sGroup = '';
         $aStack = $aComment = array();
         foreach ($aTokens as $sToken) {
             $cChar = $sToken{0};
@@ -939,6 +910,7 @@ class Rfc822Header {
             $i=0;
             foreach($address as $argument) {
                 $match = $this->findAddress($argument, true);
+                $last = end($match);
                 if ($match[1]) {
                     return $i;
                 } else {
@@ -1004,3 +976,5 @@ class Rfc822Header {
         return $this->content_type->properties;
     }
 }
+
+?>

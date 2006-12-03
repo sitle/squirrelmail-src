@@ -9,24 +9,21 @@
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
- * @todo document attachment $type hook arguments
  */
-
-$attachment_common_show_images_list = array();
 
 /**
- * Mapping of file extensions to mime types
- *
- * Used for application/octet-stream mime type detection.
- * Supported extensions: bmp, gif, htm, html, jpg, jpeg, php,
- * png, rtf, txt, patch (since 1.4.2), vcf
- * @global array $FileExtensionToMimeType
+ * FIXME Needs phpDocumentator style documentation
  */
+require_once(SM_PATH . 'functions/global.php');
+
+global $attachment_common_show_images_list;
+$attachment_common_show_images_list = array();
+
+global $FileExtensionToMimeType, $attachment_common_types;
 $FileExtensionToMimeType = array('bmp'  => 'image/x-bitmap',
                                  'gif'  => 'image/gif',
                                  'htm'  => 'text/html',
                                  'html' => 'text/html',
-                                 'jpe'  => 'image/jpeg',
                                  'jpg'  => 'image/jpeg',
                                  'jpeg' => 'image/jpeg',
                                  'php'  => 'text/plain',
@@ -38,7 +35,6 @@ $FileExtensionToMimeType = array('bmp'  => 'image/x-bitmap',
 
 /* Register browser-supported image types */
 sqgetGlobalVar('attachment_common_types', $attachment_common_types);
-// FIXME: do we use $attachment_common_types that is not extracted by sqgetGlobalVar() ?
 if (isset($attachment_common_types)) {
     // var is used to detect activation of jpeg image types
     unset($jpeg_done);
@@ -47,10 +43,9 @@ if (isset($attachment_common_types)) {
     foreach ($attachment_common_types as $val => $v) {
         if ($val == 'image/gif')
             register_attachment_common('image/gif',       'link_image');
-        elseif (($val == 'image/jpeg' || $val == 'image/pjpeg' || $val == 'image/jpg') and
+        elseif (($val == 'image/jpeg' || $val == 'image/pjpeg') and
                 (!isset($jpeg_done))) {
             $jpeg_done = 1;
-            register_attachment_common('image/jpg',       'link_image');
             register_attachment_common('image/jpeg',      'link_image');
             register_attachment_common('image/pjpeg',     'link_image');
         }
@@ -60,22 +55,17 @@ if (isset($attachment_common_types)) {
             register_attachment_common('image/x-xbitmap', 'link_image');
         elseif ($val == '*/*' || $val == 'image/*') {
             /**
-             * browser (Firefox) declared that anything is acceptable.
+             * browser (Firefox) declared that anything is acceptable. 
              * Lets register some common image types.
              */
             if (! isset($jpeg_done)) {
                 $jpeg_done = 1;
-                register_attachment_common('image/jpg',   'link_image');
                 register_attachment_common('image/jpeg',  'link_image');
                 register_attachment_common('image/pjpeg', 'link_image');
             }
             register_attachment_common('image/gif',       'link_image');
             register_attachment_common('image/png',       'link_image');
             register_attachment_common('image/x-xbitmap', 'link_image');
-            // register_attachment_common('image/x-ico',     'link_image');
-            // register_attachment_common('image/x-icon',    'link_image');
-            // register_attachment_common('image/bmp',       'link_image');
-            // register_attachment_common('image/x-ms-bmp',  'link_image');
         }
     }
     unset($jpeg_done);
@@ -88,6 +78,7 @@ register_attachment_common('text/richtext',  'link_text');
 
 /* Register HTML */
 register_attachment_common('text/html',      'link_html');
+
 
 /* Register vcards */
 register_attachment_common('text/x-vcard',   'link_vcard');
@@ -102,26 +93,16 @@ register_attachment_common('message/*',  'link_text');
 register_attachment_common('application/octet-stream', 'octet_stream');
 
 
-/**
- * Function which optimizes readability of the above code
- * Registers 'attachment $type' hooks.
- * @param string $type attachment type
- * @param string $func suffix of attachment_common_* function, which handles $type attachments.
- * @since 1.2.0
- */
+/* Function which optimizes readability of the above code */
+
 function register_attachment_common($type, $func) {
     global $squirrelmail_plugin_hooks;
     $squirrelmail_plugin_hooks['attachment ' . $type]['attachment_common'] =
                       'attachment_common_' . $func;
 }
 
-/**
- * Adds href and text keys to attachment_common array for text attachments
- * @param array $Args attachment $type hook arguments
- * @since 1.2.0
- */
+
 function attachment_common_link_text(&$Args) {
-    global $base_uri;
     /* If there is a text attachment, we would like to create a "View" button
        that links to the text attachment viewer.
 
@@ -134,8 +115,7 @@ function attachment_common_link_text(&$Args) {
        $Args[1]['attachment_common']['href'] = Where it links to */
     sqgetGlobalVar('QUERY_STRING', $QUERY_STRING, SQ_SERVER);
 
-    // if htmlspecialchars() breaks something - find other way to encode & in url.
-    $Args[1]['attachment_common']['href'] = $base_uri  . 'src/view_text.php?'. htmlspecialchars($QUERY_STRING);
+    $Args[1]['attachment_common']['href'] = SM_PATH . 'src/view_text.php?'. $QUERY_STRING;
     $Args[1]['attachment_common']['href'] =
           set_url_var($Args[1]['attachment_common']['href'],
           'ent_id',$Args[5]);
@@ -154,14 +134,8 @@ function attachment_common_link_text(&$Args) {
     $Args[6] = $Args[1]['attachment_common']['href'];
 }
 
-/**
- * Adds href and text keys to attachment_common array for rfc822 attachments
- * @param array $Args attachment $type hook arguments
- * @since 1.2.6
- */
 function attachment_common_link_message(&$Args) {
-    global $base_uri;
-    $Args[1]['attachment_common']['href'] = $base_uri  . 'src/read_body.php?startMessage=' .
+    $Args[1]['attachment_common']['href'] = SM_PATH . 'src/read_body.php?startMessage=' .
         $Args[2] . '&amp;passed_id=' . $Args[3] . '&amp;mailbox=' . $Args[4] .
         '&amp;passed_ent_id=' . $Args[5] . '&amp;override_type0=message&amp;override_type1=rfc822';
 
@@ -170,18 +144,12 @@ function attachment_common_link_message(&$Args) {
     $Args[6] = $Args[1]['attachment_common']['href'];
 }
 
-/**
- * Adds href and text keys to attachment_common array for html attachments
- * @param array $Args attachment $type hook arguments
- * @since 1.2.0
- */
+
 function attachment_common_link_html(&$Args) {
-    global $base_uri;
     sqgetGlobalVar('QUERY_STRING', $QUERY_STRING, SQ_SERVER);
 
-    $Args[1]['attachment_common']['href'] = $base_uri  . 'src/view_text.php?'. htmlspecialchars($QUERY_STRING).
-        /* why use the overridetype? can this be removed */
-        /* override_type might be needed only when we want view other type of messages as html */
+    $Args[1]['attachment_common']['href'] = SM_PATH . 'src/view_text.php?'. $QUERY_STRING.
+       /* why use the overridetype? can this be removed */
        '&amp;override_type0=text&amp;override_type1=html';
     $Args[1]['attachment_common']['href'] =
           set_url_var($Args[1]['attachment_common']['href'],
@@ -192,25 +160,18 @@ function attachment_common_link_html(&$Args) {
     $Args[6] = $Args[1]['attachment_common']['href'];
 }
 
-/**
- * Adds href and text keys to attachment_common array for image attachments
- * @param array $Args attachment $type hook arguments
- * @since 1.2.0
- */
 function attachment_common_link_image(&$Args) {
-    global $attachment_common_show_images_list, $base_uri ;
+    global $attachment_common_show_images, $attachment_common_show_images_list;
 
     sqgetGlobalVar('QUERY_STRING', $QUERY_STRING, SQ_SERVER);
 
     $info['passed_id'] = $Args[3];
     $info['mailbox'] = $Args[4];
     $info['ent_id'] = $Args[5];
-    $info['name'] = $Args[7];
-    $info['download_href'] = isset($Args[1]['download link']) ? $Args[1]['download link']['href'] : '';
-    
+
     $attachment_common_show_images_list[] = $info;
 
-    $Args[1]['attachment_common']['href'] = $base_uri  . 'src/image.php?'. htmlspecialchars($QUERY_STRING);
+    $Args[1]['attachment_common']['href'] = SM_PATH . 'src/image.php?'. $QUERY_STRING;
     $Args[1]['attachment_common']['href'] =
           set_url_var($Args[1]['attachment_common']['href'],
           'ent_id',$Args[5]);
@@ -220,16 +181,11 @@ function attachment_common_link_image(&$Args) {
     $Args[6] = $Args[1]['attachment_common']['href'];
 }
 
-/**
- * Adds href and text keys to attachment_common array for vcard attachments
- * @param array $Args attachment $type hook arguments
- * @since 1.2.0
- */
+
 function attachment_common_link_vcard(&$Args) {
-    global $base_uri;
     sqgetGlobalVar('QUERY_STRING', $QUERY_STRING, SQ_SERVER);
 
-    $Args[1]['attachment_common']['href'] = $base_uri  . 'src/vcard.php?'. htmlspecialchars($QUERY_STRING);
+    $Args[1]['attachment_common']['href'] = SM_PATH . 'src/vcard.php?'. $QUERY_STRING;
     $Args[1]['attachment_common']['href'] =
           set_url_var($Args[1]['attachment_common']['href'],
           'ent_id',$Args[5]);
@@ -239,12 +195,7 @@ function attachment_common_link_vcard(&$Args) {
     $Args[6] = $Args[1]['attachment_common']['href'];
 }
 
-/**
- * Processes octet-stream attachments.
- * Calls attachment_common-load_mime_types and attachment $type hooks.
- * @param array $Args attachment $type hook arguments
- * @since 1.2.0
- */
+
 function attachment_common_octet_stream(&$Args) {
     global $FileExtensionToMimeType;
 
@@ -265,3 +216,5 @@ function attachment_common_octet_stream(&$Args) {
         $Args[$a] = $b;
     }
 }
+
+?>

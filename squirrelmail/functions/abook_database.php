@@ -3,17 +3,6 @@
 /**
  * abook_database.php
  *
- * Supported database schema
- * <pre>
- *  owner varchar(128) NOT NULL
- *  nickname varchar(16) NOT NULL
- *  firstname varchar(128) 
- *  lastname varchar(128)
- *  email varchar(128) NOT NULL
- *  label varchar(255)
- *  PRIMARY KEY (owner,nickname)
- * </pre>
- *
  * @copyright &copy; 1999-2006 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
@@ -21,11 +10,17 @@
  * @subpackage addressbook
  */
 
-/**
- * Needs the DB functions
- * Don't display errors here. Error will be set in class constructor function.
- */
-@include_once('DB.php');
+/** Needs the DB functions */
+if (!include_once('DB.php')) {
+    // same error also in db_prefs.php
+    require_once(SM_PATH . 'functions/display_messages.php');
+    $error  = _("Could not include PEAR database functions required for the database backend.") . "<br />\n";
+    $error .= sprintf(_("Is PEAR installed, and is the include path set correctly to find %s?"),
+                        '<tt>DB.php</tt>') . "<br />\n";
+    $error .= _("Please contact your system administrator and report this error.");
+    error_box($error, $color);
+    exit;
+}
 
 /**
  * Address book in a database backend
@@ -109,16 +104,6 @@ class abook_database extends addressbook_backend {
     function abook_database($param) {
         $this->sname = _("Personal address book");
 
-        /* test if Pear DB class is available and freak out if it is not */
-        if (! class_exists('DB')) {
-            // same error also in db_prefs.php
-            $error  = _("Could not include PEAR database functions required for the database backend.") . "\n";
-            $error .= sprintf(_("Is PEAR installed, and is the include path set correctly to find %s?"),
-                              'DB.php') . "\n";
-            $error .= _("Please contact your system administrator and report this error.");
-            return $this->set_error($error);
-        }
-
         if (is_array($param)) {
             if (empty($param['dsn']) ||
                 empty($param['table']) ||
@@ -198,11 +183,8 @@ class abook_database extends addressbook_backend {
 
     /**
      * Search the database
-     *
-     * Backend supports only * and ? wildcards. Complex eregs are not supported.
-     * Search is case insensitive.
      * @param string $expr search expression
-     * @return array search results. boolean false on error
+     * @return array search results
      */
     function search($expr) {
         $ret = array();
@@ -216,8 +198,9 @@ class abook_database extends addressbook_backend {
         }
 
         // don't allow wide search when listing is disabled.
-        if ($expr=='*' && ! $this->listing)
+        if ($expr=='*' && ! $this->listing) {
             return array();
+        }
 
         /* lowercase expression in order to make it case insensitive */
         $expr = strtolower($expr);
@@ -234,11 +217,10 @@ class abook_database extends addressbook_backend {
 
         /* create escape expression */
         $escape = 'ESCAPE \'' . $this->dbh->quoteString('\\') . '\'';
-    
+
         $query = sprintf("SELECT * FROM %s WHERE owner='%s' AND " .
                          "(LOWER(firstname) LIKE '%s' %s OR LOWER(lastname) LIKE '%s' %s)",
                          $this->table, $this->owner, $expr, $escape, $expr, $escape);
-
         $res = $this->dbh->query($query);
 
         if (DB::isError($res)) {
@@ -248,7 +230,7 @@ class abook_database extends addressbook_backend {
 
         while ($row = $res->fetchRow(DB_FETCHMODE_ASSOC)) {
             array_push($ret, array('nickname'  => $row['nickname'],
-                                   'name'      => $this->fullname($row['firstname'], $row['lastname']),
+                                   'name'      => "$row[firstname] $row[lastname]",
                                    'firstname' => $row['firstname'],
                                    'lastname'  => $row['lastname'],
                                    'email'     => $row['email'],
@@ -287,7 +269,7 @@ class abook_database extends addressbook_backend {
 
         if ($row = $res->fetchRow(DB_FETCHMODE_ASSOC)) {
             return array('nickname'  => $row['nickname'],
-                         'name'      => $this->fullname($row['firstname'], $row['lastname']),
+                         'name'      => "$row[firstname] $row[lastname]",
                          'firstname' => $row['firstname'],
                          'lastname'  => $row['lastname'],
                          'email'     => $row['email'],
@@ -325,7 +307,7 @@ class abook_database extends addressbook_backend {
 
         while ($row = $res->fetchRow(DB_FETCHMODE_ASSOC)) {
             array_push($ret, array('nickname'  => $row['nickname'],
-                                   'name'      => $this->fullname($row['firstname'], $row['lastname']),
+                                   'name'      => "$row[firstname] $row[lastname]",
                                    'firstname' => $row['firstname'],
                                    'lastname'  => $row['lastname'],
                                    'email'     => $row['email'],
@@ -353,7 +335,7 @@ class abook_database extends addressbook_backend {
         /* See if user exist already */
         $ret = $this->lookup($userdata['nickname']);
         if (!empty($ret)) {
-            return $this->set_error(sprintf(_("User \"%s\" already exists"),$ret['nickname']));
+            return $this->set_error(sprintf(_("User \"%s\" already exists"), $ret['nickname']));
         }
 
         /* Create query */
@@ -369,19 +351,19 @@ class abook_database extends addressbook_backend {
 
          /* Do the insert */
          $r = $this->dbh->simpleQuery($query);
- 
+
          /* Check for errors */
          if (DB::isError($r)) {
              return $this->set_error(sprintf(_("Database error: %s"),
                                              DB::errorMessage($r)));
          }
+
          return true;
     }
 
     /**
-     * Deletes address book entries
-     * @param array $alias aliases that have to be deleted. numerical 
-     *  array with nickname values
+     * Delete address
+     * @param string $alias alias that has to be deleted
      * @return bool
      */
     function remove($alias) {
@@ -434,7 +416,7 @@ class abook_database extends addressbook_backend {
          /* See if user exist */
         $ret = $this->lookup($alias);
         if (empty($ret)) {
-            return $this->set_error(sprintf(_("User \"%s\" does not exist"),$alias));
+            return $this->set_error(sprintf(_("User \"%s\" does not exist"), $alias));
         }
 
         /* make sure that new nickname is not used */

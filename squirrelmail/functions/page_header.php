@@ -12,110 +12,47 @@
  */
 
 /** Include required files from SM */
-include_once(SM_PATH . 'functions/imap_mailbox.php');
+require_once(SM_PATH . 'functions/strings.php');
+require_once(SM_PATH . 'functions/html.php');
+require_once(SM_PATH . 'functions/imap_mailbox.php');
+require_once(SM_PATH . 'functions/global.php');
 
-/**
- * Output a SquirrelMail page header, from <!doctype> to </head>
- * Always set up the language before calling these functions.
- *
- * Since 1.5.1 function sends http headers. Function should be called
- * before any output is started.
- * @param string title the page title, default SquirrelMail.
- * @param string xtra extra HTML to insert into the header
- * @param bool do_hook whether to execute hooks, default true
- * @param bool frames generate html frameset doctype (since 1.5.1)
- * @return void
- */
-function displayHtmlHeader( $title = 'SquirrelMail', $xtra = '', $do_hook = TRUE, $frames = FALSE ) {
-    global $squirrelmail_language, $sTemplateID, $oErrorHandler, $oTemplate;
+/* Always set up the language before calling these functions */
+function displayHtmlHeader( $title = 'SquirrelMail', $xtra = '', $do_hook = TRUE ) {
+    global $squirrelmail_language;
 
     if ( !sqgetGlobalVar('base_uri', $base_uri, SQ_SESSION) ) {
         global $base_uri;
     }
-    global $custom_css, $pageheader_sent, $theme, $theme_default, $text_direction,
-        $default_fontset, $chosen_fontset, $default_fontsize, $chosen_fontsize, 
-        $chosen_theme, $chosen_theme_path, $user_themes, $user_theme_default;
+    global $theme_css, $custom_css, $pageheader_sent;
 
-    /* add no cache headers here */
-//FIXME: should change all header() calls in SM core to use $oTemplate->header()!!
-    $oTemplate->header('Pragma: no-cache'); // http 1.0 (rfc1945)
-    $oTemplate->header('Cache-Control: private, no-cache, no-store'); // http 1.1 (rfc2616)
+    echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">' .
+         "\n\n" . html_tag( 'html' ,'' , '', '', '' ) . "\n<head>\n" .
+         "<meta name=\"robots\" content=\"noindex,nofollow\">\n";
 
-    $oTemplate->assign('frames', $frames);
-    $oTemplate->assign('lang', $squirrelmail_language);
-
-    $header_tags = '';
-
-    $header_tags .= "<meta name=\"robots\" content=\"noindex,nofollow\">\n";
-
-    $used_fontset = (!empty($chosen_fontset) ? $chosen_fontset : $default_fontset);
-    $used_fontsize = (!empty($chosen_fontsize) ? $chosen_fontsize : $default_fontsize);
-    $used_theme = !isset($chosen_theme) && $user_theme_default != 'none' && is_dir($chosen_theme) && is_readable($chosen_theme)?  $user_themes[$user_theme_default]['PATH'].'/default.css' : $chosen_theme_path;
-    
-    /**
-     * Stylesheets are loaded in the following order:
-     *    1) All stylesheets provided by the template.  Normally, these are
-     *       stylsheets in templates/<template>/css/.  This is accomplished by calling
-     *       $oTemplate->fetch_standard_stylesheet_links().
-     *    2) An optional user-defined stylesheet.  This is set in the Display
-     *       Preferences.
-     *    3) src/style.php which sets some basic font prefs.
-     *    4) If we are dealing with an RTL language, we load rtl.css from the
-     *       template set.
-     */
-
-    // 1. Stylesheets from the template.
-    $header_tags .= $oTemplate->fetch_standard_stylesheet_links();
-
-    $aUserStyles = array();
-
-    // 2. Option user-defined stylesheet from preferences.
-    if (!empty($used_theme)) {
-        /**
-         * All styles just point to a directory, so we need to include all .css
-         * files in that directory. 
-         */
-        $styles = list_files($used_theme, '.css');
-        foreach ($styles as $sheet) { 
-            $aUserStyles[] = $used_theme .'/'.$sheet;
+    if ( !isset( $custom_css ) || $custom_css == 'none' ) {
+        if ($theme_css != '') {
+            echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"$theme_css\" />";
         }
-    }
-
-    // 3. src/style.php
-    $aUserStyles[] = $base_uri .'src/style.php?'
-                   . (!empty($used_fontset) ? '&amp;fontset='.$used_fontset : '')
-                   . (!empty($used_fontsize) ? '&amp;fontsize='.$used_fontsize : '');
-
-    // 3.1.  Load the stylesheets we have already  
-    $header_tags .= $oTemplate->fetch_external_stylesheet_links($aUserStyles);
-
-    // 4. Optional rtl.css stylesheet
-    if ($text_direction == 'rtl') {
-        $header_tags .= $oTemplate->fetch_right_to_left_stylesheet_link();
+    } else {
+        echo '<link rel="stylesheet" type="text/css" href="' .
+             $base_uri . 'themes/css/'.$custom_css.'" />';
     }
 
     if ($squirrelmail_language == 'ja_JP') {
-        /*
-         * force correct detection of charset, when browser does not follow
-         * http content-type and tries to detect charset from page content.
-         * Shooting of browser's creator can't be implemented in php.
-         * We might get rid of it, if we follow http://www.w3.org/TR/japanese-xml/
-         * recommendations and switch to unicode.
-         */
-        $header_tags .= "<!-- \xfd\xfe -->\n";
-        $header_tags .= '<meta http-equiv="Content-type" content="text/html; charset=euc-jp">' . "\n";
+        // Why is it added here? Header ('Content-Type:..) is used in i18n.php
+        echo "<!-- \xfd\xfe -->\n";
+        echo '<meta http-equiv="Content-type" content="text/html; charset=euc-jp" />' . "\n";
     }
+
     if ($do_hook) {
-        // NOTE! plugins here must assign output to template 
-        //       and NOT echo anything directly!!
         do_hook('generic_header');
     }
 
-    $header_tags .= $xtra;
-    $oTemplate->assign('page_title', $title);
+    echo "\n<title>$title</title>$xtra\n";
 
     /* work around IE6's scrollbar bug */
-    $header_tags .= <<<EOS
+    echo <<<ECHO
 <!--[if IE 6]>
 <style type="text/css">
 /* avoid stupid IE6 bug with frames and scrollbars */
@@ -125,196 +62,321 @@ body {
 </style>
 <![endif]-->
 
-EOS;
+ECHO;
 
-    $oTemplate->assign('header_tags', $header_tags);
-    $oTemplate->display('protocol_header.tpl');
+    echo "\n</head>\n\n";
 
     /* this is used to check elsewhere whether we should call this function */
     $pageheader_sent = TRUE;
-    if (isset($oErrorHandler)) {
-        $oErrorHandler->HeaderSent();
-    }
-
 }
 
-/**
- * Given a path to a SquirrelMail file, return a HTML link to it
- *
- * @param string path the SquirrelMail file to link to
- * @param string text the link text
- * @param string target the target frame for this link
- */
 function makeInternalLink($path, $text, $target='') {
-    global $base_uri;
-//    sqgetGlobalVar('base_uri', $base_uri, SQ_SESSION);
+    sqgetGlobalVar('base_uri', $base_uri, SQ_SESSION);
     if ($target != '') {
         $target = " target=\"$target\"";
     }
-
-    // This is an inefficient hook and is only used by
-    // one plugin that still needs to patch this code,
-    // plus if we are templat-izing SM, visual hooks
-    // are not needed.  However, I am leaving the code
-    // here just in case we find a good (non-visual?)
-    // use for the internal_link hook.
-    //
-    //$hooktext = do_hook_function('internal_link',$text);
-    //if ($hooktext != '')
-    //    $text = $hooktext;
-
     return '<a href="'.$base_uri.$path.'"'.$target.'>'.$text.'</a>';
 }
 
-/**
- * Same as makeInternalLink, but echoes it too
- */
 function displayInternalLink($path, $text, $target='') {
-// FIXME: should let the template echo all these kinds of things
     echo makeInternalLink($path, $text, $target);
 }
 
-/**
- * Outputs a complete SquirrelMail page header, starting with <!doctype> and
- * including the default menu bar. Uses displayHtmlHeader and takes
- * JavaScript and locale settings into account.
- *
- * @param array color the array of theme colors
- * @param string mailbox the current mailbox name to display
- * @param string sHeaderJs javascipt code to be inserted in a script block in the header
- * @param string sBodyTagJs js events to be inserted in the body tag
- * @return void
- */
+function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
 
-function displayPageHeader($color, $mailbox, $sHeaderJs='', $sBodyTagJs = '') {
+    global $hide_sm_attributions, $PHP_SELF, $frame_top,
+           $compose_new_win, $compose_width, $compose_height,
+           $attachemessages, $provider_name, $provider_uri,
+           $javascript_on, $default_use_mdn, $mdn_user_support,
+           $startMessage;
 
-    global $reply_focus, $hide_sm_attributions, $frame_top,
-        $provider_name, $provider_uri, $startMessage,
-        $javascript_on, $action, $oTemplate;
-
-    if (empty($sBodyTagJs)) {
-        if (strpos($action, 'reply') !== FALSE && $reply_focus) {
-        if ($reply_focus == 'select')
-            $sBodyTagJs = 'onload="checkForm(\'select\');"';
-        else if ($reply_focus == 'focus')
-            $sBodyTagJs = 'onload="checkForm(\'focus\');"';
-        else if ($reply_focus != 'none')
-            $sBodyTagJs = 'onload="checkForm();"';
-        }
-        else
-        $sBodyTagJs = 'onload="checkForm();"';
-    }
-
-    $urlMailbox = urlencode($mailbox);
-    $startMessage = (int)$startMessage;
-
+    sqgetGlobalVar('base_uri', $base_uri, SQ_SESSION );
     sqgetGlobalVar('delimiter', $delimiter, SQ_SESSION );
-
+    $module = substr( $PHP_SELF, ( strlen( $PHP_SELF ) - strlen( $base_uri ) ) * -1 );
+    if ($qmark = strpos($module, '?')) {
+        $module = substr($module, 0, $qmark);
+    }
     if (!isset($frame_top)) {
         $frame_top = '_top';
     }
 
-    if( $javascript_on || strpos($sHeaderJs, 'new_js_autodetect_results.value') ) {
-        $js_includes = $oTemplate->get_javascript_includes(TRUE);
-        $sJsBlock = '';
-        foreach ($js_includes as $js_file) {
-            $sJsBlock .= '<script src="'.$js_file.'" type="text/javascript"></script>' ."\n";
-        }
-        if ($sHeaderJs) {
-            $sJsBlock .= "\n<script type=\"text/javascript\">" .
-                        "\n<!--\n" .
-                        $sHeaderJs . "\n\n// -->\n</script>\n";
-        }
-        displayHtmlHeader ('SquirrelMail', $sJsBlock);
+    if ($session) {
+        $compose_uri = $base_uri.'src/compose.php?mailbox='.urlencode($mailbox).'&amp;attachedmessages=true&amp;session='."$session";
     } else {
-        /* do not use JavaScript */
-        displayHtmlHeader ('SquirrelMail');
-        $sBodyTagJs = '';
+        $compose_uri = $base_uri.'src/compose.php?newmessage=1';
+        $session = 0;
     }
-    /*
-     * this explains the imap_mailbox.php dependency. We should instead store
-     * the selected mailbox in the session and fallback to the session var.
-     */
+
+    // only output JavaScript if actually turned on
+    if($javascript_on || strpos($xtra, 'new_js_autodetect_results.value') ) {
+        switch ( $module ) {
+        case 'src/read_body.php':
+            $js ='';
+
+            // compose in new window code
+            if ($compose_new_win == '1') {
+                if (!preg_match("/^[0-9]{3,4}$/", $compose_width)) {
+                    $compose_width = '640';
+                }
+                if (!preg_match("/^[0-9]{3,4}$/", $compose_height)) {
+                    $compose_height = '550';
+                }
+                $js .= "function comp_in_new(comp_uri) {\n".
+                     "       if (!comp_uri) {\n".
+                     '           comp_uri = "'.$compose_uri."\";\n".
+                     '       }'. "\n".
+                     '    var newwin = window.open(comp_uri' .
+                     ', "_blank",'.
+                     '"width='.$compose_width. ',height='.$compose_height.
+                     ',scrollbars=yes,resizable=yes,status=yes");'."\n".
+                     "}\n\n";
+            }
+
+            // javascript for sending read receipts
+            if($default_use_mdn && $mdn_user_support) {
+                $js .= "function sendMDN() {\n".
+                         "    mdnuri=window.location+'&sendreceipt=1';\n" .
+                         "    if (window.top != window.self) {\n" .
+                         "      var newwin = window.open(mdnuri,'right');\n" .
+                         "    } else {\n " .
+                         "      var newwin = window.location = mdnuri;\n" .
+                         "    }\n" .
+                       "\n}\n\n";
+            }
+
+            // if any of the above passes, add the JS tags too.
+            if($js) {
+                $js = "\n".'<script language="JavaScript" type="text/javascript">' .
+                      "\n<!--\n" . $js . "// -->\n</script>\n";
+            }
+
+            displayHtmlHeader ('SquirrelMail', $js);
+            $onload = $xtra;
+          break;
+        case 'src/compose.php':
+            $js = '<script language="JavaScript" type="text/javascript">' .
+             "\n<!--\n" .
+             "var alreadyFocused = false;\n" .
+             "function checkForm() {\n" .
+             "\n    if (alreadyFocused) return;\n";
+
+            global $action, $reply_focus;
+            if (strpos($action, 'reply') !== FALSE && $reply_focus)
+            {
+                if ($reply_focus == 'select') $js .= "document.forms['compose'].body.select();}\n";
+                else if ($reply_focus == 'focus') $js .= "document.forms['compose'].body.focus();}\n";
+                else if ($reply_focus == 'none') $js .= "}\n";
+            }
+            // no reply focus also applies to composing new messages
+            else if ($reply_focus == 'none')
+            {
+                $js .= "}\n";
+            }
+            else
+                $js .= "    var f = document.forms.length;\n".
+                "    var i = 0;\n".
+                "    var pos = -1;\n".
+                "    while( pos == -1 && i < f ) {\n".
+                "        var e = document.forms[i].elements.length;\n".
+                "        var j = 0;\n".
+                "        while( pos == -1 && j < e ) {\n".
+                "            if ( document.forms[i].elements[j].type == 'text' ) {\n".
+                "                pos = j;\n".
+                "            }\n".
+                "            j++;\n".
+                "        }\n".
+                "        i++;\n".
+                "    }\n".
+                "    if( pos >= 0 ) {\n".
+                "        document.forms[i-1].elements[pos].focus();\n".
+                "    }\n".
+                "}\n";
+
+            $js .= "// -->\n".
+                 "</script>\n";
+            $onload = 'onload="checkForm();"';
+            displayHtmlHeader ('SquirrelMail', $js);
+            break;
+
+        default:
+            $js = '<script language="JavaScript" type="text/javascript">' .
+             "\n<!--\n" .
+             "function checkForm() {\n".
+             "   var f = document.forms.length;\n".
+             "   var i = 0;\n".
+             "   var pos = -1;\n".
+             "   while( pos == -1 && i < f ) {\n".
+             "       var e = document.forms[i].elements.length;\n".
+             "       var j = 0;\n".
+             "       while( pos == -1 && j < e ) {\n".
+             "           if ( document.forms[i].elements[j].type == 'text' " .
+             "           || document.forms[i].elements[j].type == 'password' ) {\n".
+             "               pos = j;\n".
+             "           }\n".
+             "           j++;\n".
+             "       }\n".
+             "   i++;\n".
+             "   }\n".
+             "   if( pos >= 0 ) {\n".
+             "       document.forms[i-1].elements[pos].focus();\n".
+             "   }\n".
+             "   $xtra\n".
+             "}\n";
+
+            if ($compose_new_win == '1') {
+                if (!preg_match("/^[0-9]{3,4}$/", $compose_width)) {
+                    $compose_width = '640';
+                }
+                if (!preg_match("/^[0-9]{3,4}$/", $compose_height)) {
+                    $compose_height = '550';
+                }
+                $js .= "function comp_in_new(comp_uri) {\n".
+                     "       if (!comp_uri) {\n".
+                     '           comp_uri = "'.$compose_uri."\";\n".
+                     '       }'. "\n".
+                     '    var newwin = window.open(comp_uri' .
+                     ', "_blank",'.
+                     '"width='.$compose_width. ',height='.$compose_height.
+                     ',scrollbars=yes,resizable=yes,status=yes");'."\n".
+                     "}\n\n";
+
+            }
+        $js .= "// -->\n". "</script>\n";
+
+
+        $onload = 'onload="checkForm();"';
+        displayHtmlHeader ('SquirrelMail', $js);
+      } // end switch module
+    } else {
+        // JavaScript off
+        displayHtmlHeader ('SquirrelMail');
+        $onload = '';
+    }
+
+    echo "<body text=\"$color[8]\" bgcolor=\"$color[4]\" link=\"$color[7]\" vlink=\"$color[7]\" alink=\"$color[7]\" $onload>\n\n";
+    /** Here is the header and wrapping table **/
     $shortBoxName = htmlspecialchars(imap_utf7_decode_local(
-                readShortMailboxName($mailbox, $delimiter)));
+                      readShortMailboxName($mailbox, $delimiter)));
     if ( $shortBoxName == 'INBOX' ) {
         $shortBoxName = _("INBOX");
     }
-
-    $sm_attributes = '';
-    if (!$hide_sm_attributions) {
-        $sm_attributes .= '<td class="sqm_providerInfo">' ."\n";
-        if (empty($provider_uri)) {
-            $sm_attributes .= '   <a href="about.php">SquirrelMail</a>';
-        } else {
-            if (empty($provider_name)) $provider_name= 'SquirrelMail';
-            $sm_attributes .= '   <a href="'.$provider_uri.'" target="_blank">'.$provider_name.'</a>'."\n";
-        }
-        $sm_attributes .= "  </td>\n";
+    echo "<a name=\"pagetop\"></a>\n"
+        . html_tag( 'table', '', '', $color[4], 'border="0" width="100%" cellspacing="0" cellpadding="2"' ) ."\n"
+        . html_tag( 'tr', '', '', $color[9] ) ."\n"
+        . html_tag( 'td', '', 'left' ) ."\n";
+    if ( $shortBoxName <> '' && strtolower( $shortBoxName ) <> 'none' ) {
+        echo '         ' . _("Current Folder") . ": <b>$shortBoxName&nbsp;</b>\n";
+    } else {
+        echo '&nbsp;';
     }
+    echo  "      </td>\n"
+        . html_tag( 'td', '', 'right' ) ."<b>\n";
+    displayInternalLink ('src/signout.php', _("Sign Out"), $frame_top);
+    echo "</b></td>\n"
+        . "   </tr>\n"
+        . html_tag( 'tr', '', '', $color[4] ) ."\n"
+        . ($hide_sm_attributions ? html_tag( 'td', '', 'left', '', 'colspan="2"' )
+                                 : html_tag( 'td', '', 'left' ) )
+        . "\n";
+    $urlMailbox = urlencode($mailbox);
+    $startMessage = (int)$startMessage;
+    echo makeComposeLink('src/compose.php?mailbox='.$urlMailbox.'&amp;startMessage='.$startMessage);
+    echo "&nbsp;&nbsp;\n";
+    displayInternalLink ('src/addressbook.php', _("Addresses"));
+    echo "&nbsp;&nbsp;\n";
+    displayInternalLink ('src/folders.php', _("Folders"));
+    echo "&nbsp;&nbsp;\n";
+    displayInternalLink ('src/options.php', _("Options"));
+    echo "&nbsp;&nbsp;\n";
+    displayInternalLink ("src/search.php?mailbox=$urlMailbox", _("Search"));
+    echo "&nbsp;&nbsp;\n";
+    displayInternalLink ('src/help.php', _("Help"));
+    echo "&nbsp;&nbsp;\n";
 
-    $oTemplate->assign('body_tag_js', $sBodyTagJs);
-    $oTemplate->assign('shortBoxName', $shortBoxName);
-    $oTemplate->assign('sm_attribute_str', $sm_attributes);
-    $oTemplate->assign('frame_top', $frame_top);
-    $oTemplate->assign('urlMailbox', $urlMailbox);
-    $oTemplate->assign('startMessage', $startMessage);
-    $oTemplate->assign('hide_sm_attributions', $hide_sm_attributions);
-    $oTemplate->display('page_header.tpl');
+    do_hook('menuline');
+
+    echo "      </td>\n";
+
+    if (!$hide_sm_attributions)
+    {
+        echo html_tag( 'td', '', 'right' ) ."\n";
+        if (!isset($provider_uri)) $provider_uri= 'http://www.squirrelmail.org/';
+        if (!isset($provider_name)) $provider_name= 'SquirrelMail';
+        echo '<a href="'.$provider_uri.'" target="_blank">'.$provider_name.'</a>';
+        echo "</td>\n";
+    }
+    echo "   </tr>\n".
+        "</table><br>\n\n";
 }
 
-/**
- * Blatantly copied/truncated/modified from displayPageHeader.
- * Outputs a page header specifically for the compose_in_new popup window
- *
- * @param array color the array of theme colors
- * @param string mailbox the current mailbox name to display
- * @param string sHeaderJs javascipt code to be inserted in a script block in the header
- * @param string sBodyTagJs js events to be inserted in the body tag
- * @return void
- */
-function compose_Header($color, $mailbox, $sHeaderJs='', $sBodyTagJs = '') {
+/* blatently copied/truncated/modified from the above function */
+function compose_Header($color, $mailbox) {
 
-    global $reply_focus, $javascript_on, $action, $oTemplate;
+    global $delimiter, $hide_sm_attributions, $base_uri, $PHP_SELF,
+           $data_dir, $username, $frame_top, $compose_new_win;
 
-    if (empty($sBodyTagJs)) {
-        if (strpos($action, 'reply') !== FALSE && $reply_focus) {
-        if ($reply_focus == 'select')
-            $sBodyTagJs = 'onload="checkForm(\'select\');"';
-        else if ($reply_focus == 'focus')
-            $sBodyTagJs = 'onload="checkForm(\'focus\');"';
-        else if ($reply_focus != 'none')
-            $sBodyTagJs = 'onload="checkForm();"';
-        }
-        else
-        $sBodyTagJs = 'onload="checkForm();"';
+
+    $module = substr( $PHP_SELF, ( strlen( $PHP_SELF ) - strlen( $base_uri ) ) * -1 );
+    if (!isset($frame_top)) {
+        $frame_top = '_top';
     }
-
 
     /*
-     * Locate the first displayable form element (only when JavaScript on)
-     */
-    if($javascript_on) {
-        if ($sHeaderJs) {
-            $sJsBlock = "\n<script type=\"text/javascript\">" .
-                        "\n<!--\n" .
-                        $sHeaderJs . "\n\n// -->\n</script>\n";
-        } else {
-        $sJsBlock = '';
-        }
-        $sJsBlock .= "\n";
+        Locate the first displayable form element
+    */
+    switch ( $module ) {
+    case 'src/search.php':
+        $pos = getPref($data_dir, $username, 'search_pos', 0 ) - 1;
+        $onload = "onload=\"document.forms[$pos].elements[2].focus();\"";
+        displayHtmlHeader (_("Compose"));
+        break;
+    default:
+        $js = '<script language="JavaScript" type="text/javascript">' .
+             "\n<!--\n" .
+             "var alreadyFocused = false;\n" .
+             "function checkForm() {\n" .
+             "\n    if (alreadyFocused) return;\n";
 
-        $js_includes = $oTemplate->get_javascript_includes(TRUE);
-        foreach ($js_includes as $js_file) {
-            $sJsBlock .= '<script src="'.$js_file.'" type="text/javascript"></script>' ."\n";
-        }
+            global $action, $reply_focus;
+            if (strpos($action, 'reply') !== FALSE && $reply_focus)
+            {
+                if ($reply_focus == 'select') $js .= "document.forms['compose'].body.select();}\n";
+                else if ($reply_focus == 'focus') $js .= "document.forms['compose'].body.focus();}\n";
+                else if ($reply_focus == 'none') $js .= "}\n";
+            }
+            // no reply focus also applies to composing new messages
+            else if ($reply_focus == 'none')
+            {
+                $js .= "}\n";
+            }
+            else
+                $js .= "var f = document.forms.length;\n".
+                "var i = 0;\n".
+                "var pos = -1;\n".
+                "while( pos == -1 && i < f ) {\n".
+                    "var e = document.forms[i].elements.length;\n".
+                    "var j = 0;\n".
+                    "while( pos == -1 && j < e ) {\n".
+                        "if ( document.forms[i].elements[j].type == 'text' ) {\n".
+                            "pos = j;\n".
+                        "}\n".
+                        "j++;\n".
+                    "}\n".
+                "i++;\n".
+                "}\n".
+                "if( pos >= 0 ) {\n".
+                    "document.forms[i-1].elements[pos].focus();\n".
+                "}\n".
+            "}\n";
+        $js .= "// -->\n".
+                 "</script>\n";
+        $onload = 'onload="checkForm();"';
+        displayHtmlHeader (_("Compose"), $js);
+        break;
 
-        displayHtmlHeader (_("Compose"), $sJsBlock);
-    } else {
-        /* javascript off */
-        displayHtmlHeader(_("Compose"));
-        $onload = '';
     }
-// FIXME: should let the template echo all these kinds of things
-    echo "<body text=\"$color[8]\" bgcolor=\"$color[4]\" link=\"$color[7]\" vlink=\"$color[7]\" alink=\"$color[7]\" $sBodyTagJs>\n\n";
+
+    echo "<body text=\"$color[8]\" bgcolor=\"$color[4]\" link=\"$color[7]\" vlink=\"$color[7]\" alink=\"$color[7]\" $onload>\n\n";
 }
+
+?>

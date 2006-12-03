@@ -1,16 +1,16 @@
 <?php
-
 /**
  * lang_change.mod
- *
+ * ----------------
  * Squirrelspell module
+ *
+ * Copyright (c) 1999-2006 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This module changes the international dictionaries selection
  * for the user. Called after LANG_SETUP module.
  *
- * @author Konstantin Riabitsev <icon at duke.edu>
- * @copyright &copy; 1999-2006 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @author Konstantin Riabitsev <icon@duke.edu>
  * @version $Id$
  * @package plugins
  * @subpackage squirrelspell
@@ -18,54 +18,79 @@
 
 global $SQSPELL_APP_DEFAULT;
 
-if (! sqgetGlobalVar('use_langs',$use_langs,SQ_POST)) {
-    $use_langs = array($SQSPELL_APP_DEFAULT);
-}
+$use_langs = $_POST['use_langs'];
+$lang_default = $_POST['lang_default'];
 
-if (! sqgetGlobalVar('lang_default',$lang_default,SQ_POST)) {
-    $lang_default = $SQSPELL_APP_DEFAULT;
+$words = sqspell_getWords();
+if (!$words) {
+  $words = sqspell_makeDummy();
 }
-
-/**
- * Rebuild languages. Default language is first one.
- */
-$new_langs = array($lang_default);
-foreach ($use_langs as $lang) {
-    if (! in_array($lang,$new_langs)) {
-        $new_langs[]=$lang;
+$langs = sqspell_getSettings($words);
+if (sizeof($use_langs)){
+  /**
+   * See if the user clicked any options on the previous page.
+   */
+  if (sizeof($use_langs)>1){
+    /**
+     * See if s/he wants more than one dictionary.
+     */
+    if ($use_langs[0]!=$lang_default){
+      /**
+       * See if we need to juggle the order of the dictionaries
+       * to make the default dictionary first in line.
+       */
+      if (in_array($lang_default, $use_langs)){
+	/**
+	 * See if the user was dumb and chose a default dictionary
+	 * to be something other than the ones he selected.
+	 */
+	$hold = array_shift($use_langs);
+	$lang_string = join(", ", $use_langs);
+	$lang_string = str_replace("$lang_default", "$hold", $lang_string);
+	$lang_string = $lang_default . ", " . $lang_string;
+      } else {
+	/**
+	 * Yes, he is dumb.
+	 */
+	$lang_string = join(', ', $use_langs);
+      }
+    } else {
+      /**
+       * No need to juggle the order -- preferred is already first.
+       */
+      $lang_string = join(', ', $use_langs);
     }
-}
-
-if (sizeof($new_langs)>1) {
+  } else {
+    /**
+     * Just one dictionary, please.
+     */
+    $lang_string = $use_langs[0];
+  }
+  $lang_array = explode( ',', $lang_string );
   $dsp_string = '';
-  foreach( $new_langs as $a) {
+  foreach( $lang_array as $a) {
     $dsp_string .= _(htmlspecialchars(trim($a))) . ', ';
   }
-  // remove last comma and space
   $dsp_string = substr( $dsp_string, 0, -2 );
-
-  /**
-   * i18n: first %s is comma separated list of languages, second %s - default language.
-   * Language names are translated, if they are present in squirrelmail.po file.
-   * make sure that you don't use html codes in language name translations
-   */
   $msg = '<p>'
-    . sprintf(_("Settings adjusted to: %s with %s as default dictionary."),
-             '<strong>'.htmlspecialchars($dsp_string).'</strong>',
-             '<strong>'.htmlspecialchars(_($lang_default)).'</strong>')
+    . sprintf(_("Settings adjusted to: %s with %s as default dictionary."), '<strong>'.$dsp_string.'</strong>', '<strong>'._(htmlspecialchars($lang_default)).'</strong>')
     . '</p>';
 } else {
   /**
-   * Only one dictionary is selected.
+   * No dictionaries selected. Use system default.
    */
   $msg = '<p>'
-    . sprintf(_("Using %s dictionary for spellcheck." ), '<strong>'.htmlspecialchars(_($new_langs[0])).'</strong>')
+    . sprintf(_("Using %s dictionary (system default) for spellcheck." ), '<strong>'.$SQSPELL_APP_DEFAULT.'</strong>')
     . '</p>';
+  $lang_string = $SQSPELL_APP_DEFAULT;
 }
-
-/** save settings */
-sqspell_saveSettings($new_langs);
-
+$old_lang_string = join(", ", $langs);
+$words = str_replace("# LANG: $old_lang_string", "# LANG: $lang_string",
+		     $words);
+/**
+ * Write it down where the sun don't shine.
+ */
+sqspell_writeWords($words);
 sqspell_makePage(_("International Dictionaries Preferences Updated"),
         null, $msg);
 
@@ -76,3 +101,4 @@ sqspell_makePage(_("International Dictionaries Preferences Updated"),
  * End:
  * vim: syntax=php
  */
+?>

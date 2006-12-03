@@ -14,18 +14,22 @@
  */
 
 /**
- * Include the SquirrelMail initialization file.
+ * Path for SquirrelMail required files.
+ * @ignore
  */
-require('../include/init.php');
+define('SM_PATH','../');
 
 /* SquirrelMail required files. */
-require_once(SM_PATH . 'functions/identity.php');
+require_once(SM_PATH . 'include/validate.php');
+include_once(SM_PATH . 'functions/global.php');
+include_once(SM_PATH . 'functions/display_messages.php');
+include_once(SM_PATH . 'functions/html.php');
+include_once(SM_PATH . 'functions/identity.php');
 
 /* make sure that page is not available when $edit_identity is false */
 if (!$edit_identity) {
-    error_box(_("Editing identities is disabled."));
-    $oTemplate->display('footer.tpl');
-    die();
+    error_box(_("Editing identities is disabled."),$color);
+    die('</body></html>');
 }
 
 if (!sqgetGlobalVar('identities', $identities, SQ_SESSION)) {
@@ -63,70 +67,48 @@ if (!empty($return)) {
 
 displayPageHeader($color, 'None');
 
-/* since 1.1.3 */
 do_hook('options_identities_top');
 
-$i = array();
-foreach ($identities as $key=>$ident) {
-    $a = array();
-    $a['Title'] = $key==0 ? _("Default Identity") : sprintf(_("Alternate Identity %d"), $key);
-    $a['New'] = false;
-    $a['Default'] = $key==0;
-    $a['FullName'] = htmlspecialchars($ident['full_name']);
-    $a['Email'] = htmlspecialchars($ident['email_address']);
-    $a['ReplyTo'] = htmlspecialchars($ident['reply_to']);
-    $a['Signature'] = htmlspecialchars($ident['signature']);
-    $i[$key] = $a;
+$td_str = '';
+$td_str .= '<form name="f" action="options_identities.php" method="post"><br />' . "\n";
+$td_str .= '<table border="0" cellspacing="0" cellpadding="0" width="100%">' . "\n";
+$cnt = count($identities);
+foreach( $identities as $iKey=>$ident ) {
+
+    if ($iKey == 0) {
+        $hdr_str = _("Default Identity");
+    } else {
+        $hdr_str = sprintf( _("Alternate Identity %d"), $iKey);
+    }
+
+    $td_str .= ShowIdentityInfo( $hdr_str, $ident, $iKey );
+
 }
 
-$a = array();
-$a['Title'] = _("Add New Identity");
-$a['New'] = true;
-$a['Default'] = false;
-$a['FullName'] = '';
-$a['Email'] = '';
-$a['ReplyTo'] = '';
-$a['Signature'] = '';
-$i[count($i)] = $a;
+$td_str .= ShowIdentityInfo( _("Add a New Identity"), array('full_name'=>'','email_address'=>'','reply_to'=>'','signature'=>''), $cnt);
+$td_str .= '</table>' . "\n";
+$td_str .= '</form>';
 
-echo '<form name="f" action="options_identities.php" method="post">' . "\n";
+echo '<br /> ' . "\n" .
+    html_tag('table', "\n" .
+        html_tag('tr', "\n" .
+            html_tag('td' , "\n" .
+            '<b>' . _("Options") . ' - ' . _("Advanced Identities") . '</b><br />' .
+            html_tag('table', "\n" .
+                html_tag('tr', "\n" .
+                    html_tag('td', "\n" .
+                        html_tag('table' , "\n" .
+                            html_tag('tr' , "\n" .
+                                html_tag('td', "\n" .  $td_str ,'','', 'style="text-align:center;"')
+                            ),
+                        '', '', 'width="80%" cellpadding="2" cellspacing="0" border="0"' ) ,
+                    'center', $color[4])
+                ),
+            '', '', 'width="100%" border="0" cellpadding="1" cellspacing="1"' )) ,
+        'center', $color[0]),
+    'center', '', 'width="95%" border="0" cellpadding="2" cellspacing="0"' ) . '</body></html>';
 
-$oTemplate->assign('identities', $i);
-$oTemplate->display('options_advidentity_list.tpl');
 
-echo "</form>\n";
-
-$oTemplate->display('footer.tpl');
-
-/**
- * The functions below should not be needed with the additions of templates,
- * however they will remain in case plugins use them.
- */
-
-/**
- * Returns html formated identity form fields
- *
- * Contains options_identities_buttons and option_identities_table hooks.
- * Before 1.4.5/1.5.1 hooks were placed in ShowTableInfo() function.
- * In 1.1.3-1.4.1 they were called in do_hook function with two or
- * three arguments. Since 1.4.1 hooks are called in concat_hook_function.
- * Arguments are moved to array.
- *
- * options_identities_buttons hook uses array with two keys. First array key is
- * boolean variable used to indicate empty identity field. Second array key
- * is integer variable used to indicate identity number
- *
- * options_identities_table hook uses array with three keys. First array key is
- * a string containing background color style CSS (1.4.1-1.4.4/1.5.0 uses only
- * html color code). Second array key is boolean variable used to indicate empty
- * identity field. Third array key is integer variable used to indicate identity
- * number
- * @param string $title Name displayed in header row
- * @param array $identity Identity information
- * @param integer $id identity ID
- * @return string html formatted table rows with form fields for identity management
- * @since 1.5.1 and 1.4.5 (was called ShowTableInfo() in 1.1.3-1.4.4 and 1.5.0)
- */
 function ShowIdentityInfo($title, $identity, $id ) {
     global $color;
 
@@ -177,17 +159,6 @@ function ShowIdentityInfo($title, $identity, $id ) {
 
 }
 
-/**
- * Creates html formated table row with input field
- * @param string $title Name displayed next to input field
- * @param string $name Name of input field
- * @param string $data Default value of input field (data is sanitized with htmlspecialchars)
- * @param string $bgcolor html attributes added to row element (tr)
- * @return string html formated table row with text input field
- * @since 1.2.0 (arguments differ since 1.4.5/1.5.1)
- * @todo check right-to-left language issues
- * @access private
- */
 function sti_input( $title, $name, $data, $bgcolor ) {
     $str = '';
     $str .= '<tr' . $bgcolor . ">\n";
@@ -199,17 +170,6 @@ function sti_input( $title, $name, $data, $bgcolor ) {
 
 }
 
-/**
- * Creates html formated table row with textarea field
- * @param string $title Name displayed next to textarea field
- * @param string $name Name of textarea field
- * @param string $data Default value of textarea field  (data is sanitized with htmlspecialchars)
- * @param string $bgcolor html attributes added to row element (tr)
- * @return string html formated table row with textarea
- * @since 1.2.5 (arguments differ since 1.4.5/1.5.1)
- * @todo check right-to-left language issues
- * @access private
- */
 function sti_textarea( $title, $name, $data, $bgcolor ) {
     $str = '';
     $str .= '<tr' . $bgcolor . ">\n";

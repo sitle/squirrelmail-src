@@ -12,8 +12,6 @@
  * @package squirrelmail
  */
 
-/** @ignore */
-if (!defined('SM_PATH')) define('SM_PATH','../../');
 
 /** This of course depends upon Deliver */
 require_once(SM_PATH . 'class/deliver/Deliver.class.php');
@@ -34,7 +32,7 @@ class Deliver_SendMail extends Deliver {
      * If parameter needs some security modifications, it should be set to 
      * private in PHP 5+ in order to prevent uncontrolled access.
      * @var string
-     * @since 1.5.1
+     * @since 1.5.1 and 1.4.8
      */
     var $sendmail_args = '-i -t';
 
@@ -42,7 +40,7 @@ class Deliver_SendMail extends Deliver {
      * Stores used sendmail command
      * Private variable that is used to inform about used sendmail command.
      * @var string
-     * @since 1.5.1
+     * @since 1.5.1 and 1.4.8
      */
     var $sendmail_command = '';
 
@@ -51,7 +49,7 @@ class Deliver_SendMail extends Deliver {
      * @param array configuration options. array key = option name, 
      * array value = option value.
      * @return void
-     * @since 1.5.1
+     * @since 1.5.1 and 1.4.8
      */
     function Deliver_SendMail($params=array()) {
         if (!empty($params) && is_array($params)) {
@@ -86,7 +84,7 @@ class Deliver_SendMail extends Deliver {
     *
     * @param Message $message Message object containing the from address
     * @param string $sendmail_path Location of sendmail binary
-    * @return resource
+    * @return void
     * @access public
     */
     function initStream($message, $sendmail_path) {
@@ -97,12 +95,14 @@ class Deliver_SendMail extends Deliver {
         // save executed command for future reference
         $this->sendmail_command = "$sendmail_path $this->sendmail_args -f$envelopefrom";
         // open process handle for writing
-        $stream = popen (escapeshellcmd($this->sendmail_command), "w");
+        $stream = popen(escapeshellcmd($this->sendmail_command), "w");
         return $stream;
     }
 
    /**
-    * Closes process handle.
+    * function finalizeStream
+    *
+    * Close the stream.
     *
     * @param resource $stream
     * @return boolean
@@ -131,7 +131,7 @@ class Deliver_SendMail extends Deliver {
     * @access private
     */
     function getBcc() {
-       return true;
+        return true;
     }
 
    /**
@@ -156,3 +156,4 @@ class Deliver_SendMail extends Deliver {
 
 
 }
+?>

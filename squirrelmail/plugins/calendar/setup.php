@@ -27,3 +27,5 @@ function calendar() {
     displayInternalLink('plugins/calendar/calendar.php',_("Calendar"),'right');
     echo "&nbsp;&nbsp;\n";
 }
+
+?>

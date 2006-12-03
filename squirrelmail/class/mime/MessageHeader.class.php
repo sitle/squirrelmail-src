@@ -96,3 +96,5 @@ class MessageHeader {
         $this->parameters[strtolower($parameter)] = $value;
     }
 }
+
+?>

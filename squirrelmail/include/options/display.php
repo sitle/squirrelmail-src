@@ -16,9 +16,6 @@ define('SMOPT_GRP_GENERAL', 0);
 define('SMOPT_GRP_MAILBOX', 1);
 define('SMOPT_GRP_MESSAGE', 2);
 
-global $use_iframe;
-if (! isset($use_iframe)) $use_iframe=false;
-
 /**
  * This function builds an array with all the information about
  * the options available to the user, and returns it. The options
@@ -33,11 +30,9 @@ if (! isset($use_iframe)) $use_iframe=false;
  * @return array all option information
  */
 function load_optpage_data_display() {
-    global $theme, $fontsets, $language, $languages,$aTemplateSet,
-    $default_use_mdn, $squirrelmail_language, $allow_thread_sort,
-    $show_alternative_names, $use_iframe, $use_icons, 
-    $sTemplateID, $oTemplate,
-    $user_themes, $chosen_theme;
+    global $theme, $language, $languages, $js_autodetect_results,
+    $compose_new_win, $default_use_mdn, $squirrelmail_language, $allow_thread_sort,
+    $optmode;
 
     /* Build a simple array into which we will build options. */
     $optgrps = array();
@@ -51,121 +46,50 @@ function load_optpage_data_display() {
     $optgrps[SMOPT_GRP_GENERAL] = _("General Display Options");
     $optvals[SMOPT_GRP_GENERAL] = array();
 
-    /* load the template set option */
-    $templateset_values = array();
-
-    foreach ($aTemplateSet as $sKey => $aTemplateSetAttributes) {
-        $templateset_values[$aTemplateSetAttributes['NAME']] = $aTemplateSetAttributes['ID'];
-    }
-    ksort($templateset_values);
-    $templateset_values = array_flip($templateset_values);
-    // display template options only when there is more than one template
-    if (count($templateset_values)>1) {
-        $optvals[SMOPT_GRP_GENERAL][] = array(
-            'name'    => 'sTemplateID',
-            'caption' => _("Skin"),
-            'type'    => SMOPT_TYPE_STRLIST,
-            'refresh' => SMOPT_REFRESH_ALL,
-            'posvals' => $templateset_values,
-            'save'    => 'save_option_template'
-        );
-    }
-
     /* Load the theme option. */
     $theme_values = array();
-    
-    // Always provide the template default first.
-    $theme_values['none'] = 'Template Default Theme';
-
-    // List alternate themes provided by templates first
-    $template_themes = $oTemplate->get_alternative_stylesheets(true);
-    asort($template_themes);
-    foreach ($template_themes as $sheet=>$name) {
-        $theme_values[$sheet] = 'Template Theme - '.htmlspecialchars($name);
+    foreach ($theme as $theme_key => $theme_attributes) {
+        $theme_values[$theme_attributes['NAME']] = $theme_attributes['PATH'];
     }
-    // Next, list user-provided styles
-    asort($user_themes);
-    foreach ($user_themes as $style) {
-        if ($style['PATH'] == 'none')
-            continue;
-        $theme_values[$style['PATH']] = 'User Theme - '.htmlspecialchars($style['NAME']);
-    }
-
-    if (count($user_themes) + count($template_themes) > 1) {
-        $optvals[SMOPT_GRP_GENERAL][] = array(
-            'name'    => 'chosen_theme',
-            'caption' => _("Theme"),
-            'type'    => SMOPT_TYPE_STRLIST,
-            'refresh' => SMOPT_REFRESH_ALL,
-            'posvals' => $theme_values,
-            'save'    => 'css_theme_save'
-        );
-    }
-
-    /* Icon theme selection */
-    if ($use_icons) {
-        global $icon_themes, $icon_theme;
-
-        $temp = array();
-        $value = 0;
-        for ($count = 0; $count < sizeof($icon_themes); $count++) {
-            $temp[$icon_themes[$count]['PATH']] = $icon_themes[$count]['NAME'];
-        }
-        if (sizeof($icon_themes) > 0) {
-            $optvals[SMOPT_GRP_GENERAL][] = array(
-                'name'          => 'icon_theme',
-                'caption'       => _("Icon Theme"),
-                'type'          => SMOPT_TYPE_STRLIST,
-                'refresh'       => SMOPT_REFRESH_NONE,
-                'posvals'       => $temp,
-                'save'          => 'icon_theme_save'
-            );
-        }
-    }
-
-    $fontset_values = array();
-    $fontset_list = array();
-
-    if (!empty($fontsets) && is_array($fontsets)) {
-
-        foreach (array_keys($fontsets) as $fontset_key) {
-            $fontset_list[$fontset_key]=$fontset_key;
-        }
-        ksort($fontset_list);
-    }
-
-    if (count($fontset_list) > 1) {
-        $fontset_list = array_merge(array('' => _("Default font style")), $fontset_list);
-        $optvals[SMOPT_GRP_GENERAL][] = array(
-            'name'    => 'chosen_fontset',
-            'caption' => _("Font style"),
-            'type'    => SMOPT_TYPE_STRLIST,
-            'refresh' => SMOPT_REFRESH_ALL,
-            'posvals' => $fontset_list
-        );
-    }
-
+    ksort($theme_values);
+    $theme_values = array_flip($theme_values);
     $optvals[SMOPT_GRP_GENERAL][] = array(
-        'name'    => 'chosen_fontsize',
-        'caption' => _("Font size"),
+        'name'    => 'chosen_theme',
+        'caption' => _("Theme"),
         'type'    => SMOPT_TYPE_STRLIST,
         'refresh' => SMOPT_REFRESH_ALL,
-        'posvals' => array('' => _("Default font size"),
-                           '8' => '8 px',
-                           '10' => '10 px',
-                           '12' => '12 px',
-                           '14' => '14 px')
+        'posvals' => $theme_values,
+        'save'    => 'save_option_theme'
     );
+
+    $css_values = array( 'none' => _("Default" ) );
+    $css_dir = SM_PATH . 'themes/css';
+    if (is_readable($css_dir) && is_dir($css_dir)) {
+        $handle=opendir($css_dir);
+        while ($file = readdir($handle) ) {
+            if ( substr( $file, -4 ) == '.css' ) {
+                $css_values[$file] = substr( $file, 0, strlen( $file ) - 4 );
+            }
+        }
+        closedir($handle);
+    }
+
+    if ( count( $css_values ) > 1 ) {
+
+        $optvals[SMOPT_GRP_GENERAL][] = array(
+            'name'    => 'custom_css',
+            'caption' => _("Custom Stylesheet"),
+            'type'    => SMOPT_TYPE_STRLIST,
+            'refresh' => SMOPT_REFRESH_ALL,
+            'posvals' => $css_values
+        );
+
+    }
 
     $language_values = array();
     foreach ($languages as $lang_key => $lang_attributes) {
         if (isset($lang_attributes['NAME'])) {
             $language_values[$lang_key] = $lang_attributes['NAME'];
-            if ( isset($show_alternative_names) &&
-                 $show_alternative_names &&
-                 isset($lang_attributes['ALTNAME']) ) {
-                $language_values[$lang_key] .= " / " . $lang_attributes['ALTNAME'];
-            }
         }
     }
 
@@ -173,19 +97,14 @@ function load_optpage_data_display() {
     $language_values =
         array_merge(array('' => _("Default")), $language_values);
     $language = $squirrelmail_language;
-
-    // add language selection only when more than 2 languages are available
-    // (default, English and some other)
-    if (count($language_values)>2) {
-        $optvals[SMOPT_GRP_GENERAL][] = array(
-            'name'    => 'language',
-            'caption' => _("Language"),
-            'type'    => SMOPT_TYPE_STRLIST,
-            'refresh' => SMOPT_REFRESH_ALL,
-            'posvals' => $language_values,
-            'htmlencoded' => true
-        );
-    }
+    $optvals[SMOPT_GRP_GENERAL][] = array(
+        'name'    => 'language',
+        'caption' => _("Language"),
+        'type'    => SMOPT_TYPE_STRLIST,
+        'refresh' => SMOPT_REFRESH_ALL,
+        'posvals' => $language_values,
+        'htmlencoded' => true
+    );
 
     /* Set values for the "use javascript" option. */
     $optvals[SMOPT_GRP_GENERAL][] = array(
@@ -195,26 +114,21 @@ function load_optpage_data_display() {
         'refresh' => SMOPT_REFRESH_ALL,
         'posvals' => array(SMPREF_JS_AUTODETECT => _("Autodetect"),
                            SMPREF_JS_ON         => _("Always"),
-                           SMPREF_JS_OFF        => _("Never")),
-        'save'    => 'save_option_javascript_autodetect',
-        'script'  => 'onclick="document.forms[0].new_js_autodetect_results.value = \'' . SMPREF_JS_ON . '\';"'
+                           SMPREF_JS_OFF        => _("Never"))
     );
+
+    if ($optmode != 'submit')
+       $onLoadScript = 'document.forms[0].new_js_autodetect_results.value = \'' . SMPREF_JS_ON . '\'';
+    else
+       $onLoadScript = '';
 
     $optvals[SMOPT_GRP_GENERAL][] = array(
         'name'    => 'js_autodetect_results',
         'caption' => '',
         'type'    => SMOPT_TYPE_HIDDEN,
-        'refresh' => SMOPT_REFRESH_NONE
+        'refresh' => SMOPT_REFRESH_NONE,
         //'post_script' => $js_autodetect_script,
-    );
-
-    $optvals[SMOPT_GRP_GENERAL][] = array(
-        'name'    => 'hour_format',
-        'caption' => _("Hour Format"),
-        'type'    => SMOPT_TYPE_STRLIST,
-        'refresh' => SMOPT_REFRESH_FOLDERLIST,
-        'posvals' => array(SMPREF_TIME_12HR => _("12-hour clock"),
-                           SMPREF_TIME_24HR => _("24-hour clock"))
+        'save'    => 'save_option_javascript_autodetect'
     );
 
     /*** Load the General Options into the array ***/
@@ -237,36 +151,8 @@ function load_optpage_data_display() {
     );
 
     $optvals[SMOPT_GRP_MAILBOX][] = array(
-        'name'    => 'fancy_index_highlite',
-        'caption' => _("Enable Fancy Row Mouseover Highlighting"),
-        'type'    => SMOPT_TYPE_BOOLEAN,
-        'refresh' => SMOPT_REFRESH_NONE
-    );
-
-    $optvals[SMOPT_GRP_MAILBOX][] = array(
-        'name'    => 'show_flag_buttons',
-        'caption' => _("Show Flag / Unflag Buttons"),
-        'type'    => SMOPT_TYPE_BOOLEAN,
-        'refresh' => SMOPT_REFRESH_NONE
-    );
-
-    $optvals[SMOPT_GRP_MAILBOX][] = array(
-        'name'    => 'show_copy_buttons',
-        'caption' => _("Enable Message Copy Buttons"),
-        'type'    => SMOPT_TYPE_BOOLEAN,
-        'refresh' => SMOPT_REFRESH_NONE
-    );
-
-    $optvals[SMOPT_GRP_MAILBOX][] = array(
         'name'    => 'page_selector',
         'caption' => _("Enable Page Selector"),
-        'type'    => SMOPT_TYPE_BOOLEAN,
-        'refresh' => SMOPT_REFRESH_NONE
-    );
-
-    $optvals[SMOPT_GRP_MAILBOX][] = array(
-        'name'    => 'compact_paginator',
-        'caption' => _("Use Compact Page Selector"),
         'type'    => SMOPT_TYPE_BOOLEAN,
         'refresh' => SMOPT_REFRESH_NONE
     );
@@ -291,7 +177,8 @@ function load_optpage_data_display() {
         'caption' => _("Length of From/To Field (0 for full)"),
         'type'    => SMOPT_TYPE_INTEGER,
         'refresh' => SMOPT_REFRESH_NONE,
-        'size'    => SMOPT_SIZE_TINY
+        'size'    => SMOPT_SIZE_TINY,
+        'initial_value' => 55
     );
 
     $optvals[SMOPT_GRP_MAILBOX][] = array(
@@ -299,33 +186,12 @@ function load_optpage_data_display() {
         'caption' => _("Length of Subject Field (0 for full)"),
         'type'    => SMOPT_TYPE_INTEGER,
         'refresh' => SMOPT_REFRESH_NONE,
-        'size'    => SMOPT_SIZE_TINY
+        'size'    => SMOPT_SIZE_TINY,
+        'initial_value' => 55
     );
-/*
-FIXME!
-  disabled because the template doesn't support it (yet?)
-    $optvals[SMOPT_GRP_MAILBOX][] = array(
-        'name'    => 'show_recipient_instead',
-        'caption' => _("Show recipient name if the message is from your default identity"),
-        'type'    => SMOPT_TYPE_BOOLEAN,
-        'refresh' => SMOPT_REFRESH_NONE,
-        'size'    => SMOPT_SIZE_TINY
-    );
-*/
-
-    if ($allow_thread_sort == TRUE) {
-        $optvals[SMOPT_GRP_MAILBOX][] = array(
-            'name'    => 'sort_by_ref',
-            'caption' => _("Enable Thread Sort by References Header"),
-            'type'    => SMOPT_TYPE_BOOLEAN,
-            'refresh' => SMOPT_REFRESH_ALL
-        );
-    }
-
-
 
     /*** Load the General Options into the array ***/
-    $optgrps[SMOPT_GRP_MESSAGE] = _("Message Display Options");
+    $optgrps[SMOPT_GRP_MESSAGE] = _("Message Display and Composition");
     $optvals[SMOPT_GRP_MESSAGE] = array();
 
     $optvals[SMOPT_GRP_MESSAGE][] = array(
@@ -337,25 +203,65 @@ FIXME!
     );
 
     $optvals[SMOPT_GRP_MESSAGE][] = array(
+        'name'    => 'editor_size',
+        'caption' => _("Width of Editor Window"),
+        'type'    => SMOPT_TYPE_INTEGER,
+        'refresh' => SMOPT_REFRESH_NONE,
+        'size'    => SMOPT_SIZE_TINY
+    );
+
+    $optvals[SMOPT_GRP_MESSAGE][] = array(
+        'name'    => 'editor_height',
+        'caption' => _("Height of Editor Window"),
+        'type'    => SMOPT_TYPE_INTEGER,
+        'refresh' => SMOPT_REFRESH_NONE,
+        'size'    => SMOPT_SIZE_TINY
+    );
+
+    $optvals[SMOPT_GRP_MESSAGE][] = array(
+        'name'    => 'location_of_buttons',
+        'caption' => _("Location of Buttons when Composing"),
+        'type'    => SMOPT_TYPE_STRLIST,
+        'refresh' => SMOPT_REFRESH_NONE,
+        'posvals' => array(SMPREF_LOC_TOP     => _("Before headers"),
+                           SMPREF_LOC_BETWEEN => _("Between headers and message body"),
+                           SMPREF_LOC_BOTTOM  => _("After message body"))
+    );
+
+
+    $optvals[SMOPT_GRP_MESSAGE][] = array(
+        'name'    => 'use_javascript_addr_book',
+        'caption' => _("Addressbook Display Format"),
+        'type'    => SMOPT_TYPE_STRLIST,
+        'refresh' => SMOPT_REFRESH_NONE,
+        'posvals' => array('1' => _("Javascript"),
+                           '0' => _("HTML"))
+    );
+
+    $optvals[SMOPT_GRP_MESSAGE][] = array(
         'name'    => 'show_html_default',
         'caption' => _("Show HTML Version by Default"),
         'type'    => SMOPT_TYPE_BOOLEAN,
         'refresh' => SMOPT_REFRESH_NONE
     );
 
-    if ($use_iframe) {
-        // Type is set to string in order to be able to use 100%.
-        $optvals[SMOPT_GRP_MESSAGE][] = array(
-            'name'    => 'iframe_height',
-            'caption' => _("Height of inline frame"),
-            'type'    => SMOPT_TYPE_STRING,
-            'size'    => SMOPT_SIZE_TINY,
-            'refresh' => SMOPT_REFRESH_NONE
-        );
-    }
     $optvals[SMOPT_GRP_MESSAGE][] = array(
         'name'    => 'enable_forward_as_attachment',
         'caption' => _("Enable Forward as Attachment"),
+        'type'    => SMOPT_TYPE_BOOLEAN,
+        'refresh' => SMOPT_REFRESH_NONE
+    );
+
+    $optvals[SMOPT_GRP_MESSAGE][] = array(
+        'name'    => 'forward_cc',
+        'caption' => _("Include CCs when Forwarding Messages"),
+        'type'    => SMOPT_TYPE_BOOLEAN,
+        'refresh' => SMOPT_REFRESH_NONE
+    );
+
+    $optvals[SMOPT_GRP_MESSAGE][] = array(
+        'name'    => 'include_self_reply_all',
+        'caption' => _("Include Me in CC when I Reply All"),
         'type'    => SMOPT_TYPE_BOOLEAN,
         'refresh' => SMOPT_REFRESH_NONE
     );
@@ -374,6 +280,13 @@ FIXME!
         'refresh' => SMOPT_REFRESH_NONE
     );
 
+    $optvals[SMOPT_GRP_MESSAGE][] = array(
+        'name'    => 'pf_cleandisplay',
+        'caption' => _("Enable Printer Friendly Clean Display"),
+        'type'    => SMOPT_TYPE_BOOLEAN,
+        'refresh' => SMOPT_REFRESH_NONE
+    );
+
     if ($default_use_mdn) {
         $optvals[SMOPT_GRP_MESSAGE][] = array(
             'name'    => 'mdn_user_support',
@@ -384,16 +297,75 @@ FIXME!
     }
 
     $optvals[SMOPT_GRP_MESSAGE][] = array(
-        'name'    => 'delete_prev_next_display',
-        'caption' => _("Show 'Delete &amp; Prev/Next' Links"),
+        'name'    => 'compose_new_win',
+        'caption' => _("Compose Messages in New Window"),
         'type'    => SMOPT_TYPE_BOOLEAN,
         'refresh' => SMOPT_REFRESH_ALL
     );
 
+    $optvals[SMOPT_GRP_MESSAGE][] = array(
+        'name'    => 'compose_width',
+        'caption' => _("Width of Compose Window"),
+        'type'    => SMOPT_TYPE_INTEGER,
+        'refresh' => SMOPT_REFRESH_ALL,
+        'size'    => SMOPT_SIZE_TINY
+    );
+
+    $optvals[SMOPT_GRP_MESSAGE][] = array(
+        'name'    => 'compose_height',
+        'caption' => _("Height of Compose Window"),
+        'type'    => SMOPT_TYPE_INTEGER,
+        'refresh' => SMOPT_REFRESH_ALL,
+        'size'    => SMOPT_SIZE_TINY
+    );
+
+    $optvals[SMOPT_GRP_MESSAGE][] = array(
+        'name'    => 'sig_first',
+        'caption' => _("Prepend Signature before Reply/Forward Text"),
+        'type'    => SMOPT_TYPE_BOOLEAN,
+        'refresh' => SMOPT_REFRESH_NONE
+    );
+
+    $optvals[SMOPT_GRP_MESSAGE][] = array(
+        'name'    => 'body_quote',
+        'caption' => _("Prefix for Original Message when Replying"),
+        'type'    => SMOPT_TYPE_STRING,
+        'refresh' => SMOPT_REFRESH_NONE,
+        'size'    => SMOPT_SIZE_TINY,
+        'save'    => 'save_option_reply_prefix'
+    );
+
+    $optvals[SMOPT_GRP_MESSAGE][] = array(
+        'name'    => 'reply_focus',
+        'caption' => _("Cursor Position when Replying"),
+        'type'    => SMOPT_TYPE_STRLIST,
+        'refresh' => SMOPT_REFRESH_NONE,
+        'posvals' => array('' => _("To: field"),
+                           'focus' => _("Focus in body"),
+                           'select' => _("Select body"),
+                           'none' => _("No focus"))
+    );
+
+    $optvals[SMOPT_GRP_MESSAGE][] = array(
+        'name'          => 'internal_date_sort',
+        'caption'       => _("Sort by Received Date"),
+        'type'          => SMOPT_TYPE_BOOLEAN,
+        'refresh'       => SMOPT_REFRESH_ALL,
+        'initial_value' => SMPREF_ON
+    );
+    if ($allow_thread_sort == TRUE) {
+        $optvals[SMOPT_GRP_MESSAGE][] = array(
+            'name'    => 'sort_by_ref',
+            'caption' => _("Enable Thread Sort by References Header"),
+            'type'    => SMOPT_TYPE_BOOLEAN,
+            'refresh' => SMOPT_REFRESH_ALL
+        );
+    }
     /* Assemble all this together and return it as our result. */
     $result = array(
         'grps' => $optgrps,
-        'vals' => $optvals
+        'vals' => $optvals,
+        'xtra' => $onLoadScript
     );
     return ($result);
 }
@@ -403,41 +375,25 @@ FIXME!
 /******************************************************************/
 
 /**
- * This function saves a new template setting.
- * It updates the template array.
+ * This function saves a new theme setting.
+ * It updates the theme array.
  */
-function save_option_template($option) {
-    global $aTemplateSet;
+function save_option_theme($option) {
+    global $theme;
 
-    /* Do checking to make sure new template is in the available templates array. */
-    $templateset_in_array = false;
-    for ($i = 0; $i < count($aTemplateSet); ++$i) {
-        if ($aTemplateSet[$i]['ID'] == $option->new_value) {
-            $templateset_in_array = true;
+    /* Do checking to make sure $new_theme is in the array. */
+    $theme_in_array = false;
+    for ($i = 0; $i < count($theme); ++$i) {
+        if ($theme[$i]['PATH'] == $option->new_value) {
+            $theme_in_array = true;
             break;
         }
     }
 
-    if (!$templateset_in_array) {
+    if (!$theme_in_array) {
         $option->new_value = '';
-    } else {
-
-        // clear template cache when changing template sets
-        // (in order to do so, we have to change the global
-        // template set ID now... should not be a problem --
-        // in fact, if we don't do it now, very anomalous
-        // problems occur)
-        //
-        global $sTemplateID;
-        $sTemplateID = $option->new_value;
-        Template::cache_template_file_hierarchy(TRUE);
-
     }
 
-    /**
-     * TODO: If the template changes and we are using a template provided theme
-     * ($user_theme), do we want to reset $user_theme?
-     */
     /* Save the option like normal. */
     save_option($option);
 }
@@ -446,55 +402,34 @@ function save_option_template($option) {
  * This function saves the javascript detection option.
  */
 function save_option_javascript_autodetect($option) {
-    save_option($option);
-    checkForJavascript(TRUE);
-}
+    global $data_dir, $username;
 
-/**
- * This function saves the user's icon theme setting
- */
-function icon_theme_save($option) {
-    global $icon_themes;
+    sqGetGlobalVar('new_javascript_setting', $new_javascript_setting);
 
-
-    // Don't assume the new value is there, double check
-    // and only save if found
-    $found = false;
-    while (!$found && (list($index, $data) = each($icon_themes))) {
-        if ($data['PATH'] == $option->new_value)
-            $found = true;
-    }
-    
-    if (!$found)
-        $option->new_value = 'none';
-        
-    save_option($option);
-}
-
-function css_theme_save ($option) {
-    global $user_themes, $oTemplate;
-
-    // Don't assume the new value is there, double check
-    // and only save if found
-    $found = false;
-    reset($user_themes);
-    while (!$found && (list($index, $data) = each($user_themes))) {
-        if ($data['PATH'] == $option->new_value)
-            $found = true;
-    }
-    
-    if (!$found) {
-        $template_themes = $oTemplate->get_alternative_stylesheets(true);
-        while (!$found && (list($path, $name) = each($template_themes))) {
-            if ($path == $option->new_value)
-                $found = true;
+    // Set javascript either on or off.
+    if ($new_javascript_setting == SMPREF_JS_AUTODETECT) {
+        if ($option->new_value == SMPREF_JS_ON) {
+            setPref($data_dir, $username, 'javascript_on', SMPREF_JS_ON);
+        } else {
+            setPref($data_dir, $username, 'javascript_on', SMPREF_JS_OFF);
         }
+    } else {
+        setPref($data_dir, $username, 'javascript_on', $new_javascript_setting);
     }
-    
-    if (!$found)
-        $option->new_value = 'none';
-        
-    save_option($option);
 }
 
+function save_option_reply_prefix($option) {
+    global $data_dir, $username, $new_javascript_setting;
 
+    // save as "NONE" if it was blanked out
+    //
+    if (empty($option->new_value)) $option->new_value = 'NONE';
+
+
+    // Save the option like normal.
+    //
+    save_option($option);
+
+}
+
+?>

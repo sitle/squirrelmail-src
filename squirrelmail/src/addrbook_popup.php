@@ -13,13 +13,32 @@
  */
 
 /**
- * Include the SquirrelMail initialization file.
+ * Path for SquirrelMail required files.
+ * @ignore
  */
-include('../include/init.php');
+define('SM_PATH','../');
 
-displayHtmlHeader($org_title .': '. _("Addresses"), '', false, true);
+/** SquirrelMail required files. */
+require_once(SM_PATH . 'include/validate.php');
+require_once(SM_PATH . 'functions/addressbook.php');
+   
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
 
-$oTemplate->display('addressbook_popup.tpl');
-
-$oTemplate->display('footer.tpl');
-
+<html>
+    <head>
+        <meta name="robots" content="noindex,nofollow">
+        <title><?php echo "$org_title: " . _("Address Book"); ?></title>
+    </head>
+    <frameset rows="60,*" border="0">
+        <frame name="abookmain"
+               marginwidth="0"
+               scrolling="no"
+               border="0"
+               src="addrbook_search.php?show=form" />
+        <frame name="abookres"
+               marginwidth="0"
+               border="0"
+               src="addrbook_search.php?show=blank" />
+    </frameset>
+</html>

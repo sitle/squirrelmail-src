@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webmail.php -- Displays the main frameset
  *
@@ -13,10 +14,32 @@
  */
 
 /**
- * Include the SquirrelMail initialization file.
+ * Path for SquirrelMail required files.
+ * @ignore
  */
-require('../include/init.php');
+define('SM_PATH','../');
 
+/* SquirrelMail required files. */
+require_once(SM_PATH . 'functions/global.php');
+require_once(SM_PATH . 'functions/strings.php');
+require_once(SM_PATH . 'config/config.php');
+require_once(SM_PATH . 'functions/prefs.php');
+require_once(SM_PATH . 'functions/imap.php');
+require_once(SM_PATH . 'functions/plugin.php');
+require_once(SM_PATH . 'functions/i18n.php');
+require_once(SM_PATH . 'functions/auth.php');
+
+if (!function_exists('sqm_baseuri')){
+    require_once(SM_PATH . 'functions/display_messages.php');
+}
+$base_uri = sqm_baseuri();
+
+sqsession_is_active();
+
+sqgetGlobalVar('username', $username, SQ_SESSION);
+sqgetGlobalVar('delimiter', $delimiter, SQ_SESSION);
+sqgetGlobalVar('onetimepad', $onetimepad, SQ_SESSION);
+sqgetGlobalVar('right_frame', $right_frame, SQ_GET);
 if (sqgetGlobalVar('sort', $sort)) {
     $sort = (int) $sort;
 }
@@ -29,16 +52,51 @@ if (!sqgetGlobalVar('mailbox', $mailbox)) {
     $mailbox = 'INBOX';
 }
 
-sqgetGlobalVar('right_frame', $right_frame, SQ_GET);
-
-if(!sqgetGlobalVar('mailtodata', $mailtodata)) {
+if(sqgetGlobalVar('mailtodata', $mailtodata)) {
     $mailtourl = 'mailtodata='.urlencode($mailtodata);
 } else {
     $mailtourl = '';
 }
 
-// Determine the size of the left frame
+is_logged_in();
+
+do_hook('webmail_top');
+
+/**
+ * We'll need this to later have a noframes version
+ *
+ * Check if the user has a language preference, but no cookie.
+ * Send him a cookie with his language preference, if there is
+ * such discrepancy.
+ */
+$my_language = getPref($data_dir, $username, 'language');
+if ($my_language != $squirrelmail_language) {
+    setcookie('squirrelmail_language', $my_language, time()+2592000, $base_uri);
+}
+
+set_up_language(getPref($data_dir, $username, 'language'));
+
+$output = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Frameset//EN\">\n".
+          "<html><head>\n" .
+          "<meta name=\"robots\" content=\"noindex,nofollow\">\n" .
+          "<title>$org_title</title>\n".
+          "</head>";
+
 $left_size = getPref($data_dir, $username, 'left_size');
+$location_of_bar = getPref($data_dir, $username, 'location_of_bar');
+
+if (isset($languages[$squirrelmail_language]['DIR']) &&
+    strtolower($languages[$squirrelmail_language]['DIR']) == 'rtl') {
+    $temp_location_of_bar = 'right';
+} else {
+    $temp_location_of_bar = 'left';
+}
+
+if ($location_of_bar == '') {
+    $location_of_bar = $temp_location_of_bar;
+}
+$temp_location_of_bar = '';
+
 if ($left_size == "") {
     if (isset($default_left_size)) {
          $left_size = $default_left_size;
@@ -48,19 +106,13 @@ if ($left_size == "") {
     }
 }
 
-// Determine where the navigation frame should be
-$location_of_bar = getPref($data_dir, $username, 'location_of_bar');
-if (isset($languages[$squirrelmail_language]['DIR']) &&
-    strtolower($languages[$squirrelmail_language]['DIR']) == 'rtl') {
-    $temp_location_of_bar = 'right';
-} else {
-    $temp_location_of_bar = 'left';
+if ($location_of_bar == 'right') {
+    $output .= "<frameset cols=\"*, $left_size\" id=\"fs1\">\n";
 }
-if ($location_of_bar == '') {
-    $location_of_bar = $temp_location_of_bar;
+else {
+    $output .= "<frameset cols=\"$left_size, *\" id=\"fs1\">\n";
 }
 
-// Determine the main frame URL
 /*
  * There are three ways to call webmail.php
  * 1.  webmail.php
@@ -76,15 +128,18 @@ if ($location_of_bar == '') {
  * The test for // should catch any attempt to include off-site webpages into
  * our frameset.
  */
+
 if (empty($right_frame) || (strpos(urldecode($right_frame), '//') !== false)) {
     $right_frame = '';
 }
+
 if ( strpos($right_frame,'?') ) {
     $right_frame_file = substr($right_frame,0,strpos($right_frame,'?'));
 } else {
     $right_frame_file = $right_frame;
 }
-switch($right_frame) {
+
+switch($right_frame_file) {
     case 'right_main.php':
         $right_frame_url = "right_main.php?mailbox=".urlencode($mailbox)
                        . (!empty($sort)?"&amp;sort=$sort":'')
@@ -105,17 +160,21 @@ switch($right_frame) {
     default:
         $right_frame_url =  urlencode($right_frame);
         break;
+} 
+
+if ($location_of_bar == 'right') {
+    $output .= "<frame src=\"$right_frame_url\" name=\"right\" frameborder=\"1\" />\n" .
+               "<frame src=\"left_main.php\" name=\"left\" frameborder=\"1\" />\n";
 }
-
-displayHtmlHeader($org_title, '', false, true);
-$oErrorHandler->setDelayedErrors(true);
-
-do_hook('webmail_top');
-
-$oTemplate->assign('nav_size', $left_size);
-$oTemplate->assign('nav_on_left', $location_of_bar=='left');
-$oTemplate->assign('right_frame_url', $right_frame_url);
-
-$oTemplate->display('webmail.tpl');
-
-$oTemplate->display('footer.tpl');
+else {
+    $output .= "<frame src=\"left_main.php\" name=\"left\" frameborder=\"1\" />\n".
+               "<frame src=\"$right_frame_url\" name=\"right\" frameborder=\"1\" />\n";
+}
+$ret = concat_hook_function('webmail_bottom', $output);
+if($ret != '') {
+    $output = $ret;
+}
+echo $output;
+?>
+</frameset>
+</html>

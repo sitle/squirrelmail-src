@@ -10,13 +10,11 @@
  * @subpackage calendar
  */
 
-/**
- * Include the SquirrelMail initialization file.
- */
-require('../../include/init.php');
+/** @ignore */
+define('SM_PATH','../../');
 
 /* SquirrelMail required files. */
-
+include_once(SM_PATH . 'include/validate.php');
 /* date_intl() */
 include_once(SM_PATH . 'functions/date.php');
 /* form functions */
@@ -152,7 +150,7 @@ function update_event_form() {
  */
 function confirm_update() {
     global $calself, $year, $month, $day, $hour, $minute, $calendardata,
-        $color, $event_year, $event_month, $event_day, $event_hour,
+        $color, $event_year, $event_month, $event_day, $event_hour, 
         $event_minute, $event_length, $event_priority, $event_title, $event_text;
 
     $tmparray = $calendardata["$month$day$year"]["$hour$minute"];

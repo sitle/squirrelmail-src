@@ -32,3 +32,4 @@ function charset_decode_ns_4551_1 ($string) {
      */
     return strtr ($string, "[\\]{|}", "ÆØÅæøå");
 }
+?>

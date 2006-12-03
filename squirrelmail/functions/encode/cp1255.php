@@ -154,3 +154,4 @@ function unicodetocp1255($var) {
     }
     return $ret;
 }
+?>

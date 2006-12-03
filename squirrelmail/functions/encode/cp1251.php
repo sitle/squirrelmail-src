@@ -176,3 +176,4 @@ function unicodetocp1251($var) {
     }
     return $ret;
 }
+?>

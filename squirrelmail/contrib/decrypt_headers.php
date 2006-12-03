@@ -18,8 +18,9 @@ define('SM_PATH','../');
 /**
  * include SquirrelMail string functions
  * script needs OneTimePadDecrypt() (functions/strings.php)
- * and sqgetGlobalVar() (functions/global.php, loaded by strings.php)
+ * and sqgetGlobalVar() (functions/global.php)
  */
+include_once(SM_PATH.'functions/global.php');
 include_once(SM_PATH.'functions/strings.php');
 
 /**
@@ -53,8 +54,7 @@ function hex2ip($hex) {
 /** create page headers */
 header('Content-Type: text/html');
 
-echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"'."\n"
-    .'  "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">'
+echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">'
     ."\n<head>\n<meta name=\"robots\" content=\"noindex,nofollow\">\n"
     ."</head><body>";
 

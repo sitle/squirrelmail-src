@@ -1,4 +1,5 @@
 <?php
+
 /**
  * options_order.php
  *
@@ -12,151 +13,143 @@
  */
 
 /**
- * Include the SquirrelMail initialization file.
+ * Path for SquirrelMail required files.
+ * @ignore
  */
-require('../include/init.php');
+define('SM_PATH','../');
 
 /* SquirrelMail required files. */
-require_once(SM_PATH . 'functions/forms.php');
+require_once(SM_PATH . 'include/validate.php');
+require_once(SM_PATH . 'functions/global.php');
+require_once(SM_PATH . 'functions/display_messages.php');
+require_once(SM_PATH . 'functions/imap.php');
+require_once(SM_PATH . 'functions/plugin.php');
+require_once(SM_PATH . 'functions/html.php');
 
 /* get globals */
-if (sqgetGlobalVar('num',       $num,       SQ_GET)) {
-   $num = (int) $num;
-} else {
-   $num = false;
-}
-if (!sqgetGlobalVar('method', $method)) {
-    $method = '';
-} else {
-    $method = htmlspecialchars($method);
-}
-if (!sqgetGlobalVar('positions', $pos, SQ_GET)) {
-    $pos = 0;
-} else {
-    $pos = (int) $pos;
-}
+sqgetGlobalVar('num',       $num,       SQ_GET);  
+sqgetGlobalVar('add',       $add,       SQ_POST);
 
-if (!sqgetGlobalVar('account', $account, SQ_GET)) {
-    $iAccount = 0;
-} else {
-    $iAccount = (int) $account;
-}
-
-if (sqgetGlobalVar('mailbox', $mailbox, SQ_GET)) {
-   $aMailboxPrefs = unserialize(getPref($data_dir, $username, "pref_".$iAccount.'_'.urldecode($mailbox)));
-   if (isset($aMailboxPrefs[MBX_PREF_COLUMNS])) {
-       $index_order = $aMailboxPrefs[MBX_PREF_COLUMNS];
-   }
-} else {
-    $index_order_ser = getPref($data_dir, $username, 'index_order');
-    if ($index_order_ser) {
-        $index_order=unserialize($index_order_ser);
-    }
-}
-if (!isset($index_order)) {
-    if (isset($internal_date_sort) && $internal_date_sort == false) {
-        $index_order = array(SQM_COL_CHECK,SQM_COL_FROM,SQM_COL_DATE,SQM_COL_FLAGS,SQM_COL_ATTACHMENT,SQM_COL_PRIO,SQM_COL_SUBJ);
-    } else {
-        $index_order = array(SQM_COL_CHECK,SQM_COL_FROM,SQM_COL_INT_DATE,SQM_COL_FLAGS,SQM_COL_ATTACHMENT,SQM_COL_PRIO,SQM_COL_SUBJ);
-    }
-}
-
-if (!sqgetGlobalVar('account', $account,  SQ_GET)) {
-   $account = 0; // future work, multiple imap accounts
-} else {
-   $account = (int) $account;
-}
-
+sqgetGlobalVar('submit',    $submit);
+sqgetGlobalVar('method',    $method);
 /* end of get globals */
 
-/***************************************************************/
-/* Finally, display whatever page we are supposed to show now. */
-/***************************************************************/
+displayPageHeader($color, 'None');
 
-displayPageHeader($color, 'None', (isset($optpage_data['xtra']) ? $optpage_data['xtra'] : ''));
-
-
-/**
- * Change the column order of a mailbox
- *
- * @param array  $index_order (reference) contains an ordered list with columns
- * @param string $method action to take, move, add and remove are supported
- * @param int    $num target column
- * @param int    $pos positions to move a column in the index_order array
- * @return bool  $r A change in the ordered list took place.
- */
-function change_columns_list(&$index_order,$method,$num,$pos=0) {
-    $r = false;
-    switch ($method) {
-      case 'move': $r = sqm_array_move_value($index_order,$num,$pos); break;
-      case 'add':
-          $index_order[] = (int) $num;
-          $r = true;
-          /**
-           * flush the cache in order to retrieve the new columns
-           */
-          sqsession_unregister('mailbox_cache');
-          break;
-      case 'remove':
-        if(in_array($num, $index_order)) {
-            unset($index_order[array_search($num, $index_order)]);
-            $index_order = array_values($index_order);
-            $r = true;
+   echo
+   html_tag( 'table', '', 'center', '', 'width="95%" border="0" cellpadding="1" cellspacing="0"' ) . 
+   html_tag( 'tr' ) . 
+   html_tag( 'td', '', 'center', $color[0] ) .
+   '<b>' . _("Options") . ' - ' . _("Index Order") . '</b>' .
+   html_tag( 'table', '', '', '', 'width="100%" border="0" cellpadding="8" cellspacing="0"' ) . 
+   html_tag( 'tr' ) . 
+   html_tag( 'td', '', 'center', $color[4] );
+ 
+    $available[1] = _("Checkbox");
+    $available[2] = _("From");
+    $available[3] = _("Date");
+    $available[4] = _("Subject");
+    $available[5] = _("Flags");
+    $available[6] = _("Size");
+    
+    if (! isset($method)) { $method = ''; }
+ 
+    if ($method == 'up' && $num > 1) {
+        $prev = $num-1;
+        $tmp = $index_order[$prev];
+        $index_order[$prev] = $index_order[$num];
+        $index_order[$num] = $tmp;
+    } else if ($method == 'down' && $num < count($index_order)) {
+        $next = $num++;
+        $tmp = $index_order[$next];
+        $index_order[$next] = $index_order[$num];
+        $index_order[$num] = $tmp;
+    } else if ($method == 'remove' && $num) {
+        for ($i=1; $i < 8; $i++) {
+            removePref($data_dir, $username, "order$i"); 
         }
-        break;
-      default: break;
+        for ($j=1,$i=1; $i <= count($index_order); $i++) {
+           if ($i != $num) {
+               $new_ary[$j] = $index_order[$i];
+               $j++;
+           }
+        }
+        $index_order = array();
+        $index_order = $new_ary;
+        if (count($index_order) < 1) {
+           include_once(SM_PATH . 'include/load_prefs.php');
+        }
+    } else if ($method == 'add' && $add) {
+        /* User should not be able to insert PHP-code here */
+        $add = str_replace ('<?', '..', $add);
+        $add = ereg_replace ('<.*script.*language.*php.*>', '..', $add);
+        $add = str_replace ('<%', '..', $add);
+        $index_order[count($index_order)+1] = $add;
     }
-    return $r;
-}
-
-/**
- * Column to string translation array
- */
-$available[SQM_COL_CHECK]      = _("Checkbox");
-$available[SQM_COL_FROM]       = _("From");
-$available[SQM_COL_DATE]       = _("Date");
-$available[SQM_COL_SUBJ]       = _("Subject");
-$available[SQM_COL_FLAGS]      = _("Flags");
-$available[SQM_COL_SIZE]       = _("Size");
-$available[SQM_COL_PRIO]       = _("Priority");
-$available[SQM_COL_ATTACHMENT] = _("Attachments");
-$available[SQM_COL_INT_DATE]   = _("Received");
-$available[SQM_COL_TO]         = _("To");
-$available[SQM_COL_CC]         = _("Cc");
-$available[SQM_COL_BCC]        = _("Bcc");
-
-if (change_columns_list($index_order,$method,$num,$pos)) {
+ 
     if ($method) {
-        // TODO, bound index_order to mailbox and make a difference between the global index_order and mailbox bounded index_order
-        setPref($data_dir, $username, 'index_order', serialize($index_order));
+        for ($i=1; $i <= count($index_order); $i++) {
+           setPref($data_dir, $username, "order$i", $index_order[$i]);
+        }
     }
-}
-
-
-$opts = array();
-if (count($index_order) != count($available)) {
-    for ($i=0; $i < count($available); $i++) {
-        if (!in_array($i,$index_order)) {
-             $opts[$i] = $available[$i];
-         }
+    echo html_tag( 'table',
+                html_tag( 'tr',
+                    html_tag( 'td',
+                        _("The index order is the order that the columns are arranged in the message index. You can add, remove, and move columns around to customize them to fit your needs.")
+                    )
+                ) ,
+            '', '', '', 'width="65%" border="0" cellpadding="0" cellspacing="0"' ) . "<br />\n";
+ 
+    if (count($index_order))
+    {
+        echo html_tag( 'table', '', '', '', ' cellspacing="0" cellpadding="0" border="0"' ) . "\n";
+        for ($i=1; $i <= count($index_order); $i++) {
+            $tmp = $index_order[$i];
+            echo html_tag( 'tr' );
+            echo html_tag( 'td', '<small><a href="options_order.php?method=up&amp;num=' . $i . '">'. _("up") .'</a></small>' );
+            echo html_tag( 'td', '<small>&nbsp;|&nbsp;</small>' );
+            echo html_tag( 'td', '<small><a href="options_order.php?method=down&amp;num=' . $i . '">'. _("down") .'</a></small>' );
+            echo html_tag( 'td', '<small>&nbsp;|&nbsp;</small>' );
+            echo html_tag( 'td' );
+            /* Always show the subject */
+            if ($tmp != 4)
+               echo '<small><a href="options_order.php?method=remove&amp;num=' . $i . '">' . _("remove") . '</a></small>';
+            else
+               echo '&nbsp;'; 
+            echo '</td>';
+            echo html_tag( 'td', '<small>&nbsp;-&nbsp;</small>' );
+            echo html_tag( 'td', $available[$tmp] );
+            echo '</tr>' . "\n";
+        }
+        echo '</table>' . "\n";
     }
-}
+    
+    if (count($index_order) != count($available)) {
+        echo '<form name="f" method="post" action="options_order.php">';
+        echo '<select name="add">';
+        for ($i=1; $i <= count($available); $i++) {
+            $found = false;
+            for ($j=1; $j <= count($index_order); $j++) {
+                if ($index_order[$j] == $i) {
+                    $found = true;
+                }
+            }
+            if (!$found) {
+                echo "<option value=\"$i\">$available[$i]</option>";
+            }
+        }
+        echo '</select>';
+        echo '<input type="hidden" value="add" name="method" />';
+        echo '<input type="submit" value="'._("Add").'" name="submit" />';
+        echo '</form>';
+    }
+ 
+    echo html_tag( 'p', '<a href="../src/options.php">' . _("Return to options page") . '</a></p><br />' );
 
-sqgetGlobalVar('PHP_SELF', $PHP_SELF, SQ_SERVER);
-$x = isset($mailbox) && $mailbox ? '&amp;mailbox='.urlencode($mailbox) : '';
-
-$oTemplate->assign('fields', $available);
-$oTemplate->assign('current_order', $index_order);
-$oTemplate->assign('not_used', $opts);
-$oTemplate->assign('always_show', array(SQM_COL_SUBJ, SQM_COL_FLAGS));
-
-$oTemplate->assign('move_up', $PHP_SELF .'?method=move&amp;positions=-1'. $x .'&amp;num=');
-$oTemplate->assign('move_down', $PHP_SELF .'?method=move&amp;positions=1'. $x .'&amp;num=');
-$oTemplate->assign('remove', $PHP_SELF .'?method=remove'. $x .'&amp;num=');
-$oTemplate->assign('add', $PHP_SELF.'?method=add'.$x.'&amp;num=');
-$oTemplate->assign('addField_action', $PHP_SELF);
-
-$oTemplate->display('options_order.tpl');
-
-$oTemplate->display('footer.tpl');
 ?>
+    </td></tr>
+    </table>
+
+</td></tr>
+</table>
+</body></html>

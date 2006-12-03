@@ -177,3 +177,4 @@ function unicodetokoi8r($var) {
     }
     return $ret;
 }
+?>

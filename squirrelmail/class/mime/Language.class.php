@@ -36,3 +36,5 @@ class Language {
         $this->properties = array();
     }
 }
+
+?>
