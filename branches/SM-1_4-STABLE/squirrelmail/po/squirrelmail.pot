@@ -1,17 +1,17 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# LANGUAGE (xx_XX) SquirrelMail Translation
+# Copyright (c) 1999-2006 The SquirrelMail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-08-07 22:00+0300\n"
+"Project-Id-Version: SquirrelMail VERSION\n"
+"Report-Msgid-Bugs-To: squirrelmail-i18n@lists.sourceforge.net\n"
+"POT-Creation-Date: 2006-12-03 23:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: LANGUAGE <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -840,6 +840,9 @@ msgstr ""
 msgid "Viewing a text attachment"
 msgstr ""
 
+msgid "View Unsafe Images"
+msgstr ""
+
 msgid ""
 "Could not include PEAR database functions required for the database backend."
 msgstr ""
@@ -858,7 +861,7 @@ msgstr ""
 msgid "Database error: %s"
 msgstr ""
 
-msgid "Addressbook is read-only"
+msgid "Address book is read-only"
 msgstr ""
 
 #, php-format
@@ -867,6 +870,10 @@ msgstr ""
 
 #, php-format
 msgid "User \"%s\" does not exist"
+msgstr ""
+
+#, php-format
+msgid "User '%s' already exist."
 msgstr ""
 
 msgid "Not a file name"
@@ -884,13 +891,19 @@ msgstr ""
 msgid "Unable to update"
 msgstr ""
 
+msgid "Address book is corrupted. Required fields are missing."
+msgstr ""
+
+msgid "Address book entry is too big"
+msgstr ""
+
 msgid "Could not lock datafile"
 msgstr ""
 
-msgid "Write to addressbook failed"
+msgid "Write to address book failed"
 msgstr ""
 
-msgid "Error initializing addressbook database."
+msgid "Error initializing address book database."
 msgstr ""
 
 #, php-format
@@ -900,7 +913,7 @@ msgstr ""
 msgid "Global address book"
 msgstr ""
 
-msgid "Error initializing global addressbook."
+msgid "Error initializing global address book."
 msgstr ""
 
 #, php-format
@@ -1202,6 +1215,10 @@ msgid ""
 "Remove unneccessary messages from your folders. Start with your Trash folder."
 msgstr ""
 
+#, php-format
+msgid "Invalid mailbox name: %s"
+msgstr ""
+
 msgid "(no subject)"
 msgstr ""
 
@@ -1306,9 +1323,6 @@ msgid "FETCH line:"
 msgstr ""
 
 msgid "Hide Unsafe Images"
-msgstr ""
-
-msgid "View Unsafe Images"
 msgstr ""
 
 msgid "Download"
@@ -3771,6 +3785,12 @@ msgid "Interface language"
 msgstr ""
 
 msgid "Translation direction"
+msgstr ""
+
+msgid "Arabic"
+msgstr ""
+
+msgid "Chinese (Simplified)"
 msgstr ""
 
 msgid "Delivery error report"
