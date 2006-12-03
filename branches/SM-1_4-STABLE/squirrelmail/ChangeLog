@@ -2,8 +2,11 @@
 *** SquirrelMail Stable Series 1.4 ***
 **************************************
 
-Version 1.4.10 - CVS
---------------------
+Version 1.4.9a - 3 December 2006
+--------------------------------
+  - Security: Multiple IE cross site scripting issues related to the
+    widely acceptation of the word expression and url by IE.
+  - Security: Removing @import when sanitizing html mail.
 
 Version 1.4.9 - 2 December 2006
 -------------------------------

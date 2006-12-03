@@ -1,7 +1,7 @@
 /*****************************************************************
- * Release Notes: SquirrelMail 1.4.9                             *
- * The "Brinky Brinkers" Release                                 *
- * 2 December 2006                                               *
+ * Release Notes: SquirrelMail 1.4.9a                            *
+ * The "Brinky Brinkers Reloaded" Release                        *
+ * 3 December 2006                                               *
  *****************************************************************/
 
 In this edition of SquirrelMail Release Notes:
@@ -16,7 +16,7 @@ In this edition of SquirrelMail Release Notes:
 All about this release
 ======================
 
-This version, 1.4.9 is a maintenance release, addressing
+This version, 1.4.9a is a maintenance release, addressing
 the following problems since 1.4.8:
 - Some security fixes (see below)
 - Small enhancements
@@ -55,6 +55,12 @@ in Internet Explorer: the browser will attempt to guess the MIME type of
 attachments based on content, not the MIME header we send. Attachments could
 fake to be an 'harmless' image/jpeg, while they were in fact HTML that
 Internet Explorer would render.
+
+After release 1.4.9 Martijn Brinkers again discovered new cross site
+scripting issues in the magicHtml filter. The new discovered security issues
+have to do with the wide intepretation of the words expression and url by IE
+browsers. As second issue Martijn Brinkers that the @import statement in
+stylesheets could be misused.
 
 
 Major updates in 1.4
@@ -95,7 +101,7 @@ Reporting my favorite SquirrelMail 1.4 bug
 
 We constantly aim to make SquirrelMail even better. So we need you to
 submit any bug you come across! Also, please mention that the bug is
-in this 1.4.9 release, and list your IMAP server and webserver details.
+in this 1.4.9a release, and list your IMAP server and webserver details.
 
    http://www.squirrelmail.org/bugs
 
