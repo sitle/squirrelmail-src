@@ -200,7 +200,7 @@ read the spam e-mail they sent. Such addresses are re-sold to other spammers
 and the amount of spam you will receive is going to grow exponentially.
 
 <sect2> Verifying that you have read your e-mail
-
+<p>
 This issue is a privacy concern - if there are images in the e-mail that link
 to the sender's website, they will know instantly when you have opened and read
 the e-mail they sent. This can be used against you if for some reason you
@@ -208,7 +208,7 @@ decide to deny ever receiving that e-mail from the sender - they will have
 proof that you have received, opened, and read that e-mail.
 
 <sect2> Finding out information about you
-
+<p>
 Every time an image is loaded off the remote server, it leaves a "log" message
 about what type of system you are using, including the version of your browser,
 your internet IP address, as well as information about your mail server and the
@@ -216,13 +216,13 @@ software running on it. This information can be used to carry out attacks on
 your computer or the server where SquirrelMail runs.
 
 <sect2> Malicious tags
-
+<p>
 Images in email can also be used to auto-execute cross-site scripting code in a
 attempt to trick your browser into revealing your account information to
 crackers with malicious intent.
 
 <sect2> Conclusion
-
+<p>
 For these reasons SquirrelMail does not display these "unsafe" images by
 default, but instead shows you a warning sign. A link is provided to show
 the images for that particular mail. If you know that the e-mail came
