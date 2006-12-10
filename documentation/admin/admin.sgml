@@ -1655,14 +1655,16 @@ the mod_rewrite module. For example:
 
 <tscreen><verb>
 # Redirect /squirrelmail link to secured server
-RedirectPermanent /squirrelmail https://secured.example.org/squirrelmail
+Redirect permanent /squirrelmail https://secured.example.org/squirrelmail
 </verb></tscreen>
 
 <tscreen><verb>
 # simple mod_rewrite example
+&lt;Location /squirrelmail&gt;
 RewriteEngine on
-RewriteCond  %{HTTPS} off
-RewriteRule  ^webmail/(.*)  https://secured.example.org/$1 [L,R]
+RewriteCond %{HTTPS} !=on
+RewriteRule .* https://%{HTTP_HOST}:443%{REQUEST_URI} [QSA,R=permanent,L]
+&lt;/Location&gt;
 </verb></tscreen>
 
 HTTP over SSL communications prevent "man in the middle" attacks between user's
