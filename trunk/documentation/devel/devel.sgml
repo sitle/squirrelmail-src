@@ -1441,6 +1441,8 @@ TODO: Update this list. (especially in 1.5.2, we are removing a great number of 
 
 TODO: Reduce list of hooks by grouping them into separate chapters.
 
+TODO: List is very out-of-synch with newest 1.5.2 and all its changes, as is the rest of the plugin documentation... much needs to be re-written
+
 <tabular ca="llll">
 <bf/Hook name/|<bf/Found in/|<bf/Called with/|<bf/Notes/@
 <tt/abook&lowbar;init/|<tt>functions/addressbook.php</tt>|<tt/do&lowbar;hook()/|&nbsp;@
@@ -1581,27 +1583,26 @@ $squirrelmail_plugin_hooks['attachment application/x-zip']['demo'] =
 This is a breakdown of the data passed in the array to the hook that is called:
 
 <tscreen><verb>
-[0] = The current hook name (e.g., 'attachment text/plain').
-[1] = An array of links for actions (see below) (alterable).
-[2] = The message index of the first message on the message list page within 
+[0] = An array of links for actions (see below) (alterable).
+[1] = The message index of the first message on the message list page within 
       which the current message is found (startMessage).  Can be used herein 
       for building URLs that point to the correct message list page.
-[3] = The ID of the current message (id).  Can be used herein to build URLs 
+[2] = The ID of the current message (id).  Can be used herein to build URLs 
       that point to the correct message.
-[4] = The mailbox name, encoded with urlencode() (urlMailbox).  Can be used
+[3] = The mailbox name, encoded with urlencode() (urlMailbox).  Can be used
       herein to build URLs that point to the correct message list page.
-[5] = The entity ID of the attachment inside the mail message (ent).  Can 
+[4] = The entity ID of the attachment inside the mail message (ent).  Can 
       be used herein to build URLs that point to the correct attachment.
-[6] = The default URL to go to when the filename is clicked upon (alterable,
+[5] = The default URL to go to when the filename is clicked upon (alterable,
       but only one URL is allowed, thus, the last plugin to execute for
       the current attachment wins out - usually it's better to just add a
       new action to array element 1 above).
-[7] = The filename that is displayed for the attachment.
-[8] = The "where" criteria that was used to find the current message (where)
+[6] = The filename that is displayed for the attachment.
+[7] = The "where" criteria that was used to find the current message (where)
       (only applicable when the message was in fact found using a search).  
       Can be used herein to build URLs that point to the correct message list 
       page.
-[9] = The "what" criteria that was used to find the current message (what) 
+[8] = The "what" criteria that was used to find the current message (what) 
       (only applicable when the message was in fact found using a search).
       Can be used herein to build URLs that point to the correct message list
       page.
@@ -1611,9 +1612,9 @@ To set up links for actions, add them to the array data passed in to the hook
 like this:
 
 <tscreen><verb>
-$args[1]['&lt;plugin_name&gt;']['href'] = 'link URL';
-$args[1]['&lt;plugin_name&gt;']['text'] = _("Text to display");
-$args[1]['&lt;plugin_name&gt;']['extra'] =
+$args[0]['&lt;plugin_name&gt;']['href'] = 'link URL';
+$args[0]['&lt;plugin_name&gt;']['text'] = _("Text to display");
+$args[0]['&lt;plugin_name&gt;']['extra'] =
     'extra stuff, such as an &lt;img ...&gt; tag (will be part of the clickable link)';
 </verb></tscreen>
 
@@ -1650,10 +1651,10 @@ function demo_handle_zip_attachment_do(&ero;$args) {
     bindtextdomain('demo', SM_PATH . 'locale');
     textdomain('demo');
 
-    $args[1]['demo']['href'] = SM_PATH . 'plugins/demo/zip_handler.php?' .
-        'passed_id=' . $args[3] . '&ero;mailbox=' . $args[4] .
-        '&ero;passed_ent_id=' . $args[5];
-    $args[1]['demo']['text'] = _("Show zip contents");
+    $args[0]['demo']['href'] = SM_PATH . 'plugins/demo/zip_handler.php?' .
+        'passed_id=' . $args[2] . '&ero;mailbox=' . $args[3] .
+        '&ero;passed_ent_id=' . $args[4];
+    $args[0]['demo']['text'] = _("Show zip contents");
 
     bindtextdomain('squirrelmail', SM_PATH . 'locale');
     textdomain('squirrelmail');
