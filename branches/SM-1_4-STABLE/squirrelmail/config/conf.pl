@@ -1847,7 +1847,7 @@ sub command214 {
 
 # Automatically delete folders 
 sub command215 {
-    if ( $imap_server_type == "uw" ) {
+    if ( $imap_server_type eq "uw" ) {
         print "UW IMAP servers will not allow folders containing";
         print "mail to also contain folders.\n";
         print "Deleting folders will bypass the trash folder and";
