@@ -1,22 +1,86 @@
-# translation of squirrelmail.po to Bahasa Indonesia
-# Copyright (C) SquirrelMail Development Project , 1999-2002
+# Bahasa Indonesia (id_ID) SquirrelMail Translation
+# Copyright (c) 1999-2007 The SquirrelMail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
+# Arief S Fitrianto <arief@gurame.fisika.ui.ac.id>, 2001-2005, 2006.
 # $Id$
-# Arief S Fitrianto <arief@gurame.fisika.ui.ac.id>, 2001-2005.
 msgid ""
 msgstr ""
-"Project-Id-Version: squirrelmail.po\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-04-16 19:47+0200\n"
-"PO-Revision-Date: 2005-01-11 16:55+0700\n"
+"Project-Id-Version: SquirrelMail HEAD\n"
+"Report-Msgid-Bugs-To: SquirrelMail Internationalization <squirrelmail-"
+"i18n@lists.sourceforge.net>\n"
+"POT-Creation-Date: 2006-02-12 08:42+0200\n"
+"PO-Revision-Date: 2007-01-06 21:41+0100\n"
 "Last-Translator: Arief S Fitrianto <arief@gurame.fisika.ui.ac.id>\n"
-"Language-Team: Bahasa Indonesia <squirrelmail-i18n@lists.sourceforge.net\n"
+"Language-Team: Bahasa Indonesia <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#, php-format
+msgid "About SquirrelMail %s"
+msgstr "Tentang SquirrelMail %s"
+
+msgid ""
+"SquirrelMail is the name of the program that provides access to your email "
+"via the web."
+msgstr ""
+
+#. i18n: %s displays org_name variable value enclosed in () or empty string.
+#, php-format
+msgid ""
+"If you have questions about or problems with your mail account, passwords, "
+"abuse etc, please refer to your system administrator or provider%s."
+msgstr ""
+
+#. i18n: %s tags are used in order to remove html URL attributes from translation
+#, php-format
+msgid ""
+"They can assist you adequately with these issues. The SquirrelMail Project "
+"Team cannot help you with that. The %shelp system%s provides answers to "
+"frequently asked questions."
+msgstr ""
+
+#. i18n: %s tags are used in order to remove html URL attributes from translation
+#, php-format
+msgid ""
+"SquirrelMail is a feature rich, standards compliant webmail application "
+"written in PHP. It was made by a group of volunteers united in the "
+"SquirrelMail Project Team and is released as open source, free software "
+"under the %sGNU General Public License%s."
+msgstr ""
+
+#. i18n: %s tags are used in order to remove html URL attributes from translation
+#, php-format
+msgid ""
+"For more information about SquirrelMail and the SquirrelMail Project Team, "
+"see %sthe SquirrelMail website%s."
+msgstr ""
+
+msgid "System information"
+msgstr "Informasi Sistem"
+
+#, php-format
+msgid "You are using SquirrelMail version: %s"
+msgstr "Anda sedang menggunakan SquirrelMail versi: %s"
+
+msgid "The administrator installed the following plugins:"
+msgstr ""
+
+msgid "none installed"
+msgstr ""
+
 msgid "Address Book"
 msgstr "Buku Alamat"
+
+msgid "All"
+msgstr "Semua"
+
+msgid "To"
+msgstr "Kepada"
+
+msgid "Cc"
+msgstr "Tembusan"
 
 msgid "Name"
 msgstr "Nama"
@@ -30,17 +94,17 @@ msgstr "Keterangan"
 msgid "Source"
 msgstr "Sumber"
 
-msgid "To"
-msgstr "Kepada"
-
-msgid "Cc"
-msgstr "Tembusan"
-
 msgid "Bcc"
 msgstr "Tembusan Rahasia"
 
-msgid "No persons matching your search were found"
-msgstr "Nama yang dicari tidak ditemukan"
+msgid "Use Addresses"
+msgstr "Pakai alamat"
+
+msgid "Cancel"
+msgstr "Batal"
+
+msgid "Address Book Search"
+msgstr "Telusuri Buku Alamat"
 
 msgid "Search for"
 msgstr "Cari untuk"
@@ -57,9 +121,6 @@ msgstr "Cari"
 msgid "List all"
 msgstr "Tampilkan semua"
 
-msgid "Close"
-msgstr "Tutup"
-
 #, php-format
 msgid "Unable to list addresses from %s"
 msgstr "Gagal menampilkan alamat dari %s"
@@ -67,42 +128,18 @@ msgstr "Gagal menampilkan alamat dari %s"
 msgid "Your search failed with the following error(s)"
 msgstr "Pencarian Anda gagal dengan kesalahan berikut:"
 
-msgid "All"
-msgstr "Semua"
-
-msgid "Use Addresses"
-msgstr "Pakai alamat"
+msgid "No persons matching your search were found"
+msgstr "Nama yang dicari tidak ditemukan"
 
 #, fuzzy
-msgid "Cancel"
-msgstr "Ubah"
-
-msgid "Address Book Search"
-msgstr "Telusuri Buku Alamat"
+msgid "Nothing to search"
+msgstr "Tidak ada yang bisa dihapus!"
 
 msgid "Return"
 msgstr "Kembali"
 
-msgid "Nickname"
-msgstr "Nama singkat"
-
-msgid "Must be unique"
-msgstr "Harus tunggal (unik)"
-
-msgid "E-mail address"
-msgstr "Alamat Surate (Email)"
-
-msgid "Last name"
-msgstr "Nama Belakang"
-
-msgid "First name"
-msgstr "Nama Depan"
-
-msgid "Additional info"
-msgstr "Keterangan tambahan"
-
-msgid "Add to:"
-msgstr "Tambahkan ke:"
+msgid "Close"
+msgstr "Tutup"
 
 msgid "No personal address book is defined. Contact administrator."
 msgstr "Tidak ada buku alamat yang didefinisikan. Hubungi administrator!"
@@ -117,7 +154,7 @@ msgid "ERROR"
 msgstr "ADA KESALAHAN"
 
 msgid "Please select address that you want to edit"
-msgstr ""
+msgstr "Silakan pilih alamat yang ingin Anda sunting"
 
 msgid "Add address"
 msgstr "Tambah alamat"
@@ -128,23 +165,39 @@ msgstr "Ubah yang dipilih"
 msgid "Delete selected"
 msgstr "Hapus yang dipilih"
 
-#, php-format
-msgid "Add to %s"
-msgstr "Tambahkan ke %s"
+msgid "Nickname"
+msgstr "Nama singkat"
 
+msgid "sort by nickname"
+msgstr "urutkan berdasarkan nama singkat"
+
+msgid "sort by name"
+msgstr "Urutkan berdasarkan nama"
+
+msgid "sort by email"
+msgstr "urutkan berdasarkan surate"
+
+msgid "sort by info"
+msgstr "urutkan berdasarkan info"
+
+msgid "Add to address book"
+msgstr "Tambahkan ke Buku Alamat"
+
+#. * To translators: %s is for author's name
 #, php-format
 msgid "%s wrote:"
-msgstr ""
+msgstr "%s menulis:"
 
-msgid "quote"
-msgstr "kutipan"
-
-msgid "who"
-msgstr "dari"
-
+#. * To translators:
+#. *  first %s is for date string, second %s is for author's name. Date uses
+#. *  formating from "D, F j, Y g:i a" and "D, F j, Y H:i" translations.
+#. * Example string:
+#. *  "On Sat, December 24, 2004 23:59, Santa wrote:"
+#. * If you have to put author's name in front of date string, check comments about
+#. * argument swapping at http://www.php.net/sprintf
 #, php-format
 msgid "On %s, %s wrote:"
-msgstr ""
+msgstr "Pada %s, %s menulis:"
 
 msgid "Subject"
 msgstr "Judul Surat"
@@ -185,6 +238,14 @@ msgstr "Tambah"
 msgid "Delete selected attachments"
 msgstr "Hapus lampiran yang dipilih"
 
+msgid ""
+"Because PHP file uploads are turned off, you can not attach files to this "
+"message. Please see your system administrator for details."
+msgstr ""
+"Karena fungsi upload PHP dimatikan, Anda tidak dapat melampirkan berkas ke "
+"dalam pesan ini. Silakan tanyakan kepada administrator sistem untuk "
+"informasi."
+
 msgid "Priority"
 msgstr "Prioritas"
 
@@ -222,35 +283,26 @@ msgstr "Anda belum mengisi kolom \"Kepada:\" "
 msgid "Error: Draft folder %s does not exist."
 msgstr "Ada Kesalahan: Folder Konsep, '%s', tidak ada"
 
-#, fuzzy
 msgid "Server replied:"
-msgstr "Tanggapan server: "
+msgstr "Server menjawab: "
 
 msgid "Folders"
 msgstr "Folder"
 
-#, fuzzy
-msgid "Subscribed successfully."
-msgstr "Berhasil memasukkan!"
-
-#, fuzzy
-msgid "Unsubscribed successfully."
-msgstr "Berhasil mengeluarkan!"
-
-#, fuzzy
-msgid "Deleted folder successfully."
-msgstr "Berhasil menghapus folder!"
-
-#, fuzzy
 msgid "Created folder successfully."
-msgstr "Berhasil membuat folder!"
+msgstr "Berhasil membuat folder."
 
-#, fuzzy
 msgid "Renamed successfully."
-msgstr "Berhasil mengganti nama!"
+msgstr "Berhasil mengganti nama."
 
-msgid "Subscription Unsuccessful - Folder does not exist."
-msgstr "Gagal memasukkan -- Folder tidak ada."
+msgid "Deleted folder successfully."
+msgstr "Berhasil menghapus folder."
+
+msgid "Subscribed successfully."
+msgstr "Berhasil memasukkan."
+
+msgid "Unsubscribed successfully."
+msgstr "Berhasil mengeluarkan."
 
 msgid "refresh folder list"
 msgstr "Perbarui daftar folder"
@@ -294,45 +346,14 @@ msgstr "Keluarkan"
 msgid "Subscribe"
 msgstr "Masukkan"
 
-msgid "No folders were found to unsubscribe from!"
+msgid "No folders were found to unsubscribe from."
 msgstr "Tidak ada folder yang bisa dikeluarkan!"
 
-msgid "No folders were found to subscribe to!"
+msgid "No folders were found to subscribe to."
 msgstr "Tidak ada folder yang bisa dimasukkan!"
 
 msgid "Subscribe to:"
 msgstr "Masukkan  ke:"
-
-msgid "Illegal folder name. Please select a different name."
-msgstr "Nama folder tidak sah. Silakan pilih nama lain."
-
-msgid "Click here to go back"
-msgstr "Klik di sini untuk kembali"
-
-msgid "You have not selected a folder to delete. Please do so."
-msgstr "Anda belum memilih folder yang akan dihapus. Silakan pilih!"
-
-#, php-format
-msgid "Are you sure you want to delete %s?"
-msgstr "Apakah Anda sungguh-sungguh ingin menghapus %s?"
-
-msgid "Yes"
-msgstr "Ya"
-
-msgid "No"
-msgstr "Tidak"
-
-msgid "You have not selected a folder to rename. Please do so."
-msgstr "Anda belum memilih folder untuk diubah namanya. Silakan pilih!"
-
-msgid "Rename a folder"
-msgstr "Ganti nama folder"
-
-msgid "New name:"
-msgstr "Nama baru:"
-
-msgid "Submit"
-msgstr "Kirim"
 
 msgid "ERROR: Help files are not in the right format!"
 msgstr "ADA KESALAHAN: Berkas panduan tidak dalam bentuk yang benar!"
@@ -340,10 +361,10 @@ msgstr "ADA KESALAHAN: Berkas panduan tidak dalam bentuk yang benar!"
 msgid "Help"
 msgstr "Panduan"
 
-#, php-format
+#, fuzzy
 msgid ""
-"The help has not been translated to %s. It will be displayed in English "
-"instead."
+"The help has not been translated to the selected language. It will be "
+"displayed in English instead."
 msgstr ""
 "Panduan ini belum diterjemahkan ke bahasa %s. Bahasa Inggris akan "
 "ditampilkan."
@@ -372,11 +393,29 @@ msgstr "Lihat pesan"
 msgid "Download this as a file"
 msgstr "Simpan ke berkas"
 
-msgid "INBOX"
-msgstr "KOTAK POS"
-
 msgid "Purge"
 msgstr "Buang"
+
+msgid "Last Refresh"
+msgstr "Peninjauan Terakhir"
+
+msgid "Check mail"
+msgstr "Periksa surat"
+
+msgid "Save folder tree"
+msgstr "Simpan Struktur Folder"
+
+msgid "The IMAP server is reporting that plain text logins are disabled."
+msgstr "Server IMAP melaporkan bahwa login 'plain text' dimatikan."
+
+msgid "Using CRAM-MD5 or DIGEST-MD5 authentication instead may work."
+msgstr "Penggunakan otentikasi CRAM-MD5 atau DIGEST-MD5 mungkin akan berhasil."
+
+msgid "Also, the use of TLS may allow SquirrelMail to login."
+msgstr "Penggunaan TLS juga memungkinkan SquirrelMail untuk login."
+
+msgid "Please contact your system administrator and report this error."
+msgstr "Hubungi administrator Anda dan laporkan hal ini."
 
 msgid "Login"
 msgstr "Masuk"
@@ -385,94 +424,21 @@ msgstr "Masuk"
 msgid "%s Logo"
 msgstr "Lambang %s"
 
-#, php-format
-msgid "SquirrelMail version %s"
-msgstr "SquirrelMail versi %s"
+msgid "SquirrelMail Webmail Application"
+msgstr "Aplikasi Webmail SquirrelMail"
 
-#, fuzzy
 msgid "By the SquirrelMail Project Team"
-msgstr "Oleh Team Pengembangan SquirrelMail"
+msgstr "Oleh Team Proyek SquirrelMail"
 
 #, php-format
 msgid "%s Login"
 msgstr "Masuk ke %s"
 
-msgid "Name:"
-msgstr "Nama:"
-
-msgid "Password:"
-msgstr "Sandi:"
-
-msgid "No messages were selected."
-msgstr "Tidak ada pesan yang dipilih."
-
-msgid "Personal Information"
-msgstr "Data Pribadi"
-
-msgid "Display Preferences"
-msgstr "Konfigurasi Tampilan"
-
-msgid "Message Highlighting"
-msgstr "Penyorotan Pesan"
-
-msgid "Folder Preferences"
-msgstr "Konfigurasi Folder"
-
-msgid "Index Order"
-msgstr "Urutan Indeks"
-
 msgid "Options"
 msgstr "Pilihan"
 
-#, fuzzy
-msgid "Error(s) occurred while saving your options"
-msgstr "Ada kesalahan saat menyimpan pilihan Anda"
-
-#, fuzzy
-msgid "Some of your preference changes were not applied."
-msgstr "Beberapa perubahan konfigurasi Anda tidak diterapkan."
-
-msgid "Successfully Saved Options"
-msgstr "Berhasil menyimpan Pilihan"
-
-msgid "Refresh Folder List"
-msgstr "Perbarui daftar folder"
-
-msgid "Refresh Page"
-msgstr "Perbarui Halaman"
-
-msgid ""
-"This contains personal information about yourself such as your name, your "
-"email address, etc."
-msgstr "Di sini berisi data tentang Anda seperti: Nama, alamat surate, dll."
-
-msgid ""
-"You can change the way that SquirrelMail looks and displays information to "
-"you, such as the colors, the language, and other settings."
-msgstr ""
-"Anda dapat mengubah cara SquirrelMail tampak dan menampilkan informasi untuk "
-"Anda, seperti: warna, bahasa, dan lain-lain."
-
-msgid ""
-"Based upon given criteria, incoming messages can have different background "
-"colors in the message list. This helps to easily distinguish who the "
-"messages are from, especially for mailing lists."
-msgstr ""
-"Berdasarkan kriteria tertentu, pesan yang masuk dapat memiliki latar warna "
-"berbeda dalam daftar pesan. Hal ini memudahkan Anda membedakan asal suatu "
-"pesan, khususnya dari suatu milis."
-
-msgid ""
-"These settings change the way your folders are displayed and manipulated."
-msgstr ""
-"Konfigurasi ini mengubah cara folder Anda ditampilkan dan dimanipulasi."
-
-msgid ""
-"The order of the message index can be rearranged and changed to contain the "
-"headers in any order you want."
-msgstr ""
-"Urutan pesan dapat diatur dan diubah sesuai keinginan dengan berdasarkan isi "
-"dari header pesan."
+msgid "Message Highlighting"
+msgstr "Penyorotan Pesan"
 
 msgid "New"
 msgstr "Baru"
@@ -555,18 +521,21 @@ msgstr "Contoh: 63aa7f"
 msgid "Matches"
 msgstr "Berisi"
 
-#, php-format
-msgid "Alternate Identity %d"
-msgstr "Identitas Pilihan %d"
-
-msgid "Advanced Identities"
-msgstr "Identitas Tambahan"
+msgid "Submit"
+msgstr "Kirim"
 
 msgid "Default Identity"
 msgstr "Identitas Utama"
 
+#, php-format
+msgid "Alternate Identity %d"
+msgstr "Identitas Pilihan %d"
+
 msgid "Add a New Identity"
 msgstr "Tambah Identitas Baru"
+
+msgid "Advanced Identities"
+msgstr "Identitas Tambahan"
 
 msgid "Full Name"
 msgstr "Nama Lengkap"
@@ -595,6 +564,15 @@ msgstr "Bendera"
 msgid "Size"
 msgstr "Ukuran"
 
+msgid "Attachments"
+msgstr "Lampiran"
+
+msgid "Received"
+msgstr "Diterima"
+
+msgid "Index Order"
+msgstr "Urutan Indeks"
+
 msgid ""
 "The index order is the order that the columns are arranged in the message "
 "index. You can add, remove, and move columns around to customize them to fit "
@@ -616,8 +594,88 @@ msgstr "hapus"
 msgid "Return to options page"
 msgstr "kembali ke halaman pilihan"
 
+msgid "Personal Information"
+msgstr "Data Pribadi"
+
+msgid "Display Preferences"
+msgstr "Konfigurasi Tampilan"
+
+msgid "Compose Preferences"
+msgstr "Konfigurasi Penulisan Surat"
+
+msgid "Folder Preferences"
+msgstr "Konfigurasi Folder"
+
+msgid "Error(s) occurred while saving your options"
+msgstr "Ada kesalahan saat menyimpan pilihan Anda."
+
+msgid "Some of your preference changes were not applied."
+msgstr "Beberapa perubahan konfigurasi Anda tidak diterapkan."
+
+msgid "Successfully Saved Options"
+msgstr "Berhasil menyimpan Pilihan"
+
+msgid "Refresh Folder List"
+msgstr "Perbarui daftar folder"
+
+msgid "Refresh Page"
+msgstr "Perbarui Halaman"
+
+msgid ""
+"This contains personal information about yourself such as your name, your "
+"email address, etc."
+msgstr "Di sini berisi data tentang Anda seperti: Nama, alamat surate, dll."
+
+msgid ""
+"You can change the way that SquirrelMail looks and displays information to "
+"you, such as the colors, the language, and other settings."
+msgstr ""
+"Anda dapat mengubah cara SquirrelMail tampak dan menampilkan informasi untuk "
+"Anda, seperti: warna, bahasa, dan lain-lain."
+
+msgid ""
+"Based upon given criteria, incoming messages can have different background "
+"colors in the message list. This helps to easily distinguish who the "
+"messages are from, especially for mailing lists."
+msgstr ""
+"Berdasarkan kriteria tertentu, pesan yang masuk dapat memiliki latar warna "
+"berbeda dalam daftar pesan. Hal ini memudahkan Anda membedakan asal suatu "
+"pesan, khususnya dari suatu milis."
+
+msgid ""
+"These settings change the way your folders are displayed and manipulated."
+msgstr ""
+"Konfigurasi ini mengubah cara folder Anda ditampilkan dan dimanipulasi."
+
+msgid ""
+"The order of the message index can be rearranged and changed to contain the "
+"headers in any order you want."
+msgstr ""
+"Urutan pesan dapat diatur dan diubah sesuai keinginan dengan berdasarkan isi "
+"dari header pesan."
+
+msgid ""
+"Control the behaviour and layout of writing new mail messages, replying to "
+"and forwarding messages."
+msgstr ""
+
 msgid "Message not printable"
 msgstr "Pesan tidak dapat dicetak"
+
+msgid "Attachments:"
+msgstr "Lampiran:"
+
+msgid "Unknown sender"
+msgstr "Pengirim Misterius"
+
+msgid "Info:"
+msgstr "Keterangan:"
+
+msgid "Size:"
+msgstr "Ukuran:"
+
+msgid "Type:"
+msgstr "Jenis:"
 
 msgid "Invalid URL"
 msgstr "URL tidak sah"
@@ -630,6 +688,13 @@ msgstr "Cetak"
 
 msgid "View Printable Version"
 msgstr "Lihat Versi Cetak"
+
+#, fuzzy
+msgid "View as plain text"
+msgstr "Login (teks murni)"
+
+msgid "View as HTML"
+msgstr ""
 
 msgid "Read:"
 msgstr "Terbaca:"
@@ -649,9 +714,6 @@ msgstr "lebih sedikit"
 
 msgid "more"
 msgstr "lebih lengkap"
-
-msgid "Unknown sender"
-msgstr "Pengirim Misterius"
 
 msgid "Mailer"
 msgstr "Sarana"
@@ -675,6 +737,17 @@ msgstr ""
 msgid "Send read receipt now"
 msgstr "Kirim tanda 'pesan telah dibaca' sekarang"
 
+msgid "View Message"
+msgstr "Lihat Pesan"
+
+#, fuzzy
+msgid "Delete & Prev"
+msgstr "Hapus &amp; Sebelumnya"
+
+#, fuzzy
+msgid "Delete & Next"
+msgstr "Hapus &amp; Berikutnya"
+
 msgid "Search Results"
 msgstr "Hasil Pencarian "
 
@@ -687,62 +760,206 @@ msgstr "Buka Konsep"
 msgid "Edit Message as New"
 msgstr "Ubah Pesan sebagai pesan baru"
 
-msgid "View Message"
-msgstr "Lihat Pesan"
-
-msgid "Forward"
-msgstr "Kirimkan ke"
-
-msgid "Forward as Attachment"
-msgstr "Kirim sbg Lampiran"
-
 msgid "Reply"
 msgstr "Balas"
 
 msgid "Reply All"
 msgstr "Balas Semua"
 
+msgid "Forward"
+msgstr "Kirimkan ke"
+
+msgid "As Attachment"
+msgstr "Sebagai Lampiran"
+
+msgid "Bypass Trash"
+msgstr "Abaikan Sampah"
+
+msgid "Move to:"
+msgstr "Pindahkan ke:"
+
+msgid "Move"
+msgstr "Pindahkan"
+
 msgid "View Full Header"
 msgstr "Lihat 'header' lengkap"
-
-msgid "Attachments"
-msgstr "Lampiran"
 
 msgid "You must be logged in to access this page."
 msgstr "Anda harus masuk dahulu sebelum mengakses halaman ini."
 
-msgid "Folder:"
-msgstr "Folder:"
+msgid "THIS FOLDER IS EMPTY"
+msgstr "FOLDER INI KOSONG"
 
-msgid "edit"
-msgstr "sunting"
+msgid "INBOX"
+msgstr "KOTAK POS"
 
-msgid "search"
-msgstr "Cari"
+msgid "All Folders"
+msgstr "Semua Folder"
 
-msgid "delete"
-msgstr "Hapus "
+msgid "Please enter something to search for"
+msgstr "Mohon masukkan sesuatu untuk dicari"
 
-msgid "Recent Searches"
-msgstr "Pencarian Terakhir"
+msgid "There must be at least one criteria to search for"
+msgstr "Minimal harus ada satu kriteria pencarian"
+
+msgid "Error in criteria argument"
+msgstr "Salah sintaks dalam parameter kriteria"
+
+msgid "M j, Y"
+msgstr "j M Y"
+
+msgid "(Illegal date)"
+msgstr "(tanggal ilegal)"
+
+msgid "(Wrong date)"
+msgstr "(tanggal salah)"
+
+msgid "In"
+msgstr "Di"
+
+msgid "(Missing argument)"
+msgstr "(argumen tidak ada)"
+
+msgid "(Spurious argument)"
+msgstr "(argumen keterlaluan)"
+
+msgid "Fold"
+msgstr ""
+
+msgid "Unfold"
+msgstr ""
+
+msgid "Saved Searches"
+msgstr "Pencarian Tersimpan"
 
 msgid "save"
 msgstr "Simpan "
 
+msgid "search"
+msgstr "Cari"
+
 msgid "forget"
 msgstr "lupakan saja"
 
-msgid "Current Search"
-msgstr "Pencarian saat ini"
+msgid "Recent Searches"
+msgstr "Pencarian Terakhir"
 
-msgid "All Folders"
-msgstr "Semua Folder"
+msgid "Missing"
+msgstr "Tidak Ada"
+
+msgid "and&nbsp;subfolders:"
+msgstr "dan&nbsp; subfolder: "
+
+msgid "Exclude Criteria:"
+msgstr "Kriteria Pengecualian:"
+
+msgid "Search Criteria"
+msgstr "Kriteria Pencarian"
+
+msgid "Add New Criteria"
+msgstr "Tambah Kriteria Baru"
+
+msgid "Remove Excluded Criteria"
+msgstr "Buang Kriteria Pengecualian"
+
+msgid "Remove All Criteria"
+msgstr "Buang Semua Kriteria"
+
+msgid "Not"
+msgstr "Bukan"
+
+msgid "Answered"
+msgstr "Dijawab"
+
+msgid "Before"
+msgstr "Sebelum"
+
+msgid "Message Body"
+msgstr "Badan Pesan"
+
+msgid "Deleted"
+msgstr "Terhapus"
+
+msgid "Draft"
+msgstr "Konsep"
+
+msgid "Flagged"
+msgstr "Diberi Bendera"
+
+msgid "Sent By"
+msgstr "Dikirim Oleh "
+
+msgid "Header Field"
+msgstr "Ruas Header"
+
+msgid "Keyword"
+msgstr "Kata Kunci"
+
+msgid "Larger Than"
+msgstr "Lebih dari"
+
+msgid "Old"
+msgstr "Lama"
+
+msgid "On"
+msgstr "Di"
+
+msgid "Recent"
+msgstr "Terbaru"
+
+msgid "Seen"
+msgstr "Terbaca"
+
+msgid "Sent Before"
+msgstr "Dikirim Sebelum"
+
+msgid "Sent On"
+msgstr "Dikirim pada "
+
+msgid "Sent Since"
+msgstr "Dikirim Sejak"
+
+msgid "Since"
+msgstr "Sejak"
+
+msgid "Smaller Than"
+msgstr "Kurang dari"
+
+msgid "Subject Contains"
+msgstr "Subyek Berisi"
+
+msgid "Header and Body"
+msgstr "Header dan Badan Pesan"
+
+msgid "Sent To"
+msgstr "Dikirim Kepada "
+
+msgid "And In"
+msgstr "Dan di"
+
+msgid "Or In"
+msgstr "Atau di"
+
+msgid "And"
+msgstr "Dan"
+
+msgid "Or"
+msgstr "Atau"
 
 msgid "Body"
 msgstr "Badan pesan"
 
 msgid "Everywhere"
 msgstr "Di mana saja"
+
+msgid "Standard search"
+msgstr "Pencarian Standar"
+
+msgid "Advanced search"
+msgstr "Pencarian Lengkap"
+
+msgid "Folder:"
+msgstr "Folder:"
 
 msgid "No Messages Found"
 msgstr "Tidak ada pesan yang ditemukan"
@@ -773,9 +990,6 @@ msgstr ""
 msgid "Title"
 msgstr "Judul"
 
-msgid "Email"
-msgstr "Surate (Email)"
-
 msgid "Web Page"
 msgstr "Halaman Web"
 
@@ -800,20 +1014,24 @@ msgstr "Faksimili"
 msgid "Note"
 msgstr "Catatan"
 
-msgid "Add to Addressbook"
-msgstr "Tambahkan ke Buku Alamat"
+msgid "E-mail address"
+msgstr "Alamat Surate (Email)"
 
+msgid "Additional info"
+msgstr "Keterangan tambahan"
+
+#, fuzzy
 msgid "Title & Org. / Dept."
-msgstr "Gelar & Org. / Dept."
-
-msgid "Add to Address Book"
-msgstr "Tambahkan ke Buku Alamat"
+msgstr "Gelar &amp; Org. / Dept."
 
 msgid "Viewing Full Header"
 msgstr "Menampilkan 'header' lengkap"
 
 msgid "Viewing a text attachment"
 msgstr "Melihat lampiran naskah"
+
+msgid "Folder List"
+msgstr "Daftar Folder"
 
 msgid ""
 "Could not include PEAR database functions required for the database backend."
@@ -827,9 +1045,6 @@ msgstr ""
 "Apakan PEAR telah dipasang, dan 'include path' disetel dengan benar untuk "
 "menemukan %s?"
 
-msgid "Please contact your system administrator and report this error."
-msgstr "Hubungi administrator Anda dan laporkan hal ini."
-
 msgid "Personal address book"
 msgstr "Buku alamat pribadi"
 
@@ -840,13 +1055,18 @@ msgstr "Ada kesalahan basis data: %s"
 msgid "Addressbook is read-only"
 msgstr "Buku alamat hanya bisa dibaca"
 
+#. i18n: don't use html formating in translation
 #, php-format
-msgid "User '%s' already exist"
-msgstr "Nama '%s' sudah ada"
+msgid "User \"%s\" already exists"
+msgstr "Nama \"%s\" sudah ada"
 
+#. i18n: don't use html formating in translation
 #, php-format
-msgid "User '%s' does not exist"
-msgstr "Nama '%s' tidak ada"
+msgid "User \"%s\" does not exist"
+msgstr "Nama \"%s\" tidak ada"
+
+msgid "PHP install does not have LDAP support."
+msgstr ""
 
 msgid "Not a file name"
 msgstr "Bukan nama berkas"
@@ -885,6 +1105,21 @@ msgstr "Ada kesalahan saat membuat buku alamat umum."
 #, php-format
 msgid "Error initializing LDAP server %s:"
 msgstr "Ada kesalahan saat memulai server LDAP %s:"
+
+msgid "Must be unique"
+msgstr "Harus tunggal (unik)"
+
+msgid "Last name"
+msgstr "Nama Belakang"
+
+msgid "First name"
+msgstr "Nama Depan"
+
+msgid "Add to:"
+msgstr "Tambahkan ke:"
+
+msgid "Click here to change the sorting of the address list"
+msgstr "Klik di sini untuk mengubah pengurutan daftar alamat"
 
 msgid "Invalid input data"
 msgstr "Masukan data tidak sah"
@@ -1021,24 +1256,18 @@ msgstr "Des"
 msgid "D, F j, Y g:i a"
 msgstr "D, j F Y, G:i"
 
-#, fuzzy
 msgid "D, F j, Y H:i"
 msgstr "D, j F Y, G:i"
-
-msgid "M j, Y"
-msgstr "j M Y"
 
 msgid "g:i a"
 msgstr "G:i"
 
-#, fuzzy
 msgid "H:i"
 msgstr "G:i"
 
 msgid "D, g:i a"
 msgstr "D, G:i"
 
-#, fuzzy
 msgid "D, H:i"
 msgstr "D, G:i"
 
@@ -1085,13 +1314,6 @@ msgstr ""
 "Berkas konfigurasi, %s, tidak dapat disalin dari berkas sementara, %s. "
 "Hubungi administrator Anda untuk mengatasi hal ini."
 
-#, php-format
-msgid "Error opening %s"
-msgstr "Gagal membuka %s"
-
-msgid "Default preference file not found or not readable!"
-msgstr "Berkas konfigurasi bawaan tidak ditemukan atau tidak dapat dibaca!"
-
 msgid "Could not create initial preference file!"
 msgstr "Tidak dapat membuat berkas konfigurasi awal!"
 
@@ -1126,59 +1348,110 @@ msgstr ""
 "Berkas Tanda tangan, %s, tidak dapat disalin dari berkas sementara, %s. "
 "Hubungi administrator Anda untuk mengatasi hal ini."
 
-msgid ""
-"You need to have php4 installed with the multibyte string function enabled "
-"(using configure option --enable-mbstring)."
-msgstr ""
-"Anda harus memasang PHP4 dengan fungsi string multibyte aktif (menggunakan "
-"pilihan konfigurasi --enable-mbstring)."
+msgid "Illegal folder name."
+msgstr "Nama Folder tidak sah."
 
-#, fuzzy
+#, php-format
+msgid "The name may not contain any of the following: %s"
+msgstr ""
+
+msgid "Please select a different name."
+msgstr "Silakan pilih nama lain."
+
+msgid "Click here to go back"
+msgstr "Klik di sini untuk kembali"
+
+msgid "You have not selected a folder to rename. Please do so."
+msgstr "Anda belum memilih folder untuk diubah namanya. Silakan pilih!"
+
+msgid "Rename a folder"
+msgstr "Ganti nama folder"
+
+msgid "New name:"
+msgstr "Nama baru:"
+
+msgid "You have not selected a folder to delete. Please do so."
+msgstr "Anda belum memilih folder yang akan dihapus. Silakan pilih!"
+
+#, php-format
+msgid "Are you sure you want to delete %s?"
+msgstr "Apakah Anda sungguh-sungguh ingin menghapus %s?"
+
+msgid "Yes"
+msgstr "Ya"
+
+msgid "No"
+msgstr "Tidak"
+
+msgid "You have not selected a folder to subscribe. Please do so."
+msgstr "Anda belum memilih folder untuk dimasukkan. Silakan pilih!"
+
+msgid "Subscription Unsuccessful - Folder does not exist."
+msgstr "Gagal memasukkan -- Folder tidak ada."
+
+msgid "You have not selected a folder to unsubscribe. Please do so."
+msgstr "Anda belum memilih folder untuk dibuang. Silakan pilih!"
+
+msgid "ERROR: Could not complete request."
+msgstr "ADA KESALAHAN: Tidak dapat melaksanakan perintah."
+
+msgid "ERROR: Bad or malformed request."
+msgstr "ADA KESALAHAN: Perintah salah atau salah bentuk."
+
+msgid "ERROR: IMAP server closed the connection."
+msgstr "ADA KESALAHAN: Server IMAP menutup sambungan"
+
+msgid "ERROR: Connection dropped by IMAP server."
+msgstr "ADA KESALAHAN: Sambungan diputuskan oleh server IMAP."
+
+msgid "ERROR: Unknown IMAP response."
+msgstr "ADA KESALAHAN: Tanggapan IMAP tak dikenal."
+
+msgid "Reason Given:"
+msgstr "Alasan yang diberikan: "
+
+msgid "Possible reason:"
+msgstr "Alasan yang mungkin: "
+
 msgid "ERROR: No available IMAP stream."
 msgstr "ADA KESALAHAN: Tidak ada imapstream yang tersedia."
 
-#, fuzzy
-msgid "ERROR: Connection dropped by IMAP server."
-msgstr "ADA KESALAHAN: Sambungan diputuskan oleh server imap."
+msgid "ERROR: Bad function call."
+msgstr "ADA KESALAHAN: fungsi 'call' salah."
 
-#, fuzzy
-msgid "ERROR: Could not complete request."
-msgstr "ADA KESALAHAN: Tidak dapat melaksanakan perintah."
+msgid "Reason:"
+msgstr "Penyebab: "
 
 msgid "Query:"
 msgstr "Mencari:"
 
-#, fuzzy
-msgid "Reason Given:"
-msgstr "Alasan yang diberikan: "
-
-#, fuzzy
-msgid "ERROR: Bad or malformed request."
-msgstr "ADA KESALAHAN: Perintah salah atau salah bentuk."
-
 msgid "Server responded:"
 msgstr "Tanggapan server: "
-
-#, fuzzy
-msgid "ERROR: IMAP server closed the connection."
-msgstr "ADA KESALAHAN: Server imap menutup sambungan"
-
-#, fuzzy
-msgid "ERROR: Unknown IMAP response."
-msgstr "ADA KESALAHAN: Tanggapan imap tak diketahui"
 
 #, php-format
 msgid "Error connecting to IMAP server: %s."
 msgstr "Gagal menghubungi server IMAP: %s."
 
-msgid "The IMAP server is reporting that plain text logins are disabled."
-msgstr "Server IMAP melaporkan bahwa login 'plain text' dimatikan."
+msgid ""
+"TLS is enabled, but this version of PHP does not support TLS sockets, or is "
+"missing the openssl extension."
+msgstr ""
+"TLS diaktifkan, tetapi versi PHP ini tidak mendukung socket TLS, atau tidak "
+"ada dalam ekstensi openssl."
 
-msgid "Using CRAM-MD5 or DIGEST-MD5 authentication instead may work."
-msgstr "Penggunakan otentikasi CRAM-MD5 atau DIGEST-MD5 mungkin akan berhasil."
+msgid ""
+"IMAP STARTTLS is enabled in SquirrelMail configuration, but used IMAP server "
+"does not support STARTTLS."
+msgstr ""
 
-msgid "Also, the use of TLS may allow SquirrelMail to login."
-msgstr "Penggunaan TLS juga memungkinkan SquirrelMail untuk login."
+#, fuzzy
+msgid "Unable to start TLS."
+msgstr "Tidak dapat menggunakan TLS."
+
+msgid ""
+"IMAP STARTTLS is enabled in SquirrelMail configuration, but used PHP version "
+"does not support functions that allow to enable encryption on open socket."
+msgstr ""
 
 #, php-format
 msgid "Bad request: %s"
@@ -1194,30 +1467,10 @@ msgstr "Membaca data:"
 msgid "Unknown user or password incorrect."
 msgstr "Nama tidak dikenal atau sandinya salah."
 
-#, fuzzy
-msgid "ERROR: Could not append message to"
-msgstr "ADA KESALAHAN: Tidak dapat menambahkan pesan ke"
-
-#, fuzzy
-msgid "Solution:"
-msgstr "Pemecahan:"
-
 msgid ""
-"Remove unneccessary messages from your folder and start with your Trash "
-"folder."
+"Your mailbox is not located at this server. Try a different server or "
+"consult your system administrator"
 msgstr ""
-"Buanglah pesan yang tidak perlu dari folder Anda dan mulailah dengan folder "
-"Sampah (Trash)"
-
-msgid "(no subject)"
-msgstr "(tidak ada judul surat)"
-
-msgid "Unknown Sender"
-msgstr "Pengirim Misterius"
-
-#, fuzzy
-msgid "Unknown response from IMAP server:"
-msgstr "Tanggapan dari server IMAP tidak dikenal: "
 
 msgid "The server couldn't find the message you requested."
 msgstr "Server tidak dapat menemukan pesan yang Anda minta"
@@ -1230,41 +1483,11 @@ msgstr ""
 "Kemungkinan besar daftar pesan Anda sudah lama dan pesan telah dipindahkan "
 "atau dihapus (mungkin oleh program lain yang mengakses kotak surat yang sama)"
 
-msgid "Unknown date"
-msgstr "Tanggal tak diketahui"
+msgid "Unknown recipient"
+msgstr "Penerima tak dikenal"
 
-msgid "A"
-msgstr "B"
-
-msgid "Thread sorting is not supported by your IMAP server."
-msgstr "Pengurutan terstruktur tidak didukung oleh server IMAP Anda."
-
-msgid "Server-side sorting is not supported by your IMAP server."
-msgstr "Pengurutan pada-server tidak didukung oleh server IMAP Anda."
-
-msgid "THIS FOLDER IS EMPTY"
-msgstr "FOLDER INI KOSONG"
-
-msgid "Move Selected To"
-msgstr "Pindahkan yang dipilih ke:"
-
-msgid "Transform Selected Messages"
-msgstr "Ubah Status Pesan Terpilih"
-
-msgid "Move"
-msgstr "Pindahkan"
-
-msgid "Expunge"
-msgstr "Kosongkan"
-
-msgid "mailbox"
-msgstr "Kotak surat"
-
-msgid "Read"
-msgstr "Sudah Dibaca"
-
-msgid "Unread"
-msgstr "Belum Dibaca"
+msgid "(no subject)"
+msgstr "(tidak ada judul surat)"
 
 msgid "Unthread View"
 msgstr "Tampilan Biasa"
@@ -1272,34 +1495,32 @@ msgstr "Tampilan Biasa"
 msgid "Thread View"
 msgstr "Tampilan Terstruktur"
 
-msgid "Toggle All"
-msgstr "Pilih Semua"
+msgid "Unflag"
+msgstr "Buang Bendera"
 
-msgid "Unselect All"
-msgstr "Batal Pilih Semua"
+msgid "Flag"
+msgstr "Bendera"
 
-msgid "Select All"
-msgstr "Pilih Semua"
+msgid "Read"
+msgstr "Sudah Dibaca"
 
-#, php-format
-msgid "Viewing Messages: %s to %s (%s total)"
-msgstr "Menampilkan Pesan: %s sampai %s (seluruhnya %s)."
+msgid "Unread"
+msgstr "Belum Dibaca"
 
-#, php-format
-msgid "Viewing Message: %s (%s total)"
-msgstr "Menampilkan Pesan: %s (seluruhnya %s)"
+msgid "Undelete"
+msgstr "Batal dihapus "
 
-msgid "Paginate"
-msgstr "Per-hlm"
+msgid "Expunge"
+msgstr "Kosongkan"
 
-msgid "Show All"
-msgstr "Lihat Semua"
+msgid "No messages were selected."
+msgstr "Tidak ada pesan yang dipilih."
 
 msgid "SquirrelMail could not decode the bodystructure of the message"
 msgstr "Squirrelmail tidak dapat mendekode struktur-badan pesan"
 
-msgid "the provided bodystructure by your imap-server"
-msgstr "Struktur badan-pesan yang diberikan oleh server imap"
+msgid "The bodystructure provided by your IMAP server:"
+msgstr "Struktur badan-pesan yang diberikan oleh server IMAP: "
 
 msgid ""
 "Body retrieval error. The reason for this is most probably that the message "
@@ -1320,6 +1541,9 @@ msgstr "Pesan:"
 msgid "FETCH line:"
 msgstr "baris FETCH:"
 
+msgid "Viewing HTML formatted email"
+msgstr ""
+
 msgid "Hide Unsafe Images"
 msgstr "Sembunyikan Gambar Berbahaya"
 
@@ -1339,8 +1563,8 @@ msgstr "Pranala eksternal ini akan dibuka di jendela baru"
 msgid "Option Type '%s' Not Found"
 msgstr "Jenis Pilihan '%s' Tidak Ada"
 
-msgid "Current Folder"
-msgstr "Folder Saat Ini"
+msgid "unavailable"
+msgstr "tidak tersedia"
 
 msgid "Compose"
 msgstr "Tulis"
@@ -1352,6 +1576,41 @@ msgstr "Gagal membuat direktori %s ."
 
 msgid "Could not create hashed directory structure!"
 msgstr "Tidak dapat membuat struktur direktori bertingkat!"
+
+#, fuzzy
+msgid "Error"
+msgstr "Ada Kesalahan:"
+
+msgid "Terminating SquirrelMail due to a fatal error"
+msgstr ""
+
+msgid "Email delivery error"
+msgstr "Ada kesalahan pengiriman surat"
+
+#, php-format
+msgid "Can't execute command '%s'."
+msgstr "Tidak dapat menjalankan perintah '%s'."
+
+msgid ""
+"Secure SMTP (TLS) is enabled in SquirrelMail configuration, but used PHP "
+"version does not support it."
+msgstr ""
+
+msgid "Can't open SMTP stream."
+msgstr "Tidak dapat membuka strem SMTP."
+
+msgid "TLS session is already activated."
+msgstr ""
+
+msgid ""
+"SMTP STARTTLS is enabled in SquirrelMail configuration, but used SMTP server "
+"does not support it"
+msgstr ""
+
+msgid ""
+"SMTP STARTTLS is enabled in SquirrelMail configuration, but used PHP version "
+"does not support functions that allow to enable encryption on open socket."
+msgstr ""
 
 msgid "Service not available, closing channel"
 msgstr "Layanan tidak tersedia, sedang menutup kanal"
@@ -1416,57 +1675,58 @@ msgstr "Transaksi gagal"
 msgid "Unknown response"
 msgstr "Tanggapan tak diketahui"
 
-msgid "General Display Options"
-msgstr "Pilihan Tampilan Umum"
+msgid "Thread sorting is not supported by your IMAP server."
+msgstr "Pengurutan terstruktur tidak didukung oleh server IMAP Anda."
 
-msgid "Theme"
-msgstr "Gaya"
+msgid ""
+"Run \"configure\", choose option 4 (General options) and set option 10 "
+"(Disable server thread sort) to true)."
+msgstr ""
 
-msgid "Default"
-msgstr "Standar(default)"
+msgid "Server-side sorting is not supported by your IMAP server."
+msgstr "Pengurutan pada-server tidak didukung oleh server IMAP Anda."
 
-msgid "Custom Stylesheet"
-msgstr "Stylesheet Pribadi"
-
-msgid "Language"
-msgstr "Bahasa"
-
-msgid "Use Javascript"
-msgstr "Pakai Javascript"
-
-msgid "Autodetect"
-msgstr "Deteksi otomatis"
-
-msgid "Always"
-msgstr "Selalu"
-
-msgid "Never"
-msgstr "Jangan pernah"
-
-msgid "Mailbox Display Options"
-msgstr "Pilihan Tampilan Kotak Surat"
+msgid ""
+"Run \"configure\", choose option 4 (General options) and set option 11 "
+"(Disable server-side sorting) to true."
+msgstr ""
 
 #, fuzzy
-msgid "Number of Messages per Page"
-msgstr "Jumlah pesan yang ditampilkan"
+msgid "Your used charset is not supported by your IMAP server."
+msgstr "Pengurutan terstruktur tidak didukung oleh server IMAP Anda."
 
-msgid "Enable Alternating Row Colors"
-msgstr "Pakai warna baris yang berbeda?"
+msgid ""
+"Run \"configure\", choose option 4 (General options) and set option 12 "
+"(Allow server charset search) to false) or choose option 10 (Language "
+"settings) and set option 2 (Default charset) to a charset supported by your "
+"IMAP server."
+msgstr ""
 
-msgid "Enable Page Selector"
-msgstr "Aktifkan Pemilih Halaman"
+msgid "Out of quota error."
+msgstr ""
 
-msgid "Maximum Number of Pages to Show"
-msgstr "Jumlah halaman maksimum yang ditampilkan"
+#, fuzzy
+msgid ""
+"Remove unneccessary messages from your folder and start with your Trash "
+"folder."
+msgstr ""
+"Buanglah pesan yang tidak perlu dari folder Anda. Mulailah dengan folder "
+"Sampah (Trash)."
 
-msgid "Always Show Full Date"
-msgstr "Selalu menampilkan tanggal lengkap"
+msgid ""
+"An error occured when SquirrelMail appended a message to the mailbox as "
+"listed in this message."
+msgstr ""
 
-msgid "Message Display and Composition"
-msgstr "Penulisan dan Penampilan Pesan"
+msgid "Your IMAP server returned an error."
+msgstr ""
 
-msgid "Wrap Incoming Text At"
-msgstr "Penggal tulisan pada kolom"
+#, fuzzy
+msgid "IMAP server closed the connection."
+msgstr "ADA KESALAHAN: Server IMAP menutup sambungan"
+
+msgid "General Message Composition"
+msgstr "Penulisan Pesan Umum"
 
 msgid "Width of Editor Window"
 msgstr "Lebar Jendela Editor"
@@ -1495,30 +1755,6 @@ msgstr "Javascript"
 msgid "HTML"
 msgstr "HTML"
 
-msgid "Show HTML Version by Default"
-msgstr "Tampilkan versi HTML secara otomatis"
-
-msgid "Enable Forward as Attachment"
-msgstr "Izinkan meneruskan pesan(Forward) sebagai Lampiran"
-
-msgid "Include CCs when Forwarding Messages"
-msgstr "Masukkan Tembusan bila meneruskan pesan"
-
-msgid "Include Me in CC when I Reply All"
-msgstr "Masukkan Saya dalam Tembusan bila Saya Balas Semua"
-
-msgid "Enable Mailer Display"
-msgstr "Tampilkan Sarana Pengiriman "
-
-msgid "Display Attached Images with Message"
-msgstr "Tampilkan Lampiran Gambar dalam Pesan"
-
-msgid "Enable Printer Friendly Clean Display"
-msgstr "Aktifkan Tampilan Layar Pencetakan yang Keren"
-
-msgid "Enable Mail Delivery Notification"
-msgstr "Aktifkan tanda pengiriman pesan"
-
 msgid "Compose Messages in New Window"
 msgstr "Selalu menulis surat di jendela baru"
 
@@ -1528,6 +1764,16 @@ msgstr "Lebar jendela penulisan"
 msgid "Height of Compose Window"
 msgstr "Tinggi jendela penulisan"
 
+msgid "Replying and Forwarding Messages"
+msgstr "Membalas dan Meneruskan Pesan"
+
+msgid "Include CCs when Forwarding Messages"
+msgstr "Masukkan Tembusan bila meneruskan pesan"
+
+msgid "Include Me in CC when I Reply All"
+msgstr "Masukkan Saya dalam Tembusan bila Saya Balas Semua"
+
+#, fuzzy
 msgid "Append Signature before Reply/Forward Text"
 msgstr "Tambahkan tanda tangan sebelum naskah balasan/terusan"
 
@@ -1549,11 +1795,127 @@ msgstr "Pilih Badan Pesan"
 msgid "No focus"
 msgstr "Tiada fokus:"
 
-msgid "Sort by Received Date"
-msgstr "Urutkan berdasarkan Tanggal Terima"
+msgid "Strip signature when replying"
+msgstr "Buang tanda tangan saat membalas"
+
+msgid "General Display Options"
+msgstr "Pilihan Tampilan Umum"
+
+#, fuzzy
+msgid "Template"
+msgstr "Gaya"
+
+msgid "Theme"
+msgstr "Gaya"
+
+msgid "Default"
+msgstr "Standar(default)"
+
+#, fuzzy
+msgid "Default font style"
+msgstr "Identitas Utama"
+
+#, fuzzy
+msgid "Font style"
+msgstr "belum ditentukan"
+
+#, fuzzy
+msgid "Font size"
+msgstr "Lihat Bulan"
+
+#, fuzzy
+msgid "Default font size"
+msgstr "Ukuran Bawaan (Default) Frame Kiri "
+
+msgid "Language"
+msgstr "Bahasa"
+
+msgid "Use Javascript"
+msgstr "Pakai Javascript"
+
+msgid "Autodetect"
+msgstr "Deteksi otomatis"
+
+msgid "Always"
+msgstr "Selalu"
+
+msgid "Never"
+msgstr "Jangan pernah"
+
+msgid "Hour Format"
+msgstr "Bentuk Waktu"
+
+msgid "12-hour clock"
+msgstr "12-jam"
+
+msgid "24-hour clock"
+msgstr "24-jam"
+
+msgid "Mailbox Display Options"
+msgstr "Pilihan Tampilan Kotak Surat"
+
+msgid "Number of Messages per Page"
+msgstr "Jumlah Pesan per Halaman "
+
+msgid "Enable Alternating Row Colors"
+msgstr "Pakai warna baris yang berbeda?"
+
+msgid "Enable Fancy Row Mouseover Highlighting"
+msgstr ""
+
+msgid "Message Flags Icon Theme"
+msgstr "Gaya Icon Bendera Pesan"
+
+msgid "Show Flag / Unflag Buttons"
+msgstr "Tampilkan Tombol Buang/Beri Bendera"
+
+msgid "Enable Page Selector"
+msgstr "Aktifkan Pemilih Halaman"
+
+msgid "Use Compact Page Selector"
+msgstr "Gunakan Pemilih Halaman Terpadu"
+
+msgid "Maximum Number of Pages to Show"
+msgstr "Jumlah halaman maksimum yang ditampilkan"
+
+msgid "Always Show Full Date"
+msgstr "Selalu menampilkan tanggal lengkap"
+
+msgid "Length of From/To Field (0 for full)"
+msgstr "Panjang Ruas Dari/Kepada (0 untuk panjang)"
+
+msgid "Length of Subject Field (0 for full)"
+msgstr "Panjang Ruas Judul Surat (0 untuk panjang)"
 
 msgid "Enable Thread Sort by References Header"
 msgstr "Pengurutan Pesan Terstruktur berdasarkan Header Acuan"
+
+msgid "Message Display Options"
+msgstr "Konfigurasi Tampilan Pesan"
+
+msgid "Wrap Incoming Text At"
+msgstr "Penggal tulisan pada kolom"
+
+msgid "Show HTML Version by Default"
+msgstr "Tampilkan versi HTML secara otomatis"
+
+msgid "Height of inline frame"
+msgstr ""
+
+msgid "Enable Forward as Attachment"
+msgstr "Izinkan meneruskan pesan(Forward) sebagai Lampiran"
+
+msgid "Enable Mailer Display"
+msgstr "Tampilkan Sarana Pengiriman "
+
+msgid "Display Attached Images with Message"
+msgstr "Tampilkan Lampiran Gambar dalam Pesan"
+
+msgid "Enable Mail Delivery Notification"
+msgstr "Aktifkan tanda pengiriman pesan"
+
+msgid "Show 'Delete & Prev/Next' Links"
+msgstr "Tampilkan Pranala 'Hapus & Sebelumnya/Berikutnya"
 
 msgid "Special Folder Options"
 msgstr "Pilihan Folder Khusus"
@@ -1579,6 +1941,9 @@ msgstr "Tidak pakai folder Kirim"
 msgid "Sent Folder"
 msgstr "Folder Kirim (Sent)"
 
+msgid "Save Replies with Original Message"
+msgstr "Simpan Balasan dengan Pesan Asli"
+
 msgid "Folder List Options"
 msgstr "Pilihan Daftar Folder"
 
@@ -1597,14 +1962,13 @@ msgstr "piksel"
 msgid "Width of Folder List"
 msgstr "Lebar daftar folder"
 
-msgid "Minutes"
-msgstr "Menit"
-
 msgid "Seconds"
 msgstr "Detik"
 
-msgid "Minute"
-msgstr "Menit"
+#, php-format
+msgid "%d Minute"
+msgid_plural "%d Minutes"
+msgstr[0] "%d Menit"
 
 msgid "Auto Refresh Folder List"
 msgstr "Perbarui daftar folder otomatis"
@@ -1657,20 +2021,14 @@ msgstr "Tampilkan Waktu"
 msgid "No Clock"
 msgstr "Tidak ada jam"
 
-msgid "Hour Format"
-msgstr "Bentuk Waktu"
-
-msgid "12-hour clock"
-msgstr "12-jam"
-
-msgid "24-hour clock"
-msgstr "24-jam"
-
 msgid "Memory Search"
 msgstr "Cari Memori"
 
 msgid "Disabled"
 msgstr "Tidak perlu"
+
+msgid "Show only subscribed folders"
+msgstr ""
 
 msgid "Folder Selection Options"
 msgstr "Pilihan Seleksi Folder"
@@ -1678,7 +2036,6 @@ msgstr "Pilihan Seleksi Folder"
 msgid "Selection List Style"
 msgstr "Gaya Penampilan Seleksi"
 
-#, fuzzy
 msgid "Long:"
 msgstr "Panjang(lengkap):"
 
@@ -1688,18 +2045,16 @@ msgstr "Folder"
 msgid "Subfolder"
 msgstr "sebagai subfolder dari"
 
-#, fuzzy
 msgid "Indented:"
 msgstr "Dimasukkan: "
 
-#, fuzzy
 msgid "Delimited:"
 msgstr "Dipisahkan: "
 
 msgid "Name and Address Options"
 msgstr "Pilihan Nama dan Alamat"
 
-msgid "Email Address"
+msgid "E-mail Address"
 msgstr "Alamat Surate"
 
 msgid "Edit Advanced Identities"
@@ -1732,11 +2087,9 @@ msgstr "Gaya Kata-Pembuka Surat Balasan"
 msgid "No Citation"
 msgstr "Tidak ada Kata-Pembuka"
 
-#, fuzzy
 msgid "AUTHOR Wrote"
 msgstr "PENULIS Berkata"
 
-#, fuzzy
 msgid "On DATE, AUTHOR Wrote"
 msgstr "Pada TANGGAL, PENULIS Berkata"
 
@@ -1760,6 +2113,9 @@ msgstr "Pakai tanda tangan?"
 
 msgid "Prefix Signature with '-- ' Line"
 msgstr "Awali tanda tangan dengan Garis '--'"
+
+msgid "XP"
+msgstr "Windows XP"
 
 msgid "Take Address"
 msgstr "Catat Alamat"
@@ -1842,6 +2198,13 @@ msgstr "Mailserver Mac OS X"
 msgid "hMailServer IMAP server"
 msgstr "Server IMAP hMailServer"
 
+#, fuzzy
+msgid "Mercury/32 IMAP server"
+msgstr "Server IMAP Cyrus"
+
+msgid "Binc IMAP server"
+msgstr "Sedang membuka server IMAP "
+
 msgid "Not one of the above servers"
 msgstr "Bukan salah satu server di atas"
 
@@ -1851,11 +2214,24 @@ msgstr "Pemisah Folder IMAP"
 msgid "Use &quot;detect&quot; to auto-detect."
 msgstr "Pakai &quot;deteksi&quot; untuk deteksi otomatis."
 
-msgid "Use TLS for IMAP Connections"
+msgid "IMAP Connection Security"
+msgstr ""
+
+#, fuzzy
+msgid "Plain text connection"
+msgstr "Menutup hubungan"
+
+#, fuzzy
+msgid "Secure IMAP (TLS) connection"
 msgstr "Gunakan TLS untuk koneksi IMAP"
 
-msgid "Requires PHP 4.3.x! Experimental."
-msgstr "Perlu PHP 4.3.x! Experimental."
+msgid "IMAP STARTTLS connection"
+msgstr ""
+
+msgid ""
+"Requires higher PHP version and special functions. See SquirrelMail "
+"documentation."
+msgstr ""
 
 msgid "IMAP Authentication Type"
 msgstr "Jenis otentikasi IMAP"
@@ -1872,14 +2248,17 @@ msgstr "Pilih &quot;tidak&quot; untuk SMTP."
 msgid "Sendmail Path"
 msgstr "Letak Path Sendmail"
 
+msgid "Sendmail Arguments"
+msgstr "Argumen Sendmail"
+
 msgid "SMTP Server Address"
 msgstr "Alamat server SMTP"
 
 msgid "SMTP Server Port"
 msgstr "Port server SMTP"
 
-msgid "Use TLS for SMTP Connections"
-msgstr "Gunakan TLS untuk koneksi SMTP"
+msgid "SMTP Connection Security"
+msgstr ""
 
 msgid "SMTP Authentication Type"
 msgstr "Jenis otentikasi SMTP"
@@ -1892,6 +2271,9 @@ msgstr "Login (teks murni)"
 
 msgid "POP3 Before SMTP?"
 msgstr "POP3 Sebelum SMTP?"
+
+msgid "Header Encryption Key"
+msgstr "Kunci Enkripsi Header"
 
 msgid "Invert Time"
 msgstr "Ganti waktu"
@@ -1986,20 +2368,54 @@ msgstr "Izinkan pengubahan identitas"
 msgid "Allow editing of full name"
 msgstr "Izinkan pengubahan Nama Lengkap"
 
-msgid "Use server-side sorting"
+msgid "Remove username from headers"
+msgstr "Hapus nama pengguna dari header"
+
+msgid "Used only when identities can't be modified"
+msgstr "Gunakan hanya jika identitas tidak dapat diubah"
+
+#, fuzzy
+msgid "Disable server-side sorting"
 msgstr "Pakai pengurutan oleh-server"
 
-msgid "Use server-side thread sorting"
+#, fuzzy
+msgid "Disable server-side thread sorting"
 msgstr "Pakai pengurutan terstruktur oleh-server"
 
 msgid "Allow server charset search"
 msgstr "Izinkan pencarian gugus karakter oleh-server"
 
-msgid "UID support"
-msgstr "Dukungan UID"
+msgid "Search functions"
+msgstr "Fungsi Pencarian"
+
+msgid "Only basic search"
+msgstr "Hanya pencarian standar"
+
+msgid "Only advanced search"
+msgstr "Hanya pencarian lengkap"
+
+msgid "Both search functions"
+msgstr "Kedua fungsi pencarian"
 
 msgid "PHP session name"
 msgstr "Nama sesi PHP"
+
+#, fuzzy
+msgid "Time Zone Configuration"
+msgstr "Ujicoba Konfigurasi"
+
+msgid "Standard GNU C time zones"
+msgstr ""
+
+#, fuzzy
+msgid "Strict time zones"
+msgstr "Waktu Mulai:"
+
+msgid "Custom GNU C time zones"
+msgstr ""
+
+msgid "Custom strict time zones"
+msgstr ""
 
 msgid "Message of the Day"
 msgstr "Pesan Hari Ini"
@@ -2022,10 +2438,22 @@ msgstr "Tabel Konfigurasi"
 msgid "Preferences username field"
 msgstr "Kolom konfigurasi nama pengguna"
 
+#, fuzzy
+msgid "Size of username field"
+msgstr "Kolom konfigurasi nama pengguna"
+
 msgid "Preferences key field"
 msgstr "Kolom konfigurasi kunci(key)"
 
+#, fuzzy
+msgid "Size of key field"
+msgstr "Kolom konfigurasi kunci(key)"
+
 msgid "Preferences value field"
+msgstr "Kolom konfigurasi nilai(value)"
+
+#, fuzzy
+msgid "Size of value field"
 msgstr "Kolom konfigurasi nilai(value)"
 
 msgid "Global address book DSN"
@@ -2049,8 +2477,35 @@ msgstr "Bahasa Utama"
 msgid "Default Charset"
 msgstr "Gugus Karakter Bawaan(Default)"
 
+msgid "Show alternative language names"
+msgstr "Tampilkan nama bahasa lainnya"
+
+msgid "Enable aggressive decoding"
+msgstr "Aktifkan dekoding agresif"
+
 msgid "Enable lossy encoding"
 msgstr "Aktifkan encoding 'lossy'"
+
+msgid "Tweaks"
+msgstr "Canggih"
+
+msgid "Use advanced tree folder listing"
+msgstr "Gunakan daftar folder dengan lengkap"
+
+msgid "Use icons"
+msgstr "Gunakan simbol/ikon"
+
+msgid "Use inline frames with HTML mails"
+msgstr ""
+
+msgid "Use PHP recode functions"
+msgstr "Gunakan fungsi php recode"
+
+msgid "Use PHP iconv functions"
+msgstr "Gunakan fungsi php iconv"
+
+msgid "Allow remote configuration test"
+msgstr "Izinkan Ujicoba Konfigurasi jarak jauh"
 
 msgid "Address Books"
 msgstr "Buku Alamat"
@@ -2064,11 +2519,20 @@ msgstr "Berkas Buku Alamat Umum"
 msgid "Allow writing into global address book file"
 msgstr "Izinkan menulis ke berkas buku alamat umum"
 
-msgid "Themes"
+#, fuzzy
+msgid "Templates"
 msgstr "Gaya"
 
 msgid "Style Sheet URL (css)"
 msgstr "URL StyleSheet (css)"
+
+#, fuzzy
+msgid "Default font set"
+msgstr "Ukuran Bawaan (Default) Frame Kiri "
+
+#, fuzzy
+msgid "Default template"
+msgstr "Gaya Standar (Default)"
 
 msgid "Default theme"
 msgstr "Gaya Standar (Default)"
@@ -2129,8 +2593,14 @@ msgstr ""
 "Modul ini memungkinkan admin untuk mengelola konfigurasi utama SquirrelMail "
 "dari jauh."
 
+msgid "Plugin is disabled."
+msgstr "Plugin dimatikan."
+
 msgid "Submit a Bug Report"
 msgstr "Laporkan suatu Masalah"
+
+msgid "Show System Specifications"
+msgstr "Tampilkan spesifikasi sistem"
 
 msgid ""
 "Before you send your bug report, please make sure to check this checklist "
@@ -2201,8 +2671,11 @@ msgstr ""
 "SouceForge, tetapi seseorang yang menerima pesan Anda mungkin akan "
 "menambahkannya."
 
-msgid "This bug involves"
-msgstr "Masalah ini melibatkan"
+msgid "This bug involves:"
+msgstr "Masalah ini melibatkan: "
+
+msgid "my email account"
+msgstr ""
 
 msgid "the general program"
 msgstr "Program secara umum"
@@ -2216,21 +2689,22 @@ msgstr "Memulai Format Laporan Masalah"
 msgid "Bug"
 msgstr "Masalah"
 
-msgid "Bug Reports:"
+#, fuzzy
+msgid "Bug Reports"
 msgstr "Lapor Masalah:"
 
 msgid "Show button in toolbar"
 msgstr "Tampilkan tombol di toolbar"
+
+#, php-format
+msgid "Could not write calendar file %s"
+msgstr "Tidak dapat menulis berkas kalender %s"
 
 msgid "TODAY"
 msgstr "HARI INI"
 
 msgid "Go"
 msgstr "Lanjut"
-
-#, php-format
-msgid "Could not write calendar file %s"
-msgstr "Tidak dapat menulis berkas kalender %s"
 
 msgid "l, F j Y"
 msgstr "l, j F Y"
@@ -2264,6 +2738,9 @@ msgstr "Acara telah ditambahkan!"
 
 msgid "Date:"
 msgstr "Tanggal:"
+
+msgid "m/d/Y"
+msgstr "b/h/T"
 
 msgid "Time:"
 msgstr "Waktu:"
@@ -2337,26 +2814,281 @@ msgstr "6 jam."
 msgid "Calendar"
 msgstr "Kalender"
 
-msgid "Delete & Prev"
-msgstr "Hapus & Sebelumnya"
+msgid "You must type in a new password."
+msgstr "Anda harus memasukkan sandi baru."
 
-msgid "Delete & Next"
-msgstr "Hapus & Berikutnya"
+msgid "You must also type in your new password in the verify box."
+msgstr "Anda juga harus memasukkan sandi baru Anda dalam kotak konfirmasi."
 
-msgid "Move to:"
-msgstr "Pindahkan ke:"
+msgid "Your new password does not match the verify password."
+msgstr "Sandi baru Anda tidak cocok dengan sandi konfirmasi."
 
-msgid "Delete/Move/Next Buttons:"
-msgstr "Tombol Hapus/Pindah/Berikutnya:"
+msgid "You must type in your current password."
+msgstr "Anda harus memasukkan sandi lama Anda."
 
-msgid "Display at top"
-msgstr "Tampilkan di atas"
+msgid "Your current password is not correct."
+msgstr "Sandi lama Anda salah."
 
-msgid "with move option"
-msgstr "dengan pilihan 'Pindah'"
+#, php-format
+msgid "Your new password should be %s to %s characters long."
+msgstr "Sandi baru Anda harus terdiri dari %s sampai %s karakter."
 
-msgid "Display at bottom"
-msgstr "Tampilkan di bawah"
+msgid "Your new password contains invalid characters."
+msgstr "Sandi baru Anda berisi karakter tidak sah."
+
+msgid "Change Password"
+msgstr "Ganti Sandi"
+
+msgid "Current Password:"
+msgstr "Sandi Lama:"
+
+msgid "New Password:"
+msgstr "Sandi Baru:"
+
+msgid "Verify New Password:"
+msgstr "Ketik ulang sandi baru:"
+
+msgid "Use this to change your email password."
+msgstr "Gunakan ini untuk mengganti sandi surat Anda."
+
+#. i18n: is displayed after "Successfully Saved Options:"
+msgid "User's Password"
+msgstr "Sandi Pengguna:"
+
+msgid "Current configuration requires LDAP support in PHP."
+msgstr ""
+
+msgid "Plugin is not configured correctly."
+msgstr ""
+
+#, php-format
+msgid "Setting of LDAP connection option %s to value %s failed."
+msgstr ""
+
+#, php-format
+msgid "Incorrect LDAP connection option: %s"
+msgstr ""
+
+msgid ""
+"Current PHP LDAP extension does not allow use of ldap_set_option() function."
+msgstr ""
+
+msgid "Unable to use TLS."
+msgstr "Tidak dapat menggunakan TLS."
+
+#, php-format
+msgid "Error: %s"
+msgstr "Ada kesalahan: %s"
+
+#, fuzzy
+msgid "Unable to use LDAP TLS in current setup."
+msgstr "Tidak dapat menggunakan TLS."
+
+#, fuzzy
+msgid "Unable to bind to LDAP server."
+msgstr "Tidak dapat menghubungi server LDAP."
+
+#, php-format
+msgid "Server replied: %s"
+msgstr "Server menjawab: %s"
+
+msgid "Unable to find user's password attribute."
+msgstr ""
+
+#, fuzzy
+msgid "Unable to rebind to LDAP server."
+msgstr "Tidak dapat menghubungi server LDAP."
+
+msgid "LDAP server uses different attribute to store user's password."
+msgstr ""
+
+msgid "Unable to connect to LDAP server."
+msgstr "Tidak dapat menghubungi server LDAP."
+
+#, fuzzy
+msgid "Unable to find user's DN."
+msgstr "Tidak dapat menggunakan TLS."
+
+msgid "Search error."
+msgstr "Ada kesalahan pencarian."
+
+msgid "Multiple userid matches found."
+msgstr ""
+
+msgid "ldap_get_dn error."
+msgstr ""
+
+#, php-format
+msgid "Unsupported crypto: %s"
+msgstr ""
+
+msgid "PHP mhash extension is missing or does not support selected crypto."
+msgstr ""
+
+msgid "System crypt library doesn't support standard DES crypt."
+msgstr ""
+
+msgid "System crypt library doesn't have MD5 support."
+msgstr ""
+
+msgid "System crypt library doesn't support extended DES crypt."
+msgstr ""
+
+msgid "System crypt library doesn't have Blowfish support."
+msgstr ""
+
+msgid "unknown"
+msgstr "Tidak dikenal"
+
+msgid "Unable to validate user's password."
+msgstr ""
+
+msgid "Blowfish is not supported by webserver's system crypt library."
+msgstr ""
+
+msgid "MD5 is not supported by webserver's system crypt library."
+msgstr ""
+
+msgid ""
+"Extended DES crypt is not supported by webserver's system crypt library."
+msgstr ""
+
+msgid ""
+"Standard DES crypt is not supported by webserver's system crypt library."
+msgstr ""
+
+msgid "PHP Curl extension is NOT available! Unable to change password!"
+msgstr "Module 'PHP Curl' TIDAK tersedia! Tidak dapat mengganti sandi!"
+
+msgid "Cannot change password! (Is user 'Self Configurable User' ?) (401)"
+msgstr ""
+"Tidak dapat mengganti sandi! (Apakah pengguna adalah 'Pengguna yang "
+"Terkonfigurasi Sendiri' ?) (401)"
+
+msgid "Cannot change password!"
+msgstr "Tidak dapat mengganti sandi!"
+
+msgid "Cannot connect to Database Server, please try later!"
+msgstr "Tidak dapat menghubungi Server Basis Data, silakan coba lagi!"
+
+msgid "Database not found on server"
+msgstr "Basis Data tidak ditemukan pada server"
+
+msgid "SQL call failed, try again later."
+msgstr "SQL call gagal, coba lagi nanti."
+
+msgid "Duplicate login entries detected, cannot change password!"
+msgstr "Login ganda terdeteksi, tidak dapat mengganti sandi!"
+
+msgid "Password change was not successful!"
+msgstr "Proses penggantian sandi tidak berhasil"
+
+msgid ""
+"Plugin is unable to use PHP Pear DB libraries. PHP Pear includes must be "
+"available in your PHP include_path setting."
+msgstr ""
+
+msgid "Required change password backend configuration options are missing."
+msgstr ""
+
+#, fuzzy, php-format
+msgid "Connection error: %s"
+msgstr "Kesalahan tidak diketahui : %s"
+
+#, php-format
+msgid "Invalid table name: %s"
+msgstr ""
+
+msgid "User table is empty."
+msgstr ""
+
+#, fuzzy
+msgid "Invalid uid field."
+msgstr "Pengguna tidak sah."
+
+#, fuzzy
+msgid "Invalid password field"
+msgstr "tidak ada sandi yang dikirimkan"
+
+#, fuzzy
+msgid "Invalid domain field"
+msgstr "Masukan data tidak sah"
+
+#, fuzzy, php-format
+msgid "Query failed: %s"
+msgstr "Gagal menghapus:"
+
+msgid "Unable to find user in user table."
+msgstr ""
+
+msgid "Too many matches found in user table."
+msgstr ""
+
+msgid "Unable to detect password crypto algorithm."
+msgstr ""
+
+#, fuzzy
+msgid "Unable to encrypt new password."
+msgstr "Sandi Baru kosong"
+
+#, fuzzy, php-format
+msgid "Unable to set new password: %s"
+msgstr "Gagal menampilkan alamat dari %s"
+
+#, fuzzy
+msgid "Unable to use digest-md5 crypto."
+msgstr "Tidak dapat menggunakan TLS."
+
+msgid "Closing Connection"
+msgstr "Menutup hubungan"
+
+msgid "Connecting to Password Server"
+msgstr "Sedang menghubungi server Sandi"
+
+msgid "No valid backend defined."
+msgstr ""
+
+msgid "Incorrent path to vmail.inc file."
+msgstr ""
+
+msgid "Invalid or corrupted vmail.inc file."
+msgstr ""
+
+msgid "Invalid user."
+msgstr "Pengguna tidak sah."
+
+msgid "Empty domain"
+msgstr "Domain kosong"
+
+msgid "Empty domain password"
+msgstr "Domain sandi kosong"
+
+msgid "Empty username"
+msgstr "Nama pengguna kosong "
+
+msgid "Empty new password"
+msgstr "Sandi Baru kosong"
+
+msgid "Message Filters"
+msgstr "Pemilah Pesan"
+
+msgid ""
+"Filtering enables messages with different criteria to be automatically "
+"filtered into different folders for easier organization."
+msgstr ""
+"Pemilahan membuat pesan dengan kriteria berbeda akan dipilah secara otomatis "
+"ke dalam folder yang berbeda untuk memudahkan pengelolaan."
+
+msgid "SPAM Filters"
+msgstr "Pemilah SPAM"
+
+msgid ""
+"SPAM filters allow you to select from various DNS based blacklists to detect "
+"junk email in your INBOX and move it to another folder (like Trash)."
+msgstr ""
+"Pemilah SPAM memungkinkan Anda memilih berbagai daftar hitam berbasis DNS "
+"untuk mendeteksi surate sampah dalam KOTAK POS Anda dan memindahkannya ke "
+"folder lain (seperti folder Sampah)."
 
 msgid ""
 "COMMERCIAL - This list contains servers that are verified spam senders. It "
@@ -2528,9 +3260,8 @@ msgid "FREE - Distributed Sender Boycott List - UN-Confirmed Relays"
 msgstr ""
 "BEBAS - Daftar Pengirim tersebar dari Boycott -- Relay tak terkonfirmasi"
 
-#, fuzzy
 msgid "WARNING! You must enter something to search for."
-msgstr "Mohon masukkan sesuatu untuk dicari"
+msgstr "PERINGATAN! Mohon masukkan sesuatu untuk dicari."
 
 msgid ""
 "WARNING! Header filters should be of the format &quot;Header: value&quot;"
@@ -2567,27 +3298,6 @@ msgstr "Berisi:"
 #, php-format
 msgid "If %s contains %s then move to %s"
 msgstr "Jika %s berisi %s maka pindahkan ke %s"
-
-msgid "Message Filters"
-msgstr "Pemilah Pesan"
-
-msgid ""
-"Filtering enables messages with different criteria to be automatically "
-"filtered into different folders for easier organization."
-msgstr ""
-"Pemilahan membuat pesan dengan kriteria berbeda akan dipilah secara otomatis "
-"ke dalam folder yang berbeda untuk memudahkan pengelolaan."
-
-msgid "SPAM Filters"
-msgstr "Pemilah SPAM"
-
-msgid ""
-"SPAM filters allow you to select from various DNS based blacklists to detect "
-"junk email in your INBOX and move it to another folder (like Trash)."
-msgstr ""
-"Pemilah SPAM memungkinkan Anda memilih berbagai daftar hitam berbasis DNS "
-"untuk mendeteksi surate sampah dalam KOTAK POS Anda dan memindahkannya ke "
-"folder lain (seperti folder Sampah)."
 
 msgid "You must select a spam folder."
 msgstr "Anda harus memilih folder spam."
@@ -2666,11 +3376,51 @@ msgstr "Peruntungan:"
 msgid "Show fortunes at top of mailbox"
 msgstr "Tampilkan peruntungan di atas kotak surat"
 
-msgid "Plugin is disabled."
-msgstr "Plugin dimatikan."
-
 msgid "IMAP server information"
 msgstr "Keterangan Server IMAP"
+
+msgid "Server Capability response:"
+msgstr "Tanggapan kapabilitas server: "
+
+msgid ""
+"Select the IMAP commands you would like to run. Most commands require a "
+"selected mailbox so the select command is already setup. You can clear all "
+"the commands and test your own IMAP command strings. The commands are "
+"executed in order. The default values are simple IMAP commands using your "
+"default_charset and folder_prefix from SquirrelMail when needed."
+msgstr ""
+"Pilih perintan IMAP yang ingin Anda jalankan. Kebanyakan perintah perlu "
+"memilih kotak surat tertentu sehingga perintah 'select' telah disetel. Anda "
+"dapat menghapus semua perintah dan mengujicoba parintah IMAP Anda sendiri. "
+"Perintah dijalankan berurutan. Nilai bawaan adalah perintah IMAP sederhana "
+"menggunakan gugus karakter bawaan dan awalan folder dari SquirrelMail bila "
+"diperlukan."
+
+msgid ""
+"NOTE: These commands are live, any changes made will effect your current "
+"email account."
+msgstr ""
+"CATATAN: Perintah-perintah ini berpengaruh, setiap perubahan akan "
+"mempengaruhi akun surate Anda."
+
+msgid "Select"
+msgstr "Pilih"
+
+msgid "Test Name"
+msgstr "Ujicoba Nama "
+
+msgid "IMAP command string"
+msgstr "String perintah IMAP "
+
+msgid "Request:"
+msgstr "Permintaan: "
+
+msgid "Execution time:"
+msgstr ""
+
+#, fuzzy, php-format
+msgid "%s ms"
+msgstr "%s sampai %s"
 
 msgid ""
 "Run some test IMAP commands, displaying both the command and the result. "
@@ -2681,8 +3431,20 @@ msgstr ""
 "Ujicoba ini memakai perintah IMAP Squirrelmail dan konfigurasi Squirrelmail "
 "Anda saat ini. Perintah yang dimodifikasi juga dapat dipakai"
 
-msgid "Mailinglist"
-msgstr "Milis"
+msgid "Mailing List"
+msgstr "Milis:"
+
+msgid "Post to List"
+msgstr "Kirim ke milis"
+
+msgid "Reply to List"
+msgstr "Balas ke milis "
+
+msgid "List Archives"
+msgstr "Arsip Milis"
+
+msgid "Contact Listowner"
+msgstr "Hubungi Pemilik Milis"
 
 #, php-format
 msgid ""
@@ -2709,32 +3471,21 @@ msgstr ""
 "di milis ini. Milis tersebut akan mencoba untuk mencabut keanggotaan alamat "
 "di bawah ini."
 
+#, php-format
+msgid "Unknown action: %s"
+msgstr "Tindakan yang tidak dikenal: %s"
+
+msgid "Mailinglist"
+msgstr "Milis"
+
 msgid "Send Mail"
 msgstr "Kirim Surat"
-
-msgid "Post to List"
-msgstr "Kirim ke milis"
-
-msgid "Reply to List"
-msgstr "Balas ke milis "
-
-msgid "List Archives"
-msgstr "Arsip Milis"
-
-msgid "Contact Listowner"
-msgstr "Hubungi Pemilik Milis"
-
-msgid "Mailing List"
-msgstr "Milis:"
 
 msgid "POP3 connect:"
 msgstr "sambung POP3:"
 
 msgid "No server specified"
 msgstr "tidak ada server yang dipilih"
-
-msgid "Error "
-msgstr "Salah"
 
 msgid "POP3 user:"
 msgstr "nama pengguna POP3:"
@@ -2750,9 +3501,6 @@ msgstr "sandi POP3:"
 
 msgid "No password submitted"
 msgstr "tidak ada sandi yang dikirimkan"
-
-msgid "authentication failed "
-msgstr "otentikasi gagal"
 
 msgid "POP3 apop:"
 msgstr "apop POP3:"
@@ -2814,11 +3562,9 @@ msgstr "POP3 hapus:"
 msgid "No msg number submitted"
 msgstr "tidak ada nomor pesan yang dikirimkan"
 
-msgid "Command failed "
+#, fuzzy
+msgid "Command failed"
 msgstr "Perintah gagal"
-
-msgid "Remote POP server Fetching Mail"
-msgstr "Mengambil surat di server POP3 Remote"
 
 msgid "Select Server:"
 msgstr "Pilih Server:"
@@ -2829,11 +3575,18 @@ msgstr "Sandi untuk"
 msgid "Fetch Mail"
 msgstr "Mengambil Surat"
 
-msgid "Fetching from "
-msgstr "Pengambilan dari "
+msgid "Remote POP server Fetching Mail"
+msgstr "Mengambil surat di server POP3 Remote"
 
-msgid "Oops, "
-msgstr "Waduh, "
+msgid "No POP3 servers configured yet."
+msgstr "Tidak ada server POP3 yang dikonfigurasi."
+
+msgid "Click here to go to the options page."
+msgstr "Klik di sini untuk kembali ke halaman konfigurasi."
+
+#, fuzzy, php-format
+msgid "Fetching from %s"
+msgstr "Pengambilan dari "
 
 msgid "Opening IMAP server"
 msgstr "Sedang membuka server IMAP "
@@ -2851,8 +3604,9 @@ msgid "Login OK: Inbox EMPTY"
 msgstr "BERHASIL masuk: KOTAK POS KOSONG"
 
 #, php-format
-msgid "Login OK: Inbox contains %s messages"
-msgstr "BERHASIL masuk: KOTAK POS berisi %s pesan"
+msgid "Login OK: Inbox contains %s message"
+msgid_plural "Login OK: Inbox contains %s messages"
+msgstr[0] "BERHASIL masuk: KOTAK POS berisi %s pesan"
 
 msgid "Fetching UIDL..."
 msgstr "sedang mengambil UIDL ..."
@@ -2860,19 +3614,18 @@ msgstr "sedang mengambil UIDL ..."
 msgid "Server does not support UIDL."
 msgstr "Server tidak mendukung UIDL."
 
-#, fuzzy
 msgid "Leaving mail on server..."
 msgstr "Membiarkan surat tetap di Server ..."
 
 msgid "Deleting messages from server..."
 msgstr "Menghapus pesan dari server ..."
 
-msgid "Fetching message "
+#, fuzzy, php-format
+msgid "Fetching message %s."
 msgstr "Pengambilan pesan "
 
-#, fuzzy
 msgid "Server error. Disconnect"
-msgstr "Server kacau .... Terputus"
+msgstr "Server panik .... Terputus"
 
 msgid "Reconnect from dead connection"
 msgstr "Sambung ulang dari sambungan terputus"
@@ -2880,7 +3633,8 @@ msgstr "Sambung ulang dari sambungan terputus"
 msgid "Saving UIDL"
 msgstr "Menyimpan UIDL"
 
-msgid "Refetching message "
+#, fuzzy, php-format
+msgid "Refetching message %s."
 msgstr "Pengambilan-ulang pesan "
 
 msgid "Error Appending Message!"
@@ -2895,12 +3649,29 @@ msgstr "Keluar dari IMAP"
 msgid "Message appended to mailbox"
 msgstr "Pesan telah ditambahkan ke kotak surat"
 
-#, fuzzy, php-format
+#, php-format
 msgid "Message %d deleted from remote server!"
-msgstr "telah dihapus dari Server Remote!"
+msgstr "Pesan %d telah dihapus dari Server Remote!"
 
 msgid "Delete failed:"
 msgstr "Gagal menghapus:"
+
+#, fuzzy
+msgid "Warning:"
+msgstr "Peringatan, "
+
+msgid "Mail Fetch Result:"
+msgstr "Hasil Pengambilan Surat:"
+
+msgid "POP3 Fetch Mail"
+msgstr "Pengambil Surat POP3"
+
+msgid ""
+"This configures settings for downloading email from a POP3 mailbox to your "
+"account on this server."
+msgstr ""
+"Hal ini dipakai untuk menyetel pengambilan surate dari kotak surat pop3 ke "
+"dalam akun Anda di server ini."
 
 msgid "Remote POP server settings"
 msgstr "seting server POP Remote"
@@ -2917,7 +3688,6 @@ msgstr ""
 "buat untuk disimpan di server dapat dilihat oleh hacker yang membaca sumber "
 "berkas ini."
 
-#, fuzzy
 msgid "If you leave password empty, it will be asked when you fetch mail."
 msgstr ""
 "Jika Anda membiarkan sandi kosong, Sandi tersebut akan ditanyakan ketika "
@@ -2941,18 +3711,18 @@ msgstr "Nama lain:"
 msgid "Username:"
 msgstr "Nama pengguna:"
 
+msgid "Password:"
+msgstr "Sandi:"
+
 msgid "Store in Folder:"
 msgstr "Simpan di Folder:"
 
-#, fuzzy
-msgid "Leave mail on server"
+msgid "Leave Mail on Server"
 msgstr "Biarkan surat di Server"
 
-#, fuzzy
 msgid "Check mail at login"
 msgstr "Periksa surat saat masuk"
 
-#, fuzzy
 msgid "Check mail at folder refresh"
 msgstr "Periksa surat saat memperbaharui folder"
 
@@ -2965,9 +3735,8 @@ msgstr "Nama Server: "
 msgid "Modify"
 msgstr "Ubah"
 
-#, fuzzy
 msgid "No servers known."
-msgstr "tidak ada baner server"
+msgstr "Server tidak dikenal."
 
 msgid "Fetching Servers"
 msgstr "Pengambilan Server"
@@ -2984,33 +3753,14 @@ msgstr "Pastikan menghapus server yang dipilih?"
 msgid "Confirm Delete"
 msgstr "Pastikan Menghapus"
 
-msgid "Leave Mail on Server"
-msgstr "Biarkan surat di Server"
-
 msgid "Undefined Function"
 msgstr "Fungsi tidak didefinisikan"
 
 msgid "The function you requested is unknown."
-msgstr ""
+msgstr "Fungsi yang Anda minta tidak dikenal."
 
 msgid "Fetch"
 msgstr "Ambil POP3"
-
-msgid "Warning, "
-msgstr "Peringatan, "
-
-msgid "Mail Fetch Result:"
-msgstr "Hasil Pengambilan Surat:"
-
-msgid "POP3 Fetch Mail"
-msgstr "Pengambil Surat POP3"
-
-msgid ""
-"This configures settings for downloading email from a POP3 mailbox to your "
-"account on this server."
-msgstr ""
-"Hal ini dipakai untuk menyetel pengambilan surate dari kotak surat pop3 ke "
-"dalam akun Anda di server ini."
 
 msgid "Message Details"
 msgstr "Rincian Pesan"
@@ -3039,34 +3789,28 @@ msgstr "Simpan Pesan"
 msgid "View Message details"
 msgstr "Lihat Rincian Pesan"
 
-msgid "New Mail"
-msgstr "Surat Baru"
+msgid "NewMail Options"
+msgstr "Pilihan Surat Baru"
 
-msgid "SquirrelMail Notice:"
-msgstr "Pesan dari SquirrelMail:"
+msgid ""
+"This configures settings for playing sounds and/or showing popup windows "
+"when new mail arrives."
+msgstr ""
+"Pilihan ini akan menkonfigurasi seting untuk memainkan suara dan/atau "
+"menampilkan jendela popup bila ada surat baru tiba."
 
 #, fuzzy, php-format
-msgid "You have %s new message"
-msgid_plural "You have %s new messages"
-msgstr[0] "Anda mendapat %s pesan baru."
-
-#, php-format
-msgid "You have %s new messages"
-msgstr "Anda memiliki %s pesan baru"
+msgid "%s New Message"
+msgid_plural "%s New Messages"
+msgstr[0] "%s Pesan Baru"
 
 msgid "New Mail Notification"
 msgstr "Pemberitahuan Surat Baru"
 
-#, php-format
 msgid ""
-"The %s option will check ALL of your folders for unseen mail, not just the "
-"inbox for notification."
+"The NewMail plugin will follow the Folder Preferences option &quot;Enable "
+"Unread Message Notification&quot;"
 msgstr ""
-"Pilihan %s akan memeriksa SEMUA folder untuk mencari surat yang belum dibaca "
-"untuk diberitahukan, bukan hanya KOTAK POS."
-
-msgid "Check all boxes, not just INBOX"
-msgstr "Periksa semua folder, bukan hanya KOTAK POS"
 
 #, php-format
 msgid ""
@@ -3141,30 +3885,47 @@ msgstr "(tidak ada)"
 msgid "requires JavaScript to work"
 msgstr "perlu JavaScript"
 
+msgid "Width of popup window:"
+msgstr "Lebar jendela popup:"
+
+msgid "If set to 0, reverts to default value"
+msgstr ""
+
+msgid "Height of popup window:"
+msgstr "Tinggi jendela popup."
+
+msgid "uploaded media file"
+msgstr ""
+
+msgid "none"
+msgstr "(tidak ada)"
+
 msgid "Try"
 msgstr "Coba dulu"
+
+msgid "Upload Media File:"
+msgstr ""
+
+msgid "Uploaded Media File:"
+msgstr ""
+
+#, php-format
+msgid "Media file %s will be removed, if you upload other media file."
+msgstr ""
 
 msgid "Current File:"
 msgstr "Berkas saat ini:"
 
-msgid "NewMail Options"
-msgstr "Pilihan Surat Baru"
+msgid "New Mail"
+msgstr "Surat Baru"
 
-msgid ""
-"This configures settings for playing sounds and/or showing popup windows "
-"when new mail arrives."
-msgstr ""
-"Pilihan ini akan menkonfigurasi seting untuk memainkan suara dan/atau "
-"menampilkan jendela popup bila ada surat baru tiba."
-
-#, php-format
-msgid "%s New Messages"
-msgstr "%s Pesan Baru"
+msgid "SquirrelMail Notice:"
+msgstr "Pesan dari SquirrelMail:"
 
 #, fuzzy, php-format
-msgid "%s New Message"
-msgid_plural "%s New Messages"
-msgstr[0] "%s Pesan Baru"
+msgid "You have %s new message"
+msgid_plural "You have %s new messages"
+msgstr[0] "Anda mendapat %s pesan baru."
 
 msgid "Test Sound"
 msgstr "Coba Suara"
@@ -3193,6 +3954,32 @@ msgstr "Tahunan"
 msgid "Base Sent Folder"
 msgstr "Folder Kirim Utama"
 
+#, fuzzy
+msgid "Warning"
+msgstr "Peringatan, "
+
+msgid "There are some restrictions in Sent Subfolder options."
+msgstr ""
+
+#, fuzzy
+msgid "Sent Subfolders plugin is misconfigured."
+msgstr "Squirrelspell salah konfigurasi"
+
+msgid "Report as Spam"
+msgstr "Laporkan sebagai Spam"
+
+msgid "SpamCop - Spam Reporting"
+msgstr "SpamCop - Pelaporan Spam"
+
+msgid ""
+"Help fight the battle against unsolicited email. SpamCop reads the spam "
+"email and determines the correct addresses to send complaints to. Quite "
+"fast, really smart, and easy to use."
+msgstr ""
+"Bantulah perang melawan surate tak perlu/sampah/mailbomb.  SpamCop membaca "
+"surate spam dan menentukan alamat yang benar untuk mengirimkan protes.  "
+"Cukup cepat, sungguh pintar, dan mudah digunakan."
+
 msgid "Enabled"
 msgstr "Diaktifkan"
 
@@ -3214,6 +4001,9 @@ msgstr "Hapus spam yang dilaporkan:"
 msgid "Only works with email-based reporting"
 msgstr "Hanya bisa dengan pelaporan berbasis surate"
 
+msgid "Save emails submitted to SpamCop:"
+msgstr ""
+
 msgid "Spam Reporting Method:"
 msgstr "Metode Pelaporan Spam:"
 
@@ -3228,6 +4018,18 @@ msgstr "Format berbasis Web"
 
 msgid "Save Method"
 msgstr "Metode Penyimpanan"
+
+msgid "Spam Service Type:"
+msgstr "Jenis layanan Spam:"
+
+msgid "Free reporting"
+msgstr "Pelaporan Bebas/Gratis"
+
+msgid "Member services"
+msgstr "Layanan Anggota"
+
+msgid "Save Service Type"
+msgstr "Simpan Jenis layanan"
 
 msgid "Your SpamCop authorization code:"
 msgstr "Kode Otorisasi SpamCop Anda:"
@@ -3379,20 +4181,8 @@ msgstr ""
 "topik yang berkaitan, cobalah membaca bagian %sHelp and Feedback%s di situs "
 "SpamCop."
 
-msgid "Report as Spam"
-msgstr "Laporkan sebagai Spam"
-
-msgid "SpamCop - Spam Reporting"
-msgstr "SpamCop - Pelaporan Spam"
-
-msgid ""
-"Help fight the battle against unsolicited email. SpamCop reads the spam "
-"email and determines the correct addresses to send complaints to. Quite "
-"fast, really smart, and easy to use."
-msgstr ""
-"Bantulah perang melawan surate tak perlu/sampah/mailbomb.  SpamCop membaca "
-"surate spam dan menentukan alamat yang benar untuk mengirimkan protes.  "
-"Cukup cepat, sungguh pintar, dan mudah digunakan."
+msgid "SpamCop reporting"
+msgstr "Pelaporan SpamCop"
 
 msgid ""
 "Sending this spam report will give you back a reply with URLs that you can "
@@ -3429,6 +4219,9 @@ msgstr "Periksa Ejaan"
 msgid "Back to &quot;SpellChecker Options&quot; page"
 msgstr "Kembali ke halaman &quot;Pilihan Pemeriksa Ejaan&quot;"
 
+msgid "Cute."
+msgstr "Bagus."
+
 msgid "ATTENTION:"
 msgstr "PERHATIAN:"
 
@@ -3450,6 +4243,12 @@ msgstr ""
 "kamus tersebut sudah usang dan tidak berlaku lagi. Anda harus menghapusnya "
 "dan membuat yang baru lagi. Hal ini juga berlaku bila Anda lupa sandi lama "
 "Anda -- tanpanya, data yang dienkripsi tidak bisa diakses lagi."
+
+#, php-format
+msgid ""
+"Your %s dictionary is encrypted with password that differs from your current "
+"password."
+msgstr ""
 
 msgid "Delete my dictionary and start a new one"
 msgstr "Hapus kamus saya dan buat yang baru"
@@ -3475,23 +4274,24 @@ msgstr "Kamus pribadi Anda akan dihapus. Lanjut?"
 msgid "Error Decrypting Dictionary"
 msgstr "Gagal mendekripsi Kamus"
 
-msgid "Cute."
-msgstr "Bagus."
+#, fuzzy
+msgid "Invalid SquirrelSpell module."
+msgstr "Hasil dari SquirrelSpell"
 
 #, php-format
 msgid "Could not run the spellchecker command (%s)."
-msgstr ""
+msgstr "Tidak dapat menjalankan perintah pengecakan ejaan (%s)."
 
 msgid "Error while writing to pipe."
-msgstr ""
+msgstr "Ada kesalahan saat menulis ke pipe."
 
-#, fuzzy, php-format
+#, php-format
 msgid "Could not open temporary file '%s'."
-msgstr "Tidak dapat menulis berkas kalender %s"
+msgstr "Tidak dapat menulis berkas sementara:  '%s'."
 
 #, php-format
 msgid "Error while writing to temporary file '%s'."
-msgstr ""
+msgstr "Ada kesalahan saat menulis ke berkas sementara:  '%s'."
 
 #, php-format
 msgid "I tried to execute '%s', but it returned:"
@@ -3512,9 +4312,10 @@ msgstr "Sekarang sedang menyimpan kamus pribadi Anda .... Silahkan menunggu."
 msgid "SquirrelSpell Results"
 msgstr "Hasil dari SquirrelSpell"
 
-#, php-format
-msgid "Found %s errors"
-msgstr "Ditemukan %s kesalahan"
+#, fuzzy, php-format
+msgid "Found %d error"
+msgid_plural "Found %d errors"
+msgstr[0] "Ditemukan %s kesalahan"
 
 msgid "Line with an error:"
 msgstr "Baris yang salah:"
@@ -3583,22 +4384,6 @@ msgstr ""
 msgid "No errors found"
 msgstr "Tidak ada kesalahan "
 
-msgid ""
-"Your personal dictionary has been encrypted and is now stored in an "
-"encrypted format."
-msgstr ""
-"Kamus pribadi Anda telah dienkripsi dan sekarang tersimpan dalam bentuk "
-"terenkripsi."
-
-msgid ""
-"Your personal dictionary has been decrypted and is now stored as plain text."
-msgstr ""
-"Kamus pribadi Anda telah didekripsi dan sekarang tersimpan dalam bentuk teks "
-"murni."
-
-msgid "Personal Dictionary Crypto Settings"
-msgstr "Seting Kriptografi Kamus Pribadi"
-
 msgid "Your personal dictionary was erased."
 msgstr "Kamus pribadi Anda telah dihapus"
 
@@ -3637,11 +4422,24 @@ msgstr ""
 msgid "Dictionary re-encrypted"
 msgstr "Kamus dienkripsi ulang"
 
-msgid "Personal Dictionary"
-msgstr "Kamus Pribadi"
+msgid ""
+"Your personal dictionary has been encrypted and is now stored in an "
+"encrypted format."
+msgstr ""
+"Kamus pribadi Anda telah dienkripsi dan sekarang tersimpan dalam bentuk "
+"terenkripsi."
 
-msgid "No words in your personal dictionary."
-msgstr "Kamus pribadi Anda kosong"
+msgid ""
+"Your personal dictionary has been decrypted and is now stored as plain text."
+msgstr ""
+"Kamus pribadi Anda telah didekripsi dan sekarang tersimpan dalam bentuk teks "
+"murni."
+
+msgid "No action requested."
+msgstr "Tidak ada tindakan yang diminta"
+
+msgid "Personal Dictionary Crypto Settings"
+msgstr "Seting Kriptografi Kamus Pribadi"
 
 msgid "Please check any words you wish to delete from your dictionary."
 msgstr ""
@@ -3653,6 +4451,9 @@ msgstr "Kamus %s"
 
 msgid "Delete checked words"
 msgstr "Hapus kata yang dipilih"
+
+msgid "No words in your personal dictionary."
+msgstr "Kamus pribadi Anda kosong"
 
 msgid "Edit your Personal Dictionary"
 msgstr "Ubah Kamus Pribadi Anda"
@@ -3751,6 +4552,9 @@ msgstr "Semua Selesai!"
 msgid "Personal Dictionary Updated"
 msgstr "Kamus Pribadi telah diperbaharui"
 
+msgid "Personal Dictionary"
+msgstr "Kamus Pribadi"
+
 msgid "No changes requested."
 msgstr "Tidak ada perubahan yang diminta"
 
@@ -3769,8 +4573,8 @@ msgstr "Memulai SquirrelSpell"
 msgid "Settings adjusted to: %s with %s as default dictionary."
 msgstr "Konfigurasi disesuaikan ke: %s dengan %s sebagai kamus utama."
 
-#, php-format
-msgid "Using %s dictionary (system default) for spellcheck."
+#, fuzzy, php-format
+msgid "Using %s dictionary for spellcheck."
 msgstr "Memakai kamus %s (dari sistem) untuk memeriksa ejaan."
 
 msgid "International Dictionaries Preferences Updated"
@@ -3804,20 +4608,37 @@ msgstr "Menset kamus internasional"
 msgid "Encrypt or decrypt your personal dictionary"
 msgstr "Enkripsi atau dekripsi kamus pribadi Anda"
 
-msgid "not available"
-msgstr "tidak tersedia"
+msgid "Personal dictionary encryption options are not available"
+msgstr "Setelan enkripsi Kamus Pribadi tidak tersedia."
 
 msgid "SquirrelSpell Options Menu"
 msgstr "Menu Pilihan SquirrelSpell"
 
-msgid "Translator"
-msgstr "Penerjemah"
+msgid "Translate"
+msgstr "Terjemahkan"
 
-msgid "Saved Translation Options"
-msgstr "Simpan Pilihan Penerjemahan"
+msgid "Translation Theme:"
+msgstr "Gaya Terjemahan: "
 
-msgid "Your server options are as follows:"
-msgstr "Pilihan server Anda sebagai berikut:"
+msgid ""
+"Selected translation engine is disabled. Please update your translation "
+"preferences."
+msgstr ""
+"Mesin penerjemah yang dipilih dimatikan. Silakan perbaharui konfigurasi "
+"terjemahan Anda."
+
+msgid "Translation Options"
+msgstr "Pilihan Penerjemahan"
+
+msgid ""
+"Which translator should be used when you get messages in a different "
+"language?"
+msgstr ""
+"Penerjemah mana yang harus digunakan bila Anda mendapatkan pesan dalam "
+"bahasa yang berbeda?"
+
+msgid "Translation Preferences"
+msgstr "Konfigurasi Terjemahan"
 
 msgid "Maximum of 150 words translated, powered by Systran"
 msgstr "Maksimum 150 huruf diterjemahkan, didukung oleh Systran."
@@ -3826,8 +4647,14 @@ msgstr "Maksimum 150 huruf diterjemahkan, didukung oleh Systran."
 msgid "Number of supported language pairs: %s"
 msgstr "Jumlah pasangan bahasa yang didukung: %s"
 
+msgid "Maximum of 25 kilobytes translated, powered by Systran"
+msgstr "Maksimum 25 kb diterjemahkan; didukung oleh Systran."
+
 msgid "No known limits, powered by Systran"
 msgstr "Jumlah tidak diketahui, didukung oleh Systran."
+
+msgid "No known limits, powered by GPLTrans (free, open source)"
+msgstr "Batasan tidak diketahui, didukung oleh GPLTrans (bebas, terbuka)"
 
 msgid "No known limits, powered by Translation Experts' InterTran"
 msgstr "Batasan tidak diketahui, didukung oleh Translation Experts's InterTran"
@@ -3841,43 +4668,6 @@ msgstr "Terjemahan Hellenis, jumlah tidak diketahui, didukung oleh Systran."
 
 msgid "Russian translations, maximum of 500 characters translated"
 msgstr "Terjemahan Rusia, maksimal 1000 huruf diterjemahkan"
-
-msgid ""
-"You also decide if you want the translation box displayed, and where it will "
-"be located."
-msgstr ""
-"Jika kotak terjemahan ingin ditampilkan, Anda juga dapat menentukan letaknya."
-
-msgid "Select your translator:"
-msgstr "Pilih penerjemah Anda:"
-
-msgid "When reading:"
-msgstr "Saat membaca:"
-
-msgid "Show translation box"
-msgstr "Tunjukkan kotak terjemahan"
-
-msgid "to the left"
-msgstr "di sebelah kiri"
-
-msgid "in the center"
-msgstr "di tengah"
-
-msgid "to the right"
-msgstr "di sebelah kanan"
-
-msgid "Translate inside the SquirrelMail frames"
-msgstr "Terjemahkan di dalam frame SquirrelMail"
-
-msgid "Translation Options"
-msgstr "Pilihan Penerjemahan"
-
-msgid ""
-"Which translator should be used when you get messages in a different "
-"language?"
-msgstr ""
-"Penerjemah mana yang harus digunakan bila Anda mendapatkan pesan dalam "
-"bahasa yang berbeda?"
 
 #, php-format
 msgid "%s to %s"
@@ -3921,9 +4711,6 @@ msgstr "Rusia"
 
 msgid "Spanish"
 msgstr "Spanyol"
-
-msgid "Translate"
-msgstr "Terjemahkan"
 
 msgid "Brazilian Portuguese"
 msgstr "Portugis Brazil"
@@ -3997,825 +4784,106 @@ msgstr "Bahasa Pengantar"
 msgid "Translation direction"
 msgstr "Arahan Penerjemahan"
 
-#, fuzzy, php-format
-msgid "About SquirrelMail %s"
-msgstr "SquirrelMail versi %s"
-
-msgid ""
-"SquirrelMail is the name of the program that provides access to your email "
-"via the web."
-msgstr ""
-
-#, php-format
-msgid ""
-"If you have questions about or problems with your mail account, passwords, "
-"abuse etc, please refer to your system administrator or provider%s."
-msgstr ""
-
-#, php-format
-msgid ""
-"They can assist you adequately with these issues. The SquirrelMail Project "
-"Team cannot help you with that. The %shelp system%s provides answers to "
-"frequently asked questions."
-msgstr ""
-
-#, php-format
-msgid ""
-"SquirrelMail is a feature rich, standards compliant webmail application "
-"written in PHP. It was made by a group of volunteers united in the "
-"SquirrelMail Project Team and is released as open source, free software "
-"under the %sGNU General Public License%s."
-msgstr ""
-
-#, php-format
-msgid ""
-"For more information about SquirrelMail and the SquirrelMail Project Team, "
-"see %sthe SquirrelMail website%s."
-msgstr ""
-
-#, fuzzy
-msgid "System information"
-msgstr "Keterangan lebih lanjut"
-
-#, fuzzy, php-format
-msgid "You are using SquirrelMail version: %s"
-msgstr "SquirrelMail versi %s"
-
-msgid "The administrator installed the following plugins:"
-msgstr ""
-
-msgid "none installed"
-msgstr ""
-
-msgid "sort by nickname"
-msgstr "urutkan berdasarkan nama singkat"
-
-msgid "sort by name"
-msgstr "Urutkan berdasarkan nama"
-
-msgid "sort by email"
-msgstr "urutkan berdasarkan surate"
-
-msgid "sort by info"
-msgstr "urutkan berdasarkan info"
-
-msgid "Add to address book"
-msgstr "Tambahkan ke Buku Alamat"
-
-msgid ""
-"Because PHP file uploads are turned off, you can not attach files to this "
-"message. Please see your system administrator for details."
-msgstr ""
-
-#, fuzzy
-msgid "No folders were found to unsubscribe from."
-msgstr "Tidak ada folder yang bisa dikeluarkan!"
-
-#, fuzzy
-msgid "No folders were found to subscribe to."
-msgstr "Tidak ada folder yang bisa dimasukkan!"
-
-msgid "Last Refresh"
-msgstr "Peninjauan Terakhir"
-
-msgid "Check mail"
-msgstr "Periksa surat"
-
-msgid "Save folder tree"
-msgstr "Simpan Struktur Folder"
-
-#, fuzzy
-msgid "SquirrelMail Webmail Application"
-msgstr "Daftar Internasionalisasi SquirrelMail"
-
-#, fuzzy
-msgid "Compose Preferences"
-msgstr "Konfigurasi Folder"
-
-msgid ""
-"Control the behaviour and layout of writing new mail messages, replying to "
-"and forwarding messages."
-msgstr ""
-
-#, fuzzy
-msgid "Received"
-msgstr "Tanda Terima"
-
-msgid "As Attachment"
-msgstr "Sbg Lampiran"
-
-msgid "Bypass Trash"
-msgstr "Abaikan Sampah"
-
-msgid "Please enter something to search for"
-msgstr "Mohon masukkan sesuatu untuk dicari"
-
-msgid "There must be at least one criteria to search for"
-msgstr "Minimal harus ada satu kriteria pencarian"
-
-msgid "Error in criteria argument"
-msgstr "Ada kesalahan dalam kriteria argumen"
-
-msgid "(Illegal date)"
-msgstr "(tanggal ilegal)"
-
-msgid "(Wrong date)"
-msgstr "(tanggal salah)"
-
-msgid "In"
-msgstr "Di"
-
-msgid "(Missing argument)"
-msgstr "(argumen tidak ada)"
-
-msgid "(Spurious argument)"
-msgstr "(argumen keterlaluan)"
-
-msgid "Fold"
-msgstr "Lipat"
-
-msgid "Unfold"
-msgstr "Bentangkan"
-
-msgid "Saved Searches"
-msgstr "Pencarian yang Tersimpan"
-
-msgid "Missing"
-msgstr "Tidak Ada"
-
-msgid "and&nbsp;subfolders:"
-msgstr "dan&nbsp; subfolder: "
-
-msgid "Exclude Criteria:"
-msgstr "Kriteria Pengecualian:"
-
-msgid "Search Criteria"
-msgstr "Kriteria Pencarian"
-
-msgid "Add New Criteria"
-msgstr "Tambah Kriteria Baru"
-
-msgid "Remove Excluded Criteria"
-msgstr "Buang Kriteria Pengecualian"
-
-msgid "Remove All Criteria"
-msgstr "Buang Semua Kriteria"
-
-msgid "Not"
-msgstr "Bukan"
-
-msgid "Answered"
-msgstr "Dijawab"
-
-msgid "Before"
-msgstr "Sebelum"
-
-msgid "Message Body"
-msgstr "Badan Pesan"
-
-msgid "Deleted"
-msgstr "Dihapus"
-
-msgid "Draft"
-msgstr "Konsep"
-
-msgid "Flagged"
-msgstr "Dibenderai"
-
-msgid "Sent By"
-msgstr "Dikirim oleh"
-
-msgid "Header Field"
-msgstr "Ruas 'Header' "
-
-msgid "Keyword"
-msgstr "Kata Kunci"
-
-msgid "Larger Than"
-msgstr "Lebih dari"
-
-msgid "Old"
-msgstr "Lama"
-
-msgid "On"
-msgstr "Di"
-
-msgid "Recent"
-msgstr "Terbaru"
-
-msgid "Seen"
-msgstr "Telah Dibaca"
-
-msgid "Sent Before"
-msgstr "Dikirim Sebelum"
-
-msgid "Sent On"
-msgstr "Dikirim pada"
-
-msgid "Sent Since"
-msgstr "Dikirim Sejak"
-
-msgid "Since"
-msgstr "Sejak"
-
-msgid "Smaller Than"
-msgstr "Kurang dari"
-
-msgid "Subject Contains"
-msgstr "Judul Surat Berisi"
-
-msgid "Header and Body"
-msgstr "Header dan Badan Pesan"
-
-msgid "Sent To"
-msgstr "Dikirim ke"
-
-msgid "And In"
-msgstr "Dan di"
-
-msgid "Or In"
-msgstr "Atau di"
-
-msgid "And"
-msgstr "Dan"
-
-msgid "Or"
-msgstr "Atau"
-
-msgid "Standard search"
-msgstr "Pencarian Standar"
-
-msgid "Advanced search"
-msgstr "Pencarian Lengkap"
-
-msgid "Folder List"
-msgstr "Daftar Folder"
-
-msgid "PHP install does not have LDAP support."
-msgstr ""
-
-msgid "Click here to change the sorting of the address list"
-msgstr "Klik di sini untuk mengubah pengurutan daftar alamat"
-
-#, fuzzy
-msgid "Illegal folder name."
-msgstr "(tanggal ilegal)"
-
-#, php-format
-msgid "The name may not contain any of the following: %s"
-msgstr ""
-
-#, fuzzy
-msgid "Please select a different name."
-msgstr "Nama folder tidak sah. Silakan pilih nama lain."
-
-#, fuzzy
-msgid "You have not selected a folder to subscribe. Please do so."
-msgstr "Anda belum memilih folder untuk diubah namanya. Silakan pilih!"
-
-#, fuzzy
-msgid "You have not selected a folder to unsubscribe. Please do so."
-msgstr "Anda belum memilih folder untuk diubah namanya. Silakan pilih!"
-
-#, fuzzy
-msgid "Possible reason:"
-msgstr "Alasan yang mungkin: "
-
-#, fuzzy
-msgid "ERROR: Bad function call."
-msgstr "ADA KESALAHAN: fungsi 'call' salah."
-
-msgid "Reason:"
-msgstr "Alasan: "
-
-msgid ""
-"TLS is enabled, but this version of PHP does not support TLS sockets, or is "
-"missing the openssl extension."
-msgstr ""
-"TLS diaktifkan, tetapi versi PHP ini tidak mendukung socket TLS, atau tidak "
-"ada dalam ekstensi openssl."
-
-msgid ""
-"Your mailbox is not located at this server. Try a different server or "
-"consult your system administrator"
-msgstr ""
-
-msgid "Unknown recipient"
-msgstr "Penerima tak dikenal"
-
-msgid "Unflag"
-msgstr "Buang Bendera"
-
-msgid "Flag"
-msgstr "Beri Bendera"
-
-#, fuzzy
-msgid "Undelete"
-msgstr "Hapus "
-
-#, fuzzy
-msgid "General Message Composition"
-msgstr "Penulisan dan Penampilan Pesan"
-
-#, fuzzy
-msgid "Replying and Forwarding Messages"
-msgstr "Masukkan Tembusan bila meneruskan pesan"
-
-msgid "Strip signature when replying"
-msgstr "Buang tanda tangan ketika membalas"
-
-msgid "Enable Fancy Row Mouseover Highlighting"
-msgstr ""
-
-msgid "Message Flags Icon Theme"
-msgstr "Gaya Icon Bendera Pesan"
-
-msgid "Show Flag / Unflag Buttons"
-msgstr "Tampilkan Tombol Buang/Beri Bendera"
-
-msgid "Use Compact Page Selector"
-msgstr "Gunakan Pemilih Halaman Terpadu"
-
-msgid "Length of From/To Field (0 for full)"
-msgstr "Panjang Ruas Dari/Kepada (0 untuk panjang)"
-
-msgid "Length of Subject Field (0 for full)"
-msgstr "Panjang Ruas Judul Surat (0 untuk panjang)"
-
-#, fuzzy
-msgid "Message Display Options"
-msgstr "Pilihan Tampilan Umum"
-
-msgid "Show 'Delete & Prev/Next' Links"
-msgstr "Tampilkan Pranala 'Hapus & Sebelumnya/Berikutnya"
-
-msgid "Save Replies with Original Message"
-msgstr "Simpan Balasan dengan Pesan Asli"
-
-#, fuzzy, php-format
-msgid "%d Minute"
-msgid_plural "%d Minutes"
-msgstr[0] "Menit"
-
-msgid "Show only subscribed folders"
-msgstr ""
-
-msgid "XP"
-msgstr "Windows XP"
-
-msgid "Hide SquirrelMail Header"
-msgstr "Sembunyikan Header SquirrelMail"
-
-msgid "Search functions"
-msgstr "Fungsi Pencarian"
-
-msgid "Only basic search"
-msgstr "Hanya pencarian standar"
-
-msgid "Only advanced search"
-msgstr "Hanya pencarian lengkap"
-
-msgid "Both search functions"
-msgstr "Kedua fungsi pencarian"
-
-msgid "Show alternative language names"
-msgstr "Tampilkan nama bahasa lainnya"
-
-msgid "Available languages"
-msgstr "Bahasa-bahasa yang tersedia"
-
-msgid "Enable aggressive decoding"
-msgstr "Aktifkan encoding agresif"
-
-msgid "Tweaks"
-msgstr "Canggih"
-
-msgid "Use advanced tree folder listing"
-msgstr "Gunakan daftar folder dengan lengkap"
-
-msgid "Use icons"
-msgstr "Gunakan icon"
-
-#, fuzzy
-msgid "Use PHP recode functions"
-msgstr "Gunakan fungsi php recode"
-
-#, fuzzy
-msgid "Use PHP iconv functions"
-msgstr "Gunakan fungsi php iconv"
-
-#, fuzzy
-msgid "Allow remote configuration test"
-msgstr "Ujicoba Konfigurasi"
-
-#, fuzzy
-msgid "Show System Specifications"
-msgstr "Tampilkan spesifikasi sistem"
-
-msgid "Search Mailing List Archives"
-msgstr "Cari di Arsip Milis"
-
-msgid "Search SourceForge Bugtracker"
-msgstr "Cari di SourceForge Bugtracker"
-
-msgid "Search for words:"
-msgstr "Cari untuk kata:"
-
-msgid "Written by:"
-msgstr "Ditulis oleh:"
-
-msgid "Email addresses only"
-msgstr "Hanya Alamat Surate (Email)"
-
-msgid "Mailing list:"
-msgstr "Milis:"
-
-msgid "SquirrelMail users list"
-msgstr "Daftar pengguna SquirrelMail versi"
-
-msgid "SquirrelMail plugins list"
-msgstr "Daftar plugin SquirrelMail"
-
-msgid "SquirrelMail developers list"
-msgstr "Daftar pengembang SquirrelMail"
-
-msgid "SquirrelMail internationalization list"
-msgstr "Daftar Internasionalisasi SquirrelMail"
-
-msgid "Sort by:"
-msgstr "Urutkan Berdasarkan:"
-
-msgid "Relevance"
-msgstr "Relevansi"
-
-msgid "Search Archives"
-msgstr "Cari di Arsip"
-
-msgid "Reset Form"
-msgstr "Hapus Format"
-
-msgid "Summary keyword:"
-msgstr "Ringkasan kata kunci:"
-
-msgid "Sort By:"
-msgstr "Urutkan berdasarkan:"
-
-msgid "ID"
-msgstr "ID"
-
-msgid "Summary"
-msgstr "Ringkasan"
-
-msgid "Open Date"
-msgstr "Tanggal Buka"
-
-msgid "Close Date"
-msgstr "Tanggal Tutup"
-
-msgid "Submitter"
-msgstr "Pengirim"
-
-msgid "Assignee"
-msgstr "Pemberi"
-
-msgid "Order:"
-msgstr "Urutan:"
-
-msgid "Ascending"
-msgstr "Menaik"
-
-msgid "Descending"
-msgstr "Menurun"
-
-msgid "Search Bugtracker"
-msgstr "Cari di Bugtracker"
-
-msgid "You must type in a new password."
-msgstr "Anda harus memasukkan sandi baru."
-
-msgid "You must also type in your new password in the verify box."
-msgstr "Anda juga harus memasukkan sandi baru Anda dalam kotak konfirmasi."
-
-msgid "Your new password does not match the verify password."
-msgstr "Sandi baru Anda tidak cocok dengan sandi konfirmasi."
-
-msgid "You must type in your current password."
-msgstr "Anda harus memasukkan sandi lama Anda."
-
-msgid "Your current password is not correct."
-msgstr "Sandi Anda saat ini tidak benar."
-
-#, php-format
-msgid "Your new password should be %s to %s characters long."
-msgstr "Sandi baru Anda harus terdiri dari %s sampai %s karakter."
-
-msgid "Your new password contains invalid characters."
-msgstr "Sandi baru Anda berisi karakter tidak sah."
-
-msgid "Change Password"
-msgstr "Ubah Sandi"
-
-msgid "Current Password:"
-msgstr "Sandi Lama:"
-
-msgid "New Password:"
-msgstr "Sandi Baru:"
-
-msgid "Verify New Password:"
-msgstr "Konfirmasi Sandi Baru:"
-
-msgid "Use this to change your email password."
-msgstr "Gunakan ini untuk mengganti sandi surat Anda."
-
-#, fuzzy
-msgid "User's Password"
-msgstr "Sandi Baru:"
-
-msgid "Current configuration requires LDAP support in PHP."
-msgstr ""
-
-msgid "Plugin is not configured correctly."
-msgstr ""
-
-#, php-format
-msgid "Setting of LDAP connection option %s to value %s failed."
-msgstr ""
-
-#, php-format
-msgid "Incorrect LDAP connection option: %s"
-msgstr ""
-
-msgid ""
-"Current PHP LDAP extension does not allow use of ldap_set_option() function."
-msgstr ""
-
-#, fuzzy
-msgid "Unable to use TLS."
-msgstr "Tidak dapat memperbarui"
-
-#, fuzzy, php-format
-msgid "Error: %s"
-msgstr "Salah"
-
-msgid "Unable to use LDAP TLS in current setup."
-msgstr ""
-
-msgid "Unable to bind to LDAP server."
-msgstr ""
-
-#, fuzzy, php-format
-msgid "Server replied: %s"
-msgstr "Tanggapan server: "
-
-msgid "Unable to find user's password attribute."
-msgstr ""
-
-msgid "Unable to rebind to LDAP server."
-msgstr ""
-
-msgid "LDAP server uses different attribute to store user's password."
-msgstr ""
-
-#, fuzzy
-msgid "Unable to connect to LDAP server."
-msgstr "Tidak ada sambungan ke server"
-
-msgid "Unable to find user's DN."
-msgstr ""
-
-#, fuzzy
-msgid "Search error."
-msgstr "Cari untuk"
-
-msgid "Multiple userid matches found."
-msgstr ""
-
-msgid "ldap_get_dn error."
-msgstr ""
-
-#, php-format
-msgid "Unsupported crypto: %s"
-msgstr ""
-
-msgid "PHP mhash extension is missing."
-msgstr ""
-
-msgid "System crypt library doesn't support standard DES crypt."
-msgstr ""
-
-msgid "System crypt library doesn't have MD5 support."
-msgstr ""
-
-msgid "System crypt library doesn't support extended DES crypt."
-msgstr ""
-
-msgid "System crypt library doesn't have Blowfish support."
-msgstr ""
-
-#, fuzzy
-msgid "unknown"
-msgstr "Tanggal tak diketahui"
-
-msgid "Unable to validate user's password."
-msgstr ""
-
-msgid "Blowfish is not supported by webserver's system crypt library."
-msgstr ""
-
-msgid "MD5 is not supported by webserver's system crypt library."
-msgstr ""
-
-msgid ""
-"Extended DES crypt is not supported by webserver's system crypt library."
-msgstr ""
-
-msgid ""
-"Standard DES crypt is not supported by webserver's system crypt library."
-msgstr ""
-
-#, fuzzy
-msgid "PHP Curl extension is NOT available! Unable to change password!"
-msgstr "Module Curl TIDAK tersedia! Tidak dapat mengganti sandi!"
-
-msgid "Cannot change password! (Is user 'Self Configurable User' ?) (401)"
-msgstr ""
-"Tidak dapat mengganti sandi! (Apakah pengguna adalah 'Pengguna yang "
-"Terkonfigurasi Sendiri' ?) (401)"
-
-msgid "Cannot change password!"
-msgstr "Tidak dapat mengubah sandi!"
-
-msgid "Cannot connect to Database Server, please try later!"
-msgstr "Tidak dapat menghubungi Server Basis Data, silakan coba lagi!"
-
-msgid "Database not found on server"
-msgstr "Basis Data tidak ditemukan pada server"
-
-msgid "SQL call failed, try again later."
-msgstr "SQL call gagal, coba lagi nanti."
-
-msgid "Duplicate login entries detected, cannot change password!"
-msgstr "Login ganda terdeteksi, tidak dapat mengganti sandi!"
-
-msgid "Password change was not successful!"
-msgstr "Proses penggantian sandi tidak berhasil"
-
-msgid "Closing Connection"
-msgstr "Menutup hubungan"
-
-msgid "Connecting to Password Server"
-msgstr "Sedang menghubungi Server."
-
-msgid "No valid backend defined."
-msgstr ""
-
-msgid "Incorrent path to vmail.inc file."
-msgstr ""
-
-msgid "Invalid or corrupted vmail.inc file."
-msgstr ""
-
-#, fuzzy
-msgid "Invalid user."
-msgstr "URL tidak sah"
-
-#, fuzzy
-msgid "Empty domain"
-msgstr "Kata perintah kosong"
-
-#, fuzzy
-msgid "Empty domain password"
-msgstr "Kata perintah kosong"
-
-#, fuzzy
-msgid "Empty username"
-msgstr "Nama pengguna:"
-
-#, fuzzy
-msgid "Empty new password"
-msgstr "Sandi Baru:"
-
-msgid "Server Capability response:"
-msgstr "Tanggapan Kemampuan Server: "
-
-msgid ""
-"Select the IMAP commands you would like to run. Most commands require a "
-"selected mailbox so the select command is already setup. You can clear all "
-"the commands and test your own IMAP command strings. The commands are "
-"executed in order. The default values are simple IMAP commands using your "
-"default_charset and folder_prefix from SquirrelMail when needed."
-msgstr ""
-"Pilih perintan IMAP yang ingin Anda jalankan. Kebanyakan perintah perlu "
-"memilih kotak surat tertentu sehingga perintah 'select' telah disetel. Anda "
-"dapat menghapus semua perintah dan mengujicoba parintah IMAP Anda sendiri. "
-"Perintah dijalankan berurutan. Nilai bawaan adalah perintah IMAP sederhana "
-"menggunakan gugus karakter bawaan dan awalan folder dari SquirrelMail bila "
-"diperlukan."
-
-msgid ""
-"NOTE: These commands are live, any changes made will effect your current "
-"email account."
-msgstr ""
-"CATATAN: Perintah-perintah ini berpengaruh, setiap perubahan akan "
-"mempengaruhi akun surate Anda."
-
-msgid "Select"
-msgstr "Pilih"
-
-msgid "Test Name"
-msgstr "Nama Ujicoba"
-
-msgid "IMAP command string"
-msgstr "String perintah IMAP"
-
-msgid "Request:"
-msgstr "Permintaan:"
-
-msgid "No POP3 servers configured yet."
-msgstr "Tidak ada konfigurasi server POP3."
-
-msgid "Click here to go to the options page."
-msgstr "Klik di sini untuk ke halaman pilihan."
-
-#, fuzzy, php-format
-msgid "Login OK: Inbox contains %s message"
-msgid_plural "Login OK: Inbox contains %s messages"
-msgstr[0] "BERHASIL masuk: KOTAK POS berisi %s pesan"
-
-#, fuzzy
-msgid "Width of popup window:"
-msgstr "Lebar jendela penulisan"
-
-msgid "If set to 0, reverts to default value"
-msgstr ""
-
-#, fuzzy
-msgid "Height of popup window:"
-msgstr "Tinggi jendela penulisan"
-
-msgid "uploaded media file"
-msgstr ""
-
-#, fuzzy
-msgid "none"
-msgstr "(tidak ada)"
-
-msgid "Upload Media File:"
-msgstr ""
-
-msgid "Uploaded Media File:"
-msgstr ""
-
-#, fuzzy
-msgid "unavailable"
-msgstr "tidak tersedia"
-
-#, php-format
-msgid "Media file %s will be removed, if you upload other media file."
-msgstr ""
-
-msgid "Spam Service Type:"
-msgstr "Jenis layanan Spam:"
-
-msgid "Free reporting"
-msgstr "Pelaporan Gratis"
-
-msgid "Member services"
-msgstr "Layanan Anggota"
-
-msgid "Save Service Type"
-msgstr "Jenis layanan Penyimpanan"
-
-msgid "SpamCop reporting"
-msgstr "Pelaporan SpamCop"
-
-msgid "Translation Theme:"
-msgstr "Gaya Penerjemahan:"
-
-msgid ""
-"Selected translation engine is disabled. Please update your translation "
-"preferences."
-msgstr ""
-"Mesin penerjemah yang dipilih dimatikan. Silakan perbaharui konfigurasi "
-"terjemahan Anda."
-
-msgid "Translation Preferences"
-msgstr "Konfigurasi Terjemahan"
-
-msgid "Maximum of 25 kilobytes translated, powered by Systran"
-msgstr "Maksimum menerjemahkan 25 KB, didukung oleh Systran."
-
-msgid "No known limits, powered by GPLTrans (free, open source)"
-msgstr "Jumlah tidak diketahui, didukung oleh GPLTrans (bebas, terbuka)"
-
 msgid "Transliterate unknown words:"
 msgstr "Transliterarikan kata-kata asing:"
+
+msgid "Translator"
+msgstr "Penerjemah"
+
+msgid "Your server options are as follows:"
+msgstr "Pilihan server Anda sebagai berikut:"
+
+msgid ""
+"You also decide if you want the translation box displayed, and where it will "
+"be located."
+msgstr ""
+"Jika kotak terjemahan ingin ditampilkan, Anda juga dapat menentukan letaknya."
+
+msgid "Select your translator:"
+msgstr "Pilih penerjemah Anda:"
+
+msgid "When reading:"
+msgstr "Saat membaca:"
+
+msgid "Show translation box"
+msgstr "Tunjukkan kotak terjemahan"
+
+msgid "to the left"
+msgstr "di sebelah kiri"
+
+msgid "in the center"
+msgstr "di tengah"
+
+msgid "to the right"
+msgstr "di sebelah kanan"
+
+msgid "Translate inside the SquirrelMail frames"
+msgstr "Terjemahkan di dalam frame SquirrelMail"
 
 msgid "When composing:"
 msgstr "Saat menulis surat:"
 
 msgid "Not yet functional, currently does nothing"
 msgstr "Belum berfungsi, tidak bisa apa-apa"
+
+#, fuzzy
+msgid "D"
+msgstr "ID"
+
+msgid "A"
+msgstr "B"
+
+msgid "F"
+msgstr ""
+
+msgid "Paginate"
+msgstr "Per-hlm"
+
+msgid "Show All"
+msgstr "Lihat Semua"
+
+#, fuzzy
+msgid "SquirrelMail notice messages"
+msgstr "Pesan dari SquirrelMail:"
+
+msgid "Category:"
+msgstr ""
+
+#, fuzzy
+msgid "Tip:"
+msgstr "Waktu:"
+
+#, fuzzy
+msgid "More info:"
+msgstr "Keterangan lebih lanjut"
+
+msgid "Name:"
+msgstr "Nama:"
+
+#, php-format
+msgid "Viewing Messages: %s to %s (%s total)"
+msgstr "Menampilkan Pesan: %s sampai %s (seluruhnya %s)."
+
+#, php-format
+msgid "Viewing Message: %s (%s total)"
+msgstr "Menampilkan Pesan: %s (seluruhnya %s)"
+
+msgid "Toggle All"
+msgstr "Pilih Semua"
+
+#, fuzzy
+msgid "Message Flags"
+msgstr "Pemilah Pesan"
+
+#, fuzzy
+msgid "Attachment"
+msgstr "Lampiran"
+
+msgid "Click here to change the sorting of the message list"
+msgstr "Klik di sini untuk mengubah pengurutan daftar pesan"
+
+msgid "Current Folder"
+msgstr "Folder Saat Ini"
 
 msgid "Delivery error report"
 msgstr "Laporan kesalahan pengiriman"
@@ -4825,45 +4893,3 @@ msgstr "Header Pesan tidak bisa dikirimkan"
 
 msgid "This image has been removed for security reasons"
 msgstr "Gambar ini telah dihapus dengan alasan keamanan."
-
-#~ msgid "Unknown error"
-#~ msgstr "Kesalahan tidak diketahui"
-
-#~ msgid "said"
-#~ msgstr "berkata"
-
-#~ msgid "purge"
-#~ msgstr "buang"
-
-#~ msgid "Nickname:"
-#~ msgstr "Nama singkat:"
-
-#~ msgid "Note Field Contains:"
-#~ msgstr "Ruas Catatan Berisi: "
-
-#~ msgid "Server responded: "
-#~ msgstr "Tanggapan server: "
-
-#~ msgid "Please report this to the system administrator."
-#~ msgstr "Silakan laporkan hal ini kepada administrator sistem Anda."
-
-#~ msgid " not found."
-#~ msgstr "tidak ada"
-
-#~ msgid "Message "
-#~ msgstr "Pesan"
-
-#~ msgid "No-one server in use. Try to add."
-#~ msgstr "Tidak ada server yang dipakai. Coba tambahkan!"
-
-#~ msgid "Hey! Wath do You are looking for?"
-#~ msgstr "Lho! Apa yang sedang Anda cari?"
-
-#~ msgid "Click here to change the sorting of the message list"
-#~ msgstr "Klik di sini untuk mengubah pengurutan daftar pesan"
-
-#~ msgid "Show recipient name if the message is from your default identity"
-#~ msgstr "Tampilkan nama penerima jika pesan dari identitas utama Anda"
-
-#~ msgid "Use old folder listing functions"
-#~ msgstr "Gunakan fungsi daftar folder klasik"
