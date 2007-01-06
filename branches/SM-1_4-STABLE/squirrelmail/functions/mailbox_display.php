@@ -506,6 +506,13 @@ function showMessagesForMailbox($imapConnection, $mailbox, $num_msgs,
     $msg_cnt_str = get_msgcnt_str($start_msg, $end_msg, $num_msgs);
 
     do_hook('mailbox_index_before');
+
+    $safe_name = preg_replace("/[^0-9A-Za-z_]/", '_', $mailbox);
+    $form_name = "FormMsgs" . $safe_name;
+    echo '<form name="' . $form_name . '" method="post" action="move_messages.php">' ."\n" .
+        '<input type="hidden" name="mailbox" value="'.htmlspecialchars($mailbox).'">' . "\n" .
+        '<input type="hidden" name="startMessage" value="'.htmlspecialchars($start_msg).'">' . "\n";
+    
     echo '<table border="0" width="100%" cellpadding="0" cellspacing="0">';
     echo '<tr><td>';
 
@@ -528,6 +535,9 @@ function showMessagesForMailbox($imapConnection, $mailbox, $num_msgs,
 
     mail_message_listing_end($num_msgs, $paginator_str, $msg_cnt_str, $color);
     echo '</td></tr></table>';
+
+    echo "\n</form>\n\n";
+    
     //$t = elapsed($start);
     //echo("elapsed time = $t seconds\n");
 }
@@ -693,21 +703,10 @@ function mail_message_listing_beginning ($imapConnection,
         $source_url = $php_self;
     }
 
-    if (!isset($msg)) {
-        $msg = '';
-    }
-    $moveFields = '<input type="hidden" name="msg" value="'.htmlspecialchars($msg).'">' . "\n" .
-        '<input type="hidden" name="mailbox" value="'.htmlspecialchars($mailbox).'">' . "\n" .
-        '<input type="hidden" name="startMessage" value="'.htmlspecialchars($start_msg).'">' . "\n";
-
     /*
      * This is the beginning of the message list table.
      * It wraps around all messages
      */
-    $safe_name = preg_replace("/[^0-9A-Za-z_]/", '_', $mailbox);
-    $form_name = "FormMsgs" . $safe_name;
-    echo '<form name="' . $form_name . '" method="post" action="move_messages.php">' ."\n"
-        . $moveFields . "\n";
 
     if (!empty($paginator) && !empty($msg_cnt_str)) {
 
@@ -743,10 +742,8 @@ function mail_message_listing_beginning ($imapConnection,
             echo getButton('SUBMIT', 'moveButton',_("Move")) . "\n";
             echo getButton('SUBMIT', 'attache',_("Forward")) . "\n";
 
-  echo "      </small></td>\n"
+    echo "      </small></td>\n"
          . html_tag( 'td', '', 'right', '', 'nowrap' );
-
-
 
     if (!$auto_expunge) {
         echo getButton('SUBMIT', 'expungeButton',_("Expunge"))
@@ -824,7 +821,6 @@ function mail_message_listing_end($num_msgs, $paginator_str, $msg_cnt_str, $colo
     /* End of message-list table */
 
     do_hook('mailbox_index_after');
-    echo "</form>\n";
 }
 
 function printHeader($mailbox, $sort, $color, $showsort=true) {
