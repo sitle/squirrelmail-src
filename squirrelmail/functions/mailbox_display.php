@@ -451,10 +451,10 @@ function showMessagesForMailbox($imapConnection, $mailbox, $num_msgs,
                 $id   = get_thread_sort($imapConnection);
                 $msgs = getServerMessages($imapConnection, $start_msg, $show_num, $num_msgs, $id);
                 if ($msgs === false) {
-                    echo '<b><small><center><font color=red>' .
+                    echo '<b><small><center><font color="red">' .
                         _("Thread sorting is not supported by your IMAP server.") . '<br />' .
                         _("Please contact your system administrator and report this error.") .
-                        '</center></small></b>';
+                        '</font></center></small></b>';
                     $thread_sort_messages = 0;
                     $msort = $msgs = array();
                 } else {
@@ -466,10 +466,10 @@ function showMessagesForMailbox($imapConnection, $mailbox, $num_msgs,
                 $id   = sqimap_get_sort_order($imapConnection, $sort, $mbxresponse);
                 $msgs = getServerMessages($imapConnection, $start_msg, $show_num, $num_msgs, $id);
                 if ($msgs === false) {
-                    echo '<b><small><center><font color=red>' .
+                    echo '<b><small><center><font color="red">' .
                         _( "Server-side sorting is not supported by your IMAP server.") . '<br />' .
                         _("Please contact your system administrator and report this error.") .
-                        '</center></small></b>';
+                        '</font></center></small></b>';
                     $sort = $server_sort_order;
                     $allow_server_sort = FALSE;
                     $msort = $msgs = array();
@@ -961,7 +961,7 @@ function get_selectall_link($start_msg, $sort) {
         } else {
             $result .= _("Select All");
         }
-        $result .= "</A>\n";
+        $result .= "</a>\n";
     }
 
     /* Return our final result. */
