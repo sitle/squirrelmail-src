@@ -86,6 +86,10 @@ function attachSelectedMessages($msg, $imapConnection) {
 
                 $localfilename = GenerateRandomString(32, 'FILE', 7);
                 $full_localfilename = "$hashed_attachment_dir/$localfilename";
+                while (file_exists($full_localfilename)) {
+                    $localfilename = GenerateRandomString(32, 'FILE', 7);
+                    $full_localfilename = "$hashed_attachment_dir/$localfilename";
+                }
 
                 $fp = fopen( $full_localfilename, 'wb');
                 fwrite ($fp, $body);
