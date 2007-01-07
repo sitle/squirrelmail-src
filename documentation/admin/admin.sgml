@@ -1926,14 +1926,15 @@ manually. Settings can be different if IMAP server uses shared folders.
 
 Possible server values are:
 <itemize>
-  <item>cyrus = Cyrus IMAP server
-  <item>uw = University of Washington's IMAP server
-  <item>exchange = Microsoft Exchange IMAP server
+  <item>bincimap = Binc IMAP server
   <item>courier = Courier IMAP server
-  <item>macosx = Mac OS X Mailserver
-  <item>hmailserver = hMailServer
-  <item>mercury32 = Mercury/32
+  <item>cyrus = Cyrus IMAP server
   <item>dovecot = Dovecot Secure IMAP server
+  <item>exchange = Microsoft Exchange IMAP server
+  <item>hmailserver = hMailServer
+  <item>macosx = Mac OS X Mailserver
+  <item>mercury32 = Mercury/32
+  <item>uw = University of Washington's IMAP server
 </itemize>
 
 <sect1>default settings
