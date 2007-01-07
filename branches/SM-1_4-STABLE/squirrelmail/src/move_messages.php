@@ -29,7 +29,7 @@ if ( !sqgetGlobalVar('composesession', $composesession, SQ_SESSION) ) {
 
 function attachSelectedMessages($msg, $imapConnection) {
     global $username, $attachment_dir, $startMessage,
-           $data_dir, $composesession, $uid_support,
+           $data_dir, $composesession, $uid_support, $mailbox,
        $msgs, $thread_sort_messages, $allow_server_sort, $show_num,
        $compose_messages;
 
@@ -66,18 +66,19 @@ function attachSelectedMessages($msg, $imapConnection) {
     while ($j < count($msg)) {
         if (isset($msg[$i])) {
             $id = $msg[$i];
+            
             $body_a = sqimap_run_command($imapConnection, "FETCH $id RFC822",true, $response, $readmessage, $uid_support);
-
+            
             if ($response == 'OK') {
+                $message = sqimap_get_message($imapConnection, $id, $mailbox);
 
-                // fetch the subject for the message with $id from msgs.
-                // is there a more efficient way to do this?
-                foreach($msgs as $k => $vals) {
-                    if($vals['ID'] == $id) {
-                        $subject = $msgs[$k]['SUBJECT'];
-                        break;
-                    }
+                // fetch the subject for the message from the object
+                $filename = $message->rfc822_header->subject;
+                if ( empty($filename) ) {
+                    $filename = "untitled-".$message->entity_id;
                 }
+                $filename .= '.msg';
+                $filename = decodeHeader($filename, false, false);
 
                 array_shift($body_a);
                 array_pop($body_a);
@@ -94,7 +95,7 @@ function attachSelectedMessages($msg, $imapConnection) {
                 $fp = fopen( $full_localfilename, 'wb');
                 fwrite ($fp, $body);
                 fclose($fp);
-                $composeMessage->initAttachment('message/rfc822',$subject.'.msg',
+                $composeMessage->initAttachment('message/rfc822',$filename,
                      $full_localfilename);
             }
             $j++;
