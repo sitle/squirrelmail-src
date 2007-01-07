@@ -296,11 +296,28 @@ name="PHP site">.
 
 <sect2>Install webserver and PHP (at least 4.1.0).
 <p>
-SquirrelMail needs webserver with PHP support. Check <url
+SquirrelMail needs a webserver with PHP support. Check <url
 url="http://www.php.net/manual/en/install.php" name="PHP install manual"> for
 information about supported web servers and install procedures.
 
 Some Linux and Unix distributions provide precompiled web server and php packages.
+
+We recommend the following PHP settings:
+
+<itemize>
+    <item><tt/register_globals/ off - a dangerous setting, not needed. We do
+        not release security advisories for issues only exploitable with this
+        setting on. Note that you can easily enable it only for some legacy
+        site that may need it and turn it off globally.
+    <item><tt/magic_quotes_{runtime,gpc,sybase}/ off - SquirrelMail may work
+        with any of these on, but if you experience stray backslashes in your
+        mail or other strange behaviour, it may be advisable to turn them off.
+    <item><tt/file_uploads/ on - needed if your users want to attach files to
+        their mails.
+    <item><tt/safe_mode/ on or off - safe_mode on is only a tiny bint more secure,
+    	in the SquirrelMail case. There may be some incompatibilities with
+	some functionality.
+</itemize>
 
 <sect2>Install IMAP server
 <p>
