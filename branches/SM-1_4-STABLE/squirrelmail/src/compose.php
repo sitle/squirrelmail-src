@@ -918,13 +918,14 @@ function getAttachments($message, &$composeMessage, $passed_id, $entities, $imap
                 $localfilename = GenerateRandomString(32, '', 7);
                 $full_localfilename = "$hashed_attachment_dir/$localfilename";
             }
+            $fp = fopen ("$hashed_attachment_dir/$localfilename", 'wb');
+
             $message->att_local_name = $full_localfilename;
 
             $composeMessage->initAttachment($message->type0.'/'.$message->type1,$filename,
                     $full_localfilename);
 
             /* Write Attachment to file */
-            $fp = fopen ("$hashed_attachment_dir/$localfilename", 'wb');
             fputs($fp, decodeBody(mime_fetch_body($imapConnection,
                             $passed_id, $message->entity_id),
                         $message->header->encoding));
