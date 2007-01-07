@@ -326,9 +326,10 @@ function SendMDN ( $mailbox, $passed_id, $sender, $message, $imapConnection) {
         $success = $deliver->finalizeStream($stream);
     }
     if (!$success) {
-        $msg  = $deliver->dlv_msg . '<br />' .
-                _("Server replied:") . ' ' . $deliver->dlv_ret_nr . ' '.
-                $deliver->dlv_server_msg;
+        $msg  = _("Message not sent.") .' '.  _("Server replied:") .
+            "\n<blockquote>\n" . $deliver->dlv_msg . '<br />' .
+            $deliver->dlv_ret_nr . ' ' .
+            $deliver->dlv_server_msg . "</blockquote>\n\n";
         require_once(SM_PATH . 'functions/display_messages.php');
         plain_error_message($msg, $color);
     } else {
