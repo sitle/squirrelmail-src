@@ -1978,9 +1978,18 @@ Possible values are:
 For <tt/SMOPT_TYPE_COMMENT/ type preferences, this is the text displayed to the
 user.
 
-<tag><tt/script/</tag>
-This is where you may add any additional JavaScript or other code to the user
-input.
+<tag><tt/extra_attributes/</tag>
+This is where you may add any additional JavaScript or other attributes to the 
+preference element.  The value of this setting should be an array, where the 
+keys of the array are the attribute names as you expect them to show up in the
+resulting HTML, and the values are the corresponding attribute values.  For 
+example, you could add an "onchange" JavaScript handler to a drop-down list:
+
+<tscreen><verb>
+    $optpage_data['vals'][1][] = array(
+        'extra_attributes' =&gt; array('onchange' =&gt; 'alert("Thank you for changing the drop-down list!");'),
+        ...
+</verb></tscreen>
 
 <tag><tt/post_script/</tag>
 You may specify some script (usually JavaScript) that will be placed after
