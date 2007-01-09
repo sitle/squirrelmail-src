@@ -88,7 +88,7 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
            $compose_new_win, $compose_width, $compose_height,
            $attachemessages, $provider_name, $provider_uri,
            $javascript_on, $default_use_mdn, $mdn_user_support,
-           $startMessage;
+           $startMessage, $org_title;
 
     sqgetGlobalVar('base_uri', $base_uri, SQ_SESSION );
     sqgetGlobalVar('delimiter', $delimiter, SQ_SESSION );
@@ -150,7 +150,7 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
                       "\n<!--\n" . $js . "// -->\n</script>\n";
             }
 
-            displayHtmlHeader ('SquirrelMail', $js);
+            displayHtmlHeader($org_title, $js);
             $onload = $xtra;
           break;
         case 'src/compose.php':
@@ -195,7 +195,7 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
             $js .= "// -->\n".
                  "</script>\n";
             $onload = 'onload="checkForm();"';
-            displayHtmlHeader ('SquirrelMail', $js);
+            displayHtmlHeader($org_title, $js);
             break;
 
         default:
@@ -245,11 +245,11 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
 
 
         $onload = 'onload="checkForm();"';
-        displayHtmlHeader ('SquirrelMail', $js);
+        displayHtmlHeader($org_title, $js);
       } // end switch module
     } else {
         // JavaScript off
-        displayHtmlHeader ('SquirrelMail');
+        displayHtmlHeader($org_title);
         $onload = '';
     }
 
