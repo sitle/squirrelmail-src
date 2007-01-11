@@ -12,6 +12,8 @@ Version 1.4.10 - CVS
   - Add warning about magic_quotes_* in configtest.
   - Unify accepted versions for imap_server_type and set_defaults (#1629722).
   - Improve SMTP error message.
+  - Fix PHP 4.4.x for wrong $_SERVER['REQUEST_URI'] value causing wrong links
+    in the [more] and [less] links in read_body.php.
 
 Version 1.4.9a - 3 December 2006
 --------------------------------
@@ -32,16 +34,16 @@ Version 1.4.9 - 2 December 2006
   - Provide View Unsafe Images link on viewing a text/html attachment.
   - Fix variable typo in folders_create.php (#1545316).
   - Added Courier IMAP OUTBOX check to configtest utility.
-  - If mailbox name starts with slash or contains ../, error message is 
+  - If mailbox name starts with slash or contains ../, error message is
     generated. Safety check for insecure default UW IMAP setup (#1557078).
   - Ignore message copy errors when messages are deleted. Allows to delete
     messages when quota is exceeded (#614887, #646386, #1446026).
   - Fixed unintended literal fetching (#1562271).
-  - Added global file based address book listing controls. Added line 
-    length configuration option for local_file address book backend 
-    (#1181561). Added address book data integrity checks in local_file 
-    address book backend. Fixed eregi and object notices in local_file 
-    and database address book backends. Added additional address book 
+  - Added global file based address book listing controls. Added line
+    length configuration option for local_file address book backend
+    (#1181561). Added address book data integrity checks in local_file
+    address book backend. Fixed eregi and object notices in local_file
+    and database address book backends. Added additional address book
     field support.
   - Fixed variable corruption in configtest utility.
   - Checked if configuration file is readable in configuration utility
@@ -88,7 +90,7 @@ Version 1.4.8 - 11th August 2006
     variable corruption. This also effectively rules out future attack vectors
     that require register_globals to be on.
   - Fixed use of $version in config.php file (#1527870).
-  - Fixed IMAP folder creation in euc-kr, big5 and gb2312 translations 
+  - Fixed IMAP folder creation in euc-kr, big5 and gb2312 translations
     (#1005353).
   - Configuration utility does not allow 8bit symbols in IMAP folder names
     (#1485501).
@@ -127,14 +129,14 @@ Version 1.4.7 - 4th July 2006
     (#1378332), (#1377567), (#1377529), (#1377528), (#1377527), (#1377526),
     (#1377525), (#1393188).
   - Removed invalid $sendmail_path check in configuration utility.
-  - Backported calendar plugin updates from devel branch. Fixed display of 
+  - Backported calendar plugin updates from devel branch. Fixed display of
     multiline events (#1291081) and sanitizing of quotes (#705796). Fixed
-    possible calendar corruption, when events contain special formating 
-    characters. Moved html sanitizing from backend functions to display 
-    code. Removed direct access to $_GET and $_POST variables and 
+    possible calendar corruption, when events contain special formating
+    characters. Moved html sanitizing from backend functions to display
+    code. Removed direct access to $_GET and $_POST variables and
     simplified form variable processing.
-  - Fixed some mailbox caching issues, when messages are deleted or moved 
-    not in first mailbox page. Fixed use of mailbox cache in right_main.php 
+  - Fixed some mailbox caching issues, when messages are deleted or moved
+    not in first mailbox page. Fixed use of mailbox cache in right_main.php
     (#1304408).
   - Stop URL parsing, if 8bit symbols or HTML entities are detected (#1356798).
   - Improve recovery when EHLO not supported on legacy SMTP servers
@@ -158,7 +160,7 @@ Version 1.4.7 - 4th July 2006
   - Tightened code in search.php for disputed security report. We don't
     believe this is exploitable, but the code is tightened anyway.
     [CVE-2006-3174]
-  
+
 
 Version 1.4.6 - 23 February 2006
 --------------------------------
@@ -179,7 +181,7 @@ Version 1.4.6 - 23 February 2006
 Version 1.4.6 Release Candidate 1 - 10 December 2005
 ----------------------------------------------------
   - Added Simple Green, Silver Steel, Wood, Bluesome, Simple Green2 and
-    Simple Purple themes. Contributed by Pavel Spatny, Saku Lehtio 
+    Simple Purple themes. Contributed by Pavel Spatny, Saku Lehtio
     (#1188209), Vicky Pyne (#1217066 and #1217069).
   - Fixes for increased error checking in PHP 5.0.5+ array_shift() (#1237160).
     [PHP5]
@@ -287,7 +289,7 @@ Version 1.4.6 Release Candidate 1 - 10 December 2005
   - Back-ported filter code change to test for filters before issuing possibly
     expensive IMAP calls.
   - Sanitize Draft folder name in compose.php error message.
-  
+
 Version 1.4.5 - 13 July 2005
 ----------------------------
   - Update COPYING with new address of the FSF.
