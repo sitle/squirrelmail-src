@@ -212,9 +212,14 @@ function readShortMailboxName($haystack, $needle) {
  * @return string the complete url for this page
  */
 function php_self () {
-    if ( sqgetGlobalVar('REQUEST_URI', $req_uri, SQ_SERVER) && !empty($req_uri) ) {
-      return $req_uri;
-    }
+    /*
+     * PHP 4.4.4 is giving the wrong REQUEST_URI. The Query string is missing.
+     * => I (stekkel) commented out the code because it's not realy needed. PHP_SELF in combinatiob
+     * with QUERY_STRING should do the job.
+     */
+//    if ( sqgetGlobalVar('REQUEST_URI', $req_uri, SQ_SERVER) && !empty($req_uri) ) {
+//      return $req_uri;
+//    }
 
     if ( sqgetGlobalVar('PHP_SELF', $php_self, SQ_SERVER) && !empty($php_self) ) {
 
