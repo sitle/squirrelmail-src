@@ -3,12 +3,11 @@
 /**
  * folders_rename_do.php
  *
- * Copyright (c) 1999-2006 The SquirrelMail Project Team
- * Licensed under the GNU GPL. For full terms see the file COPYING.
- *
  * Does the actual renaming of files on the IMAP server.
  * Called from the folders.php
  *
+ * @copyright &copy; 1999-2007 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
  */
