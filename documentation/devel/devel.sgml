@@ -640,7 +640,7 @@ make SquirrelMail a better web mail application.
 
 <sect1>Submitting a patch
 <p>
-If you do not have commit access to the SquirrelMail Project CVS, you can
+If you do not have commit access to the SquirrelMail Project Subversion (SVN), you can
 provide a patch for bugs or features that you want to add. The developers will
 then decide whether or not it can be applied to SquirrelMail. You can submit
 your patch through the patches tracker on SourceForge.net, or you can attach it
@@ -650,7 +650,7 @@ Important points when writing a patch, to improve the chances that it will be
 committed:
 
 <itemize>
-  <item>Patch against the latest CVS version (prefered) or the latest released
+  <item>Patch against the latest SVN version (prefered) or the latest released
         version.
   <item>Always use <tt/diff -u/. Do not submit entire changed files or use
         different patch options. Make sure you don't reverse the patch.
@@ -1824,8 +1824,7 @@ want to process your button actions in the <tt/options_identity_process/ hook.
 See sample implementation of identity hooks in the SquirrelMail demo plugin.
 
 <tscreen><verb>
-cvs -d:pserver:anonymous@squirrelmail.cvs.sourceforge.net:/cvsroot/squirrelmail \
-    co plugins/demo
+svn co https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/trunk/squirrelmail/plugins/demo
 </verb></tscreen>
 
 <sect2>The preference hooks

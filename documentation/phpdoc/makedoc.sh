@@ -31,7 +31,7 @@
 #  *
 #  * @var               string TITLE
 #  */
-TITLE="SquirrelMail Devel CVS Documentation"
+TITLE="SquirrelMail Devel SVN Documentation"
 
 #/**
 #  * name to use for the default package. If not specified, uses 'default'
@@ -96,7 +96,7 @@ PRIVATE=off
 #  * Ignore certain files (comma separated, wildcards enabled)
 #  * @var               string IGNORE
 #  */
-IGNORE=CVS/,*.txt,contrib/,index.php
+IGNORE=CVS/,.svn/,*.txt,contrib/,index.php
 
 # make documentation
 $PATH_PHPDOC -d $PATH_PROJECT -t $PATH_DOCS -ti "$TITLE" -dn $PACKAGES \
