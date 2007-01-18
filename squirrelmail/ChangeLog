@@ -11,10 +11,10 @@ Version 1.4.10 - SVN
   - Fix rare bug in forwarding as attachment from some search results.
   - Add warning about magic_quotes_* in configtest.
   - Unify accepted versions for imap_server_type and set_defaults (#1629722).
-  - Improve SMTP error message.
   - Fix for wrong $_SERVER['REQUEST_URI'] value causing wrong links
     in the [more] and [less] links in read_body.php.
   - Update for switch from CVS to Subversion.
+  - Fix URL to send read receipts from read_body (#1637572).
 
 Version 1.4.9a - 3 December 2006
 --------------------------------
