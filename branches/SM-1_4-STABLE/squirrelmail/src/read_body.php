@@ -444,10 +444,10 @@ function formatEnvheader($mailbox, $passed_id, $passed_ent_id, $message,
                           $message->is_deleted ||
                           $passed_ent_id)) {
                         $mdn_url = $PHP_SELF;
-                        $mdn_url = set_url_var($PHP_SELF, 'mailbox', urlencode($mailbox));
-                        $mdn_url = set_url_var($PHP_SELF, 'passed_id', $passed_id);
-                        $mdn_url = set_url_var($PHP_SELF, 'passed_ent_id', $passed_ent_id);
-                        $mdn_url = set_url_var($PHP_SELF, 'sendreceipt', 1);
+                        $mdn_url = set_url_var($mdn_url, 'mailbox', urlencode($mailbox));
+                        $mdn_url = set_url_var($mdn_url, 'passed_id', $passed_id);
+                        $mdn_url = set_url_var($mdn_url, 'passed_ent_id', $passed_ent_id);
+                        $mdn_url = set_url_var($mdn_url, 'sendreceipt', 1);
                         if ($FirstTimeSee && $javascript_on) {
                             $script  = '<script language="JavaScript" type="text/javascript">' . "\n";
                             $script .= '<!--'. "\n";
