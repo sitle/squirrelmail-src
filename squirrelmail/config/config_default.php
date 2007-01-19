@@ -447,19 +447,24 @@ $noselect_fix_enable = false;
  *
  *   It is a possible security hole to have a writable directory
  *   under the web server's root directory (ex: /home/httpd/html).
- *   For this reason, it is possible to put the data directory
- *   anywhere you would like. The path name can be absolute or
- *   relative (to the config directory). It doesn't matter. Here
- *   are two examples:
+ *   It is possible to put the data directory anywhere you would like;
+ *   it is strongly advised that it is directly web-accessible.
+ *
+ *   The path name can be absolute or relative (to the config directory).
+ *   If it is relative, it must use the SM_PATH constant.
+ *   Here are two examples:
  *
  * Absolute:
- *   $data_dir = '/usr/local/squirrelmail/data/';
+ *   $data_dir = '/var/local/squirrelmail/data/';
  *
  * Relative (to main SM directory):
  *   $data_dir = SM_PATH . 'data/';
+ *   (NOT recommended: you need to secure apache to make sure these
+ *   files are not world readable)
+ *
  * @global string $data_dir
  */
-$data_dir = SM_PATH . 'data/';
+$data_dir = '/var/local/squirrelmail/data/';
 
 /**
  * Attachments directory
@@ -472,12 +477,12 @@ $data_dir = SM_PATH . 'data/';
  *      list files in this directory. Confidential data might be laying
  *      around there.
  *    + Since the webserver is not able to list the files in the content
- *       is also impossible for the webserver to delete files lying around 
- *       there for too long.
+ *      is also impossible for the webserver to delete files lying around 
+ *      there for too long.
  *    + It should probably be another directory than data_dir.
  * @global string $attachment_dir
  */
-$attachment_dir = $data_dir;
+$attachment_dir = '/var/local/squirrelmail/attach/';
 
 /**
  * Hash level used for data directory.
