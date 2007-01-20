@@ -1,5 +1,5 @@
 # LANGUAGE (xx_XX) check_quota Translation (SquirrelMail plugin)
-# Copyright (c) 1999-2006 The SquirrelMail Project Team
+# Copyright (c) 1999-2007 The SquirrelMail Project Team
 # This file is distributed under the same license as the SquirrelMail package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # $Id$
@@ -7,7 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: check_quota 1.4\n"
-"POT-Creation-Date: 2005-03-04 15:00+0200\n"
+"Report-Msgid-Bugs-To: SquirrelMail Plugins <squirrelmail-plugins@lists."
+"sourceforge.net>\n"
+"POT-Creation-Date: 2007-01-20 06:32+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -15,31 +17,39 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#, c-format
+#: show_graph.php:33
+#, php-format
 msgid "%s%s of %s%s"
 msgstr ""
 
-#, c-format
+#: show_graph.php:35
+#, php-format
 msgid "%s%% of %s%s"
 msgstr ""
 
+#: show_graph.php:49
 msgid "Quota Usage:"
 msgstr ""
 
+#: show_graph.php:110 show_graph.php:194
 msgid "OVER QUOTA!"
 msgstr ""
 
-#, c-format
+#: show_graph.php:117
+#, php-format
 msgid "%s of %s files"
 msgstr ""
 
-#, c-format
+#: show_graph.php:119
+#, php-format
 msgid "%s%% of %s files"
 msgstr ""
 
+#: show_graph.php:133
 msgid "File Usage:"
 msgstr ""
 
+#: show_motd.php:12
 msgid ""
 "<strong>WARNING:</strong> Your quota usage is currently "
 "<strong>###PERCENT_USED###%</strong>. To avoid losing any email, you should "
@@ -47,6 +57,7 @@ msgid ""
 "large attachments."
 msgstr ""
 
+#: show_motd.php:15
 msgid ""
 "<strong>WARNING:</strong> Your quota usage is currently "
 "<strong>###PERCENT_USED###%</strong>. You may want to make sure you empty "
