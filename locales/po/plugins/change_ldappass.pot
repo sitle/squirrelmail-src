@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: change_ldappass 2.0\n"
+"Project-Id-Version: change_ldappass 2.1\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/sm-plugins/\n"
-"POT-Creation-Date: 2007-01-20 06:24+0100\n"
+"POT-Creation-Date: 2007-01-20 13:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -40,81 +40,81 @@ msgstr ""
 msgid "Passwords can only contain the following characters:"
 msgstr ""
 
-#: functions.php:104
+#: functions.php:105
 msgid "Can't connect to Directory Server, please try later!"
 msgstr ""
 
-#: functions.php:110
+#: functions.php:111
 msgid "Unable to set LDAP bind protocol version."
 msgstr ""
 
-#: functions.php:125 functions.php:194
+#: functions.php:126 functions.php:201
 msgid "LDAP bind failed."
 msgstr ""
 
-#: functions.php:126 functions.php:146
+#: functions.php:127 functions.php:153
 #, php-format
 msgid "Error: %s"
 msgstr ""
 
-#: functions.php:145
+#: functions.php:152
 msgid "LDAP search failed."
 msgstr ""
 
-#: functions.php:156
+#: functions.php:163
 msgid "Duplicate login entries detected, cannot change password!"
 msgstr ""
 
-#: functions.php:164
+#: functions.php:171
 msgid ""
 "Your login account was not found in the LDAP database, cannot change "
 "password!"
 msgstr ""
 
 #. if we can't bind as the user then the old passwd must be wrong
-#: functions.php:177 functions.php:289
+#: functions.php:184 functions.php:296
 msgid "Your old password is not correct."
 msgstr ""
 
-#: functions.php:218
+#: functions.php:225
 msgid "We could not retrieve your old password from the LDAP server."
 msgstr ""
 
-#: functions.php:249 functions.php:253 functions.php:257 functions.php:266
-#: functions.php:272
+#: functions.php:256 functions.php:260 functions.php:264 functions.php:273
+#: functions.php:279
 msgid "Password type is"
 msgstr ""
 
-#: functions.php:260 functions.php:275
+#: functions.php:267 functions.php:282
 msgid ""
 "Unsupported password schema. Insufficient PHP version or PHP mhash extension "
 "is not available."
 msgstr ""
 
 #. could not generate ntlm passwords
-#: functions.php:336 functions.php:381
+#: functions.php:343 functions.php:388
 msgid "SMB Password change was not successful, so LDAP not changed!"
 msgstr ""
 
-#: functions.php:356
+#: functions.php:363
 msgid "Password changed for user"
 msgstr ""
 
-#: functions.php:373
+#: functions.php:380
 msgid "Password changed successfully"
 msgstr ""
 
-#: functions.php:383
+#: functions.php:390
 msgid ""
 "Due to numerous password modification errors your LDAP and SMB passwords are "
 "out of sync. Please contact your administrator."
 msgstr ""
 
-#: functions.php:388
+#: functions.php:395
 msgid "LDAP Password change was not successful!"
 msgstr ""
 
-#: functions.php:389
+#: functions.php:396
 msgid "LDAP ERROR => "
 msgstr ""
 
