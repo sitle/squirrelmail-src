@@ -60,6 +60,7 @@ if(sqgetGlobalVar('mailtodata', $mailtodata)) {
 
 is_logged_in();
 
+require_once(SM_PATH . 'include/load_prefs.php');
 do_hook('webmail_top');
 
 /**
