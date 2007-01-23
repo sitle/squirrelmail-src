@@ -110,7 +110,7 @@ if ( sqgetGlobalVar('mailtodata', $mailtodata, SQ_GET) ) {
                  'body'         => 'body',
                  'subject'      => 'subject');
     $mtdata = unserialize($mailtodata);
-    
+
     foreach ($trtable as $f => $t) {
         if ( !empty($mtdata[$f]) ) {
             $$t = $mtdata[$f];
@@ -281,7 +281,7 @@ if (sqsession_is_registered('session_expired_post')) {
         sqsession_unregister('session_expired_post');
         session_write_close();
     } else {
-        // these are the vars that we can set from the expired composed session   
+        // these are the vars that we can set from the expired composed session
         $compo_var_list = array ( 'send_to', 'send_to_cc','body','startMessage',
             'passed_body','use_signature','signature','attachments','subject','newmail',
             'send_to_bcc', 'passed_id', 'mailbox', 'from_htmladdr_search', 'identity',
@@ -907,6 +907,7 @@ function getAttachments($message, &$composeMessage, $passed_id, $entities, $imap
                     $filename = $message->getFilename();
                     break;
             }
+
             $filename = decodeHeader($filename, false, false);
             if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
                     function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
@@ -925,10 +926,12 @@ function getAttachments($message, &$composeMessage, $passed_id, $entities, $imap
             $composeMessage->initAttachment($message->type0.'/'.$message->type1,$filename,
                     $full_localfilename);
 
-            /* Write Attachment to file */
-            fputs($fp, decodeBody(mime_fetch_body($imapConnection,
-                            $passed_id, $message->entity_id),
-                        $message->header->encoding));
+            /* Write Attachment to file 
+               The function mime_print_body_lines writes directly to the 
+               provided resource $fp. That prohibits large memory consumption in
+               case of forwarding mail with large attachments.
+            */
+            mime_print_body_lines ($imapConnection, $passed_id, $message->entity_id, $message->header->encoding, $fp);
             fclose ($fp);
         }
     } else {

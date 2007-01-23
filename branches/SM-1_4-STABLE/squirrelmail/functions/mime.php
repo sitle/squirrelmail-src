@@ -159,7 +159,7 @@ function mime_fetch_body($imap_stream, $id, $ent_id=1, $fetch_size=0) {
     return $ret;
 }
 
-function mime_print_body_lines ($imap_stream, $id, $ent_id=1, $encoding) {
+function mime_print_body_lines ($imap_stream, $id, $ent_id=1, $encoding, $rStream='php://stdout') {
     global $uid_support;
 
     /* Don't kill the connection if the browser is over a dialup
@@ -178,7 +178,7 @@ function mime_print_body_lines ($imap_stream, $id, $ent_id=1, $encoding) {
         } else {
             $query = "FETCH $id BODY[$ent_id]";
         }
-        sqimap_run_command($imap_stream,$query,true,$response,$message,$uid_support,'sqimap_base64_decode','php://stdout',true);
+        sqimap_run_command($imap_stream,$query,true,$response,$message,$uid_support,'sqimap_base64_decode',$rStream,true);
     } else {
         $body = mime_fetch_body ($imap_stream, $id, $ent_id);
         echo decodeBody($body, $encoding);
