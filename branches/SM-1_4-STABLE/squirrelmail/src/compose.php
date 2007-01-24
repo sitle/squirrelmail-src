@@ -131,8 +131,8 @@ function replyAllString($header) {
      * 1) Remove the addresses we'll be sending the message 'to'
      */
     $url_replytoall_avoid_addrs = '';
-    if (isset($header->replyto)) {
-        $excl_ar = $header->getAddr_a('replyto');
+    if (isset($header->reply_to)) {
+        $excl_ar = $header->getAddr_a('reply_to');
     }
     /**
      * 2) Remove our identities from the CC list (they still can be in the
