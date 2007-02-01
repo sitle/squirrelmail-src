@@ -38,7 +38,7 @@ installation and configuration procedures.
 <p>
 Document version: $Revision$
 
-<sect>SquirrelMail overview
+<sect>Overview
 <p>
 SquirrelMail is a standards-based webmail package written in PHP. It includes
 built-in pure PHP support for the IMAP and SMTP protocols, and all pages render
@@ -51,14 +51,14 @@ client, including strong MIME support, address books, and folder manipulation.
 This manual supports SquirrelMail 1.4.0 and up. The 1.2.x series has been
 obsoleted, and is only referenced in the upgrading notes of this manual.
 
-<sect1>SquirrelMail Requirements
-<sect2>Requirements for running SquirrelMail:
+<sect1>Requirements
+<sect2>Requirements
 <p>
 <itemize>
   <item>A web server with PHP installed. PHP needs to be at least 4.1.2.
   <item>Access to an IMAP server which supports IMAP 4 rev 1.
 </itemize>
-<p>
+
 It doesn't really matter what OS or web server you use, as long as the
 combination thereof supports PHP in a stable way. Read the instructions and
 suggestions in the <url url="http://php.net/" name="PHP documentation"> to see
@@ -83,49 +83,52 @@ There are also several sites offering advice and opinions on this matter. Read
 them, but make your own decision since the information at some of those sites
 might be outdated or biased.
 
-<sect2>Optional:
+<sect2>Optional programs
 <p>
 <itemize>
   <item><url url="http://www.perl.org/" name="Perl">. SquirrelMail is shipped
         with some Perl scripts. One of the most useful is
-        <tt>config/conf.pl</tt>, which will help you configure SquirrelMail
+        <tt>config/conf.pl</tt>, which will help you configure your SquirrelMail
         installation.
   <item>An SQL database supported by <url url="http://pear.php.net/package/DB"
         name="the PEAR DB library">. If you're going to use a database, you must
         have the PEAR DB library installed as well.
-  <item>Aspell or ispell installed if using the SquirrelSpell plugin, For
-        UNIX/Linux see: <url url="http://aspell.sourceforge.net/"
-        name="http://aspell.sourceforge.net/"> or for Windows, see: <url
-        url="http://aspell.net/win32/" name="http://aspell.net/win32/">
-  <item>Japanese language support: PHP must be compiled with the
-        <tt/--enable-mbstring/ option for SquirrelMail to read and write Japanese
-        emails. Each user must also set their language option to Japanese.
-  <item>PHP mbstring extension is required for translations that use multibyte
-        or not ISO-8859-1 character sets. Without mbstring extension interface will
-        remain usable, but some i18n features and fixes won't be enabled.
-  <item>PHP XML extension is required, if digest-md5 authentication is used.
+  <item><url url="http://aspell.net/" name="Aspell"> or <url
+        url="http://lasr.cs.ucla.edu/geoff/ispell.html" name="Ispell"> to be
+        able to use the SquirrelSpell plugin.
 </itemize>
 
-<sect2>Preferred configuration:
+These are not a must have, since SquirrelMail will function without them, but
+they are adding to the experience so you might want to consider them.
+
+<sect2>Preferred configuration
 <p>
 <itemize>
-  <item>PHP with gettext and mbstring support. Without gettext you lose in
-    performance. mbstring is actually required if you want a good internationalised
-    webmail system.
-  <item>An IMAP server that supports sort and thread IMAP extensions. Without
+  <item>The IMAP server should support the SORT and THREAD extensions. Without
         these extensions you lose in performance.
-  <item>The IMAP server should support Unicode. Courier IMAP must be compiled
-        with <tt/--enable-unicode/ option. Without it some translations might be
-        unable to use sorting and threading.
+  <item>The IMAP server should support Unicode. Without it some translations
+        might be unable to use sorting and threading. Courier IMAP must be
+        compiled with the <tt/--enable-unicode/ option.
+  <item>Without <url url="http://php.net/gettext" name="the PHP gettext
+        extension"> you lose in performance.
+  <item><url url="http://php.net/mbstring" name="The PHP mbstring extension"> is
+        required for translations that use multibyte or character sets but
+        ISO-8859-1.  Without the PHP mbstring extension the interface will
+        remain usable, but some internationalization features and fixes won't be
+        enabled. It's a must if you want to read and write Japanese emails, and
+        users who whish to do that must also set their language option to
+        Japanese.
+  <item><url url="http://php.net/xml" name="The PHP XML extension"> is required
+        if the DIGEST-MD5 authentication is used.
 </itemize>
 
-<sect2>Client Requirements:
+<sect2>Client requirements
 <p>
 <itemize>
   <item>Cookies must be enabled in your browser.
-  <item>15" display with 1024x768 or higher resolution. It might be hard to use
-  interface on smaller displays and some customizations are required to make it
-  usable.
+  <item>It might be hard to use SquirrelMail on a display smaller then 15" and
+        with less resolution than 1024 x 768, and some customizations are
+        required to make it usable.
 </itemize>
 
 <sect>Quick Start Guide
