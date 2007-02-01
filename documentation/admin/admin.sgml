@@ -55,25 +55,44 @@ obsoleted, and is only referenced in the upgrading notes of this manual.
 <sect2>Requirements for running SquirrelMail:
 <p>
 <itemize>
-  <item>UNIX/Linux or Windows
-  <item>An IMAP server which supports IMAP 4 rev 1.
-  <item>Web server with PHP installed (for example <url
-        url="http://httpd.apache.org/" name="Apache httpd">)
-  <item>You need at least PHP 4.1.2. If you are using PHP 4.1.2 or 4.1.4,
-        please upgrade to the latest version ( >= 4.1.2.11, >= 4.1.4.1 final).
-  <item>Perl installed on the system. (If you don't have Perl, SquirrelMail will
-        work fine but it's very helpful for the initial configuration.
-        Alternatively, you can manually edit the configuration files.)
+  <item>A web server with PHP installed. PHP needs to be at least 4.1.2.
+  <item>Access to an IMAP server which supports IMAP 4 rev 1.
 </itemize>
+<p>
+It doesn't really matter what OS or web server you use, as long as the
+combination thereof supports PHP in a stable way. Read the instructions and
+suggestions in the <url url="http://php.net/" name="PHP documentation"> to see
+what they recommend.
+
+There are plenty of IMAP servers at the market, so it might be difficult to
+decide which one to choose. Since IMAP is an open standard, all IMAP products
+should be able to communicate with each other. If you want to use SquirrelMail,
+make sure that your IMAP server supports IMAP 4 rev 1. Some IMAP servers also
+support various extensions, which are developed as a complement to IMAP. Many of
+those extensions, such as SORT and THREAD, are supported and recommended by
+SquirrelMail, even though they aren't required. Another thing to keep in mind is
+where and how the IMAP server stores the mails and the user data. Some of the
+open source alternatives are well matured products that can compete, and even
+surpass, the commercial servers.
+
+Some systems are delivered with an IMAP server from the start. Since every
+organization and server has unique demands, it's really hard to recommend
+something. <url url="http://imap.org/" name="The IMAP Connection"> has a
+searchable database of IMAP servers, as well as more information about IMAP.
+There are also several sites offering advice and opinions on this matter. Read
+them, but make your own decision since the information at some of those sites
+might be outdated or biased.
 
 <sect2>Optional:
 <p>
-
 <itemize>
-  <item>Unlike many PHP applications, SquirrelMail does <em>not require</em>
-        MySQL or another database type.
-  <item>If you use MySQL for the address book or for preferences, note that the Pear
-        DB library is required to be installed and available in the include path.
+  <item><url url="http://www.perl.org/" name="Perl">. SquirrelMail is shipped
+        with some Perl scripts. One of the most useful is
+        <tt>config/conf.pl</tt>, which will help you configure SquirrelMail
+        installation.
+  <item>An SQL database supported by <url url="http://pear.php.net/package/DB"
+        name="the PEAR DB library">. If you're going to use a database, you must
+        have the PEAR DB library installed as well.
   <item>Aspell or ispell installed if using the SquirrelSpell plugin, For
         UNIX/Linux see: <url url="http://aspell.sourceforge.net/"
         name="http://aspell.sourceforge.net/"> or for Windows, see: <url
