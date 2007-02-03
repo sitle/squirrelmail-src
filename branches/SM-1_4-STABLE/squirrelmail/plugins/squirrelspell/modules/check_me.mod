@@ -314,7 +314,7 @@ if ($errors){
 
 
   /**
-   * Did I mention that I hate dots on the end of contcatenated lines?
+   * Did I mention that I hate dots on the end of concatenated lines?
    * Dots at the beginning make so much more sense!
    */
   $extrajs.= "//-->\n"
