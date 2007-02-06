@@ -64,24 +64,71 @@ combination thereof supports PHP in a stable way. Read the instructions and
 suggestions in the <url url="http://php.net/" name="PHP documentation"> to see
 what they recommend.
 
-There are plenty of IMAP servers at the market, so it might be difficult to
-decide which one to choose. Since IMAP is an open standard, all IMAP products
-should be able to communicate with each other. If you want to use SquirrelMail,
-make sure that your IMAP server supports IMAP 4 rev 1. Some IMAP servers also
-support various extensions, which are developed as a complement to IMAP. Many of
-those extensions, such as SORT and THREAD, are supported and recommended by
-SquirrelMail, even though they aren't required. Another thing to keep in mind is
-where and how the IMAP server stores the mails and the user data. Some of the
-open source alternatives are well matured products that can compete, and even
-surpass, the commercial servers.
+If you're building your mail system from scratch, it might be a good idea to
+install and test all components one by one. If you install everything at once
+and things don't work, the troubleshoting will be more complex. If the web
+server doesn't work there's not much point in trying to install PHP, for
+instance. Make sure that everything is working before trying to install
+SquirrelMail.
 
-Some systems are delivered with an IMAP server from the start. Since every
-organization and server has unique demands, it's really hard to recommend
-something. <url url="http://imap.org/" name="The IMAP Connection"> has a
-searchable database of IMAP servers, as well as more information about IMAP.
-There are also several sites offering advice and opinions on this matter. Read
-them, but make your own decision since the information at some of those sites
-might be outdated or biased.
+<sect2>Choosing an IMAP server
+<p>
+You don't actually have to run an IMAP server yourself, but you need to be able
+to connect to one for SquirrelMail to work. Since IMAP is an open standard, all
+IMAP products should be able to communicate with each other. SquirrelMail
+requires that the server supports IMAP 4 rev 1, but that's the only requirement
+there is. 
+
+Some IMAP servers support various extensions, which are developed as a
+complement to IMAP. Those extensions aren't required by SquirrelMail, but many
+of them are supported. It's recommended to have an IMAP server that supports
+SORT and THREAD if possible. The SORT extension allows for server side sorting,
+which is a lot more efficient than having to rely on PHP for sorting. This will
+improve SquirrelMail's performance. If the server doesn't support the THREAD
+extension, SquirrelMail can't show mail conversation as threads.
+
+If possible, the IMAP server should support Unicode. Without it some
+translations might be unable to use sorting and threading. Courier IMAP must be
+compiled with the <tt/--enable-unicode/ option to have Unicode support.
+
+SquirrelMail doesn't care about how the server stores the mails, but it's
+generally a good idea not to have an IMAP server that store mails in the mailbox
+(mbox) format. Mailbox performance is low when there are many mails in the same
+folder and it doesn't allow both mails and subfolders at the same time in the
+same folder.
+
+Another good idea is to have an IMAP server that allows the use of virtual
+accounts. Virtual users don't have to be system users, which usually is a good
+thing. Again, this is not a SquirrelMail requirement, but something that you
+might want to consider when choosing an IMAP server.
+
+Some systems are delivered with an IMAP server, but if it doesn't measure up to
+the suggestions above, you might want to replace it. There are plenty of IMAP
+servers at the market, so it might be difficult to decide which one to choose.
+It is also difficult to recommend something, since every organization has unique
+demands. <url url="http://imap.org/" name="The IMAP Connection"> has a
+searchable database of IMAP servers, as well as more information about IMAP, but
+that list may not cover the entire market. There are also several sites offering
+advice and opinions on this matter. Read them, but make your own decision since
+the information at some of those sites might be outdated or biased. Remember
+that some of the open source alternatives are well matured products that can
+compete, and even surpass, the commercial servers.
+
+<sect2>Configuring PHP
+<p>
+<itemize>
+  <item>Without <url url="http://php.net/gettext" name="the PHP gettext
+        extension"> you lose in performance.
+  <item><url url="http://php.net/mbstring" name="The PHP mbstring extension"> is
+        required for translations that use multibyte or character sets but
+        ISO-8859-1.  Without the PHP mbstring extension the interface will
+        remain usable, but some internationalization features and fixes won't be
+        enabled. It's a must if you want to read and write Japanese emails, and
+        users who whish to do that must also set their language option to
+        Japanese.
+  <item><url url="http://php.net/xml" name="The PHP XML extension"> is required
+        if the DIGEST-MD5 authentication is used.
+</itemize>
 
 <sect2>Optional programs
 <p>
@@ -100,27 +147,6 @@ might be outdated or biased.
 
 These are not a must have, since SquirrelMail will function without them, but
 they are adding to the experience so you might want to consider them.
-
-<sect2>Preferred configuration
-<p>
-<itemize>
-  <item>The IMAP server should support the SORT and THREAD extensions. Without
-        these extensions you lose in performance.
-  <item>The IMAP server should support Unicode. Without it some translations
-        might be unable to use sorting and threading. Courier IMAP must be
-        compiled with the <tt/--enable-unicode/ option.
-  <item>Without <url url="http://php.net/gettext" name="the PHP gettext
-        extension"> you lose in performance.
-  <item><url url="http://php.net/mbstring" name="The PHP mbstring extension"> is
-        required for translations that use multibyte or character sets but
-        ISO-8859-1.  Without the PHP mbstring extension the interface will
-        remain usable, but some internationalization features and fixes won't be
-        enabled. It's a must if you want to read and write Japanese emails, and
-        users who whish to do that must also set their language option to
-        Japanese.
-  <item><url url="http://php.net/xml" name="The PHP XML extension"> is required
-        if the DIGEST-MD5 authentication is used.
-</itemize>
 
 <sect2>Client requirements
 <p>
