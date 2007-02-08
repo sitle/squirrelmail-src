@@ -75,6 +75,45 @@ must never be overlooked as new and cool things are developed. Rather, special
 care should be taken to assure that both the new and the old is respected as
 development progresses and the capabilities of SquirrelMail are extended.
 
+<sect2>JavaScript
+<p>
+Some people argue that JavaScript isn't a fancy or heavy requirement anymore,
+and that the project goals should be revised. Well, JavaScript is neat and all,
+but some clients, such as lynx and links, lack support and will probably never
+get it. However, most things that can be done with JavaScript can also be done
+at the server side, and any JavaScript should only increase usability, not
+functionality. JavaScript isn't supposed to be anywhere in HTML except where
+JavaScript-aware browsers look anyway (i.e. in handlers for intrinsic events
+such as <tt/onclick/, <tt/onload/, and <tt/onmouseover/). It's still important
+to be able to use SquirrelMail with non-JavaScript-aware browsers. If you detest
+lynx, think PDA, WAP and so on instead.
+
+JavaScript code runs in the client browser but is not a "sandboxed" technology.
+This means that client-side JavaScript code doesn't have near the restrictions
+placed on it in regards to accessing local files and changing browser behavior
+as do more security conscious technologies like Java. Web developers should
+avoid using JavaScript in anything but the most trivial roles as site visitors
+who value their privacy and security may have configured their browser to ignore
+all or part of a page's JavaScript code. In addition to the myriad security and
+privacy problems with client-side JavaScript, JavaScript code often introduces
+browser dependencies due to slightly differing JavaScript parser implementations
+in various web browsers. Microsoft's web application development environments
+actually seem to take advantage of these incompatibilities to lock users into
+Internet Explorer.
+
+Web application developers are encouraged to perform all input manipulation in
+server-side code or, if it is absolutely necessary, in client-side code that
+runs in a protective environment or "sandbox". Input validation should always be
+performed in server-side code despite the temptation to do so in client code in
+order to leverage libraries that allow "easier" client-side data validation.
+Google "Cross Site Scripting", "SQL Injection", and "client-side trust" for an
+explanation of the pitfalls associated with weak client-side input validation. 
+
+This doesn't mean that it's not allowed to make use of JavaScript in
+SquirrelMail or its plugins, but as much of the functionality as possible
+mustn't depend on it. Having extra JavaScript features is allowed if they
+respect the users' JavaScript preference setting.
+
 <sect1>Project management
 <p>
 The SquirrelMail Project Team is organized as four subteams, in order to get
