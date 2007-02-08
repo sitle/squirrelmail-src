@@ -289,8 +289,9 @@ if(!$no_list_for_subscribe) {
      . _("Subscribe to:") . '<br />'
      . '<tt><input type="text" name="mailbox[]" size="35" />'
      . '<input type="submit" value="'. _("Subscribe") . "\" />\n"
-     . "</form></td></tr></table><br />\n";
+     . "</form></td></tr></table>\n";
 }
+echo "\n<br /><br />\n";
 
 do_hook('folders_bottom');
 ?>
