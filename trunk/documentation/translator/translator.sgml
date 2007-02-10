@@ -28,6 +28,82 @@ by the SquirrelMail Project Team:
 </author>
 
 <sect>Overview
+<sect1>Translation policy
+<sect2>Management of translations (from 1.5.0+ and 1.4.4+)
+<p>
+All SquirrelMail translations are stored in the locales directory of the
+SquirrelMail repository. This directroy contains translations of SquirrelMail
+strings and translations of plugins. Plugin developers can use their own
+translation packages or rely on translations in the SquirrelMail locales module.
+If a plugin's translation is not included in the SquirrelMail module, the plugin
+developer should switch to her/his own gettext domain before using the plugin's
+own strings.
+
+The HEAD branch of the locales module contains combined strings from
+SquirrelMail DEVEL and STABLE branches. For example, on 2004-11-23, translations
+from HEAD can be used with 1.5.1cvs and with 1.4.4cvs.
+
+When SquirrelMail freezes strings in some release, i18n developers will branch
+HEAD locales to a SM-x_x_x branch and replace the string template with the one
+that contains strings included only in the selected SquirrelMail version.
+Strings should be frozen two weeks before planned SquirrelMail release date.
+
+SquirrelMail translations are distributed in packages separate from the main
+SquirrelMail package. Translation packages should be created within one week
+after any SquirrelMail release. If translation updates are received after a
+SquirrelMail release, developers can create other locales packages that include
+the updated translations.
+
+Only HEAD, latest STABLE and latest DEVEL version branches are actively
+maintained.
+
+<sect2>Submitting translations
+<p>
+New and updated SquirrelMail translations can be submitted to the
+squirrelmail-i18n mailing list.
+
+New translations should be licensed under the GNU GPL or another <url
+url="http://www.opensource.org/licenses/" name="open license"> or
+copyright should be assigned to SquirrelMail developers.
+
+Any translated GNU Gettext Portable Object (PO) file should pass <tt>msgfmt -v
+-c -o /dev/null squirrelmail.po</tt> test without any warning or error messages.
+
+A translation is supported only when the number of translated strings exceeds
+50% of all strings in <tt/squirrelmail.po/. A translation can be declared unsupported
+if it includes translations in other languages. A translation can be treated as
+supported if the language is similar to American English and only some spelling
+changes are needed.
+
+Supported translations can be updated by the translation maintainer or member of
+the translation team. Other people should get approval from the translation
+maintainer or a member of the translation team. If a translation maintainer does
+not reply to emails, SquirrelMail developers may assign maintenance of that
+translation to another person.
+
+An unsupported translation can be updated by anyone who is willing to take over
+maintenance of that translation.
+
+If a new translation uses a charset unsupported by existing SquirrelMail
+decoding/encoding functions, there should be a charset mapping to Unicode
+distributed under an open license or in the public domain.
+
+<sect2>Developers, Coordinators, Translators
+<p>
+Only SquirrelMail developers have write access to the SquirrelMail repository.
+They commit all translations created by other people to the repository.
+
+Coordinators maintain translations in some language. If person agrees to be
+coordinator, it should be indicated in TRANSLATORS file and person's approval is
+required for all SquirrelMail translations in that language.
+
+Translators maintain only files that they have translated.
+
+I18n developers and coordinators must be subscribed to the i18n mailing list.
+The translators are not required to subscribe to the list. When a developer
+commit a translation to the repository, he/she also has to inform the translator
+and the i18n mailing list.
+
 <sect1>Translation method
 <p>
 SquirrelMail uses <url url="http://www.gnu.org/software/gettext" name="gettext">
