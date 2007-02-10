@@ -51,9 +51,9 @@ client, including strong MIME support, address books, and folder manipulation.
 This manual supports SquirrelMail 1.4.0 and up. The 1.2.x series has been
 obsoleted, and is only referenced in the upgrading notes of this manual.
 
-<sect1>Requirements
-<sect2>Requirements
+<sect1>Server requirements
 <p>
+There are only two requirements for SquirrelMail:
 <itemize>
   <item>A web server with PHP installed. PHP needs to be at least 4.1.2.
   <item>Access to an IMAP server which supports IMAP 4 rev 1.
@@ -121,8 +121,8 @@ compete, and even surpass, the commercial servers.
         extension"> you lose in performance.
   <item><url url="http://php.net/mbstring" name="The PHP mbstring extension"> is
         required for translations that use multibyte or character sets but
-        ISO-8859-1.  Without the PHP mbstring extension the interface will
-        remain usable, but some internationalization features and fixes won't be
+        ISO-8859-1. Without the PHP mbstring extension the interface will remain
+        usable, but some internationalization features and fixes won't be
         enabled. It's a must if you want to read and write Japanese emails, and
         users who whish to do that must also set their language option to
         Japanese.
@@ -130,7 +130,7 @@ compete, and even surpass, the commercial servers.
         if the DIGEST-MD5 authentication is used.
 </itemize>
 
-<sect2>Optional programs
+<sect1>Optional server programs
 <p>
 <itemize>
   <item><url url="http://www.perl.org/" name="Perl">. SquirrelMail is shipped
@@ -148,7 +148,7 @@ compete, and even surpass, the commercial servers.
 These are not a must have, since SquirrelMail will function without them, but
 they are adding to the experience so you might want to consider them.
 
-<sect2>Client requirements
+<sect1>Client requirements
 <p>
 <itemize>
   <item>Cookies must be enabled in your browser.
