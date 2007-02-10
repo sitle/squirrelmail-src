@@ -104,6 +104,29 @@ The translators are not required to subscribe to the list. When a developer
 commit a translation to the repository, he/she also has to inform the translator
 and the i18n mailing list.
 
+<sect1>Separate translations packages
+<p>
+Since SquirrelMail 1.4.4 and 1.5.0, translations are separated from the main
+SquirrelMail package. This means that an extra installation step is required if
+you want to use other languages than American English. By having separate
+translation packages we can:
+
+<itemize>
+  <item>update translations more often that SquirrelMail releases,
+  <item>include other plugin translations,
+  <item>create combined SquirrelMail and plugins statistics without "download
+        all plugins, find translated ones, rearrange them" scripts, and
+  <item>reduce the size of the SquirrelMail core package from 13 MB to 4 MB (or
+        550 KB packed).
+</itemize>
+
+The repository contains a branch for every SquirrelMail verison and a HEAD
+branch. Only the current STABLE, DEVEL, and the HEAD branches are maintained.
+Every time a new version of SquirrelMail is released, a separate branch of
+locales will be created and translation packages for that SquirrelMail version
+will be released. Translators are strongly encouraged to use SquirrelMail
+locales HEAD branch for their translations.
+
 <sect1>Translation method
 <p>
 SquirrelMail uses <url url="http://www.gnu.org/software/gettext" name="gettext">
