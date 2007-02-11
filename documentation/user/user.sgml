@@ -47,9 +47,255 @@ install. SquirrelMail has all the functionality you would want from an email
 client, including strong MIME support, address books, and folder manipulation.
 
 <sect>Using SquirrelMail
-<sect1>How to use SquirrelMail
+<sect1>Overview
 <p>
-See UserManual wiki sections.
+SquirrelMail is an interface to your organization's email system through the
+web. It has all the functionality you would want from an email client, including
+strong support for attachments, address books, calendar and folders.
+
+SquirrelMail is also highly customizable. Your systems administrators can write,
+install, and share "plugins" at your SquirrelMail server to extend its
+functionality to meet your organization's needs.
+
+Because of the high level of customization available to your organization with
+SquirrelMail, some of the items in this manual may not apply to you. Most
+should, and we have made every effort to note things that may differ in your
+situation.
+
+<sect1>Logging in
+<p>
+<enum>
+  <item>Enter your username in the name field (if in doubt:
+        &lt;username&gt;@&lt;your.domain&gt;).
+  <item>Enter your password in the password field. Your password will show up as
+        asterisks (*); this is a security feature to prevent other people from
+        viewing your password when you type it in. The password must be exactly
+        the same as configured in the IMAP Server (or your IPMAP mailer program)
+   <item>Press the "Login" button.
+</enum>
+
+If you're can't get in, double check your username and password, and then
+contact your administrator if you still have problems.
+
+Some SquirrelMail installations, but not all, allow a user to change their
+password through the web interface. If this is a feature you need, but don't
+have, contact your administrator.
+
+It is possible to create a link (or bookmark) to the login page that will make
+it use a default username. To do this add the text <tt/?loginname=username/ to
+the end of the URL (which previously ended with <tt/login.php/), here "username"
+should be substituted by your actual username.
+
+<sect1>Setting preferences
+<p>
+From any Squirrel Mail window, you can select "Options" at the top of the
+screen, to review or edit your user preferences.
+
+Options available are:
+<itemize>
+  <item>Personal information
+  <item>Message highlighting
+  <item>Index order
+  <item>Display preferences
+  <item>Folder preferences
+</itemize>
+
+<sect2>Personal information
+<sect3>Name and Address Options (all fields are optional)
+<p>
+<descrip>
+<tag/Full Name/Enter your name. This will be used to identify you in outgoing
+email.
+
+<tag/Email Address/Enter your email address. Email you send will show this
+address in the FROM: line.
+
+<tag/Reply To/Enter the email address you would like people to reply to. Most
+email clients will use this email address instead of the "From" address when
+replying to mail you send.
+
+<tag/Signature/If you would like to include a short message or "signature" at
+the bottom of your emails, you can type it here.
+
+<tag/Multiple Identities/If you like to have multiple email addresses,
+signatures or names, you can enter them here, or select an already created
+identity.
+
+<tag/Your Current Timezone/Email usually includes a timestamp that tells the
+receiver when you sent it. If you select your timezone here, the timestamp will
+be more accurate. If not, the server's time zone is used.
+</descrip>
+
+<sect2>Display Preferences
+<sect3>General Display Options
+<p>
+<descrip>
+<tag/Theme/Different color schemes are available. Themes with "(Changes)" after
+their name may have a different color each time you log in.
+
+<tag/Custom Stylesheet/Select a stylesheet to use a different size font. The
+administrator may install special style sheets that further modify appearance.
+
+<tag/Language/Select a different language to allow the reading and writing of
+emails in that language. For example, to have Japanese emails display properly,
+one must set this to Japanese.
+
+<tag/Use JavaScript/
+<descrip>
+<tag/Autodetect/Detect if the web browser supports JavaScript
+<tag/Always/Assume that JavaScript is supported
+<tag/Never/Use plain HTML
+</descrip>
+</descrip>
+
+<sect3>Mailbox Display Options
+<p>
+<descrip>
+<tag/Number of Messages to Index/The number of message to show per page.
+
+<tag/Enable Alternating Row Colors/Show every other message with a different
+color.
+
+<tag/Enable Page Selector/Show page numbers that let you go straight to a
+specific page.
+
+<tag/Maximum Number of Pages to Show/How many page numbers to show. If there are
+too many pages then they will be split like this: <tt/1 2 3 4 5 6 7 ... 17 18 19
+20/.
+</descrip>
+
+<sect2>Message highlighting
+<p>
+From almost any window, select "Options" from the menu at top. From the
+resulting page, select "Message Highlighting". (Windows style: Select Options ->
+Message Highlighting)
+
+From this window, you can do these things:
+<descrip>
+<tag/Create a new highlight/Choose a scheme for highlighting messages that match
+a particular pattern (see below).
+
+<enum>
+  <item>Choose: Options -> Message Highlighting
+  <item>Choose: New
+  <item>Assign a name to your new highlight style
+  <item>Select a color for your highlight style
+  <item>Select a criterion for the highlighted message. The criterion matches,
+        if the string is contained within the specified field. E.g. highlighting
+        all messages coming from domain "foo.bar" would be done by selecting
+        "from" within the combobox and then type "@foo.bar" into the pattern
+        field. The match is case-insensitive, and will match a header containing
+        the search string anywhere within it - but no wild cards or regular
+        expressions.
+</enum>
+
+<tag/Edit an existing highlight/Make changes to a given highlight style.
+
+<tag/Delete an existing hightlight/Remove an existing highlight style from the
+set.
+</descrip>
+
+<sect1>Reading e-mail
+<p>
+Click on a folder on the folder bar to display a list of messages in that
+folder.
+
+Unread messages cause the folder name to be bold. Once the folder is clicked on,
+those unread messages are bold in the folder view. Click on the subject to read
+the message.
+
+A bar containing three fields (From, Date, and Subject) is next. These headings
+separate the message table into logical parts. From tells you who sent you the
+message, or at least what email address it came from. Date shows the day which
+the email was sent. Subject displays what the sender entered as the subject.
+Note: Between the Date and Subject columns is a small column that is unlabeled.
+There could be a "+", "!" or an "A" in there. If you see the "+", that means
+that the message has attachments; if you see the "A", that means that you have
+answered the message, and if you see the "!", then the message was marked as
+urgent!
+
+<sect2>Reading attachments
+<p>
+If an email contains an attachment, it will be listed at the bottom of the email
+when you are reading a message.
+
+Depending on how your web browser is set up, it may know how to open various
+types of attachments.
+
+In order to view attachments, you must have a program that can open that type of
+file.
+
+<sect1>Sending e-mail
+<p>
+To send a new message, click on the compose link on the top of the screen. To
+reply, click on reply or reply All on the top right of the message.
+
+The address link will allow you to add addresses to the To: CC: or BCC: fields
+from your address book.
+
+A drop down box exists for selecting the priority of the message, and Rcpt check
+boxes are there for openning and receiving of the email confirmations.
+
+Depending on your option configuration, Sent messages may be stored in the sent
+message folder, or they may be cc'ed to an address you specify.
+
+<sect2>Attaching documents
+<p>
+To send an attachment, you must be composing a message.
+
+At the bottom of the compose window, there should be a form field labeled Attach
+with a Browse and an Add button next to it.
+
+Click the Browse button. Locate the file on your computer that you want to
+attach. Select it (single click) and click OK or Open.
+
+The should now contain the location of the file, as well as the file's name.
+Click Add to transfer the file to the SquirrelMail server.
+
+The file's name should now be listed at the bottom of the compose screen, with a
+checkbox next to it. The other information listed is the MIME type and the file
+size in parenthesis.
+
+You can add as many attachments to a message as you want. However, the files
+should have different names. SquirrelMail will allow you to send a message
+containing multiple attachments with the same name, but when the recipient saves
+them, they may accidentally overwrite one with another.
+
+If you want to remove one or more attachments from your message, check the
+checkbox next to the attachment(s) you wish to delete and press the 'Delete
+select attachments' button.
+
+<sect2>Attachment compatibility and size
+<p>
+SquirrelMail sends your attachments in the industry standard MIME format.
+However, this does nothing to ensure that the person you are sending the file to
+can read the type of file you are sending. For example, if the file you are
+sending is a Micorosoft Word 2000 document, and the recipient does not have a
+program that can open Microsoft Word 2000 documents, the receipient will not be
+able to view your attachment.
+
+We recommend sending word processing documents in Rich Text Format, spreadsheets
+in Comma Separated Values (CSV) format, and images in either JPEG or PNG unless
+you are absolutely sure that the person on the other end has the appropriate
+software to handle your files.
+
+You should also be mindful of the size in Kilobytes of your attachments. Images,
+and word processing documents with images in them can get deceptively large. The
+size of each of your attachments is listed in parenthesis by its name at the
+bottom of the compose screen.
+
+When the recipient receives your message, their email program will attempt to
+download the message from the mail server to their computer. If you have a
+message with attachments totalling 1 megabyte (1,024 kilobytes), then the
+message will take about 8 minutes to transfer over a 56Kb modem. Since many
+email programs do not appear to be doing anything when downloading large
+messages, your receipient may think that their computer has crashed while it is
+downloading your message! Then they may restart their computer and try all over
+again with the same results.
+
+Because of this potential situation, you may want to warn the recipient ahead of
+time, either via a phone call or a smaller email sent ahead of time, if you
+intend to send them a large attachment.
 
 <sect>Security
 <sect1>SquirrelMail spam
