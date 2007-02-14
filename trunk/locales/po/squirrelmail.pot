@@ -2,13 +2,14 @@
 # Copyright (c) 1999-2006 The SquirrelMail Project Team
 # This file is distributed under the same license as the SquirrelMail package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# $Id$
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: SquirrelMail VERSION\n"
-"Report-Msgid-Bugs-To: squirrelmail-i18n@lists.sourceforge.net\n"
-"POT-Creation-Date: 2006-12-02 18:21+0100\n"
+"Project-Id-Version: SquirrelMail HEAD\n"
+"Report-Msgid-Bugs-To: SquirrelMail Internationalization <squirrelmail-"
+"i18n@lists.sourceforge.net>\n"
+"POT-Creation-Date: 2007-02-14 12:48+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -177,13 +178,25 @@ msgstr ""
 msgid "Could not move/copy file. File not attached"
 msgstr ""
 
-msgid "Draft Saved"
+msgid "Your draft has been saved."
 msgstr ""
 
-msgid "Your Message has been sent."
+msgid "Your mail has been sent."
 msgstr ""
 
 msgid "From:"
+msgstr ""
+
+msgid "To:"
+msgstr ""
+
+msgid "Cc:"
+msgstr ""
+
+msgid "Bcc:"
+msgstr ""
+
+msgid "Subject:"
 msgstr ""
 
 msgid "Send"
@@ -238,6 +251,9 @@ msgstr ""
 
 #, php-format
 msgid "Error: Draft folder %s does not exist."
+msgstr ""
+
+msgid "Message not sent."
 msgstr ""
 
 msgid "Server replied:"
@@ -395,7 +411,6 @@ msgstr ""
 msgid "Download this as a file"
 msgstr ""
 
-#, php-format
 msgid "INBOX"
 msgstr ""
 
@@ -2391,11 +2406,6 @@ msgstr ""
 msgid "COMMERCIAL - RBL+ Dial-up entries."
 msgstr ""
 
-msgid ""
-"FREE - ORDB was born when ORBS went off the air. It seems to have fewer "
-"false positives than ORBS did though."
-msgstr ""
-
 msgid "FREE - Five-Ten-sg.com - Direct SPAM sources."
 msgstr ""
 
@@ -2973,7 +2983,6 @@ msgid ""
 "inbox for notification."
 msgstr ""
 
-#, php-format
 msgid "Check all boxes, not just INBOX"
 msgstr ""
 
@@ -2983,7 +2992,6 @@ msgid ""
 "unseen mail is in your folders (requires JavaScript)."
 msgstr ""
 
-#, php-format
 msgid "Show popup window on new mail"
 msgstr ""
 
@@ -2995,7 +3003,6 @@ msgid ""
 "sounds or popups for unseen mail."
 msgstr ""
 
-#, php-format
 msgid "Count only messages that are RECENT"
 msgstr ""
 
@@ -3007,7 +3014,6 @@ msgid ""
 "have new mail, even if you have %s enabled."
 msgstr ""
 
-#, php-format
 msgid "Change title on supported browsers"
 msgstr ""
 
@@ -3018,7 +3024,6 @@ msgid ""
 "provided file box."
 msgstr ""
 
-#, php-format
 msgid "Enable Media Playing"
 msgstr ""
 
@@ -3028,7 +3033,6 @@ msgid ""
 "no file is specified, %s, no sound will be used."
 msgstr ""
 
-#, php-format
 msgid "Select server file"
 msgstr ""
 
@@ -3685,55 +3689,42 @@ msgstr ""
 msgid "%s to %s"
 msgstr ""
 
-#, php-format
 msgid "Chinese, Simplified"
 msgstr ""
 
-#, php-format
 msgid "English"
 msgstr ""
 
-#, php-format
 msgid "Chinese, Traditional"
 msgstr ""
 
-#, php-format
 msgid "Dutch"
 msgstr ""
 
-#, php-format
 msgid "French"
 msgstr ""
 
-#, php-format
 msgid "German"
 msgstr ""
 
-#, php-format
 msgid "Greek"
 msgstr ""
 
-#, php-format
 msgid "Italian"
 msgstr ""
 
-#, php-format
 msgid "Japanese"
 msgstr ""
 
-#, php-format
 msgid "Korean"
 msgstr ""
 
-#, php-format
 msgid "Portuguese"
 msgstr ""
 
-#, php-format
 msgid "Russian"
 msgstr ""
 
-#, php-format
 msgid "Spanish"
 msgstr ""
 
@@ -3812,12 +3803,7 @@ msgstr ""
 msgid "Translation direction"
 msgstr ""
 
-#, php-format
 msgid "Arabic"
-msgstr ""
-
-#, php-format
-msgid "Chinese (Simplified)"
 msgstr ""
 
 #, php-format
@@ -3869,13 +3855,7 @@ msgstr ""
 msgid "none installed"
 msgstr ""
 
-msgid "AddressBook"
-msgstr ""
-
 msgid "Nothing to search"
-msgstr ""
-
-msgid "Your message has been sent."
 msgstr ""
 
 msgid "SquirrelMail Webmail Application"
@@ -3890,12 +3870,35 @@ msgstr ""
 msgid "Compose Preferences"
 msgstr ""
 
+#, php-format
+msgid "Folder list should automatically %srefresh%s."
+msgstr ""
+
+#, php-format
+msgid "This page should automatically %srefresh%s."
+msgstr ""
+
 msgid ""
 "Control the behaviour and layout of writing new mail messages, replying to "
 "and forwarding messages."
 msgstr ""
 
 msgid "Read Receipt"
+msgstr ""
+
+msgid "deleted"
+msgstr ""
+
+msgid "answered"
+msgstr ""
+
+msgid "draft"
+msgstr ""
+
+msgid "flagged"
+msgstr ""
+
+msgid "Status"
 msgstr ""
 
 msgid "View as plain text"
@@ -4024,6 +4027,18 @@ msgstr ""
 msgid "Or"
 msgstr ""
 
+msgid "No RPC action given"
+msgstr ""
+
+msgid "No deletion ID given"
+msgstr ""
+
+msgid "No mailbox given"
+msgstr ""
+
+msgid "RPC action not understood"
+msgstr ""
+
 msgid "PHP install does not have LDAP support."
 msgstr ""
 
@@ -4055,6 +4070,11 @@ msgstr ""
 
 #, php-format
 msgid "%s %s"
+msgstr ""
+
+msgid ""
+"Could not open temporary file to store attachment. Contact your system "
+"administrator to resolve this issue."
 msgstr ""
 
 msgid "Illegal folder name."
@@ -4493,7 +4513,6 @@ msgstr ""
 msgid "System crypt library doesn't have Blowfish support."
 msgstr ""
 
-#, php-format
 msgid "unknown"
 msgstr ""
 
@@ -4656,6 +4675,15 @@ msgstr ""
 
 #, php-format
 msgid "%s ms"
+msgstr ""
+
+msgid "Mailing Lists"
+msgstr ""
+
+msgid ""
+"Manage the (non-RFC-compliant) mailing lists that you are subscribed to for "
+"the purpose of providing one-click list replies when responding to list "
+"messages."
 msgstr ""
 
 msgid "No POP3 servers configured yet."
@@ -4826,12 +4854,6 @@ msgstr ""
 msgid "Not yet functional, currently does nothing"
 msgstr ""
 
-msgid "D"
-msgstr ""
-
-msgid "F"
-msgstr ""
-
 msgid "Address book is empty"
 msgstr ""
 
@@ -4839,6 +4861,9 @@ msgid "Address book search"
 msgstr ""
 
 msgid "Attachment"
+msgstr ""
+
+msgid "Attach"
 msgstr ""
 
 msgid "Max."
@@ -4884,6 +4909,9 @@ msgid "To or cc"
 msgstr ""
 
 msgid "Other"
+msgstr ""
+
+msgid "Save Changes"
 msgstr ""
 
 msgid "Type"
