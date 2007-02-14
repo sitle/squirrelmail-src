@@ -290,7 +290,7 @@ if (sqsession_is_registered('session_expired_post')) {
 
         foreach ($compo_var_list as $var) {
             if ( isset($session_expired_post[$var]) && !isset($$var) ) {
-	        $$var = $session_expired_post[$var];
+                $$var = $session_expired_post[$var];
             }
         }
 
@@ -411,7 +411,7 @@ if ($send) {
     if (checkInput(false) && !isset($AttachFailure)) {
         if ($mailbox == "All Folders") {
             /* We entered compose via the search results page */
-            $mailbox="INBOX"; /* Send 'em to INBOX, that's safe enough */
+            $mailbox = 'INBOX'; /* Send 'em to INBOX, that's safe enough */
         }
         $urlMailbox = urlencode (trim($mailbox));
         if (! isset($passed_id)) {
@@ -460,6 +460,7 @@ if ($send) {
             exit();
         }
         unset($compose_messages[$session]);
+
         /* if it is resumed draft, delete draft message */
         if ( isset($delete_draft)) {
             Header("Location: $location/delete_message.php?mailbox=" . urlencode( $draft_folder ).
@@ -571,7 +572,6 @@ elseif (isset($sigappend)) {
     if (isset($delete) && is_array($delete)) {
         $composeMessage = $compose_messages[$session];
         foreach($delete as $index) {
-
             if (!empty($composeMessage->entities) && isset($composeMessage->entities[$index])) {
                 $composeMessage->entities[$index]->purgeAttachments();
                 unset ($composeMessage->entities[$index]);
@@ -1041,10 +1041,10 @@ function showInputForm ($session, $values=false) {
     }
 
     if ($saved_draft == 'yes') {
-        echo '<br /><center><b>'. _("Draft Saved").'</center></b>';
+        echo '<br /><center><b>'. _("Your draft has been saved.").'</center></b>';
     }
     if ($mail_sent == 'yes') {
-        echo '<br /><center><b>'. _("Your message has been sent.").'</center></b>';
+        echo '<br /><center><b>'. _("Your mail has been sent.").'</center></b>';
     }
     if ($compose_new_win == '1') {
         echo '<table align="center" bgcolor="'.$color[0].'" width="100%" border="0">'."\n" .
@@ -1104,28 +1104,28 @@ function showInputForm ($session, $values=false) {
 
     echo '   <tr>' . "\n" .
         html_tag( 'td', '', 'right', $color[4], 'width="10%"' ) .
-        _("To") . ':</td>' . "\n" .
+        _("To:") . '</td>' . "\n" .
         html_tag( 'td', '', 'left', $color[4], 'width="90%"' ) .
         substr(addInput('send_to', $send_to, 60), 0, -3). $onfocus . ' /><br />' . "\n" .
         '      </td>' . "\n" .
         '   </tr>' . "\n" .
         '   <tr>' . "\n" .
         html_tag( 'td', '', 'right', $color[4] ) .
-        _("Cc") . ':</td>' . "\n" .
+        _("Cc:") . '</td>' . "\n" .
         html_tag( 'td', '', 'left', $color[4] ) .
         substr(addInput('send_to_cc', $send_to_cc, 60), 0, -3). $onfocus . ' /><br />' . "\n" .
         '      </td>' . "\n" .
         '   </tr>' . "\n" .
         '   <tr>' . "\n" .
         html_tag( 'td', '', 'right', $color[4] ) .
-        _("Bcc") . ':</td>' . "\n" .
+        _("Bcc:") . '</td>' . "\n" .
         html_tag( 'td', '', 'left', $color[4] ) .
         substr(addInput('send_to_bcc', $send_to_bcc, 60), 0, -3). $onfocus . ' /><br />' . "\n" .
         '      </td>' . "\n" .
         '   </tr>' . "\n" .
         '   <tr>' . "\n" .
         html_tag( 'td', '', 'right', $color[4] ) .
-        _("Subject") . ':</td>' . "\n" .
+        _("Subject:") . '</td>' . "\n" .
         html_tag( 'td', '', 'left', $color[4] ) . "\n";
     echo '         '.substr(addInput('subject', $subject, 60), 0, -3). $onfocus .
         ' />      </td>' . "\n" .
@@ -1440,7 +1440,7 @@ function getByteSize($ini_size) {
 
 /**
  * temporary function to make use of the deliver class.
- * In the future the responsable backend should be automaticly loaded
+ * In the future the responsible backend should be automaticly loaded
  * and conf.pl should show a list of available backends.
  * The message also should be constructed by the message class.
  */
@@ -1510,10 +1510,12 @@ function deliverMessage($composeMessage, $draft=false) {
     if (isset($request_mdn) && $request_mdn) {
         $rfc822_header->dnt = $rfc822_header->parseAddress($from_mail,true);
     }
+
     /* Receipt: On Delivery */
     if (isset($request_dr) && $request_dr) {
         $rfc822_header->more_headers['Return-Receipt-To'] = $from_mail;
     }
+
     /* multipart messages */
     if (count($composeMessage->entities)) {
         $message_body = new Message();
