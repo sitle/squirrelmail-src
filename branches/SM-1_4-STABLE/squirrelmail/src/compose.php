@@ -1044,7 +1044,7 @@ function showInputForm ($session, $values=false) {
         echo '<br /><center><b>'. _("Draft Saved").'</center></b>';
     }
     if ($mail_sent == 'yes') {
-        echo '<br /><center><b>'. _("Your Message has been sent.").'</center></b>';
+        echo '<br /><center><b>'. _("Your message has been sent.").'</center></b>';
     }
     if ($compose_new_win == '1') {
         echo '<table align="center" bgcolor="'.$color[0].'" width="100%" border="0">'."\n" .
