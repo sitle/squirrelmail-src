@@ -226,9 +226,8 @@ function sqsession_register ($var, $name) {
         global $HTTP_SESSION_VARS;
         $HTTP_SESSION_VARS[$name] = $var;
     } else {
-        $_SESSION["$name"] = $var;
+        $_SESSION[$name] = $var;
     }
-    session_register("$name");
 }
 
 /**
