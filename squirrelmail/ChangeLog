@@ -20,6 +20,8 @@ Version 1.4.10 - SVN
   - Fix reply to all duplicating the address from Reply-To.
   - Drop redundant call to session_register, which could trigger a segfault
     in PHP 4.4.5 (#1664155).
+  - Make compose use get_identities() rather than fiddling with identities
+    by itself, resolving a problem in the listcommands plugin (#1663762).
 
 Version 1.4.9a - 3 December 2006
 --------------------------------
