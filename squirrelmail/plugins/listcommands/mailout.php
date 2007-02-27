@@ -73,11 +73,11 @@ if (count($idents) > 1) {
     echo htmlspecialchars('"'.$idents[0]['full_name'].'" <'.$idents[0]['email_address'].'>');
 }
 
-echo '<br />'
+echo '<br /><br />'
 . '<input type="hidden" name="send_to" value="' . htmlspecialchars($send_to) . '">'
 . '<input type="hidden" name="subject" value="' . htmlspecialchars($subject) . '">'
 . '<input type="hidden" name="body" value="' . htmlspecialchars($body) . '">'
 . '<input type="hidden" name="mailbox" value="' . htmlspecialchars($mailbox) . '">'
-. '<input type="submit" name="send" value="' . _("Send Mail") . '"><br /><br /></center>'
-. '</form></td></tr></table></p></body></html>';
-?>
+. '<input type="submit" name="send" value="' . _("Send Mail") . '"><br /><br />'
+. '</form></td></tr></table></body></html>';
+
