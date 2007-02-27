@@ -22,6 +22,8 @@ Version 1.4.10 - SVN
     in PHP 4.4.5 (#1664155).
   - Make compose use get_identities() rather than fiddling with identities
     by itself, resolving a problem in the listcommands plugin (#1663762).
+  - If a date-header cannot be parsed, display the unparsed version as a
+    better-than-nothing alternative.
 
 Version 1.4.9a - 3 December 2006
 --------------------------------

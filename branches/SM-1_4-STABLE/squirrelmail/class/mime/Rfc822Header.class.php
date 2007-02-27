@@ -30,6 +30,11 @@ class Rfc822Header {
      */
     var $date = -1;
     /**
+     * Date_original header
+     * @var mixed
+     */
+    var $date_unparsed = '';
+    /**
      * Subject header
      * @var string
      */
@@ -217,6 +222,7 @@ class Rfc822Header {
                 $d = strtr($value, array('  ' => ' '));
                 $d = explode(' ', $d);
                 $this->date = getTimeStamp($d);
+                $this->date_unparsed = strtr($value,'<>','  ');
                 break;
             case 'subject':
                 $this->subject = $value;
@@ -313,7 +319,7 @@ class Rfc822Header {
                 $value = $this->stripComments($value);
                 $this->mlist('id', $value);
                 break;
-	    case 'x-spam-status':
+            case 'x-spam-status':
                 $this->x_spam_status = $this->parseSpamStatus($value);
                 break;
             default:
