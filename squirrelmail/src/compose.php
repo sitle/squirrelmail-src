@@ -834,7 +834,7 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
                 }
                 /* this corrects some wrapping/quoting problems on replies */
                 $rewrap_body = explode("\n", $body);
-                $from = (is_array($orig_header->from) && !empty($orig_header->from) ? $orig_header->from[0] : $orig_header->from;
+                $from = (is_array($orig_header->from) && !empty($orig_header->from)) ? $orig_header->from[0] : $orig_header->from;
                 sqUnWordWrap($body);
                 $body = '';
                 $cnt = count($rewrap_body);
