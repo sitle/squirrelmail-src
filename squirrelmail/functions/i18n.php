@@ -107,7 +107,7 @@ function charset_decode ($charset, $string, $force_decode=false, $save_html=fals
 
     $decode=fixcharset($charset);
     $decodefile=SM_PATH . 'functions/decode/' . $decode . '.php';
-    if (file_exists($decodefile)) {
+    if ($decode != 'index' && file_exists($decodefile)) {
       include_once($decodefile);
       $ret = call_user_func('charset_decode_'.$decode, $string, $save_html);
     } else {
@@ -915,4 +915,3 @@ elseif ($gettext_flags == 0) {
         }
     }
 }
-?>
