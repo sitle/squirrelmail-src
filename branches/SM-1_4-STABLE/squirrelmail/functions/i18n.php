@@ -130,7 +130,7 @@ function charset_encode($string,$charset,$htmlencode=true) {
 
     $encode=fixcharset($charset);
     $encodefile=SM_PATH . 'functions/encode/' . $encode . '.php';
-    if (file_exists($encodefile)) {
+    if ($encode != 'index' && file_exists($encodefile)) {
         include_once($encodefile);
         $ret = call_user_func('charset_encode_'.$encode, $string);
     } elseif(file_exists(SM_PATH . 'functions/encode/us_ascii.php')) {
