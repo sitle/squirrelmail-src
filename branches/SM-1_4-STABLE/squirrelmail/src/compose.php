@@ -53,7 +53,9 @@ sqgetGlobalVar('compose_messages',  $compose_messages,  SQ_SESSION);
 sqgetGlobalVar('smaction',$action);
 sqgetGlobalVar('session',$session);
 sqgetGlobalVar('mailbox',$mailbox);
-sqgetGlobalVar('identity',$identity);
+if ( !sqgetGlobalVar('identity',$identity) ) {
+    $identity = 0;
+}
 sqgetGlobalVar('send_to',$send_to);
 sqgetGlobalVar('send_to_cc',$send_to_cc);
 sqgetGlobalVar('send_to_bcc',$send_to_bcc);
