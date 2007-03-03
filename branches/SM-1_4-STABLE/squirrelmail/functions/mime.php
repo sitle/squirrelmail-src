@@ -426,6 +426,10 @@ function formatAttachments($message, $exclude_id, $mailbox, $id) {
             $from_o = $rfc822_header->from;
             if (is_object($from_o)) {
                 $from_name = $from_o->getAddress(false);
+            } elseif (is_array($from_o) && count($from_o) && is_object($from_o[0])) {
+                // when a digest message is opened and you return to the digest
+                // now the from object is part of an array. This is a workaround.
+                $from_name = decodeHeader($from_o[0]->getAddress(false));
             } else {
                 $from_name = _("Unknown sender");
             }
