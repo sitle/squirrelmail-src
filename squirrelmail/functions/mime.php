@@ -179,9 +179,13 @@ function mime_print_body_lines ($imap_stream, $id, $ent_id=1, $encoding, $rStrea
             $query = "FETCH $id BODY[$ent_id]";
         }
         sqimap_run_command($imap_stream,$query,true,$response,$message,$uid_support,'sqimap_base64_decode',$rStream,true);
-    } else {
+   } else {
         $body = mime_fetch_body ($imap_stream, $id, $ent_id);
-        echo decodeBody($body, $encoding);
+        if ($rStream !== 'php://stdout') {
+            fwrite($rStream, decodeBody($body, $encoding));
+        } else {
+            echo decodeBody($body, $encoding);
+        }
     }
     return;
 }
