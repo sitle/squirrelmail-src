@@ -313,23 +313,24 @@ Command >>
 Menu is controlled by entering numbers or letters that are listed on the left
 side.
 
-<sect1>Address book format
+<sect1>The address book format
 <p>
-SquirrelMail stores address books in CSV format. <tt/|/ symbol is used as field
-delimiter. Address books can also be stored in <ref id="db-backend"
-name="database"> or other other storage facility, if required functions are
-provided by plugin. SquirrelMail can lookup addresses from LDAP directories, if
-directories are configured in SquirrelMail configuration and PHP installation
-contains LDAP support.
+By default SquirrelMail stores address books in files, one per address book,
+named <tt/[user account name].abook/. These address book files are kept in the
+data directory. Address books can also be stored in a <ref id="db-backend"
+name="database"> or, if the required functions are provided by a plugin, another
+storage facility. SquirrelMail can also be configured to lookup addresses in
+LDAP directories, if the PHP installation contains LDAP support.
 
-Address book file contains five fields. First field stores nicknames, short
-names, that are used to identify address book entries. Second field stores
-names. Third field stores surnames. Forth field stores email addresses. Fifth
-field stores additional information.
+An address book file contains five fields, which are delimited by the vertical
+line (|): the first field stores nicknames, short names that are used to
+identify address book entries; the second field stores names; the third field
+stores surnames; the forth field stores mail addresses; and the fifth field
+stores additional information.
 
-Additional address book fields and functions can be provided by experimental
+Additional address book fields and functions can be provided by the experimental
 vcard address book format and some address book plugins. You can find list of
-address book plugins on SquirrelMail site.
+address book plugins at the SquirrelMail site.
 
 <sect>Installing SquirrelMail
 <sect1>Quick and Dirty install
