@@ -1331,13 +1331,13 @@ a custom theme and the font style.
 SquirrelMail themes define interface colors. Each theme is a set of 17 or more
 colors.
 
-You can easily create your own theme. It is very simple. Just go into the
-<tt>themes/</tt> directory and create a file called <tt/yourtheme_theme.php/.
-You then need to create an array with 17 elements (0-16). Below is a blank theme
-sample followed by a description of what the different entries are for.
+Creating your own theme is very simple. Just go into the <tt>themes/</tt>
+directory and create a file called <tt/yourtheme_theme.php/. You then need to
+create an array with 17 elements (0-16). Below is a theme template followed by a
+description of what the different entries are for. Replace each "xxxxxx" with
+whatever HTML hex color code that you want for that element.
 
 <tscreen><verb>
----<START>---
 <?php
 
 /**
@@ -1367,11 +1367,9 @@ $color[13]  = '#xxxxxx';
 $color[14]  = '#xxxxxx';
 $color[15]  = '#xxxxxx';
 $color[16]  = '#xxxxxx';
-
----<END>---
 </verb></tscreen>
 
-Here is descriptions of what the different entries in the array are colors of.
+Here are descriptions of what the different entries in the array are colors of.
 The letter before the number denotes 'b' for background and 'f' for foreground
 colors.
 
@@ -1392,7 +1390,7 @@ b 12: Alternate color for message list [alters between #4 and this one]
 f 13: Color for single-quoted text ('> text') when reading (default: #800000)
 f 14: Color for text with more than one quote (default: #ff0000)
 f 15: Non-selectable folders in the left frame (default: $color[6])
-b 16: Highlight color (used in SquirrelMail 1.5.1 or later, default: $color[2])
+b 16: Highlight color (since SquirrelMail 1.4.6 and 1.5.1, default: $color[2])
 </verb></tscreen>
 
 Next all you have to do is run SquirrelMail configuration utility and add the
@@ -1636,7 +1634,6 @@ user information and should not be blamed when such interface is abused.
 
 <sect1>Securing the connection to your IMAP server
 <p>
-
 SquirrelMail provides the option to connect to a remote IMAP server over
 an encrypted connection: Transport Layer Security (TLS and STARTTLS),
 or to connect with only encrypted user credentials (CRAM-MD5 and DIGEST-MD5).
