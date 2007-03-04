@@ -77,7 +77,7 @@ You don't actually have to run an IMAP server yourself, but you need to be able
 to connect to one for SquirrelMail to work. Since IMAP is an open standard, all
 IMAP products should be able to communicate with each other. SquirrelMail
 requires that the server supports IMAP 4 rev 1, but that's the only requirement
-there is. 
+there is.
 
 Some IMAP servers support various extensions, which are developed as a
 complement to IMAP. Those extensions aren't required by SquirrelMail, but many
@@ -133,7 +133,7 @@ compete, and even surpass, the commercial servers.
 <sect1>Optional server programs
 <p>
 <itemize>
-  <item><url url="http://www.perl.org/" name="Perl">. SquirrelMail is shipped
+  <item><url url="http://perl.org/" name="Perl">. SquirrelMail is shipped
         with some Perl scripts. One of the most useful is
         <tt>config/conf.pl</tt>, which will help you configure your SquirrelMail
         installation.
@@ -200,7 +200,7 @@ delivery, localizations and other interface functions.
 <tt/config/ directory stores SquirrelMail configuration files and configuration
 utility. <tt/conf.pl/ script is a perl based utility used to manage SquirrelMail
 configuration. The <tt/config_default.php/ file stores default configuration
-values. The <tt/config.php/ file stores current configuration. The file 
+values. The <tt/config.php/ file stores current configuration. The file
 <tt/config_local.php/ can store local site configuration overrides and
 configuration options that are not supported by configuration utility.
 <tt/default_pref/ stores <ref
@@ -233,10 +233,10 @@ The <tt/images/ directory stores various image files that can be used in interfa
 The <tt/locale/ directory stores SquirrelMail translations. A user can select
 their preferred translation in SquirrelMail Display Options.
 
-The <tt/plugins/ directory stores plugins that can be used to extend 
-SquirrelMail functionality. Activation of plugins is controlled 
-through the SquirrelMail configuration utility. Some plugins might 
-also use their own configuration files or functions provided by other 
+The <tt/plugins/ directory stores plugins that can be used to extend
+SquirrelMail functionality. Activation of plugins is controlled
+through the SquirrelMail configuration utility. Some plugins might
+also use their own configuration files or functions provided by other
 plugins. See README and INSTALL files in each plugin's directory.
 
 The <tt/po/ directory stores scripts that are used to work with SquirrelMail
@@ -267,9 +267,9 @@ Users' preferences are stored in <tt/.pref/ files. Address books are stored in
 <tt/.abook/ files. <tt/.sig/ and <tt/.si&lt;somenumber&gt;/ files store users'
 signatures. Some plugins might use other files to store users' data.
 
-When the number of files in the data directory becomes somewhat large, directory 
-access time can be affected. In such cases, the administrator can split 
-preference files into subdirectories by enabling directory hashing in 
+When the number of files in the data directory becomes somewhat large, directory
+access time can be affected. In such cases, the administrator can split
+preference files into subdirectories by enabling directory hashing in
 the SquirrelMail configuration.
 
 <sect1>Configuration utility
@@ -338,14 +338,14 @@ In order to use SquirrelMail, you should take the following steps.
 
 <sect2>Download all required software
 <p>
-You can find SquirrelMail package on <url url="http://www.squirrelmail.org"
-name="SquirrelMail site">. PHP can be found on <url url="http://www.php.net"
+You can find SquirrelMail package on <url url="http://squirrelmail.org"
+name="SquirrelMail site">. PHP can be found on <url url="http://php.net"
 name="PHP site">.
 
 <sect2>Install webserver and PHP (at least 4.1.0).
 <p>
 SquirrelMail needs a webserver with PHP support. Check <url
-url="http://www.php.net/manual/en/install.php" name="PHP install manual"> for
+url="http://php.net/manual/en/install.php" name="PHP install manual"> for
 information about supported web servers and install procedures.
 
 Some Linux and Unix distributions provide precompiled web server and php packages.
@@ -398,12 +398,12 @@ Server Settings and General Options (datadir).
 
 <sect2>Check your SquirrelMail configuration
 <p>
-Browse to http://www.example.com/yourwebmaillocation/src/configtest.php
+Browse to http://example.com/yourwebmaillocation/src/configtest.php
 to test your configuration for common errors.
 
 <sect2>Log into SquirrelMail
 <p>
-Browse to http://www.example.com/yourwebmaillocation/ to log in.
+Browse to http://example.com/yourwebmaillocation/ to log in.
 
 
 <sect1>Installing SquirrelMail on Unix and Linux systems
@@ -428,12 +428,12 @@ You will need:
 <itemize>
   <item>Apache - <url url="http://httpd.apache.org/download.cgi"
   name="http://httpd.apache.org/download.cgi">
-  <item>PHP - <url url="http://www.php.net/downloads.php"
-  name="http://www.php.net/downloads.php">
+  <item>PHP - <url url="http://php.net/downloads.php"
+  name="http://php.net/downloads.php">
   <item>UW IMAP - <url url="http://www.washington.edu/imap/"
   name="http://www.washington.edu/imap/">
-  <item>SquirrelMail - <url url="http://www.squirrelmail.org/download.php"
-  name="http://www.squirrelmail.org/download.php">
+  <item>SquirrelMail - <url url="http://squirrelmail.org/download.php"
+  name="http://squirrelmail.org/download.php">
 </itemize>
 
 <tscreen><verb>
@@ -712,7 +712,7 @@ for more information.
 If you are using SquirrelMail in setup with PHP safe_mode restrictions, data and
 attachment directories should be owned by same user that owns other SquirrelMail
 scripts. It must be writable by webserver group. Check <url
-url="http://www.php.net/features.safe-mode" name="PHP Safe mode manual"> for
+url="http://php.net/features.safe-mode" name="PHP Safe mode manual"> for
 more details.
 
 <sect1>Run conf.pl
@@ -903,7 +903,7 @@ should be set to standard plain text IMAP and SMTP ports.
 
 Note: There is no point in using TLS if your IMAP server is localhost. You need
 root to sniff the loopback interface, and if you don't trust root, or an attacker
-already has root, the game is over.  You've got a lot more to worry about beyond
+already has root, the game is over. You've got a lot more to worry about beyond
 having the loopback interface sniffed.
 
 <sect1>Default user preferences<label id="default_pref">
@@ -1065,8 +1065,8 @@ that you tighten the permissions on config.php accordingly, so
 untrusted users can't read it.
 
 Once configuration settings are saved, users' personal preferences will be
-stored in a database. Please note, however, that some SquirrelMail plugins 
-are designed to use different files for users' data storage and won't be 
+stored in a database. Please note, however, that some SquirrelMail plugins
+are designed to use different files for users' data storage and won't be
 able to use database to store users' data.
 
 <sect2>Primary keys
@@ -1076,28 +1076,28 @@ database entries might be duplicated when users change their preferences.
 
 <sect2>Oversized field values
 <p>
-Database fields have size limits. Preference table example sets 128 
-character limit to owner field, 64 character limit to preference key 
+Database fields have size limits. Preference table example sets 128
+character limit to owner field, 64 character limit to preference key
 field and 64KB (database BLOB field size) limit to value field.
 
 If interface tries to insert data without checking field limits, it
 can cause data loss or database errors. Table information functions
-provided by Pear DB libraries are not accurate and some database 
+provided by Pear DB libraries are not accurate and some database
 backends don't support them. Since 1.5.1 SquirrelMail provides
 configuration options that set allowed field sizes.
 
-If you see oversized field errors in your error logs - check your 
-database structure. Issue can be solved by increasing database field 
+If you see oversized field errors in your error logs - check your
+database structure. Issue can be solved by increasing database field
 sizes.
 
-If you want to get more debugging information - check setKey() function 
+If you want to get more debugging information - check setKey() function
 in dbPrefs class. Class is stored in functions/db_prefs.php
 
 <sect1>Using more than one IMAP server
 <p>
 SquirrelMail is designed to work with one IMAP server. If you want to use the same
 SquirrelMail installation with multiple IMAP servers, you should be able to
-implement this with Perdition mail proxy, or with the Vlogin or Multilogin plugins, 
+implement this with Perdition mail proxy, or with the Vlogin or Multilogin plugins,
 or write your own custom server mapping function. These tools allow users to
 be transparently redirected to their correct mail servers.
 
@@ -1108,14 +1108,14 @@ IMAP proxy server, that can redirect users to appropriate mail servers.
 
 <sect2>Vlogin plugin
 <p>
-Found in the main SquirrelMail plugins repository, this plugin helps manage 
-and manipulate usernames given at login time, and allows the use of different 
-SquirrelMail settings (such as login page image, or IMAP server) for each 
-domain, each user, or each user group. 
+Found in the main SquirrelMail plugins repository, this plugin helps manage
+and manipulate usernames given at login time, and allows the use of different
+SquirrelMail settings (such as login page image, or IMAP server) for each
+domain, each user, or each user group.
 
 <sect2>Multilogin plugin
 <p>
-Found in the main SquirrelMail plugins repository, this plugin allows the 
+Found in the main SquirrelMail plugins repository, this plugin allows the
 manual selection of login server on the login page.
 
 <sect2>sqimap_get_user_server
@@ -1147,14 +1147,14 @@ SquirrelMail is far from a stand alone product. The performance of a webmail sys
 depends on a lot of factors. It makes sense to look at each of these factors. You
 should think about the following:
 <itemize>
-<item> Webserver. There's a lot of documentation about tuning Apache for example.
-<item> PHP. Using PHP as a module is a lot faster than the CGI version.
-<item> IMAP server. This starts with the choice of software. Different servers can have
+<item>Webserver. There's a lot of documentation about tuning Apache for example.
+<item>PHP. Using PHP as a module is a lot faster than the CGI version.
+<item>IMAP server. This starts with the choice of software. Different servers can have
 radical performance differences.
-<item> Authentication backend. Some backends have slow responses. Caching solutions
+<item>Authentication backend. Some backends have slow responses. Caching solutions
 are available.
-<item> Mail storage backend (mbox, maildir, database).
-<item> SquirrelMail itself.
+<item>Mail storage backend (mbox, maildir, database).
+<item>SquirrelMail itself.
 </itemize>
 
 <sect1>PHP extensions
@@ -1199,7 +1199,7 @@ commands. Courier IMAP server supports them only when compiled with the
 <tt/--enable-unicode/ option. Cyrus IMAP (v.2.2.12) does not support some
 multibyte charsets used by SquirrelMail.
 
-SquirrelMail also allows to turn on server side threading support. This option 
+SquirrelMail also allows to turn on server side threading support. This option
 allows end users to use threaded sorting. Threaded sorting requires more system
 resources and you should enable it only if you want to provide such an option to
 end users.
@@ -1214,7 +1214,7 @@ than formats that store entire mail folder in one file.
 <sect1>Filtering
 <p>
 The SquirrelMail package includes the filters plugin, which can be used to sort
-messages. It should be the last resort when you can't provide other means of 
+messages. It should be the last resort when you can't provide other means of
 filtering. This plugin is implemented in PHP and works only when users actively
 log in to their mail accounts. Server side filtering performed by applications
 such as procmail, maildrop or sieve provide more options, work even when users
@@ -1272,7 +1272,7 @@ the Zend License Agreement.
 <sect>Customizing SquirrelMail
 <sect1>Plugins
 <p>
-SquirrelMail is a modular system, wherein its functionality can be extended 
+SquirrelMail is a modular system, wherein its functionality can be extended
 with extra features provided by various plugins.
 
 <sect2>Installing plugins
@@ -1280,16 +1280,16 @@ with extra features provided by various plugins.
 Plugins are installed by unpacking them into the SquirrelMail plugins
 directory. Each plugin uses its own directory therein.
 
-After unpacking a plugin, you should check its installation documentation 
+After unpacking a plugin, you should check its installation documentation
 and requirements. Some plugins need special plugin libraries, some need
-configuration files, and some might need modifications in the main 
+configuration files, and some might need modifications in the main
 SquirrelMail scripts.
 
-After the plugin is configured, you should start the SquirrelMail configuration 
+After the plugin is configured, you should start the SquirrelMail configuration
 utility, and select <tt/8. Plugins/ menu option.
 
 This option displays two plugin categories: installed and available. The installed
-category lists plugins that are currently enabled. The a available category lists 
+category lists plugins that are currently enabled. The a available category lists
 plugins that are not currently enabled but are available for use.
 
 <tscreen><verb>
@@ -1330,7 +1330,7 @@ on the command line, you enable or disable the corresponding plugin.
 The configuration utility should display any plugin present in plugins/ directory.
 
 TODO: Add information about manually activating plugins?  See the bottom of this page:
-http://www.squirrelmail.org/wiki/InstallingPlugins
+http://squirrelmail.org/wiki/InstallingPlugins
 
 <sect1>Themes and Styles<label id="themes">
 <p>
@@ -1520,8 +1520,8 @@ address books can be configured in SquirrelMail since 1.4.4 version. Before
 than admin had to modify functions/addressbook.php file. There is a typo in
 1.4.4 code and if you want to have writeable global address
 books, you should apply patch or use newer SquirrelMail version. See
-<url url="http://www.squirrelmail.org/wiki/KnownBugs"
-name="http://www.squirrelmail.org/wiki/KnownBugs">
+<url url="http://squirrelmail.org/wiki/KnownBugs"
+name="http://squirrelmail.org/wiki/KnownBugs">
 
 If admin wants to use different backend for address book storage (IMSP,
 personal LDAP address books, sticky notes attached to server),
@@ -1648,13 +1648,13 @@ user information and should not be blamed when such interface is abused.
 <sect1>Securing the connection to your IMAP server
 <p>
 
-SquirrelMail provides the option to connect to a remote IMAP server over 
+SquirrelMail provides the option to connect to a remote IMAP server over
 an encrypted connection: Transport Layer Security (TLS and STARTTLS),
 or to connect with only encrypted user credentials (CRAM-MD5 and DIGEST-MD5).
 
 Note: There is no point in using TLS if your IMAP server is localhost. You need
 root to sniff the loopback interface, and if you don't trust root, or an attacker
-already has root, the game is over.  You've got a lot more to worry about beyond
+already has root, the game is over. You've got a lot more to worry about beyond
 having the loopback interface sniffed.
 
 <sect2>Requirements
@@ -1663,19 +1663,19 @@ having the loopback interface sniffed.
 <sect3>CRAM/DIGEST-MD5
 <p>
 <itemize>
-  <item> Digest-MD5 authentication needs PHP XML extension.
-  <item> If you have the mhash extension to PHP, it will automatically
+  <item>Digest-MD5 authentication needs PHP XML extension.
+  <item>If you have the mhash extension to PHP, it will automatically
     be used, which may help performance on heavily loaded servers.
-  <item> IMAP server support for these methods.
+  <item>IMAP server support for these methods.
 </itemize>
 
 <sect3>TLS
 <p>
 <itemize>
-  <item> PHP 4.3.0 or higher (Check Release Notes for PHP 4.3.x information)
-  <item> The server you wish to use TLS on must have a dedicated port listening for
+  <item>PHP 4.3.0 or higher (Check Release Notes for PHP 4.3.x information)
+  <item>The server you wish to use TLS on must have a dedicated port listening for
     TLS connections. (ie. port 993 for IMAP, 465 for SMTP).
-  <item>  If you use PHP 4.3.x, OpenSSL support must be compiled staticly. See
+  <item>If you use PHP 4.3.x, OpenSSL support must be compiled staticly. See
     PHP bug #29934.
 </itemize>
 
@@ -1687,18 +1687,18 @@ having the loopback interface sniffed.
   <item>Server with STARTTLS extension support
 </itemize>
 
-<sect2> Configuration
+<sect2>Configuration
 <p>
 All configuration is done using conf.pl, under main menu option #2.
 conf.pl can now attempt to detect which mechanisms your servers support.
 You must have set the host and port before attempting to detect, or you
 may get inaccurate results, or a long wait while the connection times out.
 
-<sect2> Known Issues
+<sect2>Known Issues
 <p>
 DIGEST-MD5 has three different methods of operation. (qop options "auth",
-"auth-int" and "auth-conf").  This implementation currently supports "auth"
-only.  Work is being done to add the other two modes.
+"auth-int" and "auth-conf"). This implementation currently supports "auth"
+only. Work is being done to add the other two modes.
 
 <sect1>HTTP vs HTTPS
 <p>
@@ -1938,7 +1938,7 @@ suggestions, bug reports.
 <sect1>SquirrelMail bug tracker
 <p>
 SquirrelMail uses Sourceforge system to manage bugs, patches and feature
-requests. See <url url="http://www.squirrelmail.org/bugs" name="bug tracker
+requests. See <url url="http://squirrelmail.org/bugs" name="bug tracker
 site">.
 
 <sect1>SquirrelMail mailing lists
@@ -1949,7 +1949,7 @@ name="SquirrelMail users mailing list">.
 
 Mailing list archives can be found on <url
 url="http://sourceforge.net/mail/?group_id=311" name="Sourceforge"> and
-<url url="http://www.gmane.org" name="Gmane">.
+<url url="http://gmane.org" name="Gmane">.
 
 <sect1>Security issues
 <p>
@@ -1961,8 +1961,8 @@ you towards a solution as quickly as possible and will of course give all credit
 where it's due.
 
 List of SquirrelMail security issues can be found at <url
-url="http://www.squirrelmail.org/security/"
-name="http://www.squirrelmail.org/security/">.
+url="http://squirrelmail.org/security/"
+name="http://squirrelmail.org/security/">.
 
 <sect>Presets<label id="presets">
 <p>
@@ -2158,7 +2158,7 @@ Comments:
 $imap_server_type variable is used to handle imap folder subscription
 differences.
 
-Site URL: <url url="http://www.pmail.com" name="http://www.pmail.com">
+Site URL: <url url="http://pmail.com" name="http://pmail.com">
 
 <sect1>dovecot preset
 <p>
@@ -2188,8 +2188,8 @@ Comments:
 
 <sect1>bincimap preset
 <p>
-Preset is used with Binc IMAP server. Available since SquirrelMail 1.5.1. 
-Due to available storage backend configuration options it is impossible 
+Preset is used with Binc IMAP server. Available since SquirrelMail 1.5.1.
+Due to available storage backend configuration options it is impossible
 to create single preset, which covers all setups.
 
 <sect2>Default (1.2.13) configuration with Maildir++ depot and / delimiter
@@ -2262,7 +2262,7 @@ your favorite search engine.
 List of sites and projects related to SquirrelMail
 
 <itemize>
-  <item><url url="http://www.squirrelmail.org" name="SquirrelMail site">
+  <item><url url="http://squirrelmail.org" name="SquirrelMail site">
   <item><url url="http://sourceforge.net/projects/sm-plugins/" name="SM-Plugins
   project">
   <item><url url="http://sourceforge.net/projects/vadmin-plugin/" name="Vadmin
