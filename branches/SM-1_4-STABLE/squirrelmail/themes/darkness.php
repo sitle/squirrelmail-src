@@ -140,26 +140,3 @@ $squirrelmail_plugin_hooks['generic_header']['theme_darkness'] =
          $targetDistance *= $TextAdjust;
       }
    }
-
-
-/** Reference from  doc/themes.txt
-
-b  0: Title Bar at the top of the page header
-f  1: <not currently used>
-f  2: Error messages, usually red
-b  3: Left folder list background color
-b  4: Normal background color
-b  5: Header of the message index [From, Date, Subject]
-f  6: Normal text on the left folder list
-f  7: Links in the right frame, Folders with subfolders in left frame
-f  8: Normal text [usually black]
-b  9: Darker version of #0
-b 10: Darker version of #9
-f 11: Special folders color [Inbox, Trash, Sent]
-b 12: Alternate color for message list [alters between 4 and this one]
-f 13: Color for single-quoted text ('> text') when reading (default:  #800000)
-f 14: Color for text with more than one quote (default: #FF0000)
-
-**/
-
-?>
