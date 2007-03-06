@@ -547,14 +547,16 @@ function sqimap_mailbox_option_list($imap_stream, $show_selected = 0, $folder_sk
  */
 function mailtree_sort(&$lsub) {
     if(!is_array($lsub)) return;
-
+    
+    global $delimiter;
+    
     foreach($lsub as $index => $mailbox)
-        $lsub[$index] = str_replace('.',' -#- ',$lsub[$index]);
+        $lsub[$index] = str_replace($delimiter,' -#- ',$lsub[$index]);
 
     usort($lsub, 'user_strcasecmp');
 
     foreach($lsub as $index => $mailbox)
-        $lsub[$index] = str_replace(' -#- ','.',$lsub[$index]);
+        $lsub[$index] = str_replace(' -#- ',$delimiter,$lsub[$index]);
 }
 
 /**
@@ -607,7 +609,7 @@ function sqimap_mailbox_list($imap_stream, $force=false) {
         }
         /* remove duplicates */
         $sorted_lsub_ary = array_unique($sorted_lsub_ary);
-
+       
         /* natural sort mailboxes */
         if (isset($sorted_lsub_ary)) {
             mailtree_sort($sorted_lsub_ary);
@@ -805,4 +807,3 @@ function sqimap_mailbox_list_all($imap_stream) {
     return $boxes;
 }
 
-?>
