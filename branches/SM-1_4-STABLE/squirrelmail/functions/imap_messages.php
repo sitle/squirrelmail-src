@@ -709,6 +709,7 @@ function sqimap_get_small_header_list($imap_stream, $msg_list, $show_num=false) 
         $messages[$msgi]['CC'] = $cc; //parseAddress($cc);
         $messages[$msgi]['SIZE'] = $size;
         $messages[$msgi]['TYPE0'] = $type[0];
+        $messages[$msgi]['TYPE1'] = $type[1];
         $messages[$msgi]['FLAG_DELETED'] = $flag_deleted;
         $messages[$msgi]['FLAG_ANSWERED'] = $flag_answered;
         $messages[$msgi]['FLAG_SEEN'] = $flag_seen;
@@ -945,4 +946,3 @@ function sqimap_get_small_header($imap_stream, $id, $sent) {
     return $res[0];
 }
 
-?>
