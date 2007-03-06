@@ -261,7 +261,7 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
                     $td_str .= _("A");
                     $stuff = true;
                 }
-                if ($msg['TYPE0'] == 'multipart') {
+                if ($msg['TYPE0'] == 'multipart' && $msg['TYPE1'] == 'mixed') {
                     $td_str .= '+';
                     $stuff = true;
                 }
