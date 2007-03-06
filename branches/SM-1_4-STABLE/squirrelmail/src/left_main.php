@@ -314,7 +314,7 @@ if (isset($left_refresh) && ($left_refresh != '') &&
     $xtra = '';
 }
 
-displayHtmlHeader( 'SquirrelMail', $xtra );
+displayHtmlHeader( $org_title, $xtra );
 
 /* If requested and not yet complete, attempt to autocreate folders. */
 if ($auto_create_special && !$auto_create_done) {
