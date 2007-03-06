@@ -108,7 +108,7 @@ function logout_error( $errString, $errTitle = '' ) {
 }
 
 function error_box($string, $color) {
-    global $pageheader_sent;
+    global $pageheader_sent, $org_title;
 
     if ( !isset( $color ) ) {
         $color = array();
@@ -119,6 +119,9 @@ function error_box($string, $color) {
         $color[7]  = '#0000cc';  /* blue          Links                  */
         $color[8]  = '#000000';  /* black         Normal text            */
         $color[9]  = '#ababab';  /* mid-gray      Darker version of #0   */
+    }
+    if ( !isset( $org_title ) ) {
+        $org_title = "SquirrelMail";
     }
 
     $err = _("ERROR");
@@ -132,7 +135,7 @@ function error_box($string, $color) {
     if(!isset($pageheader_sent) && !$pageheader_sent) {
         /* include this just to be sure */
         include_once( SM_PATH . 'functions/page_header.php' );
-        displayHtmlHeader('SquirrelMail: '.$err);
+        displayHtmlHeader($org_title.': '.$err);
         $pageheader_sent = TRUE;
         echo "<body text=\"$color[8]\" bgcolor=\"$color[4]\" link=\"$color[7]\" vlink=\"$color[7]\" alink=\"$color[7]\">\n\n";
     }
