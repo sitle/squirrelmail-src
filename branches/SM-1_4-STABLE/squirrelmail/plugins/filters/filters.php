@@ -194,7 +194,7 @@ function start_filters() {
 
         $AllowSpamFilters = false;
         foreach($spamfilters as $filterkey=>$value) {
-            if ($value['enabled'] == 'yes') {
+            if ($value['enabled'] == SMPREF_ON) {
                 $AllowSpamFilters = true;
                 break;
             }
@@ -501,8 +501,13 @@ function filters_spam_check_site($a, $b, $c, $d, &$filters) {
     foreach ($filters as $key => $value) {
         if ($filters[$key]['enabled']) {
             if ($filters[$key]['dns']) {
+                
+                /**
+                 *  RFC allows . on end of hostname to ensure search domain
+                 *  isn't used if no hostname is found
+                 */
                 $filter_revip = $d . '.' . $c . '.' . $b . '.' . $a . '.' .
-                                $filters[$key]['dns'];
+                                $filters[$key]['dns'] . '.';
 
                 if(!isset($SpamFilters_DNScache[$filter_revip]['L']))
                         $SpamFilters_DNScache[$filter_revip]['L'] = '';
@@ -516,8 +521,12 @@ function filters_spam_check_site($a, $b, $c, $d, &$filters) {
                     $SpamFilters_DNScache[$filter_revip]['T'] =
                                        time() + $SpamFilters_CacheTTL;
                 }
-                if ($SpamFilters_DNScache[$filter_revip]['L'] ==
-                    $filters[$key]['result']) {
+                
+                /**
+                 *  gethostbyname returns ip if resolved, or returns original host
+                 *  supplied to function if there is no resolution
+                 */
+                if ($SpamFilters_DNScache[$filter_revip]['L'] != $filter_revip) {
                     return 1;
                 }
             }
@@ -809,8 +818,7 @@ function load_spam_filters() {
         _("FREE - Distributed Sender Boycott List - UN-Confirmed Relays");
 
     foreach ($filters as $Key => $Value) {
-        $filters[$Key]['enabled'] = getPref($data_dir, $username,
-            $filters[$Key]['prefname']);
+        $filters[$Key]['enabled'] = (bool)getPref($data_dir, $username, $filters[$Key]['prefname']);
     }
 
     return $filters;
