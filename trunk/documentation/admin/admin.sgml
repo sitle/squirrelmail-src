@@ -137,9 +137,9 @@ compete, and even surpass, the commercial servers.
         with some Perl scripts. One of the most useful is
         <tt>config/conf.pl</tt>, which will help you configure your SquirrelMail
         installation.
-  <item>An SQL database supported by <url url="http://pear.php.net/package/DB"
-        name="the PEAR DB library">. If you're going to use a database, you must
-        have the PEAR DB library installed as well.
+  <item>An SQL database supported by the PEAR DB library, and the PEAR DB
+        library itself. See <ref id="db-backend" name="Using database backends">
+        for more information.
   <item><url url="http://aspell.net/" name="Aspell"> or <url
         url="http://lasr.cs.ucla.edu/geoff/ispell.html" name="Ispell"> to be
         able to use the SquirrelSpell plugin.
@@ -405,7 +405,6 @@ to test your configuration for common errors.
 <sect2>Log into SquirrelMail
 <p>
 Browse to http://example.com/yourwebmaillocation/ to log in.
-
 
 <sect1>Installing SquirrelMail on Unix and Linux systems
 <p>
@@ -950,27 +949,32 @@ database is included as a part of the distribution.
 
 <sect2>Configuring PEAR DB
 <p>
-For this to work you must have the PEAR classes installed, these are part of
-PHP. Once these are installed you must have sure the directory containing them
-is a part of your PHP include_path. See the PHP documentation for information on
-how to do that.
+SquirrelMail needs the <url url="http://pear.php.net/package/DB" name="DB
+database abstraction layer">, which is a part of the <url
+url="http://pear.php.net/" name="PHP Extension and Application Repository
+(PEAR)">, to provide database backends. Make sure that your database is <url
+url="http://pear.php.net/manual/en/package.database.db.php" name="compatible
+with PEAR DB">, that PEAR is installed, and that the directory containing PEAR
+is in <url url="http://php.net/configuration" name="PHP's include path"> (PHP
+configuration variable: <tt/include_path/).
 
-Under Mandrake Linux the PEAR classes are installed as part of the php-devel
-package and under FreeBSD they are installed as part of the mod_php4 or php4
-port/package. Debian packages pear libraries in php4-pear package.
+Note that some systems include PEAR with PHP, have PEAR and PHP as separate
+packages, or comes without a pre-packaged version of PEAR thus forcing you to
+install it manually. Check your system documentation to find out the details.
 
 <sect2>Creating the database
 <p>
-First you need to create a database and a database user with access to read and
-write in that table. For MySQL you would normally do something like:
+First you need to create a database and a database user with access to
+<tt/SELECT/, <tt/INSERT/, <tt/UPDATE/, and <tt/DELETE/ in that database. For
+MySQL you would normally do something like:
 
 <tscreen><verb>
- (from the command line)
- # mysqladmin create squirrelmail
+(from the command line)
+# mysqladmin create squirrelmail
 
- (from the MySQL client)
- mysql> GRANT select,insert,update,delete ON squirrelmail.*
-              TO squirreluser@localhost IDENTIFIED BY 'sqpassword';
+(from the MySQL client)
+mysql> GRANT select,insert,update,delete ON squirrelmail.*
+       TO squirreluser@localhost IDENTIFIED BY 'sqpassword';
 </verb></tscreen>
 
 <sect2>Constructing a data source name
@@ -1016,7 +1020,7 @@ CREATE TABLE "address" (
   "label" varchar(255) NOT NULL,
   CONSTRAINT "address_pkey" PRIMARY KEY ("nickname", "owner")
 );
-CREATE  UNIQUE INDEX "address_firstname_key" ON "address"
+CREATE UNIQUE INDEX "address_firstname_key" ON "address"
   ("firstname", "lastname");
 </verb></tscreen>
 
@@ -1024,8 +1028,9 @@ Don't forget to configure SquirrelMail with the DSN and the table name. This can
 be done using either the SquirrelMail configuration utility or via the
 administration plugin.
 
-Global address book uses same table format as the one used for personal address
-book. You can even use same table, if you don't have a user named "global".
+The global address book uses same table format as the personal address books.
+You can even use same table if you don't have a user named "global", but that's
+not recommended.
 
 <sect2>Storing preferences in the database
 <p>
@@ -1055,6 +1060,12 @@ CREATE TABLE "userprefs" (
 );
 </verb></tscreen>
 
+Note the difference in the table column definitions between the MySQL and the
+PostgreSQL structures above: the first column in the MySQL command is "user" and
+for PostgreSQL it is "username". The default <tt/config.php/ file is configured
+for the MySQL case, so you'll get a syntax error if you try to use the above
+statements literally and don't account for the different column name.
+
 Don't forget to configure SquirrelMail with the DSN, the table name, and the
 field names. This can be done using either the SquirrelMail configuration
 utility or via the administration plugin.
@@ -1082,6 +1093,14 @@ sizes.
 
 If you want to get more debugging information - check setKey() function
 in dbPrefs class. Class is stored in functions/db_prefs.php
+
+<sect2>Converting files to database
+<p>
+A conversion tool called <tt/flat2sql.pl/ is included since SquirrelMail 1.5.1.
+It's also possible to download the lastest version from the <url
+url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/squirrelmail/contrib/flat2sql.pl"
+name="repository">. <tt/flat2sql.pl/ converts the existing files to a number of
+SQL statements, that can be used to insert the data into the database.
 
 <sect1>Using more than one IMAP server
 <p>
@@ -1211,7 +1230,6 @@ such as procmail, maildrop or sieve provide more options, work even when users
 do not actively log into their accounts, and are much faster and more efficient.
 Also be aware that when using PHP-based message filtering against accounts with a
 large amount of mail in them, login times can go through the roof.
-
 
 <sect1>IMAP Proxy
 <p>
@@ -1396,7 +1414,6 @@ b 16: Highlight color (since SquirrelMail 1.4.6 and 1.5.1, default: $color[2])
 
 Next all you have to do is run SquirrelMail configuration utility and add the
 theme to the list of themes available to you.
-
 
 <sect1>Site customizations
 <p>
@@ -1785,7 +1802,6 @@ gettext extension on some operating systems depends on environment
 variables. SquirrelMail does not set them in safe mode.
 
 <em>3. directory hashing does not work</em>
-
 
 <em>4. path to data directory should be relative.</em>
 
