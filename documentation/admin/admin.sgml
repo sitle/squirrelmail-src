@@ -969,13 +969,18 @@ First you need to create a database and a database user with access to
 MySQL you would normally do something like:
 
 <tscreen><verb>
-(from the command line)
-# mysqladmin create squirrelmail
-
-(from the MySQL client)
+mysql> CREATE DATABASE squirrelmail;
 mysql> GRANT select,insert,update,delete ON squirrelmail.*
        TO squirreluser@localhost IDENTIFIED BY 'sqpassword';
 </verb></tscreen>
+
+Note that MySQL changed its password handling in 4.1, so you might need to force
+the password to be in the older form. See <url
+url="http://dev.mysql.com/doc/refman/4.1/en/password-hashing.html" name ="the
+MySQL 4.1 manual"> for more information.
+
+<tscreen><verb> mysql> SET PASSWORD FOR 'squirreluser' =
+OLD_PASSWORD('sqpassword'); </verb></tscreen>
 
 <sect2>Constructing a data source name
 <p>
