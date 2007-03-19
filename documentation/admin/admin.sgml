@@ -364,8 +364,8 @@ We recommend the following PHP settings:
     <item><tt/file_uploads/ on - needed if your users want to attach files to
         their mails.
     <item><tt/safe_mode/ on or off - safe_mode on is only a tiny bint more secure,
-    	in the SquirrelMail case. There may be some incompatibilities with
-	some functionality.
+        in the SquirrelMail case. There may be some incompatibilities with
+        some functionality.
 </itemize>
 
 <sect2>Install IMAP server
@@ -908,34 +908,71 @@ having the loopback interface sniffed.
 
 <sect1>Default user preferences<label id="default_pref">
 <p>
-If SquirrelMail is configured to use file-based preferences, default preferences are
-stored in your data directory in a file called "default_pref". As you add
+If SquirrelMail is configured to use file-based preferences, default preferences
+are stored in your data directory in a file called <tt/default_pref/. As you add
 plugins to your SquirrelMail installation, you might want to configure some of
-them on your own account and then propagate those settings to all of your
-users. Or you may simply want to change the default theme, etc. This is what you
-need to do to accomplish that.
+them on your own account and then propagate those settings to all of your users.
+Or you may simply want to change the default theme, etc. This is what you need
+to do to accomplish that.
 
-<itemize>
-  <item>Log into your own account and get all your configuration set to what
-  you'd like the defaults to be.
-  <item>Open your personal prefs file in your data directory (usually a file
-  that looks something like "username.pref" or "user@domain.tld.pref", depending
-  on what your usernames look like).
+<enum>
+  <item>Log into your own account (or a test account) and get all your
+        configuration set to what you'd like the defaults to be.
+  <item>Open the preference file related to the account you used. It's in the
+        data directory and looks something like <tt/username.pref/ or
+        <tt/user@example.com.pref/, depending on what your usernames look like.
   <item>Find the relevant settings. Most plugin settings are identified by the
-  plugin's name being the first thing on the line. Note that some plugins can
-  have multiple setting lines. If you want to duplicate all of your settings,
-  you can copy the entire file, but be careful that nothing with your name and
-  email address or other personal items get copied.
-  <item>Copy those settings into the "default_pref" file in the data directory.
-</itemize>
+        plugin's name being the first thing on the line. Note that some plugins
+        can have multiple setting lines.
+  <item>Copy those settings into the <tt/default_pref/ file in the data
+        directory. If you want to duplicate all settings, you can copy the
+        entire file, but be careful that nothing with your name, mail address,
+        or other personal items get copied.
+</enum>
 
-Note that <tt/default_pref/ file works only for users that don't have an existing
-preference file (i.e.: new users). If you want to add preferences to existing user
-accounts, you should add them to their preference files. You can do that by editing
-user .pref files or use the Forced Preferences plugin.
+Note that the <tt/default_pref/ file works only for users that don't have an
+existing preference file (i.e. new users which haven't logged in yet). If you
+want to add preferences to existing user accounts, you should edit (manually or
+by a script) their existing preference files. It's not recommended to delete the
+preference files, since that will revert <em/all/ preferences edited by your
+users, including such settings as their real names.
 
-If you use database based setup, default settings are stored in
-<tt>functions/db_prefs.php</tt> file, <tt/$default/ parameter in dbPrefs class.
+<sect2>An example script
+<p>
+TODO: Write a better script (in Perl) providing this functionality and include it the SquirrelMail distribution.
+
+This is a simple shell solution to edit more than one user preference file at
+once.
+
+If you, for example, want mails to display as HTML by default and change the
+font to a custom one by using CSS, create a file containing:
+
+<tscreen><verb>
+show_html_default=1
+custom_css=sans-10.css
+</verb></tscreen>
+
+Save the file as <tt>/tmp/default.pref</tt>, change to the data directory, and
+run the following command from the prompt:
+
+<tscreen><verb>
+for l in `ls *.pref`; do cat /tmp/default.pref >> $l; done
+</verb></tscreen>
+
+<sect2>Forced preferences
+<p>
+If you want to force some preference settings for all your users, it's possible
+when using <url url="http://squirrelmail.org/plugin_view.php?id=220" name="the
+Forced Preferences plugin">. It works regardless of if the users have set their
+own preferences or not.
+
+<sect2>Default database backend preferences
+<p>
+If you're using a database base backend, the default settings are stored in the
+array <tt/$default/, in the beginning of the <tt/dbPrefs/ class in
+<tt>functions/db_prefs.php</tt>.
+
+TODO: Having to edit the SquirrelMail source is bad. It should be possible to use <tt/default_pref/ for database backends as well, but unfortunately that's currently not a SquirrelMail feature.
 
 <sect1>Using database backends<label id="db-backend">
 <p>
@@ -1342,8 +1379,7 @@ on the command line, you enable or disable the corresponding plugin.
 
 The configuration utility should display any plugin present in plugins/ directory.
 
-TODO: Add information about manually activating plugins?  See the bottom of this page:
-http://squirrelmail.org/wiki/InstallingPlugins
+TODO: Add information about manually activating plugins?  See the bottom of this page: http://squirrelmail.org/wiki/InstallingPlugins
 
 <sect1>Themes and Styles<label id="themes">
 <p>
@@ -1422,8 +1458,7 @@ theme to the list of themes available to you.
 
 <sect1>Site customizations
 <p>
-TODO:
-Custom login page. Site control with the vlogin plugin.
+TODO: Custom login page. Site control with the vlogin plugin.
 
 <sect1>Internationalization
 <p>
