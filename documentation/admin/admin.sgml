@@ -355,17 +355,17 @@ We recommend the following PHP settings:
 
 <itemize>
     <item><tt/register_globals/ off - a dangerous setting, not needed. We do
-        not release security advisories for issues only exploitable with this
-        setting on. Note that you can easily enable it only for some legacy
-        site that may need it and turn it off globally.
+          not release security advisories for issues only exploitable with this
+          setting on. Note that you can easily enable it only for some legacy
+          site that may need it and turn it off globally.
     <item><tt/magic_quotes_{runtime,gpc,sybase}/ off - SquirrelMail may work
-        with any of these on, but if you experience stray backslashes in your
-        mail or other strange behaviour, it may be advisable to turn them off.
+          with any of these on, but if you experience stray backslashes in your
+          mail or other strange behaviour, it may be advisable to turn them off.
     <item><tt/file_uploads/ on - needed if your users want to attach files to
-        their mails.
-    <item><tt/safe_mode/ on or off - safe_mode on is only a tiny bint more secure,
-        in the SquirrelMail case. There may be some incompatibilities with
-        some functionality.
+          their mails.
+    <item><tt/safe_mode/ on or off - safe_mode on is only a tiny bint more
+          secure, in the SquirrelMail case. There may be some incompatibilities
+          with some functionality (see <ref id="safe_mode" name="Safe mode">).
 </itemize>
 
 <sect2>Install IMAP server
@@ -709,11 +709,10 @@ userid/groupid pair. Additionally, if "chown user:group" doesn't work, you can
 use "chown user" and "chgrp group" instead. See the man pages for these commands
 for more information.
 
-If you are using SquirrelMail in setup with PHP safe_mode restrictions, data and
-attachment directories should be owned by same user that owns other SquirrelMail
-scripts. It must be writable by webserver group. Check <url
-url="http://php.net/features.safe-mode" name="PHP Safe mode manual"> for
-more details.
+If you are using SquirrelMail in setup with PHP <tt/safe_mode/ restrictions,
+data and attachment directories should be owned by same user that owns other
+SquirrelMail scripts. It must be writable by webserver group (see <ref
+id="safe_mode" name="Safe mode">).
 
 <sect1>Run conf.pl
 <p>
@@ -1806,47 +1805,85 @@ Using configtest.php as a first diagnose tool.
 <p>
 missing session support
 
-<sect2>Safe Mode
+<sect2>Safe mode<label id="safe_mode">
 <p>
-Running SquirrelMail with PHP [safe_mode] restrictions.
+TODO: Clean the Safe mode section up.
+
+Running SquirrelMail with PHP <url url="http://php.net/features.safe-mode"
+name="safe_mode"> restrictions.
 
 Settings that are used in safe mode
 <itemize>
-  <item>safe_mode
-  <item>safe_mode_gid
-  <item>safe_mode_include_dir
-  <item>safe_mode_exec_dir
-  <item>safe_mode_allowed_env_vars
-  <item>safe_mode_protected_env_vars
-  <item>open_basedir
-  <item>disable_functions
-  <item>disable_classes
+  <item><tt/safe_mode/
+  <item><tt/safe_mode_gid/
+  <item><tt/safe_mode_include_dir/
+  <item><tt/safe_mode_exec_dir/
+  <item><tt/safe_mode_allowed_env_vars/
+  <item><tt/safe_mode_protected_env_vars/
+  <item><tt/disable_functions/
+  <item><tt/disable_classes/
 </itemize>
 
-It is possible to run SquirrelMail with safe_mode limitations, if you solve
+(<tt/open_basedir/ is related but functions independently of <tt/safe_mode/.)
+
+It is possible to run SquirrelMail with <tt/safe_mode/ limitations, if you solve
 some problems.
 
 <em>1. safe_mode controls list of allowed executables.</em>
 
 SquirrelMail has to use SMTP in order to send email or provider has to provide
-wrapper for /usr/sbin/sendmail.
+wrapper for <tt>/usr/sbin/sendmail</tt>.
 
 Fortune and SquirrelSpell plugins don't work, if provider does not add path to
-fortune, ispell/aspell and cat programs into safe_mode_exec_dir variable.
+fortune, ispell/aspell and cat programs into <tt/safe_mode_exec_dir/ variable.
+
+Since <tt/safe_mode_exec_dir/ only allows only directory to be added, it is
+necessary to create symbolic links from that directory to any other executables
+required (for example, add a link to <tt>/usr/sbin/sendmail</tt> and
+<tt>/bin/cat</tt> from <tt>/usr/bin</tt>).
+
+Also, since under safe_mode <url url="http://php.net/function.exec"
+name="exec()"> will only allow an executable to be called with a single
+argument, the line:
+
+<tscreen><verb>
+exec("cat $floc | $sqspell_command 2>&amp;1", $sqspell_output, $sqspell_exitcode);
+</verb></tscreen>
+
+in <tt/check_me.mod/ will fail. It is necessary to create a shell script (in
+<tt/safe_mode_exec_dir/) which takes as an argument the file to check, and then
+call this instead. For example, the line could be changed to:
+
+<tscreen><verb>
+exec("squirrelmail_hack $floc", $sqspell_output, $sqspell_exitcode);
+</verb></tscreen>
+
+and then <tt>/usr/bin/squirrelmail_hack</tt> could be created as follows:
+
+<tscreen><verb>
+#!/bin/sh
+# allow sqspell plugin to work with safe_mode
+cat "$1" | /usr/bin/aspell pipe 2>&amp;1
+</verb></tscreen>
+
+and spellchecking will work. Note that language options will be ignored with
+this script. It would also be possible to write something cleverer that splits
+its argument by whitespace and calls the required dictionary. However, custom
+user dictionaries will continue to work.
 
 <em>2. safe_mode controls list of allowed environment variables.</em>
 
 time zone settings are not available if use of TZ variable is not allowed.
 
-gettext extension on some operating systems depends on environment
-variables. SquirrelMail does not set them in safe mode.
+gettext extension on some operating systems depends on environment variables.
+SquirrelMail does not set them in safe mode.
 
 <em>3. directory hashing does not work</em>
 
 <em>4. path to data directory should be relative.</em>
 
-SquirrelMail configuration tools allow relative paths only with one upper
-level. Longer relative paths are converted to full path.
+SquirrelMail configuration tools allow relative paths only with one upper level.
+Longer relative paths are converted to full path.
 
 <em>5. mail_fetch plugin can't control PHP script execution time limits.</em>
 
@@ -1854,8 +1891,13 @@ Your email fetching time must be within PHP max_execution_time limits.
 
 <em>6. File ownership restrictions</em>
 
-Default preference file must be owned by same user that owns other SquirrelMail
-scrips. It must be readable by webserver's user.
+Default preference file (frequently named <tt/default_pref/) AND the default
+data directory (frequently <tt>/var/lib/squirrelmail/data/</tt>) must be owned
+by same user that owns other SquirrelMail scripts. The default preference file
+and the default data directory must be readable and writable by webserver's
+user. The webserver's user and the owner of the SquirrelMail scripts may be
+different (e.g. in Debian, SquirrelMail is owned by root, but the webserver runs
+as www-data).
 
 <sect1>UW IMAP
 <sect2>Login Disabled
