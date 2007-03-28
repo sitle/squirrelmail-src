@@ -31,6 +31,9 @@ Version 1.4.10 - SVN
   - On display "+" symbol on multipart/mixed messages, e.g. those with
     real attachments.
   - Fixes for issues with filters plugin (#1634735).
+  - Session not correctly handled on webmail.php (#1685031).
+  - session_id reporting session id when no active session (#1685031).
+  - sqm_baseuri moved to strings.asp (#1685114).
 
 Version 1.4.9a - 3 December 2006
 --------------------------------

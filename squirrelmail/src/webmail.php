@@ -20,18 +20,9 @@
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
-require_once(SM_PATH . 'functions/global.php');
-require_once(SM_PATH . 'functions/strings.php');
-require_once(SM_PATH . 'config/config.php');
-require_once(SM_PATH . 'functions/prefs.php');
+require_once(SM_PATH . 'include/validate.php');
 require_once(SM_PATH . 'functions/imap.php');
-require_once(SM_PATH . 'functions/plugin.php');
-require_once(SM_PATH . 'functions/i18n.php');
-require_once(SM_PATH . 'functions/auth.php');
 
-if (!function_exists('sqm_baseuri')){
-    require_once(SM_PATH . 'functions/display_messages.php');
-}
 $base_uri = sqm_baseuri();
 
 sqsession_is_active();
@@ -60,7 +51,6 @@ if(sqgetGlobalVar('mailtodata', $mailtodata)) {
 
 is_logged_in();
 
-require_once(SM_PATH . 'include/load_prefs.php');
 do_hook('webmail_top');
 
 /**
