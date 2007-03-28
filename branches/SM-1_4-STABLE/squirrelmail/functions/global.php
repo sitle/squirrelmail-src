@@ -398,11 +398,7 @@ function sqsession_destroy() {
  */
 
 function sqsession_is_active() {
-
-    $sessid = session_id();
-    if ( empty( $sessid ) ) {
-        session_start();
-    }
+    @session_start();
 }
 
 // vim: et ts=4

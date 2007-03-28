@@ -35,12 +35,6 @@ require_once(SM_PATH . 'functions/forms.php');
  */
 set_up_language($squirrelmail_language, TRUE, TRUE);
 
-/**
- * Find out the base URI to set cookies.
- */
-if (!function_exists('sqm_baseuri')){
-    require_once(SM_PATH . 'functions/display_messages.php');
-}
 $base_uri = sqm_baseuri();
 
 /**
