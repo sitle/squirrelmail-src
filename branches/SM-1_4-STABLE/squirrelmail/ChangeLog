@@ -34,6 +34,8 @@ Version 1.4.10 - SVN
   - Session not correctly handled on webmail.php (#1685031).
   - session_id reporting session id when no active session (#1685031).
   - sqm_baseuri moved to strings.asp (#1685114).
+  - Added sq_change_text_domain() for plugins to use when switching text
+    domains.  If plugins use this function, it fixes #1434043.
 
 Version 1.4.9a - 3 December 2006
 --------------------------------
