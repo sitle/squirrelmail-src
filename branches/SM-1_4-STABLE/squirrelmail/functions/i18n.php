@@ -28,21 +28,27 @@ require_once(SM_PATH . 'functions/global.php');
  * plugins when changing into their own text domain
  * and back again.
  *
- * Note that plugins using this function must have
+ * Note that if plugins using this function have
  * their translation files located in the SquirrelMail
- * locale directory.
+ * locale directory, the second argument is optional.
  *
  * @param string $domain_name The name of the text domain
  *                            (usually the plugin name, or
  *                            "squirrelmail") being switched to.
+ * @param string $directory   The directory that contains 
+ *                            all translations for the domain
+ *                            (OPTIONAL; default is SquirrelMail
+ *                            locale directory).
  *
  * @return void
  *
  * @since 1.5.2 and 1.4.10
  */
-function sq_change_text_domain($domain_name) {
+function sq_change_text_domain($domain_name, $directory='') {
 
-    global $languages, $sm_notAlias, $use_gettext;
+    if (empty($directory)) $directory = SM_PATH . 'locale/'; 
+
+    global $use_gettext;
     static $domains_already_seen = array();
 
     // only need to call bindtextdomain() once unless
@@ -55,21 +61,46 @@ function sq_change_text_domain($domain_name) {
 
     $domains_already_seen[] = $domain_name;
 
-    bindtextdomain($domain_name, SM_PATH . 'locale/');
+    sq_bindtextdomain($domain_name, $directory);
     textdomain($domain_name);
 
+}
+
+/**
+ * Gettext bindtextdomain wrapper.
+ *
+ * This provides a bind_textdomain_codeset call to make sure the
+ * domain's encoding will not be overridden.
+ *
+ * @since 1.4.10
+ *
+ * @param string $domain gettext domain name
+ * @param string $dir directory that contains all translations
+ *
+ * @return string path to translation directory
+ */
+function sq_bindtextdomain($domain,$dir) {
+
+    global $languages, $sm_notAlias;
+
+    $dir = bindtextdomain($domain, $dir);
+
     // set codeset in order to avoid gettext charset conversions
+    //
     if (function_exists('bind_textdomain_codeset')
      && isset($languages[$sm_notAlias]['CHARSET'])) {
 
         // Japanese translation uses different internal charset
+        //
         if ($sm_notAlias == 'ja_JP') {
-            bind_textdomain_codeset ($domain_name, 'EUC-JP');
+            bind_textdomain_codeset ($domain, 'EUC-JP');
         } else {
-            bind_textdomain_codeset ($domain_name, $languages[$sm_notAlias]['CHARSET']);
+            bind_textdomain_codeset ($domain, $languages[$sm_notAlias]['CHARSET']);
         }
 
     }
+
+    return $dir;
 }
 
 /**
