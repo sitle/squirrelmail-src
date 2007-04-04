@@ -28,12 +28,12 @@ Version 1.4.10 - SVN
   - Fix Priority and Receipt compose options being reset after return from
     HTML addressbook (#1673056).
   - Fix sorting of folder list with non-. delimiter (#1593229).
-  - On display "+" symbol on multipart/mixed messages, e.g. those with
+  - Only display "+" symbol on multipart/mixed messages, e.g. those with
     real attachments.
   - Fixes for issues with filters plugin (#1634735).
   - Session not correctly handled on webmail.php (#1685031).
   - session_id reporting session id when no active session (#1685031).
-  - sqm_baseuri moved to strings.asp (#1685114).
+  - sqm_baseuri moved to strings.php (#1685114).
   - Added sq_change_text_domain() for plugins to use when switching text
     domains.  If plugins use this function, it fixes #1434043.
 
