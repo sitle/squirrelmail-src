@@ -518,7 +518,6 @@ function showMessagesForMailbox($imapConnection, $mailbox, $num_msgs,
 
     mail_message_listing_beginning($imapConnection, $mailbox, $sort,
                                   $msg_cnt_str, $paginator_str, $start_msg);
-    echo '</td></tr>';
     /* line between the button area and the list */
     echo '<tr><td height="5" bgcolor="'.$color[4].'"></td></tr>';
 
@@ -526,15 +525,14 @@ function showMessagesForMailbox($imapConnection, $mailbox, $num_msgs,
     echo '    <table width="100%" cellpadding="1" cellspacing="0" align="center"'.' border="0" bgcolor="'.$color[9].'">';
     echo '     <tr><td>';
     echo '       <table width="100%" cellpadding="1" cellspacing="0" align="center" border="0" bgcolor="'.$color[5].'">';
-    echo '<tr><td>';
     printHeader($mailbox, $srt, $color, !$thread_sort_messages);
 
     displayMessageArray($imapConnection, $num_msgs, $start_msg,
                         $msort, $mailbox, $sort, $color, $show_num,0,0);
-    echo '</td></tr></table></td></tr></table>';
+    echo '</table></td></tr></table>';
 
     mail_message_listing_end($num_msgs, $paginator_str, $msg_cnt_str, $color);
-    echo '</td></tr></table>';
+    echo '</table>';
 
     echo "\n</form>\n\n";
     
@@ -726,7 +724,6 @@ function mail_message_listing_beginning ($imapConnection,
     /* line between header and button area */
         echo '</td></tr><tr><td height="5" bgcolor="'.$color[4].'"></td></tr>';
 
-        echo '<tr><td>';
         echo html_tag( 'tr' ) . "\n"
         . html_tag( 'td' ,'' , 'left', '', '' )
          . html_tag( 'table' ,'' , '', $color[9], 'border="0" width="100%" cellpadding="1"  cellspacing="0"' )
