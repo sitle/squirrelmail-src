@@ -794,6 +794,10 @@ $languages['fr_FR']['CHARSET'] = 'iso-8859-1';
 $languages['fr_FR']['LOCALE']  = array('fr_FR.ISO8859-1','fr_FR.ISO-8859-1','fr_FR');
 $languages['fr']['ALIAS']      = 'fr_FR';
 
+$languages['fy']['NAME']       = 'Frisian';
+$languages['fy']['CHARSET']    = 'utf-8';
+$languages['fy']['LOCALE']     = array('fy.UTF-8','fy_NL.UTF-8');
+
 $languages['hr_HR']['NAME']    = 'Croatian';
 $languages['hr_HR']['CHARSET'] = 'iso-8859-2';
 $languages['hr_HR']['LOCALE']  = array('hr_HR.ISO8859-2','hr_HR.ISO-8859-2','hr_HR');
