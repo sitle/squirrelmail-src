@@ -35,7 +35,12 @@ Version 1.4.10 - SVN
   - session_id reporting session id when no active session (#1685031).
   - sqm_baseuri moved to strings.php (#1685114).
   - Added sq_change_text_domain() for plugins to use when switching text
-    domains.  If plugins use this function, it fixes #1434043.
+    domains. If plugins use this function, it fixes #1434043.
+  - Security: fixes for the HTML filter to counter further XSS exploits:
+    HTML attachments containing 'data:' URLs, Internet Explorer-specifc
+    charset conversion exploits, and request forgery through included
+    images. Thanks to Mikhail Markin, Tomas Kuliavas and Michael Jordon
+    for reporting these issues. [CVE-2007-1262]
 
 Version 1.4.9a - 3 December 2006
 --------------------------------

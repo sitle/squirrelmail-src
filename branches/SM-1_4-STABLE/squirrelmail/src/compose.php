@@ -50,32 +50,36 @@ sqgetGlobalVar('composesession',    $composesession,    SQ_SESSION);
 sqgetGlobalVar('compose_messages',  $compose_messages,  SQ_SESSION);
 
 /** SESSION/POST/GET VARS */
-sqgetGlobalVar('smaction',$action);
-sqgetGlobalVar('session',$session);
-sqgetGlobalVar('mailbox',$mailbox);
-if ( !sqgetGlobalVar('identity',$identity) ) {
-    $identity = 0;
+sqgetGlobalVar('send', $send, SQ_POST);
+// Send can only be achieved by setting $_POST var. If Send = true then
+// retrieve other form fields from $_POST
+if (isset($send) && $send) {
+    $SQ_GLOBAL = SQ_POST;
+} else {
+    $SQ_GLOBAL = SQ_FORM;
 }
-sqgetGlobalVar('send_to',$send_to);
-sqgetGlobalVar('send_to_cc',$send_to_cc);
-sqgetGlobalVar('send_to_bcc',$send_to_bcc);
-sqgetGlobalVar('subject',$subject);
-sqgetGlobalVar('body',$body);
-sqgetGlobalVar('mailprio',$mailprio);
-sqgetGlobalVar('request_mdn',$request_mdn);
-sqgetGlobalVar('request_dr',$request_dr);
-sqgetGlobalVar('html_addr_search',$html_addr_search);
-sqgetGlobalVar('mail_sent',$mail_sent);
-sqgetGlobalVar('passed_id',$passed_id);
-sqgetGlobalVar('passed_ent_id',$passed_ent_id);
-sqgetGlobalVar('send',$send);
+sqgetGlobalVar('smaction',$action, $SQ_GLOBAL);
+sqgetGlobalVar('session',$session, $SQ_GLOBAL);
+sqgetGlobalVar('mailbox',$mailbox, $SQ_GLOBAL);
+sqgetGlobalVar('identity',$identity, $SQ_GLOBAL);
+sqgetGlobalVar('send_to',$send_to, $SQ_GLOBAL);
+sqgetGlobalVar('send_to_cc',$send_to_cc, $SQ_GLOBAL);
+sqgetGlobalVar('send_to_bcc',$send_to_bcc, $SQ_GLOBAL);
+sqgetGlobalVar('subject',$subject, $SQ_GLOBAL);
+sqgetGlobalVar('body',$body, $SQ_GLOBAL);
+sqgetGlobalVar('mailprio',$mailprio, $SQ_GLOBAL);
+sqgetGlobalVar('request_mdn',$request_mdn, $SQ_GLOBAL);
+sqgetGlobalVar('request_dr',$request_dr, $SQ_GLOBAL);
+sqgetGlobalVar('html_addr_search',$html_addr_search, SQ_FORM);
+sqgetGlobalVar('mail_sent',$mail_sent, SQ_FORM);
+sqgetGlobalVar('passed_id',$passed_id, $SQ_GLOBAL);
+sqgetGlobalVar('passed_ent_id',$passed_ent_id, $SQ_GLOBAL);
 
-sqgetGlobalVar('attach',$attach);
-
-sqgetGlobalVar('draft',$draft);
-sqgetGlobalVar('draft_id',$draft_id);
-sqgetGlobalVar('ent_num',$ent_num);
-sqgetGlobalVar('saved_draft',$saved_draft);
+sqgetGlobalVar('attach',$attach, SQ_POST);
+sqgetGlobalVar('draft',$draft, SQ_POST);
+sqgetGlobalVar('draft_id',$draft_id, $SQ_GLOBAL);
+sqgetGlobalVar('ent_num',$ent_num, $SQ_GLOBAL);
+sqgetGlobalVar('saved_draft',$saved_draft, SQ_FORM);
 
 if ( sqgetGlobalVar('delete_draft',$delete_draft) ) {
     $delete_draft = (int)$delete_draft;
