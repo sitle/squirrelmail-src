@@ -2,8 +2,8 @@
 *** SquirrelMail Stable Series 1.4 ***
 **************************************
 
-Version 1.4.10 - SVN
----------------------
+Version 1.4.10 - 9 May 2007
+---------------------------
   - Drop obsolete ORDB RBL from filters plugin (#1629398).
   - Fix HTML glitches (#1608798, #1628639, #1521389, #1548394, #1704686).
   - Reduce (largely theoretical) chance of reusing existing attachment
@@ -36,6 +36,7 @@ Version 1.4.10 - SVN
   - sqm_baseuri moved to strings.php (#1685114).
   - Added sq_change_text_domain() for plugins to use when switching text
     domains. If plugins use this function, it fixes #1434043.
+  - Added new language: Frisian, thanks to Rinse de Vries.
   - Security: fixes for the HTML filter to counter further XSS exploits:
     HTML attachments containing 'data:' URLs, Internet Explorer-specifc
     charset conversion exploits, and request forgery through included
