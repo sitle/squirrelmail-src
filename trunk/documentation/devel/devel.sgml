@@ -3116,6 +3116,108 @@ Preorder walking gives you the tree from the leaves up. Postorder
 walks the tree from the root node down to the leaves.
 </verb></tscreen>
 
+<sect1>Release Instructions
+<p>
+
+<enum>
+<item><bf/Teamwork/ Before beginning, coordinate the STABLE release with other members of the admin list to ensure proper time for verification and testing of release components (RPM, etc).
+<item><bf/Usual sanity/ Check the code over to make sure we are absolutely ready.
+<item><bf/Documentation/ Update Release Documents
+    <enum>
+         <item> Make sure that the ChangeLog is up to date.
+         <item> Update the ReleaseNotes, keeping the same general format.
+         <item> Compose a three to eight line message you'll post to mailinglists and forums. Include links. (While you're at it, make a simple HTML version of it as well, you'll need it later) Be BRIEF. Keep this message in your editor or on file for later on.
+   </enum>
+<item><bf/Gearing up/ Update the version number strings at 3 places:
+    <enum>
+         <item> Variables in functions/strings.php ($version = '1.2.1', $SQM_INTERNAL_VERSION=array(1,2,1)).
+         <item> ChangeLog
+         <item> ReleaseNotes
+    </enum>
+<item><bf/CVS packaging/
+    <enum>
+         <item> Commit final changes to CVS (ChangeLog, ReleaseNotes, functions/strings.php)
+         <item> Tag CVS with the release number in the format rel-X_Y_Z (rel_1_2_1). Example: run cvs tag rel-1_2_1 from the root of the repository module (the directory with ChangeLog in it).
+         <item> Pull down a brand clean version and package it with this script or this one for stable releases (or you can copy it with scp user@sciurida.squirrelmail.org:/src/www/www/htdocs/dat/release-devel .). (To do this you'll need bash, cvs, ssh, curl, tar, gzip and bzip2) The script assumes you have your public keys installed on sf.net. First parameter is the version numer you're going to make (eg. 1.2.1), second is your sf.net user name.
+         <item> The script uploaded the release files. Now remember there is a cron job at sf.net that cleans up the incoming dir once in a while, so don't go to bed before you've done the next step (huh: don't go to sleep before you're finished making the release)
+     </enum>
+<item><bf/Defrosting/ Prepare CVS for continued development
+    <enum>
+         <item> Go back to your regular CVS development directory.
+         <item> Update the version number variable in functions/strings.php by incrementing the incremental release number by 1 and adding ' cvs' after it ($version = '1.2.2 cvs').
+         <item> Archive the ReleaseNotes for this release like this: cp ReleaseNotes doc/ReleaseNotes/X.Y/Notes-X.Y.Z.txt; cvs add doc/ReleaseNotes/X.Y/Notes-X.Y.Z.txt (for example, to ...1.2/Notes-1.2.1.txt).
+         <item> Commit all these changes to CVS with a note saying that it is ready for continued development.
+    </enum>
+<item><bf/sf.net admin stuff/ Post the release files on SourceForge (you need to be a "release technician" to do this)
+    <enum>
+         <item> Create the new release of files
+            <enum>
+               <item> Log into SourceForge and go to the Admin section.
+               <item> In the admin section, click on the option for "Edit/Release Files"
+               <item> Click on the "add release" button by either the correct file package.
+               <item> Enter the release name in the box show in X.Y.Z format (no SquirrelMail or anything, just X.Y.Z).
+               <item> The next page it shows you will be the same page you get to if you clicked on "edit release" from the "Edit/Release Files" page earlier and selected a release name.
+         </enum>
+         <item> Add the newly uploaded files to the release
+            <enum>
+               <item> Go down to the "add files to this release" section
+               <item> Select the files you recently uploaded (be nice and leave other peoples files alone).
+               <item> Click the "Add Files and/or Refresh View" button.
+            </enum>
+         <item> For each files added (tar.gz, tar.bz2, and zip), one at a time, set the file info correctly.
+            <enum>
+               <item> Set the processor to 'any'.
+               <item> Adjust the "release date", if desired.
+               <item> Set the file type (.bz2 for the tar.bz2 file, .gz for the tar.gz file, .zip for the zip file, and .rpm for the .rpm files).
+               <item> Click the "Update/Refresh" button for that file.
+             </enum>
+         <item> Enter the ChangeLog and ReleaseNotes for this SourceForge file release.
+         <item> Annouce the file release to those monitoring it with the button on the bottom of the page.
+     </enum>
+<item><bf/Enable downloading/ Update the download page for the SquirrelMail website.
+    <enum>
+        <item> SSH into sciurida
+         <item> Change to the web directory for SquirrelMail (currently /srv/www/www/htdocs).
+         <item> Edit download.php and change the version number as necessary. This is a php variable in the top part of the file.
+         <item> Edit plugin_query.php file and change version number. This file informs pupdate plugin users about new release.
+         <item> Calculate MD5 sums for each file ("md5sum &lt;filename&gt;") and store these sums in the "sums/" dir under the name "filename.md5".
+    </enum>
+<item><bf/Get porting assistance/ contact our people who know how to make decent .deb and .rpm files
+    <enum>
+         <item> For Debian, this is taken care of by Thijs Kinkhorst and Jeroen van Wolffelaar
+         <item> RPM's are created by Konstantin Ryabitsev
+         <item> Mail or IM them, and ask them very politlely to take the time to create their files. point them to the download page where they can already grab the .tar.gz
+    </enum>
+<item><bf/Blatant yelling/ Announce the release to the World.
+    <enum>
+         <item> Post the release to the SourceForge news system. (you need to be a "forum moderator" to do this)
+            <enum>
+               <item> Click on News in the SourceForge interface.
+               <item> Add a news item for this release in the SourceForge news system. (The 3 to 8 line message you've made)
+               <item> Submit1 the news, go preview it, and fix it if you did something silly. :)
+            </enum>
+         <item> Add a news item to the SquirrelMail webpage.
+            <enum>
+               <item> Go to the address http://squirrelmail.org/admin and log in.
+               <item> Click on news.
+               <item> Create a brief news item titled in the format 'ANNOUNCE: SquirrelMail X.Y.Z Released'. Use the three to eight line message (you have to use HTML, no wiki pretty formatting here).
+               <item> Submit the news, go preview it, and fix it if you did something silly. :)
+            </enum>
+         <item> Send a message to squirrelmail-announce telling people about the release.
+            <enum>
+               <item> Again, use your brief 3 to 8 line message
+               <item> Approve the message
+                    <enum>
+                     <item> Log in to the squirrelmail-announce administrative interface http://lists.sourceforge.net/lists/admin/squirrelmail-announce
+                     <item> Choose "Tend to pending administrative requests"
+                     <item> Read the message, make sure you made no silly mistake whatsoever, and approve of it
+                     <item> Log out
+                    </enum>
+             </enum>
+          <item>Update freshmeat.net.
+     </enum>
+</enum>
+
 <appendix>
 
 <sect>Links
