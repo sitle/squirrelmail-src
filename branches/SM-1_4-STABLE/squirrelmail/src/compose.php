@@ -61,7 +61,9 @@ if (isset($send) && $send) {
 sqgetGlobalVar('smaction',$action, $SQ_GLOBAL);
 sqgetGlobalVar('session',$session, $SQ_GLOBAL);
 sqgetGlobalVar('mailbox',$mailbox, $SQ_GLOBAL);
-sqgetGlobalVar('identity',$identity, $SQ_GLOBAL);
+if ( !sqgetGlobalVar('identity',$identity, $SQ_GLOBAL) ) {
+    $identity = 0;
+}
 sqgetGlobalVar('send_to',$send_to, $SQ_GLOBAL);
 sqgetGlobalVar('send_to_cc',$send_to_cc, $SQ_GLOBAL);
 sqgetGlobalVar('send_to_bcc',$send_to_bcc, $SQ_GLOBAL);

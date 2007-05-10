@@ -4,6 +4,8 @@
 
 Version 1.4.11 - SVN
 --------------------
+  - Fix regression in compose: when no alternative identities have been
+    defined, the From header would be incorrect. 
 
 Version 1.4.10 - 9 May 2007
 ---------------------------
