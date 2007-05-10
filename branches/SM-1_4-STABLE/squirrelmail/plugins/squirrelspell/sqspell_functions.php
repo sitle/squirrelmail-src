@@ -519,7 +519,7 @@ function sqspell_ckMOD($rMOD){
       || strstr($rMOD, '/')
       || strstr($rMOD, '%')
       || strstr($rMOD, "\\")){
-    echo _("Cute.");
+    echo _("Invalid URL");
     exit;
   }
 }
@@ -530,4 +530,3 @@ function sqspell_ckMOD($rMOD){
  * stuff. :)
  */
 $SQSPELL_VERSION="v0.3.8";
-?>
