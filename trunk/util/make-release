@@ -4,8 +4,9 @@
 set -e
 
 if [ -z $1 ]; then
-    echo "You need to specify the version to be released.";
-    exit;
+    echo You need to specify the version to be released:
+    echo make-release 1.2.2
+    exit
 fi
 dashver=`echo $1 | sed 's/\./_/g'`
 
@@ -47,13 +48,14 @@ chmod ugo+x ./configure ./po/compilepo ./po/mergepo ./po/xgetpo
 echo -- cding up --
 cd ..
 echo -- making .tar.gz --
-tar czvf squirrelmail-$1.tar.gz squirrelmail-$1
+tar cvf squirrelmail-$1.tar.gz squirrelmail-$1
+gzip -9 squirrelmail-$1.tar.gz
 md5sum squirrelmail-$1.tar.gz > squirrelmail-$1.tar.gz.md5
 echo -- making .tar.bz2 --
 tar cjvf squirrelmail-$1.tar.bz2 squirrelmail-$1
 md5sum squirrelmail-$1.tar.bz2 > squirrelmail-$1.tar.bz2.md5
 echo -- making .zip --
-zip -r squirrelmail-$1.zip squirrelmail-$1
+zip -9 -r squirrelmail-$1.zip squirrelmail-$1
 md5sum squirrelmail-$1.zip > squirrelmail-$1.zip.md5
 echo -- optionally making .rpm s --
 rpmbuild -ta squirrelmail-$1.tar.gz || true
