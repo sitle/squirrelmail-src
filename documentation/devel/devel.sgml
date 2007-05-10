@@ -3148,7 +3148,7 @@ svn copy https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/branches/
 <item><bf/Defrosting/ Prepare SVN for continued development
     <enum>
          <item> Go back to your regular SVN development directory.
-         <item> Update the version number variable in functions/strings.php by incrementing the incremental release number by 1 and adding ' \\[SVN\\]' after it ($version = '1.2.2 \\[SVN\\]').
+         <item> Update the version number variable in functions/strings.php by incrementing the incremental release number by 1 and adding <tt>' [SVN]'</tt> after it (<tt>$version = '1.2.2 [SVN]';</tt>).
          <item> Archive the ReleaseNotes for this release like this:
          <tscreen>svn copy ReleaseNotes doc/ReleaseNotes/X.Y/Notes-X.Y.Z.txt</tscreen>
          <item> Commit all these changes to SVN with a note saying that it is ready for continued development.
