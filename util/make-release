@@ -1,0 +1,51 @@
+#!/bin/bash
+# $1 = version
+# $2 = username @ sf
+echo -- making dir --
+rm -rf $1
+mkdir $1
+echo -- cding to dir --
+cd $1
+echo -- setting umask --
+umask 0
+echo -- checking out cvs --
+cvs -d:ext:$2@squirrelmail.cvs.sourceforge.net:/cvsroot/squirrelmail co -r SM-1_4-STABLE squirrelmail
+echo -- renaming dir --
+mv squirrelmail squirrelmail-$1
+echo -- cding to cvs --
+cd squirrelmail-$1
+echo -- updating cvs --
+cvs update -dP
+echo -- removing cvs dirs --
+find -name 'CVS' -prune                         -exec rm -rf {} \;
+echo -- removing .anything files \(except .ht*\) --
+find -iregex '.*/\.[^ht].*'                     -exec rm -rf {} \;
+echo -- setting general permissions --
+find                                            -exec chmod ugo+r,u+w,go-w {} \;
+echo -- setting general file permissions --
+find -type f                                    -exec chmod ugo-x {} \;
+echo -- setting general directory permissions --
+find -type d                                    -exec chmod ugo+x {} \;
+echo -- setting perl permissions --
+find -name '*.pl'                               -exec chmod ugo+x {} \;
+echo -- setting +w on special directories --
+chmod ug+w ./data ./config
+echo -- setting special file permissions --
+chmod ugo+x ./configure ./po/compilepo ./po/mergepo ./po/xgetpo
+echo -- cding up --
+cd ..
+echo -- making .tar.gz --
+tar czvf squirrelmail-$1.tar.gz squirrelmail-$1
+echo -- making .tar.bz2 --
+tar cjvf squirrelmail-$1.tar.bz2 squirrelmail-$1
+echo -- making .zip --
+zip -r squirrelmail-$1.zip squirrelmail-$1
+echo -- making .rpm s --
+rpmbuild -ta squirrelmail-1.2.8.tar.gz
+echo -- uploading to upload.sf.net --
+curl -T squirrelmail-$1.tar.gz -u anonymous:wouter@teepe.com ftp://upload.sf.net/incoming/
+curl -T squirrelmail-$1.tar.bz2 -u anonymous:wouter@teepe.com ftp://upload.sf.net/incoming/
+curl -T squirrelmail-$1.zip -u anonymous:wouter@teepe.com ftp://upload.sf.net/incoming/
+curl -T squirrelmail-$1-1.7.x.noarch.rpm -u anonymous:wouter@teepe.com ftp://upload.sf.net/incoming/
+curl -T squirrelmail-$1-1.src.rpm -u anonymous:wouter@teepe.com ftp://upload.sf.net/incoming/
+echo -- finished so far --
