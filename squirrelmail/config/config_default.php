@@ -904,10 +904,10 @@ $motd = "";
 /**
  * To install plugins, just add elements to this array that have
  * the plugin directory name relative to the /plugins/ directory.
- * For instance, for the 'sqclock' plugin, you'd put a line like
+ * For instance, for the 'squirrelspell' plugin, you'd put a line like
  * the following.
- *    $plugins[0] = 'sqclock';
- *    $plugins[1] = 'attachment_common';
+ *    $plugins[0] = 'squirrelspell';
+ *    $plugins[1] = 'listcommands';
  */
 // Add list of enabled plugins here
 
