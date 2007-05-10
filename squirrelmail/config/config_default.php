@@ -448,7 +448,7 @@ $noselect_fix_enable = false;
  *   It is a possible security hole to have a writable directory
  *   under the web server's root directory (ex: /home/httpd/html).
  *   It is possible to put the data directory anywhere you would like;
- *   it is strongly advised that it is directly web-accessible.
+ *   it is strongly advised that it is NOT directly web-accessible.
  *
  *   The path name can be absolute or relative (to the config directory).
  *   If it is relative, it must use the SM_PATH constant.
