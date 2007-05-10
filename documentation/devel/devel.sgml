@@ -3134,7 +3134,7 @@ walks the tree from the root node down to the leaves.
          <item> <tt>ChangeLog</tt>
          <item> <tt>ReleaseNotes</tt>
     </enum>
-<item><bf/CVS packaging/
+<item><bf/SVN packaging/
     <enum>
          <item> Commit final changes to Subversion (ChangeLog, ReleaseNotes, functions/strings.php)
          <item> Tag SVN with the release number in the format rel-X_Y_Z (rel-1_2_1). Example:
@@ -3142,7 +3142,9 @@ walks the tree from the root node down to the leaves.
 svn copy https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/branches/SM-1_4-STABLE/squirrelmail \
     https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/rel-1_2_1
             </tscreen>
-         <item> Pull down a brand clean version and package it with this script or this one for stable releases (or you can copy it with scp user@sciurida.squirrelmail.org:/src/www/www/htdocs/dat/release-devel .). (To do this you'll need bash, svn, ssh, curl, tar, gzip, zip, bzip2 and optionally rpmbuild) First parameter is the version numer you're going to make (eg. 1.2.1).
+         <item> Use the script <tt>make-release</tt> <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/util/make-release" name="found in SVN"> under the <tt>utils/</tt> dir. The only parameter
+         is the version to release. It will download the tagged SVN copy, pack it up nicely and upload it to SF.net.
+         You will need the following tools: bash, svn, ssh, curl, tar, gzip, zip, bzip2 and optionally rpmbuild.
          <item> The script uploaded the release files. Now remember there is a cron job at sf.net that cleans up the incoming dir once in a while, so don't go to bed before you've done the next step (huh: don't go to sleep before you're finished making the release)
      </enum>
 <item><bf/Defrosting/ Prepare SVN for continued development
@@ -3183,7 +3185,7 @@ svn copy https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/branches/
          <item> Change to the web directory for SquirrelMail (currently /srv/www/www/htdocs).
          <item> Edit download.php and change the version number as necessary. This is a php variable in the top part of the file.
          <item> Edit plugin_query.php file and change version number. This file informs pupdate plugin users about new release.
-         <item> Calculate MD5 sums for each file ("md5sum &lt;filename&gt;") and store these sums in the "sums/" dir under the name "filename.md5".
+         <item> Upload the md5sums that make-release calculated into the <tt>sums/</tt> dir.
     </enum>
 <item><bf/Get porting assistance/ contact our people who know how to make decent .deb and .rpm files
     <enum>
@@ -3201,7 +3203,7 @@ svn copy https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/branches/
             </enum>
          <item> Add a news item to the SquirrelMail webpage.
             <enum>
-               <item> Go to the address http://squirrelmail.org/admin and log in.
+               <item> Go to the address <url name="http://squirrelmail.org/admin" url="http://squirrelmail.org/admin"> and log in.
                <item> Click on news.
                <item> Create a brief news item titled in the format 'ANNOUNCE: SquirrelMail X.Y.Z Released'. Use the three to eight line message (you have to use HTML, no wiki pretty formatting here).
                <item> Submit the news, go preview it, and fix it if you did something silly. :)
@@ -3211,13 +3213,14 @@ svn copy https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/branches/
                <item> Again, use your brief 3 to 8 line message
                <item> Approve the message
                     <enum>
-                     <item> Log in to the squirrelmail-announce administrative interface http://lists.sourceforge.net/lists/admin/squirrelmail-announce
+                     <item> Log in to the <url name="squirrelmail-announce administrative interface"
+                        url="http://lists.sourceforge.net/lists/admin/squirrelmail-announce">.
                      <item> Choose "Tend to pending administrative requests"
                      <item> Read the message, make sure you made no silly mistake whatsoever, and approve of it
                      <item> Log out
                     </enum>
              </enum>
-          <item>Update freshmeat.net.
+          <item>Update <url name="freshmeat.net" url="http://freshmeat.net/projects/squirrelmail/">.
      </enum>
 </enum>
 
