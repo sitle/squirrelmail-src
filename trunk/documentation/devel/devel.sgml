@@ -2304,18 +2304,32 @@ always validate that the calling client has a current login session. Thus, all
 such pages should start with the following code:
 
 <tscreen><verb>
-if (file_exists('../../include/init.php'))
-   include_once('../../include/init.php');
-else if (file_exists('../../include/validate.php'))
-{
-   define('SM_PATH', '../../');
-   include_once(SM_PATH . 'include/validate.php');
-}
-else
-{
-   chdir('..');
-   define('SM_PATH', '../');
-   include_once(SM_PATH . 'src/validate.php');
+/*
+ * Pages that are called directly by the client browser need to load the
+ * SquirrelMail framework. This differs between various SquirrelMail versions.
+ * Plugins that doesn't support all SquirrelMail versions can strip some of this
+ * code away.
+ */
+if (file_exists('../../include/init.php')) {
+    /*
+     * "include/init.php" is used since SquirrelMail 1.5.2. This isn't needed
+     * for plugins that doesn't support SquirrelMail 1.5.2.
+     */
+    include_once('../../include/init.php');
+} elseif (file_exists('../../include/validate.php')) {
+    /*
+     * "include/validate.php" is used since SquirrelMail 1.4.0 and 1.5.0.
+     */
+    define('SM_PATH', '../../');
+    include_once(SM_PATH . 'include/validate.php');
+} else {
+    /*
+     * "src/validate.php" is used since SquirrelMail 1.2.0. This isn't needed
+     * for plugins that doesn't support SquirrelMail 1.2.
+     */
+    chdir('..');
+    define('SM_PATH', '../');
+    include_once(SM_PATH . 'src/validate.php');
 }
 </verb></tscreen>
 
