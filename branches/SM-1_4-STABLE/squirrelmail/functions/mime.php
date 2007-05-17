@@ -1553,6 +1553,7 @@ function sq_deent(&$attvalue, $regex, $hex=false){
  * @param  $add_attr_to_tag See description for sq_sanitize
  * @param  $message         message object
  * @param  $id              message id
+ * @param  $mailbox         mailbox
  * @return                  Array with modified attributes.
  */
 function sq_fixatts($tagname,
