@@ -2307,7 +2307,7 @@ such pages should start with the following code:
 /*
  * Pages that are called directly by the client browser need to load the
  * SquirrelMail framework. This differs between various SquirrelMail versions.
- * Plugins that doesn't support all SquirrelMail versions can strip some of this
+ * Plugins that don't support all SquirrelMail versions can strip some of this
  * code away.
  */
 if (file_exists('../../include/init.php')) {
