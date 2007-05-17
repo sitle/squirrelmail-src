@@ -489,7 +489,7 @@ function parseArray($read,&$i) {
  * class/mime/Rfc822Header.php.
  */
 function parsePriority($sValue) {
-    $aValue=split('/\w/',trim($sValue));
+    $aValue=preg_split('/\s/',trim($sValue));
     $value = strtolower(array_shift($aValue));
     if ( is_numeric($value) ) {
         return $value;
