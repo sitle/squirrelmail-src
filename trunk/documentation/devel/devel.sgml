@@ -2312,23 +2312,21 @@ such pages should start with the following code:
  */
 if (file_exists('../../include/init.php')) {
     /*
-     * "include/init.php" is used in the development branch since SquirrelMail
-     * 1.5.2. This isn't needed for plugins that don't support SquirrelMail
-     * 1.5.2 and later.
+     * "include/init.php" is used since SquirrelMail 1.5.2. This isn't needed
+     * for plugins that don't support SquirrelMail 1.5.2 and later.
      */
     include_once('../../include/init.php');
 } elseif (file_exists('../../include/validate.php')) {
     /*
-     * "include/validate.php" is used since in the current stable branch since
-     * SquirrelMail 1.4.0 and in the development branch versions 1.5.0 and
+     * "include/validate.php" is used since SquirrelMail 1.4.0 until version
      * 1.5.1.
      */
     define('SM_PATH', '../../');
     include_once(SM_PATH . 'include/validate.php');
 } else {
     /*
-     * "src/validate.php" is used old stable branch since SquirrelMail 1.2.0.
-     * This isn't needed for plugins that don't support SquirrelMail 1.2.
+     * "src/validate.php" is used in SquirrelMail 1.2. This isn't needed for
+     * plugins that don't support SquirrelMail 1.2.
      */
     chdir('..');
     define('SM_PATH', '../');
