@@ -154,7 +154,7 @@ echo html_tag( 'table',
                                 'right', '', 'width="30%"' ) .
                                 html_tag( 'td',
 				    addInput($username_form_name, $loginname_value),
-                                'left', '', 'width="*"' )
+                                'left', '', 'width="70%"' )
                                 ) . "\n" .
                             html_tag( 'tr',
                                 html_tag( 'td',
@@ -165,7 +165,7 @@ echo html_tag( 'table',
 				    addHidden('js_autodetect_results', SMPREF_JS_OFF).
                     $mailtofield . 
 				    addHidden('just_logged_in', '1'),
-                                'left', '', 'width="*"' )
+                                'left', '', 'width="70%"' )
                             ) ,
                         'center', $color[4], 'border="0" width="100%"' ) ,
                     'left',$color[4] )

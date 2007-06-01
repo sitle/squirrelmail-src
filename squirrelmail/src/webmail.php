@@ -154,12 +154,12 @@ switch($right_frame_file) {
 } 
 
 if ($location_of_bar == 'right') {
-    $output .= "<frame src=\"$right_frame_url\" name=\"right\" frameborder=\"1\" />\n" .
-               "<frame src=\"left_main.php\" name=\"left\" frameborder=\"1\" />\n";
+    $output .= "<frame src=\"$right_frame_url\" name=\"right\" frameborder=\"1\">\n" .
+               "<frame src=\"left_main.php\" name=\"left\" frameborder=\"1\">\n";
 }
 else {
-    $output .= "<frame src=\"left_main.php\" name=\"left\" frameborder=\"1\" />\n".
-               "<frame src=\"$right_frame_url\" name=\"right\" frameborder=\"1\" />\n";
+    $output .= "<frame src=\"left_main.php\" name=\"left\" frameborder=\"1\">\n".
+               "<frame src=\"$right_frame_url\" name=\"right\" frameborder=\"1\">\n";
 }
 $ret = concat_hook_function('webmail_bottom', $output);
 if($ret != '') {
