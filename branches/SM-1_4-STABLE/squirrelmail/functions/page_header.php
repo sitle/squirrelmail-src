@@ -32,17 +32,17 @@ function displayHtmlHeader( $title = 'SquirrelMail', $xtra = '', $do_hook = TRUE
 
     if ( !isset( $custom_css ) || $custom_css == 'none' ) {
         if ($theme_css != '') {
-            echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"$theme_css\" />";
+            echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"$theme_css\">";
         }
     } else {
         echo '<link rel="stylesheet" type="text/css" href="' .
-             $base_uri . 'themes/css/'.$custom_css.'" />';
+             $base_uri . 'themes/css/'.$custom_css.'">';
     }
 
     if ($squirrelmail_language == 'ja_JP') {
         // Why is it added here? Header ('Content-Type:..) is used in i18n.php
         echo "<!-- \xfd\xfe -->\n";
-        echo '<meta http-equiv="Content-type" content="text/html; charset=euc-jp" />' . "\n";
+        echo '<meta http-equiv="Content-type" content="text/html; charset=euc-jp">' . "\n";
     }
 
     if ($do_hook) {
@@ -53,14 +53,14 @@ function displayHtmlHeader( $title = 'SquirrelMail', $xtra = '', $do_hook = TRUE
 
     /* work around IE6's scrollbar bug */
     echo <<<ECHO
-<!--[if IE 6]>
 <style type="text/css">
+<!--[if IE 6]>
 /* avoid stupid IE6 bug with frames and scrollbars */
 body {
     width: expression(document.documentElement.clientWidth - 30);
 }
-</style>
 <![endif]-->
+</style>
 
 ECHO;
 

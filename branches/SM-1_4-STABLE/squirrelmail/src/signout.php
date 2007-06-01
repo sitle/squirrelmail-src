@@ -63,7 +63,7 @@ set_up_language($squirrelmail_language, true, true);
 <?php
     if ($theme_css != '') {
 ?>
-   <link rel="stylesheet" type="text/css" href="<?php echo $theme_css; ?>" />
+   <link rel="stylesheet" type="text/css" href="<?php echo $theme_css; ?>">
 <?php
     }
 ?>
