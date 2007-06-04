@@ -1296,7 +1296,7 @@ the following values:
 array(
    'english_name' => 'My Plugin Name',   // different than directory name
    'version' => '1.0.0',
-   'required_sm_vesion' => '1.5.2',
+   'required_sm_version' => '1.5.2',
    'summary' => 'This is the short plugin description',
    'details' => 'This is the long, detailed plugin description',
    'requires_configuration' => 1,  // can be 0 if no config file required
@@ -1340,7 +1340,7 @@ function demo_info()
    return array(
                   'english_name' => 'Favorite Colors Demo',
                   'version' => '1.0',
-                  'required_sm_vesion' => '1.4.0', 
+                  'required_sm_version' => '1.4.0', 
                   'summary' => 'Shows user\'s favorite color in folder list.',
                   'details' => 'This plugin will show the user\'s favorite color above the folder list.',
                   'requires_configuration' => 0,
