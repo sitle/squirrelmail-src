@@ -665,7 +665,7 @@ function sqimap_get_small_header_list($imap_stream, $msg_list, $show_num=false) 
                                 }
                                 break;
                             case 'content-type':
-                                $type = $value;
+                                $type = strtolower($value);
                                 if ($pos = strpos($type, ";")) {
                                     $type = substr($type, 0, $pos);
                                 }
