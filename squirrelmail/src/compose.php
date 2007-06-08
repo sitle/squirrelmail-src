@@ -304,7 +304,7 @@ if (sqsession_is_registered('session_expired_post')) {
             }
         }
 
-        $compose_messages = unserialize(urldecode($restoremessages));
+        $compose_messages = unserialize($restoremessages);
         sqsession_register($compose_messages,'compose_messages');
         sqsession_register($composesession,'composesession');
         if (isset($send)) {
@@ -989,7 +989,7 @@ function showInputForm ($session, $values=false) {
         $onfocus = ' onfocus="alreadyFocused=true;"';
     else
         $onfocus = '';
-
+    
     $composeMessage = $compose_messages[$session];
     if ($values) {
         $send_to = $values['send_to'];
@@ -1209,7 +1209,8 @@ function showInputForm ($session, $values=false) {
             '                    </tr>' . "\n";
 
         $s_a = array();
-        if ($composeMessage->entities) {
+        // composeMessage can be empty when coming from a restored session
+        if (is_object($composeMessage) && $composeMessage->entities) {
             foreach ($composeMessage->entities as $key => $attachment) {
                 $attached_file = $attachment->att_local_name;
                 if ($attachment->att_local_name || $attachment->body_part) {
