@@ -1298,7 +1298,7 @@ $base_uri = implode('/',array_slice($a,0,$i)). '/';
 
 define('SM_PATH',$sSM_PATH);
 define('SM_BASE_URI', $base_uri);
-require(SM_PATH . 'conf.php');
+require($confFile);
 
 }
 
