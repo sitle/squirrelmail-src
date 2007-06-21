@@ -1265,3 +1265,60 @@ $this->ask_user_info = true;
 }
 
 }
+
+class SQMConfigFile extends SQMConfig {
+
+function SQMConfigFile($confFile) {
+
+/**
+ * calculate SM_PATH and calculate the base_uri
+ * assumptions made: init.php is only called from plugins or from the src dir.
+ * files in the plugin directory may not be part of a subdirectory called "src"
+ *
+ */
+if (isset($_SERVER['SCRIPT_NAME'])) {
+    $a = explode('/',$_SERVER['SCRIPT_NAME']);
+} elseif (isset($HTTP_SERVER_VARS['SCRIPT_NAME'])) {
+    $a = explode('/',$HTTP_SERVER_VARS['SCRIPT_NAME']);
+} else {
+    $error = 'Unable to detect script environment. '
+	.'Please test your PHP settings and send PHP core config, $_SERVER '
+	.'and $HTTP_SERVER_VARS to SquirrelMail developers.';
+    die($error);
+}
+$sSM_PATH = '';
+for($i = count($a) -2;$i > -1; --$i) {
+    $sSM_PATH .= '../';
+    if ($a[$i] === 'src' || $a[$i] === 'plugins') {
+        break;
+    }
+}
+
+$base_uri = implode('/',array_slice($a,0,$i)). '/';
+
+define('SM_PATH',$sSM_PATH);
+define('SM_BASE_URI', $base_uri);
+require(SM_PATH . 'conf.php');
+
+}
+
+}
+
+class SQMConfigDB extends SQMConfig {
+
+}
+
+//$sqmConfc = new SQMConfigDB("db uri");
+
+$sqmConfa = new SQMConfigFile("conf.php");
+
+$sqmConfb = new SQMConfig;
+
+print "file org_name: '$sqmConfa->org_name'\n";
+print "default org_name: '$sqmConfb->org_name'\n";
+print "file org_title: '$sqmConfa->org_title'\n";
+print "default org_title: '$sqmConfb->org_title'\n";
+
+/* php4 lacks encapsulation for member vars */
+$sqmConfb->org_title = "SQMSQM";
+print "modified org_title: '$sqmConfb->org_title'\n";
