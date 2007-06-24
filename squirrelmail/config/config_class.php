@@ -1308,6 +1308,7 @@ class SQMConfigDB extends SQMConfig {
 
 }
 
+/* DEBUG
 //$sqmConfc = new SQMConfigDB("db uri");
 
 $sqmConfa = new SQMConfigFile("conf.php");
@@ -1319,6 +1320,7 @@ print "default org_name: '$sqmConfb->org_name'\n";
 print "file org_title: '$sqmConfa->org_title'\n";
 print "default org_title: '$sqmConfb->org_title'\n";
 
-/* php4 lacks encapsulation for member vars */
+// php4 lacks encapsulation for member vars
 $sqmConfb->org_title = "SQMSQM";
 print "modified org_title: '$sqmConfb->org_title'\n";
+*/
