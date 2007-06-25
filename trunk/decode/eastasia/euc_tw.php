@@ -28,15 +28,15 @@ function charset_decode_euc_tw ($string,$save_html=false) {
     // this is CPU intensive task. Use recode functions if they are available.
     if (function_exists('recode_string')) {
         // if string is already sanitized, undo htmlspecial chars
-        if (! $save_html)
-            $string=str_replace(array('&amp;','&quot;','&lt;','&gt;'),array('&','"','<','>'),$string);
-
+        if (! $save_html) {
+            $string=str_replace(array('&quot;','&lt;','&gt;','&amp;'),array('"','<','>','&'),$string);
+        }
         $string = recode_string("euc-tw..html",$string);
 
         // if string sanitizing is not needed, undo htmlspecialchars applied by recode.
-        if ($save_html)
-            $string=str_replace(array('&amp;','&quot;','&lt;','&gt;'),array('&','"','<','>'),$string);
-
+        if ($save_html) {
+            $string=str_replace(array('&quot;','&lt;','&gt;','&amp;'),array('"','<','>','&'),$string);
+        }
         return $string;
     }
 
@@ -61,4 +61,3 @@ function charset_decode_euc_tw ($string,$save_html=false) {
     // pure php decoding is not implemented.
     return $string;
 }
-?>

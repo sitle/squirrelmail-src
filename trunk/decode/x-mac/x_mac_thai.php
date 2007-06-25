@@ -178,4 +178,3 @@ function charset_decode_x_mac_thai ($string) {
 
     return $string;
 }
-?>

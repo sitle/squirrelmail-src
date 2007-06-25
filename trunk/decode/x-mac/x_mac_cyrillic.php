@@ -184,4 +184,3 @@ function charset_decode_x_mac_cyrillic ($string) {
 
     return $string;
 }
-?>

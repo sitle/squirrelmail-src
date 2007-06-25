@@ -6977,4 +6977,3 @@ function get_jis0208_1983_symbol($symbol) {
     }
     return $ret;
 }
-?>

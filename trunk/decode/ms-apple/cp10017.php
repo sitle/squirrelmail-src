@@ -167,4 +167,3 @@ function charset_decode_cp10017 ($string) {
 
     return $string;
 }
-?>
