@@ -164,6 +164,7 @@ function change_to_rel_path($old_path) {
  *     ../images/logo.gif      --> SM_PATH . 'images/logo.gif'
  *     images/logo.gif         --> SM_PATH . 'config/images/logo.gif'
  *     /absolute/path/logo.gif --> '/absolute/path/logo.gif'
+ *     C:/absolute/win/path    --> 'C:/absolute/win/path'
  *     http://whatever/        --> 'http://whatever'
  *  
  * @param string $old_path path that has to be converted
@@ -173,7 +174,8 @@ function change_to_rel_path($old_path) {
 function change_to_sm_path($old_path) {
     if ( $old_path === '' || $old_path == "''" ) {
         return "''";
-    } elseif ( preg_match("/^(\/|http)/", $old_path) ) {
+    } elseif ( preg_match("/^(\/|http)/", $old_path) ||
+        substr($old_path,1,2) == ':/' ) {
         return "'" . $old_path . "'";
     } elseif ( preg_match("/^(\$|SM_PATH)/", $old_path) ) {
         return $old_path;
