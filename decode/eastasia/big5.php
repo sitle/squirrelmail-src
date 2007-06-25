@@ -77,7 +77,8 @@ function charset_decode_big5 ($string, $save_html=false) {
     if (function_exists('mb_convert_encoding') && 
         function_exists('sq_mb_list_encodings') &&
         check_php_version(4,3,0) &&
-        in_array('big5',sq_mb_list_encodings())) {
+        (in_array('big5',sq_mb_list_encodings()) ||
+         in_array('big-5',sq_mb_list_encodings()))) {
         return mb_convert_encoding($string,'HTML-ENTITIES','BIG5');
     }
 
