@@ -835,49 +835,6 @@ function sqimap_get_message($imap_stream, $id, $mailbox) {
     return $msg;
 }
 
-
-/**
- * Wrapper function that reformats the header information.
- * Obsolete?
- */
-function sqimap_get_message_header($imap_stream, $id, $mailbox) {
-    global $uid_support;
-    $read = sqimap_run_command ($imap_stream, "FETCH $id BODY[HEADER]", true, $response, $message, $uid_support);
-    $header = sqimap_get_header($imap_stream, $read);
-    $header->id = $id;
-    $header->mailbox = $mailbox;
-    return $header;
-}
-
-
-/**
- * Wrapper function that reformats the entity header information.
- * Obsolete?
- */
-function sqimap_get_ent_header($imap_stream, $id, $mailbox, $ent) {
-    global $uid_support;
-    $read = sqimap_run_command ($imap_stream, "FETCH $id BODY[$ent.HEADER]", true, $response, $message, $uid_support);
-    $header = sqimap_get_header($imap_stream, $read);
-    $header->id = $id;
-    $header->mailbox = $mailbox;
-    return $header;
-}
-
-
-/**
- * Function to get the mime headers
- * Obsolete?
- */
-function sqimap_get_mime_ent_header($imap_stream, $id, $mailbox, $ent) {
-    global $uid_support;
-    $read = sqimap_run_command ($imap_stream, "FETCH $id:$id BODY[$ent.MIME]", true, $response, $message, $uid_support);
-    $header = sqimap_get_header($imap_stream, $read);
-    $header->id = $id;
-    $header->mailbox = $mailbox;
-    return $header;
-}
-
-
 /**
  * Copies specified messages to specified folder
  *
