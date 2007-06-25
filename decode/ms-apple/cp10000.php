@@ -169,4 +169,3 @@ function charset_decode_cp10000 ($string) {
 
     return $string;
 }
-?>

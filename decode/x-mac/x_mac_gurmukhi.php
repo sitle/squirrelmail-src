@@ -144,4 +144,4 @@ function charset_decode_x_mac_gurmukhi ($string) {
 
     return $string;
 }
-?>
+

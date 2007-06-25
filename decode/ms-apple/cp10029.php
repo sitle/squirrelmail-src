@@ -168,4 +168,3 @@ function charset_decode_cp10029 ($string) {
 
     return $string;
 }
-?>

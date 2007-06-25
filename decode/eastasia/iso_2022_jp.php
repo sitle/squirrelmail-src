@@ -25,9 +25,9 @@ function charset_decode_iso_2022_jp ($string, $save_html=false) {
         return $string;
 
     // undo htmlspecial chars (they can break iso-2022-jp)
-    if (! $save_html)
-        $string=str_replace(array('&amp;','&quot;','&lt;','&gt;'),array('&','"','<','>'),$string);
-
+    if (! $save_html) {
+        $string=str_replace(array('&quot;','&lt;','&gt;','&amp;'),array('"','<','>','&'),$string);
+    }
     // recode
     // this is CPU intensive task. Use recode functions if they are available. 
     if (function_exists('recode_string')) {
@@ -35,9 +35,9 @@ function charset_decode_iso_2022_jp ($string, $save_html=false) {
         $string = recode_string("iso-2022-jp..html",$string);
 
         // if string sanitizing is not needed, undo htmlspecialchars applied by recode.
-        if ($save_html)
-            $string=str_replace(array('&amp;','&quot;','&lt;','&gt;'),array('&','"','<','>'),$string);
-
+        if ($save_html) {
+            $string=str_replace(array('&quot;','&lt;','&gt;','&amp;'),array('"','<','>','&'),$string);
+        }
         return $string;
     }
 
@@ -93,4 +93,3 @@ function charset_decode_iso_2022_jp ($string, $save_html=false) {
     }
     return $ret;
 }
-?>

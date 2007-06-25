@@ -185,4 +185,3 @@ function charset_decode_x_mac_arabic ($string) {
 
     return $string;
 }
-?>

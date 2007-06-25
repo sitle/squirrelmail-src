@@ -7555,4 +7555,3 @@ function charset_decode_x_mac_chinsimp ($string) {
 
     return $ret;
 }
-?>

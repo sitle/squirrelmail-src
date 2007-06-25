@@ -153,4 +153,3 @@ function charset_decode_x_mac_gujarati ($string) {
 
     return $string;
 }
-?>
