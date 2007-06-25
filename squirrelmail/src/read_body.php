@@ -176,7 +176,7 @@ function SendMDN ( $mailbox, $passed_id, $sender, $message, $imapConnection) {
     }
     $rfc822_header->content_type = $content_type;
     $rfc822_header->to[] = $header->dnt;
-    $rfc822_header->subject = _("Read:") . ' ' . encodeHeader($header->subject);
+    $rfc822_header->subject = _("Read:") . ' ' . decodeHeader($header->subject, true, false);
 
     // FIX ME, use identity.php from SM 1.5. Change this also in compose.php
 
