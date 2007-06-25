@@ -228,6 +228,7 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
                             we prohibid that literal responses appear in the
                             outer loop so we can trust the untagged and
                             tagged info provided by $read */
+                        $read_literal = false;
                         if ($s === "}\r\n") {
                             $j = strrpos($read,'{');
                             $iLit = substr($read,$j+1,-3);
@@ -252,7 +253,9 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
                             if ($read === false) { /* error */
                                 break 4; /* while while switch while */
                             }
-                            $fetch_data[] = $read;
+                            $s = substr($read,-3);
+                            $read_literal = true;
+                            continue;
                         } else {
                             $fetch_data[] = $read;
                         }
@@ -265,7 +268,7 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
                         /* check for next untagged reponse and break */
                         if ($read{0} == '*') break 2;
                         $s = substr($read,-3);
-                    } while ($s === "}\r\n");
+                    } while ($s === "}\r\n" || $read_literal);
                     $s = substr($read,-3);
                 } while ($read{0} !== '*' &&
                          substr($read,0,strlen($tag)) !== $tag);
