@@ -6,6 +6,12 @@ HORRIBLE UGLY SQM CONFIG PHP
 
 quick and dirty port of conf.pl
 
+organization of this file (4 parts):
+I. INIT - initialization
+II. FUNCTIONS - functions defined here
+III. POST - handle config data from POST
+IV. INTERFACE - output menu/panel interface
+
 things to do:
 -more elegant interface
     -better handling of conditional settings
@@ -20,12 +26,18 @@ things to do:
 **********************/
 
 
+/*********************
+
+I. INIT
+
+**********************/
+
 require("config_class.php");
 require("../functions/global.php");
 
-if ( file_exists(".conf.php") ) {
-    $sqmConf = new SQMConfigFile(".conf.php");
-    $status_msg .= "Read temp configuration (.conf.php). ";
+if ( file_exists("/tmp/conf.php") ) {
+    $sqmConf = new SQMConfigFile("/tmp/conf.php");
+    $status_msg .= "Read temp configuration (/tmp/conf.php). ";
 } elseif ( file_exists("conf.php") ) {
     $sqmConf = new SQMConfigFile("conf.php");
     $status_msg .= "Read site configuation (conf.php). ";
@@ -39,15 +51,27 @@ if ( file_exists(".conf.php") ) {
 
 /******************
 
+II. FUNCTIONS
+
+functions reside below
+
+******************/
+
+
+
+/******************
+
 CODE FOR CONFIG.PHP
 
-below code can be used to import old config.php
-however for the most part we use SQMConfig class
-*******************
-*******************
+-below code can be used to import old config.php
+-code is only partially complete, needs further modification
+-variables will be loaded locally into the function as they
+ appear in the config.php file
+-for the most part we should use SQMConfig class
+
 *******************/
 
-
+function oldConfig() {
     $confFile = fopen("config.php",r);
     if ( !$confFile ) {
         $confFile = fopen("config_default.php",r);
@@ -231,10 +255,19 @@ however for the most part we use SQMConfig class
                      } else {
                          ${ $options[0] } = $options[1];
                      }
-        }
-}
+            }
+    }
 
 fclose($confFile);
+}
+
+
+/******************
+
+change_to_rel_path is used to compute the appropriate
+relative path on the server based on SM_PATH
+
+*******************/
 
 function change_to_rel_path($oldPath) {
 
@@ -248,25 +281,73 @@ function change_to_rel_path($oldPath) {
     return $newPath;
 }
 
+/********************
+
+write_config() writes the configuration
+data to a file
+
+-currently /tmp/ is hardcoded and this
+ needs to be fixed
+
+********************/
+
 function write_config() {
 
     global $status_msg;
+    global $sqmConf;
 
-    if ( !is_writable(".conf.php") ) {
-        $status_msg .= "ERROR: .conf.php is not writable with current permissions. ";
+    if ( !is_writable("/tmp/") && !file_exists("/tmp/conf.php") ) {
+        $status_msg .= "ERROR: /tmp/conf.php is not writable with current permissions. ";
     } else {
 
-        $confOut = fopen('.conf.php','w');
+        $confOut = fopen('/tmp/conf.php','w');
         if ( !isset($confOut) ) {
-            $status_msg .= "ERROR: could not open .conf.php for writing. ";
+            $status_msg .= "ERROR: could not open /tmp/conf.php for writing. ";
         } else {
 
-            $header = "<?php\n\n/**\n * SquirrelMail Configuration File\n * Created using make_conf.php\n *\n\n";
-
+            $header = "<?php\n\n/**\n * SquirrelMail Configuration File\n * Created using make_conf.php\n**/\n\n";
 
             fwrite($confOut,$header);
+            
+            $orgprefs = "\$this->org_name      = \"$sqmConf->org_name\";\n";
+            $orgprefs .= "\$this->org_logo      = \"$sqmConf->org_logo\";\n";
+            $orgprefs .= "\$this->org_logo_width  = '$sqmConf->org_logo_width';\n";
+            $orgprefs .= "\$this->org_logo_height = '$sqmConf->org_logo_height';\n";
+            $orgprefs .= "\$this->org_title     = \"$sqmConf->org_title\";\n";
+            $orgprefs .= "\$this->signout_page  = '$sqmConf->signout_page';\n";
+            $orgprefs .= "\$this->frame_top     = '$sqmConf->frame_top';\n\n";
+            $orgprefs .= "\$this->provider_uri  = '$sqmConf->provider_uri';\n\n";
+            $orgprefs .= "\$this->provider_name = '$sqmConf->provider_name';\n\n";
+            
+            fwrite($confOut,$orgprefs);
+            
+            $motd = "\$this->motd = \"$sqmConf->motd\"\n\n";
+            
+            fwrite($confOut,$motd);
+            
+            $langsetts = "";
+            
+            fwrite($confOut,$langsetts);
+            
+            $serversetts = "\$this->domain                 = '$sqmConf->domain'\n";
+            $serversetts .= "\$this->imapServerAddress      = '$sqmConf->imapServerAddress'\n";
+            $serversetts .= "\$this->imapPort               = $sqmConf->imapPort\n";
+            $serversetts .= "\$this->useSendmail            = $sqmConf->useSendmail\n";
+            $serversetts .= "\$this->smtpServerAddress      = '$sqmConf->smtpServerAddress'\n";
+            $serversetts .= "\$this->smtpPort               = $sqmConf->smtpport\n";
+            $serversetts .= "\$this->sendmail_path          = '$sqmConf->sendmail_path'\n";
+            $serversetts .= "\$this->sendmail_args          = '$sqmConf->sendmail_args'\n";
+            $serversetts .= "\$this->pop_before_smtp        = $sqmConf->pop_before_smtp\n";
+            $serversetts .= "\$this->imap_server_type       = '$sqmConf->imap_server_type'\n";
+            $serversetts .= "\$this->invert_time            = $sqmConf->invert_time\n";
+            $serversetts .= "\$this->optional_delimiter     = '$sqmConf->optional_delimiter'\n";
+            $serversetts .= "\$this->encode_header_key      = '$sqmConf->encode_header_key'\n\n";
+            
+            fwrite($confOut,$serversetts);
+            
+            $folddefaults = "";
 
-            $status_msg .= "Wrote configuration file .conf.php. ";
+            $status_msg .= "Wrote configuration file /tmp/conf.php. ";
         }
     }
 
@@ -274,7 +355,7 @@ function write_config() {
 
 /**************************
 
-PROCESS POST DATA
+III. POST DATA PROCESSING
 
 **************************/
 
@@ -291,6 +372,7 @@ if ( sqGetGlobalVar('saveConf',$saveConf,SQ_POST) ) {
         $org_logo_width_old = $sqmConf->org_logo_width;
         $org_logo_height_old = $sqmConf->org_logo_height;
         $org_title_old = $sqmConf->org_title;
+        $signout_page_old = $sqmConf->signout_page;
         $frame_top_old = $sqmConf->frame_top;
         $provider_uri_old = $sqmConf->provider_uri;
         $provider_name_old = $sqmConf->provider_name;
@@ -329,6 +411,12 @@ if ( sqGetGlobalVar('saveConf',$saveConf,SQ_POST) ) {
             $sqmConf->org_title = preg_replace('/\"/','\'',$sqmConf->org_title);
         }
 
+        if ( $sqmConf->signout_page == '' ) {
+            $sqmConf->signout_page = $signout_page_old;
+        } else {
+            $sqmConf->signout_page = preg_replace('/^\s+$/','',$sqmConf->signout_page);
+        }
+        
         if ( $sqmConf->frame_top == '' ) {
             $sqmConf->frame_top = '_top';
         } else {
@@ -353,7 +441,7 @@ if ( sqGetGlobalVar('saveConf',$saveConf,SQ_POST) ) {
 
 /**************************
 
-BEGIN INTERFACE OUTPUT
+IV. INTERFACE OUTPUT
 
 ***************************/
 ?>
@@ -381,9 +469,10 @@ if ( isset($_GET['OrgPrefs']) ) {
 <tr><td>3. Logo Width</td><td></td><td><input name="org_logo_width" type="text" size="50" value="<? echo $sqmConf->org_logo_width; ?>"></input></td></tr>
 <tr><td>4. Logo Height</td><td></td><td><input name="org_logo_height" type="text" size="50" value="<? echo $sqmConf->org_logo_height; ?>"></input></td></tr>
 <tr><td>5. Organization Title</td><td></td><td><input name="org_title" type="text" size="50" value="<? echo $sqmConf->org_title; ?>"></input></td></tr>
-<tr><td>6. Top Frame</td><td></td><td><input name="frame_top" type="text" size="50" value="<? echo $sqmConf->frame_top; ?>"></input></td></tr>
-<tr><td>7. Provider link</td><td></td><td><input name="provider_uri" type="text" size="50" value="<? echo $sqmConf->provider_uri; ?>"></input></td></tr>
-<tr><td>8. Provider link text</td><td></td><td><input name="provider_name" type="text" size="50" value="<? echo $sqmConf->provider_name; ?>"></input></td></tr>
+<tr><td>6. Signout Page</td><td></td><td><input name="signout_page" type="text" size="50" value="<? echo $sqmConf->signout_page; ?>"></input></td></tr>
+<tr><td>7. Top Frame</td><td></td><td><input name="frame_top" type="text" size="50" value="<? echo $sqmConf->frame_top; ?>"></input></td></tr>
+<tr><td>8. Provider link</td><td></td><td><input name="provider_uri" type="text" size="50" value="<? echo $sqmConf->provider_uri; ?>"></input></td></tr>
+<tr><td>9. Provider link text</td><td></td><td><input name="provider_name" type="text" size="50" value="<? echo $sqmConf->provider_name; ?>"></input></td></tr>
 <tr><td colspan="3" align="right"><input type="submit" value="Save"></input> <input type="reset"></input></td></tr>
 </table>
 </form>
