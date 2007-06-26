@@ -13,19 +13,28 @@ things to do:
 -add predefined imap srv settings
 -finish adding panels
 -sanity check input
+-internationalization
+-add SQMConfigDB capabilities
 
 
 **********************/
 
 
 require("config_class.php");
+require("../functions/global.php");
 
-if ( file_exists("conf.php") ) {
+if ( file_exists(".conf.php") ) {
+    $sqmConf = new SQMConfigFile(".conf.php");
+    $status_msg .= "Read temp configuration (.conf.php). ";
+} elseif ( file_exists("conf.php") ) {
     $sqmConf = new SQMConfigFile("conf.php");
+    $status_msg .= "Read site configuation (conf.php). ";
 } elseif ( file_exists("conf_default.php") ) {
     $sqmConf = new SQMConfigFile("conf_default.php");
+    $status_msg .= "Read default configuration (conf_default.php). ";
 } else {
     $sqmConf = new SQMConfigFile();
+    $status_msg .= "No configuration file found. ";
 }
 
 /******************
@@ -239,42 +248,154 @@ function change_to_rel_path($oldPath) {
     return $newPath;
 }
 
+function write_config() {
 
+    global $status_msg;
+
+    if ( !is_writable(".conf.php") ) {
+        $status_msg .= "ERROR: .conf.php is not writable with current permissions. ";
+    } else {
+
+        $confOut = fopen('.conf.php','w');
+        if ( !isset($confOut) ) {
+            $status_msg .= "ERROR: could not open .conf.php for writing. ";
+        } else {
+
+            $header = "<?php\n\n/**\n * SquirrelMail Configuration File\n * Created using make_conf.php\n *\n\n";
+
+
+            fwrite($confOut,$header);
+
+            $status_msg .= "Wrote configuration file .conf.php. ";
+        }
+    }
+
+}
+
+/**************************
+
+PROCESS POST DATA
+
+**************************/
+
+if ( sqGetGlobalVar('saveConf',$saveConf,SQ_POST) ) {
+
+//print $_SERVER['HTTP_REFERER'];
+
+    sqGetGlobalVar('HTTP_REFERER',$refPage,SQ_SERVER);
+    $refPage = preg_replace('/^.*\?/','',$refPage);
+//print $refPage;
+    if ( $refPage == "OrgPrefs" ) {
+        $org_name_old = $sqmConf->org_name;
+        $org_logo_old = $sqmConf->org_logo;
+        $org_logo_width_old = $sqmConf->org_logo_width;
+        $org_logo_height_old = $sqmConf->org_logo_height;
+        $org_title_old = $sqmConf->org_title;
+        $frame_top_old = $sqmConf->frame_top;
+        $provider_uri_old = $sqmConf->provider_uri;
+        $provider_name_old = $sqmConf->provider_name;
+        sqGetGlobalVar('org_name',$sqmConf->org_name,SQ_POST);
+        sqGetGlobalVar('org_logo',$sqmConf->org_logo,SQ_POST);
+        sqGetGlobalVar('org_logo_width',$sqmConf->org_logo_width,SQ_POST);
+        sqGetGlobalVar('org_logo_height',$sqmConf->org_logo_height,SQ_POST);
+        sqGetGlobalVar('org_title',$sqmConf->org_title,SQ_POST);
+        sqGetGlobalVar('frame_top',$sqmConf->frame_top,SQ_POST);
+        sqGetGlobalVar('provider_uri',$sqmConf->provider_uri,SQ_POST);
+        sqGetGlobalVar('provider_name',$sqmConf->provider_name,SQ_POST);
+
+        if ( $sqmConf->org_name == '' ) {
+            $sqmConf->org_name = $org_name_old;
+        } else {
+            $sqmConf->org_name = preg_replace('/\"/','&quot;',$sqmConf->org_name);
+        }
+
+        if ( $sqmConf->org_logo == '' ) {
+            $sqmConf->org_logo = $org_logo_old;
+        }
+
+        $sqmConf->org_logo_width = preg_replace('/[^0-9]/','',$sqmConf->org_logo_width);
+        if ( $sqmConf->org_logo_width == '' ) {
+            $sqmConf->org_logo_width = $org_logo_width_old;
+        }
+
+        $sqmConf->org_logo_height = preg_replace('/[^0-9]/','',$sqmConf->org_logo_height);
+        if ( $sqmConf->org_logo_height == '' ) {
+            $sqmConf->org_logo_width = $org_logo_height_old;
+        }
+
+        if ( $sqmConf->org_title == '' ) {
+            $sqmConf->org_title = $org_title_old;
+        } else {
+            $sqmConf->org_title = preg_replace('/\"/','\'',$sqmConf->org_title);
+        }
+
+        if ( $sqmConf->frame_top == '' ) {
+            $sqmConf->frame_top = '_top';
+        } else {
+            $sqmConf->frame_top = preg_replace('/^\s+$/','',$sqmConf->frame_top);
+        }
+
+        if ( $sqmConf->provider_uri != '' ) {
+            $sqmConf->provider_uri = preg_replace('/^\s+$/','',$sqmConf->provider_uri);
+        }
+
+        if ( $sqmConf->provider_name != '' ) {
+            $sqmConf->provider_name = preg_replace('/^\s+$/','',$sqmConf->provider_name);
+            $sqmConf->provider_name = preg_replace("/\'/","\\'",$sqmConf->provider_name);
+        }
+
+        $status_msg .= "Saved Organization preferences. ";
+
+        write_config();
+    }
+
+}
 
 /**************************
 
 BEGIN INTERFACE OUTPUT
 
 ***************************/
-
 ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en_US">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" ></meta>
+<title>SquirrelMail Configuration</title>
+</head>
+<body>
 <h1>SquirrelMail Configuration</h1>
-<br><hr>
-<p>
+<p><i><font size="-1"><? print $status_msg; ?></font></i></p>
+<hr></hr>
+<p></p>
 <?
 if ( isset($_GET['OrgPrefs']) ) {
 ?>
 <h3>Organization Preferences</h3>
-<p>
+<p></p>
+<form name="confSubmit" method="post" action="make_conf.php">
+<input type="hidden" name="saveConf" value="1" />
 <table>
-<tr><td>1. Organization Name</td><td width=20></td><td><input type=text size=50 value="<? echo $sqmConf->org_name; ?>"></input></td></tr>
-<tr><td>2. Organization Logo</td><td></td><td><input type=text size=50 value="<? echo $sqmConf->org_logo; ?>"></input></td></tr>
-<tr><td>3. Logo Width</td><td></td><td><input type=text size=50 value="<? echo $sqmConf->org_logo_width; ?>"></input></td></tr>
-<tr><td>4. Logo Height</td><td></td><td><input type=text size=50 value="<? echo $sqmConf->org_logo_height; ?>"></input></td></tr>
-<tr><td>5. Organization Title</td><td></td><td><input type=text size=50 value="<? echo $sqmConf->org_title; ?>"></input></td></tr>
-<tr><td>6. Top Frame</td><td></td><td><input type=text size=50 value="<? echo $sqmConf->frame_top; ?>"></input></td></tr>
-<tr><td>7. Provider link</td><td></td><td><input type=text size=50 value="<? echo $sqmConf->provider_uri; ?>"></input></td></tr>
-<tr><td>8. Provider link text</td><td></td><td><input type=text size=50 value="<? echo $sqmConf->provider_name; ?>"></input></td></tr>
+<tr><td>1. Organization Name</td><td width="20"></td><td><input name="org_name" type="text" size="50" value="<? echo $sqmConf->org_name; ?>"></input></td></tr>
+<tr><td>2. Organization Logo</td><td></td><td><input name="org_logo" type="text" size="50" value="<? echo $sqmConf->org_logo; ?>"></input></td></tr>
+<tr><td>3. Logo Width</td><td></td><td><input name="org_logo_width" type="text" size="50" value="<? echo $sqmConf->org_logo_width; ?>"></input></td></tr>
+<tr><td>4. Logo Height</td><td></td><td><input name="org_logo_height" type="text" size="50" value="<? echo $sqmConf->org_logo_height; ?>"></input></td></tr>
+<tr><td>5. Organization Title</td><td></td><td><input name="org_title" type="text" size="50" value="<? echo $sqmConf->org_title; ?>"></input></td></tr>
+<tr><td>6. Top Frame</td><td></td><td><input name="frame_top" type="text" size="50" value="<? echo $sqmConf->frame_top; ?>"></input></td></tr>
+<tr><td>7. Provider link</td><td></td><td><input name="provider_uri" type="text" size="50" value="<? echo $sqmConf->provider_uri; ?>"></input></td></tr>
+<tr><td>8. Provider link text</td><td></td><td><input name="provider_name" type="text" size="50" value="<? echo $sqmConf->provider_name; ?>"></input></td></tr>
+<tr><td colspan="3" align="right"><input type="submit" value="Save"></input> <input type="reset"></input></td></tr>
 </table>
-<p>
-<hr>
+</form>
+<p></p>
+<hr></hr>
 <a href="make_conf.php">Back</a>
 
 <?
 } elseif ( isset($_GET['ServerSetts']) ) {
 ?>
 <h3>Server Settings</h3>
-<p>
+<p></p>
 <table>
 <tr><td>1. Domain</td><td width=20></td><td><input type=text size=50 value="<? echo $sqmConf->domain; ?>"></input></td></tr>
 <tr><td>2. Invert Time</td><td></td><td><input type="radio" name="invert_time" value=true<? if ( $sqmConf->invert_time ) echo " checked"; ?>>True</input><input type="radio" name="invert_time" value=false<? if ( !$sqmConf->invert_time ) echo " checked"; ?>>False</input></td></tr>
@@ -295,14 +416,14 @@ if ( isset($_GET['OrgPrefs']) ) {
 <tr><td>14. Secure SMTP (TLS)</td><td></td><td><input type=text size=50 value="<? echo $sqmConf->use_smtp_tls; ?>"></input></td></tr>
 <tr><td>15. Header encryption key</td><td></td><td><input type=text size=50 value="<? echo $sqmConf->encode_header_key; ?>"></input></td></tr>
 </table>
-<p>
-<hr>
+<p></p>
+<hr></hr>
 <a href="make_conf.php">Back</a>
 <?
 } elseif ( isset($_GET['FoldDefaults']) ) {
 ?>
 <h3>Folder Defaults</h3>
-<p>
+<p></p>
 <table>
 <tr><td>1. Default Folder Prefix</td><td width=20></td><td><input type=text size=50 value="<? echo $sqmConf->default_folder_prefix; ?>"></input></td></tr>
 <tr><td>2. Show Folder Prefix Option</td><td></td><td><input type="radio" name="show_prefix_option" value=true<? if ( $sqmConf->show_prefix_option ) echo " checked"; ?>>True</input><input type="radio" name="show_prefix_option" value=false<? if ( !$sqmConf->show_prefix_option ) echo " checked"; ?>>False</input></td></tr>
@@ -323,14 +444,14 @@ if ( isset($_GET['OrgPrefs']) ) {
 <tr><td>17. Folder Delete Bypasses Trash</td><td></td><td><input type="radio" name="delete_folder" value=true<? if ( $sqmConf->delete_folder ) echo " checked"; ?>>True</input><input type="radio" name="delete_folder" value=false<? if ( !$sqmConf->delete_folder ) echo " checked"; ?>>False</input></td></tr>
 <tr><td>18. Enable /NoSelect folder fix</td><td></td><td><input type="radio" name="noselect_fix_enable" value=true<? if ( $sqmConf->noselect_fix_enable ) echo " checked"; ?>>True</input><input type="radio" name="noselect_fix_enable" value=false<? if ( !$sqmConf->noselect_fix_enable ) echo " checked"; ?>>False</input></td></tr>
 </table>
-<p>
-<hr>
+<p></p>
+<hr></hr>
 <a href="make_conf.php">Back</a>
 <?
 } elseif ( isset($_GET['GenOptions']) ) {
 ?>
 <h3>General Options</h3>
-<p>
+<p></p>
 <table>
 <tr><td>1. Data Directory</td><td width=20></td><td><input type=text size=50 value="<? echo $sqmConf->data_dir; ?>"></input></td></tr>
 <tr><td>2. Attachment Directory</td><td></td><td><input type=text size=50 value="<? echo $sqmConf->attachment_dir; ?>"></input></td></tr>
@@ -352,14 +473,14 @@ if ( isset($_GET['OrgPrefs']) ) {
 <tr><td>18. Location base</td><td></td><td><input type=text size=50 value="<? echo $sqmConf->config_location_base; ?>"></input></td></tr>
 <tr><td>19. Only secure cookies if poss.</td><td></td><td><input type="radio" name="only_secure_cookies" value=true<? if ( $sqmConf->only_secure_cookies ) echo " checked"; ?>>True</input><input type="radio" name="only_secure_cookies" value=false<? if ( !$sqmConf->only_secure_cookies ) echo " checked"; ?>>False</input></td></tr>
 </table>
-<p>
-<hr>
+<p></p>
+<hr></hr>
 <a href="make_conf.php">Back</a>
 <?
 } elseif ( isset($_GET['UserInterf']) ) {
 ?>
 <h3>User Interface</h3>
-<p>
+<p></p>
 <table>
 <tr><td>1. Use Icons?</td><td width=20></td><td><input type="radio" name="use_icons" value=true<? if ( $sqmConf->use_icons ) echo " checked"; ?>>True</input><input type="radio" name="use_icons" value=false<? if ( !$sqmConf->use_icons ) echo " checked"; ?>>False</input></td></tr>
 <tr><td>2. Default font size</td><td></td><td><input type=text size=50 value="<? echo $sqmConf->default_font_size; ?>"></input></td></tr>
@@ -371,8 +492,8 @@ if ( isset($_GET['OrgPrefs']) ) {
 6.  Manage icon themes
 -->
 </table>
-<p>
-<hr>
+<p></p>
+<hr></hr>
 <a href="make_conf.php">Back</a>
 <?
 } elseif ( isset($_GET['AddyBooks']) ) {
@@ -449,7 +570,7 @@ add tweaks panel
 } else {
 ?>
 <h3>Main Menu</h3>
-<p>
+<p></p>
 <ol>
 <li>&nbsp;&nbsp;  <a href="make_conf.php?OrgPrefs">Organization Preferences</a></li>
 <li>&nbsp;&nbsp;  <a href="make_conf.php?ServerSetts">Server Settings</a></li>
@@ -466,3 +587,6 @@ add tweaks panel
 D.  Set pre-defined settings for specific IMAP servers
 <?
 }
+?>
+</body>
+</html>
