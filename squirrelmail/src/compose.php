@@ -342,8 +342,7 @@ if (!isset($session) || (isset($newmessage) && $newmessage)) {
 if (!isset($compose_messages)) {
     $compose_messages = array();
 }
-if (!isset($compose_messages[$session]) || ($compose_messages[$session] == NULL)) {
-    /* if (!array_key_exists($session, $compose_messages)) {  /* We can only do this in PHP >= 4.1 */
+if (empty($compose_messages[$session])) {
     $composeMessage = new Message();
     $rfc822_header = new Rfc822Header();
     $composeMessage->rfc822_header = $rfc822_header;
