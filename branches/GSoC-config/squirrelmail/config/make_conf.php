@@ -21,6 +21,9 @@ things to do:
 -sanity check input
 -internationalization
 -add SQMConfigDB capabilities
+-create secure method to output config file
+    -cannot simply overwrite conf.php
+    -take into account web server uid/gid privs
 
 
 **********************/
@@ -281,6 +284,79 @@ function change_to_rel_path($oldPath) {
     return $newPath;
 }
 
+/*****************
+
+# This subroutine corrects relative paths to ensure they
+# will work within the SM space. If the path falls within
+# the SM directory tree, the SM_PATH variable will be
+# prepended to the path, if not, then the path will be
+# converted to an absolute path, e.g.
+#   '../images/logo.gif'      --> SM_PATH . 'images/logo.gif'
+#   '../../someplace/data'    --> '/absolute/path/someplace/data'
+#   'images/logo.gif'         --> SM_PATH . 'config/images/logo.gif'
+#   '/absolute/path/logo.gif' --> '/absolute/path/logo.gif'
+#   'http://whatever/'        --> 'http://whatever'
+#   $some_var/path            --> "$some_var/path"
+
+*******************/
+
+
+function change_to_SM_path($oldPath) {
+
+    global $_SERVER;
+
+    if ( $oldPath == '') { return "'".$oldPath."'"; }
+    if ( preg_match('/^(\/|http)/',$oldPath) ) { return "'".$oldPath."'"; }
+    if ( preg_match('/^\w:\//',$oldPath) ) { return "'".$oldPath."'"; }
+    if ( preg_match('/^\'(\/|http)/',$oldPath) ) { return $oldPath; }
+    if ( preg_match('/^\'\w:\//',$oldPath) ) { return $oldPath; }
+    if ( preg_match('/^SM_PATH/',$oldPath) ) { return $oldPath; }
+    
+    if ( preg_match('/^\$/',$oldPath) ) {
+        if ( preg_match('/\//',$oldPath) ) {
+            return '"'.$oldPath.'"';
+        }
+        return $oldPath;
+    }
+
+    $oldPath = str_replace("'","",$oldPath);
+    
+    
+    $relPath = array();
+    
+    $relPath = explode("../",$oldPath);
+    
+    if ( count($relPath) > 1 ) {
+    
+        $absPath = array();
+        $absPath = explode("/",$_SERVER['PATH_TRANSLATED']);
+        
+        for ( $c = 0; $c <= count($relPath); $c++) {
+            array_pop($absPath);
+            array_shift($relPath);
+        }
+        
+        $absPath = array_merge($absPath,$relPath);
+        
+        $newPath = "'".implode('/',$absPath)."'";
+    } elseif ( count($relPath) > 0 ) {
+        $newPath = $oldPath;
+        $newPath = preg_replace('/^\.\.\/','SM_PATH . \'',$newPath);
+        $newPath .= "'";
+    } else {
+        $newPath = "SM_PATH . 'config/$oldPath'";
+    }
+    
+    return $newPath;
+}
+
+function tOrF($argmnt) {
+
+    if ( $argmnt == TRUE ) { return "true"; }
+    else { return "false"; }
+
+}
+
 /********************
 
 write_config() writes the configuration
@@ -310,18 +386,20 @@ function write_config() {
             fwrite($confOut,$header);
             
             $orgprefs = "\$this->org_name      = \"$sqmConf->org_name\";\n";
-            $orgprefs .= "\$this->org_logo      = \"$sqmConf->org_logo\";\n";
+            $orgprefs .= "\$this->org_logo      = ".change_to_SM_path($sqmConf->org_logo).";\n";
+            if ( $sqmConf->org_logo_width == '' ) { $sqmConf->org_logo_width = 0; }
+            if ( $sqmConf->org_logo_height == '' ) { $sqmCOnf->org_logo_height = 0; }
             $orgprefs .= "\$this->org_logo_width  = '$sqmConf->org_logo_width';\n";
             $orgprefs .= "\$this->org_logo_height = '$sqmConf->org_logo_height';\n";
             $orgprefs .= "\$this->org_title     = \"$sqmConf->org_title\";\n";
-            $orgprefs .= "\$this->signout_page  = '$sqmConf->signout_page';\n";
+            $orgprefs .= "\$this->signout_page  = ".change_to_SM_path($sqmConf->signout_page).";\n";
             $orgprefs .= "\$this->frame_top     = '$sqmConf->frame_top';\n\n";
             $orgprefs .= "\$this->provider_uri  = '$sqmConf->provider_uri';\n\n";
             $orgprefs .= "\$this->provider_name = '$sqmConf->provider_name';\n\n";
             
             fwrite($confOut,$orgprefs);
             
-            $motd = "\$this->motd = \"$sqmConf->motd\"\n\n";
+            $motd = "\$this->motd = \"$sqmConf->motd\";\n\n";
             
             fwrite($confOut,$motd);
             
@@ -329,23 +407,321 @@ function write_config() {
             
             fwrite($confOut,$langsetts);
             
-            $serversetts = "\$this->domain                 = '$sqmConf->domain'\n";
-            $serversetts .= "\$this->imapServerAddress      = '$sqmConf->imapServerAddress'\n";
-            $serversetts .= "\$this->imapPort               = $sqmConf->imapPort\n";
-            $serversetts .= "\$this->useSendmail            = $sqmConf->useSendmail\n";
-            $serversetts .= "\$this->smtpServerAddress      = '$sqmConf->smtpServerAddress'\n";
-            $serversetts .= "\$this->smtpPort               = $sqmConf->smtpport\n";
-            $serversetts .= "\$this->sendmail_path          = '$sqmConf->sendmail_path'\n";
-            $serversetts .= "\$this->sendmail_args          = '$sqmConf->sendmail_args'\n";
-            $serversetts .= "\$this->pop_before_smtp        = $sqmConf->pop_before_smtp\n";
-            $serversetts .= "\$this->imap_server_type       = '$sqmConf->imap_server_type'\n";
-            $serversetts .= "\$this->invert_time            = $sqmConf->invert_time\n";
-            $serversetts .= "\$this->optional_delimiter     = '$sqmConf->optional_delimiter'\n";
-            $serversetts .= "\$this->encode_header_key      = '$sqmConf->encode_header_key'\n\n";
+            $serversetts = "\$this->domain                 = '$sqmConf->domain';\n";
+            $serversetts .= "\$this->imapServerAddress      = '$sqmConf->imapServerAddress';\n";
+            $serversetts .= "\$this->imapPort               = $sqmConf->imapPort;\n";
+            $serversetts .= "\$this->useSendmail            = ".tOrF($sqmConf->useSendmail).";\n";
+            $serversetts .= "\$this->smtpServerAddress      = '$sqmConf->smtpServerAddress';\n";
+            $serversetts .= "\$this->smtpPort               = $sqmConf->smtpPort;\n";
+            $serversetts .= "\$this->sendmail_path          = '$sqmConf->sendmail_path';\n";
+            $serversetts .= "\$this->sendmail_args          = '$sqmConf->sendmail_args';\n";
+            $serversetts .= "\$this->pop_before_smtp        = ".tOrF($sqmConf->pop_before_smtp).";\n";
+            $serversetts .= "\$this->imap_server_type       = '$sqmConf->imap_server_type';\n";
+            $serversetts .= "\$this->invert_time            = ".tOrF($sqmConf->invert_time).";\n";
+            $serversetts .= "\$this->optional_delimiter     = '$sqmConf->optional_delimiter';\n";
+            $serversetts .= "\$this->encode_header_key      = '$sqmConf->encode_header_key';\n\n";
             
             fwrite($confOut,$serversetts);
             
-            $folddefaults = "";
+            $folddefaults = "\$this->default_folder_prefix          = '$sqmConf->default_folder_prefix';\n";
+            $folddefaults .= "\$this->trash_folder                   = '$sqmConf->trash_folder';\n";
+            $folddefaults .= "\$this->sent_folder                    = '$sqmConf->sent_folder';\n";
+            $folddefaults .= "\$this->draft_folder                   = '$sqmConf->draft_folder';\n";
+            $folddefaults .= "\$this->default_move_to_trash          = ".tOrF($sqmConf->default_move_to_trash).";\n";
+            $folddefaults .= "\$this->default_move_to_sent           = ".tOrF($sqmConf->default_move_to_sent).";\n";
+            $folddefaults .= "\$this->default_save_as_draft          = ".tOrF($sqmConf->default_save_as_draft).";\n";
+            $folddefaults .= "\$this->show_prefix_option             = ".tOrF($sqmConf->show_prefix_option).";\n";
+            $folddefaults .= "\$this->list_special_folders_first     = ".tOrF($sqmConf->list_special_folders_first).";\n";
+            $folddefaults .= "\$this->use_special_folder_color       = ".tOrF($sqmConf->use_special_folder_color).";\n";
+            $folddefaults .= "\$this->auto_expunge                   = ".tOrF($sqmConf->auto_expunge).";\n";
+            $folddefaults .= "\$this->default_sub_of_inbox           = ".tOrF($sqmConf->default_sub_of_inbox).";\n";
+            $folddefaults .= "\$this->show_contain_subfolders_option = ".tOrF($sqmConf->show_contain_subfolders_option).";\n";
+            $folddefaults .= "\$this->default_unseen_notify          = $sqmConf->default_unseen_notify;\n";
+            $folddefaults .= "\$this->default_unseen_type            = $sqmConf->default_unseen_type;\n";
+            $folddefaults .= "\$this->auto_create_special            = ".tOrF($sqmConf->auto_create_special).";\n";
+            $folddefaults .= "\$this->delete_folder                  = ".tOrF($sqmConf->delete_folder).";\n";
+            $folddefaults .= "\$this->noselect_fix_enable            = ".tOrF($sqmConf->noselect_fix_enable).";\n\n";
+            
+            fwrite($confOut,$folddefaults);
+            
+            $genoptions = "\$this->data_dir                 = ".change_to_SM_path($sqmConf->data_dir).";\n";
+            $genoptions .= "\$this->attachment_dir           = ".change_to_SM_path($sqmConf->attachment_dir).";\n";
+            $genoptions .= "\$this->dir_hash_level           = $sqmConf->dir_hash_level;\n";
+            $genoptions .= "\$this->default_left_size        = '$sqmConf->default_left_size';\n";
+            $genoptions .= "\$this->force_username_lowercase = ".tOrF($sqmConf->force_username_lowercase).";\n";
+            $genoptions .= "\$this->default_use_priority     = ".tOrF($sqmConf->default_use_priority).";\n";
+            $genoptions .= "\$this->hide_sm_attributions     = ".tOrF($sqmConf->hide_sm_attributions).";\n";
+            $genoptions .= "\$this->default_use_mdn          = ".tOrF($sqmConf->default_use_mdn).";\n";
+            $genoptions .= "\$this->edit_identity            = ".tOrF($sqmConf->edit_identity).";\n";
+            $genoptions .= "\$this->edit_name                = ".tOrF($sqmConf->edit_name).";\n";
+            $genoptions .= "\$this->hide_auth_header         = ".tOrF($sqmConf->hide_auth_header).";\n";
+            $genoptions .= "\$this->disable_thread_sort      = ".tOrF($sqmConf->disable_thread_sort).";\n";
+            $genoptions .= "\$this->disable_server_sort      = ".tOrF($sqmConf->disable_server_sort).";\n";
+            $genoptions .= "\$this->allow_charset_search     = ".tOrF($sqmConf->allow_charset_search).";\n";
+            $genoptions .= "\$this->allow_advanced_search    = $sqmConf->allow_advanced_search;\n\n";
+            
+            $genoptions .= "\$this->time_zone_type           = $sqmConf->time_zone_type;\n\n";
+            
+            $genoptions .= "\$this->config_location_base     = '$sqmConf->config_location_base';\n\n";
+            
+            fwrite($confOut,$genoptions);
+            
+            $disableplugins = "\$this->disable_plugins          = ".tOrF($sqmConf->disable_plugins).";\n";
+            $disableplugins .= "\$this->disable_plugins_user     = '$sqmConf->disable_plugins_user';\n\n\n";
+            
+            fwrite($confOut,$disableplugins);
+            
+            
+            for($c=0;$c<count($sqmConf->plugins);$c++) {
+                $plugins .= "\$this->plugins[] = '$sqmConf->plugins[$c]';\n";
+            }
+            
+            $plugins .= "\n";
+            
+            fwrite($confOut,$plugins);
+            
+            
+            if($sqmConf->user_theme_default == '') { $sqmConf->user_theme_default = '0'; }
+            $userthemes = "\$this->user_theme_default = $sqmConf->user_theme_default;\n";
+            
+            for($c=0;$c<=count($sqmConf->user_theme_name);$c++) {
+                if ( $sqmConf->user_theme_path[$c] == 'none') {
+                    $path = '\'none\'';
+                } else {
+                    $path = change_to_SM_path($sqmConf->user_theme_path[$c]);
+                }
+                $userthemes .= "\$this->user_themes[$c]['PATH'] = $path;\n";
+                
+                $esc_name = $sqmConf->user_theme_name[$c];
+                $esc_name = str_replace('\\','\\\\',$esc_name);
+                $esc_name = str_replace("'","\\'",$esc_name);
+                
+                $userthemes .= "\$this->user_themes[$c]['NAME'] = '$esc_name';\n";
+            }
+            
+            $userthemes .= "\n";
+            
+            fwrite($confOut,$userthemes); 
+            
+            if ( $sqmConf->icon_theme_def == '' ) { $sqmConf->icon_theme_def = '0'; }
+            if ( $sqmConf->icon_theme_fallback == '' ) { $sqmConf->icon_theme_fallback = '0'; }
+            
+            $iconthemes = "\$this->icon_theme_def = $sqmConf->icon_theme_def;\n";
+            $iconthemes .= "\$this->icon_theme_fallback = $sqmConf->icon_theme_fallback;\n";
+            
+            for ( $c = 0 ; $c <= count($sqmConf->icon_theme_name) ; $c++ ) {
+                $path = $sqmConf->icon_theme_path[$c];
+                if ( $path == 'none' || $path == 'template' ) {
+                    $path = "'$path'";
+                } else {
+                    $path = change_to_SM_path($sqmConf->icon_theme_path[$c]);
+                }
+                
+                $iconthemes .= "\$this->icon_themes[$c]['PATH'] = $path;\n";
+                
+                $esc_name = $sqmConf->icon_theme_name[$c];
+                $esc_name = str_replace('\\','\\\\',$esc_name);
+                $esc_name = str_replace("'","\\'",$esc_name);
+                
+                $iconthemes .= "\$this->icon_themes[$c]['NAME'] = '$esc_name';\n";
+            }
+            
+            $iconthemes .= "\n";
+            
+            fwrite($confOut,$iconthemes);
+            
+            if ( $sqmConf->templateset_default == '' ) { $sqmConf->templateset_default = 'default'; }
+            if ( $sqmConf->templateset_fallback == '' ) { $sqmConf->templateset_fallback = 'default'; }
+            
+            $templateset = "\$this->templateset_default = '$sqmConf->templateset_default';\n";
+            $templateset .= "\$this->templateset_fallback = '$sqmConf->templateset_fallback';\n";
+            
+            for ( $c = 0 ; $c <= count($sqmConf->templateset_name) ; $c++) {
+                $templateset .= "\$this->aTemplateSet[$c]['ID'] = '$sqmConf->templateset_id[$c]';\n";
+                
+                $esc_name = $sqmConf->templateset_name[$c];
+                $esc_name = str_replace('\\','\\\\',$esc_name);
+                $esc_name = str_replace("'","\\'",$esc_name);
+                
+                $templateset .= "\$this->aTemplateSet[$c]['NAME'] = '$esc_name';\n";
+            }
+            
+            $templateset .= "\n";
+            
+            fwrite($confOut,$templateset);
+
+            $defaultfont = "\$this->default_fontsize = '$sqmConf->default_fontsize';\n";
+            $defaultfont .= "\$this->default_fontset = '$sqmConf->default_fontset';\n\n";
+            
+            $defaultfont .= "\$this->fontsets = array();\n";
+            
+            $fontsets = $sqmConf->fontsets;
+
+            while ( $fontData = each($fontsets) ) {
+                $defaultfont .= "\$this->fontsets['$fontData[0]'] = '$fontData[1]';\n";
+            }
+            
+            $defaultfont .= "\n";
+            
+            fwrite($confOut,$defaultfont);
+            
+            $addbooks = "\$this->default_use_javascript_addr_book = ".tOrF($sqmConf->default_use_javascript_addr_book).";\n";
+            
+            for ( $c = 0 ; $c <= count($sqmConf->ldap_host) ; $c++ ) {
+                $addbooks .= "\$this->ldap_server[$c] = array(\n";
+                $addbooks .= "    'host' => '$sqmConf->ldap_host[$c]',\n";
+                $addbooks .= "    'base' => '$sqmConf->ldap_base[$c]'";
+                if ( $sqmConf->ldap_name[$c] ) {
+                    $addbooks .= ",\n";
+                    $addbooks .= "    'name' => '$sqmConf->ldap_name[$c]'";
+                }
+                if ( $sqmConf->ldap_port[$c] ) {
+                    $addbooks .= ",\n";
+                    $addbooks .= "    'port' => $sqmConf->ldap_port[$c]";
+                }
+                if ( $sqmConf->ldap_charset[$c] ) {
+                    $addbooks .= ",\n";
+                    $addbooks .= "    'charset' => '$sqmConf->ldap_charset[$c]'";
+                }
+                if ( $sqmConf->ldap_maxrows[$c] ) {
+                    $addbooks .= ",\n";
+                    $addbooks .= "    'maxrows' => $sqmConf->ldap_maxrows[$c]";
+                }
+                if ( $sqmConf->ldap_filter[$c] ) {
+                    $addbooks .= ",\n";
+                    $addbooks .= "    'filter' => '$sqmConf->ldap_filter[$c]'";
+                }
+                if ( $sqmConf->ldap_binddn[$c] ) {
+                    $addbooks .= ",\n";
+                    $addbooks .= "    'binddn' => '$sqmConf->ldap_binddn[$c]'";
+                    if ( $sqmConf->ldap_bindpw[$c] ) {
+                        $addbooks .= ",\n";
+                        $addbooks .= "    'bindpw' => '$sqmConf->ldap_bindpw[$c]'";
+                    }
+                }
+                if ( $sqmConf->ldap_protocol[$c] ) {
+                    $addbooks .= ",\n";
+                    $addbooks .= "    'protocol' => $sqmConf->ldap_protocol[$c]";
+                }
+                if ( $sqmConf->ldap_limit_scope[$c] ) {
+                    $addbooks .= ",\n";
+                    $addbooks .= "    'limit_scope' => ".tOrF($sqmConf->ldap_limit_scope[$c]);
+                }
+                if ( $sqmConf->ldap_listing[$c] ) {
+                    $addbooks .= ",\n";
+                    $addbooks .= "    'listing' => ".tOrF($sqmConf->ldap_listing[$c]);
+                }
+                if ( $sqmConf->ldap_writeable[$c] ) {
+                    $addbooks .= ",\n";
+                    $addbooks .= "    'writeable' => ".tOrF($sqmConf->ldap_writeable[$c]);
+                }
+                if ( $sqmConf->ldap_search_tree[$c] ) {
+                    $addbooks .= ",\n";
+                    $addbooks .= "    'search_tree' => $sqmConf->ldap_search_tree[$c]";
+                }
+                if ( $sqmConf->ldap_listing[$c] ) {
+                    $addbooks .= ",\n";
+                    $addbooks .= "    'starttls' => $sqmConf->ldap_starttls[$c]";
+                }
+                
+                $addbooks .= "\n);\n\n"
+                
+            }
+            
+            $addbooks .= "\$this->addrbook_dsn = '$sqmConf->addrbook_dsn';\n";
+            $addbooks .= "\$this->addrbook_table = '$sqmConf->addrbook_table';\n\n";
+            
+            fwrite($confOut,$addbooks);
+            
+            
+
+
+
+/********************************
+
+
+        # string
+        print CF "\$prefs_dsn = '$prefs_dsn';\n";
+        # string
+        print CF "\$prefs_table = '$prefs_table';\n";
+        # string
+        print CF "\$prefs_user_field = '$prefs_user_field';\n";
+        # integer
+        print CF "\$prefs_user_size = $prefs_user_size;\n";
+        # string
+        print CF "\$prefs_key_field = '$prefs_key_field';\n";
+        # integer
+        print CF "\$prefs_key_size = $prefs_key_size;\n";
+        # string
+        print CF "\$prefs_val_field = '$prefs_val_field';\n";
+        # integer
+        print CF "\$prefs_val_size = $prefs_val_size;\n\n";
+        # string
+        print CF "\$addrbook_global_dsn = '$addrbook_global_dsn';\n";
+        # string
+        print CF "\$addrbook_global_table = '$addrbook_global_table';\n";
+        # boolean
+        print CF "\$addrbook_global_writeable = $addrbook_global_writeable;\n";
+        # boolean
+        print CF "\$addrbook_global_listing = $addrbook_global_listing;\n\n";
+        # string
+        print CF "\$abook_global_file = '$abook_global_file';\n";
+        # boolean
+        print CF "\$abook_global_file_writeable = $abook_global_file_writeable;\n\n";
+        # boolean
+        print CF "\$abook_global_file_listing = $abook_global_file_listing;\n\n";
+        # integer
+        print CF "\$abook_file_line_length = $abook_file_line_length;\n\n";
+        # boolean
+        print CF "\$no_list_for_subscribe = $no_list_for_subscribe;\n";
+
+        # string
+        print CF "\$smtp_auth_mech        = '$smtp_auth_mech';\n";
+        print CF "\$smtp_sitewide_user    = '". quote_single($smtp_sitewide_user) ."';\n";
+        print CF "\$smtp_sitewide_pass    = '". quote_single($smtp_sitewide_pass) ."';\n";
+        # string
+        print CF "\$imap_auth_mech        = '$imap_auth_mech';\n";
+        # boolean
+        print CF "\$use_imap_tls          = $use_imap_tls;\n";
+        # boolean
+        print CF "\$use_smtp_tls          = $use_smtp_tls;\n";
+        # string
+        print CF "\$session_name          = '$session_name';\n";
+        # boolean
+        print CF "\$only_secure_cookies   = $only_secure_cookies;\n";
+
+        print CF "\n";
+
+        # boolean
+        print CF "\$use_iframe = $use_iframe;\n";
+        # boolean
+        print CF "\$ask_user_info = $ask_user_info;\n";
+        # boolean
+        print CF "\$use_icons = $use_icons;\n";
+        print CF "\n";
+        # boolean
+        print CF "\$use_php_recode = $use_php_recode;\n";
+        # boolean
+        print CF "\$use_php_iconv = $use_php_iconv;\n";
+        print CF "\n";
+        # boolean
+        print CF "\$allow_remote_configtest = $allow_remote_configtest;\n";
+        print CF "\n";
+
+        close CF;
+
+        print "Data saved in config.php\n";
+
+        build_plugin_hook_array();
+
+
+************************/
+
+
+
+
+
+
 
             $status_msg .= "Wrote configuration file /tmp/conf.php. ";
         }
@@ -457,7 +833,7 @@ IV. INTERFACE OUTPUT
 <hr></hr>
 <p></p>
 <?
-if ( isset($_GET['OrgPrefs']) ) {
+if ( sqGetGlobalVar('OrgPrefs',$getpage,SQ_GET) ) {
 ?>
 <h3>Organization Preferences</h3>
 <p></p>
@@ -481,7 +857,7 @@ if ( isset($_GET['OrgPrefs']) ) {
 <a href="make_conf.php">Back</a>
 
 <?
-} elseif ( isset($_GET['ServerSetts']) ) {
+} elseif ( sqGetGlobalVar('ServerSetts',$getpage,SQ_GET) ) {
 ?>
 <h3>Server Settings</h3>
 <p></p>
@@ -509,7 +885,7 @@ if ( isset($_GET['OrgPrefs']) ) {
 <hr></hr>
 <a href="make_conf.php">Back</a>
 <?
-} elseif ( isset($_GET['FoldDefaults']) ) {
+} elseif ( sqGetGlobalVar('FoldDefaults',$getpage,SQ_GET) ) {
 ?>
 <h3>Folder Defaults</h3>
 <p></p>
@@ -537,7 +913,7 @@ if ( isset($_GET['OrgPrefs']) ) {
 <hr></hr>
 <a href="make_conf.php">Back</a>
 <?
-} elseif ( isset($_GET['GenOptions']) ) {
+} elseif ( sqGetGlobalVar('GenOptions',$getpage,SQ_GET) ) {
 ?>
 <h3>General Options</h3>
 <p></p>
@@ -566,7 +942,7 @@ if ( isset($_GET['OrgPrefs']) ) {
 <hr></hr>
 <a href="make_conf.php">Back</a>
 <?
-} elseif ( isset($_GET['UserInterf']) ) {
+} elseif ( sqGetGlobalVar('UserInterf',$getpage,SQ_GET) ) {
 ?>
 <h3>User Interface</h3>
 <p></p>
@@ -585,7 +961,7 @@ if ( isset($_GET['OrgPrefs']) ) {
 <hr></hr>
 <a href="make_conf.php">Back</a>
 <?
-} elseif ( isset($_GET['AddyBooks']) ) {
+} elseif ( sqGetGlobalVar('AddyBooks',$getpage,SQ_GET) ) {
 ?>
 <h3>Address Books</h3>
 <p>
@@ -597,7 +973,7 @@ add address books panel
 <hr>
 <a href="make_conf.php">Back</a>
 <?
-} elseif ( isset($_GET['MsgOTDay']) ) {
+} elseif ( sqGetGlobalVar('MsgOTDay',$getpage,SQ_GET) ) {
 ?>
 <h3>Message of the Day</h3>
 <p>
@@ -608,7 +984,7 @@ add address books panel
 <hr>
 <a href="make_conf.php">Back</a>
 <?
-} elseif ( isset($_GET['Plugns']) ) {
+} elseif ( sqGetGlobalVar('Plugns',$getpage,SQ_GET) ) {
 ?>
 <h3>Plugins</h3>
 <p>
@@ -620,7 +996,7 @@ add plugin manager
 <hr>
 <a href="make_conf.php">Back</a>
 <?
-} elseif ( isset($_GET['DBase']) ) {
+} elseif ( sqGetGlobalVar('DBase',$getpage,SQ_GET) ) {
 ?>
 <h3>Database</h3>
 <p>
@@ -632,7 +1008,7 @@ add database panel
 <hr>
 <a href="make_conf.php">Back</a>
 <?
-} elseif ( isset($_GET['LangSetts']) ) {
+} elseif ( sqGetGlobalVar('LangSetts',$getpage,SQ_GET) ) {
 ?>
 <h3>Language Settings</h3>
 <p>
@@ -644,7 +1020,7 @@ add language settings panel
 <hr>
 <a href="make_conf.php">Back</a>
 <?
-} elseif ( isset($_GET['Tweeks']) ) {
+} elseif ( sqGetGlobalVar('Tweeks',$getpage,SQ_GET) ) {
 ?>
 <h3>Tweaks</h3>
 <p>
