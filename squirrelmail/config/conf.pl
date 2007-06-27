@@ -41,6 +41,9 @@ if ( defined( $ENV{'PATH_INFO'} )
 use Cwd;
 $dir = cwd();
 
+print $dir;
+<STDIN>;
+
 
 ############################################################
 # First, lets read in the data already in there...
