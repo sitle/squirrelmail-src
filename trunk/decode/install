@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo -n "Please enter path to your squirrelmail installation:"
+echo -n "Please enter path to your SquirrelMail installation:"
 read smpath
 
 cp -i eastasia/*.php ${smpath}/functions/decode
