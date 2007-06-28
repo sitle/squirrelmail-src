@@ -357,6 +357,124 @@ function tOrF($argmnt) {
 
 }
 
+function quote_single($argmnt) {
+
+    $argmnt = str_replace("'","\\'",$argmnt);
+    return $argmnt;
+    
+}
+
+/**********************
+# parses the setup.php files for all activated plugins and
+# builds static plugin hooks array so we don't have to load
+# ALL plugins are runtime and build the hook array on every
+# page request
+#
+# hook array is saved in config/plugin_hooks.php
+#
+# Note the $verbose variable at the top of this routine
+# can be set to zero to quiet it down.
+#
+# NOTE/FIXME: we aren't necessarily interested in writing
+#             a full-blown PHP parsing engine, so plenty
+#             of assumptions are included herein about the
+#             coding of the plugin setup files, and things
+#             like commented out curly braces or other 
+#             such oddities can break this in a bad way.
+#
+
+*******************/
+
+function build_plugin_hook_array() {
+
+    global $status_msg;
+    
+    $pluginOut = fopen('/tmp/plugin_hooks.php','w');
+    if ( !isset($pluginOut) ) {
+        $status_msg .= "ERROR: could not open /tmp/plugin_hooks.php for writing. ";
+    } else {
+        $header = "<?php\n\n/**\n * SquirrelMail Plugin Hook Registration File\n * Auto-generated using make_conf.php\n */\n\n";
+        $header .= "global \$squirrelmail_plugin_hooks;\n\n";
+            
+        fwrite($pluginOut,$header);
+            
+        for( $c = 0 ; $c < count($sqmConf->plugins) ; $c++ ) {
+            $setup_file = fopen('../plugins/'.$sqmConf->plugins[$c].'/setup.php','r');
+            if ( !$setup_file ) {
+                $status_msg .= "ERROR: problem reading ".$sqmConf->plugins[$c]."/setup.php, plugin deactivated. ";
+            } else {
+                $inside_init_fxn = 0;
+                $brace_count = 0;
+                while( $line = fgets($setup_file) ) {
+                    if ( !$inside_init_fxn && !preg_match('/^\s*function\s*squirrelmail_plugin_init_/i',$line) ) {
+                        continue;
+                    }
+                    $inside_init_fxn = 1;
+                    
+                    if ( preg_match('/{/',$line) ) {
+                        $brace_count++;
+                    }
+                    
+                    if ( preg_match('/}/',$line) ) {
+                        $brace_count--;
+                        if ( $brace_count == 0 ) {
+                            fclose($setup_file);
+                            continue;
+                        }
+                    }
+                    
+                    if ( $brace_count > 1 ) {
+                        continue;
+                    }
+                    
+                    if ( !preg_match('/^\s*squirrelmail_plugin_hooks/i',$line) ) {
+                        continue;
+                    }
+                    
+                    while ( !preg_match('/;\s*$/',$line) ) {
+                        $line = preg_replace('/[\n\r]\s*$/','',$line);
+                        $line .= fgets($setup_file);
+                    }
+                    
+                    $line = preg_replace('/^\s+/','',$line);
+                    $line = preg_replace('/^\$/','',$line);
+                    $var = $line;
+                    
+                    $var = str_replace('=','EQUALS',$var);
+                    if ( preg_match('/^([a-z])/i',$var) ) {
+                        $options = split('/\s*EQUALS\s*/',$var);
+                        $options[1] = preg_replace('/[\n\r]/','',$options[1]);
+                        $options[1] = preg_replace('/[\\\'\"];\s*$','',$options[1]);
+                        $options[1] = preg_replace('/;$/','',$options[1]);
+                        $options[1] = str_replace("\\'","'",$options[1]);
+                        $options[1] = str_replace("\\\\","\\",$options[1]);
+                        
+                        if ( preg_match('/^squirrelmail_plugin_hooks\s*\[\s*[\'"]([a-z0-9 \/._*-]+)[\'"]\s*\]\s*\[\s*[\'"]([0-9a-z._-]+)[\'"]\s*\]/',$options[1],$matches) ) {
+                            $hook_name = $matches[0];
+                            $hooked_plugin_name = $matches[1];
+                            
+                            $line = preg_replace('/ {2,}/',' ',$line);
+                            $line = str_replace('=',"\n    =",$line);
+                            $line = "\$$line";
+                            fwrite($pluginOut,$line);
+                        }
+                    }
+                }
+                fclose($setup_file);
+                
+            }
+        }
+
+        $status_msg .= "Wrote /tmp/plugin_hooks.php. ";
+        fwrite($pluginOut,"\n\n");
+        fclose($pluginOut);
+    }
+    
+
+    
+}
+
+
 /********************
 
 write_config() writes the configuration
@@ -624,7 +742,7 @@ function write_config() {
                     $addbooks .= "    'starttls' => $sqmConf->ldap_starttls[$c]";
                 }
                 
-                $addbooks .= "\n);\n\n"
+                $addbooks .= "\n);\n\n";
                 
             }
             
@@ -633,96 +751,57 @@ function write_config() {
             
             fwrite($confOut,$addbooks);
             
+            $prefsdb = "\$this->prefs_dsn = '$sqmConf->prefs_dsn';\n";
+            $prefsdb .= "\$this->prefs_table = '$sqmConf->prefs_table';\n";
+            $prefsdb .= "\$this->prefs_user_field = '$sqmConf->prefs_user_field';\n";
+            $prefsdb .= "\$this->prefs_user_size = $sqmConf->prefs_user_size;\n";
+            $prefsdb .= "\$this->prefs_key_field = '$sqmConf->prefs_key_field';\n";
+            $prefsdb .= "\$this->prefs_key_size = $sqmConf->prefs_key_size;\n";
+            $prefsdb .= "\$this->prefs_val_field = '$sqmConf->prefs_val_field';\n";
+            $prefsdb .= "\$this->prefs_val_size = $sqmConf->prefs_val_size;\n\n";
             
+            fwrite($confOut,$prefsdb);
+            
+            $addrbook = "\$this->addrbook_global_dsn = '$sqmConf->addrbook_global_dsn';\n";
+            $addrbook .= "\$this->addrbook_global_table = '$sqmConf->addrbook_global_table';\n";
+            $addrbook .= "\$this->addrbook_global_writeable = ".tOrF($sqmConf->addrbook_global_writeable).";\n";
+            $addrbook .= "\$this->addrbook_global_listing = ".tOrF($sqmConf->addrbook_global_listing).";\n\n";
 
-
-
-/********************************
-
-
-        # string
-        print CF "\$prefs_dsn = '$prefs_dsn';\n";
-        # string
-        print CF "\$prefs_table = '$prefs_table';\n";
-        # string
-        print CF "\$prefs_user_field = '$prefs_user_field';\n";
-        # integer
-        print CF "\$prefs_user_size = $prefs_user_size;\n";
-        # string
-        print CF "\$prefs_key_field = '$prefs_key_field';\n";
-        # integer
-        print CF "\$prefs_key_size = $prefs_key_size;\n";
-        # string
-        print CF "\$prefs_val_field = '$prefs_val_field';\n";
-        # integer
-        print CF "\$prefs_val_size = $prefs_val_size;\n\n";
-        # string
-        print CF "\$addrbook_global_dsn = '$addrbook_global_dsn';\n";
-        # string
-        print CF "\$addrbook_global_table = '$addrbook_global_table';\n";
-        # boolean
-        print CF "\$addrbook_global_writeable = $addrbook_global_writeable;\n";
-        # boolean
-        print CF "\$addrbook_global_listing = $addrbook_global_listing;\n\n";
-        # string
-        print CF "\$abook_global_file = '$abook_global_file';\n";
-        # boolean
-        print CF "\$abook_global_file_writeable = $abook_global_file_writeable;\n\n";
-        # boolean
-        print CF "\$abook_global_file_listing = $abook_global_file_listing;\n\n";
-        # integer
-        print CF "\$abook_file_line_length = $abook_file_line_length;\n\n";
-        # boolean
-        print CF "\$no_list_for_subscribe = $no_list_for_subscribe;\n";
-
-        # string
-        print CF "\$smtp_auth_mech        = '$smtp_auth_mech';\n";
-        print CF "\$smtp_sitewide_user    = '". quote_single($smtp_sitewide_user) ."';\n";
-        print CF "\$smtp_sitewide_pass    = '". quote_single($smtp_sitewide_pass) ."';\n";
-        # string
-        print CF "\$imap_auth_mech        = '$imap_auth_mech';\n";
-        # boolean
-        print CF "\$use_imap_tls          = $use_imap_tls;\n";
-        # boolean
-        print CF "\$use_smtp_tls          = $use_smtp_tls;\n";
-        # string
-        print CF "\$session_name          = '$session_name';\n";
-        # boolean
-        print CF "\$only_secure_cookies   = $only_secure_cookies;\n";
-
-        print CF "\n";
-
-        # boolean
-        print CF "\$use_iframe = $use_iframe;\n";
-        # boolean
-        print CF "\$ask_user_info = $ask_user_info;\n";
-        # boolean
-        print CF "\$use_icons = $use_icons;\n";
-        print CF "\n";
-        # boolean
-        print CF "\$use_php_recode = $use_php_recode;\n";
-        # boolean
-        print CF "\$use_php_iconv = $use_php_iconv;\n";
-        print CF "\n";
-        # boolean
-        print CF "\$allow_remote_configtest = $allow_remote_configtest;\n";
-        print CF "\n";
-
-        close CF;
-
-        print "Data saved in config.php\n";
-
-        build_plugin_hook_array();
-
-
-************************/
-
-
-
-
-
-
-
+            $addrbook .= "\$this->abook_global_file = '$sqmConf->abook_global_file';\n";
+            $addrbook .= "\$this->abook_global_file_writeable = ".tOrF($sqmConf->abook_global_file_writeable).";\n";
+            $addrbook .= "\$this->abook_global_file_listing = ".tOrF($sqmConf->abook_global_file_listing).";\n\n";
+            
+            $addrbook .= "\$this->abook_file_line_length = $sqmConf->abook_file_line_length;\n\n";
+            
+            fwrite($confOut,$addrbook);
+            
+            $mailauth = "\$this->no_list_for_subscribe = ".tOrF($sqmConf->no_list_for_subscribe).";\n";
+            $mailauth .= "\$this->smtp_auth_mech        = '$sqmConf->smtp_auth_mech';\n";
+            $mailauth .= "\$this->smtp_sitewide_user    = '".quote_single($sqmConf->smtp_sitewide_user)."';\n";
+            $mailauth .= "\$this->smtp_sitewide_pass    = '".quote_single($sqmConf->smtp_sitewide_pass)."';\n";
+            $mailauth .= "\$this->imap_auth_mech        = '$sqmConf->imap_auth_mech';\n";
+            $mailauth .= "\$this->use_imap_tls          = ".tOrF($sqmConf->use_imap_tls).";\n";
+            $mailauth .= "\$this->use_smtp_tls          = ".tOrF($sqmConf->use_smtp_tls).";\n";
+            $mailauth .= "\$this->session_name          = '$sqmConf->session_name';\n";
+            $mailauth .= "\$this->only_secure_cookies   = ".tOrF($sqmConf->only_secure_cookies).";\n\n";
+            
+            fwrite($confOut,$mailauth);
+            
+            $miscconf = "\$this->use_iframe = ".tOrF($sqmConf->use_iframe).";\n";
+            $miscconf .= "\$this->ask_user_info = ".tOrF($sqmConf->ask_user_info).";\n";
+            $miscconf .= "\$this->use_icons = ".tOrF($sqmConf->use_icons).";\n\n";
+            
+            $miscconf .= "\$this->use_php_recode = ".tOrF($sqmConf->use_php_recode).";\n";
+            $miscconf .= "\$this->use_php_iconv = ".tOrF($sqmConf->use_php_iconv).";\n\n";
+            
+            $miscconf .= "\$this->allow_remote_configtest = ".tOrF($sqmConf->allow_remote_configtest).";\n\n";
+            
+            fwrite($confOut,$miscconf);
+            
+            fclose($confOut);
+            
+            build_plugin_hook_array();
+            
             $status_msg .= "Wrote configuration file /tmp/conf.php. ";
         }
     }
