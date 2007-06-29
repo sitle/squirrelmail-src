@@ -89,7 +89,7 @@ function sq_bindtextdomain($domain,$dir='') {
 
     global $languages, $sm_notAlias;
 
-    if (empty($dir)) $dir = SM_PATH . 'locale/'
+    if (empty($dir)) $dir = SM_PATH . 'locale/';
 
     $dir = bindtextdomain($domain, $dir);
 
