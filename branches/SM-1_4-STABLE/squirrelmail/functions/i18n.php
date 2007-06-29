@@ -40,30 +40,34 @@ require_once(SM_PATH . 'functions/global.php');
  *                            (OPTIONAL; default is SquirrelMail
  *                            locale directory).
  *
- * @return void
+ * @return string The name of the text domain that was set
+ *                *BEFORE* it is changed herein - NOTE that
+ *                this differs from PHP's textdomain()
  *
  * @since 1.5.2 and 1.4.10
  */
 function sq_change_text_domain($domain_name, $directory='') {
 
-    if (empty($directory)) $directory = SM_PATH . 'locale/'; 
-
     global $use_gettext;
     static $domains_already_seen = array();
+    $return_value = textdomain(NULL);
 
     // only need to call bindtextdomain() once unless
     // $use_gettext is turned on
     //
     if (!$use_gettext && in_array($domain_name, $domains_already_seen)) {
         textdomain($domain_name);
-        return;
+        return $return_value;
     }
 
     $domains_already_seen[] = $domain_name;
 
+    if (empty($directory)) $directory = SM_PATH . 'locale/'; 
+
     sq_bindtextdomain($domain_name, $directory);
     textdomain($domain_name);
 
+    return $return_value;
 }
 
 /**
