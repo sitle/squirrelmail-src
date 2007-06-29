@@ -38,7 +38,12 @@ define('SM_CONF_STRING', 2);
 define('SM_CONF_INTEGER', 3);
 define('SM_CONF_ARRAY', 4);
 define('SM_CONF_TEXT', 5);
-define('SM_CONF_SELECT', 6);
+define('SM_CONF_ENUM', 6);
+define('SM_CONF_ARRAY_ENUM', 7);
+
+define('SM_CONF_ARRAY_SIMPLE', 0);
+define('SM_CONF_ARRAY_KEYS', 1);
+define('SM_CONF_ARRAY_REINDEX', 2);
 
 class SQMConfig 
 {
@@ -74,8 +79,7 @@ class SQMConfig
   */
   function register_variable($variable_name, $value=null)
   {
-    $this->sqm_config_vars[$variable_name] = $value;
-    $this->sqm_config_sections[$variable_name] = array();  
+    $this->sqm_config_vars[$variable_name] = $value;  
   }
   
   function add_section($variable_name, $section)
@@ -85,7 +89,7 @@ class SQMConfig
   
   function add_type($variable_name, $type)
   {
-    $this->sqm_config_type[$variable_name] = explode(',', $type);
+    $this->sqm_config_type[$variable_name] = explode(',', $type, 2);
   }
 
   function V($name)
@@ -140,10 +144,11 @@ define('SM_BASE_URI', $base_uri);
       { 
         foreach($variables as $name => $value)
         {
+          $this->add_type($name,$value);
           $value = explode(",",$value);
           if($value[0] == SM_CONF_ARRAY)
           {
-            if($value[1] == -1)
+            if($value[1] == SM_CONF_ARRAY_REINDEX)
             {
               $newval = array();
               foreach($this->sqm_config_vars[$name] as $confvalue)
@@ -153,21 +158,28 @@ define('SM_BASE_URI', $base_uri);
               }
               $this->sqm_config_vars[$name] = $newval;
             }
-            elseif(strlen($value[1]) > 1)
+            elseif($value[1] == SM_CONF_ARRAY_KEYS)
             {
               $newval = array();
               foreach($this->sqm_config_vars[$name] as $j => $confvalue)
               {
-                $slice = explode(',', $confvalue, count($value)-1);
+                $slice = explode(',', $confvalue, count($value)-2);
                 foreach($slice as $i=>$subdata)
                 {
-                  $newval[$j][$value[$i+1]] = $subdata;
+                  $newval[$j][$value[$i+2]] = $subdata;
                 }
               }
               $this->sqm_config_vars[$name] = $newval;              
             }
           }
         }
+      }
+      elseif($section == 'sections')
+      {
+        foreach($variables as $name => $title)
+        {
+          $this->register_section($name, $title);
+        }      
       }
       else
       {
@@ -187,31 +199,10 @@ class SQMConfigDB extends SQMConfig
 
 }
 
-/********************************************************
- * Used to test time consumed by the new config engine
-function microtime_float()
-{
-    list($usec, $sec) = explode(" ", microtime());
-    return ((float)$usec + (float)$sec);
-}
-
-$time_start = microtime_float();
-*********************************************************/
 
 $conf = new SQMConfigFile("default_config.php");
+$conf->SQMConfigFile("meta_config.php");
 
-//echo "<pre>";
-//var_dump($conf->sqm_config_vars);
+var_dump($conf);
 
-######################################
-# Current design planned :
-######################################
-# Do not use : global $org_title 
-# Use : $conf->V('org_title')
-######################################
-
-
-
-//$time_end = microtime_float();
-//$time = $time_end - $time_start;
 

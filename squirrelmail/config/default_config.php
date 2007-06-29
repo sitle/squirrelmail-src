@@ -1,6 +1,17 @@
 ; This is the default configuration file of SquirrelMail. <?php die(); ?>
 
-[script]
+[sections]
+org = "Organization preferences"
+server = "Server settings"
+folder = "Folder settings"
+general = "General options"
+customization = "Themes and customization"
+plugins = "Plugins configuration"
+database = "Database settings"
+language = "Localization"
+tweaks =  "Tweaks"
+
+[org]
 org_name = "SquirrelMail"
 org_logo = SM_PATH"images/sm_logo.png"
 org_logo_width = 308
@@ -86,8 +97,8 @@ templateset_fallback = "default"
 aTemplateSet[] = "default,Default"
 aTemplateSet[] = "default_advanced,Advanced"
 default_fontsize = ""
-default_fontset = ""
-;fontsets = array()
+default_fontset = "none"
+fontsets[] = "none,"
 fontsets[] = "serif,serif"
 fontsets[] = "sans,helvetica,arial,sans-serif"
 fontsets[] = "comicsans,comic sans ms,sans-serif"
@@ -140,9 +151,9 @@ config_use_color = 2
 ask_user_info = 1
 
 [types]
-plugins = SM_CONF_ARRAY",0"
-plugins_0 = SM_CONF_STRING",30"
-user_themes = SM_CONF_ARRAY",PATH,NAME"
-icon_themes = SM_CONF_ARRAY",PATH,NAME"
-aTemplateSet = SM_CONF_ARRAY",ID,NAME"
-fontsets = SM_CONF_ARRAY",-1"
+plugins = SM_CONF_ARRAY","SM_CONF_ARRAY_SIMPLE
+plugins_element = SM_CONF_STRING",20"
+user_themes = SM_CONF_ARRAY","SM_CONF_ARRAY_KEYS",PATH,NAME"
+icon_themes = SM_CONF_ARRAY","SM_CONF_ARRAY_KEYS",PATH,NAME"
+aTemplateSet = SM_CONF_ARRAY","SM_CONF_ARRAY_KEYS",ID,NAME"
+fontsets = SM_CONF_ARRAY","SM_CONF_ARRAY_REINDEX
