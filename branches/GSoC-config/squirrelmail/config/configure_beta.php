@@ -25,54 +25,53 @@ if(isset($_GET['section']) && is_array($section = $conf->get_section($_GET['sect
 
 <table align="center" width="80%" border="0">
 <?
-foreach($section['vars'] as $name)
-{
- $type = $conf->get_type($name);
- $desc = $conf->get_desc($name);
+  foreach($section['vars'] as $name)
+  {
+   $type = $conf->get_type($name);
+   $desc = $conf->get_desc($name);
 ?>
 
 <tr>
   <td width="40%" align="right"><?=$desc?> :</td>
   <td><?
- switch($type[0])
- {
-   case SM_CONF_BOOL:
-     echo '<input type="checkbox" name="'.$name.'"'.($conf->V($name)? ' checked' : '').'>';
-     break;
-   case SM_CONF_STRING:
-   case SM_CONF_INTEGER:
-     echo '<input type="text" name="'.$name.'" value="'.($conf->V($name)).'" size="'.$type[1].'">';
-     break;
-   case SM_CONF_KEYED_ENUM: $keyed = true;
-   case SM_CONF_ENUM:
-     echo '<select name="'.$name.'">';
+   switch($type[0])
+   {
+     case SM_CONF_BOOL:
+       echo '<input type="checkbox" name="'.$name.'"'.($conf->V($name)? ' checked' : '').'>';
+       break;
+     case SM_CONF_STRING:
+     case SM_CONF_INTEGER:
+       echo '<input type="text" name="'.$name.'" value="'.($conf->V($name)).'" size="'.$type[1].'">';
+       break;
+     case SM_CONF_KEYED_ENUM: $keyed = true;
+     case SM_CONF_ENUM:
+       echo '<select name="'.$name.'">';
      
-     $values = explode(',', $type[1]);
-     foreach($values as $value)
-     {
-       if($keyed)
+       $values = explode(',', $type[1]);
+       foreach($values as $value)
        {
-         list($value,$caption) = explode('=', $value, 2);
-         $caption = _($caption);
+         if($keyed)
+         {
+           list($value,$caption) = explode('=', $value, 2);
+           $caption = _($caption);
+         }
+         else
+         {
+           $caption = $value;
+         }
+         echo '<option'.($conf->V($name)==$value ? ' selected':'').' value="'.$value.'">'.$caption.'</option>';
        }
-       else
-       {
-         $caption = $value;
-       }
-       echo '<option'.($conf->V($name)==$value ? ' selected':'').' value="'.$value.'">'.$caption.'</option>';
-     }
      
-     echo '</select>';
-     
-     $keyed = false;
-     break;
- }
-}
+       echo '</select>';     
+       $keyed = false;
+       
+       break;
+    }
 ?></td>
 </tr>
-
-</form>
-<?
+<?php
+  }
+  echo "</form>";
 }
 else
 {
