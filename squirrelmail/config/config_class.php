@@ -23,7 +23,7 @@
 #   SQMConfigFile is the filesystem backend to do the job
 #
 #   * The same class is used for configuration and user preferences
-#   * Each variable can have its "meta-data" (decription, type)
+#   * Each variable can have "meta-data" (decription, type, categories)
 #   * Most of the time, meta-data are not loaded to save memory and time
 #   * Arrays are supported (including two-dimension associative arrays)
 #   * Each variable has an optional section and subsection
@@ -61,16 +61,19 @@ class SQMConfig
   /*
   * Register a new section and its description
   */
-  function register_section($name, $section, $parent=null)
+  function register_section($name, $title)
   {
-    if(is_null($parent))
+    $this->sqm_sections[$name] = array(
+       'title' => _($title), 
+       'sub' => array(),
+       'vars' => array(),
+       'desc' => ''
+    );
+       
+    if($pos = strrpos($name,'.'))
     {
-      $this->sqm_sections[$name][$name] = _($section);
-    }
-    else
-    {
-      $this->sqm_sections[$parent][$name] = _($section); 
-    }
+      $this->sqm_sections[substr($name,0,$pos)]['sub'][] = $name;
+    } 
   }
 
   /*
@@ -84,12 +87,31 @@ class SQMConfig
   
   function add_section($variable_name, $section)
   {
-    $this->sqm_config_sections[$variable_name][] = $section;
+    $this->sqm_sections[$section]['vars'][] = $variable_name;
+  }
+  
+  function remove_section($variable_name, $section)
+  {
+    $key = array_search($variable_name, $this->sqm_sections[$section]['vars']);
+    unset($this->sqm_sections[$section]['vars'][$key]);
   }
   
   function add_type($variable_name, $type)
   {
     $this->sqm_config_type[$variable_name] = explode(',', $type, 2);
+  }
+  
+  function add_desc($variable_name, $desc)
+  {
+    if(substr($variable_name, 0, 4) == "sec.")
+    { 
+      $section = substr($variable_name, 4); 
+      $this->sqm_sections[$section]['desc'] = _($desc);
+    }
+    else
+    {
+      $this->sqm_config_desc[$variable_name] = _($desc);
+    }
   }
 
   function V($name)
@@ -108,33 +130,7 @@ class SQMConfigFile extends SQMConfig
   function SQMConfigFile($confFile, $sections = false) 
   {
 ###########################################################################
-/**
- * calculate SM_PATH and calculate the base_uri
- * assumptions made: init.php is only called from plugins or from the src dir.
- * files in the plugin directory may not be part of a subdirectory called "src"
- */
-if (isset($_SERVER['SCRIPT_NAME'])) {
-    $a = explode('/',$_SERVER['SCRIPT_NAME']);
-} elseif (isset($HTTP_SERVER_VARS['SCRIPT_NAME'])) {
-    $a = explode('/',$HTTP_SERVER_VARS['SCRIPT_NAME']);
-} else {
-    $error = 'Unable to detect script environment. '
-	.'Please test your PHP settings and send PHP core config, $_SERVER '
-	.'and $HTTP_SERVER_VARS to SquirrelMail developers.';
-    die($error);
-}
-$sSM_PATH = '';
-for($i = count($a) -2;$i > -1; --$i) {
-    $sSM_PATH .= '../';
-    if ($a[$i] === 'src' || $a[$i] === 'plugins') {
-        break;
-    }
-}
-
-$base_uri = implode('/',array_slice($a,0,$i)). '/';
-
-define('SM_PATH',$sSM_PATH);
-define('SM_BASE_URI', $base_uri);
+define('SM_PATH', realpath(dirname(__FILE__)."/../"));
 ##########################################################################
 
     $raw_conf = parse_ini_file($confFile, true);
@@ -181,11 +177,19 @@ define('SM_BASE_URI', $base_uri);
           $this->register_section($name, $title);
         }      
       }
+      elseif($section == 'descriptions')
+      {
+        foreach($variables as $name => $desc)
+        {
+          $this->add_desc($name, $desc);
+        }      
+      }
       else
       {
         foreach($variables as $name => $value)
         {
           $this->register_variable($name, $value);
+          if($sections){ $this->add_section($name, $section); }
         }
       }  
       unset($raw_conf[$section],$newval);  
@@ -199,10 +203,11 @@ class SQMConfigDB extends SQMConfig
 
 }
 
+// $conf = new SQMConfigFile("default_config.php"); /*
+$conf = new SQMConfigFile("meta_config.php");
+$conf->SQMConfigFile("default_config.php", true);
 
-$conf = new SQMConfigFile("default_config.php");
-$conf->SQMConfigFile("meta_config.php");
-
+echo "<pre>";
 var_dump($conf);
 
 

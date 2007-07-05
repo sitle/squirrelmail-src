@@ -2,8 +2,22 @@
 ; (contains the type and description of configuration variables)
 ; This file is only included when needed, i.e when editing the configuration
 
-[types]
+[sections]
+org = "Organization preferences"
+server = "Server settings"
+folder = "Folder settings"
+general = "General options"
+customization = "Themes and customization"
+plugins = "Plugins configuration"
+database = "Database settings"
+language = "Localization"
+tweaks =  "Tweaks"
 
+[descriptions]
+sec.org = "Configure SquirrelMail to use you organization's name, logo and colors."
+org_name = "Organization name"
+
+[types]
 org_name = SM_CONF_STRING",0"
 org_logo = SM_CONF_STRING",0"
 org_logo_width = SM_CONF_INTEGER",4"

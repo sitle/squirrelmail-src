@@ -1,16 +1,5 @@
 ; This is the default configuration file of SquirrelMail. <?php die(); ?>
 
-[sections]
-org = "Organization preferences"
-server = "Server settings"
-folder = "Folder settings"
-general = "General options"
-customization = "Themes and customization"
-plugins = "Plugins configuration"
-database = "Database settings"
-language = "Localization"
-tweaks =  "Tweaks"
-
 [org]
 org_name = "SquirrelMail"
 org_logo = SM_PATH"images/sm_logo.png"
