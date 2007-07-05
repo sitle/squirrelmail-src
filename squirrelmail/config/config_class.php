@@ -58,6 +58,15 @@ class SQMConfig
     $this->register_section('private', "");  
   }
 
+  function get_section($name = null)
+  {
+    if(is_null($name))
+    {
+      return $this->sqm_sections;
+    }
+    return $this->sqm_sections[$name];
+  }
+
   /*
   * Register a new section and its description
   */
@@ -112,6 +121,16 @@ class SQMConfig
     {
       $this->sqm_config_desc[$variable_name] = _($desc);
     }
+  }
+  
+  function get_desc($variable_name)
+  {
+    return $this->sqm_config_desc[$variable_name];
+  }
+
+  function get_type($variable_name)
+  {
+    return $this->sqm_config_type[$variable_name];
   }
 
   function V($name)
@@ -202,12 +221,3 @@ class SQMConfigDB extends SQMConfig
 {
 
 }
-
-// $conf = new SQMConfigFile("default_config.php"); /*
-$conf = new SQMConfigFile("meta_config.php");
-$conf->SQMConfigFile("default_config.php", true);
-
-echo "<pre>";
-var_dump($conf);
-
-
