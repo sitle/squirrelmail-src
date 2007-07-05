@@ -1,17 +1,18 @@
-<html>
+<?php
+require_once "config_class.php";
+
+define('SM_PATH', 'SM_PATH');
+$conf = new SQMConfigFile("meta_config.php");
+$conf->SQMConfigFile("default_config.php", true);
+?><html>
 
 <head>
   <title>SquirrelMail Configuration</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Type" content="text/html; charset=<?=$conf->V('default_charset')?>" />
 </head>
 
 <body>
 <?php
-
-require_once "config_class.php";
-
-$conf = new SQMConfigFile("meta_config.php");
-$conf->SQMConfigFile("default_config.php", true);
 
 if(isset($_GET['section']) && is_array($section = $conf->get_section($_GET['section'])))
 {
@@ -42,16 +43,28 @@ foreach($section['vars'] as $name)
    case SM_CONF_INTEGER:
      echo '<input type="text" name="'.$name.'" value="'.($conf->V($name)).'" size="'.$type[1].'">';
      break;
+   case SM_CONF_KEYED_ENUM: $keyed = true;
    case SM_CONF_ENUM:
      echo '<select name="'.$name.'">';
      
      $values = explode(',', $type[1]);
      foreach($values as $value)
      {
-       echo '<option value="'.$value.'">'.$value.'</option>';
+       if($keyed)
+       {
+         list($value,$caption) = explode('=', $value, 2);
+         $caption = _($caption);
+       }
+       else
+       {
+         $caption = $value;
+       }
+       echo '<option'.($conf->V($name)==$value ? ' selected':'').' value="'.$value.'">'.$caption.'</option>';
      }
      
      echo '</select>';
+     
+     $keyed = false;
      break;
  }
 }

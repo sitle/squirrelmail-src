@@ -40,6 +40,7 @@ define('SM_CONF_ARRAY', 4);
 define('SM_CONF_TEXT', 5);
 define('SM_CONF_ENUM', 6);
 define('SM_CONF_ARRAY_ENUM', 7);
+define('SM_CONF_KEYED_ENUM', 8);
 
 define('SM_CONF_ARRAY_SIMPLE', 0);
 define('SM_CONF_ARRAY_KEYS', 1);
