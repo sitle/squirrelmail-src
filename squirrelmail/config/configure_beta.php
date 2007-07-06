@@ -66,6 +66,50 @@ if(isset($_GET['section']) && is_array($section = $conf->get_section($_GET['sect
        $keyed = false;
        
        break;
+     case SM_CONF_ARRAY_ENUM:
+       $enum = $type[1];
+       echo '<select name="'.$name.'">';
+       
+       foreach($conf->V($enum) as $id => $option)
+       {
+         echo '<option value="'.$id.'"'.($id==$value?' selected':'').'>'.current($option).'</option>';
+       }
+              
+       echo '</select>';
+       break;
+     case SM_CONF_ARRAY:
+       list($array_type, $params) = explode(',', $type[1], 2);
+       switch($array_type)
+       {
+         case SM_CONF_ARRAY_SIMPLE:
+           echo '<select name="delete_'.$name.'[]" size="2" multiple>';
+           
+           foreach($conf->V($name) as $id => $option)
+           {
+             echo '<option value="'.$id.'">'.$option.'</option>';
+           }
+           
+           echo '</select>';
+         break;
+         case SM_CONF_ARRAY_KEYS:
+           echo '<table width="100%"><tr bgcolor="#EFEFEF">';
+           $params = explode(',', $params);
+           foreach($params as $key) echo "<td>$key</td>";
+         echo '<td width="100">Add / Delete</td></tr>';
+         
+         foreach($conf->V($name) as $id => $option)
+         {
+          echo '<tr bgcolor="#FCFCFC">';
+          foreach($params as $key) echo "<td>".$option[$key]."</td>";
+          echo '<td align="center"><input type="checkbox" name="'.$name."[$id]".'" value="1">';
+          echo '</tr>';
+         }
+         
+         echo '</table>';
+         break;
+       }
+     
+       break;
     }
 ?></td>
 </tr>
