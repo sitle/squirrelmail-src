@@ -307,16 +307,11 @@ function SendMDN ( $mailbox, $passed_id, $sender, $message, $imapConnection) {
     } else {
         require_once(SM_PATH . 'class/deliver/Deliver_SMTP.class.php');
         $deliver = new Deliver_SMTP();
-        global $smtpServerAddress, $smtpPort, $smtp_auth_mech, $pop_before_smtp;
-        if ($smtp_auth_mech == 'none') {
-            $user = '';
-            $pass = '';
-        } else {
-            global $key, $onetimepad;
-            $user = $username;
-            $pass = OneTimePadDecrypt($key, $onetimepad);
-        }
+        global $smtpServerAddress, $smtpPort, $pop_before_smtp;
+        $user = '';
+        $pass = '';
         $authPop = (isset($pop_before_smtp) && $pop_before_smtp) ? true : false;
+        get_smtp_user($user, $pass);
         $stream = $deliver->initStream($composeMessage,$domain,0,
                                        $smtpServerAddress, $smtpPort, $user, $pass, $authPop);
     }

@@ -1532,15 +1532,11 @@ function deliverMessage($composeMessage, $draft=false) {
         global $smtpServerAddress, $smtpPort, $pop_before_smtp, $smtp_auth_mech;
 
         $authPop = (isset($pop_before_smtp) && $pop_before_smtp) ? true : false;
-
-        if ($smtp_auth_mech == 'none' && !$authPop) {
-                $user = '';
-                $pass = '';
-        } else {
-                global $key, $onetimepad;
-                $user = $username;
-                $pass = OneTimePadDecrypt($key, $onetimepad);
-        }
+        
+        $user = '';
+        $pass = '';
+        
+        get_smtp_user($user, $pass);
 
         $stream = $deliver->initStream($composeMessage,$domain,0,
                 $smtpServerAddress, $smtpPort, $user, $pass, $authPop);

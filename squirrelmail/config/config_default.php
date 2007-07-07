@@ -257,6 +257,26 @@ $use_smtp_tls = false;
 $smtp_auth_mech = 'none';
 
 /**
+ * Custom SMTP Authentication Username
+ * 
+ * IMAP username is used if variable is set to an empty string. Variable is included in
+ * the main configuration file only in 1.4.11+ and 1.5.2+.
+ * @global string $smtp_sitewide_user
+ * @since 1.4.11
+ */
+$smtp_sitewide_user = '';
+
+/**
+ * Custom SMTP Authentication Password
+ * 
+ * IMAP password is used if variable is set to an empty string.  Variable is included in 
+ * the main configuration file in 1.4.11+ and 1.5.2+
+ * @global string $smtp_sitewide_pass
+ * @since 1.4.11
+ */
+$smtp_sitewide_pass = '';
+
+/**
  * IMAP authentication mechanism
  *
  * auth_mech can be either 'login','plain', 'cram-md5', or 'digest-md5'
