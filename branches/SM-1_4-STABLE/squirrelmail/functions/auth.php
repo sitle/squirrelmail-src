@@ -231,4 +231,43 @@ function hmac_md5($data, $key='') {
     return $hmac;
 }
 
+/**
+ * Reads and decodes stored user password information
+ *
+ * Direct access to password information is deprecated.
+ * @return string password in plain text
+ * @since 1.5.1
+ */
+function sqauth_read_password() {
+    sqgetGlobalVar('key',         $key,       SQ_COOKIE);
+    sqgetGlobalVar('onetimepad',  $onetimepad,SQ_SESSION);
+
+    return OneTimePadDecrypt($key, $onetimepad);
+}
+
+/**
+ * Fillin user and password based on SMTP auth settings.
+ *
+ * @param string $user Reference to SMTP username
+ * @param string $pass Reference to SMTP password (unencrypted)
+ * @since 1.4.11
+ */
+function get_smtp_user(&$user, &$pass) {
+    global $username, $smtp_auth_mech,
+           $smtp_sitewide_user, $smtp_sitewide_pass;
+
+    if ($smtp_auth_mech == 'none') {
+        $user = '';
+        $pass = '';
+    } elseif ( isset($smtp_sitewide_user) && isset($smtp_sitewide_pass) &&
+               !empty($smtp_sitewide_user)) {
+        $user = $smtp_sitewide_user;
+        $pass = $smtp_sitewide_pass;
+    } else {
+        $user = $username;
+        $pass = sqauth_read_password();
+    }
+}
+
+
 ?>
