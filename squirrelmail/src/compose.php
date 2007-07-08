@@ -370,6 +370,7 @@ if ($draft) {
         exit();
     } else {
         unset($compose_messages[$session]);
+        sqsession_register($compose_messages,'compose_messages');
         $draft_message = _("Draft Email Saved");
         /* If this is a resumed draft, then delete the original */
         if(isset($delete_draft)) {
@@ -469,6 +470,7 @@ if ($send) {
             exit();
         }
         unset($compose_messages[$session]);
+        sqsession_register($compose_messages,'compose_messages');
 
         /* if it is resumed draft, delete draft message */
         if ( isset($delete_draft)) {
