@@ -236,7 +236,7 @@ function hmac_md5($data, $key='') {
  *
  * Direct access to password information is deprecated.
  * @return string password in plain text
- * @since 1.5.1
+ * @since 1.4.11
  */
 function sqauth_read_password() {
     sqgetGlobalVar('key',         $key,       SQ_COOKIE);
