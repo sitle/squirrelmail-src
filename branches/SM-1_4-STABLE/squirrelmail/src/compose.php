@@ -106,7 +106,7 @@ if ( sqgetGlobalVar('return', $temp, SQ_POST) ) {
 }
 
 /** GET VARS */
-sqgetGlobalVar('attachedmessages', $attachedmessages, SQ_GET);
+// (none)
 
 /**
  * Here we decode the data passed in from mailto.php.

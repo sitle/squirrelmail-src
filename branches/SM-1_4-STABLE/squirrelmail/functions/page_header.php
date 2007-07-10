@@ -101,7 +101,7 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
     }
 
     if ($session) {
-        $compose_uri = $base_uri.'src/compose.php?mailbox='.urlencode($mailbox).'&amp;attachedmessages=true&amp;session='."$session";
+        $compose_uri = $base_uri.'src/compose.php?mailbox='.urlencode($mailbox).'&amp;session='."$session";
     } else {
         $compose_uri = $base_uri.'src/compose.php?newmessage=1';
         $session = 0;
