@@ -21,6 +21,8 @@ Version 1.4.11 - SVN
   - Backported code for site wide SMTP authentication (#1531889).
   - Fixed issue with compose session not being cleaned after message is 
     saved or sent.
+  - Added ability to detect HTTP_X_FORWARDED_PROTO in get_location(),
+    thanks to Daniel Watts
 
 Version 1.4.10a - 10 May 2007
 -----------------------------
