@@ -31,7 +31,6 @@ $SQM_INTERNAL_VERSION = array(1,4,11);
  * For that reason, bring in global.php AFTER we define the version strings.
  */
 require_once(SM_PATH . 'functions/global.php');
-include_once(SM_PATH . 'plugins/compatibility/functions.php');
 
 /**
  * Wraps text at $wrap characters
