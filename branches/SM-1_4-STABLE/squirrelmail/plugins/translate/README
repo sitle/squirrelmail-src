@@ -1,4 +1,4 @@
-Message Translation -- Version 1.4
+Message Translation
 
 If you have ever received a mail message from someone who is not in
 your country, you probably noticed that they used a different language
@@ -42,33 +42,17 @@ Babelfish = babelfish.altavista.com
 Go.com = translator.go.com (disabled - service unavailable)
 Dictionary.com = www.dictionary.com/translate
 InterTran = tranexp.com
-GPLTrans = www.translator.cx
+GPLTrans = www.translator.cx (disabled - service unavailable)
 OteNet = systran.otenet.gr
 Promt = www.translate.ru
+Google Translate = www.google.com/translate
 
 Installation
 ============
 
-As with other plugins, just uncompress the archive in the plugins
-directory, go back to the main directory, run configure and add the plugin.
+Go back to the main directory, run configure and add the plugin.
 
-Questions/comments/flames/etc can be sent to the Squirrelmail Plugins list
-
-
-Changes
-=======
-1.3 -> 1.4
-  * Modified to use new option page hook.
-    Paul Joseph Thompson <captbunzo@squirrelmail.org>
-
-1.2 -> 1.3
-  * Stupid bugfix.  :-)
-  
-1.1 -> 1.2
-  * HTML changed to look better
-  
-1.0 -> 1.1
-  * Added more servers
-  * Added better language handling
-  * You have to pick a server, but you can choose not to have the box
-  * Added better support for direction of translation
+Some plugin settings can be adjusted by creating 
+config/translate_config.php or plugins/translate/config.php 
+configuration file. See plugins/translate/config_default.php and 
+plugins/translate/config_sample.php
