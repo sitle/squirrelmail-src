@@ -1,51 +1,28 @@
-Ok, this is my first attempt at a plugin, so excuse the mess you may find
-in here.
+This plugin is used to notify the user when a new mail arrives. There are
+several ways to do this. One is to play a sound through the browser whenever 
+the user has unseen messages flagged in the left window pane. There are options 
+available (on the options page of course) to disable this feature for each user, 
+and to select different media files from the users local computer. The default 
+is that this is NOT enabled, so you'll need to go to the options menu to turn 
+it on first! There are also options to show a popup window via JavaScript.
 
-This plugin is used to play sounds (currently a WAV file) through the
-browser whenever the user has unseen messages flagged in the left window
-pane.  There are options available (on the options page of course) to
-disable this feature for each user, and to select different media files
-from the users local computer.  The default is that this is NOT enabled,
-so you'll need to go to the options menu to turn it on first! There are
-also options to show a popup window via JavaScript.
+Plugin options are visible only when JavaScript is enabled or detected by
+SquirrelMail JavaScript detection functions.
 
-I tried to make this fairly simple to install.  To install the plugin:
+From SquirrelMail 1.5.1 newmail plugin's site configuration can be stored in
+config/newmail_config.php or plugins/newmail/config.php.
 
-  1.  Change to the plugins directory.
+$allowsound setting is replaced with $newmail_allowsound and should be stored
+inside plugin's site configuration file.
 
-        $ cd plugins/
+Plugin supports playback of WAV, SWF, MP3, OGG and SVG media files. Currently
+OGG and SVG files are played only by browsers that implement w3.org nested 
+objects correctly and browsers that can play <embed> objects. Internet Explorer 
+can't play them due to broken <object> implementation. OGG and SVG <object> 
+elements specific to IE are not implemented.
 
-  2.  Unarchive the plugin.
+CREDITS
 
-        $ tar zxvf /your/path/to/newmail-x.x.tgz
-
-  2.  This should create a newmail/ directory under plugins.
-
-  4.  Go to the config directory and run conf.pl
-
-        $ cd ../../config/
-        $ ./conf.pl
-
-  5.  Choose option 8 and proceed to add the new plugin following
-      the instructions there.  Save and exit, and your plugin should
-      be in place.
-
-Any questions, you can let me know --
-
-Mike Huttinger
-huttinger@ipact.com
-
------------------------------------------
-
-Modifications by Tyler Akins to support changing the title bar and for the
-new 1.1.1 validate.php format.  Also uses the new sqimap_unseen_messages()
-function in 1.1.2
-
------------------------------------------
-
-Modification by Wouter Teepe from Seth Randall...
-to disallow the use of audio, change 
-    $allowsound = "true";
-to 
-    $allowsound = "false";
-on line 33 of newmail_opt.php
+This plugin has been originally created by Mike Huttinger, with contributions by
+Tyler Akins and Seth Randall. It's now maintained by the SquirrelMail Project
+Team.
