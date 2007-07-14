@@ -14,6 +14,9 @@
  * @package squirrelmail
  */
 
+/** This is the printer_friendly_bottom page */
+define('PAGE_NAME', 'printer_friendly_bottom');
+
 /**
  * Path for SquirrelMail required files.
  * @ignore
@@ -289,4 +292,3 @@ function pf_show_attachments($message, $exclude_id, $mailbox, $id) {
 
 
 /* --end pf-specific functions */
-?>

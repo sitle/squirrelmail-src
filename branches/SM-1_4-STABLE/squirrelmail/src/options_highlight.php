@@ -12,6 +12,9 @@
  * @subpackage prefs
  */
 
+/** This is the options_highlight page */
+define('PAGE_NAME', 'options_highlight');
+
 /**
  * Path for SquirrelMail required files.
  * @ignore

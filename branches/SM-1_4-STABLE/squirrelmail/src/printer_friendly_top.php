@@ -12,6 +12,9 @@
  * @package squirrelmail
  */
 
+/** This is the printer_friendly_top page */
+define('PAGE_NAME', 'printer_friendly_top');
+
 /**
  * Path for SquirrelMail required files.
  * @ignore

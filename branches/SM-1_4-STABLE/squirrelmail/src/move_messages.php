@@ -11,6 +11,9 @@
  * @package squirrelmail
  */
 
+/** This is the move_messages page */
+define('PAGE_NAME', 'move_messages');
+
 /* Path for SquirrelMail required files. */
 define('SM_PATH','../');
 
@@ -257,4 +260,4 @@ if ($exception) {
     exit;
 }
 ?>
-</BODY></HTML>
+</body></html>

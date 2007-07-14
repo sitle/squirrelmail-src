@@ -17,6 +17,9 @@
  * @package squirrelmail
  */
 
+/** This is the mailto page */
+define('PAGE_NAME', 'mailto');
+
 /**
  * Path for SquirrelMail required files.
  * @ignore
@@ -80,4 +83,3 @@ if($force_login == false && sqsession_is_registered('user_is_logged_in')) {
 
 session_write_close();
 header('Location: ' . get_location() . '/' . $redirect);
-?>

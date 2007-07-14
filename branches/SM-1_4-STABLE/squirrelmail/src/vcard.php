@@ -11,6 +11,9 @@
  * @package squirrelmail
  */
 
+/** This is the vcard page */
+define('PAGE_NAME', 'vcard');
+
 /**
  * Path for SquirrelMail required files.
  * @ignore

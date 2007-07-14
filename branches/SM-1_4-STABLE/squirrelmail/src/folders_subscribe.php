@@ -12,6 +12,9 @@
  * @package squirrelmail
  */
 
+/** This is the folders_subscribe page */
+define('PAGE_NAME', 'folders_subscribe');
+
 /**
  * Path for SquirrelMail required files.
  * @ignore
@@ -69,4 +72,3 @@ if ($method == 'sub') {
 sqimap_logout($imapConnection);
 header("Location: $location/folders.php?success=$success");
 
-?>

@@ -12,6 +12,9 @@
  * @package squirrelmail
  */
 
+/** This is the folders_delete page */
+define('PAGE_NAME', 'folders_delete');
+
 /**
  * Path for SquirrelMail required files.
  * @ignore
@@ -134,4 +137,3 @@ sqimap_logout($imap_stream);
 $location = get_location();
 header ("Location: $location/folders.php?success=delete");
 
-?>

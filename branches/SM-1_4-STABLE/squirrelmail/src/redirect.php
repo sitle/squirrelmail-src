@@ -11,6 +11,9 @@
  * @package squirrelmail
  */
 
+/** This is the redirect page */
+define('PAGE_NAME', 'redirect');
+
 /**
  * Path for SquirrelMail required files.
  * @ignore
@@ -193,4 +196,3 @@ function attachment_common_parse($str, $debug) {
     sqsession_register($attachment_common_types, 'attachment_common_types');
 }
 
-?>

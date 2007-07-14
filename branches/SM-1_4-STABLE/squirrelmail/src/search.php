@@ -12,6 +12,9 @@
  * @subpackage search
  */
 
+/** This is the search page */
+define('PAGE_NAME', 'search');
+
 /**
  * Path for SquirrelMail required files.
  * @ignore
@@ -554,4 +557,3 @@ $allow_thread_sort = $old_value;
 do_hook('search_bottom');
 sqimap_logout($imapConnection);
 echo '</body></html>';
-?>

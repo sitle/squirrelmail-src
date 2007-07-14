@@ -12,6 +12,9 @@
  * @subpackage addressbook
  */
 
+/** This is the addressbook page */
+define('PAGE_NAME', 'addressbook');
+
 /**
  * Path for SquirrelMail required files.
  * @ignore

@@ -12,6 +12,9 @@
  * @package squirrelmail
  */
 
+/** This is the folders_rename_do page */
+define('PAGE_NAME', 'folders_rename_do');
+
 /**
  * Path for SquirrelMail required files.
  * @ignore
@@ -81,4 +84,3 @@ if ($old_name <> $new_name) {
 
 header ('Location: ' . get_location() . '/folders.php?success=rename');
 
-?>

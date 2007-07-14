@@ -17,6 +17,9 @@
  * @package squirrelmail
  */
 
+/** This is the compose page */
+define('PAGE_NAME', 'compose');
+
 /**
  * Path for SquirrelMail required files.
  * @ignore
@@ -1633,4 +1636,3 @@ function deliverMessage($composeMessage, $draft=false) {
     return $succes;
 }
 
-?>

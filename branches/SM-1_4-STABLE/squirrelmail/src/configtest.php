@@ -25,6 +25,9 @@ function do_err($str, $exit = TRUE) {
 }
 
 ob_implicit_flush();
+/** This is the configtest page */
+define('PAGE_NAME', 'configtest');
+
 /** @ignore */
 define('SM_PATH', '../');
 
@@ -473,6 +476,3 @@ if(!empty($addrbook_dsn) || !empty($prefs_dsn) || !empty($addrbook_global_dsn)) 
 
 </body>
 </html>
-<?php
-// vim: et ts=4
-?>

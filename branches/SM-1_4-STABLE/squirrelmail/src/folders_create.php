@@ -12,6 +12,9 @@
  * @package squirrelmail
  */
 
+/** This is the folders_create page */
+define('PAGE_NAME', 'folders_create');
+
 /**
  * Path for SquirrelMail required files.
  * @ignore
@@ -79,4 +82,3 @@ sqimap_logout($imapConnection);
 $location = get_location();
 header ("Location: $location/folders.php?success=create");
 
-?>

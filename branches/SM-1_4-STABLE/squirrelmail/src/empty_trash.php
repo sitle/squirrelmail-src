@@ -12,6 +12,9 @@
  * @package squirrelmail
  */
 
+/** This is the empty_trash page */
+define('PAGE_NAME', 'empty_trash');
+
 /**
  * Path for SquirrelMail required files.
  * @ignore
@@ -78,4 +81,3 @@ $location = get_location();
 // force_refresh = 1 in case trash contains deleted mailboxes
 header ("Location: $location/left_main.php?force_refresh=1");
 
-?>
