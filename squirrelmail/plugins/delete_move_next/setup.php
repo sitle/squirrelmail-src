@@ -122,8 +122,6 @@ function delete_move_expunge_from_all($id) {
 
 function delete_move_next_action() {
 
-    global $PHP_SELF;
-
     if ( sqgetGlobalVar('delete_id', $delete_id, SQ_GET) ) {
         delete_move_next_delete();
         fix_sort_array();
@@ -383,4 +381,3 @@ function delete_move_next_loading_prefs() {
 
 }
 
-?>

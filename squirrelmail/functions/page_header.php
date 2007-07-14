@@ -84,7 +84,7 @@ function displayInternalLink($path, $text, $target='') {
 
 function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
 
-    global $hide_sm_attributions, $PHP_SELF, $frame_top,
+    global $hide_sm_attributions, $frame_top,
            $compose_new_win, $compose_width, $compose_height,
            $attachemessages, $provider_name, $provider_uri,
            $javascript_on, $default_use_mdn, $mdn_user_support,
@@ -92,10 +92,6 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
 
     sqgetGlobalVar('base_uri', $base_uri, SQ_SESSION );
     sqgetGlobalVar('delimiter', $delimiter, SQ_SESSION );
-    $module = substr( $PHP_SELF, ( strlen( $PHP_SELF ) - strlen( $base_uri ) ) * -1 );
-    if ($qmark = strpos($module, '?')) {
-        $module = substr($module, 0, $qmark);
-    }
     if (!isset($frame_top)) {
         $frame_top = '_top';
     }
@@ -109,8 +105,9 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
 
     // only output JavaScript if actually turned on
     if($javascript_on || strpos($xtra, 'new_js_autodetect_results.value') ) {
-        switch ( $module ) {
-        case 'src/read_body.php':
+        if ( !defined('PAGE_NAME') ) define('PAGE_NAME', NULL);
+        switch ( PAGE_NAME ) {
+        case 'read_body':
             $js ='';
 
             // compose in new window code
@@ -149,7 +146,7 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
             displayHtmlHeader($org_title, $js);
             $onload = $xtra;
           break;
-        case 'src/compose.php':
+        case 'compose':
             $js = '<script language="JavaScript" type="text/javascript">' .
              "\n<!--\n" .
              "var alreadyFocused = false;\n" .
@@ -308,11 +305,10 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
 /* blatently copied/truncated/modified from the above function */
 function compose_Header($color, $mailbox) {
 
-    global $delimiter, $hide_sm_attributions, $base_uri, $PHP_SELF,
+    global $delimiter, $hide_sm_attributions, $base_uri,
            $data_dir, $username, $frame_top, $compose_new_win;
 
 
-    $module = substr( $PHP_SELF, ( strlen( $PHP_SELF ) - strlen( $base_uri ) ) * -1 );
     if (!isset($frame_top)) {
         $frame_top = '_top';
     }
@@ -320,8 +316,9 @@ function compose_Header($color, $mailbox) {
     /*
         Locate the first displayable form element
     */
-    switch ( $module ) {
-    case 'src/search.php':
+    if ( !defined('PAGE_NAME') ) define('PAGE_NAME', NULL);
+    switch ( PAGE_NAME ) {
+    case 'search':
         $pos = getPref($data_dir, $username, 'search_pos', 0 ) - 1;
         $onload = "onload=\"document.forms[$pos].elements[2].focus();\"";
         displayHtmlHeader (_("Compose"));
@@ -375,4 +372,3 @@ function compose_Header($color, $mailbox) {
     echo "<body text=\"$color[8]\" bgcolor=\"$color[4]\" link=\"$color[7]\" vlink=\"$color[7]\" alink=\"$color[7]\" $onload>\n\n";
 }
 
-?>

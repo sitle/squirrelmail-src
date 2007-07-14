@@ -64,8 +64,7 @@ function is_logged_in() {
 
         // signout page will deal with users who aren't logged 
         // in on its own; don't show error here
-        //
-        if (strpos($PHP_SELF, 'signout.php') !== FALSE) {
+        if (defined('PAGE_NAME') && PAGE_NAME == 'signout') {
            return;
         }
 
@@ -269,5 +268,3 @@ function get_smtp_user(&$user, &$pass) {
     }
 }
 
-
-?>

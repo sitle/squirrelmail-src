@@ -157,7 +157,7 @@ function newmail_set_loadinfo() {
 function newmail_plugin() {
     global $username, $key, $imapServerAddress, $imapPort,
         $newmail_media, $newmail_enable, $newmail_popup,
-        $newmail_recent, $newmail_changetitle, $imapConnection, $PHP_SELF;
+        $newmail_recent, $newmail_changetitle, $imapConnection;
 
     include_once(SM_PATH . 'functions/display_messages.php');
 
@@ -256,4 +256,3 @@ function newmail_plugin() {
         }
     }
 }
-?>
