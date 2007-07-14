@@ -13,6 +13,9 @@
  * @subpackage administrator
  */
 
+/** This is the administrator_options page */
+define('PAGE_NAME', 'administrator_options');
+
 /**
  * parse the config file
  *
