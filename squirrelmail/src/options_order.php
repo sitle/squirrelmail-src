@@ -12,6 +12,9 @@
  * @subpackage prefs
  */
 
+/** This is the options_order page */
+define('PAGE_NAME', 'options_order');
+
 /**
  * Path for SquirrelMail required files.
  * @ignore

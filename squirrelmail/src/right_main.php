@@ -12,6 +12,9 @@
  * @package squirrelmail
  */
 
+/** This is the right_main page */
+define('PAGE_NAME', 'right_main');
+
 /**
  * Path for SquirrelMail required files.
  * @ignore
@@ -233,4 +236,3 @@ sqimap_logout ($imapConnection);
 
 echo '</body></html>';
 
-?>

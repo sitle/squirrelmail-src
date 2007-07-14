@@ -16,6 +16,9 @@
  * @subpackage addressbook
  */
 
+/** This is the addrbook_search page */
+define('PAGE_NAME', 'addrbook_search');
+
 /**
  * Path for SquirrelMail required files.
  * @ignore

@@ -12,6 +12,9 @@
  * @package squirrelmail
  */
 
+/** This is the download page */
+define('PAGE_NAME', 'download');
+
 /**
  * Path for SquirrelMail required files.
  * @ignore
@@ -153,4 +156,3 @@ if (isset($absolute_dl) && $absolute_dl) {
 /* be aware that any warning caused by download.php will corrupt the
  * attachment in case of ERROR reporting = E_ALL and the output is the screen */
 mime_print_body_lines ($imapConnection, $passed_id, $ent_id, $encoding);
-?>

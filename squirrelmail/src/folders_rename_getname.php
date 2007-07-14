@@ -12,6 +12,9 @@
  * @package squirrelmail
  */
 
+/** This is the folders_rename_getname page */
+define('PAGE_NAME', 'folders_rename_getname');
+
 /**
  * Path for SquirrelMail required files.
  * @ignore
@@ -80,4 +83,3 @@ echo addHidden('orig', $old).
      '<input type="submit" value="'._("Submit")."\" />\n".
      '</form><br /></td></tr></table>';
 
-?>

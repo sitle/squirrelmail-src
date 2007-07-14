@@ -13,6 +13,9 @@
  * @package squirrelmail
  */
 
+/** This is the folders page */
+define('PAGE_NAME', 'folders');
+
 /**
  * Path for SquirrelMail required files.
  * @ignore

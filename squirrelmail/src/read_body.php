@@ -12,6 +12,9 @@
  * @package squirrelmail
  */
 
+/** This is the read_body page */
+define('PAGE_NAME', 'read_body');
+
 /**
  * Path for SquirrelMail required files.
  * @ignore

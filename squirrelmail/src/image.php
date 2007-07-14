@@ -11,6 +11,9 @@
  * @package squirrelmail
  */
 
+/** This is the image page */
+define('PAGE_NAME', 'image');
+
 /**
  * Path for SquirrelMail required files.
  * @ignore

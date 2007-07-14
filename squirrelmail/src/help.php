@@ -11,6 +11,9 @@
  * @package squirrelmail
  */
 
+/** This is the help page */
+define('PAGE_NAME', 'help');
+
 /**
  * Path for SquirrelMail required files.
  * @ignore

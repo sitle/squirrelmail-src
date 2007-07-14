@@ -11,6 +11,9 @@
  * @package squirrelmail
  */
 
+/** This is the view_header page */
+define('PAGE_NAME', 'view_header');
+
 /**
  * Path for SquirrelMail required files.
  * @ignore
@@ -136,4 +139,3 @@ $mbx_response = sqimap_mailbox_select($imapConnection, $mailbox, false, false, t
 $header = parse_viewheader($imapConnection,$passed_id, $passed_ent_id); 
 view_header($header, $mailbox, $color);
 sqimap_logout($imapConnection);
-?>
