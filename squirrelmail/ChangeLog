@@ -26,7 +26,10 @@ Version 1.4.11 - SVN
   - Fix test for signout.php in the logged in check in is_logged_in() so it
     cannot be circumvented by manipulating the URL. External plugins might
     rely on this function guaranteeing that the user is logged in.
-
+  - Use attachment_dir only at the point where we're actually
+    reading from / writing to the files, do not carry it around
+    in the object. This makes us safer in the event the object
+    is somehow exposed to the outside world.
 
 Version 1.4.10a - 10 May 2007
 -----------------------------

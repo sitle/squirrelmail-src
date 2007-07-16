@@ -296,7 +296,7 @@ if (sqsession_is_registered('session_expired_post')) {
     } else {
         // these are the vars that we can set from the expired composed session
         $compo_var_list = array ( 'send_to', 'send_to_cc','body','startMessage',
-            'passed_body','use_signature','signature','attachments','subject','newmail',
+            'passed_body','use_signature','signature','subject','newmail',
             'send_to_bcc', 'passed_id', 'mailbox', 'from_htmladdr_search', 'identity',
             'draft_id', 'delete_draft', 'mailprio', 'edit_as_new', 'compose_messsages',
             'composesession', 'request_mdn', 'request_dr');
@@ -923,10 +923,10 @@ function getAttachments($message, &$composeMessage, $passed_id, $entities, $imap
             }
             $fp = fopen ("$hashed_attachment_dir/$localfilename", 'wb');
 
-            $message->att_local_name = $full_localfilename;
+            $message->att_local_name = $localfilename;
 
             $composeMessage->initAttachment($message->type0.'/'.$message->type1,$filename,
-                    $full_localfilename);
+                    $localfilename);
 
             /* Write Attachment to file 
                The function mime_print_body_lines writes directly to the 
@@ -946,7 +946,7 @@ function getAttachments($message, &$composeMessage, $passed_id, $entities, $imap
 
 function getMessage_RFC822_Attachment($message, $composeMessage, $passed_id,
         $passed_ent_id='', $imapConnection) {
-    global $attachments, $attachment_dir, $username, $data_dir, $uid_support;
+    global $attachment_dir, $username, $data_dir, $uid_support;
     $hashed_attachment_dir = getHashedDir($username, $attachment_dir);
     if (!$passed_ent_id) {
         $body_a = sqimap_run_command($imapConnection,
@@ -972,7 +972,7 @@ function getMessage_RFC822_Attachment($message, $composeMessage, $passed_id,
         fwrite ($fp, $body);
         fclose($fp);
         $composeMessage->initAttachment('message/rfc822',$subject.'.msg',
-                $full_localfilename);
+                $localfilename);
     }
     return $composeMessage;
 }
@@ -980,7 +980,7 @@ function getMessage_RFC822_Attachment($message, $composeMessage, $passed_id,
 function showInputForm ($session, $values=false) {
     global $send_to, $send_to_cc, $body, $startMessage,
         $passed_body, $color, $use_signature, $signature, $prefix_sig,
-        $editor_size, $editor_height, $attachments, $subject, $newmail,
+        $editor_size, $editor_height, $subject, $newmail,
         $use_javascript_addr_book, $send_to_bcc, $passed_id, $mailbox,
         $from_htmladdr_search, $location_of_buttons, $attachment_dir,
         $username, $data_dir, $identity, $idents, $draft_id, $delete_draft,
@@ -1213,6 +1213,8 @@ function showInputForm ($session, $values=false) {
             '                    </tr>' . "\n";
 
         $s_a = array();
+        global $username, $attachment_dir;
+        $hashed_attachment_dir = getHashedDir($username, $attachment_dir);
         // composeMessage can be empty when coming from a restored session
         if (is_object($composeMessage) && $composeMessage->entities) {
             foreach ($composeMessage->entities as $key => $attachment) {
@@ -1227,7 +1229,8 @@ function showInputForm ($session, $values=false) {
                         addCheckBox('delete[]', FALSE, $key).
                         "</td><td>\n" . $attached_filename .
                         '</td><td>-</td><td> ' . $type . '</td><td>('.
-                        show_readable_size( filesize( $attached_file ) ) . ')</td></tr></table>'."\n";
+                        show_readable_size( filesize( $hashed_attachment_dir . '/' . $attached_file ) ) .
+                        ')</td></tr></table>'."\n";
                 }
             }
         }
@@ -1355,7 +1358,7 @@ function checkInput ($show) {
 
 /* True if FAILURE */
 function saveAttachedFiles($session) {
-    global $_FILES, $attachment_dir, $attachments, $username,
+    global $_FILES, $attachment_dir, $username,
         $data_dir, $compose_messages;
 
     /* get out of here if no file was attached at all */
@@ -1381,7 +1384,7 @@ function saveAttachedFiles($session) {
     $message = $compose_messages[$session];
     $type = strtolower($_FILES['attachfile']['type']);
     $name = $_FILES['attachfile']['name'];
-    $message->initAttachment($type, $name, $full_localfilename);
+    $message->initAttachment($type, $name, $localfilename);
     $compose_messages[$session] = $message;
     sqsession_register($compose_messages , 'compose_messages');
 }

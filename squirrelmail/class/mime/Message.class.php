@@ -1105,8 +1105,12 @@ class Message {
      * @since 1.4.6
      */
     function purgeAttachments() {
-        if ($this->att_local_name && file_exists($this->att_local_name)) {
-            unlink($this->att_local_name);
+        if ($this->att_local_name) {
+            global $username, $attachment_dir;
+            $hashed_attachment_dir = getHashedDir($username, $attachment_dir);
+            if ( file_exists($hashed_attachment_dir . '/' . $this->att_local_name) ) {
+                unlink($hashed_attachment_dir . '/' . $this->att_local_name);
+            }
         }
         // recursively delete attachments from entities contained in this object
         for ($i=0, $entCount=count($this->entities);$i< $entCount; ++$i) {
