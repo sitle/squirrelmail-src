@@ -99,7 +99,7 @@ function attachSelectedMessages($msg, $imapConnection) {
                 fwrite ($fp, $body);
                 fclose($fp);
                 $composeMessage->initAttachment('message/rfc822',$filename,
-                     $full_localfilename);
+                     $localfilename);
             }
             $j++;
         }
