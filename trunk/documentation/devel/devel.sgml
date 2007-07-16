@@ -572,7 +572,6 @@ are included from v.1.3.2.
    1.7. class/mime/Language.class.php
    1.8. class/mime/ContentType.class.php
 2. functions/global.php
-   * Fixes differences between PHP 4.0.x and 4.1+ globals (only in 1.4.x).
    * Undoes magic_quotes_gpc=on sanitizing
    * Sets $PHP_SELF (since 1.5.1)
    * Starts session
@@ -1314,7 +1313,7 @@ array(
    'required_functions' => array(
                                       'recode_string',
                                ),
-   'required_php_version' => '4.0.6',
+   'required_php_version' => '4.1.0',
    'other_requirements' => 'Courier Maildrop LDA',
    'external_project_uri' => 'http://www.example.org/my_plugin'
 );
