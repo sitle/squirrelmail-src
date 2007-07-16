@@ -1,7 +1,7 @@
 /*****************************************************************
- * Release Notes: SquirrelMail 1.4.10a                           *
- * The "Visculamia Reloaded" Release                             *
- * 10 May 2007                                                   *
+ * Release Notes: SquirrelMail 1.4.11                            *
+ * The "" Release                             *
+ * ????? 2007                                                   *
  *****************************************************************/
 
 In this edition of SquirrelMail Release Notes:
@@ -16,16 +16,21 @@ In this edition of SquirrelMail Release Notes:
 All about this release
 ======================
 
-This version, 1.4.10a is a maintenance release, addressing
+This version, 1.4.11 is a maintenance release, addressing
 the following problems since 1.4.9a:
-- Some security fixes (see below)
 - Small enhancements
 - A collection of bugfixes and stability enhancements
 (see ChangeLog for a full list)
 
-Version 1.4.10a was released shortly after 1.4.10 which
-had a regression in compose with just one identity defined.
 
+PHP requirement raised to 4.1.0
+===============================
+
+The minimum PHP requirement raised from 4.0.6 to 4.1.0.
+SquirrelMail has been broken for a while with 4.0.x without anyone
+noticing, this move merely reflects reality.
+
+PHP 4.1.0 has been released more than 5 years ago.
 
 Locales / Translations / Charsets
 =================================
@@ -40,29 +45,6 @@ That release also introduced a backport of the new Character set
 decoding functions from the development branch, vastly increasing the
 number of supported character sets and decoding performance.
 
-
-Security issues
-===============
-
-This release addresses security issues found since the release of 1.4.9a:
-
-There's an ongoing battle to further secure the HTML filter against malicious
-HTML mail and the browsers that accept almost any malformed piece of HTML.
-
-This release contains fixes for the following:
-- HTML attachments containing "data:" URLs;
-- Internet Explorer in various versions accepts many permutations of HTML
-  and JavaScript in many charsets. We now properly canonicalize the incoming
-  HTML to us-ascii before applying further filters. IE only.
-- Request forgery through images. It was possible to include "images" in
-  HTML mails which were in fact GET requests for the compose.php page sending
-  mail. These images are now properly detected, and the compose form will only
-  send mail through a POST request.
-
-Thanks to Mikhail Markin, Tomas Kuliavas and Michael Jordon for reporting
-(parts of) these issues and working with us to get them resolved.
-
-These are known as CVE-2007-1262.
 
 
 Major updates in 1.4
