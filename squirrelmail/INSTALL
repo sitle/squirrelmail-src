@@ -16,7 +16,7 @@ Table of Contents:
 
 Each of these steps is covered in detail below.
 
-- Install webserver and PHP (at least 4.0.6).
+- Install webserver and PHP (at least 4.1.0).
 - Install IMAP server (see docs of that server).
 - Unpack the SquirrelMail package in a web-accessible location.
 - Select a data-dir and attachment dir, outside the webtree (e.g. in /var).
@@ -36,7 +36,7 @@ Each of these steps is covered in detail below.
 --------------------------------------------
 
   If your webserver does not already have PHP you must configure it
-  to work with PHP. You need at least PHP v4.0.6. SquirrelMail uses
+  to work with PHP. You need at least PHP v4.1.0. SquirrelMail uses
   the standard suffix .php for all PHP files.
 
   You can find PHP at http://www.php.net. See the documentation that

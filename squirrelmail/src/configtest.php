@@ -83,8 +83,8 @@ echo "<p><table>\n<tr><td>SquirrelMail version:</td><td><b>" . $version . "</b><
 
 echo "Checking PHP configuration...<br />\n";
 
-if(!check_php_version(4,0,6)) {
-    do_err('Insufficient PHP version: '. PHP_VERSION . '! Minimum required: 4.0.6');
+if(!check_php_version(4,1,0)) {
+    do_err('Insufficient PHP version: '. PHP_VERSION . '! Minimum required: 4.1.0');
 }
 
 echo $IND . 'PHP version ' . PHP_VERSION . " OK.<br />\n";
