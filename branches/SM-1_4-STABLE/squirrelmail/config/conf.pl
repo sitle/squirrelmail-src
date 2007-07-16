@@ -2262,9 +2262,8 @@ sub command39b {
 }
 
 sub command310 {
-    print "This option allows you to choose if users can use thread sorting\n";
-    print "Your IMAP server must support the THREAD command for this to work\n";
-    print "PHP versions later than 4.0.3 recommended\n";
+    print "This option allows you to choose if users can use thread sorting.\n";
+    print "Your IMAP server must support the THREAD command for this to work.\n";
     print "\n";
 
     if ( lc($allow_thread_sort) eq "true" ) {
