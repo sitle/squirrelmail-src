@@ -210,7 +210,7 @@ function sqimap_mailbox_exists ($imap_stream, $mailbox) {
 function sqimap_mailbox_select ($imap_stream, $mailbox) {
     global $auto_expunge;
 
-    if ($mailbox == 'None') {
+    if (empty($mailbox)) {
         return;
     }
 
