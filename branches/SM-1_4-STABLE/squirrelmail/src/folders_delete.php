@@ -60,6 +60,14 @@ if ( sqgetGlobalVar('backingout', $tmp, SQ_POST) ) {
 if( !sqgetGlobalVar('confirmed', $tmp, SQ_POST) ) {
     displayPageHeader($color, 'None');
 
+    // get displayable mailbox format
+    global $folder_prefix;
+    if (substr($mailbox,0,strlen($folder_prefix))==$folder_prefix) {
+        $mailbox_unformatted_disp = substr($mailbox, strlen($folder_prefix));
+    } else {
+        $mailbox_unformatted_disp = $mailbox;
+    }
+
     echo '<br />' .
         html_tag( 'table', '', 'center', '', 'width="95%" border="0"' ) .
         html_tag( 'tr',
@@ -67,7 +75,7 @@ if( !sqgetGlobalVar('confirmed', $tmp, SQ_POST) ) {
         ) .
         html_tag( 'tr' ) .
         html_tag( 'td', '', 'center', $color[4] ) .
-        sprintf(_("Are you sure you want to delete %s?"), str_replace(array(' ','<','>'),array('&nbsp;','&lt;','&gt;'),imap_utf7_decode_local($mailbox))).
+        sprintf(_("Are you sure you want to delete %s?"), str_replace(array(' ','<','>'),array('&nbsp;','&lt;','&gt;'),imap_utf7_decode_local($mailbox_unformatted_disp))).
         addForm('folders_delete.php', 'post')."<p>\n".
         addHidden('mailbox', $mailbox).
         addSubmit(_("Yes"), 'confirmed').
