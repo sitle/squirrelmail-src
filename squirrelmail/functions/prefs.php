@@ -24,12 +24,9 @@ sqgetGlobalVar('prefs_are_cached', $prefs_are_cached, SQ_SESSION );
 
 $rg = ini_get('register_globals');
 
-/* if php version >= 4.1 OR (4.0 AND $rg = off) */
 if ( !sqsession_is_registered('prefs_are_cached') ||
-     !isset( $prefs_cache) ||
-     !is_array( $prefs_cache) ||
-     check_php_version(4,1) ||
-     empty($rg)
+     !isset($prefs_cache) ||
+     !is_array($prefs_cache)
    ) {
     $prefs_are_cached = false;
     $prefs_cache = array();
@@ -155,4 +152,3 @@ function computeHashDirs($username) {
     return ($hash_dirs);
 }
 
-?>

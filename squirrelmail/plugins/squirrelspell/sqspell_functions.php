@@ -181,14 +181,8 @@ function sqspell_crypto($mode, $ckey, $input){
   /**
    * Finish up the mcrypt routines and return the processed content.
    */
-  if (function_exists('mcrypt_generic_deinit')) {
-      // php 4.1.1+ syntax
-      mcrypt_generic_deinit ($td);
-      mcrypt_module_close ($td);
-  } else {
-      // older deprecated function
-      mcrypt_generic_end ($td);
-  }
+  mcrypt_generic_deinit ($td);
+  mcrypt_module_close ($td);
   return $crypto;
 }
 
