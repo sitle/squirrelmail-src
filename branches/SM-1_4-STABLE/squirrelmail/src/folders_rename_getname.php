@@ -54,12 +54,23 @@ if (substr($old, strlen($old) - strlen($delimiter)) == $delimiter) {
 
 $old = imap_utf7_decode_local($old);
 
-if (strpos($old, $delimiter)) {
-    $old_name = substr($old, strrpos($old, $delimiter)+1, strlen($old));
-    $old_parent = substr($old, 0, strrpos($old, $delimiter));
+// displayable mailbox format is without folder prefix on front
+global $folder_prefix;
+if (substr($old, 0, strlen($folder_prefix)) == $folder_prefix) {
+    $displayable_old = substr($old, strlen($folder_prefix));
 } else {
-    $old_name = $old;
-    $old_parent = '';
+    $displayable_old = $old;
+}
+
+if (strpos($displayable_old, $delimiter)) {
+    $old_name = substr($displayable_old, strrpos($displayable_old, $delimiter)+1);
+    $parent = htmlspecialchars(substr($displayable_old, 
+                                      0, 
+                                      strrpos($displayable_old, $delimiter))
+            . ' ' . $delimiter);
+} else {
+    $old_name = $displayable_old;
+    $parent = '';
 }
 
 
@@ -73,7 +84,7 @@ echo '<br />' .
             html_tag( 'td', '', 'center', $color[4] ) .
             addForm('folders_rename_do.php').
      _("New name:").
-     '<br /><b>' . htmlspecialchars($old_parent) . ' ' . htmlspecialchars($delimiter) . '</b>' .
+     '<br /><b>'. $parent . '</b>'.
      addInput('new_name', $old_name, 25) . '<br />' . "\n";
 if ( $isfolder ) {
     echo addHidden('isfolder', 'true');
