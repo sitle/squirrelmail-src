@@ -583,7 +583,7 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
         }
         print "\n  Available Plugins:\n";
         opendir( DIR, "../plugins" );
-        @files          = readdir(DIR);
+        @files          = sort(readdir(DIR));
         $pos            = 0;
         @unused_plugins = ();
         for ( $i = 0 ; $i <= $#files ; $i++ ) {
@@ -2453,7 +2453,7 @@ sub command41 {
             print "\nStarting detection...\n\n";
 
             opendir( DIR, "../themes" );
-            @files = grep { /\.php$/i } readdir(DIR);
+            @files = grep { /\.php$/i } sort(readdir(DIR));
             $cnt = 0;
             while ( $cnt <= $#files ) {
                 $filename = "../themes/" . $files[$cnt];
