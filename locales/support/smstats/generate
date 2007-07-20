@@ -95,10 +95,10 @@ rm ${SM_WORKSITEPATH}files/HEAD/locales/locale/*/LC_MESSAGES/extra/*.mo
 
 # gzip all .po files
 for BRANCH in $SM_BRANCHES; do
-  gzip ${SM_WORKSITEPATH}files/${BRANCH}/locales/locale/*/LC_MESSAGES/*.po
-  gzip ${SM_WORKSITEPATH}files/${BRANCH}/locales/locale/*/LC_MESSAGES/plugins/*.po
-  gzip ${SM_WORKSITEPATH}files/${BRANCH}/locales/locale/*/LC_MESSAGES/extra/*.po
-  gzip ${SM_WORKSITEPATH}files/${BRANCH}/locales/po/*.pot
+  gzip -9 ${SM_WORKSITEPATH}files/${BRANCH}/locales/locale/*/LC_MESSAGES/*.po
+  gzip -9 ${SM_WORKSITEPATH}files/${BRANCH}/locales/locale/*/LC_MESSAGES/plugins/*.po
+  gzip -9 ${SM_WORKSITEPATH}files/${BRANCH}/locales/locale/*/LC_MESSAGES/extra/*.po
+  gzip -9 ${SM_WORKSITEPATH}files/${BRANCH}/locales/po/*.pot
 done
 
 # sync generated files with main www directory

@@ -35,13 +35,13 @@ tar -cf packages/${plugin}-${date}.tar \
     locale/*/LC_MESSAGES/${prefix}${plugin}.po \
     locale/*/LC_MESSAGES/${prefix}${plugin}.mo \
     po/${prefix}${plugin}.pot install
-zip -q packages/${plugin}-${date}.zip \
+zip -9 -q packages/${plugin}-${date}.zip \
     locale/*/LC_MESSAGES/${prefix}${plugin}.po \
     locale/*/LC_MESSAGES/${prefix}${plugin}.mo \
     po/${prefix}${plugin}.pot install
 # Pack them
 for package in `ls packages/*-${date}.tar`; do
-    gzip ${package} -c > ${package}.gz
+    gzip -9 ${package} -c > ${package}.gz
     bzip2 ${package}
 done
 #
