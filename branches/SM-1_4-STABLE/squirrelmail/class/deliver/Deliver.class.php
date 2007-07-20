@@ -178,7 +178,7 @@ class Deliver {
                 $hashed_attachment_dir = getHashedDir($username, $attachment_dir);
                 $filename = $message->att_local_name;
                 $file = fopen ($hashed_attachment_dir . '/' . $filename, 'rb');
-                $encoded = '';
+                
                 while ($tmp = fread($file, 570)) {
                     $body_part = chunk_split(base64_encode($tmp));
                     // Up to 4.3.10 chunk_split always appends a newline,
