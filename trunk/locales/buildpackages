@@ -4,10 +4,10 @@ source version
 install -d ../packages
 # Make source
 tar -cf ../packages/locales-${LOCALE_VERSION}-${date}-src.tar *
-gzip ../packages/locales-${LOCALE_VERSION}-${date}-src.tar -c \
+gzip -9 ../packages/locales-${LOCALE_VERSION}-${date}-src.tar -c \
  > ../packages/locales-${LOCALE_VERSION}-${date}-src.tar.gz
  bzip2 ../packages/locales-${LOCALE_VERSION}-${date}-src.tar
-zip -q -r ../packages/locales-${LOCALE_VERSION}-${date}-src.zip *
+zip -9 -q -r ../packages/locales-${LOCALE_VERSION}-${date}-src.zip *
 # Compile locales
 for trans in `ls locale/`; do
     for string in `ls po/*.pot | sed 's/^po\///' | sed 's/.pot$//'` ; do
@@ -25,7 +25,7 @@ for trans in `ls locale/`; do
 	    locale/${trans}/LC_MESSAGES/*.mo \
 	    locale/${trans}/setup.php \
 	    install version ReleaseNotes.locales COPYING.locales ChangeLog.locales
-	zip -q ../packages/${trans}-${LOCALE_VERSION}-${date}.zip \
+	zip -9 -q ../packages/${trans}-${LOCALE_VERSION}-${date}.zip \
 	    locale/${trans}/LC_MESSAGES/*.po \
 	    locale/${trans}/LC_MESSAGES/*.mo \
 	    locale/${trans}/setup.php \
@@ -34,14 +34,14 @@ for trans in `ls locale/`; do
 	if [ -f images/sec_remove_${trans}.png ]; then
 	    tar -rf ../packages/${trans}-${LOCALE_VERSION}-${date}.tar \
 		images/sec_remove_${trans}.png
-	    zip -q -g ../packages/${trans}-${LOCALE_VERSION}-${date}.zip \
+	    zip -9 -q -g ../packages/${trans}-${LOCALE_VERSION}-${date}.zip \
 		images/sec_remove_${trans}.png
 	fi
 	# Help
 	if [ -d help/${trans} ]; then
 	    tar -rf ../packages/${trans}-${LOCALE_VERSION}-${date}.tar \
 		help/${trans}/*.hlp
-	    zip -q -g ../packages/${trans}-${LOCALE_VERSION}-${date}.zip \
+	    zip -9 -q -g ../packages/${trans}-${LOCALE_VERSION}-${date}.zip \
 		help/${trans}/*.hlp
 	fi
     fi
@@ -55,7 +55,7 @@ tar -cf ../packages/all_locales-${LOCALE_VERSION}-${date}.tar \
     images/sec_remove_*.png \
     help/*/*.hlp install version \
     ReleaseNotes.locales COPYING.locales ChangeLog.locales
-zip -q ../packages/all_locales-${LOCALE_VERSION}-${date}.zip \
+zip -9 -q ../packages/all_locales-${LOCALE_VERSION}-${date}.zip \
     locale/*/LC_MESSAGES/*.po \
     locale/*/LC_MESSAGES/*.mo \
     locale/*/setup.php \
@@ -65,7 +65,7 @@ zip -q ../packages/all_locales-${LOCALE_VERSION}-${date}.zip \
 
 # Pack them
 for package in `ls ../packages/*-${date}.tar`; do
-    gzip ${package} -c > ${package}.gz
+    gzip -9 ${package} -c > ${package}.gz
     bzip2 ${package}
 done
 
