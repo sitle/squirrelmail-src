@@ -327,7 +327,7 @@ class Deliver_SMTP extends Deliver {
         if (!$pop_server) {
             $pop_server = 'localhost';
         }
-        $popConnection = fsockopen($pop_server, $pop_port, $err_no, $err_str);
+        $popConnection = @fsockopen($pop_server, $pop_port, $err_no, $err_str);
         if (!$popConnection) {
             error_log("Error connecting to POP Server ($pop_server:$pop_port)"
                 . " $err_no : $err_str");
