@@ -406,7 +406,7 @@ function formatRecipientString($recipients, $item ) {
 
 function formatEnvheader($mailbox, $passed_id, $passed_ent_id, $message,
                          $color, $FirstTimeSee) {
-    global $msn_user_support, $default_use_mdn, $default_use_priority,
+    global $default_use_mdn, $default_use_priority,
            $show_xmailer_default, $mdn_user_support, $PHP_SELF, $javascript_on,
            $squirrelmail_language;
 
