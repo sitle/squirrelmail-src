@@ -1,9 +1,12 @@
 <?php
+
+require_once "../include/init.php";
 require_once "config_class.php";
 
 define('SM_PATH', 'SM_PATH');
-$conf = new SQMConfigFile("meta_config.php");
-$conf->SQMConfigFile("default_config.php", true);
+//$conf = new SMConfig();
+$conf = new SMConfigFile("meta.php");
+$conf->SMConfigFile("default.php", true);
 ?><html>
 
 <head>
