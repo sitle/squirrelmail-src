@@ -1277,16 +1277,15 @@ large amount of mail in them, login times can go through the roof.
 A caching IMAP proxy server can vastly improve SquirrelMail performance by
 cutting down on the number of times you have to create a new connection to the
 IMAP server. It keeps server connections alive for reuse avoiding a new IMAP
-connection for each SquirrelMail transaction. You run the proxy on your
-webserver (SquirrelMail connects to localhost) and the Proxy connects to your
-IMAP server. A side benefit is your logs are not full of IMAP logins. The
-following caching IMAP proxy has worked well for other people with
-SquirrelMail.
+connection for each SquirrelMail transaction. You run the proxy on your web
+server (SquirrelMail connects to localhost) and the Proxy connects to your IMAP
+server. A side benefit is your logs aren't full of IMAP logins.
 
-<url url="http://www.imapproxy.org/" name="Up-imapproxy"> is a caching IMAP
-proxy server. It is open source and free. The package is written in C. Tested on
-Solaris, Linux, IRIX and FreeBSD. The latest version allows log levels to be
-configured at runtime from the config file.
+<url url="http://www.imapproxy.org/" name="IMAP Proxy"> is a caching IMAP proxy
+server known to be working well in various SquirrelMail installations. The
+latest version allows log levels to be configured at runtime from the
+configuration file. It's free, open source software and runs on various
+platforms.
 
 <sect1>PHP cache
 <p>
