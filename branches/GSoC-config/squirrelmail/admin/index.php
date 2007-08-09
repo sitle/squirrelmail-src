@@ -1,17 +1,14 @@
 <?php
 
-require_once "../include/init.php";
-require_once "config_class.php";
+define('SM_PATH', realpath(dirname(__FILE__).'/..').'/');
+require_once SM_PATH . 'class/config/configurator.class.php';
+$conf = new SMConfigurator(true);
 
-define('SM_PATH', 'SM_PATH');
-//$conf = new SMConfig();
-$conf = new SMConfigFile("meta.php");
-$conf->SMConfigFile("default.php", true);
 ?><html>
 
 <head>
   <title>SquirrelMail Configuration</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=<?=$conf->V('default_charset')?>" />
+  <meta http-equiv="Content-Type" content="text/html; charset=<?=$conf->GetVar('default_charset')?>" />
 </head>
 
 <body>
@@ -40,11 +37,11 @@ if(isset($_GET['section']) && is_array($section = $conf->get_section($_GET['sect
    switch($type[0])
    {
      case SM_CONF_BOOL:
-       echo '<input type="checkbox" name="'.$name.'"'.($conf->V($name)? ' checked' : '').'>';
+       echo '<input type="checkbox" name="'.$name.'"'.($conf->GetVar($name)? ' checked' : '').'>';
        break;
      case SM_CONF_STRING:
      case SM_CONF_INTEGER:
-       echo '<input type="text" name="'.$name.'" value="'.($conf->V($name)).'" size="'.$type[1].'">';
+       echo '<input type="text" name="'.$name.'" value="'.($conf->GetVar($name)).'" size="'.$type[1].'">';
        break;
      case SM_CONF_KEYED_ENUM: $keyed = true;
      case SM_CONF_ENUM:
@@ -62,7 +59,7 @@ if(isset($_GET['section']) && is_array($section = $conf->get_section($_GET['sect
          {
            $caption = $value;
          }
-         echo '<option'.($conf->V($name)==$value ? ' selected':'').' value="'.$value.'">'.$caption.'</option>';
+         echo '<option'.($conf->GetVar($name)==$value ? ' selected':'').' value="'.$value.'">'.$caption.'</option>';
        }
      
        echo '</select>';     
@@ -73,7 +70,7 @@ if(isset($_GET['section']) && is_array($section = $conf->get_section($_GET['sect
        $enum = $type[1];
        echo '<select name="'.$name.'">';
        
-       foreach($conf->V($enum) as $id => $option)
+       foreach($conf->GetVar($enum) as $id => $option)
        {
          echo '<option value="'.$id.'"'.($id==$value?' selected':'').'>'.current($option).'</option>';
        }
@@ -87,7 +84,7 @@ if(isset($_GET['section']) && is_array($section = $conf->get_section($_GET['sect
          case SM_CONF_ARRAY_SIMPLE:
            echo '<select name="delete_'.$name.'[]" size="2" multiple>';
            
-           foreach($conf->V($name) as $id => $option)
+           foreach($conf->GetVar($name) as $id => $option)
            {
              echo '<option value="'.$id.'">'.$option.'</option>';
            }
@@ -100,7 +97,7 @@ if(isset($_GET['section']) && is_array($section = $conf->get_section($_GET['sect
            foreach($params as $key) echo "<td>$key</td>";
          echo '<td width="100">Add / Delete</td></tr>';
          
-         foreach($conf->V($name) as $id => $option)
+         foreach($conf->GetVar($name) as $id => $option)
          {
           echo '<tr bgcolor="#FCFCFC">';
           foreach($params as $key) echo "<td>".$option[$key]."</td>";
