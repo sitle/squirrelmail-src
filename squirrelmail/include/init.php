@@ -106,8 +106,9 @@ for($i = count($a) -2;$i > -1; --$i) {
 
 $base_uri = implode('/',array_slice($a,0,$i)). '/';
 
-define('SM_PATH',$sSM_PATH);
+define('SM_PATH', $sSM_PATH);
 define('SM_BASE_URI', $base_uri);
+
 /**
  * global var $bInit is used to check if initialisation took place.
  * At this moment it's a workarounf for the include of addrbook_search_html
@@ -153,12 +154,18 @@ $aTemplateSet = array();
 $aTemplateSet[0]['ID'] = 'default';
 $aTemplateSet[0]['NAME'] = 'Default';
 
-/* load site configuration */
+require_once SM_PATH . 'class/config/configurator.class.php';
+global $config;
+$config = new SMConfigurator(false);
+
+/*
+/* load site configuration 
 require(SM_PATH . 'config/config.php');
-/* load local configuration overrides */
+/* load local configuration overrides 
 if (file_exists(SM_PATH . 'config/config_local.php')) {
     require(SM_PATH . 'config/config_local.php');
 }
+*/
 
 require(SM_PATH . 'functions/plugin.php');
 require(SM_PATH . 'include/constants.php');

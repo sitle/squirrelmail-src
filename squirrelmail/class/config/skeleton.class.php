@@ -46,7 +46,6 @@ class SMConfigSkeleton
   {
     $this->sm_sections[$name] = array(
        'title' => _($title), 
-       'sub' => array(),
        'vars' => array(),
        'desc' => ''
     );

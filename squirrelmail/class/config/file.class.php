@@ -10,12 +10,15 @@
  */
 
 
+require_once SM_PATH.'class/config/skeleton.class.php';
+
 class SMConfigFile extends SMConfigSkeleton
 {  
-  function SMConfigFile($context, $load_meta) 
+  function SMConfigFile($confFile=null, $sections=false) 
   {
-  
-    $raw_conf = parse_ini_file($confFile, true);
+    $raw_conf = @parse_ini_file($confFile, true);
+    if(!is_array($raw_conf)) return;
+    
     foreach($raw_conf as $section => $variables)
     {
       if($section == 'types')
@@ -77,4 +80,22 @@ class SMConfigFile extends SMConfigSkeleton
       unset($raw_conf[$section],$newval);  
     }    
   }
+}
+
+function parse_config_file($files, $load_metas)
+{
+  $objects = array();
+  
+  foreach($files as $file)
+  {
+    list($meta, $defaults, $config) = explode(",", $file);    
+    $obj = new SMConfigFile();
+    
+    if($load_metas) $obj->SMConfigFile(SM_PATH."config/$meta", $load_metas);
+    $obj->SMConfigFile(SM_PATH."config/$defaults", $load_metas);
+    $obj->SMConfigFile(SM_PATH."config/$config", $load_metas);
+    $objects[] = $obj;
+  }
+
+  return $objects;
 }
