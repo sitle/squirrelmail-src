@@ -69,7 +69,7 @@ if (sizeof($use_langs)){
   $lang_array = explode( ',', $lang_string );
   $dsp_string = '';
   foreach( $lang_array as $a) {
-    $dsp_string .= _(htmlspecialchars(trim($a))) . ', ';
+    $dsp_string .= _(htmlspecialchars(trim($a))) . _(", ");
   }
   $dsp_string = substr( $dsp_string, 0, -2 );
   $msg = '<p>'
