@@ -1261,25 +1261,39 @@ loads when used with bigger mail folders. If you use UW IMAP server, you should
 try switching to mbx mailbox format. Maildir mailboxes have higher bottlenecks
 than formats that store entire mail folder in one file.
 
-<sect1>Filtering
+<sect1>Use server side filtering
 <p>
-The SquirrelMail package includes the filters plugin, which can be used to sort
-messages. It should be the last resort when you can't provide other means of
-filtering. This plugin is implemented in PHP and works only when users actively
-log in to their mail accounts. Server side filtering performed by applications
-such as procmail, maildrop or sieve provide more options, work even when users
-do not actively log into their accounts, and are much faster and more efficient.
-Also be aware that when using PHP-based message filtering against accounts with a
-large amount of mail in them, login times can go through the roof.
+Mail filtering, i.e. deleting mails or putting them in selected folders based on
+criteria, isn't a must have mail system feature, but it's sure one of those nice
+to have features that the end users might require.
 
-<sect1>IMAP Proxy
+To avoid negative performance impact as much as possible, systems providing mail
+filtering should do so by using a server side application. The SquirrelMail
+package includes the Filter plugin, but it should be the last resort when other
+means of filtering can't be provided. The plugin is implemented in PHP and works
+only when users actively log in to their mail accounts, making the display of
+the folders slower (typically when logging in, and especially for accounts with
+a large amount of mail) or, at worst, produce errors thus preventing the use of
+some accounts completely. Server side filtering, performed by applications such
+as <url url="http://www.procmail.org/" name="Procmail">, <url
+url="http://www.courier-mta.org/maildrop/" name="Maildrop">, or any application
+using <url url="http://rfc.net/rfc3028.html" name="Sieve">; provide more
+options, work even when users do not actively log into their accounts, and are
+much faster and more efficient.
+
+SquirrelMail frontends for server side filtering applications are found at the
+<url url="http://squirrelmail.org/plugins_category.php?category_id=3"
+name="Filters &amp; Spam"> section of the plugin pages.
+
+<sect1>Use an IMAP proxy
 <p>
 A caching IMAP proxy server can vastly improve SquirrelMail performance by
 cutting down on the number of times you have to create a new connection to the
 IMAP server. It keeps server connections alive for reuse avoiding a new IMAP
-connection for each SquirrelMail transaction. You run the proxy on your web
-server (SquirrelMail connects to localhost) and the Proxy connects to your IMAP
-server. A side benefit is your logs aren't full of IMAP logins.
+connection for each SquirrelMail transaction. Install the proxy at the web
+server, configure SquirrelMail to connect to the proxy (localhost), and
+configure the proxy to connect to the IMAP server. A side benefit is your logs
+aren't full of IMAP logins.
 
 <url url="http://www.imapproxy.org/" name="IMAP Proxy"> is a caching IMAP proxy
 server known to be working well in various SquirrelMail installations. The
