@@ -95,8 +95,11 @@ function getHashedFile($username, $dir, $datafile, $hash_search = true) {
 }
 
 /**
- * Helper function for getHashedFile, given a username returns the hashed
- * dir for that username.
+ * Helper function for getHashedFile(), given a username returns 
+ * the hashed dir for that username.  
+ *
+ * NOTE that the hashed dir will be created if it doesn't 
+ * already exist.
  *
  * @param string username the username of the current user
  * @param string dir the squirrelmail datadir
