@@ -31,7 +31,7 @@ require_once(SM_PATH . 'functions/imap.php');
 sqgetGlobalVar('username', $username, SQ_SESSION);
 sqgetGlobalVar('key', $key, SQ_COOKIE);
 sqgetGlobalVar('onetimepad', $onetimepad, SQ_SESSION);
-
+sqgetGlobalVar('messages', $messages, SQ_SESSION);
 sqgetGlobalVar('passed_id', $passed_id, SQ_GET);
 sqgetGlobalVar('mailbox', $mailbox, SQ_GET);
 

@@ -31,7 +31,7 @@ sqgetGlobalVar('username',   $username,     SQ_SESSION);
 sqgetGlobalVar('onetimepad', $onetimepad,   SQ_SESSION);
 sqgetGlobalVar('delimiter',  $delimiter,    SQ_SESSION);
 sqgetGlobalVar('QUERY_STRING', $QUERY_STRING, SQ_SERVER);
-sqgetGlobalVar('messages', $messages);
+sqgetGlobalVar('messages', $messages,       SQ_SESSION);
 sqgetGlobalVar('passed_id', $passed_id, SQ_GET);
 
 if ( sqgetGlobalVar('mailbox', $temp, SQ_GET) ) {
