@@ -2,7 +2,7 @@
 
 [org]
 org_name = "SquirrelMail"
-org_logo = SM_PATH"images/sm_logo.png"
+org_logo = "SM_PATHimages/sm_logo.png"
 org_logo_width = 308
 org_logo_height = 111
 org_title = "SquirrelMail"
@@ -101,7 +101,7 @@ abook_file_line_length = 2048
 motd = ""
 
 [plugins]
-plugins[] = ""
+plugins = ""
 disable_plugins = 0
 disable_plugins_user = ""
 
@@ -140,6 +140,7 @@ config_use_color = 2
 ask_user_info = 1
 
 [types]
+org_logo = SM_CONF_PATH",40"
 plugins = SM_CONF_ARRAY","SM_CONF_ARRAY_SIMPLE
 user_themes = SM_CONF_ARRAY","SM_CONF_ARRAY_KEYS",NAME,PATH"
 icon_themes = SM_CONF_ARRAY","SM_CONF_ARRAY_KEYS",NAME,PATH"
