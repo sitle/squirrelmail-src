@@ -13,16 +13,16 @@ database = "Database settings"
 language = "Localization"
 tweaks =  "Tweaks"
 
-[descriptions]
-sec.org = "Configure SquirrelMail to use you organization's name, logo and colors."
-sec.server = "Configure your IMAP settings and how outgoing mail is handled."
-sec.folder = "Set prefixes, delimiters and special folder names."
-sec.general = "SquirrelMail's paths and other general settings."
-sec.customization = "Customize your theme, colors and template."
-sec.plugins = "Configure plugins"
-sec.database = "Setup a link to your database server."
-sec.language = "Setup languages and charsets."
-sec.tweaks = "Miscellaneous and advanced options."
+[description]
+org = "Configure SquirrelMail to use you organization's name, logo and colors."
+server = "Configure your IMAP settings and how outgoing mail is handled."
+folder = "Set prefixes, delimiters and special folder names."
+general = "SquirrelMail's paths and other general settings."
+customization = "Customize your theme, colors and template."
+plugins = "Configure plugins"
+database = "Setup a link to your database server."
+language = "Setup languages and charsets."
+tweaks = "Miscellaneous and advanced options."
 
 org_name = "Organization name"
 org_logo = "Organization's logo picture (blank if none)"
@@ -145,11 +145,18 @@ use_php_recode = "Use PHP built-in recode function"
 use_php_iconv = "Use PHP built-in iconv function"
 allow_remote_configtest = "Allow remote configuration testing"
 no_list_for_subscribe = "Disable listing of folers to suscribe"
+config_use_color = "Color in config control"
 ask_user_info = "Ask User for Personal Information on login"
+
+[readonly]
+user_themes = 2
+icon_themes = 4
+aTemplateSet = 2
+fontsets = 6
 
 [types]
 org_name = SM_CONF_STRING",30"
-org_logo = SM_CONF_STRING",40"
+org_logo = SM_CONF_PATH",40"
 org_logo_width = SM_CONF_INTEGER",4"
 org_logo_height = SM_CONF_INTEGER",4"
 org_title = SM_CONF_STRING",30"

@@ -3,6 +3,9 @@
 /**
  * skeleton.class.php
  *
+ * TODO:
+ *  - Move constants to the right place
+ *
  * @copyright &copy; 1999-2007 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
@@ -17,18 +20,23 @@ define('SM_CONF_TEXT', 5);
 define('SM_CONF_ENUM', 6);
 define('SM_CONF_ARRAY_ENUM', 7);
 define('SM_CONF_KEYED_ENUM', 8);
+define('SM_CONF_PATH', 9);
 
 define('SM_CONF_ARRAY_SIMPLE', 0);
 define('SM_CONF_ARRAY_KEYS', 1);
 define('SM_CONF_ARRAY_REINDEX', 2);
 
+define('SM_CONF_METAS', 0);
+define('SM_CONF_DEFAULTS', 1);
+define('SM_CONF_DEFAULTS_SECTIONS', 2);
+define('SM_CONF_CUSTOM', 3);
+
 class SMConfigSkeleton 
 {
   var $sm_sections;  
   var $sm_config_vars;
-  var $sm_config_sections;
-  var $sm_config_desc;
-  var $sm_config_type;
+  var $sm_config_metas;
+  var $sm_config_type = array();
 
   function get_section($name = null)
   {
@@ -46,14 +54,8 @@ class SMConfigSkeleton
   {
     $this->sm_sections[$name] = array(
        'title' => _($title), 
-       'vars' => array(),
-       'desc' => ''
+       'vars' => array()
     );
-       
-    if($pos = strrpos($name,'.'))
-    {
-      $this->sm_sections[substr($name,0,$pos)]['sub'][] = $name;
-    } 
   }
 
   /*
@@ -81,22 +83,14 @@ class SMConfigSkeleton
     $this->sm_config_type[$variable_name] = explode(',', $type, 2);
   }
   
-  function add_desc($variable_name, $desc)
+  function add_meta($variable_name, $meta, $value)
   {
-    if(substr($variable_name, 0, 4) == "sec.")
-    { 
-      $section = substr($variable_name, 4); 
-      $this->sm_sections[$section]['desc'] = _($desc);
-    }
-    else
-    {
-      $this->sm_config_desc[$variable_name] = _($desc);
-    }
+    $this->sm_config_metas[$variable_name][$meta] = $value;
   }
   
-  function get_desc($variable_name)
+  function get_meta($variable_name, $meta)
   {
-    return $this->sm_config_desc[$variable_name];
+    return $this->sm_config_metas[$variable_name][$meta];
   }
 
   function get_type($variable_name)
@@ -106,7 +100,12 @@ class SMConfigSkeleton
 
   function V($name)
   {
-    return $this->sm_config_vars[$name];
+    return (isset($this->sm_config_vars[$name]) ? $this->sm_config_vars[$name] : null);
+  }
+  
+  function SetVar($name, $value)
+  {
+    $this->sm_config_vars[$name] = $value;
   }
 }
 
