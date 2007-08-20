@@ -158,6 +158,12 @@ require_once SM_PATH . 'class/config/configurator.class.php';
 global $config;
 $config = new SMConfigurator(false);
 
+///////// TEMPORARY HACK TO USE THE NEW CONFIGURATION ENGINE /////////
+foreach($config->sources[0]->sm_config_vars as $var => $value)
+{
+  $$var = $value;
+}
+
 /*
 /* load site configuration 
 require(SM_PATH . 'config/config.php');
@@ -166,6 +172,7 @@ if (file_exists(SM_PATH . 'config/config_local.php')) {
     require(SM_PATH . 'config/config_local.php');
 }
 */
+///////////////////////////////////////////////////////////////////////
 
 require(SM_PATH . 'functions/plugin.php');
 require(SM_PATH . 'include/constants.php');

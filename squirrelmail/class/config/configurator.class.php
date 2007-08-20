@@ -25,6 +25,13 @@ class SMConfigurator
   {
     $toplevel = parse_ini_file(SM_PATH.'config/toplevel_config.php', false);
     
+    if(!$toplevel)
+    {
+      die('<html><body><p><strong>ERROR:</strong> Config file ' .
+        '&quot;<tt>config/toplevel_config.php</tt>&quot; not found. You need to ' .
+        'configure SquirrelMail before you can use it.</p></body></html>');
+    }
+    
     $this->admin_password = $toplevel['admin_password'];
     $this->squirrelmail_default_language = $toplevel['squirrelmail_default_language'];
     $this->default_charset = $toplevel['default_charset'];

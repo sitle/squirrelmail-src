@@ -53,6 +53,7 @@ if($_SESSION['admpass'] && $_SESSION['admpass'] == $conf->admin_password)
   
   if(isset($_GET['saveconfig']))
   {
+    $_SESSION['made_changes'] = false;
     $result = $config->sources[0]->Save($conf);  
   }  
   
