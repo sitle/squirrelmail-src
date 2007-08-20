@@ -1,5 +1,5 @@
 #!/bin/sh
 #
-# Redirects to the config directory and runs conf.pl
+# Redirects to the config directory and runs configure.php
 
-cd `dirname $0`/config && ./conf.pl
+cd `dirname $0`/config && ./configure.php

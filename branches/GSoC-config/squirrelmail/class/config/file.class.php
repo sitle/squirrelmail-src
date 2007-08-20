@@ -206,3 +206,9 @@ function parse_config_file($files, $load_metas, $def_only)
 
   return $objects;
 }
+
+// Must add support for more config files
+function configure_backend_file()
+{
+  return 'config_file[] = "meta_config.php,default_config.php,config.php"'."\n";
+}

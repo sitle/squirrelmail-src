@@ -1,0 +1,49 @@
+
+This is a special release of SquirrelMail to demonstrate the
+new configuration engine made during the Google Summer of Code
+program in 2007.
+
+Installation
+===================================
+
+     First, you must run the top-level configuration script.
+ 
+  $ cd config/
+  $ ./configure.php
+  
+  If the PHP parser is not in your path, or for Windows users, run
+  
+  $ cd config/
+  $ /path/to/php configure.php
+
+   > cd config
+   > C:\php\php.exe configure.php
+
+ You *must* provide an administrator password, since the command line interface
+ is not completed yet.
+ 
+ Browse to the web configuration page :
+   http://server/path/squirrelmail/admin/
+   
+ Using your administrator password, you are ready to configure SquirrelMail.
+ Once you are done, save your configuration file in the config/ folder.
+
+Updates
+===================================
+
+ The sole purpose of this release is to provide Google with a working
+ sample of what has been achieved during the Summer of Code timeframe.
+ 
+ All features are not implemented yet. It is recommanded that use check out
+ SquirrelMail's latest SVN to have an up-to-date version.
+ 
+Thanks
+===================================
+
+ All my thanks go to my mentor, Thijs Kinkhorst, who was kind
+ enough to support my application and help me through the summer,
+ however busy he was. I also want to thank Paul Lesniewski for
+ his guidance, comments and feedbacks. Finally, I thank all the
+ people who showed interest in our improvements, through their
+ comments and suggestions on the mailing list.
+
