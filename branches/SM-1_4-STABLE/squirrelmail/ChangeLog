@@ -36,6 +36,9 @@ Version 1.4.11 - SVN
   - Better support mailboxes named 'None' (#1598890).
   - Sort readdir() output in conf.pl (#1755886).
   - Fix message cache in printer friendly, thanks Tomas Kuliavas.
+  - Made the webmail_top hook work again for plugins that want to change
+    the URI of the "right" frame; plugins have to change the value of the
+    global variable $right_frame_url
 
 Version 1.4.10a - 10 May 2007
 -----------------------------
