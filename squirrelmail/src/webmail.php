@@ -54,6 +54,10 @@ if(sqgetGlobalVar('mailtodata', $mailtodata)) {
 
 is_logged_in();
 
+// this value may be changed by a plugin, but initialize
+// it first to avoid register_globals headaches
+//
+$right_frame_url = '';
 do_hook('webmail_top');
 
 /**
@@ -121,6 +125,11 @@ else {
  *
  * The test for // should catch any attempt to include off-site webpages into
  * our frameset.
+ *
+ * Note that plugins are allowed to completely and freely override the URI
+ * used for the "right" (content) frame, and they do so by modifying the 
+ * global variable $right_frame_url.
+ *
  */
 
 if (empty($right_frame) || (strpos(urldecode($right_frame), '//') !== false)) {
@@ -133,27 +142,29 @@ if ( strpos($right_frame,'?') ) {
     $right_frame_file = $right_frame;
 }
 
-switch($right_frame_file) {
-    case 'right_main.php':
-        $right_frame_url = "right_main.php?mailbox=".urlencode($mailbox)
-                       . (!empty($sort)?"&amp;sort=$sort":'')
-                       . (!empty($startMessage)?"&amp;startMessage=$startMessage":'');
-        break;
-    case 'options.php':
-        $right_frame_url = 'options.php';
-        break;
-    case 'folders.php':
-        $right_frame_url = 'folders.php';
-        break;
-    case 'compose.php':
-        $right_frame_url = 'compose.php?' . $mailtourl;
-        break;
-    case '':
-        $right_frame_url = 'right_main.php';
-        break;
-    default:
-        $right_frame_url =  urlencode($right_frame);
-        break;
+if (empty($right_frame_url)) {
+    switch($right_frame_file) {
+        case 'right_main.php':
+            $right_frame_url = "right_main.php?mailbox=".urlencode($mailbox)
+                           . (!empty($sort)?"&amp;sort=$sort":'')
+                           . (!empty($startMessage)?"&amp;startMessage=$startMessage":'');
+            break;
+        case 'options.php':
+            $right_frame_url = 'options.php';
+            break;
+        case 'folders.php':
+            $right_frame_url = 'folders.php';
+            break;
+        case 'compose.php':
+            $right_frame_url = 'compose.php?' . $mailtourl;
+            break;
+        case '':
+            $right_frame_url = 'right_main.php';
+            break;
+        default:
+            $right_frame_url =  urlencode($right_frame);
+            break;
+    } 
 } 
 
 if ($location_of_bar == 'right') {
