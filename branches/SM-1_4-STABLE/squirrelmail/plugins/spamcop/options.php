@@ -14,9 +14,9 @@ require_once(SM_PATH . 'include/validate.php');
 
 function spamcop_enable_disable($option,$disable_action,$enable_action) {
     if ($option) { 
-	$ret= _("Enabled") . "(<a href=\"options.php?action=$disable_action\">" . _("Disable it") . "</a>)\n";
+	$ret= _("Enabled") . " (<a href=\"options.php?action=$disable_action\">" . _("Disable it") . "</a>)\n";
     } else {
-	$ret = _("Disabled") . "(<a href=\"options.php?action=$enable_action\">" . _("Enable it") . "</a>)\n";
+	$ret = _("Disabled") . " (<a href=\"options.php?action=$enable_action\">" . _("Enable it") . "</a>)\n";
     }
     return $ret;
 }
@@ -91,7 +91,7 @@ spamcop_load();
 	</tr>
 	<tr>
 	  <?php
-	  echo html_tag('td',_("Spam Reporting Method:"),'right');
+	  echo html_tag('td',_("Spam Reporting Method:"),'right','','valign="top"');
 	  ?>
 	  <td>
 	  <form method="post" action="options.php">
