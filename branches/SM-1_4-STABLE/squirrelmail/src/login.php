@@ -44,18 +44,28 @@ $base_uri = sqm_baseuri();
  * In case the last session was not terminated properly, make sure
  * we get a new one, but make sure we preserve session_expired_*
  */
+$sep = '';
+$sel = '';
+sqGetGlobalVar('session_expired_post', $sep, SQ_SESSION);
+sqGetGlobalVar('session_expired_location', $sel, SQ_SESSION);
 
-if ( !empty($_SESSION['session_expired_post']) && !empty($_SESSION['session_expired_location']) ) {
-    $sep = $_SESSION['session_expired_post'];
-    $sel = $_SESSION['session_expired_location'];
+/* blow away session */
+sqsession_destroy();
 
-    sqsession_destroy();
+/**
+ * in some rare instances, the session seems to stick
+ * around even after destroying it (!!), so if it does,
+ * we'll manually flatten the $_SESSION data
+ */
+if (!empty($_SESSION)) {
+    $_SESSION = array();
+}
 
-    sqsession_is_active();
+/* put session_expired_* variables back in session */
+sqsession_is_active();
+if (!empty($sep) && !empty($sel)) {
     sqsession_register($sep, 'session_expired_post');
     sqsession_register($sel, 'session_expired_location');
-} else {
-    sqsession_destroy();
 }
 
 header('Pragma: no-cache');
