@@ -42,7 +42,7 @@ function IsUnique($Distance, $r, $g, $b, $usedArray)
 // Always tremble background
 // This might make people go insane.  Yes!  *Victory dance!*
 function Darkness_HeaderPlugin() {
-   if (defined('PAGE_NAME') && PAGE_NAME=='left_main')) {
+   if (defined('PAGE_NAME') && PAGE_NAME=='left_main') {
       echo '<meta http-equiv="Page-Enter" content="' .
          'blendTrans(Duration=2.0)" />' . "\n";
    }
