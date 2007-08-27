@@ -44,6 +44,13 @@ function is_logged_in() {
         global $PHP_SELF, $session_expired_post,
                $session_expired_location, $squirrelmail_language;
 
+        // use $message to indicate what logout text the user
+        // will see... if 0, typical "You must be logged in"
+        // if 1, information that the user session was saved
+        // and will be resumed after (re)login
+        //
+        $message = 0;
+
         //  First we store some information in the new session to prevent
         //  information-loss.
         $session_expired_post = $_POST;
@@ -53,6 +60,8 @@ function is_logged_in() {
         }
         if (!sqsession_is_registered('session_expired_location')) {
             sqsession_register($session_expired_location,'session_expired_location');
+            if (stristr($session_expired_location, 'src/compose.php'))
+            $message = 1;
         }
 
         session_write_close();
@@ -65,7 +74,10 @@ function is_logged_in() {
 
         include_once( SM_PATH . 'functions/display_messages.php' );
         set_up_language($squirrelmail_language, true);
-        logout_error( _("You must be logged in to access this page.") );
+        if (!$message)
+            logout_error( _("You must be logged in to access this page.") );
+        else
+            logout_error( _("Your session has expired, but will be resumed after logging in again.") );
         exit;
     }
 }
