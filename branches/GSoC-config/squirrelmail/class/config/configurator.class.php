@@ -23,7 +23,7 @@ class SMConfigurator
   
   function SMConfigurator($load_meta = false, $def_only = false)
   {
-    $toplevel = parse_ini_file(SM_PATH.'config/toplevel_config.php', false);
+    $toplevel = @parse_ini_file(SM_PATH.'config/toplevel_config.php', false);
     
     if(!$toplevel)
     {
