@@ -63,9 +63,10 @@ if (!empty($_SESSION)) {
 
 /* put session_expired_* variables back in session */
 sqsession_is_active();
-if (!empty($sep) && !empty($sel)) {
-    sqsession_register($sep, 'session_expired_post');
+if (!empty($sel)) {
     sqsession_register($sel, 'session_expired_location');
+    if (!empty($sep)) 
+        sqsession_register($sep, 'session_expired_post');
 }
 
 header('Pragma: no-cache');
