@@ -144,15 +144,17 @@ $redirect_url = 'webmail.php';
 
 if ( sqgetGlobalVar('session_expired_location', $session_expired_location, SQ_SESSION) ) {
     sqsession_unregister('session_expired_location');
-    if ( strpos($session_expired_location, 'compose.php') !== FALSE ) {
+    if ( $session_expired_location == 'compose' ) {
         $compose_new_win = getPref($data_dir, $username, 'compose_new_win', 0);
         if ($compose_new_win) {
-            $redirect_url = $session_expired_location;
-        } elseif ( strpos($session_expired_location, 'webmail.php') === FALSE ) {
+            // do not prefix $location here because $session_expired_location is set to the PAGE_NAME
+            // of the last page
+            $redirect_url = $session_expired_location.'.php';
+        } elseif ( $session_expired_location != 'webmail' ) {
             $redirect_url = 'webmail.php?right_frame=compose.php';
         }
     } else {
-        $redirect_url = 'webmail.php?right_frame=' . urlencode($session_expired_location);
+        $redirect_url = 'webmail.php?right_frame=' . urlencode($session_expired_location) . '.php';
     }
     unset($session_expired_location);
 }
