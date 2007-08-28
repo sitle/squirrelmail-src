@@ -61,7 +61,7 @@ function is_logged_in() {
         if (!sqsession_is_registered('session_expired_location')) {
             sqsession_register($session_expired_location,'session_expired_location');
             if (stristr($session_expired_location, 'src/compose.php'))
-            $message = 1;
+                $message = 1;
         }
 
         session_write_close();
