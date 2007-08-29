@@ -149,12 +149,12 @@ if ( sqgetGlobalVar('session_expired_location', $session_expired_location, SQ_SE
         if ($compose_new_win) {
             // do not prefix $location here because $session_expired_location is set to the PAGE_NAME
             // of the last page
-            $redirect_url = $session_expired_location.'.php';
-        } elseif ( $session_expired_location != 'webmail' ) {
-            $redirect_url = 'webmail.php?right_frame=compose.php';
+            $redirect_url = $session_expired_location . '.php';
+        } else {
+            $redirect_url = 'webmail.php?right_frame=' . urlencode($session_expired_location . '.php');
         }
     } else if ($session_expired_location != 'webmail') {
-        $redirect_url = 'webmail.php?right_frame=' . urlencode($session_expired_location) . '.php';
+        $redirect_url = 'webmail.php?right_frame=' . urlencode($session_expired_location . '.php');
     }
     unset($session_expired_location);
 }
