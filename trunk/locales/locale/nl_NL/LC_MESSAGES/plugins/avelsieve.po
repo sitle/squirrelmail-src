@@ -1,0 +1,657 @@
+# translation of avelsieve.po to Dutch
+# Rinse de Vries <rinsedevries@kde.nl>, 2007.
+# LANGUAGE (xx_XX) avelsieve Translation (SquirrelMail plugin)
+# Copyright (c) 1999-2006 The SquirrelMail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
+# $Id: avelsieve.pot 10877 2006-03-04 11:22:22Z jervfors $
+msgid ""
+msgstr ""
+"Project-Id-Version: avelsieve\n"
+"POT-Creation-Date: 2004-04-01 20:12+0300\n"
+"PO-Revision-Date: 2007-04-11 23:23+0200\n"
+"Last-Translator: Rinse de Vries <rinsedevries@kde.nl>\n"
+"Language-Team: Dutch <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+msgid "You have to define at least one header match text."
+msgstr "Geef ten minste één tekenreeks op waarmee de koptekst overeen moet komen."
+
+msgid "You have not defined the name for the new folder."
+msgstr "U hebt geen naam opgegeven voor de nieuwe map."
+
+msgid "Please try again."
+msgstr "Probeer het opnieuw."
+
+msgid "Illegal folder name.  Please select a different name"
+msgstr "Niet-toegestane mapnaam. Geef een andere naam op."
+
+msgid "Add New Rule"
+msgstr "Nieuwe regel toevoegen"
+
+msgid "New Rule Wizard - Step"
+msgstr "Nieuwe-regel-assistent - stap"
+
+msgid "of"
+msgstr "van"
+
+msgid "Rule Type"
+msgstr "Regeltype"
+
+msgid "Condition"
+msgstr "Conditie"
+
+msgid "Action"
+msgstr "Actie"
+
+msgid "Confirmation"
+msgstr "Bevestiging"
+
+msgid ""
+"<p>You have chosen to keep every mail. This is the default action anyway, so "
+"you might want to start over with a rule that makes more sense. Select &quot;"
+"finished&quot; to save this rule nonetheless.</p>"
+msgstr "<p>U hebt er voor gekozen om elk bericht te behouden. Dit is zowiezo de standaardwerkwijze, dus u kunt beter opnieuw beginnen met een regel die meer bruikbaar is. Selecteer &quot;voltooid&quot; als u deze regel toch wilt opslaan.</p>"
+
+msgid ""
+"Please use the buttons on the bottom instead of your browser's reload, back "
+"and forward buttons, to build a rule."
+msgstr "Gebruik de knoppen onderaan in plaats van de knoppen voor 'herladen', 'terug' en 'volgende' van uw webbrowser om een regel aan te maken."
+
+msgid "Clear this Form"
+msgstr "Dit formulier wissen"
+
+msgid "Start Over"
+msgstr "Opnieuw"
+
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgid "Add SPAM Rule"
+msgstr "SPAM-regel toevoegen"
+
+msgid "Move back to step"
+msgstr "Terug naar stap"
+
+msgid "Finished"
+msgstr "Voltooid"
+
+msgid "Move on to step"
+msgstr "Verder naar stap"
+
+msgid "None"
+msgstr "Geen"
+
+msgid "What kind of rule would you like to add?"
+msgstr "Wat voor regel wilt u toevoegen?"
+
+msgid ""
+"The rule will trigger if the following addresses appear anywhere in the "
+"message's headers:"
+msgstr "De regel zal worden toegepast als de volgende adressen ergens in de berichtkoppen verschijnen:"
+
+msgid "To: or Cc"
+msgstr "Aan: of Cc"
+
+msgid "AND (Every item must match)"
+msgstr "EN (elk item moet overeen komen)"
+
+msgid "OR (Either item will match)"
+msgstr "OF (Tenminste één van de items moet overeenkomen)"
+
+msgid "The condition for the following rules is:"
+msgstr "De conditie van de volgende regel is:"
+
+msgid "The header "
+msgstr "De kop "
+
+msgid "Less..."
+msgstr "Minder..."
+
+msgid "More..."
+msgstr "Meer..."
+
+msgid "This rule will trigger if message is"
+msgstr "Deze regel zal worden toegepast als het bericht "
+
+msgid "bigger"
+msgstr "groter is"
+
+msgid "smaller"
+msgstr "kleiner is"
+
+msgid "than"
+msgstr "dan"
+
+msgid "KB (kilobytes)"
+msgstr "KB (kilobytes)"
+
+msgid "MB (megabytes)"
+msgstr "MB (megabytes)"
+
+msgid ""
+"The following action will be applied to <strong>all</strong> incoming "
+"messages that do not match any of the previous rules."
+msgstr "De volgende actie zal worden toegepast op <strong>alle</strong> inkomende berichten die met geen van de vorige regels overeenkomen."
+
+msgid ""
+"This rule will trigger upon the occurrence of one or more strings in the "
+"body of an e-mail message. "
+msgstr "Deze regel zal worden toegepast als één of meer teksten in het e-mailbericht zelf gevonden zijn."
+
+msgid "Choose what to do when this rule triggers, from one of the following:"
+msgstr "Kies uit het volgende wat u wilt laten doen als een regel wordt toegepast:"
+
+msgid "Keep (Default action)"
+msgstr "Behouden (standaard)"
+
+msgid "Discard Silently"
+msgstr "Stilzwijgend negeren"
+
+msgid "Reject, sending this excuse to the sender:"
+msgstr "Weigeren, waarbij dit als reden aan de afzender wordt gestuurd:"
+
+msgid "Please do not send me large attachments."
+msgstr "Stuur me geen grote bijlagen."
+
+msgid "Redirect to the following email address:"
+msgstr "Doorsturen naar het volgende e-mailadres:"
+
+msgid "someone@example.org"
+msgstr "iemand@voorbeeld.be"
+
+msgid "Keep a local copy as well."
+msgstr "Behoud ook een lokale kopie."
+
+msgid "Move message into"
+msgstr "Berichten verplaatsen naar"
+
+msgid "the existing folder"
+msgstr "de bestaande map"
+
+msgid "a new folder, named"
+msgstr "een nieuwe map, genaamd"
+
+msgid "created as a subfolder of"
+msgstr "aangemaakt als submap van"
+
+msgid "Also keep copy in INBOX, marked as deleted."
+msgstr "Probeer ook kopie in INBOX te behouden, gemarkeerd als verwijderd."
+
+msgid "Vacation"
+msgstr "Vakantie"
+
+msgid ""
+"The notice will be sent only once to each person that sends you mail, and "
+"will not be sent to a mailing list address."
+msgstr "Dit bericht zal eenmalig worden verzonden naar iedere persoon die u berichten stuurt en niet naar een mailinglist-adres."
+
+msgid "Addresses: Only reply if sent to these addresses:"
+msgstr "Adressen: alleen antwoorden wanneer verzonden vanaf deze adressen:"
+
+msgid "Days: Reply message will be resent after"
+msgstr "Dagen: antwoord zal opnieuw worden gestuurd na"
+
+msgid "days"
+msgstr "dagen"
+
+msgid "Use the following message:"
+msgstr "Het volgende bericht gebruiken:"
+
+msgid ""
+"This is an automated reply; I am away and will not be able to reply to you "
+"immediately."
+msgstr "Dit is een geautomatiseerd antwoord. Ik ben niet aanwezig en daardoor niet in staat om uw bericht onmiddellijk te beantwoorden."
+
+msgid "I will get back to you as soon as I return."
+msgstr "Ik kom er op terug zodra ik weer aanwezig ben."
+
+msgid "Additional Actions"
+msgstr "Aanvullende acties"
+
+msgid "STOP"
+msgstr "STOP"
+
+msgid "If this rule matches, do not check any rules after it."
+msgstr "Als deze regel overeenkomt, geen van de regels erna toepassen."
+
+msgid "Notify me, using the following method:"
+msgstr "Breng me op de hoogte, met behulp van deze methode:"
+
+msgid "Notification ID"
+msgstr "Notificatie-ID"
+
+msgid "Destination"
+msgstr "Bestemming"
+
+msgid "Message"
+msgstr "Bericht"
+
+msgid "Help: Valid variables are:"
+msgstr "Help: geldige variabelen zijn:"
+
+msgid "Your new rule states:"
+msgstr "Uw nieuwe regel stelt:"
+
+msgid ""
+"If this is what you wanted, select Finished. You can also start over or "
+"cancel adding a rule altogether."
+msgstr "Als dit is wat u wilt, selecteer dan 'Voltooid'. U kunt opnieuw beginnen of het toevoegen van een regel annuleren."
+
+msgid "Configure Anti-SPAM Protection"
+msgstr "Anti-spam-bescherming instellen"
+
+msgid ""
+"All incoming mail is checked for unsolicited commercial content (SPAM) and "
+"marked accordingly. This special rule allows you to configure what to do "
+"with such messages once they arrive to your Inbox."
+msgstr "Alle inkomende berichten worden gecontroleerd op ongevraagde commerciële inhoud (SPAM) en gemarkeerd. Deze speciale regel stelt u in staat om te bepalen wat er met dergelijke berichten gebeurt als ze in uw INBOX aankomen."
+
+#, php-format
+msgid ""
+"Select %s to add the predefined rule, or select the advanced SPAM filter to "
+"customize the rule."
+msgstr "Selecteer %s om de voorgedefinieerde regel toe te voegen of selecteer het geavanceerde spam-filter om de regel aan te passen."
+
+msgid "Add Spam Rule"
+msgstr "Spamregel toevoegen"
+
+msgid "Advanced Spam Filter..."
+msgstr "Geavanceerd spam-filter..."
+
+msgid "Target Score"
+msgstr "Doelscore"
+
+#, php-format
+msgid ""
+"Messages with SPAM-Score higher than the target value, the maximum value "
+"being %s, will be considered SPAM."
+msgstr "Berichten met een spam-score hoger dan de doelwaarde, waarvan de maximumwaarde %s is, zal worden aangemerkt als spam."
+
+msgid "SPAM Lists to check against"
+msgstr "Spamlijsten waarmee wordt vergeleken"
+
+msgid "Whitelist"
+msgstr "Witte lijst"
+
+msgid ""
+"Messages that match any of these header rules will never end up in Junk "
+"Folders or regarded as SPAM."
+msgstr "Berichten die overeenkomen met deze berichtregels zullen nooit eindigen in de junk-mappen of worden aangemerkt als spam."
+
+msgid "Apply Changes"
+msgstr "Wijzigingen toepassen"
+
+msgid "Error Encountered"
+msgstr "Fout opgetreden"
+
+msgid "is"
+msgstr "is"
+
+msgid "is not"
+msgstr "is niet"
+
+msgid "contains"
+msgstr "bevat"
+
+msgid "does not contain"
+msgstr "bevat niet"
+
+msgid "matches"
+msgstr "komt overeen met"
+
+msgid "does not match"
+msgstr "komt niet overeen met"
+
+msgid "is greater than"
+msgstr "is groter dan"
+
+msgid "is greater or equal to"
+msgstr "is groter dan of gelijk aan"
+
+msgid "is lower than"
+msgstr "is kleiner dan"
+
+msgid "is lower or equal to"
+msgstr "is kleiner dan of gelijk aan"
+
+msgid "is equal to"
+msgstr "is gelijk aan"
+
+msgid "is not equal to"
+msgstr "is niet gelijk aan"
+
+msgid "matches the regural expression"
+msgstr "komt overeen met de reguliere expressie"
+
+msgid "does not match the regural expression"
+msgstr "komt niet overeen met de reguliere expressie"
+
+msgid "exists"
+msgstr "bestaat"
+
+msgid "does not exist"
+msgstr "bestaat niet"
+
+msgid "For <strong>ALL</strong> incoming messages; "
+msgstr "Voor <strong>Alle</strong> inkomende berichten; "
+
+msgid ""
+"All messages considered as <strong>SPAM</strong> (unsolicited commercial "
+"messages)"
+msgstr "Alle berichten die als <strong>SPAM</strong> (ongewenste commerciële berichten) worden aangemerkt"
+
+msgid "unless"
+msgstr "tenzij"
+
+msgid "or"
+msgstr "of"
+
+msgid "matching the Spam List(s):"
+msgstr "overeenkomend met de spam-lijst(en):"
+
+#, php-format
+msgid "and with score greater than %s"
+msgstr "en met een score hoger dan %s"
+
+msgid "will be"
+msgstr "zal worden"
+
+msgid "stored in the Junk Folder."
+msgstr "opgeslagen in de Junk-map."
+
+msgid "stored in the Trash Folder."
+msgstr "worden opgeslagen in de prullenbakmap."
+
+msgid "discarded."
+msgstr "worden genegeerd."
+
+msgid "If"
+msgstr "Als"
+
+msgid "<em>any</em> of the following mail headers match: "
+msgstr "<em>één</em> van de volgende berichtkoppen overeen komt met: "
+
+msgid "<em>all</em> of the following mail headers match: "
+msgstr "<em>al</em> deze berichtkoppen overeenkomen met: "
+
+msgid "the header"
+msgstr "de kop"
+
+msgid "the size of the message is"
+msgstr "de grootte van het bericht is"
+
+msgid " bigger"
+msgstr " groter"
+
+msgid " smaller"
+msgstr " kleiner"
+
+msgid "then"
+msgstr "dan"
+
+msgid "<em>keep</em> it."
+msgstr "<em>behouden</em>."
+
+msgid "<em>discard</em> it."
+msgstr "<em>negeren</em>."
+
+msgid "<em>reject</em> it, sending this excuse back to the sender:"
+msgstr "<em>weigeren</em>, met deze reden aan de afzender gestuurd:"
+
+msgid "<em>redirect</em> it to the email address"
+msgstr "<em>omleiden</em> naar het e-mailadres"
+
+msgid "<em>file</em> it into the folder <strong>"
+msgstr "<em>opslaan</em> in de map <strong>"
+
+msgid "reply with this vacation message: "
+msgstr "antwoorden met deze vakantiemelding: "
+
+msgid "Also keep a local copy."
+msgstr "Ook een lokale kopie behouden."
+
+msgid " Also keep a copy in INBOX, marked as deleted."
+msgstr " Ook een kopie in INBOX behouden, gemarkeerd als verwijderd"
+
+msgid " Also notify using the method"
+msgstr " Ook melden met behulp van"
+
+msgid "with"
+msgstr "met"
+
+msgid "priority and the message"
+msgstr "prioriteit en het bericht"
+
+msgid " Then <strong>STOP</strong> processing rules."
+msgstr " Dan <strong>STOPPEN</strong> met het verwerken van regels."
+
+msgid "Address Match"
+msgstr "Adresovereenkomst"
+
+msgid "Perform an action depending on email addresses appearing in message headers."
+msgstr "Voer een actie uit afhankelijk van de e-mailadressen die in de berichtkoppen zijn gevonden."
+
+msgid "Header Match"
+msgstr "Berichtkopovereenkomst"
+
+msgid "Perform an action on messages matching a specified header (From, To etc.)."
+msgstr "Voer een actie uit op berichten die overeenkomen met een opgegeven kop (Van, Aan, etc.)."
+
+msgid "Size"
+msgstr "Grootte"
+
+msgid "Perform an action on messages depending on their size."
+msgstr "Voer een actie uit op berichten, afhankelijk van hun grootte."
+
+msgid "All Messages"
+msgstr "Alle berichten"
+
+msgid "Perform an action on <strong>all</strong> incoming messages."
+msgstr "Voer een actie uit op <strong>alle</strong> inkomende berichten."
+
+msgid "Body Match"
+msgstr "Berichtovereenkomst"
+
+msgid "Perform an action on messages depending on their content (body text)."
+msgstr "Voer een actie uit op berichten afhankelijk van hun inhoud (berichttekst)."
+
+msgid "wildcard"
+msgstr "jokerteken"
+
+msgid "regexp"
+msgstr "regexp"
+
+msgid "verbose"
+msgstr "uitgebreid"
+
+msgid "terse"
+msgstr "beknopt"
+
+msgid "Mobile Phone Message (SMS)"
+msgstr "SMS"
+
+msgid "Email notification"
+msgstr "E-mailmelding"
+
+msgid "Notification via Zephyr"
+msgstr "Melding via Zephyr"
+
+msgid "Notification via ICQ"
+msgstr "Melding via ICQ"
+
+msgid "Low"
+msgstr "Laag"
+
+msgid "Normal"
+msgstr "Normaal"
+
+msgid "High"
+msgstr "Hoog"
+
+msgid "Delete"
+msgstr "Verwijderen"
+
+msgid "Edit"
+msgstr "Bewerken"
+
+msgid "Duplicate"
+msgstr "Dupliceren"
+
+msgid "Move Up"
+msgstr "Omhoog"
+
+msgid "Move to Top"
+msgstr "Naar top verplaatsen"
+
+msgid "Move Down"
+msgstr "Omlaag"
+
+msgid "Move to Bottom"
+msgstr "Naar bodem verplaatsen"
+
+msgid "Junk Folder"
+msgstr "Junk-map"
+
+#, php-format
+msgid ""
+"Store SPAM message in your Junk Folder. Messages older than %s days will be "
+"deleted automatically."
+msgstr "Sla spam-bericht op in uw junk-map. Berichten ouder dan %s dagen zullen automatisch worden verwijderd."
+
+msgid "Note that you can set the number of days in Folder Preferences."
+msgstr "Onthoud dat u het aantal dagen kunt bepalen in de mapvoorkeuren."
+
+msgid "Trash Folder"
+msgstr "Prullenbakmap"
+
+msgid ""
+"Store SPAM message in your Trash Folder. You will have to purge the folder "
+"yourself."
+msgstr "Bewaar spam-berichten in uw prullenbakmap. U dient deze map zelf te legen."
+
+msgid "Discard"
+msgstr "Negeren"
+
+msgid ""
+"Discard SPAM message. You will get no indication that the message ever "
+"arrived."
+msgstr "Negeer het spam-bericht. U zult niet merken dat het bericht ooit is aangekomen."
+
+msgid "Editing Mail Filtering Rule"
+msgstr "Berichtfilterregel bewerken"
+
+msgid "Message Filters"
+msgstr "Berichtfilters"
+
+msgid ""
+"Server-Side mail filtering enables you to add criteria in order to "
+"automatically forward, delete or place a given message into a folder."
+msgstr "Serverzijde-filtering maakt het mogelijk om criteria toe te voegen om berichten automatisch door te sturen, te verwijderen of in een bepaalde map te plaatsen."
+
+msgid "Filters"
+msgstr "Filters"
+
+msgid "Could not log on to timsieved daemon on your IMAP server"
+msgstr "Kon niet inloggen bij de timsieved-daemon op uw IMAP-server"
+
+msgid "Please contact your administrator."
+msgstr "Neem contact op met uw systeembeheerder"
+
+msgid "Could not set active script on your IMAP server"
+msgstr "Kon geen actief script instellen op uw IMAP-server"
+
+msgid "Unable to load script to server."
+msgstr "Kon script niet op de server laden."
+
+msgid "Server responded with:"
+msgstr "Server antwoordde met:"
+
+msgid "Test for Forged Header"
+msgstr "Test voor nep-koptekst"
+
+msgid "Current Mail Filtering Rules"
+msgstr "Huidige berichtfilterregels"
+
+msgid "No Filtering Rules Defined Yet"
+msgstr "Er zijn nog geen filterregels opgegeven"
+
+msgid "Could not get SIEVE script from your IMAP server"
+msgstr "Kon SIEVE-script niet van uw IMAP-server halen"
+
+msgid "(Probably the script is size null)."
+msgstr "(mogelijk is net script volledig leeg)"
+
+msgid "All your rules have been deleted"
+msgstr "Al uw regels zijn verwijderd"
+
+msgid "Really delete this rule?"
+msgstr "Wilt u deze regel verwijderen?"
+
+msgid "Delete Selected"
+msgstr "Selectie verwijderen"
+
+msgid "Server-Side Mail Filtering"
+msgstr "Serverzijde-berichtfiltering"
+
+msgid ""
+"Here you can add or delete filtering rules for your email account. These "
+"filters will always apply to your incoming mail, wherever you check your "
+"email."
+msgstr "Hier kunt u filterregels voor uw e-mailaccount toevoegen of verwijderen. Deze filters zullen altijd worden toegepast op uw inkomende berichten, telkens als u nieuwe berichten ophaalt."
+
+msgid ""
+"You don't have any rules yet. Feel free to add any with the button &quot;Add "
+"a New Rule&quot;. When you are done, please select &quot;Save Changes&quot; "
+"to get back to the main options screen."
+msgstr "U hebt geen regels ingesteld. Voel u vrij om enkele toe te voegen met de knop &quot;Een nieuwe regel toevoegen&quot;. Als u klaar bent, selecteer &quot;Wijzigingen opslaan&quot; om terug te gaan naar het hoofdscherm met opties."
+
+msgid ""
+"When you are done with editing, <strong>remember to select &quot;Save "
+"Changes&quot;</strong> to activate your changes!"
+msgstr "Als u klaar bent met verwerken, <strong>vergeet dan niet om &quot;Wijzigingen opslaan&quot; te selecteren</strong> om uw wijzingen te activeren!"
+
+msgid "Successfully added new rule."
+msgstr "Nieuwe regel met succes toegevoegd."
+
+msgid "Successfully updated rule #"
+msgstr "Bijwerken succesvol voor regel #"
+
+msgid "Successfully deleted rules #"
+msgstr "Verwijderen succesvol voor regels #"
+
+msgid "Successfully deleted rule #"
+msgstr "Verwijderen succesvol voor regel #"
+
+msgid "The following table summarizes your current mail filtering rules."
+msgstr "De volgende tabel geeft een samenvatting van uw huidige filterregels."
+
+msgid "No"
+msgstr "Nee"
+
+msgid "Description of Rule"
+msgstr "Beschrijving van de regel"
+
+msgid "Display as:"
+msgstr "Weergeven als:"
+
+msgid "Options"
+msgstr "Opties"
+
+msgid "Add a New Rule"
+msgstr "Een nieuwe regel toevoegen"
+
+msgid "When you are done, please click the button below to return to your webmail."
+msgstr "Als u klaar bent, klik op onderstaande knop om terug te keren naar uw webmail."
+
+msgid "Save Changes"
+msgstr "Wijzigingen opslaan"
+
+msgid "Created:"
+msgstr "Aangemaakt:"
+
+msgid "Last modified:"
+msgstr "Laatst gewijzigd:"
+

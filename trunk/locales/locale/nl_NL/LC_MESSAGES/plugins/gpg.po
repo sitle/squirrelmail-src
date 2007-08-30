@@ -1,675 +1,530 @@
+# translation of gpg.po to Dutch
 # Plugin G/PGP Encryption
 # Copyright (c) 2003-2005 The SquirrelMail Project Team
 # This file is distributed under the same license as the Squirrelmail package.
-# M.J. Prinsen <translation@prinsenonline.com>, 2003.
 #
+# M.J. Prinsen <translation@prinsenonline.com>, 2003.
+# Rinse de Vries <rinsedevries@kde.nl>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: G/PGP Encryption\n"
-"POT-Creation-Date: 2003-12-29 17:58-0600\n"
-"PO-Revision-Date: 2004-01-08 23:55+0100\n"
-"Last-Translator: M.J. Prinsen <translation@prinsenonline.com>\n"
+"Project-Id-Version: gpg\n"
+"POT-Creation-Date: 2004-01-28 09:53-0600\n"
+"PO-Revision-Date: 2007-04-17 22:54+0200\n"
+"Last-Translator: Rinse de Vries <rinsedevries@kde.nl>\n"
 "Language-Team: Dutch <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
 
-#: modules/cachepass.mod:38
 msgid " Please try again."
-msgstr " Probeer a.u.b. opnieuw."
+msgstr "Probeer het opnieuw."
 
-#: modules/genkey.php:210
 msgid " selected"
 msgstr " geselecteerd"
 
-#: modules/general.mod:196
 msgid "'On Send' Defaults"
-msgstr "'Bij verzenden' Standaardwaarden"
+msgstr "Standaardwaarden voor 'Bij verzenden'"
 
-#: modules/genkey.php:247
 msgid "1 Year"
 msgstr "1 jaar"
 
-#: help/what_keystrength.php:13
+msgid ""
+"<a href=\"http://www.gnupg.org/gph/en/manual.html\">The GNU Privacy "
+"Handbook</a>"
+msgstr "<a href=\"http://www.gnupg.org/gph/en/manual.html\">Het GNU Privacy-handboek</a>"
+
 msgid ""
 "A 1024 bit key is often acceptable, 2048 is generally seen as a good "
 "compromise between security and usability, and 4096 is very strong and can "
 "be noticeably slower."
 msgstr ""
-"Een 1024 bits versleuteling is acceptabel, 2048 wordt gezien als een goed "
+"Een 1024-bits versleuteling is acceptabel, 2048 wordt gezien als een goed "
 "compromis tussen veiligheid en bruikbaarheid, en 4096 is een erg sterke "
 "versleuteling, die merkbaar trager kan zijn."
 
-#: modules/genkey.php:80
 msgid ""
 "A Keypair consists of a <b>public key</b>, which people will use to send "
 "encrypted messages to you and verify your signature, and a <b>secret key</"
 "b>, which will never be shared with others."
 msgstr ""
-"Een sleutelpaar bestaat uit een <b>publieke sleutel</b>, die mensen gebruiken "
-"om versleutelde berichten naar u te versturen en om uw handtekening te verifieren. "
-"En uit een <b>prive sleutel</b>, die nooit met anderen wordt uitgewisseld."
+"Een sleutelpaar bestaat uit een <b>publieke sleutel</b>, die mensen "
+"gebruiken om versleutelde berichten naar u te versturen en om uw "
+"handtekening te verifiëren. En een <b>privésleutel</b>, die nooit met "
+"anderen wordt uitgewisseld."
 
-#: help/disc_keystore.php:15
 msgid ""
 "A new Keypair can be generated for this account on the webserver for use "
 "here."
-msgstr ""
-"Een nieuw sleutelpaar voor dit account kan op de webserver worden gegenereerd om "
-"hier te gebruiken."
+msgstr "U kunt op de webserver een nieuw sleutelpaar voor dit account genereren om hier te gebruiken."
 
-#: modules/genkey_keygen.php:250
 msgid "A new personal Keypair has been generated."
 msgstr "Een nieuw persoonlijk sleutelpaar is gegenereerd."
 
-#: modules/import_key_file.php:74 modules/import_key_text.php:86
 msgid "Add Keys"
-msgstr "Voeg sleutels toe"
+msgstr "Sleutels toevoegen"
 
-#: modules/keyview.php:66
 msgid "Algorithm"
 msgstr "Algoritme"
 
-#: modules/getstart.php:100 help/what_trusted.php:21
 msgid ""
 "Any key signed with your trusted key ID will be allowed for encryption "
 "without generating errors."
 msgstr ""
-"Elke sleutel, getekend met uw vertrouwde sleutel ID, kan worden "
-"gebruikt voor versleuteling zonder fouten te genereren."
+"Elke sleutel, getekend met uw vertrouwde sleutel-ID, kan worden gebruikt "
+"voor versleuteling, zonder fouten te genereren."
 
-#: modules/gpgdecrypt.mod:636
 msgid "Attachments"
 msgstr "Bijlagen"
 
-#: modules/gpg_module_footer.php:25
 msgid "Back to GPG Plugin Options"
-msgstr "Terug naar de GPG Plugin opties"
+msgstr "Terug naar de GPG-Plugin-opties"
 
-#: modules/genkey_keygen.php:271
 msgid "Back to Keyring Management"
-msgstr "Terug naar sleutelring management"
+msgstr "Terug naar sleutelringbeheer"
 
-#: modules/gpg_module_footer.php:29
 msgid "Back to Keyring Management Options"
-msgstr "Terug naar sleutelring management opties"
+msgstr "Terug naar sleutelringbeheeropties"
 
-#: modules/gpg_module_footer.php:21
 msgid "Back to Main Squirrelmail Options"
-msgstr "Terug naar Squirrelmail opties"
+msgstr "Terug naar Squirrelmail-opties"
 
-#: modules/cachepass.mod:38 modules/keyring_main.php:133
-#: modules/keyring_main.php:160
 msgid "Bad Passphrase."
-msgstr "Verkeerde beveilingszin"
+msgstr "Onjuiste wachtwoordzin."
 
-#: gpg_hook_functions.php:164
 msgid "Bad Signature"
-msgstr "Verkeerde handtekening"
+msgstr "Onjuiste handtekening"
 
-#: modules/gpgdecrypt.mod:580
 msgid "Bcc"
-msgstr "BCC"
+msgstr "Bcc"
 
-#: modules/general.mod:206
 msgid ""
 "Be aware that using this option in combination with the partial recipients "
 "option, above, may result in unintended consequences."
 msgstr ""
-"Wees gewaarschuwd dat het gebruik van deze optie in combinatie met de gedeeltelijke "
-"onvangers optie hierboven kan resulteren in onbedoelde consequenties."
+"Wees gewaarschuwd dat het gebruik van deze optie in combinatie met de "
+"gedeeltelijke-ontvangers-optie hierboven kan leiden tot onbedoelde "
+"consequenties."
 
-#: help/what_trusted.php:14
 msgid ""
 "Because of this risk of compromise and lack of security, you may not want to "
 "store your private key on the web server."
 msgstr ""
-"Vanwege de veiligheid is het beter uw prive sleutel niet op de webserver te bewaren"
+"Vanwege de veiligheid is het beter uw privésleutel niet op de webserver te "
+"bewaren"
 
-#: modules/general.mod:306
 msgid ""
 "Caching the passphrase can be very convenient, but many security experts "
 "recommend against storing the passphrase on the server because it may be "
 "more susceptible to an attack."
-msgstr ""
-"Opslaan van de beveiligingszin is erg makkelijk, maar veel veiligheids "
-"deskundigen raden het af de beveiligingszin op de server te bewaren, omdat "
-"die dan meer vatbaar is voor een aanval."
+msgstr "Het bewaren van de wachtwoordzin is erg gemakkelijk, maar veel veiligheidsdeskundigen raden het af de wachtwoordzin op de server te bewaren, omdat die dan meer vatbaar is voor een aanval."
 
-#: modules/general.mod:334 modules/changepass.php:101 modules/genkey.php:293
-#: modules/import_key_file.php:78 modules/import_key_text.php:90
-#: modules/keyview.php:161
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: modules/keyring_main.php:103
 msgid "Cannot change passphrase on key: "
-msgstr "Kan de beveiligingszin niet veranderen van de sleutel: "
+msgstr "Kan de wachtwoordzin niet veranderen van de sleutel: "
 
-#: modules/gpgdecrypt.mod:579
 msgid "Cc"
 msgstr "CC"
 
-#: modules/changepass.php:14 modules/changepass.php:100
 msgid "Change Passphrase"
-msgstr "Verander beveiligingszin"
+msgstr "Wachtwoordzin wijzigen"
 
-#: modules/keyserver.mod:81
 msgid "Choose a Key to Import"
 msgstr "Kies een sleutel om te importeren"
 
-#: help/what_passphrase.php:20
 msgid "Choose a complete sentence that you will be able to remember."
 msgstr "Kies een volledige zin die u kunt onthouden."
 
-#: modules/keyserver.mod:50
 msgid "Choose your Default Keyserver"
-msgstr "Kies uw standaard Sleutel-server"
+msgstr "Kies uw standaard sleutelserver"
 
-#: help/what_passphrase.php:12
 msgid ""
 "Choosing a good passphrase is one of the most important tasks for secure "
 "communications."
 msgstr ""
-"De keuze van een goede beveiligingszin is een van de meest belangrijke voorwaarden "
-"voor veilige communicatie."
+"De keuze van een goede wachtwoordzin is een van de meest belangrijke "
+"voorwaarden voor veilige communicatie."
 
-#: modules/passpop.mod:148
 msgid "Close Window"
-msgstr "Sluit venster"
+msgstr "Venster sluiten"
 
-#: modules/getstart.php:97
 msgid "Configure a Trusted Key"
-msgstr "Maak een vertrouwde sleutel"
+msgstr "Een vertrouwde sleutel instellen"
 
-#: modules/passpop.mod:80
 msgid "Confirm Delete Key"
-msgstr "Bevestig verwijdering sleutel"
+msgstr "Verwijderen van sleutel bevestigen"
 
-#: modules/passpop.mod:85
 msgid "Confirm Delete Keypair"
-msgstr "Bevestig verwijdering sleutelpaar"
+msgstr "Verwijderen van sleutelpaar bevestigen"
 
-#: modules/gpgdecrypt.mod:459
 msgid "Connection to IMAP Server to retrieve message body failed."
-msgstr "Verbinding met IMAP server om berichttekst te ontvangen mislukt."
+msgstr "Verbinding met IMAP-server om berichttekst te ontvangen is mislukt."
 
-#: modules/keyring_main.php:60
 msgid "Could not export your key.  Please contact gpg development."
-msgstr "Kan uw sleutel niet exporteren.  Neem contact op met gpg ontwikkeling."
+msgstr "Kon uw sleutel niet exporteren.  Neem contact op met gpg-ontwikkeling."
 
-#: gpg_decrypt_attach.php:141 gpg_decrypt_attach.php:332
-#: gpg_hook_functions.php:78
 msgid "Could not write to temporary file: "
-msgstr "Kan niet schrijven naar tijdelijk bestand: "
+msgstr "Kon niet schrijven naar tijdelijk bestand: "
 
-#: modules/genkey.php:289
 msgid "Create New Personal Keypair"
-msgstr "Maak een nieuw persoonlijk sleutelpaar"
+msgstr "Nieuw persoonlijk sleutelpaar aanmaken"
 
-#: gpg_functions.php:152
 msgid "Cute."
 msgstr "Mooi."
 
-#: modules/gpgdecrypt.mod:577
 msgid "Date"
 msgstr "Datum"
 
-#: modules/genkey_keygen.php:161 modules/genkey.php:215 modules/genkey.php:226
-#: modules/genkey.php:237
 msgid "Days"
 msgstr "Dagen"
 
-#: gpg_hook_functions.php:117
 msgid "Decrypt Attachment"
-msgstr "Decodeer bijlage"
+msgstr "Bijlage ontcijferen"
 
-#: gpg_hook_functions.php:405
 msgid "Decrypt Message Now"
-msgstr "Decodeer bericht nu"
+msgstr "Bericht nu ontcijferen"
 
-#: modules/gpgdecrypt.mod:600
 msgid "Decrypted Message"
-msgstr "Decodeer bericht"
+msgstr "Bericht ontcijferen"
 
-#: modules/keyserver.mod:85
 msgid "Default Keyserver set to:"
-msgstr "Standaard sleutel-server is:"
+msgstr "Standaard sleutelserver is:"
 
-#: modules/keyserver.mod:96
 msgid "Default Keyserver: "
-msgstr "Standaard sleutel-server: "
+msgstr "Standaard sleutelserver: "
 
-#: modules/gpgdecrypt.mod:238 modules/keyview.php:180 modules/keyview.php:184
 msgid "Delete"
-msgstr "Verwijder"
+msgstr "Verwijderen"
 
-#: modules/keyview.php:178 modules/keyview.php:185
 msgid "Delete Keypair"
-msgstr "Verwijder sleutelpaar"
+msgstr "Sleutelpaar verwijderen"
 
-#: gpg_key_functions.php:575
 msgid "Did not receive valid export_type in gpg_export_key function."
-msgstr "Geen geldig export_type ontvangen in gpg_export_key functie."
+msgstr "Geen geldig export_type ontvangen in functie gpg_export_key."
 
-#: gpg_key_functions.php:120
 msgid "Did not receive valid keyring_type in gpg_list_keys function."
-msgstr "Geen geldig keyring_type ontvangen in gpg_list_keys functie."
+msgstr "Geen geldig keyring_type ontvangen in functie gpg_list_keys."
 
-#: modules/getstart.php:87
 msgid "Did you import a personal Keypair in Step 1?"
-msgstr "Heeft u een persoonlijk sleutelpaar geimporteerd in Stap 1?"
+msgstr "Heeft u een persoonlijk sleutelpaar geïmporteerd in Stap 1?"
 
-#: modules/getstart.php:68
-msgid ""
-"Do you already have a keyring, or individual keys you would like to use?"
-msgstr ""
-"Heeft u al een sleutelring of individuele sleutels die u wilt gebruiken?"
+msgid "Do you already have a keyring, or individual keys you would like to use?"
+msgstr "Heeft u al een sleutelring of individuele sleutels die u wilt gebruiken?"
 
-#: modules/genkey.php:84
 msgid "Do you already have a personal Keypair?"
 msgstr "Heeft u al een persoonlijk sleutelpaar?"
 
-#: modules/general.mod:130
 msgid ""
 "Do you want the GPG plugin to encrypt the message to only some recipients, "
 "if you do not have public keys for everyone?"
 msgstr ""
-"Wilt u dat de GPG plugin berichten naar slechts enkele ontvangers codeert "
+"Wilt u dat de GPG plugin berichten naar slechts enkele ontvangers versleutelt "
 "als u niet de publieke sleutels heeft voor iedereen?"
 
-#: modules/general.mod:156
 msgid ""
 "Do you want the plugin to encrypt mail to your address, in addition to the "
 "recipients?"
 msgstr ""
-"Wilt u dat de GPG plugin mail op uw adres codeert, in aanvulling op de ontvangers?"
+"Wilt u dat de GPG-plugin berichten aan uw adres versleutelt, in aanvulling op de "
+"ontvangers?"
 
-#: modules/general.mod:314
 msgid "Do you want the system to cache your passphrase?"
-msgstr "Wilt u dat uw systeem uw beveiligingszin onthoudt?"
+msgstr "Wilt u dat het systeem uw wachtwoordzin onthoudt?"
 
-#: modules/general.mod:245
 msgid ""
 "Do you want to trust the system-wide keyring that has been defined by your "
 "system administrator?"
 msgstr ""
-"Wilt u de systeembrede sleutelring vertrouwen, die is gedefinieerd door uw "
-"system administrator?"
+"Wilt u de systeemwijde sleutelring vertrouwen, die gedefinieerd is door uw "
+"systeembeheerder?"
 
-#: modules/general.mod:279
 msgid ""
 "Do you want to use the system-wide ADK that has been defined by your system "
 "administrator?"
-msgstr ""
-"Wilt u de systeembrede ADK gebruiken, die is gedefinieerd door uw system "
-"administrator?"
+msgstr "Wilt u de systeemwijde ADK gebruiken, die gedefinieerd is door uw systeembeheerder?"
 
-#: modules/keyring_main.php:84
 msgid "Done"
-msgstr "Sluit"
+msgstr "Gereed"
 
-#: gpg_view_verify_text.php:57
 msgid "Download signed attachment"
-msgstr "Download getekende bijlage"
+msgstr "Ondertekende bijlage downloaden"
 
-#: modules/keyring_main.php:472 modules/keyring_main.php:487
 msgid "Email"
 msgstr "E-mail"
 
-#: modules/keyserver.mod:122 modules/genkey_keygen.php:97
-#: modules/genkey.php:146
 msgid "Email Address"
 msgstr "E-mailadres"
 
-#: modules/keyview.php:167 modules/keyview.php:169
 msgid "Email Key"
-msgstr "E-mail sleutel"
+msgstr "E-mailsleutel"
 
-#: gpg_hook_functions.php:1017
 msgid "Encrypt Now"
-msgstr "Codeer nu"
+msgstr "Nu versleutelen"
 
-#: gpg_hook_functions.php:1094
 msgid "Encrypt on Send"
-msgstr "Codeer bij verzenden"
+msgstr "Bij verzenden versleutelen"
 
-#: modules/general.mod:222
 msgid "Encrypt on Send by Default"
-msgstr "Codeer standaard bij verzenden"
+msgstr "Standaard bij verzenden versleutelen"
 
-#: modules/general.mod:148
 msgid "Encrypt to Self"
-msgstr "Codeer naar zelf"
+msgstr "Berichten voor mijzelf versleutelen"
 
-#: gpg_hook_functions.php:1078
 msgid "Encrypt&Sign Now"
-msgstr "Codeer & Teken nu"
+msgstr "Nu versleutelen & ondertekenen"
 
-#: gpg_hook_functions.php:535
 msgid "Encrypted"
-msgstr "Gecodeerd"
+msgstr "Versleuteld"
 
-#: modules/getstart.php:40
 msgid "Encryption Options - Getting Started"
-msgstr "Coderings opties - Start"
+msgstr "Versleutelopties - begin"
 
-#: modules/changepass.php:67
 msgid "Enter New Passphrase:"
-msgstr "Geef nieuwe beveilingszin"
+msgstr "Nieuwe wachtwoordzin:"
 
-#: gpg_decrypt_attach.php:229 modules/passpop.mod:133 modules/genkey.php:253
 msgid "Enter Passphrase"
-msgstr "Geef beveilingszin"
+msgstr "Voer de wachtwoordzin in"
 
-#: modules/keyserver.mod:66
 msgid "Enter Search text below to search for a key to import"
-msgstr "Geef zoektekst in waarmee wordt gezocht naar een sleutel om te importeren"
+msgstr "Voer hieronder termen in waarmee u wilt zoeken naar een sleutel om te importeren."
 
-#: gpg_key_functions.php:391
-msgid ""
-"Enter a search string for the key you would like to trust in the box below."
-msgstr ""
-"Geef een zoektekst in voor de sleutel die u wilt vertrouwen."
+msgid "Enter a search string for the key you would like to trust in the box below."
+msgstr "Voer in het veld hieronder een zoekterm in voor de sleutel die wilt vertrouwen."
 
-#: modules/gpgdecrypt.mod:662 modules/changepass.php:28
-#: modules/genkey_keygen.php:209 modules/keyring_main.php:286
-#: modules/keyview.php:137
 msgid "Error: "
 msgstr "Fout: "
 
-#: gpg_decrypt_attach.php:311
 msgid "Error: No filename found to save attachment"
-msgstr "Fout: Geen bestandsnaam gevonden om bijlage op te slaan"
+msgstr "Fout: geen bestandsnaam gevonden om bijlage op te slaan"
 
-#: gpg_encrypt.php:191
 msgid "Errors:"
 msgstr "Fouten:"
 
-#: modules/keyview.php:63
 msgid "Expiration Date"
 msgstr "Verloopdatum"
 
-#: help/base.php:54 help/external_resources.php:4
 msgid "External Resources"
 msgstr "Externe bronnen"
 
-#: modules/keyring_main.php:520
 msgid "Extras"
-msgstr "Extras"
+msgstr "Extra's"
 
-#: modules/getstart.php:138
 msgid "Find the public keys of people you want to communicate securely with"
 msgstr "Zoek de publieke sleutels van mensen waarmee u veilig wilt communiceren"
 
-#: modules/keyring_main_chunk.php:31 modules/keyring_main_chunk.php:34
 msgid "First"
 msgstr "Eerste"
 
-#: modules/gpgdecrypt.mod:296
 msgid "Forward"
 msgstr "Doorsturen"
 
-#: modules/gpgdecrypt.mod:301
 msgid "Forward as Attachment"
 msgstr "Doorsturen als bijlage"
 
-#: modules/gpgdecrypt.mod:576
 msgid "From"
 msgstr "Van"
 
-#: modules/options_main.mod:27
 msgid "From this screen, you may select options for setting up the GPG Plugin."
-msgstr "In dit scherm kunt u de opties van de GPG plugin instellen."
+msgstr "In dit scherm kunt u de opties van de GPG-plugin instellen."
 
-#: modules/genkey_keygen.php:113 modules/genkey.php:131
 msgid "Full Name"
 msgstr "Volledige naam"
 
-#: modules/passpop.mod:75
 msgid "GPG Decryption Initiating"
-msgstr "GPG decodering gestart"
+msgstr "GPG-ontcijferen gestart"
 
-#: modules/gpgdecrypt.mod:445
 msgid "GPG Decryption Results"
-msgstr "GPG resultaten decodering"
+msgstr "Resultaten van GPG-ontcijfering"
 
-#: modules/passpop.mod:55
 msgid "GPG Draft Signing Initiating"
-msgstr "GPG concept tekenen gestart"
+msgstr "GPG concept ondertekenen gestart"
 
-#: modules/passpop.mod:65
 msgid "GPG Encrypt and Sign Initiating"
-msgstr "GPG coderen en tekenen gestart"
+msgstr "GPG versleutelen en ondertekenen gestart"
 
-#: modules/genkey_keygen.php:76 modules/genkey.php:69
 msgid "GPG Options - Create a Personal Keypair"
-msgstr "GPG opties - Maak een persoonlijk sleutelpaar"
+msgstr "GPG-opties - een persoonlijk sleutelpaar aanmaken"
 
-#: modules/keyring_main.php:67 modules/keyview.php:129
 msgid "GPG Options - Display Key"
-msgstr "GPG opties - Toon sleutel"
+msgstr "GPG-opties - Sleutel weergeven"
 
-#: modules/keyring_main.php:259
 msgid "GPG Options - Keyring Management"
-msgstr "GPG opties - Sleutelring management"
+msgstr "GPG-opties - sleutelringbeheer"
 
-#: modules/options_main.mod:21
 msgid "GPG Options - Main Options"
-msgstr "GPG opties - Hoofdopties"
+msgstr "GPG-opties - hoofdopties"
 
-#: modules/gpg_module_footer.php:39
 msgid "GPG Plugin"
-msgstr "GPG Plugin"
+msgstr "GPG-plugin"
 
-#: modules/general.mod:107
 msgid "GPG Plugin - General Options"
-msgstr "GPG Plugin - Algemene opties"
+msgstr "GPG-plugin - algemene opties"
 
-#: gpg_sign_functions.php:220
 msgid "GPG Plugin Error:No body text received from Compose page"
-msgstr "GPG Plugin Fout: Geen berichttekst ontvangen van opstelpagina"
+msgstr "GPG-pluginfout: geen berichttekst ontvangen van opstelpagina"
 
-#: gpg_help_base.php:57 gpg_help_base.php:62 gpg_help.php:56
-#: modules/options_main.mod:43
 msgid "GPG Plugin Help"
-msgstr "GPG Plugin help"
+msgstr "GPG-plugin-help"
 
-#: gpg_hook_functions.php:901
 msgid "GPG Plugin Options"
-msgstr "GPG Plugin opties"
+msgstr "GPG-plugin-opties"
 
-#: gpg_encrypt_functions.php:104
-msgid ""
-"GPG Plugin: Check your preferences from the Trusted Key Screen in Options."
-msgstr ""
-"GPG Plugin: Check uw voorkeuren in het vertrouwde sleutel scherm in opties."
+msgid "GPG Plugin: Check your preferences from the Trusted Key Screen in Options."
+msgstr "GPG-plugin: controleer uw voorkeuren in het vertrouwde-sleutel-scherm in Opties."
 
-#: gpg_encrypt_functions.php:103
 msgid "GPG Plugin: No Trusted Key Selected, but Use Trusted Key Feature Set."
-msgstr "GPG Plugin: Geen vertrouwde sleutel geselecteerd, gebruik vertrouwde sleutel set"
+msgstr "GPG-plugin: geen vertrouwde sleutel geselecteerd, gebruikt de vertrouwde- sleutel-set."
 
-#: gpg_encrypt_functions.php:279
 msgid "GPG Plugin: No cyphertext was generated."
-msgstr "GPG Plugin: Geen cyphertext is gegenereerd."
+msgstr "GPG-plugin: er is geen versleutelde tekst gegenereerd."
 
-#: gpg_encrypt.php:355
-msgid ""
-"GPG Plugin: Plain-text Attachment file not deleted due to error in Encrypt."
-msgstr ""
-"GPG Plugin: Bijlage bestand in platte tekst niet verwijderd door fout in codering."
+msgid "GPG Plugin: Plain-text Attachment file not deleted due to error in Encrypt."
+msgstr "GPG-plugin: bijgevoegd plattetekstbestand is niet verwijderd vanwege een fout in Encrypt."
 
-#: gpg_encrypt_functions.php:203
 msgid ""
 "GPG Plugin: You must specify a signing key in the Options screen to sign "
 "messages."
-msgstr ""
-"GPG Plugin: U moet een sleutel om berichten te tekenen specificeren in het scherm opties."
+msgstr "GPG-plugin: u moet een sleutel specificeren in het optiesscherm om berichten te kunnen tekenen."
 
-#: gpg_encrypt_functions.php:137
 msgid ""
 "GPG Plugin: Your recipient list is empty. After parsing, there are no valid "
 "recipients."
-msgstr ""
-"GPG Plugin: U ontvangers lijst is leeg. Er zijn geen geldige ontvangers."
+msgstr "GPG-plugin: uw lijst met geadresseerden is leeg. Na het ontleden zijn er geen geldige geadresseerden."
 
-#: gpg_encrypt_functions.php:285
 msgid "GPG Plugin: gpg returned a non-clean return value of: "
-msgstr "GPG Plugin: gpg gaf een corrupt resultaat terug van: "
+msgstr "GPG-plugin: gpg gaf een corrupt resultaat terug van: "
 
-#: modules/passpop.mod:45
+msgid "GPG Recipient List"
+msgstr "GPG-ontvangerslijst"
+
 msgid "GPG Signing Initiating"
-msgstr "GPG tekenen gestart"
+msgstr "GPG-ondertekenen gestart"
 
-#: modules/options_main.mod:37
 msgid "General Options about how the plugin works"
 msgstr "Algemene opties over de werking van de plugin"
 
-#: modules/genkey.php:123
 msgid "Generate New Keypair"
-msgstr "Genereer een nieuw sleutelpaar"
+msgstr "Een nieuw sleutelpaar genereren"
 
-#: modules/keyring_main.php:668
 msgid "Generate new personal key pair"
-msgstr "Genereer een nieuw persoonlijk sleutelpaar"
+msgstr "Een nieuw persoonlijk sleutelpaar genereren"
 
-#: modules/genkey_keygen.php:85
 msgid "Generating Keypair based on:"
-msgstr "Genereer sleutelpaar gebaseerd op:"
+msgstr "Sleutelpaar genereren gebaseerd op:"
 
-#: modules/keyring_main.php:497 modules/keyring_main.php:512
-#: modules/keyview.php:62
 msgid "Generation Date"
-msgstr "Vervaardigingsdatum"
+msgstr "Aanmaakdatum"
 
-#: modules/options_main.mod:35 help/base.php:7
 msgid "Getting Started with the GPG Plugin"
-msgstr "Start met de GPG Plugin"
+msgstr "Beginnen met de GPG-plugin"
 
-#: modules/keyring_main.php:405
 msgid "Go"
-msgstr "Start"
+msgstr "Ga"
 
-#: gpg_hook_functions.php:162
 msgid "Good Signature"
 msgstr "Goede handtekening"
 
-#: help/what_passphrase.php:15
 msgid "Here are a few tips on choosing a good passphrase:"
-msgstr "Hier is een aantal tips voor het kiezen van een goede beveilingszin:"
+msgstr "Hier is een aantal tips voor het kiezen van een goede wachtwoordzin:"
 
-#: gpg_encrypt.php:203
 msgid "Here are the keys which GPG reported as missing:"
-msgstr "Hier zijn de sleutels die GPG rapporteert als ontbrekend:"
+msgstr "Dit zijn de sleutels die GPG rapporteert als ontbrekend:"
 
-#: help/what_keystrength.php:11
 msgid ""
 "Higher strength keys (those with more 'bits') are harder to compromise, but "
 "they also take more time to use.  It will take longer to decrypt and sign "
 "with a stronger key."
 msgstr ""
 "Sterkere sleutels (met meer 'bits') zijn veiliger, maar ze kosten meer tijd "
-"in het gebruik. Het decoderen en tekenen duurt langer met een sterkere sleutel."
+"in het gebruik. Het ontcijferen en ondertekenen duurt langer met een sterkere "
+"sleutel."
 
-#: help/base.php:19 help/what_passphrase.php:5
 msgid "How do I choose a passphrase?"
-msgstr "Hoe kies ik een beveiligingszin?"
+msgstr "Hoe kies ik een wachtwoordzin?"
 
-#: modules/keyview.php:65
 msgid "ID"
 msgstr "ID"
 
-#: help/disc_keystore.php:11
 msgid "If it is not secure, your identity can be stolen!"
 msgstr "Als het niet veilig is, kan uw identiteit worden gestolen!"
 
-#: modules/getstart.php:79
 msgid "If not, skip this step."
 msgstr "Zo niet, sla deze stap over."
 
-#: modules/getstart.php:89
 msgid "If not, you should"
 msgstr "Zo niet, dan kunt u"
 
-#: modules/general.mod:212
 msgid ""
 "If you Sign your messages, the message will be verifiable as being from you, "
 "and the recipient will be able to make sure that the message was not "
 "tampered with in transit."
 msgstr ""
-"Als u uw berichten tekent, dan is het bericht te verifieren als zijnde van u. "
-"De ontvanger kan nu verifieren of het bericht tijdens zijn reis niet is onderschept en veranderd."
+"Als u uw berichten ondertekent is het bericht te verifiëren als zijnde van "
+"u. De ontvanger kan nu verifiëren of het bericht tijdens zijn reis niet is "
+"onderschept en veranderd."
 
-#: help/what_passphrase.php:26
 msgid ""
 "If you are inventing a new passphrase that you have never used before, you "
 "should consider writing it down until you are comfortable that you will not "
 "forget it."
 msgstr ""
-"Als u een nieuwe beveiligingszin gaat gebruiken, die u nog nooit heeft gebruikt, "
-"dan kunt u hem tijdelijk ergens opschrijven totdat u denkt hem niet meer te vergeten."
+"Als u een nieuwe wachtwoordzin gaat gebruiken, die u nog nooit heeft "
+"gebruikt, dan kunt u hem tijdelijk ergens opschrijven totdat u denkt hem "
+"niet meer te vergeten."
 
-#: help/what_trusted.php:26
 msgid ""
 "If you choose a trusted key and store a keypair on the web server, all keys "
 "that you wish to encrypt to will need to be signed by a trusted key."
 msgstr ""
-"Als u kiest voor een vertrouwde sleutel en een sleutelpaar op de webserver bewaart, "
-"dan zullen alle sleutels waar u naar wilt coderen moeten zijn getekend door een "
-"vertrouwde sleutel."
+"Als u kiest voor een vertrouwde sleutel en een sleutelpaar op de webserver "
+"bewaart, dan moeten alle sleutels waarmee u wilt versleutelen zijn ondertekend met een vertrouwde sleutel."
 
-#: modules/general.mod:308
 msgid ""
 "If you choose to cache your passphrase, your passphrase will be stored on "
 "the Web Mail server in secure storage for use by you while you are logged in."
-msgstr ""
-"Als u kiest voor het uw onthouden van uw beveiligingszin, dan zal uw zin worden "
-"bewaard op de webmailserver in een veilige opslag voor gebruik wanneer u bent ingelogged."
+msgstr "Als u kiest voor het uw onthouden van uw wachtwoordzin, dan zal deze in een veilige opslag worden bewaard op de webmailserver voor gebruik wanneer u bent ingelogd."
 
-#: help/what_passphrase.php:28
 msgid ""
 "If you do choose to write down your passphrase, be careful about where you "
 "store it, and destroy your paper copy as soon as you are sure that you will "
 "remember your passphrase."
 msgstr ""
-"Als u kiest voor het opschrijven van uw beveiligingszin, wees dan voorzichtig "
-"waar u het opbergt en vernietig uw papieren kopie zodra u de zin kunt onthouden."
+"Als u kiest voor het opschrijven van uw wachtwoordzin, wees dan "
+"voorzichtig waar u het opbergt en vernietig uw papieren kopie zodra u de zin "
+"kunt onthouden."
 
-#: gpg_key_functions.php:389
 msgid ""
 "If you do not see the key you want to trust in the list above, or if there "
 "is no list:"
 msgstr ""
-"Als u de sleutel die u wilt vertrouwen niet vindt in de lijst hierboven, of als "
-"er geen lijst is:"
+"Als u de sleutel die u wilt vertrouwen niet vindt in de lijst hierboven, of "
+"als er geen lijst is:"
 
-#: modules/keyserver.mod:115
 msgid ""
 "If you do not see the key you wish to import, you may go back and enter "
 "different search terms or select a different keyserver."
 msgstr ""
-"Als u de sleutel niet vindt die u wilt importeren, ga dan terug en vul "
+"Als u de sleutel die u wilt importeren niet kunt vinden, ga dan terug en vul "
 "andere zoektermen in of selecteer een andere sleutelserver."
 
-#: help/disc_keystore.php:13
 msgid ""
 "If you do not trust the people that are hosting this email service it is "
 "recommended that you do not upload your existing private key until trust can "
 "be established."
 msgstr ""
 "Als u de mensen die deze e-mail service hosten niet vertrouwt, dan is het "
-"aanbevolen dat u uw bestaande prive sleutel niet upload totdat u zeker weet "
+"aanbevolen dat u uw bestaande privésleutel niet uploadt totdat u zeker weet "
 "dat u hen kunt vertrouwen."
 
-#: help/what_passphrase.php:10
 msgid ""
 "If you forget your passphrase, you will not be able to decrypt messages "
 "encrypted with this public key."
 msgstr ""
-"Als u uw beveiligingszin vergeet, bent u niet meer in staat berichten te decoderen "
-"die zijn gecodeerd met deze publieke sleutel."
+"Als u uw wachtwoordzin vergeet zult u niet meer in staat zijn berichten te "
+"ontcijferen die zijn versleuteld met deze publieke sleutel."
 
-#: modules/getstart.php:132
 msgid ""
 "If you generated a personal Keypair in step 2, this is probably the key you "
 "want."
@@ -677,641 +532,506 @@ msgstr ""
 "Als u een persoonlijk sleutelpaar in stap 2 heeft gegenereerd, dan is dit "
 "waarschijnlijk de sleutel die u wilt gebruiken."
 
-#: modules/general.mod:276
 msgid ""
 "If you select 'No' below, the holder of the ADK will not be able to decrypt "
 "your messages."
 msgstr ""
-"Als u hieronder 'Nee' selecteert, dan zal de ADK-houder niet in staat zijn om uw "
-"berichten te decoderen."
+"Als u hieronder 'Nee' selecteert, dan zal de ADK-houder niet in staat zijn "
+"om uw berichten te ontcijferen."
 
-#: modules/general.mod:312
 msgid ""
 "If you select 'No' below, you will be prompted for your passphrase every "
 "time it is needed for decryption or signing of messages."
 msgstr ""
-"Als u hieronder 'Nee' selecteert, dan zal iedere keer uw beveiligingszin worden "
-"gevraagd bij het decoderen or tekenen van berichten."
+"Als u hieronder 'Nee' selecteert, dan zal iedere keer uw wachtwoordzin "
+"worden gevraagd bij het ontcijferen of ondertekenen van berichten."
 
-#: modules/general.mod:272
 msgid ""
 "If you select 'Yes' below, all messages that you encrypt will also be "
 "encrypted to the ADK."
 msgstr ""
-"Als u hieronder 'Ja' selecteert, dan zullen alle door u gecodeerde berichten "
-"ook naar de ADK worden gecodeerd."
+"Als u hieronder 'Ja' selecteert, dan zullen alle door u versleutelde berichten "
+"ook naar de ADK worden versleuteld."
 
-#: modules/general.mod:241
 msgid ""
 "If you select 'Yes' below, the plugin will search the 'system-wide' keyring "
 "for public keys after looking at your public keyring."
 msgstr ""
-"Als u hieronder 'Ja' selecteert, zal de plugin na de publieke sleutelring de 'systeembrede' "
-"sleutelring doorzoeken op publieke sleutels." 
+"Als u hieronder 'Ja' selecteert, zal de plugin na de publieke sleutelring de "
+"'systeemwijde' sleutelring doorzoeken op publieke sleutels."
 
-#: modules/general.mod:310
 msgid ""
 "If you select 'Yes' below, you will only be prompted for your passphrase "
 "once during a session."
 msgstr ""
-"Als u hieronder 'Ja' selecteert, dan wordt u slechts een keer per sessie om uw beveiligingszin gevraagd."
+"Als u hieronder 'Ja' selecteert, dan wordt u slechts één keer per sessie om "
+"uw wachtwoordzin gevraagd."
 
-#: modules/general.mod:172
 msgid ""
 "If you selected 'Yes', what is the email address you would like to encrypt "
 "to:"
-msgstr ""
-"Als u 'Ja' selecteert, naar welk e-mailadres wilt u dan coderen: "
+msgstr "Als u 'Ja' selecteert, naar welk e-mailadres wilt u dan versleutelen: "
 
-#: modules/general.mod:214
 msgid ""
 "If you set one of these options below, you will have the opportunity on the "
 "Compose page to turn it off on a message by message basis."
 msgstr ""
-"Als u een van deze opties hieronder selecteert, heeft u de mogelijkheid deze optie "
-"per bericht aan of uit te zetten."
+"Als u één van deze opties hieronder selecteert heeft u de mogelijkheid deze "
+"optie per bericht aan of uit te zetten."
 
-#: modules/general.mod:154
 msgid ""
 "If you set this option to 'No', you will not be able to decrypt messages "
 "encrypted with the plugin unless you add your email address in the To, CC, "
 "or BCC line of the email before encrypting it."
-msgstr ""
-"Als u deze optie op 'Nee' zet, zult u niet in staat zijn gecodeerde berichten te "
-"decoderen met de plugin totdat u uw e-mailadres in het AAN, CC of BCC veld toevoegt "
-"voordat u het bericht codeert."
+msgstr "Als u deze optie op 'Nee' zet kunt u alleen versleutelde berichten  met de plugin ontcijferen als u uw e-mailadres in het Aan-, CC- of BCC-veld heeft toegevoegd voordat u het bericht versleutelt."
 
-#: modules/general.mod:243
 msgid ""
 "If you set this option to 'No', you will not have access to any keys stored "
 "on the system keyring, which may include keys for members of a group to "
 "which you belong."
 msgstr ""
-"Als u deze optie op 'Nee' zet, zult u geen toegang hebben tot sleutels die zijn "
-"bewaard in de systeem sleutelring, en mogelijk sleutels bevat voor leden van een groep "
-"waar u lid van bent."
+"Als u deze optie op 'Nee' zet, zult u geen toegang hebben tot sleutels die "
+"zijn bewaard in de systeemsleutelring en mogelijk sleutels bevat voor "
+"leden van een groep waar u lid van bent."
 
-#: help/what_trusted.php:30
 msgid ""
 "If you try to encrypt to a key not signed by one of these keys, you will not "
 "be allowed to do so, because the identity of the recipient is unverifiable."
 msgstr ""
-"Als u naar een sleutel probeert te coderen die niet is getekend door een van deze "
-"sleutels, dan zal dit niet worden toegestaan, omdat de identiteit van de ontvanger "
-"niet is te verifieren."
+"Als u naar een sleutel probeert te versleutelen die niet is ondertekend door één van "
+"deze sleutels, dan zal dit niet worden toegestaan omdat de identiteit van "
+"de ontvanger niet is te verifiëren."
 
-#: modules/general.mod:210
 msgid ""
 "If you wish to Sign all of your messages by default, you may also select the "
 "'Sign on Send' option below."
 msgstr ""
-"Als u al uw berichten standaard wilt tekenen, kunt u de 'Standaard tekenen bij verzenden' optie selecteren."
+"Als u al uw berichten standaard wilt ondertekenen kunt u de optie 'Standaard ondertekenen "
+"bij verzenden' selecteren."
 
-#: modules/general.mod:204
 msgid ""
 "If you with to Encrypt all messages by default, select the 'Encrypt on Send' "
 "option below."
-msgstr ""
-"Als u al uw berichten standaard wilt coderen, selecteer dan de 'Codeer standaard bij verzenden' optie."
+msgstr "Als u al uw berichten standaard wilt versleutelen, selecteer dan de optie 'Standaard ondertekenen bij verzenden'."
 
-#: modules/general.mod:152
 msgid ""
 "If your keyring has a public key for this email address on it, then all "
 "messages you encrypt will be readable by you later."
 msgstr ""
-"Als uw sleutelring een publieke sleutel bevat voor dit e-mailadres, dan zullen "
-"alle berichten die u codeert later leesbaar zijn voor u."
+"Als uw sleutelring een publieke sleutel bevat voor dit e-mailadres, dan "
+"zullen alle berichten die u versleutelt later leesbaar zijn voor u."
 
-#: modules/import_key_file.php:41
 msgid "Import ASCII-Armored Key Text to Keyring"
-msgstr "Importeer ASCII-gewapende sleutel tekst in sleutelring"
+msgstr "ASCII-gewapende sleuteltekst naar sleutelring importeren"
 
-#: modules/keyserver.mod:152
 msgid "Import Key"
-msgstr "Importeer sleutel"
+msgstr "Sleutel importeren"
 
-#: modules/import_key_text.php:41
 msgid "Import Key File to Keyring"
-msgstr "Importeer sleutelbestand in sleutelring"
+msgstr "Sleutelbestand naar sleutelring importeren"
 
-#: gpg_hook_functions.php:454
 msgid "Import Key contained in this email now"
-msgstr "Importeer sleutel uit deze e-mail"
+msgstr "Sleutel uit dit bericht nu importeren"
 
-#: modules/keyserver.mod:135
 msgid "Import Selected Key"
-msgstr "Importeer geselecteerde sleutel"
+msgstr "Geselecteerde sleutel importeren"
 
-#: modules/getstart.php:66
 msgid "Import external keys"
-msgstr "Importeer externe sleutels"
+msgstr "Externe sleutels importeren"
 
-#: modules/genkey.php:88 modules/getstart.php:70 modules/keyring_main.php:656
 msgid "Import keys to your personal keyring via: "
-msgstr "Importeer sleutels in uw persoonlijke sleutelring via: "
+msgstr "Sleutels in uw persoonlijke sleutelring importeren via: "
 
-#: modules/keyserver.mod:157
 msgid "Importing key with KeyID: "
-msgstr "Importeer sleutel met sleutelID: "
+msgstr "Sleutel importeren met sleutel-ID: "
 
-#: help/what_trusted.php:12
 msgid ""
 "In fact, most security experts recommend that web servers be presumed to be "
 "at risk of compromise."
 msgstr ""
-"Webservers zijn volgens de meeste veiligheidsdeskundigen vanzelfsprekend onveilig."
+"Webservers zijn volgens de meeste veiligheidsdeskundigen vanzelfsprekend "
+"onveilig."
 
-#: gpg_encrypt.php:213
 msgid "Info:"
 msgstr "Informatie:"
 
-#: modules/gpgdecrypt.mod:671
 msgid "Info: "
 msgstr "Informatie:"
 
-#: help/what_trusted.php:10
 msgid ""
 "It may be dangerous to believe that any web server (like this one) may be "
 "presumed secure."
-msgstr ""
-"Het kan gevaarlijk zijn te denken dat elke webserver veilig is."
+msgstr "Het kan gevaarlijk zijn te denken dat elke webserver veilig is."
 
-#: help/disc_keystore.php:9
 msgid ""
 "It would be dangerous to simply assume that any web server (like this one) "
 "is secure."
-msgstr ""
-"Het is gevaarlijk om aan te nemen dat elke webserver veilig is."
+msgstr "Het is gevaarlijk om aan te nemen dat elke webserver veilig is."
 
-#: modules/keyring_main.php:447 modules/keyring_main.php:462
 msgid "Key"
 msgstr "Sleutel"
 
-#: modules/keyserver.mod:123
 msgid "Key Date"
 msgstr "Datum sleutel"
 
-#: gpg_key_functions.php:350 gpg_key_functions.php:363
 msgid "Key Details:"
 msgstr "Details sleutel:"
 
-#: modules/genkey_keygen.php:151 modules/genkey.php:190
 msgid "Key Expires"
 msgstr "Verloopdatum sleutel"
 
-#: modules/keyserver.mod:120
 msgid "Key ID"
 msgstr "ID sleutel"
 
-#: modules/keyview.php:64
 msgid "Key Length"
 msgstr "Lengte sleutel"
 
-#: modules/keyring_main.php:640
 msgid "Key Search"
 msgstr "Zoek sleutel"
 
-#: modules/genkey_keygen.php:143
 msgid "Key Strength"
 msgstr "Sterkte sleutel"
 
-#: gpg_key_functions.php:878
 msgid "Key generated on public webmail server"
 msgstr "Sleutel gegenereerd op publieke webmailserver"
 
-#: help/what_keystrength.php:9
 msgid ""
 "Key strength is a measure of how difficult it is for an eavesdropper to "
 "compromise the security of your encrypted messages."
 msgstr ""
 "De sterkte van een sleutel is een maat voor hoe moeilijk het is voor iemand "
-"die afluistert om uw gecodeerde berichten te ontcijferen."
+"die afluistert om uw versleutelde berichten te ontcijferen."
 
-#: modules/options_main.mod:39
+msgid "Keyring"
+msgstr "Sleutelring"
+
 msgid "Keyring Management Functions"
-msgstr "Sleutelring management functies"
+msgstr "Sleutelringbeheerfuncties"
 
-#: modules/keyring_main.php:683
 msgid "Keyring not editable, keyring functions disabled."
-msgstr "Sleutelring is niet te bewerken, sleutelring functies uitgeschakeld."
+msgstr "Sleutelring is niet te bewerken, sleutelringfuncties uitgeschakeld."
 
-#: modules/keyserver.mod:44
 msgid "Keyserver Options"
-msgstr "Sleutelserver opties"
+msgstr "Sleutelserveropties"
 
-#: modules/genkey.php:160
 msgid "Keystrength"
 msgstr "Sterkte sleutel"
 
-#: modules/keyring_main_chunk.php:52 modules/keyring_main_chunk.php:55
 msgid "Last"
 msgstr "Laatste"
 
-#: modules/getstart.php:143 modules/keyring_main.php:675
 msgid "Look up keys on a public keyserver"
-msgstr "sleutels zoeken op een publieke sleutelserver"
+msgstr "Sleutels zoeken op een publieke sleutelserver"
 
-#: modules/gpgdecrypt.mod:224
+msgid "Make this my default keyserver"
+msgstr "Deze instellen als standaard sleutelserver"
+
 msgid "Message List"
 msgstr "Berichtenlijst"
 
-#: modules/gpgdecrypt.mod:345
 msgid "Move"
-msgstr "Verplaats"
+msgstr "Verplaatsen"
 
-#: modules/gpgdecrypt.mod:336
 msgid "Move to:"
-msgstr "Verplaats naar:"
+msgstr "Verplaatsen naar:"
 
-#: modules/keyserver.mod:121
 msgid "Name"
 msgstr "Naam"
 
-#: modules/genkey_keygen.php:156 modules/genkey.php:204
 msgid "Never"
 msgstr "Nooit"
 
-#: modules/keyring_main.php:422 modules/keyring_main.php:610
 msgid "New Search"
 msgstr "Nieuwe zoekopdracht"
 
-#: modules/keyring_main.php:376
 msgid "Newly Imported Keys"
-msgstr "Nieuw geimporteerde sleutels"
+msgstr "Nieuw-geïmporteerde sleutels"
 
-#: modules/gpgdecrypt.mod:267 modules/gpgdecrypt.mod:281
-#: modules/gpgdecrypt.mod:283 modules/keyring_main_chunk.php:45
-#: modules/keyring_main_chunk.php:48
 msgid "Next"
 msgstr "Volgende"
 
-#: modules/general.mod:136 modules/general.mod:141 modules/general.mod:163
-#: modules/general.mod:168 modules/general.mod:251 modules/general.mod:256
-#: modules/general.mod:285 modules/general.mod:290 modules/general.mod:321
-#: modules/general.mod:326
 msgid "No"
 msgstr "Nee"
 
-#: modules/keyring_main.php:211
+msgid "No GPG Plugin preferences could be found"
+msgstr "Geen voorkeuren voor GPG-plugin gevonden"
+
 msgid "No file was uploaded."
-msgstr "Geen bestanden uploaded."
+msgstr "Geen bestanden geüpload."
 
-#: modules/keyring_main.php:118
 msgid "No old passphrase passed.  Possibly blank password?"
-msgstr "Geen oude beveiligingszin doorgegeven. Misschien een blank password?"
+msgstr "Geen oude wachtwoordzin doorgegeven. Misschien een leeg wachtwoord?"
 
-#: modules/keyring_main.php:156
 msgid "No secret key found."
-msgstr "Geen prive sleutel gevonden."
+msgstr "Geen privésleutel gevonden."
 
-#: modules/keyring_main.php:572
 msgid "None"
 msgstr "Geen"
 
-#: modules/genkey_keygen.php:158
 msgid "One Year"
 msgstr "Een jaar"
 
-#: modules/keyview.php:61
 msgid "Owner Email"
-msgstr "E-mail eigenaar"
+msgstr "E-mail-eigenaar"
 
-#: modules/general.mod:124
 msgid "Partial Recipient Encryption Option"
 msgstr "Gedeeltelijke ontvangers coderingsoptie"
 
-#: modules/genkey_keygen.php:129
 msgid "Passphrase"
-msgstr "Beveiligingszin"
+msgstr "Wachtwoordzin"
 
-#: modules/general.mod:301
 msgid "Passphrase Caching"
-msgstr "Beveiligingszin onthouden"
+msgstr "Wachtwoordzin onthouden"
 
-#: modules/import_key_text.php:79
 msgid "Paste one or more ASCII-armored keys below:"
-msgstr "Plak een of meer ASCII-gewapende sleutels hieronder:"
+msgstr "Plak  hieronder één of meer ASCII-gewapende sleutels:"
 
-#: modules/genkey_keygen.php:215
 msgid "Please"
 msgstr "Alstublieft"
 
-#: gpg_key_functions.php:121 gpg_key_functions.php:576
 msgid "Please Notify GPG Plugin Developers"
-msgstr "Neem a.u.b. contact op met de GPG Plugin ontwikkelaars"
+msgstr "Neem contact op met de GPG Plugin-ontwikkelaars"
 
-#: modules/import_key_file.php:62
 msgid "Please choose a file containing one or more ASCII-armored key blocks"
-msgstr "Kies een bestand met een of meer ASCII-gewapende sleutel blokken"
+msgstr "Kies een bestand met één of meer ASCII-gewapende sleutelblokken"
 
-#: modules/options_main.mod:31
 msgid "Please choose the GPG Encryption Plugin options you wish to set up:"
-msgstr "Kies de GPG Plugin opties die u wilt gebruiken:"
+msgstr "Kies de GPG Plugin-opties die u wilt gebruiken:"
 
-#: modules/keyring_main.php:548
-msgid ""
-"Please import a keypair containing a secret key if you wish to continue."
-msgstr ""
-"Importeer een sleutelpaar die een prive sleutel bevat al u wilt doorgaan."
+msgid "Please import a keypair containing a secret key if you wish to continue."
+msgstr "Importeer een sleutelpaar die een privésleutel bevat om door te kunnen gaan."
 
-#: gpg_key_functions.php:468
 msgid "Please try a different keyserver or contact your system administrator."
-msgstr "Probeer een andere sleutelserver of neem contact op met uw systeemadministrator."
+msgstr ""
+"Probeer een andere sleutelserver of neem contact op met uw "
+"systeembeheerder."
 
-#: modules/genkey_keygen.php:39 modules/gpg_module_header.php:31
-#: modules/gpg_popup_header.php:32 modules/keyring_main.php:541
 msgid "Please try again."
-msgstr "Probeer a.u.b. opnieuw."
+msgstr "Probeer het opnieuw."
 
-#: modules/changepass.php:53
 msgid "Please type your old passphrase: "
-msgstr "Type uw oude beveiligingszin: "
+msgstr "Type uw oude wachtwoordzin: "
 
-#: modules/gpgdecrypt.mod:266 modules/gpgdecrypt.mod:272
-#: modules/gpgdecrypt.mod:274 modules/keyring_main_chunk.php:38
-#: modules/keyring_main_chunk.php:41
 msgid "Previous"
 msgstr "Vorige"
 
-#: modules/gpgdecrypt.mod:581
 msgid "Priority"
 msgstr "Prioriteit"
 
-#: gpg_functions.php:923 gpg_functions.php:1025
 msgid "Problem with command syntax. Check Debug Output"
-msgstr "Probleem met de commando syntax. Check Debug Output"
+msgstr "Probleem met de commandosyntaxis. Controleer de Debug-uitvoer"
 
-#: gpg_hook_functions.php:843
 msgid "Problems with the cyphertext output:"
-msgstr "Problemen met de cyphertext output:"
+msgstr "Problemen met de cyphertext-uitvoer:"
 
-#: help/disc_keystore.php:4
 msgid "Public web servers are not always secure!"
 msgstr "Publieke webservers zijn niet altijd veilig!"
 
-#: gpg_key_functions.php:121 gpg_key_functions.php:576
 msgid "Received"
 msgstr "Ontvangen"
 
-#: modules/keyview.php:91
 msgid "Remove this key from your keyring?  This action cannot be undone!"
 msgstr ""
-"Verwijder deze sleutel vanuit uw sleutelring? Deze actie kan niet "
-"ongedaan worden gemaakt!"
+"Deze sleutel uit uw sleutelring verwijderen? Deze actie kan niet ongedaan "
+"worden gemaakt!"
 
-#: modules/gpgdecrypt.mod:327
 msgid "Reply"
-msgstr "Antwoord"
+msgstr "Beantwoorden"
 
-#: modules/gpgdecrypt.mod:330
 msgid "Reply All"
 msgstr "Allen beantwoorden"
 
-#: help/base.php:59
 msgid "Report a bug on the GPG Plugin Bugzilla"
 msgstr "Rapporteer een bug op GPG Plugin Bugzilla"
 
-#: modules/genkey_keygen.php:214
 msgid "Required data missing."
-msgstr "Vereiste data missen."
+msgstr "Vereiste gegevens ontbreken."
 
-#: modules/gpgdecrypt.mod:253
 msgid "Resume Draft"
-msgstr "Hervat concept"
+msgstr "Concept hervatten"
 
-#: modules/changepass.php:84
 msgid "Retype New Passphrase:"
-msgstr "Herhaal nieuwe beveiligingszin"
+msgstr "Nieuwe wachtwoordzin herhalen:"
 
-#: modules/genkey.php:271
 msgid "Retype Passphrase"
-msgstr "Herhaal beveiligingszin"
+msgstr "Wachtwoordzin herhalen"
 
-#: gpg_key_functions.php:867 modules/genkey_keygen.php:53
-#: modules/genkey.php:47
 msgid "SSL connection required to generate keypair."
-msgstr "SSL verbinding vereist om sleutelpaar te genereren."
+msgstr "SSL-verbinding vereist om sleutelpaar te genereren."
 
-#: gpg_encrypt_functions.php:81 gpg_encrypt_functions.php:370
 msgid "SSL connection required to use passphrase functions."
-msgstr "SSL verbinding vereist om beveiligingszin functies te gebruiken"
+msgstr "SSL-verbinding vereist om wachtwoordzinfuncties te gebruiken."
 
-#: modules/general.mod:333 modules/keyview.php:160
 msgid "Save"
 msgstr "Opslaan"
 
-#: gpg_key_functions.php:395
 msgid "Search String:"
 msgstr "Zoekterm:"
 
-#: modules/keyserver.mod:71
 msgid "Search for Key"
-msgstr ""
+msgstr "Naar sleutel zoeken"
 
-#: gpg_key_functions.php:398
 msgid "Search my keyring for a new trusted key using the search string above:"
 msgstr ""
-"Zoek in mijn sleutelring naar een nieuwe vertrouwde sleutel gebruikmakend van de "
-"zoekterm hierboven:"
+"Zoek in mijn sleutelring naar een nieuwe vertrouwde sleutel, gebruikmakend "
+"van de zoekterm hierboven:"
 
-#: modules/gpgdecrypt.mod:219
 msgid "Search results"
 msgstr "Zoekresultaten"
 
-#: modules/keyring_main.php:416 modules/keyring_main.php:603
 msgid "Search results for"
 msgstr "Zoekresultaten voor"
 
-#: modules/keyserver.mod:68
 msgid "Search text may be an email address or an OpenPGP(PGP/GPG) Key ID"
-msgstr "Zoekterm kan een e-mailadres of een OpenPGP(PGP/GPG) sleutel ID zijn"
+msgstr "Zoekterm kan een e-mailadres of een OpenPGP(PGP/GPG)-sleutel-ID zijn"
 
-#: modules/keyview.php:192
 msgid "Secret Key: "
-msgstr "Prive sleutel:"
+msgstr "Privésleutel: "
 
-#: modules/getstart.php:116
 msgid "Select a Signing Key"
-msgstr "Selecteer een sleutel voor tekenen"
+msgstr "Selecteer een sleutel voor ondertekenen"
 
-#: modules/keyserver.mod:113
 msgid "Select a key to import from the list below."
 msgstr "Selecteer een te importeren sleutel uit de lijst hieronder."
 
-#: help/what_signing.php:13
 msgid "Select this option to set the key as your signing key."
-msgstr "Selecteer deze optie om een sleutel aan te merken als uw sleutel voor tekenen."
+msgstr ""
+"Selecteer deze optie om een sleutel aan te merken als uw sleutel voor "
+"ondertekenen."
 
-#: help/what_trusted.php:33
 msgid "Select this option to set the key as your trusted key."
 msgstr "Selecteer deze optie om een sleutel aan te merken als uw vertrouwde sleutel."
 
-#: help/what_signing.php:15
 msgid "Setting a new signing key will replace any previously chosen key."
-msgstr "Aanmerken van een nieuwe sleutel voor tekenen zal uw vorige gekozen sleutel vervangen."
+msgstr ""
+"Het aanmerken van een nieuwe sleutel voor ondertekenen zal uw vorige gekozen sleutel "
+"vervangen."
 
-#: help/what_trusted.php:35
 msgid "Setting a new trusted key will replace any previously chosen key."
-msgstr "Aanmerken van een nieuwe vertrouwde sleutel zal uw vorige gekozen sleutel vervangen."
+msgstr ""
+"Het aanmerken van een nieuwe vertrouwde sleutel zal uw vorige gekozen sleutel "
+"vervangen."
 
-#: gpg_hook_functions.php:377
 msgid "Setup the GPG Plugin with a secret key."
-msgstr "Setup de GPG Plugin met een prive sleutel."
+msgstr "De GPG-plugin instellen met een privésleutel."
 
-#: modules/general.mod:233
 msgid "Shared System Keyring"
-msgstr "Gedeelde systeem sleutelring"
+msgstr "Gedeelde systeemsleutelring"
 
-#: help/base.php:34
 msgid "Should I store my private keys on the server?"
-msgstr "Zal ik mijn eigen veilige sleutels op de server bewaren?"
+msgstr "Zal ik mijn eigen privésleutels op de server bewaren?"
 
-#: modules/keyring_main_chunk.php:20
 msgid "Showing"
-msgstr "Toon"
+msgstr "Tonen"
 
-#: modules/keyring_main.php:365
 msgid "Showing keys in"
-msgstr "Toon sleutels in"
+msgstr "Sleutels tonen in"
 
-#: gpg_hook_functions.php:1079
 msgid "Sign on Send"
-msgstr "Tekenen bij verzenden"
+msgstr "Ondertekenen bij verzenden"
 
-#: modules/general.mod:223
 msgid "Sign on Send by Default"
-msgstr "Standaard tekenen bij verzenden"
+msgstr "Standaard ondertekenen bij verzenden"
 
-#: gpg_hook_functions.php:479 gpg_hook_functions.php:667
-#: modules/gpgdecrypt.mod:583 modules/gpgdecrypt.mod:585
 msgid "Signature"
 msgstr "Handtekening"
 
-#: gpg_hook_functions.php:170
 msgid "Signature verification process failed."
-msgstr "Proces van handtekeningverificatie mislukt"
+msgstr "Proces van handtekeningverificatie mislukt."
 
-#: modules/passpop.mod:146
 msgid "Signing functions not allowed from an insecure connection."
-msgstr "Functies voor het tekenen niet toegestaan vanaf een onveilige verbinding."
+msgstr "De functies voor het ondertekenen zijn niet toegestaan vanaf een onveilige verbinding."
 
-#: modules/general.mod:126
 msgid ""
 "Sometimes, you may not have public keys for all of the email addresses in "
 "your To, CC, and BCC fields in the Compose window."
-msgstr ""
-"Soms zult u geen publieke sleutels hebben voor alle e-mailadressen in uw "
-"AAN, CC en BCC velden in het 'Nieuw bericht' venster."
+msgstr "Soms zult u geen publieke sleutels hebben voor alle e-mailadressen in de Aan-, CC- en BCC- velden in het opstellervenster."
 
-#: modules/genkey.php:101
 msgid ""
 "Storing a private key on a remote host can be insecure if you do not trust "
 "the host!"
 msgstr ""
-"Opslaan van een prive sleutel op een computer op afstand (host) kan onveilig zijn als "
-"u de computer (host) niet vertrouwd!"
+"Het opslaan van een privésleutel op een computer op afstand (host) kan onveilig "
+"zijn als u de computer (host) niet vertrouwt!"
 
-#: modules/gpgdecrypt.mod:575
 msgid "Subject"
 msgstr "Onderwerp"
 
-#: modules/keyview.php:252
 msgid "Subkey"
 msgstr "Subsleutel"
 
-#: modules/passpop.mod:138
 msgid "Submit"
-msgstr "Verzend"
+msgstr "Verzenden"
 
-#: modules/genkey_keygen.php:249
 msgid "Success!"
 msgstr "Succes!"
 
-#: modules/keyring_main.php:388
 msgid "System Keyring"
-msgstr "Systeem sleutelring"
+msgstr "Systeemsleutelring"
 
-#: gpg_help_base.php:69
 msgid "Table of Contents"
 msgstr "Inhoudsopgave"
 
-#: gpg_hook_functions.php:903 setup.php:97 modules/options_main.mod:29
 msgid ""
 "The GPG Encryption Plugin will allow you to encrypt, sign, and decrypt "
 "messages in accordance with the OpenPGP standard for email security and "
 "authentication."
 msgstr ""
-"Met de GPG Plugin kunt u berichten coderen, decoderen en tekenen volgens "
-"de OpenPGP standaard voor e-mailbeveiliging."
+"Met de GPG-plugin kunt u berichten versleutelen, ontcijferen en ondertekenen volgens de "
+"OpenPGP-standaard voor e-mailbeveiliging."
 
-#: gpg_hook_functions.php:364
 msgid "The System Administrator has disabled private key functions."
-msgstr "De systemadministrator heeft prive sleutel functies gedeactiveerd."
+msgstr "De systeembeheerder heeft privésleutelfuncties gedeactiveerd."
 
-#: gpg_encrypt_functions.php:67
 msgid "The attachment file was not found"
 msgstr "Het bestand voor de bijlage is niet gevonden"
 
-#: modules/getstart.php:58
 msgid "The following is a list of suggested steps you can take to get started:"
-msgstr "Hier volgt een lijst met stappen die u kan nemen om te beginnen:"
+msgstr "Hier volgt een lijst met stappen die u kunt nemen om te beginnen:"
 
-#: modules/general.mod:274
 msgid "The holder of the ADK will be able to decrypt these messages."
-msgstr "De houder van de ADK zal deze berichten kunnen decoderen."
+msgstr "De houder van de ADK zal deze berichten kunnen ontcijferen."
 
-#: modules/general.mod:198
 msgid ""
 "The plugin supports the ability to set default options to be applied every "
 "time you send a message."
 msgstr ""
-"De plugin heeft de functionaliteit om elke keer dat u een bericht zendt "
-"de standaard opties te gebruiken." 
+"De plugin biedt de mogelijkheid om elke keer dat u een bericht verzendt de "
+"standaardopties te gebruiken."
 
-#: modules/general.mod:218
 msgid ""
 "The plugin will return you to the Compose page with your original message "
 "(plaintext) preserved if there is an error that requires your attention "
 "after you press 'Send'."
-msgstr ""
-"De plugin zal u terugbrengen naar het 'Nieuw bericht' venster met het "
-"originele bericht (platte tekst) als er een fout plaatsvindt nadat u "
-"op 'Verzenden' heeft gedrukt."
+msgstr "Als er een fout plaatsvindt nadat u op 'Verzenden' heeft gedrukt zal de plugin u terugbrengen naar het 'Nieuw bericht'-venster met het originele bericht (platte tekst)."
 
-#: help/what_trusted.php:28
 msgid ""
 "The signing key may be one of: a key that you have explicitly marked as a "
 "trusted key, a keypair that you have on your public and secret keyrings, or "
 "a shared system trusted key defined by your system administrator."
 msgstr ""
 "De sleutel om te tekenen kan zijn: een sleutel die u heeft gemarkeerd als "
-"vertrouwde sleutel, een sleutel paar in uw publieke en prive sleutelringen, of "
-"een door uw systeemadministrator vastgelegde gedeelde en vertrouwde systeemsleutel." 
+"vertrouwde sleutel, een sleutelpaar in uw publieke en privésleutelringen, "
+"of een door uw systeembeheerder vastgelegde gedeelde en vertrouwde "
+"systeemsleutel."
 
-#: modules/general.mod:304
 msgid ""
 "The system has the ability to cache (store) the passphrase for your secret "
 "key."
-msgstr ""
-"Het systeem heeft de mogelijkheid om de beveiligingszin voor uw prive sleutel te bewaren."
+msgstr "Het systeem heeft de mogelijkheid om de wachtwoordzin voor uw privésleutel te bewaren."
 
-#: modules/keyring_main.php:537
 msgid "There are no keys containing the string "
 msgstr "Er zijn geen sleutels die de volgende zoekterm bevatten "
 
-#: gpg_functions.php:1096 gpg_functions.php:1103
 msgid "There is no indication that this key really belongs to the owner"
 msgstr "Er is geen aanwijzing dat deze sleutel daadwerkelijk hoort bij de eigenaar"
 
-#: modules/gpg_err.php:10
 msgid "There was a problem with your request"
 msgstr "Er is een probleem met uw verzoek"
 
-#: modules/gpg_module_header.php:30 modules/gpg_popup_header.php:31
 msgid "There was a problem with your request."
 msgstr "Er is een probleem met uw verzoek."
 
-#: modules/general.mod:113
 msgid ""
 "These options have broad effects on how the plugin works, and can help you "
 "be more productive."
@@ -1319,130 +1039,107 @@ msgstr ""
 "Deze opties hebben effect op de werking van de plugin en kunnen u helpen "
 "productiever te zijn."
 
-#: modules/keyring_main.php:93
 msgid ""
 "This action can only be performed on a secure connection (https).  Please "
 "change the 'http' in your address bar to 'https', and try again."
 msgstr ""
 "Deze actie kan alleen worden uitgevoerd via een veilige verbinding (https). "
-"Verander 'http' in de adresbalk in 'https' en probeer opnieuw."
+"Verander 'http' in de adresbalk in 'https' en probeer het opnieuw."
 
-#: gpg_functions.php:1097 gpg_functions.php:1104
 msgid ""
 "This error usually occurs because you have not set a trusted key, or because "
 "you have not signed the key you are trying to encrypt to."
 msgstr ""
-"Deze fout treedt voornamelijk op omdat u geen vertrouwde sleutel heeft aangegeven, "
-"of omdat u de sleutel waarnaar u wilt coderen niet heeft getekend."
+"Deze fout treedt voornamelijk op omdat u geen vertrouwde sleutel heeft "
+"aangegeven of omdat u de sleutel waarnaar u wilt versleutelen niet heeft "
+"ondertekend."
 
-#: modules/keyring_main.php:205
 msgid "This file exceeds the maximum size allowed."
 msgstr "Dit bestand is groter dan de maximale toegestane bestandsgrootte."
 
-#: modules/keyring_main.php:208
 msgid "This file was only partially uploaded."
-msgstr "Dit bestand is slechts gedeeltelijk uploaded."
+msgstr "Dit bestand is slechts gedeeltelijk geüpload."
 
-#: modules/keyview.php:200
 msgid "This is my SIGNING key"
-msgstr "Dit is mijn sleutel om te TEKENEN"
+msgstr "Dit is mijn sleutel om te ONDERTEKENEN"
 
-#: modules/keyview.php:213
 msgid "This is my TRUSTED key"
 msgstr "Dit is mijn VERTROUWDE sleutel"
 
-#: modules/general.mod:264
 msgid "This key has the properties:"
 msgstr "Deze sleutel heeft de eigenschappen:"
 
-#: gpg_hook_functions.php:372
 msgid "This message contains encrypted content."
-msgstr "Dit bericht bevat gecodeerde inhoud."
+msgstr "Dit bericht bevat versleutelde inhoud."
 
-#: help/what_trusted.php:19
 msgid ""
 "This option allows you to indicate to GPG which key on your public keyring "
 "should be treated as a fully trusted key."
 msgstr ""
-"Deze optie geeft u de mogelijkheid om aan GPG aan te geven welke sleutel in uw "
-"publieke sleutelring kan worden beschouwd als volledig vertrouwde sleutel."
+"Deze optie biedt u de mogelijkheid om aan GPG aan te geven welke sleutel in "
+"uw publieke sleutelring kan worden beschouwd als volledig vertrouwde sleutel."
 
-#: help/external_resources.php:7
 msgid ""
 "This page provides links to external resources about the technologies used "
 "by the GPG Plugin."
 msgstr ""
-"Deze pagina bevat links naar externe bronnen over de technologien die zijn "
-"gebruikt in de GPG Plugin."
+"Deze pagina bevat links naar externe bronnen over de technologieën die zijn "
+"gebruikt in de GPG-plugin."
 
-#: modules/general.mod:216
 msgid "This preference only sets the default behavior."
-msgstr "Deze voorkeur activeert alleen het standaard gedrag."
+msgstr "Deze optie activeert alleen het standaardgedrag."
 
-#: modules/general.mod:111
 msgid "This screen allows you to set general GPG Plugin options."
-msgstr "In dit venster kunt u algemene GPG Plugin opties activeren."
+msgstr "In dit venster kunt u algemene GPG-plugin-opties activeren."
 
-#: modules/getstart.php:51
 msgid ""
 "This screen will help you set up the various options you need to get started "
 "using encryption. "
 msgstr ""
-"Dit venster helpt u bij het activeren van de verschillende opties die u nodig "
-"heeft om te starten met het gebruik van de codering."
+"Dit venster helpt u bij het activeren van de verschillende opties die u "
+"nodig heeft om te beginnen met het gebruik van versleuteling. "
 
-#: gpg_key_functions.php:393
 msgid ""
 "This will usually be the email address of the account that you use as your "
 "primary signing key."
-msgstr ""
-"Dit is normaal gezien het e-mailadres dat u gebruikt als uw primaire sleutel om "
-"te tekenen."
+msgstr "Dit is normaal gezien het e-mailadres dat u gebruikt als uw primaire ondertekensleutel."
 
-#: modules/import_key_file.php:66
 msgid "Tip: this is typically a '.asc' or '.pkr' file"
-msgstr "Tip: normaal gesproken een '.asc' of '.pkr' bestand"
+msgstr "Tip: normaal gesproken een '.asc'- of '.pkr'-bestand"
 
-#: modules/gpgdecrypt.mod:578
 msgid "To"
-msgstr "AAN"
+msgstr "Aan"
 
-#: help/what_trusted.php:17
 msgid ""
 "To allow you to use the GPG plugin optimally without storing your private key"
 "(s) on the web server, the GPG Plugin allows you to specify a special option "
 "called 'Trusted Key ID'."
 msgstr ""
-"Om de GPG Plugin optimaal te gebruiken zonder uw prive sleutel(s) op de webserver "
-"te bewaren, kunt u een speciale optie specificeren genaamd 'Vertrouwde sleutel ID'."
+"Om de GPG-plugin optimaal te gebruiken zonder uw privésleutel(s) op de "
+"webserver te bewaren kunt u een speciale optie specificeren, genaamd "
+"'Vertrouwde sleutel-ID'."
 
-#: gpg_hook_functions.php:374
 msgid "To decrypt this message inside Squirrelmail:"
-msgstr "Om dit bericht te decoderen in Squirrelmail"
+msgstr "Om dit bericht te ontcijferen in Squirrelmail:"
 
-#: help/what_trusted.php:38
 msgid "To disable the trusted key option, select no key as trusted."
-msgstr "Om de vertrouwde sleutel optie te deactiveren, selecteer dan geen vertrouwde sleutel."
+msgstr "Om de vertrouwde-sleutel-optie te deactiveren, selecteer geen vertrouwde sleutel."
 
-#: modules/keyring_main.php:557
 msgid "To locate a key or keys, please enter a search string below."
-msgstr "Om sleutel(s) te localiseren, vul hieronder dan een zoekterm in."
+msgstr "Om sleutel(s) te lokaliseren, vul hieronder een zoekterm in."
 
-#: modules/getstart.php:123
-msgid ""
-"To set your signing key, find the desired key in the 'secret' ring of the"
+msgid "To set your signing key, find the desired key in the 'secret' ring of the"
 msgstr ""
-"Om uw sleutel voor tekenen aan te geven ... zoek de gewenste sleutel in de 'prive' ring van de"
+"Om uw sleutel voor ondertekenen aan te geven,  zoek de gewenste sleutel in de "
+"'privé'-ring van de"
 
-#: modules/getstart.php:104
 msgid ""
 "To set your trusted key, find the desired key in the 'public' or 'system' "
 "ring of the"
 msgstr ""
-"Om uw vertrouwde sleutel aan te geven ... zoek de gewenste sleutel in de 'publieke' of "
-"'systeem' ring van de"
+"Om uw vertrouwde sleutel aan te geven,  zoek de gewenste sleutel in de "
+"'publieke' of 'systeem'-ring van de"
 
-#: modules/genkey.php:78
 msgid ""
 "To sign outgoing mail and receive encrypted messages, you must have a "
 "personal Keypair."
@@ -1450,105 +1147,82 @@ msgstr ""
 "Om uitgaande e-mail te tekenen en gecodeerde berichten te ontvangen, dient u "
 "een persoonlijk sleutelpaar te hebben."
 
-#: help/base.php:39 help/troubleshooting.php:3
 msgid "Troubleshooting"
 msgstr "Probleem oplossen"
 
-#: gpg_key_functions.php:466
 msgid "Unable to connect to the keyserver you specified."
-msgstr "Onmogelijk om verbinding te maken met de sleutelserver"
+msgstr "Kon geen verbinding maken met de sleutelserver."
 
-#: gpg_key_functions.php:894
 msgid "Unable to open command pipe."
-msgstr "Niet in staat de command pipe te openen"
+msgstr "Kon het commando 'pipe' niet aanroepen."
 
-#: gpg_encrypt.php:324
 msgid "Unable to rename encrypted file"
-msgstr "Niet in staat het gecodeerde bestand te hernoemen"
+msgstr "Kon het versleutelde bestand niet hernoemen"
 
-#: gpg_encrypt.php:312
 msgid "Unable to rename temporary file"
-msgstr "Niet in staat het tijdelijke bestand te hernoemen"
+msgstr "Kon het tijdelijke bestand niet hernoemen"
 
-#: gpg_encrypt.php:359
 msgid "Unable to rename temporary file after failed encrypt"
-msgstr "Niet in staat het tijdelijke bestand te hernoemen na mislukte codering"
+msgstr "Kon tijdelijk bestand niet hernoemen na het mislukken van het versleutelen ervan"
 
-#: modules/genkey_keygen.php:106 modules/genkey_keygen.php:122
-#: modules/genkey_keygen.php:136
+#, fuzzy
 msgid "Unassigned"
-msgstr "Niet getekend"
+msgstr "Niet toegewezen"
 
-#: gpg_key_functions.php:118 gpg_key_functions.php:573
 msgid "Unexpected Error."
 msgstr "Onverwachte fout."
 
-#: modules/gpgdecrypt.mod:109 modules/gpgdecrypt.mod:477
 msgid "Unknown sender"
 msgstr "Onbekende verzender"
 
-#: gpg_hook_functions.php:532 gpg_hook_functions.php:535
-#: gpg_hook_functions.php:676 modules/gpgdecrypt.mod:585
 msgid "Unsigned"
 msgstr "Ongetekend"
 
-#: modules/keyserver.mod:90 modules/keyserver.mod:99 modules/keyserver.mod:155
 msgid "Using Keyserver: "
 msgstr "Gebruikte sleutelserver: "
 
-#: gpg_key_functions.php:342
 msgid "Using signing key:"
 msgstr "Gebruikte sleutel voor tekenen:"
 
-#: gpg_key_functions.php:355
 msgid "Using trusted key:"
 msgstr "Gebruikte vertrouwde sleutel:"
 
-#: help/what_trusted.php:23
 msgid ""
 "Usually, this will be your primary public key, the key you use to sign other "
 "people's keys."
 msgstr ""
-"Normaal gesproken is de sleutel, die u gebruikt om de sleutels van andere mensen "
-" te coderen, uw primaire publieke sleutel."
+"Normaal gesproken is de sleutel, die u gebruikt om de sleutels van andere "
+"mensen  te versleutelen, uw primaire publieke sleutel."
 
-#: modules/general.mod:237
 msgid ""
 "Usually, this would suggest that a keyring is maintained for some group "
 "which you are a part of, such as an organization or corporation."
 msgstr ""
 "Normaal gesproken is het zo dat een sleutelring wordt bijgehouden voor een "
-"bepaalde groep waar u deel van uitmaakt, zoals een organisatie of een bedrijf."
+"bepaalde groep waar u deel van uitmaakt, zoals een organisatie of een "
+"bedrijf."
 
-#: help/base.php:49
 msgid "View INSTALL file"
 msgstr "Bekijk INSTALL bestand"
 
-#: modules/genkey_keygen.php:258 modules/keyview.php:171
 msgid "View Key"
 msgstr "Bekijk sleutel"
 
-#: help/base.php:44
 msgid "View README file - includes contact information"
 msgstr "Bekijk README bestand - bevat contactinformatie"
 
-#: gpg_view_verify_text.php:53
 msgid "View message"
 msgstr "Bekijk bericht"
 
-#: gpg_view_verify_text.php:52
 msgid "Viewing signature verification output for attachment: "
 msgstr "Handtekeningverificatie resultaat voor bijlage: "
 
-#: modules/gpgdecrypt.mod:654
 msgid "Warning: "
 msgstr "Waarschuwing: "
 
-#: gpg_encrypt.php:181
 msgid "Warnings:"
 msgstr "Waarschuwingen:"
 
-#: help/what_trusted.php:8
 msgid ""
 "Web-based email programs are very convenient, and using your web email to "
 "send encrypted email adds to that convenience."
@@ -1556,7 +1230,6 @@ msgstr ""
 "Op het web gebaseerde e-mailprogrammas zijn erg handig en het zenden van "
 "gecodeerde e-mail draagt daaraan bij."
 
-#: help/disc_keystore.php:7
 msgid ""
 "Web-based email programs are very convenient, and using your web email to "
 "send encrypted emails adds to that convenience."
@@ -1564,39 +1237,27 @@ msgstr ""
 "Op het web gebaseerde e-mailprogramma's zijn erg handig en het zenden van "
 "gecodeerde e-mails draagt daaraan bij."
 
-#: modules/getstart.php:49
 msgid "Welcome to the GPG Encryption Plugin for Squirrelmail! "
 msgstr "Welkom in de GPG coderings Plugin voor Squirrelmail! "
 
-#: help/what_keystrength.php:5
-msgid "What is Key Strength?"
-msgstr "Wat is sleutel sterkte?"
-
-#: help/base.php:24
 msgid "What is a 'Signing Key'?"
 msgstr "Wat is een 'sleutel voor tekenen'?"
 
-#: help/base.php:29
 msgid "What is a 'Trusted Key'?"
 msgstr "Wat is een 'vertrouwde sleutel'?"
 
-#: help/what_signing.php:4
 msgid "What is a Signing Key?"
 msgstr "Wat is een sleutel voor tekenen?"
 
-#: help/what_trusted.php:4
 msgid "What is a Trusted Key?"
 msgstr "Wat is een vertrouwde sleutel?"
 
-#: help/base.php:14
 msgid "What is a good key strength?"
 msgstr "Wat is een goede sleutel sterkte?"
 
-#: modules/genkey.php:182 modules/keyview.php:205 modules/keyview.php:219
 msgid "What's this?"
 msgstr "Wat is dit?"
 
-#: modules/general.mod:128
 msgid ""
 "When this happens, the GPG plugin can either display an error and return to "
 "your plaintext, or encrypt the message to the recipients that you do have "
@@ -1604,10 +1265,9 @@ msgid ""
 "for."
 msgstr ""
 "Als dit gebeurt, kan de GPG Plugin een fout weergeven en terugkeren naar uw "
-"platte tekst, of het bericht coderen voor de ontvangers waar u een sleutel "
+"platte tekst, of het bericht versleutelen voor de ontvangers waar u een sleutel "
 "voor heeft en u informeren van welke e-mailadressen u geen sleutel heeft."
 
-#: modules/general.mod:150
 msgid ""
 "When you encrypt an email message, the plugin can be set to automatically "
 "include your email address in the recipient list."
@@ -1615,37 +1275,26 @@ msgstr ""
 "U kunt de GPG Plugin zodanig instellen dat als u een e-mailbericht codeert "
 "uw e-mailadres toegevoegd wordt aan de lijst van ontvangers."
 
-#: modules/getstart.php:53
 msgid ""
 "With this interface, you will be able to encrypt, decrypt, and sign your "
 "email and attachments from the comfort of the Squirrelmail web mail "
 "interface."
 msgstr ""
-"Met deze interface bent u in staat uw e-mail en bijlagen te coderen, decoderen "
-"en te tekenen vanuit de webmailinterface van Squirrelmail."
+"Met deze interface bent u in staat uw e-mail en bijlagen te versleutelen, "
+"ontcijferen en te tekenen vanuit de webmailinterface van Squirrelmail."
 
-#: modules/general.mod:135 modules/general.mod:140 modules/general.mod:162
-#: modules/general.mod:167 modules/general.mod:250 modules/general.mod:255
-#: modules/general.mod:284 modules/general.mod:289 modules/general.mod:320
-#: modules/general.mod:325
 msgid "Yes"
 msgstr "Ja"
 
-#: modules/passpop.mod:144
 msgid "You are not connected using a secure connection."
 msgstr "U bent niet verbonden via een veilige verbinding."
 
-#: gpg_encrypt_functions.php:81 gpg_encrypt_functions.php:370
-#: gpg_key_functions.php:867 modules/genkey_keygen.php:53
-#: modules/genkey.php:45
 msgid "You are not using a secure connection."
 msgstr "U gebruikt geen veilige verbinding."
 
-#: modules/getstart.php:141
 msgid "You can"
 msgstr "U kunt"
 
-#: modules/import_key_file.php:50 modules/import_key_text.php:49
 msgid ""
 "You can add keys to your keyring with blocks of ASCII-armored key text "
 "(encoded text which contains all the necessary information for a key)."
@@ -1653,218 +1302,185 @@ msgstr ""
 "U kunt sleutels aan uw sleutelring toevoegen met blokken ASCII-gewapende "
 "sleutel tekst (gecodeerde tekst die alle informatie bevat van een sleutel)."
 
-#: modules/changepass.php:22
 msgid ""
 "You can change your passphrase from this screen.  More help will be "
 "available in the future."
 msgstr ""
-"U kunt uw beveiligingszin wijzigen in dit venster. Meer hulp zal in de "
+"U kunt uw wachtwoordzin wijzigen in dit venster. Meer hulp zal in de "
 "toekomst beschikbaar zijn."
 
-#: modules/getstart.php:121 help/what_signing.php:10
 msgid "You can only have one signing key at any given time."
 msgstr "Slechts een sleutel voor tekenen kan worden geselecteerd."
 
-#: modules/getstart.php:102 help/what_trusted.php:40
 msgid "You can only have one trusted key at any given time."
 msgstr "Slechts een vertrouwde sleutel kan worden geselecteerd."
 
-#: gpg_key_functions.php:359
 msgid "You currently trust key:"
 msgstr "U huidige vertrouwde sleutel:"
 
-#: gpg_encrypt_functions.php:454
 msgid "You did not provide a passphrase!"
-msgstr "U heeft geen beveiligingszin ingegeven!"
+msgstr "U heeft geen wachtwoordzin ingegeven!"
 
-#: gpg_sign_functions.php:260
 msgid ""
 "You did not provide a passphrase! Please right-click and select 'Back' and "
 "try again"
 msgstr ""
-"U heeft geen beveiligingszin ingegeven! Gebruik de rechter muisknop en "
+"U heeft geen wachtwoordzin ingegeven! Gebruik de rechter muisknop en "
 "selecteer 'Terug' en probeer opnieuw."
 
-#: gpg_encrypt.php:202
 msgid ""
 "You do not have a public key for the following email addresses and so your "
 "message will NOT be readable by these recipients."
 msgstr ""
-"U heeft geen publieke sleutel voor de volgende e-mailadressen. Uw bericht zal dus "
-"NIET leesbaar zijn voor deze personen."
+"U heeft geen publieke sleutel voor de volgende e-mailadressen. Uw bericht "
+"zal dus NIET leesbaar zijn voor deze personen."
 
-#: modules/keyring_main.php:546
 msgid "You have no secret keys in your ring"
-msgstr "U heeft geen prive sleutels in uw ring"
+msgstr "U heeft geen privé sleutels in uw ring"
 
-#: modules/general.mod:200
 msgid ""
 "You have the option to attempt to Encrypt, Sign, or Encrypt and Sign every "
 "message that you send, by default. "
 msgstr ""
-"U heeft standaard de mogelijkheid elk bericht dat u verzendt te coderen, te "
-"tekenen of te coderen en te tekenen."
+"U heeft standaard de mogelijkheid elk bericht dat u verzendt te versleutelen, te "
+"tekenen of te versleutelen en te tekenen."
 
-#: help/what_passphrase.php:24
 msgid ""
 "You may also choose to replace letters with numbers and symbols. For "
 "example: 'A dove of peace is here.' where 'e'='3', 'i'='1' and 'o'='0' "
 "becomes 'A d0v3 0f p3ac3 1s h3r3.' which becomes 'ad0v30fp3ac31sh3r3.'"
 msgstr ""
-"U mag ook letters door nummers en symbolen vervangen. Bijvoorbeeld: "
-"'A dove of peace is here.' where 'e'='3', 'i'='1' and 'o'='0' wordt "
-"'A d0v3 0f p3ac3 1s h3r3.' dat wordt 'ad0v30fp3ac31sh3re.'"
+"U mag ook letters door nummers en symbolen vervangen. Bijvoorbeeld: 'A dove "
+"of peace is here.' where 'e'='3', 'i'='1' and 'o'='0' wordt 'A d0v3 0f p3ac3 "
+"1s h3r3.' dat wordt 'ad0v30fp3ac31sh3re.'"
 
-#: modules/general.mod:202
 msgid ""
 "You may encrypt your email either after you press the 'Encrypt Now' button "
 "from the Compose page, or at the time you send the message."
 msgstr ""
-"U kunt uw e-mail coderen als u op de 'Codeer nu' knop drukt, of op het moment "
-"dat u een bericht verzendt."
+"U kunt uw e-mail versleutelen als u op de 'Codeer nu' knop drukt, of op het "
+"moment dat u een bericht verzendt."
 
-#: modules/general.mod:239
 msgid ""
 "You must choose whether to trust this keyring and use it in your public key "
 "lookups."
 msgstr ""
-"U moet aangeven of u deze sleutelring vertrouwd en hem wilt gebruiken om publieke "
-"sleutels voor u in op te zoeken."
+"U moet aangeven of u deze sleutelring vertrouwd en hem wilt gebruiken om "
+"publieke sleutels voor u in op te zoeken."
 
-#: modules/general.mod:270
 msgid "You must choose whether to use this ADK."
 msgstr "U moet kiezen of u deze ADK wilt gebruiken."
 
-#: help/what_passphrase.php:22
+msgid ""
+"You must select a signing key to use the GPG Plugin to securely sign "
+"messages."
+msgstr "U dient een ondertekeningssleutel te selecteren om de GPG-plugin te kunnen gebruiken voor het veilig ondertekenen van berichten."
+
 msgid ""
 "You should change the capitalization and punctuation so that others cannot "
 "easily guess it, even if they guess the phrase you chose."
 msgstr ""
-"U zou het hoofdlettergebruik en de punctuatie zo moeten veranderen dat anderen "
-"het niet makkelijk kunnen raden, zelfs als ze de zin raden die u heeft gekozen."
+"U zou het hoofdlettergebruik en de punctuatie zo moeten veranderen dat "
+"anderen het niet makkelijk kunnen raden, zelfs als ze de zin raden die u "
+"heeft gekozen."
 
-#: modules/general.mod:350
 msgid "Your Preference to allow partial encryption has been saved."
 msgstr "Uw voorkeur voor het activeren van gedeeltelijke codering is opgeslagen."
 
-#: modules/general.mod:388
-msgid ""
-"Your Preference to attempt to Encrypt on Send by default has been saved."
-msgstr ""
-"Uw voorkeur voor het standaard coderen bij verzenden is opgeslagen."
+msgid "Your Preference to attempt to Encrypt on Send by default has been saved."
+msgstr "Uw voorkeur voor het standaard versleutelen bij verzenden is opgeslagen."
 
-#: modules/general.mod:395
 msgid "Your Preference to attempt to Sign on Send by default has been saved."
 msgstr "Uw voorkeur voor het standaard tekenen bij verzenden is opgeslagen."
 
-#: modules/general.mod:431
 msgid "Your Preference to cache your passphrase has been saved."
-msgstr "Uw voorkeur voor het bewaren van uw beveiligingszin is opgeslagen."
+msgstr "Uw voorkeur voor het bewaren van uw wachtwoordzin is opgeslagen."
 
-#: modules/general.mod:364
 msgid "Your Preference to encrypt a copy of all messages to"
 msgstr "Uw voorkeur voor het gecodeerd versturen van alle berichten naar"
 
-#: modules/general.mod:391
 msgid "Your Preference to not Encrypt on Send by default has been saved."
-msgstr "Uw voorkeur voor het niet standaard coderen bij verzenden is opgeslagen."
+msgstr "Uw voorkeur voor het niet standaard versleutelen bij verzenden is opgeslagen."
 
-#: modules/general.mod:398
 msgid "Your Preference to not Sign on Send by default has been saved."
 msgstr "Uw voorkeur voor het niet standaard tekenen bij verzenden is opgeslagen."
 
-#: modules/general.mod:353
 msgid "Your Preference to not allow partial encryption has been saved."
-msgstr "Uw voorkeur voor het niet activeren van gedeeltelijke coderen is opgeslagen."
+msgstr "Uw voorkeur voor het niet activeren van gedeeltelijke versleutelen is opgeslagen."
 
-#: modules/general.mod:434
 msgid "Your Preference to not cache your passphrase has been saved."
-msgstr "Uw voorkeur voor het niet bewaren van uw beveiligingszin is opgeslagen."
+msgstr "Uw voorkeur voor het niet bewaren van uw wachtwoordzin is opgeslagen."
 
-#: modules/general.mod:367
 msgid ""
 "Your Preference to not encrypt a copy of every message to yourself has been "
 "saved."
 msgstr ""
-"Uw voorkeur voor het niet gecodeerd versturen van alle berichten naar uzelf is opgeslagen." 
+"Uw voorkeur voor het niet gecodeerd versturen van alle berichten naar uzelf "
+"is opgeslagen."
 
-#: modules/general.mod:408
 msgid "Your Preference to not trust the system keyring has been saved."
 msgstr "Uw voorkeur om de systeem sleutelring niet te vertrouwen is opgeslagen."
 
-#: modules/general.mod:418
 msgid "Your Preference to not use the system ADK has been saved."
 msgstr "Uw voorkeur om de systeem ADK niet te gebruiken is opgeslagen."
 
-#: modules/general.mod:377
 msgid "Your Preference to request automatic key lookup has been saved"
 msgstr "Uw voorkeur voor het automatisch opzoeken van een sleutel is opgeslagen."
 
-#: modules/general.mod:405
 msgid "Your Preference to trust the system keyring has been saved."
 msgstr "Uw voorkeur om de systeem sleutelring te vertrouwen is opgeslagen."
 
-#: modules/general.mod:415
 msgid "Your Preference to use the system ADK has been saved."
 msgstr "Uw voorkeur om de systeem ADK te gebruiken is opgeslagen."
 
-#: modules/keyring_main.php:370
 msgid "Your Public Keyring"
 msgstr "Uw publieke sleutelring"
 
-#: gpg_encrypt.php:107
 msgid "Your Request to Encrypt on Send encountered a problem, details below:"
-msgstr "Uw verzoek om te coderen bij verzenden heeft een probleem ondervonden, details hieronder:"
+msgstr ""
+"Uw verzoek om te versleutelen bij verzenden heeft een probleem ondervonden, "
+"details hieronder:"
 
-#: modules/keyring_main.php:399
 msgid "Your Secret Keyring"
-msgstr "Uw prive sleutelring"
+msgstr "Uw privé sleutelring"
 
-#: modules/general.mod:235
 msgid ""
 "Your System administrator has indicated that there is a 'system-wide' public "
 "keyring."
 msgstr ""
-"Uw systeem administrator heeft aangegeven dat er een 'systeem brede' publieke "
-"sleutelring is."
+"Uw systeem administrator heeft aangegeven dat er een 'systeem brede' "
+"publieke sleutelring is."
 
-#: modules/general.mod:437
 msgid "Your cached passphrase has been securely erased."
-msgstr "Uw bewaarde beveiligingszin is veilig verwijderd."
+msgstr "Uw bewaarde wachtwoordzin is veilig verwijderd."
 
-#: gpg_key_functions.php:346
 msgid "Your current signing key: "
 msgstr "Uw huidige sleutel voor tekenen: "
 
-#: modules/genkey_keygen.php:171
 msgid "Your key is being generated... please be patient!"
 msgstr "Uw sleutel wordt aangemaakt ... wees geduldig!"
 
-#: modules/general.mod:208
 msgid "Your message may be sent without being readable by some recipients."
-msgstr "Uw bericht wordt wellicht verzonden zonder leesbaar te zijn voor de ontvangers."
+msgstr ""
+"Uw bericht wordt wellicht verzonden zonder leesbaar te zijn voor de "
+"ontvangers."
 
-#: modules/genkey_keygen.php:37
 msgid "Your passphrases do not match."
-msgstr "Uw beveiligingszinnen komen niet overeen."
+msgstr "Uw wachtwoordzinnen komen niet overeen."
 
-#: modules/getstart.php:84
 msgid "Your personal Keypair"
 msgstr "Uw persoonlijke sleutelpaar"
 
-#: modules/gpg_err.php:27
 msgid "Your request returned this information:"
 msgstr "Uw verzoek gaf de volgende informatie:"
 
-#: help/what_passphrase.php:8
 msgid ""
 "Your secret passphrase should be as long as possible and easy for you to "
 "remember, but hard for someone else to guess."
 msgstr ""
-"Uw geheime beveiligingszin zou zo lang mogelijk moeten zijn en makkelijk voor u "
-"te onthouden, maar moeilijk door iemand anders te raden."
+"Uw geheime wachtwoordzin zou zo lang mogelijk moeten zijn en makkelijk "
+"voor u te onthouden, maar moeilijk door iemand anders te raden."
 
-#: modules/getstart.php:119
 msgid ""
 "Your signing key is the key you use to 'sign' a message you are sending, to "
 "prove that is from you."
@@ -1872,7 +1488,6 @@ msgstr ""
 "Uw sleutel voor tekenen is de sleutel waarmee u een bericht 'tekent' dat u "
 "verzendt om te bewijzen dat het bericht van u afkomstig is."
 
-#: help/what_signing.php:8
 msgid ""
 "Your signing key is the key you use to 'sign' a message you are sending, to "
 "prove that it is from you."
@@ -1880,90 +1495,70 @@ msgstr ""
 "Uw sleutel voor tekenen is de sleutel waarmee u een bericht 'tekent' dat u "
 "verzendt om te bewijzen dat het bericht van u afkomstig is."
 
-#: modules/general.mod:262
 msgid ""
 "Your system administrator has also defined an Alternate Decryption Key (ADK) "
 "for the system."
 msgstr ""
-"Uw system administrator heeft ook een Alternatieve Decoderings Sleutel (ADK) "
+"Uw systeembeheerder heeft ook een Alternatieve Decoderings Sleutel (ADK) "
 "voor het systeem gedefinieerd."
 
-#: modules/getstart.php:146 modules/keyring_main.php:678
 msgid "and import them to your keyring."
 msgstr "en ze importeren in uw sleutelring."
 
-#: modules/getstart.php:130
 msgid "check 'This is my signing key' and save."
 msgstr "selecteer 'Dit is mijn 'sleutel voor tekenen' en sla op."
 
-#: modules/getstart.php:111
 msgid "check 'This is my trusted key', and save."
 msgstr "selecteer 'Dit is mijn 'vertrouwde sleutel', en sla op."
 
-#: modules/getstart.php:109 modules/getstart.php:128
 msgid "click on it to view the details,"
 msgstr "klik erop om de details te tonen,"
 
-#: modules/genkey.php:106
 msgid "disclaimer"
 msgstr "disclaimer"
 
-#: gpg_hook_functions.php:869
 msgid "evil_muppets killed your encryption"
 msgstr "evil_muppets hebben uw codering kapot gemaakt"
 
-#: modules/genkey.php:90 modules/getstart.php:72 modules/keyring_main.php:658
 msgid "file"
 msgstr "bestand"
 
-#: modules/keyring_main.php:198
 msgid "filename:"
 msgstr "bestandsnaam:"
 
-#: modules/getstart.php:91
 msgid "generate a personal Keypair"
 msgstr "een persoonlijk sleutelpaar genereren"
 
-#: modules/general.mod:364
 msgid "has been saved."
 msgstr "is opgeslagen."
 
-#: modules/getstart.php:106 modules/getstart.php:125
 msgid "keyring"
 msgstr "sleutelring"
 
-#: modules/keyring_main_chunk.php:28
 msgid "of"
 msgstr "van"
 
-#: modules/genkey.php:92 modules/getstart.php:74 modules/keyring_main.php:660
 msgid "or"
 msgstr "of"
 
-#: modules/passpop.mod:40
 msgid "script file not found, exiting abnormally."
 msgstr "script bestand niet gevonden, abnormaal afgesloten."
 
-#: modules/genkey.php:200
 msgid "selected"
 msgstr "geselecteerd"
 
-#: modules/keyring_main.php:585
 msgid "signing key"
 msgstr "sleutel voor tekenen"
 
-#: modules/genkey.php:94 modules/getstart.php:76 modules/keyring_main.php:662
 msgid "text"
 msgstr "tekst"
 
-#: modules/keyring_main.php:579
 msgid "trusted key"
 msgstr "vertrouwde sleutel"
 
-#: modules/genkey_keygen.php:218
 msgid "try again"
 msgstr "probeer opnieuw"
 
-#: modules/gpgdecrypt.mod:697
 msgid "writes"
 msgstr "schrijft"
+
