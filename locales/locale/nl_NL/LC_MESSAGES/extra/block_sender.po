@@ -1,21 +1,26 @@
+# translation of block_sender.po to Dutch
 # Block Sender Plugin
 # Copyright (C) 2004 The Squirrelmail Devellopment Team
 # This file is distributed under the same license as the Squirrelmail package.
-# M.J. Prinsen <translation@prinsenonline.com>, 2004.
 #
+# M.J. Prinsen <translation@prinsenonline.com>, 2004.
+# Rinse de Vries <rinsedevries@kde.nl>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: Block Sender Plugin 2.02\n"
+"Project-Id-Version: block_sender\n"
 "POT-Creation-Date: 2003-11-08 11:49+0200\n"
-"PO-Revision-Date: 2004-01-11 02:25+0100\n"
-"Last-Translator: M.J. Prinsen <translation@prinsenonline.com>\n"
+"PO-Revision-Date: 2007-04-10 23:50+0200\n"
+"Last-Translator: Rinse de Vries <rinsedevries@kde.nl>\n"
 "Language-Team: Dutch <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
 
 msgid "Can't determine sender's e-mail address!  Nothing added to block list!"
-msgstr "Kan het e-mailadres van de afzender niet bepalen! Niets toegevoegd aan de blokkeringslijst!"
+msgstr ""
+"Kan het e-mailadres van de afzender niet bepalen! Er is niets toegevoegd aan de "
+"blokkeringslijst!"
 
 msgid "Click Here to Return to the Message List"
 msgstr "Klik hier om terug te gaan naar de berichtenlijst"
@@ -23,12 +28,10 @@ msgstr "Klik hier om terug te gaan naar de berichtenlijst"
 msgid ""
 "is already on your block list!  Please contact your system administrator if "
 "you're not reading this message from your Trash folder!"
-msgstr ""
-"bestaat al in uw blokkeringslijst! Neem contact op met uw system administrator als "
-"als u dit bericht niet leest vanuit uw Verwijderde Items map!"
+msgstr "staat al in uw blokkeringslijst! Neem contact op met uw systeembeheerder als u dit bericht niet leest vanuit de map  Verwijderde Items!"
 
 msgid "Can't open block list!  Address not added!"
-msgstr "Kan de blokkeringslijst niet openen! Adres niet toegevoegd!"
+msgstr "Kan de blokkeringslijst niet openen! Het adres is niet toegevoegd."
 
 msgid "has been successfully added to your blocked list!"
 msgstr "is succesvol toegevoegd aan uw blokkeringslijst!"
@@ -46,9 +49,8 @@ msgid ""
 "There was an error updating your blocked list!  Please try again or report "
 "this error to your system administrator if this problem continues!"
 msgstr ""
-"Er was een fout bij het vernieuwen van uw blokkeringslijst! Probeer opnieuw of "
-"rapporteer deze fout aan uw system administrator als dit probleem zich blijft "
-"voordoen!"
+"Er was een fout bij het vernieuwen van uw blokkeringslijst! Probeer het opnieuw "
+"of meld deze fout bij uw systeembeheerder als dit probleem zich blijft voordoen!"
 
 msgid ""
 "The list below shows all of the addresses that are currently being blocked.  "
@@ -59,19 +61,21 @@ msgid ""
 "\"Update List\" when done."
 msgstr ""
 "De lijst hieronder toont alle adressen die momenteel worden geblokkeerd. "
-"Elke e-mail die wordt ontvangen vanaf de adressen op de lijst worden "
-"automatisch in uw <b>Verwijderde Items</b> map afgeleverd. Elke regel bevat "
-"slechts <b>een</b> adres. Om e-mail van een heel domein te blokkeren vult u in" 
-"<b>*@te-blokkeren-domein.nl</b>. Klik op \"Vernieuw lijst\" als u klaar bent."
+"Elk bericht dat wordt ontvangen vanaf de adressen op de lijst wordt  "
+"automatisch in de map <b>Verwijderde Items</b> geplaatst. Elke regel bevat "
+"slechts <b>één</b> adres. Om e-mail van een heel domein te blokkeren vult u "
+"in<b>*@te-blokkeren-domein.nl</b>. Klik op \"Lijst vernieuwen\" als u klaar "
+"bent."
 
 msgid "Update List"
-msgstr "Vernieuw lijst"
+msgstr "Lijst vernieuwen"
 
 msgid "View and edit the addresses currently being blocked."
-msgstr "Bekijk en bewerk de momenteel geblokkeerde adressen"
+msgstr "Bekijk en bewerk de momenteel geblokkeerde adressen."
 
 msgid "Block Sender"
-msgstr "Blokkeer afzender"
+msgstr "Afzender blokkeren"
 
 msgid "Block Sender's Domain"
-msgstr "Blokkeer domein afzender"
+msgstr "Domein van afzender blokkeren"
+

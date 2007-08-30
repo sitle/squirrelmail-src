@@ -1,96 +1,147 @@
-# Squirrelmail change_ldappass plugin
-# Copyright (c) 2004-2005 The SquirrelMail Project Team
-# This file is distributed under the same license as the plugin's package.
-# Tony den Haan <tony@dhits.nl>, 2007.
-# $Id: change_ldappass.po,v 1.1 2006/10/06 10:41:30 tokul Exp $
+# translation of change_ldappass.po to Dutch
+# Rinse de Vries <rinsedevries@kde.nl>, 2007.
+# LANGUAGE (xx_XX) change_ldappass Translation (SquirrelMail plugin)
+# Copyright (c) 1999-2007 The SquirrelMail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
+# $Id: change_ldappass.pot 12168 2007-01-21 03:52:07Z jervfors $
 msgid ""
 msgstr ""
 "Project-Id-Version: change_ldappass\n"
-"POT-Creation-Date: 2004-12-28 16:52+0200\n"
-"PO-Revision-Date: 2007-01-25 22:00+0100\n"
-"Last-Translator: Tony den Haan <tony@dhits.nl>\n"
+"Report-Msgid-Bugs-To: http://sourceforge.net/projects/sm-plugins/\n"
+"POT-Creation-Date: 2007-01-20 13:49+0200\n"
+"PO-Revision-Date: 2007-04-11 23:55+0200\n"
+"Last-Translator: Rinse de Vries <rinsedevries@kde.nl>\n"
 "Language-Team: Dutch <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
 
-msgid "Verify New Password:"
-msgstr "Controle nieuw wachtwoord:"
+#: functions.php:26 options.php:55
+msgid "PHP LDAP extension is not available."
+msgstr "PHP LDAP-extensie is niet beschikbaar."
 
+#: functions.php:29
 msgid "You must type in your old password."
-msgstr "Eerst je oude wachtwoord invoeren."
+msgstr "Voer uw oude wachtwoord in."
 
+#: functions.php:32
 msgid "You must type in a new password."
-msgstr "Je moet een nieuw wachtwood invoeren."
+msgstr "Voer een nieuw wachtwoord in"
 
+#: functions.php:36
 msgid "You must also type in your new password in the verify box."
-msgstr "Je moet je wachtwoord ook in de tweede box invoeren."
+msgstr "Voer uw nieuwe wachtwoord ook in het verificatieveld in."
 
-
+#: functions.php:40
 msgid "Your new password doesn't match the verify password."
-msgstr "De nieuwe wachtwoorden komen niet overeen."
+msgstr "Uw nieuwe wachtwoord komt niet overeen met het verificatiewachtwoord."
 
-msgid "Connecting to LDAP Server"
-msgstr "Verbinden met LDAP Server"
+#: functions.php:46
+msgid "Passwords can only contain the following characters:"
+msgstr "Wachtwoorden mogen alleen de volgende lettertekens bevatten:"
 
+#: functions.php:105
 msgid "Can't connect to Directory Server, please try later!"
-msgstr "Kan geen verbinding maken met de LDAP Server, probeer later opnieuw!"
+msgstr "Kan geen verbinding maken met de directory-server. Probeer het later opnieuw."
 
+#: functions.php:111
+msgid "Unable to set LDAP bind protocol version."
+msgstr "Kon versie van LDAP-bind-protocol niet instellen."
+
+#: functions.php:126 functions.php:201
 msgid "LDAP bind failed."
-msgstr "LDAP bind() mislukt."
+msgstr "LDAP-bind is mislukt."
 
-msgid "LDAP bind successful."
-msgstr "LDAP bind() gelukt."
+#: functions.php:127 functions.php:153
+#, php-format
+msgid "Error: %s"
+msgstr "Fout: %s"
 
+#: functions.php:152
+msgid "LDAP search failed."
+msgstr "LDAP-zoeken is mislukt."
+
+#: functions.php:163
 msgid "Duplicate login entries detected, cannot change password!"
-msgstr "Duplicaten van login namen gevonden, kan het wachtwoord niet veranderen!"
+msgstr "Dubbele inloggegevens ontdekt, kan wachtwoord niet veranderen!"
 
+#: functions.php:171
 msgid ""
 "Your login account was not found in the LDAP database, cannot change "
 "password!"
-msgstr ""
-"Login naam niet gevonden in de LDAP database, kan het wachtwoord "
-"niet veranderen."
+msgstr "Uw inlogaccount is niet gevonden in de LDAP-database. Kan wachtwoord niet wijzigen!"
 
+#. if we can't bind as the user then the old passwd must be wrong
+#: functions.php:184 functions.php:296
 msgid "Your old password is not correct."
-msgstr "Het oude wachtwoord is fout."
+msgstr "Uw oude wachtwoord was onjuist."
 
+#: functions.php:225
 msgid "We could not retrieve your old password from the LDAP server."
-msgstr "Kon het oude wachtwoord niet ophalen van de LDAP server."
+msgstr "Uw oude wachtwoord kon niet van de LDAP-server worden opgehaald."
 
+#: functions.php:256 functions.php:260 functions.php:264 functions.php:273
+#: functions.php:279
 msgid "Password type is"
-msgstr "Wachtwoord type is"
+msgstr "Wachtwoordtype is"
 
-msgid "Stored Password:"
-msgstr "Opgeslagen wachtwoord:"
+#: functions.php:267 functions.php:282
+msgid ""
+"Unsupported password schema. Insufficient PHP version or PHP mhash extension "
+"is not available."
+msgstr "Niet-ondersteund wachtwoordschema. Onjuiste PHP-versie of PHP mhash-extensie is niet beschikbaar."
 
+#. could not generate ntlm passwords
+#: functions.php:343 functions.php:388
+msgid "SMB Password change was not successful, so LDAP not changed!"
+msgstr "Wijzigen van SMB-wachtwoord is niet gelukt. LDAP is daarom niet gewijzigd!"
+
+#: functions.php:363
+msgid "Password changed for user"
+msgstr "Wachtwoord gewijzigd voor gebruiker"
+
+#: functions.php:380
+msgid "Password changed successfully"
+msgstr "Wachtwoord met succes gewijzigd"
+
+#: functions.php:390
+msgid ""
+"Due to numerous password modification errors your LDAP and SMB passwords are "
+"out of sync. Please contact your administrator."
+msgstr "Vanwege diverse fouten bij het wijzigen van het wachtwoord zijn uw LDAP- en SMB-wachtwoorden niet meer gelijk. Neem contact op met uw systeembeheerder. "
+
+#: functions.php:395
+msgid "LDAP Password change was not successful!"
+msgstr "Wijzigen van LDAP-wachtwoord is mislukt!"
+
+#: functions.php:396
+msgid "LDAP ERROR => "
+msgstr "LDAP-fout =>"
+
+#: options.php:65
+msgid "Please create plugin configuration file."
+msgstr "Maak a.u.b. een configuratiebestand voor de plugin aan."
+
+#: options.php:75 options.php:103 setup.php:30
+msgid "Change Password"
+msgstr "Wachtwoord wijzigen"
+
+#: options.php:90
 msgid "Old Password:"
-msgstr "Oude wachtwoord:"
+msgstr "Oud wachtwoord:"
 
+#: options.php:94
 msgid "New Password:"
 msgstr "Nieuw wachtwoord:"
 
-msgid "SMB Password change was not successful, so LDAP not changed!"
-msgstr "SMB wachtwoord veranderen is niet gelukt, dus LDAP niet veranderd!"
+#: options.php:98
+msgid "Verify New Password:"
+msgstr "Nieuw wachtwoord verifiëren:"
 
-msgid "Password changed for user"
-msgstr "Het wachtwoord wordt aangepast voor gebruiker"
-
-msgid "Password changed successfully"
-msgstr "Wachtwoord aangepast"
-
-msgid "LDAP Password change was not successful!"
-msgstr "Wijzigen van LDAP wachtwoord mislukt!"
-
-msgid "LDAP ERROR => "
-msgstr "LDAP fout =>"
-
-msgid "Change Password"
-msgstr "Wachtwoord veranderen"
-
+#: setup.php:32
 msgid ""
 "This connects to your local Password Server to change your login password "
 "for all services."
-msgstr "Verbindt met de lokale Wachtwoord server om login wachtwoord voor "
-"alle diensten te veranderen."
+msgstr "Dit maakt verbinding met uw lokale wachtwoordserver om uw inlogwachtwoord voor alle diensten te wijzigen."
 
