@@ -1,0 +1,781 @@
+# translation of sasql.po to Dutch
+# Tony den Haan <tony@dhits.nl>, 2007.
+# This file is distributed under the same license as the sasql plugin.
+# Copyright (c) 2004-2005 The SquirrelMail Project Team
+# $Id: sasql.po,v 1.4 2005/08/13 05:31:07 tokul Exp $
+msgid ""
+msgstr ""
+"Project-Id-Version: sasql\n"
+"POT-Creation-Date: 2005-03-29 08:36-0700\n"
+"PO-Revision-Date: 2007-01-25 22:00+0100\n"
+"Last-Translator: Tony den Haan <tony@dhits.nl>\n"
+"Language-Team: Dutch <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "DSPAM Settings"
+msgstr "DSPAM instellingen"
+
+msgid "Warning"
+msgstr "Waarschuwing"
+
+msgid "Enabling DSPAM will disable SpamAssassin scanning of your email."
+msgstr "Door DSPAM aan te zetten zal SpamAssassing geen mail meer scannen"
+
+msgid "SpamAssassin settings and white/blacklists will not be used by dspam."
+msgstr "SpamAssassin instellingen en black/whitelists worden niet gebruikt door DSPAM"
+
+#. *
+#. * To translators: %s's will be replaced with <a ..> and </a>
+#.
+msgid ""
+"This %sFAQ%s from the DSPAM web site explains the differences between "
+"SpamAssassin and DSPAM and why you might want to use dspam instead of "
+"SpamAssassin."
+msgstr ""
+"Deze %s FAQ %s van de DSPAM site verklaart de verschillen tussen "
+"SpamAssassin en DSAPM en waarom je beter DSPAM kan gebruiken in plaats van "
+"SpamAssassin."
+
+msgid ""
+"DSPAM is a learning system that filters spam based on what <i>you</i> tell "
+"it is spam and what isn't. Messages are analyzed as they are delivered and "
+"are assigned a spam probability between 0 and 1. The more messages you "
+"receive, both spam and innocent, the better DSPAM learns what <i>you</i> "
+"think is spam and what is not."
+msgstr ""
+"DSPAM is een lerend systeem dat spam filtert op basis van wat <i>"
+"jij</i> spam vindt. Berichten worden geanaliseerd zodra ze worden bezorgd "
+"en krijgen een spam nummer tussen 0 en 1. Hoe meer berichten je ontvangt, "
+"spam en normaal, hoe beter DSPAM leert wat <i>jij</i> spam "
+"vindt"
+
+msgid "Reporting Spam"
+msgstr "Spam melden"
+
+msgid ""
+"If you receive a spam message in your Inbox, forward the message to "
+"<nobr>username-spam@domain</nobr> and it will be learned as spam. For "
+"example, if your address is joe@example.com, you would forward the message "
+"to <nobr>joe-spam@example.com</nobr>."
+msgstr ""
+"Als je een spam bericht in je Inbox krijgt, stuur dit naar "
+"<nobr>naam-spam@example.com</nobr> en het wordt aangemerkt als spam. Bijvoorbeeld: "
+"als je adres naam@example.com is, stuur je het bericht naar "
+"<nobr>naam-spam@example.com</nobr>"
+
+msgid ""
+"You can also move your spam messages to the <i>%s</i> folder. This folder is "
+"periodically checked for messages which are then learned as spam and "
+"deleted. You do not need to move messages from your %s folder here because "
+"they have already been learned as spam."
+msgstr ""
+"Je kan spam berichten ook verplaatsen naar de <i>%s</i> folder. Deze folder "
+"wordt regelmatig gecontroleerd op nieuwe berichten, waar het systeem van leert "
+"en ze dan verwijdert. Je hoeft berichten niet meer uit je %s te verplaatsen "
+"omdat ze al gemarkeerd zijn als spam"
+
+msgid "Reporting False Positives"
+msgstr "Melden False Positives"
+
+msgid ""
+"From time to time, DSPAM will catch an innocent messages as spam. These "
+"messages are called \"false positives\". There is no way to prevent false "
+"positives entirely. If you find a false positive, forward the message to "
+"<nobr>username-fp@domain</nobr> and it will be learned as an innocent "
+"message. For example, if your email address is joe@example.com, you would "
+"forward the message to <nobr>joe-fp@example.com</nobr>."
+msgstr ""
+"Af en toe zal DSPAM een onschuldig bericht aanmerken als spam. Zulke berichten "
+"staan bekend als \"false positives\". Het is onmogelijk om dit geheel te voorkomen. "
+"Als je zo een bericht krijgt, stuur het door naar <nobr>naam-fp@example.com en het "
+"wordt daarna bekend als onschuldig. Bijvoorbeeld: als je adress naam@example.com is, "
+"stuur je de mail naar "
+"<nobr>naam-fp@example.com</nobr>"
+
+msgid ""
+"You can also move your false positives to the <i>%s</i> folder from the %s "
+"folder. This folder is periodically checked for messages which are then "
+"learned as false positives and deleted."
+msgstr ""
+"Je kan de false positives ook naar de <i>%s</i> folder verplaatsen vanuit de %s "
+"folder. Deze folder wordt regelmatig gecontroleerd. Na het leren worden de false "
+"positives verwijderd"
+
+msgid "Disclaimer"
+msgstr "Waarschuwing"
+
+msgid ""
+"DSPAM is a learning system. It only knows what is spam based on what you "
+"teach it is spam and what is not. Due to DSPAM's nature, you are more likely "
+"to see errors in spam detection until it is trained on your email. If you do "
+"not report a message as spam within ten days, the message will be "
+"permanently learned as innocent and you will be more likely to receive more "
+"spam."
+msgstr ""
+"DSPAM is een lerend system. Het weet alleen wat spam is gebaseerd op wat "
+"het van jou leert. Hierdoor is het mogelijk dat je fouten tegenkomt totdat "
+"het goed getraind. Als je een spam bericht niet binnen 10 dagen aanmeldt als "
+"spam wordt het aangemerkt als spam, en is de kans groter dat je later meer "
+"spam zal krijgen"
+
+#. *
+#. * To translators: %s's will be replaced by <a ..> and </a>
+#.
+msgid "Please read the %sDSPAM Primer%s before enabling DSPAM."
+msgstr "Lees de  %sDSPAM Primer%s voordat je DSPAM aanzet."
+
+msgid "Use DSPAM"
+msgstr "Gebruik DSPAM"
+
+#. *
+#. * To translators: %s is the name of the spam folder.
+#.
+msgid "Clean out your %s folder on opt-in?"
+msgstr "%s folder opruimen?"
+
+msgid "Note"
+msgstr "Let op"
+
+#. *
+#. * To translators: %s is the name of the spam folder.
+#.
+msgid ""
+"Your %s folder may be unavailable during the purge. It will become available "
+"again when the purge is complete."
+msgstr ""
+"Tijdens het opruimen zal je %s folder niet beschikbaar "
+"zijn"
+
+msgid "Update"
+msgstr "Update"
+
+msgid "No messages were selected."
+msgstr "Er waren geen berichten geselecteerd"
+
+msgid "Purge"
+msgstr "Opruimen"
+
+msgid "Delete all messages from your %s folder."
+msgstr "Verwijder alle berichten uit de %s folder."
+
+msgid "Allow Senders from Address Book"
+msgstr "Sta verzenden toe voor Verzenders in adreslijst"
+
+msgid "Allow"
+msgstr "Toestaan"
+
+msgid "Allow all address in the address book."
+msgstr "Laat alle adressen in adreslijst toe"
+
+#. required_hists
+msgid "Spam Score"
+msgstr "Spam score"
+
+msgid ""
+"Once all SpamAssassin tests have been run, the resulting score is matched "
+"against this value, and if greater than this value, the e-mail message is "
+"marked as spam. We recommend a value of '5'."
+msgstr ""
+"Zodra alle SpamAssassin tests gedraaid zijn wordt de score vergeleken met "
+"deze waarde, en als de score hoger is wordt het bericht gemarkeerd als spam. "
+"We raden een waarde van '5' aan."
+
+msgid "0 - Very Aggressive"
+msgstr "0 - Zeer agressief"
+
+msgid "1"
+msgstr "1"
+
+msgid "2 - Aggressive"
+msgstr "2 - Aggresief"
+
+msgid "3"
+msgstr "3"
+
+msgid "4"
+msgstr "4"
+
+msgid "5 - Recommended"
+msgstr "5 - Aanbevolen"
+
+msgid "6"
+msgstr "6"
+
+msgid "7"
+msgstr "7"
+
+msgid "8 - Lenient"
+msgstr "8 - Mild"
+
+msgid "9"
+msgstr "9"
+
+msgid "10 - Very Lenient"
+msgstr "10 - Zeer mild"
+
+msgid "Don't Filter"
+msgstr "Niet filteren"
+
+#. NOTE: The ordering here is a little odd to allow some inclusion of
+#. other option names.
+#. subject_tag
+msgid "Spam Subject Tag"
+msgstr "Spam Onderwerp Markering"
+
+msgid "*****SPAM*****"
+msgstr "*****SPAM*****"
+
+#. rewrite_subject
+msgid "Rewrite Subject Line"
+msgstr "Herschrijf Onderwerp regel"
+
+#. To translators: %s is the default from subject_tag
+msgid ""
+"SpamAssassin can re-write the subject line of e-mail that has been "
+"determined to be spam by prefixing the original subject with: %s.  To turn "
+"on this feature, select this option."
+msgstr ""
+"SpamAssassin kan de Onderwerp regel in een e-mail herschrijven "
+"om er \"%s\" voor te plaatsen. Selecteer deze optie "
+"om dit te aktiveren"
+
+#. This is here to allow me to include the rewrite_subject title
+#. *
+#. * To Translators: %s is the title from rewrite_subject
+#.
+msgid ""
+"The text to prefix to the subject of messages determined to be spam. %s must "
+"be turned on."
+msgstr ""
+"De tekst om voor het Onderwerp te plaatsen om spam te markeren. %s moet "
+"aangezet zijn"
+
+msgid ""
+"SpamAssassin can re-write the subject line of e-mail that has been "
+"determined to be spam by prefixing the original subject with this value."
+msgstr ""
+"SpamAssassin kan de Onderwerp regel herschrijven om deze waarde "
+"voor het onderwerp te plaatsen"
+
+#. use_terse_report
+msgid "Short Report"
+msgstr "Kort rapport"
+
+msgid ""
+"This option will tell SpamAssassin to use a shorter spam report once the "
+"message has been found to be spam."
+msgstr ""
+"Deze optie vertelt SpamAssassin om een korter bericht te sturen nadat "
+"is vastgesteld dat het om spam gaat"
+
+#. use_dcc
+msgid "Use DCC"
+msgstr "Gebruik DCC"
+
+msgid ""
+"Checks messages against the DCC (Distrubuted Checksum Clearinghouse) to see "
+"if a message matches a known spam message."
+msgstr ""
+"Controleert berichten bij DCC (Distrubuted Checksum Clearinghouse) om te kijken "
+"of het bericht spam is"
+
+#. use_razor1
+msgid "Use SpamNet (version 1)"
+msgstr "Gebruik SpamNet(versie 1)"
+
+msgid "Checks messages against SpamNet to see if a message is a known spam message."
+msgstr "Controleer berichten bij Spamnet om te zien of het een bekend spam bericht is."
+
+#. use_razor2
+msgid "Use SpamNet (version 2)"
+msgstr "Gebruik SpamNet (versie 2)"
+
+#. always_add_headers
+msgid "Always Add Headers"
+msgstr "Altijd headers tonen"
+
+msgid "Uncheck if you do not want to add the headers to non-spam."
+msgstr "Uitzetten als je geen headers wilt zien bij niet-spam berichten."
+
+#. ok_languages
+msgid "Acceptable Languages"
+msgstr "Geaccepteerde Talen"
+
+msgid "Select all the languages you expect to receive e-mail in."
+msgstr "Selecteer de talen in welke je mail wilt accepteren."
+
+msgid "All"
+msgstr "Alle"
+
+msgid "Afrikaans"
+msgstr "Afrikaans"
+
+msgid "Albanian"
+msgstr "Albanees"
+
+msgid "Amharic"
+msgstr "Amharic"
+
+msgid "Arabic"
+msgstr "Arabisch"
+
+msgid "Armenian"
+msgstr "Armeens"
+
+msgid "Basque"
+msgstr "Baskisch"
+
+msgid "Bosnian"
+msgstr "Bosnisch"
+
+msgid "Bulgarian"
+msgstr "Bulgaars"
+
+msgid "Byelorussian"
+msgstr "Wit-Russisch"
+
+msgid "Catalan"
+msgstr "Catalaans"
+
+msgid "Chinese"
+msgstr "Chinees"
+
+msgid "Croatian"
+msgstr "Kroatisch"
+
+msgid "Czech"
+msgstr "Tjechisch"
+
+msgid "Danish"
+msgstr "Deens"
+
+msgid "Dutch"
+msgstr "Nederlands"
+
+msgid "English"
+msgstr "Engels"
+
+msgid "Esperanto"
+msgstr "Esperanto"
+
+msgid "Estonian"
+msgstr "Est"
+
+msgid "Finnish"
+msgstr "Fins"
+
+msgid "French"
+msgstr "Frans"
+
+msgid "Frisian"
+msgstr "Fries"
+
+msgid "Georgian"
+msgstr "Georgisch"
+
+msgid "German"
+msgstr "Duits"
+
+msgid "Greek"
+msgstr "Grieks"
+
+msgid "Hebrew"
+msgstr "Hebreeuws"
+
+msgid "Hindi"
+msgstr "Hindi"
+
+msgid "Hungarian"
+msgstr "Hongaars"
+
+msgid "Icelandic"
+msgstr "IJslands"
+
+msgid "Indonesian"
+msgstr "Indonesisch"
+
+msgid "Irish Gaelic"
+msgstr "Iers Gaelic"
+
+msgid "Italian"
+msgstr "Italiaans"
+
+msgid "Japanese"
+msgstr "Japans"
+
+msgid "Korean"
+msgstr "Koreaans"
+
+msgid "Latin"
+msgstr "Latijn"
+
+msgid "Latvian"
+msgstr "Lets"
+
+msgid "Lithuanian"
+msgstr "Litouwen"
+
+msgid "Malay"
+msgstr "Maleis"
+
+msgid "Marathi"
+msgstr "Maratisch"
+
+msgid "Nepali"
+msgstr "Nepalees"
+
+msgid "Norwegian"
+msgstr "Noors"
+
+msgid "Persian"
+msgstr "Persisch"
+
+msgid "Polish"
+msgstr "Pools"
+
+msgid "Portuguese"
+msgstr "Portugees"
+
+msgid "Quechua"
+msgstr "Quechisch"
+
+msgid "Rhaeto-Romance"
+msgstr "Raeto-romaans"
+
+msgid "Romanian"
+msgstr "Roemeens"
+
+msgid "Russian"
+msgstr "Russisch"
+
+msgid "Sanskrit"
+msgstr "Sanskriet"
+
+msgid "Scots"
+msgstr "Schots"
+
+msgid "Scottish Gaelic"
+msgstr "Schots Gaelic"
+
+msgid "Serbian"
+msgstr "Servisch"
+
+msgid "Slovak"
+msgstr "Slovaaks"
+
+msgid "Slovenian"
+msgstr "Sloveens"
+
+msgid "Spanish"
+msgstr "Spaans"
+
+msgid "Swahili"
+msgstr "Swahili"
+
+msgid "Swedish"
+msgstr "Zweeds"
+
+msgid "Tagalog"
+msgstr "Tagalogisch"
+
+msgid "Tamil"
+msgstr "Tamil"
+
+msgid "Thai"
+msgstr "Thais"
+
+msgid "Turkish"
+msgstr "Turks"
+
+msgid "Ukrainian"
+msgstr "Ukrains"
+
+msgid "Vietnamese"
+msgstr "Vietamees"
+
+msgid "Welsh"
+msgstr "Welsh"
+
+msgid "Yiddish"
+msgstr "Yiddish"
+
+#. use_bayes
+msgid "Use Bayesian Filter"
+msgstr "Gebruik bayesisch filter"
+
+msgid ""
+"The Bayesian Filter will learn what is spam and what isn't to become a better "
+"filter."
+msgstr ""
+"Het Bayesisch Filter leert wat wel en niet spam is "
+"om een beter filter te worden."
+
+#. auto_learn
+msgid "Auto-learn"
+msgstr "Auto-leren"
+
+msgid ""
+"Automatically feed high and low scoring mails into SpamAssassin's learning "
+"systems. (Currently, only Bayesian filtering is supported.)"
+msgstr ""
+"Automatisch hoog- en laagscorende mails in SpamAssassin leersysteem "
+"invoeren. (Momenteel alleen Bayesisch)"
+
+#. report_safe
+msgid "Spam Encapsulation"
+msgstr "Spam Inkapselen"
+
+msgid ""
+"Encapsulate spam messages into a MIME or plain-text attachment, or you can "
+"disable it altogether."
+msgstr ""
+"Pakt spam berichten in in MIME of platte tekts, of helemaal "
+"uitzetten"
+
+msgid "Disabled"
+msgstr "Uitgezet"
+
+msgid "MIME Attachment"
+msgstr "MIME Attachment"
+
+msgid "Text Attachment"
+msgstr "Tekst Attachment"
+
+#. These options were removed as of SpamAssassin 2.50-ish
+#. They are here for those running older versions of SA.
+#. report_header
+msgid "Report in Header"
+msgstr "Rapport in Header"
+
+msgid ""
+"SpamAssassin will create a report when it determines an e-mail message to be "
+"spam.  This report is normally prepended to the e-mail message.  To have the "
+"report written as part of the e-mail header, select this option."
+msgstr ""
+"SpamAssassin zal een rapport maken als het een bericht als spam aanmerkt. "
+"Dit rapport wordt normaal voorin het bericht geplaatst. Selecteer deze optie "
+"om het rapport in de mail header te krijgen."
+
+#. defang_mime
+msgid "Reformat HTML Spam"
+msgstr "Omvormen HTML Spam"
+
+msgid ""
+"When an e-mail in HTML format is determined to be spam, SpamAssassin can "
+"convert the message to text. To allow this, select this option."
+msgstr ""
+"Als een e-mail in HTML formaat als spam beschouwd wordt, kan SpamAssassin "
+"het bericht in tekst omzetten. Kies daarvoor deze optie."
+
+#. White/black list info
+msgid "Whitelist From"
+msgstr "Whitelist van"
+
+msgid ""
+"E-mail from these addresses will not be marked as spam. You may use '*' as a "
+"wildcard to allow a large number of addresses at one time. E.g. Whitelist "
+"From '*@aol.com' will not mark any message that claims to be from aol.com as "
+"spam."
+msgstr ""
+"E-mail van deze adressen wordt niet aangemerkt als spam. Je kan '*' gebruiken "
+"als wildcard, bijv Whitelist van '*@aol.com' zal alle berichten van aol.com "
+"doorlaten."
+
+msgid "Don't Whitelist From"
+msgstr "Niet whitelisten van"
+
+msgid ""
+"This address will be excluded from a previous whitelist and will be treated "
+"as a normal address, i.e. it will not be automatically allowed."
+msgstr ""
+"Dit adres wordt uitgezondered van een eerdere  whitelist en wordt behandeld "
+"als een normaal adres, dus niet automatisch doorgelaten."
+
+msgid "Blacklist From"
+msgstr "Blacklist van"
+
+msgid ""
+"E-mail from these addresses will always be marked as spam. You may use '*' "
+"as a wildcard to block a large number of addresses at one time. E.g. "
+"Blacklist From '*@aol.com' will mark all messages that claims to be from aol."
+"com as spam."
+msgstr ""
+"E-mail van deze adressen wordt altijd beschouwd als spam. Je kan '*' gebruiken "
+"als wildcard, bijv Blacklist van '*@aol.com' zal alle berichten van aol.com "
+"als spam beschouwen."
+
+msgid "Don't Blacklist From"
+msgstr "Niet blacklisten van"
+
+msgid ""
+"This address will be excluded from a previous blacklist and will be treated "
+"as a normal address, i.e. it will not be automatically denied."
+msgstr "Dit adres wordt uitgezonderd van een bestaande blacklisting en wordt behandeld als een normaal adres, en dus niet automatisch geweigerd."
+
+msgid "Whitelist To"
+msgstr "Whitelisten naar"
+
+msgid ""
+"E-mail to these addresses will not be marked as spam. This is useful for "
+"allowing e-mail lists. For example, you can allow all messages from an e-"
+"mail list that sends to 'Tofu-Support-List@beeflovers.com'. You may use '*' "
+"as a wildcard to allow a large number of addresses at one time. E.g. "
+"Whitelist To '*@aol.com' will not mark any message that claims to be to aol."
+"com as spam."
+msgstr "E-mail naar deze adressen wordt niet gemarkeerd als spam. Dit is bruikbaar voor bijvoorbeeld mailing lijsten. Je kan bijvoorbeeld alle berichten naar  'Tofu-Support-List@beeflovers.com doorlaten.  Je kan ook '*' gebruiken als wildcard voor meerdere adressen. Bijvoorbeeld:  Whitelist To '*@aol.com' zal alle mail naar aol.com niet markeren."
+
+msgid "Blacklist To"
+msgstr "Blacklisten Naar"
+
+msgid ""
+"E-mail to these addresses will be marked as spam. You may use '*' as a "
+"wildcard to reject a large number of addresses at one time. E.g. Blacklist "
+"To '*@aol.com' will mark all messages that claims to be to aol.com as spam."
+msgstr "E-mail naar deze adressen wordt gemarkeerd als spam. Je kan '*' als wildcard gebruiken om een groot aantal adressen ineens te blokkeren. Bijv: Blacklist Naar '*@aol.com' zal alle mails die beweren voor aol.com blokkeren. "
+
+msgid "General Settings"
+msgstr "Algemene instellingen"
+
+msgid "Save Settings"
+msgstr "Instellingen opslaan"
+
+msgid "Error: You must include an e-mail address."
+msgstr "Je moet een e-mail adres invullen"
+
+msgid "Error: You have entered an invalid e-mail address."
+msgstr "Fout: Ongeldig e-mail adres ingevuld"
+
+msgid "Error: You must select Allow or Deny."
+msgstr "Fout: Kies Toestaan of Weigeren"
+
+msgid "Global Allow / Deny Address List"
+msgstr "Globale Toestaan/Weigeren lijst"
+
+msgid "Address"
+msgstr "Adres"
+
+msgid "Type"
+msgstr "Type"
+
+msgid "Personal Allow / Deny Address List"
+msgstr "Persoonlijke Toestaan/Weigeren lijst"
+
+msgid "Action"
+msgstr "Handeling"
+
+msgid "Address Removed"
+msgstr "Adres verwijderd"
+
+msgid "Unknown option: %s"
+msgstr "Onbekende optie: %s"
+
+msgid "Delete"
+msgstr "Verwijderen"
+
+msgid "Edit"
+msgstr "Bewerken"
+
+#. echo $edit;
+msgid "Edit Address"
+msgstr "Adres bewerken"
+
+msgid "Add New Address"
+msgstr "Adres toevoegen"
+
+msgid "Address:"
+msgstr "Adres"
+
+msgid "Type:"
+msgstr "Type"
+
+#. End Form
+#. Help
+msgid "Legend"
+msgstr "Legenda"
+
+#. To translators: %s's are the function name
+#. and PEAR generated error message.
+#.
+msgid "Database error in %s: %s"
+msgstr "Database fout in %s: %s"
+
+#. To translators: %s's are the function name
+#. and PEAR generated error message.
+#.
+msgid "Database error: %s"
+msgstr "Database fout: %s"
+
+msgid "sasql_AddPref_multiple Database error: %s"
+msgstr "sasql_AddPref_multiple Database fout: %s"
+
+#. To translators: %s's are the function name
+#. and PEAR generated error message.
+#.
+msgid "Database error %s: %s"
+msgstr "Database fout: %s: %s"
+
+msgid "Spam Filters"
+msgstr "Spamfilters"
+
+msgid "Configure the behavior of your spam filters."
+msgstr "Configuratie van de spamfilters"
+
+msgid "Add Email to Whitelist"
+msgstr "Voeg toe aan whitelist"
+
+msgid "Allow Sender"
+msgstr "Toestaan afzender"
+
+msgid "Remove Email from Whitelist"
+msgstr "Verwijder van whitelist"
+
+msgid "remove"
+msgstr "verwijderen"
+
+msgid "Remove Domain from Whitelist"
+msgstr "Verwijder uit whitelist"
+
+msgid "Add Email to Blacklist"
+msgstr "Toevoegen aan whitelist"
+
+msgid "Block Sender"
+msgstr "Afzender blokkeren"
+
+msgid "Remove Email from Blacklist"
+msgstr "Verwijder mail uit blacklist"
+
+msgid "Remove Domain from Blacklist"
+msgstr "Verwijder domein uit blacklist"
+
+msgid "Address is already in your whitelist"
+msgstr "Adres staat al in whitelist"
+
+msgid "Whitelisted"
+msgstr "In de whitelist"
+
+msgid "Domain is already in your whitelist"
+msgstr "Domein staat al in de whitelist"
+
+msgid "Address is already in your blacklist"
+msgstr "Adres staat al in de blacklist"
+
+msgid "Blacklisted"
+msgstr "Blacklisted"
+
+msgid "Domain is already in your blacklist"
+msgstr "Domein staat al in blacklist"
+
+msgid "Learn as False Positive"
+msgstr "Leer als foutief positief "
+
+msgid "Learn as Spam"
+msgstr "Leer als Spam"
+
+msgid "Options"
+msgstr "Opties"
+
+msgid "Error: Missing option."
+msgstr "Fout: Optie ontbreekt"
+
