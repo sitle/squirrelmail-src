@@ -55,6 +55,7 @@ function demo_info()
 
    return array(
              'english_name' => 'Demo',
+             'version' => 'CORE',
              'summary' => 'This plugin provides test/sample code for many of the hook points in the SquirrelMail core.',
              'details' => 'This plugin provides test/sample code for many of the hook points in the SquirrelMail core.', 
              'requires_configuration' => 0,
