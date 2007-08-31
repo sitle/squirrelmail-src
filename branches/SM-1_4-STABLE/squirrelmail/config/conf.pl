@@ -2466,9 +2466,17 @@ sub command41 {
                     }
                     if ( $found != 1 ) {
                         print "** Found theme: $filename\n";
-                        print "   What is its name? ";
+                        $def = $files[$cnt];
+                        $def =~ s/_/ /g;
+                        $def =~ s/\.php//g;
+                        $def = lc($def);
+                        #$def =~ s/(^\w+)/ucfirst $1/eg;
+                        #$def =~ s/(\s+)(\w+)/$1 . ucfirst $2/eg;
+                        $def =~ s/(^\w+)|(\s+)(\w+)/ucfirst $1 . $2 . ucfirst $3/eg;
+                        print "   What is its name? [$def]: ";
                         $nm = <STDIN>;
-                        $nm =~ s/[\n|\r]//g;
+                        $nm =~ s/^\s+|\s+$|[\n|\r]//g;
+                        if ( $nm eq '' ) { $nm = $def; }
                         $theme_name[ $#theme_name + 1 ] = $nm;
                         $theme_path[ $#theme_path + 1 ] = $filename;
                     }
