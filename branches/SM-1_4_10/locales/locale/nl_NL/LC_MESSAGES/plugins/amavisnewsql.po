@@ -1,0 +1,303 @@
+# translation of amavisnewsql.po to Frisian
+# Rinse de Vries <rinsedevries@kde.nl>, 2007.
+# LANGUAGE (xx_XX) amavisnewsql Translation (SquirrelMail plugin)
+# Copyright (c) 1999-2006 The SquirrelMail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
+# $Id: amavisnewsql.pot 10877 2006-03-04 11:22:22Z jervfors $
+msgid ""
+msgstr ""
+"Project-Id-Version: amavisnewsql\n"
+"POT-Creation-Date: 2005-07-26 20:04+0300\n"
+"PO-Revision-Date: 2007-04-11 21:58+0200\n"
+"Last-Translator: Rinse de Vries <rinsedevries@kde.nl>\n"
+"Language-Team: Frisian <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+msgid "Never"
+msgstr "Nooit"
+
+msgid "Week Days"
+msgstr "Weekdagen"
+
+msgid "Weekly"
+msgstr "Wekelijks"
+
+msgid "Monthly"
+msgstr "Maandelijks"
+
+msgid "Daily"
+msgstr "Dagelijks"
+
+msgid " Days"
+msgstr " dagen"
+
+msgid "Quarantine"
+msgstr "Quarantine"
+
+msgid "Reject"
+msgstr "Verwerpen"
+
+msgid "Add New Address"
+msgstr "Nieuw adres toevoegen"
+
+msgid "add_edit_wb_address"
+msgstr "add_edit_wb_address"
+
+msgid "Address:"
+msgstr "Adres:"
+
+msgid "Examples"
+msgstr "Voorbeelden"
+
+msgid "complete address"
+msgstr "volledig adres"
+
+msgid " OR"
+msgstr " OF"
+
+msgid "complete part before domain"
+msgstr "compleet gedeelte voor domein"
+
+msgid "domain only including the "
+msgstr "alleen domein inclusief de "
+
+msgid "Whitelist Everyone In Your Address Book"
+msgstr "Iedereen in uw adresboek op de witte lijst plaatsen"
+
+msgid "Type:"
+msgstr "Type:"
+
+msgid "Whitelist"
+msgstr "Witte lijst"
+
+msgid "Blacklist"
+msgstr "Zwarte lijst"
+
+msgid "Priority:"
+msgstr "Prioriteit:"
+
+msgid "Address"
+msgstr "Adres"
+
+msgid "Type"
+msgstr "Type"
+
+msgid "Priority"
+msgstr "Prioriteit"
+
+msgid "Quarantine Level"
+msgstr "Quarantineniveau"
+
+msgid "Kill Level"
+msgstr ""
+
+msgid "Options"
+msgstr "Opties"
+
+msgid "SpamAssassin Configuration"
+msgstr "Configuratie van SpamAssassin"
+
+msgid "Global Address List"
+msgstr "Algemene adressenlijst"
+
+msgid "Personal Allow / Deny Addresses List"
+msgstr "Persoonlijke lijst met toestaan/weigeren"
+
+msgid "Action"
+msgstr "Actie"
+
+msgid "No Personal Addresses Defined"
+msgstr "Geen persoonlijke adressen opgegeven"
+
+msgid "Description"
+msgstr "Beschrijving"
+
+msgid "Whitelist / Blacklist"
+msgstr "Witte lijst / zwarte lijst"
+
+msgid ""
+"Here you may list the addresses you wish to protect and those you wish to "
+"block. Please keep in mind that spammers often have throw-away or fake "
+"addresses so blacklisting these is pointless. The listed addresses appear in "
+"the same order as they will be applied by the mail server. Please read the "
+"section on priority to understand why this is important."
+msgstr "Hier kunt u de adressen opgeven die u wilt beschermen en de adressen die u wilt blokkeren. Onthoud dat spammers vaak tijdelijke of nepadressen hebben, waardoor het plaatsen ervan op zwarte lijsten zinloos is. De opgesomde adressen verschijnen in dezelfde volgorde als waarin de mailserver ze zal toepassen. Lees de sectie over de prioriteit om te begrijpen wat het belang daarvan is."
+
+msgid ""
+"The priority determines the order of the list with the search stopping at "
+"the first matching address.  Overlapping addresses should be listed from "
+"specific to general.  E.g. if you want to allow one person from aol to mail "
+"you and block everyone else you would use two rules. The higher priority one "
+"set to whitelist friend@aol.com and a lower priority one set to blacklist "
+"@aol.com. The server will match the specific higher priority address first "
+"and end the search.  Addresses that are whitelisted for the whole company "
+"appear above with the lowest priorities.. your settings can always override "
+"the global ones."
+msgstr "De prioriteit bepaalt de volgorde van de lijst. Het doorzoeken van de lijst stopt bij het eerste overeenkomende adres. Overlappende adressen dien u aflopend van specifiek tot algemeen in de lijst plaatsen. Dus als u één persoon van AOL wilt toelaten en de rest wilt blokkeren, dan zult u twee regels gebruiken. U zet vriend@aol.com met een hogere prioriteit op de witte lijst en @aol.com met een lagere prioriteit op de zwarte lijst. Op die manier vindt de server het adres eerder op de lijst en zal daar stoppen met het afhandelen ervan. Adressen die voor het hele bedrijf op de witte lijst zijn geplaatst verschijnen boven de laagste prioriteiten.. uw instellingen kunnen altijd de algemene instellingen overschrijven."
+
+msgid "No Policies Defined"
+msgstr "Geen beleid opgegeven"
+
+msgid "Quarantine Settings"
+msgstr "Quarantine-instellingen"
+
+msgid "How often should you receive quarantine reports?"
+msgstr "Hoe vaak wilt u quarantinerapporten ontvangen?"
+
+msgid "Currently:"
+msgstr "Momenteel:"
+
+msgid "Week Days (Default)"
+msgstr "Weekdagen (standaard)"
+
+msgid "Weekly (Friday)"
+msgstr "Wekelijks (vrijdag)"
+
+msgid "Monthly (1st)"
+msgstr "Maandelijks (1e)"
+
+msgid ""
+"How long should mail stay in the quarantine before being automatically "
+"removed?"
+msgstr "Hoe lang moeten berichten in quarantine blijven voordat ze automatisch worden verwijderd?"
+
+msgid "3 Days"
+msgstr "3 dagen"
+
+msgid "5 Days"
+msgstr "5 dagen"
+
+msgid "7 Days"
+msgstr "7 dagen"
+
+msgid "10 Days"
+msgstr "10 dagen"
+
+msgid "14 Days"
+msgstr "14 dagen"
+
+msgid "20 Days"
+msgstr "20 dagen"
+
+msgid "30 Days"
+msgstr "30 dagen"
+
+msgid ""
+"Should messages be quarantined or rejected when reaching the higher Score "
+"Level?"
+msgstr "Moeten berichten in quarantine worden geplaatst of worden geweigerd wanneer het niveau van hogere score wordt bereikt?"
+
+msgid "Use Quarantine"
+msgstr "In quarantine"
+
+msgid "Reject High Scoring Email"
+msgstr "Berichten met hoge score weigeren"
+
+msgid "Set Quarantine Policy"
+msgstr "Quarantinebeleid instellen"
+
+msgid "Message Scoring Policy"
+msgstr "Beleid voor berichtscores"
+
+msgid "Your Current Policy"
+msgstr "Uw huidige beleid"
+
+msgid "Tag Level"
+msgstr "Tagniveau"
+
+msgid "Predefined Policies"
+msgstr "Voorgedefinieerd beleid"
+
+msgid "Click To Select"
+msgstr "Klik om te selecteren"
+
+msgid "Define Custom Policy"
+msgstr "Aangepast beleid definiëren"
+
+msgid "Custom Policy"
+msgstr "Aangepast beleid"
+
+msgid "Set Custom Policy"
+msgstr "Aangepast beleid instellen"
+
+msgid "Policies"
+msgstr "Beleid"
+
+msgid ""
+"You may select from one of several predefined scoring policies or you may "
+"define your own. Each email is assigned a numerical score based on the "
+"characteristics it shares with those common to spam."
+msgstr "U kunt uit voorgedefinieerd scorebeleid kiezen of uw eigen beleid definiëren. Elk bericht krijgt een score toegewezen, gebaseerd op de karakteristieken die overeenkomen met spam."
+
+msgid ""
+"The tag level is the numerical score required to identify a message as being "
+"spam.  This will cause *SPAM* to be added to the subject line and the X-Spam-"
+"Flag header to be set to YES."
+msgstr "Het tagniveau is de score die nodig is om een bericht als spam aan te merken. Dit plaatst *SPAM* in het berichtonderwerp en zet de koptekst 'X-Spam-Flag' op 'YES'."
+
+msgid "The "
+msgstr "De "
+
+msgid ""
+" is the numerical score required to prevent delivery of a message at the "
+"server.  This level should be higher or equal to Tag Level and high enough "
+"to avoid catching legitimate email. As your custom whitelist grows you "
+"should adjust these two levels to tag and block more spam."
+msgstr "is de score die vereist is om het afleveren van een bericht bij de server te voorkomen. Dit niveau moet hoger dan of gelijk zijn aan het tagniveau en hoog genoeg om te voorkomen dat normale e-mail wordt getroffen. Terwijl uw eigen witte lijst groeit dient u deze twee niveaus aan te passen om meer spam te labelen en te blokkeren."
+
+msgid "Select Action"
+msgstr "Actie selecteren"
+
+msgid "DELETE"
+msgstr "VERWIJDEREN"
+
+msgid "Release"
+msgstr "Vrijgeven"
+
+msgid "Release + Add To Whitelist"
+msgstr "Vrijgeven en aan witte lijst toevoegen"
+
+msgid "Submit"
+msgstr "Indienen"
+
+msgid "Messages hilighted in RED likely contain viruses!"
+msgstr "Berichten die ROOD oplichten bevatten mogelijk virussen!"
+
+msgid "Spam Assassin Settings"
+msgstr "Instellingen voor SpamAssassin"
+
+msgid "No Messages in Quarantine"
+msgstr "Geen berichten in quarantine"
+
+msgid "From"
+msgstr "Van"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Subject"
+msgstr "Onderwerp"
+
+msgid "Score"
+msgstr "Score"
+
+msgid "Next"
+msgstr "Volgende"
+
+msgid "Previous"
+msgstr "Vorige"
+
+msgid "Whitelist Sender"
+msgstr "Afzender op witte lijst"
+
+msgid ""
+"Here you may define your own white/black lists and customize your spam "
+"scoring rules."
+msgstr "Hier kunt u uw eigen witte/zwarte lijst aanleggen en uw spam-score-regels aanpassen."
+
+msgid "[Quarantine] "
+msgstr "[Quarantine] "
+

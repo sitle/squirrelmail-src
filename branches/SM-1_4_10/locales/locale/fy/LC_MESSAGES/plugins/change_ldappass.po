@@ -1,0 +1,150 @@
+# translation of change_ldappass.po to Frisian
+# Rinse de Vries <rinsedevries@kde.nl>, 2007.
+# LANGUAGE (xx_XX) change_ldappass Translation (SquirrelMail plugin)
+# Copyright (c) 1999-2007 The SquirrelMail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
+# $Id: change_ldappass.pot 12168 2007-01-21 03:52:07Z jervfors $
+msgid ""
+msgstr ""
+"Project-Id-Version: change_ldappass\n"
+"Report-Msgid-Bugs-To: http://sourceforge.net/projects/sm-plugins/\n"
+"POT-Creation-Date: 2007-01-20 13:49+0200\n"
+"PO-Revision-Date: 2007-05-03 21:28+0100\n"
+"Last-Translator: Douwe VDM <dvandermeulen@hetnet.nl>\n"
+"Language-Team: Frisian <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#: functions.php:26
+#: options.php:55
+msgid "PHP LDAP extension is not available."
+msgstr "PHP LDAP-ekstinsje is net beskikber."
+
+#: functions.php:29
+msgid "You must type in your old password."
+msgstr "Fier jo âlde wachtwurd yn."
+
+#: functions.php:32
+msgid "You must type in a new password."
+msgstr "Jo moatte in nij wachtwurd yntype."
+
+#: functions.php:36
+msgid "You must also type in your new password in the verify box."
+msgstr "Jo moatte jo nije wachtwurd ek yn it ferifikaasjefak yntype."
+
+#: functions.php:40
+msgid "Your new password doesn't match the verify password."
+msgstr "Jo nije wachtwurd komt net oerien mei it ferifikaasje-wachtwurd."
+
+#: functions.php:46
+msgid "Passwords can only contain the following characters:"
+msgstr "Wachtwurden meie allinnich út de folgjende lettertekens bestean:"
+
+#: functions.php:105
+msgid "Can't connect to Directory Server, please try later!"
+msgstr "Kin gjin ferbining meitsje mei de directory-tsjinner. Besykje it letter nochris."
+
+#: functions.php:111
+msgid "Unable to set LDAP bind protocol version."
+msgstr "Koe ferzje fan LDAP-bind-protokol net ynstelle."
+
+#: functions.php:126
+#: functions.php:201
+msgid "LDAP bind failed."
+msgstr "LDAP-bind is mislearre."
+
+#: functions.php:127
+#: functions.php:153
+#, php-format
+msgid "Error: %s"
+msgstr "Flater: %s"
+
+#: functions.php:152
+msgid "LDAP search failed."
+msgstr "LDAP-sykjen is mislearre."
+
+#: functions.php:163
+msgid "Duplicate login entries detected, cannot change password!"
+msgstr "Dûbele oanmeldgegevens ûntdekt, kin wachtwurd net feroarje!"
+
+#: functions.php:171
+msgid "Your login account was not found in the LDAP database, cannot change password!"
+msgstr "Jo ynlogakkount is net fûn yn de LDAP-databank. Kin wachtwurd net wizigje!"
+
+#. if we can't bind as the user then the old passwd must be wrong
+#: functions.php:184
+#: functions.php:296
+msgid "Your old password is not correct."
+msgstr "Jo âlde wachtwurd wie ferkeard."
+
+#: functions.php:225
+msgid "We could not retrieve your old password from the LDAP server."
+msgstr "Jo âlde wachtwurd koe net fan de LDAP-tsjinner ophelle wurde."
+
+#: functions.php:256
+#: functions.php:260
+#: functions.php:264
+#: functions.php:273
+#: functions.php:279
+msgid "Password type is"
+msgstr "Wachtwurdtype is"
+
+#: functions.php:267
+#: functions.php:282
+msgid "Unsupported password schema. Insufficient PHP version or PHP mhash extension is not available."
+msgstr "Net-stipe wachtwurdskema. Ferkearde PHP-ferzje of PHP mhash-ekstinsje is net beskikber."
+
+#. could not generate ntlm passwords
+#: functions.php:343
+#: functions.php:388
+msgid "SMB Password change was not successful, so LDAP not changed!"
+msgstr "Wizigen fan SMB-wachtwurd is net slagge. LDAP is dêrom net wizige!"
+
+#: functions.php:363
+msgid "Password changed for user"
+msgstr "Wachtwurd wizige foar brûker"
+
+#: functions.php:380
+msgid "Password changed successfully"
+msgstr "Wachtwurd mei súkses wizige"
+
+#: functions.php:390
+msgid "Due to numerous password modification errors your LDAP and SMB passwords are out of sync. Please contact your administrator."
+msgstr "Fanwege ferskate fouten by it wizigjen fan it wachtwurd binne jo LDAP- en SMB-wachtwurden net mear gelyk. Nim kontakt op mei jo systeembehearder. "
+
+#: functions.php:395
+msgid "LDAP Password change was not successful!"
+msgstr "Wizigjen fan LDAP-wachtwurd is mislearre!"
+
+#: functions.php:396
+msgid "LDAP ERROR => "
+msgstr "LDAP-fout =>"
+
+#: options.php:65
+msgid "Please create plugin configuration file."
+msgstr "Meitsje a.j.w. in konfiguraasjetriem foar de plugin oan."
+
+#: options.php:75
+#: options.php:103
+#: setup.php:30
+msgid "Change Password"
+msgstr "Wachtwurd wizigje"
+
+#: options.php:90
+msgid "Old Password:"
+msgstr "Ald wachtwurd:"
+
+#: options.php:94
+msgid "New Password:"
+msgstr "Nij wachtwurd:"
+
+#: options.php:98
+msgid "Verify New Password:"
+msgstr "Ferifiearje nij wachtwurd:"
+
+#: setup.php:32
+msgid "This connects to your local Password Server to change your login password for all services."
+msgstr "Dit makket ferbining mei jo lokale wachtwurdtsjinner om jo ynlogwachtwurd foar alle tsjinsten te wizigjen."
+

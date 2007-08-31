@@ -1,0 +1,309 @@
+# translation of bayesspam.po to Dutch
+# Rinse de Vries <rinsedevries@kde.nl>, 2007.
+# LANGUAGE (xx_XX) bayesspam Translation (SquirrelMail plugin)
+# Copyright (c) 1999-2006 The SquirrelMail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
+# $Id: bayesspam.pot 10877 2006-03-04 11:22:22Z jervfors $
+msgid ""
+msgstr ""
+"Project-Id-Version: bayesspam\n"
+"POT-Creation-Date: 2004-12-07 17:06+0200\n"
+"PO-Revision-Date: 2007-04-11 23:36+0200\n"
+"Last-Translator: Rinse de Vries <rinsedevries@kde.nl>\n"
+"Language-Team: Dutch <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#: bayesspam_functions.php:27
+msgid "BayesSpam improperly configured. Check DB Information."
+msgstr "BayesSpam is niet goed ingesteld. Controleer DB-informatie."
+
+#: bayesspam_functions.php:117 bayesspam_functions.php:1336
+msgid "Spam"
+msgstr "Spam"
+
+#: bayesspam_functions.php:118 bayesspam_functions.php:1341
+msgid "NonSpam"
+msgstr "Geen-spam"
+
+#: bayesspam_functions.php:1205
+msgid "Recalculate score to view interesting tokens."
+msgstr "Bereken de score opnieuw om interessante tokens te bekijken."
+
+#: bayesspam_functions.php:1245
+msgid "BayesSpam Probability"
+msgstr "BayesSpam-waarschijnlijkheid"
+
+#: bayesspam_functions.php:1255 bayesspam_functions.php:1276
+msgid "Cached"
+msgstr "Gecached"
+
+#: bayesspam_functions.php:1261 bayesspam_functions.php:1282
+msgid "Calculated"
+msgstr "Berekend"
+
+#: bayesspam_functions.php:1306 bayesspam_functions.php:1309
+msgid "BayesSpam Links"
+msgstr "BayesSpam-links"
+
+#: bayesspam_functions.php:1320
+msgid "Known As Spam"
+msgstr "Gemarkeerd als spam"
+
+#: bayesspam_functions.php:1324
+msgid "Move to NonSpam"
+msgstr "Naar geen-spam verplaatsen"
+
+#: bayesspam_functions.php:1326
+msgid "Known As NonSpam"
+msgstr "Gemarkeerd als geen-spam"
+
+#: bayesspam_functions.php:1330
+msgid "Move to Spam"
+msgstr "Naar spam verplaatsen"
+
+#: bayesspam_functions.php:1332
+msgid "Not In DB"
+msgstr "Niet in DB"
+
+#: bayesspam_functions.php:1347
+msgid "Recalculate Score"
+msgstr "Score opnieuw berekenen"
+
+#: bayesspam_functions.php:1366
+msgid "BayesSpam - Intelligent Spam Filtering"
+msgstr "BayesSpam - intelligent spam filteren"
+
+#: bayesspam_functions.php:1368
+msgid ""
+"An intelligent mail filter that actually learns what you consider to be "
+"spam. Uses Bayesian filtering to very accurately filter out your spam."
+msgstr "Een intelligent berichtfilter dat automatisch leert wat u als spam beschouwd. Gebruikt Bayesian-filtering om zeer accuraat uw spam eruit te filteren."
+
+#: options.php:152
+msgid "Options"
+msgstr "Opties"
+
+#: options.php:152
+msgid "BayesSpam Filtering"
+msgstr "BayesSpam-filtering"
+
+#: options.php:161
+msgid "Spam/Nonspam Message List Buttons are"
+msgstr "Spam/geen-spam berichtlijstknoppen zijn"
+
+#: options.php:165 options.php:178 options.php:190 options.php:202
+#: options.php:219 options.php:235 options.php:252 options.php:264
+#: options.php:276 options.php:378
+msgid "Enabled"
+msgstr "Ingeschakeld"
+
+#: options.php:165 options.php:178 options.php:190 options.php:202
+#: options.php:219 options.php:235 options.php:252 options.php:264
+#: options.php:276 options.php:378
+msgid "Disable it"
+msgstr "Deactiveren"
+
+#: options.php:167 options.php:180 options.php:192 options.php:205
+#: options.php:207 options.php:222 options.php:224 options.php:238
+#: options.php:240 options.php:254 options.php:266 options.php:278
+#: options.php:380
+msgid "Disabled"
+msgstr "Uitgeschakeld"
+
+#: options.php:167 options.php:180 options.php:192 options.php:205
+#: options.php:222 options.php:238 options.php:254 options.php:266
+#: options.php:278 options.php:380
+msgid "Enable it"
+msgstr "Activeren"
+
+#: options.php:174
+msgid "BayesSpam Probability Display is"
+msgstr "Weergave voor BayesSpam-waarschijnlijkheid is"
+
+#: options.php:186
+msgid "BayesSpam Links are"
+msgstr "BayesSpam-links zijn"
+
+#: options.php:198
+msgid "BayesSpam Filtering is"
+msgstr "BayesSpam-filtering is"
+
+#: options.php:215
+msgid "Filtering Uncertain Messages is"
+msgstr "Filteren van onzekere berichten is"
+
+#: options.php:231
+msgid "Spam Deletion is"
+msgstr "Spam-verwijdering is"
+
+#: options.php:248
+msgid "Rebuild On Folder Refresh is"
+msgstr "Herbouwen bij mapverversing is"
+
+#: options.php:260
+msgid "Rebuild On Login is"
+msgstr "Herbouwen bij inloggen is"
+
+#: options.php:272
+msgid "Stats Tracking is"
+msgstr "Stats-volgen is"
+
+#: options.php:287
+msgid "Bytes of message to scan"
+msgstr "Bytes van te scannen berichten"
+
+#: options.php:288
+msgid "Maximum"
+msgstr "Maximum"
+
+#: options.php:302
+msgid "Delete Spam older than X Days"
+msgstr "Spam ouder dan X dagen verwijderen"
+
+#: options.php:303
+msgid "0 to disable"
+msgstr "0 voor uitschakelen"
+
+#: options.php:316
+msgid "Folder To Filter Into"
+msgstr "Map om naar te filteren"
+
+#: options.php:345
+msgid "Folder To Filter Uncertain Messages Into"
+msgstr "Map om onzekere berichten naartoe te filteren"
+
+#: options.php:374
+msgid "Check Inbox Only"
+msgstr "Alleen inbox controleren"
+
+#: options.php:387
+msgid "Add Folder To Ignore List"
+msgstr "Map aan negeerlijst toevoegen"
+
+#: options.php:411
+msgid "Remove Folder From Ignore List"
+msgstr "Map uit negeerlijst verwijderen"
+
+#: options.php:437
+msgid "Spam Database Stats"
+msgstr "Spam-database-statistieken"
+
+#: options.php:442
+msgid "Total Mail Filtered"
+msgstr "Totaal aan berichten gefilterd"
+
+#: options.php:458
+msgid "Total Filtered as Spam"
+msgstr "Totaal als spam gefilterd"
+
+#: options.php:474
+msgid "Total Filtered as NonSpam"
+msgstr "Totaal als geen-spam gefilterd"
+
+#: options.php:490
+msgid "Filtered As Unsure"
+msgstr "Gefilterd als onzeker"
+
+#: options.php:506
+msgid "False Positives"
+msgstr "Valse positieven"
+
+#: options.php:522
+msgid "False Negatives"
+msgstr "Valse negatieven"
+
+#: options.php:538
+msgid "Overall Accuracy (Based on Corrections)"
+msgstr "Totale accuraatheid (gebaseerd op verbeteringen)"
+
+#: options.php:555
+msgid "Average Parse Time / Message"
+msgstr "Gemiddelde verwerkingstijd / bericht"
+
+#: options.php:573
+msgid "NonSpam Emails in Corpus"
+msgstr "Geen-spam-berichten in Corpus"
+
+#: options.php:581
+msgid "Spam Emails in Corpus"
+msgstr "Spam-berichten in Corpus"
+
+#: options.php:589
+msgid "Last Database Rebuild"
+msgstr "Laatste database-herbouwing"
+
+#: options.php:605
+msgid "Last Mail Added"
+msgstr "Laatste toegevoegd bericht"
+
+#: options.php:629
+msgid "Rebuild Filtering Database Now"
+msgstr "Filterdatabase nu herbouwen"
+
+#: options.php:636
+msgid "Empty Database Now"
+msgstr "Database nu legen"
+
+#: options.php:641
+msgid ""
+"To start using BayesSpam Intelligent Filtering, you must first build up a "
+"database of what you consider to be spam, and what you consider to not be "
+"spam."
+msgstr "Om het intelligent filteren met BayesSpam te starten moet u eerst een database opbouwen aan de hand van wat u als spam ziet en wat niet."
+
+#: options.php:642
+msgid ""
+"To do this, enable the links. When you read an email, there will be two new "
+"links to the upper right, to let you mark the mail as Spam or NonSpam."
+msgstr "Om dit te doen, activeer de links. Als u een bericht leest verschijnen er twee nieuwe links rechtsboven, waarmee u het bericht kunt markeren als spam of geen-spam."
+
+#: options.php:643
+msgid ""
+"Use them a few dozen times on both spam and nonspam emails before going any "
+"further. The more times you use them, the more accurate your filtering will "
+"become."
+msgstr "Gebruik ze op een groot aantal spam- en geen-spam-berichten voordat u verder gaat. Hoe vaker u ze gebruikt, hoe accurater uw filter wordt."
+
+#: options.php:644
+msgid ""
+"Once you have a few dozen emails in your database (Come here to check your "
+"DB stats) you can enable the filtering itself."
+msgstr "Als u eenmaal een flinke hoeveelheid berichten in uw database hebt (kom hier om uw DB-statistieken te controleren) kunt u het filteren zelf activeren."
+
+#: options.php:646
+msgid "Spam Deletion"
+msgstr "Spamverwijdering"
+
+#: options.php:646
+msgid ""
+"This option is somewhat dangerous, since if you get a false positive, it "
+"would delete the message without ever telling you. False positives should "
+"not happen, but you use this option at your own risk. This option requires "
+"Filtering to be turned on as well."
+msgstr "Deze optie is enigszins gevaarlijk, omdat wanneer u een valse positieve ontvangt, het bericht zal worden verwijderd zonder dat u er weet van hebt. Valse positieven mogen niet voorkomen, maar u gebruikt deze optie op eigen risico. Deze optie vereist dat ook het filteren is geactiveerd."
+
+#: options.php:647
+msgid "Ignore List"
+msgstr "Negeerlijst"
+
+#: options.php:647
+msgid ""
+"Folders to not run the filtering on. This is not 100% reliable, since "
+"BayesSpam may load before the main Filters plugin, thus giving it a chance "
+"to run on the messages in the inbox before they've been moved to their own "
+"folders."
+msgstr "Mappen die niet zullen worden gefilterd. Dit is niet 100% betrouwbaar omdat BayesSpam kan worden geladen voordat de filterplugin geladen is. Daardoor krijgt deze de kans om de berichten in de inbox te doorlopen voordat ze in hun eigen mappen zijn geplaatst."
+
+#: options.php:650
+msgid "Empty Database"
+msgstr "Database legen"
+
+#: options.php:650
+msgid ""
+"Do this if you for some reason want to wipe out your current spam DB and "
+"start all over."
+msgstr "Doe dit als u om welke reden dan ook uw huidige spam-database wilt wissen en opnieuw wilt beginnen."
+

@@ -1,0 +1,46 @@
+#!/bin/sh
+STRINGS=`ls po/*.pot | sed 's/^po\///' | sed 's/.pot$//'`
+for trans in `ls locale/`; do
+    echo ${trans}
+    for string in $STRINGS ; do
+	if [ -f locale/${trans}/LC_MESSAGES/${string}.po ] ; then
+	    echo ${string}
+            mv locale/${trans}/LC_MESSAGES/${string}.po \
+    		locale/${trans}/LC_MESSAGES/${string}.po.bak
+	    msgmerge --no-location locale/${trans}/LC_MESSAGES/${string}.po.bak \
+		po/${string}.pot > locale/${trans}/LC_MESSAGES/${string}.po
+            rm locale/${trans}/LC_MESSAGES/${string}.po.bak
+	fi
+    done
+done
+
+STRINGS2=`ls po/plugins/*.pot | sed 's/^po\/plugins\///' | sed 's/.pot$//'`
+for trans in `ls locale/`; do
+    echo ${trans}
+    for string in $STRINGS2 ; do
+	if [ -f locale/${trans}/LC_MESSAGES/plugins/${string}.po ] ; then
+	    echo ${string}
+            mv locale/${trans}/LC_MESSAGES/plugins/${string}.po \
+    		locale/${trans}/LC_MESSAGES/plugins/${string}.po.bak
+	    msgmerge --no-location locale/${trans}/LC_MESSAGES/plugins/${string}.po.bak \
+		po/plugins/${string}.pot > locale/${trans}/LC_MESSAGES/plugins/${string}.po
+            rm locale/${trans}/LC_MESSAGES/plugins/${string}.po.bak
+	fi
+    done
+done
+
+STRINGS3=`ls po/extra/*.pot | sed 's/^po\/extra\///' | sed 's/.pot$//'`
+for trans in `ls locale/`; do
+    echo ${trans}
+    for string in $STRINGS3 ; do
+	if [ -f locale/${trans}/LC_MESSAGES/extra/${string}.po ] ; then
+	    echo ${string}
+            mv locale/${trans}/LC_MESSAGES/extra/${string}.po \
+    		locale/${trans}/LC_MESSAGES/extra/${string}.po.bak
+	    msgmerge --no-location locale/${trans}/LC_MESSAGES/extra/${string}.po.bak \
+		po/extra/${string}.pot > locale/${trans}/LC_MESSAGES/extra/${string}.po
+            rm locale/${trans}/LC_MESSAGES/extra/${string}.po.bak
+	fi
+    done
+done
+

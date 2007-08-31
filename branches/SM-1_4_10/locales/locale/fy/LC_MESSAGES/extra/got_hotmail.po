@@ -1,0 +1,254 @@
+# translation of got_hotmail.po to Frisian
+# Rinse de Vries <rinsedevries@kde.nl>, 2007.
+# LANGUAGE (xx_XX) got_hotmail Translation (SquirrelMail plugin)
+# Copyright (c) 1999-2006 The SquirrelMail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
+# $Id: got_hotmail.pot 10877 2006-03-04 11:22:22Z jervfors $
+msgid ""
+msgstr ""
+"Project-Id-Version: got_hotmail\n"
+"POT-Creation-Date: 2005-03-12 16:51+0100\n"
+"PO-Revision-Date: 2007-04-15 11:54+0100\n"
+"Last-Translator: Douwe VDM <dvandermeulen@hetnet.nl>\n"
+"Language-Team: Frisian <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#: functions.php:102
+msgid "Logging in"
+msgstr "Logget yn"
+
+#: functions.php:104
+msgid "Getting folder info"
+msgstr "Untfangt berjochtynformaasje"
+
+#: functions.php:106
+msgid " has "
+msgstr " hat "
+
+#: functions.php:106
+msgid " unread messages of "
+msgstr " net-lêzen berjochten fan"
+
+#: functions.php:111
+msgid "Getting msg "
+msgstr "Untfangt berjocht "
+
+#: functions.php:111
+#: functions.php:115
+msgid " from "
+msgstr " fan "
+
+#: functions.php:113
+msgid "Marking msg "
+msgstr "Markearret berjocht "
+
+#: functions.php:113
+msgid " as read"
+msgstr " as lêzen"
+
+#: functions.php:115
+msgid "Removing msg "
+msgstr "Wisket berjocht "
+
+#: functions.php:117
+msgid "Closing connection"
+msgstr "Slút de ferbining"
+
+#: functions.php:127
+msgid "No messages to get"
+msgstr "Gjin te ûntfangen berjochten"
+
+#: functions.php:129
+#: functions.php:133
+msgid "All the messages should be delivered to "
+msgstr "Alle berjochten moatte besoarge wurde by "
+
+#: functions.php:129
+#: functions.php:133
+msgid " shortly"
+msgstr "meikoarten"
+
+#: functions.php:135
+#: functions.php:149
+msgid "Some errors have occured"
+msgstr "Der dienen him inkele fouten foar"
+
+#: functions.php:136
+msgid "Please notify your administrator"
+msgstr "Ynformear jo systeembehearder"
+
+#: functions.php:150
+msgid "Please make sure all fields for this account"
+msgstr "Soargje derfoar dat alle fjilden foar dit akkount"
+
+#: functions.php:151
+msgid "Are complete and true, all fields are REQUIRED!!!"
+msgstr "kompleet en goed binne. Alle fjilden binne FEREASKE!"
+
+#: gothotmail.php:63
+msgid "Get HotMail Messages"
+msgstr "Hotmail-berjochten ûntfange"
+
+#: gothotmail.php:74
+msgid "Select Account:"
+msgstr "Akkount selektearje:"
+
+#: gothotmail.php:77
+msgid "All"
+msgstr "Alles"
+
+#: gothotmail.php:91
+msgid "Password for"
+msgstr "Wachtwurd foar"
+
+#: gothotmail.php:101
+msgid "Get HotMail"
+msgstr "Hotmail ûntfange"
+
+#: gothotmail.php:136
+msgid "Getting mail from "
+msgstr "Hotmail ûntfange fan "
+
+#: gothotmail.php:146
+msgid "Running gotmail"
+msgstr "Gotmail starte"
+
+#: gothotmail.php:159
+msgid "HotMail Account Checked"
+msgstr "Hotmail-akkount kontrolearre"
+
+#: gothotmail.php:163
+msgid "ERROR: Please re-run setup and define and address to send to"
+msgstr "FOUT: fier de setup op 'e nij út en jou in adres om nei te ferstjoeren op"
+
+#: options.php:195
+msgid "Got HotMail account settings"
+msgstr "Untfong Hotmail-akkountynstellingen"
+
+#: options.php:202
+msgid "You should be aware that the encryption used to store your password is not perfectly secure.  Additionally, the encryption that we do to save it on the server can be undone by a hacker reading the source to this file."
+msgstr "Unthâld dat de brûkte fersifering foar it bewarjen fan jo wachtwurd net hielendal feilich is. Teffens kin de fersifering ûngedaan makke wurde troch in hacker dy't de boarne fan dit berjocht lêze kin."
+
+#: options.php:210
+msgid "If you leave password empty, it will be required when SquirrelMail  tries to fetch your Hotmail."
+msgstr "As jo it wachtwurd leech litte sille jo it opjaan moatte as SquirrelMail besiket jo Hotmail op te heljen."
+
+#: options.php:221
+#: options.php:271
+msgid "Add Account"
+msgstr "Akkount taheakje"
+
+#: options.php:230
+#: options.php:286
+#: options.php:342
+msgid "Account:"
+msgstr "Akkount:"
+
+#: options.php:234
+#: options.php:355
+msgid "Password:"
+msgstr "Wachtwurd:"
+
+#: options.php:238
+#: options.php:359
+msgid "Account to send mail to:"
+msgstr "Akkount om e-mail nei te ferstjoeren:"
+
+#: options.php:242
+#: options.php:363
+msgid "Folders:"
+msgstr "Mappen:"
+
+#: options.php:251
+#: options.php:374
+msgid "Delete from Hotmail after pick up"
+msgstr "By Hotmail wiskje nei opheljen"
+
+#: options.php:255
+#: options.php:381
+msgid "Mark as read on Hotmail after pick up"
+msgstr "By Hotmail markearje as Lêzen nei opheljen"
+
+#: options.php:259
+#: options.php:388
+msgid "Pick up only new mail from Hotmail"
+msgstr "Allinnich nije e-mail ophelje by Hotmail"
+
+#: options.php:263
+#: options.php:395
+msgid "Check this account for mail at login"
+msgstr "Selektearje dit akkount foar e-mail by ynlogjen"
+
+#: options.php:267
+#: options.php:402
+msgid "Check this account for mail during folder refresh"
+msgstr "Selektearje dit akkount foar e-mail ûnder it mappenferfarskjen"
+
+#: options.php:280
+#: options.php:407
+msgid "Modify Account"
+msgstr "Akkount wizigje"
+
+#: options.php:292
+#: options.php:325
+msgid "Modify"
+msgstr "Wizigje"
+
+#: options.php:293
+#: options.php:301
+msgid "Delete"
+msgstr "Wiskje"
+
+#: options.php:296
+msgid "No accounts in use. Try adding."
+msgstr "Gjin akkount yn gebrûk. Heakje der ien ta."
+
+#: options.php:304
+#: options.php:328
+#: options.php:417
+msgid "Retreving Accounts"
+msgstr "Akkounts ophelje"
+
+#: options.php:310
+msgid "Confirm Deletion of an Account"
+msgstr "Wiskjen fan in akkount befêstigje"
+
+#: options.php:316
+msgid "Selected Account:"
+msgstr "Selektearre akkount:"
+
+#: options.php:317
+msgid "Confirm deletion of selected account?"
+msgstr "Wiskjen fan selektearre akkount befêstigje?"
+
+#: options.php:318
+msgid "Confirm Delete"
+msgstr "Wiskjen befêstigje"
+
+#: options.php:334
+msgid "Modify an Account"
+msgstr "In akkount wizigje"
+
+#: options.php:423
+msgid "Undefined Function"
+msgstr "Net definiearre funksje"
+
+#: options.php:424
+msgid "Something went wrong!!  Women and children first!!  Abandon SHIP!!!"
+msgstr "Der gie wat mis!! Froulju en bern earst! Ferlit it skip!!"
+
+#: setup.php:37
+msgid "Got Hotmail Options"
+msgstr "Got-Hotmail-opsjes"
+
+#: setup.php:39
+msgid "This configures settings for retrieving mail from hotmail and/or MSN accounts to your current mailbox."
+msgstr "Dit konfigureart de ynstellingen foar it opheljen fan berjochten fan Hotmail en/of MSN-akkounts nei jo besteande postbus."
+
+#: setup.php:47
+msgid "Hotmail"
+msgstr "Hotmail"
+
