@@ -496,7 +496,7 @@ function sqimap_mailbox_option_list($imap_stream, $show_selected = 0, $folder_sk
     if ( $use_long_format ) {
         $shorten_box_names = 0;
     } else {
-        $shorten_box_names = getPref($data_dir, $username, 'mailbox_select_style', SMPREF_OFF);
+        $shorten_box_names = getPref($data_dir, $username, 'mailbox_select_style', 1);
     }
 
     if ($boxes == 0) {

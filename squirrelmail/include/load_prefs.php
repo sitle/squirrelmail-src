@@ -266,7 +266,7 @@ $search_memory = getPref($data_dir, $username, 'search_memory', 0);
 
 $forward_cc = getPref($data_dir, $username, 'forward_cc', 0);
 
-$mailbox_select_style = getPref($data_dir, $username, 'mailbox_select_style', 0);
+$mailbox_select_style = getPref($data_dir, $username, 'mailbox_select_style', 1);
 
 /* Allow user to customize, and display the full date, instead of day, or time based
    on time distance from date of message */
@@ -279,4 +279,3 @@ $truncate_subject = getPref($data_dir, $username, 'truncate_subject', 50);
 
 do_hook('loading_prefs');
 
-?>
