@@ -41,9 +41,10 @@ Version 1.4.11 - SVN
     global variable $right_frame_url
   - Fix issue in darkness theme with extra closing bracket.
   - No longer store all message composition sessions in the PHP session,
-    since it was not made use of and in rare cases, made sessions too big
-  - Composition restoration functionality now correctly restores attachments
-  - Added smtp_auth hook
+    since it was not made use of and in rare cases, made sessions too big.
+  - Composition restoration functionality now correctly restores attachments.
+  - Added smtp_auth hook.
+  - Change default Selection List Style to Indented.
 
 Version 1.4.10a - 10 May 2007
 -----------------------------
