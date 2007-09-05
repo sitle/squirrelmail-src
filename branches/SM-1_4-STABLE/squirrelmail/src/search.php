@@ -508,14 +508,14 @@ if ($search_all == 'all') {
     for ($x=0;$x<$boxcount;$x++) {
         if (!in_array('noselect', $boxes[$x]['flags'])) {
             $mailbox = $boxes[$x]['unformatted'];
-        }
-        if (($submit == _("Search") || $submit == 'Search_no_update') && !empty($what)) {
-            sqimap_mailbox_select($imapConnection, $mailbox);
-            $msgs = sqimap_search($imapConnection, $where, $what, $mailbox, $color, 0, $search_all, $count_all);
-            $count_all = count($msgs);
-            printSearchMessages($msgs, $mailbox, $count_all, $imapConnection, 
-                                $where, $what, false, false);
-            array_push($perbox_count, $count_all);
+            if (($submit == _("Search") || $submit == 'Search_no_update') && !empty($what)) {
+                sqimap_mailbox_select($imapConnection, $mailbox);
+                $msgs = sqimap_search($imapConnection, $where, $what, $mailbox, $color, 0, $search_all, $count_all);
+                $count_all = count($msgs);
+                printSearchMessages($msgs, $mailbox, $count_all, $imapConnection, 
+                                    $where, $what, false, false);
+                array_push($perbox_count, $count_all);
+            }
         }
     }
     for ($i=0;$i<count($perbox_count);$i++) {
