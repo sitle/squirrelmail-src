@@ -264,8 +264,6 @@ $use_javascript_addr_book = getPref($data_dir, $username, 'use_javascript_addr_b
 
 $search_memory = getPref($data_dir, $username, 'search_memory', 0);
 
-$forward_cc = getPref($data_dir, $username, 'forward_cc', 0);
-
 $mailbox_select_style = getPref($data_dir, $username, 'mailbox_select_style', 1);
 
 /* Allow user to customize, and display the full date, instead of day, or time based
