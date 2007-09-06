@@ -253,13 +253,6 @@ function load_optpage_data_display() {
     );
 
     $optvals[SMOPT_GRP_MESSAGE][] = array(
-        'name'    => 'forward_cc',
-        'caption' => _("Include CCs when Forwarding Messages"),
-        'type'    => SMOPT_TYPE_BOOLEAN,
-        'refresh' => SMOPT_REFRESH_NONE
-    );
-
-    $optvals[SMOPT_GRP_MESSAGE][] = array(
         'name'    => 'include_self_reply_all',
         'caption' => _("Include Me in CC when I Reply All"),
         'type'    => SMOPT_TYPE_BOOLEAN,
