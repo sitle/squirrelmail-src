@@ -741,6 +741,7 @@ function mail_message_listing_beginning ($imapConnection,
             getMbxList($imapConnection);
             echo getButton('SUBMIT', 'moveButton',_("Move")) . "\n";
             echo getButton('SUBMIT', 'attache',_("Forward")) . "\n";
+            do_hook('mailbox_display_buttons');
 
     echo "      </small></td>\n"
          . html_tag( 'td', '', 'right', '', 'nowrap' );
