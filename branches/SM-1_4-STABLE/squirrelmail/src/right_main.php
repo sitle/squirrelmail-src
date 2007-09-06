@@ -74,6 +74,11 @@ if ( sqgetGlobalVar('PG_SHOWALL', $temp, SQ_GET) ) {
 if ( sqgetGlobalVar('newsort', $temp, SQ_GET) ) {
   $newsort = (int) $temp;
 }
+if ( !sqgetGlobalVar('preselected', $preselected, SQ_GET) || !is_array($preselected)) {
+  $preselected = array();
+} else {
+  $preselected = array_keys($preselected);
+}
 if ( sqgetGlobalVar('checkall', $temp, SQ_GET) ) {
   $checkall = (int) $temp;
 }
