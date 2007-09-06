@@ -41,7 +41,7 @@ function elapsed($start)
 
 function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
                           $start_msg, $where, $what) {
-    global $checkall,
+    global $checkall, $preselected,
            $color, $msgs, $msort, $td_str, $msg,
            $default_use_priority,
            $message_highlight_list,
@@ -194,7 +194,10 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
     if (!isset($hlt_color)) {
         $hlt_color = $color_string;
     }
-    $checked = ($checkall == 1) ? ' CHECKED' : '';
+    if ($checkall == 1 || in_array($msg['ID'], $preselected))
+        $checked = ' checked="checked"';
+    else
+        $checked = '';
     $col = 0;
     $msg['SUBJECT'] = decodeHeader($msg['SUBJECT']);
 //    $subject = processSubject($msg['SUBJECT'], $indent_array[$msg['ID']]);
