@@ -1715,7 +1715,6 @@ having the loopback interface sniffed.
 
 <sect2>Requirements
 <p>
-
 <sect3>CRAM/DIGEST-MD5
 <p>
 <itemize>
@@ -1805,9 +1804,137 @@ About data directory security.
 <p>
 vkeyboard plugin.
 
-<sect>FAQ
+<sect>Adding accounts
 <p>
-Daily questions
+<sect1>The problem
+<p>
+SquirrelMail can't be used to add user accounts, or to allow users to add their
+own accounts, for three main reasons.
+
+<itemize>
+  <item>One of the SquirrelMail design goals is to do what it does very well,
+        but to remain lean and simple.
+  <item>User administration is very dependent on the server. A NT server with
+        Exchange differs from a Linux server with Cyrus. There's no such thing
+        as adding a SquirrelMail user; what you need to do is to add users to
+        the IMAP server.
+  <item>This would open a whole new (and unwanted) batch of security issues. One
+        of those issues is giving your web server administrative access to your
+        e-mail system.
+</itemize>
+
+SquirrelMail (without plugins) is just an IMAP client - nothing more. It merely
+passes information to your IMAP server and formats it so it looks better to the
+people logged in.
+
+It is, however, possible to develop a tool that fits your environment and put a
+link to it at your login page. Such a tool could either be a SquirrelMail plugin
+or a detached application with the "look and feel" of SquirrelMail. The
+internals of such a tool are system-specific, so you should consult the
+documentation for your system and/or IMAP server. If you do develop it as a
+plugin, we would love to list it on our plugins page.
+
+<sect1>Existing solutions
+<p>
+In order to provide a free web mail sign up you can try one of these third party
+solutions (listed in no particular order):
+
+<enum>
+  <item><url url="http://inter7.com/index.php?page=vpopmail" name="vpopmail">,
+        <url url="http://inter7.com/index.php?page=vqregister" name="vqregister">,
+        and <url url="http://inter7.com/index.php?page=vqsignup" name="vqsignup">.
+    <itemize>
+      <item>vpopmail provides a virtual user setup. User's information can be
+            stored in file databases, a SQL database, or a LDAP directory.
+            vqregister and vqsignup provide sign up scripts that use vpopmail
+            libraries. This setup uses qmail or Courier MTA (SMTP servers) and
+            the Courier IMAP server.
+      <item>If you use vpopmail - you can use administration and automatic
+            signup programs available at <url url="http://inter7.com"
+            name="http://inter7.com">. If you have other type of setup (LDAP /
+            MySQL / System users / other special local delivery program) - you
+            need to write appropriate scripts that automate user management. As
+            of version 3.0 of the Vadmin plugin (mentioned below), SQL-based
+            backends are supported.
+      <item>WARNING! inter7.com might require using other browsers than
+            Microsoft Internet Explorer (typically <url
+            url="http://mozilla.com/firefox/" name="Firefox">).
+    </itemize>
+  <item><url url="http://email.uoa.gr/projects/misc/uoa-signup/"
+        name="UoA-Signup">.
+    <itemize>
+      <item>UoA-Signup is a simple signup script for inserting users in
+            an LDAP directory. This setup uses the Sendmail MTA and the Cyrus
+            IMAP server. For Cyrus, you would also need the autocreate patch.
+            Setup can be customized for different MTAs (like Exim and Postfix).
+            Note that UoA-Signup is a bit old and might not be supported.
+    </itemize>
+  <item><url url="http://untroubled.org/vmailmgr/" name="VMailMgr"> and the <url
+        url="http://squirrelmail.org/plugin_view.php?id=3" name="Vadmin"> plugin
+    <itemize>
+      <item>The excellent Vadmin plugin was created to meet the needs of system
+            administrators, and allows you to create new accounts and manage
+            accounts.  But as expected it requires a specific configuration (or
+            a SQL backend system). Please note that this is contributed and not
+            a part of SquirrelMail.
+    </itemize>
+  <item><url url="http://hmailserver.com/forum/viewtopic.php?t=904" name="hMailServer">
+    <itemize>
+      <item>There is a script and a small discussion in the forum about doing
+            this (rather easily) with hMailServer as the mail server.
+    </itemize>
+</enum>
+
+<sect1>Issues to consider
+<p>
+There are a couple of issues related to making an e-mail service open to the
+public. Some of them are listed below.
+
+<enum>
+  <item>Accountability
+    <itemize>
+      <item>You must have end user agreements and procedures that deal with
+            misuse of the interface.
+    </itemize>
+  <item>Performance
+    <itemize>
+      <item>The SquirrelMail requirements are not large, but certain PHP modules
+            are required if you want a fast system.
+      <item>You need to remove plugins that can increase the load at your
+            server, and provide server side alternatives. For example, stock
+            filters plugin should not be enabled on larger systems.
+    </itemize>
+  <item>Scalability
+    <itemize>
+      <item>Your system should be able to extend when the current server can't
+            deal with the load. This would mean fast internal network (maybe 1
+            Gb Ethernet) that contains separate authentication and storage
+            servers and load balancing between several WWW/IMAP servers.
+    </itemize>
+  <item>Backups
+    <itemize>
+      <item>You will have to use RAID1 disks for storage and some special backup
+            solution.
+      <item>You will have to use at least two different internet providers in
+            order to get reliable internet connection.
+    </itemize>
+  <item>Experience
+    <itemize>
+      <item>You need to understand how SquirrelMail works. You will need that
+            knowledge in order to
+        <itemize>
+          <item>customize the interface to suit your site,
+          <item>combine the stock and third party plugins, and
+          <item>write your own plugins (you will most likely need at least one
+                non-existent plugin or interface customization).
+        </itemize>
+    </itemize>
+  <item>Finances
+    <itemize>
+      <item>You need money to allow you to keep your server farm running and pay
+            your bills.
+    </itemize>
+</enum>
 
 <sect>Solving problems
 <sect1>Configtest
@@ -2027,6 +2154,10 @@ viewing the message list or a message's content, that can be used to delete
 mails without changing the trash folder setting per above.
 
 Some quota setups can ignore files placed in Trash folder.
+
+<sect>FAQ
+<p>
+Daily questions
 
 <sect>Support
 <p>
@@ -2394,7 +2525,6 @@ List of sites and projects related to SquirrelMail
 
 <sect>Licensing and warranty
 <p>
-
 SquirrelMail is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation; either version 2 of the License, or
