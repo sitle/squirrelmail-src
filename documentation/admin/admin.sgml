@@ -1333,26 +1333,82 @@ the Zend License Agreement.
 
 <sect>Customizing SquirrelMail
 <sect1>Plugins
+<sect2>What is a plugin?
 <p>
-SquirrelMail is a modular system, wherein its functionality can be extended
-with extra features provided by various plugins.
+SquirrelMail is a modular system, wherein its functionality can be extended with
+extra features provided by various plugins. The plugins may be downloaded from
+various sources, one of them being <url
+url="http://squirrelmail.org/plugins.php" name="the SquirrelMail Project's
+official plugin page">.
 
-<sect2>Installing plugins
+Read the plugin's documentation and requirements to find out if this is a plugin
+that might be used in your setup. Sometimes you might need to uncompress the
+plugin package to be able to read the full documentation about it.
+
+Plugins available to SquirrelMail must be stored in the SquirrelMail plugins
+directory. Each plugin uses its own subdirectory therein.
+
+<sect2>Installing a plugin
 <p>
-Plugins are installed by unpacking them into the SquirrelMail plugins
-directory. Each plugin uses its own directory therein.
+Installation of a new plugin is done it in a number of steps described below.
 
-After unpacking a plugin, you should check its installation documentation
-and requirements. Some plugins need special plugin libraries, some need
-configuration files, and some might need modifications in the main
-SquirrelMail scripts.
+<enum>
+  <item>Uncompressing
+  <item>Configurating
+  <item>Enabling
+  <item>Testing
+</enum>
 
-After the plugin is configured, you should start the SquirrelMail configuration
-utility, and select <tt/8. Plugins/ menu option.
+<sect3>Uncompressing a plugin
+<p>
+Download the plugin package, save it in <tt>/[path to
+SquirrelMail]/plugins/</tt> and uncompress it. This should create a new
+directory with the uncompressed plugin in it. Obviously, you have to substitute
+<tt/[path to SquirrelMail]/ with the path used at your system. Here's an
+example:
 
-This option displays two plugin categories: installed and available. The installed
-category lists plugins that are currently enabled. The a available category lists
-plugins that are not currently enabled but are available for use.
+<tscreen><verb>
+cd /var/www/squirrelmail/plugins/
+tar -xzvf newplugin-1.0.tar.gz
+</verb></tscreen>
+
+<sect3>Configuring a plugin
+<p>
+Every plugin should come with a README and/or INSTALL file (and maybe some other
+documentation as well) which should always be read before enabling the plugin.
+There might be some extra setup steps needed, such as configuring or patching,
+that are specific to that plugin or your system, and those steps are described
+there. Any dependencies, such as special libraries, should also be listed in the
+plugin documentation. However, many plugins require no additional configuration.
+
+Some plugins depend on <url url="http://squirrelmail.org/plugin_view.php?id=152"
+name="the Compatibility plugin">, but it might be important which version of the
+Compatibility plugin is used. <url
+url="http://squirrelmail.org/wiki/CompatibilityDependencies" name="The wiki">
+provides more information as a complement to the plugin's documentation.
+
+<sect3>Enabling or disabling a plugin
+<p>
+There are two ways to enable or disable a plugin: the configuration script tool,
+or to edit the configuration manually. Using the configuration script is
+recommended.
+
+<sect4>Using the configuration script
+<p>
+Go to the main SquirrelMail directory and run the configuration script, by
+executing;
+
+<tscreen><verb>
+cd /[path to SquirrelMail]/
+config/conf.pl
+</verb></tscreen>
+
+Select the menu option "8. Plugins". This option displays all plugins present in
+the directory <tt>plugins/</tt> divided in two categories: installed and
+available. The installed category lists plugins that are currently enabled, and
+the available category lists plugins that are not currently enabled but are
+available for use. If you correctly uncompressed the plugin in the right place,
+it should be listed among the available plugins.
 
 <tscreen><verb>
 SquirrelMail Configuration : Read: config.php (1.4.0)
@@ -1373,10 +1429,11 @@ Plugins
     10. info
     11. mail_fetch
     12. newmail
-    13. sent_subfolders
-    14. spamcop
-    15. squirrelspell
-    16. translate
+    13. newplugin
+    14. sent_subfolders
+    15. spamcop
+    16. squirrelspell
+    17. translate
 
 R   Return to Main Menu
 C   Turn color on
@@ -1386,12 +1443,43 @@ Q   Quit
 Command &gt;&gt;
 </verb></tscreen>
 
-Each plugin has a number written next to its name. If you enter that number
-on the command line, you enable or disable the corresponding plugin.
+Each plugin has a number written next to its name. If you enter that number on
+the command line, the corresponding plugin is enabled or disabled. Don.t forget
+to save your changes by entering "S" at the command line.
 
-The configuration utility should display any plugin present in plugins/ directory.
+<sect4>Manually editing the configuration file
+<p>
+Find the SquirrelMail configuration file <tt/config.php/ file (usually located in
+<tt>/[path to SquirrelMail]/config/</tt>. Edit it using your favorite text
+editor, and add a line similar to this:
 
-TODO: Add information about manually activating plugins?  See the bottom of this page: http://squirrelmail.org/wiki/InstallingPlugins
+<tscreen><verb>
+$plugins[0] = 'newplugin';
+</verb></tscreen>
+
+The example above will add "newplugin" as the first plugin (index zero). There
+might already be other plugins installed, and if that is the case, make sure to
+change the zero to the first available plugin index number, since two plugins
+aren't allowed to share index number.
+
+Since SquirrelMail 1.5.2 you also need to edit the file <tt/plugin_hooks.php/
+(usually located in <tt>/[path to SquirrelMail]/config/</tt>. Inside of that
+file, you must add all of the plugin hook registration points that are listed in
+the plugin's <tt/setup.php/ file, inside the
+<tt/squirrelmail_plugin_init_[plugin name]()/ function.
+
+Make sure that there is no trailing <url
+url="http://squirrelmail.org/wiki/EndOfLine" name="end of line character"> and
+save the configuration.
+
+<sect3>Testing a plugin
+<p>
+Test the plugin to make sure that it works. This step is almost always
+successful, but if it isn't you may need to get support. Consult the plugin
+documentation to find out how to get the support, since it might vary depending
+on the plugin. It's usually a good idea to install, enable, and test one plugin
+at a time, since some plugins might not go well with the used system setup or
+other installed plugins.
 
 <sect1>Themes and Styles<label id="themes">
 <p>
