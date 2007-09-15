@@ -24,14 +24,14 @@ function squirrelmail_plugin_init_message_details()
 }
 
 function show_message_details() {
-    global $passed_id, $mailbox, $ent_num, $color,
+    global $passed_id, $mailbox, $passed_ent_id, $color,
            $javascript_on;
 
     if (strlen(trim($mailbox)) < 1) {
         $mailbox = 'INBOX';
     }
 
-    $params = '?passed_ent_id=' . $ent_num .
+    $params = '?passed_ent_id=' . $passed_ent_id .
               '&mailbox=' . urlencode($mailbox) .
               '&passed_id=' . $passed_id;
 
