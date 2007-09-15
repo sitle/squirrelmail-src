@@ -30,6 +30,8 @@ displayHtmlHeader( _("Message Details"),
              "</script>\n", FALSE );
 
 sqgetGlobalVar('passed_id', $passed_id, SQ_GET);
+if (!sqgetGlobalVar('passed_ent_id', $passed_ent_id, SQ_GET))
+    $passed_ent_id = 0;
 sqgetGlobalVar('mailbox', $mailbox, SQ_GET);
 
 echo "<body text=\"$color[8]\" bgcolor=\"$color[3]\" link=\"$color[7]\" vlink=\"$color[7]\" alink=\"$color[7]\">\n" .
@@ -40,7 +42,7 @@ echo "<body text=\"$color[8]\" bgcolor=\"$color[3]\" link=\"$color[7]\" vlink=\"
      '<input type="submit" value="' . _("Save Message") . '" /> '.
      '<input type="hidden" name="mailbox" value="' . urlencode($mailbox) . '" />' .
      '<input type="hidden" name="passed_id" value="' . urlencode($passed_id) . '" />' .
-     '<input type="hidden" name="ent_id" value="0" />' .
+     '<input type="hidden" name="ent_id" value="' . urlencode($passed_ent_id) . '" />' .
      '<input type="hidden" name="absolute_dl" value="true" />' .
      '</form>'.
      '</b>'.
