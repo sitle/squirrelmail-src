@@ -157,10 +157,28 @@ they are adding to the experience so you might want to consider them.
         required to make it usable.
 </itemize>
 
+<sect1>Scalability
+<p>
+SquirrelMail is known to scale well for large installations with thousands of
+users. It's recommended to have a lot of free memory available at the web
+server. Another common problem with larger systems is the <url
+url="http://squirrelmail.org/wiki/ConnectionsPerMinute" name="connections per
+minute"> limitation. Suggested reading is <ref id="optimization"
+name="Optimizing SquirrelMail">, <url
+url="http://squirrelmail.org/wiki/SquirrelMailPerformance" name="SquirrelMail
+performance">, and the <url
+url="http://squirrelmail.org/wiki/BrowseProblemsByComplaint" name="speed section
+in the wiki">.
+
+An example of a large SquirrelMail installation (with peaks of 225 concurrent
+IMAP connections) is described in the article <url
+url="http://linuxjournal.com/article/7323" name="HEC Montréal: Deployment of a
+Large-Scale Mail Installation"> from the May 2004 edition of Linux Journal.
+
 <sect>Quick Start Guide
 <p>
 SquirrelMail can be downloaded from the SquirrelMail website or provided by your OS
-packager. It is configured with the conf.pl utility, that is stored in
+packager. It is configured with the <tt/conf.pl/ utility, that is stored in
 the <tt/config/ directory. You must configure SquirrelMail before using it.
 SquirrelMail can be used by accessing it in web browser just like any other files
 and scripts stored on your web server.
@@ -1186,7 +1204,7 @@ mapping in imap server's address configuration, it might be broken.
 <p>
 Other configuration issues.
 
-<sect>Optimizing SquirrelMail
+<sect>Optimizing SquirrelMail<label id="optimization">
 <p>
 This chapter should explain what can help in speeding up your SquirrelMail
 installation and improve its performance.
@@ -1222,37 +1240,89 @@ In some cases SquirrelMail can take advantage of PHP recode or iconv
 functions. These functions can be used to speedup decoding of CJK charsets.
 
 <sect1>IMAP server extensions
+<sect2>Sorting
 <p>
-If your IMAP server supports the IMAP SORT or THREAD extensions (most mainstream
-servers do) turn them on. Server side sorting is faster than sorting in PHP
-script.
+If the IMAP server supports the IMAP extension SORT (most mainstream servers do)
+enable this feature in SquirrelMail's configuration. In general, always enable
+this option if your server supports it since it's way faster than sorting in
+SquirrelMail, and may prevent problems for end users with very large mailboxes.
+When not using server-side sorting, these end users may get an empty page upon
+viewing the large mailbox, because the PHP sorting times out. It'll vary by
+machine speed, but it has been reported that when viewing a folder containing
+circa 17,000 mails, the initial viewing delays can decrease from around 35
+seconds to 4 seconds.
 
-Options can be enabled in SquirrelMail configuration utility:
-<tscreen><verb>
-4. General Options
-  12. Allow server-side sorting: false (default) &gt; true
-</verb></tscreen>
-
-In general, always enable this option if your server supports it. It's faster
-than sorting in SquirrelMail, and may prevent problems with users with very
-large mailboxes. When not using server side sorting, these users may get
-an empty page upon viewing the large mailbox, because the PHP sorting times
-out.
-
-SquirrelMail 1.5.1 and newer versions automatically turn on server side sorting
-if the SORT or THREAD extension is declared in the IMAP CAPABILITY response.
-
-Server side sorting can cause problems in SquirrelMail only when IMAP server
-does not support charset used by selected SquirrelMail translation. SquirrelMail
-can use more than 15 charsets in server side sorting and threading
+Server-side sorting can cause problems in SquirrelMail only when IMAP server
+does not support char set used by selected SquirrelMail translation.
+SquirrelMail can use more than 15 char sets in server-side sorting and threading
 commands. Courier IMAP server supports them only when compiled with the
 <tt/--enable-unicode/ option. Cyrus IMAP (v.2.2.12) does not support some
-multibyte charsets used by SquirrelMail.
+multibyte char sets used by SquirrelMail.
 
-SquirrelMail also allows to turn on server side threading support. This option
-allows end users to use threaded sorting. Threaded sorting requires more system
-resources and you should enable it only if you want to provide such an option to
-end users.
+<sect2>Threading
+<p>
+SquirrelMail also allows using server-side threading if the IMAP server supports
+it. This option offers the end users to view the message list in a thread view.
+Threaded sorting requires more system resources and you should enable it only if
+you want to provide such an option to end users.
+
+<sect2>Enabling the extensions
+<p>
+To find out if the IMAP server supports server-side sorting and threading,
+telnet to it and ask:
+
+<tscreen><verb>
+> telnet imapserver.example.com imap
+* OK
+
+1 capability
+* CAPABILITY IMAP4rev1 UIDPLUS CHILDREN NAMESPACE THREAD=ORDEREDSUBJECT THREAD=REFERENCES SORT QUOTA IDLE AUTH=PLAIN STARTTLS
+1 OK CAPABILITY completed
+</verb></tscreen>
+
+The SORT and THREAD capabilities indicates that this server supports these
+extensions. Next step is to configure SquirrelMail to use them.
+
+Using <tt>config/conf.pl</tt>:
+
+<tscreen><verb>
+4. General Options
+    10. Allow server thread sort:   false
+    11. Allow server-side sorting:  false
+</verb></tscreen>
+
+Editing <tt>config/config.php</tt>:
+
+<tscreen><verb>
+$allow_thread_sort = false;
+$allow_server_sort = false;
+</verb></tscreen>
+
+<sect2>Sorting and threading since 1.5.1
+<p>
+SquirrelMail 1.5.1 introduces some changes when it comes to sorting and
+threading. Sorting and threading is used by default, if the IMAP server supports
+it (according to the IMAP server's CAPABILITY response). It is, however,
+possible to manually override that, thus disabling them, in SquirrelMail's
+configuration.
+
+Using <tt>config/conf.pl</tt>:
+
+<tscreen><verb>
+4. General Options
+    10. Disable server thread sort:   false
+    11. Disable server-side sorting:  false
+</verb></tscreen>
+
+Editing <tt>config/config.php</tt>:
+
+<tscreen><verb>
+$disable_thread_sort = false;
+$disable_server_sort = false;
+</verb></tscreen>
+
+Even with server-side sorting disabled, PHP sorting is faster thanks to the
+rewritten sorting code.
 
 <sect1>Mailbox format
 <p>
@@ -1330,6 +1400,49 @@ compromises". There is no official license for PHPA, and it's free for use.
 Optimizer"> is a "free application that runs the files encoded by the Zend
 Guard, while enhancing the performance of PHP applications." It's released under
 the Zend License Agreement.
+
+<sect1>Decreasing the bandwidth
+<p>
+Sometimes the speed of the server is perceived to be terribly slow, but it is
+the cause of the modem speed or bandwidth at some intermediate server. To cut
+down on the amount of traffic generated from the server, you could compress web
+pages or condense them by removing excess garbage. Keep in mind that this will
+put a little more load on your server, but it is practically nothing when
+compared to your IMAP server and SquirrelMail.
+
+<sect2>Compression
+<p>
+These solutions only compress the output to clients that support it, so you
+don't need to worry about corrupting data to some older browsers by enabling any
+of the options listed below. They are listed in order of preference.
+
+Only implement one or else you might get some weird problems.
+
+<itemize>
+  <item>Configure the web server to compress the web pages (and maybe images).
+        The module <tt/mod_deflate/ is part of Apache since 2.0 and there's also
+        a third party module for Apache called <tt><url
+        url="http://schroepl.net/projekte/mod_gzip/" name="mod_gzip"></tt>.
+  <item>PHP can also compress all PHP pages sent out by setting the
+        <tt/output_handler/ to <tt/ob_gzhandler/, or enable
+        <tt/zlib.output_compression/ in <tt/php.ini/.
+  <item>SquirrelMail has the <url
+        url="http://squirrelmail.org/plugin_view.php?id=19" name="Gzip
+        Compressed Output"> plugin that can compress certain pages, but won't
+        compress much. It does help, but one of the others is suggested instead.
+</itemize>
+
+<sect2>Condensation
+<p>
+This refers to cleaning the HTML and removing unnecessary garbage in an effort
+to send as little to the client without actually changing the structure of the
+web page. Usually white space (extra spaces and new lines) are condensed into
+one, comments are removed, and sometimes HTML tags will be changed to be more
+efficient.
+
+Unfortunately the SquirrelMail Project Team doesn't know of a semi-standard
+module or PHP extension that does this, but we'd like to be informed if you find
+one.
 
 <sect>Customizing SquirrelMail
 <sect1>Plugins
@@ -1962,9 +2075,9 @@ solutions (listed in no particular order):
     <itemize>
       <item>The excellent Vadmin plugin was created to meet the needs of system
             administrators, and allows you to create new accounts and manage
-            accounts.  But as expected it requires a specific configuration (or
-            a SQL backend system). Please note that this is contributed and not
-            a part of SquirrelMail.
+            accounts. But as expected it requires a specific configuration (or a
+            SQL backend system). Please note that this is contributed and not a
+            part of SquirrelMail.
     </itemize>
   <item><url url="http://hmailserver.com/forum/viewtopic.php?t=904" name="hMailServer">
     <itemize>
