@@ -1373,10 +1373,10 @@ sub command_smtp_sitewide_userpass($) {
     print "SMTP connections?";
     if ($smtp_sitewide_user ne '') {
         $default = 'y';
-        print " [Yn]:";
+        print " [Y/n]:";
     } else {
         $default = 'n';
-        print " [yN]:";
+        print " [y/N]:";
     }
     $tmp=<STDIN>;
     $tmp = trim($tmp);
