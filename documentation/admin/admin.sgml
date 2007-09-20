@@ -729,7 +729,7 @@ for more information.
 
 If you are using SquirrelMail in setup with PHP <tt/safe_mode/ restrictions,
 data and attachment directories should be owned by same user that owns other
-SquirrelMail scripts. It must be writable by webserver group (see <ref
+SquirrelMail scripts. It must be writable by the web server group (see <ref
 id="safe_mode" name="Safe mode">).
 
 <sect1>Run conf.pl
@@ -845,21 +845,11 @@ specific settings.
 
 <sect1>Authentication
 <p>
-Next to plain text logins for IMAP and SMTP, SquirrelMail supports the
-CRAM-MD5 and DIGEST-MD5 authentication mechanisms. It is possible
-to use different methods for both IMAP and SMTP. Unless the administrator
-changes the authentication methods, SquirrelMail will default to the "classic"
-plain text methods.
-
-<sect2>Requirements
-<p>
-<verb>
-CRAM/DIGEST-MD5
-* If you have the mhash extension to PHP, it will automatically
-  be used, which may help performance on heavily loaded servers.
-  ** NOTE: mhash is optional and no longer a requirement **  (SINCE WHEN?)
-* PHP XML extension needed for digest-md5 authentication.
-</verb>
+Next to plain text logins for IMAP and SMTP, SquirrelMail supports the CRAM-MD5
+and DIGEST-MD5 authentication mechanisms. It is possible to use different
+methods for both IMAP and SMTP. Unless the administrator changes the
+authentication methods, SquirrelMail will default to the "classic" plain text
+methods.
 
 <sect2>POP before SMTP
 <p>
@@ -1920,8 +1910,8 @@ having the loopback interface sniffed.
 <p>
 <itemize>
   <item>Digest-MD5 authentication needs PHP XML extension.
-  <item>If you have the mhash extension to PHP, it will automatically
-    be used, which may help performance on heavily loaded servers.
+  <item>If you have the mhash extension to PHP, it will automatically be used,
+        which may help performance on heavily loaded servers.
   <item>IMAP server support for these methods.
 </itemize>
 
@@ -1929,16 +1919,16 @@ having the loopback interface sniffed.
 <p>
 <itemize>
   <item>PHP 4.3.0 or higher (Check Release Notes for PHP 4.3.x information)
-  <item>The server you wish to use TLS on must have a dedicated port listening for
-    TLS connections. (ie. port 993 for IMAP, 465 for SMTP).
+  <item>The server you wish to use TLS on must have a dedicated port listening
+        for TLS connections. (ie. port 993 for IMAP, 465 for SMTP).
   <item>If you use PHP 4.3.x, OpenSSL support must be compiled staticly. See
-    PHP bug #29934.
+        <url url="http://bugs.php.net/bug.php?id=29934" name="PHP bug #29934">.
 </itemize>
 
 <sect3>STARTTLS
 <p>
 <itemize>
-  <item>SquirrelMail 1.5.1 or higher
+  <item>Available since SquirrelMail 1.5.1.
   <item>PHP 5.1.0rc1 or higher (stream_socket_enable_crypto() function)
   <item>Server with STARTTLS extension support
 </itemize>
@@ -2472,7 +2462,8 @@ This preset is written for UW IMAPD.
   <item>force_username_lowercase = true
 </itemize>
 
-Comments:
+<sect2>Comments
+<p>
 <itemize>
   <item>Since v.2002 UW IMAPD disabled plain text logins in default
   configuration. SquirrelMail can't use STARTTLS features provided by default
@@ -2576,7 +2567,8 @@ SquirrelMail 1.5.0. It was tested on Mercury32 v.4.01b
   <item>force_username_lowercase = true
 </itemize>
 
-Comments:
+<sect2>Comments
+<p>
 <itemize>
   <item>Server side sorting and threading are not supported.
   <item>Message flags are not supported.
@@ -2611,7 +2603,8 @@ quick way to set correct folder settings. Tested on Dovecot v.0.99.14
   <item>force_username_lowercase = true
 </itemize>
 
-Comments:
+<sect2>Comments
+<p>
 <itemize>
   <item>IMAP server supports server side sorting and threading.
 </itemize>
