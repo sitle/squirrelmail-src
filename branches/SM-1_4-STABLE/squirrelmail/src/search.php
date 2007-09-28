@@ -54,7 +54,11 @@ if (! sqgetGlobalVar('where',$where,SQ_GET) ||
     // make sure that 'where' is one if standard IMAP SEARCH keywords
     $where = 'FROM';
 }
-// FIXME: what is this?
+if ( !sqgetGlobalVar('preselected', $preselected, SQ_GET) || !is_array($preselected)) {
+  $preselected = array();
+} else {
+  $preselected = array_keys($preselected);
+}
 if (!sqgetGlobalVar('checkall',$checkall,SQ_GET)) {
     unset($checkall);
 }
