@@ -41,8 +41,8 @@ chmod ugo+x ./configure ./po/compilepo ./po/mergepo ./po/xgetpo
 echo -- cding up --
 cd ..
 echo -- making .tar.gz --
-tar cvf squirrelmail-$1.tar.gz squirrelmail-$1
-gzip -9 squirrelmail-$1.tar.gz
+tar cvf squirrelmail-$1.tar squirrelmail-$1
+gzip -9 squirrelmail-$1.tar
 md5sum squirrelmail-$1.tar.gz > squirrelmail-$1.tar.gz.md5
 echo -- making .tar.bz2 --
 tar cjvf squirrelmail-$1.tar.bz2 squirrelmail-$1
