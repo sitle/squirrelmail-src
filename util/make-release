@@ -22,15 +22,8 @@ umask 0
 echo -- exporting svn --
 svn export https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/rel-$dashver \
     squirrelmail-$1
-#cvs -d:ext:$2@squirrelmail.cvs.sourceforge.net:/cvsroot/squirrelmail co -r SM-1_4-STABLE squirrelmail
-#echo -- renaming dir --
-#mv squirrelmail squirrelmail-$1
 echo -- cding to checkout --
 cd squirrelmail-$1
-#echo -- updating cvs --
-#cvs update -dP
-#echo -- removing cvs dirs --
-#find -name 'CVS' -prune                         -exec rm -rf {} \;
 echo -- removing .anything files \(except .ht*\) --
 find -iregex '.*/\.[^ht].*'                     -exec rm -rf {} \;
 echo -- setting general permissions --
