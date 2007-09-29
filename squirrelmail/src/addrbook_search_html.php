@@ -15,7 +15,9 @@
  */
 
 /** This is the addrbook_search_html page */
-define('PAGE_NAME', 'addrbook_search_html');
+if (! defined('PAGE_NAME') ) {
+    define('PAGE_NAME', 'addrbook_search_html');
+}
 
 /** 
  * Path for SquirrelMail required files.
