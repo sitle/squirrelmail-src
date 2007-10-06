@@ -2350,39 +2350,311 @@ Some quota setups can ignore files placed in Trash folder.
 <p>
 Daily questions
 
-<sect>Support
+<sect>Support, feedback, and suggestions<label id="support">
+<sect1>Before asking for support
 <p>
-Where do I get support? How do I provide feedback, patches, feature
-suggestions, bug reports.
+First of all you should read the documentation. Apart from the documentation
+included when installing SquirrelMail (you'll find it in <tt>doc/</tt>), and
+the documentation for the end users (which is available through the "Help" link
+in SquirrelMail), there are a few other useful resources:
 
-<sect1>SquirrelMail bug tracker
+<itemize>
+  <item><url url="http://squirrelmail.org/documentation/" name="The SquirrelMail documentation">,
+  <item><url url="http://squirrelmail.org/wiki/KnownBugs" name="Known bugs">, and
+  <item><url url="http://squirrelmail.org/wiki/SolvingProblems" name="Solving problems">.
+</itemize>
+
+After reading the documentation there's one more thing to do: search for more
+information on your own. The SquirrelMail Project has <ref id="mailinglists"
+name="mailing list archives"> and <ref id="trackers" name="trackers"> which
+contains useful information. The answers to your questions are likely to be
+found there if not in the documentation. It's also recommended to use a search
+engine, such as <url url="http://google.com/" name="Google">, or <url
+url="http://squirrelmail.org/search.php" name="the SquirrelMail search page">.
+
+Please use the tools described above, to make sure that you're not repeating a
+question that have been asked before. Chances are that the answer you're looking
+for is out there already.
+
+<sect1>Needed details<label id="neededdetails">
 <p>
-SquirrelMail uses Sourceforge system to manage bugs, patches and feature
-requests. See <url url="http://squirrelmail.org/bugs" name="bug tracker
-site">.
+To be able to get help solving your problem, you need to provide details about
+it. The better details you provide, the easier it will become to find the
+solution needed. Make it a rule to collect as much information as possible, even
+if you think that it might be irrelevant. Having to ask about more details is
+quite common and slows down the process, which most likely isn't what you want
+when asking for support.
 
-<sect1>SquirrelMail mailing lists
+Everyone trying to solve a problem, regardless of what kind of problem it might
+be, wants to know as much as possible about the various things that might affect
+the situation at hand. Here are some details that's needed when asking for
+SquirrelMail support.
+
+<itemize>
+  <item>SquirrelMail version (such as 1.4.0, 1.5.0, or 1.4.12-SVN from
+        2007-10-04)
+  <item>Every plugin installed (both names and version numbers)
+  <item>PHP version (such as 4.2.0 or 5.2.4)
+  <item>Web server (both brand and version number, such as Apache 1.3.27, or IIS
+        5.0)
+  <item>IMAP server (both brand and version number, such as Courier-IMAP 4.2.0,
+        UW IMAP as packaged by Debian as "uw-imapd (7:2002edebian1-13.1)", or
+        Microsoft Exchange Server 2003)
+  <item>SMTP server (both brand and version number, such as Sendmail 8.14.1, or
+        Postfix as packaged by FreeBSD as "postfix-2.4.5,1")
+  <item>OS and, if applicable, distribution (such as Debian GNU/Linux 4.0 for
+        i386 (kernel "linux-image-2.6.18-4-686 (2.6.18.dfsg.1-12etch2)"), Red
+        Hat Enterprise Linux 5.0.0 for PPC, NetBSD 3.1 for ARM, or Windows 2000)
+  <item>How your software was installed, including the package name if
+        applicable (Fedora 7 "dovecot-1.0.1-12.fc7" installed by RPM, or
+        SquirrelMail 1.4.11 installed manually)
+  <item>Browsers tried (both brand and version, such as Firefox 2.0.0.7, or
+        Internet Explorer 7.0.6000.16512)
+  <item>Any things that might make your install different, even if minor (such
+        as web server rewrite rules, configuration files, load balancers, and
+        proxies)
+  <item><ref id="errormessages" name="Error messages"> (see below)
+</itemize>
+
+The bug report plugin (bundled with SquirrelMail) collects a number of useful
+details. Make sure that the data provided by it is part of your request for
+support.
+
+Read more about how to ask for support in a smart way at <url
+url="http://www.catb.org/~esr/faqs/smart-questions.html" name="How to Ask
+Questions the Smart Way"> and <url
+url="http://www.chiark.greenend.org.uk/~sgtatham/bugs.html" name="How to Report
+Bugs Effectively">. Those pages are general suggestions applicable to almost all
+open source software, not only the SquirrelMail Project, and aren't maintained
+by the SquirrelMail Project Team.
+
+Remember that details are of the essence, and it's close to impossible to give
+too many of them.
+
+<sect2>Error Messages<label id="errormessages">
 <p>
-SquirrelMail uses Sourceforge mailing list services. See <url
-url="http://lists.sourceforge.net/lists/listinfo/squirrelmail-users"
-name="SquirrelMail users mailing list">.
+When you are getting errors from SquirrelMail, PHP, your IMAP logs, or any
+other source, please copy and paste the <em/exact/ message text from <em/all/
+error messages. Error messages from the SMTP or IMAP servers can usually be
+found in the system mail log, which might be in a place such as
+<tt>/var/log/maillog</tt>, and PHP errors might be found in the web server logs
+(sometimes in a file such as <tt>/var/log/httpd/error_log</tt>), or by turning
+PHP error displays on by either using the <url
+url="http://squirrelmail.org/plugin_view.php?id=228" name="Debugger plugin"> or
+by editing <tt/php.ini/ (<tt/display_errors=On/ and <tt/error_reporting=E_ALL/)
+and restarting your web server.
 
-Mailing list archives can be found on <url
-url="http://sourceforge.net/mail/?group_id=311" name="Sourceforge"> and
-<url url="http://gmane.org" name="Gmane">.
+The suggested logs above might not be applicable for your system, so check your
+system documentation if you don't know where to find the error messages.
 
-<sect1>Security issues
+<sect1>Posting guidelines
+<p>
+In addition to the sections above, there are some extra things to think about
+when using the mailing lists.
+
+<descrip>
+  <tag/Discuss SquirrelMail/
+    All the lists are related to SquirrelMail, so please don't use them for
+    non-related topics. If, for some reason, you <em/have/ to post something off
+    topic, please mark that post with "OT" in the subject line.
+  <tag/Post in plain text/
+    Disable HTML posting in your mail client when posting the mailing lists.
+    Most archive tools can't handle HTML, so try to describe your problem with
+    words in plain text, and not in colors and such.
+  <tag/Use a meaningful subject line/
+    See "<ref id="choosingsubject" name="Choosing a subject line">".
+  <tag/Use inline replying/
+    People may argue the pros and cons for various posting styles, such as
+    top-posting, bottom-posting, and double quoting, but use inline replying
+    when mailing to the SquirrelMail mailing lists. Remember that any mail you
+    send isn't just useful now and for yourself. When searching the archives
+    months later, being able to read a mail top-down is much easier than having
+    to jump back and forth in the mail to get the context. More information can
+    be found in <url url="http://en.wikipedia.org/wiki/Posting_style"
+    name="Wikipedia's article on posting style">.
+  <tag/Trim your replies/
+    Remove irrelevant lines from your replies, such as footers, but leave enough
+    for someone to understand the context when searching the archives.
+  <tag/Link to images, don't attach them/
+    Try not to use images, but sometimes a picture says more than a thousand
+    words. In those cases, please refrain from attaching your picture.
+    Publishing it at the web and providing a link to it helps keeping the list
+    volume down.
+  <tag/Only describe one problem per thread/
+    Don't describe more than one problem per thread. That helps when choosing a
+    fitting subject and is more useful when searching the archives.
+  <tag/Start a new thread when having a new problem/
+    Don't reply to a thread when your own post is not related to it, also known
+    as "hijacking threads". This is valid even if you change both the subject
+    and the mail body, since the other headers (which you can't change from your
+    client) will make your post appear in the thread you're replying to. Always
+    start a new thread from scratch.
+  <tag/Be patient/
+    Don't expect to get a reply within minutes. Wait at least 24 hours before
+    posting the same mail again. If you're impatient, you might want to consider
+    getting <ref id="commercialsupport" name="commercial support"> instead.
+</descrip>
+
+Remember to follow <url url="http://faqs.org/rfcs/rfc1855.html" name="RFC 1855 -
+Netiquette Guidelines"> as much as possible, unless it clashes with the
+guidelines above.
+
+<sect2>Choosing a subject line<label id="choosingsubject">
+<p>
+Make sure to use a subject line that describes the problem at hand. Putting
+"Help" is a poor description, but something like "Connection dropped by IMAP on
+login attempts" is more useful, both for you, the people trying to help you, and
+other people searching the archives since they have similar issues.
+
+To make the mailing list archives easier to search and use, please keep the
+following in mind when choosing a subject for your post to the mailing list:
+
+<itemize>
+  <item>Not everyone wants to read every message. A good subject lets readers
+        know the subject without opening the message.
+  <item>The mailing list archives serve as a form of self-generating
+        documentation. The better your subject line, the more likely someone
+        will learn from your post or reply.
+  <item>If you are certain that the problem is related to a specific plugin, you
+        should include the plugin name in the subject line.
+  <item>If you are writing a reply, try to preserve the sender's original
+        subject (unless it is the generic "no subject") as this helps preserve
+        threading if other reply mechanisms do not.
+</itemize>
+
+Some examples of <em/good/ subject lines:
+
+<itemize>
+  <item>Warnings with today's SVN
+  <item>SquirrelMail 1.0.1 doesn't work with PHP 4.0.1p1
+  <item>Re: SquirrelMail 1.0.1 doesn't work with PHP 4.0.1p1
+  <item>compose.php won't load in Mozilla
+  <item>mail_fetch plugin 1.4.9a hangs checking for messages
+  <item>Subject line does not appear when sending mail to oneself
+</itemize>
+
+Some examples of <em/too generic/ subject lines which violates the policy:
+
+<itemize>
+  <item>SquirrelMails
+  <item>Problem (or variations thereof, like "I have a problem" or "SquirrelMail
+        Problem")
+  <item>Error
+  <item>(No Subject)
+  <item>squirrelmail-devel digest, Vol x #xxxx - x msgs
+</itemize>
+
+<sect1>Free support<label id="freesupport">
+<p>
+Before contacting the free support, which is provided by the SquirrelMail
+Project Team and the SquirrelMail community, make sure that the prerequisites
+are fulfilled. Please note that this free service is "best effort only", i.e.
+please do not demand answers within a certain timeframe in the same way as when
+you have a <ref id="commercialsupport" name="commercial support agreement">.
+
+Please note that the free support only covers the SquirrelMail software, and not
+any other problems that you might have regarding sending or receiving mail with
+your employer's or ISP's particular installation. Problems such as "My mail
+keeps bouncing", "How come the boss didn't get my big proposal? Fix it!", or
+"Why are you blocking my mail?" is akin to asking the folks who built the road
+why your car's running poorly.
+
+There are three ways to contact the SquirrelMail Project Team: the <ref
+id="mailinglists" name="mailing lists">, the <ref id="trackers"
+name="trackers">, and the <ref id="irc" name="Internet Relay Chat channel">. The
+<ref id="neededdetails" name="information needed"> is applicable to all of them.
+If you're not sure which method to use, you're most likely best off trying the
+mailing lists first.
+
+<sect2>The mailing lists<label id="mailinglists">
+<p>
+If you have general questions, comments, or suggestions please send them to our
+mailing lists. The SquirrelMail Project Team actively monitors the lists, and
+you should get replies within a reasonable time. The available lists are listed
+below.
+
+When you try to join a list, a confirmation mail will be sent to you. Simply
+reply to that confirmation message (leaving the subject line intact), and you
+will be subscribed. Remember that you must be a member of a mailing list in
+order to post to it.
+
+<sect3>Available Mailing Lists
+<p>
+<tabular ca="lccc">
+<bf/Mailing list/|<bf/Description/|<bf/Subscribe/|<bf/Archives/@
+SquirrelMail Announcement Mailing List|Very low traffic, moderated, announcements only.|<url url="http://lists.sourceforge.net/mailman/listinfo/squirrelmail-announce" name="Subscribe">|<url url="http://sourceforge.net/mailarchive/forum.php?forum_name=squirrelmail-announce" name="S"> <url url="http://marc.info/?l=squirrelmail-announce" name="M"> <url url="http://dir.gmane.org/gmane.mail.squirrelmail.announce" name="G"> <url url="http://www.nabble.com/squirrelmail-announce-f4373.html" name="N">@
+SquirrelMail CVS Mailing List (legacy name)|Messages are sent with every change in the repository.|<url url="http://lists.sourceforge.net/mailman/listinfo/squirrelmail-cvs" name="Subscribe">|<url url="http://sourceforge.net/mailarchive/forum.php?forum_name=squirrelmail-cvs" name="S"> <url url="http://marc.info/?l=squirrelmail-cvs" name="M"> <url url="http://dir.gmane.org/gmane.mail.squirrelmail.cvs" name="G"> N@
+SquirrelMail Development Mailing List|For discussing the development of SquirrelMail and patches.|<url url="http://lists.sourceforge.net/mailman/listinfo/squirrelmail-devel" name="Subscribe">|<url url="http://sourceforge.net/mailarchive/forum.php?forum_name=squirrelmail-devel" name="S"> <url url="http://marc.info/?l=squirrelmail-devel" name="M"> <url url="http://dir.gmane.org/gmane.mail.squirrelmail.devel" name="G"> <url url="http://www.nabble.com/squirrelmail-devel-f4374.html" name="N">@
+SquirrelMail Internationalization Mailing List|Questions and discussions concerning translations, character sets, etc.|<url url="http://lists.sourceforge.net/mailman/listinfo/squirrelmail-i18n" name="Subscribe">|<url url="http://sourceforge.net/mailarchive/forum.php?forum_name=squirrelmail-i18n" name="S"> <url url="http://marc.info/?l=squirrelmail-i18n" name="M"> <url url="http://dir.gmane.org/gmane.mail.squirrelmail.internationalization" name="G"> <url url="http://www.nabble.com/squirrelmail-i18n-f4375.html" name="N">@
+SquirrelMail Mailing List in Spanish|For those of us who prefer Spanish.|<url url="http://lists.sourceforge.net/mailman/listinfo/squirrelmail-lang-es" name="Subscribe">|<url url="http://sourceforge.net/mailarchive/forum.php?forum_name=squirrelmail-lang-es" name="S"> <url url="http://marc.info/?l=squirrelmail-lang-es" name="M"> G <url url="http://www.nabble.com/squirrelmail-lang-es-f4376.html" name="N">@
+SquirrelMail Plugins Mailing List|For help with using and developing SquirrelMail plugins.|<url url="http://lists.sourceforge.net/mailman/listinfo/squirrelmail-plugins" name="Subscribe">|<url url="http://sourceforge.net/mailarchive/forum.php?forum_name=squirrelmail-plugins" name="S"> <url url="http://marc.info/?l=squirrelmail-plugins" name="M"> <url url="http://dir.gmane.org/gmane.mail.squirrelmail.plugins" name="G"> <url url="http://www.nabble.com/squirrelmail-plugins-f4377.html" name="N">@
+SquirrelMail Stable Series Mailing List|This list is inactive, but the archives still exist.|Inactive|<url url="http://sourceforge.net/mailarchive/forum.php?forum_name=squirrelmail-stable" name="S"> <url url="http://marc.info/?l=squirrelmail-stable" name="M"> G N@
+SquirrelMail Users Mailing List (legacy name)|Despite its name, this list is intended for supporting administrators and not end users. This is the main list, dealing mostly with administrating SquirrelMail and general feedback.|<url url="http://lists.sourceforge.net/mailman/listinfo/squirrelmail-users" name="Subscribe">|<url url="http://sourceforge.net/mailarchive/forum.php?forum_name=squirrelmail-users" name="S"> <url url="http://marc.info/?l=squirrelmail-users" name="M"> <url url="http://dir.gmane.org/gmane.mail.squirrelmail.user" name="G"> <url url="http://www.nabble.com/squirrelmail-users-f4380.html" name="N">
+</tabular>
+
+Legend: S = SourceForge, M = MARC, G = Gmane, N = Nabble (there's also an <url
+url="http://www.nabble.com/SquirrelMail-f4372.html" name="all-in-one">
+interface for all list archives at Nabble).
+
+The subscription interface for <url
+url="http://sourceforge.net/mail/?group_id=311" name="all mailing lists"> can
+also be found at the project site at SourceForge.
+
+<sect2>The trackers<label id="trackers">
+<p>
+The SquirrelMail Project uses trackers to manage bugs, patches and feature
+requests. Using a tracker instead of the mailing lists prevent your patches,
+feature requests, and bug reports from "getting drowned" in the amount of mails
+at the lists. Try to use the trackers only when reporting new, not previously
+addressed issues. If you're not sure whether to use the mailing lists or the
+trackers, ask for advice at the mailing lists.
+
+<tabular ca="ll">
+<bf/Tracker/|<bf/Use/@
+<url url="http://squirrelmail.org/bugs/" name="Bug reports">|For reporting newly discovered bugs not solved in the latest version of SquirrelMail.@
+<url url="http://squirrelmail.org/features/" name="Feature requests">|For requesting features not provided by the latest version of SquirrelMail or any available plugins.@
+<url url="http://squirrelmail.org/patches/" name="Patches">|For providing patches against a recent repository version of SquirrelMail. See the <url url="http://squirrelmail.org/docs/devel/devel.html" name="SquirrelMail Developer's Manual"> for more information about patches.
+</tabular>
+
+A list of <url url="http://squirrelmail.org/trackers/" name="all trackers"> can
+be found at the project site at SourceForge.
+
+<sect2>The Internet Relay Chat channel<label id="irc">
+<p>
+The SquirrelMail Project has an <url url="irc://irc.freenode.net/squirrelmail"
+name="Internet Relay Chat channel">. It can be used to get support on a best
+effort basis. Ask your question and wait patiently - someone will answer it
+eventually. Keep in mind that even if the channel appears populated, most of the
+users are away from their keyboards (AFK) most of the time. And no, typing
+"Hello?" won't get them back any quicker - it's better to describe what you need
+help with.
+
+For those interested, there's a page with <url
+url="http://squirrelmail.org/wiki/InternetRelayChat" name="nickname mapping"> in
+the wiki.
+
+<sect1>Commercial support<label id="commercialsupport">
+<p>
+There are <url url="http://squirrelmail.org/wiki/CommercialSupport" name="third
+party companies that provide commercial support and service level agreements">
+for SquirrelMail installations. These companies make their living supporting
+open source software for a fee, so don't call them asking for free support.
+Depending on the services they provide, they might not require you to do as much
+research on your own as when asking for free support, and you might be able to
+have guaranteed response and resolution times as well (check your support
+contact for the details).
+
+<sect1>Security issues<label id="security">
 <p>
 The SquirrelMail Project takes security very seriously. If you think you've
 discovered a security-related issue in SquirrelMail, please contact developers
-directly at <htmlurl url="mailto:security@squirrelmail.org"
+directly at <url url="mailto:security@squirrelmail.org"
 name="security@squirrelmail.org">. Developers will do their best to work with
 you towards a solution as quickly as possible and will of course give all credit
 where it's due.
 
-List of SquirrelMail security issues can be found at <url
-url="http://squirrelmail.org/security/"
-name="http://squirrelmail.org/security/">.
+A list of already solved SquirrelMail security issues can be found at the <url
+url="http://squirrelmail.org/security/" name="SquirrelMail security page">.
 
 <sect>Presets<label id="presets">
 <p>
