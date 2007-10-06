@@ -5,10 +5,10 @@
 # $Id$
 msgid ""
 msgstr ""
-"Project-Id-Version: squirrelmail 1.4.10\n"
+"Project-Id-Version: squirrelmail 1.4.11\n"
 "Report-Msgid-Bugs-To: squirrelmail-i18n@lists.sourceforge.net\n"
-"POT-Creation-Date: 2007-03-07 22:53+0100\n"
-"PO-Revision-Date: 2007-05-21 15:28+0300\n"
+"POT-Creation-Date: 2007-10-05 07:01+0300\n"
+"PO-Revision-Date: 2007-10-05 07:06+0300\n"
 "Last-Translator: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
 "Language-Team: Lithuanian <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -982,6 +982,9 @@ msgstr "Peržiūra"
 msgid "View Business Card"
 msgstr "Vizitinės kortelės peržiūra"
 
+msgid "Your session has expired, but will be resumed after logging in again."
+msgstr "Jūsų sesija yra pasenusi, bet Jūs galėsite toliau dirbti po to kai vėl prisiregistruosite."
+
 msgid "Sunday"
 msgstr "Sekmadienis"
 
@@ -1577,9 +1580,6 @@ msgstr "Ar automatiškai rodyti žinutės HTML variantą?"
 msgid "Enable Forward as Attachment"
 msgstr "Įjungti persiuntimą kaip priedą"
 
-msgid "Include CCs when Forwarding Messages"
-msgstr "Įtraukti CC adresus persiunčiant žinutes"
-
 msgid "Include Me in CC when I Reply All"
 msgstr "Įtrauk mane į CC kai atsakau visiems"
 
@@ -1982,6 +1982,12 @@ msgstr "Nenaudoti SMTP auth"
 
 msgid "Login (plain text)"
 msgstr "Login (tekstinis autentifikavimas)"
+
+msgid "Custom SMTP AUTH username"
+msgstr "Specialus SMTP AUTH vartotojo slaptažodis"
+
+msgid "Custom SMTP AUTH password"
+msgstr "Specialus SMTP AUTH vartotojo vardas"
 
 msgid "POP3 Before SMTP?"
 msgstr "Vykdyti POP3 prieš SMTP?"
@@ -2825,17 +2831,11 @@ msgstr "Susisiekti su sąrašo prižiūrėtoju"
 msgid "Mailing List"
 msgstr "Susirašinėjimo sąrašas"
 
-msgid "POP3 connect:"
-msgstr "POP3 susijungimo komanda:"
-
 msgid "No server specified"
 msgstr "Serveris nenurodytas"
 
 msgid "Error "
 msgstr "Klaida "
-
-msgid "POP3 user:"
-msgstr "POP3 vartotojas:"
 
 msgid "no login ID submitted"
 msgstr "nepateiktas joks prisijungimo ID"
@@ -2843,14 +2843,8 @@ msgstr "nepateiktas joks prisijungimo ID"
 msgid "connection not established"
 msgstr "nėra susijungimo"
 
-msgid "POP3 pass:"
-msgstr "POP3 slaptažodis:"
-
 msgid "No password submitted"
 msgstr "Nebuvo pateiktas slaptažodis"
-
-msgid "POP3 apop:"
-msgstr "POP3 apop:"
 
 msgid "No connection to server"
 msgstr "Prisijungti prie serverio nepavyko"
@@ -2867,44 +2861,14 @@ msgstr "nutraukti"
 msgid "apop authentication failed"
 msgstr "apop autorizacija nepavyko"
 
-msgid "POP3 login:"
-msgstr "POP3 prisijungimas:"
-
-msgid "POP3 top:"
-msgstr "POP3 top:"
-
-msgid "POP3 pop_list:"
-msgstr "POP3 pop_list:"
-
 msgid "Premature end of list"
 msgstr "Netvarkinga sąrašo pabaiga"
-
-msgid "POP3 get:"
-msgstr "POP3 žinučių gavimo komanda:"
-
-msgid "POP3 last:"
-msgstr "POP3 paskutinės žinutės komanda:"
-
-msgid "POP3 reset:"
-msgstr "POP3 reset:"
-
-msgid "POP3 send_cmd:"
-msgstr "POP3 send_cmd:"
 
 msgid "Empty command string"
 msgstr "Tuščia komandos eilutė"
 
-msgid "POP3 quit:"
-msgstr "POP3 quit:"
-
 msgid "connection does not exist"
 msgstr "susijungimas neegzistuoja"
-
-msgid "POP3 uidl:"
-msgstr "POP3 uidl:"
-
-msgid "POP3 delete:"
-msgstr "POP3 trynimo komanda:"
 
 msgid "No msg number submitted"
 msgstr "Nebuvo pateiktas žinučių skaičius"
@@ -3554,9 +3518,6 @@ msgstr "Asmeninis žodynas bus ištrintas. Tęsti?"
 msgid "Error Decrypting Dictionary"
 msgstr "Įvyko klaida atkoduojant žodyną"
 
-msgid "Cute."
-msgstr "Gražu."
-
 #, php-format
 msgid "Could not run the spellchecker command (%s)."
 msgstr "Nepavyko paleisti rašybos tikrinimo komandos (%s)."
@@ -3841,6 +3802,9 @@ msgstr "Pasirinkite žodyną, kurį naudosite žinutės tikrinimui:"
 msgid "SquirrelSpell Initiating"
 msgstr "Pasileidžia rašybos tikrinimas"
 
+msgid ", "
+msgstr ", "
+
 #, php-format
 msgid "Settings adjusted to: %s with %s as default dictionary."
 msgstr "Nustatymai pakeisti į: %s su %s pagrindiniu žodynu."
@@ -4083,3 +4047,51 @@ msgstr "Nepristatytos žinutės antraštės"
 
 msgid "This image has been removed for security reasons"
 msgstr "Šis piešinys buvo pašalintas saugumo sumetimais"
+
+#~ msgid "Include CCs when Forwarding Messages"
+#~ msgstr "Įtraukti CC adresus persiunčiant žinutes"
+
+#~ msgid "POP3 connect:"
+#~ msgstr "POP3 susijungimo komanda:"
+
+#~ msgid "POP3 user:"
+#~ msgstr "POP3 vartotojas:"
+
+#~ msgid "POP3 pass:"
+#~ msgstr "POP3 slaptažodis:"
+
+#~ msgid "POP3 apop:"
+#~ msgstr "POP3 apop:"
+
+#~ msgid "POP3 login:"
+#~ msgstr "POP3 prisijungimas:"
+
+#~ msgid "POP3 top:"
+#~ msgstr "POP3 top:"
+
+#~ msgid "POP3 pop_list:"
+#~ msgstr "POP3 pop_list:"
+
+#~ msgid "POP3 get:"
+#~ msgstr "POP3 žinučių gavimo komanda:"
+
+#~ msgid "POP3 last:"
+#~ msgstr "POP3 paskutinės žinutės komanda:"
+
+#~ msgid "POP3 reset:"
+#~ msgstr "POP3 reset:"
+
+#~ msgid "POP3 send_cmd:"
+#~ msgstr "POP3 send_cmd:"
+
+#~ msgid "POP3 quit:"
+#~ msgstr "POP3 quit:"
+
+#~ msgid "POP3 uidl:"
+#~ msgstr "POP3 uidl:"
+
+#~ msgid "POP3 delete:"
+#~ msgstr "POP3 trynimo komanda:"
+
+#~ msgid "Cute."
+#~ msgstr "Gražu."
