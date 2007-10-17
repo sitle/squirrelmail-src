@@ -1,14 +1,14 @@
 # LANGUAGE (xx_XX) compatibility Translation (SquirrelMail plugin)
-# Copyright (c) 1999-2007 The SquirrelMail Project Team
+# Copyright (c) 2003-2007 The SquirrelMail Project Team
 # This file is distributed under the same license as the SquirrelMail package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # $Id$
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: compatibility 2.0.6\n"
+"Project-Id-Version: compatibility 2.0.9\n"
 "Report-Msgid-Bugs-To: Paul Lesneiwski <paul@squirrelmail.org>\n"
-"POT-Creation-Date: 2007-01-19 13:03+0100\n"
+"POT-Creation-Date: 2007-10-17 23:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -16,25 +16,29 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: functions.php:558 functions.php:656
+#: functions.php:635 functions.php:730
 msgid "Administrative error:"
 msgstr ""
 
-#: functions.php:559 functions.php:657
+#: functions.php:636 functions.php:731
 #, php-format
 msgid "The plugin %s has not been set up correctly."
 msgstr ""
 
-#: functions.php:562 functions.php:663
+#: functions.php:639 functions.php:737
 msgid "Please read the README or INSTALL files that came with the plugin."
 msgstr ""
 
-#: functions.php:648
+#: functions.php:723
 #, php-format
 msgid "The file %s is missing from plugin %s."
 msgstr ""
 
-#: functions.php:660
+#: functions.php:734
 #, php-format
 msgid "The file %s is missing."
+msgstr ""
+
+#: includes/1.5.2/global.php:43
+msgid "Illegal filesystem access was requested"
 msgstr ""
