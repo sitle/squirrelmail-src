@@ -1,14 +1,14 @@
 # LANGUAGE (xx_XX) advanced_settings Translation (SquirrelMail plugin)
-# Copyright (c) 1999-2006 The SquirrelMail Project Team
+# Copyright (c) 2006-2007 The SquirrelMail Project Team
 # This file is distributed under the same license as the SquirrelMail package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # $Id$
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: advanced_settings 1.0\n"
+"Project-Id-Version: advanced_settings 1.2.1.sm\n"
 "Report-Msgid-Bugs-To: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
-"POT-Creation-Date: 2006-04-15 09:10+0300\n"
+"POT-Creation-Date: 2007-08-29 17:06+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -16,36 +16,57 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: functions.php:28 functions.php:48
+#: functions.php:29 functions.php:49
 msgid "Advanced Settings"
 msgstr ""
 
-#: functions.php:50
+#: functions.php:51
 msgid "You can control advanced interface options here."
 msgstr ""
 
 #. * Settings related to mailbox
-#: options.php:30
+#: options.php:33
 msgid "Advanced Mailbox Options"
 msgstr ""
 
-#: options.php:35
+#: options.php:38
 msgid "Auto expunge"
 msgstr ""
 
-#: options.php:41
+#: options.php:44
 msgid "Use special folder color"
 msgstr ""
 
-#: options.php:48
+#: options.php:51
 msgid "List special folders first"
 msgstr ""
 
 #. * Message composition options
-#: options.php:55
+#: options.php:58
 msgid "Advanced Message Composition Options"
 msgstr ""
 
-#: options.php:59
+#: options.php:62
 msgid "Use email priorities"
+msgstr ""
+
+#. * Settings related to address book
+#: options.php:67
+msgid "Advanced Address Book Options"
+msgstr ""
+
+#: options.php:75
+msgid "Address Book Email Prefix"
+msgstr ""
+
+#: options.php:78
+msgid "No Prefix"
+msgstr ""
+
+#: options.php:79
+msgid "Nickname"
+msgstr ""
+
+#: options.php:80
+msgid "Name"
 msgstr ""
