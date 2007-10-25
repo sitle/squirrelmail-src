@@ -1,14 +1,14 @@
 # LANGUAGE (xx_XX) abook_group Translation (SquirrelMail plugin)
-# Copyright (c) 1999-2007 The SquirrelMail Project Team
+# Copyright (c) 2002-2007 The SquirrelMail Project Team
 # This file is distributed under the same license as the SquirrelMail package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # $Id$
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: abook_group 0.51\n"
-"Report-Msgid-Bugs-To: http://sourceforge.net/projects/sm-plugins/\n"
-"POT-Creation-Date: 2007-01-20 06:17+0100\n"
+"Project-Id-Version: abook_group 0.51.1\n"
+"Report-Msgid-Bugs-To: <http://sourceforge.net/projects/sm-plugins/>\n"
+"POT-Creation-Date: 2007-10-25 23:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -16,46 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: abook_group_functions.php:100
-msgid "Add New Members"
-msgstr ""
-
-#: abook_group_functions.php:101
-msgid "List All Groups"
-msgstr ""
-
-#: abook_group_interface.php:68 addrbook_search.php:43
-msgid "Name"
-msgstr ""
-
-#: abook_group_interface.php:69 addrbook_search.php:44
-msgid "E-mail"
-msgstr ""
-
-#: abook_group_interface.php:70 addrbook_search.php:45
-msgid "Info"
-msgstr ""
-
-#: abook_group_interface.php:73 addrbook_search.php:48
-msgid "Source"
-msgstr ""
-
-#: abook_group_interface.php:100
-msgid "Use Addresses"
-msgstr ""
-
-#: abook_group_interface.php:137 list_abook_group.php:58 setup.php:82
-msgid "Groups"
-msgstr ""
-
-#: abook_group_interface.php:173
-msgid "There are no groups available for selection"
-msgstr ""
-
-#: abook_group_interface.php:179
-msgid "Close"
-msgstr ""
-
+#. FIXME: use own string
 #: abook_group_PEAR_database.php:68
 msgid "Global address book"
 msgstr ""
@@ -102,6 +63,59 @@ msgstr ""
 #: abook_group_PEAR_database.php:520
 #, php-format
 msgid "Another group %s already exists"
+msgstr ""
+
+#: abook_group_functions.php:100
+msgid "Add New Members"
+msgstr ""
+
+#: abook_group_functions.php:101
+msgid "List All Groups"
+msgstr ""
+
+#: abook_group_interface.php:68 addrbook_search.php:43
+msgid "Name"
+msgstr ""
+
+#: abook_group_interface.php:69 addrbook_search.php:44
+msgid "E-mail"
+msgstr ""
+
+#: abook_group_interface.php:70 addrbook_search.php:45
+msgid "Info"
+msgstr ""
+
+#: abook_group_interface.php:73 addrbook_search.php:48
+msgid "Source"
+msgstr ""
+
+#: abook_group_interface.php:83 abook_group_interface.php:158
+msgid "To"
+msgstr ""
+
+#: abook_group_interface.php:85 abook_group_interface.php:159
+msgid "Cc"
+msgstr ""
+
+#: abook_group_interface.php:87 abook_group_interface.php:160
+msgid "Bcc"
+msgstr ""
+
+#: abook_group_interface.php:100
+msgid "Use Addresses"
+msgstr ""
+
+#. FIXME: combine three tables into one.
+#: abook_group_interface.php:137 list_abook_group.php:58 setup.php:82
+msgid "Groups"
+msgstr ""
+
+#: abook_group_interface.php:171
+msgid "There are no groups available for selection"
+msgstr ""
+
+#: abook_group_interface.php:175
+msgid "Close"
 msgstr ""
 
 #: addrbook_search.php:41
@@ -169,22 +183,6 @@ msgstr ""
 msgid "Add to New Group (supply group name):"
 msgstr ""
 
-#: list_abook_group.php:80 modifyGroup.php:165
-msgid "Modify"
-msgstr ""
-
-#: list_abook_group.php:81
-msgid "Delete"
-msgstr ""
-
-#: list_abook_group.php:82
-msgid "List"
-msgstr ""
-
-#: list_abook_group.php:96
-msgid "You Currently Do Not Have Any Groups"
-msgstr ""
-
 #: listMembers.php:75
 msgid "Remove Successful"
 msgstr ""
@@ -199,6 +197,22 @@ msgstr ""
 
 #: listMembers.php:145
 msgid "Remove"
+msgstr ""
+
+#: list_abook_group.php:80 modifyGroup.php:165
+msgid "Modify"
+msgstr ""
+
+#: list_abook_group.php:81
+msgid "Delete"
+msgstr ""
+
+#: list_abook_group.php:82
+msgid "List"
+msgstr ""
+
+#: list_abook_group.php:96
+msgid "You Currently Do Not Have Any Groups"
 msgstr ""
 
 #: modifyGroup.php:75
