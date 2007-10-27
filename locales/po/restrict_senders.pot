@@ -1,13 +1,14 @@
 # LANGUAGE (xx_XX) restrict_senders Translation (SquirrelMail plugin)
-# Copyright (c) 1999-2006 The SquirrelMail Project Team
+# Copyright (c) 2003-2007 The SquirrelMail Project Team
 # This file is distributed under the same license as the SquirrelMail package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # $Id$
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: restrict_senders 1.1\n"
-"POT-Creation-Date: 2005-06-07 15:40+0300\n"
+"Project-Id-Version: restrict_senders 1.2\n"
+"Report-Msgid-Bugs-To: Paul Lesniewski <paul@squirrelmail.org>\n"
+"POT-Creation-Date: 2007-10-27 12:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -15,30 +16,127 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: functions.php:158
+msgid ""
+"We are sorry, but your account has been temporarily disabled due to "
+"suspicious activity.  If you feel we have done so by mistake, please contact "
+"us immediately to have your account reactivated."
+msgstr ""
+
+#: functions.php:211
 #, php-format
 msgid "Too many outgoing recipients. Please limit number of recipients to %d."
 msgstr ""
 
+#: functions.php:225
+msgid ""
+"NOTICE: User \"###USERNAME###\" (domain \"###DOMAIN###\") has attempted to "
+"send an email with more than their allotted recipients: "
+"###NUMBER_RECIPIENTS###\n"
+"\n"
+"TO: ###TO###\n"
+"CC: ###CC###\n"
+"BCC: ###BCC###\n"
+"BODY: ###BODY###"
+msgstr ""
+
+#: functions.php:279
 #, php-format
 msgid ""
-"Daily e-mail limit has been reached. Please limit number of emails per day "
-"to %d."
+"Daily email limit has been reached. Please limit number of emails per day to "
+"%d."
 msgstr ""
 
-msgid "All recipients in the To: field are illegal destinations."
+#: functions.php:293
+msgid ""
+"WARNING: User \"###USERNAME###\" (domain \"###DOMAIN###\") has attempted to "
+"send more than their allotted number of emails in one day: "
+"###NUMBER_MAILS_TODAY###\n"
+"\n"
+"To allow this user to send mail again today, remove the \"todays_email_count"
+"\" setting from their preferences.\n"
+"\n"
+"TO: ###TO###\n"
+"CC: ###CC###\n"
+"BCC: ###BCC###\n"
+"BODY: ###BODY###"
 msgstr ""
 
+#: functions.php:341
+msgid "All recipients are illegal destinations."
+msgstr ""
+
+#: functions.php:517
 #, php-format
-msgid "\"%s\" plugin is not configured correctly."
+msgid ""
+"NOTICE: User \"%s\" (domain \"%s\") has sent %d mass emails of %d or more "
+"recipients in the last %d minutes.\n"
+"\n"
+"Times:\n"
+"%s\n"
+"\n"
+"%s has been BANNED.\n"
+"\n"
+"To un-ban this user, remove the USER_IS_POSSIBLE_SPAMMER setting from their "
+"preferences.\n"
+"\n"
+"TO: %s\n"
+"CC: %s\n"
+"BCC: %s\n"
+"BODY: %s"
 msgstr ""
 
+#: functions.php:517
 #, php-format
-msgid "Error on data/send_restrictions.dat line number %d."
+msgid " --- BANNED - %s"
 msgstr ""
 
+#: functions.php:1054
+#, php-format
+msgid ""
+"The \"%s\" plugin is not configured correctly.  The file \"%s\" has a syntax "
+"error on line %d."
+msgstr ""
+
+#: functions.php:1064 functions.php:1066 functions.php:1091 functions.php:1093
 msgid "Message not sent."
 msgstr ""
 
+#: functions.php:1084
 #, php-format
-msgid "\"%s\" plugin could not open its restriction table."
+msgid ""
+"The \"%s\" plugin is not configured correctly.  The file \"%s\" could not be "
+"opened."
+msgstr ""
+
+#: functions.php:1441
+msgid "User account:"
+msgstr ""
+
+#: functions.php:1442
+msgid "Domain:"
+msgstr ""
+
+#: functions.php:1443
+msgid "Timestamp: "
+msgstr ""
+
+#: functions.php:1444
+msgid "Delete account:"
+msgstr ""
+
+#: functions.php:1446
+msgid "(must be logged into administrative interface)"
+msgstr ""
+
+#: functions.php:1452
+msgid "OFFENDING MESSAGE"
+msgstr ""
+
+#: functions.php:1461
+msgid "OFFENDING SERVER ENVIRONMENT"
+msgstr ""
+
+#: functions.php:1485
+msgid "[WEBMAIL ABUSE]"
 msgstr ""
