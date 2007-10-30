@@ -51,10 +51,16 @@ global $uid_support;
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
 $mbx_response =  sqimap_mailbox_select($imapConnection, $mailbox);
 
-$message = $messages[$mbx_response['UIDVALIDITY']]["$passed_id"];
+$message = '';
+
+if (isset($messages[$mbx_response['UIDVALIDITY']]["$passed_id"])) {
+    $message = $messages[$mbx_response['UIDVALIDITY']]["$passed_id"];
+}
+
 if (!is_object($message)) {
     $message = sqimap_get_message($imapConnection,$passed_id, $mailbox);
 }
+
 $subject = $message->rfc822_header->subject;
 if ($ent_id) {
     $message = $message->getEntity($ent_id);

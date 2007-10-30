@@ -26,9 +26,11 @@ function error_message($message, $mailbox, $sort, $startMessage, $color) {
               '<tr><td align="center">'.
               '<a href="'.sqm_baseuri()."src/right_main.php?sort=$sort&amp;startMessage=$startMessage&amp;mailbox=$urlMailbox\">";
 
-    if (strpos($mailbox, $default_folder_prefix) === 0)
-        $mailbox = substr($mailbox, strlen($default_folder_prefix));
-
+    if (!empty($default_folder_prefix)) {
+        if (strpos($mailbox, $default_folder_prefix) === 0)
+            $mailbox = substr($mailbox, strlen($default_folder_prefix));
+    }
+    
     $string .= sprintf (_("Click here to return to %s"),
                   htmlspecialchars(imap_utf7_decode_local($mailbox))).
               '</a></td></tr>';

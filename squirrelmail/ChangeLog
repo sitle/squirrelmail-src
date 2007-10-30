@@ -9,6 +9,12 @@ Version 1.4.12 - SVN
   - Fixed issue with adding attachments in PHP 4.x environments (#1805471).
   - Backport size setting on "newmail" popup window.
   - Added a "short_open_tag" configuration test.
+  - Undefined notice in error message box when no default folder prefix is set.
+  - Undefined index error when downloading.  Possibly caused by using tabs and
+    opening multiple mailboxes.
+  - PAGE_NAME might not be defined in all plugins, which might cause a 
+    "not defined" error on session timeouts.
+  
 
 Version 1.4.11 - 29 September 2007
 ----------------------------------
