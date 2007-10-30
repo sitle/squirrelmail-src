@@ -14,6 +14,8 @@ Version 1.4.12 - SVN
     opening multiple mailboxes.
   - PAGE_NAME might not be defined in all plugins, which might cause a 
     "not defined" error on session timeouts.
+  - Fixed outgoing messages to allow addresses such as "0@..." or "000@...",
+    etc. (#1818398).
   
 
 Version 1.4.11 - 29 September 2007
