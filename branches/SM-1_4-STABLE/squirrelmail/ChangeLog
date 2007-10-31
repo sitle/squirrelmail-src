@@ -16,6 +16,8 @@ Version 1.4.12 - SVN
     "not defined" error on session timeouts.
   - Fixed outgoing messages to allow addresses such as "0@..." or "000@...",
     etc. (#1818398).
+  - Fixed issue with in-reply-to and reference headers not being retained on
+    reply (#1810659).
   
 
 Version 1.4.11 - 29 September 2007
