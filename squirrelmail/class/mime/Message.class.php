@@ -31,6 +31,11 @@ class Message {
      */
     var $rfc822_header = '';
     /**
+     * Headers from original email in reply
+     * @var string 
+     */
+    var $reply_rfc822_header = '';
+    /**
      * MessageHeader object
      * @var object
      */
