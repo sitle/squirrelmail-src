@@ -190,6 +190,7 @@ function soupNazi(){
 /*************************************/
 
 /* On startup, register all plugins configured for use. */
+global $plugins;
 if (isset($plugins) && is_array($plugins)) {
     // turn on output buffering in order to prevent output of new lines
     ob_start();
