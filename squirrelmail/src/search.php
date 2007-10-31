@@ -263,7 +263,7 @@ function printSearchMessages($msgs,$mailbox, $cnt, $imapConnection, $where, $wha
 
         echo '</td></tr></table></td></tr></table>';
         mail_message_listing_end($cnt, '', $msg_cnt_str, $color); 
-        echo "\n</form>\n\n";
+        echo "\n</table></form>\n\n";
     }
 }
 
