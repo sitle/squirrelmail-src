@@ -189,7 +189,10 @@ function soupNazi(){
 /*** MAIN PLUGIN LOADING CODE HERE ***/
 /*************************************/
 
-/* On startup, register all plugins configured for use. */
+/* On startup, register all plugins configured for use. 
+   $plugins needs to be globalized because this file is
+   sometimes included inside function (non-global) scope,
+   such as for logout_error. */
 global $plugins;
 if (isset($plugins) && is_array($plugins)) {
     // turn on output buffering in order to prevent output of new lines
