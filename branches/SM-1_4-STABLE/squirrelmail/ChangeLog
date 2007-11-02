@@ -19,6 +19,8 @@ Version 1.4.12 - SVN
   - Fixed issue with in-reply-to and reference headers not being retained on
     reply (#1810659).
   - Revived logout_error hook (#1800015).
+  - Allow custom session handlers to work correctly (and be defined at the
+    application level with SquirrelMail).
   
 
 Version 1.4.11 - 29 September 2007
