@@ -21,7 +21,9 @@ Version 1.4.12 - SVN
   - Revived logout_error hook (#1800015).
   - Allow custom session handlers to work correctly (and be defined at the
     application level with SquirrelMail).
-  
+  - Fix off-by-one in bodystructure parsing triggered by servers sending
+    a body location part (e.g. Sun Java System Messaging Server). Thanks
+    John Callahan (#1808382).
 
 Version 1.4.11 - 29 September 2007
 ----------------------------------
