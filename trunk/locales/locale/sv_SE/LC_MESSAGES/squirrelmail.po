@@ -1,17 +1,17 @@
 # Swedish (sv_SE) SquirrelMail Translation
-# Copyright (c) 1999-2006 The SquirrelMail Project Team
+# Copyright (c) 1999-2007 The SquirrelMail Project Team
 # This file is distributed under the same license as the SquirrelMail package.
 # Johan Fernberger <johan@fernberger.com>, 2002.
-# Fredrik Jervfors <sqm_admin@fimbul.net>, 2004-2006.
+# Fredrik Jervfors <jervfors@squirrelmail.org>, 2004-2007.
 # $Id$
 msgid ""
 msgstr ""
 "Project-Id-Version: SquirrelMail HEAD\n"
 "Report-Msgid-Bugs-To: SquirrelMail Internationalization <squirrelmail-"
 "i18n@lists.sourceforge.net>\n"
-"POT-Creation-Date: 2006-08-08 23:25+0300\n"
-"PO-Revision-Date: 2006-08-12 23:09+0200\n"
-"Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
+"POT-Creation-Date: 2007-11-09 08:43+0100\n"
+"PO-Revision-Date: 2007-11-09 09:19+0100\n"
+"Last-Translator: Fredrik Jervfors <jervfors@squirrelmail.org>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
@@ -178,14 +178,26 @@ msgstr "Utkast sparat"
 msgid "Could not move/copy file. File not attached"
 msgstr "Kunde inte flytta/kopiera filen. Filen bifogades inte."
 
-msgid "Draft Saved"
-msgstr "Utkast sparat"
+msgid "Your draft has been saved."
+msgstr "Ditt utkast har sparats."
 
-msgid "Your Message has been sent."
-msgstr "Brevet har skickats."
+msgid "Your mail has been sent."
+msgstr "Ditt brev har skickats."
 
 msgid "From:"
 msgstr "Från:"
+
+msgid "To:"
+msgstr "Till:"
+
+msgid "Cc:"
+msgstr "Kopia:"
+
+msgid "Bcc:"
+msgstr "Dold kopia:"
+
+msgid "Subject:"
+msgstr "Ärende:"
 
 msgid "Send"
 msgstr "Skicka"
@@ -243,6 +255,9 @@ msgstr "Du måste ange en mottagare."
 #, php-format
 msgid "Error: Draft folder %s does not exist."
 msgstr "Fel: Katalogen &quot;%s&quot; för sparade utkast finns inte"
+
+msgid "Message not sent."
+msgstr "Brevet skickades inte."
 
 msgid "Server replied:"
 msgstr "Servern svarade:"
@@ -860,6 +875,9 @@ msgstr "Visar alla rubriker"
 msgid "Viewing a text attachment"
 msgstr "Visar en bifogad text"
 
+msgid "View Unsafe Images"
+msgstr "Visa osäkra bilder"
+
 msgid ""
 "Could not include PEAR database functions required for the database backend."
 msgstr "Det gick inte att använda nödvändiga PEAR databasfunktioner."
@@ -878,7 +896,7 @@ msgstr "Personlig adressbok"
 msgid "Database error: %s"
 msgstr "Databasfel: %s"
 
-msgid "Addressbook is read-only"
+msgid "Address book is read-only"
 msgstr "Adressboken är skrivskyddad"
 
 #, php-format
@@ -888,6 +906,10 @@ msgstr "Användaren \"%s\" finns redan"
 #, php-format
 msgid "User \"%s\" does not exist"
 msgstr "Användaren \"%s\" finns inte"
+
+#, php-format
+msgid "User '%s' already exist."
+msgstr "Användaren \"%s\" finns redan."
 
 msgid "Not a file name"
 msgstr "Ogiltigt filnamn"
@@ -904,13 +926,19 @@ msgstr "Skrivning misslyckades"
 msgid "Unable to update"
 msgstr "Kunde inte uppdatera"
 
+msgid "Address book is corrupted. Required fields are missing."
+msgstr "Adressboken är korrupt. Nödvändiga fält saknas."
+
+msgid "Address book entry is too big"
+msgstr "Adressboksposten är för stor"
+
 msgid "Could not lock datafile"
 msgstr "Kunde inte låsa datafilen"
 
-msgid "Write to addressbook failed"
+msgid "Write to address book failed"
 msgstr "Kunde inte skriva till adressboken"
 
-msgid "Error initializing addressbook database."
+msgid "Error initializing address book database."
 msgstr "Fel vid initiering av adressboksdatabasen."
 
 #, php-format
@@ -920,8 +948,8 @@ msgstr "Fel vid öppnandet av filen %s"
 msgid "Global address book"
 msgstr "Global adressbok"
 
-msgid "Error initializing global addressbook."
-msgstr "Fel vid initiering av den globala adressboken"
+msgid "Error initializing global address book."
+msgstr "Fel vid initiering av den globala adressboken."
 
 #, php-format
 msgid "Error initializing LDAP server %s:"
@@ -947,6 +975,10 @@ msgstr "Visa"
 
 msgid "View Business Card"
 msgstr "Visa visitkort"
+
+msgid "Your session has expired, but will be resumed after logging in again."
+msgstr ""
+"Sessionen har gått ut men kommer att återupptas efter förnyad inloggning."
 
 msgid "Sunday"
 msgstr "Söndag"
@@ -1239,6 +1271,10 @@ msgid ""
 "Remove unneccessary messages from your folders. Start with your Trash folder."
 msgstr "Kasta onödiga brev. Börja med brev i din papperskorg."
 
+#, php-format
+msgid "Invalid mailbox name: %s"
+msgstr "Ogiltigt brevlådenamn: %s"
+
 msgid "(no subject)"
 msgstr "(ärende saknas)"
 
@@ -1348,9 +1384,6 @@ msgstr "Hämta rad:"
 
 msgid "Hide Unsafe Images"
 msgstr "Dölj osäkra bilder"
-
-msgid "View Unsafe Images"
-msgstr "Visa osäkra bilder"
 
 msgid "Download"
 msgstr "Ladda ner"
@@ -1530,7 +1563,7 @@ msgstr "Mellan rubriker och brevtext"
 msgid "After message body"
 msgstr "Efter brevtexten"
 
-msgid "Addressbook Display Format"
+msgid "Address Book Display Format"
 msgstr "Adressbokens utseende"
 
 msgid "Javascript"
@@ -1539,14 +1572,23 @@ msgstr "JavaScript"
 msgid "HTML"
 msgstr "HTML"
 
+msgid "Format of Addresses Added From Address Book"
+msgstr "Format på adresser tillagda från adressboken"
+
+msgid "No prefix/Address only"
+msgstr "Inget prefix/endast adress"
+
+msgid "Nickname and address"
+msgstr "Smeknamn och adress"
+
+msgid "Full name and address"
+msgstr "Fullständigt namn och adress"
+
 msgid "Show HTML Version by Default"
 msgstr "Visa HTML-versionen"
 
 msgid "Enable Forward as Attachment"
 msgstr "Aktivera vidarebefordran som bilaga"
-
-msgid "Include CCs when Forwarding Messages"
-msgstr "Inkludera alla när ett brev vidarebefordras"
 
 msgid "Include Me in CC when I Reply All"
 msgstr "Lägg till mig som mottagare när jag svarar alla"
@@ -1890,8 +1932,14 @@ msgstr "Mac OS X e-postserver"
 msgid "hMailServer IMAP server"
 msgstr "hMailServer IMAP-server"
 
+msgid "Mercury/32 IMAP server"
+msgstr "Mercury/32 IMAP-server"
+
 msgid "Binc IMAP server"
 msgstr "Binc IMAP-server"
+
+msgid "Dovecot IMAP server"
+msgstr "Dovecot IMAP-server"
 
 msgid "Not one of the above servers"
 msgstr "Ingen av ovanstående servrar"
@@ -1920,11 +1968,11 @@ msgstr "Använd Sendmail-programmet"
 msgid "Choose &quot;no&quot; for SMTP"
 msgstr "Välj &quot;Nej&quot; för SMTP"
 
-msgid "Sendmail Arguments"
-msgstr "Sendmailparametrar"
-
 msgid "Sendmail Path"
 msgstr "Sökväg till Sendmail"
+
+msgid "Sendmail Arguments"
+msgstr "Sendmailparametrar"
 
 msgid "SMTP Server Address"
 msgstr "Adress till SMTP-server"
@@ -1943,6 +1991,12 @@ msgstr "Ingen SMTP-validering"
 
 msgid "Login (plain text)"
 msgstr "Inloggning (klartext)"
+
+msgid "Custom SMTP AUTH username"
+msgstr "Anpassat SMTP AUTH-användarnamn"
+
+msgid "Custom SMTP AUTH password"
+msgstr "Anpassat SMTP AUTH-lösenord"
 
 msgid "POP3 Before SMTP?"
 msgstr "POP3 innan SMTP?"
@@ -2460,13 +2514,6 @@ msgstr "KOMMERSIELL - RBL+ OpenRelay."
 msgid "COMMERCIAL - RBL+ Dial-up entries."
 msgstr "KOMMERSIELL - RBL+ Dial-up."
 
-msgid ""
-"FREE - ORDB was born when ORBS went off the air. It seems to have fewer "
-"false positives than ORBS did though."
-msgstr ""
-"FRI - ORDB föddes när ORBS försvann. Verkar i alla fall ha färre falsklarm "
-"än ORBS hade."
-
 msgid "FREE - Five-Ten-sg.com - Direct SPAM sources."
 msgstr "FRI - Five-Ten-sg.com - Direkta skräppostkällor."
 
@@ -2798,17 +2845,11 @@ msgstr "Kontakta listans ägare"
 msgid "Mailing List"
 msgstr "E-postlista"
 
-msgid "POP3 connect:"
-msgstr "POP3-uppkoppling:"
-
 msgid "No server specified"
 msgstr "Ingen server angiven"
 
 msgid "Error "
 msgstr "Fel "
-
-msgid "POP3 user:"
-msgstr "POP3 användarnamn:"
 
 msgid "no login ID submitted"
 msgstr "inget användarnamn angivet"
@@ -2816,14 +2857,8 @@ msgstr "inget användarnamn angivet"
 msgid "connection not established"
 msgstr "uppkoppling ej genomförd"
 
-msgid "POP3 pass:"
-msgstr "POP3 lösenord:"
-
 msgid "No password submitted"
 msgstr "Inget lösenord angivet"
-
-msgid "POP3 apop:"
-msgstr "POP3 apop:"
 
 msgid "No connection to server"
 msgstr "Kunde inte kontakta servern"
@@ -2840,44 +2875,14 @@ msgstr "avbryt"
 msgid "apop authentication failed"
 msgstr "apop-validering misslyckades"
 
-msgid "POP3 login:"
-msgstr "POP3 användarnamn:"
-
-msgid "POP3 top:"
-msgstr "POP3 början:"
-
-msgid "POP3 pop_list:"
-msgstr "POP3 pop_lista:"
-
 msgid "Premature end of list"
 msgstr "Listan är inte fullständig"
-
-msgid "POP3 get:"
-msgstr "POP3 hämta:"
-
-msgid "POP3 last:"
-msgstr "POP3 sista:"
-
-msgid "POP3 reset:"
-msgstr "POP3 återställ:"
-
-msgid "POP3 send_cmd:"
-msgstr "POP3 skicka_kommando:"
 
 msgid "Empty command string"
 msgstr "Tom kommandosträng"
 
-msgid "POP3 quit:"
-msgstr "POP3 avsluta:"
-
 msgid "connection does not exist"
 msgstr "uppkopplingen finns inte"
-
-msgid "POP3 uidl:"
-msgstr "POP3 UIDL:"
-
-msgid "POP3 delete:"
-msgstr "POP3 kasta:"
 
 msgid "No msg number submitted"
 msgstr "Inget brevnummer angivet"
@@ -3178,6 +3183,15 @@ msgstr "(ingen)"
 
 msgid "requires JavaScript to work"
 msgstr "kräver JavaScript"
+
+msgid "Width of popup window:"
+msgstr "Bredd på dialogrutan:"
+
+msgid "If set to 0, reverts to default value"
+msgstr "Ange 0 för att använda det förinställda värdet"
+
+msgid "Height of popup window:"
+msgstr "Höjd på dialogrutan:"
 
 msgid "Try"
 msgstr "Spela"
@@ -3520,9 +3534,6 @@ msgstr "Vill du kasta din personliga ordlista?"
 msgid "Error Decrypting Dictionary"
 msgstr "Fel vid dekryptering av ordlista"
 
-msgid "Cute."
-msgstr "Sött."
-
 #, php-format
 msgid "Could not run the spellchecker command (%s)."
 msgstr "Stavningskontrollen kunde inte exekvera kommandot (%s)."
@@ -3799,6 +3810,9 @@ msgstr ""
 msgid "SquirrelSpell Initiating"
 msgstr "Startar SquirrelSpell"
 
+msgid ", "
+msgstr ", "
+
 #, php-format
 msgid "Settings adjusted to: %s with %s as default dictionary."
 msgstr "Inställningarna justerade till: %s med %s som förvald ordlista"
@@ -4029,6 +4043,9 @@ msgstr "Språk för gränssnittet"
 msgid "Translation direction"
 msgstr "Översättningsriktning"
 
+msgid "Arabic"
+msgstr "Arabiska"
+
 #, php-format
 msgid "About SquirrelMail %s"
 msgstr "Om SquirrelMail %s"
@@ -4096,8 +4113,15 @@ msgstr "inga installerade"
 msgid "Nothing to search"
 msgstr "Inget att söka efter"
 
-msgid "SquirrelMail Webmail Application"
-msgstr "SquirrelMail - en webbpostklient"
+msgid "SquirrelMail Webmail"
+msgstr "SquirrelMail webbpost"
+
+#, php-format
+msgid "The %s logo"
+msgstr "Logotyp för %s"
+
+msgid "Add New Identity"
+msgstr "Lägg till identitet"
 
 msgid "Received"
 msgstr "Mottaget"
@@ -4105,25 +4129,46 @@ msgstr "Mottaget"
 msgid "Compose Preferences"
 msgstr "Brevskrivning"
 
+#, php-format
+msgid "Folder list should automatically %srefresh%s."
+msgstr "Listan över mappar bör %suppdateras%s automatiskt."
+
+#, php-format
+msgid "This page should automatically %srefresh%s."
+msgstr "Denna sida bör %suppdateras%s automatiskt."
+
 msgid ""
 "Control the behaviour and layout of writing new mail messages, replying to "
 "and forwarding messages."
 msgstr "Hur brev skrivs, besvaras och vidarebefordras."
+
+#, php-format
+msgid "Welcome to %s. Please supply your full name and email address."
+msgstr "Välkommen till %s. Ange ditt fullständiga namn och din e-postadress."
+
+msgid "Read Receipt"
+msgstr "Mottagningsbevis"
+
+msgid "deleted"
+msgstr "borttaget"
+
+msgid "answered"
+msgstr "besvarat"
+
+msgid "draft"
+msgstr "utkast"
+
+msgid "flagged"
+msgstr "markerat"
+
+msgid "Status"
+msgstr "Status"
 
 msgid "View as plain text"
 msgstr "Visa som ren text"
 
 msgid "View as HTML"
 msgstr "Visa som HTML"
-
-msgid "As Attachment"
-msgstr "som bilaga"
-
-msgid "Bypass Trash"
-msgstr "Kringgå papperskorgen"
-
-msgid "Copy"
-msgstr "Kopiera"
 
 msgid "There must be at least one criteria to search for"
 msgstr "Det måste finnas minst ett sökkriterium"
@@ -4146,23 +4191,14 @@ msgstr "(Saknat argument)"
 msgid "(Spurious argument)"
 msgstr "(Falskt argument)"
 
-msgid "Fold"
-msgstr "Dölj"
-
-msgid "Unfold"
-msgstr "Visa"
-
 msgid "Missing"
 msgstr "Saknas"
 
-msgid "and&nbsp;subfolders:"
-msgstr "och&nbsp;undermappar:"
+msgid "Standard Search"
+msgstr "Standardsökning"
 
-msgid "Exclude Criteria:"
-msgstr "Uteslut kriterium:"
-
-msgid "Search Criteria"
-msgstr "Sökkriterier"
+msgid "Advanced search"
+msgstr "Avancerad sökning"
 
 msgid "Add New Criteria"
 msgstr "Lägg till nya kriterier"
@@ -4254,24 +4290,20 @@ msgstr "och"
 msgid "Or"
 msgstr "eller"
 
-msgid "Standard search"
-msgstr "Standardsökning"
+msgid "No RPC action given"
+msgstr "Ingen fjärranropsaktivitet angiven"
 
-msgid "Advanced search"
-msgstr "Avancerad sökning"
+msgid "No deletion ID given"
+msgstr "Inget ID att radera agivet"
 
-msgid "Address book is read-only"
-msgstr "Adressboken är skrivskyddad"
+msgid "No mailbox given"
+msgstr "Ingen brevlåda angiven"
 
-#, php-format
-msgid "User '%s' already exist."
-msgstr "Användaren \"%s\" finns redan."
+msgid "RPC action not understood"
+msgstr "Fjärranropsaktiviteten förstods inte"
 
 msgid "PHP install does not have LDAP support."
 msgstr "Denna installation av PHP stödjer inte LDAP."
-
-msgid "Write to address book failed"
-msgstr "Kunde inte skriva till adressboken"
 
 msgid "Removing entry from address book failed"
 msgstr "Det gick inte att ta bort posten från adressboken"
@@ -4293,23 +4325,26 @@ msgstr "Det gick inte att ta bort vissa fältvärden"
 msgid "Unable to rename user \"%s\" to \"%s\""
 msgstr "Det gick inte att namnbyta användare \"%s\" till \"%s\""
 
-msgid "Address book is corrupted. Required fields are missing."
-msgstr "Adressboken är korrupt. Nödvändiga fält saknas."
-
-msgid "Address book entry is too big"
-msgstr "Adressboksposten är för stor"
-
-msgid "Error initializing address book database."
-msgstr "Fel vid initiering av adressboksdatabasen."
-
-msgid "Error initializing global address book."
-msgstr "Fel vid initiering av den globala adressboken."
-
 msgid "Error initializing other address books."
 msgstr "Fel vid initiering av andra adressböcker."
 
 msgid "Unknown address book backend"
 msgstr "Okänd bakände för adressboken"
+
+#, php-format
+msgid "%s %s"
+msgstr "%s %s"
+
+msgid ""
+"Could not open temporary file to store attachment. Contact your system "
+"administrator to resolve this issue."
+msgstr ""
+"Kunde inte öppna en temporär fil för att spara bilagan. Rapportera detta fel "
+"till systemadministratören."
+
+#, php-format
+msgid "%s should be writable by user %s."
+msgstr "%s måste ha skrivrättigheter för användaren %s."
 
 msgid "Illegal folder name."
 msgstr "Otillåtet mappnamn."
@@ -4326,6 +4361,9 @@ msgstr "Du har inte valt vilken mapp du vill aktivera."
 
 msgid "You have not selected a folder to unsubscribe. Please do so."
 msgstr "Du har inte valt vilken mapp du vill avaktivera."
+
+msgid "Illegal filesystem access was requested"
+msgstr "En otillåten filsystemsaccess begärdes"
 
 msgid "Possible reason:"
 msgstr "Trolig orsak:"
@@ -4386,8 +4424,11 @@ msgstr "Markera"
 msgid "Undelete"
 msgstr "Ta tillbaka"
 
-msgid "Viewing HTML formatted email"
-msgstr "Visar HTML-formaterat brev"
+msgid "Bypass Trash"
+msgstr "Kringgå papperskorgen"
+
+msgid "Copy"
+msgstr "Kopiera"
 
 msgid "unavailable"
 msgstr "inte tillgänglig"
@@ -4470,14 +4511,23 @@ msgstr "IMAP-servern stängde förbindelsen."
 msgid "General Message Composition"
 msgstr "Allmänt"
 
+msgid "Pop-up window"
+msgstr "Som dialogruta"
+
+msgid "In-page"
+msgstr "Som sida"
+
 msgid "Replying and Forwarding Messages"
 msgstr "Besvara och vidarebefordra brev"
 
 msgid "Strip signature when replying"
 msgstr "Avlägsna brevfot vid svar"
 
-msgid "Template"
-msgstr "Mall"
+msgid "Skin"
+msgstr "Skinn"
+
+msgid "Icon Theme"
+msgstr "Tema för ikoner"
 
 msgid "Default font style"
 msgstr "Förvald typsnittstyp"
@@ -4490,9 +4540,6 @@ msgstr "Typsnittsstorlek"
 
 msgid "Default font size"
 msgstr "Förvald typsnittsstorlek"
-
-msgid "Icon Theme"
-msgstr "Tema för ikoner"
 
 msgid "Enable Fancy Row Mouseover Highlighting"
 msgstr "Aktivera dokumentlinjal"
@@ -4530,14 +4577,11 @@ msgstr[1] "%d minuter"
 msgid "Show only subscribed folders"
 msgstr "Visa endast aktiverade mappar"
 
-msgid "Template Default"
-msgstr "Förvald mall"
-
 msgid "XP"
 msgstr "XP"
 
-msgid "Mercury/32 IMAP server"
-msgstr "Mercury/32 IMAP-server"
+msgid "Address Book Take"
+msgstr "Spara till adressboken"
 
 msgid "IMAP Connection Security"
 msgstr "Anslutningssäkerhet för IMAP-servern"
@@ -4560,12 +4604,6 @@ msgstr ""
 
 msgid "SMTP Connection Security"
 msgstr "Anslutningssäkerhet för SMTP-servern"
-
-msgid "Custom SMTP AUTH username"
-msgstr "Anpassat SMTP AUTH-användarnamn"
-
-msgid "Custom SMTP AUTH password"
-msgstr "Anpassat SMTP AUTH-lösenord"
 
 msgid "Disable server-side sorting"
 msgstr "Inaktivera sortering på server-sidan"
@@ -4644,6 +4682,9 @@ msgstr "Förvalt typsnitt"
 
 msgid "Default template"
 msgstr "Förvald mall"
+
+msgid "Fallback template"
+msgstr "Reservmall"
 
 msgid "Show System Specifications"
 msgstr "Visa systemspecifikationerna"
@@ -4834,7 +4875,8 @@ msgstr ""
 
 msgid "Required change password backend configuration options are missing."
 msgstr ""
-"Erfordrade konfigureringsinställningar för lösenordsbytesmodulens bakände saknas."
+"Erfordrade konfigureringsinställningar för lösenordsbytesmodulens bakände "
+"saknas."
 
 #, php-format
 msgid "Connection error: %s"
@@ -4956,8 +4998,16 @@ msgstr "Exekveringstid:"
 msgid "%s ms"
 msgstr "%s ms"
 
-msgid "Command failed"
-msgstr "Kommandot misslyckades"
+msgid "Mailing Lists"
+msgstr "E-postlistor"
+
+msgid ""
+"Manage the (non-RFC-compliant) mailing lists that you are subscribed to for "
+"the purpose of providing one-click list replies when responding to list "
+"messages."
+msgstr ""
+"Administrera de (icke-RFC-kompatibla) e-postlistor du prenumererar på, för "
+"att kunna svara till dem med bara ett klick."
 
 msgid "No POP3 servers configured yet."
 msgstr "Inga POP3-servrar är konfigurerade."
@@ -4969,6 +5019,12 @@ msgstr "Tillbaka till inställningar"
 msgid "Fetching from %s"
 msgstr "Hämtar från %s"
 
+msgid "Can't get mailbox status:"
+msgstr "Kan inte hämta brevlådans status:"
+
+msgid "Fetching list of messages..."
+msgstr "Hämtar en lista över brev..."
+
 #, php-format
 msgid "Login OK: Inbox contains %s message"
 msgid_plural "Login OK: Inbox contains %s messages"
@@ -4979,12 +5035,32 @@ msgstr[1] "Inloggning OK: Inkorgen innehåller %s brev"
 msgid "Fetching message %s."
 msgstr "Hämtar brev %s."
 
-#, php-format
-msgid "Refetching message %s."
-msgstr "Återhämtar brev %s."
-
 msgid "Warning:"
 msgstr "Varning:"
+
+msgid "Authentication type:"
+msgstr "Valideringstyp:"
+
+msgid "USER"
+msgstr "USER"
+
+msgid "APOP"
+msgstr "APOP"
+
+msgid "APOP or USER"
+msgstr "APOP eller USER"
+
+msgid "Connection type:"
+msgstr "Anslutningstyp:"
+
+msgid "Plain text"
+msgstr "Klartext"
+
+msgid "Use TLS"
+msgstr "Använd TLS"
+
+msgid "Use StartTLS"
+msgstr "Använd StartTLS"
 
 msgid ""
 "The NewMail plugin will follow the Folder Preferences option &quot;Enable "
@@ -5007,15 +5083,6 @@ msgstr "Vanliga mappar"
 
 msgid "Check for new messages in:"
 msgstr "Avisera inkomna brev i:"
-
-msgid "Width of popup window:"
-msgstr "Bredd på dialogrutan:"
-
-msgid "If set to 0, reverts to default value"
-msgstr "Ange 0 för att använda det förinställda värdet"
-
-msgid "Height of popup window:"
-msgstr "Höjd på dialogrutan:"
 
 msgid "uploaded media file"
 msgstr "uppladdad mediafil"
@@ -5063,6 +5130,12 @@ msgstr ""
 msgid "Invalid SquirrelSpell module."
 msgstr "Ogiltig SquirrelSpell-modul."
 
+msgid "Unknown error"
+msgstr "Okänt fel"
+
+msgid "SquirrelSpell error."
+msgstr "SquirrelSpell-fel."
+
 #, php-format
 msgid "Found %d error"
 msgid_plural "Found %d errors"
@@ -5101,11 +5174,23 @@ msgstr "Vid skrivning:"
 msgid "Not yet functional, currently does nothing"
 msgstr "Ej implementerat"
 
-msgid "D"
-msgstr "K"
+msgid "Address book is empty"
+msgstr "Adressboken är tom"
 
-msgid "F"
-msgstr "M"
+msgid "Address book search"
+msgstr "Sök i adressbok"
+
+msgid "Attachment"
+msgstr "Bilaga"
+
+msgid "Attach"
+msgstr "Bifoga"
+
+msgid "Max."
+msgstr "Max."
+
+msgid "Receipts"
+msgstr "Mottagningsbevis"
 
 msgid "SquirrelMail notice messages"
 msgstr "Varsel från SquirrelMail:"
@@ -5128,11 +5213,68 @@ msgstr "Inga mappar att aktivera."
 msgid "Message Flags"
 msgstr "Ikoner"
 
-msgid "Attachment"
-msgstr "Bilaga"
-
 msgid "Click here to change the sorting of the message list"
 msgstr "Ändra sorteringen av index"
+
+msgid "Add/Edit"
+msgstr "Lägg till/redigera"
+
+msgid "Rule Conditions"
+msgstr "Regler"
+
+msgid "Identifying Name"
+msgstr "Identifierande namn"
+
+msgid "To or cc"
+msgstr "Till eller kopia"
+
+msgid "Other"
+msgstr "Annan"
+
+msgid "Save Changes"
+msgstr "Spara ändringar"
+
+msgid "Type"
+msgstr "Typ"
+
+msgid "Requested"
+msgstr "Begärt"
+
+msgid "Send Read Receipt Now"
+msgstr "Skicka mottagningsbevis nu"
+
+msgid "Viewing HTML formatted email"
+msgstr "Visar HTML-formaterat brev"
+
+msgid "As Attachment"
+msgstr "som bilaga"
+
+msgid "Move To"
+msgstr "Flytta till"
+
+msgid "Delete &amp; Previous"
+msgstr "Kasta och visa föregående"
+
+msgid "and subfolders"
+msgstr "och undermappar"
+
+msgid "Exclude"
+msgstr "Uteslut"
+
+msgid "Fold"
+msgstr "Dölj"
+
+msgid "Unfold"
+msgstr "Visa"
+
+msgid "Forget"
+msgstr "Glöm"
+
+msgid "Email"
+msgstr "E-postadress"
+
+msgid "Additional Info"
+msgstr "Extra information"
 
 msgid "Folder List"
 msgstr "Lista över mappar"
