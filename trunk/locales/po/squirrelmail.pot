@@ -1,5 +1,5 @@
 # LANGUAGE (xx_XX) SquirrelMail Translation
-# Copyright (c) 1999-2006 The SquirrelMail Project Team
+# Copyright (c) 1999-2007 The SquirrelMail Project Team
 # This file is distributed under the same license as the SquirrelMail package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # $Id$
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: SquirrelMail HEAD\n"
 "Report-Msgid-Bugs-To: SquirrelMail Internationalization <squirrelmail-"
 "i18n@lists.sourceforge.net>\n"
-"POT-Creation-Date: 2007-02-14 12:48+0100\n"
+"POT-Creation-Date: 2007-11-09 08:43+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -958,6 +958,9 @@ msgstr ""
 msgid "View Business Card"
 msgstr ""
 
+msgid "Your session has expired, but will be resumed after logging in again."
+msgstr ""
+
 msgid "Sunday"
 msgstr ""
 
@@ -1516,7 +1519,7 @@ msgstr ""
 msgid "After message body"
 msgstr ""
 
-msgid "Addressbook Display Format"
+msgid "Address Book Display Format"
 msgstr ""
 
 msgid "Javascript"
@@ -1525,13 +1528,22 @@ msgstr ""
 msgid "HTML"
 msgstr ""
 
+msgid "Format of Addresses Added From Address Book"
+msgstr ""
+
+msgid "No prefix/Address only"
+msgstr ""
+
+msgid "Nickname and address"
+msgstr ""
+
+msgid "Full name and address"
+msgstr ""
+
 msgid "Show HTML Version by Default"
 msgstr ""
 
 msgid "Enable Forward as Attachment"
-msgstr ""
-
-msgid "Include CCs when Forwarding Messages"
 msgstr ""
 
 msgid "Include Me in CC when I Reply All"
@@ -1876,7 +1888,13 @@ msgstr ""
 msgid "hMailServer IMAP server"
 msgstr ""
 
+msgid "Mercury/32 IMAP server"
+msgstr ""
+
 msgid "Binc IMAP server"
+msgstr ""
+
+msgid "Dovecot IMAP server"
 msgstr ""
 
 msgid "Not one of the above servers"
@@ -1906,10 +1924,10 @@ msgstr ""
 msgid "Choose &quot;no&quot; for SMTP"
 msgstr ""
 
-msgid "Sendmail Arguments"
+msgid "Sendmail Path"
 msgstr ""
 
-msgid "Sendmail Path"
+msgid "Sendmail Arguments"
 msgstr ""
 
 msgid "SMTP Server Address"
@@ -1928,6 +1946,12 @@ msgid "No SMTP auth"
 msgstr ""
 
 msgid "Login (plain text)"
+msgstr ""
+
+msgid "Custom SMTP AUTH username"
+msgstr ""
+
+msgid "Custom SMTP AUTH password"
 msgstr ""
 
 msgid "POP3 Before SMTP?"
@@ -2681,16 +2705,10 @@ msgstr ""
 msgid "Mailing List"
 msgstr ""
 
-msgid "POP3 connect:"
-msgstr ""
-
 msgid "No server specified"
 msgstr ""
 
 msgid "Error "
-msgstr ""
-
-msgid "POP3 user:"
 msgstr ""
 
 msgid "no login ID submitted"
@@ -2699,13 +2717,7 @@ msgstr ""
 msgid "connection not established"
 msgstr ""
 
-msgid "POP3 pass:"
-msgstr ""
-
 msgid "No password submitted"
-msgstr ""
-
-msgid "POP3 apop:"
 msgstr ""
 
 msgid "No connection to server"
@@ -2723,43 +2735,13 @@ msgstr ""
 msgid "apop authentication failed"
 msgstr ""
 
-msgid "POP3 login:"
-msgstr ""
-
-msgid "POP3 top:"
-msgstr ""
-
-msgid "POP3 pop_list:"
-msgstr ""
-
 msgid "Premature end of list"
-msgstr ""
-
-msgid "POP3 get:"
-msgstr ""
-
-msgid "POP3 last:"
-msgstr ""
-
-msgid "POP3 reset:"
-msgstr ""
-
-msgid "POP3 send_cmd:"
 msgstr ""
 
 msgid "Empty command string"
 msgstr ""
 
-msgid "POP3 quit:"
-msgstr ""
-
 msgid "connection does not exist"
-msgstr ""
-
-msgid "POP3 uidl:"
-msgstr ""
-
-msgid "POP3 delete:"
 msgstr ""
 
 msgid "No msg number submitted"
@@ -3042,6 +3024,15 @@ msgstr ""
 msgid "requires JavaScript to work"
 msgstr ""
 
+msgid "Width of popup window:"
+msgstr ""
+
+msgid "If set to 0, reverts to default value"
+msgstr ""
+
+msgid "Height of popup window:"
+msgstr ""
+
 msgid "Try"
 msgstr ""
 
@@ -3322,9 +3313,6 @@ msgstr ""
 msgid "Error Decrypting Dictionary"
 msgstr ""
 
-msgid "Cute."
-msgstr ""
-
 #, php-format
 msgid "Could not run the spellchecker command (%s)."
 msgstr ""
@@ -3574,6 +3562,9 @@ msgid ""
 msgstr ""
 
 msgid "SquirrelSpell Initiating"
+msgstr ""
+
+msgid ", "
 msgstr ""
 
 #, php-format
@@ -3858,7 +3849,11 @@ msgstr ""
 msgid "Nothing to search"
 msgstr ""
 
-msgid "SquirrelMail Webmail Application"
+msgid "SquirrelMail Webmail"
+msgstr ""
+
+#, php-format
+msgid "The %s logo"
 msgstr ""
 
 msgid "Add New Identity"
@@ -3881,6 +3876,10 @@ msgstr ""
 msgid ""
 "Control the behaviour and layout of writing new mail messages, replying to "
 "and forwarding messages."
+msgstr ""
+
+#, php-format
+msgid "Welcome to %s. Please supply your full name and email address."
 msgstr ""
 
 msgid "Read Receipt"
@@ -4077,6 +4076,10 @@ msgid ""
 "administrator to resolve this issue."
 msgstr ""
 
+#, php-format
+msgid "%s should be writable by user %s."
+msgstr ""
+
 msgid "Illegal folder name."
 msgstr ""
 
@@ -4091,6 +4094,9 @@ msgid "You have not selected a folder to subscribe. Please do so."
 msgstr ""
 
 msgid "You have not selected a folder to unsubscribe. Please do so."
+msgstr ""
+
+msgid "Illegal filesystem access was requested"
 msgstr ""
 
 msgid "Possible reason:"
@@ -4213,6 +4219,12 @@ msgstr ""
 msgid "General Message Composition"
 msgstr ""
 
+msgid "Pop-up window"
+msgstr ""
+
+msgid "In-page"
+msgstr ""
+
 msgid "Replying and Forwarding Messages"
 msgstr ""
 
@@ -4276,7 +4288,7 @@ msgstr ""
 msgid "XP"
 msgstr ""
 
-msgid "Mercury/32 IMAP server"
+msgid "Address Book Take"
 msgstr ""
 
 msgid "IMAP Connection Security"
@@ -4297,12 +4309,6 @@ msgid ""
 msgstr ""
 
 msgid "SMTP Connection Security"
-msgstr ""
-
-msgid "Custom SMTP AUTH username"
-msgstr ""
-
-msgid "Custom SMTP AUTH password"
 msgstr ""
 
 msgid "Disable server-side sorting"
@@ -4757,15 +4763,6 @@ msgid "Regular folders"
 msgstr ""
 
 msgid "Check for new messages in:"
-msgstr ""
-
-msgid "Width of popup window:"
-msgstr ""
-
-msgid "If set to 0, reverts to default value"
-msgstr ""
-
-msgid "Height of popup window:"
 msgstr ""
 
 msgid "uploaded media file"
