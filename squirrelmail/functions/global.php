@@ -185,7 +185,7 @@ function sqstripslashes(&$array) {
 }
 
 /**
- * Quelch error output to screen (only) for the given function.
+ * Squelch error output to screen (only) for the given function.
  *
  * This provides an alternative to the @ error-suppression
  * operator where errors will not be shown in the interface
@@ -196,6 +196,7 @@ function sqstripslashes(&$array) {
  * 
  * @param string $function The function to be executed
  * @param array  $args     The arguments to be passed to the function
+ *                         (OPTIONAL; default no arguments)
  *                         NOTE: The caller must take extra action if
  *                               the function being called is supposed
  *                               to use any of the parameters by 
@@ -209,11 +210,11 @@ function sqstripslashes(&$array) {
  *               executed will be returned.
  * 
  */ 
-function sq_call_function_suppress_errors($function, $args) {
+function sq_call_function_suppress_errors($function, $args=NULL) {
    $display_errors = ini_get('display_errors');
    ini_set('display_errors', '0');
    $ret = call_user_func_array($function, $args);
-   ini_set(display_errors, $display_errors);
+   ini_set('display_errors', $display_errors);
    return $ret;
 }
 
