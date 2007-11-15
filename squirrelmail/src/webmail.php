@@ -28,8 +28,6 @@ require_once(SM_PATH . 'functions/imap.php');
 
 $base_uri = sqm_baseuri();
 
-sqsession_is_active();
-
 sqgetGlobalVar('username', $username, SQ_SESSION);
 sqgetGlobalVar('delimiter', $delimiter, SQ_SESSION);
 sqgetGlobalVar('onetimepad', $onetimepad, SQ_SESSION);
@@ -72,7 +70,7 @@ if ($my_language != $squirrelmail_language) {
     setcookie('squirrelmail_language', $my_language, time()+2592000, $base_uri);
 }
 
-set_up_language(getPref($data_dir, $username, 'language'));
+set_up_language($my_language);
 
 $output = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Frameset//EN\">\n".
           "<html><head>\n" .
