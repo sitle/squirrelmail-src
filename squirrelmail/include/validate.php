@@ -40,18 +40,6 @@ $theme=array();
 /* SquirrelMail required files. */
 require_once(SM_PATH . 'class/mime.class.php');
 require_once(SM_PATH . 'functions/global.php');
-require_once(SM_PATH . 'functions/strings.php');
-require_once(SM_PATH . 'config/config.php');
-
-/* set the name of the session cookie */
-if(isset($session_name) && $session_name) {
-    ini_set('session.name' , $session_name);
-} else {
-    ini_set('session.name' , 'SQMSESSID');
-}
-
-sqsession_is_active();
-
 require_once(SM_PATH . 'functions/i18n.php');
 require_once(SM_PATH . 'functions/auth.php');
 
