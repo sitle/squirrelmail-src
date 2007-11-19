@@ -23,13 +23,11 @@ define('SM_PATH','../');
 
 /* SquirrelMail required files. */
 require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/global.php');
 require_once(SM_PATH . 'functions/imap.php');
 require_once(SM_PATH . 'functions/mime.php');
 require_once(SM_PATH . 'functions/date.php');
 require_once(SM_PATH . 'functions/url_parser.php');
 require_once(SM_PATH . 'functions/html.php');
-require_once(SM_PATH . 'functions/global.php');
 
 /**
  * Given an IMAP message id number, this will look it up in the cached
