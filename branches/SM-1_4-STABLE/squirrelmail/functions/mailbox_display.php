@@ -885,6 +885,7 @@ function printHeader($mailbox, $sort, $color, $showsort=true) {
             if ($showsort) {
                 ShowSortButton($sort, $mailbox, 8, 9);
             }
+            echo "</td>\n";
             break;
         }
     }
