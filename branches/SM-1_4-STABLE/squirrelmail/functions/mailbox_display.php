@@ -345,7 +345,7 @@ function getSelfSortMessages($imapConnection, $start_msg, $show_num,
     $msgs = array();
     if ($num_msgs >= 1) {
         $id = sqimap_get_php_sort_order ($imapConnection, $mbxresponse);
-        if ($sort < 6 ) {
+        if ($sort != 6 ) {
             $end = $num_msgs;
             $end_loop = $end;
             /* set shownum to 999999 to fool sqimap_get_small_header_list
@@ -552,6 +552,10 @@ function calc_msort($msgs, $sort) {
      * 3 = Name (dn)
      * 4 = Subject (up)
      * 5 = Subject (dn)
+     * 6 = default no sort
+     * 7 - UNUSED
+     * 8 = Size (up)
+     * 9 = Size (dn)
      */
 
     if (($sort == 0) || ($sort == 1)) {
@@ -566,10 +570,14 @@ function calc_msort($msgs, $sort) {
         foreach ($msgs as $item) {
             $msort[] = $item['SUBJECT-SORT'];
         }
+    } elseif (($sort == 8) || ($sort == 9)) {
+       foreach ($msgs as $item) {
+           $msort[] = $item['SIZE'];
+       }
     } else {
         $msort = $msgs;
     }
-    if ($sort < 6) {
+    if ($sort != 6) {
         if ($sort % 2) {
             asort($msort);
         } else {
@@ -872,7 +880,11 @@ function printHeader($mailbox, $sort, $color, $showsort=true) {
             echo "</td>\n";
             break;
         case 6: /* size */
-            echo html_tag( 'td', '<b>' . _("Size") . '</b>', 'center', '', 'width="5%" nowrap' );
+            echo html_tag( 'td' ,'' , 'left', '', 'width="5%" nowrap' )
+                 . '<b>' . _("Size") . '</b>';
+            if ($showsort) {
+                ShowSortButton($sort, $mailbox, 8, 9);
+            }
             break;
         }
     }
