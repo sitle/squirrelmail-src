@@ -29,6 +29,8 @@ Version 1.4.12 - SVN
   - Cleanup in multiple files to remove unneeded includes.
   - Added sort by size (#812233 and #159997, plus multiple list requests).
     Patch provided by Christopher E. Brown.
+  - Fix bug in sitewide SMTP settings still using authenticated user, rather
+    than configured settings (#1835942).
 
 Version 1.4.11 - 29 September 2007
 ----------------------------------

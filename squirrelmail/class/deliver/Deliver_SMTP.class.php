@@ -28,10 +28,10 @@ class Deliver_SMTP extends Deliver {
     }
 
     function initStream($message, $domain, $length=0, $host='', $port='', $user='', $pass='', $authpop=false) {
-        global $use_smtp_tls,$smtp_auth_mech,$username,$key,$onetimepad;
+        global $use_smtp_tls,$smtp_auth_mech;
 
         if ($authpop) {
-            $this->authPop($host, '', $username, $pass);
+            $this->authPop($host, '', $user, $pass);
         }
 
         $rfc822_header = $message->rfc822_header;
@@ -120,9 +120,9 @@ class Deliver_SMTP extends Deliver {
             $chall = substr($tmp,4);
             // Depending on mechanism, generate response string
             if ($smtp_auth_mech == 'cram-md5') {
-                $response = cram_md5_response($username,$pass,$chall);
+                $response = cram_md5_response($user,$pass,$chall);
             } elseif ($smtp_auth_mech == 'digest-md5') {
-                $response = digest_md5_response($username,$pass,$chall,'smtp',$host);
+                $response = digest_md5_response($user,$pass,$chall,'smtp',$host);
             }
             fputs($stream, $response);
 
@@ -154,7 +154,7 @@ class Deliver_SMTP extends Deliver {
             if ($this->errorCheck($tmp, $stream)) {
                 return(0);
             }
-            fputs($stream, base64_encode ($username) . "\r\n");
+            fputs($stream, base64_encode ($user) . "\r\n");
             $tmp = fgets($stream, 1024);
             if ($this->errorCheck($tmp, $stream)) {
                 return(0);
