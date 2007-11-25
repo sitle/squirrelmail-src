@@ -28,8 +28,7 @@ class Deliver_SMTP extends Deliver {
     }
 
     function initStream($message, $domain, $length=0, $host='', $port='', $user='', $pass='', $authpop=false) {
-        global $use_smtp_tls, $smtp_auth_mech, $username;
-        if ($user === '') $user = $username;
+        global $use_smtp_tls, $smtp_auth_mech;
 
         if ($authpop) {
             $this->authPop($host, '', $user, $pass);
