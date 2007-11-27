@@ -3,14 +3,30 @@
 /**
  * mailto.php -- mailto: url handler
  *
- * This checks to see if we're logged in.  If we are we open up a new
- * compose window for this email, otherwise we go to login.php
- * (the above functionality has been disabled, by default you are required to
- *  login first)
+ * This page facilitates handling mailto: links in SquirrelMail.  It checks 
+ * to see if we're logged in, and if we are, it refers the user to the
+ * compose screen (embedded in a normal, full SquirrelMail interface) with 
+ * the mailto: data auto-populated in the corresponding fields.  If there
+ * is no user currently logged in, the user is redirected to the login screen
+ * first, but after login, the compose screen is shown with the correct
+ * fields pre-populated.
  *
- * Use the following url to use mailto:
- * http://<your server>/<squirrelmail base dir>/src/mailto.php?emailaddress=%1
- * see ../contrib/squirrelmail.mailto.reg for a Windows Registry file
+ * If the administrator desires, $compose_only can be set to TRUE, in which 
+ * case only a compose screen will show, not embedded in the normal 
+ * SquirrelMail interface.
+ *
+ * If the administrator wants to force a re-login every time a mailto: link
+ * is clicked on (no matter if a user was already logged in), set $force_login
+ * to TRUE.
+ *
+ * Use the following URI when configuring a computer to handle mailto: links
+ * by using SquirrelMail:
+ *
+ *  http://<your server>/<squirrelmail base dir>/src/mailto.php?emailaddress=%1
+ *
+ * see ../contrib/squirrelmail.mailto.NT2KXP.reg for a Windows Registry file
+ * that will set this up in the most robust manner.
+ *
  * @copyright &copy; 1999-2007 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
