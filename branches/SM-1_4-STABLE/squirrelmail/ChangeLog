@@ -33,6 +33,8 @@ Version 1.4.12 - SVN
     than configured settings (#1835942).
   - Fixed mailto: functionality.
   - Added mailto: link handling when viewing messages.
+  - Handle PHP's insistence on setting the value to 'deleted' for destroyed sessions
+    (#1829098).
 
 Version 1.4.11 - 29 September 2007
 ----------------------------------
