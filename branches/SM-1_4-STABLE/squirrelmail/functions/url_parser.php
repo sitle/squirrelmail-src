@@ -37,6 +37,15 @@ $Host_RegExp_Match = '(' . $IP_RegExp_Match .
 $Email_RegExp_Match = '[0-9a-z]([-_.+]?[0-9a-z])*(%' . $Host_RegExp_Match .
     ')?@' . $Host_RegExp_Match;
 
+/**
+ * rfc 2368 (mailto URL) preg_match() regexp
+ * @link http://www.ietf.org/rfc/rfc2368.txt
+ * @global string MailTo_PReg_Match the encapsulated regexp for preg_match()
+ */
+global $MailTo_PReg_Match;
+$Mailto_Email_RegExp = '[0-9a-z%]([-_.+%]?[0-9a-z])*(%' . $Host_RegExp_Match . ')?@' . $Host_RegExp_Match;
+$MailTo_PReg_Match = '/((?:' . $Mailto_Email_RegExp . ')*)((?:\?(?:to|cc|bcc|subject|body)=[^\s\?&=,()]+)?(?:&amp;(?:to|cc|bcc|subject|body)=[^\s\?&=,()]+)*)/i';
+
 function parseEmail (&$body) {
     global $color, $Email_RegExp_Match, $compose_new_win;
     $sbody     = $body;
