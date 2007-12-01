@@ -46,13 +46,15 @@ function logout_error( $errString, $errTitle = '' ) {
            $hide_sm_attributions, $version, $squirrelmail_language, 
            $color, $theme, $theme_default;
 
+    include_once( SM_PATH . 'functions/page_header.php' );
+
     $base_uri = sqm_baseuri();
 
-    include_once( SM_PATH . 'functions/page_header.php' );
-    if ( !isset( $org_logo ) ) {
-        // Don't know yet why, but in some accesses $org_logo is not set.
-        include( SM_PATH . 'config/config.php' );
-    }
+    $logout_link = $base_uri . 'src/login.php';
+
+    list($junk, $errString, $errTitle, $logout_link) 
+        = do_hook('logout_error', $errString, $errTitle, $logout_link);
+
     /* Display width and height like good little people */
     $width_and_height = '';
     if (isset($org_logo_width) && is_numeric($org_logo_width) && $org_logo_width>0) {
@@ -79,11 +81,6 @@ function logout_error( $errString, $errTitle = '' ) {
         $color[7]  = '#0000cc';  /* blue          Links                  */
         $color[8]  = '#000000';  /* black         Normal text            */
     }
-
-    $logout_link = $base_uri . 'src/login.php';
-
-    list($junk, $errString, $errTitle, $logout_link) 
-        = do_hook('logout_error', $errString, $errTitle, $logout_link);
 
     if ( $errTitle == '' ) {
         $errTitle = $errString;
