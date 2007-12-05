@@ -32,6 +32,10 @@ $SQM_INTERNAL_VERSION = array(1,4,13);
  */
 require_once(SM_PATH . 'functions/global.php');
 
+if (file_exists(SM_PATH . 'plugins/compatibility/functions.php')) {
+    include_once(SM_PATH . 'plugins/compatibility/functions.php');
+}
+
 /**
  * Wraps text at $wrap characters
  *
