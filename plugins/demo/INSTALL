@@ -1,15 +1,13 @@
-Installing Plugin
-=================
+Installing Demo
+===============
 
-1) Start with untaring the file into the plugins directory.
-Here is a example for the 1.0 version of the demo plugin.
+The Demo plugin comes with SquirrelMail, so you should
+only need to activate it using the configuration utility.
 
-    $ cd /var/www/squirrelmail/plugins
-    $ tar -xzvf /home/archives/demo-1.0-1.4.0.tar.gz
+1) Go to your config directory and run conf.pl.  Choose
+   option 8 and move the plugin from the "Available Plugins"
+   category to the "Installed Plugins" category.  Save and exit.
 
-2) Then go to your config directory and run conf.pl.  Choose
-option 8 and move the plugin from the "Available Plugins"
-category to the "Installed Plugins" category.  Save and exit.
+  $ cd config/
+  $ ./conf.pl
 
-    $ cd ../config/
-    $ ./conf.pl
