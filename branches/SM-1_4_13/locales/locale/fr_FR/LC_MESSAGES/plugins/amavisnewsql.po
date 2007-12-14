@@ -1,0 +1,235 @@
+# SquirrelMail amavisnewsql plugin French translation.
+# Copyright (C) 2005 The SquirrelMail Project Team
+# This file is distributed under the same license as the PACKAGE package.
+# Denis Sacchet <dsacchet@kikamedical.com>, 2004.
+# $Id$
+msgid ""
+msgstr ""
+"Project-Id-Version: amavisnewsql VERSION\n"
+"POT-Creation-Date: 2004-08-11 18:20+0100\n"
+"PO-Revision-Date: 2004-08-11 18:20+0100\n"
+"Last-Translator: Denis Sacchet <dsacchet@kikamedical.com>\n"
+"Language-Team: French <dsacchet@kikamedical.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Quarantine"
+msgstr "Quarantaine"
+
+msgid "[Quarantine]"
+msgstr "Quarantaine"
+
+msgid "Here you may define your own white/black lists and customize your spam scoring rules."
+msgstr "Ici vous pouvez définir votre propre white/black lists et paramétrer vos règles de scoring du spam"
+
+msgid "Options"
+msgstr "Options"
+
+msgid "SpamAssassin Configuration"
+msgstr "Configuration de SpamAssassin"
+
+msgid "Global Address List"
+msgstr "Liste d'adresse globale"
+
+msgid "Personal Allow / Deny Addresses List"
+msgstr "Liste personnelle d'adresses autorisées / bloqués"
+
+msgid "No Personal Addresses Defined"
+msgstr "Pas d'adresses personnelles définie"
+
+msgid "Address"
+msgstr "Adresse"
+
+msgid "Address:"
+msgstr "Adresse:"
+
+msgid "Type"
+msgstr "Type"
+
+msgid "Type:"
+msgstr "Type:"
+
+msgid "Action"
+msgstr "Action"
+
+msgid "Edit"
+msgstr "Editer"
+
+msgid "Delete"
+msgstr "Supprimer"
+
+msgid "Add New Address"
+msgstr "Ajouter une nouvelle adresse"
+
+msgid "Examples"
+msgstr "Exemples"
+
+msgid "complete address"
+msgstr "adresse complète"
+
+msgid " OR"
+msgstr " OU"
+
+msgid "complete part before domain"
+msgstr " partie complète avant le domaine"
+
+msgid "domain only including the "
+msgstr "seulement le domaine avec le "
+
+msgid "Whitelist"
+msgstr "Whitelist"
+
+msgid "Blacklist"
+msgstr "Blacklist"
+
+msgid "Description"
+msgstr "Description"
+
+msgid "Whitelist / Blacklist"
+msgstr "Whitelist / Blacklist"
+
+msgid "Here you may list the addresses you wish to protect and those you wish to block. Please keep in mind that spammers often have throw-away or fake addresses so blacklisting these is pointless. The listed addresses appear in the same order as they will be applied by the mail server. Please read the section on priority to understand why this is important."
+msgstr "Ici vous pouvez lister les adresses que vous voulez protéger ou celle que vous voulez bloquer. Merci de garder à l'esprit que les spammeurs utilisent des adresses factices, donc les blacklistés ne sert à rien. Les adresses listées apparait dans le même ordre que quand elles seront appliquées au serveur de mail. Merci de lire la section sur la priorité pour comprendre pourquoi cela est important."
+
+msgid "Priority"
+msgstr "Priorité"
+
+msgid "Priority:"
+msgstr "Priorité:"
+
+msgid "The priority determines the order of the list with the search stopping at the first matching address.  Overlapping addresses should be listed from specific to general.  E.g. if you want to allow one person from aol to mail you and block everyone else you would use two rules. The higher priority one set to whitelist friend@aol.com and a lower priority one set to blacklist @aol.com. The server will match the specific higher priority address first and end the search.  Addresses that are whitelisted for the whole company appear above with the lowest priorities.. your settings can always override the global ones."
+msgstr "La priorité détermine l'ordre de la liste et la recherche s'arrête à la première adresse correspondante. Les adresses qui se recoupent, doivent être entrées du plus spécifique au plus général. Par exemple, si vous voulez autoriser une personne d'aol à vous écrire mais que vous voulez bloquer tous les autres, vous utiliserez deux règles.  La plus haute priorité sera attribué à l'entrée votre ami d'@aol.com dans la white list et une priorité plus basse sera attribuée à l'entrée @aol.com dans la blacklist. Le serveur trouvera l'adresse spécifique avec une plus grand priorité en premier et arrêtera la recherche. Les adresses qui sont whitelistées pour le domaine de la société apparaît au dessus avec une priorité inférieure, vos paramètres peuvent toujours remplacés les globaux."
+
+msgid "No Policies Defined"
+msgstr "Pas de politiques définis"
+
+msgid "Quarantine Settings"
+msgstr "Paramètres de la quarantaine"
+
+msgid "Currently:"
+msgstr "Actuellement:"
+
+msgid "How often should you receive quarantine reports?"
+msgstr "A quelle fréquence voulez-vous recevoir les rapports de mise en quarantaine ?"
+
+msgid "Week Days (Default)"
+msgstr "Une fois par semaine (par défaut)"
+
+msgid "Never"
+msgstr "Jamais"
+
+msgid "Daily"
+msgstr "Quotidiennement"
+
+msgid "Weekly (Friday)"
+msgstr "Hebdomadairement (le vendredi)"
+
+msgid "Monthly (1st)"
+msgstr "Mensuellement (le premier)"
+
+msgid "How long should mail stay in the quarantine before being automatically removed?"
+msgstr "Pendant combien de temps les mails mis en quarantaines doivent-ils être conservés avant d'être supprimés ?"
+
+msgid "3 Days"
+msgstr "3 jours"
+
+msgid "5 Days"
+msgstr "5 jours"
+
+msgid "7 Days"
+msgstr "7 jours"
+
+msgid "10 Days"
+msgstr "10 jours"
+
+msgid "14 Days"
+msgstr "14 jours"
+
+msgid "20 Days"
+msgstr "20 jours"
+
+msgid "30 Days"
+msgstr "30 jours"
+
+msgid "Set Quarantine Policy"
+msgstr "Configuration de la politique de quarantaine"
+
+msgid "Message Scoring Policy"
+msgstr "Politique de scoring des messages"
+
+msgid "Define Custom Policy"
+msgstr "Définition d'une politique personnalisée"
+
+msgid "Set Custom Policy"
+msgstr "Choisir une politique personnalisée"
+
+msgid "Directions"
+msgstr "Directions"
+
+msgid "Policies"
+msgstr "Politiques"
+
+msgid "Predefined Policies"
+msgstr "Politiques prédéfinies"
+
+msgid "Your Current Policy"
+msgstr "Votre politique actuelle"
+
+msgid "Click To Select"
+msgstr "Cliquer pour sélectionner"
+
+msgid "You may select from one of several predefined scoring policies or you may define your own. Each email is assigned a numerical score based on the characteristics it shares with those common to spam."
+msgstr "Vous devez choisir une politique parmi les politiques prédéfinis ou vous pouvez définir la votre. Un score numérique est associé à chaque mail en fonction des caractéristiques avec celles communes au spam"
+
+msgid "Tag Level"
+msgstr "Niveau pour tag"
+
+msgid "Quarantine Level"
+msgstr "Niveau pour mise en quarantaine"
+
+msgid "Kill Level"
+msgstr "Niveau pour destruction"
+
+msgid "Custom Policy"
+msgstr "Politique personnalisée"
+
+msgid "The tag level is the numerical score required to identify a message as being spam.  This will cause *SPAM* to be added to the subject line and the X-Spam-Flag header to be set to YES."
+msgstr "Le niveau de tag est le score numérique requis pour identifier un message comme spam. Cela va provoquer l'ajout du mot clé *SPAM* dans le sujet du message et la mise à YES de l'entête X-Spam-Flag"
+
+msgid "The $tag2_label is the numerical score required to prevent delivery of a message at the server.  This level should be higher or equal to Tag Level and high enough to avoid catching legitimate email. As your custom whitelist grows you should adjust these two levels to tag and block more spam."
+msgstr "Le $tag2_label est le score numérique requis pour empêche le message d'être délivré au server. Ce niveau doit être supérieur ou égal au niveau de tag, et assez haut pour éviter de capturer des mails légitimes. En même temps que votre white liste grossis, vous pouvez ajuster ces deux niveaux pour bloquer plus de spams."
+
+msgid "No Messages in Quarantine"
+msgstr "Pas de messages en quarantaine"
+
+msgid "Select Action"
+msgstr "Selectionner une action"
+
+msgid "DELETE"
+msgstr "SUPPRESSION"
+
+msgid "Release"
+msgstr "Libération"
+
+msgid "Submit"
+msgstr "Soumettre"
+
+msgid "Messages hilighted in RED likely contain viruses!"
+msgstr "Les messages mis en valeurs en ROUGE sont susceptibles de contenir des virus !"
+
+msgid "Spam Assassin Settings"
+msgstr "Paramètres de SpamAssassin"
+
+msgid "From"
+msgstr "De"
+
+msgid "Date"
+msgstr "Date"
+
+msgid "Subject"
+msgstr "Sujet"
+
+msgid "Score"
+msgstr "Score"
+

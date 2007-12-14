@@ -1,0 +1,1564 @@
+# translation of gpg.po to Dutch
+# Plugin G/PGP Encryption
+# Copyright (c) 2003-2005 The SquirrelMail Project Team
+# This file is distributed under the same license as the Squirrelmail package.
+#
+# M.J. Prinsen <translation@prinsenonline.com>, 2003.
+# Rinse de Vries <rinsedevries@kde.nl>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: gpg\n"
+"POT-Creation-Date: 2004-01-28 09:53-0600\n"
+"PO-Revision-Date: 2007-04-17 22:54+0200\n"
+"Last-Translator: Rinse de Vries <rinsedevries@kde.nl>\n"
+"Language-Team: Dutch <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+msgid " Please try again."
+msgstr "Probeer het opnieuw."
+
+msgid " selected"
+msgstr " geselecteerd"
+
+msgid "'On Send' Defaults"
+msgstr "Standaardwaarden voor 'Bij verzenden'"
+
+msgid "1 Year"
+msgstr "1 jaar"
+
+msgid ""
+"<a href=\"http://www.gnupg.org/gph/en/manual.html\">The GNU Privacy "
+"Handbook</a>"
+msgstr "<a href=\"http://www.gnupg.org/gph/en/manual.html\">Het GNU Privacy-handboek</a>"
+
+msgid ""
+"A 1024 bit key is often acceptable, 2048 is generally seen as a good "
+"compromise between security and usability, and 4096 is very strong and can "
+"be noticeably slower."
+msgstr ""
+"Een 1024-bits versleuteling is acceptabel, 2048 wordt gezien als een goed "
+"compromis tussen veiligheid en bruikbaarheid, en 4096 is een erg sterke "
+"versleuteling, die merkbaar trager kan zijn."
+
+msgid ""
+"A Keypair consists of a <b>public key</b>, which people will use to send "
+"encrypted messages to you and verify your signature, and a <b>secret key</"
+"b>, which will never be shared with others."
+msgstr ""
+"Een sleutelpaar bestaat uit een <b>publieke sleutel</b>, die mensen "
+"gebruiken om versleutelde berichten naar u te versturen en om uw "
+"handtekening te verifiëren. En een <b>privésleutel</b>, die nooit met "
+"anderen wordt uitgewisseld."
+
+msgid ""
+"A new Keypair can be generated for this account on the webserver for use "
+"here."
+msgstr "U kunt op de webserver een nieuw sleutelpaar voor dit account genereren om hier te gebruiken."
+
+msgid "A new personal Keypair has been generated."
+msgstr "Een nieuw persoonlijk sleutelpaar is gegenereerd."
+
+msgid "Add Keys"
+msgstr "Sleutels toevoegen"
+
+msgid "Algorithm"
+msgstr "Algoritme"
+
+msgid ""
+"Any key signed with your trusted key ID will be allowed for encryption "
+"without generating errors."
+msgstr ""
+"Elke sleutel, getekend met uw vertrouwde sleutel-ID, kan worden gebruikt "
+"voor versleuteling, zonder fouten te genereren."
+
+msgid "Attachments"
+msgstr "Bijlagen"
+
+msgid "Back to GPG Plugin Options"
+msgstr "Terug naar de GPG-Plugin-opties"
+
+msgid "Back to Keyring Management"
+msgstr "Terug naar sleutelringbeheer"
+
+msgid "Back to Keyring Management Options"
+msgstr "Terug naar sleutelringbeheeropties"
+
+msgid "Back to Main Squirrelmail Options"
+msgstr "Terug naar Squirrelmail-opties"
+
+msgid "Bad Passphrase."
+msgstr "Onjuiste wachtwoordzin."
+
+msgid "Bad Signature"
+msgstr "Onjuiste handtekening"
+
+msgid "Bcc"
+msgstr "Bcc"
+
+msgid ""
+"Be aware that using this option in combination with the partial recipients "
+"option, above, may result in unintended consequences."
+msgstr ""
+"Wees gewaarschuwd dat het gebruik van deze optie in combinatie met de "
+"gedeeltelijke-ontvangers-optie hierboven kan leiden tot onbedoelde "
+"consequenties."
+
+msgid ""
+"Because of this risk of compromise and lack of security, you may not want to "
+"store your private key on the web server."
+msgstr ""
+"Vanwege de veiligheid is het beter uw privésleutel niet op de webserver te "
+"bewaren"
+
+msgid ""
+"Caching the passphrase can be very convenient, but many security experts "
+"recommend against storing the passphrase on the server because it may be "
+"more susceptible to an attack."
+msgstr "Het bewaren van de wachtwoordzin is erg gemakkelijk, maar veel veiligheidsdeskundigen raden het af de wachtwoordzin op de server te bewaren, omdat die dan meer vatbaar is voor een aanval."
+
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgid "Cannot change passphrase on key: "
+msgstr "Kan de wachtwoordzin niet veranderen van de sleutel: "
+
+msgid "Cc"
+msgstr "CC"
+
+msgid "Change Passphrase"
+msgstr "Wachtwoordzin wijzigen"
+
+msgid "Choose a Key to Import"
+msgstr "Kies een sleutel om te importeren"
+
+msgid "Choose a complete sentence that you will be able to remember."
+msgstr "Kies een volledige zin die u kunt onthouden."
+
+msgid "Choose your Default Keyserver"
+msgstr "Kies uw standaard sleutelserver"
+
+msgid ""
+"Choosing a good passphrase is one of the most important tasks for secure "
+"communications."
+msgstr ""
+"De keuze van een goede wachtwoordzin is een van de meest belangrijke "
+"voorwaarden voor veilige communicatie."
+
+msgid "Close Window"
+msgstr "Venster sluiten"
+
+msgid "Configure a Trusted Key"
+msgstr "Een vertrouwde sleutel instellen"
+
+msgid "Confirm Delete Key"
+msgstr "Verwijderen van sleutel bevestigen"
+
+msgid "Confirm Delete Keypair"
+msgstr "Verwijderen van sleutelpaar bevestigen"
+
+msgid "Connection to IMAP Server to retrieve message body failed."
+msgstr "Verbinding met IMAP-server om berichttekst te ontvangen is mislukt."
+
+msgid "Could not export your key.  Please contact gpg development."
+msgstr "Kon uw sleutel niet exporteren.  Neem contact op met gpg-ontwikkeling."
+
+msgid "Could not write to temporary file: "
+msgstr "Kon niet schrijven naar tijdelijk bestand: "
+
+msgid "Create New Personal Keypair"
+msgstr "Nieuw persoonlijk sleutelpaar aanmaken"
+
+msgid "Cute."
+msgstr "Mooi."
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Days"
+msgstr "Dagen"
+
+msgid "Decrypt Attachment"
+msgstr "Bijlage ontcijferen"
+
+msgid "Decrypt Message Now"
+msgstr "Bericht nu ontcijferen"
+
+msgid "Decrypted Message"
+msgstr "Bericht ontcijferen"
+
+msgid "Default Keyserver set to:"
+msgstr "Standaard sleutelserver is:"
+
+msgid "Default Keyserver: "
+msgstr "Standaard sleutelserver: "
+
+msgid "Delete"
+msgstr "Verwijderen"
+
+msgid "Delete Keypair"
+msgstr "Sleutelpaar verwijderen"
+
+msgid "Did not receive valid export_type in gpg_export_key function."
+msgstr "Geen geldig export_type ontvangen in functie gpg_export_key."
+
+msgid "Did not receive valid keyring_type in gpg_list_keys function."
+msgstr "Geen geldig keyring_type ontvangen in functie gpg_list_keys."
+
+msgid "Did you import a personal Keypair in Step 1?"
+msgstr "Heeft u een persoonlijk sleutelpaar geïmporteerd in Stap 1?"
+
+msgid "Do you already have a keyring, or individual keys you would like to use?"
+msgstr "Heeft u al een sleutelring of individuele sleutels die u wilt gebruiken?"
+
+msgid "Do you already have a personal Keypair?"
+msgstr "Heeft u al een persoonlijk sleutelpaar?"
+
+msgid ""
+"Do you want the GPG plugin to encrypt the message to only some recipients, "
+"if you do not have public keys for everyone?"
+msgstr ""
+"Wilt u dat de GPG plugin berichten naar slechts enkele ontvangers versleutelt "
+"als u niet de publieke sleutels heeft voor iedereen?"
+
+msgid ""
+"Do you want the plugin to encrypt mail to your address, in addition to the "
+"recipients?"
+msgstr ""
+"Wilt u dat de GPG-plugin berichten aan uw adres versleutelt, in aanvulling op de "
+"ontvangers?"
+
+msgid "Do you want the system to cache your passphrase?"
+msgstr "Wilt u dat het systeem uw wachtwoordzin onthoudt?"
+
+msgid ""
+"Do you want to trust the system-wide keyring that has been defined by your "
+"system administrator?"
+msgstr ""
+"Wilt u de systeemwijde sleutelring vertrouwen, die gedefinieerd is door uw "
+"systeembeheerder?"
+
+msgid ""
+"Do you want to use the system-wide ADK that has been defined by your system "
+"administrator?"
+msgstr "Wilt u de systeemwijde ADK gebruiken, die gedefinieerd is door uw systeembeheerder?"
+
+msgid "Done"
+msgstr "Gereed"
+
+msgid "Download signed attachment"
+msgstr "Ondertekende bijlage downloaden"
+
+msgid "Email"
+msgstr "E-mail"
+
+msgid "Email Address"
+msgstr "E-mailadres"
+
+msgid "Email Key"
+msgstr "E-mailsleutel"
+
+msgid "Encrypt Now"
+msgstr "Nu versleutelen"
+
+msgid "Encrypt on Send"
+msgstr "Bij verzenden versleutelen"
+
+msgid "Encrypt on Send by Default"
+msgstr "Standaard bij verzenden versleutelen"
+
+msgid "Encrypt to Self"
+msgstr "Berichten voor mijzelf versleutelen"
+
+msgid "Encrypt&Sign Now"
+msgstr "Nu versleutelen & ondertekenen"
+
+msgid "Encrypted"
+msgstr "Versleuteld"
+
+msgid "Encryption Options - Getting Started"
+msgstr "Versleutelopties - begin"
+
+msgid "Enter New Passphrase:"
+msgstr "Nieuwe wachtwoordzin:"
+
+msgid "Enter Passphrase"
+msgstr "Voer de wachtwoordzin in"
+
+msgid "Enter Search text below to search for a key to import"
+msgstr "Voer hieronder termen in waarmee u wilt zoeken naar een sleutel om te importeren."
+
+msgid "Enter a search string for the key you would like to trust in the box below."
+msgstr "Voer in het veld hieronder een zoekterm in voor de sleutel die wilt vertrouwen."
+
+msgid "Error: "
+msgstr "Fout: "
+
+msgid "Error: No filename found to save attachment"
+msgstr "Fout: geen bestandsnaam gevonden om bijlage op te slaan"
+
+msgid "Errors:"
+msgstr "Fouten:"
+
+msgid "Expiration Date"
+msgstr "Verloopdatum"
+
+msgid "External Resources"
+msgstr "Externe bronnen"
+
+msgid "Extras"
+msgstr "Extra's"
+
+msgid "Find the public keys of people you want to communicate securely with"
+msgstr "Zoek de publieke sleutels van mensen waarmee u veilig wilt communiceren"
+
+msgid "First"
+msgstr "Eerste"
+
+msgid "Forward"
+msgstr "Doorsturen"
+
+msgid "Forward as Attachment"
+msgstr "Doorsturen als bijlage"
+
+msgid "From"
+msgstr "Van"
+
+msgid "From this screen, you may select options for setting up the GPG Plugin."
+msgstr "In dit scherm kunt u de opties van de GPG-plugin instellen."
+
+msgid "Full Name"
+msgstr "Volledige naam"
+
+msgid "GPG Decryption Initiating"
+msgstr "GPG-ontcijferen gestart"
+
+msgid "GPG Decryption Results"
+msgstr "Resultaten van GPG-ontcijfering"
+
+msgid "GPG Draft Signing Initiating"
+msgstr "GPG concept ondertekenen gestart"
+
+msgid "GPG Encrypt and Sign Initiating"
+msgstr "GPG versleutelen en ondertekenen gestart"
+
+msgid "GPG Options - Create a Personal Keypair"
+msgstr "GPG-opties - een persoonlijk sleutelpaar aanmaken"
+
+msgid "GPG Options - Display Key"
+msgstr "GPG-opties - Sleutel weergeven"
+
+msgid "GPG Options - Keyring Management"
+msgstr "GPG-opties - sleutelringbeheer"
+
+msgid "GPG Options - Main Options"
+msgstr "GPG-opties - hoofdopties"
+
+msgid "GPG Plugin"
+msgstr "GPG-plugin"
+
+msgid "GPG Plugin - General Options"
+msgstr "GPG-plugin - algemene opties"
+
+msgid "GPG Plugin Error:No body text received from Compose page"
+msgstr "GPG-pluginfout: geen berichttekst ontvangen van opstelpagina"
+
+msgid "GPG Plugin Help"
+msgstr "GPG-plugin-help"
+
+msgid "GPG Plugin Options"
+msgstr "GPG-plugin-opties"
+
+msgid "GPG Plugin: Check your preferences from the Trusted Key Screen in Options."
+msgstr "GPG-plugin: controleer uw voorkeuren in het vertrouwde-sleutel-scherm in Opties."
+
+msgid "GPG Plugin: No Trusted Key Selected, but Use Trusted Key Feature Set."
+msgstr "GPG-plugin: geen vertrouwde sleutel geselecteerd, gebruikt de vertrouwde- sleutel-set."
+
+msgid "GPG Plugin: No cyphertext was generated."
+msgstr "GPG-plugin: er is geen versleutelde tekst gegenereerd."
+
+msgid "GPG Plugin: Plain-text Attachment file not deleted due to error in Encrypt."
+msgstr "GPG-plugin: bijgevoegd plattetekstbestand is niet verwijderd vanwege een fout in Encrypt."
+
+msgid ""
+"GPG Plugin: You must specify a signing key in the Options screen to sign "
+"messages."
+msgstr "GPG-plugin: u moet een sleutel specificeren in het optiesscherm om berichten te kunnen tekenen."
+
+msgid ""
+"GPG Plugin: Your recipient list is empty. After parsing, there are no valid "
+"recipients."
+msgstr "GPG-plugin: uw lijst met geadresseerden is leeg. Na het ontleden zijn er geen geldige geadresseerden."
+
+msgid "GPG Plugin: gpg returned a non-clean return value of: "
+msgstr "GPG-plugin: gpg gaf een corrupt resultaat terug van: "
+
+msgid "GPG Recipient List"
+msgstr "GPG-ontvangerslijst"
+
+msgid "GPG Signing Initiating"
+msgstr "GPG-ondertekenen gestart"
+
+msgid "General Options about how the plugin works"
+msgstr "Algemene opties over de werking van de plugin"
+
+msgid "Generate New Keypair"
+msgstr "Een nieuw sleutelpaar genereren"
+
+msgid "Generate new personal key pair"
+msgstr "Een nieuw persoonlijk sleutelpaar genereren"
+
+msgid "Generating Keypair based on:"
+msgstr "Sleutelpaar genereren gebaseerd op:"
+
+msgid "Generation Date"
+msgstr "Aanmaakdatum"
+
+msgid "Getting Started with the GPG Plugin"
+msgstr "Beginnen met de GPG-plugin"
+
+msgid "Go"
+msgstr "Ga"
+
+msgid "Good Signature"
+msgstr "Goede handtekening"
+
+msgid "Here are a few tips on choosing a good passphrase:"
+msgstr "Hier is een aantal tips voor het kiezen van een goede wachtwoordzin:"
+
+msgid "Here are the keys which GPG reported as missing:"
+msgstr "Dit zijn de sleutels die GPG rapporteert als ontbrekend:"
+
+msgid ""
+"Higher strength keys (those with more 'bits') are harder to compromise, but "
+"they also take more time to use.  It will take longer to decrypt and sign "
+"with a stronger key."
+msgstr ""
+"Sterkere sleutels (met meer 'bits') zijn veiliger, maar ze kosten meer tijd "
+"in het gebruik. Het ontcijferen en ondertekenen duurt langer met een sterkere "
+"sleutel."
+
+msgid "How do I choose a passphrase?"
+msgstr "Hoe kies ik een wachtwoordzin?"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "If it is not secure, your identity can be stolen!"
+msgstr "Als het niet veilig is, kan uw identiteit worden gestolen!"
+
+msgid "If not, skip this step."
+msgstr "Zo niet, sla deze stap over."
+
+msgid "If not, you should"
+msgstr "Zo niet, dan kunt u"
+
+msgid ""
+"If you Sign your messages, the message will be verifiable as being from you, "
+"and the recipient will be able to make sure that the message was not "
+"tampered with in transit."
+msgstr ""
+"Als u uw berichten ondertekent is het bericht te verifiëren als zijnde van "
+"u. De ontvanger kan nu verifiëren of het bericht tijdens zijn reis niet is "
+"onderschept en veranderd."
+
+msgid ""
+"If you are inventing a new passphrase that you have never used before, you "
+"should consider writing it down until you are comfortable that you will not "
+"forget it."
+msgstr ""
+"Als u een nieuwe wachtwoordzin gaat gebruiken, die u nog nooit heeft "
+"gebruikt, dan kunt u hem tijdelijk ergens opschrijven totdat u denkt hem "
+"niet meer te vergeten."
+
+msgid ""
+"If you choose a trusted key and store a keypair on the web server, all keys "
+"that you wish to encrypt to will need to be signed by a trusted key."
+msgstr ""
+"Als u kiest voor een vertrouwde sleutel en een sleutelpaar op de webserver "
+"bewaart, dan moeten alle sleutels waarmee u wilt versleutelen zijn ondertekend met een vertrouwde sleutel."
+
+msgid ""
+"If you choose to cache your passphrase, your passphrase will be stored on "
+"the Web Mail server in secure storage for use by you while you are logged in."
+msgstr "Als u kiest voor het uw onthouden van uw wachtwoordzin, dan zal deze in een veilige opslag worden bewaard op de webmailserver voor gebruik wanneer u bent ingelogd."
+
+msgid ""
+"If you do choose to write down your passphrase, be careful about where you "
+"store it, and destroy your paper copy as soon as you are sure that you will "
+"remember your passphrase."
+msgstr ""
+"Als u kiest voor het opschrijven van uw wachtwoordzin, wees dan "
+"voorzichtig waar u het opbergt en vernietig uw papieren kopie zodra u de zin "
+"kunt onthouden."
+
+msgid ""
+"If you do not see the key you want to trust in the list above, or if there "
+"is no list:"
+msgstr ""
+"Als u de sleutel die u wilt vertrouwen niet vindt in de lijst hierboven, of "
+"als er geen lijst is:"
+
+msgid ""
+"If you do not see the key you wish to import, you may go back and enter "
+"different search terms or select a different keyserver."
+msgstr ""
+"Als u de sleutel die u wilt importeren niet kunt vinden, ga dan terug en vul "
+"andere zoektermen in of selecteer een andere sleutelserver."
+
+msgid ""
+"If you do not trust the people that are hosting this email service it is "
+"recommended that you do not upload your existing private key until trust can "
+"be established."
+msgstr ""
+"Als u de mensen die deze e-mail service hosten niet vertrouwt, dan is het "
+"aanbevolen dat u uw bestaande privésleutel niet uploadt totdat u zeker weet "
+"dat u hen kunt vertrouwen."
+
+msgid ""
+"If you forget your passphrase, you will not be able to decrypt messages "
+"encrypted with this public key."
+msgstr ""
+"Als u uw wachtwoordzin vergeet zult u niet meer in staat zijn berichten te "
+"ontcijferen die zijn versleuteld met deze publieke sleutel."
+
+msgid ""
+"If you generated a personal Keypair in step 2, this is probably the key you "
+"want."
+msgstr ""
+"Als u een persoonlijk sleutelpaar in stap 2 heeft gegenereerd, dan is dit "
+"waarschijnlijk de sleutel die u wilt gebruiken."
+
+msgid ""
+"If you select 'No' below, the holder of the ADK will not be able to decrypt "
+"your messages."
+msgstr ""
+"Als u hieronder 'Nee' selecteert, dan zal de ADK-houder niet in staat zijn "
+"om uw berichten te ontcijferen."
+
+msgid ""
+"If you select 'No' below, you will be prompted for your passphrase every "
+"time it is needed for decryption or signing of messages."
+msgstr ""
+"Als u hieronder 'Nee' selecteert, dan zal iedere keer uw wachtwoordzin "
+"worden gevraagd bij het ontcijferen of ondertekenen van berichten."
+
+msgid ""
+"If you select 'Yes' below, all messages that you encrypt will also be "
+"encrypted to the ADK."
+msgstr ""
+"Als u hieronder 'Ja' selecteert, dan zullen alle door u versleutelde berichten "
+"ook naar de ADK worden versleuteld."
+
+msgid ""
+"If you select 'Yes' below, the plugin will search the 'system-wide' keyring "
+"for public keys after looking at your public keyring."
+msgstr ""
+"Als u hieronder 'Ja' selecteert, zal de plugin na de publieke sleutelring de "
+"'systeemwijde' sleutelring doorzoeken op publieke sleutels."
+
+msgid ""
+"If you select 'Yes' below, you will only be prompted for your passphrase "
+"once during a session."
+msgstr ""
+"Als u hieronder 'Ja' selecteert, dan wordt u slechts één keer per sessie om "
+"uw wachtwoordzin gevraagd."
+
+msgid ""
+"If you selected 'Yes', what is the email address you would like to encrypt "
+"to:"
+msgstr "Als u 'Ja' selecteert, naar welk e-mailadres wilt u dan versleutelen: "
+
+msgid ""
+"If you set one of these options below, you will have the opportunity on the "
+"Compose page to turn it off on a message by message basis."
+msgstr ""
+"Als u één van deze opties hieronder selecteert heeft u de mogelijkheid deze "
+"optie per bericht aan of uit te zetten."
+
+msgid ""
+"If you set this option to 'No', you will not be able to decrypt messages "
+"encrypted with the plugin unless you add your email address in the To, CC, "
+"or BCC line of the email before encrypting it."
+msgstr "Als u deze optie op 'Nee' zet kunt u alleen versleutelde berichten  met de plugin ontcijferen als u uw e-mailadres in het Aan-, CC- of BCC-veld heeft toegevoegd voordat u het bericht versleutelt."
+
+msgid ""
+"If you set this option to 'No', you will not have access to any keys stored "
+"on the system keyring, which may include keys for members of a group to "
+"which you belong."
+msgstr ""
+"Als u deze optie op 'Nee' zet, zult u geen toegang hebben tot sleutels die "
+"zijn bewaard in de systeemsleutelring en mogelijk sleutels bevat voor "
+"leden van een groep waar u lid van bent."
+
+msgid ""
+"If you try to encrypt to a key not signed by one of these keys, you will not "
+"be allowed to do so, because the identity of the recipient is unverifiable."
+msgstr ""
+"Als u naar een sleutel probeert te versleutelen die niet is ondertekend door één van "
+"deze sleutels, dan zal dit niet worden toegestaan omdat de identiteit van "
+"de ontvanger niet is te verifiëren."
+
+msgid ""
+"If you wish to Sign all of your messages by default, you may also select the "
+"'Sign on Send' option below."
+msgstr ""
+"Als u al uw berichten standaard wilt ondertekenen kunt u de optie 'Standaard ondertekenen "
+"bij verzenden' selecteren."
+
+msgid ""
+"If you with to Encrypt all messages by default, select the 'Encrypt on Send' "
+"option below."
+msgstr "Als u al uw berichten standaard wilt versleutelen, selecteer dan de optie 'Standaard ondertekenen bij verzenden'."
+
+msgid ""
+"If your keyring has a public key for this email address on it, then all "
+"messages you encrypt will be readable by you later."
+msgstr ""
+"Als uw sleutelring een publieke sleutel bevat voor dit e-mailadres, dan "
+"zullen alle berichten die u versleutelt later leesbaar zijn voor u."
+
+msgid "Import ASCII-Armored Key Text to Keyring"
+msgstr "ASCII-gewapende sleuteltekst naar sleutelring importeren"
+
+msgid "Import Key"
+msgstr "Sleutel importeren"
+
+msgid "Import Key File to Keyring"
+msgstr "Sleutelbestand naar sleutelring importeren"
+
+msgid "Import Key contained in this email now"
+msgstr "Sleutel uit dit bericht nu importeren"
+
+msgid "Import Selected Key"
+msgstr "Geselecteerde sleutel importeren"
+
+msgid "Import external keys"
+msgstr "Externe sleutels importeren"
+
+msgid "Import keys to your personal keyring via: "
+msgstr "Sleutels in uw persoonlijke sleutelring importeren via: "
+
+msgid "Importing key with KeyID: "
+msgstr "Sleutel importeren met sleutel-ID: "
+
+msgid ""
+"In fact, most security experts recommend that web servers be presumed to be "
+"at risk of compromise."
+msgstr ""
+"Webservers zijn volgens de meeste veiligheidsdeskundigen vanzelfsprekend "
+"onveilig."
+
+msgid "Info:"
+msgstr "Informatie:"
+
+msgid "Info: "
+msgstr "Informatie:"
+
+msgid ""
+"It may be dangerous to believe that any web server (like this one) may be "
+"presumed secure."
+msgstr "Het kan gevaarlijk zijn te denken dat elke webserver veilig is."
+
+msgid ""
+"It would be dangerous to simply assume that any web server (like this one) "
+"is secure."
+msgstr "Het is gevaarlijk om aan te nemen dat elke webserver veilig is."
+
+msgid "Key"
+msgstr "Sleutel"
+
+msgid "Key Date"
+msgstr "Datum sleutel"
+
+msgid "Key Details:"
+msgstr "Details sleutel:"
+
+msgid "Key Expires"
+msgstr "Verloopdatum sleutel"
+
+msgid "Key ID"
+msgstr "ID sleutel"
+
+msgid "Key Length"
+msgstr "Lengte sleutel"
+
+msgid "Key Search"
+msgstr "Zoek sleutel"
+
+msgid "Key Strength"
+msgstr "Sterkte sleutel"
+
+msgid "Key generated on public webmail server"
+msgstr "Sleutel gegenereerd op publieke webmailserver"
+
+msgid ""
+"Key strength is a measure of how difficult it is for an eavesdropper to "
+"compromise the security of your encrypted messages."
+msgstr ""
+"De sterkte van een sleutel is een maat voor hoe moeilijk het is voor iemand "
+"die afluistert om uw versleutelde berichten te ontcijferen."
+
+msgid "Keyring"
+msgstr "Sleutelring"
+
+msgid "Keyring Management Functions"
+msgstr "Sleutelringbeheerfuncties"
+
+msgid "Keyring not editable, keyring functions disabled."
+msgstr "Sleutelring is niet te bewerken, sleutelringfuncties uitgeschakeld."
+
+msgid "Keyserver Options"
+msgstr "Sleutelserveropties"
+
+msgid "Keystrength"
+msgstr "Sterkte sleutel"
+
+msgid "Last"
+msgstr "Laatste"
+
+msgid "Look up keys on a public keyserver"
+msgstr "Sleutels zoeken op een publieke sleutelserver"
+
+msgid "Make this my default keyserver"
+msgstr "Deze instellen als standaard sleutelserver"
+
+msgid "Message List"
+msgstr "Berichtenlijst"
+
+msgid "Move"
+msgstr "Verplaatsen"
+
+msgid "Move to:"
+msgstr "Verplaatsen naar:"
+
+msgid "Name"
+msgstr "Naam"
+
+msgid "Never"
+msgstr "Nooit"
+
+msgid "New Search"
+msgstr "Nieuwe zoekopdracht"
+
+msgid "Newly Imported Keys"
+msgstr "Nieuw-geïmporteerde sleutels"
+
+msgid "Next"
+msgstr "Volgende"
+
+msgid "No"
+msgstr "Nee"
+
+msgid "No GPG Plugin preferences could be found"
+msgstr "Geen voorkeuren voor GPG-plugin gevonden"
+
+msgid "No file was uploaded."
+msgstr "Geen bestanden geüpload."
+
+msgid "No old passphrase passed.  Possibly blank password?"
+msgstr "Geen oude wachtwoordzin doorgegeven. Misschien een leeg wachtwoord?"
+
+msgid "No secret key found."
+msgstr "Geen privésleutel gevonden."
+
+msgid "None"
+msgstr "Geen"
+
+msgid "One Year"
+msgstr "Een jaar"
+
+msgid "Owner Email"
+msgstr "E-mail-eigenaar"
+
+msgid "Partial Recipient Encryption Option"
+msgstr "Gedeeltelijke ontvangers coderingsoptie"
+
+msgid "Passphrase"
+msgstr "Wachtwoordzin"
+
+msgid "Passphrase Caching"
+msgstr "Wachtwoordzin onthouden"
+
+msgid "Paste one or more ASCII-armored keys below:"
+msgstr "Plak  hieronder één of meer ASCII-gewapende sleutels:"
+
+msgid "Please"
+msgstr "Alstublieft"
+
+msgid "Please Notify GPG Plugin Developers"
+msgstr "Neem contact op met de GPG Plugin-ontwikkelaars"
+
+msgid "Please choose a file containing one or more ASCII-armored key blocks"
+msgstr "Kies een bestand met één of meer ASCII-gewapende sleutelblokken"
+
+msgid "Please choose the GPG Encryption Plugin options you wish to set up:"
+msgstr "Kies de GPG Plugin-opties die u wilt gebruiken:"
+
+msgid "Please import a keypair containing a secret key if you wish to continue."
+msgstr "Importeer een sleutelpaar die een privésleutel bevat om door te kunnen gaan."
+
+msgid "Please try a different keyserver or contact your system administrator."
+msgstr ""
+"Probeer een andere sleutelserver of neem contact op met uw "
+"systeembeheerder."
+
+msgid "Please try again."
+msgstr "Probeer het opnieuw."
+
+msgid "Please type your old passphrase: "
+msgstr "Type uw oude wachtwoordzin: "
+
+msgid "Previous"
+msgstr "Vorige"
+
+msgid "Priority"
+msgstr "Prioriteit"
+
+msgid "Problem with command syntax. Check Debug Output"
+msgstr "Probleem met de commandosyntaxis. Controleer de Debug-uitvoer"
+
+msgid "Problems with the cyphertext output:"
+msgstr "Problemen met de cyphertext-uitvoer:"
+
+msgid "Public web servers are not always secure!"
+msgstr "Publieke webservers zijn niet altijd veilig!"
+
+msgid "Received"
+msgstr "Ontvangen"
+
+msgid "Remove this key from your keyring?  This action cannot be undone!"
+msgstr ""
+"Deze sleutel uit uw sleutelring verwijderen? Deze actie kan niet ongedaan "
+"worden gemaakt!"
+
+msgid "Reply"
+msgstr "Beantwoorden"
+
+msgid "Reply All"
+msgstr "Allen beantwoorden"
+
+msgid "Report a bug on the GPG Plugin Bugzilla"
+msgstr "Rapporteer een bug op GPG Plugin Bugzilla"
+
+msgid "Required data missing."
+msgstr "Vereiste gegevens ontbreken."
+
+msgid "Resume Draft"
+msgstr "Concept hervatten"
+
+msgid "Retype New Passphrase:"
+msgstr "Nieuwe wachtwoordzin herhalen:"
+
+msgid "Retype Passphrase"
+msgstr "Wachtwoordzin herhalen"
+
+msgid "SSL connection required to generate keypair."
+msgstr "SSL-verbinding vereist om sleutelpaar te genereren."
+
+msgid "SSL connection required to use passphrase functions."
+msgstr "SSL-verbinding vereist om wachtwoordzinfuncties te gebruiken."
+
+msgid "Save"
+msgstr "Opslaan"
+
+msgid "Search String:"
+msgstr "Zoekterm:"
+
+msgid "Search for Key"
+msgstr "Naar sleutel zoeken"
+
+msgid "Search my keyring for a new trusted key using the search string above:"
+msgstr ""
+"Zoek in mijn sleutelring naar een nieuwe vertrouwde sleutel, gebruikmakend "
+"van de zoekterm hierboven:"
+
+msgid "Search results"
+msgstr "Zoekresultaten"
+
+msgid "Search results for"
+msgstr "Zoekresultaten voor"
+
+msgid "Search text may be an email address or an OpenPGP(PGP/GPG) Key ID"
+msgstr "Zoekterm kan een e-mailadres of een OpenPGP(PGP/GPG)-sleutel-ID zijn"
+
+msgid "Secret Key: "
+msgstr "Privésleutel: "
+
+msgid "Select a Signing Key"
+msgstr "Selecteer een sleutel voor ondertekenen"
+
+msgid "Select a key to import from the list below."
+msgstr "Selecteer een te importeren sleutel uit de lijst hieronder."
+
+msgid "Select this option to set the key as your signing key."
+msgstr ""
+"Selecteer deze optie om een sleutel aan te merken als uw sleutel voor "
+"ondertekenen."
+
+msgid "Select this option to set the key as your trusted key."
+msgstr "Selecteer deze optie om een sleutel aan te merken als uw vertrouwde sleutel."
+
+msgid "Setting a new signing key will replace any previously chosen key."
+msgstr ""
+"Het aanmerken van een nieuwe sleutel voor ondertekenen zal uw vorige gekozen sleutel "
+"vervangen."
+
+msgid "Setting a new trusted key will replace any previously chosen key."
+msgstr ""
+"Het aanmerken van een nieuwe vertrouwde sleutel zal uw vorige gekozen sleutel "
+"vervangen."
+
+msgid "Setup the GPG Plugin with a secret key."
+msgstr "De GPG-plugin instellen met een privésleutel."
+
+msgid "Shared System Keyring"
+msgstr "Gedeelde systeemsleutelring"
+
+msgid "Should I store my private keys on the server?"
+msgstr "Zal ik mijn eigen privésleutels op de server bewaren?"
+
+msgid "Showing"
+msgstr "Tonen"
+
+msgid "Showing keys in"
+msgstr "Sleutels tonen in"
+
+msgid "Sign on Send"
+msgstr "Ondertekenen bij verzenden"
+
+msgid "Sign on Send by Default"
+msgstr "Standaard ondertekenen bij verzenden"
+
+msgid "Signature"
+msgstr "Handtekening"
+
+msgid "Signature verification process failed."
+msgstr "Proces van handtekeningverificatie mislukt."
+
+msgid "Signing functions not allowed from an insecure connection."
+msgstr "De functies voor het ondertekenen zijn niet toegestaan vanaf een onveilige verbinding."
+
+msgid ""
+"Sometimes, you may not have public keys for all of the email addresses in "
+"your To, CC, and BCC fields in the Compose window."
+msgstr "Soms zult u geen publieke sleutels hebben voor alle e-mailadressen in de Aan-, CC- en BCC- velden in het opstellervenster."
+
+msgid ""
+"Storing a private key on a remote host can be insecure if you do not trust "
+"the host!"
+msgstr ""
+"Het opslaan van een privésleutel op een computer op afstand (host) kan onveilig "
+"zijn als u de computer (host) niet vertrouwt!"
+
+msgid "Subject"
+msgstr "Onderwerp"
+
+msgid "Subkey"
+msgstr "Subsleutel"
+
+msgid "Submit"
+msgstr "Verzenden"
+
+msgid "Success!"
+msgstr "Succes!"
+
+msgid "System Keyring"
+msgstr "Systeemsleutelring"
+
+msgid "Table of Contents"
+msgstr "Inhoudsopgave"
+
+msgid ""
+"The GPG Encryption Plugin will allow you to encrypt, sign, and decrypt "
+"messages in accordance with the OpenPGP standard for email security and "
+"authentication."
+msgstr ""
+"Met de GPG-plugin kunt u berichten versleutelen, ontcijferen en ondertekenen volgens de "
+"OpenPGP-standaard voor e-mailbeveiliging."
+
+msgid "The System Administrator has disabled private key functions."
+msgstr "De systeembeheerder heeft privésleutelfuncties gedeactiveerd."
+
+msgid "The attachment file was not found"
+msgstr "Het bestand voor de bijlage is niet gevonden"
+
+msgid "The following is a list of suggested steps you can take to get started:"
+msgstr "Hier volgt een lijst met stappen die u kunt nemen om te beginnen:"
+
+msgid "The holder of the ADK will be able to decrypt these messages."
+msgstr "De houder van de ADK zal deze berichten kunnen ontcijferen."
+
+msgid ""
+"The plugin supports the ability to set default options to be applied every "
+"time you send a message."
+msgstr ""
+"De plugin biedt de mogelijkheid om elke keer dat u een bericht verzendt de "
+"standaardopties te gebruiken."
+
+msgid ""
+"The plugin will return you to the Compose page with your original message "
+"(plaintext) preserved if there is an error that requires your attention "
+"after you press 'Send'."
+msgstr "Als er een fout plaatsvindt nadat u op 'Verzenden' heeft gedrukt zal de plugin u terugbrengen naar het 'Nieuw bericht'-venster met het originele bericht (platte tekst)."
+
+msgid ""
+"The signing key may be one of: a key that you have explicitly marked as a "
+"trusted key, a keypair that you have on your public and secret keyrings, or "
+"a shared system trusted key defined by your system administrator."
+msgstr ""
+"De sleutel om te tekenen kan zijn: een sleutel die u heeft gemarkeerd als "
+"vertrouwde sleutel, een sleutelpaar in uw publieke en privésleutelringen, "
+"of een door uw systeembeheerder vastgelegde gedeelde en vertrouwde "
+"systeemsleutel."
+
+msgid ""
+"The system has the ability to cache (store) the passphrase for your secret "
+"key."
+msgstr "Het systeem heeft de mogelijkheid om de wachtwoordzin voor uw privésleutel te bewaren."
+
+msgid "There are no keys containing the string "
+msgstr "Er zijn geen sleutels die de volgende zoekterm bevatten "
+
+msgid "There is no indication that this key really belongs to the owner"
+msgstr "Er is geen aanwijzing dat deze sleutel daadwerkelijk hoort bij de eigenaar"
+
+msgid "There was a problem with your request"
+msgstr "Er is een probleem met uw verzoek"
+
+msgid "There was a problem with your request."
+msgstr "Er is een probleem met uw verzoek."
+
+msgid ""
+"These options have broad effects on how the plugin works, and can help you "
+"be more productive."
+msgstr ""
+"Deze opties hebben effect op de werking van de plugin en kunnen u helpen "
+"productiever te zijn."
+
+msgid ""
+"This action can only be performed on a secure connection (https).  Please "
+"change the 'http' in your address bar to 'https', and try again."
+msgstr ""
+"Deze actie kan alleen worden uitgevoerd via een veilige verbinding (https). "
+"Verander 'http' in de adresbalk in 'https' en probeer het opnieuw."
+
+msgid ""
+"This error usually occurs because you have not set a trusted key, or because "
+"you have not signed the key you are trying to encrypt to."
+msgstr ""
+"Deze fout treedt voornamelijk op omdat u geen vertrouwde sleutel heeft "
+"aangegeven of omdat u de sleutel waarnaar u wilt versleutelen niet heeft "
+"ondertekend."
+
+msgid "This file exceeds the maximum size allowed."
+msgstr "Dit bestand is groter dan de maximale toegestane bestandsgrootte."
+
+msgid "This file was only partially uploaded."
+msgstr "Dit bestand is slechts gedeeltelijk geüpload."
+
+msgid "This is my SIGNING key"
+msgstr "Dit is mijn sleutel om te ONDERTEKENEN"
+
+msgid "This is my TRUSTED key"
+msgstr "Dit is mijn VERTROUWDE sleutel"
+
+msgid "This key has the properties:"
+msgstr "Deze sleutel heeft de eigenschappen:"
+
+msgid "This message contains encrypted content."
+msgstr "Dit bericht bevat versleutelde inhoud."
+
+msgid ""
+"This option allows you to indicate to GPG which key on your public keyring "
+"should be treated as a fully trusted key."
+msgstr ""
+"Deze optie biedt u de mogelijkheid om aan GPG aan te geven welke sleutel in "
+"uw publieke sleutelring kan worden beschouwd als volledig vertrouwde sleutel."
+
+msgid ""
+"This page provides links to external resources about the technologies used "
+"by the GPG Plugin."
+msgstr ""
+"Deze pagina bevat links naar externe bronnen over de technologieën die zijn "
+"gebruikt in de GPG-plugin."
+
+msgid "This preference only sets the default behavior."
+msgstr "Deze optie activeert alleen het standaardgedrag."
+
+msgid "This screen allows you to set general GPG Plugin options."
+msgstr "In dit venster kunt u algemene GPG-plugin-opties activeren."
+
+msgid ""
+"This screen will help you set up the various options you need to get started "
+"using encryption. "
+msgstr ""
+"Dit venster helpt u bij het activeren van de verschillende opties die u "
+"nodig heeft om te beginnen met het gebruik van versleuteling. "
+
+msgid ""
+"This will usually be the email address of the account that you use as your "
+"primary signing key."
+msgstr "Dit is normaal gezien het e-mailadres dat u gebruikt als uw primaire ondertekensleutel."
+
+msgid "Tip: this is typically a '.asc' or '.pkr' file"
+msgstr "Tip: normaal gesproken een '.asc'- of '.pkr'-bestand"
+
+msgid "To"
+msgstr "Aan"
+
+msgid ""
+"To allow you to use the GPG plugin optimally without storing your private key"
+"(s) on the web server, the GPG Plugin allows you to specify a special option "
+"called 'Trusted Key ID'."
+msgstr ""
+"Om de GPG-plugin optimaal te gebruiken zonder uw privésleutel(s) op de "
+"webserver te bewaren kunt u een speciale optie specificeren, genaamd "
+"'Vertrouwde sleutel-ID'."
+
+msgid "To decrypt this message inside Squirrelmail:"
+msgstr "Om dit bericht te ontcijferen in Squirrelmail:"
+
+msgid "To disable the trusted key option, select no key as trusted."
+msgstr "Om de vertrouwde-sleutel-optie te deactiveren, selecteer geen vertrouwde sleutel."
+
+msgid "To locate a key or keys, please enter a search string below."
+msgstr "Om sleutel(s) te lokaliseren, vul hieronder een zoekterm in."
+
+msgid "To set your signing key, find the desired key in the 'secret' ring of the"
+msgstr ""
+"Om uw sleutel voor ondertekenen aan te geven,  zoek de gewenste sleutel in de "
+"'privé'-ring van de"
+
+msgid ""
+"To set your trusted key, find the desired key in the 'public' or 'system' "
+"ring of the"
+msgstr ""
+"Om uw vertrouwde sleutel aan te geven,  zoek de gewenste sleutel in de "
+"'publieke' of 'systeem'-ring van de"
+
+msgid ""
+"To sign outgoing mail and receive encrypted messages, you must have a "
+"personal Keypair."
+msgstr ""
+"Om uitgaande e-mail te tekenen en gecodeerde berichten te ontvangen, dient u "
+"een persoonlijk sleutelpaar te hebben."
+
+msgid "Troubleshooting"
+msgstr "Probleem oplossen"
+
+msgid "Unable to connect to the keyserver you specified."
+msgstr "Kon geen verbinding maken met de sleutelserver."
+
+msgid "Unable to open command pipe."
+msgstr "Kon het commando 'pipe' niet aanroepen."
+
+msgid "Unable to rename encrypted file"
+msgstr "Kon het versleutelde bestand niet hernoemen"
+
+msgid "Unable to rename temporary file"
+msgstr "Kon het tijdelijke bestand niet hernoemen"
+
+msgid "Unable to rename temporary file after failed encrypt"
+msgstr "Kon tijdelijk bestand niet hernoemen na het mislukken van het versleutelen ervan"
+
+#, fuzzy
+msgid "Unassigned"
+msgstr "Niet toegewezen"
+
+msgid "Unexpected Error."
+msgstr "Onverwachte fout."
+
+msgid "Unknown sender"
+msgstr "Onbekende verzender"
+
+msgid "Unsigned"
+msgstr "Ongetekend"
+
+msgid "Using Keyserver: "
+msgstr "Gebruikte sleutelserver: "
+
+msgid "Using signing key:"
+msgstr "Gebruikte sleutel voor tekenen:"
+
+msgid "Using trusted key:"
+msgstr "Gebruikte vertrouwde sleutel:"
+
+msgid ""
+"Usually, this will be your primary public key, the key you use to sign other "
+"people's keys."
+msgstr ""
+"Normaal gesproken is de sleutel, die u gebruikt om de sleutels van andere "
+"mensen  te versleutelen, uw primaire publieke sleutel."
+
+msgid ""
+"Usually, this would suggest that a keyring is maintained for some group "
+"which you are a part of, such as an organization or corporation."
+msgstr ""
+"Normaal gesproken is het zo dat een sleutelring wordt bijgehouden voor een "
+"bepaalde groep waar u deel van uitmaakt, zoals een organisatie of een "
+"bedrijf."
+
+msgid "View INSTALL file"
+msgstr "Bekijk INSTALL bestand"
+
+msgid "View Key"
+msgstr "Bekijk sleutel"
+
+msgid "View README file - includes contact information"
+msgstr "Bekijk README bestand - bevat contactinformatie"
+
+msgid "View message"
+msgstr "Bekijk bericht"
+
+msgid "Viewing signature verification output for attachment: "
+msgstr "Handtekeningverificatie resultaat voor bijlage: "
+
+msgid "Warning: "
+msgstr "Waarschuwing: "
+
+msgid "Warnings:"
+msgstr "Waarschuwingen:"
+
+msgid ""
+"Web-based email programs are very convenient, and using your web email to "
+"send encrypted email adds to that convenience."
+msgstr ""
+"Op het web gebaseerde e-mailprogrammas zijn erg handig en het zenden van "
+"gecodeerde e-mail draagt daaraan bij."
+
+msgid ""
+"Web-based email programs are very convenient, and using your web email to "
+"send encrypted emails adds to that convenience."
+msgstr ""
+"Op het web gebaseerde e-mailprogramma's zijn erg handig en het zenden van "
+"gecodeerde e-mails draagt daaraan bij."
+
+msgid "Welcome to the GPG Encryption Plugin for Squirrelmail! "
+msgstr "Welkom in de GPG coderings Plugin voor Squirrelmail! "
+
+msgid "What is a 'Signing Key'?"
+msgstr "Wat is een 'sleutel voor tekenen'?"
+
+msgid "What is a 'Trusted Key'?"
+msgstr "Wat is een 'vertrouwde sleutel'?"
+
+msgid "What is a Signing Key?"
+msgstr "Wat is een sleutel voor tekenen?"
+
+msgid "What is a Trusted Key?"
+msgstr "Wat is een vertrouwde sleutel?"
+
+msgid "What is a good key strength?"
+msgstr "Wat is een goede sleutel sterkte?"
+
+msgid "What's this?"
+msgstr "Wat is dit?"
+
+msgid ""
+"When this happens, the GPG plugin can either display an error and return to "
+"your plaintext, or encrypt the message to the recipients that you do have "
+"keys for, and inform you of the email addresses that you did not have keys "
+"for."
+msgstr ""
+"Als dit gebeurt, kan de GPG Plugin een fout weergeven en terugkeren naar uw "
+"platte tekst, of het bericht versleutelen voor de ontvangers waar u een sleutel "
+"voor heeft en u informeren van welke e-mailadressen u geen sleutel heeft."
+
+msgid ""
+"When you encrypt an email message, the plugin can be set to automatically "
+"include your email address in the recipient list."
+msgstr ""
+"U kunt de GPG Plugin zodanig instellen dat als u een e-mailbericht codeert "
+"uw e-mailadres toegevoegd wordt aan de lijst van ontvangers."
+
+msgid ""
+"With this interface, you will be able to encrypt, decrypt, and sign your "
+"email and attachments from the comfort of the Squirrelmail web mail "
+"interface."
+msgstr ""
+"Met deze interface bent u in staat uw e-mail en bijlagen te versleutelen, "
+"ontcijferen en te tekenen vanuit de webmailinterface van Squirrelmail."
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "You are not connected using a secure connection."
+msgstr "U bent niet verbonden via een veilige verbinding."
+
+msgid "You are not using a secure connection."
+msgstr "U gebruikt geen veilige verbinding."
+
+msgid "You can"
+msgstr "U kunt"
+
+msgid ""
+"You can add keys to your keyring with blocks of ASCII-armored key text "
+"(encoded text which contains all the necessary information for a key)."
+msgstr ""
+"U kunt sleutels aan uw sleutelring toevoegen met blokken ASCII-gewapende "
+"sleutel tekst (gecodeerde tekst die alle informatie bevat van een sleutel)."
+
+msgid ""
+"You can change your passphrase from this screen.  More help will be "
+"available in the future."
+msgstr ""
+"U kunt uw wachtwoordzin wijzigen in dit venster. Meer hulp zal in de "
+"toekomst beschikbaar zijn."
+
+msgid "You can only have one signing key at any given time."
+msgstr "Slechts een sleutel voor tekenen kan worden geselecteerd."
+
+msgid "You can only have one trusted key at any given time."
+msgstr "Slechts een vertrouwde sleutel kan worden geselecteerd."
+
+msgid "You currently trust key:"
+msgstr "U huidige vertrouwde sleutel:"
+
+msgid "You did not provide a passphrase!"
+msgstr "U heeft geen wachtwoordzin ingegeven!"
+
+msgid ""
+"You did not provide a passphrase! Please right-click and select 'Back' and "
+"try again"
+msgstr ""
+"U heeft geen wachtwoordzin ingegeven! Gebruik de rechter muisknop en "
+"selecteer 'Terug' en probeer opnieuw."
+
+msgid ""
+"You do not have a public key for the following email addresses and so your "
+"message will NOT be readable by these recipients."
+msgstr ""
+"U heeft geen publieke sleutel voor de volgende e-mailadressen. Uw bericht "
+"zal dus NIET leesbaar zijn voor deze personen."
+
+msgid "You have no secret keys in your ring"
+msgstr "U heeft geen privé sleutels in uw ring"
+
+msgid ""
+"You have the option to attempt to Encrypt, Sign, or Encrypt and Sign every "
+"message that you send, by default. "
+msgstr ""
+"U heeft standaard de mogelijkheid elk bericht dat u verzendt te versleutelen, te "
+"tekenen of te versleutelen en te tekenen."
+
+msgid ""
+"You may also choose to replace letters with numbers and symbols. For "
+"example: 'A dove of peace is here.' where 'e'='3', 'i'='1' and 'o'='0' "
+"becomes 'A d0v3 0f p3ac3 1s h3r3.' which becomes 'ad0v30fp3ac31sh3r3.'"
+msgstr ""
+"U mag ook letters door nummers en symbolen vervangen. Bijvoorbeeld: 'A dove "
+"of peace is here.' where 'e'='3', 'i'='1' and 'o'='0' wordt 'A d0v3 0f p3ac3 "
+"1s h3r3.' dat wordt 'ad0v30fp3ac31sh3re.'"
+
+msgid ""
+"You may encrypt your email either after you press the 'Encrypt Now' button "
+"from the Compose page, or at the time you send the message."
+msgstr ""
+"U kunt uw e-mail versleutelen als u op de 'Codeer nu' knop drukt, of op het "
+"moment dat u een bericht verzendt."
+
+msgid ""
+"You must choose whether to trust this keyring and use it in your public key "
+"lookups."
+msgstr ""
+"U moet aangeven of u deze sleutelring vertrouwd en hem wilt gebruiken om "
+"publieke sleutels voor u in op te zoeken."
+
+msgid "You must choose whether to use this ADK."
+msgstr "U moet kiezen of u deze ADK wilt gebruiken."
+
+msgid ""
+"You must select a signing key to use the GPG Plugin to securely sign "
+"messages."
+msgstr "U dient een ondertekeningssleutel te selecteren om de GPG-plugin te kunnen gebruiken voor het veilig ondertekenen van berichten."
+
+msgid ""
+"You should change the capitalization and punctuation so that others cannot "
+"easily guess it, even if they guess the phrase you chose."
+msgstr ""
+"U zou het hoofdlettergebruik en de punctuatie zo moeten veranderen dat "
+"anderen het niet makkelijk kunnen raden, zelfs als ze de zin raden die u "
+"heeft gekozen."
+
+msgid "Your Preference to allow partial encryption has been saved."
+msgstr "Uw voorkeur voor het activeren van gedeeltelijke codering is opgeslagen."
+
+msgid "Your Preference to attempt to Encrypt on Send by default has been saved."
+msgstr "Uw voorkeur voor het standaard versleutelen bij verzenden is opgeslagen."
+
+msgid "Your Preference to attempt to Sign on Send by default has been saved."
+msgstr "Uw voorkeur voor het standaard tekenen bij verzenden is opgeslagen."
+
+msgid "Your Preference to cache your passphrase has been saved."
+msgstr "Uw voorkeur voor het bewaren van uw wachtwoordzin is opgeslagen."
+
+msgid "Your Preference to encrypt a copy of all messages to"
+msgstr "Uw voorkeur voor het gecodeerd versturen van alle berichten naar"
+
+msgid "Your Preference to not Encrypt on Send by default has been saved."
+msgstr "Uw voorkeur voor het niet standaard versleutelen bij verzenden is opgeslagen."
+
+msgid "Your Preference to not Sign on Send by default has been saved."
+msgstr "Uw voorkeur voor het niet standaard tekenen bij verzenden is opgeslagen."
+
+msgid "Your Preference to not allow partial encryption has been saved."
+msgstr "Uw voorkeur voor het niet activeren van gedeeltelijke versleutelen is opgeslagen."
+
+msgid "Your Preference to not cache your passphrase has been saved."
+msgstr "Uw voorkeur voor het niet bewaren van uw wachtwoordzin is opgeslagen."
+
+msgid ""
+"Your Preference to not encrypt a copy of every message to yourself has been "
+"saved."
+msgstr ""
+"Uw voorkeur voor het niet gecodeerd versturen van alle berichten naar uzelf "
+"is opgeslagen."
+
+msgid "Your Preference to not trust the system keyring has been saved."
+msgstr "Uw voorkeur om de systeem sleutelring niet te vertrouwen is opgeslagen."
+
+msgid "Your Preference to not use the system ADK has been saved."
+msgstr "Uw voorkeur om de systeem ADK niet te gebruiken is opgeslagen."
+
+msgid "Your Preference to request automatic key lookup has been saved"
+msgstr "Uw voorkeur voor het automatisch opzoeken van een sleutel is opgeslagen."
+
+msgid "Your Preference to trust the system keyring has been saved."
+msgstr "Uw voorkeur om de systeem sleutelring te vertrouwen is opgeslagen."
+
+msgid "Your Preference to use the system ADK has been saved."
+msgstr "Uw voorkeur om de systeem ADK te gebruiken is opgeslagen."
+
+msgid "Your Public Keyring"
+msgstr "Uw publieke sleutelring"
+
+msgid "Your Request to Encrypt on Send encountered a problem, details below:"
+msgstr ""
+"Uw verzoek om te versleutelen bij verzenden heeft een probleem ondervonden, "
+"details hieronder:"
+
+msgid "Your Secret Keyring"
+msgstr "Uw privé sleutelring"
+
+msgid ""
+"Your System administrator has indicated that there is a 'system-wide' public "
+"keyring."
+msgstr ""
+"Uw systeem administrator heeft aangegeven dat er een 'systeem brede' "
+"publieke sleutelring is."
+
+msgid "Your cached passphrase has been securely erased."
+msgstr "Uw bewaarde wachtwoordzin is veilig verwijderd."
+
+msgid "Your current signing key: "
+msgstr "Uw huidige sleutel voor tekenen: "
+
+msgid "Your key is being generated... please be patient!"
+msgstr "Uw sleutel wordt aangemaakt ... wees geduldig!"
+
+msgid "Your message may be sent without being readable by some recipients."
+msgstr ""
+"Uw bericht wordt wellicht verzonden zonder leesbaar te zijn voor de "
+"ontvangers."
+
+msgid "Your passphrases do not match."
+msgstr "Uw wachtwoordzinnen komen niet overeen."
+
+msgid "Your personal Keypair"
+msgstr "Uw persoonlijke sleutelpaar"
+
+msgid "Your request returned this information:"
+msgstr "Uw verzoek gaf de volgende informatie:"
+
+msgid ""
+"Your secret passphrase should be as long as possible and easy for you to "
+"remember, but hard for someone else to guess."
+msgstr ""
+"Uw geheime wachtwoordzin zou zo lang mogelijk moeten zijn en makkelijk "
+"voor u te onthouden, maar moeilijk door iemand anders te raden."
+
+msgid ""
+"Your signing key is the key you use to 'sign' a message you are sending, to "
+"prove that is from you."
+msgstr ""
+"Uw sleutel voor tekenen is de sleutel waarmee u een bericht 'tekent' dat u "
+"verzendt om te bewijzen dat het bericht van u afkomstig is."
+
+msgid ""
+"Your signing key is the key you use to 'sign' a message you are sending, to "
+"prove that it is from you."
+msgstr ""
+"Uw sleutel voor tekenen is de sleutel waarmee u een bericht 'tekent' dat u "
+"verzendt om te bewijzen dat het bericht van u afkomstig is."
+
+msgid ""
+"Your system administrator has also defined an Alternate Decryption Key (ADK) "
+"for the system."
+msgstr ""
+"Uw systeembeheerder heeft ook een Alternatieve Decoderings Sleutel (ADK) "
+"voor het systeem gedefinieerd."
+
+msgid "and import them to your keyring."
+msgstr "en ze importeren in uw sleutelring."
+
+msgid "check 'This is my signing key' and save."
+msgstr "selecteer 'Dit is mijn 'sleutel voor tekenen' en sla op."
+
+msgid "check 'This is my trusted key', and save."
+msgstr "selecteer 'Dit is mijn 'vertrouwde sleutel', en sla op."
+
+msgid "click on it to view the details,"
+msgstr "klik erop om de details te tonen,"
+
+msgid "disclaimer"
+msgstr "disclaimer"
+
+msgid "evil_muppets killed your encryption"
+msgstr "evil_muppets hebben uw codering kapot gemaakt"
+
+msgid "file"
+msgstr "bestand"
+
+msgid "filename:"
+msgstr "bestandsnaam:"
+
+msgid "generate a personal Keypair"
+msgstr "een persoonlijk sleutelpaar genereren"
+
+msgid "has been saved."
+msgstr "is opgeslagen."
+
+msgid "keyring"
+msgstr "sleutelring"
+
+msgid "of"
+msgstr "van"
+
+msgid "or"
+msgstr "of"
+
+msgid "script file not found, exiting abnormally."
+msgstr "script bestand niet gevonden, abnormaal afgesloten."
+
+msgid "selected"
+msgstr "geselecteerd"
+
+msgid "signing key"
+msgstr "sleutel voor tekenen"
+
+msgid "text"
+msgstr "tekst"
+
+msgid "trusted key"
+msgstr "vertrouwde sleutel"
+
+msgid "try again"
+msgstr "probeer opnieuw"
+
+msgid "writes"
+msgstr "schrijft"
+
