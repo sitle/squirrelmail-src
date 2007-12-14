@@ -16,7 +16,7 @@
  * SquirrelMail version number -- DO NOT CHANGE
  */
 global $version;
-$version = '1.4.13 [SVN]';
+$version = '1.4.13';
 
 /**
  * SquirrelMail internal version number -- DO NOT CHANGE
