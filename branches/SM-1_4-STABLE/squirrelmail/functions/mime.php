@@ -2190,7 +2190,7 @@ function sq_sanitize($body,
  */
 function magicHTML($body, $id, $message, $mailbox = 'INBOX', $take_mailto_links =true) {
 
-    // require_once(SM_PATH . 'functions/url_parser.php');  // for $MailTo_PReg_Match
+    require_once(SM_PATH . 'functions/url_parser.php');  // for $MailTo_PReg_Match
 
     global $attachment_common_show_images, $view_unsafe_images,
            $has_unsafe_images;
@@ -2511,4 +2511,3 @@ function SendDownloadHeaders($type0, $type1, $filename, $force, $filesize=0) {
 
 }  // end fn SendDownloadHeaders
 
-?>

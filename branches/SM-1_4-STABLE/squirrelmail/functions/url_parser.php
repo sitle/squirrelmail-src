@@ -242,4 +242,3 @@ function sq_strpos_8bit($haystack,$offset=0,$maxlength=false) {
     }
     return $ret;
 }
-?>
