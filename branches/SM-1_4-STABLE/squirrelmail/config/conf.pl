@@ -354,9 +354,14 @@ $abook_file_line_length = 2048          if ( !$abook_file_line_length );
 
 if ( $ARGV[0] eq '--install-plugin' ) {
     print "Activating plugin " . $ARGV[1] . "\n";
-    push @plugins, $ARGV[1];
-    save_data();
-    exit(0);
+    if ( -d "../plugins/" . $ARGV[1]) {
+        push @plugins, $ARGV[1];
+        save_data();
+        exit(0);
+    } else {
+        print "No such plugin.\n";
+        exit(1);
+    }
 } elsif ( $ARGV[0] eq '--remove-plugin' ) {
     print "Removing plugin " . $ARGV[1] . "\n";
     foreach $plugin (@plugins) {
