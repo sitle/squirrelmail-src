@@ -1611,10 +1611,19 @@ function deliverMessage($composeMessage, $draft=false) {
         plain_error_message($msg, $color);
     } else {
         unset ($deliver);
-        $move_to_sent = getPref($data_dir,$username,'move_to_sent');
         $imap_stream = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
 
-        /* Move to sent code */
+
+        // mark original message as having been replied to if applicable
+        global $passed_id, $mailbox, $action;
+        if ($action == 'reply' || $action == 'reply_all') {
+            sqimap_mailbox_select ($imap_stream, $mailbox);
+            sqimap_messages_flag ($imap_stream, $passed_id, $passed_id, 'Answered', false);
+        }
+
+
+        // copy message to sent folder
+        $move_to_sent = getPref($data_dir,$username,'move_to_sent');
         if (isset($default_move_to_sent) && ($default_move_to_sent != 0)) {
             $svr_allow_sent = true;
         } else {
@@ -1642,12 +1651,7 @@ function deliverMessage($composeMessage, $draft=false) {
             sqimap_append_done ($imap_stream, $sent_folder);
             unset ($imap_deliver);
         }
-        global $passed_id, $mailbox, $action;
         $composeMessage->purgeAttachments();
-        if ($action == 'reply' || $action == 'reply_all') {
-            sqimap_mailbox_select ($imap_stream, $mailbox);
-            sqimap_messages_flag ($imap_stream, $passed_id, $passed_id, 'Answered', false);
-        }
         sqimap_logout($imap_stream);
     }
     return $succes;
