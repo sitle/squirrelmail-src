@@ -1577,16 +1577,12 @@ function deliverMessage($composeMessage, $draft=false) {
         $stream = $deliver->initStream($composeMessage,$sendmail_path);
     } elseif ($draft) {
         global $draft_folder;
-        require_once(SM_PATH . 'class/deliver/Deliver_IMAP.class.php');
         $imap_stream = sqimap_login($username, $key, $imapServerAddress,
                 $imapPort, 0);
         if (sqimap_mailbox_exists ($imap_stream, $draft_folder)) {
             require_once(SM_PATH . 'class/deliver/Deliver_IMAP.class.php');
             $imap_deliver = new Deliver_IMAP();
-            $length = $imap_deliver->mail($composeMessage, 0, $reply_id, $reply_ent_id);
-            sqimap_append ($imap_stream, $draft_folder, $length);
-            $imap_deliver->mail($composeMessage, $imap_stream, $reply_id, $reply_ent_id);
-            sqimap_append_done ($imap_stream, $draft_folder);
+            $imap_deliver->mail($composeMessage, $imap_stream, $reply_id, $reply_ent_id, $draft_folder);
             sqimap_logout($imap_stream);
             unset ($imap_deliver);
             $composeMessage->purgeAttachments();
@@ -1644,11 +1640,9 @@ function deliverMessage($composeMessage, $draft=false) {
         }
 
         if (($fld_sent && $svr_allow_sent && !$lcl_allow_sent) || ($fld_sent && $lcl_allow_sent)) {
-            sqimap_append ($imap_stream, $sent_folder, $length);
             require_once(SM_PATH . 'class/deliver/Deliver_IMAP.class.php');
             $imap_deliver = new Deliver_IMAP();
-            $imap_deliver->mail($composeMessage, $imap_stream, $reply_id, $reply_ent_id);
-            sqimap_append_done ($imap_stream, $sent_folder);
+            $imap_deliver->mail($composeMessage, $imap_stream, $reply_id, $reply_ent_id, $sent_folder);
             unset ($imap_deliver);
         }
         $composeMessage->purgeAttachments();
