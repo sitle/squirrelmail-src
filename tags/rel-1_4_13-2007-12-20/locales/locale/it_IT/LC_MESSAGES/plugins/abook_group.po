@@ -1,0 +1,276 @@
+# Italian (it_IT) abook_group Translation (SquirrelMail plugin)
+# Copyright (c) 2002-2007 The SquirrelMail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
+# Roberto Piola <roberto@ilpiola.it>, 2004.
+# Leonardo Bianchi Quota <leobq.box@gmail.com, bumozz@yahoo.it>, 2007.
+# $Id: abook_group.pot 12741 2007-10-25 22:47:34Z jervfors $
+msgid ""
+msgstr ""
+"Project-Id-Version: abook_group 0.51.1\n"
+"Report-Msgid-Bugs-To: <http://sourceforge.net/projects/sm-plugins/>\n"
+"POT-Creation-Date: 2007-10-25 23:05+0200\n"
+"PO-Revision-Date: 2007-10-25 15:14+0100\n"
+"Last-Translator: Leonardo Bianchi Quota <leobq.box@gmail.com,bumozz@yahoo.it>\n"
+"Language-Team: Italian <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../abook_group_functions.php:100
+msgid "Add New Members"
+msgstr "Aggiungi nuovi membri"
+
+#: ../abook_group_functions.php:101
+msgid "List All Groups"
+msgstr "Elenca tutti i gruppi"
+
+#: ../abook_group_interface.php:68
+#: ../addrbook_search.php:43
+msgid "Name"
+msgstr "Nome"
+
+#: ../abook_group_interface.php:69
+#: ../addrbook_search.php:44
+msgid "E-mail"
+msgstr "Indirizzo"
+
+#: ../abook_group_interface.php:70
+#: ../addrbook_search.php:45
+msgid "Info"
+msgstr "Info"
+
+#: ../abook_group_interface.php:73
+#: ../addrbook_search.php:48
+msgid "Source"
+msgstr "Sorgente"
+
+#: ../abook_group_interface.php:83
+#: ../abook_group_interface.php:155
+msgid "To"
+msgstr "A"
+
+#: ../abook_group_interface.php:85
+#: ../abook_group_interface.php:156
+msgid "Cc"
+msgstr "Cc"
+
+#: ../abook_group_interface.php:87
+#: ../abook_group_interface.php:157
+msgid "Bcc"
+msgstr "Bcc"
+
+#: ../abook_group_interface.php:100
+msgid "Use Addresses"
+msgstr "Usa gli indirizzi"
+
+#. FIXME: combine three tables into one.
+#: ../abook_group_interface.php:137
+#: ../list_abook_group.php:58
+#: ../setup.php:82
+msgid "Groups"
+msgstr "Gruppi"
+
+#: ../abook_group_interface.php:168
+msgid "There are no groups available for selection"
+msgstr "Non ci sono gruppi da selezionare"
+
+#: ../abook_group_interface.php:172
+msgid "Close"
+msgstr "Chiudi"
+
+#. FIXME: use own string
+#: ../abook_group_PEAR_database.php:68
+msgid "Global address book"
+msgstr "Rubrica globale"
+
+#: ../abook_group_PEAR_database.php:118
+#: ../abook_group_PEAR_database.php:150
+#: ../abook_group_PEAR_database.php:202
+#: ../abook_group_PEAR_database.php:325
+#: ../abook_group_PEAR_database.php:404
+#: ../abook_group_PEAR_database.php:458
+#: ../abook_group_PEAR_database.php:541
+#, php-format
+msgid "Database error: %s"
+msgstr "Errore database: %s"
+
+#: ../abook_group_PEAR_database.php:228
+#: ../abook_group_PEAR_database.php:341
+#: ../abook_group_PEAR_database.php:416
+#: ../abook_group_PEAR_database.php:476
+msgid "Addressbook is read-only"
+msgstr "Rubrica in sola lettura"
+
+#: ../abook_group_PEAR_database.php:252
+#, php-format
+msgid "Group %s already exists"
+msgstr "Il gruppo %s esiste gia'"
+
+#: ../abook_group_PEAR_database.php:304
+msgid "User Already Exists in The Group"
+msgstr "L'utente %s esiste gia' nel gruppo"
+
+#: ../abook_group_PEAR_database.php:383
+msgid "User Does Not Exist in The Group"
+msgstr "L'utente non esiste nel gruppo"
+
+#: ../abook_group_PEAR_database.php:438
+#: ../abook_group_PEAR_database.php:502
+#, php-format
+msgid "Group %s does not exist"
+msgstr "Il gruppo %s non esiste"
+
+#: ../abook_group_PEAR_database.php:472
+msgid "Group name is unchanged."
+msgstr "Il nome del gruppo non e' cambiato."
+
+#: ../abook_group_PEAR_database.php:474
+msgid "Group name was empty."
+msgstr "Indicare il nome del gruppo."
+
+#: ../abook_group_PEAR_database.php:520
+#, php-format
+msgid "Another group %s already exists"
+msgstr "Il gruppo %s esiste gia'"
+
+#: ../addrbook_search.php:41
+msgid "Toggle All"
+msgstr "Seleziona Tutti"
+
+#: ../addrbook_search.php:138
+msgid "Search for name to add"
+msgstr "Trova"
+
+#: ../addrbook_search.php:144
+msgid "in"
+msgstr "in"
+
+#: ../addrbook_search.php:145
+msgid "All address books"
+msgstr "Tutte le rubriche"
+
+#: ../addrbook_search.php:155
+msgid "Search"
+msgstr "Ricerca"
+
+#: ../addrbook_search.php:156
+msgid "List all"
+msgstr "Elenca tutti"
+
+#: ../addrbook_search.php:159
+msgid "Close window"
+msgstr "Chiudi la finestra"
+
+#: ../addrbook_search.php:175
+#: ../addrbook_search.php:194
+msgid "Add Successful"
+msgstr "Aggiunto con successo!"
+
+#: ../addrbook_search.php:179
+msgid "New Group Name is Empty"
+msgstr "Indica il nome del nuovo gruppo"
+
+#: ../addrbook_search.php:212
+#, php-format
+msgid "Unable to list addresses from %s"
+msgstr "Impossibile elencare gli indirizzi da %s"
+
+#: ../addrbook_search.php:224
+#: ../addrbook_search.php:245
+msgid "No persons matching your search was found"
+msgstr "Non è stata trovata alcuna voce corrispondente ai criteri di ricerca."
+
+#: ../addrbook_search.php:238
+msgid "Your search failed with the following error(s)"
+msgstr "La ricerca è fallita con l'errore seguente"
+
+#: ../addrbook_search.php:261
+msgid "Add to Existing Group: "
+msgstr "Aggiungi ad un gruppo esistente:"
+
+#: ../addrbook_search.php:270
+#: ../addrbook_search.php:283
+msgid "Add"
+msgstr "Aggiungi"
+
+#: ../addrbook_search.php:274
+msgid "OR"
+msgstr "Oppure"
+
+#: ../addrbook_search.php:279
+msgid "Add to New Group (supply group name):"
+msgstr "Aggiungi al nuovo gruppo (indicare il nome del gruppo)"
+
+#: ../list_abook_group.php:80
+#: ../modifyGroup.php:165
+msgid "Modify"
+msgstr "Modifica"
+
+#: ../list_abook_group.php:81
+msgid "Delete"
+msgstr "Cancella"
+
+#: ../list_abook_group.php:82
+msgid "List"
+msgstr "Elenco di tutti"
+
+#: ../list_abook_group.php:96
+msgid "You Currently Do Not Have Any Groups"
+msgstr "Nessun gruppo"
+
+#: ../listMembers.php:75
+msgid "Remove Successful"
+msgstr "Rimosso con successo!"
+
+#: ../listMembers.php:93
+msgid "Members"
+msgstr "Membri"
+
+#: ../listMembers.php:133
+msgid "You Currently Do Not Have Any Members In This Group"
+msgstr "Non esiste alcun membro nel gruppo"
+
+#: ../listMembers.php:145
+msgid "Remove"
+msgstr "Rimuovi"
+
+#: ../modifyGroup.php:75
+msgid "Delete Group"
+msgstr "Cancella il gruppo"
+
+#: ../modifyGroup.php:79
+msgid "Are you sure you want to delete "
+msgstr "Prosegui con la cancellazione del gruppo:"
+
+#: ../modifyGroup.php:83
+msgid "Yes"
+msgstr "Si"
+
+#: ../modifyGroup.php:84
+msgid "No"
+msgstr "No"
+
+#: ../modifyGroup.php:122
+msgid "Modify Group Name"
+msgstr "Modifica il nome del gruppo"
+
+#: ../modifyGroup.php:138
+msgid "Old Group Name"
+msgstr "Vecchio nome del gruppo"
+
+#: ../modifyGroup.php:150
+msgid "New Group Name"
+msgstr "Nuovo gruppo"
+
+#: ../setup.php:54
+msgid "Address Groups"
+msgstr "Gruppi di indirizzi"
+
+#: ../setup.php:56
+msgid "You can create address groups and add email addresses from your address book"
+msgstr "E' possibile creare gruppi ed aggiungere indirizzi email dalla rubrica"
+
+#: ../setup.php:101
+msgid "Current address book setup is not supported by abook_group plugin."
+msgstr "I settaggi della rubrica non sono supportati dal plugin abook_group"
+

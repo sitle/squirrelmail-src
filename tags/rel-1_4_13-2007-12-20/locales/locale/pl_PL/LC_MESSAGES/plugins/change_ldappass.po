@@ -1,0 +1,125 @@
+# Polish (pl_PL) change_ldappass Translation (SquirrelMail plugin)
+# Copyright (c) 1999-2007 The SquirrelMail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
+# Georg Lehner <jorge@magma.com.ni>, 2003.
+# $Id$
+msgid ""
+msgstr ""
+"Project-Id-Version: change_ldappass\n"
+"POT-Creation-Date: 2003-03-17 16:23-0600\n"
+"PO-Revision-Date: 2007-01-06 20:48+0100\n"
+"Last-Translator: Georg Lehner <jorge.lehner@gmx.net>\n"
+"Language-Team: Polish <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-2\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: setup.php:51
+msgid "<p align=center>Password changed successfully.</p>\n"
+msgstr "<p align=center>Has³o zosta³o zmienione.</p>\n"
+
+#: options.php:155
+msgid "Bind to database as $dn successful."
+msgstr "Pod³±cznie do bazy jako $dn powiod³o siê."
+
+#: options.php:162
+msgid "Bind to database as $ldap_manager_dn successful."
+msgstr "Pod³±cznie do bazy jako $ldap_manager_dn powiod³o siê."
+
+#: options.php:131
+msgid "Can't connect to Directory Server, please try later!"
+msgstr "Brak po³±czenia z serwerem !"
+
+#: options.php:62
+#: setup.php:24
+msgid "Change Password"
+msgstr "Zmieñ has³o"
+
+#: options.php:127
+msgid "Connecting to LDAP Server"
+msgstr "Pod³aczam do serwera LDAP"
+
+#: options.php:159
+msgid "Could not bind to the LDAP server as $ldap_manager_dn. Is the password correct?"
+msgstr "Niemogê pod³aczyæ siê do bazy LDAP jako $ldap_manager_dn. Czy has³o jest poprawne?"
+
+#: options.php:138
+msgid "Duplicate login entries detected, cannot change password!"
+msgstr "Wykryto zdublowane wpisy logowania, nie mogê zmieniæ has³a!"
+
+#: options.php:260
+msgid "LDAP Password change was not successful!"
+msgstr "Zmiana has³a LDAP zakoñczy³a siê niepowodzeniem!"
+
+#: options.php:81
+msgid "New Password:"
+msgstr "Nowe has³o:"
+
+#: options.php:225
+msgid "New Password: $newpass"
+msgstr "Nowe Has³o: $newpass"
+
+#: options.php:77
+msgid "Old Password:"
+msgstr "Stare Has³o:"
+
+#: options.php:234
+msgid "Password changed for user $username"
+msgstr "Has³o dla u¿ytkownika $username zosta³o zmienione"
+
+#: options.php:195
+msgid "Password type is {MD5}"
+msgstr "Algorytmem szyfrowania has³a jest {MD5}"
+
+#: options.php:199
+msgid "Password type is {SHA}"
+msgstr "Algorytmem szyfrowania has³a jest {SHA}"
+
+#: options.php:191
+msgid "Password type is {crypt}, sub-type $stype"
+msgstr "Algorytmem szyfrowania has³a jest {crypt}, podtyp $stype"
+
+#: options.php:256
+msgid "SMB Password change was not successful, so LDAP not changed!"
+msgstr "Zmiana has³a SMB nie powiod³a siê, wiêc has³o LDAP nie zosta³o zmienione!"
+
+#: options.php:208
+msgid "Stored Password: $lpass  Old Password: $cpass"
+msgstr "Zachowane has³o: $lpass   Stare has³o: $cpass"
+
+#: setup.php:29
+msgid "This connects to your local Password Server to change your login password for all services."
+msgstr "To rozszerzenie umo¿liwia zmianê has³a logowania dla wszystkich us³ug."
+
+#: options.php:85
+msgid "Verify New Password:"
+msgstr "Weryfikuj Nowe Has³o:"
+
+#: options.php:111
+msgid "You must also type in your new password in the verify box."
+msgstr "Musisz tak¿e wpisaæ nowe has³o w polu <b>Weryfikuj Nowe Has³o</b>."
+
+#: options.php:110
+msgid "You must type in a new password."
+msgstr "Pole <b>Nowe Has³o</b> musi byæ wype³nione."
+
+#: options.php:109
+msgid "You must type in your old password."
+msgstr "Pole <b>Stare Has³o</b> musi byæ wype³nione."
+
+#: options.php:142
+msgid "Your login account was not found in the LDAP database, cannot change password!"
+msgstr "Twoje konto nie zosta³o odnalezione w bazie LDAP, nie moge zmieniæ has³a!"
+
+#: options.php:112
+msgid "Your new password doesn't match the verify password."
+msgstr "Twoje nowe has³o nie zgadza siê z weryfikowanym."
+
+#: options.php:152
+#: options.php:207
+msgid "Your old password is not correct."
+msgstr "Stare has³o jest niepoprawne."
+
+#: options.php:281
+msgid "Password changed successfully"
+msgstr "Zmiana has³a zakoñczy³a siê powodzeniem"

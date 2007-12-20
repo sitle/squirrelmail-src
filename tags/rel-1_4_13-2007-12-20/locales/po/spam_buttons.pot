@@ -1,0 +1,161 @@
+# LANGUAGE (xx_XX) spam_buttons Translation (SquirrelMail plugin)
+# Copyright (c) 2005-2007 The SquirrelMail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# $Id$
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: spam_buttons 2.0\n"
+"Report-Msgid-Bugs-To: Paul Lesniewski <paul@squirrelmail.org>\n"
+"POT-Creation-Date: 2007-10-26 18:34+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: bounce_send.php:81
+msgid "No resend destination specified"
+msgstr ""
+
+#: bounce_send.php:210
+msgid "Could not establish connection to outgoing mail server"
+msgstr ""
+
+#: bounce_send.php:312 functions.php:1748
+#, php-format
+msgid "Could not find requested message: %s"
+msgstr ""
+
+#: bounce_send.php:347
+msgid ""
+"Could not send report: \n"
+"%1\n"
+"%2 %3"
+msgstr ""
+
+#: bounce_send.php:349
+msgid "Could not send report: <blockquote>%1<br />%2 %3</blockquote>"
+msgstr ""
+
+#: compose_functions-1.4.10.php:481 compose_functions-1.4.11.php:521
+#: compose_functions-1.5.2.php:478
+#, php-format
+msgid "Error: Draft folder %s does not exist."
+msgstr ""
+
+#: compose_functions-1.4.10.php:493
+msgid "Server replied: "
+msgstr ""
+
+#: compose_functions-1.4.11.php:272 compose_functions-1.4.11.php:289
+msgid "Subject"
+msgstr ""
+
+#: compose_functions-1.4.11.php:273 compose_functions-1.4.11.php:290
+msgid "From"
+msgstr ""
+
+#: compose_functions-1.4.11.php:274 compose_functions-1.4.11.php:291
+msgid "Date"
+msgstr ""
+
+#: compose_functions-1.4.11.php:275 compose_functions-1.4.11.php:292
+msgid "To"
+msgstr ""
+
+#: compose_functions-1.4.11.php:276 compose_functions-1.4.11.php:296
+msgid "Cc"
+msgstr ""
+
+#: compose_functions-1.4.11.php:288
+msgid "Original Message"
+msgstr ""
+
+#: compose_functions-1.4.11.php:533 compose_functions-1.5.2.php:490
+msgid "Message not sent."
+msgstr ""
+
+#: compose_functions-1.4.11.php:533 compose_functions-1.5.2.php:496
+msgid "Server replied:"
+msgstr ""
+
+#: functions.php:200
+msgid "Reselect Messages After Reporting"
+msgstr ""
+
+#: functions.php:215
+msgid "Delete Spam After Reporting"
+msgstr ""
+
+#: functions.php:238 functions.php:239 functions.php:301 functions.php:302
+msgid "[Do not move]"
+msgstr ""
+
+#: functions.php:252
+msgid "Copy Spam After Reporting To"
+msgstr ""
+
+#: functions.php:254
+msgid "Move Spam After Reporting To"
+msgstr ""
+
+#: functions.php:275 functions.php:339
+msgid "Copy Instead of Moving"
+msgstr ""
+
+#: functions.php:316
+msgid "Copy Non-Spam After Reporting To"
+msgstr ""
+
+#: functions.php:318
+msgid "Move Non-Spam After Reporting To"
+msgstr ""
+
+#: functions.php:364 functions.php:365 functions.php:376 functions.php:377
+#: functions.php:416 functions.php:417 functions.php:430 functions.php:431
+msgid "[Always Display]"
+msgstr ""
+
+#: functions.php:391
+msgid "Don't Display Spam Button in Folder"
+msgstr ""
+
+#: functions.php:445
+msgid "Don't Display Non-Spam Button in Folder"
+msgstr ""
+
+#: functions.php:457
+msgid "Spam Reporting"
+msgstr ""
+
+#: functions.php:1649
+msgid "ERROR: Report could not be delivered"
+msgstr ""
+
+#: functions.php:1814
+msgid "ERROR: Could not open temp file; check attachments directory permissions"
+msgstr ""
+
+#: functions.php:1825
+#, php-format
+msgid "ERROR %d: Problem reporting message ID %d: %s"
+msgstr ""
+
+#: setup.php:106
+msgid "Spam"
+msgstr ""
+
+#: setup.php:107
+msgid "Not Spam"
+msgstr ""
+
+#: setup.php:108
+msgid "Successfully reported as spam"
+msgstr ""
+
+#: setup.php:109
+msgid "Successfully reported as non-spam"
+msgstr ""
