@@ -24,12 +24,12 @@ for trans in `ls locale/`; do
 	    locale/${trans}/LC_MESSAGES/*.po \
 	    locale/${trans}/LC_MESSAGES/*.mo \
 	    locale/${trans}/setup.php \
-	    install version ReleaseNotes.locales COPYING.locales ChangeLog.locales
+	    install version ReleaseNotes.locales COPYING.locales ChangeLog.locales TRANSLATORS
 	zip -9 -q ../packages/${trans}-${LOCALE_VERSION}-${date}.zip \
 	    locale/${trans}/LC_MESSAGES/*.po \
 	    locale/${trans}/LC_MESSAGES/*.mo \
 	    locale/${trans}/setup.php \
-	    install version ReleaseNotes.locales COPYING.locales ChangeLog.locales
+	    install version ReleaseNotes.locales COPYING.locales ChangeLog.locales TRANSLATORS
 	# sec_remove images
 	if [ -f images/sec_remove_${trans}.png ]; then
 	    tar -rf ../packages/${trans}-${LOCALE_VERSION}-${date}.tar \
@@ -54,14 +54,14 @@ tar -cf ../packages/all_locales-${LOCALE_VERSION}-${date}.tar \
     locale/*/setup.php \
     images/sec_remove_*.png \
     help/*/*.hlp install version \
-    ReleaseNotes.locales COPYING.locales ChangeLog.locales
+    ReleaseNotes.locales COPYING.locales ChangeLog.locales TRANSLATORS
 zip -9 -q ../packages/all_locales-${LOCALE_VERSION}-${date}.zip \
     locale/*/LC_MESSAGES/*.po \
     locale/*/LC_MESSAGES/*.mo \
     locale/*/setup.php \
     images/sec_remove_*.png \
     help/*/*.hlp install version \
-    ReleaseNotes.locales COPYING.locales ChangeLog.locales
+    ReleaseNotes.locales COPYING.locales ChangeLog.locales TRANSLATORS
 
 # Pack them
 for package in `ls ../packages/*-${date}.tar`; do
