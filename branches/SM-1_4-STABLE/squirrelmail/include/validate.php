@@ -9,6 +9,13 @@
  * @package squirrelmail
  */
 
+/**
+ * Make sure we have a page name
+ *
+ */
+if ( !defined('PAGE_NAME') ) define('PAGE_NAME', NULL);
+
+
 /** include the mime class before the session start ! otherwise we can't store
  * messages with a session_register.
  *
