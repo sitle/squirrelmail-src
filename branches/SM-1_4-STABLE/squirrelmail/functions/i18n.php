@@ -410,9 +410,18 @@ function set_up_language($sm_language, $do_search = false, $default = false) {
         if ($squirrelmail_language == 'ja_JP') {
             header ('Content-Type: text/html; charset=EUC-JP');
             if (!function_exists('mb_internal_encoding')) {
-                echo _("You need to have PHP installed with the multibyte string function enabled (using configure option --enable-mbstring).");
-                // Revert to English link has to be added.
-                // stop further execution in order not to get php errors on mb_internal_encoding().
+
+                // don't display mbstring warning when user isn't logged
+                // in because the user may not be using SM for Japanese;
+                // also don't display on webmail page so user has the 
+                // chance to go back and revert their language setting
+                // until admin can get their act together
+                if (sqGetGlobalVar('user_is_logged_in', $user_is_logged_in, SQ_SESSION) 
+                 && $user_is_logged_in && PAGE_NAME != 'webmail') {
+                    echo _("You need to have PHP installed with the multibyte string function enabled (using configure option --enable-mbstring).");
+                    // Revert to English link has to be added.
+                    // stop further execution in order not to get php errors on mb_internal_encoding().
+                }
                 return;
             }
             if (function_exists('mb_language')) {
