@@ -113,11 +113,10 @@ $attachment_common_types_parsed = array();
 sqsession_register($attachment_common_types, 'attachment_common_types');
 sqsession_register($attachment_common_types_parsed, 'attachment_common_types_parsed');
 
-$debug = false;
 
 if ( sqgetGlobalVar('HTTP_ACCEPT', $http_accept, SQ_SERVER) &&
     !isset($attachment_common_types_parsed[$http_accept]) ) {
-    attachment_common_parse($http_accept, $debug);
+    attachment_common_parse($http_accept);
 }
 
 /* Complete autodetection of Javascript. */
@@ -173,7 +172,7 @@ header("Location: $redirect_url");
 
 /* --------------------- end main ----------------------- */
 
-function attachment_common_parse($str, $debug) {
+function attachment_common_parse($str) {
     global $attachment_common_types, $attachment_common_types_parsed;
 
     $attachment_common_types_parsed[$str] = true;
