@@ -177,10 +177,15 @@ xgettext ${XGETTEXT_OPTIONS} -j \
     --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext ${XGETTEXT_OPTIONS} -j \
     ${SM_DEVEL_PATH}/plugins/translate/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
+
+# ** Templates
+
 xgettext ${XGETTEXT_OPTIONS} -j \
     ${SM_DEVEL_PATH}/templates/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext ${XGETTEXT_OPTIONS} -j \
     ${SM_DEVEL_PATH}/templates/default/*.tpl --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
+xgettext ${XGETTEXT_OPTIONS} -j \
+    ${SM_DEVEL_PATH}/templates/default_advanced/*.tpl --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
     
 # Independent strings
 
