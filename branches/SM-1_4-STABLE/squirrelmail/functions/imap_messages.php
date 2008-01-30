@@ -726,14 +726,14 @@ function sqimap_get_small_header_list($imap_stream, $msg_list, $show_num=false) 
         if (!$allow_server_sort) {
            $from = parseAddress($from);
            if ($from[0][1]) {
-              $from = decodeHeader($from[0][1]);
+              $from = decodeHeader($from[0][1], true, false);
            } else {
               $from = $from[0][0];
            }
            $messages[$msgi]['FROM-SORT'] = $from;
-           $subject_sort = strtolower(decodeHeader($subject));
-           if (preg_match("/^(vedr|sv|re|aw):\s*(.*)$/si", $subject_sort, $matches)){
-                $messages[$msgi]['SUBJECT-SORT'] = $matches[2];
+           $subject_sort = strtolower(decodeHeader($subject, true, false));
+           if (preg_match("/^(?:(?:vedr|sv|re|aw|fw|fwd):\s*)*\s*(.*)$/si", $subject_sort, $matches)){
+                $messages[$msgi]['SUBJECT-SORT'] = $matches[1];
            } else {
                $messages[$msgi]['SUBJECT-SORT'] = $subject_sort;
            }
