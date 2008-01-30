@@ -31,8 +31,8 @@ function addInputField($type, $name = null, $value = null, $attributes = '') {
 /**
  * Password input field
  */
-function addPwField($name , $value = null) {
-    return addInputField('password', $name , $value);
+function addPwField($name , $value = null, $extra_attributes='') {
+    return addInputField('password', $name , $value, $extra_attributes);
 }
 
 
@@ -62,17 +62,16 @@ function addHidden($name, $value) {
 /**
  * An input textbox.
  */
-function addInput($name, $value = '', $size = 0, $maxlength = 0) {
+function addInput($name, $value = '', $size = 0, $maxlength = 0, $extra_attributes='') {
 
-    $attr = '';
     if ($size) {
-        $attr.= ' size="'.(int)$size.'"';
+        $extra_attributes .= ' size="'.(int)$size.'"';
     }
     if ($maxlength) {
-        $attr.= ' maxlength="'.(int)$maxlength .'"';
+        $extra_attributes .= ' maxlength="'.(int)$maxlength .'"';
     }
 
-    return addInputField('text', $name, $value, $attr);
+    return addInputField('text', $name, $value, $extra_attributes);
 }
 
 

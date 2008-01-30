@@ -122,8 +122,10 @@ $loginname_value = (sqGetGlobalVar('loginname', $loginname) ? htmlspecialchars($
 
 $header = "<script language=\"JavaScript\" type=\"text/javascript\">\n" .
           "<!--\n".
+          "  var alreadyFocused = false;\n".
           "  function squirrelmail_loginpage_onload() {\n".
           "    document.forms[0].js_autodetect_results.value = '" . SMPREF_JS_ON . "';\n".
+          "    if (alreadyFocused) return;\n".
           "    var textElements = 0;\n".
           "    for (i = 0; i < document.forms[0].elements.length; i++) {\n".
           "      if (document.forms[0].elements[i].type == \"text\" || document.forms[0].elements[i].type == \"password\") {\n".
@@ -210,7 +212,7 @@ echo html_tag( 'table',
                                     _("Name:") ,
                                 'right', '', 'width="30%"' ) .
                                 html_tag( 'td',
-				    addInput($username_form_name, $loginname_value),
+				    addInput($username_form_name, $loginname_value, 0, 0, ' onfocus="alreadyFocused=true;"'),
                                 'left', '', 'width="70%"' )
                                 ) . "\n" .
                             html_tag( 'tr',
@@ -218,7 +220,7 @@ echo html_tag( 'table',
                                     _("Password:") ,
                                 'right', '', 'width="30%"' ) .
                                 html_tag( 'td',
-				    addPwField($password_form_name).
+				    addPwField($password_form_name, null, ' onfocus="alreadyFocused=true;"').
 				    addHidden('js_autodetect_results', SMPREF_JS_OFF).
                     $mailtofield . 
 				    addHidden('just_logged_in', '1'),
