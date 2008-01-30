@@ -755,12 +755,11 @@ function mail_message_listing_beginning ($imapConnection,
          . html_tag( 'td', '', 'right', '', 'nowrap' );
 
     if (!$auto_expunge) {
-        echo getButton('SUBMIT', 'expungeButton',_("Expunge"))
-             ."&nbsp;\n";
+        echo getButton('SUBMIT', 'expungeButton',_("Expunge")) ."\n";
     }
 
-    echo getButton('SUBMIT', 'markRead',_("Read"));
-    echo getButton('SUBMIT', 'markUnread',_("Unread"));
+    echo getButton('SUBMIT', 'markRead',_("Read")) . "\n";
+    echo getButton('SUBMIT', 'markUnread',_("Unread")) . "\n";
     echo getButton('SUBMIT', 'delete',_("Delete")) ."&nbsp;\n";
     if (!strpos($php_self,'mailbox')) {
         $location = $php_self.'?mailbox=INBOX&amp;startMessage=1';
