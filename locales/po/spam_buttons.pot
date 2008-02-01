@@ -1,14 +1,14 @@
 # LANGUAGE (xx_XX) spam_buttons Translation (SquirrelMail plugin)
-# Copyright (c) 2005-2007 The SquirrelMail Project Team
+# Copyright (c) 2005-2008 The SquirrelMail Project Team
 # This file is distributed under the same license as the SquirrelMail package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # $Id$
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: spam_buttons 2.0\n"
+"Project-Id-Version: spam_buttons 2.1\n"
 "Report-Msgid-Bugs-To: Paul Lesniewski <paul@squirrelmail.org>\n"
-"POT-Creation-Date: 2007-10-26 18:34+0200\n"
+"POT-Creation-Date: 2008-02-01 09:12+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "Could not establish connection to outgoing mail server"
 msgstr ""
 
-#: bounce_send.php:312 functions.php:1748
+#: bounce_send.php:312 report.php:1521
 #, php-format
 msgid "Could not find requested message: %s"
 msgstr ""
@@ -41,7 +41,7 @@ msgid "Could not send report: <blockquote>%1<br />%2 %3</blockquote>"
 msgstr ""
 
 #: compose_functions-1.4.10.php:481 compose_functions-1.4.11.php:521
-#: compose_functions-1.5.2.php:478
+#: compose_functions-1.4.14.php:522 compose_functions-1.5.2.php:480
 #, php-format
 msgid "Error: Draft folder %s does not exist."
 msgstr ""
@@ -51,111 +51,168 @@ msgid "Server replied: "
 msgstr ""
 
 #: compose_functions-1.4.11.php:272 compose_functions-1.4.11.php:289
+#: compose_functions-1.4.14.php:269 compose_functions-1.4.14.php:286
 msgid "Subject"
 msgstr ""
 
 #: compose_functions-1.4.11.php:273 compose_functions-1.4.11.php:290
+#: compose_functions-1.4.14.php:270 compose_functions-1.4.14.php:287
 msgid "From"
 msgstr ""
 
 #: compose_functions-1.4.11.php:274 compose_functions-1.4.11.php:291
+#: compose_functions-1.4.14.php:271 compose_functions-1.4.14.php:288
 msgid "Date"
 msgstr ""
 
 #: compose_functions-1.4.11.php:275 compose_functions-1.4.11.php:292
+#: compose_functions-1.4.14.php:272 compose_functions-1.4.14.php:289
 msgid "To"
 msgstr ""
 
 #: compose_functions-1.4.11.php:276 compose_functions-1.4.11.php:296
+#: compose_functions-1.4.14.php:273 compose_functions-1.4.14.php:293
 msgid "Cc"
 msgstr ""
 
-#: compose_functions-1.4.11.php:288
+#: compose_functions-1.4.11.php:288 compose_functions-1.4.14.php:285
 msgid "Original Message"
 msgstr ""
 
-#: compose_functions-1.4.11.php:533 compose_functions-1.5.2.php:490
+#: compose_functions-1.4.11.php:533 compose_functions-1.4.14.php:534
+#: compose_functions-1.5.2.php:492
 msgid "Message not sent."
 msgstr ""
 
-#: compose_functions-1.4.11.php:533 compose_functions-1.5.2.php:496
+#: compose_functions-1.4.11.php:533 compose_functions-1.4.14.php:534
+#: compose_functions-1.5.2.php:498
 msgid "Server replied:"
 msgstr ""
 
-#: functions.php:200
+#: options.php:60
 msgid "Reselect Messages After Reporting"
 msgstr ""
 
-#: functions.php:215
+#: options.php:75
 msgid "Delete Spam After Reporting"
 msgstr ""
 
-#: functions.php:238 functions.php:239 functions.php:301 functions.php:302
+#: options.php:98 options.php:99 options.php:196 options.php:197
 msgid "[Do not move]"
 msgstr ""
 
-#: functions.php:252
+#: options.php:112
 msgid "Copy Spam After Reporting To"
 msgstr ""
 
-#: functions.php:254
+#: options.php:114
 msgid "Move Spam After Reporting To"
 msgstr ""
 
-#: functions.php:275 functions.php:339
+#: options.php:135 options.php:234
 msgid "Copy Instead of Moving"
 msgstr ""
 
-#: functions.php:316
+#: options.php:169
+msgid "Move To Next Message After Reporting"
+msgstr ""
+
+#: options.php:172
+msgid "Return to Message List"
+msgstr ""
+
+#: options.php:173
+msgid "Next"
+msgstr ""
+
+#: options.php:174
+msgid "Previous"
+msgstr ""
+
+#: options.php:211
 msgid "Copy Non-Spam After Reporting To"
 msgstr ""
 
-#: functions.php:318
+#: options.php:213
 msgid "Move Non-Spam After Reporting To"
 msgstr ""
 
-#: functions.php:364 functions.php:365 functions.php:376 functions.php:377
-#: functions.php:416 functions.php:417 functions.php:430 functions.php:431
+#: options.php:259 options.php:260 options.php:271 options.php:272
+#: options.php:348 options.php:349 options.php:362 options.php:363
+#: options.php:438 options.php:439 options.php:453 options.php:454
+#: options.php:529 options.php:530 options.php:545 options.php:546
 msgid "[Always Display]"
 msgstr ""
 
-#: functions.php:391
+#: options.php:305
+msgid "Display Spam Button in Folders"
+msgstr ""
+
+#: options.php:322
+msgid "Display Spam Button in Folder"
+msgstr ""
+
+#: options.php:395
+msgid "Display Non-Spam Button in Folders"
+msgstr ""
+
+#: options.php:412
+msgid "Display Non-Spam Button in Folder"
+msgstr ""
+
+#: options.php:486
+msgid "Don't Display Spam Button in Folders"
+msgstr ""
+
+#: options.php:503
 msgid "Don't Display Spam Button in Folder"
 msgstr ""
 
-#: functions.php:445
+#: options.php:579
+msgid "Don't Display Non-Spam Button in Folders"
+msgstr ""
+
+#: options.php:596
 msgid "Don't Display Non-Spam Button in Folder"
 msgstr ""
 
-#: functions.php:457
+#: options.php:609
 msgid "Spam Reporting"
 msgstr ""
 
-#: functions.php:1649
+#: report.php:1198
+msgid "The reported message is no longer available in this folder"
+msgstr ""
+
+#: report.php:1422
 msgid "ERROR: Report could not be delivered"
 msgstr ""
 
-#: functions.php:1814
-msgid "ERROR: Could not open temp file; check attachments directory permissions"
+#: report.php:1587
+msgid ""
+"ERROR: Could not open temp file; check attachments directory permissions"
 msgstr ""
 
-#: functions.php:1825
-#, php-format
-msgid "ERROR %d: Problem reporting message ID %d: %s"
+#: report.php:1599
+msgid "ERROR %1: Problem reporting message ID %2: %3"
 msgstr ""
 
-#: setup.php:106
+#: report.php:1603
+msgid "ERROR %1: Problem reporting message ID %2 (entity %4): %3"
+msgstr ""
+
+#: setup.php:112
 msgid "Spam"
 msgstr ""
 
-#: setup.php:107
+#: setup.php:113
 msgid "Not Spam"
 msgstr ""
 
-#: setup.php:108
+#: setup.php:114
 msgid "Successfully reported as spam"
 msgstr ""
 
-#: setup.php:109
+#: setup.php:115
 msgid "Successfully reported as non-spam"
 msgstr ""
