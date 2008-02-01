@@ -876,8 +876,8 @@ $languages['nl_NL']['LOCALE']  = array('nl_NL.ISO8859-1','nl_NL.ISO-8859-1','nl_
 $languages['nl']['ALIAS']      = 'nl_NL';
 
 $languages['nb_NO']['NAME']    = 'Norwegian (Bokm&aring;l)';
-$languages['nb_NO']['CHARSET'] = 'iso-8859-1';
-$languages['nb_NO']['LOCALE']  = array('nb_NO.ISO8859-1','nb_NO.ISO-8859-1','nb_NO');
+$languages['nb_NO']['CHARSET'] = 'utf-8';
+$languages['nb_NO']['LOCALE']  = array('nb_NO.UTF-8','nb_NO');
 $languages['nb']['ALIAS']      = 'nb_NO';
 
 $languages['nn_NO']['NAME']    = 'Norwegian (Nynorsk)';
