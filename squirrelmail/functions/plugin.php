@@ -208,4 +208,3 @@ if (isset($plugins) && is_array($plugins)) {
     }
 }
 
-?>

@@ -396,5 +396,3 @@ function getSig($data_dir, $username, $number) {
     return getPref($data_dir, $username, $key);
 }
 
-// vim: et ts=4
-?>

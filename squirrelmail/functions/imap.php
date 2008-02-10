@@ -19,4 +19,3 @@ require_once(SM_PATH . 'functions/imap_messages.php');
 require_once(SM_PATH . 'functions/imap_general.php');
 require_once(SM_PATH . 'functions/imap_search.php');
 
-?>

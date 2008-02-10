@@ -352,4 +352,3 @@ class Deliver_SMTP extends Deliver {
     }
 }
 
-?>

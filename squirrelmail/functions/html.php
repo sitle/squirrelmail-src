@@ -183,4 +183,3 @@ function set_url_var($url, $var, $val=null, $link=true) {
             echo $format_ar[$frm_last];
         }
     }
-?>

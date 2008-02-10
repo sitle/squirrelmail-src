@@ -376,4 +376,3 @@ class abook_ldap_server extends addressbook_backend {
          // return $this->search('*');
      }
 }
-?>

@@ -233,4 +233,3 @@ function save_option_signature($option) {
     setSig($data_dir, $username, 'g', $option->new_value);
 }
 
-?>

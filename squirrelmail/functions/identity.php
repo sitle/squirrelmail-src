@@ -213,4 +213,3 @@ function empty_identity($ident) {
     }
 }
 
-?>

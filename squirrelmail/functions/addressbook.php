@@ -695,4 +695,3 @@ if((isset($addrbook_dsn) && !empty($addrbook_dsn)) ||
  * @since 1.5.1 and 1.4.5
  */
 do_hook('abook_add_class');
-?>

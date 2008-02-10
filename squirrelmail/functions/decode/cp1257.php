@@ -157,4 +157,3 @@ function charset_decode_cp1257 ($string) {
     return $string;
 }
 
-?>
