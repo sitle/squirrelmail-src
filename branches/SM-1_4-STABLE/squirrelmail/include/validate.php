@@ -77,4 +77,3 @@ if ( $timeZone != SMPREF_NONE && ($timeZone != "")
     putenv("TZ=".$timeZone);
 }
 
-?>

@@ -1327,5 +1327,3 @@ function handleAsSent($mailbox) {
     return $handleAsSent_result;
 }
 
-// vim: et ts=4
-?>

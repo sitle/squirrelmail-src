@@ -147,4 +147,3 @@ function addForm($action, $method = 'post', $name = '', $enctype = '', $charset 
         $enctype . $name . $charset . ">\n";
 }
 
-?>

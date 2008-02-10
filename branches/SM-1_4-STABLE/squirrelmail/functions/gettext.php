@@ -249,4 +249,3 @@ function textdomain($name = false) {
 
     return $gettext_php_domain;
 }
-?>

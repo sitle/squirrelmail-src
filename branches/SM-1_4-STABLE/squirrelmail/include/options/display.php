@@ -435,4 +435,3 @@ function save_option_reply_prefix($option) {
 
 }
 
-?>

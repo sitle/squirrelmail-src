@@ -267,5 +267,3 @@ function getSig($data_dir, $username, $number) {
     return $sig;
 }
 
-// vim: et ts=4
-?>

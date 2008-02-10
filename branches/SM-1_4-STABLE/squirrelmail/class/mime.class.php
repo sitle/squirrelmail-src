@@ -25,4 +25,3 @@ require_once(SM_PATH . 'class/mime/Disposition.class.php');
 require_once(SM_PATH . 'class/mime/Language.class.php');
 require_once(SM_PATH . 'class/mime/ContentType.class.php');
 
-?>

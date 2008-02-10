@@ -217,4 +217,3 @@ function attachment_common_octet_stream(&$Args) {
     }
 }
 
-?>

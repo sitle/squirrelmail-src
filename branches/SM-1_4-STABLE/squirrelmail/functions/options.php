@@ -504,5 +504,3 @@ function OptionSubmit( $name ) {
                 ) . "\n";
 }
 
-// vim: et ts=4
-?>

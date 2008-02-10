@@ -881,4 +881,3 @@ function sq_trim_value ( &$value ) {
 
 
 $PHP_SELF = php_self();
-?>

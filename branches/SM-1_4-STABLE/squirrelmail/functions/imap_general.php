@@ -960,4 +960,3 @@ function map_yp_alias($username) {
    return chop(substr($yp, strlen($username)+1));
 }
 
-?>

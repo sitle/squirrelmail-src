@@ -170,5 +170,3 @@ function error_option_save($message) {
 
     $optpage_save_error=array_merge($optpage_save_error,array($message));
 }
-// vim: et ts=4
-?>
