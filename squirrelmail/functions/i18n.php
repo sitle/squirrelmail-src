@@ -956,11 +956,9 @@ $languages['uk_UA']['CHARSET'] = 'utf-8';
 $languages['uk_UA']['LOCALE']  = array('uk_UA.UTF-8','uk_UA','uk');
 $languages['uk']['ALIAS'] = 'uk_UA';
 
-/*
 $languages['vi_VN']['NAME']    = 'Vietnamese';
 $languages['vi_VN']['CHARSET'] = 'utf-8';
 $languages['vi']['ALIAS'] = 'vi_VN';
-*/
 
 // Right to left languages
 
