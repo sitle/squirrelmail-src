@@ -1,20 +1,22 @@
-# SquirrelMail Vietnamese Translation
-# Copyright (c) 1999-2005 The SquirrelMail Project Team
+# Vietnamese (vn_VN) SquirrelMail Translation
+# Copyright (c) 1999-2008 The SquirrelMail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
 # Le Viet Hung <heros@hcm.fpt.vn>, 2002.
-#
+# Clytie Siddall <clytie@riverland.net.au>, 2008.
+# $Id$
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id: squirrelmail.po,v 1.4 2003/10/08 12:28:41 tokul Exp "
-"$\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: SquirrelMail HEAD\n"
+"Report-Msgid-Bugs-To: SquirrelMail Internationalization <squirrelmail-"
+"i18n@lists.sourceforge.net>\n"
 "POT-Creation-Date: 2005-04-16 19:47+0200\n"
-"PO-Revision-Date: 2002-02-23 22:59GMT+1\n"
-"Last-Translator: Le Viet Hung <e9912030@is-edu.hcmuns.edu.vn>\n"
-"Language-Team: Vietnamese <squirrelmail-i18n@lists.sourceforge.net>\n"
+"PO-Revision-Date: 2008-02-09 19:50+1030\n"
+"Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
+"Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 0.9.5\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "Address Book"
 msgstr "Sổ địa chỉ"
@@ -23,16 +25,16 @@ msgid "Name"
 msgstr "Tên"
 
 msgid "E-mail"
-msgstr "E-mail"
+msgstr "Địa chỉ thư"
 
 msgid "Info"
 msgstr "Thông tin"
 
 msgid "Source"
-msgstr "Mã nguồn"
+msgstr "Nguồn"
 
 msgid "To"
-msgstr "Gởi tới"
+msgstr "Tới"
 
 msgid "Cc"
 msgstr "Cc"
@@ -40,7 +42,6 @@ msgstr "Cc"
 msgid "Bcc"
 msgstr "Bcc"
 
-#, fuzzy
 msgid "No persons matching your search were found"
 msgstr "Không tìm thấy người nào như thế"
 
@@ -75,40 +76,38 @@ msgstr "Tất cả"
 msgid "Use Addresses"
 msgstr "Dùng các địa chỉ"
 
-#, fuzzy
 msgid "Cancel"
-msgstr "Đổi"
+msgstr "Thôi"
 
 msgid "Address Book Search"
 msgstr "Tìm trong sổ địa chỉ"
 
 msgid "Return"
-msgstr "Quay về"
+msgstr "Trở về"
 
 msgid "Nickname"
-msgstr "Bí danh"
+msgstr "Tên hiệu"
 
 msgid "Must be unique"
-msgstr " Phải là duy nhất"
+msgstr "Phải là duy nhất"
 
 msgid "E-mail address"
-msgstr "Địa chỉ E-mail"
+msgstr "Địa chỉ thư"
 
 msgid "Last name"
-msgstr "Tên"
+msgstr "Họ"
 
 msgid "First name"
-msgstr "Họ"
+msgstr "Tên"
 
 msgid "Additional info"
 msgstr "Thông tin bổ sung"
 
-#, fuzzy
 msgid "Add to:"
-msgstr "Thêm vào %s"
+msgstr "Thêm vào :"
 
 msgid "No personal address book is defined. Contact administrator."
-msgstr "Chưa có sổ địa chỉ. Xin liên hệ với quản trị viên!"
+msgstr "Chưa xác định sổ địa chỉ cá nhân. Xin liên hệ với quản trị."
 
 msgid "You can only edit one address at the time"
 msgstr "Bạn chỉ có thể soạn mỗi lần một địa chỉ."
@@ -120,7 +119,7 @@ msgid "ERROR"
 msgstr "LỖI"
 
 msgid "Please select address that you want to edit"
-msgstr ""
+msgstr "Hãy chọn địa chỉ cần sửa đổi"
 
 msgid "Add address"
 msgstr "Thêm địa chỉ"
@@ -137,7 +136,7 @@ msgstr "Thêm vào %s"
 
 #, php-format
 msgid "%s wrote:"
-msgstr ""
+msgstr "%s đã viết:"
 
 msgid "quote"
 msgstr "trích dẫn"
@@ -147,13 +146,13 @@ msgstr "ai"
 
 #, php-format
 msgid "On %s, %s wrote:"
-msgstr ""
+msgstr "Vào %s, %s đã viết:"
 
 msgid "Subject"
 msgstr "Chủ đề"
 
 msgid "From"
-msgstr "Người gởi"
+msgstr "Từ"
 
 msgid "Date"
 msgstr "Ngày"
@@ -162,23 +161,22 @@ msgid "Original Message"
 msgstr "Thông điệp gốc"
 
 msgid "Draft Email Saved"
-msgstr "Soạn Email đã lưu"
+msgstr "Thư nháp đã lưu"
 
 msgid "Could not move/copy file. File not attached"
-msgstr "Không thể di chuyển/chép tệp. Tệp chưa được gắn kèm"
+msgstr "Không thể di chuyển/chép tập tin nên chưa đính kèm tập tin"
 
 msgid "Draft Saved"
-msgstr "Bản soạn thảo đã lưu"
+msgstr "Bản nháp đã lưu"
 
-#, fuzzy
 msgid "Your Message has been sent."
-msgstr "Thông điệp đã được gởi"
+msgstr "Thư của bạn đã được gửi đi."
 
 msgid "From:"
 msgstr "Từ:"
 
 msgid "Send"
-msgstr "Gởi"
+msgstr "Gửi"
 
 msgid "Attach:"
 msgstr "Gắn kèm:"
@@ -187,87 +185,80 @@ msgid "Add"
 msgstr "Thêm"
 
 msgid "Delete selected attachments"
-msgstr "Xóa các tệp gắn kèm đã chọn"
+msgstr "Xóa các đồ đính kèm đã chọn"
 
 msgid "Priority"
-msgstr "Quyền ưu tiên"
+msgstr "Ưu tiên"
 
 msgid "High"
 msgstr "Cao"
 
 msgid "Normal"
-msgstr "Bình thường"
+msgstr "Vừa"
 
 msgid "Low"
 msgstr "Thấp"
 
 msgid "Receipt"
-msgstr "Yêu cầu gởi xác nhận"
+msgstr "Thông báo đã nhận"
 
-#, fuzzy
 msgid "On Read"
 msgstr "Đã đọc"
 
 msgid "On Delivery"
-msgstr "Đã chuyển"
+msgstr "Đã phát"
 
 msgid "Signature"
 msgstr "Chữ ký"
 
 msgid "Addresses"
-msgstr "Các địa chỉ"
+msgstr "Địa chỉ"
 
 msgid "Save Draft"
-msgstr "Lưu bản soạn thảo"
+msgstr "Lưu bản nháp"
 
 msgid "You have not filled in the \"To:\" field."
-msgstr "Bạn chưa điền vào mục \"Tới:\""
+msgstr "Bạn chưa điền vào trường « Cho : »."
 
-#, fuzzy, php-format
+#, php-format
 msgid "Error: Draft folder %s does not exist."
-msgstr "Người dùng '%s' không tồn tại"
+msgstr "Lỗi : thư mục nháp %s không tồn tại."
 
-#, fuzzy
 msgid "Server replied:"
-msgstr "El servidor respondió: "
+msgstr "Máy phục vụ đã đáp ứng:"
 
 msgid "Folders"
-msgstr "Các thư mục"
+msgstr "Thư mục"
 
-#, fuzzy
 msgid "Subscribed successfully."
-msgstr "Đã đăng ký thành công!"
+msgstr "Đã đăng ký thành công."
 
-#, fuzzy
 msgid "Unsubscribed successfully."
-msgstr "Đã hủy đăng ký thành công!"
+msgstr "Đã hủy đăng ký thành công."
 
-#, fuzzy
 msgid "Deleted folder successfully."
-msgstr "Đã xóa thư mục thành công!"
+msgstr "Đã xóa thư mục thành công,"
 
-#, fuzzy
 msgid "Created folder successfully."
-msgstr "Đã tạo thư mục thành công!"
+msgstr "Đã tạo thư mục thành công."
 
-#, fuzzy
 msgid "Renamed successfully."
-msgstr "Đã đổi tên thành công!"
+msgstr "Đã đổi tên thành công."
 
 msgid "Subscription Unsuccessful - Folder does not exist."
-msgstr ""
+msgstr "Lỗi đăng ký — thư mục không tồn tại."
 
 msgid "refresh folder list"
-msgstr "lập lại danh sách thư mục"
+msgstr "cập nhật danh sách thư mục"
 
 msgid "Create Folder"
 msgstr "Tạo thư mục"
 
 msgid "as a subfolder of"
-msgstr "như là thư mục con của"
+msgstr "dạng thư mục con của"
 
 msgid "None"
-msgstr "Không có gì"
+msgstr "Không có"
 
 msgid "Let this folder contain subfolders"
 msgstr "Cho phép thư mục này chứa các thư mục con"
@@ -276,16 +267,16 @@ msgid "Create"
 msgstr "Tạo"
 
 msgid "Rename a Folder"
-msgstr "Đổi tên thư mục"
+msgstr "Thay tên thư mục"
 
 msgid "Select a folder"
 msgstr "Chọn thư mục"
 
 msgid "Rename"
-msgstr "Đổi tên"
+msgstr "Thay tên"
 
 msgid "No folders found"
-msgstr "Không tìm thấy thư mục nào"
+msgstr "Không tìm thấy thư mục"
 
 msgid "Delete Folder"
 msgstr "Xóa thư mục"
@@ -300,173 +291,165 @@ msgid "Subscribe"
 msgstr "Đăng ký"
 
 msgid "No folders were found to unsubscribe from!"
-msgstr "Không tìm thấy các thư mục để hủy đăng ký!"
+msgstr "Không tìm thấy các thư mục để hủy đăng ký !"
 
 msgid "No folders were found to subscribe to!"
-msgstr "Không tìm thấy các thư mục đề đăng ký!"
+msgstr "Không tìm thấy các thư mục đề đăng ký !"
 
-#, fuzzy
 msgid "Subscribe to:"
-msgstr "Đăng ký"
+msgstr "Đăng ký với:"
 
-#, fuzzy
 msgid "Illegal folder name. Please select a different name."
-msgstr "Tên thư mục không đúng. Xin vui lòng chọn tên khác."
+msgstr "Tên thư mục sai. Hãy chọn một tên khác."
 
 msgid "Click here to go back"
-msgstr "Nhấn vào đây để quay lại"
+msgstr "Nhấn vào đây để trở về"
 
 msgid "You have not selected a folder to delete. Please do so."
-msgstr "Bạn chưa chọn thư mục để xóa."
+msgstr "Bạn chưa chọn thư mục để xóa. Hãy chọn."
 
-#, fuzzy, php-format
+#, php-format
 msgid "Are you sure you want to delete %s?"
-msgstr "Do you really want to delete this event?"
+msgstr "Bạn có chắc muốn xoá %s không?"
 
 msgid "Yes"
-msgstr "Vâng"
+msgstr "Có"
 
 msgid "No"
 msgstr "Không"
 
 msgid "You have not selected a folder to rename. Please do so."
-msgstr "Bạn chưa chọn thư mục để đổi tên."
+msgstr "Bạn chưa chọn thư mục để đổi tên. Hãy chọn."
 
 msgid "Rename a folder"
-msgstr "Đổi tên thư mục"
+msgstr "Thay tên thư mục"
 
 msgid "New name:"
 msgstr "Tên mới:"
 
 msgid "Submit"
-msgstr "Trình lên"
+msgstr "Gửi"
 
 msgid "ERROR: Help files are not in the right format!"
-msgstr ""
+msgstr "LỖI: tập tin Trợ giúp có định dạng sai."
 
 msgid "Help"
-msgstr "Giúp đỡ"
+msgstr "Trợ giúp"
 
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "The help has not been translated to %s. It will be displayed in English "
 "instead."
 msgstr ""
-"Phần giúp đỡ chưa được dịch sang %s. Nó sẽ được trình bày bằng tiếng Anh."
+"Phần Trợ giúp chưa được dịch sang %s. Nó sẽ vẫn được trình bày bằng tiếng Anh."
 
 msgid "Some or all of the help documents are not present!"
-msgstr "Chưa có một vài hay tất cả các tài liệu hướng dẫn!"
+msgstr "Chưa có một vài hay tất cả các tài liệu hướng dẫn."
 
 msgid "Table of Contents"
-msgstr "Bảng mục lục"
+msgstr "Mục lục"
 
 msgid "Previous"
-msgstr "Kế trước"
+msgstr "Lùi"
 
 msgid "Next"
-msgstr "Kế sau"
+msgstr "Kế"
 
 msgid "Top"
 msgstr "Đầu"
 
 msgid "Viewing an image attachment"
-msgstr "Xem ảnh gắn kèm"
+msgstr "Đang xem một ảnh đính kèm"
 
 msgid "View message"
 msgstr "Xem thông điệp"
 
 msgid "Download this as a file"
-msgstr "Tải về cái này như một tệp"
+msgstr "Tải về cái này dạng tập tin"
 
 msgid "INBOX"
 msgstr "THƯ ĐẾN"
 
-#, fuzzy
 msgid "Purge"
-msgstr "thanh lọc"
+msgstr "Tẩy"
 
 msgid "Login"
 msgstr "Đăng nhập"
 
 #, php-format
 msgid "%s Logo"
-msgstr "Biểu tượng là %s"
+msgstr "Biểu hình %s"
 
 #, php-format
 msgid "SquirrelMail version %s"
 msgstr "SquirrelMail phiên bản %s"
 
-#, fuzzy
 msgid "By the SquirrelMail Project Team"
-msgstr "của SquirrelMail Development Team. Việt hóa bởi XGROUP."
+msgstr "của Nhóm Dự Án SquirrelMail"
 
 #, php-format
 msgid "%s Login"
 msgstr "Đăng nhập %s"
 
 msgid "Name:"
-msgstr "Bí danh:"
+msgstr "Tên:"
 
 msgid "Password:"
-msgstr "Mật khẩu:"
+msgstr "Mật khẩu :"
 
 msgid "No messages were selected."
-msgstr "Không có thông điệp nào được chọn."
+msgstr "Chưa chọn thông thư."
 
 msgid "Personal Information"
 msgstr "Thông tin cá nhân"
 
 msgid "Display Preferences"
-msgstr "Các sở thích trình bày"
+msgstr "Tùy thích Trình bày"
 
 msgid "Message Highlighting"
-msgstr "Kiểu làm nổi bật thông điệp"
+msgstr "Tô sáng thư"
 
 msgid "Folder Preferences"
-msgstr "Các sở thích về thư mục"
+msgstr "Tùy thích Thư mục"
 
 msgid "Index Order"
-msgstr "Trật tự chỉ số"
+msgstr "Thứ tự Chỉ mục"
 
 msgid "Options"
-msgstr "Các lưa chọn"
+msgstr "Tùy chọn"
 
 msgid "Error(s) occurred while saving your options"
-msgstr ""
+msgstr "Gặp lỗi trong khi lưu các tùy chọn của bạn"
 
 msgid "Some of your preference changes were not applied."
-msgstr ""
+msgstr "Một số thay đổi chưa được áp dụng cho tùy thích."
 
 msgid "Successfully Saved Options"
-msgstr "Các lựa chọn đã lưu thành công"
+msgstr "Các tùy chọn đã lưu thành công"
 
 msgid "Refresh Folder List"
-msgstr "Cập nhật lại danh sách thư mục"
+msgstr "Cập nhật danh sách thư mục"
 
 msgid "Refresh Page"
-msgstr "Cập nhật lại trang"
+msgstr "Cập nhật trang"
 
 msgid ""
 "This contains personal information about yourself such as your name, your "
 "email address, etc."
-msgstr "Cái này chứa thông tin cá nhân của bạn như tên, địa chỉ email, v.v..."
+msgstr "Cái này chứa thông tin cá nhân của bạn như tên, địa chỉ thư điện tử, v.v..."
 
 msgid ""
 "You can change the way that SquirrelMail looks and displays information to "
 "you, such as the colors, the language, and other settings."
 msgstr ""
-"Bạn có thể thay đổi cách trình bày thông tin, chẳng hạn về màu sắc, ngôn "
-"ngữ, và các cái khác."
+"Bạn có thể thay đổi cách trình bày thông tin, chẳng hạn về màu sắc, ngôn ngữ, và các cái khác."
 
-#, fuzzy
 msgid ""
 "Based upon given criteria, incoming messages can have different background "
 "colors in the message list. This helps to easily distinguish who the "
 "messages are from, especially for mailing lists."
 msgstr ""
-"Dựa trên tiêu chuẩn đã định, các thông điệp đến có thể có màu nền khác nhau "
-"trong danh sách các thông điệp. Điều này giúp cho dễ phân biệt thông điệp do "
-"ai gởi, nhất là cho các danh sách thư từ."
+"Dựa trên tiêu chuẩn đã định, các thư đến có thể có màu nền khác nhau trong danh sách các thư. Điều này giúp cho dễ phân biệt thư do ai gửi, nhất là cho các hộp thư chung."
 
 msgid ""
 "These settings change the way your folders are displayed and manipulated."
@@ -476,36 +459,34 @@ msgid ""
 "The order of the message index can be rearranged and changed to contain the "
 "headers in any order you want."
 msgstr ""
-"Trật tự của chỉ số thông điệp có thể được sắp lại để trình bày các đầu đề "
-"theo cách mà bạn muốn."
+"Thứ tự của chỉ mục thư có thể được sắp lại để trình bày các dòng đầu theo cách mà bạn muốn."
 
 msgid "New"
 msgstr "Mới"
 
 msgid "Done"
-msgstr "Kết thúc"
+msgstr "Hoàn tất"
 
 msgid "To or Cc"
-msgstr "Gởi tới hoặc CC"
+msgstr "Cho hoặc Cc"
 
-#, fuzzy
 msgid "subject"
-msgstr "Chủ đề"
+msgstr "chủ đề"
 
 msgid "Edit"
-msgstr "Soạn thảo"
+msgstr "Sửa"
 
 msgid "Up"
-msgstr "Up"
+msgstr "Lên"
 
 msgid "Down"
-msgstr "Down"
+msgstr "Xuống"
 
 msgid "No highlighting is defined"
-msgstr "Chưa có kiểu làm nổi bật thông điệp nào"
+msgstr "Chưa xác định cách tô sáng"
 
 msgid "Identifying name"
-msgstr "Tên kiểu"
+msgstr "Tên nhận diện"
 
 msgid "Color"
 msgstr "Màu"
@@ -556,80 +537,78 @@ msgid "Other:"
 msgstr "Cái khác:"
 
 msgid "Ex: 63aa7f"
-msgstr "Ví dụ: 63AA7F"
+msgstr "Ví dụ : 63aa7f"
 
 msgid "Matches"
-msgstr "Các phối hợp"
+msgstr "Kết quả"
 
 #, php-format
 msgid "Alternate Identity %d"
-msgstr "Định danh luân phiên %d"
+msgstr "Cá tính xen kẽ %d"
 
 msgid "Advanced Identities"
-msgstr "Các định danh cao cấp"
+msgstr "Cá tính cấp cao"
 
 msgid "Default Identity"
-msgstr "Định danh mặc định"
+msgstr "Cá tính mặc định"
 
 msgid "Add a New Identity"
-msgstr "Thêm một định danh mới"
+msgstr "Thêm một cá tính mới"
 
 msgid "Full Name"
-msgstr "Tên đầy đủ"
+msgstr "Họ tên"
 
 msgid "E-Mail Address"
-msgstr "Địa chỉ E-Mail"
+msgstr "Địa chỉ thư điện tử"
 
 msgid "Reply To"
-msgstr "Hồi âm cho"
+msgstr "Trả lời cho"
 
 msgid "Save / Update"
 msgstr "Lưu / Cập nhật"
 
 msgid "Make Default"
-msgstr "Tạo mặc định"
+msgstr "Làm mặc định"
 
 msgid "Move Up"
-msgstr "Chuyển lên trên"
+msgstr "Dời lên"
 
 msgid "Checkbox"
 msgstr "Hộp kiểm"
 
 msgid "Flags"
-msgstr "Các cờ"
+msgstr "Cờ"
 
 msgid "Size"
-msgstr "Kích thước"
+msgstr "Kích cỡ"
 
-#, fuzzy
 msgid ""
 "The index order is the order that the columns are arranged in the message "
 "index. You can add, remove, and move columns around to customize them to fit "
 "your needs."
 msgstr ""
-"Trật tự chỉ số là trật tự mà các cột được sắp trong việc trình bày thông "
-"điệp. Bạn có thể thêm, xóa, chuyển các cột tùy ý."
+"Thứ tự chỉ mục là thứ tự mà các cột được sắp trong việc trình bày các thư. Bạn có thể thêm, xóa, chuyển các cột tùy ý."
 
 msgid "up"
-msgstr "lên trên"
+msgstr "lên"
 
 msgid "down"
-msgstr "xuống dưới"
+msgstr "xuống"
 
 msgid "remove"
-msgstr "bỏ đi"
+msgstr "bỏ"
 
 msgid "Return to options page"
-msgstr "Quay lại trang các lựa chọn"
+msgstr "Quay lại trang các tùy chọn chọn"
 
 msgid "Message not printable"
-msgstr "Thông điệp không thể in được"
+msgstr "Thư không thể in được"
 
 msgid "Invalid URL"
-msgstr ""
+msgstr "Địa chỉ URL sai"
 
 msgid "Printer Friendly"
-msgstr "In thông điệp"
+msgstr "Dễ in"
 
 msgid "Print"
 msgstr "In"
@@ -641,15 +620,14 @@ msgid "Read:"
 msgstr "Đã đọc:"
 
 msgid "Your message"
-msgstr "Thông điệp của bạn"
+msgstr "Thư của bạn"
 
-#, fuzzy
 msgid "Sent"
-msgstr "Đã gởi:"
+msgstr "Đã gửi"
 
 #, php-format
 msgid "Was displayed on %s"
-msgstr "đã được đọc lúc %s"
+msgstr "đã được hiển thị lúc %s"
 
 msgid "less"
 msgstr "ít hơn"
@@ -657,19 +635,17 @@ msgstr "ít hơn"
 msgid "more"
 msgstr "nhiều hơn"
 
-#, fuzzy
 msgid "Unknown sender"
-msgstr "Không biết người gởi"
+msgstr "Người gửi không rõ"
 
 msgid "Mailer"
-msgstr "Mailer"
+msgstr "Trình thư"
 
 msgid "Read receipt"
-msgstr "Xác nhận đọc"
+msgstr "Thông báo đã đọc"
 
-#, fuzzy
 msgid "sent"
-msgstr "đã gởi"
+msgstr "đã gửi"
 
 msgid "requested"
 msgstr "đã yêu cầu"
@@ -678,55 +654,52 @@ msgid ""
 "The message sender has requested a response to indicate that you have read "
 "this message. Would you like to send a receipt?"
 msgstr ""
-"Nguoi goi thong diep nay yeu cau ban goi xac nhan rang da doc no. Ban co "
-"muon goi xac nhan nay khong?"
+"Người gửi thư này đã yêu cầu bạn thông báo đã đọc chưa. Bạn có muốn gửi thông báo đã đọc không?"
 
 msgid "Send read receipt now"
-msgstr "Giởi xác nhận đọc ngay"
+msgstr "Gửi thông báo đã đọc ngay"
 
 msgid "Search Results"
-msgstr "Kết quả tìm kiếm"
+msgstr "Kết quả Tìm kiếm"
 
 msgid "Message List"
-msgstr "Danh sách các thông điệp"
+msgstr "Danh sách thư"
 
 msgid "Resume Draft"
-msgstr "Làm lại bản thảo"
+msgstr "Mở lại bản nháp"
 
 msgid "Edit Message as New"
-msgstr "Soạn mới lại thông điệp"
+msgstr "Sửa mới thư"
 
-#, fuzzy
 msgid "View Message"
-msgstr "Xem thông điệp"
+msgstr "Xem thư"
 
 msgid "Forward"
 msgstr "Chuyển tiếp"
 
-#, fuzzy
 msgid "Forward as Attachment"
-msgstr "Ficheros adjuntos"
+msgstr "Chuyển tiếp dạng đồ đính kèm"
 
 msgid "Reply"
-msgstr "Hồi âm"
+msgstr "Trả lời"
 
 msgid "Reply All"
-msgstr "Hồi âm cho tất cả"
+msgstr "Trả lời cho tất cả"
 
 msgid "View Full Header"
-msgstr "Xem kỹ đầu đề"
+msgstr "Xem phần đầu đầy đủ"
 
 msgid "Attachments"
-msgstr "Ficheros adjuntos"
+msgstr "Đồ đính kèm"
 
 msgid "You must be logged in to access this page."
-msgstr "Bạn phải đăng nhập để truy cập trang này!."
+msgstr "Bạn phải đăng nhập để truy cập trang này."
 
 msgid "Folder:"
 msgstr "Thư mục:"
 
 msgid "edit"
-msgstr "soạn"
+msgstr "sửa"
 
 msgid "search"
 msgstr "tìm"
@@ -735,7 +708,7 @@ msgid "delete"
 msgstr "xóa"
 
 msgid "Recent Searches"
-msgstr "Các tìm kiếm gần đây"
+msgstr "Tìm kiếm gần đây"
 
 msgid "save"
 msgstr "lưu"
@@ -744,47 +717,46 @@ msgid "forget"
 msgstr "quên đi"
 
 msgid "Current Search"
-msgstr "Thư mục tìm hiện tại"
+msgstr "Tìm kiếm dạng chạy"
 
 msgid "All Folders"
-msgstr "Tất cả các thư mục"
+msgstr "Mọi thư mục"
 
 msgid "Body"
-msgstr "Nội dung"
+msgstr "Thân"
 
 msgid "Everywhere"
 msgstr "Khắp nơi"
 
 msgid "No Messages Found"
-msgstr "No se Encontraron Mensajes"
+msgstr "Không tìm thấy thư"
 
-#, fuzzy
 msgid "Signout"
-msgstr "Thoát ra"
+msgstr "Đăng xuất"
 
 msgid "Sign Out"
-msgstr "Thoát ra"
+msgstr "Đăng xuất"
 
 msgid "You have been successfully signed out."
-msgstr "Bạn đã thoát ra thành công."
+msgstr "Bạn đã đăng xuất thành công."
 
 msgid "Click here to log back in."
-msgstr "Nhấn vào đây để đăng nhập lại"
+msgstr "Nhấn vào đây để đăng nhập lại."
 
 msgid "Viewing a Business Card"
-msgstr "Viewing a Business Card"
+msgstr "Xem danh thiếp"
 
 #, php-format
 msgid ""
 "vCard Version %s is not supported. Some information might not be converted "
 "correctly."
-msgstr ""
+msgstr "vCard phiên bản %s không phải được hỗ trợ nên có lẽ không chuyển đổi đúng một số thông tin nào đó."
 
 msgid "Title"
-msgstr "Título"
+msgstr "Tuổi tác"
 
 msgid "Email"
-msgstr "Email"
+msgstr "Địa chỉ thư"
 
 msgid "Web Page"
 msgstr "Trang Web"
@@ -796,88 +768,84 @@ msgid "Address"
 msgstr "Địa chỉ"
 
 msgid "Work Phone"
-msgstr "Số điện thoại cơ quan"
+msgstr "Số điện thoại chỗ làm"
 
 msgid "Home Phone"
-msgstr "Số điện thoại nhà"
+msgstr "Số điện thoại ở nhà"
 
 msgid "Cellular Phone"
-msgstr "Số di động"
+msgstr "Số điện thoại di động"
 
 msgid "Fax"
-msgstr "Fax"
+msgstr "Điện thư"
 
 msgid "Note"
 msgstr "Ghi chú"
 
 msgid "Add to Addressbook"
-msgstr "Thêm vào sổ địa chỉ"
+msgstr "Thêm vào Sổ địa chỉ"
 
-#, fuzzy
 msgid "Title & Org. / Dept."
-msgstr "Puesto, Empr. / Dpto."
+msgstr "Tuổi tác và Tổ chức/Bộ phận"
 
-#, fuzzy
 msgid "Add to Address Book"
-msgstr "Thêm vào sổ địa chỉ"
+msgstr "Thêm vào Sổ địa chỉ"
 
 msgid "Viewing Full Header"
-msgstr "Xem đầy đủ đầu đề"
+msgstr "Đang xem phần đầu đầy đủ"
 
 msgid "Viewing a text attachment"
-msgstr "Xem văn bản gắn kèm"
+msgstr "Đang xem một đồ đính kèm văn bản"
 
 msgid ""
 "Could not include PEAR database functions required for the database backend."
-msgstr ""
+msgstr "Không thể kèm thêm các chức năng cơ sở dữ liệu PEAR cần thiết cho hậu phương cơ sở dữ liệu."
 
 #, php-format
 msgid "Is PEAR installed, and is the include path set correctly to find %s?"
-msgstr ""
+msgstr "PEAR đã được cài đặt chưa, và đường dẫn bao gồm đã được đặt đúng để tìm %s không?"
 
 msgid "Please contact your system administrator and report this error."
-msgstr "Contacte con su administrador y comuníquele este error."
+msgstr "Hãy liên lạc với quản trị hệ thống và thông báo lỗi này."
 
 msgid "Personal address book"
 msgstr "Sổ địa chỉ cá nhân"
 
 #, php-format
 msgid "Database error: %s"
-msgstr "Lỗi cơ sở dữ liệu: %s"
+msgstr "Lỗi cơ sở dữ liệu : %s"
 
 msgid "Addressbook is read-only"
-msgstr "La libreta de direcciones es de solo lectura"
+msgstr "Sổ địa chỉ là chỉ-đọc"
 
 #, php-format
 msgid "User '%s' already exist"
-msgstr "Người dùng '%s' đã tồn tại"
+msgstr "Người dùng « %s » đã có"
 
 #, php-format
 msgid "User '%s' does not exist"
-msgstr "Người dùng '%s' không tồn tại"
+msgstr "Người dùng « %s » không tồn tại"
 
 msgid "Not a file name"
-msgstr "Không phải tên tệp"
+msgstr "Không phải tên tập tin"
 
 msgid "No such file or directory"
-msgstr "Không có tệp hay thư mục nào như vậy"
+msgstr "Không có tập tin hay thư mục nào như vậy"
 
 msgid "Open failed"
-msgstr "Mở tệp không được!"
+msgstr "Lỗi mở"
 
-#, fuzzy
 msgid "Write failed"
-msgstr "Mở tệp không được!"
+msgstr "Lỗi ghi"
 
-#, fuzzy
 msgid "Unable to update"
-msgstr "Lưu / Cập nhật"
+msgstr "Không thể cập nhật"
 
 msgid "Could not lock datafile"
-msgstr "Không thể khóa tệp dữ liệu"
+msgstr "Không thể khóa tập tin dữ liệu"
 
 msgid "Write to addressbook failed"
-msgstr "Không chép vàp sổ địa chỉ được!"
+msgstr "Lỗi ghi vào sổ địa chỉ"
 
 msgid "Error initializing addressbook database."
 msgstr "Lỗi khởi tạo cơ sở dữ liệu sổ địa chỉ."
@@ -894,7 +862,7 @@ msgstr "Lỗi khởi tạo sổ địa chỉ toàn cục."
 
 #, php-format
 msgid "Error initializing LDAP server %s:"
-msgstr "Lỗi khởi tạo LDAP server %s:"
+msgstr "Lỗi khởi tạo trình phục vụ LDAP %s:"
 
 msgid "Invalid input data"
 msgstr "Dữ liệu đưa vào không hợp lệ"
@@ -903,18 +871,16 @@ msgid "Name is missing"
 msgstr "Thiếu tên"
 
 msgid "E-mail address is missing"
-msgstr "Thiếu địa chỉ e-mail"
+msgstr "Thiếu địa chỉ thư điện tử"
 
 msgid "Nickname contains illegal characters"
-msgstr "bí danh chứa các ký tự không hợp lệ"
+msgstr "Tên hiệu chứa các ký tự sai"
 
-#, fuzzy
 msgid "View"
-msgstr "xem"
+msgstr "Xem"
 
-#, fuzzy
 msgid "View Business Card"
-msgstr "Viewing a Business Card"
+msgstr "Xem Danh Thiếp"
 
 msgid "Sunday"
 msgstr "Chủ Nhật"
@@ -937,30 +903,26 @@ msgstr "Thứ Sáu"
 msgid "Saturday"
 msgstr "Thứ Bảy"
 
-#, fuzzy
 msgid "Sun"
-msgstr "Chủ Nhật"
+msgstr "CN"
 
-#, fuzzy
 msgid "Mon"
-msgstr "Thứ Hai"
+msgstr "T2"
 
-#, fuzzy
 msgid "Tue"
-msgstr "Thứ Ba"
+msgstr "T3"
 
 msgid "Wed"
-msgstr ""
+msgstr "T4"
 
 msgid "Thu"
-msgstr ""
+msgstr "T5"
 
-#, fuzzy
 msgid "Fri"
-msgstr "Thứ Sáu"
+msgstr "T6"
 
 msgid "Sat"
-msgstr ""
+msgstr "T7"
 
 msgid "January"
 msgstr "Tháng Một"
@@ -998,56 +960,47 @@ msgstr "Tháng Mười Một"
 msgid "December"
 msgstr "Tháng Mười Hai"
 
-#, fuzzy
 msgid "Jan"
-msgstr "Tháng Một"
+msgstr "Th1"
 
 msgid "Feb"
-msgstr ""
+msgstr "Th2"
 
-#, fuzzy
 msgid "Mar"
-msgstr "Tháng Ba"
+msgstr "Th3"
 
-#, fuzzy
 msgid "Apr"
-msgstr "Tháng Tư"
+msgstr "Th4"
 
 msgid "Ma&#121;"
-msgstr ""
+msgstr "Th5"
 
-#, fuzzy
 msgid "Jun"
-msgstr "Tháng Sáu"
+msgstr "Th6"
 
-#, fuzzy
 msgid "Jul"
-msgstr "Tháng Bảy"
+msgstr "Th7"
 
-#, fuzzy
 msgid "Aug"
-msgstr "Tháng Tám"
+msgstr "Th8"
 
 msgid "Sep"
-msgstr ""
+msgstr "Th9"
 
-#, fuzzy
 msgid "Oct"
-msgstr "Tháng Mười"
+msgstr "Th10"
 
-#, fuzzy
 msgid "Nov"
-msgstr "Không"
+msgstr "Th11"
 
 msgid "Dec"
-msgstr ""
+msgstr "Th12"
 
 msgid "D, F j, Y g:i a"
 msgstr "D, F j, Y g:i a"
 
-#, fuzzy
 msgid "D, F j, Y H:i"
-msgstr "D, F j, Y G:i"
+msgstr "D, F j, Y H:i"
 
 msgid "M j, Y"
 msgstr "M j, Y"
@@ -1055,219 +1008,202 @@ msgstr "M j, Y"
 msgid "g:i a"
 msgstr "g:i a"
 
-#, fuzzy
 msgid "H:i"
-msgstr "G:i"
+msgstr "H:i"
 
 msgid "D, g:i a"
 msgstr "D, g:i a"
 
-#, fuzzy
 msgid "D, H:i"
-msgstr "D, G:i"
+msgstr "D, H:i"
 
 #, php-format
 msgid "Preference database error (%s). Exiting abnormally"
-msgstr "Archivo de preferencias %s no encontrado. Saliendo anormalmente."
+msgstr "Lỗi cơ sở dữ liệu tùy thích (%s) nên thoát bất thường"
 
 #, php-format
 msgid "Click here to return to %s"
-msgstr "Pulse aquí para volver a %s"
+msgstr "Nhấn vào đây để trở về %s"
 
 msgid "Go to the login page"
-msgstr "Quay lại trang đăng nhập"
+msgstr "Đi tới trang đăng nhập"
 
 #, php-format
 msgid ""
 "Preference file, %s, does not exist. Log out, and log back in to create a "
 "default preference file."
 msgstr ""
-"El archivo de preferencias, %s, no existe. Desconéctese y vuelva a ingresar "
-"para regenerar el archivo por omisión."
+"Tập tin tùy thích, %s, không tồn tại. Hãy đăng xuất, rồi đăng nhập lại để tạo một tập tin tùy thích mặc định."
 
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "Preference file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
-msgstr "Contacte con su administrador y comuníquele este error."
+msgstr "Tập tin tùy thích, %s, không mở được. Liên lạc với quản trị hệ thống để giải quyết vấn đề này."
 
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "Preference file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
-msgstr "Contacte con su administrador y comuníquele este error."
+msgstr "Tập tin tùy thích, %s, không ghi được. Liên lạc với quản trị hệ thống để giải quyết vấn đề này."
 
 #, php-format
 msgid ""
 "Preference file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
-msgstr ""
+msgstr "Tập tin tùy thích, %s, không sao chép được từ tập tin tạm thời %s. Liên lạc với quản trị hệ thống để giải quyết vấn đề này."
 
 #, php-format
 msgid "Error opening %s"
-msgstr "Error abriendo %s"
+msgstr "Lỗi mở %s"
 
-#, fuzzy
 msgid "Default preference file not found or not readable!"
-msgstr "No se encuentra el fichero de preferencias por omisión!"
+msgstr "Tập tin tùy thích mặc định không tìm thấy hoặc không đọc được."
 
 msgid "Could not create initial preference file!"
-msgstr "No se pudo crear el fichero inicial de preferencias!"
+msgstr "Không thể tạo tập tin tùy thích đầu tiên."
 
 #, php-format
 msgid "%s should be writable by user %s"
-msgstr "Debe darse derechos de escritura en el directorio %s al usuario %s"
+msgstr "%s nên cho phép người dùng %s ghi vào"
 
-#, fuzzy
 msgid "Signature is too big."
-msgstr "Các lựa chọn chữ ký"
+msgstr "Chữ ký quá lớn."
 
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "Signature file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
-msgstr "Contacte con su administrador y comuníquele este error."
+msgstr "Tập tin chữ ký, %s, không mở được. Liên lạc với quản trị hệ thống để giải quyết vấn đề này."
 
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "Signature file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
-msgstr "Contacte con su administrador y comuníquele este error."
+msgstr "Tập tin chữ ký, %s, không ghi được. Liên lạc với quản trị hệ thống để giải quyết vấn đề này."
 
 #, php-format
 msgid ""
 "Signature file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
-msgstr ""
+msgstr "Tập tin chữ ký, %s, không sao chép được từ tập tin tạm thời %s. Liên lạc với quản trị hệ thống để giải quyết vấn đề này."
 
 msgid ""
 "You need to have php4 installed with the multibyte string function enabled "
 "(using configure option --enable-mbstring)."
-msgstr ""
+msgstr "Bạn cần phải cài đặt php4 và hiệu lực chức năng chuỗi đa byte (dùng tùy chọn cấu hình « --enable-mbstring »)."
 
 msgid "ERROR: No available IMAP stream."
-msgstr ""
+msgstr "LỖI: không có sẵn luồng IMAP."
 
-#, fuzzy
 msgid "ERROR: Connection dropped by IMAP server."
-msgstr "Error conectando al servidor IMAP: %s."
+msgstr "LỖI: máy phục vụ IMAP đã thả kết nối."
 
-#, fuzzy
 msgid "ERROR: Could not complete request."
-msgstr "ERROR: No se pudo completar el pedido."
+msgstr "LỖI: không thể hoàn tất yêu cầu."
 
 msgid "Query:"
-msgstr "Consulta:"
+msgstr "Truy vấn:"
 
-#, fuzzy
 msgid "Reason Given:"
-msgstr "Razón dada: "
+msgstr "Lý do đưa ra:"
 
-#, fuzzy
 msgid "ERROR: Bad or malformed request."
-msgstr "ERROR: pedido erroneo o con formato erroneo."
+msgstr "LỖI: yêu cầu dạng sai."
 
-#, fuzzy
 msgid "Server responded:"
-msgstr "El servidor respondió: "
+msgstr "Máy phục vụ đã đáp ứng:"
 
 msgid "ERROR: IMAP server closed the connection."
-msgstr ""
+msgstr "LỖI: máy phục vụ IMAP đã đóng kết nối."
 
 msgid "ERROR: Unknown IMAP response."
-msgstr ""
+msgstr "LỖI: không rõ đáp ứng IMAP."
 
 #, php-format
 msgid "Error connecting to IMAP server: %s."
-msgstr "Error conectando al servidor IMAP: %s."
+msgstr "Lỗi kết nối tới máy phục vụ IMAP: %s"
 
 msgid "The IMAP server is reporting that plain text logins are disabled."
-msgstr ""
+msgstr "Máy phục vụ IMAP thông báo rằng chức năng đăng nhập không mật mã đã bị tắt."
 
 msgid "Using CRAM-MD5 or DIGEST-MD5 authentication instead may work."
-msgstr ""
+msgstr "Thử cách xác thực CRAM-MD5 hoặc DIGEST-MD5 có thể có tác động."
 
 msgid "Also, the use of TLS may allow SquirrelMail to login."
-msgstr ""
+msgstr "Hơn nữa, dùng TSL có thể cho phép SquirrelMail đăng nhập được."
 
 #, php-format
 msgid "Bad request: %s"
-msgstr "Pedido Erroneo: %s"
+msgstr "Yêu cầu sai: %s"
 
 #, php-format
 msgid "Unknown error: %s"
-msgstr "Error desconocido: %s"
+msgstr "Lỗi không rõ : %s"
 
 msgid "Read data:"
-msgstr "Leer datos:"
+msgstr "Đọc dữ liệu :"
 
 msgid "Unknown user or password incorrect."
-msgstr "Không biết người dùng hoặc mật khẩu sai."
+msgstr "Người dùng không rõ hoặc mật khẩu sai."
 
-#, fuzzy
 msgid "ERROR: Could not append message to"
-msgstr "ERROR: No se pudo completar el pedido."
+msgstr "LỖI: không thể phụ thêm thư vào"
 
-#, fuzzy
 msgid "Solution:"
-msgstr "Đề nghị:"
+msgstr "Giải pháp:"
 
 msgid ""
 "Remove unneccessary messages from your folder and start with your Trash "
 "folder."
-msgstr ""
+msgstr "Gỡ bỏ các thư không cần khỏi thư mục rồi khởi chạy với thư mục Sọt Rác."
 
 msgid "(no subject)"
 msgstr "(không chủ đề)"
 
 msgid "Unknown Sender"
-msgstr "Không biết người gởi"
+msgstr "Người gửi không rõ"
 
-#, fuzzy
 msgid "Unknown response from IMAP server:"
-msgstr "Contestación desconocida del servidor IMAP:"
+msgstr "Không rõ đáp ứng của máy phục vụ IMAP:"
 
 msgid "The server couldn't find the message you requested."
-msgstr ""
+msgstr "Máy phục vụ không tìm thấy thư bạn yêu cầu."
 
 msgid ""
 "Most probably your message list was out of date and the message has been "
 "moved away or deleted (perhaps by another program accessing the same "
 "mailbox)."
-msgstr ""
+msgstr "Rất có thể là danh sách thư của bạn là quá cũ, và thư đó đã bị chuyển ra hoặc bị xoá (có lẽ do chương trình khác cũng truy cập đến hộp thư này)."
 
-#, fuzzy
 msgid "Unknown date"
-msgstr "Không biết người gởi"
+msgstr "Không rõ ngày tháng"
 
 msgid "A"
 msgstr "A"
 
-#, fuzzy
 msgid "Thread sorting is not supported by your IMAP server."
 msgstr ""
-"El servidor IMAP empleado en esta instalación no puede ordenar los mensajes."
+"Máy phục vụ của bạn không hỗ trợ chức năng sắp xếp nhánh thư."
 
-#, fuzzy
 msgid "Server-side sorting is not supported by your IMAP server."
 msgstr ""
-"El servidor IMAP empleado en esta instalación no puede ordenar los mensajes."
+"Máy phục vụ của bạn không hỗ trợ chức năng sắp xếp bên máy phục vụ."
 
 msgid "THIS FOLDER IS EMPTY"
 msgstr "Thư mục này thì RỖNG"
 
-#, fuzzy
 msgid "Move Selected To"
 msgstr "Chuyển cái đã chọn tới:"
 
 msgid "Transform Selected Messages"
-msgstr "Thay đổi trạng thái các thông điệp đã chọn"
+msgstr "Chuyển dạng các thư đã chọn"
 
 msgid "Move"
 msgstr "Chuyển"
 
 msgid "Expunge"
-msgstr "Expunge"
+msgstr "Xoá hẳn"
 
 msgid "mailbox"
 msgstr "hộp thư"
@@ -1279,13 +1215,13 @@ msgid "Unread"
 msgstr "Chưa đọc"
 
 msgid "Unthread View"
-msgstr "Xem theo thứ tự ngược"
+msgstr "Không xem theo nhánh"
 
 msgid "Thread View"
-msgstr "Xem theo thứ tự xuôi"
+msgstr "Xem theo nhánh"
 
 msgid "Toggle All"
-msgstr "Bật tắt chọn tất cả"
+msgstr "Bật tắt tất cả"
 
 msgid "Unselect All"
 msgstr "Bỏ chọn tất cả"
@@ -1293,67 +1229,63 @@ msgstr "Bỏ chọn tất cả"
 msgid "Select All"
 msgstr "Chọn tất cả"
 
-#, fuzzy, php-format
+#, php-format
 msgid "Viewing Messages: %s to %s (%s total)"
 msgstr ""
-"Các thông điệp đang nhìn thấy: từ <B>%s</B> tới <B>%s</B> (tổng cộng %s)"
+"Đang xem thư : %s đến %s (tổng %s)"
 
-#, fuzzy, php-format
+#, php-format
 msgid "Viewing Message: %s (%s total)"
-msgstr "Các thông điệp đang nhìn thấy: <b>%s</b> (tổng cộng 1)"
+msgstr "Đang xem thư : %s (tổng %s)"
 
 msgid "Paginate"
-msgstr "Phân trang"
+msgstr "Dàn trang"
 
 msgid "Show All"
-msgstr "Để lộ tất cả"
+msgstr "Hiện tất cả"
 
 msgid "SquirrelMail could not decode the bodystructure of the message"
-msgstr ""
+msgstr "Trình SquirrelMail không thể giải mã cấu trúc thân của thư đó"
 
 msgid "the provided bodystructure by your imap-server"
-msgstr ""
+msgstr "cấu trúc thân đã cung cấp bởi máy phục vụ IMAP của bạn"
 
-#, fuzzy
 msgid ""
 "Body retrieval error. The reason for this is most probably that the message "
 "is malformed."
 msgstr ""
-"Error de recuperación: El motivo de este error se debe probablemente a que "
-"el mensaje está mal formado. Por favor, ayúdenos a depurar versiones futuras "
-"enviando este mensaje al centro de desarrollo."
+"Lỗi lấy thân thư. Lý do rất có thể là thư dạng sai."
 
 msgid "Command:"
-msgstr "Comando:"
+msgstr "Lệnh:"
 
 msgid "Response:"
-msgstr "Contestación:"
+msgstr "Đáp ứng:"
 
 msgid "Message:"
-msgstr "Thông điệp:"
+msgstr "Thư :"
 
 msgid "FETCH line:"
-msgstr "Línea contestada:"
+msgstr "Dòng LẤY:"
 
 msgid "Hide Unsafe Images"
-msgstr "Ocultar imágenes inseguras"
+msgstr "Ẩn các ảnh không an toàn"
 
 msgid "View Unsafe Images"
-msgstr "Ver imágenes inseguras"
+msgstr "Xem các ảnh không an toàn"
 
-#, fuzzy
 msgid "Download"
-msgstr "descargar"
+msgstr "Tải về"
 
 msgid "sec_remove_eng.png"
 msgstr ""
 
 msgid "This external link will open in a new window"
-msgstr ""
+msgstr "Liên kết bên ngoài này sẽ mở trong một cửa sổ mới"
 
 #, php-format
 msgid "Option Type '%s' Not Found"
-msgstr "La opción %s no se ha encontrado"
+msgstr "Không tìm thấy tùy chọn kiểu « %s »"
 
 msgid "Current Folder"
 msgstr "Thư mục hiện tại"
@@ -1363,97 +1295,91 @@ msgstr "Biên soạn"
 
 #, php-format
 msgid "Error creating directory %s."
-msgstr "Error creando el directorio %s."
+msgstr "Lỗi tạo thư mục %s."
 
 msgid "Could not create hashed directory structure!"
-msgstr "Could not create hashed directory structure!"
+msgstr "Không thể tạo cấu trúc thư mục đã hash."
 
 msgid "Service not available, closing channel"
-msgstr ""
+msgstr "Dịch vụ không sẵn sàng nên đóng kênh"
 
 msgid "A password transition is needed"
-msgstr ""
+msgstr "Cần phải chuyển tiếp mật khẩu"
 
 msgid "Requested mail action not taken: mailbox unavailable"
-msgstr ""
+msgstr "Hành động thư đã yêu cầu chưa được làm vì hộp thư không sẵn sàng"
 
 msgid "Requested action aborted: error in processing"
-msgstr ""
+msgstr "Hành động thư đã yêu cầu bị hủy bỏ do lỗi xử lý"
 
 msgid "Requested action not taken: insufficient system storage"
-msgstr ""
+msgstr "Hành động thư đã yêu cầu chưa được làm vì không đủ sức chứa hệ thống"
 
-#, fuzzy
 msgid "Temporary authentication failure"
-msgstr "apop authentication failed"
+msgstr "Lỗi xác thực tạm thời"
 
 msgid "Syntax error; command not recognized"
-msgstr ""
+msgstr "Lỗi cú pháp, không nhận ra lệnh"
 
 msgid "Syntax error in parameters or arguments"
-msgstr ""
+msgstr "Lỗi cú pháp trong các tham số hoặc đối số"
 
-#, fuzzy
 msgid "Command not implemented"
-msgstr "Command failed "
+msgstr "Lệnh chưa được thực hiện"
 
 msgid "Bad sequence of commands"
-msgstr ""
+msgstr "Dãy lệnh sai"
 
 msgid "Command parameter not implemented"
-msgstr ""
+msgstr "Tham số lệnh chưa được thực hiện"
 
-#, fuzzy
 msgid "Authentication required"
-msgstr "authentication failed "
+msgstr "Cần thiết xác thực"
 
 msgid "Authentication mechanism is too weak"
-msgstr ""
+msgstr "Cơ chế xác thực quá yếu"
 
-#, fuzzy
 msgid "Authentication failed"
-msgstr "authentication failed "
+msgstr "Lỗi xác thực"
 
 msgid "Encryption required for requested authentication mechanism"
-msgstr ""
+msgstr "Cần thiết mật mã cho cơ chế xác thực đã yêu cầu"
 
 msgid "Requested action not taken: mailbox unavailable"
-msgstr ""
+msgstr "Hành động thư đã yêu cầu chưa được làm vì hộp thư không sẵn sàng"
 
 msgid "User not local; please try forwarding"
-msgstr ""
+msgstr "Người dùng không phải cục bộ : hãy thử chuyển tiếp thư"
 
 msgid "Requested mail action aborted: exceeding storage allocation"
-msgstr ""
+msgstr "Hành động thư đã yêu cầu bị hủy bỏ vì vượt quá sức chứa đã cấp phát"
 
 msgid "Requested action not taken: mailbox name not allowed"
-msgstr ""
+msgstr "Hành động thư đã yêu cầu chưa được làm vì tên hộp thư không được phép"
 
-#, fuzzy
 msgid "Transaction failed"
-msgstr "authentication failed "
+msgstr "Lỗi giao dịch"
 
-#, fuzzy
 msgid "Unknown response"
-msgstr "Không biết người gởi"
+msgstr "Không rõ đáp ứng"
 
 msgid "General Display Options"
-msgstr "Lựa chọn trình bày chung"
+msgstr "Tùy chọn trình bày chung"
 
 msgid "Theme"
-msgstr "Kiểu trình bày"
+msgstr "Sắc thái"
 
 msgid "Default"
 msgstr "Mặc định"
 
 msgid "Custom Stylesheet"
-msgstr "Bảng các kiểu truyền thống"
+msgstr "Bảng kiểu dáng riêng"
 
 msgid "Language"
 msgstr "Ngôn ngữ"
 
 msgid "Use Javascript"
-msgstr "Dùng Javascript"
+msgstr "Dùng JavaScript"
 
 msgid "Autodetect"
 msgstr "Tự động dò"
@@ -1465,14 +1391,13 @@ msgid "Never"
 msgstr "Không bao giờ"
 
 msgid "Mailbox Display Options"
-msgstr "Lựa chọn trình bày hộp thư"
+msgstr "Tùy chọn Trình bày Hộp thư"
 
-#, fuzzy
 msgid "Number of Messages per Page"
-msgstr "Số của thông điệp theo chỉ mục"
+msgstr "Số thư trên mỗi trang"
 
 msgid "Enable Alternating Row Colors"
-msgstr "Cho phép luân phiên đổi màu các dòng"
+msgstr "Cho phép hiển thị các hàng màu xen kẽ"
 
 msgid "Enable Page Selector"
 msgstr "Cho phép chọn trang"
@@ -1481,140 +1406,130 @@ msgid "Maximum Number of Pages to Show"
 msgstr "Số trang tối đa để xem"
 
 msgid "Always Show Full Date"
-msgstr ""
+msgstr "Lúc nào cũng hiện ngày đầy đủ"
 
 msgid "Message Display and Composition"
-msgstr "Trình bày thông điệp và các thành phần"
+msgstr "Hiển thị và Cấu táo Thư"
 
 msgid "Wrap Incoming Text At"
-msgstr "Bao bọc văn bản đến tại"
+msgstr "Cuộn văn bản đến ở"
 
-#, fuzzy
 msgid "Width of Editor Window"
-msgstr "Kích cỡ của cửa sổ soạn thảo"
+msgstr "Bề rộng của cửa sổ soạn thảo"
 
-#, fuzzy
 msgid "Height of Editor Window"
-msgstr "Kích cỡ của cửa sổ soạn thảo"
+msgstr "Bề cao của cửa sổ soạn thảo"
 
 msgid "Location of Buttons when Composing"
 msgstr "Vị trí của các nút khi biên soạn"
 
 msgid "Before headers"
-msgstr "Trước các tiêu đề"
+msgstr "Phía trước dòng đầu"
 
 msgid "Between headers and message body"
-msgstr "Giữa các tiêu đề và thân thông điệp"
+msgstr "Giữa các dòng đầu và thân thư"
 
 msgid "After message body"
-msgstr "Sau thân thông điệp"
+msgstr "Phía sau thân thư"
 
 msgid "Addressbook Display Format"
-msgstr "Định dạng trình bày sổ địa chỉ"
+msgstr "Định dạng Hiển thị Sổ địa chỉ"
 
 msgid "Javascript"
-msgstr "Javascript"
+msgstr "JavaScript"
 
 msgid "HTML"
 msgstr "HTML"
 
 msgid "Show HTML Version by Default"
-msgstr "Để lộ phiên bản HTML theo mặc định"
+msgstr "Hiện phiên bản HTML theo mặc định"
 
 msgid "Enable Forward as Attachment"
-msgstr ""
+msgstr "Bật chuyển tiếp dạng đồ đính kèm"
 
-#, fuzzy
 msgid "Include CCs when Forwarding Messages"
-msgstr "Gồm cả các địa chỉ trong CC khi chuyển tiếp thông điệp"
+msgstr "Gồm cả các địa chỉ trong CC khi chuyển tiếp thư"
 
 msgid "Include Me in CC when I Reply All"
-msgstr "Gồm cả Tôi trong phần CC khi tôi hồi âm cho tất cả"
+msgstr "Gồm cả Tôi trong phần CC khi tôi trả lời cho tất cả"
 
 msgid "Enable Mailer Display"
-msgstr "Cho phép trình bày gói thư"
+msgstr "Cho phép trình bày trình thư"
 
 msgid "Display Attached Images with Message"
-msgstr "Trình bày các ảnh gắn kèm chung với thông điệp"
+msgstr "Hiển thị các ảnh đính kèm cùng với thư"
 
 msgid "Enable Printer Friendly Clean Display"
-msgstr "Đặt chức năng Xem bản in ở dưới"
+msgstr "Bật hiển thị rõ để dễ in"
 
-#, fuzzy
 msgid "Enable Mail Delivery Notification"
-msgstr "Cho phép thông báo các thông điệp chưa đọc"
+msgstr "Bật thông báo thư đã đọc"
 
-#, fuzzy
 msgid "Compose Messages in New Window"
-msgstr "Luôn biên soạn trong một cửa sổ mới"
+msgstr "Biên soạn thư trong một cửa sổ mới"
 
-#, fuzzy
 msgid "Width of Compose Window"
-msgstr "Chiều rộng của cửa sổ biên soạn"
+msgstr "Bề rộng của cửa sổ biên soạn"
 
-#, fuzzy
 msgid "Height of Compose Window"
-msgstr "Chiều cao của cửa sổ biên soạn"
+msgstr "Bề cao của cửa sổ biên soạn"
 
-#, fuzzy
 msgid "Append Signature before Reply/Forward Text"
-msgstr "Thêm chữ ký vào văn bản trước khi hồi âm/chuyển tiếp"
+msgstr "Thêm chữ ký vào phía trước văn bản trả lời/chuyển tiếp"
 
 msgid "Prefix for Original Message when Replying"
-msgstr ""
+msgstr "Tiền tố cho thư gốc khi trả lời"
 
 msgid "Cursor Position when Replying"
-msgstr ""
+msgstr "Vị trí con trỏ khi trả lời"
 
 msgid "To: field"
-msgstr ""
+msgstr "Trường Cho :"
 
 msgid "Focus in body"
-msgstr ""
+msgstr "Tiêu điểm trong Thân"
 
-#, fuzzy
 msgid "Select body"
-msgstr "Chọn thư mục"
+msgstr "Chọn Thân"
 
-#, fuzzy
 msgid "No focus"
-msgstr "Không có đồng hồ"
+msgstr "Không có tiêu điểm"
 
 msgid "Sort by Received Date"
-msgstr ""
+msgstr "Sắp xếp theo Ngày nhận"
 
 msgid "Enable Thread Sort by References Header"
-msgstr ""
+msgstr "Bật nhánh sắp xếp theo dòng đầu tham chiếu"
 
 msgid "Special Folder Options"
-msgstr "Các lựa chọn thư mục đặc biệt"
+msgstr "Tùy chọn Thư mục Đặc biệt"
 
 msgid "Folder Path"
-msgstr "Đường dẫn thư mục"
+msgstr "Đường dẫn Thư mục"
 
 msgid "Do not use Trash"
-msgstr "Không dùng thư mục Đã xóa"
+msgstr "Không dùng Sọt Rác"
 
 msgid "Trash Folder"
-msgstr "Thư mục Đã xóa"
+msgstr "Thư mục Sọt Rác"
 
 msgid "Do not use Drafts"
-msgstr "Không dùng thư mục Soạn thảo"
+msgstr "Không dùng bản nháp"
 
 msgid "Draft Folder"
-msgstr "Thư mục Soạn thảo"
+msgstr "Thư mục Nháp"
 
 msgid "Do not use Sent"
-msgstr "Không dùng thư mục Đã gởi"
+msgstr "Không dùng thư mục Đã gửi"
 
 msgid "Sent Folder"
-msgstr "Thư mục Đã gởi"
+msgstr "Thư mục Đã gửi"
 
 msgid "Folder List Options"
-msgstr "Các lựa chọn danh sách thư mục"
+msgstr "Tùy chọn Danh sách Thư mục"
 
 msgid "Location of Folder List"
-msgstr "Vị trí của danh sách thư mục"
+msgstr "Vị trí của Danh sách Thư mục"
 
 msgid "Left"
 msgstr "Trái"
@@ -1623,10 +1538,10 @@ msgid "Right"
 msgstr "Phải"
 
 msgid "pixels"
-msgstr "pixels"
+msgstr "điểm ảnh"
 
 msgid "Width of Folder List"
-msgstr "Chiều rộng của danh sách thư mục"
+msgstr "Bề rộng của Danh sách Thư mục"
 
 msgid "Minutes"
 msgstr "Phút"
@@ -1638,56 +1553,52 @@ msgid "Minute"
 msgstr "Phút"
 
 msgid "Auto Refresh Folder List"
-msgstr "Tự động cập nhật danh sách thư mục"
+msgstr "Tự động Cập nhật Danh sách Thư mục"
 
 msgid "Enable Unread Message Notification"
-msgstr "Cho phép thông báo các thông điệp chưa đọc"
+msgstr "Bật thông báo thư chưa đọc"
 
 msgid "No Notification"
 msgstr "Không thông báo"
 
 msgid "Only INBOX"
-msgstr "Chỉ riêng THƯ ĐẾN"
+msgstr "Chỉ THƯ ĐẾN"
 
 msgid "Unread Message Notification Type"
-msgstr "Kiểu thông báo thông điệp chưa đọc"
+msgstr "Kiểu thông báo thư chưa đọc"
 
 msgid "Only Unseen"
-msgstr "Chỉ riêng Chưa xem"
+msgstr "Chỉ Chưa xem"
 
 msgid "Unseen and Total"
-msgstr "Chưa xem và Tất cả"
+msgstr "Chưa xem và Tổng"
 
 msgid "Enable Collapsable Folders"
-msgstr "Cho phép các thư mục có thể bị vỡ"
+msgstr "Bật thư mục có thể co lại"
 
-#, fuzzy
 msgid "Enable Cumulative Unread Message Notification"
-msgstr "Cho phép thông báo các thông điệp chưa đọc"
+msgstr "Bật thông báo thư chưa đọc lũy tích"
 
 msgid "Show Clock on Folders Panel"
-msgstr "Để lộ đồng hồ trên bảng thư mục"
+msgstr "Hiện đồng hồ trên bảng thư mục"
 
-#, fuzzy
 msgid "International date and time"
-msgstr "Chọn các từ điển quốc tế"
+msgstr "Ngày/Giờ quốc tế"
 
 msgid "American date and time"
-msgstr ""
+msgstr "Ngày/Giờ Mỹ"
 
-#, fuzzy
 msgid "European date and time"
-msgstr "Tiếng Tây Ban Nha"
+msgstr "Ngày/Giờ Âu"
 
 msgid "Show weekday and time"
-msgstr ""
+msgstr "Hiện hôm và giờ"
 
 msgid "Show time with seconds"
-msgstr ""
+msgstr "Hiện giờ có phút"
 
-#, fuzzy
 msgid "Show time"
-msgstr "Thời gian bắt đầu:"
+msgstr "Hiện giờ"
 
 msgid "No Clock"
 msgstr "Không có đồng hồ"
@@ -1705,92 +1616,85 @@ msgid "Memory Search"
 msgstr "Tìm trong bộ nhớ"
 
 msgid "Disabled"
-msgstr "Không cho phép"
+msgstr "Bị tắt"
 
-#, fuzzy
 msgid "Folder Selection Options"
-msgstr "Các lựa chọn danh sách thư mục"
+msgstr "Tùy chọn chọn thư mục"
 
-#, fuzzy
 msgid "Selection List Style"
-msgstr "Kiểu trích dẫn hồi âm"
+msgstr "Kiểu dáng danh sách chọn"
 
-#, fuzzy
 msgid "Long:"
-msgstr "Length:"
+msgstr "Dài:"
 
-#, fuzzy
 msgid "Folder"
-msgstr "Các thư mục"
+msgstr "Thư mục"
 
-#, fuzzy
 msgid "Subfolder"
-msgstr "Emplear Carpetas Subordinadas de Mensajes Enviados"
+msgstr "Thư mục con"
 
 msgid "Indented:"
-msgstr ""
+msgstr "Thụt vào :"
 
-#, fuzzy
 msgid "Delimited:"
-msgstr "Xóa"
+msgstr "Định giới:"
 
 msgid "Name and Address Options"
-msgstr "Các lựa chọn tên và địa chỉ"
+msgstr "Tùy chọn tên và địa chỉ"
 
 msgid "Email Address"
-msgstr "Địa chỉ Email"
+msgstr "Địa chỉ thư"
 
 msgid "Edit Advanced Identities"
-msgstr "soạn thảo các định danh"
+msgstr "Sửa Cá tính Cấp cao"
 
 msgid "(discards changes made on this form so far)"
 msgstr "(loại bỏ các thay đổi đã làm trên mẫu này)"
 
 msgid "Multiple Identities"
-msgstr "Đa định danh"
+msgstr "Đa cá tính"
 
 msgid "Same as server"
-msgstr "Giống như máy chủ"
+msgstr "Giống như máy phục vụ"
 
 msgid "Error opening timezone config, contact administrator."
-msgstr ""
+msgstr "Lỗi mở cấu hình múi giờ, liên lạc với quản trị."
 
 msgid "Timezone Options"
-msgstr "Các lựa chọn giờ khu vực"
+msgstr "Tùy chọn Múi giờ"
 
 msgid "Your current timezone"
-msgstr "Giờ khu vực hiện tại"
+msgstr "Múi giờ hiện thời của bạn"
 
 msgid "Reply Citation Options"
-msgstr "Các lựa chọn trích dẫn hồi âm"
+msgstr "Tùy chọn trích dẫn trả lời"
 
 msgid "Reply Citation Style"
-msgstr "Kiểu trích dẫn hồi âm"
+msgstr "Kiểu dáng trích dẫn trả lời"
 
 msgid "No Citation"
 msgstr "Không trích dẫn"
 
-#, fuzzy
 msgid "AUTHOR Wrote"
-msgstr "Tác giả nói"
+msgstr "AUTHOR đã viết"
 
 msgid "On DATE, AUTHOR Wrote"
-msgstr ""
+msgstr "Vào DATE, AUTHOR đã viết"
 
 msgid "Quote Who XML"
-msgstr "Quote Who XML"
+msgstr "XML trích dẫn ai"
 
 msgid "User-Defined"
-msgstr "Định nghĩa riêng"
+msgstr "Tự xác định"
 
 msgid "User-Defined Citation Start"
-msgstr "Bắt đầu định nghĩa trích dẫn riêng"
+msgstr "Đầu trích dẫn tự xác định"
 
 msgid "User-Defined Citation End"
-msgstr "Kết thúc định nghĩa trích dẫn riêng"
+msgstr "Cuối trích dẫn tự xác định"
 
 msgid "Signature Options"
-msgstr "Các lựa chọn chữ ký"
+msgstr "Tùy chọn Chữ ký"
 
 msgid "Use Signature"
 msgstr "Dùng chữ ký"
@@ -1798,426 +1702,399 @@ msgstr "Dùng chữ ký"
 msgid "Prefix Signature with '-- ' Line"
 msgstr "Chữ ký bắt đầu với '-- '"
 
-#, fuzzy
 msgid "Take Address"
-msgstr "Địa chỉ"
+msgstr "Lấy địa chỉ"
 
-#, fuzzy
 msgid "Address Book Take:"
-msgstr "Sổ địa chỉ"
+msgstr "Sổ địa chỉ lấy:"
 
 msgid "Try to verify addresses"
-msgstr ""
+msgstr "Thử thẩm tra địa chỉ"
 
 msgid "Config File Version"
-msgstr "Versión de configuración"
+msgstr "Phiên bản tập tin cấu hình"
 
-#, fuzzy
 msgid "SquirrelMail Version"
-msgstr "Phiên bản Squirrelmail"
+msgstr "Phiên bản SquirrelMail"
 
 msgid "PHP Version"
 msgstr "Phiên bản PHP"
 
 msgid "Organization Preferences"
-msgstr "Opciones de la Entidad"
+msgstr "Tùy chọn Tổ chức"
 
 msgid "Organization Name"
-msgstr "Nombre de la entidad"
+msgstr "Tên tổ chức"
 
 msgid "Organization Logo"
-msgstr "Logotipo de la entidad"
+msgstr "Biểu hình Tổ chức"
 
 msgid "Organization Logo Width"
-msgstr "Ancho del Logotipo"
+msgstr "Bề rộng Biểu hình Tổ chức"
 
 msgid "Organization Logo Height"
-msgstr "Alto Logotipo"
+msgstr "Bề cao Biểu hình Tổ chức"
 
 msgid "Organization Title"
-msgstr "Título de la entidad"
+msgstr "Tên tổ chức"
 
 msgid "Signout Page"
-msgstr "Página de desconexión"
+msgstr "Trang đăng xuất"
 
 msgid "Provider Link URI"
-msgstr ""
+msgstr "Liên kết nhà cung cấp (URI)"
 
-#, fuzzy
 msgid "Provider Name"
-msgstr "Nombre de Servidor:"
+msgstr "Tên nhà cung cấp"
 
 msgid "Top Frame"
-msgstr "Marco superior"
+msgstr "Khung đầu"
 
 msgid "Server Settings"
-msgstr "Configuración de servidores"
+msgstr "Thiết lập máy phục vụ"
 
 msgid "Mail Domain"
-msgstr "Dominio de correo"
+msgstr "Miền thư tín"
 
 msgid "IMAP Server Address"
-msgstr "Dirección del servidor IMAP"
+msgstr "Địa chỉ máy phục vụ IMAP"
 
 msgid "IMAP Server Port"
-msgstr "Puerto del servidor IMAP"
+msgstr "Cồng máy phục vụ IMAP"
 
 msgid "IMAP Server Type"
-msgstr "Tipo de servidor IMAP"
+msgstr "Kiểu máy phục vụ IMAP"
 
 msgid "Cyrus IMAP server"
-msgstr "Servidor IMAP Cyrus"
+msgstr "Máy phục vụ IMAP Cyrus"
 
 msgid "University of Washington's IMAP server"
-msgstr "Servidor IMAP de la Universidad de Washington"
+msgstr "Máy phục vụ IMAP của Trường Đại Học Washington"
 
 msgid "Microsoft Exchange IMAP server"
-msgstr "Servidor IMAP Microsoft Exchange"
+msgstr "Máy phục vụ IMAP Microsoft Exchange"
 
 msgid "Courier IMAP server"
-msgstr "Servidor IMAP Courier"
+msgstr "Máy phục vụ IMAP Courier"
 
 msgid "Mac OS X Mailserver"
-msgstr ""
+msgstr "Mấy phục vụ Mac OSX"
 
-#, fuzzy
 msgid "hMailServer IMAP server"
-msgstr "Servidor IMAP Courier"
+msgstr "Máy phục vụ IMAP hMailServer"
 
 msgid "Not one of the above servers"
-msgstr "Ninguno de los anteriores"
+msgstr "Không phải một của những máy phục vụ trên"
 
 msgid "IMAP Folder Delimiter"
-msgstr "Delimitador de carpetas IMAP"
+msgstr "Dấu tách thư mục IMAP"
 
-#, fuzzy
 msgid "Use &quot;detect&quot; to auto-detect."
-msgstr "Escribe \"detect\" para su auto-detección."
+msgstr "Dùng &quot;detect&quot; để tự động phát hiện"
 
 msgid "Use TLS for IMAP Connections"
-msgstr ""
+msgstr "Dùng TLS cho kết nối IMAP"
 
 msgid "Requires PHP 4.3.x! Experimental."
-msgstr ""
+msgstr "Cần thiết PHP 4.3.x! Vẫn thực nghiệm !"
 
-#, fuzzy
 msgid "IMAP Authentication Type"
-msgstr "authentication failed "
+msgstr "Kiểu xác thực IMAP"
 
-#, fuzzy
 msgid "IMAP login"
-msgstr "POP3 login:"
+msgstr "Đăng nhập IMAP"
 
-#, fuzzy
 msgid "Use Sendmail Binary"
-msgstr "Use Sendmail"
+msgstr "Dùng tập tin nhị phân Sendmail"
 
 msgid "Choose &quot;no&quot; for SMTP"
-msgstr ""
+msgstr "Chọn &quot;no&quot; cho SMTP"
 
 msgid "Sendmail Path"
-msgstr "Ubicación de Sendmail"
+msgstr "Đường dẫn đến Sendmail"
 
 msgid "SMTP Server Address"
-msgstr "Dirección del servidor SMTP"
+msgstr "Địa chỉ máy phục vụ SMTP"
 
 msgid "SMTP Server Port"
-msgstr "Puerto del servidor SMTP"
+msgstr "Cổng máy phục vụ SMTP"
 
 msgid "Use TLS for SMTP Connections"
-msgstr ""
+msgstr "Dùng TSL cho kết nối SMTP"
 
-#, fuzzy
 msgid "SMTP Authentication Type"
-msgstr "authentication failed "
+msgstr "Kiểu xác thực SMTP"
 
 msgid "No SMTP auth"
-msgstr ""
+msgstr "Không xác thực SMTP"
 
 msgid "Login (plain text)"
-msgstr ""
+msgstr "Đăng nhập (nhập thô)"
 
 msgid "POP3 Before SMTP?"
-msgstr ""
+msgstr "POP3 trước SMTP?"
 
 msgid "Invert Time"
-msgstr "Invert Time"
+msgstr "Đảo giờ"
 
 msgid "Folders Defaults"
-msgstr "Valores por Omisión para las Carpetas"
+msgstr "Giá trị mặc định thư mục"
 
 msgid "Default Folder Prefix"
-msgstr "Prefijo de carpetas"
+msgstr "Tiền tố thư mục mặc định"
 
 msgid "Show Folder Prefix Option"
-msgstr "Show Folder Prefix Option"
+msgstr "Hiện tùy chọn tiền tố thư mục"
 
 msgid "By default, move to trash"
-msgstr "By default, move to trash"
+msgstr "Mặc định là chuyển vào Sọt Rác"
 
 msgid "By default, move to sent"
-msgstr "By default, move to sent"
+msgstr "Mặc định là chuyển vào Đã gửi"
 
 msgid "By default, save as draft"
-msgstr "By default, save as draft"
+msgstr "Mặc định là lưu dạng nháp"
 
 msgid "List Special Folders First"
-msgstr "List Special Folders First"
+msgstr "Liệt kê thư mục đặc biệt trước"
 
 msgid "Show Special Folders Color"
-msgstr "Show Special Folders Color"
+msgstr "Hiện màu thư mục đặc biệt"
 
 msgid "Auto Expunge"
-msgstr "Auto Expunge"
+msgstr "Tự động xoá hẳn"
 
 msgid "Default Sub. of INBOX"
-msgstr "Default Sub. of INBOX"
+msgstr "Sub. mặc định của HỘP ĐẾN"
 
 msgid "Show 'Contain Sub.' Option"
-msgstr "Show 'Contain Sub.' Option"
+msgstr "Hiện tùy chọn « Chứa Sub. »"
 
 msgid "Default Unseen Notify"
-msgstr "Notificación de no leídos por omisión"
+msgstr "Thông báo chưa xem mặc định"
 
 msgid "Default Unseen Type"
-msgstr "Tipo de no leídos por omisión"
+msgstr "Kiểu chưa xem mặc định"
 
 msgid "Auto Create Special Folders"
-msgstr "Auto Create Special Folders"
+msgstr "Tự động tạo thư mục đặc biệt"
 
 msgid "Auto delete folders"
-msgstr "Borrado automático de carpetas"
+msgstr "Tự động xoá thư mục"
 
-#, fuzzy
 msgid "Enable /NoSelect folder fix"
-msgstr "Cho phép chọn trang"
+msgstr "Bật sửa thư mục /NoSelect"
 
 msgid "General Options"
-msgstr "Opciones Generales"
+msgstr "Tùy chọn chung"
 
 msgid "Data Directory"
-msgstr "Directorio de datos"
+msgstr "Thư mục dữ liệu"
 
 msgid "Temp Directory"
-msgstr "Directorio temporal"
+msgstr "Thư mục tạm thời"
 
 msgid "Hash Level"
-msgstr "Nivel de fragmentación"
+msgstr "Cấp hash"
 
 msgid "Hash Disabled"
-msgstr "Hash Disabled"
+msgstr "Hash bị tắt"
 
 msgid "Moderate"
-msgstr "Moderada"
+msgstr "Vừa"
 
 msgid "Medium"
-msgstr "Media"
+msgstr "Vật chứa"
 
 msgid "Default Left Size"
-msgstr "Tamaño por omisión de lista de carpetas"
+msgstr "Kích cỡ trái mặc định"
 
 msgid "Usernames in Lowercase"
 msgstr "Tên người dùng bằng chữ thường"
 
 msgid "Allow use of priority"
-msgstr "Allow use of priority"
+msgstr "Cho phép dùng mức ưu tiên"
 
 msgid "Hide SM attributions"
-msgstr "Hide SM attributions"
+msgstr "Ẩn các thuộc tính SM"
 
 msgid "Enable use of delivery receipts"
-msgstr "Enable use of delivery receipts"
+msgstr "Bật dùng thông báo đã phát"
 
 msgid "Allow editing of identities"
-msgstr "Permitir edición de identidades"
+msgstr "Cho phép sửa cá tính"
 
 msgid "Allow editing of full name"
-msgstr "Permitir edición del nombre"
+msgstr "Cho phép sửa họ tên"
 
 msgid "Use server-side sorting"
-msgstr ""
+msgstr "Dùng chức năng sắp xếp bên máy phục vụ"
 
-#, fuzzy
 msgid "Use server-side thread sorting"
-msgstr "Sắp theo đầu đề"
+msgstr "Dùng chức năng sắp xếp nhánh bên máy phục vụ"
 
 msgid "Allow server charset search"
-msgstr ""
+msgstr "Cho phép tìm kiếm bộ ký tự máy phục vụ"
 
 msgid "UID support"
-msgstr ""
+msgstr "Hỗ trợ UID"
 
-#, fuzzy
 msgid "PHP session name"
-msgstr "Phiên bản PHP"
+msgstr "Tên phiên chạy PHP"
 
 msgid "Message of the Day"
-msgstr "Mensaje del día"
+msgstr "Thông điệp của Hôm nay"
 
 msgid "Database"
 msgstr "Cơ sở dữ liệu"
 
 msgid "Address book DSN"
-msgstr "DSN de la libreta de direcciones"
+msgstr "DSN sổ địa chỉ"
 
 msgid "Address book table"
-msgstr "Tabla de la agenda"
+msgstr "Bảng sổ địa chỉ"
 
 msgid "Preferences DSN"
-msgstr "DSN de preferencias"
+msgstr "DSN tùy thích"
 
 msgid "Preferences table"
-msgstr "Tabla de preferencias"
+msgstr "Bảng tùy thích"
 
 msgid "Preferences username field"
-msgstr "Preferencias del campo de usuario"
+msgstr "Trường tên người dùng tùy thích"
 
 msgid "Preferences key field"
-msgstr "Preferencias del campo clave"
+msgstr "Trường khoá tùy thích"
 
 msgid "Preferences value field"
-msgstr "Preferencias de campos de valor"
+msgstr "Trường giá trị tùy thích"
 
-#, fuzzy
 msgid "Global address book DSN"
-msgstr "Sổ địa chỉ toàn cục"
+msgstr "DSN sổ địa chỉ toàn cục"
 
-#, fuzzy
 msgid "Global address book table"
-msgstr "Sổ địa chỉ toàn cục"
+msgstr "Bảng sổ địa chỉ toàn cục"
 
-#, fuzzy
 msgid "Allow writing into global address book"
-msgstr "Không thể bổ sung sổ địa chỉ toàn cục"
+msgstr "Cho phép ghi vào sổ địa chỉ toàn cục"
 
-#, fuzzy
 msgid "Allow listing of global address book"
-msgstr "Không thể bổ sung sổ địa chỉ toàn cục"
+msgstr "Cho phép liệt kê sổ địa chỉ toàn cục"
 
-#, fuzzy
 msgid "Language settings"
-msgstr "Cambiar opciones"
+msgstr "Thiết lập ngôn ngữ"
 
 msgid "Default Language"
-msgstr "Idioma por omisión"
+msgstr "Ngôn ngữ mặc định"
 
 msgid "Default Charset"
-msgstr "Juego de caracteres por omisión"
+msgstr "Bộ ký tự mặc định"
 
 msgid "Enable lossy encoding"
-msgstr ""
+msgstr "Bật mã hoá mật dữ liệu"
 
-#, fuzzy
 msgid "Address Books"
 msgstr "Sổ địa chỉ"
 
-#, fuzzy
 msgid "Default Javascript Addressbook"
-msgstr "Default Javascript Adrressbook"
+msgstr "Sổ địa chỉ JavaScript mặc định"
 
-#, fuzzy
 msgid "Global address book file"
-msgstr "Sổ địa chỉ toàn cục"
+msgstr "Tập tin sổ địa chỉ toàn cục"
 
-#, fuzzy
 msgid "Allow writing into global address book file"
-msgstr "Không chép vàp sổ địa chỉ được!"
+msgstr "Cho phép ghi vào tập tin sổ địa chỉ toàn cục"
 
 msgid "Themes"
-msgstr "Temas"
+msgstr "Sắc thái"
 
 msgid "Style Sheet URL (css)"
-msgstr "URL de la hoja de estilos (css)"
+msgstr "URL bảng kiểu dáng (CSS)"
 
-#, fuzzy
 msgid "Default theme"
-msgstr "Juego de caracteres por omisión"
+msgstr "Sắc thái mặc định"
 
 msgid "Use index number of theme"
-msgstr ""
+msgstr "Dùng số chỉ mục của sắc thái"
 
 msgid "Configuration Administrator"
-msgstr "Configuración del Sistema"
+msgstr "Quản trị cấu hình"
 
 msgid ""
 "Note: it is recommended that you configure your system using conf.pl, and "
 "not this plugin. conf.pl contains additional information regarding the "
 "purpose of variables and appropriate values, as well as additional "
 "verification steps."
-msgstr ""
+msgstr "Ghi chú : khuyên bạn cấu hình hệ thốn dùng « conf.pl », không phải phần bổ sung này: tập tin « conf.pl » chứa thêm thông tin về mục đích của các biến và các giá trị thích hợp, cũng như các bước thẩm tra thêm."
 
 msgid ""
 "Run or consult conf.pl should you run into difficulty with your "
 "configuration."
-msgstr ""
+msgstr "Chạy hoặc xem tập tin « conf.pl » nếu bạn gặp khó khan trong việc cấu hình."
 
 msgid "Theme Name"
-msgstr "Nombre del tema"
+msgstr "Tên sắc thái"
 
 msgid "Theme Path"
-msgstr "Ubicación del tema"
+msgstr "Đường dẫn đến sắc thái"
 
 msgid "Plugins"
-msgstr "Añadidos (Plugins)"
+msgstr "Phần bổ sung"
 
 #, php-format
 msgid "Plugin directory could not be found: %s"
-msgstr ""
+msgstr "Không tìm thấy thư mục phần bổ sung: %s"
 
 msgid "Change Settings"
-msgstr "Cambiar opciones"
+msgstr "Đổi thiết lập"
 
-#, fuzzy
 msgid "Test Configuration"
-msgstr "Activar Confirmación de Recepción"
+msgstr "Thử cấu hình"
 
 msgid "Config file can't be opened. Please check config.php."
 msgstr ""
-"El archivo de configuración no puede abrirse. Por favor compruebe el fichero "
-"config.php"
+"Không thể mở tập tin cấu hình. Hãy kiểm tra tập tin « config.php »."
 
 msgid "Administration"
-msgstr "Administración"
+msgstr "Quản lý"
 
 msgid ""
 "This module allows administrators to manage SquirrelMail main configuration "
 "remotely."
 msgstr ""
-"Este módulo permite configurar remotamente las opciones principales de "
-"Squirrelmail."
+"Mô-đun này cho phép quản trị quản lý từ xa cấu hình chính của trình SquirrelMail."
 
-#, fuzzy
 msgid "Submit a Bug Report"
-msgstr "Reporte de Errores:"
+msgstr "Gửi báo cáo lỗi"
 
 msgid ""
 "Before you send your bug report, please make sure to check this checklist "
 "for any common problems."
-msgstr ""
+msgstr "Trước khi gửi một báo cáo lỗi, hãy kiểm tra có lỗi thường gặp mà nằm trong danh sách kiểm này."
 
 #, php-format
 msgid ""
 "Make sure that you are running the most recent copy of %s. You are currently "
 "using version %s."
-msgstr ""
+msgstr "Kiểm tra xem bạn đang chạy phiên bản mới nhất của %s. Bạn đang sử dụng phiên bản %s."
 
 #, php-format
 msgid ""
 "Check to see if your bug is already listed in the %sBug List%s on "
 "SourceForge. If it is, we already know about it and are trying to fix it."
-msgstr ""
+msgstr "Kiểm tra xem nếu lỗi này đã được liệt kê trong danh sách lỗi %sBug List%s ở SourceForge. Có thì chúng tôi đã biết về nó nên cố gắng sửa chữa."
 
 msgid ""
 "Try to make sure that you can repeat it. If the bug happens sporatically, "
 "try to document what you did when it happened. If it always occurs when you "
 "view a specific message, keep that message around so maybe we can see it."
-msgstr ""
+msgstr "Kiểm tra nếu bạn có thể lặp lại lỗi này. Không thì thử ghi lưu trường hợp khi nó xảy ra. Nếu nó thường xảy ra với một thư nào đó, xin hãy giữ lại thư đó cho chúng tôi xem."
 
 #, php-format
 msgid ""
 "If there were warnings displayed above, try to resolve them yourself. Read "
 "the guides in the %s directory where SquirrelMail was installed."
-msgstr ""
+msgstr "Có cảnh báo được hiển thị trên thì bạn thử tự giải quyết. Đọc các tài liệu hướng dẫn trong thư mục %s chứa chương trình SquirrelMail."
 
 msgid ""
 "Pressing the button below will start a mail message to the developers of "
@@ -2225,159 +2102,154 @@ msgid ""
 "browser, how SquirrelMail is set up, and your IMAP server. It will also "
 "prompt you for information. Just fill out the sections at the top. If you "
 "like, you can scroll down in the message to see what else is being sent."
-msgstr ""
+msgstr "Bấm cái nút bên dưới sẽ bắt đầu tạo một thư cho nhóm phát triển SquirrelMail mà chứa nhiều thông tin về hệ thống của bạn, trình duyệt của bạn, cách thiết lập SquirrelMail và máy phục vụ IMAP đang dùng. Nó sẽ cũng nhắc bạn cung cấp thông tin khác. Chỉ điền vào các phần ở đầu thư. Cũng có thể cuộn xuống trong thư để xem thông tin khác sẽ gửi."
 
 msgid ""
 "Please make sure to fill out as much information as you possibly can to give "
 "everyone a good chance of finding and removing the bug. Submitting your bug "
 "like this will not have it automatically added to the bug list on "
 "SourceForge, but someone who gets your message may add it for you."
-msgstr ""
+msgstr "Hãy điền vào càng nhiều thông tin càng có thể để tạo dịp tốt nhất để tìm và sửa chữa lỗi này. Gửi báo cáo lỗi như thế sẽ không tự động thêm nó vào danh sách các lỗi ở Sourceforge, nhưng ai đó nhận thư đó có thể thêm nó cho bạn."
 
 msgid "This bug involves"
-msgstr ""
+msgstr "Lỗi này liên quan đến"
 
 msgid "the general program"
-msgstr ""
+msgstr "chương trình chung"
 
 msgid "a specific plugin"
-msgstr ""
+msgstr "một phần bổ sung cụ thể"
 
-#, fuzzy
 msgid "Start Bug Report Form"
-msgstr "Reporte de Errores:"
+msgstr "Mở báo cáo lỗi"
 
 msgid "Bug"
-msgstr ""
+msgstr "Lỗi"
 
 msgid "Bug Reports:"
-msgstr "Reporte de Errores:"
+msgstr "Báo cáo lỗi:"
 
 msgid "Show button in toolbar"
-msgstr "Mostrar botón en la línea superior."
+msgstr "Hiện nút trên thanh công cụ"
 
 msgid "TODAY"
-msgstr "HOY"
+msgstr "HÔM NAY"
 
 msgid "Go"
-msgstr "Thực hiện"
+msgstr "Tới"
 
-#, fuzzy, php-format
+#, php-format
 msgid "Could not write calendar file %s"
-msgstr "No se pudo crear el fichero inicial de preferencias!"
+msgstr "Không thể ghi tập tin lịch %s"
 
-#, fuzzy
 msgid "l, F j Y"
-msgstr "D, F j, Y G:i"
+msgstr "l, F j Y"
 
 msgid "ADD"
 msgstr "THÊM"
 
 msgid "EDIT"
-msgstr "SOẠN"
+msgstr "SỬA"
 
 msgid "DEL"
-msgstr "XÓA"
+msgstr "XOÁ"
 
 msgid "Start time:"
-msgstr "Thời gian bắt đầu:"
+msgstr "Giờ bắt đầu:"
 
 msgid "Length:"
-msgstr "Length:"
+msgstr "Bề dài:"
 
 msgid "Priority:"
-msgstr "Độ ưu tiên:"
+msgstr "Ưu tiên:"
 
 msgid "Title:"
-msgstr "Tiêu đề:"
+msgstr "Tên:"
 
 msgid "Set Event"
-msgstr "Establecer Cita"
+msgstr "Đặt dữ kiện"
 
 msgid "Event Has been added!"
-msgstr "Event Has been added!"
+msgstr "Dữ kiện đã được thêm."
 
 msgid "Date:"
 msgstr "Ngày:"
 
 msgid "Time:"
-msgstr "Hora:"
+msgstr "Giờ:"
 
 msgid "Day View"
-msgstr "Por Días"
+msgstr "Xem Ngày"
 
 msgid "Do you really want to delete this event?"
-msgstr "Do you really want to delete this event?"
+msgstr "Bạn có chắc muốn xoá dữ kiện này không?"
 
 msgid "Event deleted!"
-msgstr "Event deleted!"
+msgstr "Dữ kiện bị xoá."
 
 msgid "Nothing to delete!"
-msgstr "Nothing to delete!"
+msgstr "Không có gì cần xoá."
 
 msgid "Update Event"
-msgstr "Actualizar Cita"
+msgstr "Cập nhật dữ kiện"
 
 msgid "Do you really want to change this event from:"
-msgstr "Confirme el cambio de esta cita de:"
+msgstr "Bạn có chắc muốn thay đổi dữ kiện này từ :"
 
 msgid "to:"
-msgstr "a:"
+msgstr "đến:"
 
 msgid "Event updated!"
-msgstr "Event updated!"
+msgstr "Dữ kiện đã cập nhật."
 
 msgid "Month View"
-msgstr "Por Meses"
+msgstr "Xem Tháng"
 
 msgid "0 min."
-msgstr "0 phút."
+msgstr "0 phút"
 
 msgid "15 min."
-msgstr "15 phút."
+msgstr "15 phút"
 
-#, fuzzy
 msgid "30 min."
-msgstr "0 phút."
+msgstr "30 phút"
 
 msgid "45 min."
-msgstr "45 phút."
+msgstr "45 phút"
 
 msgid "1 hr."
-msgstr "1 giờ."
+msgstr "1 giờ"
 
 msgid "1.5 hr."
-msgstr "1,5 giờ."
+msgstr "1,5 giờ"
 
 msgid "2 hr."
-msgstr "2 giờ."
+msgstr "2 giờ"
 
 msgid "2.5 hr."
-msgstr "2,5 giờ."
+msgstr "2,5 giờ"
 
 msgid "3 hr."
-msgstr "3 giờ."
+msgstr "3 giờ"
 
 msgid "3.5 hr."
-msgstr "3,5 giờ."
+msgstr "3,5 giờ"
 
 msgid "4 hr."
-msgstr "4 giờ."
+msgstr "4 giờ"
 
 msgid "5 hr."
-msgstr "5 giờ."
+msgstr "5 giờ"
 
 msgid "6 hr."
-msgstr "6 giờ."
+msgstr "6 giờ"
 
 msgid "Calendar"
 msgstr "Lịch"
 
-#, fuzzy
 msgid "Delete & Prev"
 msgstr "Xóa và xem thư trước"
 
-#, fuzzy
 msgid "Delete & Next"
 msgstr "Xóa và xem thư sau"
 
@@ -2385,13 +2257,13 @@ msgid "Move to:"
 msgstr "Chuyển tới:"
 
 msgid "Delete/Move/Next Buttons:"
-msgstr "Các nút Xóa/Chuyển/Kế tiếp:"
+msgstr "Nút Xóa/Chuyển/Kế:"
 
 msgid "Display at top"
 msgstr "Đặt ở đầu"
 
 msgid "with move option"
-msgstr "Cho phép di chuyển"
+msgstr "với tùy chọn di chuyển"
 
 msgid "Display at bottom"
 msgstr "Đặt ở cuối"
@@ -2400,234 +2272,213 @@ msgid ""
 "COMMERCIAL - This list contains servers that are verified spam senders. It "
 "is a pretty reliable list to scan spam from."
 msgstr ""
-"COMERCIAL - Esta lista contiene servidores reconocidos como emisores de "
-"mensajes SPAM y resulta muy fiable."
+"THƯƠNG MẠI — danh sách này chứa máy phục vụ có phải gửi thư rác. Nó là một danh sách hơi đáng tin cậy để quét tìm thư rác."
 
-#, fuzzy
 msgid ""
 "COMMERCIAL - Servers that are configured (or misconfigured) to allow spam to "
 "be relayed through their system will be banned with this. Another good one "
 "to use."
 msgstr ""
-"COMERCIAL - Los servidores que estén configurados ( o mal configurados) para "
-"permitir correo SPAM pasar a través de ellos serán bloqueados. Muy bueno."
+"THƯƠNG MẠI — chức năng này sẽ cấm mỗi máy phục vụ được cấu hình (hoặc sai cấu hình) để cho phép thư rác được chuyển tiếp qua hệ thống. Một cái khuyến khích khác."
 
-#, fuzzy
 msgid ""
 "COMMERCIAL - Dial-up users are often filtered out since they should use "
 "their ISP's mail servers to send mail. Spammers typically get a dial-up "
 "account and send spam directly from there."
 msgstr ""
-"COMERCIAL - Los usuarios que conectan a través de una línea conmutada a "
-"menudo son filtrados, ya que deberían de usar los servidores de correo de "
-"sus ISP. Es típico que los \"Spammers\" utilicen una cuenta de este tipo "
-"para mandar sus mensajes."
+"THƯƠNG MẠI — người dùng quay số thường bị lọc ra vì họ nên dùng máy phục vụ thư tín của nhà cung cấp dịch vụ Internet (ISP) để gửi thư. Người gửi thư rác thì thường giành được một tài khoản quay số rồi gửi thư rác một cách trực tiếp từ đó."
 
 msgid "COMMERCIAL - RBL+ Blackhole entries."
-msgstr "COMERCIAL - RBL + listado \"Blackhole\"."
+msgstr "THƯƠNG MẠI — các mục nhập RBL và lỗ đen."
 
 msgid "COMMERCIAL - RBL+ OpenRelay entries."
-msgstr "COMERCIAL - RBL+ listado \"OpenRelay\"."
+msgstr "THƯƠNG MẠI — các mục nhập RBL và máy chuyển tiếp còn mở."
 
 msgid "COMMERCIAL - RBL+ Dial-up entries."
-msgstr "COMERCIAL - RBL+ conexiones RTC."
+msgstr "THƯƠNG MẠI — các mục nhập RBL và quay số."
 
 msgid ""
 "FREE - ORDB was born when ORBS went off the air. It seems to have fewer "
 "false positives than ORBS did though."
 msgstr ""
-"GRATUITO - ORDB nació cuando ORBS desapareció. Al parecer tiene menos falsos "
-"positivos de los que tenia ORBS."
+"MIỄN PHÍ — ORDB đã được tạo khi ORBS không còn hoạt động lại. Có vẻ là ORDB có ít kết quả âm giả hơn ORBS."
 
 msgid "FREE - Five-Ten-sg.com - Direct SPAM sources."
-msgstr "GRATUITO - Five-Ten-sg.com - Fuentes SPAM directa."
+msgstr "MIỄN PHÍ — Five-Ten-sg.com — các nguồn thư rác trực tiếp."
 
 msgid "FREE - Five-Ten-sg.com - Dial-up lists - includes some DSL IPs."
 msgstr ""
-"GRATUITO - Five-Ten-sg.com - Lista de conexiones RTC - incluye algunas IPs "
-"DSL."
+"MIỄN PHÍ — Five-Ten-sg.com — các danh sách quay số, gồm có một số IP DSL."
 
 msgid "FREE - Five-Ten-sg.com - Bulk mailers that do not use confirmed opt-in."
 msgstr ""
-"GRATUITO - Five-Ten-sg.com - Emisores masivos que no emplean \"opt in\" "
-"confirmados."
+"MIỄN PHÍ — Five-Ten-sg.com — trình thư tín hàng loạt mà không dùng dịch vụ chọn vào đã xác nhận."
 
 msgid "FREE - Five-Ten-sg.com - Other misc. servers."
-msgstr "GRATUITO - Five-Ten-sg.com - Otros servidores varios."
+msgstr "MIỄN PHÍ — Five-Ten-sg.com — các máy phục vụ khác."
 
 msgid "FREE - Five-Ten-sg.com - Single Stage servers."
-msgstr "GRATUITO - Five-Ten-sg.com - Servidores de Simple Fase."
+msgstr "MIỄN PHÍ — Five-Ten-sg.com — các máy phục vụ giải đoạn đơn"
 
 msgid "FREE - Five-Ten-sg.com - SPAM Support servers."
-msgstr "GRATUITO - Five-Ten-sg.com - Servidores de Soporte de SPAM."
+msgstr "MIỄN PHÍ — Five-Ten-sg.com — các máy phục vụ hỗ trợ thư rác."
 
 msgid "FREE - Five-Ten-sg.com - Web Form IPs."
-msgstr "GRATUITO - Five-Ten-sg.com - IPs de formularios WEB."
+msgstr "MIỄN PHÍ — Five-Ten-sg.com — các IP dạng Web."
 
 msgid ""
 "FREE - Dorkslayers appears to include only really bad open relays outside "
 "the US to avoid being sued. Interestingly enough, their website recommends "
 "you NOT use their service."
 msgstr ""
-"GRATUITO - Parece que Dorkslayers solo incluye muy malos enlaces abiertos "
-"fuera de los EEUU. Aunque es bastante interesante, su página web recomienda "
-"que NO se use su servicio."
+"MIỄN PHÍ — có vẻ là Dorkslayers chỉ bao gồm các máy chuyển tiếp rất xấu mà nằm ở ngoại Mỹ, để tránh bị kiện. Lạ là trang Web của họ khuyên bạn KHÔNG dùng dịch vụ của họ !"
 
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
-msgstr "GRATUITO - Lista de conocidos SPAMERS de SPAMHaus."
+msgstr "MIỄN PHÍ — SPAMhaus — một danh sách các nguồn thư rác nổi tiếng."
 
-#, fuzzy
 msgid ""
 "FREE, for now - SpamCop - An interesting solution that lists servers that "
 "have a very high spam to legit email ratio (85 percent or more)."
 msgstr ""
-"GRATUITO (de momento) - SPAMCOP - Una solución interesante que relaciona "
-"servidores que tienen un ratio muy elevado de SPAM (85% o superior)."
+"MIỄN PHÍ — SpamCop — một lời giải hay mà liệt kê các máy phục vụ có tỷ lệ rất cao về thư rác so với thư thật (≥85%)."
 
 msgid "FREE - dev.null.dk - I don't have any detailed info on this list."
-msgstr ""
+msgstr "MIỄN PHÍ — dev.null.dk — chưa có thông tin chi tiết về danh sách này."
 
 msgid "FREE - visi.com - Relay Stop List. Very conservative OpenRelay List."
-msgstr ""
+msgstr "MIỄN PHÍ — visi.com — Danh Sách Dừng Chuyển Tiếp, một danh sách Chuyển Tiếp Còn Mở rất dè dặt."
 
 msgid "FREE - ahbl.org Open Relays - Another list of Open Relays."
-msgstr ""
+msgstr "MIỄN PHÍ — ahbl.org Open Relays — một danh sách khác chứa các máy chuyển tiếp còn mở."
 
-#, fuzzy
 msgid "FREE - ahbl.org SPAM Source - List of Direct SPAM Sources."
-msgstr "GRATUITO - Lista de conocidos SPAMERS de SPAMHaus."
+msgstr "MIỄN PHÍ — ahbl.org SPAM Source — danh sách các nguồn thư rác trực tiếp."
 
 msgid "FREE - ahbl.org SPAM ISPs - List of SPAM-friendly ISPs."
-msgstr ""
+msgstr "MIỄN PHÍ — ahbl.org SPAM ISPs — danh sách các nhà cung cấp dịch vụ Internet (ISP) thân thiện với người gửi thư rác."
 
 msgid ""
 "FREE - Leadmon DUL - Another list of Dial-up or otherwise dynamically "
 "assigned IPs."
-msgstr ""
+msgstr "MIỄN PHÍ — Leadmon DUL — một danh sách khác chứa các địa chỉ IP kiểu quay số hoặc được gán động khác."
 
 msgid ""
 "FREE - Leadmon SPAM Source - List of IPs Leadmon.net has received SPAM "
 "directly from."
-msgstr ""
+msgstr "MIỄN PHÍ — Leadmon SPAM Source — danh sách các ISP từ chúng Leadmon.net đã nhận trực tiếp thư rác."
 
 msgid ""
 "FREE - Leadmon Bulk Mailers - Bulk mailers that do not require confirmed opt-"
 "in or that have allowed known spammers to become clients and abuse their "
 "services."
-msgstr ""
+msgstr "MIỄN PHÍ — Leadmon Bulk Mailers — các dịch vụ thư tín hàng loạt mà không cần thiết chọn vào đã xác nhận, hoặc đã cho phép các người gửi thư rác đã biết để đăng ký và lạm dụng dịch vụ đó."
 
 msgid ""
 "FREE - Leadmon Open Relays - Single Stage Open Relays that are not listed on "
 "other active RBLs."
-msgstr ""
+msgstr "MIỄN PHÍ — Leadmon Open Relays — các máy chuyển tiếp còn mở giai đoạn đơn mà không phải được liệt kê trên các RBL hoạt động khác."
 
 msgid ""
 "FREE - Leadmon Multi-stage - Multi-Stage Open Relays that are not listed on "
 "other active RBLs and that have sent SPAM to Leadmon.net."
-msgstr ""
+msgstr "MIỄN PHÍ — Leadmon Multi-stage — các máy chuyển tiếp còn mở đa giai đoạn mà không phải được liệt kê trên các RBL hoạt động khác, và đã gửi thư rác cho Leadmon.net."
 
 msgid ""
 "FREE - Leadmon SpamBlock - Sites on this listing have sent Leadmon.net "
 "direct SPAM from IPs in netblocks where the entire block has no DNS "
 "mappings. It's a list of BLOCKS of IPs being used by people who have SPAMmed "
 "Leadmon.net."
-msgstr ""
+msgstr "MIỄN PHÍ — Leadmon SpamBlock — các địa chỉ trong danh sách này thì đã gửi cho Leadmon.net thư rác trực tiếp từ địa chỉ IP trong khối mạng mà toàn bộ khối mạng không có sự ánh xạ DNS. Nó là một danh sách các KHỐI IP đang được dùng bởi các người đã gửi thư cho Leadmon.net."
 
 msgid ""
 "FREE, for now - Not Just Another Blacklist - Both Open Relays and Direct "
 "SPAM Sources."
-msgstr ""
+msgstr "MIỄN PHÍ — Not Just Another Blacklist — liệt kê cả hai các máy chuyển tiếp còn mở và các nguồn thư rác trực tiếp."
 
 msgid "FREE, for now - Not Just Another Blacklist - Dial-up IPs."
-msgstr ""
+msgstr "MIỄN PHÍ — Not Just Another Blacklist — các địa chỉ IP quay số."
 
 msgid "FREE - Distributed Sender Boycott List - Confirmed Relays"
-msgstr ""
+msgstr "MIỄN PHÍ — Distributed Sender Boycott List — các máy chuyển tiếp đã xác nhận."
 
 msgid "FREE - Distributed Sender Boycott List - Confirmed Multi-stage Relays"
-msgstr ""
+msgstr "MIỄN PHÍ — Distributed Sender Boycott List — các máy chuyển tiếp đa giai đoạn đã xác nhận."
 
 msgid "FREE - Distributed Sender Boycott List - UN-Confirmed Relays"
-msgstr ""
+msgstr "MIỄN PHÍ — Distributed Sender Boycott List — các máy chuyển tiếp chưa được xác nhận."
 
 msgid "WARNING! You must enter something to search for."
-msgstr ""
+msgstr "CẢNH BÁO : bạn cần phải nhập một chuỗi cần tìm."
 
 msgid ""
 "WARNING! Header filters should be of the format &quot;Header: value&quot;"
-msgstr ""
+msgstr "CẢNH BÁO : bộ lọc dòng đầu nên có dạng « Dòng đầu: giá trị »."
 
 msgid "Saved Scan type"
-msgstr ""
+msgstr "Kiểu quét đã lưu"
 
 msgid "Message Filtering"
-msgstr "Filtrado de Mensajes"
+msgstr "Lọc thư"
 
 msgid "What to Scan:"
-msgstr "Comprobar:"
+msgstr "Quét gì:"
 
 msgid "All messages"
-msgstr "Todos los mensajes"
+msgstr "Mọi thư"
 
 msgid "Only unread messages"
-msgstr "Solo mensajes sin leer"
+msgstr "Chỉ các thư chưa đọc"
 
 msgid "Save"
-msgstr "Guardar"
+msgstr "Lưu"
 
 msgid "Match:"
-msgstr "Coincidencia:"
+msgstr "Khớp:"
 
 msgid "Header"
-msgstr "Cabecera"
+msgstr "Dòng đầu"
 
 msgid "Contains:"
-msgstr "Contiene:"
+msgstr "Chứa:"
 
-#, fuzzy, php-format
+#, php-format
 msgid "If %s contains %s then move to %s"
-msgstr "Si <b>%s</b> contiene <b>%s</b> muévelo a <b>%s</b>"
+msgstr "Nếu %s chứa %s thì chuyển vào %s"
 
 msgid "Message Filters"
-msgstr "Filtros de Mensajes"
+msgstr "Bộ lọc thư"
 
 msgid ""
 "Filtering enables messages with different criteria to be automatically "
 "filtered into different folders for easier organization."
 msgstr ""
-"El filtrado de mensajes permite organizar los mensajes en carpetas "
-"automáticamente."
+"Chức năng lọc thì cho phép tự động lọc theo các tiêu chuẩn khác nhau để dễ dàng tổ chức các thư trong các thư mục khác nhau."
 
 msgid "SPAM Filters"
-msgstr "Filtros de Correo Masivo (SPAM)"
+msgstr "Bộ lọc thư rác"
 
 msgid ""
 "SPAM filters allow you to select from various DNS based blacklists to detect "
 "junk email in your INBOX and move it to another folder (like Trash)."
 msgstr ""
-"Los filtros para correo masivo (SPAM) le permite seleccionar algunos de las "
-"muchas listas negras basadas en DNS que existen para detectar mensajes "
-"basura en su buzón y moverlos a otra carpeta (como por ejemplo la papelera)."
+"Bộ lọc thư rác thì cho phép bạn chọn trong một số danh sách cấm (blacklist) dựa vào DNS để phát hiện thư rác trong Hộp Đến, rồi chuyển nó vào thư mục khác (v.d. Sọt Rác)."
 
-#, fuzzy
 msgid "You must select a spam folder."
-msgstr "Chọn thư mục"
+msgstr "Bạn cần phải chọn một thư mục thư rác."
 
-#, fuzzy
 msgid "You must select a scan type."
-msgstr "Debe hacer alguna elección"
+msgstr "Bạn cần phải chọn một kiểu quét."
 
 msgid "Spam Filtering"
-msgstr "Filtro SPAM"
+msgstr "Lọc thư rác"
 
-#, fuzzy, php-format
+#, php-format
 msgid "WARNING! Tell the administrator to set the %s variable."
 msgstr ""
-"¡ATENCIóN! Pida a su administrador del sistema que active la variable "
-"SpamFilters_YourHop."
+"CẢNH BÁO : yêu cầu quản trị đặt biến %s."
 
 msgid "Move spam to:"
-msgstr "Mover SPAM a:"
+msgstr "Chuyển thư rác vào :"
 
 msgid ""
 "Moving spam directly to the trash may not be a good idea at first, since "
@@ -2636,16 +2487,11 @@ msgid ""
 "periodically, so that you don't have an excessively large mailbox hanging "
 "around."
 msgstr ""
-"Mover mensajes SPAM directamente a la papelera no es buena idea al principio "
-"ya que algunos mensajes importantes pueden perderse accidentalmente mientras "
-"afina la detección . No obstante asegúrese que la carpeta elegida como "
-"destino se limpia de vez en cuando para evitar aglomeraciones."
+"Chuyển thư rác một cách trực tiếp vào Sọt Rác có thể không phải là ý kiến tốt đầu tiên, vì các thư từ bạn bè và hộp thư chung có thể bị đánh dấu là thư rác (kết quả dương giả). Bạn nên kiểm tra thư mục này một cách định kỳ, cũng xoá các thư rác để tránh có một hộp thư rất lớn."
 
-#, fuzzy
 msgid "Unread messages only"
-msgstr "Solo mensajes nuevos"
+msgstr "Chỉ các thư chưa đọc"
 
-#, fuzzy
 msgid ""
 "The more messages scanned, the longer it takes. It's recommended to scan "
 "unread messages only. If a change to the filters is made, it's recommended "
@@ -2654,421 +2500,389 @@ msgid ""
 "applied and even the spam you didn't catch with the old filters will be "
 "scanned."
 msgstr ""
-"Cuanto más mensajes compruebe, más tarda. Le sugerimos que solo compruebe "
-"mensajes nuevos en funcionamiento normal. Si realiza algún cambio en los "
-"filtros cámbielo a Todos los mensajes, entre en su carpeta de entrada, y "
-"vuelva a situarlo en solo mensajes nuevos. De esta manera aplicará el filtro "
-"sobre mensajes anteriores antes de volver al funcionamiento normal."
+"Càng nhiều thư được quét, càng lâu tiến trình đang chạy. Khuyên bạn quét chỉ các thư chưa đọc. Nếu bộ lọc đã thay đổi, khuyên bạn đặt chức năng này để quét mọi thư, rồi đi xem Hộp Đến, rồi trở về đây và đặt nó để quét chỉ các thư chưa đọc. Bằng cách này, các bộ lọc thư rác sẽ được áp dụng, và sẽ quét ngay cả những thư rác bạn đã không bất dùng các bộ lọc cũ."
 
-#, fuzzy, php-format
+#, php-format
 msgid "Spam is sent to %s."
-msgstr "Mandar SPAM a <b>%s</b>"
+msgstr "Thư rác được gửi cho %s."
 
-#, fuzzy
 msgid "not set yet"
-msgstr "[<i>no definido aún</i>]"
+msgstr "chưa đặt"
 
-#, fuzzy, php-format
+#, php-format
 msgid "Spam scan is limited to %s."
-msgstr "La comprobación de mensajes se limita a <b>%s</b>"
+msgstr "Quét thư rác bị hạn chế thành %s."
 
 msgid "ON"
-msgstr "ON"
+msgstr "BẬT"
 
 msgid "OFF"
-msgstr "OFF"
+msgstr "TẮT"
 
 #, php-format
 msgid "%s is not found."
-msgstr ""
+msgstr "không tìm thấy %s"
 
 msgid "Today's Fortune"
-msgstr ""
+msgstr "Lời bói của hôm nay"
 
-#, fuzzy
 msgid "Fortunes:"
-msgstr "Portugués"
+msgstr "Lời bói:"
 
 msgid "Show fortunes at top of mailbox"
-msgstr ""
+msgstr "Hiển thị lời bói ở đầu của hộp thư"
 
 msgid "Plugin is disabled."
-msgstr ""
+msgstr "Phần bổ sung bị tắt."
 
-#, fuzzy
 msgid "IMAP server information"
-msgstr "Puerto del servidor IMAP"
+msgstr "Thông tin về máy phục vụ IMAP"
 
 msgid ""
 "Run some test IMAP commands, displaying both the command and the result. "
 "These tests use the SquirrelMail IMAP commands and your current SquirrelMail "
 "configuration. Custom command strings can be used."
-msgstr ""
+msgstr "Chạy một số câu lệnh IMAP thử, hiển thị cả hai câu lệnh và kết quả. Các sự thử này dùng những câu lệnh IMAP của SquirrelMail và cấu hình SquirrelMail hiện thời của bạn. Cũng có thể dùng các chuỗi lệnh tự chọn."
 
 msgid "Mailinglist"
-msgstr "Danh sách thư từ"
+msgstr "Hộp thư chung"
 
 #, php-format
 msgid ""
 "This will send a message to %s requesting help for this list. You will "
 "receive an emailed response at the address below."
 msgstr ""
-"Esta acción mandará un correo a %s solicitando ayuda para esta lista de "
-"correo. Recibirá una contestación por correo electrónico a la dirección que "
-"se muestra a continuación:"
+"Đây sẽ gửi cho %s một thư yêu cầu trợ giúp về hộp thư chung này, Bạn sẽ nhận một thư đáp ứng ở địa chỉ bên dưới."
 
 #, php-format
 msgid ""
 "This will send a message to %s requesting that you will be subscribed to "
 "this list. You will be subscribed with the address below."
 msgstr ""
-"Esta acción mandará un correo a %s solicitando la suscripción a esta lista "
-"de correo. Se dará de alta la dirección que se muestra a continuación:"
+"Đây sẽ gửi cho %s một thư yêu cầu đăng ký bạn với hộp thư chung này, Bạn sẽ được đăng ký dùng địa chỉ bên dưới."
 
 #, php-format
 msgid ""
 "This will send a message to %s requesting that you will be unsubscribed from "
 "this list. It will try to unsubscribe the adress below."
 msgstr ""
-"Esta acción mandará un correo a %s solicitando la baja de lista de correo. "
-"Se dará de baja la dirección que se muestra a continuación:"
+"Đây sẽ gửi cho %s một thư yêu cầu hủy đăng ký bạn khỏi hộp thư chung này, Nó sẽ thử hủy đăng ký địa chỉ bên dưới."
 
 msgid "Send Mail"
-msgstr "Mandar Correo"
+msgstr "Gửi thư"
 
 msgid "Post to List"
-msgstr "Componer"
+msgstr "Gửi chung"
 
 msgid "Reply to List"
-msgstr "Contestar"
+msgstr "Trả lời chung"
 
 msgid "List Archives"
-msgstr "Archivos"
+msgstr "Kho thư chung"
 
 msgid "Contact Listowner"
-msgstr "Contactar Adm."
+msgstr "Liên lạc với chủ hộp"
 
-#, fuzzy
 msgid "Mailing List"
-msgstr "Lista de Correo:"
+msgstr "Hộp thư chung"
 
 msgid "POP3 connect:"
 msgstr "Kết nối POP3:"
 
 msgid "No server specified"
-msgstr "Chưa xác định máy chủ"
+msgstr "Chưa xác định máy phục vụ"
 
 msgid "Error "
 msgstr "Lỗi "
 
 msgid "POP3 user:"
-msgstr "POP3 user:"
+msgstr "Người dùng POP3:"
 
 msgid "no login ID submitted"
-msgstr "no login ID submitted"
+msgstr "chưa nhập ID đăng nhập"
 
 msgid "connection not established"
-msgstr "la conexión no se ha establecido"
+msgstr "chưa thiết lập kết nối"
 
 msgid "POP3 pass:"
-msgstr "POP3 pass:"
+msgstr "Mật khẩu POP3:"
 
 msgid "No password submitted"
-msgstr "No password submitted"
+msgstr "Chưa nhập mật khẩu"
 
 msgid "authentication failed "
-msgstr "authentication failed "
+msgstr "lỗi xác thực"
 
 msgid "POP3 apop:"
 msgstr "POP3 apop:"
 
 msgid "No connection to server"
-msgstr "Chưa có kết nối tới máy chủ"
+msgstr "Chưa có kết nối tới máy phục vụ"
 
 msgid "No login ID submitted"
-msgstr "No login ID submitted"
+msgstr "Chưa gửi ID đăng nhập"
 
 msgid "No server banner"
-msgstr "No server banner"
+msgstr "Không có băng cờ máy phục vụ"
 
 msgid "abort"
-msgstr "bỏ dỡ"
+msgstr "hủy bỏ"
 
 msgid "apop authentication failed"
-msgstr "apop authentication failed"
+msgstr "lỗi xác thực APOP"
 
 msgid "POP3 login:"
-msgstr "POP3 login:"
+msgstr "Đang nhập POP3:"
 
 msgid "POP3 top:"
-msgstr "POP3 top:"
+msgstr "POP3 trên:"
 
 msgid "POP3 pop_list:"
-msgstr "POP3 pop_list:"
+msgstr "POP3 danh sách POP:"
 
 msgid "Premature end of list"
-msgstr "Premature end of list"
+msgstr "Kết thúc danh sách quá sớm"
 
 msgid "POP3 get:"
-msgstr "POP3 get:"
+msgstr "POP3 lấy:"
 
 msgid "POP3 last:"
-msgstr "POP3 last:"
+msgstr "POP3 cuối:"
 
 msgid "POP3 reset:"
-msgstr "POP3 reset:"
+msgstr "POP3 đặt lại:"
 
 msgid "POP3 send_cmd:"
-msgstr "POP3 send_cmd:"
+msgstr "POP3 gửi lệnh:"
 
 msgid "Empty command string"
-msgstr "Empty command string"
+msgstr "Chuỗi lệnh rỗng"
 
 msgid "POP3 quit:"
-msgstr "POP3 quit:"
+msgstr "POP3 thoát:"
 
 msgid "connection does not exist"
-msgstr "connection does not exist"
+msgstr "kết nối không tồn tại"
 
 msgid "POP3 uidl:"
 msgstr "POP3 uidl:"
 
 msgid "POP3 delete:"
-msgstr "POP3 delete:"
+msgstr "POP3 xoá:"
 
 msgid "No msg number submitted"
-msgstr "No msg number submitted"
+msgstr "Chưa nhập số thứ tự thư"
 
 msgid "Command failed "
-msgstr "Command failed "
+msgstr "Lệnh không thành công"
 
 msgid "Remote POP server Fetching Mail"
-msgstr "Remote POP server Fetching Mail"
+msgstr "Máy phục vụ POP từ xa đang lấy thư"
 
 msgid "Select Server:"
-msgstr "Seleccione Servidor:"
+msgstr "Chọn máy phục vụ :"
 
 msgid "Password for"
-msgstr "Password for"
+msgstr "Mật khẩu cho"
 
 msgid "Fetch Mail"
-msgstr "Fetch Mail"
+msgstr "Lấy thư"
 
 msgid "Fetching from "
-msgstr "Fetching from "
+msgstr "Đang lấy từ"
 
 msgid "Oops, "
-msgstr "Oops, "
+msgstr "Rõ tiếc, "
 
 msgid "Opening IMAP server"
-msgstr "Opening IMAP server"
+msgstr "Đang mở máy phục vụ IMAP"
 
 msgid "Opening POP server"
-msgstr "Opening POP server"
+msgstr "Đang mở máy phục vụ POP"
 
 msgid "Login Failed:"
-msgstr "Login Failed:"
+msgstr "Lỗi đăng nhập:"
 
 msgid "Login OK: No new messages"
-msgstr "Login OK: No new messages"
+msgstr "Đăng nhập được: chưa có thư mới"
 
 msgid "Login OK: Inbox EMPTY"
-msgstr "Login OK: Inbox EMPTY"
+msgstr "Đăng nhập được: Hộp Đến RỖNG"
 
-#, fuzzy, php-format
+#, php-format
 msgid "Login OK: Inbox contains %s messages"
-msgstr "Login OK: Inbox contains ["
+msgstr "Đăng nhập được: Hộp Đến chứa %s thư"
 
 msgid "Fetching UIDL..."
-msgstr "Fetching UIDL..."
+msgstr "Đang lấy UIDL..."
 
 msgid "Server does not support UIDL."
-msgstr "Server does not support UIDL."
+msgstr "Máy phục vụ không hỗ trợ UIDL."
 
-#, fuzzy
 msgid "Leaving mail on server..."
-msgstr "Leaving Mail on Server..."
+msgstr "Đang để lại các thư trên máy phục vụ..."
 
 msgid "Deleting messages from server..."
-msgstr "Deleting messages from server..."
+msgstr "Đang xoá các thư khỏi máy phục vụ..."
 
 msgid "Fetching message "
-msgstr "Fetching message "
+msgstr "Đang lấy thư"
 
 msgid "Server error. Disconnect"
-msgstr ""
+msgstr "Lỗi máy phục vụ. Ngắt kết nối"
 
 msgid "Reconnect from dead connection"
-msgstr ""
+msgstr "Tái kết nối từ kết nối chết"
 
 msgid "Saving UIDL"
-msgstr "Guardando UIDL"
+msgstr "Đang lưu UIDL"
 
-#, fuzzy
 msgid "Refetching message "
-msgstr "Fetching message "
+msgstr "Đang lấy lại thư"
 
 msgid "Error Appending Message!"
-msgstr "¡Ocurrió un error incorporando un mensaje!"
+msgstr "Lỗi phụ thêm lỗi."
 
 msgid "Closing POP"
-msgstr "Cerrando POP"
+msgstr "Đang đóng POP"
 
 msgid "Logging out from IMAP"
-msgstr "Desconectando del IMAP"
+msgstr "Đang đăng xuất khỏi IMAP"
 
 msgid "Message appended to mailbox"
-msgstr "Mensaje añadido al buzón"
+msgstr "Thư được phụ thêm vào hộp thư"
 
-#, fuzzy, php-format
+#, php-format
 msgid "Message %d deleted from remote server!"
-msgstr " borrado del servidor remoto."
+msgstr "Thư %d bị xoá khỏi máy phục vụ từ xa."
 
 msgid "Delete failed:"
-msgstr "Falló el Borrado:"
+msgstr "Lỗi xoá:"
 
 msgid "Remote POP server settings"
-msgstr "Configuración de Cuentas POP3"
+msgstr "Thiết lập máy phục vụ POP từ xa"
 
-#, fuzzy
 msgid ""
 "You should be aware that the encryption used to store your password is not "
 "perfectly secure. However, if you are using pop, there is inherently no "
 "encryption anyway. Additionally, the encryption that we do to save it on the "
 "server can be undone by a hacker reading the source to this file."
 msgstr ""
-"Debe saber que el cifrado usado para almacenar las contraseñas no es del "
-"todo seguro, y que un hacker con podría descifrarlas bajo determinadas "
-"circunstancias. Por otra parte, las cuentas POP no disponen de cifrado en si "
-"mismas. "
+"Ghi chú : chức năng mật mã dùng để lưu trữ mật khẩu của bạn không phải là bảo mật hoàn toàn. Tuy nhiên, nếu bạn đang dùng giao thức POP, thật không có mật mã. Trong mọi trường hợp đều, bất cứ người nào đọc mã nguồn của tập tin này có thể giải mật mã dùng để lưu mật khẩu của bạn vào máy phục vụ."
 
-#, fuzzy
 msgid "If you leave password empty, it will be asked when you fetch mail."
-msgstr "Si no introduce la contraseña se le pedirá durante la recogida."
+msgstr "Không nhập mật khẩu thì bạn sẽ nhắc nhập nó khi lấy thư."
 
 msgid "Encrypt passwords (informative only)"
-msgstr "Cifrar contraseñas (informativo)"
+msgstr "Mật mã mật khẩu (chỉ cung cấp thông tin)"
 
 msgid "Add Server"
-msgstr "Add Server"
+msgstr "Thêm máy phục vụ"
 
 msgid "Server:"
-msgstr "Servidor:"
+msgstr "Máy phục vụ :"
 
-#, fuzzy
 msgid "Port:"
-msgstr "Độ ưu tiên:"
+msgstr "Cổng:"
 
 msgid "Alias:"
-msgstr "Descripción:"
+msgstr "Bí danh:"
 
 msgid "Username:"
-msgstr "Nombre de Usuario"
+msgstr "Tên người dùng:"
 
 msgid "Store in Folder:"
-msgstr "Carpeta de Destino:"
+msgstr "Lưu vào thư mục:"
 
-#, fuzzy
 msgid "Leave mail on server"
-msgstr "Dejar el correo en el Servidor"
+msgstr "Để lại các thư trên máy phục vụ"
 
-#, fuzzy
 msgid "Check mail at login"
-msgstr "Comprobar el correo a la entrada"
+msgstr "Kiểm tra có thư khi đăng nhập"
 
-#, fuzzy
 msgid "Check mail at folder refresh"
-msgstr "Comprobar correo durante el refresco"
+msgstr "Kiểm tra có thư khi cập nhật thư mục"
 
 msgid "Modify Server"
-msgstr "Modificar Servidor"
+msgstr "Sửa máy phục vụ"
 
 msgid "Server Name:"
-msgstr "Nombre de Servidor:"
+msgstr "Tên máy phục vụ :"
 
 msgid "Modify"
-msgstr "Modificar"
+msgstr "Sửa"
 
-#, fuzzy
 msgid "No servers known."
-msgstr "No server banner"
+msgstr "Không có máy phục vụ đã biết."
 
 msgid "Fetching Servers"
-msgstr "Servidores de Recogida"
+msgstr "Đang lấy các máy phục vụ"
 
 msgid "Confirm Deletion of a Server"
-msgstr "Confirme el borrado del servidor"
+msgstr "Xác nhận xoá máy phục vụ"
 
 msgid "Selected Server:"
-msgstr "Servidor Borrado:"
+msgstr "Máy phục vụ đã chọn:"
 
 msgid "Confirm delete of selected server?"
-msgstr "¿Confirma el borrado del servidor?"
+msgstr "Xác nhận việc xoá máy phục vụ đã chọn không?"
 
 msgid "Confirm Delete"
-msgstr "Confirmar Borrado"
+msgstr "Xác nhận xoá"
 
 msgid "Leave Mail on Server"
-msgstr "Dejar el correo en el Servidor"
+msgstr "Để lại các thư trên máy phục vụ"
 
 msgid "Undefined Function"
-msgstr "Función no definida"
+msgstr "Chưa xác định chức năng"
 
 msgid "The function you requested is unknown."
-msgstr ""
+msgstr "Bạn đã yêu cầu một chức năng không rõ."
 
 msgid "Fetch"
-msgstr "Recoger"
+msgstr "Lấy"
 
 msgid "Warning, "
-msgstr "Atención, "
+msgstr "Cảnh báo, "
 
 msgid "Mail Fetch Result:"
-msgstr "Resultado de la recogida:"
+msgstr "Kết quả lấy thư"
 
-#, fuzzy
 msgid "POP3 Fetch Mail"
-msgstr "Recogida de Cuentas POP3"
+msgstr "Lấy thư POP3"
 
-#, fuzzy
 msgid ""
 "This configures settings for downloading email from a POP3 mailbox to your "
 "account on this server."
 msgstr ""
-"Esta opción configura los datos necesarios para recoger en su cuenta de este "
-"servidor correo de cuentas POP3."
+"Đây cấu hình thiết lập để tải thư tín xuống một hộp thư POP3 về tài khoản của bạn trên máy phục vụ này."
 
-#, fuzzy
 msgid "Message Details"
-msgstr "Danh sách các thông điệp"
+msgstr "Chi tiết thư"
 
 msgid "Bodystructure"
-msgstr ""
+msgstr "Cấu trúc thân"
 
-#, fuzzy
 msgid "Entity"
-msgstr "Soạn thảo"
+msgstr "Thực thể"
 
 msgid "Content-Type"
-msgstr ""
+msgstr "Kiểu nội dung"
 
 msgid "Encoding"
-msgstr ""
+msgstr "Bảng mã"
 
-#, fuzzy
 msgid "RFC822 Message body"
-msgstr "Sau thân thông điệp"
+msgstr "Thân thư RFC822"
 
 msgid "Close Window"
-msgstr "Đóng"
+msgstr "Đóng cửa sổ"
 
-#, fuzzy
 msgid "Save Message"
-msgstr "Mensaje "
+msgstr "Lưu thư"
 
-#, fuzzy
 msgid "View Message details"
-msgstr "Xem thông điệp"
+msgstr "Xem chi tiết thư"
 
 msgid "New Mail"
 msgstr "Thư mới"
@@ -3076,218 +2890,200 @@ msgstr "Thư mới"
 msgid "SquirrelMail Notice:"
 msgstr "Thông báo của SquirrelMail:"
 
-#, fuzzy, php-format
+#, php-format
 msgid "You have %s new message"
 msgid_plural "You have %s new messages"
-msgstr[0] "Bạn có thư mới!"
-msgstr[1] "Bạn có thư mới!"
+msgstr[0] "Bạn có %s thư mới"
 
-#, fuzzy, php-format
+#, php-format
 msgid "You have %s new messages"
-msgstr "Bạn có thư mới!"
+msgstr "Bạn có %s thư mới"
 
 msgid "New Mail Notification"
 msgstr "Thông Báo Thư Mới"
 
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "The %s option will check ALL of your folders for unseen mail, not just the "
 "inbox for notification."
 msgstr ""
-"<b>Kiểm tra tất cả thư mục, trừ THƯ ĐẾN</b> cho phép chọn thông báo khi tất "
-"cả thư mục có thư chưa xem, trừ <b>THƯ ĐẾN</b>."
+"Tùy chọn %s sẽ kiểm tra TẤT CẢ các thư mục tìm thư chưa xem, không phải chỉ Hộp Đến để thông báo."
 
 msgid "Check all boxes, not just INBOX"
-msgstr "Kiểm tra tất cả thư mục, trừ THƯ ĐẾN"
+msgstr "Kiểm tra tất cả thư mục, không phải chỉ THƯ ĐẾN"
 
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "Selecting the %s option will enable the showing of a popup window when "
 "unseen mail is in your folders (requires JavaScript)."
 msgstr ""
-"Chọn <b>Để lộ popup</b> nếu muốn cửa sổ popup hiện ra khi có thư chưa đọc "
-"trong thư mục."
+"Bật tùy chọn %s thì hiệu lực một cửa sổ tự mở khi thư mục chứa thư chưa xem (cần thiết JavaScript)."
 
 msgid "Show popup window on new mail"
-msgstr "Để lộ cửa sổ popup trên thư mới"
+msgstr "Cửa sổ tự mở khi có thư mới"
 
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "Use the %s option to only check for messages that are recent. Recent "
 "messages are those that have just recently showed up and have not been "
 "\"viewed\" or checked yet. This can prevent being continuously annoyed by "
 "sounds or popups for unseen mail."
 msgstr ""
-"Dùng chức năng <b>Kiểm tra các tin gần đây</b> để chỉ kiểm tra các thông "
-"điệp nhận gần đây xem thử đã đọc chưa."
+"Dùng tùy chọn %s để chỉ kiểm tra có thư vừa nhận. Các thư vừa nhận là những thư vừa nhận mà chưa được xem hoặc kiểm tra. Tùy chọn này có thể tránh có cửa sổ tự mở liên tục hoặc nghe âm thanh liên tục do thư chưa xem."
 
 msgid "Count only messages that are RECENT"
-msgstr "Kiểm tra các tin gần đây"
+msgstr "Đếm chỉ những thư VỪA NHẬN"
 
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "Selecting the %s option will change the title in some browsers to let you "
 "know when you have new mail (requires JavaScript, and only works in IE but "
 "you won't see errors with other browsers). This will always tell you if you "
 "have new mail, even if you have %s enabled."
 msgstr ""
-"Chọn <b>Thay đổi tiêu đề</b> để đổi tiêu đề trong vài trình duyệt, giúp bạn "
-"biết bạn có thư mới hay không (chỉ xài được trong IE thôi)."
+"Bật tùy chọn %s sẽ thay đổi tựa đề trên thanh cửa sổ trong một số trình duyệt Web nào đó để cho bạn biết khi có thư mới (cần thiết JavaScript và chỉ hoạt động được trong IE nhưng không thông báo lỗi trên trình duyệt khác). Tùy chọn này lúc nào sẽ cũng báo bạn nếu có thư mới, thậm chí nếu bạn đã cũng hiệu lực %s."
 
-#, fuzzy
 msgid "Change title on supported browsers"
-msgstr "Thay đổi tiêu đề"
+msgstr "Thay đổi tựa đề trong trình duyệt đã hỗ trợ"
 
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "Select %s to turn on playing a media file when unseen mail is in your "
 "folders. When enabled, you can specify the media file to play in the "
 "provided file box."
 msgstr ""
-"Chọn <b>Cho phép dùng chương trình Media</b> để chơi các tệp báo hiệu. Với "
-"lựa chọn này bạn có thể xác định tệp truyền thông để chơi ở hộp chọn bên "
-"dưới."
+"Bật %s để hiệu lực phát một tập tin nhạc/ảnh khi thư mục chứa thư chưa xem. Bật thì bạn có thể ghi rõ tập tin nhạc/ảnh cần phát trong hộp tập tin đã cung cấp."
 
 msgid "Enable Media Playing"
-msgstr "Cho phép dùng chương trình Media"
+msgstr "Bật phát nhạc/ảnh"
 
 #, php-format
 msgid ""
 "Select from the list of %s the media file to play when new mail arrives. If "
 "no file is specified, %s, no sound will be used."
-msgstr ""
+msgstr "Chọn trong danh sách các %s tập tin nhạc/ảnh cần phát khi nhận được thư mới. Không ghi rõ tập tin, %s, thì không phát âm thanh."
 
-#, fuzzy
 msgid "Select server file"
-msgstr "Chọn tệp trên máy chủ:"
+msgstr "Chọn tập tin máy phục vụ"
 
-#, fuzzy
 msgid "(none)"
-msgstr "Kết thúc"
+msgstr "(không có)"
 
 msgid "requires JavaScript to work"
-msgstr "yêu cầu Javascript để chạy"
+msgstr "yêu cầu JavaScript để chạy"
 
 msgid "Try"
-msgstr "Chơi thử"
+msgstr "Thử"
 
 msgid "Current File:"
-msgstr "Tệp hiện tại:"
+msgstr "Tập tin hiện tại:"
 
 msgid "NewMail Options"
-msgstr "Các lựa chọn Thư mới"
+msgstr "Tùy chọn Thư mới"
 
 msgid ""
 "This configures settings for playing sounds and/or showing popup windows "
 "when new mail arrives."
 msgstr ""
-"Các thiết lập cấu hình này dành để chơi một khúc nhạc hay mở một cửa sổ "
-"popup khi nhận được thư mới."
+"Các thiết lập cấu hình này dành để chơi một khúc nhạc hay tự mở một cửa sổ khi nhận được thư mới."
 
 #, php-format
 msgid "%s New Messages"
-msgstr "%s Thong Diep Moi"
+msgstr "%s Thư Mới"
 
-#, fuzzy, php-format
+#, php-format
 msgid "%s New Message"
 msgid_plural "%s New Messages"
-msgstr[0] "%s Thong Diep Moi"
-msgstr[1] "%s Thong Diep Moi"
+msgstr[0] "%s Thư Mới"
 
 msgid "Test Sound"
 msgstr "Thử âm thanh"
 
-#, fuzzy
 msgid "No sound specified"
-msgstr "Chưa xác định máy chủ"
+msgstr "Chưa xác định âm thanh"
 
 msgid "Loading the sound..."
-msgstr "Đang tải âm thanh ..."
+msgstr "Đang nạp âm thanh ..."
 
 msgid "Sent Subfolders Options"
-msgstr "Opciones de Carpetas Subordinadas de Mensajes Enviados"
+msgstr "Tùy chọn thư mục con Đã Gửi"
 
 msgid "Use Sent Subfolders"
-msgstr "Emplear Carpetas Subordinadas de Mensajes Enviados"
+msgstr "Dùng thư mục con Đã Gửi"
 
 msgid "Monthly"
-msgstr "Mensualmente"
+msgstr "Hàng tháng"
 
 msgid "Quarterly"
-msgstr "Trimestralmente"
+msgstr "Hàng quý"
 
 msgid "Yearly"
-msgstr "Anualmente"
+msgstr "Hàng năm"
 
 msgid "Base Sent Folder"
-msgstr "Carpeta Base de Mensajes Enviados"
+msgstr "Thư mục gốc Đã Gửi"
 
-#, fuzzy
 msgid "Enabled"
-msgstr "Không cho phép"
+msgstr "Đã bật"
 
-#, fuzzy
 msgid "Disable it"
-msgstr "Không cho phép"
+msgstr "Tắt nó"
 
 msgid "Enable it"
-msgstr ""
+msgstr "Bật nó"
 
-#, fuzzy
 msgid "Spam reporting"
-msgstr "Filtro SPAM"
+msgstr "Thông báo thư rác"
 
 msgid "SpamCop link is:"
-msgstr ""
+msgstr "Liên kết SpamCop:"
 
-#, fuzzy
 msgid "Delete spam when reported:"
-msgstr "Xóa cái đã chọn"
+msgstr "Xóa thư rác đã thông báo :"
 
 msgid "Only works with email-based reporting"
-msgstr ""
+msgstr "Chỉ hoạt động được với chức năng thông báo dựa vào thư điện tử"
 
 msgid "Spam Reporting Method:"
-msgstr ""
+msgstr "Phương pháp thông báo thư rác:"
 
 msgid "Quick email-based reporting"
-msgstr ""
+msgstr "Thông báo nhanh dựa vào thư điện tử"
 
 msgid "Thorough email-based reporting"
-msgstr ""
+msgstr "Thông báo cẩn thận dựa vào thư điện tử"
 
 msgid "Web-based form"
-msgstr ""
+msgstr "Biểu mẫu dựa vào Web"
 
 msgid "Save Method"
-msgstr ""
+msgstr "Lưu phương pháp"
 
 msgid "Your SpamCop authorization code:"
-msgstr ""
+msgstr "Mã xác thực SpamCop của bạn:"
 
 msgid "see below"
-msgstr ""
+msgstr "xem dưới"
 
-#, fuzzy
 msgid "Save ID"
-msgstr "Guardar"
+msgstr "Lưu ID"
 
 msgid "About SpamCop"
-msgstr ""
+msgstr "Giới thiệu SpamCop"
 
 msgid ""
 "SpamCop is a free service that greatly assists in finding the true source of "
 "the spam and helps in letting the proper people know about the abuse."
-msgstr ""
+msgstr "SpamCop là một dịch vụ miễn phí mà rất giúp tìm nguồn thật của thư rác, và giúp báo các người thích hợp về trường hợp lạm dụng đó."
 
 #, php-format
 msgid ""
 "To use it, you must get a SpamCop authorization code. There is a free %ssign "
 "up page%s so you can use SpamCop."
-msgstr ""
+msgstr "Để sử dụng nó, bạn cần phải giành được một mã xác thực SpamCop. Có một %strang đăng ký miễn phí%s vì vậy dễ sử dụng SpamCop."
 
 msgid "Before you sign up, be warned"
-msgstr ""
+msgstr "Trước khi đăng ký, ghi chú"
 
 #, php-format
 msgid ""
@@ -3298,7 +3094,7 @@ msgid ""
 "worries about losing your real email address. Just go create an email "
 "forwarder somewhere (%s has a %slist of places%s) so that messages from "
 "system administrators and what not can be sent to you."
-msgstr ""
+msgstr "Một số người dùng nào đó đã thông báo rằng địa chỉ thư điện tử được dùng với SpamCop có phải được kèm thêm vào danh sách của người gửi thư. Để an toàn, bạn chỉ có thể tạo một tài khoản chuyển tiếp thư, và đặt mọi thông báo SpamCop được gửi cho nó. Hơn nữa, nếu địa chỉ này tràn ngập thư rác, bạn có thể xoá tài khoản đó, không cần lo về mất địa chỉ thư điện tử thật. Chỉ tạo một bộ chuyển tiếp thư điện tử ở một nơi nào đó (%s có một %sdanh sách các nơi%s) để mà quản trị v.v. vẫn còn có thể gửi thư cho bạn."
 
 msgid ""
 "Once you have signed up with SpamCop and have received your SpamCop "
@@ -3309,10 +3105,10 @@ msgid ""
 "message as spam. Clicking on it brings you to a confirmation page. "
 "Confirming that you want the spam report sent will do different things with "
 "different reporting methods."
-msgstr ""
+msgstr "Một khi đăng nhập với SpamCop và nhận được mã xác thực SpamCop riêng, bạn cần phải hiệu lực phần bổ sung này bằng cách nhấn vào liên kết trên. Một khi bật thì bạn chỉ làm các việc bình thường. Gặp thư rác trong hộp thư thì chỉ xem nó. Ở bên phải, gần đầu của ô hiển thị thư, bạn sẽ thấy một liên kết để thông báo thư đó là thư rác. Cú nhấn vào nó sẽ đưa bạn sang một trang xác nhận. Việc xác nhận sẽ có kết quả khác nhau tùy theo phương pháp thông báo khác nhau."
 
 msgid "Email-based reporting"
-msgstr ""
+msgstr "Thông báo dựa vào thư điện tử"
 
 msgid ""
 "Pressing the button forwards the message to the SpamCop service and will "
@@ -3321,23 +3117,23 @@ msgid ""
 "account you registered with, so make sure that your mail forwarder works!) "
 "Open it up, click on the appropriate link at the top, and a new browser "
 "window will open."
-msgstr ""
+msgstr "Cú bấm cái nút sẽ chuyển tiếp thư cho dịch vụ SpamCop (và tùy chọn sẽ cũng xoá thư đó). Từ đó, bạn chỉ cần trở về Hộp Đến mà sắp nhận một thư từ SpamCop. (Thư này được gửi cho địa chỉ đã đăng ký: hãy kiểm tra bộ chuyển tiếp thư của bạn đang chạy được.) Mở thư này, nhấn vào liên kết thích hợp ở đầu, và một cửa sổ trình duyệt mới sẽ mở."
 
 msgid ""
 "Currently, the quick reporting just forwards the request to the thorough "
 "reporting. Also, it appears that this is for members (non-free) only. "
 "Hopefully this will change soon."
-msgstr ""
+msgstr "Hiện thời, phương pháp thông báo nhanh chỉ chuyển tiếp yêu cầu cho phương pháp thông báo cẩn thận. Hơn nữa, có vẻ là nó dành cho thành viên (không phải miễn phí). Mong muốn trường hợp này thay đổi sớm."
 
 msgid "Web-based reporting"
-msgstr ""
+msgstr "Thông báo dựa vào Web"
 
 msgid ""
 "When you press the button on the confirmation page, this will pop open a new "
 "browser window and the SpamCop service should appear inside. The message "
 "will not be deleted (working on that part), but you won't need to wait for a "
 "response email to start the spam reporting."
-msgstr ""
+msgstr "Khi bạn bấm cái nút trên trang xác nhận, một cửa sổ trình duyệt mới sẽ tự mở, nên chứa dịch vụ SpamCop. Thư sẽ không bị xoá (vẫn phát triển giai đoạn đó), nhưng bạn không cần phải đợi nhận một thư đáp ứng để khởi chạy tiến trình thông báo thư rác."
 
 msgid ""
 "The SpamCop service will display information as it finds it, so scroll down "
@@ -3345,73 +3141,70 @@ msgid ""
 "information, so be a little patient. Read what it says, and submit the spam. "
 "Close the browser window. Press Cancel or click on the appropriate mail "
 "folder to see messages and/or delete the spam."
-msgstr ""
+msgstr "Dịch vụ SpamCop sẽ hiển thị thông tin khi tìm nó, vậy bạn nên cuộn xuống đến khi thấy một cái nút biểu mẫu. Nó có thể tạm dừng một ít trong khi tra cứu thông tin, vậy hãy kiên nhẫn. Đọc thông tin nó cung cấp, rồi đệ trình thư rác. Đóng cửa sổ trình duyệt. Bấm nút Thôi hoặc nhấn vào thư mục thư thích hợp để xem các thư và/hoặc xoá thư rác."
 
 msgid "SpamCop service type"
-msgstr ""
+msgstr "Kiểu dịch vụ SpamCop"
 
 msgid ""
 "Service type option allows selecting which SpamCop services you are using. "
 "Member services use different web reporting forms and does not display nags. "
 "You can purchase these services, if you want to support SpamCop."
-msgstr ""
+msgstr "Tùy chọn kiểu dịch vụ thì cho phép bạn chọn dịch vụ SpamCop nào cần ùng. Các dịch vụ dành cho thành viên có dùng các biểu mẫu thông báo khác trên Web, cũng không hiển thị thông điệp rầy la. Bạn có thể mua dịch vụ này, để hỗ trợ sự cố gắng đấu tranh chống thư rác của SpamCop."
 
-#, fuzzy
 msgid "More information"
-msgstr "Thông tin cá nhân"
+msgstr "Thông tin bổ sung"
 
 #, php-format
 msgid ""
 "For more information about SpamCop, it's services, spam in general, and many "
 "related topics, try reading through SpamCop's %sHelp and Feedback%s section."
-msgstr ""
+msgstr "Để tìm thêm thông tin về SpamCop, các dịch vụ của nó, thư rác nói chung và các chủ đề liên quan, hãy đọc phần Trợ giúp và Phản hồi (%sHelp and Feedback%s) của SpamCop."
 
 msgid "Report as Spam"
-msgstr ""
+msgstr "Thông báo là thư rác"
 
 msgid "SpamCop - Spam Reporting"
-msgstr ""
+msgstr "SpamCop — Thông Báo Thư Rác"
 
 msgid ""
 "Help fight the battle against unsolicited email. SpamCop reads the spam "
 "email and determines the correct addresses to send complaints to. Quite "
 "fast, really smart, and easy to use."
-msgstr ""
+msgstr "Xin hãy giúp đầu tranh chống thư không được yêu cầu. SpamCop đọc thư rác và quyết định những địa chỉ đúng cho chúng cần gửi lời than phiền. Nó hơi nhanh, rất khéo và dễ dùng."
 
 msgid ""
 "Sending this spam report will give you back a reply with URLs that you can "
 "click on to properly report this spam message to the proper authorities. "
 "This is a free service. By pressing the \"Send Spam Report\" button, you "
 "agree to follow SpamCop's rules/terms of service/etc."
-msgstr ""
+msgstr "Gửi thông báo thư rác này sẽ có kết quả là bạn nhận được một thư chứa các địa chỉ URL vào chúng bạn có thể nhấn chuột để thông báo đúng thư rác này cho các nhà chức trách thích hợp. Bằng cách bấm cái nút « Gửi báo cáo thư rác », bạn đồng ý với các điều kiện dịch vụ của SpamCop."
 
 msgid "Cancel / Done"
-msgstr ""
+msgstr "Thôi/Hoàn tất"
 
 msgid "Send Spam Report"
-msgstr ""
+msgstr "Gửi báo cáo thư rác"
 
 msgid "SpellChecker Options"
-msgstr "Các lựa chọn kiểm chính tả"
+msgstr "Tùy chọn Kiểm tra Chính tả"
 
 msgid ""
 "Here you may set up how your personal dictionary is stored, edit it, or "
 "choose which languages should be available to you when spell-checking."
 msgstr ""
 "Ở đây, bạn có thể thiết lập từ điển riêng cho mình, soạn thảo nó, hoặc chọn "
-"ngôn ngữ có sẵn để kiểm lỗi chính tả."
+"những ngôn ngữ có sẵn để kiểm lỗi chính tả."
 
 msgid "Check Spelling"
 msgstr "Kiểm tra chính tả"
 
-#, fuzzy
 msgid "Back to &quot;SpellChecker Options&quot; page"
-msgstr "Quay lại trang \"SpellChecker Options\""
+msgstr "Trở về trang « Tùy chọn Kiểm tra Chính tả »"
 
 msgid "ATTENTION:"
-msgstr "ATTENTION:"
+msgstr "CHÚ Ý:"
 
-#, fuzzy
 msgid ""
 "SquirrelSpell was unable to decrypt your personal dictionary. This is most "
 "likely due to the fact that you have changed your mailbox password. In order "
@@ -3423,11 +3216,11 @@ msgid ""
 "encrypted data is no longer accessible."
 msgstr ""
 "SquirrelSpell không thể giải mã từ điển riêng của bạn. Có thể do bạn đã thay "
-"đổi mật khẩu của hộp thư. Để tiếp tục, bạn cần phải cung cấp mật khẩu của "
+"đổi mật khẩu của hộp thư. Để tiếp tục, bạn cần phải cung cấp mật khẩu cũ "
 "thì SquirrelSpell mới có thể giải mã từ điển riêng của bạn. Nó sẽ được mã "
-"hóa lại với mật khẩu mới sau này. <br> Nếu bạn chưa mã hóa, sau này nó sẽ bị "
-"hư và không còn hiệu lực nữa. Bạn sẽ phải xóa nó và làm lại. Điều này cũng "
-"xảy ra khi bạn không nhớ mật khẩu cũ -- không có nó thì dữ liệu đã mã hóa "
+"hóa lại với mật khẩu mới sau này. Nếu bạn chưa mã hóa, nó đã bị "
+"hư nên không còn hiệu lực nữa. Bạn sẽ phải xóa nó và làm lại. Điều này cũng "
+"xảy ra khi bạn không nhớ mật khẩu cũ — không có nó thì dữ liệu đã mã hóa "
 "không thể truy cập được nữa."
 
 msgid "Delete my dictionary and start a new one"
@@ -3437,63 +3230,62 @@ msgid "Decrypt my dictionary with my old password:"
 msgstr "Giải mã từ điển của tôi với mật khẩu cũ:"
 
 msgid "Proceed"
-msgstr "Proceder"
+msgstr "Tiếp tục"
 
 msgid "You must make a choice"
-msgstr "Debe hacer alguna elección"
+msgstr "Bạn cần phải chọn gì"
 
 msgid ""
 "You can either delete your dictionary or type in the old password. Not both."
 msgstr ""
-"Puede borrar su diccionario o introducir la contraseña deldiccionario "
-"antiguo."
+"Bạn có thể hoặc xoá từ điển của mình, hoặc gõ mật khẩu cũ. Không phải cả hai."
 
 msgid "This will delete your personal dictionary file. Proceed?"
-msgstr "Esto borrará su diccionario personal. ¿Continuamos?"
+msgstr "Hành động này sẽ xoá tập tin từ điển riêng của bạn. Tiếp tục ?"
 
 msgid "Error Decrypting Dictionary"
-msgstr "Error Descifrando el Diccionario"
+msgstr "Lỗi giải mật mã từ điển"
 
 msgid "Cute."
-msgstr "Muy bonito."
+msgstr "Xảo quyệt."
 
 #, php-format
 msgid "Could not run the spellchecker command (%s)."
-msgstr ""
+msgstr "Không thể chạy câu lệnh kiểm tra chính tả (%s)."
 
 msgid "Error while writing to pipe."
-msgstr ""
+msgstr "Lỗi khi ghi vào ống dẫn."
 
-#, fuzzy, php-format
+#, php-format
 msgid "Could not open temporary file '%s'."
-msgstr "Không thể khóa tệp dữ liệu"
+msgstr "Không thể mở tập tin tạm thời « %s »."
 
 #, php-format
 msgid "Error while writing to temporary file '%s'."
-msgstr ""
+msgstr "Lỗi khi ghi vào tập tin tạm thời « %s »."
 
 #, php-format
 msgid "I tried to execute '%s', but it returned:"
-msgstr "Se ha intentado ejecutar '%s', pero ha devuelto:"
+msgstr "Thử thực hiện « %s » nhưng nó đã đáp ứng:"
 
 msgid "SquirrelSpell is misconfigured."
-msgstr "SquirrelSpell está mal configurado"
+msgstr "SquirrelSpell sai cấu hình."
 
 msgid "Spellcheck completed. Commit changes?"
-msgstr "La comprobación no finalizó.¿Guardamos las correcciones?"
+msgstr "Tiến trình kiểm tra chính tả đã chạy xong. Ghi lưu các thay đổi không?"
 
 msgid "No changes were made."
-msgstr "No se han realizado cambios."
+msgstr "Chưa thay đổi gì."
 
 msgid "Now saving your personal dictionary... Please wait."
-msgstr "Almacenando su diccionario personal... Espere un momento."
+msgstr "Hiện thời đang lưu từ điển riêng của bạn... hãy đợi."
 
 msgid "SquirrelSpell Results"
-msgstr "Resultados de SquirrelSpell"
+msgstr "Kết quả của SquirrelSpell"
 
 #, php-format
 msgid "Found %s errors"
-msgstr "Se encontraron %s errores"
+msgstr "Tìm %s lỗi"
 
 msgid "Line with an error:"
 msgstr "Dòng có lỗi:"
@@ -3502,10 +3294,10 @@ msgid "Error:"
 msgstr "Lỗi:"
 
 msgid "Suggestions:"
-msgstr "Đề nghị:"
+msgstr "Góp ý:"
 
 msgid "Suggestions"
-msgstr "Các đề nghị"
+msgstr "Góp ý"
 
 msgid "Change to:"
 msgstr "Đổi thành:"
@@ -3520,7 +3312,7 @@ msgid "Change"
 msgstr "Đổi"
 
 msgid "Change ALL occurances of this word"
-msgstr "Cambia TODAS las apariciones de esta palabra"
+msgstr "Thay đổi TẤT CẢ các lần từ này xảy ra"
 
 msgid "Change All"
 msgstr "Đổi tất cả"
@@ -3528,18 +3320,17 @@ msgstr "Đổi tất cả"
 msgid "Ignore this word"
 msgstr "Bỏ qua từ này"
 
-#, fuzzy
 msgid "Ignore"
-msgstr "Bỏ qua tất cả"
+msgstr "Bỏ qua"
 
 msgid "Ignore ALL occurances this word"
-msgstr "Ignora TODAS las apariciones de esta palabra"
+msgstr "Bỏ qua TẤT CẢ các lần từ này xảy ra"
 
 msgid "Ignore All"
 msgstr "Bỏ qua tất cả"
 
 msgid "Add this word to your personal dictionary"
-msgstr "Agregar esta palabra a su diccionario personal"
+msgstr "Thêm từ này vào từ điển riêng của bạn"
 
 msgid "Add to Dic"
 msgstr "Thêm vào từ điển"
@@ -3548,83 +3339,73 @@ msgid "Close and Commit"
 msgstr "Đóng lại và Ghi vào"
 
 msgid "The spellcheck is not finished. Really close and commit changes?"
-msgstr "Việc kiểm chính tả chưa xong. Bạn có muốn đóng lại và ghi vào?"
+msgstr "Việc kiểm chính tả chưa xong. Bạn thực sự muốn đóng lại và ghi vào?"
 
 msgid "Close and Cancel"
 msgstr "Đóng lại và Hủy bỏ"
 
 msgid "The spellcheck is not finished. Really close and discard changes?"
-msgstr "Việc kiểm chính tả chưa xong. Bạn có muốn đóng lại và hủy bỏ?"
+msgstr "Việc kiểm chính tả chưa xong. Bạn thực sự muốn đóng lại và hủy bỏ?"
 
 msgid "No errors found"
 msgstr "Không tìm thấy lỗi"
 
-#, fuzzy
 msgid ""
 "Your personal dictionary has been encrypted and is now stored in an "
 "encrypted format."
 msgstr ""
-"Su diccionario personal ha sido <b>cifrado</b> y ha sido almacenado en un "
-"formato <b>cifrado</b>."
+"Từ điển riêng của bạn đã được mật mã và giờ được lưu theo định dạng đã mật mã."
 
-#, fuzzy
 msgid ""
 "Your personal dictionary has been decrypted and is now stored as plain text."
 msgstr ""
-"Su diccionario personal ha sido <b>descifrado</b> y se ha almacenado como "
-"<b>texto</b> sin cifrar."
+"Từ điển riêng của bạn đã được giải mật mã và giờ được lưu dạng nhập thô."
 
 msgid "Personal Dictionary Crypto Settings"
-msgstr "Opciones de Cifrado del Diccionario Personal"
+msgstr "Thiết lập Mật mã Từ điển Riêng"
 
 msgid "Your personal dictionary was erased."
 msgstr "Từ điển riêng của bạn đã bị xóa."
 
 msgid "Dictionary Erased"
-msgstr "Diccionario Borrado"
+msgstr "Từ điển bị xoá"
 
 msgid ""
 "Your personal dictionary was erased. Please close this window and click "
 "\"Check Spelling\" button again to start your spellcheck over."
 msgstr ""
-"Su diccionario personal ha sido borrado. Por favor cierre estaventana y "
-"pulse el botón de comprobar la ortografía de nuevo."
+"Từ điển riêng của bạn đã bị xoá. Hãy đóng cửa sổ này và nhấn vào cái nút « Kiểm tra Chính tả » lần nữa để khởi chạy lại tiến trình kiểm tra chính tả."
 
 msgid "Close this Window"
-msgstr "Cerrar esta Ventana"
+msgstr "Đóng cửa sổ này"
 
-#, fuzzy
 msgid ""
 "Your personal dictionary was re-encrypted successfully. Now return to the "
 "&quot;SpellChecker options&quot; menu and make your selection again."
 msgstr ""
-"Su diccionario personal ha sido cifrado correctamente. Vuelva a la página de "
-"opciones de SpellChecker y vuelva a realizar su selección."
+"Từ điển riêng của bạn đã được mật mã lại thành công. Sau đó thì bạn nên trở về trình đơn « Tùy chọn Kiểm tra Chính tả » và làm lựa chọn lại."
 
-#, fuzzy
 msgid "Successful re-encryption"
-msgstr "Cifrado Correcto"
+msgstr "Mật mã lại thành công"
 
 msgid ""
 "Your personal dictionary was re-encrypted successfully. Please close this "
 "window and click \"Check Spelling\" button again to start your spellcheck "
 "over."
 msgstr ""
-"Su diccionario personal ha sido cifrado correctamente. Por favor cierre esta "
-"venta y pulse sobre el botón \"Otrografía\" de nuevo para volver a empezar "
-"la comprobación"
+"Từ điển riêng của bạn đã được mật mã lại thành công. Sau đó thì bạn nên trở về trình đơn « Tùy chọn Kiểm tra Chính tả » để khởi chạy lại tiến trình kiểm tra chính tả."
 
 msgid "Dictionary re-encrypted"
-msgstr "Diccionario Cifrado"
+msgstr "Từ điển đã mật mã lại"
 
 msgid "Personal Dictionary"
-msgstr "Diccionario Personal"
+msgstr "Từ điển riêng"
 
 msgid "No words in your personal dictionary."
 msgstr "Chưa có từ nào trong từ điển riêng của bạn."
 
 msgid "Please check any words you wish to delete from your dictionary."
-msgstr "Vui lòng chọn các từ mà bạn muốn xóa."
+msgstr "Hãy chọn các từ mà bạn muốn xóa."
 
 #, php-format
 msgid "%s dictionary"
@@ -3634,59 +3415,55 @@ msgid "Delete checked words"
 msgstr "Xóa các từ đã chọn"
 
 msgid "Edit your Personal Dictionary"
-msgstr "Soạn thảo từ điển riêng"
+msgstr "Sửa từ điển riêng"
 
 msgid "Please make your selection first."
-msgstr "Por favor elija algo antes."
+msgstr "Trước tiên hãy chọn gì."
 
 msgid ""
 "This will encrypt your personal dictionary and store it in an encrypted "
 "format. Proceed?"
-msgstr "Esto cifrará su diccionario personal. ¿Continuamos?"
+msgstr "Hành động này sẽ mật mã hoá từ điển riêng của bạn và lưu nó theo định dạng đã mật mã. Tiếp tục ?"
 
-#, fuzzy
 msgid ""
 "This will decrypt your personal dictionary and store it in a plain text "
 "format. Proceed?"
-msgstr "Esto descifrará su diccionario personal. ¿Continuamos?"
+msgstr "Hành động này sẽ giải mật mã từ điển riêng của bạn và lưu nó theo định dạng nhập thô. Tiếp tục ?"
 
-#, fuzzy
 msgid "Your personal dictionary is currently encrypted."
-msgstr "Từ điển riêng của bạn đã bị xóa."
+msgstr "Từ điển riêng của bạn hiện thời đã được mật mã."
 
 msgid ""
 "This helps protect your privacy in case the web-mail system gets compromized "
 "and your personal dictionary ends up stolen. It is currently encrypted with "
 "the password you use to access your mailbox, making it hard for anyone to "
 "see what is stored in your personal dictionary."
-msgstr ""
+msgstr "Đây giúp bảo vệ sự riêng tư của bạn trong trường hợp hệ thống thư tín Web bị hại thậm và từ điển riêng của bạn bị ăn cắp. Nó hiện thời được mật mã bằng mật khẩu bạn dùng để truy cập đến hộp thư của bạn, làm cho khó cho ai đó muốn xem nội dung."
 
 msgid ""
 "If you forget your password, your personal dictionary will become "
 "unaccessible, since it can no longer be decrypted. If you change your "
 "mailbox password, SquirrelSpell will recognize it and prompt you for your "
 "old password in order to re-encrypt the dictionary with a new key."
-msgstr ""
+msgstr "Quên mật khẩu thì không thể truy cập được nữa từ điển riêng, vì không còn có thể giải mật mã lại. Nếu bạn thay đổi mật khẩu hộp thư, trình SquirrelSpell sẽ nhận dạng nó và nhắc bạn nhập mật khẩu cũ để mật mã lại từ điển bằng mật khẩu mới."
 
 msgid ""
 "Please decrypt my personal dictionary and store it in a clear-text format."
-msgstr "Por favor descifra mi diccionario personal y guárdalo en modo texto."
+msgstr "Hãy giải mật mã từ điển riêng của tôi, và lưu nó dạng nhập thô."
 
 msgid "Change crypto settings"
-msgstr "Cambiar opciones de cifrado"
+msgstr "Đổi thiết lập mật mã"
 
-#, fuzzy
 msgid "Your personal dictionary is currently not encrypted."
-msgstr "Từ điển riêng của bạn đã bị xóa."
+msgstr "Từ điển riêng của bạn hiện thời không phải được mật mã."
 
 msgid ""
 "You may wish to encrypt your personal dictionary to protect your privacy in "
 "case the webmail system gets compromized and your personal dictionary file "
 "gets stolen. When encrypted, the file's contents look garbled and are hard "
 "to decrypt without knowing the correct key (which is your mailbox password)."
-msgstr ""
+msgstr "Có lẽ bạn muốn mật mã hoá từ điển riêng để bảo vệ sự riêng tư của bạn trong trường hợp hệ thống thư tín Web bị hại thậm và từ điển riêng của bạn bị ăn cắp. Việc mật mã hoá thì làm cho lộn xộn nội dung của tập tin, khoá mật mã khi không có khoá đúng (mật khẩu hộp thư)."
 
-#, fuzzy
 msgid ""
 "If you decide to encrypt your personal dictionary, you must remember that it "
 "gets &quot;hashed&quot; with your mailbox password. If you forget your "
@@ -3696,65 +3473,54 @@ msgid ""
 "but you still have the old password at hand, you will be able to enter the "
 "old key to re-encrypt the dictionary with the new value."
 msgstr ""
-"<p>Actualmente su diccionario personal <b>no está cifrado</b>. Si lo desea "
-"puede hacerlo para proteger su intimidad en el caso en el que la seguridad "
-"del correo WEB se vea comprometida y se robe el fichero que contiene su "
-"diccionario. Una vez cifrado, es muy improbable que se pueda ver su "
-"contenido sin conocer su contraseña (que equivale a la de su buzón de "
-"correo).</p><b>ATENCIóN:</b> Si una vez el diccionario cifrado usted "
-"olvidara la contraseña, este no podría volver a utilizarse. En cualquier "
-"caso, si se produjera algún cambio en la contraseña de su buzón deberá de "
-"facilitar la contraseña antigua para poder cifrar el diccionario con la "
-"clave nueva.</p>"
+"Nếu bạn quyết định mật mã hoá từ điển riêng, ghi nhớ rằng nó sẽ bị &quot;hash&quot; (làm lộn xộn) bằng mật khẩu hộp thư của bạn. Nếu bạn quên mật khẩu hộp thư và quản trị thay đổi nó thành một giá trị mới, từ điển riêng của bạn sẽ không còn có ích lại, vậy bạn cần phải tạo lại từ số không. Tuy nhiên, nếu quản trị hệ thống đã thay đổi mật khẩu hộp thư của bạn, còn bạn vẫn có mật khẩu cũ, bạn có thể nhập mật khẩu cũ để mật mã hoá từ điển bằng giá trị mới."
 
 msgid ""
 "Please encrypt my personal dictionary and store it in an encrypted format."
-msgstr "Por favor cifra mi diccionario."
+msgstr "Mật mã hoá từ điển riêng của tôi, và lưu nó theo một định dạng đã mật mã."
 
-#, fuzzy, php-format
+#, php-format
 msgid "Deleting the following entries from %s dictionary:"
-msgstr "Xóa các mục từ <b>%s</b> khỏi từ điển:"
+msgstr "Đang xóa các mục sau khỏi từ điển %s:"
 
 msgid "All done!"
-msgstr "Đã hoàn tất!"
+msgstr "Hoàn tất."
 
 msgid "Personal Dictionary Updated"
-msgstr "Diccionario Personal Actualizado"
+msgstr "Từ điển riêng đã được cập nhật"
 
 msgid "No changes requested."
-msgstr "Không có thay đổi nào được yêu cầu"
+msgstr "Không có thay đổi nào được yêu cầu."
 
 msgid "Please wait, communicating with the server..."
-msgstr "Espere un momento, comunicando con el servidor ..."
+msgstr "Hãy đợi, đang liên lạc với máy phục vụ..."
 
 msgid ""
 "Please choose which dictionary you would like to use to spellcheck this "
 "message:"
 msgstr ""
-"Xin vui lòng chọn từ điển mà bạn muốn dùng để kiểm tra chính tả thông điệp "
-"này:"
+"Hãy chọn từ điển mà bạn muốn dùng để kiểm tra chính tả thư này:"
 
 msgid "SquirrelSpell Initiating"
-msgstr "Bắt đầu SquirrelSpell"
+msgstr "Đang khởi chạy SquirrelSpell"
 
-#, fuzzy, php-format
+#, php-format
 msgid "Settings adjusted to: %s with %s as default dictionary."
-msgstr "Chỉnh các thiết lập cho: <b>%s</b>, với <b>%s</b> là từ điển mặc định."
+msgstr "Đã chỉnh các thiết lập thành %s, với %s là từ điển mặc định."
 
-#, fuzzy, php-format
+#, php-format
 msgid "Using %s dictionary (system default) for spellcheck."
 msgstr ""
-"Usando el diccionario <b>%s</b> (establecido por omisión) para comprobar la "
-"ortografía"
+"Đang dùng từ điển %s (mặc định hệ thống) để kiểm tra chính tả."
 
 msgid "International Dictionaries Preferences Updated"
-msgstr "Opciones de Diccionarios Intl. Actualizadas"
+msgstr "Tùy thích Từ điển Quốc tế đã được Cập nhật"
 
 msgid ""
 "Please check any available international dictionaries which you would like "
 "to use when spellchecking:"
 msgstr ""
-"Vui lòng chọn các từ điển có sẵn dưới đây để dùng khi kiểm lỗi chính tả:"
+"Hãy chọn các từ điển quốc tế có sẵn dưới đây để dùng khi kiểm lỗi chính tả:"
 
 msgid "Make this dictionary my default selection:"
 msgstr "Chọn từ điển mặc định:"
@@ -3763,13 +3529,13 @@ msgid "Make these changes"
 msgstr "Thay đổi"
 
 msgid "Add International Dictionaries"
-msgstr "Chọn các từ điển quốc tế"
+msgstr "Thêm các từ điển quốc tế"
 
 msgid "Please choose which options you wish to set up:"
-msgstr "Vui lòng chọn cái mà bạn cần thiết lập:"
+msgstr "Hãy chọn cái mà bạn cần thiết lập:"
 
 msgid "Edit your personal dictionary"
-msgstr "Soạn từ điển riêng"
+msgstr "Sửa từ điển riêng"
 
 msgid "Set up international dictionaries"
 msgstr "Thiết lập các từ điển quốc tế"
@@ -3778,101 +3544,92 @@ msgid "Encrypt or decrypt your personal dictionary"
 msgstr "Mã hóa hoặc giải mã từ điển riêng"
 
 msgid "not available"
-msgstr "chưa có"
+msgstr "không sẵn sàng"
 
 msgid "SquirrelSpell Options Menu"
-msgstr "Các lựa chọn của SquirrelSpell"
+msgstr "Trình đơn Tùy chọn của SquirrelSpell"
 
 msgid "Translator"
-msgstr "Traductor"
+msgstr "Bộ dịch"
 
-#, fuzzy
 msgid "Saved Translation Options"
-msgstr "Opciones de Traducción"
+msgstr "Tùy chọn Dịch đã Lưu"
 
 msgid "Your server options are as follows:"
-msgstr "Estas son sus opciones de servidor:"
+msgstr "Các tùy chọn máy phục vụ :"
 
-#, fuzzy
 msgid "Maximum of 150 words translated, powered by Systran"
-msgstr "10 pares de idiomas, máximo de 25 ks. traducidos, motor de Systran"
+msgstr "Dịch đến 150 từ, chạy bằng Systran"
 
 #, php-format
 msgid "Number of supported language pairs: %s"
-msgstr ""
+msgstr "Số cặp ngôn ngữ được hỗ trợ : %s"
 
-#, fuzzy
 msgid "No known limits, powered by Systran"
-msgstr "12 pares de idiomas, no hay límites conocidos, motor de Systran"
+msgstr "Không có hạn chế đã biết, chạy bằng Systran"
 
-#, fuzzy
 msgid "No known limits, powered by Translation Experts' InterTran"
 msgstr ""
-"767 pares de idiomas, no hay límites conocidos, motor InterTran de "
-"Translation Experts"
+"Không có hạn chế đã biết, chạy bằng InterTran của Translation Experts"
 
 #, php-format
 msgid "Number of supported languages: %s"
-msgstr ""
+msgstr "Số ngôn ngữ được hỗ trợ : %s"
 
-#, fuzzy
 msgid "Hellenic translations, no known limits, powered by Systran"
-msgstr "12 pares de idiomas, no hay límites conocidos, motor de Systran"
+msgstr "Dịch tiếng Hy Lạp, không có hạn chế đã biết, chạy bằng Systran"
 
-#, fuzzy
 msgid "Russian translations, maximum of 500 characters translated"
 msgstr ""
-"13 pares de idiomas, un máximo de 1000 caracteres traducidos, motor de "
-"Systran"
+"Dịch tiếng Nga, dịch đến 500 ký tự"
 
 msgid ""
 "You also decide if you want the translation box displayed, and where it will "
 "be located."
 msgstr ""
-"También puede decidir si quiere que se muestre el selector de traducción, y "
-"donde quiere que se sitúe"
+"Bạn cũng có thể quyết định có nên hiển thị hộp dịch hay không, có thì nên hiển thị nó ở đâu."
 
 msgid "Select your translator:"
-msgstr "Chọn bộ dịch của bạn:"
+msgstr "Chọn bộ dịch:"
 
 msgid "When reading:"
-msgstr "Leyendo:"
+msgstr "Khi đọc:"
 
 msgid "Show translation box"
-msgstr "Mostrar selector de traducción"
+msgstr "Hiển thị hộp dịch"
 
 msgid "to the left"
-msgstr "la izquierda"
+msgstr "ở bên trái"
 
 msgid "in the center"
-msgstr "en el centro"
+msgstr "ở giữa"
 
 msgid "to the right"
-msgstr "a la derecha"
+msgstr "ở bên phải"
 
 msgid "Translate inside the SquirrelMail frames"
-msgstr "Traducir en el interior del marco de SquirrelMail"
+msgstr "Dịch bên trong các khung SquirrelMail"
 
 msgid "Translation Options"
-msgstr "Opciones de Traducción"
+msgstr "Tùy chọn Dịch"
 
 msgid ""
 "Which translator should be used when you get messages in a different "
 "language?"
-msgstr "¿Que traductor debe usarse al recibir mensajes en otros idiomas?"
+msgstr "Nhận được thư bằng ngôn ngữ khác thì dùng bộ dịch nào?"
 
 #, php-format
 msgid "%s to %s"
-msgstr "%s to %s"
+msgstr "%s sang %s"
 
 msgid "Chinese, Simplified"
-msgstr ""
+msgstr "Tiếng Trung phổ thông"
 
 msgid "English"
 msgstr "Tiếng Anh"
 
 msgid "Chinese, Traditional"
-msgstr ""
+msgstr "Tiếng Trung truyền thống"
 
 msgid "Dutch"
 msgstr "Tiếng Hà Lan"
@@ -3890,14 +3647,13 @@ msgid "Italian"
 msgstr "Tiếng Ý"
 
 msgid "Japanese"
-msgstr "Toếng Nhật"
+msgstr "Tiếng Nhật"
 
-#, fuzzy
 msgid "Korean"
-msgstr "Tiếng Na Uy"
+msgstr "Tiếng Hàn"
 
 msgid "Portuguese"
-msgstr "Portugués"
+msgstr "Tiếng Bồ Đào Nha"
 
 msgid "Russian"
 msgstr "Tiếng Nga"
@@ -3909,22 +3665,22 @@ msgid "Translate"
 msgstr "Dịch"
 
 msgid "Brazilian Portuguese"
-msgstr "Tiếng Bra-xin"
+msgstr "Tiếng Bồ Đao Nha (Bra-xin)"
 
 msgid "Bulgarian"
 msgstr "Tiếng Bun-ga-ri"
 
 msgid "Croatian"
-msgstr "Tiếng Croatia"
+msgstr "Tiếng Cợ-rô-a-ti-a"
 
 msgid "Czech"
-msgstr "Czech"
+msgstr "Tiếng Séc"
 
 msgid "Danish"
 msgstr "Tiếng Đan Mạch"
 
 msgid "Filipino (Tagalog)"
-msgstr ""
+msgstr "Tiếng Ta-ga-loc"
 
 msgid "Finnish"
 msgstr "Tiếng Phần Lan"
@@ -3933,13 +3689,13 @@ msgid "Hungarian"
 msgstr "Tiếng Hung-ga-ri"
 
 msgid "Icelandic"
-msgstr "Tiếng Ai-xơ-len"
+msgstr "Tiếng Bảng Đảo"
 
 msgid "Latin"
-msgstr "Tiến Latinh"
+msgstr "Tiến La-tinh"
 
 msgid "Latin American Spanish"
-msgstr "Tiếng Mỹ La Tinh"
+msgstr "Tiếng Tây Ban Nha (Mỹ La-tinh)"
 
 msgid "Norwegian"
 msgstr "Tiếng Na Uy"
@@ -3951,60 +3707,56 @@ msgid "Romanian"
 msgstr "Tiếng Ru-ma-ni"
 
 msgid "Serbian"
-msgstr "Serbian"
+msgstr "Tiếng Xéc-bi"
 
 msgid "Slovenian"
-msgstr "Tiếng Slovenia"
+msgstr "Tiếng Xlô-ven"
 
 msgid "Swedish"
-msgstr "Tiếng Thụy Điển"
+msgstr "Tiếng Thuỵ Điển"
 
 msgid "Turkish"
-msgstr ""
+msgstr "Tiếng Thổ Nhĩ Kỳ"
 
 msgid "Welsh"
-msgstr "Welsh"
+msgstr "Tiếng Ouen-s"
 
 msgid "Indonesian"
-msgstr "Tiếng In-đô"
+msgstr "Tiếng In-đô-nê-xi-a"
 
-#, fuzzy
 msgid "to English"
-msgstr "Tiếng Anh"
+msgstr "sang tiếng Anh"
 
-#, fuzzy
 msgid "from English"
-msgstr "Tiếng Anh"
+msgstr "từ tiếng Anh"
 
-#, fuzzy
 msgid "Interface language"
-msgstr "Idioma por omisión"
+msgstr "Ngôn ngữ giao diện"
 
-#, fuzzy
 msgid "Translation direction"
-msgstr "Opciones de Traducción"
+msgstr "Hướng dịch"
 
-#, fuzzy, php-format
+#, php-format
 msgid "About SquirrelMail %s"
-msgstr "SquirrelMail phiên bản %s"
+msgstr "Giới thiệu SquirrelMail phiên bản %s"
 
 msgid ""
 "SquirrelMail is the name of the program that provides access to your email "
 "via the web."
-msgstr ""
+msgstr "SquirrelMail là tên của một chương trình cung cấp truy cập đến thư điện tử của bạn thông qua Web."
 
 #, php-format
 msgid ""
 "If you have questions about or problems with your mail account, passwords, "
 "abuse etc, please refer to your system administrator or provider%s."
-msgstr ""
+msgstr "Cần hỏi câu liên quan đến tài khoản thư thì hỏi quản trị hệ thống hoặc nhà cung cấp dịch vụ Internet%s."
 
 #, php-format
 msgid ""
 "They can assist you adequately with these issues. The SquirrelMail Project "
 "Team cannot help you with that. The %shelp system%s provides answers to "
 "frequently asked questions."
-msgstr ""
+msgstr "Họ có thể giúp bạn về các vấn đề đó. Nhóm Dự Án SquirrelMail không thể: chúng tôi chỉ phát triển phần mềm gửi và nhận thư. %sHệ thống Trợ giúp%s cũng cũng đáp ứng một số câu hỏi thường gặp."
 
 #, php-format
 msgid ""
@@ -4012,725 +3764,643 @@ msgid ""
 "written in PHP. It was made by a group of volunteers united in the "
 "SquirrelMail Project Team and is released as open source, free software "
 "under the %sGNU General Public License%s."
-msgstr ""
+msgstr "SquirrelMail là một ứng dụng thư tín Web tuân theo tiêu chuẩn có tính năng đầy đủ được ghi bằng PHP. Nó đã được tạo bởi một nhóm người tình nguyện (Nhóm Dự Án SquirrelMail) và được phát hành dưới dạng phần mềm tự do, nguồn mở, dưới %sGiấy Phép Công Cộng GNU%s."
 
 #, php-format
 msgid ""
 "For more information about SquirrelMail and the SquirrelMail Project Team, "
 "see %sthe SquirrelMail website%s."
-msgstr ""
+msgstr "Để tìm thêm thông tin về SquirrelMail và Nhóm Dự Án SquirrelMail, xem %strang Web SquirrelMail%s."
 
-#, fuzzy
 msgid "System information"
-msgstr "Thông tin cá nhân"
+msgstr "Thông tin hệ thống"
 
-#, fuzzy, php-format
+#, php-format
 msgid "You are using SquirrelMail version: %s"
-msgstr "SquirrelMail phiên bản %s"
+msgstr "Bạn đang dùng SquirrelMail phiên bản %s"
 
 msgid "The administrator installed the following plugins:"
-msgstr ""
+msgstr "Quản trị đã cài đặt các phần bổ sung này:"
 
 msgid "none installed"
-msgstr ""
+msgstr "chưa cài đặt gì"
 
 msgid "sort by nickname"
-msgstr ""
+msgstr "sắp xếp theo tên hiệu"
 
-#, fuzzy
 msgid "sort by name"
-msgstr "Tên"
+msgstr "sắp xếp theo tên"
 
 msgid "sort by email"
-msgstr ""
+msgstr "sắp xếp theo địa chỉ thư"
 
 msgid "sort by info"
-msgstr ""
+msgstr "sắp xếp theo thông tin"
 
-#, fuzzy
 msgid "Add to address book"
-msgstr "Thêm vào sổ địa chỉ"
+msgstr "Thêm vào Sổ địa chỉ"
 
 msgid ""
 "Because PHP file uploads are turned off, you can not attach files to this "
 "message. Please see your system administrator for details."
-msgstr ""
+msgstr "Vì chức năng tải lên tập tin PHP bị tắt, bạn không thể đính tập tin kèm thư này. Xem quản trị hệ thống để tìm thêm thông in."
 
-#, fuzzy
 msgid "No folders were found to unsubscribe from."
-msgstr "Không tìm thấy các thư mục để hủy đăng ký!"
+msgstr "Không tìm thấy các thư mục để hủy đăng ký."
 
-#, fuzzy
 msgid "No folders were found to subscribe to."
-msgstr "Không tìm thấy các thư mục đề đăng ký!"
+msgstr "Không tìm thấy các thư mục đề đăng ký."
 
 msgid "Last Refresh"
 msgstr "Lần cập nhật cuối"
 
-#, fuzzy
 msgid "Check mail"
-msgstr "Comprobar el correo a la entrada"
+msgstr "Kiểm tra có thư"
 
 msgid "Save folder tree"
-msgstr ""
+msgstr "Lưu cây thư mục"
 
-#, fuzzy
 msgid "SquirrelMail Webmail Application"
-msgstr "SquirrelMail phiên bản %s"
+msgstr "Ứng dụng Thư tín Web SquirrelMail"
 
-#, fuzzy
 msgid "Compose Preferences"
-msgstr "Các sở thích về thư mục"
+msgstr "Tùy thích Soạn thảo"
 
 msgid ""
 "Control the behaviour and layout of writing new mail messages, replying to "
 "and forwarding messages."
-msgstr ""
+msgstr "Điều khiển ứng xử và bố trí khi viết thư mới, trả lời và chuyển tiếp thư."
 
-#, fuzzy
 msgid "Received"
-msgstr "Yêu cầu gởi xác nhận"
+msgstr "Nhận được"
 
-#, fuzzy
 msgid "As Attachment"
-msgstr "Ficheros adjuntos"
+msgstr "Dạng đồ đính kèm"
 
 msgid "Bypass Trash"
-msgstr ""
+msgstr "Đi vòng Sọt Rác"
 
 msgid "Please enter something to search for"
-msgstr ""
+msgstr "Hãy nhập chuỗi cần tìm"
 
 msgid "There must be at least one criteria to search for"
-msgstr ""
+msgstr "Phải có ít nhất một tiêu chuẩn để tìm"
 
 msgid "Error in criteria argument"
-msgstr ""
+msgstr "Lỗi trong đối số tiêu chuẩn"
 
 msgid "(Illegal date)"
-msgstr ""
+msgstr "(Ngày tháng sai)"
 
 msgid "(Wrong date)"
-msgstr ""
+msgstr "(Ngày không đúng)"
 
-#, fuzzy
 msgid "In"
-msgstr "Thông tin"
+msgstr "Trong"
 
 msgid "(Missing argument)"
-msgstr ""
+msgstr "(Thiếu đối số)"
 
 msgid "(Spurious argument)"
-msgstr ""
+msgstr "(Đối số giả)"
 
-#, fuzzy
 msgid "Fold"
-msgstr "Các thư mục"
+msgstr "Gấp"
 
-#, fuzzy
 msgid "Unfold"
-msgstr "Thông tin"
+msgstr "Mở ra"
 
-#, fuzzy
 msgid "Saved Searches"
-msgstr "Các tìm kiếm gần đây"
+msgstr "Tìm kiếm đã lưu"
 
 msgid "Missing"
-msgstr ""
+msgstr "Thiếu"
 
 msgid "and&nbsp;subfolders:"
-msgstr ""
+msgstr "và các thư mục con:"
 
 msgid "Exclude Criteria:"
-msgstr ""
+msgstr "Loại trừ tiêu chuẩn:"
 
-#, fuzzy
 msgid "Search Criteria"
-msgstr "Tìm kiếm"
+msgstr "Tiêu chuẩn tìm kiếm"
 
-#, fuzzy
 msgid "Add New Criteria"
-msgstr "Add Server"
+msgstr "Thêm tiêu chuẩn mới"
 
 msgid "Remove Excluded Criteria"
-msgstr ""
+msgstr "Gỡ bỏ các tiêu chuẩn bị loại trừ"
 
 msgid "Remove All Criteria"
-msgstr ""
+msgstr "Gỡ bỏ mọi tiêu chuẩn"
 
-#, fuzzy
 msgid "Not"
-msgstr "Ghi chú"
+msgstr "Không phải"
 
 msgid "Answered"
-msgstr ""
+msgstr "Đã trả lời"
 
-#, fuzzy
 msgid "Before"
-msgstr "quên đi"
+msgstr "Trước"
 
-#, fuzzy
 msgid "Message Body"
-msgstr "Mensaje "
+msgstr "Thân thư "
 
-#, fuzzy
 msgid "Deleted"
-msgstr "Xóa"
+msgstr "Bị xóa"
 
-#, fuzzy
 msgid "Draft"
-msgstr "Lưu bản soạn thảo"
+msgstr "Nháp"
 
-#, fuzzy
 msgid "Flagged"
-msgstr "Các cờ"
+msgstr "Đặt cờ"
 
-#, fuzzy
 msgid "Sent By"
-msgstr "Đã gởi:"
+msgstr "Gửi bởi"
 
-#, fuzzy
 msgid "Header Field"
-msgstr "Cabecera"
+msgstr "Dòng đầu"
 
 msgid "Keyword"
-msgstr ""
+msgstr "Từ khoá"
 
 msgid "Larger Than"
-msgstr ""
+msgstr "Lớn hơn"
 
 msgid "Old"
-msgstr ""
+msgstr "Cũ"
 
 msgid "On"
-msgstr ""
+msgstr "Vào"
 
-#, fuzzy
 msgid "Recent"
-msgstr "Yêu cầu gởi xác nhận"
+msgstr "Gần đây"
 
-#, fuzzy
 msgid "Seen"
-msgstr "Gởi"
+msgstr "Đã xem"
 
-#, fuzzy
 msgid "Sent Before"
-msgstr "Thư mục Đã gởi"
+msgstr "Gửi trước"
 
-#, fuzzy
 msgid "Sent On"
-msgstr "Đã gởi:"
+msgstr "Gửi vào"
 
 msgid "Sent Since"
-msgstr ""
+msgstr "Gửi kể từ"
 
-#, fuzzy
 msgid "Since"
-msgstr "Kích thước"
+msgstr "Kể từ"
 
 msgid "Smaller Than"
-msgstr ""
+msgstr "Nhỏ hơn"
 
-#, fuzzy
 msgid "Subject Contains"
-msgstr "Contiene:"
+msgstr "Chủ đề chứa"
 
 msgid "Header and Body"
-msgstr ""
+msgstr "Phần đầu và thân"
 
-#, fuzzy
 msgid "Sent To"
-msgstr "Đã gởi:"
+msgstr "Gửi cho"
 
 msgid "And In"
-msgstr ""
+msgstr "Và trong"
 
 msgid "Or In"
-msgstr ""
+msgstr "Hoặc trong"
 
-#, fuzzy
 msgid "And"
-msgstr "Thêm"
+msgstr "Và"
 
 msgid "Or"
-msgstr ""
+msgstr "Hoặc"
 
 msgid "Standard search"
-msgstr ""
+msgstr "Tìm kiếm chuẩn"
 
 msgid "Advanced search"
-msgstr ""
+msgstr "Tìm kiếm cấp cao"
 
-#, fuzzy
 msgid "Folder List"
-msgstr "Các thư mục"
+msgstr "Danh sách Thư mục"
 
 msgid "PHP install does not have LDAP support."
-msgstr ""
+msgstr "Bản cài đặt PHP không hỗ trợ LDAP."
 
 msgid "Click here to change the sorting of the address list"
-msgstr ""
+msgstr "Nhấn vào đây để thay đổi thứ tự sắp xếp danh sách địa chỉ"
 
 msgid "Illegal folder name."
-msgstr ""
+msgstr "Tên thư mục sai."
 
 #, php-format
 msgid "The name may not contain any of the following: %s"
-msgstr ""
+msgstr "Tên không thể chứa bất cứ ký tự nào sau : %s"
 
-#, fuzzy
 msgid "Please select a different name."
-msgstr "Tên thư mục không đúng. Xin vui lòng chọn tên khác."
+msgstr "Hãy chọn một tên khác."
 
-#, fuzzy
 msgid "You have not selected a folder to subscribe. Please do so."
-msgstr "Bạn chưa chọn thư mục để đổi tên."
+msgstr "Bạn chưa chọn thư mục để đăng ký. Hãy chọn."
 
-#, fuzzy
 msgid "You have not selected a folder to unsubscribe. Please do so."
-msgstr "Bạn chưa chọn thư mục để đổi tên."
+msgstr "Bạn chưa chọn thư mục để hủy đăng ký. Hãy."
 
 msgid "Possible reason:"
-msgstr ""
+msgstr "Lý do có thể:"
 
 msgid "ERROR: Bad function call."
-msgstr ""
+msgstr "LỖI: lời gọi hàm sai."
 
-#, fuzzy
 msgid "Reason:"
-msgstr "Contestación:"
+msgstr "Lý do :"
 
 msgid ""
 "TLS is enabled, but this version of PHP does not support TLS sockets, or is "
 "missing the openssl extension."
-msgstr ""
+msgstr "TSL đã được bật, nhưng phiên bản PHP này không hỗ trợ ổ cắm TLS, hoặc còn thiếu phần mở rộng openssl."
 
 msgid ""
 "Your mailbox is not located at this server. Try a different server or "
 "consult your system administrator"
-msgstr ""
+msgstr "Hộp thư của bạn không phải nằm trên máy phục vụ này. Hãy thử máy phục vụ khác hoặc hỏi quản trị hệ thống."
 
-#, fuzzy
 msgid "Unknown recipient"
-msgstr "Không biết người gởi"
+msgstr "Không rõ người nhận"
 
 msgid "Unflag"
-msgstr ""
+msgstr "Bỏ cờ"
 
-#, fuzzy
 msgid "Flag"
-msgstr "Các cờ"
+msgstr "Đặt cờ"
 
-#, fuzzy
 msgid "Undelete"
-msgstr "xóa"
+msgstr "Hủy xoá"
 
-#, fuzzy
 msgid "General Message Composition"
-msgstr "Trình bày thông điệp và các thành phần"
+msgstr "Soạn thảo thư chung"
 
-#, fuzzy
 msgid "Replying and Forwarding Messages"
-msgstr "Gồm cả các địa chỉ trong CC khi chuyển tiếp thông điệp"
+msgstr "Trả lời và chuyển tiếp thư"
 
 msgid "Strip signature when replying"
-msgstr ""
+msgstr "Cắt bỏ chữ ký khi trả lời"
 
 msgid "Enable Fancy Row Mouseover Highlighting"
-msgstr ""
+msgstr "Bật tô sáng đẹp hàng có con chuột ở trên"
 
 msgid "Message Flags Icon Theme"
-msgstr ""
+msgstr "Sắc thái biểu tượng cờ thư"
 
 msgid "Show Flag / Unflag Buttons"
-msgstr ""
+msgstr "Hiện nút Đặt cờ/Bỏ cờ"
 
-#, fuzzy
 msgid "Use Compact Page Selector"
-msgstr "Cho phép chọn trang"
+msgstr "Dùng bộ chọn trang gọn"
 
 msgid "Length of From/To Field (0 for full)"
-msgstr ""
+msgstr "Chiều dài của trường Từ/Cho (0 là đầy)"
 
 msgid "Length of Subject Field (0 for full)"
-msgstr ""
+msgstr "Chiều dài của trường Chủ đề (0 là đầy)"
 
-#, fuzzy
 msgid "Message Display Options"
-msgstr "Lựa chọn trình bày chung"
+msgstr "Tùy chọn hiển thị thư"
 
 msgid "Show 'Delete & Prev/Next' Links"
-msgstr ""
+msgstr "Hiện liên kết « Xoá » và « Lùi/Kế »"
 
-#, fuzzy
 msgid "Save Replies with Original Message"
-msgstr "Thông điệp gốc"
+msgstr "Lưu các trả lời cùng với thư gốc"
 
-#, fuzzy, php-format
+#, php-format
 msgid "%d Minute"
 msgid_plural "%d Minutes"
-msgstr[0] "Phút"
-msgstr[1] "Phút"
+msgstr[0] "%d phút"
 
 msgid "Show only subscribed folders"
-msgstr ""
+msgstr "Hiện chỉ các thư mục đã đăng ký"
 
 msgid "XP"
-msgstr ""
+msgstr "XP"
 
-#, fuzzy
 msgid "Hide SquirrelMail Header"
-msgstr "Xem kỹ đầu đề"
+msgstr "Ẩn dòng đầu SquirrelMail"
 
-#, fuzzy
 msgid "Search functions"
-msgstr "Tìm kiếm"
+msgstr "Chức năng tìm kiếm"
 
 msgid "Only basic search"
-msgstr ""
+msgstr "Chỉ tìm cơ bản"
 
 msgid "Only advanced search"
-msgstr ""
+msgstr "Chỉ tìm cấp cao"
 
 msgid "Both search functions"
-msgstr ""
+msgstr "Cả hai chức năng tìm"
 
 msgid "Show alternative language names"
-msgstr ""
+msgstr "Hiện các tên ngôn ngữ xen kẽ"
 
 msgid "Available languages"
-msgstr ""
+msgstr "Ngôn ngữ sẵn sàng"
 
-#, fuzzy
 msgid "Enable aggressive decoding"
-msgstr "Cho phép chọn trang"
+msgstr "Bật giải mã tích cực"
 
 msgid "Tweaks"
-msgstr ""
+msgstr "Điều chỉnh"
 
 msgid "Use advanced tree folder listing"
-msgstr ""
+msgstr "Dùng danh sách cây thư mục cấp cao"
 
-#, fuzzy
 msgid "Use icons"
-msgstr "Giây"
+msgstr "Dùng biểu tượng"
 
 msgid "Use PHP recode functions"
-msgstr ""
+msgstr "Dùng các hàm mã hoá lại PHP"
 
 msgid "Use PHP iconv functions"
-msgstr ""
+msgstr "Dùng các hàm iconv PHP"
 
 msgid "Allow remote configuration test"
-msgstr ""
+msgstr "Cho phép thử cấu hình từ xa"
 
 msgid "Show System Specifications"
-msgstr ""
+msgstr "Hiện đặc tả hệ thống"
 
-#, fuzzy
 msgid "Search Mailing List Archives"
-msgstr "Archivos"
+msgstr "Tìm trong kho lưu hộp thư chung"
 
 msgid "Search SourceForge Bugtracker"
-msgstr ""
+msgstr "Tìm trong bộ theo dõi lỗi Sourceforge"
 
-#, fuzzy
 msgid "Search for words:"
-msgstr "Tìm kiếm"
+msgstr "Tìm từ :"
 
 msgid "Written by:"
-msgstr ""
+msgstr "Tác giả:"
 
-#, fuzzy
 msgid "Email addresses only"
-msgstr "Địa chỉ E-mail"
+msgstr "Chỉ địa chỉ thư điện tử"
 
-#, fuzzy
 msgid "Mailing list:"
-msgstr "Lista de Correo:"
+msgstr "Hộp thư chung:"
 
-#, fuzzy
 msgid "SquirrelMail users list"
-msgstr "SquirrelMail phiên bản %s"
+msgstr "Hộp thư chung cho các người dùng SquirrelMail"
 
-#, fuzzy
 msgid "SquirrelMail plugins list"
-msgstr "SquirrelMail phiên bản %s"
+msgstr "Hộp thư chung về các phần bổ sung SquirrelMail"
 
-#, fuzzy
 msgid "SquirrelMail developers list"
-msgstr "SquirrelMail phiên bản %s"
+msgstr "Hộp thư chung cho các nhà phát triển SquirrelMail"
 
-#, fuzzy
 msgid "SquirrelMail internationalization list"
-msgstr "SquirrelMail phiên bản %s"
+msgstr "Hộp thư chung cho các người dịch SquirrelMail"
 
 msgid "Sort by:"
-msgstr ""
+msgstr "Sắp xếp theo :"
 
 msgid "Relevance"
-msgstr ""
+msgstr "Mức thích đáng"
 
-#, fuzzy
 msgid "Search Archives"
-msgstr "Archivos"
+msgstr "Tìm trong kho lưu"
 
-#, fuzzy
 msgid "Reset Form"
-msgstr "Xóa thư mục"
+msgstr "Đặt lại biểu mẫu"
 
 msgid "Summary keyword:"
-msgstr ""
+msgstr "Từ khoá tóm tắt:"
 
 msgid "Sort By:"
-msgstr ""
+msgstr "Sắp xếp theo :"
 
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
-#, fuzzy
 msgid "Summary"
-msgstr "Chủ Nhật"
+msgstr "Tóm tắt"
 
-#, fuzzy
 msgid "Open Date"
-msgstr "Mở tệp không được!"
+msgstr "Ngày mở"
 
-#, fuzzy
 msgid "Close Date"
-msgstr "Đóng"
+msgstr "Ngày đóng"
 
-#, fuzzy
 msgid "Submitter"
-msgstr "Trình lên"
+msgstr "Người gửi"
 
 msgid "Assignee"
-msgstr ""
+msgstr "Người được gán"
 
-#, fuzzy
 msgid "Order:"
-msgstr "Cái khác:"
+msgstr "Thứ tự :"
 
-#, fuzzy
 msgid "Ascending"
-msgstr "đã gởi"
+msgstr "Tăng dần"
 
 msgid "Descending"
-msgstr ""
+msgstr "Giảm dần"
 
 msgid "Search Bugtracker"
-msgstr ""
+msgstr "Tìm trong bộ theo dõi lỗi"
 
 msgid "You must type in a new password."
-msgstr ""
+msgstr "Bạn cần phải gõ một mật khẩu mới."
 
 msgid "You must also type in your new password in the verify box."
-msgstr ""
+msgstr "Bạn cũng cần phải gõ mật khẩu mới vào hộp xác nhận."
 
 msgid "Your new password does not match the verify password."
-msgstr ""
+msgstr "Mật khẩu mới không trùng với mật khẩu xác nhận."
 
 msgid "You must type in your current password."
-msgstr ""
+msgstr "Bạn cần phải gõ một mật khẩu cũ."
 
-#, fuzzy
 msgid "Your current password is not correct."
-msgstr "Không biết người dùng hoặc mật khẩu sai."
+msgstr "Bạn đã gõ sai mật khẩu cũ."
 
 #, php-format
 msgid "Your new password should be %s to %s characters long."
-msgstr ""
+msgstr "Mật khẩu mới nên có chiều dài từ %s đến %s ký tự."
 
-#, fuzzy
 msgid "Your new password contains invalid characters."
-msgstr "bí danh chứa các ký tự không hợp lệ"
+msgstr "Mật khẩu mới chứa ký tự không hợp lệ."
 
-#, fuzzy
 msgid "Change Password"
-msgstr "Đổi từ này"
+msgstr "Đổi mật khẩu"
 
-#, fuzzy
 msgid "Current Password:"
-msgstr "Mật khẩu:"
+msgstr "Mật khẩu cũ :"
 
-#, fuzzy
 msgid "New Password:"
-msgstr "Mật khẩu:"
+msgstr "Mật khẩu mới:"
 
-#, fuzzy
 msgid "Verify New Password:"
-msgstr "Mật khẩu:"
+msgstr "Xác nhận mật khẩu mới:"
 
 msgid "Use this to change your email password."
-msgstr ""
+msgstr "Dùng cái này để thay đổi mật khẩu thư điện tử của bạn."
 
-#, fuzzy
 msgid "User's Password"
-msgstr "Mật khẩu:"
+msgstr "Mật khẩu của người dùng"
 
 msgid "Current configuration requires LDAP support in PHP."
-msgstr ""
+msgstr "Cấu hình hiện thời cần thiết PHP hỗ trợ LDAP."
 
 msgid "Plugin is not configured correctly."
-msgstr ""
+msgstr "Sai cấu hình phần bổ sung."
 
 #, php-format
 msgid "Setting of LDAP connection option %s to value %s failed."
-msgstr ""
+msgstr "Lỗi đặt tùy chọn kết nối LDAP %s thành giá trị %s."
 
 #, php-format
 msgid "Incorrect LDAP connection option: %s"
-msgstr ""
+msgstr "Tùy chọn kết nối LDAP sai: %s"
 
 msgid ""
 "Current PHP LDAP extension does not allow use of ldap_set_option() function."
-msgstr ""
+msgstr "Phần mở rộng LDAP PHP hiện thời không cho phép dùng hàm ldap_set_option() ."
 
 msgid "Unable to use TLS."
-msgstr ""
+msgstr "Không thể dùng TLS."
 
-#, fuzzy, php-format
+#, php-format
 msgid "Error: %s"
-msgstr "Lỗi:"
+msgstr "Lỗi: %s"
 
 msgid "Unable to use LDAP TLS in current setup."
-msgstr ""
+msgstr "Không thể dùng LDAP TLS với thiết lập hiện thời."
 
 msgid "Unable to bind to LDAP server."
-msgstr ""
+msgstr "Không thể đóng kết tới máy phục vụ LDAP."
 
-#, fuzzy, php-format
+#, php-format
 msgid "Server replied: %s"
-msgstr "El servidor respondió: "
+msgstr "Máy phục vụ đã đáp ứng: %s"
 
 msgid "Unable to find user's password attribute."
-msgstr ""
+msgstr "Không tìm thấy thuộc tính mật khẩu của người dùng."
 
 msgid "Unable to rebind to LDAP server."
-msgstr ""
+msgstr "Không thể đóng kết lại tới máy phục vụ LDAP."
 
 msgid "LDAP server uses different attribute to store user's password."
-msgstr ""
+msgstr "Máy phục vụ LDAP dùng một thuộc tính khác để lưu trữ mật khẩu của người dùng."
 
-#, fuzzy
 msgid "Unable to connect to LDAP server."
-msgstr "Chưa có kết nối tới máy chủ"
+msgstr "Không thể kết nối tới máy phục vụ LDAP."
 
 msgid "Unable to find user's DN."
-msgstr ""
+msgstr "Không tìm thấy DN của người dùng."
 
-#, fuzzy
 msgid "Search error."
-msgstr "Tìm kiếm"
+msgstr "Lỗi tìm kiếm."
 
 msgid "Multiple userid matches found."
-msgstr ""
+msgstr "Tìm thấy nhiều ID người dùng tương ứng."
 
 msgid "ldap_get_dn error."
-msgstr ""
+msgstr "Lỗi ldap_get_dn ."
 
 #, php-format
 msgid "Unsupported crypto: %s"
-msgstr ""
+msgstr "Mật mã không được hỗ trợ : %s"
 
 msgid "PHP mhash extension is missing."
-msgstr ""
+msgstr "Thiếu phần mở rộng mhash PHP."
 
 msgid "System crypt library doesn't support standard DES crypt."
-msgstr ""
+msgstr "Thư viện mật mã của hệ thống không hỗ trợ mật mã DES chuẩn."
 
 msgid "System crypt library doesn't have MD5 support."
-msgstr ""
+msgstr "Thư viện mật mã của hệ thống không hỗ trợ MD5."
 
 msgid "System crypt library doesn't support extended DES crypt."
-msgstr ""
+msgstr "Thư viện mật mã của hệ thống không hỗ trợ mật mã DES đã mở rộng."
 
 msgid "System crypt library doesn't have Blowfish support."
-msgstr ""
+msgstr "Thư viện mật mã của hệ thống không hỗ trợ Blowfish."
 
-#, fuzzy
 msgid "unknown"
-msgstr "(không biết người gởi)"
+msgstr "không rõ"
 
 msgid "Unable to validate user's password."
-msgstr ""
+msgstr "Không thể thẩm tra mật khẩu của người dùng."
 
 msgid "Blowfish is not supported by webserver's system crypt library."
-msgstr ""
+msgstr "Thư viện mật mã của trình phục vụ Web không hỗ trợ Blowfish."
 
 msgid "MD5 is not supported by webserver's system crypt library."
-msgstr ""
+msgstr "Thư viện mật mã của trình phục vụ Web không hỗ trợ MD5."
 
 msgid ""
 "Extended DES crypt is not supported by webserver's system crypt library."
-msgstr ""
+msgstr "Thư viện mật mã của trình phục vụ Web không hỗ trợ mật mã DES đã mở rộng."
 
 msgid ""
 "Standard DES crypt is not supported by webserver's system crypt library."
-msgstr ""
+msgstr "Thư viện mật mã của trình phục vụ Web không hỗ trợ mật mã DES chuẩn."
 
 msgid "PHP Curl extension is NOT available! Unable to change password!"
-msgstr ""
+msgstr "Phần mở rộng Curl PHP KHÔNG phải sẵn sàng nên không thể thay đổi mật khẩu."
 
 msgid "Cannot change password! (Is user 'Self Configurable User' ?) (401)"
-msgstr ""
+msgstr "Không thể thay đổi mật khẩu (người dùng là « Self Configurable User » không?) (401)"
 
-#, fuzzy
 msgid "Cannot change password!"
-msgstr "Đổi từ này"
+msgstr "Không thể thay đổi mật khẩu."
 
 msgid "Cannot connect to Database Server, please try later!"
-msgstr ""
+msgstr "Không thể kết nối tới máy phục vụ cơ sở dữ liệu, hãy thử lại sau."
 
 msgid "Database not found on server"
-msgstr ""
+msgstr "Không tìm thấy cơ sở dữ liệu trên máy phục vụ"
 
 msgid "SQL call failed, try again later."
-msgstr ""
+msgstr "Lời gọi SQL bị lỗi, thử lại sau."
 
 msgid "Duplicate login entries detected, cannot change password!"
-msgstr ""
+msgstr "Phát hiện các mục nhập đăng nhập trùng nên không thể thay đổi mật khẩu."
 
 msgid "Password change was not successful!"
-msgstr ""
+msgstr "Không thay đổi được mật khẩu."
 
 msgid "Closing Connection"
-msgstr ""
+msgstr "Đang đóng kết nối"
 
-#, fuzzy
 msgid "Connecting to Password Server"
-msgstr "Chưa có kết nối tới máy chủ"
+msgstr "Đang kết nối tới máy phục vụ mật khẩu"
 
 msgid "No valid backend defined."
-msgstr ""
+msgstr "Chưa xác định hậu phương hợp lệ."
 
 msgid "Incorrent path to vmail.inc file."
-msgstr ""
+msgstr "Sai đường dẫn đến tập tin « vmail.inc »."
 
 msgid "Invalid or corrupted vmail.inc file."
-msgstr ""
+msgstr "Tập tin « vmail.inc » không hợp lệ hoặc bị hỏng."
 
 msgid "Invalid user."
-msgstr ""
+msgstr "Người dùng không hợp lệ."
 
-#, fuzzy
 msgid "Empty domain"
-msgstr "Empty command string"
+msgstr "Miền rỗng"
 
-#, fuzzy
 msgid "Empty domain password"
-msgstr "Empty command string"
+msgstr "Mật khẩu miền rỗng"
 
-#, fuzzy
 msgid "Empty username"
-msgstr "Nombre de Usuario"
+msgstr "Tên người dùng rỗng"
 
 msgid "Empty new password"
-msgstr ""
+msgstr "Mật khẩu mới rỗng"
 
-#, fuzzy
 msgid "Server Capability response:"
-msgstr "El servidor respondió: "
+msgstr "Đáp ứng về khả năng của máy phục vụ :"
 
 msgid ""
 "Select the IMAP commands you would like to run. Most commands require a "
@@ -4738,362 +4408,111 @@ msgid ""
 "the commands and test your own IMAP command strings. The commands are "
 "executed in order. The default values are simple IMAP commands using your "
 "default_charset and folder_prefix from SquirrelMail when needed."
-msgstr ""
+msgstr "Hãy chọn những câu lệnh IMAP bạn muốn chạy. Phần lớn câu lệnh cần thiết một hộp thư đã chọn, vì vậy lệnh lựa chọn đã được đặt. Bạn có thể gột tất cả các câu lệnh và thử chuỗi IMAP riêng của mình. Các lệnh được thực hiện theo thứ tự. Những giá trị mặc định là các câu lệnh IMAP đơn giản dùng bộ ký tự mặc định (default_charset) và tiền tố thư mục (folder_prefix) từ SquirrelMail khi cần."
 
 msgid ""
 "NOTE: These commands are live, any changes made will effect your current "
 "email account."
-msgstr ""
+msgstr "GHI CHÚ : các câu lệnh này vẫn còn động: mỗi thay đổi được làm sẽ có tác động tìm kiếm thư điện tử của bạn."
 
-#, fuzzy
 msgid "Select"
-msgstr "Chọn tất cả"
+msgstr "Chọn"
 
-#, fuzzy
 msgid "Test Name"
-msgstr "Nombre del tema"
+msgstr "Tên thử"
 
-#, fuzzy
 msgid "IMAP command string"
-msgstr "Empty command string"
+msgstr "Chuỗi lệnh IMAP"
 
-#, fuzzy
 msgid "Request:"
-msgstr "đã yêu cầu"
+msgstr "Yêu cầu :"
 
-#, fuzzy
 msgid "No POP3 servers configured yet."
-msgstr "Chưa xác định máy chủ"
+msgstr "Chưa cấu hình máy phục vụ POP3."
 
-#, fuzzy
 msgid "Click here to go to the options page."
-msgstr "Nhấn vào đây để đăng nhập lại"
+msgstr "Nhấn vào đây để thăm trang chứa các tùy chọn."
 
-#, fuzzy, php-format
+#, php-format
 msgid "Login OK: Inbox contains %s message"
 msgid_plural "Login OK: Inbox contains %s messages"
-msgstr[0] "Login OK: Inbox contains ["
-msgstr[1] "Login OK: Inbox contains ["
+msgstr[0] "Đăng nhập được: Hộp Đến chứa %s thư"
 
-#, fuzzy
 msgid "Width of popup window:"
-msgstr "Chiều rộng của cửa sổ biên soạn"
+msgstr "Chiều rộng của cửa sổ tự mở :"
 
 msgid "If set to 0, reverts to default value"
-msgstr ""
+msgstr "Đặt thành 0 thì hoàn nguyên về giá trị mặc định"
 
-#, fuzzy
 msgid "Height of popup window:"
-msgstr "Chiều cao của cửa sổ biên soạn"
+msgstr "Chiều cao của cửa sổ tự mở :"
 
-#, fuzzy
 msgid "uploaded media file"
-msgstr "Chọn tệp trên máy bạn:"
+msgstr "tập tin nhạc/ảnh đã tải lên"
 
-#, fuzzy
 msgid "none"
-msgstr "Không có gì"
+msgstr "không có"
 
-#, fuzzy
 msgid "Upload Media File:"
-msgstr "Chọn tệp trên máy bạn:"
+msgstr "Tải lên tập tin nhạc/ảnh:"
 
-#, fuzzy
 msgid "Uploaded Media File:"
-msgstr "Chọn tệp trên máy bạn:"
+msgstr "Tập tin nhạc/ảnh đã tải lên:"
 
-#, fuzzy
 msgid "unavailable"
-msgstr "chưa có"
+msgstr "không sẵn sàng"
 
 #, php-format
 msgid "Media file %s will be removed, if you upload other media file."
-msgstr ""
+msgstr "Tải lên tập tin nhạc/ảnh khác thì gỡ bỏ tập tin nhạc/ảnh %s."
 
-#, fuzzy
 msgid "Spam Service Type:"
-msgstr "Tipo de servidor IMAP"
+msgstr "Kiểu dịch vụ chống thư rác:"
 
 msgid "Free reporting"
-msgstr ""
+msgstr "Thông báo miễn phí"
 
 msgid "Member services"
-msgstr ""
+msgstr "Dịch vụ dành cho thành viên"
 
-#, fuzzy
 msgid "Save Service Type"
-msgstr "Tipo de servidor IMAP"
+msgstr "Lưu kiểu dịch vụ"
 
-#, fuzzy
 msgid "SpamCop reporting"
-msgstr "Filtro SPAM"
+msgstr "Thông báo cho SpamCop"
 
-#, fuzzy
 msgid "Translation Theme:"
-msgstr "Dịch"
+msgstr "Sắc thái dịch:"
 
 msgid ""
 "Selected translation engine is disabled. Please update your translation "
 "preferences."
-msgstr ""
+msgstr "Cơ chế dịch đã chọn đã bị tắt. Hãy cập nhật tùy thích dịch của bạn."
 
-#, fuzzy
 msgid "Translation Preferences"
-msgstr "Opciones de la Entidad"
+msgstr "Tùy thích dịch"
 
-#, fuzzy
 msgid "Maximum of 25 kilobytes translated, powered by Systran"
-msgstr "10 pares de idiomas, máximo de 25 ks. traducidos, motor de Systran"
+msgstr "Dịch đến 25 KB, chạy bằng Systran"
 
-#, fuzzy
 msgid "No known limits, powered by GPLTrans (free, open source)"
 msgstr ""
-"8 pares de idiomas, no hay límites conocidos, motor GPLTrans (gratuito, open "
-"source)"
+"Không có hạn chế đã biết, chạy bằng GPLTrans (tự do, nguồn mở)"
 
 msgid "Transliterate unknown words:"
-msgstr ""
+msgstr "Chuyển chữ các từ lạ:"
 
 msgid "When composing:"
-msgstr "Redactando:"
+msgstr "Khi soạn:"
 
 msgid "Not yet functional, currently does nothing"
-msgstr "Aún no funciona."
+msgstr "Chưa có chức năng, hiện thời không làm gì"
 
 msgid "Delivery error report"
-msgstr "Informe de error en entrega"
+msgstr "Thông báo lỗi phát thư"
 
 msgid "Undelivered Message Headers"
-msgstr "Cabecera de mensaje no entregado"
+msgstr "Dòng đầu thư chưa phát"
 
 msgid "This image has been removed for security reasons"
-msgstr ""
-
-#~ msgid "Unknown error"
-#~ msgstr "Lỗi chưa biết"
-
-#~ msgid "To:"
-#~ msgstr "Tới:"
-
-#~ msgid "CC:"
-#~ msgstr "CC:"
-
-#~ msgid "BCC:"
-#~ msgstr "BCC:"
-
-#~ msgid "Subject:"
-#~ msgstr "Chủ đề:"
-
-#~ msgid "said"
-#~ msgstr "nói"
-
-#~ msgid "Viewing a message attachment"
-#~ msgstr "Xem thông điệp gắn kèm"
-
-#~ msgid "Cc:"
-#~ msgstr "Cc:"
-
-#~ msgid "Bcc:"
-#~ msgstr "Bcc:"
-
-#~ msgid "<No subject>"
-#~ msgstr "<Không chủ đề>"
-
-#~ msgid "Enable Subtle Printer Friendly Link"
-#~ msgstr "Đặt chức năng Xem bản in ở trên"
-
-#~ msgid "Enable request/confirm reading"
-#~ msgstr "Cho phép yêu cầu/xác nhận việc đọc"
-
-#~ msgid "Use receive date for sort"
-#~ msgstr "Sắp theo ngày nhận"
-
-#~ msgid "CC"
-#~ msgstr "CC"
-
-#~ msgid "There was an error contacting the mail server."
-#~ msgstr "Có lỗi khi liên lạc với mail server."
-
-#~ msgid "Contact your administrator for help."
-#~ msgstr "Liên hệ với quản trị viên để họ giúp đỡ."
-
-#~ msgid "No Messages found"
-#~ msgstr "Không tìm được thông điệp nào"
-
-#~ msgid "Business Card"
-#~ msgstr "Danh thiếp"
-
-#~ msgid "Click here to try again"
-#~ msgstr "Click here to try again"
-
-#~ msgid ""
-#~ "Please contact your system administrator and report the following error:"
-#~ msgstr ""
-#~ "Por favor, contacte el administrador de su sistema y comuníquele el "
-#~ "siguiente error:"
-
-#~ msgid "Unknown message number in reply from server: "
-#~ msgstr "Número de mensaje desconocido en la contestación del servidor:"
-
-#~ msgid "No To Address"
-#~ msgstr "Sin destinatario"
-
-#~ msgid "Found"
-#~ msgstr "Encontrado"
-
-#~ msgid "messages"
-#~ msgstr "thông điệp"
-
-#~ msgid "Error decoding mime structure.  Report this as a bug!"
-#~ msgstr "Error decoding mime structure.  Report this as a bug!"
-
-#~ msgid "Submit message"
-#~ msgstr "Submit message"
-
-#~ msgid ""
-#~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
-#~ "to include servers used by abuse@uunet.net auto-replies too."
-#~ msgstr ""
-#~ "GRATUITO - Enlaces Osirusoft - Lista \"Osirusoft\" de enlaces abiertos. "
-#~ "Parece que también incluye servidores empleados por las respuestas "
-#~ "automáticas de abuse@uunet.net"
-
-#~ msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-#~ msgstr ""
-#~ "GRATUITO - RTC de \"Osirusoft\" - Lista SPAM de \"Osirusoft\" de "
-#~ "conexiones RTC."
-
-#~ msgid ""
-#~ "FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
-#~ "have been manually added after multiple nominations. Use with caution. "
-#~ "Seems to catch abuse auto-replies from some ISPs."
-#~ msgstr ""
-#~ "GRATUITO - Lista Osirusoft de Emisores SPAM Confirmados - Sitios que "
-#~ "mandan SPAM continuamente y que han sido añadidos manualmente después de "
-#~ "múltiples nominaciones. A usar con precaución ya que parece emplear "
-#~ "respuestas automáticas de algunos ISPs."
-
-#~ msgid ""
-#~ "FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay "
-#~ "for other mail servers that are not secure."
-#~ msgstr ""
-#~ "GRATUITO - \"Osirusoft Smart Hosts\" - Lista de servidores seguros que "
-#~ "sin embargo permiten el paso a terceros que no lo son."
-
-#~ msgid ""
-#~ "FREE - Osirusoft Spamware Developers - It is believed that these are IP "
-#~ "ranges of companies that are known to produce spam software. Seems to "
-#~ "catch abuse auto-replies from some ISPs."
-#~ msgstr ""
-#~ "GRATUITO - Lista de Osirusoft de Desarrolladores de Programas SPAM - Se "
-#~ "piensa que estas IPs pertenecen a desarrolladores de programas SPAM. "
-#~ "Parece que intercepta abusos en las respuestas de algunos ISPs."
-
-#~ msgid ""
-#~ "FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
-#~ "users in without confirmation."
-#~ msgstr "GRATUITO - Lista Osirusoft de Servidores \"Opt-In\" sin confirmar."
-
-#~ msgid ""
-#~ "FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure "
-#~ "formmail.cgi scripts. (planned)."
-#~ msgstr "GRATUITO - Formularios inseguros de Osirusoft."
-
-#~ msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
-#~ msgstr "GRATUITO - Lista de servidores Proxy abiertos de Osirusoft."
-
-#~ msgid "All Messages"
-#~ msgstr "Todos los mensajes"
-
-#~ msgid "Bỏ qua"
-#~ msgstr "Ignorar"
-
-#~ msgid ""
-#~ "<p>Your personal dictionary is <strong>currently encrypted</strong>. This "
-#~ "helps protect your privacy in case the web-mail system gets compromized "
-#~ "and your personal dictionary ends up stolen. It is currently encrypted "
-#~ "with the password you use to access your mailbox, making it hard for "
-#~ "anyone to see what is stored in your personal dictionary.</p> "
-#~ "<p><strong>ATTENTION:</strong> If you forget your password, your personal "
-#~ "dictionary will become unaccessible, since it can no longer be decrypted. "
-#~ "If you change your mailbox password, SquirrelSpell will recognize it and "
-#~ "prompt you for your old password in order to re-encrypt the dictionary "
-#~ "with a new key.</p>"
-#~ msgstr ""
-#~ "<p>Su diccionario personal está <b>cifrado</b>. Esto ayuda a proteger su "
-#~ "intimidad en el caso de que la seguridad del correo web esté comprometida "
-#~ "y su diccionario personal sea robado por terceros. Actualmente la "
-#~ "contraseña de cifrado empleada es la misma que la de su buzón.</"
-#~ "p><p><b>ATENCIóN:</b> Si olvida su contraseña su diccionario personal no "
-#~ "podrá emplearse, puesto que no podrá ser descifrado. Si cambia la "
-#~ "contraseña de su buzón SquirrelSpell se dará cuenta  y le pedirá su "
-#~ "contraseña antigua para cambiar el cifrado del diccionario.</p>"
-
-#~ msgid ""
-#~ "Select from the list of <b>server files</b> the media file to play when "
-#~ "new mail arrives.  Selecting <b>local media</b> will play the file "
-#~ "specified in the <b>local media file</b> box to play from the local "
-#~ "computer.  If no file is specified, the system will use a default from "
-#~ "the server."
-#~ msgstr ""
-#~ "<b>Chọn tệp trên máy chủ</b> dùng để chơi báo hiệu khi nhận thư mới. "
-#~ "<b>Chọn tệp trên máy bạn</b> để nếu muốn chơi tệp báo hiệu từ máy của "
-#~ "bạn. Nếu không chọn gì, thì sẽ dùng tệp mặc định trên máy chủ."
-
-#~ msgid "(local media)"
-#~ msgstr "(local media)"
-
-#~ msgid "New Mail Notification options saved"
-#~ msgstr "Các lựa chọn thông báo Thư mới đã lưu"
-
-#~ msgid "POP3: premature NOOP OK, NOT an RFC 1939 Compliant server"
-#~ msgstr "POP3: premature NOOP OK, NOT an RFC 1939 Compliant server"
-
-#~ msgid "POP3 noop:"
-#~ msgstr "POP3 noop:"
-
-#~ msgid "NOOP failed. Server not RFC 1939 compliant"
-#~ msgstr "NOOP failed. Server not RFC 1939 compliant"
-
-#~ msgid "] messages"
-#~ msgstr "] messages"
-
-#~ msgid "No-one server in use. Try to add."
-#~ msgstr "No existen cuentas. Cree una,"
-
-#~ msgid "Mofify a Server"
-#~ msgstr "Modificar un Servidor"
-
-#~ msgid "Hey! Wath do You are looking for?"
-#~ msgstr "Hey! Wath do You are looking for?"
-
-#~ msgid "35 min."
-#~ msgstr "35 phút."
-
-#~ msgid "Authenticated SMTP"
-#~ msgstr "Authenticated SMTP"
-
-#~ msgid "Unknown messagenumber in reply from server: "
-#~ msgstr "Número de mensaje desconocido en contestación del servidor: "
-
-#~ msgid "empty"
-#~ msgstr "vaciar"
-
-#~ msgid "Welcome to %s's WebMail system"
-#~ msgstr "Bienvenido al Correo Web de %s"
-
-#~ msgid "Running SquirrelMail version %s (c) 1999-2001."
-#~ msgstr "Ejecutando SquirrelMail versión %s (c) 1999-2001."
-
-#~ msgid ""
-#~ "FREE - Another ORBS replacement (just the INPUTS database used here)."
-#~ msgstr ""
-#~ "GRATUITO - Otro sustituto de ORBS (solo usa la base de datos INPUTS)"
-
-#~ msgid ""
-#~ "FREE - Another ORBS replacement (just the OUTPUTS database used here)."
-#~ msgstr ""
-#~ "GRATUITO - Otro sustituto de ORBS (solo usa la base de datos INPUTS)."
-
-#~ msgid "delete_move_next:"
-#~ msgstr "Borrar_mover_siguiente:"
+msgstr "Ảnh này đã bị gỡ bỏ vì lý do bảo mật."
