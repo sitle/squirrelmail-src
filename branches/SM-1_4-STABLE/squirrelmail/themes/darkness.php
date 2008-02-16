@@ -47,7 +47,7 @@ function Darkness_HeaderPlugin() {
          'blendTrans(Duration=2.0)" />' . "\n";
    }
 
-?><script language="javascript">
+?><script type="text/javascript">
 darkness_color = 0;
 darkness_dir = +1;
 darkness_hex = new Array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
@@ -73,68 +73,68 @@ global $squirrelmail_plugin_hooks;
 $squirrelmail_plugin_hooks['generic_header']['theme_darkness'] =
     'Darkness_HeaderPlugin';
 
-   /** seed the random number generator **/
-   sq_mt_randomize();
+/** seed the random number generator **/
+sq_mt_randomize();
 
-   $color[3] = '#000000';
-   $color[4] = '#000000';
-   $used = array(0);
-   $targetDistance = $BackgroundTargetDistance;
-   $Left = array(0, 5, 9, 10, 12);
-   while (count($Left) > 0) {
-      // Some background colors
-      $r = mt_rand(24,64);
-      $unique = true;
-      foreach ($used as $col) {
-         if (abs($r - $col) < $targetDistance)
+$color[3] = '#000000';
+$color[4] = '#000000';
+$used = array(0);
+$targetDistance = $BackgroundTargetDistance;
+$Left = array(0, 5, 9, 10, 12);
+while (count($Left) > 0) {
+    // Some background colors
+    $r = mt_rand(24,64);
+    $unique = true;
+    foreach ($used as $col) {
+        if (abs($r - $col) < $targetDistance)
             $unique = false;
-      }
-      if ($unique) {
-         $i = array_shift($Left);
-         $color[$i] = sprintf('#%02X%02X%02X',$r,$r, $r);
-         $used[] = $r;
-         $targetDistance = $BackgroundTargetDistance;
-      } else {
-         $targetDistance -= $BackgroundAdjust;
-      }
-   }
+    }
+    if ($unique) {
+        $i = array_shift($Left);
+        $color[$i] = sprintf('#%02X%02X%02X',$r,$r, $r);
+        $used[] = $r;
+        $targetDistance = $BackgroundTargetDistance;
+    } else {
+        $targetDistance -= $BackgroundAdjust;
+    }
+}
 
-   // Set the error color to some shade of red
-   $r = mt_rand(196, 255);
-   $g = mt_rand(144, ($r * .8));
-   $color[2] = sprintf('#%02X%02X%02X', $r, $g, $g);
-   $used = array(array($r, $g, $g));
+// Set the error color to some shade of red
+$r = mt_rand(196, 255);
+$g = mt_rand(144, ($r * .8));
+$color[2] = sprintf('#%02X%02X%02X', $r, $g, $g);
+$used = array(array($r, $g, $g));
 
-   // Set normal text colors
-   $cmin = 196;
-   $cmax = 255;
-   foreach (array(6, 8) as $i) {
-      /** generate random color **/
-      $r = mt_rand($cmin,$cmax);
-      $g = mt_rand($cmin,$cmax);
-      $b = mt_rand($cmin,$cmax);
-      $color[$i] = sprintf('#%02X%02X%02X',$r,$g,$b);
-      $used[] = array($r, $g, $b);
-   }
+// Set normal text colors
+$cmin = 196;
+$cmax = 255;
+foreach (array(6, 8) as $i) {
+    /** generate random color **/
+    $r = mt_rand($cmin,$cmax);
+    $g = mt_rand($cmin,$cmax);
+    $b = mt_rand($cmin,$cmax);
+    $color[$i] = sprintf('#%02X%02X%02X',$r,$g,$b);
+    $used[] = array($r, $g, $b);
+}
 
-   $Left = array(1, 7, 11, 13, 14, 15);
-   $targetDistance = $TextTargetDistance;
-   while (count($Left) > 0) {
-      // Text colors -- Try to keep the colors distinct
-      $cmin = 196;
-      $cmax = 255;
+$Left = array(1, 7, 11, 13, 14, 15);
+$targetDistance = $TextTargetDistance;
+while (count($Left) > 0) {
+    // Text colors -- Try to keep the colors distinct
+    $cmin = 196;
+    $cmax = 255;
 
-      /** generate random color **/
-      $r = mt_rand($cmin,$cmax);
-      $g = mt_rand($cmin,$cmax);
-      $b = mt_rand($cmin,$cmax);
+    /** generate random color **/
+    $r = mt_rand($cmin,$cmax);
+    $g = mt_rand($cmin,$cmax);
+    $b = mt_rand($cmin,$cmax);
 
-      if (IsUnique($targetDistance, $r, $g, $b, $used)) {
-         $i = array_shift($Left);
-         $color[$i] = sprintf('#%02X%02X%02X',$r,$g,$b);
-         $used[] = array($r, $g, $b);
-         $targetDistance = $TextTargetDistance;
-      } else {
-         $targetDistance *= $TextAdjust;
-      }
-   }
+    if (IsUnique($targetDistance, $r, $g, $b, $used)) {
+        $i = array_shift($Left);
+        $color[$i] = sprintf('#%02X%02X%02X',$r,$g,$b);
+        $used[] = array($r, $g, $b);
+        $targetDistance = $TextTargetDistance;
+    } else {
+        $targetDistance *= $TextAdjust;
+    }
+}
