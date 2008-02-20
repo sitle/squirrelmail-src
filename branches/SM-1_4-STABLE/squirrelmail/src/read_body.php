@@ -157,10 +157,10 @@ function ServerMDNSupport($read) {
 }
 
 function SendMDN ( $mailbox, $passed_id, $sender, $message, $imapConnection) {
-    global $username, $attachment_dir, $color,
+    global $username, $attachment_dir, $color, $default_move_to_sent,
            $version, $attachments, $squirrelmail_language, $default_charset,
            $languages, $useSendmail, $domain, $sent_folder,
-           $popuser, $data_dir, $username;
+           $popuser, $data_dir;
 
     sqgetGlobalVar('SERVER_NAME', $SERVER_NAME, SQ_SERVER);
 
@@ -309,16 +309,20 @@ function SendMDN ( $mailbox, $passed_id, $sender, $message, $imapConnection) {
         require_once(SM_PATH . 'class/deliver/Deliver_SMTP.class.php');
         $deliver = new Deliver_SMTP();
         global $smtpServerAddress, $smtpPort, $pop_before_smtp;
+
+        $authPop = (isset($pop_before_smtp) && $pop_before_smtp) ? true : false;
+
         $user = '';
         $pass = '';
-        $authPop = (isset($pop_before_smtp) && $pop_before_smtp) ? true : false;
+
         get_smtp_user($user, $pass);
+
         $stream = $deliver->initStream($composeMessage,$domain,0,
-                                       $smtpServerAddress, $smtpPort, $user, $pass, $authPop);
+                $smtpServerAddress, $smtpPort, $user, $pass, $authPop);
     }
     $success = false;
     if ($stream) {
-        $length  = $deliver->mail($composeMessage, $stream);
+        $deliver->mail($composeMessage, $stream);
         $success = $deliver->finalizeStream($stream);
     }
     if (!$success) {
@@ -330,12 +334,32 @@ function SendMDN ( $mailbox, $passed_id, $sender, $message, $imapConnection) {
         plain_error_message($msg, $color);
     } else {
         unset ($deliver);
-        if (sqimap_mailbox_exists ($imapConnection, $sent_folder)) {
-            sqimap_append ($imapConnection, $sent_folder, $length);
+
+        // copy message to sent folder
+        $move_to_sent = getPref($data_dir,$username,'move_to_sent');
+        if (isset($default_move_to_sent) && ($default_move_to_sent != 0)) {
+            $svr_allow_sent = true;
+        } else {
+            $svr_allow_sent = false;
+        }
+
+        if (isset($sent_folder) && (($sent_folder != '') || ($sent_folder != 'none'))
+                && sqimap_mailbox_exists( $imapConnection, $sent_folder)) {
+            $fld_sent = true;
+        } else {
+            $fld_sent = false;
+        }
+
+        if ((isset($move_to_sent) && ($move_to_sent != 0)) || (!isset($move_to_sent))) {
+            $lcl_allow_sent = true;
+        } else {
+            $lcl_allow_sent = false;
+        }
+
+        if (($fld_sent && $svr_allow_sent && !$lcl_allow_sent) || ($fld_sent && $lcl_allow_sent)) {
             require_once(SM_PATH . 'class/deliver/Deliver_IMAP.class.php');
             $imap_deliver = new Deliver_IMAP();
-            $imap_deliver->mail($composeMessage, $imapConnection);
-            sqimap_append_done ($imapConnection);
+            $imap_deliver->mail($composeMessage, $imapConnection, 0, 0, $sent_folder);
             unset ($imap_deliver);
         }
     }
