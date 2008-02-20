@@ -1561,7 +1561,7 @@ function deliverMessage(&$composeMessage, $draft=false) {
     if (!$useSendmail && !$draft) {
         require_once(SM_PATH . 'class/deliver/Deliver_SMTP.class.php');
         $deliver = new Deliver_SMTP();
-        global $smtpServerAddress, $smtpPort, $pop_before_smtp, $smtp_auth_mech;
+        global $smtpServerAddress, $smtpPort, $pop_before_smtp;
 
         $authPop = (isset($pop_before_smtp) && $pop_before_smtp) ? true : false;
         
