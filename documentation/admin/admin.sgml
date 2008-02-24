@@ -1242,12 +1242,12 @@ machine speed, but it has been reported that when viewing a folder containing
 circa 17,000 mails, the initial viewing delays can decrease from around 35
 seconds to 4 seconds.
 
-Server-side sorting can cause problems in SquirrelMail only when IMAP server
-does not support char set used by selected SquirrelMail translation.
-SquirrelMail can use more than 15 char sets in server-side sorting and threading
-commands. Courier IMAP server supports them only when compiled with the
-<tt/--enable-unicode/ option. Cyrus IMAP (v.2.2.12) does not support some
-multibyte char sets used by SquirrelMail.
+The only case when server-side sorting causes problems in SquirrelMail is when
+the IMAP server doesn't support the character set used by the translation
+selected in SquirrelMail. SquirrelMail can use more than 15 character sets in
+server-side sorting and threading commands. Courier IMAP server only supports
+them when compiled with the <tt/--enable-unicode/ option. Cyrus IMAP (v.2.2.12)
+doesn't support some of the multibyte character sets used by SquirrelMail.
 
 <sect2>Threading
 <p>
