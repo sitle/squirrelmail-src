@@ -26,6 +26,9 @@ define('SMOPT_TYPE_BOOLEAN', 5);
 define('SMOPT_TYPE_HIDDEN', 6);
 define('SMOPT_TYPE_COMMENT', 7);
 define('SMOPT_TYPE_FLDRLIST', 8);
+define('SMOPT_TYPE_FLDRLIST_MULTI', 9);
+define('SMOPT_TYPE_EDIT_LIST', 10);
+define('SMOPT_TYPE_STRLIST_MULTI', 11);
 
 /* Define constants for the options refresh levels. */
 define('SMOPT_REFRESH_NONE', 0);
@@ -184,6 +187,15 @@ class SquirrelOption {
             case SMOPT_TYPE_FLDRLIST:
                 $result = $this->createWidget_FolderList();
                 break;
+            case SMOPT_TYPE_FLDRLIST_MULTI:
+                $result = $this->createWidget_FolderList(TRUE);
+                break;
+            case SMOPT_TYPE_EDIT_LIST:
+                $result = $this->createWidget_EditList();
+                break;
+            case SMOPT_TYPE_STRLIST_MULTI:
+                $result = $this->createWidget_StrList(TRUE);
+                break;
             default:
                $result = '<font color="' . $color[2] . '">'
                        . sprintf(_("Option Type '%s' Not Found"), $this->type)
@@ -227,9 +239,52 @@ class SquirrelOption {
         return ($result);
     }
 
-    function createWidget_StrList() {
+    /**
+     * Create selection box
+     *
+     * When $this->htmlencoded is TRUE, the keys and values in
+     * $this->possible_values are assumed to be display-safe.
+     * Use with care!
+     *
+     * @param boolean $multiple_select When TRUE, the select widget
+     *                                 will allow multiple selections
+     *                                 (OPTIONAL; default is FALSE
+     *                                 (single select list))
+     *
+     * @return string html formated selection box
+     *
+     */
+    function createWidget_StrList($multiple_select=FALSE) {
+
+        switch ($this->size) {
+//FIXME: not sure about these sizes... seems like we could add another on the "large" side...
+            case SMOPT_SIZE_TINY:
+                $height = 3;
+                break;
+            case SMOPT_SIZE_SMALL:
+                $height = 8;
+                break;
+            case SMOPT_SIZE_LARGE:
+                $height = 15;
+                break;
+            case SMOPT_SIZE_HUGE:
+                $height = 25;
+                break;
+            case SMOPT_SIZE_NORMAL:
+            default:
+                $height = 5;
+        }
+
+        // multiple select lists should already have array values
+        if (is_array($this->value))
+            $selected = $this->value;
+        else
+            $selected = array(strtolower($this->value));
+
         /* Begin the select tag. */
-        $result = "<select name=\"new_$this->name\" $this->script>\n";
+        $result = '<select name="new_' . $this->name
+            . ($multiple_select ? '[]" multiple="multiple" size="' . $height . '" ' : '" ')
+            . $this->script . ">\n";
 
         /* Add each possible value to the select list. */
         foreach ($this->possible_values as $real_value => $disp_value) {
@@ -237,8 +292,18 @@ class SquirrelOption {
             $new_option = '<option value="' .
                 ($this->htmlencoded ? $real_value : htmlspecialchars($real_value)) . '"';
 
+            // multiple select lists have possibly more than one default selection
+            if ($multiple_select) {
+                foreach ($selected as $default) {
+                    if ((string)$default == (string)$real_value) {
+                        $new_option .= ' selected="selected"';
+                        break;
+                    }
+                }
+            }
+
             /* If this value is the current value, select it. */
-            if ($real_value == $this->value) {
+            else if ($real_value == $this->value) {
                $new_option .= ' selected="selected"';
             }
 
@@ -253,28 +318,80 @@ class SquirrelOption {
         return ($result);
     }
 
-    function createWidget_FolderList() {
-        $selected = array(strtolower($this->value));
+    /**
+     * Create folder selection box
+     *
+     * @param boolean $multiple_select When TRUE, the select widget
+     *                                 will allow multiple selections
+     *                                 (OPTIONAL; default is FALSE
+     *                                 (single select list))
+     *
+     * @return string html formated selection box
+     *
+     */
+    function createWidget_FolderList($multiple_select=FALSE) {
+
+        switch ($this->size) {
+//FIXME: not sure about these sizes... seems like we could add another on the "large" side...
+            case SMOPT_SIZE_TINY:
+                $height = 3;
+                break;
+            case SMOPT_SIZE_SMALL:
+                $height = 8;
+                break;
+            case SMOPT_SIZE_LARGE:
+                $height = 15;
+                break;
+            case SMOPT_SIZE_HUGE:
+                $height = 25;
+                break;
+            case SMOPT_SIZE_NORMAL:
+            default:
+                $height = 5;
+        }
+
+        // multiple select lists should already have array values
+        if (is_array($this->value))
+            $selected = $this->value;
+        else
+            $selected = array(strtolower($this->value));
 
         /* Begin the select tag. */
-        $result = "<select name=\"new_$this->name\" $this->script>\n";
+        $result = '<select name="new_' . $this->name
+                . ($multiple_select ? '[]" multiple="multiple" size="' . $height . '"' : '"')
+                . " $this->script>\n";
 
         /* Add each possible value to the select list. */
         foreach ($this->possible_values as $real_value => $disp_value) {
+
             if ( is_array($disp_value) ) {
-              /* For folder list, we passed in the array of boxes.. */
-              $new_option = sqimap_mailbox_option_list(0, $selected, 0, $disp_value);
+                /* For folder list, we passed in the array of boxes.. */
+                $selected_lowercase = array();
+                foreach ($selected as $i => $box) 
+                    $selected_lowercase[$i] = strtolower($box);
+                $new_option = sqimap_mailbox_option_list(0, $selected_lowercase, 0, $disp_value);
+
             } else {
-              /* Start the next new option string. */
-              $new_option = '<option value="' . htmlspecialchars($real_value) . '"';
+                /* Start the next new option string. */
+                $new_option = '<option value="' . htmlspecialchars($real_value) . '"';
 
-              /* If this value is the current value, select it. */
-              if ($real_value == $this->value) {
-                 $new_option .= ' selected="selected"';
-              }
+                // multiple select lists have possibly more than one default selection
+                if ($multiple_select) {
+                    foreach ($selected as $default) {
+                        if ((string)$default == (string)$real_value) {
+                            $new_option .= ' selected="selected"';
+                            break;
+                        }
+                    }
+                }
 
-              /* Add the display value to our option string. */
-              $new_option .= '>' . htmlspecialchars($disp_value) . "</option>\n";
+                /* If this value is the current value, select it. */
+                else if ($real_value == $this->value) {
+                   $new_option .= ' selected="selected"';
+                }
+
+                /* Add the display value to our option string. */
+                $new_option .= '>' . htmlspecialchars($disp_value) . "</option>\n";
             }
             /* And add the new option string to our select tag. */
             $result .= $new_option;
@@ -370,23 +487,144 @@ class SquirrelOption {
         return ($result);
     }
 
+    /**
+     * Creates an edit list
+     * @return string html formated list of edit fields and
+     *                their associated controls
+     */
+    function createWidget_EditList() {
+
+        switch ($this->size) {
+//FIXME: not sure about these sizes... seems like we could add another on the "large" side...
+            case SMOPT_SIZE_TINY:
+                $height = 3;
+                break;
+            case SMOPT_SIZE_SMALL:
+                $height = 8;
+                break;
+            case SMOPT_SIZE_LARGE:
+                $height = 15;
+                break;
+            case SMOPT_SIZE_HUGE:
+                $height = 25;
+                break;
+            case SMOPT_SIZE_NORMAL:
+            default:
+                $height = 5;
+        }
+
+        global $javascript_on;
+
+        $result = _("Add")
+            . '&nbsp;<input name="add_' . $this->name 
+            . '" size="38" /><br /><select name="new_' . $this->name
+            . '[]" multiple="multiple" size="' . $height . '"'
+            . ($javascript_on ? ' onchange="if (typeof(window.addinput) == \'undefined\') { var f = document.forms.length; var i = 0; var pos = -1; while( pos == -1 && i < f ) { var e = document.forms[i].elements.length; var j = 0; while( pos == -1 && j < e ) { if ( document.forms[i].elements[j].type == \'text\' && document.forms[i].elements[j].name == \'add_' . $this->name . '\' ) { pos = j; } j++; } i++; } if( pos >= 0 ) { window.addinput = document.forms[i-1].elements[pos]; } } for (x = 0; x < this.length; x++) { if (this.options[x].selected) { window.addinput.value = this.options[x].text; break; } }"' : '')
+            . ' ' . $this->script . ">\n";
+
+
+        if (is_array($this->value))
+            $selected = $this->value;
+        else
+            $selected = array($this->value);
+
+
+        // Add each possible value to the select list.
+        //
+        foreach ($this->possible_values as $real_value => $disp_value) {
+
+            // Start the next new option string.
+            //
+            $result .= '<option value="' . htmlspecialchars($real_value) . '"';
+
+            // having a selected item in the edit list doesn't have
+            // any meaning, but maybe someone will think of a way to
+            // use it, so we might as well put the code in
+            //
+            foreach ($selected as $default) {
+                if ((string)$default == (string)$real_value) {
+                    $result .= ' selected="selected"';
+                    break;
+                }
+            }
+
+            // Add the display value to our option string.
+            //
+            $result .= '>' . htmlspecialchars($disp_value) . "</option>\n";
+
+        }
+
+        $result .= '</select><br /><input type="checkbox" name="delete_' 
+            . $this->name . '" id="delete_' . $this->name 
+            . '" value="1" />&nbsp;<label for="delete_' . $this->name . '">'
+            . _("Delete Selected");
+
+        return $result;
+
+    }
+
     function save() {
         $function = $this->save_function;
         $function($this);
     }
 
     function changed() {
+
+        // edit lists have a lot going on, so we'll always process them
+        //
+        if ($this->type == SMOPT_TYPE_EDIT_LIST) return TRUE;
+
         return ($this->value != $this->new_value);
     }
 }
 
 function save_option($option) {
+
+    // Can't save the pref if we don't have the username
+    //
     if ( !sqgetGlobalVar('username', $username, SQ_SESSION ) ) {
-        /* Can't save the pref if we don't have the username */
         return;
     }
+
     global $data_dir;
-    setPref($data_dir, $username, $option->name, $option->new_value);
+
+    // edit lists: first add new elements to list, then
+    // remove any selected ones (note that we must add
+    // before deleting because the javascript that populates
+    // the "add" textbox when selecting items in the list
+    // (for deletion))
+    //
+    if ($option->type == SMOPT_TYPE_EDIT_LIST) {
+
+        // add element if given
+        //
+        if (sqGetGlobalVar('add_' . $option->name, $new_element, SQ_POST)) {
+            $new_element = trim($new_element);
+            if (!empty($new_element)
+             && !in_array($new_element, $option->possible_values))
+                $option->possible_values[] = $new_element;
+        }
+
+        // delete selected elements if needed
+        //
+        if (is_array($option->new_value)
+         && sqGetGlobalVar('delete_' . $option->name, $ignore, SQ_POST))
+            foreach ($option->new_value as $delete_index)
+                unset($option->possible_values[$delete_index]);
+
+        // save full list (stored in "possible_values")
+        //
+        setPref($data_dir, $username, $option->name, serialize($option->possible_values));
+
+    // Certain option types need to be serialized because
+    // they are not scalar
+    //
+    } else if ($option->type == SMOPT_TYPE_FLDRLIST_MULTI
+            || $option->type == SMOPT_TYPE_STRLIST_MULTI)
+        setPref($data_dir, $username, $option->name, serialize($option->new_value));
+    else
+        setPref($data_dir, $username, $option->name, $option->new_value);
+
 }
 
 function save_option_noop($option) {
