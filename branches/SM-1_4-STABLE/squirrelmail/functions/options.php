@@ -531,6 +531,7 @@ class SquirrelOption {
 
         // Add each possible value to the select list.
         //
+        if (empty($this->possible_values)) $this->possible_values = array();
         foreach ($this->possible_values as $real_value => $disp_value) {
 
             // Start the next new option string.
