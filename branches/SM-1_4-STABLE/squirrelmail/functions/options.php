@@ -533,18 +533,18 @@ class SquirrelOption {
         //
         if (empty($this->possible_values)) $this->possible_values = array();
         if (!is_array($this->possible_values)) $this->possible_values = array($this->possible_values);
-        foreach ($this->possible_values as $real_value => $disp_value) {
+        foreach ($this->possible_values as $value) {
 
             // Start the next new option string.
             //
-            $result .= '<option value="' . htmlspecialchars($real_value) . '"';
+            $result .= '<option value="' . htmlspecialchars($value) . '"';
 
             // having a selected item in the edit list doesn't have
             // any meaning, but maybe someone will think of a way to
             // use it, so we might as well put the code in
             //
             foreach ($selected as $default) {
-                if ((string)$default == (string)$real_value) {
+                if ((string)$default == (string)$value) {
                     $result .= ' selected="selected"';
                     break;
                 }
@@ -552,7 +552,7 @@ class SquirrelOption {
 
             // Add the display value to our option string.
             //
-            $result .= '>' . htmlspecialchars($disp_value) . "</option>\n";
+            $result .= '>' . htmlspecialchars($value) . "</option>\n";
 
         }
 
@@ -614,8 +614,7 @@ function save_option($option) {
         //
         if (is_array($option->new_value)
          && sqGetGlobalVar('delete_' . $option->name, $ignore, SQ_POST))
-            foreach ($option->new_value as $delete_index)
-                unset($option->possible_values[$delete_index]);
+            $option->possible_values = array_diff($option->possible_values, $option->new_value);
 
         // save full list (stored in "possible_values")
         //
