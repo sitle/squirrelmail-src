@@ -942,8 +942,8 @@ $languages['tr_TR']['LOCALE']  = array('tr_TR.ISO8859-9','tr_TR.ISO-8859-9','tr_
 $languages['tr']['ALIAS']      = 'tr_TR';
 
 $languages['zh_TW']['NAME']    = 'Chinese Trad';
-$languages['zh_TW']['CHARSET'] = 'big5';
-$languages['zh_TW']['LOCALE']  = 'zh_TW.BIG5';
+$languages['zh_TW']['CHARSET'] = 'utf-8';
+$languages['zh_TW']['LOCALE']  = 'zh_TW.UTF-8';
 $languages['tw']['ALIAS']      = 'zh_TW';
 
 $languages['zh_CN']['NAME']    = 'Chinese Simp';

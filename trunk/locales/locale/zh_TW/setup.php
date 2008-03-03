@@ -27,6 +27,6 @@
  */
 
 $languages['zh_TW']['NAME']    = 'Chinese Trad';
-$languages['zh_TW']['CHARSET'] = 'big5';
-$languages['zh_TW']['LOCALE']  = array('zh_TW.BIG5','zh_TW');
+$languages['zh_TW']['CHARSET'] = 'utf-8';
+$languages['zh_TW']['LOCALE']  = array('zh_TW.UTF-8','zh_TW');
 $languages['tw']['ALIAS'] = 'zh_TW';
