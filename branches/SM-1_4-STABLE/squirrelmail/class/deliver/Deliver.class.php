@@ -504,15 +504,15 @@ class Deliver {
         /* Create a message-id */
         $message_id = 'MESSAGE ID GENERATION ERROR! PLEASE CONTACT SQUIRRELMAIL DEVELOPERS';
         if (empty($rfc822_header->message_id)) {
-            $message_id = '<' . (!empty($REMOTE_PORT) ? $REMOTE_PORT . '.' : '');
-//FIXME: if $REMOTE_ADDR is missing, should we skip this if/else block?  or perhaps try to generate it with some different kind of info?
-            if (isset($encode_header_key) && trim($encode_header_key)!='') {
-                // use encrypted form of remote address
-                $message_id.= OneTimePadEncrypt($this->ip2hex($REMOTE_ADDR),base64_encode($encode_header_key));
-            } else {
-                $message_id.= $REMOTE_ADDR;
-            }
-            $message_id .= '.' . time() . '.squirrel@' . $SERVER_NAME .'>';
+            $message_id = '<';
+            /* user-specifc data to decrease collision chance */
+            $seed_data = $username . '.';
+            $seed_data .= (!empty($REMOTE_PORT) ? $REMOTE_PORT . '.' : '');
+            $seed_data .= (!empty($REMOTE_ADDR) ? $REMOTE_ADDR . '.' : '');
+            /* add the current time in milliseconds and randomness */
+            $seed_data .= uniqid(mt_rand(),true);
+            /* put it through one-way hash and add it to the ID */
+            $message_id .= md5($seed_data) . '.squirrel@' . $SERVER_NAME .'>';
         }
 
         /* Make an RFC822 Received: line */
