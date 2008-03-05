@@ -781,6 +781,18 @@ function print_option_groups($option_groups) {
         /* Print each option in this option group. */
         foreach ($next_optgrp['options'] as $option) {
             if ($option->type != SMOPT_TYPE_HIDDEN) {
+
+                // although trailing_text will be a label for the checkbox,
+                // make the caption a label too - some widgets won't have
+                // trailing_text and having both as labels is perfectly fine
+                //
+//FIXME: use the following two lines instead if we make the default boolean type checkbox
+                //if ($option->type == SMOPT_TYPE_BOOLEAN_CHECKBOX
+                // || $option->type == SMOPT_TYPE_BOOLEAN)
+                if ($option->type == SMOPT_TYPE_BOOLEAN_CHECKBOX)
+                    $option->caption = '<label for="new_' . $option->name . '">'
+                                     . $option->caption . '</label>';
+
                 echo html_tag( 'tr', "\n".
                            html_tag( 'td', $option->caption . (!empty($option->caption) ? ':' : ''), 'right' ,'', 'valign="middle"' ) .
                            html_tag( 'td', $option->createHTMLWidget(), 'left' )
