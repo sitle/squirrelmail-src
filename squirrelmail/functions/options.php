@@ -29,6 +29,7 @@ define('SMOPT_TYPE_FLDRLIST', 8);
 define('SMOPT_TYPE_FLDRLIST_MULTI', 9);
 define('SMOPT_TYPE_EDIT_LIST', 10);
 define('SMOPT_TYPE_STRLIST_MULTI', 11);
+define('SMOPT_TYPE_BOOLEAN_CHECKBOX', 12);
 
 /* Define constants for the options refresh levels. */
 define('SMOPT_REFRESH_NONE', 0);
@@ -68,6 +69,7 @@ class SquirrelOption {
     var $comment;
     var $script;
     var $post_script;
+    var $trailing_text;
 
     /* The name of the Save Function for this option. */
     var $save_function;
@@ -91,6 +93,7 @@ class SquirrelOption {
         $this->comment = '';
         $this->script = '';
         $this->post_script = '';
+        $this->trailing_text = '';
 
         /* Check for a current value. */
         if (isset($GLOBALS[$name])) {
@@ -135,6 +138,11 @@ class SquirrelOption {
     /* Set the size for this option. */
     function setSize($size) {
         $this->size = $size;
+    }
+
+    /* Set the trailing text for this option. */
+    function setTrailingText($trailing_text) {
+        $this->trailing_text = $trailing_text;
     }
 
     /* Set the comment for this option. */
@@ -186,6 +194,9 @@ class SquirrelOption {
             case SMOPT_TYPE_BOOLEAN:
                 $result = $this->createWidget_Boolean();
                 break;
+            case SMOPT_TYPE_BOOLEAN_CHECKBOX:
+                $result = $this->createWidget_Boolean(TRUE);
+                break;
             case SMOPT_TYPE_HIDDEN:
                 $result = $this->createWidget_Hidden();
                 break;
@@ -219,7 +230,7 @@ class SquirrelOption {
         }
 
         /* Now, return the created widget. */
-        return ($result);
+        return $result;
     }
 
     function createWidget_String() {
@@ -241,10 +252,11 @@ class SquirrelOption {
                 $width = 25;
         }
 
-        $result = "<input type=\"text\" name=\"new_$this->name\" value=\"" .
-            htmlspecialchars($this->value) .
-            "\" size=\"$width\" $this->script />\n";
-        return ($result);
+        $result = "<input type=\"text\" name=\"new_$this->name\" value=\""
+                . htmlspecialchars($this->value)
+                . "\" size=\"$width\" $this->script />" 
+                . htmlspecialchars($this->trailing_text) . "\n";
+        return $result;
     }
 
     /**
@@ -322,8 +334,8 @@ class SquirrelOption {
         }
 
         /* Close the select tag and return our happy result. */
-        $result .= "</select>\n";
-        return ($result);
+        $result .= '</select>' . htmlspecialchars($this->trailing_text) . "\n";
+        return $result;
     }
 
     /**
@@ -405,8 +417,8 @@ class SquirrelOption {
             $result .= $new_option;
         }
         /* Close the select tag and return our happy result. */
-        $result .= "</select>\n";
-        return ($result);
+        $result .= '</select>' . htmlspecialchars($this->trailing_text) . "\n";
+        return $result;
     }
 
 
@@ -456,7 +468,19 @@ class SquirrelOption {
            return $this->createWidget_String();
     }
 
-    function createWidget_Boolean() {
+    /**
+     * Create boolean widget
+     *
+     * @param boolean $checkbox When TRUE, the widget will be
+     *                          constructed as a checkbox,
+     *                          otherwise it will be a set of
+     *                          Yes/No radio buttons (OPTIONAL;
+     *                          default is FALSE (radio buttons)).
+     *
+     * @return string html formated boolean widget
+     *
+     */
+    function createWidget_Boolean($checkbox=FALSE) {
         /* Do the whole current value thing. */
         if ($this->value != SMPREF_NO) {
             $yes_chk = ' checked="checked"';
@@ -466,20 +490,37 @@ class SquirrelOption {
             $no_chk = ' checked="checked"';
         }
 
-        /* Build the yes choice. */
-        $yes_option = '<input type="radio" name="new_' . $this->name 
-                    . '" id="new_' . $this->name . '_yes"'
-                    . ' value="' . SMPREF_YES . "\"$yes_chk $this->script />&nbsp;"
-                    . '<label for="new_' . $this->name . '_yes">' . _("Yes") . '</label>';
+        // checkbox...
+        //
+        if ($checkbox) {
+            $result = '<input type="checkbox" name="new_' . $this->name
+                    . '" id="new_' . $this->name . '" value="' . SMPREF_YES
+                    . "\" $yes_chk " . $this->script . ' />&nbsp;'
+                    . '<label for="new_' . $this->name . '">' 
+                    . $this->trailing_text . '</label>';
+        }
 
-        /* Build the no choice. */
-        $no_option = '<input type="radio" name="new_' . $this->name
-                   . '" id="new_' . $this->name . '_no"'
-                   . ' value="' . SMPREF_NO . "\"$no_chk $this->script />&nbsp;"
-                   . '<label for="new_' . $this->name . '_no">' . _("No") . '</label>';
+        // radio buttons...
+        //
+        else {
 
-        /* Build and return the combined "boolean widget". */
-        $result = "$yes_option&nbsp;&nbsp;&nbsp;&nbsp;$no_option";
+            /* Build the yes choice. */
+            $yes_option = '<input type="radio" name="new_' . $this->name 
+                        . '" id="new_' . $this->name . '_yes"'
+                        . ' value="' . SMPREF_YES . "\"$yes_chk $this->script />&nbsp;"
+                        . '<label for="new_' . $this->name . '_yes">' . _("Yes") . '</label>';
+
+            /* Build the no choice. */
+            $no_option = '<input type="radio" name="new_' . $this->name
+                       . '" id="new_' . $this->name . '_no"'
+                       . ' value="' . SMPREF_NO . "\"$no_chk $this->script />&nbsp;"
+                       . '<label for="new_' . $this->name . '_no">' . _("No") . '</label>';
+    
+            /* Build the combined "boolean widget". */
+            $result = "$yes_option&nbsp;&nbsp;&nbsp;&nbsp;$no_option";
+
+        }
+
         return ($result);
     }
 
@@ -685,6 +726,11 @@ function create_option_groups($optgrps, $optvals) {
             /* If provided, set the size for this option. */
             if (isset($optset['size'])) {
                 $next_option->setSize($optset['size']);
+            }
+
+            /* If provided, set the trailing_text for this option. */
+            if (isset($optset['trailing_text'])) {
+                $next_option->setTrailingText($optset['trailing_text']);
             }
 
             /* If provided, set the comment for this option. */
