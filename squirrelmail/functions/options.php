@@ -71,6 +71,8 @@ class SquirrelOption {
     var $script;
     var $post_script;
     var $trailing_text;
+    var $yes_text;
+    var $no_text;
 
     /* The name of the Save Function for this option. */
     var $save_function;
@@ -95,6 +97,8 @@ class SquirrelOption {
         $this->script = '';
         $this->post_script = '';
         $this->trailing_text = '';
+        $this->yes_text = '';
+        $this->no_text = '';
 
         /* Check for a current value. */
         if (isset($GLOBALS[$name])) {
@@ -144,6 +148,16 @@ class SquirrelOption {
     /* Set the trailing text for this option. */
     function setTrailingText($trailing_text) {
         $this->trailing_text = $trailing_text;
+    }
+
+    /* Set the yes text for this option. */
+    function setYesText($yes_text) {
+        $this->yes_text = $yes_text;
+    }
+
+    /* Set the no text for this option. */
+    function setNoText($no_text) {
+        $this->no_text = $no_text;
     }
 
     /* Set the comment for this option. */
@@ -475,6 +489,10 @@ class SquirrelOption {
     /**
      * Create boolean widget
      *
+     * When creating Yes/No radio buttons, the "yes_text"
+     * and "no_text" option attributes are used to override
+     * the typical "Yes" and "No" text.
+     *
      * @param boolean $checkbox When TRUE, the widget will be
      *                          constructed as a checkbox,
      *                          otherwise it will be a set of
@@ -512,13 +530,13 @@ class SquirrelOption {
             $yes_option = '<input type="radio" name="new_' . $this->name 
                         . '" id="new_' . $this->name . '_yes"'
                         . ' value="' . SMPREF_YES . "\"$yes_chk $this->script />&nbsp;"
-                        . '<label for="new_' . $this->name . '_yes">' . _("Yes") . '</label>';
+                        . '<label for="new_' . $this->name . '_yes">' . (!empty($this->yes_text) ? htmlspecialchars($this->yes_text) : _("Yes")) . '</label>';
 
             /* Build the no choice. */
             $no_option = '<input type="radio" name="new_' . $this->name
                        . '" id="new_' . $this->name . '_no"'
                        . ' value="' . SMPREF_NO . "\"$no_chk $this->script />&nbsp;"
-                       . '<label for="new_' . $this->name . '_no">' . _("No") . '</label>';
+                       . '<label for="new_' . $this->name . '_no">' . (!empty($this->no_text) ? htmlspecialchars($this->no_text) : _("No")) . '</label>';
     
             /* Build the combined "boolean widget". */
             $result = "$yes_option&nbsp;&nbsp;&nbsp;&nbsp;$no_option";
@@ -735,6 +753,16 @@ function create_option_groups($optgrps, $optvals) {
             /* If provided, set the trailing_text for this option. */
             if (isset($optset['trailing_text'])) {
                 $next_option->setTrailingText($optset['trailing_text']);
+            }
+
+            /* If provided, set the yes_text for this option. */
+            if (isset($optset['yes_text'])) {
+                $next_option->setYesText($optset['yes_text']);
+            }
+
+            /* If provided, set the no_text for this option. */
+            if (isset($optset['no_text'])) {
+                $next_option->setNoText($optset['no_text']);
             }
 
             /* If provided, set the comment for this option. */
