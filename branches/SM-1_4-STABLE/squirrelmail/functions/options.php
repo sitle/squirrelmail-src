@@ -732,7 +732,7 @@ function print_option_groups($option_groups) {
         foreach ($next_optgrp['options'] as $option) {
             if ($option->type != SMOPT_TYPE_HIDDEN) {
                 echo html_tag( 'tr', "\n".
-                           html_tag( 'td', $option->caption . ':', 'right' ,'', 'valign="middle"' ) .
+                           html_tag( 'td', $option->caption . (!empty($option->caption) ? ':' : ''), 'right' ,'', 'valign="middle"' ) .
                            html_tag( 'td', $option->createHTMLWidget(), 'left' )
                        ) ."\n";
             } else {
