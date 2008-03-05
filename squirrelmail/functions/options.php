@@ -479,12 +479,12 @@ class SquirrelOption {
      *                          constructed as a checkbox,
      *                          otherwise it will be a set of
      *                          Yes/No radio buttons (OPTIONAL;
-     *                          default is FALSE (radio buttons)).
+     *                          default is TRUE (checkbox)).
      *
      * @return string html formated boolean widget
      *
      */
-    function createWidget_Boolean($checkbox=FALSE) {
+    function createWidget_Boolean($checkbox=TRUE) {
         /* Do the whole current value thing. */
         if ($this->value != SMPREF_NO) {
             $yes_chk = ' checked="checked"';
@@ -786,10 +786,8 @@ function print_option_groups($option_groups) {
                 // make the caption a label too - some widgets won't have
                 // trailing_text and having both as labels is perfectly fine
                 //
-//FIXME: use the following two lines instead if we make the default boolean type checkbox
-                //if ($option->type == SMOPT_TYPE_BOOLEAN_CHECKBOX
-                // || $option->type == SMOPT_TYPE_BOOLEAN)
-                if ($option->type == SMOPT_TYPE_BOOLEAN_CHECKBOX)
+                if ($option->type == SMOPT_TYPE_BOOLEAN_CHECKBOX
+                 || $option->type == SMOPT_TYPE_BOOLEAN)
                     $option->caption = '<label for="new_' . $option->name . '">'
                                      . $option->caption . '</label>';
 
