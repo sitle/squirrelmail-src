@@ -497,7 +497,7 @@ class SquirrelOption {
                     . '" id="new_' . $this->name . '" value="' . SMPREF_YES
                     . "\" $yes_chk " . $this->script . ' />&nbsp;'
                     . '<label for="new_' . $this->name . '">' 
-                    . $this->trailing_text . '</label>';
+                    . htmlspecialchars($this->trailing_text) . '</label>';
         }
 
         // radio buttons...
