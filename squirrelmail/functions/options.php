@@ -282,7 +282,7 @@ class SquirrelOption {
     }
 
     /**
-     * Create selection box
+     * Create selection box or radio group
      *
      * When $this->htmlencoded is TRUE, the keys and values in
      * $this->possible_values are assumed to be display-safe.
