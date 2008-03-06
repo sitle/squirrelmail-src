@@ -21,7 +21,14 @@
  * @access private
  */
 function fortune_show() {
-    global $color;
+
+    global $fortune_visible, $color, $username, $data_dir;
+    $fortune_visible = getPref($data_dir, $username, 'fortune_visible');
+
+    // Don't show fortune if not enabled
+    if (empty($fortune_visible)) {
+        return;
+    }
     
     $fortune_location = '/usr/bin/fortune';
     $exist = is_executable($fortune_location);
@@ -45,8 +52,14 @@ function fortune_show() {
 }
 
 
+/**
+ * Add fortune options
+ * @access private
+ */
 function fortune_show_options() {
-    global $optpage_data;
+
+    global $optpage_data, $username, $data_dir, $fortune_visible;
+    $fortune_visible = getPref($data_dir, $username, 'fortune_visible');
     
     $optgrp = _("Fortunes");
     $optvals = array();
@@ -62,4 +75,3 @@ function fortune_show_options() {
      $optpage_data['vals']['fortune'] = $optvals;
 }
 
-?>
