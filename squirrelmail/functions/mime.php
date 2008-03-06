@@ -315,7 +315,6 @@ function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num, $id, $ma
 
     // If there's no "view_unsafe_images" setting in the user's preferences,
     // turn unsafe images off by default.
-    // FIXME: Check if the UIR plugin is enabled. If it's not, no unsafe images should be displayed regardless of the user's preferences. This test is done in several places in the code and they should all be fixed in the same way.
     if( !sqgetGlobalVar('view_unsafe_images', $view_unsafe_images, SQ_GET) ) {
         $view_unsafe_images = false;
     }
@@ -1705,7 +1704,6 @@ function sq_fix_url($attname, &$attvalue, $message, $id, $mailbox,$sQuote = '"')
 
     // If there's no "view_unsafe_images" setting in the user's preferences,
     // turn unsafe images off by default.
-    // FIXME: Check if the UIR plugin is enabled. If it's not, no unsafe images should be displayed regardless of the user's preferences. This test is done in several places in the code and they should all be fixed in the same way.
     if( !sqgetGlobalVar('view_unsafe_images', $view_unsafe_images, SQ_GET) ) {
         $view_unsafe_images = false;
     }
@@ -2336,7 +2334,6 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX', $take_mailto_links 
 
     // If there's no "view_unsafe_images" setting in the user's preferences,
     // turn unsafe images off by default.
-    // FIXME: Check if the UIR plugin is enabled. If it's not, no unsafe images should be displayed regardless of the user's preferences. This test is done in several places in the code and they should all be fixed in the same way.
     if( !sqgetGlobalVar('view_unsafe_images', $view_unsafe_images, SQ_GET) ) {
         $view_unsafe_images = false;
     }
