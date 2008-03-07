@@ -22,13 +22,7 @@
  */
 function fortune_show() {
 
-    global $fortune_visible, $color, $username, $data_dir;
-    $fortune_visible = getPref($data_dir, $username, 'fortune_visible');
-
-    // Don't show fortune if not enabled
-    if (empty($fortune_visible)) {
-        return;
-    }
+    global $color;
     
     $fortune_location = '/usr/bin/fortune';
     $exist = is_executable($fortune_location);

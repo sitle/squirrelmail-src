@@ -32,6 +32,14 @@ function squirrelmail_plugin_init_fortune() {
  * @access private
  */
 function fortune() {
+    global $fortune_visible, $username, $data_dir;
+    $fortune_visible = getPref($data_dir, $username, 'fortune_visible');
+
+    // Don't show fortune if not enabled
+    if (empty($fortune_visible)) {
+        return;
+    }
+
     include_once(SM_PATH . 'plugins/fortune/fortune_functions.php');
     fortune_show();
 }
