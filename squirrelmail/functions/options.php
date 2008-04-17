@@ -33,6 +33,10 @@ define('SMOPT_TYPE_BOOLEAN_CHECKBOX', 12);
 define('SMOPT_TYPE_BOOLEAN_RADIO', 13);
 define('SMOPT_TYPE_STRLIST_RADIO', 14);
 
+/* Define constants for the layout scheme for edit lists. */
+define('SMOPT_EDIT_LIST_LAYOUT_LIST', 0);
+define('SMOPT_EDIT_LIST_LAYOUT_SELECT', 1);
+
 /* Define constants for the options refresh levels. */
 define('SMOPT_REFRESH_NONE', 0);
 define('SMOPT_REFRESH_FOLDERLIST', 1);
@@ -68,6 +72,7 @@ class SquirrelOption {
     var $type;
     var $refresh_level;
     var $size;
+    var $layout_type;
     var $comment;
     var $script;
     var $post_script;
@@ -94,6 +99,7 @@ class SquirrelOption {
         $this->possible_values = $possible_values;
         $this->htmlencoded = $htmlencoded;
         $this->size = SMOPT_SIZE_MEDIUM;
+        $this->layout_type = 0;
         $this->comment = '';
         $this->script = '';
         $this->post_script = '';
@@ -159,6 +165,11 @@ class SquirrelOption {
     /* Set the no text for this option. */
     function setNoText($no_text) {
         $this->no_text = $no_text;
+    }
+
+    /* Set the layout type for this option. */
+    function setLayoutType($layout_type) {
+        $this->layout_type = $layout_type;
     }
 
     /* Set the comment for this option. */
@@ -603,6 +614,11 @@ class SquirrelOption {
 
     /**
      * Creates an edit list
+     *
+     * Note that multiple layout types are supported for this widget.
+     * $this->layout_type must be one of the SMOPT_EDIT_LIST_LAYOUT_*
+     * constants.
+     *
      * @return string html formated list of edit fields and
      *                their associated controls
      */
@@ -627,53 +643,107 @@ class SquirrelOption {
                 $height = 5;
         }
 
-        global $javascript_on;
 
-        $result = _("Add")
-            . '&nbsp;<input name="add_' . $this->name 
-            . '" size="38" /><br /><select name="new_' . $this->name
-            . '[]" multiple="multiple" size="' . $height . '"'
-            . ($javascript_on ? ' onchange="if (typeof(window.addinput) == \'undefined\') { var f = document.forms.length; var i = 0; var pos = -1; while( pos == -1 && i < f ) { var e = document.forms[i].elements.length; var j = 0; while( pos == -1 && j < e ) { if ( document.forms[i].elements[j].type == \'text\' && document.forms[i].elements[j].name == \'add_' . $this->name . '\' ) { pos = j; } j++; } i++; } if( pos >= 0 ) { window.addinput = document.forms[i-1].elements[pos]; } } for (x = 0; x < this.length; x++) { if (this.options[x].selected) { window.addinput.value = this.options[x].text; break; } }"' : '')
-            . ' ' . $this->script . ">\n";
-
-
-        if (is_array($this->value))
-            $selected = $this->value;
-        else
-            $selected = array($this->value);
-
-
-        // Add each possible value to the select list.
+        // ensure correct format of current value(s)
         //
         if (empty($this->possible_values)) $this->possible_values = array();
         if (!is_array($this->possible_values)) $this->possible_values = array($this->possible_values);
-        foreach ($this->possible_values as $value) {
 
-            // Start the next new option string.
-            //
-            $result .= '<option value="' . htmlspecialchars($value) . '"';
 
-            // having a selected item in the edit list doesn't have
-            // any meaning, but maybe someone will think of a way to
-            // use it, so we might as well put the code in
-            //
-            foreach ($selected as $default) {
-                if ((string)$default == (string)$value) {
-                    $result .= ' selected="selected"';
-                    break;
+        global $javascript_on, $color;
+
+        switch ($this->layout_type) {
+            case SMOPT_EDIT_LIST_LAYOUT_SELECT:
+                $result = _("Add")
+                    . '&nbsp;<input name="add_' . $this->name 
+                    . '" size="38" /><br /><select name="new_' . $this->name
+                    . '[]" multiple="multiple" size="' . $height . '"'
+                    . ($javascript_on ? ' onchange="if (typeof(window.addinput) == \'undefined\') { var f = document.forms.length; var i = 0; var pos = -1; while( pos == -1 && i < f ) { var e = document.forms[i].elements.length; var j = 0; while( pos == -1 && j < e ) { if ( document.forms[i].elements[j].type == \'text\' && document.forms[i].elements[j].name == \'add_' . $this->name . '\' ) { pos = j; } j++; } i++; } if( pos >= 0 ) { window.addinput = document.forms[i-1].elements[pos]; } } for (x = 0; x < this.length; x++) { if (this.options[x].selected) { window.addinput.value = this.options[x].text; break; } }"' : '')
+                    . ' ' . $this->script . ">\n";
+
+
+                if (is_array($this->value))
+                    $selected = $this->value;
+                else
+                    $selected = array($this->value);
+
+
+                // Add each possible value to the select list.
+                //
+                foreach ($this->possible_values as $value) {
+
+                    // Start the next new option string.
+                    //
+                    $result .= '<option value="' . htmlspecialchars($value) . '"';
+
+                    // having a selected item in the edit list doesn't have
+                    // any meaning, but maybe someone will think of a way to
+                    // use it, so we might as well put the code in
+                    //
+                    foreach ($selected as $default) {
+                        if ((string)$default == (string)$value) {
+                            $result .= ' selected="selected"';
+                            break;
+                        }
+                    }
+
+                    // Add the display value to our option string.
+                    //
+                    $result .= '>' . htmlspecialchars($value) . "</option>\n";
+
                 }
-            }
 
-            // Add the display value to our option string.
-            //
-            $result .= '>' . htmlspecialchars($value) . "</option>\n";
+                $result .= '</select><br /><input type="checkbox" name="delete_' 
+                    . $this->name . '" id="delete_' . $this->name 
+                    . '" value="1" />&nbsp;<label for="delete_' . $this->name . '">'
+                    . _("Delete Selected") . '</label>';
 
+                break;
+
+
+
+            case SMOPT_EDIT_LIST_LAYOUT_LIST:
+                $result = '<table width="80%" cellpadding="1" cellspacing="0" border="0" bgcolor="' . $color[0]
+                      . '"><tr><td>'
+                      . _("Add") . '&nbsp;<input name="add_' . $this->name 
+                      . '" size="38" /><br />'
+                      . '<table cellpadding="1" cellspacing="0" border="0" bgcolor="' . $color[5] . '">';
+
+                $bgcolor = 4;
+                if (!isset($color[12]))
+                    $color[12] = '#EAEAEA';
+                $index = 0;
+
+                foreach ($this->possible_values as $key => $value) {
+
+                    if ($bgcolor == 4) $bgcolor = 12;
+                    else $bgcolor = 4;
+
+                    $result .= '<tr bgcolor="' . $color[$bgcolor] . '">'
+                             . '<td width="1%"><input type="checkbox" name="new_' . $this->name . '[' . ($index++) . ']" id="' . $this->name . '_list_item_' . $key . '" value="' . $value . '"></td>'
+                             . '<td><label for="' . $this->name . '_list_item_' . $key . '">' . $value . '</label></td>'
+                             . "</tr>\n";
+
+                }
+
+                $result .= '</table>';
+
+                if (!empty($this->possible_values))
+                    $result .= '<input type="checkbox" name="delete_' 
+                        . $this->name . '" id="delete_' . $this->name 
+                        . '" value="1" />&nbsp;<label for="delete_' . $this->name . '">'
+                        . _("Delete Selected") . '</label>';
+
+                $result .= '</td></tr></table>';
+
+                break;
+
+
+            default:
+                $result = '<font color="' . $color[2] . '">'
+                        . sprintf(_("Edit List Layout Type '%s' Not Found"), $this->layout_type)
+                        . '</font>';
         }
-
-        $result .= '</select><br /><input type="checkbox" name="delete_' 
-            . $this->name . '" id="delete_' . $this->name 
-            . '" value="1" />&nbsp;<label for="delete_' . $this->name . '">'
-            . _("Delete Selected");
 
         return $result;
 
@@ -824,6 +894,11 @@ function create_option_groups($optgrps, $optvals) {
             /* If provided, set the no_text for this option. */
             if (isset($optset['no_text'])) {
                 $next_option->setNoText($optset['no_text']);
+            }
+
+            /* If provided, set the layout type for this option. */
+            if (isset($optset['layout_type'])) {
+                $next_option->setLayoutType($optset['layout_type']);
             }
 
             /* If provided, set the comment for this option. */
