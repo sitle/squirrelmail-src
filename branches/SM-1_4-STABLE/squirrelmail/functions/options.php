@@ -112,7 +112,7 @@ class SquirrelOption {
 
         /* Check for a new value. */
     if ( !sqgetGlobalVar("new_$name", $this->new_value, SQ_POST ) ) {
-            $this->new_value = '';
+            $this->new_value = NULL;
         }
 
         /* Set the default save function. */
@@ -185,7 +185,7 @@ class SquirrelOption {
         global $javascript_on, $color;
 
         // Use new value if available
-        if (!empty($this->new_value)) {
+        if (!is_null($this->new_value)) {
             $tempValue = $this->value;
             $this->value = $this->new_value;
         }
@@ -247,7 +247,7 @@ class SquirrelOption {
         $result .= $this->post_script;
 
         // put correct value back if need be
-        if (!empty($this->new_value)) {
+        if (!is_null($this->new_value)) {
             $this->value = $tempValue;
         }
 
