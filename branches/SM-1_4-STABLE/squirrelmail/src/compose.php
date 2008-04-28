@@ -1652,7 +1652,7 @@ function deliverMessage(&$composeMessage, $draft=false) {
         if (($fld_sent && $svr_allow_sent && !$lcl_allow_sent) || ($fld_sent && $lcl_allow_sent)) {
             require_once(SM_PATH . 'class/deliver/Deliver_IMAP.class.php');
             $imap_deliver = new Deliver_IMAP();
-            $imap_deliver->mail($composeMessage, $imap_stream, $reply_id, $reply_ent_id, $sent_folder, $imap_stream);
+            $imap_deliver->mail($composeMessage, $imap_stream, $reply_id, $reply_ent_id, $imap_stream, $sent_folder);
             unset ($imap_deliver);
         }
         $composeMessage->purgeAttachments();
