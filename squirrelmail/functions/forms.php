@@ -39,9 +39,9 @@ function addPwField($name , $value = null, $extra_attributes='') {
 /**
  * Form checkbox
  */
-function addCheckBox($name, $checked = false, $value = null) {
+function addCheckBox($name, $checked = false, $value = null, $extra_attributes='') {
     return addInputField('checkbox', $name, $value,
-        ($checked ? ' checked="checked"' : ''));
+        ($checked ? ' checked="checked"' : '') . $extra_attributes);
 }
 
 /**
