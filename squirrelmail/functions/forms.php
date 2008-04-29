@@ -109,8 +109,8 @@ function addSelect($name, $values, $default = null, $usekeys = false)
  * Form submission button
  * Note the switched value/name parameters!
  */
-function addSubmit($value, $name = null) {
-    return addInputField('submit', $name, $value);
+function addSubmit($value, $name = null, $extra_attributes='') {
+    return addInputField('submit', $name, $value, $extra_attributes);
 }
 /**
  * Form reset button, $value = caption
