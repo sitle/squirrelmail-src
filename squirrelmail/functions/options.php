@@ -707,7 +707,7 @@ class SquirrelOption {
                       . '"><tr><td>'
                       . _("Add") . '&nbsp;<input name="add_' . $this->name 
                       . '" size="38" /><br />'
-                      . '<table cellpadding="1" cellspacing="0" border="0" bgcolor="' . $color[5] . '">';
+                      . '<table width="100%" cellpadding="1" cellspacing="0" border="0" bgcolor="' . $color[5] . '">';
 
                 $bgcolor = 4;
                 if (!isset($color[12]))
