@@ -331,7 +331,7 @@ Command >>
 Menu is controlled by entering numbers or letters that are listed on the left
 side.
 
-<sect1>The address book format
+<sect1>The address book format<label id="addressbookformat">
 <p>
 By default SquirrelMail stores address books in files, one per address book,
 named <tt/[user account name].abook/. These address book files are kept in the
@@ -349,6 +349,8 @@ stores additional information.
 Additional address book fields and functions can be provided by the experimental
 vcard address book format and some address book plugins. You can find list of
 address book plugins at the SquirrelMail site.
+
+Also see <ref id="addressbooks" name="personal and shared address books">.
 
 <sect>Installing SquirrelMail
 <sect1>Quick and Dirty install
@@ -1511,6 +1513,11 @@ module or PHP extension that does this, but we'd like to be informed if you find
 one.
 
 <sect>Customizing SquirrelMail<label id="customizing">
+<p>
+SquirrelMail can be customized in a couple of ways, both to fit your system
+better and by changing some of the visual appearance. This chapter provides
+information about how to that.
+
 <sect1>Plugins
 <sect2>What is a plugin?
 <p>
@@ -1660,12 +1667,34 @@ on the plugin. It's usually a good idea to install, enable, and test one plugin
 at a time, since some plugins might not go well with the used system setup or
 other installed plugins.
 
+<sect3>Creating a plugin
+<p>
+For information about how to code plugins, see the <url
+url="http://squirrelmail.org/docs/devel/devel.html" name="the SquirrelMail
+Developer's Manual">.
+
+<sect1>Site customizations
+<p>
+There are configuration options dealing with customizing SquirrelMail to your
+site available in the configuration tool under "1. Organization Preferences".
+For those who prefer manual configuration the same configuration options are
+available under the <tt>/*** Organization preferences ***/</tt> headline.
+
+There's also information about embedding the login form in other web pages to be
+found at <url url="http://squirrelmail.org/wiki/EmbeddedSquirrelMailLogin"
+name="the wiki page about embedding the login form">.
+
+TODO: Custom login page. Site control with the vlogin plugin.
+
 <sect1>Themes and Styles<label id="themes">
 <p>
-TODO: As of 1.5.2, this changes....
+TODO: This section has to rewritten with the changes, such as templates, in 1.5.2 when that version is released.
 
 SquirrelMail users are able to customize the look of the interface by selecting
-a custom theme and the font style.
+a custom theme and the font style. The configuration options dealing with
+customizing SquirrelMail themes and styles available in the configuration tool
+under "5. Themes". For those who prefer manual configuration the same
+configuration options are available under <tt>* Themes</tt>.
 
 SquirrelMail themes define interface colors. Each theme is a set of 17 or more
 colors.
@@ -1735,9 +1764,11 @@ b 16: Highlight color (since SquirrelMail 1.4.6 and 1.5.1, default: $color[2])
 Next all you have to do is run SquirrelMail configuration utility and add the
 theme to the list of themes available to you.
 
-<sect1>Site customizations
-<p>
-TODO: Custom login page. Site control with the vlogin plugin.
+It's also possible to provide a style sheet to be included on every page. That's
+useful for specifying a site-wide font or other characteristics. More
+information about this is available at <url
+url="http://squirrelmail.org/wiki/StyleSheets" name="the wiki page about style
+sheets">.
 
 <sect1>Internationalization
 <p>
@@ -1827,7 +1858,7 @@ translation. Administrator can set that character set in SquirrelMail
 1.4.5/1.5.1 configuration utility. Users can also select different character
 set, if the Custom Charset plugin is installed.
 
-<sect1>Personal and shared address books
+<sect1>Personal and shared address books<label id="addressbooks">
 <p>
 SquirrelMail supports multiple address book backends. Backends can be
 configured to provide address books that store entries visible to one user
@@ -1857,7 +1888,7 @@ is limited to standard SquirrelMail address book format.
 
 <sect2>How to use shared file based address book in SquirrelMail.
 <p>
-1. Get SquirrelMail 1.4.4, 1.4.5cvs, 1.5.1cvs or later.
+1. Get SquirrelMail 1.4.4, 1.5.1, or any later version.
 
 2. If you want to use a writable address book in 1.4.4, get <url
 url="http://squirrelmail.cvs.sourceforge.net/squirrelmail/squirrelmail/src/addressbook.php?r1=1.58.2.16&amp;r2=1.58.2.17"
@@ -1900,6 +1931,8 @@ path, system assumes path relative to SquirrelMail top directory.
 If you want to use global file based address book in older SquirrelMail
 versions, take a look at <tt>functions/addressbook.php file</tt>. It contains some
 comments that explain how to do that without configuration utility.
+
+Also see <ref id="addressbookformat" name="the address book format">.
 
 <sect>Security
 <p>
