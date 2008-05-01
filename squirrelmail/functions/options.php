@@ -658,7 +658,7 @@ class SquirrelOption {
                     . '&nbsp;<input name="add_' . $this->name 
                     . '" size="38" /><br /><select name="new_' . $this->name
                     . '[]" multiple="multiple" size="' . $height . '"'
-                    . ($javascript_on ? ' onchange="if (typeof(window.addinput) == \'undefined\') { var f = document.forms.length; var i = 0; var pos = -1; while( pos == -1 && i < f ) { var e = document.forms[i].elements.length; var j = 0; while( pos == -1 && j < e ) { if ( document.forms[i].elements[j].type == \'text\' && document.forms[i].elements[j].name == \'add_' . $this->name . '\' ) { pos = j; } j++; } i++; } if( pos >= 0 ) { window.addinput = document.forms[i-1].elements[pos]; } } for (x = 0; x < this.length; x++) { if (this.options[x].selected) { window.addinput.value = this.options[x].text; break; } }"' : '')
+                    . ($javascript_on ? ' onchange="if (typeof(window.addinput_' . $this->name . ') == \'undefined\') { var f = document.forms.length; var i = 0; var pos = -1; while( pos == -1 && i < f ) { var e = document.forms[i].elements.length; var j = 0; while( pos == -1 && j < e ) { if ( document.forms[i].elements[j].type == \'text\' && document.forms[i].elements[j].name == \'add_' . $this->name . '\' ) { pos = j; } j++; } i++; } if( pos >= 0 ) { window.addinput_' . $this->name . ' = document.forms[i-1].elements[pos]; } } for (x = 0; x < this.length; x++) { if (this.options[x].selected) { window.addinput_' . $this->name . '.value = this.options[x].text; break; } }"' : '')
                     . ' ' . $this->script . ">\n";
 
 
