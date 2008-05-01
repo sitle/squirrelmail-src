@@ -799,10 +799,87 @@ or later.
 
 <sect>Configuring SquirrelMail
 <p>
-SquirrelMail stores interface configuration in <tt>config/config.php</tt>
-file. This file can be controlled with SquirrelMail configuration utility
-<tt>config/conf.pl</tt>. Default configuration values are stored and
-documented in <tt>config/config_default.php</tt> file.
+Even though the size of this documentation might indicate otherwise,
+SquirrelMail is quite easy to configure. On the other hand, mailsystems are
+quite complicated for a beginner so a few configuration tips might be useful.
+
+<sect1>Configuration files and tools
+<p>
+SquirrelMail configuration is file based. If you've installed SquirrelMail
+directly from source you'll find the configuration file in
+<tt>config/config.php</tt>, but if you're using a SquirrelMail package from your
+OS distribution the actual configuration file may be located somewhere else
+(such as <tt>/etc/</tt>) - usually with a symbolic link from
+<tt>config/config.php</tt>. Read the documentation that came with the
+distribution package to find out more about OS distribution specific details.
+The rest of these instuctions assumes that you've installed SquirrelMail from
+source.
+
+There are three ways to change the SquirrelMail configuration file: using the
+configuration tool, using the Administrator plugin, or editing the configuration
+file manually. The first of these ways is the one recommended by the
+SquirrelMail Project.
+
+<sect2>The configuration tool
+<p>
+Included in the SquirrelMail distribution is a Perl script, located at
+<tt>config/conf.pl</tt>, which helps when creating or editing the configuration
+file.
+
+The first thing to do when configuring from scratch is to choose an IMAP server
+using "D. Set pre-defined settings for specific IMAP servers". This will change
+SquirrelMail configuration to match a default installation of the IMAP server
+of your choice.
+
+The next step is to go through all the menu selections and set the configuration
+options to the values most suitable for your installation. Each configuration
+option is described in the tool to help you make the right choices.
+
+Even if you don't have Perl accessible at the computer where SquirrelMail is
+insalled, you can use <tt>config/conf.pl</tt> if you have access to a computer
+with Perl installed. Just copy <tt>config/conf.pl</tt> to the computer with
+Perl, use it to create a configuration file, and then upload the configuration
+file to <tt>config/config.php</tt> in your SquirrelMail installation.
+
+Note that some OS distributions have their own tools to configure SquirrelMail,
+which you might use instead (Debian, Ubuntu, and other Debian derived
+distributions have "squirrelmail-configure", which can be run even outside the
+SquirrelMail installation directory). Read the documentation that came with the
+distribution package to find out more about OS distribution specific details.
+
+<sect2>The Administrator plugin
+<p>
+SquirrelMail also includes the Administrator plugin as part of the distribution.
+Some administrators considers this to be a more user-friendly tool than the Perl
+script. It can be used instead of <tt>config/conf.pl</tt>, but is less safe
+since it requires the web server to have write access to the configuration file.
+Read <tt>plugins/administrator/INSTALL</tt> for instructions on how to install
+it and set up the administrator user.
+
+Once the Administrator plugin is configured and enabled, the SquirrelMail
+configuration can be changed using a web interface within SquirrelMail. Log in
+as a user with assigned administrator privileges and click "Options >
+Administration". The Configuration Administrator page will open, providing you
+with options to configure SquirrelMail (for instance enabling and disabling
+plugins). When done, click "Save" to update the configuration at the server.
+
+Even though you can use the Administrator plugin in all cases where
+documentation suggests <tt>config/conf.pl</tt>, there's one exception to the
+rule: the first installation. Since the Administrator plugin only can be used
+from within SquirrelMail, you have to configure SquirrelMail using the
+configuration tool or manually the first time.
+
+<sect2>Manual configuration
+<p>
+Since <tt>config/config.php</tt> is a PHP file, SquirrelMail can also be
+configured manually with the editor of your choice. A sample configuration is
+provided in <tt>config/config_default.php</tt>, so copy
+<tt>config/config_default.php</tt> to <tt>config/config.php</tt> and then edit
+<tt>config/config.php</tt> to match your installation. The configuration options
+are documented within the file to help you make the right choices. Note that
+manually configuring SquirrelMail needs you to follow the PHP syntax. Make sure
+that there is no trailing <url url="http://squirrelmail.org/wiki/EndOfLine"
+name="end of line character"> and save the configuration.
 
 <sect1>Basic configuration
 <p>
@@ -820,6 +897,9 @@ You might want to change:
 <itemize>
   <item>Organization Preferences (1. Organization Preferences)
 </itemize>
+
+Read the chapter <ref id="customizing" name="Customizing SquirrelMail"> for more
+tips on how to make your SquirrelMail installation blend with your site.
 
 <sect1>Selecting IMAP server<label id="select-imap">
 <p>
@@ -1190,10 +1270,6 @@ program to get IMAP servers from yellowpages (NIS).
 This feature is experimental. If some code does not take into account use of
 mapping in imap server's address configuration, it might be broken.
 
-<sect1>Other configuration issues
-<p>
-Other configuration issues.
-
 <sect>Optimizing SquirrelMail<label id="optimization">
 <p>
 This chapter should explain what can help in speeding up your SquirrelMail
@@ -1434,7 +1510,7 @@ Unfortunately the SquirrelMail Project Team doesn't know of a semi-standard
 module or PHP extension that does this, but we'd like to be informed if you find
 one.
 
-<sect>Customizing SquirrelMail
+<sect>Customizing SquirrelMail<label id="customizing">
 <sect1>Plugins
 <sect2>What is a plugin?
 <p>
