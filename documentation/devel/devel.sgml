@@ -263,9 +263,6 @@ and the rest of the Project Team is just as important as the developers. We can
 only succeed by the time and effort of the team as a whole.
 
 <sect>General guidelines
-<p>
-This section should provide some generic information.
-
 <sect1>Coding guidelines
 <p>
 To ensure that the SquirrelMail affects the logs as little as possible, executes
@@ -340,24 +337,24 @@ Read more about the functions in the SquirrelMail API Documentation.
 
 <itemize>
   <item><tt/sqGetGlobalVar()/ (<url
-        url="http://www.squirrelmail.org/docs/phpdoc14/squirrelmail/_squirrelmail_functions_global_php.html#functionsqgetGlobalVar"
+        url="http://squirrelmail.org/docs/phpdoc14/squirrelmail/_squirrelmail_functions_global_php.html#functionsqgetGlobalVar"
         name="stable"> and <url
-        url="http://www.squirrelmail.org/docs/phpdoc/squirrelmail/_functions_global_php.html#functionsqgetGlobalVar"
+        url="http://squirrelmail.org/docs/phpdoc/squirrelmail/_functions_global_php.html#functionsqgetGlobalVar"
         name="development">)
   <item><tt/sqsession_register()/ (<url
-        url="http://www.squirrelmail.org/docs/phpdoc14/squirrelmail/_functions---global.php.html#functionsqsession_register"
+        url="http://squirrelmail.org/docs/phpdoc14/squirrelmail/_functions---global.php.html#functionsqsession_register"
         name="stable"> and <url
-        url="http://www.squirrelmail.org/docs/phpdoc/squirrelmail/_functions---global.php.html#functionsqsession_register"
+        url="http://squirrelmail.org/docs/phpdoc/squirrelmail/_functions---global.php.html#functionsqsession_register"
         name="development">)
   <item><tt/sqsession_is_registered()/ (<url
-        url="http://www.squirrelmail.org/docs/phpdoc14/squirrelmail/_functions---global.php.html#functionsqsession_is_registered"
+        url="http://squirrelmail.org/docs/phpdoc14/squirrelmail/_functions---global.php.html#functionsqsession_is_registered"
         name="stable"> and <url
-        url="http://www.squirrelmail.org/docs/phpdoc/squirrelmail/_functions---global.php.html#functionsqsession_is_registered"
+        url="http://squirrelmail.org/docs/phpdoc/squirrelmail/_functions---global.php.html#functionsqsession_is_registered"
         name="development">)
   <item><tt/sqsession_unregister()/ (<url
-        url="http://www.squirrelmail.org/docs/phpdoc14/squirrelmail/_functions---global.php.html#functionsqsession_unregister"
+        url="http://squirrelmail.org/docs/phpdoc14/squirrelmail/_functions---global.php.html#functionsqsession_unregister"
         name="stable"> and <url
-        url="http://www.squirrelmail.org/docs/phpdoc/squirrelmail/_functions---global.php.html#functionsqsession_unregister"
+        url="http://squirrelmail.org/docs/phpdoc/squirrelmail/_functions---global.php.html#functionsqsession_unregister"
         name="development">)
 </itemize>
 
@@ -765,8 +762,8 @@ committed:
 </itemize>
 
 Do you feel that your patch is ignored? Feel free to ask on the <url
-url="http://www.squirrelmail.org/wiki/MailingLists" name="SquirrelMail
-development mailing list">.
+url="http://squirrelmail.org/docs/admin/admin-12.html#mailinglists"
+name="SquirrelMail development mailing list">.
 
 <sect>Internationalization
 <p>
@@ -872,7 +869,7 @@ Possible array key names:
               (ISO-639). 'value' should contain name of other 'language_code'
               that defines translation with NAME and CHARSET keys.
               Entry links short language form with long form (language+country).
-              See: http://www.loc.gov/standards/iso639-2/langhome.html and
+              See: http://loc.gov/standards/iso639-2/langhome.html and
               http://www.iso.org/iso/en/prods-services/iso3166ma/02iso-3166-code-lists/list-en1.html
   <tag/ALTNAME/ Native translation name. Any 8bit symbols must be HTML encoded.
               Name is visible when $show_alternative_names is enabled.
@@ -1111,9 +1108,9 @@ be unable to affect webserver's logging system.
 
 <sect1>Sanitizing HTML strings
 <p>
-PHP provides the functions <tt><url url="http://www.php.net/htmlspecialchars"
+PHP provides the functions <tt><url url="http://php.net/htmlspecialchars"
 name="htmlspecialchars()"></tt> and <tt><url
-url="http://www.php.net/htmlentities" name="htmlentities()"></tt> for HTML
+url="http://php.net/htmlentities" name="htmlentities()"></tt> for HTML
 string sanitizing. When SquirrelMail developers want to sanitize HTML formating
 symbols, they should use <tt>htmlspecialchars()</tt> and avoid using
 <tt>htmlentities()</tt>.
@@ -1135,7 +1132,7 @@ A charset option is added to <tt>htmlentities()</tt> and
 limited. The fallback charset is same good old and dangerous ISO-8859-1.
 
 Differences between two functions can be examined with the <tt><url
-url="http://www.php.net/get-html-translation-table"
+url="http://php.net/get-html-translation-table"
 name="get_html_translation_table()"></tt> function.
 
 If SquirrelMail charset decoding functions are used, they should apply
@@ -1152,7 +1149,7 @@ name="SM Plugins"> project registered at SourceForge to house plugin code,
 developers should consider joining this project.
 
 In addition to this document, help writing plugins is easily obtained by posting
-to the <url url="http://www.squirrelmail.org/wiki/MailingLists"
+to the <url url="http://squirrelmail.org/docs/admin/admin-12.html#mailinglists"
 name="SquirrelMail plugins mailing list">.
 
 <sect1>The plugin architecture
@@ -1315,7 +1312,7 @@ array(
                                ),
    'required_php_version' => '4.1.0',
    'other_requirements' => 'Courier Maildrop LDA',
-   'external_project_uri' => 'http://www.example.org/my_plugin'
+   'external_project_uri' => 'http://example.org/my_plugin'
 );
 </verb></tscreen>
 
@@ -1477,9 +1474,9 @@ parameters that may have been included in the actual hook call in the source.
 Modify parameters with care!
 
 Read more about the <tt/do_hook()/ function in the <url
-url="http://www.squirrelmail.org/docs/phpdoc14/squirrelmail/_functions---plugin.php.html#functiondo_hook"
+url="http://squirrelmail.org/docs/phpdoc14/squirrelmail/_functions---plugin.php.html#functiondo_hook"
 name="stable"> and <url
-url="http://www.squirrelmail.org/docs/phpdoc/squirrelmail/_functions---plugin.php.html#functiondo_hook"
+url="http://squirrelmail.org/docs/phpdoc/squirrelmail/_functions---plugin.php.html#functiondo_hook"
 name="development"> API documentation.
 
 The <tt/do_hook_function()/ was intended to be the main hook type used when the
@@ -1494,9 +1491,9 @@ These cannot be changed in the same way that the <tt/do_hook()/ parameters can
 be.
 
 Read more about the <tt/do_hook_function()/ function in the <url
-url="http://www.squirrelmail.org/docs/phpdoc14/squirrelmail/_functions---plugin.php.html#functiondo_hook_function"
+url="http://squirrelmail.org/docs/phpdoc14/squirrelmail/_functions---plugin.php.html#functiondo_hook_function"
 name="stable"> and <url
-url="http://www.squirrelmail.org/docs/phpdoc/squirrelmail/_functions---plugin.php.html#functiondo_hook_function"
+url="http://squirrelmail.org/docs/phpdoc/squirrelmail/_functions---plugin.php.html#functiondo_hook_function"
 name="development"> API documentation.
 
 The <tt/concat_hook_function()/ fixes some shortcomings of the
@@ -1510,9 +1507,9 @@ get are the same as for the <tt/do_hook_function/; they are anything <it/after/
 the hook name in the actual hook call in the source.
 
 Read more about the <tt/concat_hook_function()/ function in the <url
-url="http://www.squirrelmail.org/docs/phpdoc14/squirrelmail/_functions---plugin.php.html#functionconcat_hook_function"
+url="http://squirrelmail.org/docs/phpdoc14/squirrelmail/_functions---plugin.php.html#functionconcat_hook_function"
 name="stable"> and <url
-url="http://www.squirrelmail.org/docs/phpdoc/squirrelmail/_functions---plugin.php.html#functionconcat_hook_function"
+url="http://squirrelmail.org/docs/phpdoc/squirrelmail/_functions---plugin.php.html#functionconcat_hook_function"
 name="development"> API documentation.
 
 The <tt/boolean_hook_function()/ allows plugins to vote for a specified action.
@@ -1534,9 +1531,9 @@ source as its parameter (this might be an array if multiple values need to be
 passed).
 
 Read more about the <tt/boolean_hook_function()/ function in the <url
-url="http://www.squirrelmail.org/docs/phpdoc14/squirrelmail/_functions---plugin.php.html#functionboolean_hook_function"
+url="http://squirrelmail.org/docs/phpdoc14/squirrelmail/_functions---plugin.php.html#functionboolean_hook_function"
 name="stable"> and <url
-url="http://www.squirrelmail.org/docs/phpdoc/squirrelmail/_functions---plugin.php.html#functionboolean_hook_function"
+url="http://squirrelmail.org/docs/phpdoc/squirrelmail/_functions---plugin.php.html#functionboolean_hook_function"
 name="development"> API documentation.
 
 <sect2>List of hooks
@@ -2355,9 +2352,9 @@ approach you may be able to use is to include code that can auto-sense the
 SquirrelMail version and make adjustments on the fly. There is a function called 
 <tt/check_sm_version()/ available which does that. Read more about it in the 
 <url
-url="http://www.squirrelmail.org/docs/phpdoc14/squirrelmail/_functions---global.php.html#functioncheck_sm_version"
+url="http://squirrelmail.org/docs/phpdoc14/squirrelmail/_functions---global.php.html#functioncheck_sm_version"
 name="stable"> and <url
-url="http://www.squirrelmail.org/docs/phpdoc/squirrelmail/_functions---global.php.html#functioncheck_sm_version"
+url="http://squirrelmail.org/docs/phpdoc/squirrelmail/_functions---global.php.html#functioncheck_sm_version"
 name="development"> API documentation.
 
 Finally, there is a plugin called "Compatibility" that is intended to solve 
@@ -2756,7 +2753,7 @@ CAPABILITY IMAP4 IMAP4rev1 QUOTA
 
 PERMANENTFLAGS (\Deleted \Seen \Draft \Answered \Flagged)
 
-Site URL: http://www.hmailserver.com/
+Site URL: http://hmailserver.com/
 
 
 ---------
@@ -2775,7 +2772,7 @@ Comments:
 * Supports STARTTLS, if configured.
 * May have issues with 8bit IMAP folder names.
 
-Site URL: http://www.pmail.com
+Site URL: http://pmail.com/
 
 
 -------
@@ -2794,7 +2791,7 @@ IMAP server supports server side sorting and threading. 1.0alpha1-5 versions
 violate syntax of responses to UID commands. NAMESPACE is supported in 1.0alpha.
 Remote plain text logins are disabled by default.
 
-Site URL: http://www.dovecot.org
+Site URL: http://dovecot.org/
 
 
 ---------
@@ -2815,7 +2812,7 @@ IMAP server does not support server side sorting and threading. Plain text
 logins are disabled by default. Due to available storage backend configuration
 options it is impossible to create single preset, which covers all setups.
 
-Site URL: http://www.bincimap.org
+Site URL: http://bincimap.org/
 
 
 -------------------
@@ -2867,7 +2864,7 @@ A05 BAD syntax error in sort keys
 > A06 UID SORT (FROM) ISO-8859-1 ALL
 A06 BAD UID command received in invalid state
 
-Site URL: http://www.dbmail.org
+Site URL: http://dbmail.org/
 
 
 ----
@@ -2889,7 +2886,7 @@ Site URL: http://www.bejy.net
 Mac OS X
 --------
 No clear information about used software. Some OS X versions might use Eudora
-Internet Messaging Suite (EIMS, http://www.eudora.com/eims/), some - Apple IMAP
+Internet Messaging Suite (EIMS, http://eudora.com/eims/), some - Apple IMAP
 server, some - Cyrus.
 
 
@@ -2919,7 +2916,7 @@ NAMESPACE (("" "/")) NIL NIL
 Supports TLS and SSL encryption, SASL CRAM-MD5 and DIGEST-MD5 authentication.
 Includes SIEVE (rfc3028) support.
 
-Site URL: http://www.process.com/tcpip/pmdf.html
+Site URL: http://process.com/tcpip/pmdf.html
 
 -----------------
 Merak IMAP server
@@ -2968,14 +2965,14 @@ NAMESPACE (("" "/")) (("#shared/" "/")) NIL
 
 FETCH response to UID STORE command violates RFC 3501.
 
-Site URL: http://www.rockliffe.com/
+Site URL: http://rockliffe.com/
 
 
 -----------------------------
 IMAP server ready H mproxyus4
 -----------------------------
 Unidentified IMAP server or IMAP proxy used by 1&1 Internet Inc.
-(http://www.1and1.com and http://www.1und1.de)
+(http://1and1.com/ and http://1und1.de/)
 
 CAPABILITY CHILDREN ID IDLE IMAP4 IMAP4rev1 LITERAL+ LOGIN-REFERRALS
  MAILBOX-REFERRALS NAMESPACE UIDPLUS QUOTA STARTTLS AUTH=PLAIN AUTH=LOGIN
@@ -3252,33 +3249,33 @@ standards-compatible, we need to refer to RFC documents. Here's a list of the
 ones we use a lot:
 
 <itemize>
-  <item><url url="http://www.faqs.org/rfcs/rfc2045.html" name="RFC 2045"> -
+  <item><url url="http://faqs.org/rfcs/rfc2045.html" name="RFC 2045"> -
         MIME Part One: Format of Internet Message Bodies
-  <item><url url="http://www.faqs.org/rfcs/rfc2046.html" name="RFC 2046"> -
+  <item><url url="http://faqs.org/rfcs/rfc2046.html" name="RFC 2046"> -
         MIME Part Two: Media Types
-  <item><url url="http://www.faqs.org/rfcs/rfc2047.html" name="RFC 2047"> -
+  <item><url url="http://faqs.org/rfcs/rfc2047.html" name="RFC 2047"> -
         MIME Part Three: Message Header Extensions for Non-ASCII Text
-  <item><url url="http://www.faqs.org/rfcs/rfc2183.html" name="RFC 2183"> -
+  <item><url url="http://faqs.org/rfcs/rfc2183.html" name="RFC 2183"> -
         Content-Disposition MIME header
-  <item><url url="http://www.faqs.org/rfcs/rfc2195.html" name="RFC 2195"> -
+  <item><url url="http://faqs.org/rfcs/rfc2195.html" name="RFC 2195"> -
         IMAP/POP AUTHorize Extension for Simple Challenge/Response
-  <item><url url="http://www.faqs.org/rfcs/rfc2221.html" name="RFC 2221"> -
+  <item><url url="http://faqs.org/rfcs/rfc2221.html" name="RFC 2221"> -
         IMAP4 Login Referrals
-  <item><url url="http://www.faqs.org/rfcs/rfc2298.html" name="RFC 2298"> -
+  <item><url url="http://faqs.org/rfcs/rfc2298.html" name="RFC 2298"> -
         Details return receipts
-  <item><url url="http://www.faqs.org/rfcs/rfc2342.html" name="RFC 2342"> -
+  <item><url url="http://faqs.org/rfcs/rfc2342.html" name="RFC 2342"> -
         The IMAP4 NAMESPACE command
-  <item><url url="http://www.faqs.org/rfcs/rfc2369.html" name="RFC 2369"> -
+  <item><url url="http://faqs.org/rfcs/rfc2369.html" name="RFC 2369"> -
         The Use of URLs as Meta-Syntax for Core Mail List Commands and their Transport through Message Header Fields (implemented in listcommands plugin)
-  <item><url url="http://www.faqs.org/rfcs/rfc2616.html" name="RFC 2616"> -
+  <item><url url="http://faqs.org/rfcs/rfc2616.html" name="RFC 2616"> -
         HTTP/1.1
-  <item><url url="http://www.faqs.org/rfcs/rfc2683.html" name="RFC 2683"> -
+  <item><url url="http://faqs.org/rfcs/rfc2683.html" name="RFC 2683"> -
         IMAP4 Implementation Recommendations
-  <item><url url="http://www.faqs.org/rfcs/rfc2822.html" name="RFC 2822"> -
+  <item><url url="http://faqs.org/rfcs/rfc2822.html" name="RFC 2822"> -
         Format of an email message (sendmail) (obsoletes RFC 822)
-  <item><url url="http://www.faqs.org/rfcs/rfc2831.html" name="RFC 2831"> -
+  <item><url url="http://faqs.org/rfcs/rfc2831.html" name="RFC 2831"> -
         Using Digest Authentication as a SASL Mechanism (digest-md5)
-  <item><url url="http://www.faqs.org/rfcs/rfc3501.html" name="RFC 3501"> -
+  <item><url url="http://faqs.org/rfcs/rfc3501.html" name="RFC 3501"> -
         IMAP version 4rev1 (obsoletes RFC 1730 and RFC 2060)
 </itemize>
 
