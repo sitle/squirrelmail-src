@@ -100,6 +100,7 @@ class SquirrelOption {
         $this->refresh_level = $refresh_level;
         $this->possible_values = $possible_values;
         $this->htmlencoded = $htmlencoded;
+// FIXME: why isn't this set by default to NORMAL?
         $this->size = SMOPT_SIZE_MEDIUM;
         $this->layout_type = 0;
         $this->comment = '';
@@ -627,18 +628,20 @@ class SquirrelOption {
     function createWidget_EditList() {
 
         switch ($this->size) {
-//FIXME: not sure about these sizes... seems like we could add another on the "large" side...
             case SMOPT_SIZE_TINY:
                 $height = 3;
                 break;
             case SMOPT_SIZE_SMALL:
                 $height = 8;
                 break;
-            case SMOPT_SIZE_LARGE:
+            case SMOPT_SIZE_MEDIUM:
                 $height = 15;
                 break;
-            case SMOPT_SIZE_HUGE:
+            case SMOPT_SIZE_LARGE:
                 $height = 25;
+                break;
+            case SMOPT_SIZE_HUGE:
+                $height = 40;
                 break;
             case SMOPT_SIZE_NORMAL:
             default:
