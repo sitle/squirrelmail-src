@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: SquirrelMail HEAD\n"
 "Report-Msgid-Bugs-To: SquirrelMail Internationalization <squirrelmail-"
 "i18n@lists.sourceforge.net>\n"
-"POT-Creation-Date: 2008-01-17 13:04+0100\n"
+"POT-Creation-Date: 2008-05-06 01:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -128,6 +128,9 @@ msgid "Edit selected"
 msgstr ""
 
 msgid "Delete selected"
+msgstr ""
+
+msgid "Compose to selected"
 msgstr ""
 
 msgid "sort by nickname"
@@ -1358,6 +1361,13 @@ msgstr ""
 msgid "Option Type '%s' Not Found"
 msgstr ""
 
+msgid "Delete Selected"
+msgstr ""
+
+#, php-format
+msgid "Edit List Layout Type '%s' Not Found"
+msgstr ""
+
 msgid "Current Folder"
 msgstr ""
 
@@ -2197,6 +2207,9 @@ msgid ""
 "remotely."
 msgstr ""
 
+msgid "Plugin is not enabled"
+msgstr ""
+
 msgid "Submit a Bug Report"
 msgstr ""
 
@@ -2259,7 +2272,7 @@ msgstr ""
 msgid "Bug"
 msgstr ""
 
-msgid "Bug Reports:"
+msgid "Bug Reports"
 msgstr ""
 
 msgid "Show button in toolbar"
@@ -2644,7 +2657,7 @@ msgstr ""
 msgid "Today's Fortune"
 msgstr ""
 
-msgid "Fortunes:"
+msgid "Fortunes"
 msgstr ""
 
 msgid "Show fortunes at top of mailbox"
@@ -4157,6 +4170,12 @@ msgstr ""
 msgid "unavailable"
 msgstr ""
 
+msgid "KiB"
+msgstr ""
+
+msgid "MiB"
+msgstr ""
+
 msgid "Error"
 msgstr ""
 
@@ -4258,6 +4277,12 @@ msgid "Enable Message Copy Buttons"
 msgstr ""
 
 msgid "Use Compact Page Selector"
+msgstr ""
+
+msgid "Custom Date Format"
+msgstr ""
+
+msgid "(Uses format of PHP date() function)"
 msgstr ""
 
 msgid "Message Display Options"
@@ -4391,13 +4416,17 @@ msgstr ""
 msgid "Fallback template"
 msgstr ""
 
+msgid "Warnings were reported in your setup:"
+msgstr ""
+
+#, php-format
+msgid "%d warning(s) reported."
+msgstr ""
+
 msgid "Show System Specifications"
 msgstr ""
 
 msgid "my email account"
-msgstr ""
-
-msgid "Bug Reports"
 msgstr ""
 
 msgid "You must type in a new password."
@@ -4647,6 +4676,9 @@ msgstr ""
 msgid "Unable to execute \"%s\"."
 msgstr ""
 
+msgid "Fortunes:"
+msgstr ""
+
 msgid "Server Capability response:"
 msgstr ""
 
@@ -4856,7 +4888,7 @@ msgstr ""
 msgid "Address book search"
 msgstr ""
 
-msgid "Attachment"
+msgid "New attachment"
 msgstr ""
 
 msgid "Attach"
@@ -4889,6 +4921,9 @@ msgstr ""
 msgid "Message Flags"
 msgstr ""
 
+msgid "Attachment"
+msgstr ""
+
 msgid "Click here to change the sorting of the message list"
 msgstr ""
 
@@ -4908,9 +4943,6 @@ msgid "Other"
 msgstr ""
 
 msgid "Save Changes"
-msgstr ""
-
-msgid "Type"
 msgstr ""
 
 msgid "Requested"
