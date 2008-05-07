@@ -44,6 +44,8 @@ sqgetGlobalVar('editaddr',   $editaddr,   SQ_POST);
 sqgetGlobalVar('deladdr',    $deladdr,    SQ_POST);
 sqgetGlobalVar('compose_to', $compose_to, SQ_POST);
 sqgetGlobalVar('sel',        $sel,        SQ_POST);
+// renumber $sel array
+if (!empty($sel)) $sel = array_merge($sel);
 sqgetGlobalVar('oldnick',    $oldnick,    SQ_POST);
 sqgetGlobalVar('backend',    $backend,    SQ_POST);
 sqgetGlobalVar('doedit',     $doedit,     SQ_POST);
@@ -423,6 +425,7 @@ if ($showaddrlist) {
         } else {
             $abook_fields = 5;
         }
+        $count = 0;
         while(list($undef,$row) = each($alist)) {
 
             /* New table header for each backend */
@@ -498,7 +501,7 @@ if ($showaddrlist) {
                 if ($abook->backends[$row['backend']]->writeable) {
                     echo html_tag( 'td',
                             '<small>' .
-                            addCheckBox('sel[]', $selected, $row['backend'].':'.$row['nickname'], ' id="' . $row['backend'] . '_' . urlencode($row['nickname']) . '"').
+                            addCheckBox('sel[' . $count . ']', $selected, $row['backend'].':'.$row['nickname'], ' id="' . $row['backend'] . '_' . urlencode($row['nickname']) . '"').
                             '</small>' ,
                             'center', '', 'valign="top" width="1%"' );
                 } else {
@@ -514,7 +517,7 @@ if ($showaddrlist) {
                 if ($abook->backends[$row['backend']]->writeable) {
                     echo html_tag( 'td',
                             '<small>' .
-                            addCheckBox('sel[]', $selected, $row['backend'] . ':' . $row['nickname'], ' id="' . $row['backend'] . '_' . urlencode($row['nickname']) . '"').
+                            addCheckBox('sel[' . $count . ']', $selected, $row['backend'] . ':' . $row['nickname'], ' id="' . $row['backend'] . '_' . urlencode($row['nickname']) . '"').
                             '</small>' ,
                             'center', '', 'valign="top" width="1%"' );
                 } else {
@@ -542,6 +545,7 @@ if ($showaddrlist) {
 
             echo "</tr>\n";
             $line++;
+            $count++;
         }
 
         /* End of list. Close table. */
