@@ -973,7 +973,7 @@ function print_option_groups($option_groups) {
 
         /* Print an empty row after this option group. */
         echo html_tag( 'tr',
-                   html_tag( 'td', '&nbsp;' . (!empty($hidden_options) ? $hidden_options : ''), 'left', '', 'colspan="2"' )
+                   html_tag( 'td', '&nbsp;' . $hidden_options, 'left', '', 'colspan="2"' )
                 ) . "\n";
     }
 }
