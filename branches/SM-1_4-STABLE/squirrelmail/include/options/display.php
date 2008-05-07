@@ -118,7 +118,8 @@ function load_optpage_data_display() {
     );
 
     if ($optmode != 'submit')
-       $onLoadScript = 'document.forms[0].new_js_autodetect_results.value = \'' . SMPREF_JS_ON . '\'';
+       // FIXME: our form is named "f" - why? let's use something better
+       $onLoadScript = 'document.f.new_js_autodetect_results.value = \'' . SMPREF_JS_ON . '\'';
     else
        $onLoadScript = '';
 
