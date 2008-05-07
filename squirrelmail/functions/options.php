@@ -949,6 +949,7 @@ function print_option_groups($option_groups) {
         }
 
         /* Print each option in this option group. */
+        $hidden_options = '';
         foreach ($next_optgrp['options'] as $option) {
             if ($option->type != SMOPT_TYPE_HIDDEN) {
 
@@ -966,13 +967,13 @@ function print_option_groups($option_groups) {
                            html_tag( 'td', $option->createHTMLWidget(), 'left' )
                        ) ."\n";
             } else {
-                echo $option->createHTMLWidget();
+                $hidden_options .= $option->createHTMLWidget();
             }
         }
 
         /* Print an empty row after this option group. */
         echo html_tag( 'tr',
-                   html_tag( 'td', '&nbsp;', 'left', '', 'colspan="2"' )
+                   html_tag( 'td', '&nbsp;' . (!empty($hidden_options) ? $hidden_options : ''), 'left', '', 'colspan="2"' )
                 ) . "\n";
     }
 }
