@@ -124,14 +124,14 @@ $header = "<script language=\"JavaScript\" type=\"text/javascript\">\n" .
           "<!--\n".
           "  var alreadyFocused = false;\n".
           "  function squirrelmail_loginpage_onload() {\n".
-          "    document.forms[0].js_autodetect_results.value = '" . SMPREF_JS_ON . "';\n".
+          "    document.login_form.js_autodetect_results.value = '" . SMPREF_JS_ON . "';\n".
           "    if (alreadyFocused) return;\n".
           "    var textElements = 0;\n".
-          "    for (i = 0; i < document.forms[0].elements.length; i++) {\n".
-          "      if (document.forms[0].elements[i].type == \"text\" || document.forms[0].elements[i].type == \"password\") {\n".
+          "    for (i = 0; i < document.login_form.elements.length; i++) {\n".
+          "      if (document.login_form.elements[i].type == \"text\" || document.login_form.elements[i].type == \"password\") {\n".
           "        textElements++;\n".
           "        if (textElements == " . (isset($loginname) ? 2 : 1) . ") {\n".
-          "          document.forms[0].elements[i].focus();\n".
+          "          document.login_form.elements[i].focus();\n".
           "          break;\n".
           "        }\n".
           "      }\n".
@@ -159,7 +159,7 @@ if (! isset($color) || ! is_array($color)) {
 displayHtmlHeader( "$org_name - " . _("Login"), $header, FALSE );
 
 echo "<body text=\"$color[8]\" bgcolor=\"$color[4]\" link=\"$color[7]\" vlink=\"$color[7]\" alink=\"$color[7]\" onLoad=\"squirrelmail_loginpage_onload();\">" .
-     "\n" . addForm('redirect.php', 'post');
+     "\n" . addForm('redirect.php', 'post', 'login_form');
 
 $username_form_name = 'login_username';
 $password_form_name = 'secretkey';
