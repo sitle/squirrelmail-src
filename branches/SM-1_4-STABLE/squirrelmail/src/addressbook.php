@@ -417,7 +417,7 @@ if ($showaddrlist) {
 
     /* List addresses */
     if (count($alist) > 0) {
-        echo addForm($form_url, 'post');
+        echo addForm($form_url, 'post', 'address_book_form');
         if ($abook->add_extra_field) {
             $abook_fields = 6;
         } else {
