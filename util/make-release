@@ -17,8 +17,6 @@ rm -rf $1
 mkdir $1
 echo -- cding to dir --
 cd $1
-echo -- setting umask --
-umask 0
 echo -- exporting svn --
 svn export https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/rel-$dashver \
     squirrelmail-$1
@@ -44,12 +42,15 @@ echo -- making .tar.gz --
 tar cvf squirrelmail-$1.tar squirrelmail-$1
 gzip -9 squirrelmail-$1.tar
 md5sum squirrelmail-$1.tar.gz > squirrelmail-$1.tar.gz.md5
+sha1sum squirrelmail-$1.tar.gz > squirrelmail-$1.tar.gz.sha1
 echo -- making .tar.bz2 --
 tar cjvf squirrelmail-$1.tar.bz2 squirrelmail-$1
 md5sum squirrelmail-$1.tar.bz2 > squirrelmail-$1.tar.bz2.md5
+sha1sum squirrelmail-$1.tar.bz2 > squirrelmail-$1.tar.bz2.sha1
 echo -- making .zip --
 zip -9 -r squirrelmail-$1.zip squirrelmail-$1
 md5sum squirrelmail-$1.zip > squirrelmail-$1.zip.md5
+sha1sum squirrelmail-$1.zip > squirrelmail-$1.zip.sha1
 echo -- optionally making .rpm s --
 rpmbuild -ta squirrelmail-$1.tar.gz || true
 echo -- uploading to upload.sf.net --
