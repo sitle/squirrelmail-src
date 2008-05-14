@@ -899,8 +899,8 @@ $languages['pt_BR']['CHARSET'] = 'iso-8859-1';
 $languages['pt_BR']['LOCALE']  = array('pt_BR.ISO8859-1','pt_BR.ISO-8859-1','pt_BR');
 
 $languages['ro_RO']['NAME']    = 'Romanian';
-$languages['ro_RO']['CHARSET'] = 'iso-8859-2';
-$languages['ro_RO']['LOCALE']  = array('ro_RO.ISO8859-2','ro_RO.ISO-8859-2','ro_RO');
+$languages['ro_RO']['CHARSET'] = 'utf-8';
+$languages['ro_RO']['LOCALE']  = array('ro_RO.UTF-8','ro_RO');
 $languages['ro']['ALIAS']      = 'ro_RO';
 
 $languages['ru_RU']['NAME']    = 'Russian';
