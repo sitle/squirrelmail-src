@@ -1738,28 +1738,29 @@ $color[16]  = '#xxxxxx';
 </verb></tscreen>
 
 Here are descriptions of what the different entries in the array are colors of.
-The letter before the number denotes 'b' for background and 'f' for foreground
+The letter after the number denotes "B" for background and "F" for foreground
 colors.
 
-<tscreen><verb>
-b  0: Title bar at the top of the page header
-f  1: Error messages border, usually red
-f  2: Error messages, usually red
-b  3: Left folder list background color
-b  4: Normal background color
-b  5: Header of the message index [From, Date, Subject]
-f  6: Normal text on the left folder list
-f  7: Links in the right frame
-f  8: Normal text [usually black]
-b  9: Darker version of #0
-b 10: Darker version of #9
-f 11: Special folders color [Inbox, Trash, Sent]
-b 12: Alternate color for message list [alters between #4 and this one]
-f 13: Color for single-quoted text ('> text') when reading (default: #800000)
-f 14: Color for text with more than one quote (default: #ff0000)
-f 15: Non-selectable folders in the left frame (default: $color[6])
-b 16: Highlight color (since SquirrelMail 1.4.6 and 1.5.1, default: $color[2])
-</verb></tscreen>
+<tabular ca="rll">
+<bf/No./|<bf>B/F</bf>|<bf/Description/@
+0|B|Title bar at the top of the page header.@
+1|F|Error messages border, usually red.@
+2|F|Error messages, usually red.@
+3|B|Left folder list background color.@
+4|B|Normal background color.@
+5|B|Header of the message index (From, Date, Subject).@
+6|F|Normal text on the left folder list.@
+7|F|Links in the right frame.@
+8|F|Normal text (usually black).@
+9|B|Darker version of #0.@
+10|B|Darker version of #9.@
+11|F|Special folders color (Inbox, Trash, Sent).@
+12|B|Alternate color for message list (alters between #4 and this one).@
+13|F|Color for single-quoted text ("> text") when reading (default: <tt/#800000/).@
+14|F|Color for text with more than one quote (default: <tt/#ff0000/).@
+15|F|Non-selectable folders in the left frame (default: <tt/$color[6]/).@
+16|B|Highlight color (since SquirrelMail 1.5.1, default: <tt/$color[2]/). Note that even though color 16 is in the templates since SquirrelMail 1.4.6 it's not actually used in the 1.4 branch.
+</tabular>
 
 Next all you have to do is run SquirrelMail configuration utility and add the
 theme to the list of themes available to you.
