@@ -910,7 +910,7 @@ $languages['ru']['ALIAS']      = 'ru_RU';
 
 $languages['sk_SK']['NAME']    = 'Slovak';
 $languages['sk_SK']['CHARSET'] = 'iso-8859-2';
-$languages['sk_SK']['LOCALE']  = array('sk_SK.ISO8859-2','sk_SK.ISO-8859-2','sk_SK');
+$languages['sk_SK']['LOCALE']  = array('sk_SK.UTF-8','sk_SK');
 $languages['sk']['ALIAS']      = 'sk_SK';
 
 $languages['sl_SI']['NAME']    = 'Slovenian';
