@@ -924,8 +924,8 @@ $languages['sr_YU']['LOCALE']  = array('sr_YU.ISO8859-2','sr_YU.ISO-8859-2','sr_
 $languages['sr']['ALIAS']      = 'sr_YU';
 
 $languages['sv_SE']['NAME']    = 'Swedish';
-$languages['sv_SE']['CHARSET'] = 'iso-8859-1';
-$languages['sv_SE']['LOCALE']  = array('sv_SE.ISO8859-1','sv_SE.ISO-8859-1','sv_SE');
+$languages['sv_SE']['CHARSET'] = 'utf-8';
+$languages['sv_SE']['LOCALE']  = array('sv_SE.UTF-8','sv_SE');
 $languages['sv']['ALIAS']      = 'sv_SE';
 
 /* translation is disabled because it contains less than 50%
