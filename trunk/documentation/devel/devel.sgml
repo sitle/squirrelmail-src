@@ -3153,10 +3153,11 @@ walks the tree from the root node down to the leaves.
 svn copy https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/branches/SM-1_4-STABLE/squirrelmail \
     https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/rel-1_2_1
             </tscreen>
-         <item> Use the script <tt>make-release</tt> <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/util/make-release" name="found in SVN"> under the <tt>utils/</tt> dir. The only parameter
+         <item> Use the script <tt>make-release</tt> <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/util/make-release" name="found in SVN"> under the <tt>util/</tt> dir. The only parameter
          is the version to release. It will download the tagged SVN copy, pack it up nicely and upload it to SF.net.
          You will need the following tools: bash, svn, ssh, curl, tar, gzip, zip, bzip2 and optionally rpmbuild.
-         <item> The script uploaded the release files. Now remember there is a cron job at sf.net that cleans up the incoming dir once in a while, so don't go to bed before you've done the next step (huh: don't go to sleep before you're finished making the release)
+         <item> Upload the release files to Sourceforge.net, see <url url="http://alexandria.wiki.sourceforge.net/File+Release+System+-+Offering+Files+for+Download#upload" name="sf.net instructions">.
+         <item> (huh: don't go to sleep before you're finished making the release)
      </enum>
 <item><bf/Defrosting/ Prepare SVN for continued development
     <enum>
