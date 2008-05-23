@@ -53,10 +53,10 @@ md5sum squirrelmail-$1.zip > squirrelmail-$1.zip.md5
 sha1sum squirrelmail-$1.zip > squirrelmail-$1.zip.sha1
 echo -- optionally making .rpm s --
 rpmbuild -ta squirrelmail-$1.tar.gz || true
-echo -- uploading to upload.sf.net --
-curl -T squirrelmail-$1.tar.gz -u anonymous:wouter@teepe.com ftp://upload.sf.net/incoming/
-curl -T squirrelmail-$1.tar.bz2 -u anonymous:wouter@teepe.com ftp://upload.sf.net/incoming/
-curl -T squirrelmail-$1.zip -u anonymous:wouter@teepe.com ftp://upload.sf.net/incoming/
-curl -T squirrelmail-$1-1.7.x.noarch.rpm -u anonymous:wouter@teepe.com ftp://upload.sf.net/incoming/
-curl -T squirrelmail-$1-1.src.rpm -u anonymous:wouter@teepe.com ftp://upload.sf.net/incoming/
+echo -- NOT uploading to upload.sf.net --
+#curl -T squirrelmail-$1.tar.gz -u anonymous:wouter@teepe.com ftp://upload.sf.net/incoming/
+#curl -T squirrelmail-$1.tar.bz2 -u anonymous:wouter@teepe.com ftp://upload.sf.net/incoming/
+#curl -T squirrelmail-$1.zip -u anonymous:wouter@teepe.com ftp://upload.sf.net/incoming/
+#curl -T squirrelmail-$1-1.7.x.noarch.rpm -u anonymous:wouter@teepe.com ftp://upload.sf.net/incoming/
+#curl -T squirrelmail-$1-1.src.rpm -u anonymous:wouter@teepe.com ftp://upload.sf.net/incoming/
 echo -- finished so far --
