@@ -1,0 +1,257 @@
+# Vietnamese (vi_VI) ldap_abook Translation (SquirrelMail plugin)
+# Copyright (c) 1999-2008 The SquirrelMail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
+# Clytie Siddall <clytie@riverland.net.au>, 2008.
+# $Id: ldap_abook.pot 10877 2006-03-04 11:22:22Z jervfors $
+msgid ""
+msgstr ""
+"Project-Id-Version: ldap_abook 1.02\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-03-22 01:12+0100\n"
+"PO-Revision-Date: 2008-04-02 22:58+1030\n"
+"Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
+"Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ldap_gui.php:45
+msgid "AND"
+msgstr "VÀ"
+
+#: ldap_abook_class.php:129
+#: ldap_abook_class.php:180
+msgid "Add new Contact"
+msgstr "Thêm liên lạc mới"
+
+#: ldap_abook.php:22
+#: setup.php:18
+#: setup.php:32
+msgid "Address Book"
+msgstr "Sổ địa chỉ"
+
+#: options.php:21
+msgid "Address Book setup"
+msgstr "Thiết lập Sổ địa chỉ"
+
+#: ldap_abook.php:87
+#: ldap_abook.php:137
+#: ldap_abook.php:188
+msgid "Address Book updated"
+msgstr "Sổ địa chỉ đã cập nhật"
+
+#: ldap_gui.php:16
+msgid "Address book"
+msgstr "Sổ địa chỉ"
+
+#: options.php:95
+msgid "Base DN"
+msgstr "Tên miền cơ bản"
+
+#: options.php:37
+msgid "Book"
+msgstr "Sổ"
+
+#: options.php:38
+#: options.php:133
+msgid "Charset"
+msgstr "Bộ ký tự"
+
+#: setup.php:34
+msgid "Configure preferences for your personal LDAP address book"
+msgstr "Cấu hình tùy thích cho sổ địa chỉ LDAP riêng của bạn"
+
+#: ldap_abook.php:68
+#: ldap_abook.php:105
+#: ldap_abook.php:155
+#: ldap_abook.php:205
+#: ldap_gui.php:89
+#, php-format
+msgid "Connect Error"
+msgstr "Lỗi kết nối"
+
+#: options.php:33
+msgid "DN"
+msgstr "DN"
+
+#: ldap_abook_class.php:173
+msgid "Del"
+msgstr "Xoá"
+
+#: ldap_gui.php:71
+#: options.php:59
+msgid "Delete"
+msgstr "Xoá"
+
+#: ldap_abook_class.php:134
+#: ldap_gui.php:33
+#: ldap_gui.php:131
+msgid "Email"
+msgstr "Địa chỉ thư"
+
+#: ldap_gui.php:113
+msgid "Entry"
+msgstr "Mục nhập"
+
+#: ldap_gui.php:30
+#: ldap_gui.php:125
+msgid "Family Name"
+msgstr "Họ"
+
+#: ldap_gui.php:26
+#: ldap_gui.php:118
+msgid "Given Name"
+msgstr "Tên hay gọi"
+
+#: ldap_abook_class.php:136
+#: ldap_gui.php:36
+#: ldap_gui.php:137
+msgid "Home Phone"
+msgstr "Điện thoại ở nhà"
+
+#: options.php:34
+msgid "Host"
+msgstr "Máy"
+
+#: options.php:30
+msgid "I will use these preferences"
+msgstr "Tôi sẽ dùng tùy thích này"
+
+#: ldap_abook_class.php:138
+#: ldap_gui.php:39
+#: ldap_gui.php:142
+msgid "Mobile Phone"
+msgstr "Điện thoại di động"
+
+#: ldap_abook_class.php:175
+msgid "Mod"
+msgstr "Sửa"
+
+#: ldap_gui.php:77
+msgid "Modify"
+msgstr "Sửa"
+
+#: ldap_abook_class.php:132
+msgid "Name"
+msgstr "Tên"
+
+#: options.php:116
+msgid "Name of address book"
+msgstr "Tên của Sổ địa chỉ"
+
+#: ldap_gui.php:74
+msgid "New"
+msgstr "Mới"
+
+#: options.php:66
+msgid "New values"
+msgstr "Giá trị mới"
+
+#: ldap_abook.php:42
+msgid "No LDAP preferences defined"
+msgstr "Chưa xác định tùy thích LDAP"
+
+#: ldap_gui.php:52
+msgid "None"
+msgstr "Không có"
+
+#: ldap_abook_class.php:124
+msgid "Number of entries found"
+msgstr "Số mục nhập đã tìm"
+
+#: ldap_gui.php:46
+msgid "OR"
+msgstr "HOẶC"
+
+#: options.php:111
+msgid "Option"
+msgstr "Tùy chọn"
+
+#: ldap_abook.php:245
+#: ldap_abook.php:251
+#: ldap_abook.php:257
+#, php-format
+msgid "Output Error"
+msgstr "Lỗi xuất"
+
+#: options.php:36
+msgid "Password"
+msgstr "Mật khẩu"
+
+#: options.php:76
+msgid "Preferences loaded"
+msgstr "Tùy thích đã nạp"
+
+#: options.php:86
+msgid "Preferences updated"
+msgstr "Tùy thích đã cập nhật"
+
+#: ldap_abook.php:88
+#: ldap_abook.php:138
+#: ldap_abook.php:189
+#: options.php:77
+#: options.php:87
+msgid "Return"
+msgstr "Trở về"
+
+#: ldap_gui.php:59
+msgid "Search"
+msgstr "Tìm kiếm"
+
+#: ldap_abook.php:239
+#: ldap_gui.php:100
+#, php-format
+msgid "Search Error"
+msgstr "Lỗi tìm kiếm"
+
+#: ldap_gui.php:43
+msgid "Search type"
+msgstr "Cách tìm"
+
+#: ldap_abook.php:43
+msgid "Set preferences"
+msgstr "Đặt tùy thích"
+
+#: ldap_gui.php:50
+msgid "Sort order"
+msgstr "Thứ tự sắp xếp"
+
+#: options.php:130
+msgid "Submit"
+msgstr "Gửi"
+
+#: ldap_abook.php:78
+#: ldap_abook.php:127
+#: ldap_abook.php:178
+#, php-format
+msgid "Update Error"
+msgstr "Lỗi cập nhật"
+
+#: options.php:65
+msgid "Use values"
+msgstr "Dùng giá trị"
+
+#: options.php:35
+#: options.php:126
+msgid "Username"
+msgstr "Tên người dùng"
+
+#: options.php:112
+msgid "Value"
+msgstr "Giá trị"
+
+#: options.php:120
+msgid "Your password"
+msgstr "Mật khẩu cua bạn"
+
+#: ldap_gui.php:55
+msgid "Z..a"
+msgstr "Z..a"
+
+#: ldap_gui.php:54
+msgid "a..Z"
+msgstr "a..Z"
+
+#: options.php:124
+msgid "the next option is optional - I will use your current username"
+msgstr "tùy chọn kế tiếp không thể bắt buộc phải đặt: chương trình này sẽ dùng tên người dùng hiện thời của bạn."
