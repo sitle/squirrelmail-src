@@ -1,0 +1,343 @@
+# Vietnamese (vi_VI) windows Translation (SquirrelMail plugin)
+# Copyright (c) 1999-2008 The SquirrelMail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
+# Clytie Siddall <clytie@riverland.net.au>, 2008.
+# $Id: windows.pot 10877 2006-03-04 11:22:22Z jervfors $
+msgid ""
+msgstr ""
+"Project-Id-Version: windows 1.6\n"
+"POT-Creation-Date: 2003-12-26 17:35+0200\n"
+"PO-Revision-Date: 2008-05-30 22:45+0930\n"
+"Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
+"Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: LocFactoryEditor 1.7b3\n"
+
+#: compose.php:159
+msgid "said"
+msgstr "nói"
+
+#: compose.php:162
+msgid "quote"
+msgstr "trích dẫn"
+
+#: compose.php:162
+msgid "who"
+msgstr "ai"
+
+#: compose.php:181
+#: compose.php:198
+#: read_body.php:401
+msgid "Subject"
+msgstr "Chủ đề"
+
+#: compose.php:182
+#: compose.php:199
+#: read_body.php:409
+msgid "From"
+msgstr "Từ"
+
+#: compose.php:183
+#: compose.php:200
+#: read_body.php:410
+msgid "Date"
+msgstr "Ngày"
+
+#: compose.php:184
+#: compose.php:201
+#: read_body.php:411
+msgid "To"
+msgstr "Cho"
+
+#: compose.php:185
+#: compose.php:205
+#: read_body.php:412
+msgid "Cc"
+msgstr "Cc"
+
+#: compose.php:197
+msgid "Original Message"
+msgstr "Thân gốc"
+
+#: compose.php:299
+msgid "Draft Email Saved"
+msgstr "Đã lưu thư nháp"
+
+#: compose.php:396
+#: compose.php:439
+#: compose.php:449
+msgid "Could not move/copy file. File not attached"
+msgstr "Không thể di chuyển/sao chép tập tin nên không đính tập tin kèm thư."
+
+#: compose.php:906
+msgid "Draft Saved"
+msgstr "Đã lưu bản nháp"
+
+#: compose.php:909
+msgid "Your Message has been sent"
+msgstr "Thư của bạn đã được gửi"
+
+#: compose.php:914
+msgid "Close"
+msgstr "Đóng"
+
+#: compose.php:927
+msgid "From:"
+msgstr "Từ :"
+
+#: compose.php:963
+#: read_body.php:205
+msgid "To:"
+msgstr "Cho :"
+
+#: compose.php:971
+msgid "CC:"
+msgstr "CC:"
+
+#: compose.php:979
+msgid "BCC:"
+msgstr "BCC:"
+
+#: compose.php:987
+#: read_body.php:206
+msgid "Subject:"
+msgstr "Chủ đề:"
+
+#: compose.php:1052
+#: compose.php:1216
+msgid "Send"
+msgstr "Gửi"
+
+#: compose.php:1090
+msgid "Attach:"
+msgstr "Đính:"
+
+#: compose.php:1094
+msgid "Add"
+msgstr "Thêm"
+
+#: compose.php:1122
+msgid "Delete selected attachments"
+msgstr "Xoá các đồ đính kèm được chọn"
+
+#: compose.php:1176
+#: read_body.php:415
+msgid "Priority"
+msgstr "Ưu tiên"
+
+#: compose.php:1177
+msgid "High"
+msgstr "Cao"
+
+#: compose.php:1178
+msgid "Normal"
+msgstr "Vừa"
+
+#: compose.php:1179
+msgid "Low"
+msgstr "Thấp"
+
+#: compose.php:1185
+msgid "Receipt"
+msgstr "Báo đã nhận"
+
+#: compose.php:1187
+msgid "On Read"
+msgstr "Vì đoc"
+
+#: compose.php:1189
+msgid "On Delivery"
+msgstr "Vì phát"
+
+#: compose.php:1198
+msgid "Signature"
+msgstr "Chữ ký"
+
+#: compose.php:1201
+#: compose.php:1205
+#: compose.php:1209
+msgid "Addresses"
+msgstr "Địa chỉ"
+
+#: compose.php:1213
+msgid "Save Draft"
+msgstr "Lưu bản nháp"
+
+#: compose.php:1234
+msgid "You have not filled in the \"To:\" field."
+msgstr "Bạn chưa điền vào trường « Cho : »."
+
+#: compose.php:1457
+msgid "Draft folder"
+msgstr "Thư mục Nháp"
+
+#: compose.php:1469
+#: read_body.php:294
+msgid "Server replied: "
+msgstr "Máy phục vụ đã đáp ứng: "
+
+#: functions.php:100
+msgid "Windows Preferences"
+msgstr "Tuỳ thích Windows"
+
+#: functions.php:101
+msgid "Open a new window when reading messages:"
+msgstr "Mở một cửa sổ mới khi đọc thư :"
+
+#: functions.php:107
+#: functions.php:123
+msgid "Yes"
+msgstr "Đồng ý"
+
+#: functions.php:112
+#: functions.php:128
+msgid "No"
+msgstr "Từ chối"
+
+#: functions.php:117
+msgid "Reuse message window when reading messages:"
+msgstr "Dùng lại cửa sổ thư khi đọc thư :"
+
+#: functions.php:133
+msgid "Width of message window:<br>(set to zero for default)"
+msgstr "Chiều rộng của cửa sổ thư :<br>(mặc định là số không)"
+
+#: functions.php:142
+msgid "Height of message window:<br>(set to zero for default)"
+msgstr "Chiều cao của cửa sổ thư :<br>(mặc định là số không)"
+
+#: read_body.php:120
+msgid "View Printable Version"
+msgstr "Xem phiên bản có thể in"
+
+#: read_body.php:168
+msgid "Read:"
+msgstr "Đọc:"
+
+#: read_body.php:204
+msgid "Your message"
+msgstr "Thư của bạn"
+
+#: read_body.php:207
+msgid "Sent:"
+msgstr "Đã gửi:"
+
+#: read_body.php:209
+#, php-format
+msgid "Was displayed on %s"
+msgstr "Đã hiển thị vào %s"
+
+#: read_body.php:381
+msgid "less"
+msgstr "ít"
+
+#: read_body.php:383
+msgid "more"
+msgstr "nhiều"
+
+#: read_body.php:406
+msgid "Unknown sender"
+msgstr "Người gửi lạ"
+
+#: read_body.php:413
+msgid "Bcc"
+msgstr "BCC"
+
+#: read_body.php:418
+msgid "Mailer"
+msgstr "Trình thư"
+
+#: read_body.php:424
+#: read_body.php:426
+#: read_body.php:443
+msgid "Read receipt"
+msgstr "Báo đã đọc"
+
+#: read_body.php:424
+msgid "send"
+msgstr "gửi"
+
+#: read_body.php:426
+msgid "requested"
+msgstr "được yêu cầu"
+
+#: read_body.php:435
+msgid ""
+"The message sender has requested a response to indicate that you have read "
+"this message. Would you like to send a receipt?"
+msgstr "Người gửi thư này đã yêu cầu bạn gửi một thư ngụ ý rằng bạn đã đọc thư này chưa. Bạn có muốn gửi một thông báo đã đọc không?"
+
+#: read_body.php:444
+msgid "Send read receipt now"
+msgstr "Gửi báo đã đọc ngay"
+
+#: read_body.php:488
+msgid "Search results"
+msgstr "Kết quả tìm"
+
+#: read_body.php:492
+msgid "Message List"
+msgstr "Danh sách thư"
+
+#: read_body.php:505
+msgid "Delete"
+msgstr "Xoá"
+
+#: read_body.php:524
+msgid "Resume Draft"
+msgstr "Mở lại bản nháp"
+
+#: read_body.php:527
+msgid "Edit Message as New"
+msgstr "Sửa thư dạng mới"
+
+#: read_body.php:543
+#: read_body.php:545
+#: read_body.php:571
+msgid "Previous"
+msgstr "Trước"
+
+#: read_body.php:552
+#: read_body.php:554
+#: read_body.php:572
+msgid "Next"
+msgstr "Tiếp"
+
+#: read_body.php:559
+msgid "View Message"
+msgstr "Xem thư"
+
+#: read_body.php:591
+msgid "Up"
+msgstr "Lên"
+
+#: read_body.php:599
+msgid "Forward"
+msgstr "Chuyển tiếp"
+
+#: read_body.php:604
+msgid "Forward as Attachment"
+msgstr "Chuyển tiếp đính kèm"
+
+#: read_body.php:609
+msgid "Reply"
+msgstr "Trả lời"
+
+#: read_body.php:613
+msgid "Reply All"
+msgstr "Trả lời cho tất cả"
+
+#: read_body.php:628
+msgid "Options"
+msgstr "Tùy chọn"
+
+#: read_body.php:630
+msgid "View Full Header"
+msgstr "Xem mọi dòng đầu"
+
+#: read_body.php:817
+msgid "Attachments"
+msgstr "Đồ đính kèm"
