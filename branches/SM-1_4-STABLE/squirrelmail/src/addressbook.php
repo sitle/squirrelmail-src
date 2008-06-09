@@ -152,8 +152,12 @@ function list_writable_backends($name) {
                                'center', $color[4], 'colspan="2"')) . "\n";
 }
 
-/* Create page header before addressbook_init in order to  display error messages correctly. */
-displayPageHeader($color, 'None');
+// Create page header before addressbook_init in order to
+// display error messages correctly, unless we might be
+// redirecting the browser to the compose page. 
+//
+if ((empty($compose_to)) || sizeof($sel) < 1) 
+    displayPageHeader($color, 'None');
 
 /* Open addressbook, with error messages on but without LDAP (the *
  * second "true"). Don't need LDAP here anyway                    */
@@ -277,6 +281,9 @@ if(sqgetGlobalVar('REQUEST_METHOD', $req_method, SQ_SERVER) && $req_method == 'P
             if ($lookup_failed || empty($send_to)) {
                 $showaddrlist = true;
                 $defselected  = $sel;
+
+                // we skipped the page header above for this functionality, so add it here
+                displayPageHeader($color, 'None');
             }
 
 
