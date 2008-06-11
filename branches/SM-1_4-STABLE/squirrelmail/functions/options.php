@@ -32,6 +32,7 @@ define('SMOPT_TYPE_STRLIST_MULTI', 11);
 define('SMOPT_TYPE_BOOLEAN_CHECKBOX', 12);
 define('SMOPT_TYPE_BOOLEAN_RADIO', 13);
 define('SMOPT_TYPE_STRLIST_RADIO', 14);
+define('SMOPT_TYPE_SUBMIT', 15);
 
 /* Define constants for the layout scheme for edit lists. */
 define('SMOPT_EDIT_LIST_LAYOUT_LIST', 0);
@@ -80,6 +81,7 @@ class SquirrelOption {
     var $trailing_text;
     var $yes_text;
     var $no_text;
+    var $use_add_widget;
 
     /* The name of the Save Function for this option. */
     var $save_function;
@@ -109,6 +111,7 @@ class SquirrelOption {
         $this->trailing_text = '';
         $this->yes_text = '';
         $this->no_text = '';
+        $this->use_add_widget = TRUE;
 
         /* Check for a current value. */
         if (isset($GLOBALS[$name])) {
@@ -168,6 +171,11 @@ class SquirrelOption {
     /* Set the no text for this option. */
     function setNoText($no_text) {
         $this->no_text = $no_text;
+    }
+
+    /* Set the "use add widget" value for this option. */
+    function setUseAddWidget($use_add_widget) {
+        $this->use_add_widget = $use_add_widget;
     }
 
     /* Set the layout type for this option. */
@@ -250,6 +258,9 @@ class SquirrelOption {
                 break;
             case SMOPT_TYPE_STRLIST_RADIO:
                 $result = $this->createWidget_StrList(FALSE, TRUE);
+                break;
+            case SMOPT_TYPE_SUBMIT:
+                $result = $this->createWidget_Submit();
                 break;
             default:
                $result = '<font color="' . $color[2] . '">'
@@ -659,9 +670,11 @@ class SquirrelOption {
 
         switch ($this->layout_type) {
             case SMOPT_EDIT_LIST_LAYOUT_SELECT:
-                $result = _("Add")
-                    . '&nbsp;<input name="add_' . $this->name 
-                    . '" size="38" /><br /><select name="new_' . $this->name
+                $result = '';
+                if ($this->use_add_widget)
+                    $result .= _("Add") . '&nbsp;<input name="add_' . $this->name 
+                             . '" size="38" /><br />';
+                $result .= '<select name="new_' . $this->name
                     . '[]" multiple="multiple" size="' . $height . '"'
                     . ($javascript_on ? ' onchange="if (typeof(window.addinput_' . $this->name . ') == \'undefined\') { var f = document.forms.length; var i = 0; var pos = -1; while( pos == -1 && i < f ) { var e = document.forms[i].elements.length; var j = 0; while( pos == -1 && j < e ) { if ( document.forms[i].elements[j].type == \'text\' && document.forms[i].elements[j].name == \'add_' . $this->name . '\' ) { pos = j; } j++; } i++; } if( pos >= 0 ) { window.addinput_' . $this->name . ' = document.forms[i-1].elements[pos]; } } for (x = 0; x < this.length; x++) { if (this.options[x].selected) { window.addinput_' . $this->name . '.value = this.options[x].text; break; } }"' : '')
                     . ' ' . $this->script . ">\n";
@@ -708,11 +721,12 @@ class SquirrelOption {
 
 
             case SMOPT_EDIT_LIST_LAYOUT_LIST:
-                $result = '<table width="80%" cellpadding="1" cellspacing="0" border="0" bgcolor="' . $color[0]
-                      . '"><tr><td>'
-                      . _("Add") . '&nbsp;<input name="add_' . $this->name 
-                      . '" size="38" /><br />'
-                      . '<table width="100%" cellpadding="1" cellspacing="0" border="0" bgcolor="' . $color[5] . '">';
+                $result = '<table width="80%" cellpadding="1" cellspacing="0" border="0" bgcolor="'
+                        . $color[0] . '"><tr><td>';
+                if ($this->use_add_widget)
+                    $result .= _("Add") . '&nbsp;<input name="add_' . $this->name 
+                             . '" size="38" /><br />';
+                $result .= '<table width="100%" cellpadding="1" cellspacing="0" border="0" bgcolor="' . $color[5] . '">';
 
                 $bgcolor = 4;
                 if (!isset($color[12]))
@@ -749,6 +763,23 @@ class SquirrelOption {
                         . sprintf(_("Edit List Layout Type '%s' Not Found"), $this->layout_type)
                         . '</font>';
         }
+
+        return $result;
+
+    }
+
+    /**
+     * Creates a submit button
+     *
+     * @return string html formated submit button widget
+     *
+     */
+    function createWidget_Submit() {
+
+        $result = "<input type=\"submit\" name=\"$this->name\" value=\""
+                . htmlspecialchars($this->comment)
+                . "\" $this->script />" 
+                . htmlspecialchars($this->trailing_text) . "\n";
 
         return $result;
 
@@ -792,7 +823,8 @@ function save_option($option) {
 
         // add element if given
         //
-        if (sqGetGlobalVar('add_' . $option->name, $new_element, SQ_POST)) {
+        if ((isset($option->use_add_widget) && $option->use_add_widget)
+         && sqGetGlobalVar('add_' . $option->name, $new_element, SQ_POST)) {
             $new_element = trim($new_element);
             if (!empty($new_element)
              && !in_array($new_element, $option->possible_values))
@@ -900,6 +932,11 @@ function create_option_groups($optgrps, $optvals) {
             /* If provided, set the no_text for this option. */
             if (isset($optset['no_text'])) {
                 $next_option->setNoText($optset['no_text']);
+            }
+
+            /* If provided, set the use_add_widget value for this option. */
+            if (isset($optset['use_add_widget'])) {
+                $next_option->setUseAddWidget($optset['use_add_widget']);
             }
 
             /* If provided, set the layout type for this option. */
