@@ -856,6 +856,12 @@ $languages['ko_KR']['CHARSET'] = 'euc-KR';
 // $languages['ko_KR']['XTRA_CODE'] = 'korean_charset_xtra';
 $languages['ko']['ALIAS']      = 'ko_KR';
 
+$languages['lv_LV']['NAME']    = 'Latvian';
+$languages['lv_LV']['ALTNAME'] = 'Latvi&#371;';
+$languages['lv_LV']['CHARSET'] = 'utf-8';
+$languages['lv_LV']['LOCALE'] = 'lv_LV.UTF-8';
+$languages['lv']['ALIAS'] = 'lv_LV';
+
 $languages['lt_LT']['NAME']    = 'Lithuanian';
 $languages['lt_LT']['CHARSET'] = 'utf-8';
 $languages['lt_LT']['LOCALE']  = 'lt_LT.UTF-8';
