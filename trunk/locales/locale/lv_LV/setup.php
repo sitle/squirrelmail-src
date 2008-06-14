@@ -2,7 +2,7 @@
 /**
  * Language configuration file
  *
- * Copyright (c) 2005-2007 The SquirrelMail Project Team
+ * Copyright (c) 2005-2008 The SquirrelMail Project Team
  *
  * This file is part of SquirrelMail webmail interface. It is distributed
  * together with other translation files and is used to enable 
@@ -27,6 +27,7 @@
  */
 
 $languages['lv_LV']['NAME']    = 'Latvian';
+$languages['lv_LV']['ALTNAME'] = 'Latvi&#371;';
 $languages['lv_LV']['CHARSET'] = 'utf-8';
 $languages['lv_LV']['LOCALE'] = 'lv_LV.UTF-8';
 $languages['lv']['ALIAS'] = 'lv_LV';
