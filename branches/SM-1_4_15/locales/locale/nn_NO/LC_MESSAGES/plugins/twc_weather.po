@@ -1,0 +1,292 @@
+# translation of twc_weather.po to Nynorsk
+# Copyright (c) 2006 The SquirrelMail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
+# $Id$
+# Ola Ketil Siqveland <olaketil@hotmail.com>, 2006
+msgid ""
+msgstr ""
+"Project-Id-Version: twc_weather\n"
+"POT-Creation-Date: 2005-12-25 14:05+0100\n"
+"PO-Revision-Date: 2006-08-10 10:15+0200\n"
+"Last-Translator: Ola Ketil Siqveland <olaketil@hotmail.com>\n"
+"Language-Team: Nynorsk <nn@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.0.1\n"
+
+#: config.php.sample:239
+msgid "Today"
+msgstr "I dag"
+
+#: config.php.sample:240
+msgid "Tomorrow"
+msgstr "I morgon"
+
+#: config.php.sample:241
+msgid "Tonight"
+msgstr "I natt"
+
+#: config.php.sample:242
+msgid "Tomorrow night"
+msgstr "I morgon natt"
+
+#: config.php.sample:243
+msgid "Monday"
+msgstr "Måndag"
+
+#: config.php.sample:244
+msgid "Tuesday"
+msgstr "Tysdag"
+
+#: config.php.sample:245
+msgid "Wednesday"
+msgstr "Onsdag"
+
+#: config.php.sample:246
+msgid "Thursday"
+msgstr "Torsdag"
+
+#: config.php.sample:247
+msgid "Friday"
+msgstr "Fredag"
+
+#: config.php.sample:248
+msgid "Saturday"
+msgstr "Laurdag"
+
+#: config.php.sample:249
+msgid "Sunday"
+msgstr "Sundag"
+
+#: options.php:726 options.php:730 options.php:734
+msgid "Options"
+msgstr "Val"
+
+#: options.php:726 options.php:730 options.php:734 setup.php:117
+msgid "TWC Weather"
+msgstr "TWC vêr"
+
+#: options.php:727
+msgid "Edit Location"
+msgstr "Rediger stad"
+
+#: options.php:731
+msgid "Add Location"
+msgstr "Legg til stad"
+
+#: options.php:737
+msgid "New"
+msgstr "Ny"
+
+#: options.php:738
+msgid "Done"
+msgstr "Ferdig"
+
+#: options.php:809
+msgid ""
+"For the location, you can enter a US Zip code, a city, state/country (or "
+"some combination to search). For example you could use either: \"94521\", "
+"\"San Francisco, CA\", \"New York\", \"Rome, Italy\", etc."
+msgstr ""
+"For nokre stader kan ein skriva inn eit US Postnummer, poststad, delstat/"
+"land (eller ein kombinasjon for søk) For eksempel kan ein bruka enten: "
+"«94521», «San Francisco, CA»,«Stavanger, Norway», osv."
+
+#: options.php:815 options.php:1178
+msgid "Location:"
+msgstr "Stad:"
+
+#: options.php:827
+msgid "* choose one!"
+msgstr "* vel ein!"
+
+#: options.php:873
+msgid "* location not found, try again!"
+msgstr "* stad finst ikkje, prøv på ny!"
+
+#: options.php:879 options.php:944
+msgid "Alias:"
+msgstr "Alias:"
+
+#: options.php:891
+msgid "Display Position:"
+msgstr "Vis posisjon:"
+
+#: options.php:896 options.php:901
+msgid "Above folder list"
+msgstr "Over mappeliste"
+
+#: options.php:897 options.php:902
+msgid "Below folder list"
+msgstr "Under mappeliste"
+
+#: options.php:911
+msgid "Cache Time:"
+msgstr "Hurtiglagre tid:"
+
+#: options.php:938
+msgid ""
+"Select which of the following information you want displayed for this "
+"location:"
+msgstr "Vel kvafor opplysning som skal visast for denne staden:"
+
+#: options.php:970
+msgid "Weather Icon:"
+msgstr "Vêrikon:"
+
+#: options.php:990 weather.php:1066
+msgid "Temperature:"
+msgstr "Temperatur:"
+
+#: options.php:1007 weather.php:1069
+msgid "Feels Like:"
+msgstr "Kjenast som:"
+
+#: options.php:1025 weather.php:1072
+msgid "Conditions:"
+msgstr "Vilkår:"
+
+#: options.php:1042 weather.php:1075
+msgid "UV Index:"
+msgstr "UV indeks:"
+
+#: options.php:1060 weather.php:1078
+msgid "Wind:"
+msgstr "Vind:"
+
+#: options.php:1076 weather.php:1081
+msgid "Dew Point:"
+msgstr "Dugpunkt:"
+
+#: options.php:1094 weather.php:1084
+msgid "Humidity:"
+msgstr "Vassdampinnhald:"
+
+#: options.php:1111 weather.php:1087
+msgid "Visibility:"
+msgstr "Sikt:"
+
+#: options.php:1130 weather.php:1090
+msgid "Barometer:"
+msgstr "Barometer:"
+
+#: options.php:1161 weather.php:1096 weather.php:1100
+msgid "Forecast:"
+msgstr "Vêrvarsel:"
+
+#: options.php:1196
+msgid "Extended Forecast Days:"
+msgstr "Utvida vêrmeldingdagar:"
+
+#: options.php:1217
+msgid "Metric SI Units:"
+msgstr "Metrisk SI einingar:"
+
+#: options.php:1246
+msgid "&nbsp;"
+msgstr "&nbsp;"
+
+#: options.php:1262
+msgid "The following options are to control the appearance of the display"
+msgstr "Val for å setje opp utsjånaden til skjermen"
+
+#: options.php:1263
+msgid "box. If the field is left blank, the default values will be used. In "
+msgstr "boks. Viss felt er blankt, vil standardverdiar verta brukt. I "
+
+#: options.php:1264
+msgid "the case of the colors, the default values are based on the current "
+msgstr "for fargar, standardverdiar er basert på noverande "
+
+#: options.php:1265
+msgid "theme."
+msgstr "tema."
+
+#: options.php:1271
+msgid "Show this location:"
+msgstr "Vis denne staden:"
+
+#: options.php:1286
+msgid "Narrow Forecast:"
+msgstr "Snever vêrmelding:"
+
+#: options.php:1311
+msgid "Box Width:"
+msgstr "Boks breidde:"
+
+#: options.php:1325
+msgid "Margin - Right:"
+msgstr "Høgremarg:"
+
+#: options.php:1339
+msgid "Margin - Left:"
+msgstr "Venstremarg:"
+
+#: options.php:1355
+msgid "Margin - Top:"
+msgstr "Toppmarg:"
+
+#: options.php:1369
+msgid "Margin - Bottom:"
+msgstr "Nedre marg:"
+
+#: options.php:1385
+msgid "Color - Background:"
+msgstr "Bakgrunnsfarge:"
+
+#: options.php:1399
+msgid "Color - Foreground:"
+msgstr "Framgrunnsfarge:"
+
+#: options.php:1415
+msgid "Color - Labels:"
+msgstr "Fargeetiketter:"
+
+#: options.php:1429
+msgid "Color - Values:"
+msgstr "Fargeverdiar:"
+
+#: options.php:1448
+msgid "Submit"
+msgstr "Send"
+
+#: options.php:1449
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: options.php:1460
+msgid "Changes saved."
+msgstr "Endringar lagra."
+
+#: options.php:1484
+msgid "Add a new location to get started"
+msgstr "Legg til ny stad for å starta"
+
+#: options.php:1492
+msgid "Edit"
+msgstr "Rediger"
+
+#: options.php:1495
+msgid "Delete"
+msgstr "Slett"
+
+#: options.php:1501
+msgid "Hide"
+msgstr "Gøym"
+
+#: options.php:1506
+msgid "Show"
+msgstr "Vis"
+
+#: options.php:1520
+msgid "Location: <b>%s</b>"
+msgstr "Stad: <b>%s</b>"
+
+#: setup.php:119
+msgid ""
+"Setup the weather displaying options. You can add all the cities you want to "
+"monitor as well as various options to display."
+msgstr ""
+"Oppsett av vêr-visinga. Ein kan leggja til alle byar ein vill overvåka også "
+"val for å vise."

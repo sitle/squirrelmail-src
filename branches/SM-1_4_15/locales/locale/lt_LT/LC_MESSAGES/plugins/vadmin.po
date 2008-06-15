@@ -1,0 +1,991 @@
+# Lithuanian translation of
+# SquirrelMail's vadmin plugin.
+# Copyright (c) 2003-2005 SquirrelMail Project Team
+# Tomas Kuliavas <tokul@users.sourceforge.net>, 2003.
+# $Id$
+msgid ""
+msgstr ""
+"Project-Id-Version: vadmin 1.9.2\n"
+"POT-Creation-Date: 2003-07-06 21:57-0400\n"
+"PO-Revision-Date: 2003-12-02 20:37+0200\n"
+"Last-Translator: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
+"Language-Team: Lithuanian <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#, c-format
+msgid "%s already exists!"
+msgstr "%s jau yra!"
+
+#, c-format
+msgid "Failed to create %s!"
+msgstr "Nepavyko sukurti %s!"
+
+#, c-format
+msgid "Could not open %s for writing"
+msgstr "Nepavyko atidaryti %s rašymui"
+
+#, c-format
+msgid "Could not write data in %s!"
+msgstr "Nepavyko įrašyti duomenų į %s!"
+
+#, c-format
+msgid "Vadmin is misconfigured: No writing permissions to %s"
+msgstr "Vadmin priedas klaidingai įdiegtas: Negalima rašyti į %s"
+
+msgid "You have attempted an action that was flagged by the system as violating the security measures in place. Your access has been denied. If you believe it was an error on our part, please try your action again, or e-mail your system administrator."
+msgstr "Jūs bandėte atlikti veiksmą, kuris priskiriamas prie saugumo pažeidimų. Jūsų veiksmai buvo užblokuoti. Jei manote, kad tai įvyko dėl kokios nors sistemos klaidos, pabandykite dar kartą arba susisiekite su savo pašto sistemos administratoriumi."
+
+#, c-format
+msgid "VADMIN SYSTEM ERROR: %s"
+msgstr "VADMIN SISTEMINĖ KLAIDA: %s"
+
+#, c-format
+msgid "<strong>SYSTEM ERROR: %s</strong>. We apologize for the inconvenience, but your request cannot be completed at this time. Please contact your system administrator if the problem persists."
+msgstr "<strong>SISTEMOS KLAIDA: %s</strong>. Atsiprašome už nepatogumus, tačiau Jūsų užklausa šiuo metu negali būti įvykdyta. Susisiekite su savo pašto sistemos administratoriumi, jei problema pasikartos."
+
+msgid "SYSTEM ERROR"
+msgstr "SISTEMINĖ KLAIDA"
+
+#, c-format
+msgid "<strong>Error: %s</strong>. Please return to the previous page and try to correct your input. If you need assistance or believe this is a software error, please contact your system administrator."
+msgstr "<strong>Klaida: %s</strong>. Grįžkite į ankstesnį puslapį ir ištaisykite klaidas įvestoje informacijoje. Jei Jums reikia pagalbos arba jei manote kad tai yra sistemos klaida, susisiekite su savo pašto sistemos administratoriumi."
+
+msgid "Input Error"
+msgstr "Įvedimo Klaida"
+
+msgid "Back to &quot;Main Menu&quot;"
+msgstr "Atgal į &quot;Pagrindinį Meniu&quot;"
+
+msgid "Logout"
+msgstr "Išsiregistruoti"
+
+#, c-format
+msgid "Vadmin Plugin version %s"
+msgstr "Vadmin priedo versija %s"
+
+msgid "Could not find CRYPTO_HASH_LINE! "
+msgstr "Nepavyko rasti CRYPTO_HASH_LINE! "
+
+msgid "Could not find MCRYPT_ALGO! "
+msgstr "Nepavyko rasti MCRYPT_ALGO! "
+
+#, c-format
+msgid "Vamin is misconfigured: %s"
+msgstr "Vamin yra klaidingai nustatytas: %s"
+
+msgid "An algorithm other than 'rc4_builtin' specified, but mcrypt support not found."
+msgstr "Nurodytas ne 'rc4_builtin' algoritmas, tačiau nerastos būtinos mcrypt palaikymo funkcijos."
+
+#, c-format
+msgid "Vadmin is misconfigured: %s"
+msgstr "Vadmin yra klaidingai nustatytas: %s"
+
+#, c-format
+msgid "Could not find virtual domains file %s!"
+msgstr "Tarp bylos %s nepavyko rasti jokių virtualių domenų!"
+
+#, c-format
+msgid "No virtual domains defined in %s!"
+msgstr "Tarp %s neaprašyti jokie virtualūs domenai!"
+
+msgid "Error:"
+msgstr "Klaida:"
+
+msgid "Success:"
+msgstr "Sėkmė:"
+
+msgid "Username/Alias"
+msgstr "Vardas/Trumpinys"
+
+msgid "Personal Info"
+msgstr "Asmeninė Info"
+
+msgid "Mailbox"
+msgstr "Pašto dėžė"
+
+msgid "Forwards"
+msgstr "Persiuntimai"
+
+#, c-format
+msgid "%s (admin)"
+msgstr "%s (admin)"
+
+msgid "End of listing"
+msgstr "Sąrašo pabaiga"
+
+#, c-format
+msgid "User listing for %s"
+msgstr "%s vartotojų sąrašas"
+
+#, c-format
+msgid "No such user or alias exists: %s"
+msgstr "Nėra tokio vartotojo ar trumpinio: %s"
+
+#, c-format
+msgid "You don't have permissions to edit user '%s'"
+msgstr "Jūs neturite teisės keisti vartotojo '%s'"
+
+msgid "encrypted"
+msgstr "koduota"
+
+msgid "a 'catchall' account"
+msgstr "surenkanti sąskaita"
+
+#, c-format
+msgid "Listing for <em>%s</em>, created on <em>%s</em>"
+msgstr "<em>%s</em> sąrašas, sukurtas <em>%s</em>"
+
+msgid "Change user attributes"
+msgstr "Keisti vartotojo nustatymus"
+
+msgid "Hard Quota"
+msgstr "Griežta kvota"
+
+msgid "MBytes"
+msgstr "MBaitai"
+
+msgid "Soft Quota"
+msgstr "Pakanti Kvota"
+
+msgid "Set Password"
+msgstr "Nustatyti Slaptažodį"
+
+msgid "Size Limit"
+msgstr "Dydžio Riba"
+
+msgid "Expiry Time"
+msgstr "Termino Laikas"
+
+msgid "days"
+msgstr "dienos"
+
+msgid "Count Limit"
+msgstr "Kiekio Riba"
+
+msgid "msgs"
+msgstr "žinutės"
+
+msgid "Can administer this domain"
+msgstr "Gali valdyti šį domeną"
+
+msgid "separate by commas"
+msgstr "atskirti kableliais"
+
+msgid "Make these changes"
+msgstr "Įvykdyti šiuos pakeitimus"
+
+msgid "Delete this account"
+msgstr "Ištrinti šią sąskaitą"
+
+msgid "Click here if you wish to delete this account. This will also delete any and all user files associated with it -- mailbox files, SquirrelMail preferences, etc."
+msgstr "Paspauskite čia, jei norite ištrinti šią sąskaitą. Trindami Jūs pašalinsite visas su sąskaita susijusias bylas -- pašto dėžės bylas, SquirrelMail nustatymus ir kitką."
+
+msgid "Description of fields"
+msgstr "Laukų aprašymas"
+
+msgid "This is where you put full name of this user or some other information to help you better identify your users and aliases."
+msgstr "Čia Jūs galite įvesti pilną vartotojo vardą ar kitą informaciją, kuri leistų Jums lengviau valdyti vartotojus ir trumpinius."
+
+msgid "This is a Maildir-format style mailbox. If you wish to change this user to an alias without a mailbox, then you will need to leave this setting blank. Please don't change setting unless you know what you are doing, as this can prevent users from accessing their mailboxes."
+msgstr "Tai yra Maildir formato pašto dėžė. Jei Jūs norite pakeisti šį vartotoją į trumpinį be realios pašto dėžės, Jūs turite palikti šį nustatymą neužpildytą. Nekeiskite šio nustatymo jei nesate visiškai tikri dėl to ką Jūs darote, kadangi Jūsų veiksmai gali užblokuoti vartotojų galimybes pasiekti jų pašto dėžutes."
+
+msgid "Since users' passwords are encrypted, it is impossible to see what it is in this listing. Leave it saying 'encrypted' or blank to keep the old value, or type in a new value to change this user's mailbox access password."
+msgstr "Kadangi vartotojų slaptažodžiai yra užkoduoti, yra neįmanoma pasakyti, kas ten yra įrašyta. Palikite 'encrypted' įrašą arba tuščią lauką, norėdami išsaugoti senąją slaptažodžio reikšmę arba įveskite naująjį vartotojo pašto dėžės slaptažodį."
+
+msgid "A '-' means that password for this user is not set."
+msgstr "Minusas reiškia, kad vartotojo slaptažodis yra nenustatytas."
+
+msgid "If you want to limit the availability of this mailbox by some amount of time, put in the number of days this box should be active."
+msgstr "Jei Jūs norite apriboti laiką, kurį bus galima naudotis šia pašto dėže, įveskite skaičių į šį laukelį nurodydami veikimo dienų kiekį."
+
+msgid "A '-' means there is no time limit on this box."
+msgstr "Minusas reiškia, kad ši pašto dėžė neturi laiko apribojimų."
+
+msgid "The absolute limit of how many kilobytes this user may have in his or her mailbox. If this limit is ever reached, the system will not accept any more messages for this user."
+msgstr "Tai yra absoliuti riba duomenų kiekiui, kurį šis vartotojas gali turėti savo pašto dėžėje. Kai ši riba pasiekta, sistema nebepriims naujų vartotojui skirtų laiškų."
+
+msgid "A '-' means unlimited storage space."
+msgstr "Minusas reiškia, kad vartotojo dėžės talpa yra neribojama."
+
+msgid "This sets the size of user's mailbox in kilobytes. If this level is reached, the user is notified that his or her mailbox is at its limits and should be cleaned. The system will still accept messages until Hard Quota limit is reached. Soft Quota should be less than Hard Quota."
+msgstr "Tai yra vartotojo pašto dėžės dydis kilobaitais. Kai duomenų kiekis pasiekia šią ribą, vartotojas yra perspėjamas, kad jo ar jos pašto dėžė yra perpildyta ir turėtų būti išvalyta. Sistema vis dar priims žinutes, kol nebus pasiekta galutinė dydžio riba. Pakanti Kvota turi būti mažesnė už Dydžio Ribą."
+
+msgid "A '-' means no limits are set on this user's mailbox."
+msgstr "Minusas reiškia, kad vartotojo pašto dėžė neturi jokių apribojimų."
+
+msgid "This limits the maximum size of any one message that this user is trying to receive in kilobytes. If a message arrives which is larger than the limit specified here, then it will be discarded."
+msgstr "Čia nustatomas didžiausias žinutės, kurią gali gauti vartotojas, dydis kilobaitais. Jei ateinanti žinutė viršyja nurodytą ribą, ji yra atmetama."
+
+msgid "A '-' means no limits on message sizes."
+msgstr "Minusas reiškia, kad nėra jokių apribojimų dėl žinutės dydžio."
+
+msgid "This limits how many messages a user can have in his or her mailbox. If more messages accumulate than the amount allows, any incoming messages will be discarded until the user cleans the mailbox."
+msgstr "Čia nustatomas leistinas žinučių, esančių pašto dėžėje kiekis. Jei pašto dėžėje susikaupia daugiau žinučių, visos naujos žinutės bus atmetamos tol, kol vartotojas išsivalys pašto dėžę."
+
+msgid "A '-' means no limits."
+msgstr "Minusas reiškia apribojimų nebuvimą."
+
+msgid "This specifies the forwarding addresses for this user or alias. You may put in as  many as you want, separating them by commas (comma-space is OK). Leave blank if you don't want to forward any copies."
+msgstr "Čia aprašomi pasirinkto vartotojo ar trumpinio persiuntimo adresai. Jūs galite įvesti kiek tik norite adresų kableliais (tiks ir kablelis su tarpu). Palikite neužpildytą, jei nenorite niekur persiųsti žinučių kopijų."
+
+msgid "Command"
+msgstr "Komanda"
+
+msgid "Execution result"
+msgstr "Paleidimo rezultatai"
+
+msgid "Marked as administrator"
+msgstr "Pažymėtas kaip administratorius"
+
+msgid "Setting administrator privileges"
+msgstr "Nustatomos administratoriaus teisės"
+
+msgid "This is currently not working due to a bug in include files provided by vmailmgr."
+msgstr "Ši galimybė neveikia dėl klaidos tarp pateiktų vmailmgr pagalbinių bylų"
+
+msgid "Invalid characters in password. Passwords can only contain latin characters, numbers, and underscores."
+msgstr "Neleistini slaptažodžio simboliai. Sistema leidžia naudoti tik lotyniškas raides, skaičius ir apatinius brūkšnius."
+
+msgid "The password has been changed."
+msgstr "Slaptažodis buvo pakeistas."
+
+msgid "Changing Password"
+msgstr "Keičiamas Slaptažodis"
+
+#, c-format
+msgid "Changed to '%s'"
+msgstr "Pakeistas į '%s'"
+
+msgid "Changing Mailbox"
+msgstr "Keičiama Pašto Dėžė"
+
+#, c-format
+msgid "Updated to '%s'"
+msgstr "Pakeista į '%s'"
+
+msgid "Changing Aliases"
+msgstr "Keičiami Trumpiniai"
+
+msgid "Changing Personal Info"
+msgstr "Keičiama Asmeninė Informacija"
+
+msgid "Unlimited quotas not permitted"
+msgstr "Kvotos be apribojimų yra uždraustos"
+
+msgid "Changed to unlimited."
+msgstr "Pakeista į neribotą."
+
+#, c-format
+msgid "Quota above the limit of %d Mb"
+msgstr "Esamas duomenų kiekis viršija %d Mb ribą"
+
+#, c-format
+msgid "Changed to %d MBytes."
+msgstr "Pakeista į %d MBaitų ribą."
+
+msgid "Changing Hard Quota"
+msgstr "Keičiama Griežta Kvota"
+
+msgid "Changing Soft Quota"
+msgstr "Keičiama Pakanti Kvota"
+
+msgid "Unlimited message size not permitted"
+msgstr "Žinutės dydis be apribojimų yra neleidžiamas"
+
+#, c-format
+msgid "Size above the limit of %d Mb"
+msgstr "Esamų žinučių dydžiai viršija %d Mb ribą"
+
+msgid "Changing Size Limit"
+msgstr "Keičiama Dydžio Riba"
+
+msgid "Unlimited message count not permitted"
+msgstr "Žinučių kiekis be apribojimų yra neleidžiamas"
+
+#, c-format
+msgid "Message count above permitted %d"
+msgstr "Esamas žinučių kiekis viršija leistiną (%d)"
+
+#, c-format
+msgid "Changed to %s messages."
+msgstr "Pakeista į %s žinučių ribą."
+
+msgid "Changing Count Limit"
+msgstr "Keičiama Žinučių Skaičiaus Riba"
+
+#, c-format
+msgid "Changed to %s days."
+msgstr "Pakeista į %s dienų ribą."
+
+msgid "Changing Expiry Time"
+msgstr "Keičiamas Pakantumo Terminas"
+
+msgid "Execution completed"
+msgstr "Komanda įvykdyta"
+
+msgid "No changes requested"
+msgstr "Niekas nepakeista"
+
+#, c-format
+msgid "Changing attributes for <em>%s</em>"
+msgstr "Keičiami <em>%s</em> nustatymai"
+
+msgid "Username:"
+msgstr "Vartotojas:"
+
+msgid "Password:"
+msgstr "Slaptažodis:"
+
+msgid "[Optional] Also forward to (separate by commas):"
+msgstr "(Papildomas) Taip pat persiųsti į (atskirti adresus kableliais):"
+
+msgid "Create new user"
+msgstr "Sukurti naują vartotoją"
+
+msgid "Creating new user"
+msgstr "Kuriamas naujas vartotojas"
+
+msgid "Forward to (separate by commas):"
+msgstr "Persiųsti į (atskirti kableliais):"
+
+msgid "Create new alias"
+msgstr "Sukurti naują trumpinį"
+
+msgid "Creating new alias"
+msgstr "Kuriamas naujas trumpinys"
+
+msgid "Create new 'catchall' default forward"
+msgstr "Sukurti naują 'surenkančios' sąskaitos persiuntimą"
+
+msgid "Creating new 'catchall' account"
+msgstr "Sukuriama nauja 'surenkanti' sąskaita"
+
+msgid "'catchall'"
+msgstr "'surenkanti'"
+
+#, c-format
+msgid "Account %s created"
+msgstr "Sąskaita %s sukurta"
+
+#, c-format
+msgid "User <strong>%s</strong> has been successfully created and is ready to be used. If you would like to adjust settings for this newly created account, then please click the button below."
+msgstr "Vartotojas <strong>%s</strong> buvo sėkmingai sukurtas ir gali būti naudojamas. Jei norite pakeisti sukurtos sąskaitos nustatymus, paspauskite žemiau esantį mygtuką."
+
+msgid "Customize this account"
+msgstr "Valdyti šią sąskaitą"
+
+msgid "User created"
+msgstr "Vartotojas sukurtas"
+
+msgid "Confirm action"
+msgstr "Veiksmo patvirtinimas"
+
+#, c-format
+msgid "<strong>WARNING:</strong> You are about to delete user or alias <strong>%s</strong>. If it's a real user, this will delete his/her mailbox including all stored messages, and clear any SquirrelMail preferences this user has. Proceed?"
+msgstr "<strong>DĖMESIO:</strong> Jūs bandote ištrinti vartotoją arba trumpinį <strong>%s</strong>. Jei tai yra realus pašto vartotojas, komanda ištrins visą jo/jos pašto dėžutę su saugomomis žinutėmis bei išvalys visus vartotojo pašto sąsajos nustatymus. Tęsti?"
+
+msgid "No, cancel"
+msgstr "Ne, atšaukti"
+
+msgid "Yes, delete"
+msgstr "Taip, ištrinti"
+
+#, c-format
+msgid "About to delete account %s"
+msgstr "Ruošiamasi ištrinti sąskaitą %s"
+
+#, c-format
+msgid "Account %s deleted"
+msgstr "Sąskaita %s ištrinta"
+
+#, c-format
+msgid "Account <strong>%s</strong> deleted successfully."
+msgstr "Sąskaita <strong>%s</strong> sėkmingai ištrinta."
+
+msgid "The following preference files have also been deleted:"
+msgstr "Taip pat bus ištrintos šios nustatymų bylos:"
+
+msgid "Deletion Results"
+msgstr "Trynimo Rezultatai"
+
+#, c-format
+msgid "Invalid request, handler for '%s' does not exist"
+msgstr "Klaidinga užklausa, '%s' rodyklė neegzistuoja"
+
+msgid "Delete"
+msgstr "Ištrinti"
+
+msgid "Add"
+msgstr "Pridėti"
+
+msgid "Editing instructions"
+msgstr "Taisymo instrukcijos"
+
+msgid "To delete a cross-administrator, press the 'Delete' key next to the username. To add a cross-administrator, put in the full username into the field for the domain to which you wish to add one, and press 'Add'. The term 'full username' means both the username and the domain name, e.g.: joe@domain.com."
+msgstr "Norėdami ištrinti super-administratorių, paspauskite raktą 'Ištrinti', esantį šalią vardo. Norėdami sukurti super-administratorių, įveskite pilną jo vardą į šalia domeno esantį lauką ir paspauskite 'Pridėti'. Terminas pilnas vardas reiškia vartotojo vardą ir domeno pavadinimą, pvz.: jonas@example.com."
+
+msgid "Listing cross-admins for all configured domains"
+msgstr "Visų nustatytų domenų super-administratorių sąrašas"
+
+#, c-format
+msgid "Listing cross-admins for %s"
+msgstr "%s super-administratorių sąrašas"
+
+msgid "Choose a cross-admin to view"
+msgstr "Pasirinkite peržiūrimą super-administratorių"
+
+msgid "Cross-admin:"
+msgstr "Super-administatorius:"
+
+msgid "Edit"
+msgstr "Taisyti"
+
+msgid "Instructions"
+msgstr "Instrukcijos"
+
+msgid "To edit a cross-admin, select the admin's username from the drop-down dialog box and then click 'Edit'. To add a new one, provide the full username in the text box and click the 'Add' button next to it. The 'full' username means both the user's name and the domain, e.g.: joe@domain.com."
+msgstr "Norėdami pakeisti super-administratorių, pasirinkite vardą iš išsiskleidžiančio sąrašo ir paspauskite 'Taisyti'. Norėdami pridėti naują super-administratorių, įveskite pilną vardą žemiau esančiame lauke ir paspauskite mygtuką 'Pridėti'. „Pilnas“ vartotojo vardas reiškia vartotojo vardą ir domeno pavadinimą, pvz.: jonas@example.com."
+
+msgid "No cross-admins found. You should add some first."
+msgstr "Nerastas nei vienas super-administatorius. Jūs turėtumėte pirmiau sukurti bent vieną."
+
+#, c-format
+msgid "Viewing domains for %s"
+msgstr "Peržiūrimi domenai skirti %s"
+
+#, c-format
+msgid "Viewing Cross-administrator %s"
+msgstr "Peržiūrimas Super-administratorius %s"
+
+msgid "The default squirrelmail image"
+msgstr "Standartinis SquirrelMail paveikslėlis"
+
+msgid "Your custom login image"
+msgstr "Jūsų specialus prisijungimo paveikslėlis"
+
+msgid "Restore the default login image"
+msgstr "Atstatyti standartinį prisijungimo paveikslėlį"
+
+msgid "Upload custom image"
+msgstr "Nusiųsti specialų paveikslėlį"
+
+msgid "Title"
+msgstr "Antraštė"
+
+msgid "Customize the login page look"
+msgstr "Pakeisti prisijungimo puslapio išvaizdą"
+
+msgid "Only GIF, PNG, and JPEG type images are permitted"
+msgstr "Galima naudoti tik GIF, PNG arba JPEG tipo paveikslėlius"
+
+#, c-format
+msgid "The image is over the limit of %d Kb"
+msgstr "Paveikslėlis viršija nustatytą %d Kb ribą"
+
+msgid "Login page preferences saved"
+msgstr "Prisijungimo puslapio nustatymai išsaugoti"
+
+msgid "Login page image"
+msgstr "Prisijungimo puslapio piešinys"
+
+msgid "Login page preferences"
+msgstr "Prisijungimo puslapio nustatymai"
+
+msgid "You may set the following permissions"
+msgstr "Jūs galite nustatyti šias teises"
+
+msgid "Users may change their passwords"
+msgstr "Vartotojai gali keisti savo slaptažodžius"
+
+msgid "Users may use autoresponder"
+msgstr "Vartotojai gali naudoti automatinį atsakiklį"
+
+msgid "Set these permissions"
+msgstr "Nustatykite šias teises"
+
+#, c-format
+msgid "Set user permissions for %s"
+msgstr "Vartotojų teisės pakeistos į %s"
+
+msgid "Action taken"
+msgstr "Komanda įvykdyta"
+
+msgid "Result"
+msgstr "Rezultatas"
+
+msgid "Enabled"
+msgstr "Įjungta"
+
+msgid "Disabled"
+msgstr "Išjungta"
+
+msgid "No change"
+msgstr "Nepakeista"
+
+msgid "Changing password change settings"
+msgstr "Keičiami slaptažodžių keitimo nustatymai"
+
+msgid "Changing autoresponder settings"
+msgstr "Keičiami automatinio atsakiklio nustatymai"
+
+#, c-format
+msgid "Setting user preferences for %s"
+msgstr "Vartotojų teisės keičiamos į %s"
+
+msgid "This option requires domain password"
+msgstr "Šiam nustatymui yra būtinas domeno slaptažodis"
+
+msgid "To let users change passwords and set autoresponders, there will need to be a copy of the system password saved on the disk."
+msgstr "Norint leisti vartotojams keisti slaptažodžius ir nustatyti automatinį atsakiklį, serveryje reikia išsaugoti priėjimo prie sistemos slaptažodį."
+
+msgid "Save domain password"
+msgstr "Išsaugoti domeno slaptažodį"
+
+msgid "Domain password required"
+msgstr "Būtinas domeno slaptažodis"
+
+msgid "Maximum number of mailboxes"
+msgstr "Leistinas pašto dėžučių kiekis"
+
+msgid "Maximum user hard quota limit (Mb)"
+msgstr "Leistina griežta vartotojo pašto dėžės kvota (Mb)"
+
+msgid "Maximum user message size limit (Mb)"
+msgstr "Leistinas atskiro laiško skirto vartotojui dydis (Mb)"
+
+msgid "Maximum user message count limit"
+msgstr "Leistinas vieno vartotojo turimų žinučių kiekis"
+
+msgid "Maxium login page image size (Kb)"
+msgstr "Leistinas prisijungimo puslapio paveikslėlio dydis (Kb)"
+
+msgid "Field Description"
+msgstr "Lauko Aprašymas"
+
+msgid "Current value"
+msgstr "Esama reikšmė"
+
+msgid "Set these limits"
+msgstr "Nustatyti šias ribas"
+
+#, c-format
+msgid "Set domain limits for %s"
+msgstr "Nustatomi apribojimai, skirti %s domenui."
+
+#, c-format
+msgid "%s is not an integer. Ignored"
+msgstr "%s nėra sveikas skaičius. Reikšmė atmesta"
+
+#, c-format
+msgid "%d is over the master limit of %d. Maximum setting of %d used"
+msgstr "%d viršija nustatoma %d ribą. Panaudotas nustatymas %d"
+
+msgid "OK, set to unlimited"
+msgstr "Gerai, ribos nuimamos"
+
+#, c-format
+msgid "OK, set to %d"
+msgstr "Gerai, riba nustatoma ties %d"
+
+#, c-format
+msgid "Recording domain limits for %s"
+msgstr "Išsaugomi apribojimai, skirti %s domenui"
+
+msgid "<strong>Password</strong> is the same as your <em>mailbox password</em> you used during login procedure. You are asked to type it in second time as an extra security precaution."
+msgstr "<strong>Šis slaptažodis</strong> yra toks pat kaip <em>Jūsų pašto dėžės slaptažodis</em>, kurį Jūs panaudojote registruodamiesi į pašto sąsają. Saugumo nustatymai reikalauja įvesti tą slaptažodį dar kartą."
+
+msgid "<strong>Password</strong> is the <em>system password</em> corresponding to the domain you have selected. Once you type it in, it will be stored on the server in an encrypted format until you sign out of the vadmin interface."
+msgstr "<strong>Šis slaptažodis</strong> yra <em>sisteminis slaptažodis</em> valdantis Jūsų pasirinktą domeną. Jį įvedus slaptažodis bus saugomas serveryje koduotame formate, kol Jūs dirbsite vadmin sąsajoje."
+
+msgid "Domain"
+msgstr "Domenas"
+
+msgid "Password"
+msgstr "Slaptažodis"
+
+msgid "Log in"
+msgstr "Prisijungti"
+
+msgid "Administrator Login"
+msgstr "Administracinis Prisijungimas"
+
+#, c-format
+msgid "Domain '%s' doesn't seem to be configured with qmail as a virtual domain"
+msgstr "'%s' domenas nėra priskirtas prie qmail virtualių domenų"
+
+#, c-format
+msgid "Sorry, domain password for %s is not stored within the system. Please contact your systems administrator."
+msgstr "Domeno %s slaptažodis nėra saugomas tarp sistemos. Susisiekite su Jūsų pašto sistemos administratoriumi."
+
+msgid "The password you provided is incorrect."
+msgstr "Pateiktas slaptažodis yra neteisingas."
+
+msgid "The password you provided did not verify."
+msgstr "Nepavyko sulyginti Jūsų pateikto slaptažodžio."
+
+#, c-format
+msgid "Domain %s is not configured with Vadmin. Please ask your administrator to configure it first."
+msgstr "Domenas %s nėra sukonfiguruotas tarp Vadmin. Paprašykite Jūsų pašto sistemos administratorių sukonfiguruoti šį domeną."
+
+msgid "The stored password file was invalid and has been removed. Please contact your systems administrator."
+msgstr "Saugomas slaptažodis buvo klaidingas ir sistema jį pašalino. Susisiekite su savo pašto sistemos administratoriumi."
+
+msgid "There is no stored password for this domain. Your admin will have to first finish all needed configuration for this domain, and only then you will be able to log in and administer users. Please contact the person in charge and remind them about this problem."
+msgstr "Domeno slaptažodis yra neišsaugotas. Jūsų administratorius turi pabaigti tvarkyti būtinus šiam domenui nustatymus ir tik tada Jūs galėsite prisijungti ir valdyti vartotojus. Susisiekite su sistemą tvarkančiu asmeniu ir praneškite apie šią problemą."
+
+msgid "Cannot continue"
+msgstr "Negalima tęsti"
+
+msgid "You will need to store the domain password on the server before you can proceed. It will be stored in an encrypted format, so it's not easily hijacked. Please provide the password in the form below. If you don't know the password, please contact the people who do so they set it up to be stored on the server."
+msgstr "Prieš tęsdami Jūs turite išsaugoti domeno slaptažodį serveryje. Slaptažodis bus išsaugotas koduotame formate ir negali būti lengvai atkoduotas. Pateikite slaptažodį žemiau esančioje formoje. Jei Jūs nežinote slaptažodžio, susisiekite su jį žinančiais žmonėmis ir paprašykite išsaugoti tą slaptažodį serveryje."
+
+msgid "Domain Password"
+msgstr "Domeno Slaptažodis"
+
+msgid "Store Password"
+msgstr "Išsaugoti Slaptažodį"
+
+#, c-format
+msgid "Need domain password for '%s'"
+msgstr "Būtinas domeno slaptažodis, skirtas '%s'"
+
+msgid "The password you provided did not validate."
+msgstr "Pateiktas slaptažodis netiko."
+
+msgid "Sorry, but you cannot login over a clear-text HTTP connection. Please sign out and login using a secure HTTPS server instead. This is for your own protection. Thank you!"
+msgstr "Jūs negalite prisijungti naudodami neužkoduotus HTTP susijungimus. Išsiregistruokite ir pasinaukite apsaugotu HTTPS serveriu. Tai yra skirta Jūsų pačių saugumui. Sėkmės!"
+
+msgid "Secure connection required"
+msgstr "Būtinas saugus prisijungimas"
+
+msgid "Cannot log in at this time"
+msgstr "Šiuo metu negalima prisijungti"
+
+#, c-format
+msgid "Domain <strong>'%s'</strong> is currently not enabled with vadmin. If you would like to enable it, then click the button below, otherwise return to the previous page and choose a different domain."
+msgstr "Domenas <strong>'%s'</strong> šiuo metu neįjungtas į vadmin. Jei norite tai padaryti, paspauskite žemiau esantį mygtuką, priešingu atveju grįžkite į ankstesnį puslapį ir pasirinkite skirtingą domeną."
+
+msgid "Use this template"
+msgstr "Naudoti šį šabloną"
+
+msgid "Domain not enabled"
+msgstr "Domenas neaktyvuotas"
+
+#, c-format
+msgid "Enable %s"
+msgstr "Įjungti %s"
+
+#, c-format
+msgid "%s is not enabled"
+msgstr "%s neįjungtas"
+
+#, c-format
+msgid "Sorry, the domain name you supplied, %s, is not configured among the virtual domains on this system"
+msgstr "Jūsų pateiktas domeno vardas %s nėra įtrauktas į šios sistemos virtualių domenų sąrašą"
+
+#, c-format
+msgid "Domain <strong>'%s'</strong> enabled successfully. Click the 'Admin' link at the top and log in again to access the domain."
+msgstr "Domenas <strong>'%s'</strong> sėkmingai įjungtas. Paspauskite 'Admin' nuorodą, esančią puslapio viršuje ir užsiregistruokite iš naujo norėdami valdyti domeną."
+
+msgid "Domain enabled successfully"
+msgstr "Domenas sėkmingai aktyvuotas"
+
+msgid "Logged out"
+msgstr "Išsiregistruota"
+
+msgid "You have been logged out of the Vadmin Plugin interface. You may still use your mailbox, but you will need to re-login to vadmin if you wish to administer users again."
+msgstr "Jūs išsiregistravote iš Vadmin priedo sąsajos. Šiuo metu Jūs vis dar galite naudotis savo pašto dėžutę, tačiau norint valdyti vartotojus, Jums teks iš naujo užsiregistruoti tarp vadmin."
+
+msgid "Log back in"
+msgstr "Prisijungti iš naujo"
+
+msgid "Logged Out"
+msgstr "Išsiregistruota"
+
+msgid "Make your selection:"
+msgstr "Pasirinkite:"
+
+msgid "Proceed"
+msgstr "Tęsti"
+
+msgid "List users"
+msgstr "Išvardinti vartotojus"
+
+msgid "List accounts in this domain"
+msgstr "Išvardinti esamas šio domeno sąskaitas"
+
+msgid "Add new user or alias"
+msgstr "Pridėti naują vartotoją ar trumpinį"
+
+msgid "Create new users or new aliases for this domain"
+msgstr "Sukurti naujus šio domeno vartotojus arba trumpinius"
+
+msgid "Customize this domain"
+msgstr "Nustatyti šį domeną"
+
+msgid "Change the look of your domain and set account defaults"
+msgstr "Pakeisti domenui skirtos sąsajos išvaizdą bei nustatyti standartinius sąskaitų nustatymus"
+
+msgid "Set domain limits"
+msgstr "Nustatyti domeno ribas"
+
+msgid "Set limits for this domain: maximum number of users, maximum quotas, etc."
+msgstr "Nustatyti šio domeno apribojimus: didžiausias galimas vartotojų kiekis, didžiausios kvotos ir pan."
+
+msgid "Configure cross-admins"
+msgstr "Valdyti super-administratorius"
+
+msgid "Edit cross-administrators"
+msgstr "Taisyti super-administratorius"
+
+msgid "Set up domain templates"
+msgstr "Nustatyti domeno šablonus"
+
+msgid "Set up some templates for new domains"
+msgstr "Nustatyti naujų domenų kūrimo šablonus"
+
+#, c-format
+msgid "Vadmin Plugin: %s"
+msgstr "Vadmin Priedas: %s"
+
+msgid "List all users"
+msgstr "Išvardinti visus vartotojus"
+
+msgid "Show a listing of ALL users in this domain"
+msgstr "Parodyti VISŲ šio domeno vartotojų sąrašą"
+
+msgid "Look up username"
+msgstr "Ieškoti vardo"
+
+msgid "Look up a specific username"
+msgstr "Ieškoti kokio nors vardo"
+
+#, c-format
+msgid "Accounts for %s"
+msgstr "%s sąskaitos"
+
+msgid "Mailbox Limit Reached"
+msgstr "Pasiekta pašto dėžučių riba"
+
+msgid "Cannot add any more real users, please delete some or ask your administrator for a higher mailbox quota"
+msgstr "Negalima sukurti daugiau realių vartotojų, pašalinkite dalį vartotojų arba paprašykite pašto administratorių praplėsti nustatytas ribas"
+
+msgid "Create a new user"
+msgstr "Sukurti naują vartotoją"
+
+msgid "Create a real user with a real mailbox"
+msgstr "Sukurti naują realų vartotoją su realia pašto dėžute"
+
+msgid "Create a new alias"
+msgstr "Sukurti naują trumpinį"
+
+msgid "Don't create a mailbox, just a forwarding address"
+msgstr "Nesukurti pašto dėžutės, aprašyti tik persiuntimo adresą"
+
+msgid "Create a 'catchall' account"
+msgstr "Sukurti 'surenkančią' sąskaitą"
+
+msgid "Create a default forwarding alias for this domain"
+msgstr "Sukurti naują šio domeno persiuntimo trumpinį"
+
+msgid "Real user or Alias?"
+msgstr "Realus vartotojas ar trumpinys?"
+
+msgid "Configure your login screen"
+msgstr "Valdyti prisijungimo lango nustatymus"
+
+msgid "Set your login screen title and picture"
+msgstr "Nustatyti prisijungimo lango antraštę ir paveikslėlį"
+
+msgid "Set user permissions"
+msgstr "Nustatyti vartotojų teises"
+
+msgid "Configure what your users are allowed to do"
+msgstr "Valdykite tai, ką vartotojai gali keisti savo nustatymuose"
+
+msgid "Customize your domain"
+msgstr "Priderinti savo domeną"
+
+msgid "List all cross-admins by domain"
+msgstr "Išvardinti visus super-administratorius pagal domenus"
+
+msgid "Show a listing of ALL cross-admins on this system sorted by the domain"
+msgstr "Parodyti VISŲ šios sistemos super-administratorių sąrašą, surūšiuotą pagal domenus"
+
+msgid "List cross-admins in a specific domain"
+msgstr "Išvardinti konkretaus domeno super-administratorius"
+
+msgid "Lists all cross-admins in a domain you specify"
+msgstr "Parodo visus super-administratorius valdančius Jūsų nurodytą domeną"
+
+msgid "List domains belonging to each cross-admin"
+msgstr "Išvardinti domenus priklausančius kiekvienam iš super-administratorių"
+
+msgid "This lets you list all domians belonging to a certain cross-admin"
+msgstr "Tai leidžia pamatyti visus domenus, valdomus konkretaus super-administratoriaus"
+
+msgid "Cross-admins administration menu"
+msgstr "Super-administratorių vardymo meniu"
+
+msgid "List cross-admins for a domain"
+msgstr "Domeno super-administratorių sąrašas"
+
+msgid "Choose a domain:"
+msgstr "Pasirinkti domeną:"
+
+msgid "Domain Creation Templates"
+msgstr "Domenų Kūrimo Šablonai"
+
+#, c-format
+msgid "Template '%s' processed"
+msgstr "Šablonas '%s' apdorotas"
+
+msgid "No domain templates are currently defined. Please click the button below to create one"
+msgstr "Nėra sukurta jokių domenų šablonų. Paspauskite žemiau esantį mygtuką, norėdami sukurti naują šabloną"
+
+msgid "Create a New Template"
+msgstr "Sukurti Naują Šabloną"
+
+msgid "Domain creation templates"
+msgstr "Domeno kūrimo šablonai"
+
+#, c-format
+msgid "Editing template '%s'"
+msgstr "Taisomas šablonas '%s'"
+
+msgid "Creating a new domain template"
+msgstr "Kuriamas naujas domeno šablonas"
+
+msgid "Set template parameters"
+msgstr "Nustatyti šablono parametrus"
+
+msgid "Template name"
+msgstr "Šablono vardas"
+
+msgid "Maximum allowed mailboxes"
+msgstr "Leistinas pašto dėžių kiekis"
+
+msgid "Maximum allowed hard quota per user (Mb)"
+msgstr "Leistina griežta vartotojo pašto dėžės kvota (Mb)"
+
+msgid "Maximum allowed message size per user (Mb)"
+msgstr "Leistina žinutės dydžio riba vartotojui (Mb)"
+
+msgid "Maximum message count per user"
+msgstr "Leistinas žinučių kiekis vartotojui"
+
+msgid "Maximum front page image size (Kb)"
+msgstr "Leistinas prisijungimo puslapio paveikslėlio dydis (Kb)"
+
+msgid "Allow changing passwords by users"
+msgstr "Leisti vartotojams pasikeisti slaptažodžius"
+
+msgid "Let users use the autoresponder (requires qmail-autoresponder)"
+msgstr "Leisti vartotojams naudoti automatinį atsakiklį (būtina qmail-autoresponder programa)"
+
+msgid "Save template"
+msgstr "Išsaugoti šabloną"
+
+msgid "Delete template"
+msgstr "Ištrinti šabloną"
+
+msgid "Domain templates let you specify a set of default parameters that can be applied to the domains you enable. These parameters include limits, restrictions, and some preferences as well"
+msgstr "Domenų šablonai leidžia Jums nustatyti standartinius nustatymus, kurie priskiriami atitinkamiems domenams. Nustatymai apima pašto dėžių bei atskirų vartotojų apribojimus bei dalį sąsajos nustatymų. "
+
+msgid "Please provide a template name"
+msgstr "Pateikite šablono vardą"
+
+msgid "Your autoresponder settings"
+msgstr "Jūsų automatinio atsakiklio nustatymai"
+
+msgid "Your autoresponder is enabled"
+msgstr "Jūsų automatinis atsakiklis įjungtas"
+
+msgid "Your message"
+msgstr "Jūsų žinutė"
+
+msgid "Disable autoresponder"
+msgstr "Nenaudoti automatinio atsakiklio"
+
+msgid "I am currently away from my email. I will respond to your message when I return."
+msgstr "Šiuo metu aš negaliu skaityti gaunamų laiškų. Į Jūsų žinutę atsakysiu, kai grįšiu."
+
+msgid "Your autoresponder is not enabled"
+msgstr "Jūsų automatinis atsakiklis neįjungtas"
+
+msgid "Enable autoresponder"
+msgstr "Naudoti automatinį atsakiklį"
+
+msgid "Please provide an autoresponse message. It cannot be an empty string."
+msgstr "Pateikite automatinio atsakiklio žinutę. Žinutė negali būti tuščia."
+
+msgid "Change Password"
+msgstr "Slaptažodžio keitimas"
+
+msgid "Old Password"
+msgstr "Senas slaptažodis"
+
+msgid "New Password"
+msgstr "Naujas slaptažodis"
+
+msgid "Repeat Password"
+msgstr "Pakartoti naują slaptažodį"
+
+msgid "Change your password"
+msgstr "Pakeisti slaptažodį"
+
+msgid "Your old password did not match"
+msgstr "Įvedėte neteisingą senąjį slaptažodį"
+
+msgid "New password did not match repeat password"
+msgstr "Naujas slaptažodis neatitiko slaptažodžio įvesto patvirtinimo lauke"
+
+msgid "New password is the same as old one"
+msgstr "Naujas slaptažodis yra toks pat kaip senas"
+
+msgid "Invalid characters in password. Passwords can only contain latin characters and numbers"
+msgstr "Nepriimtini simboliai slaptažodyje. Slaptažodžiai gali turėti tik lotyniškas raides ir skaičius"
+
+msgid "Password must be at least 6 characters long"
+msgstr "Slaptažodis turi būti bent 6 simbolių ilgio"
+
+msgid "Sorry, but this service is not available at this time. Please try again later, or notify somebody in charge that this feature is not working."
+msgstr "Šiuo metu negalima pasinaudoti šia galimybe. Pabandykite vėliau arba informuokite atsakingus asmenis, kad ši galimybė neveikia."
+
+msgid "Password changed successfully"
+msgstr "Slaptažodis sėkmingai pakeistas"
+
+msgid "Your password was changed successfully. Next time you log in, please use your new password."
+msgstr "Jūsų slaptažodis buvo pakeistas. Kitą kartą jungdamiesi naudokite naująjį slaptažodį."
+
+msgid "Password changed"
+msgstr "Slaptažodis pakeistas"
+
+msgid "Administrator Interface"
+msgstr "Vmailmgr administratoriaus sąsaja"
+
+msgid "Access the administrator interface to set up and configure users, mailboxes, and other domain settings."
+msgstr "Leidžia pasiekti vmailmgr administravimo sąsaja, kurioje galima valdyti vartotojus, pašto dėžes ir kitus domeno nustatymus."
+
+msgid "You may change the password that you use to log in and check your e-mail."
+msgstr "Jūs galite čia pakeisti slaptažodį, kurį Jūs naudojate prisijungti prie pašto."
+
+msgid "Configure autoresponder"
+msgstr "Valdyti automatinį atsakiklį"
+
+msgid "You may set up an automatic responder, for example to notify your correspondents that you are on vacation."
+msgstr "Jūs galite nustatyti automatinį atsakiklį, jei norite informuoti Jums laiškus siunčiančius asmenis, kad Jums atostogos."
+
+msgid "autoresponder&nbsp;on"
+msgstr "atsakiklis&nbsp;įjungtas"
+
+#, c-format
+msgid "Could not load function file for storage type %s"
+msgstr "Nepavyko aptikti duomenų bazės tipui %s skirtų saugojimo funkcijų"
+
+#, c-format
+msgid "No such module '%s' for level '%s'"
+msgstr "Nėra modulio '%s' skirto lygiui '%s'"
+
