@@ -311,16 +311,23 @@ class abook_local_file extends addressbook_backend {
     }
 
     /**
-     * Lookup alias
-     * @param string $alias alias
+     * Lookup by the indicated field
+     *
+     * @param string  $value Value to look up
+     * @param integer $field The field to look in, should be one
+     *                       of the SM_ABOOK_FIELD_* constants
+     *                       defined in functions/constants.php
+     *                       (OPTIONAL; defaults to nickname field)
+     *
      * @return array search results
+     *
      */
-    function lookup($alias) {
-        if(empty($alias)) {
+    function lookup($value, $field=SM_ABOOK_FIELD_NICKNAME) {
+        if(empty($value)) {
             return array();
         }
 
-        $alias = strtolower($alias);
+        $value = strtolower($value);
 
         $this->open();
         @rewind($this->filehandle);
@@ -332,7 +339,7 @@ class abook_local_file extends addressbook_backend {
                 error_box(_("Address book is corrupted. Required fields are missing."),$color);
                 die('</body></html>');
             } else {
-                if(strtolower($row[0]) == $alias) {
+                if(strtolower($row[$field]) == $value) {
                     return array('nickname'  => $row[0],
                                  'name'      => $row[1] . ' ' . $row[2],
                                  'firstname' => $row[1],

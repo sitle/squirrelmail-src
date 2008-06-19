@@ -53,5 +53,12 @@ define('SMPREF_JS_OFF', 0);
 define('SMPREF_JS_ON', 1);
 define('SMPREF_JS_AUTODETECT', 2);
 
+/* Define constants for address book functionalities. */
+define('SM_ABOOK_FIELD_NICKNAME', 0);
+define('SM_ABOOK_FIELD_FIRSTNAME', 1);
+define('SM_ABOOK_FIELD_LASTNAME', 2);
+define('SM_ABOOK_FIELD_EMAIL', 3);
+define('SM_ABOOK_FIELD_LABEL', 4);
+
 do_hook('loading_constants');
 
