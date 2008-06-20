@@ -277,6 +277,10 @@ class abook_database extends addressbook_backend {
      *                       of the SM_ABOOK_FIELD_* constants
      *                       defined in functions/constants.php
      *                       (OPTIONAL; defaults to nickname field)
+     *                       NOTE: uniqueness is only guaranteed
+     *                       when the nickname field is used here;
+     *                       otherwise, the first matching address
+     *                       is returned.
      *
      * @return array search results
      *
