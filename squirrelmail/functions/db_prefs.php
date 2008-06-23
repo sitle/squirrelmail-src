@@ -154,17 +154,27 @@ class dbPrefs {
     function getKey($user, $key, $default = '') {
         global $prefs_cache;
 
-        cachePrefValues($user);
+        $result = do_hook_function('get_pref_override', array($user, $key));
+//FIXME: testing below for !$result means that a plugin cannot fetch its own pref value of 0, '0', '', FALSE, or anything else that evaluates to boolean FALSE.
+        if (!$result) {
+            cachePrefValues($user);
 
-        if (isset($prefs_cache[$key])) {
-            return $prefs_cache[$key];
-        } else {
-            if (isset($this->default[$key])) {
-                return $this->default[$key];
+            if (isset($prefs_cache[$key])) {
+                $result = $prefs_cache[$key];
             } else {
-                return $default;
+//FIXME: is there justification for having these TWO hooks so close together?  who uses these?
+                $result = do_hook_function('get_pref', array($user, $key));
+//FIXME: testing below for !$result means that a plugin cannot fetch its own pref value of 0, '0', '', FALSE, or anything else that evaluates to boolean FALSE.
+                if (!$result) {
+                    if (isset($this->default[$key])) {
+                        $result = $this->default[$key];
+                    } else {
+                        $result = $default;
+                    }
+                }
             }
         }
+        return $result;
     }
 
     function deleteKey($user, $key) {
