@@ -89,13 +89,16 @@ function cachePrefValues($data_dir, $username) {
 function getPref($data_dir, $username, $string, $default = '') {
     global $prefs_cache;
 
-    $result = do_hook_function('get_pref_override',array($username,$string));
+    $result = do_hook_function('get_pref_override',array($username, $string));
+//FIXME: testing below for !$result means that a plugin cannot fetch its own pref value of 0, '0', '', FALSE, or anything else that evaluates to boolean FALSE.
     if (!$result) {
         cachePrefValues($data_dir, $username);
         if (isset($prefs_cache[$string])) {
             $result = $prefs_cache[$string];
         } else {
-            $result = do_hook_function('get_pref', array($username,$string));
+//FIXME: is there justification for having these TWO hooks so close together?  who uses these?
+            $result = do_hook_function('get_pref', array($username, $string));
+//FIXME: testing below for !$result means that a plugin cannot fetch its own pref value of 0, '0', '', FALSE, or anything else that evaluates to boolean FALSE.
             if (!$result) {
                 $result = $default;
             }
