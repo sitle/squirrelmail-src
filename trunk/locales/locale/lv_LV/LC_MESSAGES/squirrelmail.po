@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: SquirrelMail Internationalization <squirrelmail-"
 "i18n@lists.sourceforge.net>\n"
 "POT-Creation-Date: 2008-05-16 06:41+0200\n"
-"PO-Revision-Date: 2008-05-27 12:10+0300\n"
+"PO-Revision-Date: 2008-06-17 13:06+0300\n"
 "Last-Translator: Ivars Strazdins <ivars.strazdins@gmail.com>\n"
 "Language-Team: Latvian <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -130,9 +130,8 @@ msgstr "Labot izvēlēto"
 msgid "Delete selected"
 msgstr "Nodzēst izvēlēto"
 
-#, fuzzy
 msgid "Compose to selected"
-msgstr "Nodzēst izvēlēto"
+msgstr "Jauns ziņojums izvēlētajam"
 
 msgid "sort by nickname"
 msgstr "kārtot pēc aizstājvārda"
@@ -657,7 +656,7 @@ msgid ""
 "messages are from, especially for mailing lists."
 msgstr ""
 "Sekojot izvēlētajiem kritērijiem, ienākošie ziņojumi sarakstā varēs būt "
-"dažādās krāsās. Tas palīdz viegli izcelt sūtītāju, īpaši no adrešu "
+"dažādās krāsās. Tas palīdz viegli izcelt sūtītāju, īpaši no adresātu "
 "sarakstiem."
 
 msgid ""
@@ -966,7 +965,7 @@ msgid "Error initializing LDAP server %s:"
 msgstr "Kļūda, inicializējot LDAP serveri: %s"
 
 msgid "Click here to change the sorting of the address list"
-msgstr "Klikšķiniet šeit, lai mainītu adrešu saraksta kārtošanu"
+msgstr "Klikšķiniet šeit, lai mainītu adresātu saraksta kārtošanu"
 
 msgid "Invalid input data"
 msgstr "Nederīgi ievadītie dati"
@@ -1409,13 +1408,12 @@ msgstr "Atvērt iezīmēto saiti jaunā logā"
 msgid "Option Type '%s' Not Found"
 msgstr "Iestatījuma tips '%s' nav atrasts"
 
-#, fuzzy
 msgid "Delete Selected"
 msgstr "Nodzēst izvēlēto"
 
-#, fuzzy, php-format
+#, php-format
 msgid "Edit List Layout Type '%s' Not Found"
-msgstr "Iestatījuma tips '%s' nav atrasts"
+msgstr "Saraksta izkārtojuma iestatījuma tips '%s' nav atrasts"
 
 msgid "Current Folder"
 msgstr "Tekošā mape"
@@ -2264,9 +2262,8 @@ msgstr ""
 "Šis modulis ļauj administratoriem mainīt SquirrelMail konfigurāciju "
 "attālināti."
 
-#, fuzzy
 msgid "Plugin is not enabled"
-msgstr "Spraudnis ir atstatīts."
+msgstr "Spraudnis ir atstatīts"
 
 msgid "Submit a Bug Report"
 msgstr "Iesniegt kļūdas ziņojumu"
@@ -2351,9 +2348,8 @@ msgstr "Atvērt kļūdas paziņojuma formu"
 msgid "Bug"
 msgstr "Programmatūras kļūda"
 
-#, fuzzy
 msgid "Bug Reports"
-msgstr "Kļūdas atskaite:"
+msgstr "Kļūdu atskaites:"
 
 msgid "Show button in toolbar"
 msgstr "Rādīt ikonu rīkjoslā"
@@ -2763,7 +2759,7 @@ msgid ""
 "around."
 msgstr ""
 "Pārvietot mēstules uzreiz uz miskasti iesākumā var nebūt labākais "
-"risinājums, jo arī ziņojumi no draugiem un adrešu sarakstiem var tikt "
+"risinājums, jo arī ziņojumi no draugiem un adresātu sarakstiem var tikt "
 "nejauši iezīmēti kā mēstules. Lai arī kādu mapi jūs norādītu, "
 "pārliecinieties, ka tā tiek regulāri iztīrīta, lai pastkaste nekļūtu "
 "pārlieku liela."
@@ -2810,7 +2806,6 @@ msgstr "%s nav atrasts."
 msgid "Today's Fortune"
 msgstr "Šodienas veiksme"
 
-#, fuzzy
 msgid "Fortunes"
 msgstr "Veiksmes:"
 
@@ -2837,15 +2832,15 @@ msgid ""
 "This will send a message to %s requesting help for this list. You will "
 "receive an emailed response at the address below."
 msgstr ""
-"Tiks nosūtīts ziņojums %s ar pieprasījumu palīdzēt šim adrešu sarakstam. Jūs "
-"saņemsiet e-pasta atbildi uz zemāk minēto adresi."
+"Tiks nosūtīts ziņojums %s ar pieprasījumu palīdzēt šim adresātu sarakstam. "
+"Jūs saņemsiet e-pasta atbildi uz zemāk minēto adresi."
 
 #, php-format
 msgid ""
 "This will send a message to %s requesting that you will be subscribed to "
 "this list. You will be subscribed with the address below."
 msgstr ""
-"Tiks nosūtīts ziņojums %s ar pieprasījumu parakstīties uz šo adrešu "
+"Tiks nosūtīts ziņojums %s ar pieprasījumu parakstīties uz šo adresātu "
 "sarakstu. Jūs tiksiet pierakstīts ar zemāk minēto adresi."
 
 #, php-format
@@ -2853,7 +2848,7 @@ msgid ""
 "This will send a message to %s requesting that you will be unsubscribed from "
 "this list. It will try to unsubscribe the adress below."
 msgstr ""
-"Tiks nosūtīts ziņojums %s ar pieprasījumu atrakstīties no šī adrešu "
+"Tiks nosūtīts ziņojums %s ar pieprasījumu atrakstīties no šī adresātu "
 "saraksta. Tiks mēģināts atrakstīties ar zemāk minēto adresi."
 
 #, php-format
@@ -3180,15 +3175,14 @@ msgstr ""
 msgid "Count only messages that are RECENT"
 msgstr "Skaitīt tikai NESENOS ziņojumus"
 
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "Selecting the %s option will change the title in some browsers to let you "
 "know when you have new mail (requires JavaScript). This will always tell you "
 "if you have new mail, even if you have %s enabled."
 msgstr ""
 "Iestatījot %s, dažas pārlūkprogrammas mainīs virsrakstu, ļaujot jums "
-"pamanīt, ka pienācis jauns ziņojums (pieprasa Javascript, un str;adā tikai "
-"ar IE, bet citās pārlūkprogrammās kļūdas nebūs redzamas). Tas vienmēr "
+"pamanīt, ka pienācis jauns ziņojums (pieprasa Javascript). Tas vienmēr "
 "parādīs, ka pienācis jauns ziņojums, pat ja %s būs iestatīts."
 
 msgid "Change title on supported browsers"
@@ -3225,13 +3219,13 @@ msgid "requires JavaScript to work"
 msgstr "nepieciešams JavaScript"
 
 msgid "Width of popup window:"
-msgstr "Izlecošā loga platums:"
+msgstr "Uznirstošā loga platums:"
 
 msgid "If set to 0, reverts to default value"
 msgstr "0 vērtības ierakstīšana atgriezīs noklusēto vērtību"
 
 msgid "Height of popup window:"
-msgstr "Izlecošā loga augstums:"
+msgstr "Uznirstošā loga augstums:"
 
 msgid "Try"
 msgstr "Mēģināt"
@@ -4605,7 +4599,7 @@ msgstr "<b>Ārpus biroja ziņojums:</b>"
 
 #, fuzzy
 msgid "Pop-up window"
-msgstr "Izlecošā loga platums:"
+msgstr "Uznirstošā loga platums:"
 
 msgid "In-page"
 msgstr ""
@@ -5118,6 +5112,7 @@ msgstr "_Atkārtot jauno paroli:"
 msgid "Unable to execute \"%s\"."
 msgstr "Nav iespējams lietot pašreizējo versiju!"
 
+#, fuzzy
 msgid "Fortunes:"
 msgstr "Veiksmes:"
 
@@ -5379,7 +5374,7 @@ msgstr "Labot izvēlēto"
 
 #, fuzzy
 msgid "Compose to Selected"
-msgstr "Ziņojuma sastādīšanas iestatījumi"
+msgstr "Jauns ziņojums izvēlētajam"
 
 #, fuzzy
 msgid "Address book search"
@@ -5431,7 +5426,7 @@ msgstr "Pielikumi"
 
 #, fuzzy
 msgid "Click here to change the sorting of the message list"
-msgstr "Klikšķiniet šeit, lai mainītu adrešu saraksta kārtošanu"
+msgstr "Klikšķiniet šeit, lai mainītu adresātu saraksta kārtošanu"
 
 #, fuzzy
 msgid "Add/Edit"
@@ -5568,3 +5563,207 @@ msgstr "Nepiegādāto ziņojumu sākumi"
 
 msgid "This image has been removed for security reasons"
 msgstr "Drošības dēļ attēls tika aizvākts "
+
+#~ msgid "Draft Saved"
+#~ msgstr "Melnraksts saglabāts"
+
+#~ msgid "Some or all of the help documents are not present!"
+#~ msgstr "Daži vai visi palīdzības dokumenti nav atrasti!"
+
+#~ msgid "Add to Addressbook"
+#~ msgstr "Pievienot adrešu grāmatai"
+
+#~ msgid "Include CCs when Forwarding Messages"
+#~ msgstr "Pielikt CC pārsūtot ziņojumus"
+
+#~ msgid "POP3 connect:"
+#~ msgstr "POP3 pieslēgšanās"
+
+#~ msgid "POP3 user:"
+#~ msgstr "POP3 lietotājs:"
+
+#~ msgid "POP3 pass:"
+#~ msgstr "POP3 parole:"
+
+#~ msgid "authentication failed "
+#~ msgstr "Autentifikācija nav izdevusies"
+
+#, fuzzy
+#~ msgid "POP3 login:"
+#~ msgstr "Autentifikācijas lietotājvārds:"
+
+#, fuzzy
+#~ msgid "POP3 top:"
+#~ msgstr "Top 40"
+
+#, fuzzy
+#~ msgid "POP3 pop_list:"
+#~ msgstr "Programmu autoru saraksts"
+
+#, fuzzy
+#~ msgid "POP3 get:"
+#~ msgstr "_Piedalīties"
+
+#, fuzzy
+#~ msgid "POP3 last:"
+#~ msgstr "Pēdējā _lappuse"
+
+#, fuzzy
+#~ msgid "POP3 reset:"
+#~ msgstr "_Nomest fontus"
+
+#, fuzzy
+#~ msgid "POP3 send_cmd:"
+#~ msgstr "custom_cmd_button%d"
+
+#, fuzzy
+#~ msgid "POP3 quit:"
+#~ msgstr "Aizvērt Ekiga"
+
+#, fuzzy
+#~ msgid "POP3 delete:"
+#~ msgstr "_Dzēst rīkjoslu"
+
+#~ msgid "not available"
+#~ msgstr "nav pieejams"
+
+#~ msgid "Save folder tree"
+#~ msgstr "Saglabāt mapju koku"
+
+#, fuzzy
+#~ msgid "Exclude Criteria:"
+#~ msgstr "Rādīt kārtošanas kritērijus atskaņojumiem"
+
+#, fuzzy
+#~ msgid "Search Criteria"
+#~ msgstr "Meklējamā virkne"
+
+#, fuzzy
+#~ msgid "Message Flags Icon Theme"
+#~ msgstr "Tēmai jau ir atkāpšanās ikona"
+
+#, fuzzy
+#~ msgid "Hide SquirrelMail Header"
+#~ msgstr "HTTP galvenes vārds"
+
+#, fuzzy
+#~ msgid "Available languages"
+#~ msgstr "Pašreizējs Va_loda"
+
+#, fuzzy
+#~ msgid "Search Mailing List Archives"
+#~ msgstr "Meklēt mapi priekš Adresātu saraksta"
+
+#, fuzzy
+#~ msgid "Search SourceForge Bugtracker"
+#~ msgstr "Parādīt meklējamo"
+
+#, fuzzy
+#~ msgid "Search for words:"
+#~ msgstr "Meklēt pēc rindas"
+
+#, fuzzy
+#~ msgid "Written by:"
+#~ msgstr "Autors:"
+
+#, fuzzy
+#~ msgid "Email addresses only"
+#~ msgstr "Tikai _prioritātes teksts"
+
+#, fuzzy
+#~ msgid "Mailing list:"
+#~ msgstr "%s pasta sarakste"
+
+#, fuzzy
+#~ msgid "SquirrelMail users list"
+#~ msgstr "Lietotāji satur saraksta modifikācijas"
+
+#, fuzzy
+#~ msgid "SquirrelMail plugins list"
+#~ msgstr "Aktīvo spraudņu saraksts"
+
+#, fuzzy
+#~ msgid "SquirrelMail developers list"
+#~ msgstr "Programmu autoru saraksts"
+
+#, fuzzy
+#~ msgid "SquirrelMail internationalization list"
+#~ msgstr "Programmu autoru saraksts"
+
+#~ msgid "Sort by:"
+#~ msgstr "Kārtot pēc"
+
+#~ msgid "Search Archives"
+#~ msgstr "Meklēt arhīvos"
+
+#, fuzzy
+#~ msgid "Reset Form"
+#~ msgstr "Saīsinātā forma"
+
+#, fuzzy
+#~ msgid "Summary keyword:"
+#~ msgstr "Priekšprocesora atslēgvārds"
+
+#~ msgid "Sort By:"
+#~ msgstr "Kārtot pēc:"
+
+#~ msgid "ID"
+#~ msgstr "ID"
+
+#~ msgid "Summary"
+#~ msgstr "Kopsavilkums"
+
+#~ msgid "Open Date"
+#~ msgstr "Atvēršanas datums"
+
+#~ msgid "Order:"
+#~ msgstr "Kārtība:"
+
+#~ msgid "Ascending"
+#~ msgstr "Pieaugoši"
+
+#~ msgid "Descending"
+#~ msgstr "Dilstoši"
+
+#, fuzzy
+#~ msgid "Search Bugtracker"
+#~ msgstr "Meklējamā virkne"
+
+#, fuzzy
+#~ msgid "Spam Service Type:"
+#~ msgstr "Izvēlaties diska veidu"
+
+#, fuzzy
+#~ msgid "Free reporting"
+#~ msgstr "Audioscrobbler atskaites"
+
+#, fuzzy
+#~ msgid "Member services"
+#~ msgstr "Servisi "
+
+#, fuzzy
+#~ msgid "Save Service Type"
+#~ msgstr "Izvēlaties diska veidu"
+
+#~ msgid ""
+#~ "<p>Your personal dictionary is <strong>currently encrypted</strong>. This "
+#~ "helps protect your privacy in case the web-mail system gets compromized "
+#~ "and your personal dictionary ends up stolen. It is currently encrypted "
+#~ "with the password you use to access your mailbox, making it hard for "
+#~ "anyone to see what is stored in your personal dictionary.</p> "
+#~ "<p><strong>ATTENTION:</strong> If you forget your password, your personal "
+#~ "dictionary will become unaccessible, since it can no longer be decrypted. "
+#~ "If you change your mailbox password, SquirrelSpell will recognize it and "
+#~ "prompt you for your old password in order to re-encrypt the dictionary "
+#~ "with a new key.</p>"
+#~ msgstr ""
+#~ "<p>Your personal dictionary is <strong>currently encrypted</strong>. This "
+#~ "helps protect your privacy in case the web-mail system gets compromised "
+#~ "and your personal dictionary ends up stolen. It is currently encrypted "
+#~ "with the password you use to access your mailbox, making it hard for "
+#~ "anyone to see what is stored in your personal dictionary.</p> "
+#~ "<p><strong>ATTENTION:</strong> If you forget your password, your personal "
+#~ "dictionary will become unaccessible, since it can no longer be decrypted. "
+#~ "If you change your mailbox password, SquirrelSpell will recognise it and "
+#~ "prompt you for your old password in order to re-encrypt the dictionary "
+#~ "with a new key.</p>"
