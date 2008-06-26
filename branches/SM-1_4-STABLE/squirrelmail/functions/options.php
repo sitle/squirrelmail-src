@@ -82,6 +82,7 @@ class SquirrelOption {
     var $yes_text;
     var $no_text;
     var $use_add_widget;
+    var $use_delete_widget;
 
     /* The name of the Save Function for this option. */
     var $save_function;
@@ -112,6 +113,7 @@ class SquirrelOption {
         $this->yes_text = '';
         $this->no_text = '';
         $this->use_add_widget = TRUE;
+        $this->use_delete_widget = TRUE;
 
         /* Check for a current value. */
         if (isset($GLOBALS[$name])) {
@@ -176,6 +178,11 @@ class SquirrelOption {
     /* Set the "use add widget" value for this option. */
     function setUseAddWidget($use_add_widget) {
         $this->use_add_widget = $use_add_widget;
+    }
+
+    /* Set the "use delete widget" value for this option. */
+    function setUseDeleteWidget($use_delete_widget) {
+        $this->use_delete_widget = $use_delete_widget;
     }
 
     /* Set the layout type for this option. */
@@ -711,10 +718,13 @@ class SquirrelOption {
 
                 }
 
-                $result .= '</select><br /><input type="checkbox" name="delete_' 
-                    . $this->name . '" id="delete_' . $this->name 
-                    . '" value="1" />&nbsp;<label for="delete_' . $this->name . '">'
-                    . _("Delete Selected") . '</label>';
+                $result .= '</select>';
+                if (!empty($this->possible_values) && $this->use_delete_widget)
+                    $result .= '<br /><input type="checkbox" name="delete_' 
+                             . $this->name . '" id="delete_' . $this->name 
+                             . '" value="1" />&nbsp;<label for="delete_'
+                             . $this->name . '">' . _("Delete Selected")
+                             . '</label>';
 
                 break;
 
@@ -747,7 +757,7 @@ class SquirrelOption {
 
                 $result .= '</table>';
 
-                if (!empty($this->possible_values))
+                if (!empty($this->possible_values) && $this->use_delete_widget)
                     $result .= '<input type="checkbox" name="delete_' 
                         . $this->name . '" id="delete_' . $this->name 
                         . '" value="1" />&nbsp;<label for="delete_' . $this->name . '">'
@@ -833,7 +843,8 @@ function save_option($option) {
 
         // delete selected elements if needed
         //
-        if (is_array($option->new_value)
+        if ((isset($option->use_delete_widget) && $option->use_delete_widget)
+         && is_array($option->new_value)
          && sqGetGlobalVar('delete_' . $option->name, $ignore, SQ_POST))
             $option->possible_values = array_diff($option->possible_values, $option->new_value);
 
@@ -937,6 +948,11 @@ function create_option_groups($optgrps, $optvals) {
             /* If provided, set the use_add_widget value for this option. */
             if (isset($optset['use_add_widget'])) {
                 $next_option->setUseAddWidget($optset['use_add_widget']);
+            }
+
+            /* If provided, set the use_delete_widget value for this option. */
+            if (isset($optset['use_delete_widget'])) {
+                $next_option->setUseDeleteWidget($optset['use_delete_widget']);
             }
 
             /* If provided, set the layout type for this option. */
