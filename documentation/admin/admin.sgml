@@ -51,7 +51,7 @@ client, including strong MIME support, address books, and folder manipulation.
 This manual supports SquirrelMail 1.4.0 and up. The 1.2.x series has been
 obsoleted, and is only referenced in the upgrading notes of this manual.
 
-<sect1>Server requirements
+<sect1>Server requirements<label id="requirements">
 <p>
 There are only two requirements for SquirrelMail:
 <itemize>
@@ -596,6 +596,204 @@ SquirrelMailInstallIIS
 <sect1>Installing SquirrelMail on MaxOS X systems
 <p>
 MacInfoHere
+
+<sect1>Installing SquirrelMail on a hosted service without shell access
+<p>
+How to install SquirrelMail on a server where you do not have shell access or
+administrative access.
+
+<sect2>Requirements
+<p>
+First, check the general <ref id="requirements" name="SquirrelMail
+requirements">.
+
+Additionally, you should be able to:
+
+<itemize>
+  <item>add files to your web server's document directory
+  <item>execute PHP scripts (see <url
+        url="http://squirrelmail.org/wiki/TestPHPSettings" name="the wiki page
+        about testing PHP settings">).
+  <item>PHP scripts should be able to connect to your IMAP, SMTP and any other
+        servers that are used by SquirrelMail.
+</itemize>
+
+Optional features:
+
+<itemize>
+  <item>Control of PHP settings with <tt>.htaccess</tt> files
+  <item>PHP access to a SQL database.
+</itemize>
+
+You will need:
+
+<itemize>
+  <item>the address and type of the IMAP server you plan to use
+  <item>the address of the SMTP server you plan to use
+</itemize>
+
+<sect2>Installation
+<p>
+SquirrelMail is installed by copying all of its files to the web server. You
+should be able to do that with a FTP, SFTP or FTP-SSL client program.
+
+<sect2>Configuration
+<p>
+You need to create a configuration file for SquirrelMail. If you
+have Perl on your own computer, you can run the SquirrelMail
+configuration script (<tt>conf.pl</tt>, found in the
+<tt>config/</tt> directory) on your computer, using it to adjust
+your configuration, choose save when done, and then upload the
+resultant <tt>config.php</tt> file to the web server. Be sure to
+put this file into the SquirrelMail <tt>config/</tt> directory
+on your web server. You can now skip to the next step below -
+testing your configuration.
+
+If you don't have Perl on your computer, you'll need to create
+the configuration file by hand. Make a copy of
+<tt>config_default.php</tt> (also found in the <tt>config/</tt>
+directory), naming it <tt>config.php</tt>, then open it in your
+favorite text editor or PHP editor (see below). You must save
+the file as plain text - do not use a word processor's document
+format. When you're done with it, put it in the SquirrelMail
+<tt>config/</tt> directory on your web server.
+
+Editing the configuration file is fairly easy: the comments in the default
+configuration file that you are starting with do a good job of explaining what
+each setting is for. Keep in mind that the configuration file is actually a PHP
+script and must contain valid PHP syntax. This means that you should only change
+values that are (usually but not always) in quotes, making sure not to alter
+anything else. It is especially important that you leave the semicolons at the
+end of each line. Always save a copy of the original file in case you make a
+mistake and need to start over.
+
+When editing the configuration file by hand, you don't have to change ALL the
+settings in the default configuration file, but there are several that are
+mandatory:
+
+1. Default Domain: This is set in the <tt>$domain</tt> setting and is the part
+after the "@" sign in the mail addresses on your mail server. For example:
+
+<tscreen><verb>
+$domain = 'example.org';
+</verb></tscreen>
+
+2. Paths to Data and Attachment Directories: These are set in
+the <tt>$data_dir</tt> and <tt>$attachment_dir</tt> settings.
+These should usually be the full path from the root directory of
+your hard disk, not a path that is relative to your web or FTP
+directory. However, it is possible to specify a relative path
+from the SquirrelMail <tt>src/</tt> directory (for example,
+<tt>../data</tt> might work for <tt>$data_dir</tt>), but this is
+discouraged in favor of more robust full path specification and
+placing these directories apart from the SquirrelMail code
+itself. The web server must have write permission to these
+directories (your FTP access permissions are not the same as the
+web server's access permissions). See the comments in the
+configuration file for more information about setting the
+correct directory permissions (you may need to ask your hosting
+service to do this for you). For example:
+
+<tscreen><verb>
+$data_dir = '/var/lib/squirrelmail/data/';
+$attachment_dir = '/var/spool/squirrelmail/attachments/';
+</verb></tscreen>
+
+3. Address of the IMAP Server: This is set in the
+<tt>$imapServerAddress</tt> variable. For example:
+
+<tscreen><verb>
+$imapServerAddress = 'imap.example.org';
+</verb></tscreen>
+
+4. IMAP Encryption: You may use encryption for your IMAP
+connections if desired or necessary. If you don't know what this
+means, chances are that you may not need it and can skip this
+step. To do this, you will have to modify the <tt>$imapPort</tt>
+and <tt>$use_imap_tls</tt> settings. For example:
+
+<tscreen><verb>
+$imapPort = 993;
+$use_imap_tls = true;
+</verb></tscreen>
+
+5. Address of the SMTP Server, SMTP Port and SMTP Encryption
+Settings: You must set the <tt>$smtpServerAddress</tt>,
+<tt>$smtpPort</tt> and <tt>$use_smtp_tls</tt> settings. These
+are similar to the IMAP settings explained above. Encrypted SMTP
+typically uses port 465, and may not be necessary if you are
+unaware of whether your SMTP server supports encryption. For
+example:
+
+<tscreen><verb>
+$smtpServerAddress = 'smtp.example.org';
+$smtpPort = 25;
+$use_smtp_tls = false;
+</verb></tscreen>
+
+6. IMAP Server Settings: Check the file <tt>presets.txt</tt> in
+the SquirrelMail <tt>doc/</tt> directory to see if your IMAP
+server type is listed there. If so, adjust the settings in your
+configuration file according to the ones that match your server
+type.
+
+7. Optional: It is easier to continue to configure SquirelMail
+using a web interface (the "administrator" plugin), however this
+requires that the web server is able to overwrite the
+configuration file - some hosting environments do not allow this
+or require you to ask them to do it for you. This can also be a
+security risk that you may wish to weigh against the trouble of
+continuing to edit other configuration settings by hand. If you
+decide to (and are able to) proceed in this fashion, you'll add
+"administrator" as the first plugin in the configuration file.
+Find this part of the configuration file:
+
+<tscreen><verb>
+/**
+ * To install plugins, just add elements to this array that have
+ * the plugin directory name relative to the /plugins/ directory.
+ * For instance, for the 'sqclock' plugin, you'd put a line like
+ * the following.
+ *    $plugins[0] = 'sqclock';
+ *    $plugins[1] = 'attachment_common';
+ */
+// Add list of enabled plugins here
+</verb></tscreen>
+
+Just after that, you'll add this line:
+
+<tscreen><verb>
+$plugins[0] = 'administrator';
+</verb></tscreen>
+
+Next, you'll need to tell the administrator plugin who the
+administrator is (so that only you have access to it and your
+normal users do not). Create a file named <tt>admins</tt> with
+your IMAP user name in it and upload it to the SquirrelMail
+<tt>config/</tt> directory. When you have logged in to
+SquirrelMail (see below), click on the "Options" link at the top
+of the page. If your user name matches the one that is in
+<tt>admins</tt> file, you should now see an "Administration"
+block on the SquirrelMail options page which can be used to
+further configure SquirrelMail.
+
+<sect2>Test your configuration
+<p>
+After you have uploaded <tt>config.php</tt> to the SquirrelMail
+<tt>config/</tt> directory, go to
+<tt>http://your-server/path-to-squirrelmail/src/configtest.php</tt>
+and check if the configuration is correct so far. Every time you
+change your configuration file, it is a good idea to re-visit
+this page to make sure everything is working correctly. This
+page includes making a test connection to the IMAP server, so
+make sure it is working correctly and accepting connections.
+
+<sect2>First login
+<p>
+Go to
+<tt>http://your-server/path-to-squirrelmail/src/login.php</tt>
+and try logging in. You should use a user name and password that
+are known to work with your IMAP server.
 
 <sect1>Prepackaged SquirrelMail installs
 <p>
