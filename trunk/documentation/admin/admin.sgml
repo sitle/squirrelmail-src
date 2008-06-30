@@ -2303,9 +2303,11 @@ About data directory security.
 <p>
 vkeyboard plugin.
 
-<sect>Adding accounts
+<sect>Account management
 <p>
-<sect1>The problem
+<sect1>Adding accounts<label id="addingaccounts">
+<p>
+<sect2>The problem
 <p>
 SquirrelMail can't be used to add user accounts, or to allow users to add their
 own accounts, for three main reasons.
@@ -2333,7 +2335,7 @@ internals of such a tool are system-specific, so you should consult the
 documentation for your system and/or IMAP server. If you do develop it as a
 plugin, we would love to list it on our plugins page.
 
-<sect1>Existing solutions
+<sect2>Existing solutions
 <p>
 In order to provide a free web mail sign up you can try one of these third party
 solutions (listed in no particular order):
@@ -2384,7 +2386,7 @@ solutions (listed in no particular order):
     </itemize>
 </enum>
 
-<sect1>Issues to consider
+<sect2>Issues to consider
 <p>
 There are a couple of issues related to making an e-mail service open to the
 public. Some of them are listed below.
@@ -2434,6 +2436,20 @@ public. Some of them are listed below.
             your bills.
     </itemize>
 </enum>
+
+<sect1>Changing passwords<label id="changingpasswords">
+<p>
+SquirrelMail doesn't store any passwords. It's the IMAP server's responsibility
+to take care of that, and the IMAP server can choose from a number of different
+backends, such as SQL or LDAP database for instance, to perform that task.
+Fortunately, there are several SquirrelMail plugins that, depending on how your
+system is set up, can be used as a change password interface. 
+
+It you're using SquirrelMail 1.5, try the included <tt/change_password/ plugin
+first. If it doesn't work, or if you're running some other SquirrelMail
+version, try the plugins at the <url
+url="http://squirrelmail.org/plugins_category.php?category_id=5" name="change
+password"> plugin page.
 
 <sect>Solving problems
 <sect1>Configtest
