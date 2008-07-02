@@ -447,13 +447,13 @@ system.
 You will need:
 <itemize>
   <item>Apache - <url url="http://httpd.apache.org/download.cgi"
-  name="http://httpd.apache.org/download.cgi">
+        name="http://httpd.apache.org/download.cgi">
   <item>PHP - <url url="http://php.net/downloads.php"
-  name="http://php.net/downloads.php">
+        name="http://php.net/downloads.php">
   <item>UW IMAP - <url url="http://www.washington.edu/imap/"
-  name="http://www.washington.edu/imap/">
+        name="http://www.washington.edu/imap/">
   <item>SquirrelMail - <url url="http://squirrelmail.org/download.php"
-  name="http://squirrelmail.org/download.php">
+        name="http://squirrelmail.org/download.php">
 </itemize>
 
 <tscreen><verb>
@@ -584,18 +584,6 @@ Alias /squirrelmail /usr/local/squirrelmail/www
 After you add alias to SquirrelMail in apache configuration and restart apache,
 you should be able to access SquirrelMail by going to
 <tt>http://your-server/squirrelmail</tt>.
-
-<sect1>Installing SquirrelMail on Windows systems with Apache webserver
-<p>
-SquirrelMailInstallWin32Apache
-
-<sect1>Installing SquirrelMail on Windows systems with IIS webserver
-<p>
-SquirrelMailInstallIIS
-
-<sect1>Installing SquirrelMail on MaxOS X systems
-<p>
-MacInfoHere
 
 <sect1>Installing SquirrelMail on a hosted service without shell access
 <p>
