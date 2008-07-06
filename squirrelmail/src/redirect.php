@@ -24,7 +24,6 @@ define('SM_PATH','../');
 require_once(SM_PATH . 'functions/global.php');
 require_once(SM_PATH . 'functions/i18n.php');
 require_once(SM_PATH . 'functions/strings.php');
-require_once(SM_PATH . 'config/config.php');
 require_once(SM_PATH . 'functions/prefs.php');
 require_once(SM_PATH . 'functions/imap.php');
 require_once(SM_PATH . 'functions/plugin.php');
