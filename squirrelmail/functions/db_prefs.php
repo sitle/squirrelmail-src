@@ -36,7 +36,6 @@ define('SMDB_MYSQL', 1);
 /** PostgreSQL */
 define('SMDB_PGSQL', 2);
 
-require_once(SM_PATH . 'config/config.php');
 if (!include_once('DB.php')) {
     // same error also in abook_database.php
     require_once(SM_PATH . 'functions/display_messages.php');
