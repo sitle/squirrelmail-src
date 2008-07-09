@@ -1484,9 +1484,9 @@ function deliverMessage(&$composeMessage, $draft=false) {
         $from_mail = "$popuser@$domain";
     }
     $rfc822_header->from = $rfc822_header->parseAddress($from_mail,true);
+    if (!$rfc822_header->from[0]->host) $rfc822_header->from[0]->host = $domain;
     if ($full_name) {
         $from = $rfc822_header->from[0];
-        if (!$from->host) $from->host = $domain;
         $full_name_encoded = encodeHeader($full_name);
         if ($full_name_encoded != $full_name) {
             $from_addr = $full_name_encoded .' <'.$from->mailbox.'@'.$from->host.'>';
