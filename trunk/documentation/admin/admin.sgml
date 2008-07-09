@@ -2333,18 +2333,18 @@ solutions (listed in no particular order):
         <url url="http://inter7.com/index.php?page=vqregister" name="vqregister">,
         and <url url="http://inter7.com/index.php?page=vqsignup" name="vqsignup">.
     <itemize>
-      <item>vpopmail provides a virtual user setup. User's information can be
-            stored in file databases, a SQL database, or a LDAP directory.
-            vqregister and vqsignup provide sign up scripts that use vpopmail
-            libraries. This setup uses qmail or Courier MTA (SMTP servers) and
-            the Courier IMAP server.
+      <item>vpopmail provides a virtual user setup. User account information can
+            be stored in file databases, a SQL database, or a LDAP directory.
+            vqregister and vqsignup provide account sign up scripts that use
+            vpopmail libraries. This setup uses qmail or Courier MTA (SMTP
+            servers) and the Courier IMAP server.
       <item>If you use vpopmail - you can use administration and automatic
             signup programs available at <url url="http://inter7.com"
-            name="http://inter7.com">. If you have other type of setup (LDAP /
-            MySQL / System users / other special local delivery program) - you
-            need to write appropriate scripts that automate user management. As
-            of version 3.0 of the Vadmin plugin (mentioned below), SQL-based
-            backends are supported.
+            name="http://inter7.com">. If you have some other type of setup
+            (LDAP / MySQL / System users / other special local delivery program)
+            - you need to write appropriate scripts that automate user
+            management (for SQL-based setups, you can use the Vadmin plugin
+            (mentioned below) as long as you use Vadmin version 3.0 or better).
       <item>WARNING! inter7.com might require using other browsers than
             Microsoft Internet Explorer (typically <url
             url="http://mozilla.com/firefox/" name="Firefox">).
@@ -2358,14 +2358,17 @@ solutions (listed in no particular order):
             Setup can be customized for different MTAs (like Exim and Postfix).
             Note that UoA-Signup is a bit old and might not be supported.
     </itemize>
-  <item><url url="http://untroubled.org/vmailmgr/" name="VMailMgr"> and the <url
-        url="http://squirrelmail.org/plugin_view.php?id=3" name="Vadmin"> plugin
+  <item>The <url url="http://squirrelmail.org/plugin_view.php?id=3" name="Vadmin"> plugin.
     <itemize>
       <item>The excellent Vadmin plugin was created to meet the needs of system
             administrators, and allows you to create new accounts and manage
-            accounts. But as expected it requires a specific configuration (or a
-            SQL backend system). Please note that this is contributed and not a
-            part of SquirrelMail.
+            accounts, or even provide a full control panel for you and lower-
+            priveleged administrators. It requires a specific configuration or
+            software to be running on the mail server
+            (<url url="http://untroubled.org/vmailmgr/" name="VMailMgr"> or a
+            SQL backend system are currently supported, but you may add your own
+            backend to interface with other types of setups). Please note that
+            this is contributed and not a part of SquirrelMail.
     </itemize>
   <item><url url="http://hmailserver.com/forum/viewtopic.php?t=904" name="hMailServer">
     <itemize>
