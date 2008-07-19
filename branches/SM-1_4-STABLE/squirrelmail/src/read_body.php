@@ -316,17 +316,19 @@ function SendMDN ( $mailbox, $passed_id, $sender, $message, $imapConnection) {
     } else {
         require_once(SM_PATH . 'class/deliver/Deliver_SMTP.class.php');
         $deliver = new Deliver_SMTP();
-        global $smtpServerAddress, $smtpPort, $pop_before_smtp;
+        global $smtpServerAddress, $smtpPort, $pop_before_smtp, $pop_before_smtp_host;
 
         $authPop = (isset($pop_before_smtp) && $pop_before_smtp) ? true : false;
 
         $user = '';
         $pass = '';
+        if (empty($pop_before_smtp_host))
+            $pop_before_smtp_host = $smtpServerAddress;
 
         get_smtp_user($user, $pass);
 
         $stream = $deliver->initStream($composeMessage,$domain,0,
-                $smtpServerAddress, $smtpPort, $user, $pass, $authPop);
+                $smtpServerAddress, $smtpPort, $user, $pass, $authPop, $pop_before_smtp_host);
     }
     $success = false;
     if ($stream) {
@@ -909,6 +911,7 @@ if (($attachment_common_show_images) &&
     }
 }
 
+//FIXME: one of these hooks should be removed if we can verify disuse (html_bottom?)
 do_hook('read_body_bottom');
 do_hook('html_bottom');
 sqimap_logout($imapConnection);
