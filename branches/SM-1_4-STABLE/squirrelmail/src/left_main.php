@@ -106,11 +106,11 @@ function formatMailboxName($imapConnection, $box_array) {
                     '&nbsp;&nbsp;(<a href="empty_trash.php" style="text-decoration:none">'._("Purge").'</a>)' .
                     '</small>';
         }
-    } else {
-        $line .= concat_hook_function('left_main_after_each_folder',
-                                      array(isset($numMessages) ? $numMessages : '',
-                                            $real_box, $imapConnection));
     }
+
+    $line .= concat_hook_function('left_main_after_each_folder',
+                                  array(isset($numMessages) ? $numMessages : '',
+                                        $real_box, $imapConnection));
 
     /* Return the final product. */
     return ($line);
