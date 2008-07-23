@@ -680,7 +680,7 @@ include_once(SM_PATH . 'functions/imap_general.php');
 
 <sect1>The base URI funcion
 <p>
-TODO: Add information about the base URI funcion.
+FIXME: Add information about the base URI funcion.
 
 <sect1>Version numbering
 <sect2>The version number format<label id="versionformat">
@@ -1140,40 +1140,64 @@ If SquirrelMail charset decoding functions are used, they should apply
 use <tt>htmlspecialchars()</tt> twince on the same string, since that might
 break the decoded string.
 
-<sect>Developing plugins
+<sect>Developing plugins<label id="developing_plugins">
 <p>
-Due to the large number and wide range of functions plugins can cover it is
-impractical to add all but the most popular to the SquirrelMail core project.
-There is a separate <url url="http://sourceforge.net/projects/sm-plugins/"
-name="SM Plugins"> project registered at SourceForge to house plugin code,
-developers should consider joining this project.
+SquirrelMail is built with an ingenious and powerful system that allows
+add-ons known as plugins to extend its feature set in almost infinite
+directions. This is one of the main reasons cited when users and
+administrators explain SquirrelMail as their webmail of choice, and the
+technology behind it has also been borrowed for other projects.
 
-In addition to this document, help writing plugins is easily obtained by posting
-to the <url url="http://squirrelmail.org/docs/admin/admin-12.html#mailinglists"
-name="SquirrelMail plugins mailing list">.
+It is also thanks to the many plugin authors that have contributed large
+amounts of code and a wide array of functionality ideas that SquirrelMail
+is as popular as it is. The SquirrelMail team would like to encourage
+authors to contribute in the best way possible, which is what the following
+information will enable them to do. If you are considering adding a feature
+to SquirrelMail, this is the best place to start.
 
-<sect1>The plugin architecture
+<sect1>Before embarking<label id="before_developing_plugins">
+<p>
+One of the most fun parts about programming is seeing an idea turn into a
+working product - the transition from "what if SquirrelMail could do..."
+to "SquirrelMail CAN do...." The SquirrelMail team can appreciate and
+relate to that kind of enthusiasm, but we also don't want to see it go to
+waste. Therefore, the first thing to be done before considering the development
+of a new plugin (for public consumption at least) is to ask the SquirrelMail
+team if anyone has already attempted to implement the idea. It is also
+extremely helpful to announce your intentions in public so that the
+SquirrelMail community can provide feedback and help refine the idea BEFORE
+it is implemented.
+
+Additionally, in keeping with the SquirrelMail theme of providing a product
+that is simple to install and maintain, the team's philosophy regarding
+plugins is to avoid the "Firefox syndrome", wherein it can take hours for
+an administrator to understand what plugin is the right one for them.
+Plugins that contain similar feature sets should be merged and authors should
+work collaboratively instead of duplicating each others' efforts. If there
+is a plugin on the SquirrelMail web site that <it/almost/ does what you
+want to do, please inquire with its author and/or the SquirrelMail team
+about enhancing it with your ideas.
+
+<sect1>The plugin architecture<label id="plugin_architecture">
 <p>
 The plugin architecture of SquirrelMail is designed to make it possible to add
 new features without having to patch SquirrelMail itself. Functionality like
-password changing, displaying ads and calendars should be possible to add as
-plugins.
+changing user passowrds, displaying ads and calendars should be possible to add
+as plugins. In this scheme, either package (SquirrelMail or a plugin) may be
+upgraded independently without risk of one breaking the other.
 
 <sect2>The idea
 <p>
-The idea is to be able to run random code at given places in the SquirrelMail
-code. This random code should then be able to do whatever needed to enhance the
-functionality of SquirrelMail. The places where code can be executed are called
-"hooks".
+The idea is to be able to run random (plugin) code at given places in the
+SquirrelMail core. This random code should then be able to do whatever is
+needed to enhance the functionality of SquirrelMail. The places where plugin
+code can be executed are called "hooks".
 
-There are some limitations in what these hooks can do. It is difficult to use
+There are some limitations with what these hooks can do. It is difficult to use
 them to change the layout and to change functionality that already is in
 SquirrelMail.
 
-Some way for the plugins to interact with the help subsystem and translations
-will be provided.
-
-<sect2>The implementation
+<sect2>The implementation<label id="plugin_implementation">
 <p>
 The plugin start point in the main SquirrelMail code is in the file
 <tt>functions/plugin.php</tt>. In places where hooks are made available, they
@@ -1188,336 +1212,169 @@ A plugin must reside in a subdirectory of the <tt>plugins/</tt> directory. The
 name of the subdirectory is considered to be the name of the plugin. Note that
 the plugin will not function correctly if this is not the case.
 
-To start using a plugin, its name must be added to the <tt/$plugins/ array in
-<tt/config.php/ like this:
+A plugin is registered with SquirrelMail by using the configuration utility
+or by manually editing the SquirrelMail configuration file. When adding a
+plugin manually, its name (its directory name) must be added to the
+<tt/$plugins/ array in <tt/config.php/ like this:
 
 <tscreen><verb>
 $plugins[] = 'plugin_name';
 </verb></tscreen>
 
-When a plugin is registered, the file <tt>plugins/plugin_name/setup.php</tt> is
-included and the function <tt/squirrelmail_plugin_init_plugin_name()/ is called
-with no parameters. That function is where the plugin may register itself
-against any hooks it wishes to take advantage of.
+<label id="plugin_registration">When a plugin is registered, the file
+<tt>plugins/plugin_name/setup.php</tt> is loaded and the function
+<tt/squirrelmail_plugin_init_&lt;plugin_name&gt;()/ is called with no parameters.
+That function is where the plugin may register itself against any hooks it
+wishes to take advantage of.
+
+As of SquirrelMail 1.5.2, the <tt>plugins/plugin_name/setup.php</tt> file is
+parsed at <it/configuration/ time instead of at run time as a performance
+enhancement. The resultant <tt/$squirrelmail_plugin_hooks['hookname']/ array
+is then stored statically in the SquirrelMail <tt/config/ directory in a file
+called <tt/plugin_hooks.php/. Plugin authors should keep in mind that when
+making changes to the hook structure of their plugins, they will need to
+re-run the SquirrelMail configuraion utility or manually edit
+<tt/plugin_hooks.php/ before the changes will take effect.
 
 <sect1>The starting point
-<sect2>Plugin initialization
+<sect2>Plugin initialization<label id="plugin_setup_file">
 <p>
 All plugins must contain a file called <tt/setup.php/ and must include a
 function called <tt/squirrelmail_plugin_init_&lt;plugin_name&gt;()/ therein.
-Since including numerous plugins can slow SquirrelMail's performance down
+Since including numerous plugins can slow SquirrelMail's performance
 considerably, the <tt/setup.php/ file should contain little else. Any functions
 that are registered against plugin hooks should do little more than call another
-function in a different file.
+function in a different file. No other files should be included in the global
+scope of <tt/setup.php/, as this defeats the purpose of keeping it streamlined.
 
 Any other files used by the plugin should also be placed in the plugin directory
-(or subdirectory thereof) and should contain the bulk of the plugin logic.
+(or a subdirectory thereof) and should contain the bulk of the plugin logic.
 
 The function <tt/squirrelmail_plugin_init_&lt;plugin_name&gt;()/ is called to
-initalize a plugin. This function could look something like this (if the plugin
-was named "demo" and resided in the directory <tt>plugins/demo/</tt>):
+initalize a plugin as explained <ref id="plugin_registration" name="above">. This
+function could look something like this (if the plugin was named "demo" and
+resided in the directory <tt>plugins/demo/</tt>):
 
-<tscreen><verb>
+<label id="plugin_init_example"><tscreen><verb>
+/**
+  * Register this plugin with SquirrelMail
+  *
+  */
 function squirrelmail_plugin_init_demo() {
     global $squirrelmail_plugin_hooks;
 
-    $squirrelmail_plugin_hooks['generic_header']['demo'] = 'plugin_demo_header';
-    $squirrelmail_plugin_hooks['menuline']['demo'] = 'plugin_demo_menuline';
+    $squirrelmail_plugin_hooks['optpage_register_block']['demo']
+       = 'plugin_demo_options';
+    $squirrelmail_plugin_hooks['login_cookie']['demo']
+       = 'plugin_demo_login';
 }
 </verb></tscreen>
 
-Please note that as of SquirrelMail 1.5.2, this function is no longer 
-called at run time and is instead called (actually, just parsed) only 
-once at configuration time.  Thus, the inclusion of any dynamic code 
-(anything except hook registration) here is strongly discouraged.
+Again, please note that as of SquirrelMail 1.5.2, this function is no longer 
+called at run time and is instead called (actually, it is only parsed, never
+executed) only once at configuration time. Thus, the inclusion of any dynamic
+code (anything except hook registration) here is strongly discouraged.
 
 <sect2>Adding functionality
 <p>
-In this example, the "demo" plugin should also have two other functions in its
-<tt/setup.php/ file called <tt/plugin_demo_header()/ and
-<tt/plugin_demo_menuline()/. The first of these might look something like this:
+In the example <ref id="plugin_init_example" name="above">, the "demo" plugin
+should also have two other functions in its <tt/setup.php/ file called
+<tt/plugin_demo_options()/ and <tt/plugin_demo_login()/. The first of these
+might look something like this:
 
 <tscreen><verb>
-function plugin_demo_header() {
+/**
+  * Add link to the Demo options page on the SquirrelMail
+  * main options page listing
+  *
+  */
+function plugin_demo_options() {
     include_once(SM_PATH . 'plugins/demo/functions.php');
-    plugin_demo_header_do();
+    plugin_demo_options_do();
 }
 </verb></tscreen>
 
-The function called <tt/plugin_demo_header_do()/ in the file
+The function called <tt/plugin_demo_options_do()/ in the file
 <tt>plugins/demo/functions.php</tt> contains the plugin's core logic for the
-<tt/generic_header/ hook.
-
-<sect1>Versioning
-<sect2>Version numbering
-<p>
-In order to facilitate easier (and possibly automated) plugin management by 
-system administrators as well as in-SquirrelMail functionality that enables
-cross-plugin compatibility and communication, plugin versioning should remain 
-consistent with that of SquirrelMail itself.  While SquirrelMail does its
-best to work with non-standard version strings, versioning such as that
-explained in <ref id="versionformat" name="Version numbering">, with the 
-possible addition of an applicable SquirrelMail version, is the best way 
-to track your plugin's development (i.e., "1.0.4-1.4.5" or just "1.0.4").  
-Versions with only two digits ("1.0-1.4.5" or just "1.0") are also acceptable
-(a third digit of zero is implied).
-
-<sect2>Version reporting
-<p>
-The way any automated process gets its hands on the plugin version string
-depends on the SquirrelMail version being used.  As of SqruirrelMail 1.5.2,
-plugins should include an administrative function in <tt/setup.php/ that 
-returns an array of details that describe the plugin, including its version 
-number.  The function must be named <tt/&lt;plugin name&gt;_info()/ and 
-should return an associative array of version and requirements information.  
-Currently, at least the following elements are required, but the more 
-information returned, the better.
-
-<itemize>
-  <item>plugin name
-  <item>plugin version
-  <item>minimum SquirrelMail 
-  <item>version
-  <item>summary
-  <item>details
-  <item>requires_configuration
-  <item>requires_source_patch
-</itemize>
-
-Depending on the plugin, other information such as required PHP extensions
-or Pear packages should be included.  Currently, SquirrelMail understands
-the following values:
-
-<tscreen><verb>
-array(
-   'english_name' => 'My Plugin Name',   // different than directory name
-   'version' => '1.0.0',
-   'required_sm_version' => '1.5.2',
-   'summary' => 'This is the short plugin description',
-   'details' => 'This is the long, detailed plugin description',
-   'requires_configuration' => 1,  // can be 0 if no config file required
-   'requires_source_patch' => 0,   // set to 2 if depends on SM version
-   'required_plugins' => array(    // plugin name and version sub-array
-                                      'compatibility' => '2.0.3',
-                               ),
-   'required_php_modules' => array(
-                                      'recode'
-                                 ),
-   'required_pear_packages' => array(
-                                      'Cache_Lite',
-                                      'MDB2',
-                                   ),
-   'required_functions' => array(
-                                      'recode_string',
-                               ),
-   'required_php_version' => '4.1.0',
-   'other_requirements' => 'Courier Maildrop LDA',
-   'external_project_uri' => 'http://example.org/my_plugin'
-);
-</verb></tscreen>
-
-The more of these that are returned to SquirrelMail, the more useful 
-and cooperative a plugin will be.
-
-TODO: might be nice to see something like this for templates too (version/language(HTML,XML,XHTML,CHTML,WML,etc)/engine(Smarty,PHP,etc)/intended interface...
-
-Prior to SquirrelMail 1.5.2, a function called <tt/&lt;plugin name&gt;_version()/ 
-was required.  For the sake of compatibility, it can be piggy-backed on top of
-the <tt/&lt;plugin name&gt;_info()/ function, such that <tt/setup.php/ looks like:
-
-<tscreen><verb>
-/**
-  * Returns info about this plugin
-  *
-  */
-function demo_info()
-{
-
-   return array(
-                  'english_name' => 'Favorite Colors Demo',
-                  'version' => '1.0',
-                  'required_sm_version' => '1.4.0', 
-                  'summary' => 'Shows user\'s favorite color in folder list.',
-                  'details' => 'This plugin will show the user\'s favorite color above the folder list.',
-                  'requires_configuration' => 0,
-                  'requires_source_patch' => 0,
-               );
-
-}
-
-
-/**
-  * Returns version info about this plugin
-  *
-  */
-function demo_version() 
-{
-
-   $info = demo_info();
-   return $info['version'];
-
-}
-</verb></tscreen>
-
-There is also a legacy version reporting mechanism that we would like plugin
-authors to implement, since we are still in a transition period between the 
-older and newer reporting usages. The now deprecated reporting mechanism  is to 
-create a file called <tt/version/ in the plugin directory. That file should 
-have only two lines: the first line should have the name of the plugin as 
-named on the SquirrelMail web site (this is often a prettified version of the plugin
-directory name), and the second line must have the version and nothing more. So
-for our "demo" plugin, whose name on the web site might be something like "Demo
-Favorite Colors", the file <tt>plugins/demo/version</tt> should have these two
-lines:
-
-<tscreen><verb>
-Favorite Colors Demo
-1.0
-</verb></tscreen>
-
-<sect1>Configuration
-<p>
-It is common to need a configuration file that holds some variables that are set
-up at install time. For ease of installation and maintenance, you should place
-all behavioral settings in a config file, isolated from the rest of your plugin
-code. A typical file name to use is <tt/config.php/. If you are using such a
-file, you should <it/not/ include a file called <tt/config.php/ in your plugin
-distribution, but instead a copy of that file called <tt/config.sample.php/.
-This helps systems administrators avoid overwriting the <tt/config.php/ files
-and losing all of their setup information when they upgrade your plugin.
-
-<sect1>Security considerations
-<sect2>Calling external programs
-<p>
-All plugin authors should consider the security implications of their plugin.
-Great care must always be taken if the plugin calls external programs, especially
-ones that require set-uid permissions.
-
-FIXME: more here about how to secure exec() calls with escapeshellarg() and named pipes method vs exec()
-
-
-<sect2>Storing sensitive data
-<p>
-If a plugin needs to store sensitive user configuration files or other such data,
-please consider extra steps to secure such files.  One very easy way to do so is
-to wrap all configuration files in PHP tags (and C-style block comments if the
-configuration data is not PHP code itself):
-
-<tscreen><verb>
-<?php /*
-
-# below is example non-PHP configuration 
-# data that is secured from prying eyes
-
-username_1 = admin
-username_2 = super_admin
-
-*/ ?>
-</verb></tscreen>
-
-Another approach is to store sensitive configuration data in SquirrelMail's 
-own <tt/$data/ directory, since most system administrators (at least those who 
-have read the installation instructions) know that the <tt/$data/ directory 
-needs to be protected and (hopefully) have made sure that it has been.
-
-Never store unsecured configuration data that contains any user or system-specific 
-information in your plugin directory.  Even the above suggestions
-may not be sufficient depending on how sensitive the data is that you are 
-storing.  In such a situation, you might think about a more complex encryption
-scheme such as the one provided by the <bf/vadmin/ plugin.
-
-Note that just shipping unsecured configuration files along with a 
-configuration file for Apache (<tt/.htaccess/) is not sufficient because 
-not every system uses Apache as its web server.
-
-<sect2>Disallowing access for diabled plugins
-<p>
-
-In some cases, it is also prudent to make sure that the plugin doesn't perform 
-its function when it is not enabled. Any functions or files that contain PHP
-code that is <tt/not/ wrapped inside a function can be protected from being
-executed when the plugin is not activated by adding code similar to this:
-
-<tscreen><verb>
-if ( !is_plugin_enabled('my_plugin_name') ) {
-    exit('The plugin my_plugin_name isn't enabled in the SquirrelMail configuration.');
-}
-</verb></tscreen>
-
-Note, however, that sometimes <tt/other/ plugins can legitimately access a 
-disabled plugin, so don't shoot yourself in the foot with too much protection.
-
+<tt/optpage_register_block/ hook. Aside from <tt/plugin_demo_options()/ and
+<tt/plugin_demo_login()/ and the
+<ref id="plugin_version_reporting" name="version reporting information explained below">,
+there should be little-to-nothing else in <tt/setup.php/.
 
 <sect1>Hooks
 <p>
-Hooks, when executed, are called with differing parameters and may or may not
+In the example <ref id="plugin_init_example" name="above">, the "demo" plugin
+uses two "hooks" called "optpage_register_block" and "login_cookie".  Which
+hooks a plugin uses depends on what kind of functionality is being
+implemented - where in the SquirrelMail source code does the plugin need to
+execute its own code?
+
+Hooks themselves are functions executed by the SquirrelMail core using one of
+just a few hook types which in turn pass execution to the plugins that have 
+registered themselves against the current hook as explained
+<ref id="plugin_implementation" name="above">.
+
+When executed, hooks are called with differing parameters and may or may not
 take return values, all depending on the type of hook being called and the
 context in which it is being used. On the source side (where the hook call
 originates), all hooks have at least one parameter, which is the name of the
-hook. After that, things get complicated.
+hook. After that, things get complicated (sometimes).
 
-<sect2>Hook types: parameters and return values
+<sect2>Hook types, parameters and return values
 <p>
-SquirrelMail uses four hook functions: <tt/do_hook()/, <tt/do_hook_function()/,
-<tt/concat_hook_function()/, and <tt/boolean_hook_function()/.
+The design of each of the hook types has changed somewhat starting with
+SquirrelMail version 1.5.2, so we provide a description of the hook types for
+both the 1.4 release series and versions starting with 1.5.2.  Despite the
+differences noted here, in most cases, plugins will run on the same hook
+without the need for version-specific code in either environment (however,
+there are other differences that do require version-specific code, which are
+explained elsewhere).
 
-The <tt/do_hook()/ function is a simple function that allows injecting custom
-HTML or override default interface data. It doesn't pass any data and doesn't
-ask for anything back. A limited number of <tt/do_hook()/ calls do pass some
-extra parameters, in which case your plugin may modify the given data if you do
-so by reference. It is not necessary to return anything from your function in
-such a case; modifying the parameter data by reference is what does the job
-(although the hook call itself (in the source) must grab the return value for
-this to work). Note that in this case, the parameter to your hook function will
-be an array, the first element simply being the hook name, followed by any other
-parameters that may have been included in the actual hook call in the source.
-Modify parameters with care!
+<descrip>
 
-Read more about the <tt/do_hook()/ function in the <url
-url="http://squirrelmail.org/docs/stable-code/squirrelmail/_functions---plugin.php.html#functiondo_hook"
-name="stable"> and <url
-url="http://squirrelmail.org/docs/devel-code/squirrelmail/_functions---plugin.php.html#functiondo_hook"
-name="development"> API documentation.
+<tag>SquirrelMail 1.5.2+ uses three hook functions: <tt/do_hook()/,
+<tt/concat_hook_function()/, and <tt/boolean_hook_function()/.</tag>
 
-The <tt/do_hook_function()/ was intended to be the main hook type used when the
-source needs to get something back from your plugin. It is somewhat limited in
-that it will only use the value returned from the <it/last/ plugin registered
-against the hook. The source for this hook might use the return value for
-internal purposes, or might expect you to provide text or HTML to be sent to the
-client browser (you'll have to look at its use in context to understand how you
-should return values here). The parameters that your hook function gets will be
-anything you see <it/after/ the hook name in the actual hook call in the source.
-These cannot be changed in the same way that the <tt/do_hook()/ parameters can
-be.
+The <tt/do_hook()/ function is the most common do-all hook in the SquirrelMail
+core. It provides all plugins a single parameter which is passed through the
+hook by reference, so, if a plugin also accepts it by reference, it can be
+changed as needed (and it is often an array of multiple values of interest to
+plugins using a particular hook: take a look in the core - the second argument
+to the <tt/do_hook/ call is what is passed along to the plugins). There is a
+second parameter given to plugins, but it is not normally used: it is the
+current value of the ultimate hook return value. All plugins are responsible
+for sharing the creation/modification of whatever <tt/do_hook/ returns.  The
+ultimate return value is whatever the <it/last/ plugin returns from its hook
+implementation, but if it does return something, it should be contious of
+checking if there was already a return value created by other plugins, which
+is what is given as the second parameter to the plugin. As with all hooks,
+the usage of the hook parameters and/or its return value are determined based
+on the context in which the hook is used - you have to look at it in the
+SquirrelMail core. Please remember NEVER to output any HTML directly during
+hook execution.
 
-Read more about the <tt/do_hook_function()/ function in the <url
-url="http://squirrelmail.org/docs/stable-code/squirrelmail/_functions---plugin.php.html#functiondo_hook_function"
-name="stable"> and <url
-url="http://squirrelmail.org/docs/devel-code/squirrelmail/_functions---plugin.php.html#functiondo_hook_function"
-name="development"> API documentation.
+Read more about the <tt/do_hook()/ function in the
+<url url="http://squirrelmail.org/docs/devel-code/squirrelmail/_functions---plugin.php.html#functiondo_hook" name="1.5 API documentation">.
 
-The <tt/concat_hook_function()/ fixes some shortcomings of the
-<tt/do_hook_function()/. It uses the return values of all plugins registered
-against the hook. In order to do so, the return value is assumed to be a string,
-which is just piled on top of whatever it got from the other plugins working on
-the same hook. Again, you'll have to inspect the source code to see how such
-data is put to use, but most of the time, it is used to create a string of HTML
-to be inserted into the output page. The parameters that your hook function will
-get are the same as for the <tt/do_hook_function/; they are anything <it/after/
-the hook name in the actual hook call in the source.
+The <tt/concat_hook_function()/ is used in places where the SquirrelMail
+core needs to aggregate return data from all plugins on the same hook.
+Plugins are provided with the same (modifyable) parameter as with <tt/do_hook/.
+In some places, the core will expect all plugins to return strings, which will
+be concatenated together and returned to the SquirrelMail core. In other cases,
+arbitrary values are used by the core, which will be placed into an array of
+return values. What kind of return value is expected is best determined by
+inspecting the core where the hook is called. Please remember NEVER to output
+any HTML directly during hook execution.
 
-Read more about the <tt/concat_hook_function()/ function in the <url
-url="http://squirrelmail.org/docs/stable-code/squirrelmail/_functions---plugin.php.html#functionconcat_hook_function"
-name="stable"> and <url
-url="http://squirrelmail.org/docs/devel-code/squirrelmail/_functions---plugin.php.html#functionconcat_hook_function"
-name="development"> API documentation.
+Read more about the <tt/concat_hook_function()/ function in the
+<url url="http://squirrelmail.org/docs/devel-code/squirrelmail/_functions---plugin.php.html#functionconcat_hook_function" name="1.5 API documentation">.
 
 The <tt/boolean_hook_function()/ allows plugins to vote for a specified action.
-What that action is is entirely dependent on how the hook is used in the source
-(look for yourself). Plugins make their vote by returning a boolean <tt/TRUE/ or
-<tt/FALSE/ values. This hook may be configured to tally votes in one of three
-ways. This configuration is done with the third parameter in the hook call in
-the source:
+What that action is is entirely dependent on how the hook is used in the
+SquirrelMail core (look for yourself). Plugins make their vote by returning a
+boolean <tt/TRUE/ or <tt/FALSE/ value. This hook may be configured to tally
+votes in one of three ways. This configuration is done with the third parameter
+in the hook call in the core:
 
 <itemize>
   <item>&gt; 0 -- At least one <tt/TRUE/ will override all <tt/FALSE/.
@@ -1526,15 +1383,82 @@ the source:
         hook call.
 </itemize>
 
-The plugin's hook function will get the second paramter in the hook call in the
-source as its parameter (this might be an array if multiple values need to be
-passed).
+Plugins using <tt/boolean_hook_function/ are provided with the same
+(modifyable) parameter as with <tt/do_hook/. Please remember NEVER to output
+any HTML directly during hook execution.
 
-Read more about the <tt/boolean_hook_function()/ function in the <url
-url="http://squirrelmail.org/docs/stable-code/squirrelmail/_functions---plugin.php.html#functionboolean_hook_function"
-name="stable"> and <url
-url="http://squirrelmail.org/docs/devel-code/squirrelmail/_functions---plugin.php.html#functionboolean_hook_function"
-name="development"> API documentation.
+Read more about the <tt/boolean_hook_function()/ function in the
+<url url="http://squirrelmail.org/docs/devel-code/squirrelmail/_functions---plugin.php.html#functionboolean_hook_function" name="1.5 API documentation">.
+
+<tag>SquirrelMail 1.4 uses four hook functions: <tt/do_hook()/, <tt/do_hook_function()/,
+<tt/concat_hook_function()/, and <tt/boolean_hook_function()/.</tag>
+
+The <tt/do_hook()/ function is a simple function that allows injecting of
+custom output or override of default interface data. It doesn't pass any
+data and doesn't ask for anything back. A limited number of <tt/do_hook()/
+calls do pass some extra parameters, in which case your plugin may modify
+the given data if you do so by reference. It is not necessary to return
+anything from your function in such a case; modifying the parameter data
+by reference is what does the job (although the hook call itself (in the
+SquirrelMail core) must grab the return value for this to work). Note that
+in this case, the one and only parameter to your hook function will be an
+array, the first element simply being the hook name, followed by any other
+parameters that may have been included in the actual hook call in the core.
+Modify parameters with care!
+
+Read more about the <tt/do_hook()/ function in the
+<url url="http://squirrelmail.org/docs/stable-code/squirrelmail/_functions---plugin.php.html#functiondo_hook" name="1.4 API documentation">
+
+The <tt/do_hook_function()/ was intended to be the main hook type used when the
+source needs to get something back from your plugin. It is somewhat limited in
+that it will only use the value returned from the <it/last/ plugin registered
+against the hook. The SquirrelMail core might use the return value for this hook
+type for internal purposes, or might expect you to provide text or HTML to be
+sent to the client browser (you'll have to look at its use in context to
+understand how you should return values here). The parameters that your hook
+function gets will be anything you see <it/after/ the hook name in the actual
+hook call in the source.  These cannot be changed in the same way that the
+<tt/do_hook()/ parameters can be.
+
+Read more about the <tt/do_hook_function()/ function in the
+<url url="http://squirrelmail.org/docs/stable-code/squirrelmail/_functions---plugin.php.html#functiondo_hook_function" name="1.4 API documentation">
+
+The <tt/concat_hook_function()/ fixes some shortcomings of the
+<tt/do_hook_function()/ in that it uses the return values of all plugins
+registered against the hook. In order to do so, the return value is assumed to
+be a string, which is just piled (concatenated) on top of whatever it got from
+the other plugins working on the same hook. Again, you'll have to inspect the
+source code to see how such data is put to use, but most of the time, it is
+used to create a string of HTML to be inserted into the output page. The
+parameters that your hook function will get are the same as for the
+<tt/do_hook_function/; they are anything <it/after/ the hook name in the
+actual hook call in the source.
+
+Read more about the <tt/concat_hook_function()/ function in the
+<url url="http://squirrelmail.org/docs/stable-code/squirrelmail/_functions---plugin.php.html#functionconcat_hook_function" name="1.4 API documentation">
+
+The <tt/boolean_hook_function()/ allows plugins to vote for a specified action.
+What that action is is entirely dependent on how the hook is used in the
+SquirrelMail core (look for yourself). Plugins make their vote by returning a
+boolean <tt/TRUE/ or <tt/FALSE/ value. This hook may be configured to tally
+votes in one of three ways. This configuration is done with the third parameter
+in the hook call in the core:
+
+<itemize>
+  <item>&gt; 0 -- At least one <tt/TRUE/ will override all <tt/FALSE/.
+  <item>&lt; 0 -- At least one <tt/FALSE/ will override all <tt/TRUE/.
+  <item>= 0 -- Majority wins. Any ties are broken with the last parameter in the
+        hook call.
+</itemize>
+
+Each plugin registered on such a hook will receive the second paramter in the
+hook call in the core as its one and only parameter (this might be an array if
+multiple values need to be passed).
+
+Read more about the <tt/boolean_hook_function()/ function in the
+<url url="http://squirrelmail.org/docs/stable-code/squirrelmail/_functions---plugin.php.html#functionboolean_hook_function" name="1.4 API documentation">
+
+</descrip>
 
 <sect2>List of hooks
 <p>
@@ -2041,6 +1965,7 @@ The type of input element, which should be one of:
   <item><tt><bf/SMOPT_TYPE_HIDDEN/</tt> for a hidden input (not actually shown on preferences page).
   <item><tt><bf/SMOPT_TYPE_COMMENT/</tt> for a showing the text specified by the <tt/comment/ attribute, but no user input is needed.
   <item><tt><bf/SMOPT_TYPE_FLDRLIST/</tt> for a select list of IMAP folders.
+  <item><tt><bf/SMOPT_TYPE_FLDRLIST_MULTI/</tt> for a select list of IMAP folders where the user can select more than one folder.
 </itemize>
 
 <tag><tt/refresh/ (optional)</tag>
@@ -2332,6 +2257,247 @@ if (file_exists('../../include/init.php')) {
 
 TODO: Possibly provide link to the include hierarchy provided by init.php/validate.php
 
+<sect1>Configuration<label id="plugin_configuration">
+<p>
+It is common to need a configuration file that holds some variables that are
+set up at install time. For ease of installation, maintenance and upgrades, all
+behavioral settings should be placed in a configuration file that is isolated
+from the rest of the plugin code. A typical file name to use is
+<tt/config.php/. The plugin should allow the administrator to store this file
+in either the plugin directory or in the main SquirrelMail configuration
+directory, giving precedence to the latter. 
+
+Plugins that make use of configuration files should <it/not/ include a file
+called <tt/config.php/ in distribution packages; instead, a copy of that file
+named <tt/config.sample.php/ is desirable, since customized <tt/config.php/
+files will not be lost upon upgrading the plugin.
+
+A plugin can try to be smart about where to find the needed configuration
+file by doing something such as this:
+
+<tscreen><verb>
+if (!@include_once(SM_PATH . 'config/config_demo.php'))
+   if (!@include_once(SM_PATH . 'plugins/demo/config.php'))
+      @include_once(SM_PATH . 'plugins/demo/config.sample.php');
+</verb></tscreen>
+
+This assumes that the plugin has some sensible defaults in the sample
+configuration file - if the plugin <it/must/ be configured specifically
+for the system upon which it is installed, remove the third line in this
+example.
+
+<sect1>Versioning
+<sect2>Version numbering
+<p>
+In order to facilitate easier (and possibly automated) plugin management by 
+system administrators as well as in-SquirrelMail functionality that enables
+cross-plugin compatibility and communication, plugin versioning should remain 
+consistent with that of SquirrelMail itself. While SquirrelMail does its
+best to work with non-standard version strings, versioning such as that
+explained in <ref id="versionformat" name="Version numbering">, with the 
+possible addition of an applicable SquirrelMail version, is the best way 
+to track your plugin's development (i.e., "1.0.4-1.4.5" or just "1.0.4").
+Versions with only two digits ("1.0-1.4.5" or just "1.0") are also acceptable
+(a third digit of zero is implied).
+
+<sect2>Version reporting<label id="plugin_version_reporting">
+<p>
+The way any automated process gets its hands on the plugin version string
+depends on the SquirrelMail version being used. As of SquirrelMail 1.5.2,
+plugins should include an administrative function in <tt/setup.php/ that 
+returns an array of details that describe the plugin, including its version 
+number. The function must be named <tt/&lt;plugin name&gt;_info()/ and 
+should return an associative array of version and requirements information.
+Currently, at least the following elements are required, but the more 
+information returned, the better.
+
+<tabular ca="lll">
+<bf/Element Name/|<bf/Explanation/|<bf/Example Values &amp; Notes/@
+<tt/english_name/|Prettified plugin display name|"Demo Future Prediction" (can be different than the plugin's directory name)@
+<tt/version/|Plugin version|"1.0", "2.5.1", etc.@
+<tt/authors/|Plugin authors|An array of authors, where each author is described by a sub-array that is keyed by "email" and "sm&lowbar;site&lowbar;username" (the latter to be used at a later date). See below for an example.@
+<tt/required_sm_version/|Minimum required SquirrelMail version|"1.2.8", "1.4.15", "1.5.2", etc.@
+<tt/summary/|Functionality summary|This should be a brief sentence or two at the most.@
+<tt/details/|Functionality details|This can be much more verbose compared to the <tt/summary/.@
+<tt/requires_configuration/|Whether or not the plugin requires a configuration file to be prepared by the administrator|boolean <tt/0/ or <tt/1/.@
+<tt/requires_source_patch/|Whether or not the plugin requires patching of the SquirrelMail source code|boolean <tt/0/ or <tt/1/ (or <tt/2/ to indicate that patching is optional (enables optional functionality) or is only required for some SquirrelMail versions, although the latter should be done in more detail using <tt/per_version_requirements/).@
+</tabular>
+
+Other optional elements include:
+
+<tabular ca="lll">
+<bf/Element Name/|<bf/Explanation/|<bf/Example Values &amp; Notes/@
+<tt/required_php_version/|Minimum required PHP version|"4.1.0", "4.4.8", "5.2.6", etc.@
+<tt/required_php_modules/|List of required PHP extensions|An array of PHP extension names needed by the plugin: <tt/array("recode", "gd", )/@
+<tt/required_functions/|List of required PHP functions|An array of function names needed by the plugin: <tt/array("recode_string", "ngettext", )/@
+<tt/required_pear_packages/|List of required Pear packages|An array of Pear package names needed by the plugin: <tt/array("MDB2", "Cache_Lite", )/@
+<tt/required_plugins/|List of other plugins that are required|An array of required plugins, where each plugin is described by a sub-array that is keyed by "version" (the minimum version of the plugin that is required) and "activate" (whether or not the plugin needs to be activated, or merely present in the plugins directory (as a code library)). Instead of the sub-array, the special constant <tt/SQ_INCOMPATIBLE/ may be used to indicate that this plugin is not compatible with the other. See below for an example.@
+<tt/rpc/|List of RPC commands that this plugin answers to|A two-element array keyed by "commands" and "errors". Each of these contains a sub-array. The "commands" array is keyed by RPC command name, where corresponding values are the English explanations for what each command does. The "errors" array is keyed by each possible error number that the plugin's RPC interface might produce, where corresponding values are English explanations of what each error number means. <tt/array("commands" => array("demo_get_one_prediction" => "Peer into the crystal ball once"), "errors" => array(720 => "demo_get_one_prediction failed"),)/@
+<tt/other_requirements/|Some other non-SquirrelMail or non-PHP requirements|<tt/"Courier Maildrop LDA"/@
+<tt/external_project_uri/|Address of the project page or source code repository for the plugin|<tt>"http://example.org/my_plugin"</tt>@
+<tt/per_version_requirements/|List of requirements this plugin has that are different based on the SquirrelMail version being used|An array which is keyed by SquirrelMail version numbers.  Any version numbers skipped receive the same requirements laid out for the last version number that is listed below the skipped one. Each value is then a sub-array that may contain any of the requirement entries listed here, such as <tt/requires_source_patch/, <tt/required_plugins/, etc., or a special constant called <tt/SQ_INCOMPATIBLE/ (set the associated value to boolean <tt/1/), which indicates that the plugin is not compatible with the corresponding version of SquirrelMail. <tt/SQ_INCOMPATIBLE/ may also replace the entire sub-array for the incompatible SquirrelMail version, which is easier to understand. See below for an example.@
+</tabular>
+
+A typical implementation of this function is as follows.  Note that
+this example shows a conditional requirement for the Compatibility
+plugin that is due to the (required) use of <tt/sq_change_text_domain()/
+[FIXME: PROVIDE LINK FOR THE FOLLOWING]
+(explained in the plugin internationalization section below), which
+was added to the SquirrelMail core as of version 1.4.10 and 1.5.2.
+
+<tscreen><verb>
+/**
+  * Returns info about this plugin
+  *
+  */
+function demo_info()
+{
+
+   return array(
+             'english_name' => 'Demo Future Prediction',
+             'authors' => array(
+                'Emma Goldman' => array(
+                   'email' => 'emma@sts.org',
+                   'sm_site_username' => 'emma',
+                ),
+             ),
+             'summary' => 'Adds important information above the folder list.',
+             'details' => 'This plugin automatically sees into the user\'s future and places important details about upcoming events above the folder list.',
+             'version' => '2.5.1',
+             'required_sm_version' => '1.2.9',
+             'requires_configuration' => 0,
+             'requires_source_patch' => 0,
+             'per_version_requirements' => array(
+                '1.5.2' => array(
+                   'required_plugins' => array(),
+                ),
+                '1.5.0' => array(
+                   'required_plugins' => array(
+                      'compatibility' => array(
+                         'version' => '2.0.7',
+                         'activate' => FALSE,
+                      )
+                   )
+                ),
+                '1.4.10' => array(
+                   'required_plugins' => array(),
+                ),
+                '1.2.9' => array(
+                   'required_plugins' => array(
+                      'compatibility' => array(
+                         'version' => '2.0.7',
+                         'activate' => FALSE,
+                      )
+                   )
+                ),
+             ),
+          );
+
+}
+</verb></tscreen>
+
+Prior to SquirrelMail 1.5.2, a function called
+<tt>/&lt;plugin name&gt;_version()</tt> was required. For the sake of
+compatibility, it can be piggy-backed on top of the
+<tt>&lt;plugin name&gt;_info()</tt> function very simply as follows:
+
+<tscreen><verb>
+/**
+  * Returns version info about this plugin
+  *
+  */
+function demo_version() 
+{
+   $info = demo_info();
+   return $info['version'];
+}
+</verb></tscreen>
+
+There is also a legacy version reporting mechanism that we would like plugin
+authors to implement, since we are still in a transition period between the 
+older and newer reporting usages. The now deprecated reporting mechanism  is to 
+create a file called <tt/version/ in the plugin directory. That file should 
+have only two lines: the first line should have the name of the plugin as 
+named on the SquirrelMail web site (this is often a prettified version of the plugin
+directory name), and the second line must have the version and nothing more. So
+for our "demo" plugin, whose name on the web site might be something like "Demo
+Future Prediction", the file <tt>plugins/demo/version</tt> should have these two
+lines:
+
+<tscreen><verb>
+Demo Future Prediction
+2.5.1
+</verb></tscreen>
+
+<sect1>Security considerations
+<sect2>Calling external programs
+<p>
+All plugin authors should consider the security implications of their plugin.
+Great care must always be taken if the plugin calls external programs, especially
+ones that require set-uid permissions.
+
+FIXME: more here about how to secure exec() calls with escapeshellarg() and named pipes method vs exec()
+
+
+<sect2>Storing sensitive data
+<p>
+If a plugin needs to store sensitive user configuration files or other such data,
+please consider extra steps to secure such files.  One very easy way to do so is
+to wrap all configuration files in PHP tags (and C-style block comments if the
+configuration data is not PHP code itself):
+
+<tscreen><verb>
+<?php /*
+
+# below is example non-PHP configuration 
+# data that is secured from prying eyes
+
+username_1 = admin
+username_2 = super_admin
+
+*/ ?>
+</verb></tscreen>
+
+Another approach is to store sensitive configuration data in SquirrelMail's 
+own <tt/$data/ directory, since most system administrators (at least those who 
+have read the installation instructions) know that the <tt/$data/ directory 
+needs to be protected and (hopefully) have made sure that it has been.
+
+Never store unsecured configuration data that contains any user or system-specific 
+information in your plugin directory.  Even the above suggestions
+may not be sufficient depending on how sensitive the data is that you are 
+storing.  In such a situation, you might think about a more complex encryption
+scheme such as the one provided by the <bf/vadmin/ plugin.
+
+Note that just shipping unsecured configuration files along with a 
+configuration file for Apache (<tt/.htaccess/) is not sufficient because 
+not every system uses Apache as its web server.
+
+<sect2>Disallowing access for diabled plugins
+<p>
+
+In some cases, it is also prudent to make sure that the plugin doesn't perform 
+its function when it is not enabled. Any functions or files that contain PHP
+code that is <tt/not/ wrapped inside a function can be protected from being
+executed when the plugin is not activated by adding code similar to this:
+
+<tscreen><verb>
+if ( !is_plugin_enabled('my_plugin_name') ) {
+    exit('The plugin my_plugin_name isn't enabled in the SquirrelMail configuration.');
+}
+</verb></tscreen>
+
+Note, however, that sometimes <tt/other/ plugins can legitimately access a 
+disabled plugin, so don't shoot yourself in the foot with too much protection.
+
+<sect1>Coding tips<label id="plugin_coding_tips">
+<p>
+Listed below are several useful tips to keep in mind while coding plugins. Some of these items will be scrutinized and possibly treated as mandatory by the plugin team when evaluating new plugins.
+
+<sect2>Knowing what hook is running
+<p>
+Some plugins may register the same function against multiple hooks or otherwise run the same library code for more than one hook. If that code needs to make a hook-specific decision, it can look at the global variable called <tt/$currentHookName/. However, this variable is only available in SquirrelMail versions 1.5.1 and above, so it is more portable to use the function <tt/get_current_hook_name()/, which is provided by the Compatibility plugin (see elsewhere for more information about using the Compatibility plugin[FIXME: provide a link for this]).
+
 <sect1>Compatibility with older versions of SquirrelMail
 <p>
 Whenever new versions of SquirrelMail are released, there is always a
@@ -2435,6 +2601,22 @@ Upgrading the Demo plugin
    procedure above).
 </verb></tscreen>
 
+<sect1>Storing code
+<p>
+[FIXME: expand this section]
+Due to the large number and wide range of functions plugins can cover it is
+impractical to add all but the most popular of these to the SquirrelMail
+core project.
+There is a separate <url url="http://sourceforge.net/projects/sm-plugins/"
+name="SM Plugins"> project registered at SourceForge to house plugin code,
+developers should consider joining this project.
+
+<sect1>Additional Resources
+<p>
+In addition to this document, help writing plugins is easily obtained by posting
+to the <url url="http://www.squirrelmail.org/docs/admin/admin-12.html#ss12.3"
+name="SquirrelMail plugins mailing list">.
+
 <sect1>How to release your plugin
 <p>
 As long as you've consulted the list of plugin standards and done your best to
@@ -2453,11 +2635,19 @@ command from the plugins directory (NOT your plugin directory):
 tar -czvf demo-1.0-1.4.0.tar.gz demo
 </verb></tscreen>
 
+<sect2>Requirements Checklist
+<p>
+Make sure the plugin meets the SquirrelMail plugin requirements explained throughout this document. Here is a quick checklist to help summarize the various requirements.
+
+<itemize>
+  <item>FIXME: WHERE SHOULD THIS CHECKLIST BE BEST PLACED IN THIS DOCUMENT?
+  <item>Keep <tt/setup.php/ <ref id="plugin_setup_file" name="small and efficient">
+</itemize>
+
+<sect2>Submitting the plugin
+<p>
 When the plugin is ready to be reviewed by the SquirrelMail plugin team, mail it
-to the SquirrelMail plugins team members.  Also consider asking on the SquirrelMail
-plugins mailing list for access to upload your plugin to the 
-<url url="http://squirrelmail.org/plugins.php" name="official third party plugin 
-list"> after your plugin is approved.
+to the SquirrelMail plugins team members.
 
 When the plugin is approved and you're granted access to upload it, all you have
 to do is the actual uploading along with filling out some general information 
