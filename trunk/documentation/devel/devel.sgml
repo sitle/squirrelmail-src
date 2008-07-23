@@ -337,24 +337,24 @@ Read more about the functions in the SquirrelMail API Documentation.
 
 <itemize>
   <item><tt/sqGetGlobalVar()/ (<url
-        url="http://squirrelmail.org/docs/phpdoc14/squirrelmail/_squirrelmail_functions_global_php.html#functionsqgetGlobalVar"
+        url="http://squirrelmail.org/docs/stable-code/squirrelmail/_squirrelmail_functions_global_php.html#functionsqgetGlobalVar"
         name="stable"> and <url
-        url="http://squirrelmail.org/docs/phpdoc/squirrelmail/_functions_global_php.html#functionsqgetGlobalVar"
+        url="http://squirrelmail.org/docs/devel-doc/squirrelmail/_functions_global_php.html#functionsqgetGlobalVar"
         name="development">)
   <item><tt/sqsession_register()/ (<url
-        url="http://squirrelmail.org/docs/phpdoc14/squirrelmail/_functions---global.php.html#functionsqsession_register"
+        url="http://squirrelmail.org/docs/stable-code/squirrelmail/_functions---global.php.html#functionsqsession_register"
         name="stable"> and <url
-        url="http://squirrelmail.org/docs/phpdoc/squirrelmail/_functions---global.php.html#functionsqsession_register"
+        url="http://squirrelmail.org/docs/devel-doc/squirrelmail/_functions---global.php.html#functionsqsession_register"
         name="development">)
   <item><tt/sqsession_is_registered()/ (<url
-        url="http://squirrelmail.org/docs/phpdoc14/squirrelmail/_functions---global.php.html#functionsqsession_is_registered"
+        url="http://squirrelmail.org/docs/stable-code/squirrelmail/_functions---global.php.html#functionsqsession_is_registered"
         name="stable"> and <url
-        url="http://squirrelmail.org/docs/phpdoc/squirrelmail/_functions---global.php.html#functionsqsession_is_registered"
+        url="http://squirrelmail.org/docs/devel-doc/squirrelmail/_functions---global.php.html#functionsqsession_is_registered"
         name="development">)
   <item><tt/sqsession_unregister()/ (<url
-        url="http://squirrelmail.org/docs/phpdoc14/squirrelmail/_functions---global.php.html#functionsqsession_unregister"
+        url="http://squirrelmail.org/docs/stable-code/squirrelmail/_functions---global.php.html#functionsqsession_unregister"
         name="stable"> and <url
-        url="http://squirrelmail.org/docs/phpdoc/squirrelmail/_functions---global.php.html#functionsqsession_unregister"
+        url="http://squirrelmail.org/docs/devel-doc/squirrelmail/_functions---global.php.html#functionsqsession_unregister"
         name="development">)
 </itemize>
 
@@ -1474,9 +1474,9 @@ parameters that may have been included in the actual hook call in the source.
 Modify parameters with care!
 
 Read more about the <tt/do_hook()/ function in the <url
-url="http://squirrelmail.org/docs/phpdoc14/squirrelmail/_functions---plugin.php.html#functiondo_hook"
+url="http://squirrelmail.org/docs/stable-code/squirrelmail/_functions---plugin.php.html#functiondo_hook"
 name="stable"> and <url
-url="http://squirrelmail.org/docs/phpdoc/squirrelmail/_functions---plugin.php.html#functiondo_hook"
+url="http://squirrelmail.org/docs/devel-doc/squirrelmail/_functions---plugin.php.html#functiondo_hook"
 name="development"> API documentation.
 
 The <tt/do_hook_function()/ was intended to be the main hook type used when the
@@ -1491,9 +1491,9 @@ These cannot be changed in the same way that the <tt/do_hook()/ parameters can
 be.
 
 Read more about the <tt/do_hook_function()/ function in the <url
-url="http://squirrelmail.org/docs/phpdoc14/squirrelmail/_functions---plugin.php.html#functiondo_hook_function"
+url="http://squirrelmail.org/docs/stable-code/squirrelmail/_functions---plugin.php.html#functiondo_hook_function"
 name="stable"> and <url
-url="http://squirrelmail.org/docs/phpdoc/squirrelmail/_functions---plugin.php.html#functiondo_hook_function"
+url="http://squirrelmail.org/docs/devel-doc/squirrelmail/_functions---plugin.php.html#functiondo_hook_function"
 name="development"> API documentation.
 
 The <tt/concat_hook_function()/ fixes some shortcomings of the
@@ -1507,9 +1507,9 @@ get are the same as for the <tt/do_hook_function/; they are anything <it/after/
 the hook name in the actual hook call in the source.
 
 Read more about the <tt/concat_hook_function()/ function in the <url
-url="http://squirrelmail.org/docs/phpdoc14/squirrelmail/_functions---plugin.php.html#functionconcat_hook_function"
+url="http://squirrelmail.org/docs/stable-code/squirrelmail/_functions---plugin.php.html#functionconcat_hook_function"
 name="stable"> and <url
-url="http://squirrelmail.org/docs/phpdoc/squirrelmail/_functions---plugin.php.html#functionconcat_hook_function"
+url="http://squirrelmail.org/docs/devel-doc/squirrelmail/_functions---plugin.php.html#functionconcat_hook_function"
 name="development"> API documentation.
 
 The <tt/boolean_hook_function()/ allows plugins to vote for a specified action.
@@ -1531,9 +1531,9 @@ source as its parameter (this might be an array if multiple values need to be
 passed).
 
 Read more about the <tt/boolean_hook_function()/ function in the <url
-url="http://squirrelmail.org/docs/phpdoc14/squirrelmail/_functions---plugin.php.html#functionboolean_hook_function"
+url="http://squirrelmail.org/docs/stable-code/squirrelmail/_functions---plugin.php.html#functionboolean_hook_function"
 name="stable"> and <url
-url="http://squirrelmail.org/docs/phpdoc/squirrelmail/_functions---plugin.php.html#functionboolean_hook_function"
+url="http://squirrelmail.org/docs/devel-doc/squirrelmail/_functions---plugin.php.html#functionboolean_hook_function"
 name="development"> API documentation.
 
 <sect2>List of hooks
@@ -2352,9 +2352,9 @@ approach you may be able to use is to include code that can auto-sense the
 SquirrelMail version and make adjustments on the fly. There is a function called 
 <tt/check_sm_version()/ available which does that. Read more about it in the 
 <url
-url="http://squirrelmail.org/docs/phpdoc14/squirrelmail/_functions---global.php.html#functioncheck_sm_version"
+url="http://squirrelmail.org/docs/stable-code/squirrelmail/_functions---global.php.html#functioncheck_sm_version"
 name="stable"> and <url
-url="http://squirrelmail.org/docs/phpdoc/squirrelmail/_functions---global.php.html#functioncheck_sm_version"
+url="http://squirrelmail.org/docs/devel-doc/squirrelmail/_functions---global.php.html#functioncheck_sm_version"
 name="development"> API documentation.
 
 Finally, there is a plugin called "Compatibility" that is intended to solve 
