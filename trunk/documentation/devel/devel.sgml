@@ -2320,7 +2320,7 @@ information returned, the better.
 <tt/summary/|Functionality summary|This should be a brief sentence or two at the most.@
 <tt/details/|Functionality details|This can be much more verbose compared to the <tt/summary/.@
 <tt/requires_configuration/|Whether or not the plugin requires a configuration file to be prepared by the administrator|boolean <tt/0/ or <tt/1/.@
-<tt/requires_source_patch/|Whether or not the plugin requires patching of the SquirrelMail source code|boolean <tt/0/ or <tt/1/ (or <tt/2/ to indicate that patching is optional (enables optional functionality) or is only required for some SquirrelMail versions, although the latter should be done in more detail using <tt/per_version_requirements/).@
+<tt/requires_source_patch/|Whether or not the plugin requires patching of the SquirrelMail source code|boolean <tt/0/ or <tt/1/ (or <tt/2/ to indicate that patching is optional (enables optional functionality) or is only required for some SquirrelMail versions, although the latter should be done in more detail using <tt/per_version_requirements/).
 </tabular>
 
 Other optional elements include:
@@ -2335,7 +2335,7 @@ Other optional elements include:
 <tt/rpc/|List of RPC commands that this plugin answers to|A two-element array keyed by "commands" and "errors". Each of these contains a sub-array. The "commands" array is keyed by RPC command name, where corresponding values are the English explanations for what each command does. The "errors" array is keyed by each possible error number that the plugin's RPC interface might produce, where corresponding values are English explanations of what each error number means. <tt/array("commands" => array("demo_get_one_prediction" => "Peer into the crystal ball once"), "errors" => array(720 => "demo_get_one_prediction failed"),)/@
 <tt/other_requirements/|Some other non-SquirrelMail or non-PHP requirements|<tt/"Courier Maildrop LDA"/@
 <tt/external_project_uri/|Address of the project page or source code repository for the plugin|<tt>"http://example.org/my_plugin"</tt>@
-<tt/per_version_requirements/|List of requirements this plugin has that are different based on the SquirrelMail version being used|An array which is keyed by SquirrelMail version numbers.  Any version numbers skipped receive the same requirements laid out for the last version number that is listed below the skipped one. Each value is then a sub-array that may contain any of the requirement entries listed here, such as <tt/requires_source_patch/, <tt/required_plugins/, etc., or a special constant called <tt/SQ_INCOMPATIBLE/ (set the associated value to boolean <tt/1/), which indicates that the plugin is not compatible with the corresponding version of SquirrelMail. <tt/SQ_INCOMPATIBLE/ may also replace the entire sub-array for the incompatible SquirrelMail version, which is easier to understand. See below for an example.@
+<tt/per_version_requirements/|List of requirements this plugin has that are different based on the SquirrelMail version being used|An array which is keyed by SquirrelMail version numbers.  Any version numbers skipped receive the same requirements laid out for the last version number that is listed below the skipped one. Each value is then a sub-array that may contain any of the requirement entries listed here, such as <tt/requires_source_patch/, <tt/required_plugins/, etc., or a special constant called <tt/SQ_INCOMPATIBLE/ (set the associated value to boolean <tt/1/), which indicates that the plugin is not compatible with the corresponding version of SquirrelMail. <tt/SQ_INCOMPATIBLE/ may also replace the entire sub-array for the incompatible SquirrelMail version, which is easier to understand. See below for an example.
 </tabular>
 
 A typical implementation of this function is as follows.  Note that
@@ -2397,7 +2397,7 @@ function demo_info()
 </verb></tscreen>
 
 Prior to SquirrelMail 1.5.2, a function called
-<tt>/&lt;plugin name&gt;_version()</tt> was required. For the sake of
+<tt>&lt;plugin name&gt;_version()</tt> was required. For the sake of
 compatibility, it can be piggy-backed on top of the
 <tt>&lt;plugin name&gt;_info()</tt> function very simply as follows:
 
