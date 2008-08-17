@@ -2269,8 +2269,12 @@ directory, giving precedence to the latter.
 
 Plugins that make use of configuration files should <it/not/ include a file
 called <tt/config.php/ in distribution packages; instead, a copy of that file
-named <tt/config.sample.php/ is desirable, since customized <tt/config.php/
-files will not be lost upon upgrading the plugin.
+named <tt/config_example.php/ is desirable, since customized <tt/config.php/
+files will not be lost upon upgrading the plugin. If the plugin does not need
+environment-specific configuration settings, you may also consider including
+a default configuration file so that the administrator does not need to
+configure the plugin unless she wants to change some particular setting.
+The usual default configuration file name is <tt/config_default.php/.
 
 A plugin can try to be smart about where to find the needed configuration
 file by doing something such as this:
@@ -2278,13 +2282,11 @@ file by doing something such as this:
 <tscreen><verb>
 if (!@include_once(SM_PATH . 'config/config_demo.php'))
    if (!@include_once(SM_PATH . 'plugins/demo/config.php'))
-      @include_once(SM_PATH . 'plugins/demo/config.sample.php');
+      @include_once(SM_PATH . 'plugins/demo/config_default.php');
 </verb></tscreen>
 
-This assumes that the plugin has some sensible defaults in the sample
-configuration file - if the plugin <it/must/ be configured specifically
-for the system upon which it is installed, remove the third line in this
-example.
+If the plugin <it/must/ be configured specifically for the system upon which
+it is installed, remove the third line in this example.
 
 <sect1>Versioning
 <sect2>Version numbering
