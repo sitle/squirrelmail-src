@@ -319,7 +319,17 @@ function sent_subfolder_getQuarter($month) {
  * @return boolean 1 - is part of sent_subfolders, 0 - is not part of sent_subfolders
  */
 function sent_subfolders_special_mailbox($mb) {
-    global $data_dir, $username, $delimiter;
+    global $data_dir, $username;
+
+    sqgetGlobalVar('delimiter', $delimiter, SQ_SESSION);
+/*
+    if( $imap_server_type == 'uw' ) {
+        $cnd_delimiter = '';
+    } else {
+        $cnd_delimiter = $delimiter;
+    }
+*/        
+    $cnd_delimiter = $delimiter;
 
     $use_sent_subfolders = getPref
         ($data_dir, $username, 'use_sent_subfolders', SMPREF_OFF);
@@ -331,4 +341,3 @@ function sent_subfolders_special_mailbox($mb) {
     }
     return 0;
 }
-?>
