@@ -1345,13 +1345,12 @@ second parameter given to plugins, but it is not normally used: it is the
 current value of the ultimate hook return value. All plugins are responsible
 for sharing the creation/modification of whatever <tt/do_hook/ returns.  The
 ultimate return value is whatever the <it/last/ plugin returns from its hook
-implementation, but if it does return something, it should be contious of
-checking if there was already a return value created by other plugins, which
-is what is given as the second parameter to the plugin. As with all hooks,
-the usage of the hook parameters and/or its return value are determined based
-on the context in which the hook is used - you have to look at it in the
-SquirrelMail core. Please remember NEVER to output any HTML directly during
-hook execution.
+implementation, but if it does return something, it should be sure to check
+if there was already a return value created by other plugins, which is what is
+given as the second parameter to the plugin. As with all hooks, the usage of
+the hook parameters and/or its return value are determined based on the
+context in which the hook is used - you have to look at it in the SquirrelMail
+core. Please remember NEVER to output any HTML directly during hook execution.
 
 Read more about the <tt/do_hook()/ function in the
 <url url="http://squirrelmail.org/docs/devel-code/squirrelmail/_functions---plugin.php.html#functiondo_hook" name="1.5 API documentation">.
