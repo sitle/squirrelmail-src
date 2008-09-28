@@ -16,6 +16,11 @@ Version 1.4.16 - SVN
   - Update the left_main_after_each_folder hook to work on the trash
     folder as well as all other folders.
   - Fix HTML validity issue with IE conditional construct (#1985916).
+  - Backported sqsetcookie() from 1.5.2, so cookies won't be
+    transmitted under non-SSL connections if the session is
+    started under an SSL (https) connection (CVE-2008-3663).
+    Also limits cookies to HTTPOnly, a feature of IE and Firefox
+    to counter cross site scripting attacks.
 
 Version 1.4.15 - 23 May 2008
 ----------------------------
