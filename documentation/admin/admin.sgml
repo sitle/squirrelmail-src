@@ -1682,8 +1682,8 @@ Only implement one or else you might get some weird problems.
         <tt/zlib.output_compression/ in <tt/php.ini/.
   <item>SquirrelMail has the <url
         url="http://squirrelmail.org/plugin_view.php?id=19" name="Gzip
-        Compressed Output"> plugin that can compress certain pages, but won't
-        compress much. It does help, but one of the others is suggested instead.
+        Compressed Output"> plugin that enables compression of output
+        in the same way that PHP does (see above), but only for SquirrelMail.
 </itemize>
 
 <sect2>Condensation
