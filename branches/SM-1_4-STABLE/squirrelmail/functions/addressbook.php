@@ -351,7 +351,7 @@ class AddressBook {
 
     function full_address($row) {
         global $data_dir, $username;
-        $addrsrch_fullname = getPref($data_dir, $username, 'addrsrch_fullname');
+        $addrsrch_fullname = getPref($data_dir, $username, 'addrsrch_fullname', 'fullname');
         if ($addrsrch_fullname == 'fullname')
             return $row['name'] . ' <' . trim($row['email']) . '>';
         else if ($addrsrch_fullname == 'nickname')
