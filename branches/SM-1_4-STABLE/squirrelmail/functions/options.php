@@ -1030,7 +1030,7 @@ function print_option_groups($option_groups) {
                 // text area trailing text just goes under the caption
                 //
                 if ($option->type == SMOPT_TYPE_TEXTAREA && !empty($option->trailing_text))
-                    $option->caption .= '<br />' . $option->trailing_text;
+                    $option->caption .= '<br /><small>' . $option->trailing_text . '</small>';
 
                 echo html_tag( 'tr', "\n".
                            html_tag( 'td', $option->caption . (!empty($option->caption) ? ':' : ''), 'right' ,'', 'valign="middle"' . ($option->caption_wrap ? '' : ' style="white-space:nowrap"') ) .
