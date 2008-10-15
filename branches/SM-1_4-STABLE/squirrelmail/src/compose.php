@@ -1308,8 +1308,8 @@ function showComposeButtonRow() {
     if ($default_use_mdn) {
         if ($mdn_user_support) {
             echo '          ' . _("Receipt") .': '.
-                addCheckBox('request_mdn', $request_mdn == '1', '1'). _("On Read").
-                addCheckBox('request_dr',  $request_dr  == '1', '1'). _("On Delivery");
+                addCheckBox('request_mdn', $request_mdn == '1', '1', 'id="request_mdn"') . '<label for="request_mdn">' . _("On Read") . '</label>' .
+                addCheckBox('request_dr',  $request_dr  == '1', '1', 'id="request_dr"') . '<label for="request_dr">' . _("On Delivery") . '</label>';
         }
     }
 
