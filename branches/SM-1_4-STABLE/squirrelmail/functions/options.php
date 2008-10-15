@@ -756,8 +756,8 @@ class SquirrelOption {
                     else $bgcolor = 4;
 
                     $result .= '<tr bgcolor="' . $color[$bgcolor] . '">'
-                             . '<td width="1%"><input type="checkbox" name="new_' . $this->name . '[' . ($index++) . ']" id="' . $this->name . '_list_item_' . $key . '" value="' . $value . '"></td>'
-                             . '<td><label for="' . $this->name . '_list_item_' . $key . '">' . $value . '</label></td>'
+                             . '<td width="1%"><input type="checkbox" name="new_' . $this->name . '[' . ($index++) . ']" id="' . $this->name . '_list_item_' . $key . '" value="' . htmlspecialchars($value) . '"></td>'
+                             . '<td><label for="' . $this->name . '_list_item_' . $key . '">' . htmlspecialchars($value) . '</label></td>'
                              . "</tr>\n";
 
                 }
