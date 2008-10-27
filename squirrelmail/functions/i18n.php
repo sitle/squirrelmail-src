@@ -52,6 +52,10 @@ function sq_change_text_domain($domain_name, $directory='') {
     static $domains_already_seen = array();
     $return_value = textdomain(NULL);
 
+    // empty domain defaults to "squirrelmail"
+    //
+    if (empty($domain_name)) $domain_name = 'squirrelmail';
+
     // only need to call bindtextdomain() once unless
     // $use_gettext is turned on
     //
