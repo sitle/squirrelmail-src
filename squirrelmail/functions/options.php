@@ -315,7 +315,7 @@ class SquirrelOption {
 
         $result = "<input type=\"text\" name=\"new_$this->name\" value=\""
                 . htmlspecialchars($this->value)
-                . "\" size=\"$width\" $this->script />" 
+                . "\" size=\"$width\" $this->script /> " 
                 . htmlspecialchars($this->trailing_text) . "\n";
         return $result;
     }
