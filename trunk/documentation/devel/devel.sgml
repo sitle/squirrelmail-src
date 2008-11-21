@@ -2363,7 +2363,9 @@ function demo_info()
                 ),
              ),
              'summary' => 'Adds important information above the folder list.',
-             'details' => 'This plugin automatically sees into the user\'s future and places important details about upcoming events above the folder list.',
+             'details' => 'This plugin automatically sees into the user\'s '
+                        . 'future and places important details about upcoming '
+                        . 'events above the folder list.',
              'version' => '2.5.1',
              'required_sm_version' => '1.2.9',
              'requires_configuration' => 0,
