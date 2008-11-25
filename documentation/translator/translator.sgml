@@ -347,27 +347,28 @@ by the Unicode consortium.
 <sect>Common problems
 <sect1>Translations are not working
 <p>
-If you have gettext support in php, translations will work only if you have
-appropriate system locale.
+If you have gettext support in PHP, translations will work only if you
+have the appropriate system locale. You should also restart your web
+server after installing new locale packs.
 
 <sect1>Some words are not translated
 <p>
-This is the way gettext translations work. If translated string is not available
-- English version of translation is used.
+This is the way gettext translations work. If a translated string is not
+available, the English version of the string is used.
 
 Possible causes are:
 <itemize>
- <item>translation that you are using is not fully translated.
- <item>strings belong to non-core SquirrelMail plugins
+ <item>The locale that you are using is not fully translated.
+ <item>The incorrect (untranslated) strings belong to non-core SquirrelMail plugins whose translations may not be in your locale pack, or the plugin may be broken or otherwise untranslated.
 </itemize>
 
 <sect1>"xxx character set is not supported"
 <p>
 "xxx character set is not supported" errors may appear when you switch to some
-translations. This usually means that your IMAP server does not support charset
-that is used by translation.
+translations. This usually means that your IMAP server does not support the
+charset that is used by that translation.
 
-Error can be disabled by setting following SquirrelMail options to false:
+This error can be disabled by setting following SquirrelMail options to false:
 <itemize>
  <item>4. General Options -> 11. Allow server thread sort (it is not enabled by
  default)
@@ -377,36 +378,59 @@ Error can be disabled by setting following SquirrelMail options to false:
  default)
 </itemize>
 
-There is one exception. If you are using Turkish translation, you can get
-similar errors even when your IMAP server supports ISO-8859-9 charset. This
-happens due to different small letters to capital letters conversion rules in
-Turkish. See <url
+There is one exception: if you are using the Turkish translation, you can get
+similar errors even when your IMAP server supports the ISO-8859-9 charset.
+This happens due to different small letter to capital letter conversion rules
+in Turkish. See <url
 url="https://sourceforge.net/tracker/?func=detail&amp;aid=690625&amp;group_id=311&amp;atid=100311" 
-name="SM bug No.690625"> and <url
-url="http://www.topolis.lt/squirrelmail/turkish.html" 
-name="http://www.topolis.lt/squirrelmail/turkish.html"> for more details.
+name="SM bug No.690625">, <url url="http://www.topolis.lt/php/"
+name="http://www.topolis.lt/php/">,
+<url url="http://www.topolis.lt/php/patched-utf8.txt"
+name="http://www.topolis.lt/php/patched-utf8.txt"> and
+<url url="http://www.topolis.lt/php/turkish.phps"
+name="http://www.topolis.lt/php/turkish.phps"> for more details.
 
 <sect1>"Invalid range end in /usr/share/squirrelmail/functions/i18n.php"
 <p>
-If you are using SquirrelMail on Linux RedHat v7.3 system, sometimes you can get
-error:
+If you are using SquirrelMail on Linux RedHat v7.3 system, sometimes you can
+get an error similar to:
 
 Warning: Invalid range end in /usr/share/squirrelmail/functions/i18n.php on line
 xx 
 
-Problem can be reproduced only on RedHat 7.3 or RedHat Advanced Server 2.0. It
-happens only if UTF-8 enabled glibc locale is used. this means - ca_ES, cs_CZ,
-da_DK, en_CA, es_ES, es_US, et_EE, fi_FI, hr_HR, is_IS, lt_LT, lv_LV, no_NO,
-pl_PL, sl_SI are affected. Emails that produce warnings use other encoding than
-is set in user's locale.
+This problem can be reproduced only on RedHat 7.3 or RedHat Advanced Server 2.0.
+It happens only if a UTF-8 enabled glibc locale is used. This means that the
+ca_ES, cs_CZ, da_DK, en_CA, es_ES, es_US, et_EE, fi_FI, hr_HR, is_IS, lt_LT,
+lv_LV, no_NO, pl_PL and sl_SI locales are all affected. Emails that produce
+this kind of warning will do so because they use an encoding other than the
+one that is set in the user's locale.
 
-The problem is in broken glibc, apache or php patches used by RH. System doesn't
-like regexp ranges at \237-\240 (octal numbers). decimal 159-160. Latest
-SquirrelMail versions tries to avoid this error.
+The problem is in a broken glibc, Apache or PHP patch or patches used by
+RedHat. The system doesn't like regexp ranges between \237-\240 (octal
+numbers; decimal 159-160). Recent SquirrelMail versions try to avoid this
+error.
 
-<sect1>Latin letters instead of the ones that are used by translation.
+<sect1>Latin letters show instead of the ones that are used by some translation.
 <p>
-FreeBSD requires full locale name.
+FreeBSD requires the full locale name.
+
+<sect1>Special folders (Sent/Drafts/Trash) are not translated
+<p>
+This is intentional. Those folders may be special in content, but not in
+name - they could be named anything, which is why SquirrelMail cannot
+pretend to know what they will be named. In some cases, users could already
+have folders with the desired translated name, which would cause confusion. 
+
+You can take some steps to provide translated special folder names for your
+users, but be careful about imposing translated folder names as the
+administrator rather than letting users manage their folders themselves.
+
+<itemize>
+ <item>The administrator can set what folders to use (for all users - by default) for Trash, Drafts and Sent (you might want to ensure you have a script on the mail server that creates pre-translated folders for this purpose first) by using the SquirrelMail configuration script (config/conf.pl, which is usually aliased to "configure" in the main SquirrelMail directory) and choosing "3. Folder Defaults" and then entering the utf7-imap encoded folder names for "3. Trash Folder", "4. Sent Folder" and "5. Drafts Folder". You can also do the same by directly editing config/config.php and changing the values for $trash_folder, $sent_folder and $draft_folder.
+ <item>Users can go to Options->Folder Preferences and select what folders to use for Trash, Drafts and Sent (they can create their own pre-translated folders for this purpose on the Folders page first). These settings will override the administrative settings described in the item above.
+ <item>As of SquirrelMail 1.5.2, users can go to Options->Folder Preferences and enable "Translate Special Folders", and SquirrelMail will try to automatically translate folders named "Trash", Sent" and "Drafts", but, as mentioned above, this can result in unexpected or confusing results if the user has already created similarly-named folders.
+ <item>The administrator can choose to set default values for (or force the values of) the prior two user settings by using one of the methods explained <url url="http://www.squirrelmail.org/docs/admin/admin-5.html#ss5.6" name="in the Administrator's Manual">
+</itemize>
 
 <sect>OS Specific problems
 <sect1>GNU/Debian
