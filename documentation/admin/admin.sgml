@@ -1253,8 +1253,10 @@ TODO: Having to edit the SquirrelMail source is bad. It should be possible to us
 <p>
 On sites with many users you might want to store your user data in a database
 instead of in files. SquirrelMail can be configured to do this. Note, however,
-that some SquirrelMail plugins are designed to use different files for users'
-data storage and won't be able to use database to store users' data.
+that some SquirrelMail plugins are designed to use different files for user
+data storage and won't be able to use the database, so it is strongly
+recommended to make sure you have a correctly configured data directory even
+when using a database as explained here.
 
 Methods for storing both personal address books and user preferences in a
 database is included as a part of the distribution.
