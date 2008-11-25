@@ -2447,7 +2447,26 @@ password"> plugin page.
 <sect>Solving problems
 <sect1>Configtest
 <p>
-Using configtest.php as a first diagnose tool.
+When attempting to diagnose any issues with SquirrelMail, the first thing
+to do is load up http://example.org/squirrelmail/src/configtest.php and ensure
+that SquirrelMail can't already tell you what the problem is.
+
+Note that as of SquirrelMail version 1.5.2, you cannot view this page from
+any computer other than the one where SquirrelMail is installed unless you
+have enabled remote computers to view it by using the SquirrelMail
+configuration tool (config/conf.pl, which is usually aliased to "configure"
+in the main SquirrelMail directory) and going to "11. Tweaks" and then chossing
+"7. Allow remote configtest". You can also edit the <tt/$allow_remote_configtest/
+setting directly in <tt>config/config.php</tt> if you prefer. Before leaving
+this enabled, consider that exposing the kind of information it displays can
+be a security concern, so you are advised to turn it off except when
+specifically needed.
+
+Aside from diagnosing certain problems directly, this tool will also display
+many pieces of information that may be very helpful when asking others to
+help you with problems you cannot fix yourself. Therefore, this should always
+be your first stop when any problems come up.
+
 <sect1>Common PHP error messages
 <sect2>unknown function session_id() call
 <p>
@@ -2620,6 +2639,10 @@ Configure SquirrelMail with UW preset and don't remove <tt>mail/</tt> prefix in
 Folder Options.
 
 <sect1>Common interface error messages
+<sect2>Special folders (Sent/Drafts/Trash) are not translated
+<p>
+See <url url="http://squirrelmail.org/docs/translator/translator-3.html#ss3.6" name="http://squirrelmail.org/docs/translator/translator-3.html#ss3.6">
+
 <sect2>Unknown username or password
 <p>
 password is not ********. you need cookies.
