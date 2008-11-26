@@ -7,6 +7,9 @@ Version 1.4.17 - SVN
   - Allow control over white space wrapping of auto-generated
     SquirrelMail option widgets.
   - Fix matching of alternate identities when replying.
+  - Fix HTTPS detection under Windows IIS that was incorrectly
+    setting cookies to be transmitted only over a secure
+    connections when none existed (#2318118).
 
 Version 1.4.16 - 28 September 2008
 ----------------------------------
