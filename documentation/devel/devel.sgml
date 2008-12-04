@@ -3328,7 +3328,7 @@ walks the tree from the root node down to the leaves.
 <item><bf/Usual sanity/ Check the code over to make sure we are absolutely ready.
 <item><bf/Documentation/ Update Release Documents
     <enum>
-         <item> Make sure that the ChangeLog is up to date.
+         <item> Make sure that the ChangeLog is up to date - remember to put the release date in place of <tt/SVN/ at the top of the file.
          <item> Update the ReleaseNotes, keeping the same general format.
          <item> Compose a three to eight line message you'll post to mailinglists and forums. Include links. (While you're at it, make a simple HTML version of it as well, you'll need it later) Be BRIEF. Keep this message in your editor or on file for later on.
    </enum>
@@ -3347,7 +3347,7 @@ svn copy https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/branches/
     https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/rel-1_2_1
             </tscreen>
          <item> Use the script <tt>make-release</tt> <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/util/make-release" name="found in SVN"> under the <tt>util/</tt> dir. The only parameter
-         is the version to release. It will download the tagged SVN copy, pack it up nicely and upload it to SF.net.
+         is the version to release. It will download the tagged SVN copy, pack it up nicely and upload it to SF.net (CORRECTION - the upload commands are currently commented out, so you'll need to do that manually or edit the script to do that for you).
          You will need the following tools: bash, svn, ssh, curl, tar, gzip, zip, bzip2 and optionally rpmbuild.
          <item> Upload the release files to Sourceforge.net, see <url url="http://alexandria.wiki.sourceforge.net/File+Release+System+-+Offering+Files+for+Download#upload" name="sf.net instructions">.
          <item> (huh: don't go to sleep before you're finished making the release)
@@ -3356,6 +3356,7 @@ svn copy https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/branches/
     <enum>
          <item> Go back to your regular SVN development directory.
          <item> Update the version number variable in functions/strings.php by incrementing the incremental release number by 1 and adding <tt>' [SVN]'</tt> after it (<tt>$version = '1.2.2 [SVN]';</tt>).
+         <item> Add a new section in ChangeLog for the new release, followed by <tt>' - SVN'</tt>
          <item> Archive the ReleaseNotes for this release like this:
          <tscreen>svn copy ReleaseNotes doc/ReleaseNotes/X.Y/Notes-X.Y.Z.txt</tscreen>
          <item> Commit all these changes to SVN with a note saying that it is ready for continued development.
@@ -3404,7 +3405,7 @@ svn copy https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/branches/
             <enum>
                <item> Click on News in the SourceForge interface.
                <item> Add a news item for this release in the SourceForge news system. (The 3 to 8 line message you've made)
-               <item> Submit1 the news, go preview it, and fix it if you did something silly. :)
+               <item> Submit the news, go preview it, and fix it if you did something silly. :)
             </enum>
          <item> Add a news item to the SquirrelMail webpage.
             <enum>
@@ -3415,7 +3416,9 @@ svn copy https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/branches/
             </enum>
          <item> Send a message to squirrelmail-announce telling people about the release.
             <enum>
+               <item> Also, currently, it seems to have become convention that the message gets sent to all our other mailing lists: <tt>squirrelmail-announce@lists.sourceforge.net,  squirrelmail-users@lists.sourceforge.net, squirrelmail-plugins@lists.sourceforge.net, squirrelmail-devel@lists.sourceforge.net, squirrelmail-i18n@lists.sourceforge.net</tt> 
                <item> Again, use your brief 3 to 8 line message
+               <item> The subject should read "ANNOUNCE: SquirrelMail X.Y.Z Released"
                <item> Approve the message
                     <enum>
                      <item> Log in to the <url name="squirrelmail-announce administrative interface"
