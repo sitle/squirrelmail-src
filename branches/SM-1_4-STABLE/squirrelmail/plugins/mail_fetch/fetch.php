@@ -18,6 +18,11 @@ include_once(SM_PATH . 'functions/imap.php');
 include_once(SM_PATH . 'plugins/mail_fetch/class.POP3.php');
 include_once(SM_PATH . 'plugins/mail_fetch/functions.php' );
 
+// don't load this page if this plugin is not enabled
+//
+global $plugins;
+if (!in_array('mail_fetch', $plugins)) exit;
+
 /* globals */
 sqgetGlobalVar('username',   $username,   SQ_SESSION);
 sqgetGlobalVar('key',        $key,        SQ_COOKIE);
