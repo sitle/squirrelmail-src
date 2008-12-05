@@ -17,6 +17,11 @@ require_once(SM_PATH . 'include/validate.php');
 require_once(SM_PATH . 'functions/imap.php');
 require_once(SM_PATH . 'include/load_prefs.php');
 
+// don't load this page if this plugin is not enabled
+//
+global $plugins;
+if (!in_array('mail_fetch', $plugins)) exit;
+
 /* globals */
 sqgetGlobalVar('username',   $username,   SQ_SESSION);
 sqgetGlobalVar('key',        $key,        SQ_COOKIE);
