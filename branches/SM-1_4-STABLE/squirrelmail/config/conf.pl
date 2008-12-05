@@ -2227,9 +2227,13 @@ sub command38 {
 }
 
 sub command39 {
-    print "This allows you to prevent the editing of the user's name and\n";
-    print "email address. This is mainly useful when used with the\n";
-    print "retrieveuserdata plugin\n";
+    print "In loosely managed environments, you may want to allow users\n";
+    print "to edit their full name and email address. In strictly managed\n";
+    print "environments, you may want to force users to use the name\n";
+    print "and email address assigned to them.\n";
+    print "\n";
+    print "'y' - allow a user to edit their full name and email address,\n";
+    print "'n' - users must use the assigned values.\n";
     print "\n";
 
     if ( lc($edit_identity) eq "true" ) {
@@ -2275,14 +2279,16 @@ sub command39a {
 
 sub command39b {
     print $NRM;
-    print "\nSquirrelMail adds username information to every sent email.\n";
-    print "It is done in order to prevent possible sender forging when\n";
-    print "end users are allowed to change their email and name\n";
-    print "information.\n";
+    print "\nSquirrelMail adds username information to every outgoing\n";
+    print "email in order to prevent possible sender forging when\n";
+    print "users are allowed to change their email and/or full name.\n";
     print "\n";
-    print "You can disable this header, if you think that it violates\n";
-    print "user's privacy or security. Please note, that setting will\n";
-    print "work only when users are not allowed to change their identity.\n";
+    print "You can remove user information from this header (y) if you\n";
+    print "think that it violates privacy or security.\n";
+    print "\n";
+    print "Note: SquirrelMail will refuse to remove that information\n";
+    print "from the email headers if users are allowed to change their\n";
+    print "identities, regardless of what you have set here.\n";
     print "\n";
 
     if ( lc($hide_auth_header) eq "true" ) {
