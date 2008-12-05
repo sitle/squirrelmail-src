@@ -2252,6 +2252,7 @@ sub command39 {
 }
 
 sub command39a {
+    print $NRM;
     print "As a follow-up, this option allows you to choose if the user ";
     print "can edit their full name even when you don't want them to ";
     print "change their username\n";
@@ -2273,6 +2274,7 @@ sub command39a {
 }
 
 sub command39b {
+    print $NRM;
     print "SquirrelMail adds username information to every sent email.";
     print "It is done in order to prevent possible sender forging when ";
     print "end users are allowed to change their email and name ";
