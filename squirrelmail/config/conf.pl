@@ -2227,8 +2227,8 @@ sub command38 {
 }
 
 sub command39 {
-    print "This allows you to prevent the editing of the user's name and ";
-    print "email address. This is mainly useful when used with the ";
+    print "This allows you to prevent the editing of the user's name and\n";
+    print "email address. This is mainly useful when used with the\n";
     print "retrieveuserdata plugin\n";
     print "\n";
 
@@ -2253,8 +2253,8 @@ sub command39 {
 
 sub command39a {
     print $NRM;
-    print "As a follow-up, this option allows you to choose if the user ";
-    print "can edit their full name even when you don't want them to ";
+    print "\nAs a follow-up, this option allows you to choose if the user\n";
+    print "can edit their full name even when you don't want them to\n";
     print "change their username\n";
     print "\n";
 
@@ -2275,13 +2275,13 @@ sub command39a {
 
 sub command39b {
     print $NRM;
-    print "SquirrelMail adds username information to every sent email.";
-    print "It is done in order to prevent possible sender forging when ";
-    print "end users are allowed to change their email and name ";
+    print "\nSquirrelMail adds username information to every sent email.\n";
+    print "It is done in order to prevent possible sender forging when\n";
+    print "end users are allowed to change their email and name\n";
     print "information.\n";
     print "\n";
-    print "You can disable this header, if you think that it violates ";
-    print "user's privacy or security. Please note, that setting will ";
+    print "You can disable this header, if you think that it violates\n";
+    print "user's privacy or security. Please note, that setting will\n";
     print "work only when users are not allowed to change their identity.\n";
     print "\n";
 
