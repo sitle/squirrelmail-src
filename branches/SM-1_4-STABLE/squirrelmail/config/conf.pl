@@ -2295,6 +2295,11 @@ sub command39b {
     print "from the email headers if users are allowed to change their\n";
     print "identities, regardless of what you have set here.\n";
     print "\n";
+    print "Note: If you have defined a header encryption key in your SMTP\n";
+    print "or Sendmail settings (see the \"Server Settings\" option page),\n";
+    print "this setting is ignored because all user information in outgoing\n";
+    print "messages is encoded.\n";
+    print "\n";
 
     if ( lc($hide_auth_header) eq "true" ) {
         $default_value = "y";
