@@ -33,6 +33,7 @@ define('SMOPT_TYPE_BOOLEAN_CHECKBOX', 12);
 define('SMOPT_TYPE_BOOLEAN_RADIO', 13);
 define('SMOPT_TYPE_STRLIST_RADIO', 14);
 define('SMOPT_TYPE_SUBMIT', 15);
+define('SMOPT_TYPE_INFO', 16);
 
 /* Define constants for the layout scheme for edit lists. */
 define('SMOPT_EDIT_LIST_LAYOUT_LIST', 0);
@@ -132,7 +133,9 @@ class SquirrelOption {
         }
 
         /* Set the default save function. */
-        if (($type != SMOPT_TYPE_HIDDEN) && ($type != SMOPT_TYPE_COMMENT)) {
+        if ($type != SMOPT_TYPE_HIDDEN
+         && $type != SMOPT_TYPE_INFO
+         && $type != SMOPT_TYPE_COMMENT) {
             $this->save_function = SMOPT_SAVE_DEFAULT;
         } else {
             $this->save_function = SMOPT_SAVE_NOOP;
@@ -276,6 +279,9 @@ class SquirrelOption {
             case SMOPT_TYPE_SUBMIT:
                 $result = $this->createWidget_Submit();
                 break;
+            case SMOPT_TYPE_INFO:
+                $result = $this->createWidget_Info();
+                break;
             default:
                $result = '<font color="' . $color[2] . '">'
                        . sprintf(_("Option Type '%s' Not Found"), $this->type)
@@ -291,6 +297,11 @@ class SquirrelOption {
         }
 
         /* Now, return the created widget. */
+        return $result;
+    }
+
+    function createWidget_Info() {
+        $result = htmlspecialchars($this->value) . "\n";
         return $result;
     }
 
@@ -1032,10 +1043,17 @@ function print_option_groups($option_groups) {
                 if ($option->type == SMOPT_TYPE_TEXTAREA && !empty($option->trailing_text))
                     $option->caption .= '<br /><small>' . $option->trailing_text . '</small>';
 
-                echo html_tag( 'tr', "\n".
-                           html_tag( 'td', $option->caption . (!empty($option->caption) ? ':' : ''), 'right' ,'', 'valign="middle"' . ($option->caption_wrap ? '' : ' style="white-space:nowrap"') ) .
-                           html_tag( 'td', $option->createHTMLWidget(), 'left' )
-                       ) ."\n";
+                global $color;
+                //$info_bgcolor = 0;
+                $info_bgcolor = 4;
+                $info_width = 80;
+                if ($option->type == SMOPT_TYPE_INFO)
+                    echo html_tag('tr', "\n" . html_tag('td', "\n" . html_tag('table', "\n" . html_tag('tr', "\n" . html_tag('td', "\n" . $option->createHTMLWidget())), '', $color[$info_bgcolor], 'width="' . $info_width . '%"'), 'center' ,'', 'colspan="2" valign="middle"')) ."\n";
+                else
+                    echo html_tag( 'tr', "\n".
+                               html_tag( 'td', $option->caption . (!empty($option->caption) ? ':' : ''), 'right' ,'', 'valign="middle"' . ($option->caption_wrap ? '' : ' style="white-space:nowrap"') ) .
+                               html_tag( 'td', $option->createHTMLWidget(), 'left' )
+                           ) ."\n";
             } else {
                 $hidden_options .= $option->createHTMLWidget();
             }
