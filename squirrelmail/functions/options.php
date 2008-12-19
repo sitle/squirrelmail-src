@@ -34,6 +34,7 @@ define('SMOPT_TYPE_BOOLEAN_RADIO', 13);
 define('SMOPT_TYPE_STRLIST_RADIO', 14);
 define('SMOPT_TYPE_SUBMIT', 15);
 define('SMOPT_TYPE_INFO', 16);
+define('SMOPT_TYPE_PASSWORD', 17);
 
 /* Define constants for the layout scheme for edit lists. */
 define('SMOPT_EDIT_LIST_LAYOUT_LIST', 0);
@@ -234,6 +235,9 @@ class SquirrelOption {
             case SMOPT_TYPE_STRING:
                 $result = $this->createWidget_String();
                 break;
+            case SMOPT_TYPE_PASSWORD:
+                $result = $this->createWidget_String(TRUE);
+                break;
             case SMOPT_TYPE_STRLIST:
                 $result = $this->createWidget_StrList();
                 break;
@@ -305,7 +309,17 @@ class SquirrelOption {
         return $result;
     }
 
-    function createWidget_String() {
+    /**
+     * Create text box
+     *
+     * @param boolean $password When TRUE, the text in the input
+     *                          widget will be obscured (OPTIONAL;
+     *                          default = FALSE).
+     *
+     * @return string html formated text input
+     *
+     */
+    function createWidget_String($password=FALSE) {
         switch ($this->size) {
             case SMOPT_SIZE_TINY:
                 $width = 5;
@@ -324,7 +338,9 @@ class SquirrelOption {
                 $width = 25;
         }
 
-        $result = "<input type=\"text\" name=\"new_$this->name\" value=\""
+        $result = "<input type=\"" 
+                . ($password ? 'password' : 'text') 
+                . "\" name=\"new_$this->name\" value=\""
                 . htmlspecialchars($this->value)
                 . "\" size=\"$width\" $this->script /> " 
                 . htmlspecialchars($this->trailing_text) . "\n";
