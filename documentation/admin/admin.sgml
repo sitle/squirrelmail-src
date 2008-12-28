@@ -1425,16 +1425,21 @@ SQL statements, that can be used to insert the data into the database.
 <p>
 SquirrelMail is designed to work with one IMAP server. If you want to use the same
 SquirrelMail installation with multiple IMAP servers, you should be able to
-implement this with Perdition mail proxy, or with the Vlogin or Multilogin plugins,
-or write your own custom server mapping function. These tools allow users to
-be transparently redirected to their correct mail servers.
+implement this with Perdition mail proxy, with the Login Manager (vlogin) or
+Multilogin plugins, or by writing your own custom server mapping function. These
+tools allow users to be transparently redirected to their correct mail servers.
+
+In the future, SquirrelMail will natively provide users with the ability to
+check mail on multiple IMAP servers during one login session (some plumbing
+for this feature has been added for this into version 1.5.2, but full support
+is not yet implemented).
 
 <sect2>Perdition proxy
 <p>
 <url url="http://www.vergenet.net/linux/perdition/" name="Perdition"> is POP and
 IMAP proxy server, that can redirect users to appropriate mail servers.
 
-<sect2>Vlogin plugin
+<sect2>Login Manager (vlogin) plugin
 <p>
 Found in the main SquirrelMail plugins repository, this plugin helps manage
 and manipulate usernames given at login time, and allows the use of different
@@ -1448,17 +1453,19 @@ manual selection of login server on the login page.
 
 <sect2>sqimap_get_user_server
 <p>
-SquirrelMail can use mapping by a user defined function
-instead of IMAP server's address. If IMAP server's address is set to
-<tt/map:some_function_name/, SquirrelMail functions should use provided username
-as first function argument and replace  mapping with address returned by
-function.
+SquirrelMail can use a custom mapping provided by a user-defined function
+instead of the IMAP server address in the main configuration file. If the
+IMAP server address is set to <tt/map:some_function_name/, SquirrelMail
+will call that function (e.g., "some_function_name") to determine what IMAP
+server address to use, passing the username as the first argument. The
+function is expected to return the IMAP server address for that username.
 
-SquirrelMail provides example <tt>map_yp_alias</tt> function that uses ypmatch
-program to get IMAP servers from yellowpages (NIS).
+SquirrelMail provides an example function called <tt>map_yp_alias</tt> that
+uses the ypmatch program to get the IMAP server address from NIS (Yellow
+Pages).
 
-This feature is experimental. If some code does not take into account use of
-mapping in imap server's address configuration, it might be broken.
+This feature is experimental. If code somewhere in SquirrelMail or in a plugin
+does not take into account the use of this custom mapping, it will break.
 
 <sect>Optimizing SquirrelMail<label id="optimization">
 <p>
