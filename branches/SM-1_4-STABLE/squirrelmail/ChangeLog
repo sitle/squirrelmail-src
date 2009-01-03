@@ -8,6 +8,19 @@ Version 1.4.18 - SVN
     (get_location()) (#2388423)
   - Add informational type option widget
   - Add password type option widget
+  - Fix filters plugin to allow spam filters to scan multiple
+    messages, rather than the first message returned (#1634735).
+  - Removed code from spam filters plugin to stop if falling back
+    to searching all messages when there was no new messages.
+  - Altered filters plugin to issue single move/delete statement
+    for multiple messages.
+  - Updated some core code, and several plugins, to not use code
+    marked as obsolete.
+  - Corrected sqimap_msgs_list_copy to actually copy messages,
+    rather than move.
+  - Created new sqimap_msgs_list_copy to move messages.
+  - Migrated some fetch handling code from dev branch in plans to
+    update some core functionality to allow reusability of code.
 
 Version 1.4.17 - 03 December 2008
 ---------------------------------

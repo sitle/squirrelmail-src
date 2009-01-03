@@ -54,7 +54,7 @@ $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0
 
 sqimap_mailbox_select($imapConnection, $mailbox);
 
-sqimap_messages_delete($imapConnection, $message, $message, $mailbox);
+sqimap_msgs_list_delete($imapConnection, $mailbox, $message);
 if ($auto_expunge) {
     sqimap_mailbox_expunge($imapConnection, $mailbox, true);
 }
