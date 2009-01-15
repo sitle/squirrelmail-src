@@ -4,11 +4,11 @@
 
 Version 1.4.18 - SVN
 --------------------
-  - Fix port detection in automatic base URL detection scheme
-    (get_location()) (#2388423)
-  - Add informational type option widget
-  - Add password type option widget
-  - Fix filters plugin to allow spam filters to scan multiple
+  - Fixed port detection in automatic base URL detection scheme
+    (get_location()). (#2388423)
+  - Added informational type option widget.
+  - Added password type option widget.
+  - Fixed filters plugin to allow spam filters to scan multiple
     messages, rather than the first message returned (#1634735).
   - Removed code from spam filters plugin to stop if falling back
     to searching all messages when there was no new messages.
@@ -21,6 +21,7 @@ Version 1.4.18 - SVN
   - Created new sqimap_msgs_list_copy to move messages.
   - Migrated some fetch handling code from dev branch in plans to
     update some core functionality to allow reusability of code.
+  - Make address book file permissions 0600 - same as preference files.
 
 Version 1.4.17 - 03 December 2008
 ---------------------------------
