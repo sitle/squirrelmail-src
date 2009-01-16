@@ -18,7 +18,7 @@ Version 1.4.18 - SVN
     marked as obsolete.
   - Corrected sqimap_msgs_list_copy to actually copy messages,
     rather than move.
-  - Created new sqimap_msgs_list_copy to move messages.
+  - Created new sqimap_msgs_list_move to move messages.
   - Migrated some fetch handling code from dev branch in plans to
     update some core functionality to allow reusability of code.
   - Make address book file permissions 0600 - same as preference files.
