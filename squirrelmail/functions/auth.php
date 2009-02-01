@@ -33,8 +33,8 @@ if (! isset($use_smtp_tls)) {
  * Check if user has previously logged in to the SquirrelMail session.  If user
  * has not logged in, execution will stop inside this function.
  *
- * @return int A positive value is returned if user has previously logged in
- * successfully.
+ * @return void This function returns ONLY if user has previously logged in
+ * successfully (otherwise, execution terminates herein).
  */
 function is_logged_in() {
 
