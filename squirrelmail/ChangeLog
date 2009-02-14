@@ -23,6 +23,8 @@ Version 1.4.18 - SVN
     update some core functionality to allow reusability of code.
   - Make address book file permissions 0600 - same as preference files.
   - Fix for address book nicknames that contain the : character.
+  - Ensure that hash directory computation is the same on both 32 and
+    64 bit architectures (#2596879).
 
 Version 1.4.17 - 03 December 2008
 ---------------------------------
