@@ -940,6 +940,12 @@ $languages['sv_SE']['CHARSET'] = 'utf-8';
 $languages['sv_SE']['LOCALE']  = array('sv_SE.UTF-8','sv_SE');
 $languages['sv']['ALIAS']      = 'sv_SE';
 
+$languages['ta_LK']['NAME']    = 'Tamil';
+$languages['ta_LK']['ALTNAME'] = '&#2980;&#2990;&#3007;&#2996;&#3021;';
+$languages['ta_LK']['CHARSET'] = 'utf-8';
+$languages['ta_LK']['LOCALE']  = array('ta_LK.UTF-8', 'ta_LK', 'ta.UTF-8', 'ta');
+$languages['ta']['ALIAS'] = 'ta_LK';
+
 /* translation is disabled because it contains less than 50%
  * translated strings
 $languages['th_TH']['NAME']    = 'Thai';
