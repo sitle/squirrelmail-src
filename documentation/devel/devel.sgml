@@ -770,7 +770,7 @@ name="SquirrelMail development mailing list">.
 This chapter should explain how SquirrelMail internationalization works and
 provide information about some aspects of implementation.
 
-<sect1>Supported languages
+<sect1>Supported Languages<label id="supported_languages">
 <p>
 TODO: Remove statistics and add them dynamically to the i18n stat's page, using
 a script.
@@ -795,6 +795,7 @@ Valid language codes are (<em>list depends on SquirrelMail version</em>):
   <item>fi_FI - Finnish, iso-8859-1 charset
   <item>fo_FO - Faroese, iso-8859-1 charset
   <item>fr_FR - French, iso-8859-1 charset
+  <item>fy    - Frisian, utf-8 charset
   <item>he_IL - Hebrew, windows-1255 charset
   <item>hr_HR - Croatian, iso-8859-2 charset
   <item>hu_HU - Hungarian, iso-8859-2 charset
@@ -802,9 +803,11 @@ Valid language codes are (<em>list depends on SquirrelMail version</em>):
   <item>is_IS - Icelandic, iso-8859-1 charset
   <item>it_IT - Italian, iso-8859-1 charset
   <item>ja_JP - Japanese, euc-jp charset (emails are created in iso-2022-jp)
-  <item>ka - Georgian, utf-8 charset (since 1.5.1 and 1.4.6)
+  <item>ka    - Georgian, utf-8 charset (since 1.5.1 and 1.4.6)
   <item>ko_KR - Korean, euc-kr charset
+  <item>lv_LV - Latvian, utf-8 charset
   <item>lt_LT - Lithuanian, utf-8 charset
+  <item>mk    - Macedonian, utf-8 charset
   <item>ms_MY - Malay, iso-8859-1 charset
   <item>nb_NO - Norwegian (Bokmal), iso-8859-1 charset
   <item>nl_NL - Dutch, iso-8859-1 charset
@@ -815,15 +818,18 @@ Valid language codes are (<em>list depends on SquirrelMail version</em>):
   <item>ro_RO - Romanian, iso-8859-2 charset
   <item>ru_UA - Ukrainian Russian, koi8-r charset
   <item>ru_RU - Russian, utf-8 charset
+  <item>si_LK - Sinhala, utf-8 charset
   <item>sk_SK - Slovak, iso-8859-2 charset
   <item>sl_SI - Slovenian, iso-8859-2 charset
   <item>sr_YU - Serbian, iso-8859-2 charset
   <item>sv_SE - Swedish, iso-8859-1 charset
-  <item>ug    - Uighur, utf-8 charset (some systems don't support Uighur system locale)
+  <item>ta_SK - Tamil (Sri Lanka), utf-8 charset
   <item>th_TH - Thai, tis-620 charset
   <item>tl_PH - Tagalog, iso-8859-1 charset (main translation is missing, only some plugins are translated)
   <item>tr_TR - Turkish, iso-8859-9 charset
+  <item>ug    - Uighur, utf-8 charset (some systems don't support Uighur system locale)
   <item>uk_UA - Ukrainian, koi8-u charset
+  <item>vi_VN - Vietnamese, utf-8 charset
   <item>zh_CN - Chinese Simplified, gb2312 charset
   <item>zh_TW - Chinese Traditional, big5 charset
 </itemize>
@@ -832,7 +838,7 @@ Charset totals:
 <itemize>
   <item>iso-8859-1   = 21
   <item>iso-8859-2   = 8
-  <item>utf-8        = 6
+  <item>utf-8        = 12
   <item>iso-8859-15  = 2
   <item>iso-8859-7   = 1
   <item>iso-8859-9   = 1
@@ -846,47 +852,66 @@ Charset totals:
   <item>big5         = 1
   <item>euc-jp       = 1
   <item>euc-kr       = 1
+  <item>TOTAL        = 55
 </itemize>
 
-<sect1>The <tt>$languages</tt> array
+<sect1>The <tt>$languages</tt> array<label id="languages_array">
 <p>
-The <tt>$languages</tt> array is stored in <tt>functions/i18n.php</tt> and defines translations
-that are enabled in SquirrelMail. Since SquirrelMail 1.5.1 <tt>functions/i18n.php</tt>
-stores only English entry. Other languages are loaded automatically from
-<tt>locale/&lt;language_code&gt;/setup.php</tt> files.
+The <tt>$languages</tt> array is defined in <tt>functions/i18n.php</tt> (which has been
+moved to <tt>include/languages.php</tt> as of SquirrelMail 1.5.2) and defines translations
+that are enabled in SquirrelMail. Starting with SquirrelMail 1.5.1, only the English
+language entry is defined in the core; other languages are added automatically to the
+<tt>$languages</tt> array from a file in the locale pack:
+<tt>locale/&lt;language_code&gt;/setup.php</tt>.
 
 Format of array:
 
 <tscreen><verb>
-    $languages['language_code']['key'] = 'value'
+    $languages['language_code']['key'] = 'value';
 </verb></tscreen>
 
 Possible array key names:
 <descrip>
-  <tag/NAME/ Translation name in English. Any 8bit symbols must be HTML encoded.
-  <tag/CHARSET/ Charset used by translation
-  <tag/ALIAS/ 'language_code' should contain short language name
-              (ISO-639). 'value' should contain name of other 'language_code'
-              that defines translation with NAME and CHARSET keys.
-              Entry links short language form with long form (language+country).
-              See: http://loc.gov/standards/iso639-2/langhome.html and
-              http://www.iso.org/iso/en/prods-services/iso3166ma/02iso-3166-code-lists/list-en1.html
-  <tag/ALTNAME/ Native translation name. Any 8bit symbols must be HTML encoded.
-              Name is visible when $show_alternative_names is enabled.
-  <tag/LOCALE/ Full locale name (in xx_XX.charset format or other format required
-              by PHP gettext functions). From 1.4.4/1.5.1 'value' can contain
-              array. If PHP version is older than 4.3.0, system uses only first
-              locale name listed in array. First locale name must be compatible
-              with FreeBSD system locale names.
-  <tag/DIR/ Text direction. Used to define Right-to-Left languages. Possible
-              values 'rtl' or 'ltr'. If undefined - defaults to 'ltr'.
-  <tag/XTRA_CODE/ translation uses special functions. (see chapter about XTRA_CODE functions)
+  <tag/NAME/ The name of the language in English. HTML encoding must be used for
+             any 8-bit symbols.
+  <tag/ALTNAME/ The native language name (the name of the language in that language
+                itself). HTML encoding must be used for any 8-bit symbols. This name
+                is shown when <tt>$show_alternative_names</tt> is enabled in
+                <tt>config/config.php</tt> (or use the configuration utiltiy and
+                choose "10. Language settings" --> "3. Show alternative language names")
+                (for SquirrelMail 1.5.0 and up).
+  <tag/CHARSET/ The character set used for the translation.
+  <tag/LOCALE/ The full locale name (in "xx_XX.charset" format or other format required
+               by PHP gettext functions). Starting with 1.4.4/1.5.1 and up, 'value' can
+               contain an array. If the PHP version is older than 4.3.0, the system will
+               use only the first locale name listed in the array. The first locale name
+               must be compatible with the FreeBSD system locale names. Under all other
+               setups, if the first locale is not supported, SquirrelMail will continue
+               to try the other locales in the order given in this array. Developers
+               can check for supported locale names on their system by checking the
+               contents of, for example, <tt>/usr/lib/locale/</tt> (RedHat/Fedora).
+  <tag/ALIAS/ Any number of aliased language codes can be linked to a given translation
+              by creating one ALIAS entry for each link. The 'language_code' for the
+              alias should contain the aliased language code and the 'value' should
+              contain the language code SquirrelMail uses to store the actual translation.
+              For example, the <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/locales/locale/nb_NO/setup.php?view=markup" name="Norwegian">
+              Translation is stored in SquirrelMail as "nb_NO", but it also has an
+              alias for its ISO-639-1 code "nb".
+              See: <url url="http://loc.gov/standards/iso639-2/langhome.html"
+              name="ISO 639 list"> and
+              <url url="http://www.iso.org/iso/en/prods-services/iso3166ma/02iso-3166-code-lists/list-en1.html"
+              name="country code list">
+  <tag/DIR/ The text direction of the language. This is used to indicate
+            right-to-left languages and is not needed otherwise. Possible
+            values are 'rtl' or 'ltr' (when undefined, it defaults to 'ltr').
+  <tag/XTRA_CODE/ Indicates that the translation uses special functions. (see
+                  <ref id="language_xtra_code" name="chapter about XTRA_CODE functions">)
 </descrip>
 
-Each 'language_code' definition requires NAME+CHARSET or ALIAS keys. Other keys are
-optional.
+Note that each 'language_code' definition requires at least the NAME and CHARSET keys
+or just the ALIAS key. All other keys are optional.
 
-<sect1>XTRA_CODE functions
+<sect1>XTRA_CODE functions<label id="language_xtra_code">
 <p>
 XTRA_CODE functions provide way to change interface behavior, when translation
 requires special handling of some SquirrelMail functions. Functions are enabled
@@ -2658,6 +2683,147 @@ When the plugin is approved and you're granted access to upload it, all you have
 to do is the actual uploading along with filling out some general information 
 about the plugin and what it does.
 
+<sect>Project Administration
+<p>
+TODO: This section may still need cleanup and/or some conversion to LinuxDoc format.
+
+<sect1>Release Instructions
+<p>
+
+<enum>
+<item><bf/Teamwork:/ Before beginning, coordinate the release with other members of the admin list to ensure proper time for verification and testing of release components (RPM, etc).
+<item><bf/Usual sanity:/ Check the code over to make sure we are absolutely ready.
+<item><bf/Documentation:/ Update Release Documents
+    <enum>
+         <item> Make sure that the ChangeLog is up to date - remember to put the release date in place of <tt/SVN/ at the top of the file.
+         <item> Update the ReleaseNotes, keeping the same general format.
+         <item> Compose a three to eight line message you'll post to mailinglists and forums. Include links. (While you're at it, make a simple HTML version of it as well, you'll need it later) Be BRIEF. Keep this message in your editor or on file for later on.
+   </enum>
+<item><bf/Gearing up:/ Update the version number strings at 3 places:
+    <enum>
+         <item> Variables in <tt>functions/strings.php</tt> (<tt>$version = '1.2.1', $SQM_INTERNAL_VERSION=array(1,2,1)</tt>).
+         <item> <tt>ChangeLog</tt>
+         <item> <tt>ReleaseNotes</tt>
+    </enum>
+<item><bf/SVN packaging:/
+    <enum>
+         <item> Commit final changes to Subversion (ChangeLog, ReleaseNotes, functions/strings.php)
+         <item> Tag SVN with the release number in the format rel-X_Y_Z (rel-1_2_1). Example:
+            <tscreen>
+svn copy https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/branches/SM-1_4-STABLE/squirrelmail \
+    https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/rel-1_2_1
+            </tscreen>
+         <item> Use the script <tt>make-release</tt> <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/util/make-release" name="found in SVN"> under the <tt>util/</tt> dir. The only parameter
+         is the version to release. It will download the tagged SVN copy, pack it up nicely and upload it to SF.net (CORRECTION - the upload commands are currently commented out, so you'll need to do that manually or edit the script to do that for you).
+         You will need the following tools: bash, svn, ssh, curl, tar, gzip, zip, bzip2 and optionally rpmbuild.
+         <item> Upload the release files to Sourceforge.net, see <url url="http://alexandria.wiki.sourceforge.net/File+Release+System+-+Offering+Files+for+Download#upload" name="sf.net instructions">.
+         <item> (huh: don't go to sleep before you're finished making the release)
+     </enum>
+<item><bf/Defrosting:/ Prepare SVN for continued development
+    <enum>
+         <item> Go back to your regular SVN development directory.
+         <item> Update the version number variable in functions/strings.php by incrementing the incremental release number by 1 and adding <tt>' [SVN]'</tt> after it (<tt>$version = '1.2.2 [SVN]';</tt>).
+         <item> Add a new section in ChangeLog for the new release, followed by <tt>' - SVN'</tt>
+         <item> Archive the ReleaseNotes for this release like this:
+         <tscreen>svn copy ReleaseNotes doc/ReleaseNotes/X.Y/Notes-X.Y.Z.txt</tscreen>
+         <item> Commit all these changes to SVN with a note saying that it is ready for continued development.
+    </enum>
+<item><bf/sf.net admin stuff:/ Post the release files on SourceForge (you need to be a "release technician" to do this)
+    <enum>
+         <item> Create the new release of files
+            <enum>
+               <item> Log into SourceForge and go to the Admin section, File Releases.
+               <item> Click on the "add release" button for the correct package.
+               <item> Enter the release name in the box show in X.Y.Z format (no SquirrelMail or anything, just X.Y.Z).
+               <item> The next page it shows you will be the same page you get to if you clicked on "edit release" from the "Edit/Release Files" page earlier and selected a release name.
+         </enum>
+         <item> Enter the ChangeLog and ReleaseNotes for this SourceForge file release.
+         <item> Add the newly uploaded files to the release
+            <enum>
+               <item> Go down to the "add files to this release" section
+               <item> Select the files you recently uploaded (be nice and leave other peoples files alone).
+               <item> Click the "Add Files and/or Refresh View" button.
+            </enum>
+         <item> For each files added (tar.gz, tar.bz2, and zip), one at a time, set the file info correctly.
+            <enum>
+               <item> Set the processor to 'Platform-Independent'.
+               <item> Set the file type (.bz2 for the tar.bz2 file, .gz for the tar.gz file, .zip for the zip file, and .rpm for the .rpm files).
+               <item> Click the "Update/Refresh" button for that file.
+             </enum>
+         <item> Annouce the file release to those monitoring it with the button on the bottom of the page.
+     </enum>
+<item><bf/Enable downloading:/ Update the download page for the SquirrelMail website.
+    <enum>
+        <item> SSH into sciurida
+         <item> Change to the web directory for SquirrelMail (currently /srv/www/www/htdocs).
+         <item> Edit download.php and change the version number as necessary. This is a php variable in the top part of the file.
+         <item> Edit plugin_query.php file and change version number. This file informs pupdate plugin users about new release.
+         <item> Upload the md5sums that make-release calculated into the <tt>sums/</tt> dir.
+    </enum>
+<item><bf/Get porting assistance:/ contact our people who know how to make decent .deb and .rpm files
+    <enum>
+         <item> For Debian, this is taken care of by Thijs Kinkhorst and Jeroen van Wolffelaar
+         <item> RPM's are created by Konstantin Ryabitsev
+         <item> Mail or IM them, and ask them very politlely to take the time to create their files. point them to the download page where they can already grab the .tar.gz
+    </enum>
+<item><bf/Blatant yelling:/ Announce the release to the World.
+    <enum>
+         <item> Post the release to the SourceForge news system. (you need to be a "forum moderator" to do this)
+            <enum>
+               <item> Click on News in the SourceForge interface.
+               <item> Add a news item for this release in the SourceForge news system. (The 3 to 8 line message you've made)
+               <item> Submit the news, go preview it, and fix it if you did something silly. :)
+            </enum>
+         <item> Add a news item to the SquirrelMail webpage.
+            <enum>
+               <item> Go to the address <url name="http://squirrelmail.org/admin" url="http://squirrelmail.org/admin"> and log in.
+               <item> Click on news.
+               <item> Create a brief news item titled in the format 'ANNOUNCE: SquirrelMail X.Y.Z Released'. Use the three to eight line message (you have to use HTML, no wiki pretty formatting here).
+               <item> Submit the news, go preview it, and fix it if you did something silly. :)
+            </enum>
+         <item> Send a message to squirrelmail-announce telling people about the release.
+            <enum>
+               <item> Also, currently, it seems to have become convention that the message gets sent to all our other mailing lists: <tt>squirrelmail-announce@lists.sourceforge.net,  squirrelmail-users@lists.sourceforge.net, squirrelmail-plugins@lists.sourceforge.net, squirrelmail-devel@lists.sourceforge.net, squirrelmail-i18n@lists.sourceforge.net</tt> 
+               <item> Again, use your brief 3 to 8 line message
+               <item> The subject should read "ANNOUNCE: SquirrelMail X.Y.Z Released"
+               <item> Approve the message
+                    <enum>
+                     <item> Log in to the <url name="squirrelmail-announce administrative interface"
+                        url="http://lists.sourceforge.net/lists/admin/squirrelmail-announce">.
+                     <item> Choose "Tend to pending administrative requests"
+                     <item> Read the message, make sure you made no silly mistake whatsoever, and approve of it
+                     <item> Log out
+                    </enum>
+             </enum>
+          <item>Update <url name="freshmeat.net" url="http://freshmeat.net/projects/squirrelmail/">.
+     </enum>
+</enum>
+
+<sect1>Adding New Languages
+<p>
+
+<enum>
+<item><bf/Validate the translation:/ Before beginning, there are several things that need to be verified for the translation to be acceptable:
+    <enum>
+         <item><bf/Copyright:/ Make sure it's OK to assign the copyright to the SquirrelMail project. We won't accept translations with other copyright holders.
+         <item><bf/Validate what was translated:/ The typical starting point for translating the SquirrelMail core is the most recent 1.4.x translation pack release squirrelmail.pot file, the most current of which is found in SVN <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/branches/SM-1_4_15/locales/po/squirrelmail.pot?view=markup" name="/branches/SM-1_4_15/locales/po">. However, the most comprehensive list of strings (for both STABLE and DEVEL) is always found in the SVN <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/locales/po/" name="trunk locales">, which is also the starting point for making new language pack releases.
+         <item><bf/We want UTF-8:/ If the translation isn't already in UTF-8, push very hard to have the translator convert to UTF-8. SquirrelMail 1.5.x will soon be UTF-only, in which case we will stop accepting non-Unicode translations.
+         <item><bf/Inspect headers/ Compare the translation headers to one of the better ones already in the repository, such as Swedish (<url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/locales/locale/sv_SE/LC_MESSAGES/squirrelmail.po?view=markup" name="sv_SE">). Ask the translator to fix any problems with the headers.
+         <item><bf/We want two letter ISO 639-1:/ If the translator has chosen a language code with attached region code, work with them to understand if the region code is necessary. If at all possible, we want languages with just the language code ("de" instead of "de_DE"; the latter is in the SquirrelMail repository only for legacy reasons). Check other projects to get an idea of the region code is needed such as <url url="http://l10n.kde.org/" name="KDE">, <url url="http://websvn.kde.org/trunk/l10n-kde4/" name="KDE">, Gnome, <url url="http://www.debian.org/international/l10n/po/" name="Debian">, Ubuntu, <url url="http://translate.fedoraproject.org/languages" name="Fedora">, Drupal, etc. Ideally, only the lower case two letter <url url="http://wikipedia.org/wiki/List_of_ISO_639-1_codes" name="ISO 639-1"> language code is used. If the region code is needed, make sure the language code is lower case and the region code is upper case ("de_DE").
+         <item><bf/Sanity check:/ Have a look over the translation file(s) and make sure they look reasonable.
+         <item><bf/sec_remove image:/ Ask for a translated copy of the <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/squirrelmail/images/sec_remove_eng.png?view=markup" name="sec_remove_eng.png"> image file (renamed, of course, to sec_remove_&lt;language&gt;.png).
+         <item><bf/sec_remove strings:/ The sec_remove_eng.png string in the squirrelmail.po file should be "translated" to sec_remove_&lt;language&gt;.png. The string in the image itself ("This image has been removed for security reasons") is also in the .pot file and should be translated in the .po file.
+   </enum>
+<item><bf/Create setup.php:/ Each language has its own setup.php file found in the top-level language directory (alongside LC_MESSAGES). A good starting point is to look at an existing example such as the Norwegian (<url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/locales/locale/nb_NO/setup.php?view=markup" name="nb_NO">) one. See our <ref id="languages_array" name="explanation of the $languages array"> manual section.
+<item><bf/Update i18n.php:/ Copy the contents of the language setup.php file created in the previous step into a block in the STABLE branch <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/branches/SM-1_4-STABLE/squirrelmail/functions/i18n.php?view=markup" name="functions/i18n.php"> file.
+<item><bf/Place translations in SVN trunk:/ The main translations should go in SVN <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/locales/locale/" name="trunk/locales/locale">/&lt;language&gt;/LC_MESSAGES. There are two directories in the LC_MESSAGES directory for most languages: "plugins", which contains translations for plugins that are still coded such that translation files need to be placed within the plugin itself (obsolete).  The "extra" directory contains other translation files for broken things (mostly plugins with missing or incorrect internationalization efforts). These all correspond to the .pot files we provide, so where the translated files go should be rather obvious. Properly coded plugin translation files belong in the top-level LC_MESSAGES directory.
+<item><bf/sec_remove image:/ The translated sec_remove image file should be placed in the main <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/locales/images/" name="locales images"> directory.
+<item><bf/Update SourceForge:/ Add the language to the list of supported translations on the SquirrelMail project page by logging in as an administrator and going to: "Project Admin" --> "Public Info" --> "Edit Trove Categorization" --> "Translations"
+<item><bf/Update SquirrelMail manual:/ Update the supported languages list in the Developer's Manual (<ref id="supported_languages" name="&quot;Supported Languages&quot; in docs/devel/devel-3">).
+<item><bf/Add translator(s):/ Add the translation maintainer(s) to the <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/locales/TRANSLATORS?view=markup" name="TRANSLATORS"> file.
+<item><bf/Changelog:/ Add the new translation to the Changelog for both STABLE and DEVEL.
+</enum>
+
 <sect>Miscellaneous
 <p>
 TODO: This is a quick and dirty import of the documents in "/doc/Development".
@@ -3321,118 +3487,6 @@ create, etc).
 Preorder walking gives you the tree from the leaves up. Postorder
 walks the tree from the root node down to the leaves.
 </verb></tscreen>
-
-<sect1>Release Instructions
-<p>
-
-<enum>
-<item><bf/Teamwork/ Before beginning, coordinate the release with other members of the admin list to ensure proper time for verification and testing of release components (RPM, etc).
-<item><bf/Usual sanity/ Check the code over to make sure we are absolutely ready.
-<item><bf/Documentation/ Update Release Documents
-    <enum>
-         <item> Make sure that the ChangeLog is up to date - remember to put the release date in place of <tt/SVN/ at the top of the file.
-         <item> Update the ReleaseNotes, keeping the same general format.
-         <item> Compose a three to eight line message you'll post to mailinglists and forums. Include links. (While you're at it, make a simple HTML version of it as well, you'll need it later) Be BRIEF. Keep this message in your editor or on file for later on.
-   </enum>
-<item><bf/Gearing up/ Update the version number strings at 3 places:
-    <enum>
-         <item> Variables in <tt>functions/strings.php</tt> (<tt>$version = '1.2.1', $SQM_INTERNAL_VERSION=array(1,2,1)</tt>).
-         <item> <tt>ChangeLog</tt>
-         <item> <tt>ReleaseNotes</tt>
-    </enum>
-<item><bf/SVN packaging/
-    <enum>
-         <item> Commit final changes to Subversion (ChangeLog, ReleaseNotes, functions/strings.php)
-         <item> Tag SVN with the release number in the format rel-X_Y_Z (rel-1_2_1). Example:
-            <tscreen>
-svn copy https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/branches/SM-1_4-STABLE/squirrelmail \
-    https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/rel-1_2_1
-            </tscreen>
-         <item> Use the script <tt>make-release</tt> <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/util/make-release" name="found in SVN"> under the <tt>util/</tt> dir. The only parameter
-         is the version to release. It will download the tagged SVN copy, pack it up nicely and upload it to SF.net (CORRECTION - the upload commands are currently commented out, so you'll need to do that manually or edit the script to do that for you).
-         You will need the following tools: bash, svn, ssh, curl, tar, gzip, zip, bzip2 and optionally rpmbuild.
-         <item> Upload the release files to Sourceforge.net, see <url url="http://alexandria.wiki.sourceforge.net/File+Release+System+-+Offering+Files+for+Download#upload" name="sf.net instructions">.
-         <item> (huh: don't go to sleep before you're finished making the release)
-     </enum>
-<item><bf/Defrosting/ Prepare SVN for continued development
-    <enum>
-         <item> Go back to your regular SVN development directory.
-         <item> Update the version number variable in functions/strings.php by incrementing the incremental release number by 1 and adding <tt>' [SVN]'</tt> after it (<tt>$version = '1.2.2 [SVN]';</tt>).
-         <item> Add a new section in ChangeLog for the new release, followed by <tt>' - SVN'</tt>
-         <item> Archive the ReleaseNotes for this release like this:
-         <tscreen>svn copy ReleaseNotes doc/ReleaseNotes/X.Y/Notes-X.Y.Z.txt</tscreen>
-         <item> Commit all these changes to SVN with a note saying that it is ready for continued development.
-    </enum>
-<item><bf/sf.net admin stuff/ Post the release files on SourceForge (you need to be a "release technician" to do this)
-    <enum>
-         <item> Create the new release of files
-            <enum>
-               <item> Log into SourceForge and go to the Admin section, File Releases.
-               <item> Click on the "add release" button for the correct package.
-               <item> Enter the release name in the box show in X.Y.Z format (no SquirrelMail or anything, just X.Y.Z).
-               <item> The next page it shows you will be the same page you get to if you clicked on "edit release" from the "Edit/Release Files" page earlier and selected a release name.
-         </enum>
-         <item> Enter the ChangeLog and ReleaseNotes for this SourceForge file release.
-         <item> Add the newly uploaded files to the release
-            <enum>
-               <item> Go down to the "add files to this release" section
-               <item> Select the files you recently uploaded (be nice and leave other peoples files alone).
-               <item> Click the "Add Files and/or Refresh View" button.
-            </enum>
-         <item> For each files added (tar.gz, tar.bz2, and zip), one at a time, set the file info correctly.
-            <enum>
-               <item> Set the processor to 'Platform-Independent'.
-               <item> Set the file type (.bz2 for the tar.bz2 file, .gz for the tar.gz file, .zip for the zip file, and .rpm for the .rpm files).
-               <item> Click the "Update/Refresh" button for that file.
-             </enum>
-         <item> Annouce the file release to those monitoring it with the button on the bottom of the page.
-     </enum>
-<item><bf/Enable downloading/ Update the download page for the SquirrelMail website.
-    <enum>
-        <item> SSH into sciurida
-         <item> Change to the web directory for SquirrelMail (currently /srv/www/www/htdocs).
-         <item> Edit download.php and change the version number as necessary. This is a php variable in the top part of the file.
-         <item> Edit plugin_query.php file and change version number. This file informs pupdate plugin users about new release.
-         <item> Upload the md5sums that make-release calculated into the <tt>sums/</tt> dir.
-    </enum>
-<item><bf/Get porting assistance/ contact our people who know how to make decent .deb and .rpm files
-    <enum>
-         <item> For Debian, this is taken care of by Thijs Kinkhorst and Jeroen van Wolffelaar
-         <item> RPM's are created by Konstantin Ryabitsev
-         <item> Mail or IM them, and ask them very politlely to take the time to create their files. point them to the download page where they can already grab the .tar.gz
-    </enum>
-<item><bf/Blatant yelling/ Announce the release to the World.
-    <enum>
-         <item> Post the release to the SourceForge news system. (you need to be a "forum moderator" to do this)
-            <enum>
-               <item> Click on News in the SourceForge interface.
-               <item> Add a news item for this release in the SourceForge news system. (The 3 to 8 line message you've made)
-               <item> Submit the news, go preview it, and fix it if you did something silly. :)
-            </enum>
-         <item> Add a news item to the SquirrelMail webpage.
-            <enum>
-               <item> Go to the address <url name="http://squirrelmail.org/admin" url="http://squirrelmail.org/admin"> and log in.
-               <item> Click on news.
-               <item> Create a brief news item titled in the format 'ANNOUNCE: SquirrelMail X.Y.Z Released'. Use the three to eight line message (you have to use HTML, no wiki pretty formatting here).
-               <item> Submit the news, go preview it, and fix it if you did something silly. :)
-            </enum>
-         <item> Send a message to squirrelmail-announce telling people about the release.
-            <enum>
-               <item> Also, currently, it seems to have become convention that the message gets sent to all our other mailing lists: <tt>squirrelmail-announce@lists.sourceforge.net,  squirrelmail-users@lists.sourceforge.net, squirrelmail-plugins@lists.sourceforge.net, squirrelmail-devel@lists.sourceforge.net, squirrelmail-i18n@lists.sourceforge.net</tt> 
-               <item> Again, use your brief 3 to 8 line message
-               <item> The subject should read "ANNOUNCE: SquirrelMail X.Y.Z Released"
-               <item> Approve the message
-                    <enum>
-                     <item> Log in to the <url name="squirrelmail-announce administrative interface"
-                        url="http://lists.sourceforge.net/lists/admin/squirrelmail-announce">.
-                     <item> Choose "Tend to pending administrative requests"
-                     <item> Read the message, make sure you made no silly mistake whatsoever, and approve of it
-                     <item> Log out
-                    </enum>
-             </enum>
-          <item>Update <url name="freshmeat.net" url="http://freshmeat.net/projects/squirrelmail/">.
-     </enum>
-</enum>
 
 <appendix>
 
