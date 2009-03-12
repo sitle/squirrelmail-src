@@ -2812,24 +2812,98 @@ svn copy https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/branches/
 <p>
 
 <enum>
-<item><bf/Validate the translation:/ Before beginning, there are several things that need to be verified for the translation to be acceptable:
+<item><bf/Validate the translation:/ Before beginning, there are several things
+          that need to be verified for the translation to be acceptable:
     <enum>
-         <item><bf/Copyright:/ Make sure it's OK to assign the copyright to the SquirrelMail project. We won't accept translations with other copyright holders.
-         <item><bf/Validate what was translated:/ The typical starting point for translating the SquirrelMail core is the most recent 1.4.x translation pack release squirrelmail.pot file, the most current of which is found in SVN <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/branches/SM-1_4_15/locales/po/squirrelmail.pot?view=markup" name="/branches/SM-1_4_15/locales/po">. However, the most comprehensive list of strings (for both STABLE and DEVEL) is always found in the SVN <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/locales/po/" name="trunk locales">, which is also the starting point for making new language pack releases.
-         <item><bf/We want UTF-8:/ If the translation isn't already in UTF-8, push very hard to have the translator convert to UTF-8. SquirrelMail 1.5.x will soon be UTF-only, in which case we will stop accepting non-Unicode translations.
-         <item><bf/Inspect headers/ Compare the translation headers to one of the better ones already in the repository, such as Swedish (<url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/locales/locale/sv_SE/LC_MESSAGES/squirrelmail.po?view=markup" name="sv_SE">). Ask the translator to fix any problems with the headers.
-         <item><bf/We want two letter ISO 639-1:/ If the translator has chosen a language code with attached region code, work with them to understand if the region code is necessary. If at all possible, we want languages with just the language code ("de" instead of "de_DE"; the latter is in the SquirrelMail repository only for legacy reasons). Check other projects to get an idea of the region code is needed such as <url url="http://l10n.kde.org/" name="KDE">, <url url="http://websvn.kde.org/trunk/l10n-kde4/" name="KDE">, Gnome, <url url="http://www.debian.org/international/l10n/po/" name="Debian">, Ubuntu, <url url="http://translate.fedoraproject.org/languages" name="Fedora">, Drupal, etc. Ideally, only the lower case two letter <url url="http://wikipedia.org/wiki/List_of_ISO_639-1_codes" name="ISO 639-1"> language code is used. If the region code is needed, make sure the language code is lower case and the region code is upper case ("de_DE").
-         <item><bf/Sanity check:/ Have a look over the translation file(s) and make sure they look reasonable.
-         <item><bf/sec_remove image:/ Ask for a translated copy of the <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/squirrelmail/images/sec_remove_eng.png?view=markup" name="sec_remove_eng.png"> image file (renamed, of course, to sec_remove_&lt;language&gt;.png).
-         <item><bf/sec_remove strings:/ The sec_remove_eng.png string in the squirrelmail.po file should be "translated" to sec_remove_&lt;language&gt;.png. The string in the image itself ("This image has been removed for security reasons") is also in the .pot file and should be translated in the .po file.
+         <item><bf/Copyright:/ Make sure it's OK to assign the copyright to the
+                   SquirrelMail project. We won't accept translations with other
+                   copyright holders.
+         <item><bf/Validate what was translated:/ The typical starting point for
+                   translating the SquirrelMail core is the most recent 1.4.x
+                   translation pack release squirrelmail.pot file, the most current
+                   of which is found in SVN
+                   <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/branches/SM-1_4_15/locales/po/squirrelmail.pot?view=markup"
+                   name="/branches/SM-1_4_15/locales/po">. However, the most
+                   comprehensive list of strings (for both STABLE and DEVEL) is
+                   always found in the SVN
+                   <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/locales/po/"
+                   name="trunk locales">, which is also the starting point for making
+                   new language pack releases.
+         <item><bf/We want UTF-8:/ If the translation isn't already in UTF-8, push
+                   very hard to have the translator convert to UTF-8. SquirrelMail
+                   1.5.x will soon be UTF-only, in which case we will stop accepting
+                   non-Unicode translations.
+         <item><bf/Inspect headers/ Compare the translation headers to one of the
+                   better ones already in the repository, such as Swedish
+                   (<url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/locales/locale/sv_SE/LC_MESSAGES/squirrelmail.po?view=markup"
+                   name="sv_SE">). Ask the translator to fix any problems with the
+                   headers.
+         <item><bf/We want two letter ISO 639-1:/ If the translator has chosen a
+                   language code with attached region code, work with them to understand
+                   if the region code is necessary. If at all possible, we want
+                   languages with just the language code ("de" instead of "de_DE";
+                   the latter is in the SquirrelMail repository only for legacy
+                   reasons). Check other projects to get an idea of the region code
+                   is needed such as <url url="http://l10n.kde.org/" name="KDE">,
+                   <url url="http://websvn.kde.org/trunk/l10n-kde4/" name="KDE">,
+                   Gnome, <url url="http://www.debian.org/international/l10n/po/"
+                   name="Debian">, Ubuntu,
+                   <url url="http://translate.fedoraproject.org/languages" name="Fedora">,
+                   Drupal, etc. Ideally, only the lower case two letter
+                   <url url="http://wikipedia.org/wiki/List_of_ISO_639-1_codes"
+                   name="ISO 639-1"> language code is used. If the region code is
+                   needed, make sure the language code is lower case and the region
+                   code is upper case ("de_DE").
+         <item><bf/Sanity check:/ Have a look over the translation file(s) and make
+                   sure they look reasonable.
+         <item><bf/sec_remove image:/ Ask for a translated copy of the
+                   <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/squirrelmail/images/sec_remove_eng.png?view=markup"
+                   name="sec_remove_eng.png"> image file (renamed, of course, to
+                   sec_remove_&lt;language&gt;.png).
+         <item><bf/sec_remove strings:/ The sec_remove_eng.png string in the
+                   squirrelmail.po file should be "translated" to
+                   sec_remove_&lt;language&gt;.png. The string in the image itself
+                   ("This image has been removed for security reasons") is also in
+                   the .pot file and should be translated in the .po file.
    </enum>
-<item><bf/Create setup.php:/ Each language has its own setup.php file found in the top-level language directory (alongside LC_MESSAGES). A good starting point is to look at an existing example such as the Norwegian (<url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/locales/locale/nb_NO/setup.php?view=markup" name="nb_NO">) one. See our <ref id="languages_array" name="explanation of the $languages array"> manual section.
-<item><bf/Update i18n.php:/ Copy the contents of the language setup.php file created in the previous step into a block in the STABLE branch <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/branches/SM-1_4-STABLE/squirrelmail/functions/i18n.php?view=markup" name="functions/i18n.php"> file.
-<item><bf/Place translations in SVN trunk:/ The main translations should go in SVN <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/locales/locale/" name="trunk/locales/locale">/&lt;language&gt;/LC_MESSAGES. There are two directories in the LC_MESSAGES directory for most languages: "plugins", which contains translations for plugins that are still coded such that translation files need to be placed within the plugin itself (obsolete).  The "extra" directory contains other translation files for broken things (mostly plugins with missing or incorrect internationalization efforts). These all correspond to the .pot files we provide, so where the translated files go should be rather obvious. Properly coded plugin translation files belong in the top-level LC_MESSAGES directory.
-<item><bf/sec_remove image:/ The translated sec_remove image file should be placed in the main <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/locales/images/" name="locales images"> directory.
-<item><bf/Update SourceForge:/ Add the language to the list of supported translations on the SquirrelMail project page by logging in as an administrator and going to: "Project Admin" --> "Public Info" --> "Edit Trove Categorization" --> "Translations"
-<item><bf/Update SquirrelMail manual:/ Update the supported languages list in the Developer's Manual (<ref id="supported_languages" name="&quot;Supported Languages&quot; in docs/devel/devel-3">).
-<item><bf/Add translator(s):/ Add the translation maintainer(s) to the <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/locales/TRANSLATORS?view=markup" name="TRANSLATORS"> file.
+<item><bf/Create setup.php:/ Each language has its own setup.php file found in
+          the top-level language directory (alongside LC_MESSAGES). A good starting
+          point is to look at an existing example such as the Norwegian
+          (<url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/locales/locale/nb_NO/setup.php?view=markup"
+          name="nb_NO">) one. See our <ref id="languages_array" name="explanation of
+          the $languages array"> manual section.
+<item><bf/Update i18n.php:/ Copy the contents of the language setup.php file created
+          in the previous step into a block in the STABLE branch
+          <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/branches/SM-1_4-STABLE/squirrelmail/functions/i18n.php?view=markup"
+          name="functions/i18n.php"> file.
+<item><bf/Place translations in SVN trunk:/ The main translations should go in SVN
+          <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/locales/locale/"
+          name="trunk/locales/locale">/&lt;language&gt;/LC_MESSAGES. There are two
+          directories in the LC_MESSAGES directory for most languages: "plugins",
+          which contains translations for plugins that are still coded such that
+          translation files need to be placed within the plugin itself (obsolete).
+          The "extra" directory contains other translation files for broken things
+          (mostly plugins with missing or incorrect internationalization efforts).
+          These all correspond to the .pot files we provide, so where the translated
+          files go should be rather obvious. Properly coded plugin translation files
+          belong in the top-level LC_MESSAGES directory.
+<item><bf/sec_remove image:/ The translated sec_remove image file should be placed
+          in the main
+          <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/locales/images/"
+          name="locales images"> directory.
+<item><bf/Update SourceForge:/ Add the language to the list of supported translations
+          on the SquirrelMail project page by logging in as an administrator and going
+          to: "Project Admin" --> "Public Info" --> "Edit Trove Categorization"
+          --> "Translations"
+<item><bf/Update SquirrelMail manual:/ Update the supported languages list in the
+          Developer's Manual (<ref id="supported_languages"
+          name="&quot;Supported Languages&quot; in docs/devel/devel-3">).
+<item><bf/Add translator(s):/ Add the translation maintainer(s) to the
+          <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/locales/TRANSLATORS?view=markup"
+          name="TRANSLATORS"> file.
+<item><bf/Update statistics:/ Add the translation team to the
+          <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/locales/teamnames?view=markup"
+          name="teamnames"> file.
 <item><bf/Changelog:/ Add the new translation to the Changelog for both STABLE and DEVEL.
 </enum>
 
