@@ -2685,7 +2685,6 @@ about the plugin and what it does.
 
 <sect>Project Administration
 <p>
-TODO: This section may still need cleanup and/or some conversion to LinuxDoc format.
 
 <sect1>Release Instructions
 <p>
@@ -2698,7 +2697,7 @@ TODO: This section may still need cleanup and/or some conversion to LinuxDoc for
          <item> Make sure that the ChangeLog is up to date - remember to put the release date in place of <tt/SVN/ at the top of the file.
          <item> Update the ReleaseNotes, keeping the same general format.
          <item> Compose a three to eight line message you'll post to mailinglists and forums. Include links. (While you're at it, make a simple HTML version of it as well, you'll need it later) Be BRIEF. Keep this message in your editor or on file for later on.
-   </enum>
+    </enum>
 <item><bf/Gearing up:/ Update the version number strings at 3 places:
     <enum>
          <item> Variables in <tt>functions/strings.php</tt> (<tt>$version = '1.2.1', $SQM_INTERNAL_VERSION=array(1,2,1)</tt>).
@@ -2716,7 +2715,17 @@ svn copy https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/branches/
          <item> Use the script <tt>make-release</tt> <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/util/make-release" name="found in SVN"> under the <tt>util/</tt> dir. The only parameter
          is the version to release. It will download the tagged SVN copy, pack it up nicely and upload it to SF.net (CORRECTION - the upload commands are currently commented out, so you'll need to do that manually or edit the script to do that for you).
          You will need the following tools: bash, svn, ssh, curl, tar, gzip, zip, bzip2 and optionally rpmbuild.
-         <item> Upload the release files to Sourceforge.net, see <url url="http://alexandria.wiki.sourceforge.net/File+Release+System+-+Offering+Files+for+Download#upload" name="sf.net instructions">.
+         <item> Create a GPG signature for each of the newly created release packages. Typically, this can be done with:
+             <enum>
+                 <item><tt>gpg -a --detach-sign --output squirrelmail-X.Y.Z.tar.gz.sig squirrelmail-X.Y.Z.tar.gz</tt>
+                 <item><tt>gpg -a --detach-sign --output squirrelmail-X.Y.Z.tar.bz2.sig squirrelmail-X.Y.Z.tar.bz2</tt>
+                 <item><tt>gpg -a --detach-sign --output squirrelmail-X.Y.Z.zip.sig squirrelmail-X.Y.Z.zip</tt>
+             </enum>
+                An example for how to verify that your signature worked would be:
+             <enum>
+                 <item><tt>gpg --verify squirrelmail-X.Y.Z.tar.gz.sig squirrelmail-X.Y.Z.tar.gz</tt>
+             </enum>
+         <item> Upload the release files (including the md5, sha and GPG signatures) to Sourceforge.net, see <url url="http://alexandria.wiki.sourceforge.net/File+Release+System+-+Offering+Files+for+Download#upload" name="sf.net instructions">.
          <item> (huh: don't go to sleep before you're finished making the release)
      </enum>
 <item><bf/Defrosting:/ Prepare SVN for continued development
