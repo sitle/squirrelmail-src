@@ -745,8 +745,12 @@ $languages['bg']['ALIAS']      = 'bg_BG';
 $languages['bn_IN']['NAME']    = 'Bengali';
 $languages['bn_IN']['CHARSET'] = 'utf-8';
 $languages['bn_IN']['LOCALE']  = 'bn_IN.UTF-8';
-$languages['bn_BD']['ALIAS'] = 'bn_IN';
-$languages['bn']['ALIAS'] = 'bn_IN';
+
+$languages['bn_BD']['NAME']    = 'Bengali';
+$languages['bn_BD']['ALTNAME'] = 'Bangla';
+$languages['bn_BD']['CHARSET'] = 'utf-8';
+$languages['bn_BD']['LOCALE']  = array('bn_BD.UTF-8', 'bn_BD', 'bn.UTF-8', 'bn');
+$languages['bn']['ALIAS'] = 'bn_BD';
 
 $languages['ca_ES']['NAME']    = 'Catalan';
 $languages['ca_ES']['CHARSET'] = 'iso-8859-1';
@@ -768,7 +772,8 @@ $languages['da_DK']['CHARSET'] = 'iso-8859-1';
 $languages['da_DK']['LOCALE']  = array('da_DK.ISO8859-1','da_DK.ISO-8859-1','da_DK');
 $languages['da']['ALIAS']      = 'da_DK';
 
-$languages['de_DE']['NAME']    = 'Deutsch';
+$languages['de_DE']['NAME']    = 'German';
+$languages['de_DE']['ALTNAME'] = 'Deutsch';
 $languages['de_DE']['CHARSET'] = 'iso-8859-1';
 $languages['de_DE']['LOCALE']  = array('de_DE.ISO8859-1','de_DE.ISO-8859-1','de_DE');
 $languages['de']['ALIAS']      = 'de_DE';
