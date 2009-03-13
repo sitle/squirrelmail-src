@@ -2,7 +2,7 @@
 /**
  * Language configuration file
  *
- * Copyright (c) 2005-2006 The SquirrelMail Project Team
+ * Copyright (c) 2005-2009 The SquirrelMail Project Team
  *
  * This file is part of SquirrelMail webmail interface. It is distributed
  * together with other translation files and is used to enable 
@@ -26,6 +26,8 @@
  * @package locales
  */
 
-$languages['bn_IN']['NAME']    = 'Bengali';
-$languages['bn_IN']['CHARSET'] = 'utf-8';
-$languages['bn_IN']['LOCALE']  = 'bn_IN.UTF-8';
+$languages['bn_BD']['NAME']    = 'Bengali';
+$languages['bn_BD']['ALTNAME'] = 'Bangla';
+$languages['bn_BD']['CHARSET'] = 'utf-8';
+$languages['bn_BD']['LOCALE']  = array('bn_BD.UTF-8', 'bn_BD', 'bn.UTF-8', 'bn');
+$languages['bn']['ALIAS'] = 'bn_BD';
