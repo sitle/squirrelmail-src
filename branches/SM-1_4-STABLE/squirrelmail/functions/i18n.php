@@ -925,6 +925,22 @@ $languages['ru_RU']['CHARSET'] = 'utf-8';
 $languages['ru_RU']['LOCALE']  = 'ru_RU.UTF-8';
 $languages['ru']['ALIAS']      = 'ru_RU';
 
+/* This translation is disabled because it is supposedly
+ * Russian slang and is in need of updating.
+$languages['ru_UA']['NAME']    = 'Russian (Ukrainian)';
+$languages['ru_UA']['CHARSET'] = 'koi8-r';
+$languages['ru_UA']['LOCALE']  = 'ru_UA.KOI8-R';
+*/
+
+/* This translation is disabled because it contains less than 50%
+ * translated strings
+$languages['si_LK']['NAME']    = 'Sinhala';
+$languages['si_LK']['ALTNAME'] = '&#3523;&#3538;&#3458;&#3524;&#3517;';
+$languages['si_LK']['CHARSET'] = 'utf-8';
+$languages['si_LK']['LOCALE']  = 'si_LK.UTF-8';
+$languages['si']['ALIAS'] = 'si_LK';
+*/
+
 $languages['sk_SK']['NAME']    = 'Slovak';
 $languages['sk_SK']['CHARSET'] = 'utf-8';
 $languages['sk_SK']['LOCALE']  = array('sk_SK.UTF-8','sk_SK');
@@ -951,12 +967,20 @@ $languages['ta_LK']['CHARSET'] = 'utf-8';
 $languages['ta_LK']['LOCALE']  = array('ta_LK.UTF-8', 'ta_LK', 'ta.UTF-8', 'ta');
 $languages['ta']['ALIAS'] = 'ta_LK';
 
-/* translation is disabled because it contains less than 50%
+/* This translation is disabled because it contains less than 50%
  * translated strings
 $languages['th_TH']['NAME']    = 'Thai';
 $languages['th_TH']['CHARSET'] = 'tis-620';
 $languages['th_TH']['LOCALE']  = 'th_TH.TIS-620';
 $languages['th']['ALIAS'] = 'th_TH';
+*/
+
+/* This translation is disabled because it contains less than 50%
+ * translated strings
+$languages['tl_PH']['NAME']    = 'Tagalog';
+$languages['tl_PH']['CHARSET'] = 'iso-8859-1';
+$languages['tl_PH']['LOCALE']  = array('tl_PH.ISO8859-1','tl_PH.ISO-8859-1','tl_PH');
+$languages['tl']['ALIAS'] = 'tl_PH';
 */
 
 $languages['tr_TR']['NAME']    = 'Turkish';
