@@ -27,7 +27,8 @@
  */
 
 $languages['bn_BD']['NAME']    = 'Bengali (Bangladesh)';
-$languages['bn_BD']['ALTNAME'] = 'Bangla';
+//$languages['bn_BD']['ALTNAME'] = 'Bangla';
+$languages['bn_BD']['ALTNAME'] = '&#x09AC;&#x09BE;&#x0982;&#x09B2;&#x09BE;';
 $languages['bn_BD']['CHARSET'] = 'utf-8';
 $languages['bn_BD']['LOCALE']  = array('bn_BD.UTF-8', 'bn_BD', 'bn.UTF-8', 'bn');
 $languages['bn']['ALIAS'] = 'bn_BD';
