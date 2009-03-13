@@ -26,6 +26,6 @@
  * @package locales
  */
 
-$languages['bn_IN']['NAME']    = 'Bengali';
+$languages['bn_IN']['NAME']    = 'Indian Bengali';
 $languages['bn_IN']['CHARSET'] = 'utf-8';
 $languages['bn_IN']['LOCALE']  = 'bn_IN.UTF-8';
