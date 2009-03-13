@@ -2876,7 +2876,8 @@ svn copy https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/branches/
           in the previous step into a block in the STABLE branch
           <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/branches/SM-1_4-STABLE/squirrelmail/functions/i18n.php?view=markup"
           name="functions/i18n.php"> file.
-<item><bf/Place translations in SVN trunk:/ The main translations should go in SVN
+<item><bf/Place translations in SVN trunk:/ The main translations (.po files - .mo
+          files don't belong in SVN) should go in SVN
           <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/locales/locale/"
           name="trunk/locales/locale">/&lt;language&gt;/LC_MESSAGES. There are two
           directories in the LC_MESSAGES directory for most languages: "plugins",
