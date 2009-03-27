@@ -2702,12 +2702,12 @@ about the plugin and what it does.
 <item><bf/Gearing up:/ Update the version number strings at 3 places:
     <enum>
          <item> Variables in <tt>functions/strings.php</tt> (<tt>$version = '1.2.1', $SQM_INTERNAL_VERSION=array(1,2,1)</tt>).
-         <item> <tt>ChangeLog</tt>
-         <item> <tt>ReleaseNotes</tt>
+         <item> <tt>doc/ChangeLog</tt>
+         <item> <tt>doc/ReleaseNotes</tt>
     </enum>
 <item><bf/SVN packaging:/
     <enum>
-         <item> Commit final changes to Subversion (ChangeLog, ReleaseNotes, functions/strings.php)
+         <item> Commit final changes to Subversion (doc/ChangeLog, doc/ReleaseNotes, functions/strings.php)
          <item> Tag SVN with the release number in the format rel-X_Y_Z (rel-1_2_1). Example:
             <tscreen>
 svn copy https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/branches/SM-1_4-STABLE/squirrelmail \
@@ -2733,9 +2733,9 @@ svn copy https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/branches/
     <enum>
          <item> Go back to your regular SVN development directory.
          <item> Update the version number variable in functions/strings.php by incrementing the incremental release number by 1 and adding <tt>' [SVN]'</tt> after it (<tt>$version = '1.2.2 [SVN]';</tt>).
-         <item> Add a new section in ChangeLog for the new release, followed by <tt>' - SVN'</tt>
-         <item> Archive the ReleaseNotes for this release like this:
-         <tscreen>svn copy ReleaseNotes doc/ReleaseNotes/X.Y/Notes-X.Y.Z.txt</tscreen>
+         <item> Add a new section in doc/ChangeLog for the new release, followed by <tt>' - SVN'</tt>
+         <item> Archive the doc/ReleaseNotes for this release like this:
+         <tscreen>svn copy doc/ReleaseNotes doc/release_notes_archive/X.Y/Notes-X.Y.Z.txt</tscreen>
          <item> Commit all these changes to SVN with a note saying that it is ready for continued development.
     </enum>
 <item><bf/sf.net admin stuff:/ Post the release files on SourceForge (you need to be a "release technician" to do this)
