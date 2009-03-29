@@ -471,18 +471,20 @@ the "Data Directory" and "Attachment Directory" settings).
 <p>
 Browse to http://example.com/squirrelmail/src/configtest.php
 to test your configuration for common errors.  You'll need to adjust the
-"squirrelmail" part to match the location where you installed it.  Note that
-in SquirrelMail versions 1.5.0 and up, if you are accessing configtest.php
-from any place other than the machine where SquirrelMail is installed, you'll
-need to make sure <tt>$allow_remote_configtest</tt> is enabled in your
-configuration file to do so (or see "<tt>11. Tweaks</tt>" ==>
-"<tt>7. Allow remote configtest</tt>" in the configuration utility).  If you
-do that, be sure to disable it again when you are finished.
+"example.com" and "squirrelmail" parts to match the location where you
+installed it.  Note that in SquirrelMail versions 1.5.0 and up, if you are
+accessing configtest.php from any place other than the machine where
+SquirrelMail is installed, you'll need to make sure
+<tt>$allow_remote_configtest</tt> is enabled in your configuration file to
+do so (or see "<tt>11. Tweaks</tt>" ==> "<tt>7. Allow remote configtest</tt>"
+in the configuration utility).  If you do that, be sure to disable it again
+when you are finished.
 
 <sect2>Log into SquirrelMail
 <p>
 Browse to http://example.com/squirrelmail/ to log in. Again, you'll need to
-change "squirrelmail" to whatever the location is that you have it installed.
+change "example.com" and "squirrelmail" to whatever the location is that you
+have it installed.
 
 <sect1>Installing SquirrelMail on Unix and Linux systems
 <p>
@@ -923,12 +925,12 @@ After you have uploaded <tt>config.php</tt> to the SquirrelMail
 <tt>config/</tt> directory, go to
 <tt>http://example.com/squirrelmail/src/configtest.php</tt>
 and check if the configuration is correct so far.  You'll need to
-adjust the "squirrelmail" part to match the location where you
-installed it.  Note that in SquirrelMail versions 1.5.0 and up,
-if you are accessing configtest.php
-from any place other than the machine where SquirrelMail is installed,
-you'll need to make sure <tt>$allow_remote_configtest</tt> is
-enabled in your configuration file to do so (or see
+adjust the "example.com" and "squirrelmail" parts to match the
+location where you installed it.  Note that in SquirrelMail versions
+1.5.0 and up, if you are accessing configtest.php from any place other
+than the machine where SquirrelMail is installed, you'll need to make
+sure <tt>$allow_remote_configtest</tt> is enabled in your configuration
+file to do so (or see
 "<tt>11. Tweaks</tt>" ==> "<tt>7. Allow remote configtest</tt>" in
 the configuration utility).  If you do that, be sure to disable it
 again when you are finished.
@@ -942,9 +944,9 @@ make sure it is working correctly and accepting connections.
 <p>
 Go to
 <tt>http://example.com/squirrelmail/src/login.php</tt> and try logging
-in.  You'll need to adjust the "squirrelmail" part to match the location
-where you installed it.  You should use a user name and password that
-are known to work with your IMAP server.
+in.  You'll need to adjust the "example.com" and "squirrelmail" parts to
+match the location where you installed it.  You should use a user name
+and password that are known to work with your IMAP server.
 
 <sect1>Prepackaged SquirrelMail installs
 <p>
