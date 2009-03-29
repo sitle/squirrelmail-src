@@ -359,43 +359,60 @@ In order to use SquirrelMail, you should take the following steps.
 
 <sect2>Download all required software
 <p>
-You can find SquirrelMail package on <url url="http://squirrelmail.org"
-name="SquirrelMail site">. PHP can be found on <url url="http://php.net"
+You can find the SquirrelMail package at the <url url="http://squirrelmail.org"
+name="SquirrelMail site">. PHP can be found at the <url url="http://php.net"
 name="PHP site">.
 
-<sect2>Install webserver and PHP (at least 4.1.0).
+<sect2>Install web server and PHP (version 4.1.0 or above)
 <p>
-SquirrelMail needs a webserver with PHP support. Check <url
-url="http://php.net/manual/en/install.php" name="PHP install manual"> for
-information about supported web servers and install procedures.
+SquirrelMail needs a web server with PHP support. Please refere to the <url
+url="http://php.net/manual/en/install.php" name="PHP installation manual">
+for information about what web servers PHP works with and its installation
+procedures.
 
-Some Linux and Unix distributions provide precompiled web server and php packages.
+Note that some Linux and Unix distributions provide a precompiled web server
+with PHP support built in.
 
 We recommend the following PHP settings:
 
 <itemize>
-    <item><tt/register_globals/ off - a dangerous setting, not needed. We do
-          not release security advisories for issues only exploitable with this
-          setting on. Note that you can easily enable it only for some legacy
-          site that may need it and turn it off globally.
-    <item><tt/magic_quotes_{runtime,gpc,sybase}/ off - SquirrelMail may work
-          with any of these on, but if you experience stray backslashes in your
-          mail or other strange behaviour, it may be advisable to turn them off.
-    <item><tt/file_uploads/ on - needed if your users want to attach files to
-          their mails.
-    <item><tt/safe_mode/ on or off - safe_mode on is only a tiny bint more
-          secure, in the SquirrelMail case. There may be some incompatibilities
-          with some functionality (see <ref id="safe_mode" name="Safe mode">).
+    <item><bf><tt>register_globals</tt> off</bf> - This is a dangerous setting
+          when enabled, and is not generally needed for most recent PHP
+          applications. We no longer release security advisories for issues only
+          exploitable with this setting turned on because it has long been a
+          well-known weakness in PHP (and has been removed from PHP 6). Note
+          that you can easily enable it only for a single legacy application
+          that may require it while keeping the default off for the rest of
+          your applications.
+    <item><bf><tt>magic_quotes_{runtime, gpc, sybase}</tt> off</bf> - SquirrelMail
+          may work with any of these turned on, but if you experience stray
+          backslashes in your mail or other strange behaviour, it may be advisable
+          to turn them off.
+    <item><bf><tt>file_uploads</tt> on</bf> - This is needed if your users want
+          to attach files to their emails.
+    <item><bf><tt>safe_mode</tt> on or off</bf> - Turning safe mode on in
+          SquirrelMail's case is not much more secure than having it off.
+          When it is enabled, incompatibilities with some functionality
+          may arise (see our <ref id="safe_mode" name="safe mode notes">).
 </itemize>
 
 <sect2>Install IMAP server
 <p>
-It depends on used email system. Email server needs IMAP service that knows
-used email system layout. If you use Unix with standard sendmail server, you
-might have to install UW IMAP, Dovecot or other IMAP server, that can use email
-stored in /var/spool/mail/ directory. If you use Windows, you might have to
-enable IMAP service that is bundled with your email server. If your email server
-does not support IMAP, you might have to find some other email server product.
+What IMAP server you can use depends on what the other components in your
+email system are and how they were installed and configured.  The IMAP server
+needs to understand and be compatible with how messages are stored on your
+system.  
+
+If you use Unix or Linux with a standard sendmail <url
+url="http://wikipedia.org/wiki/Mail_transfer_agent" name="MTA"> server, you
+probably have to install an IMAP server that works with mail stored in
+<tt>/var/spool/mail/</tt>, such as UW IMAP, Dovecot, etc.
+
+If you are running your email server on a Windows platform, you might have to
+enable an IMAP service that is bundled with your email server.
+
+If your email server does not support IMAP, you might have to find some other
+email server product.
 
 <sect2>Unpack SquirrelMail package
 <p>
@@ -403,44 +420,102 @@ Unpack the SquirrelMail package in a web-accessible location.
 
 <sect2>Prepare data and attachment directories
 <p>
-Select a data-dir and attachment dir, outside the webtree (e.g. in /var).
-The data-dir (for user prefs) should be owned by the user the webserver
-runs as (e.g. www-data). The attachment dir (for uploading files as
-attachments) should be file mode 0730 and in the same group as the
-webserver.
+Select a data dirrectory and attachment dirrectory outside of the web
+server's reach (for example in a Unix or Linux environment, a subdirectory
+of /var is a good place for these).
 
-If you use PHP with safe mode enabled, check chapter about safe mode.
+The data directory is where SquirrelMail user preferences are stored - even
+when you have configured SquirrelMail to store user preferences in a database,
+some plugins might still need to use this directory.  The attachment directory
+is used mainly for temporary storage of file uploads that will become email
+attachments.
+
+Both of these directories should be writable (not readable) by the web server
+and no one else (except you).  In a Unix or Linux environment, that means that
+they should be owned by the root user if possible (otherwise whatever user you
+log in as), their group should be the same as that that the web server runs as
+(e.g. "www-data", "apache", "nobody", "wheel", etc.), and their permissions
+should be 0730 (rwx-wx---).
+
+If you use PHP with safe mode enabled, check our <ref id="safe_mode"
+name="safe mode notes"> which explain other possible limitations on these
+directories.
+
+<sect2>Directory access considerations
+<p>
+Only a small subset of the SquirrelMail source code needs to be directly
+accessible to users' browsers.  The rest of the source code is used internally
+by SquirrelMail.  Leaving the entire source tree open to outside access is
+not a problem or vulnerability, but some attackers have been known to snoop
+for old versions of SquirrelMail by trying to inspect things such as the
+ChangeLog file.  If you want to employ the maximum level of protection against
+snoops and would-be attackers, you can make use of the .htaccess files that
+come with the SquirrelMail source code by adding
+"<tt>AllowOverride AuthConfig</tt>" to the <tt>Directory</tt> settings for
+SquirrelMail in your Apache configuration file (if using the Apache web server),
+or you can use the <tt>Directory</tt> settings suggested in the
+<ref id="apache_configuration" name="apache configuration"> section below.
 
 <sect2>Configure SquirrelMail
 <p>
-Run <tt>config/conf.pl</tt> from the command line. Use the D option to load
-predefined options for specific IMAP servers, and edit at least the
-Server Settings and General Options (datadir).
+Run <tt>config/conf.pl</tt> (or just <tt>configure</tt>) from the command
+line. This is a Perl script, so if you do not have Perl installed, please
+refer to our notes about <ref id="configuration_without_shell_access"
+name="how to configure SquirrelMail without shell access">.
+
+Use the D option to load predefined settings for your particular IMAP server,
+and edit at least the Server Settings and General Options (making sure to set
+the "Data Directory" and "Attachment Directory" settings).
 
 <sect2>Check your SquirrelMail configuration
 <p>
-Browse to http://example.com/yourwebmaillocation/src/configtest.php
-to test your configuration for common errors.
+Browse to http://example.com/squirrelmail/src/configtest.php
+to test your configuration for common errors.  You'll need to adjust the
+"squirrelmail" part to match the location where you installed it.  Note that
+in SquirrelMail versions 1.5.0 and up, if you are accessing configtest.php
+from any place other than the machine where SquirrelMail is installed, you'll
+need to make sure <tt>$allow_remote_configtest</tt> is enabled in your
+configuration file to do so (or see "<tt>11. Tweaks</tt>" ==>
+"<tt>7. Allow remote configtest</tt>" in the configuration utility).  If you
+do that, be sure to disable it again when you are finished.
 
 <sect2>Log into SquirrelMail
 <p>
-Browse to http://example.com/yourwebmaillocation/ to log in.
+Browse to http://example.com/squirrelmail/ to log in. Again, you'll need to
+change "squirrelmail" to whatever the location is that you have it installed.
 
 <sect1>Installing SquirrelMail on Unix and Linux systems
 <p>
-This chapter covers installation of SquirrelMail on generic Unix or Linux
-system. It does not cover installation of operating system or tools required to
-install web server or PHP.
-
-Any version numbers used in examples are specific to the time when this
-documentation is written. If current version numbers differ, make sure that you
-are not using old, obsolete or vulnerable software.
-
-Guide uses UW IMAP server as example. This IMAP server can be used in generic
-email setup when incoming mail is stored in <tt>/var/spool/mail</tt>
-directory. If you are planning to use webmail with big number of users or with
-bigger mailboxes, consider using different IMAP server and redesign entire email
+This chapter covers the installation of SquirrelMail and related packages on
+a generic Unix or Linux system.  It does not cover the installation of the
+operating system or any other tools required for a fully functional email
 system.
+
+Any version numbers used in these examples are specific to the time when this
+documentation was written.  You should generally use the most up to date
+versions of all software involved.  That is, if there are newer versions of
+these packages available now, you'll probably want to substitute the newer
+numbers in the examples below.  Make sure that you are not using old, obsolete
+or vulnerable software!
+
+This guide uses the UW IMAP server, because it is a simple (and ubiquitous)
+example and because it can be used in most generic email system setups where
+incoming mail is stored in the <tt>/var/spool/mail</tt> directory.  If you are
+planning to offer webmail on a system with a large number of users or where 
+users have large mailboxes, consider planning a better email system design
+and using different IMAP server software.
+
+PLEASE NOTE that before you begin installing such things as a web server, PHP
+or an IMAP server, you should check whether or not your system already has
+such software installed.  Many server-class systems come with that kind of
+software ready to go.  Also note that these installation instructions use
+generic compilation commands that should work on most any system, however your
+system may have more graceful (and even easier) ways to install software,
+like the <tt>apt-get</tt> tool in systems such as Debian and the <tt>yum</tt>
+tool in systems such as Fedora/Red Hat.
+
+Typically, you'll need to have root-level access to your server to perform
+these operations.
 
 <sect2>Download required software
 <p>
@@ -459,90 +534,111 @@ You will need:
 <tscreen><verb>
 # install -d /usr/local/src/downloads
 # cd /usr/local/src/downloads
-# wget http://some-apache-mirror-server/apache/httpd/httpd-2.0.54.tar.gz
-# wget http://some-php-mirror-server/get/php-4.3.11.tar.bz2/from/this/mirror
+# wget http://some-apache-mirror-server/apache/httpd/httpd-2.2.11.tar.gz
+# wget http://www.php.net/get/php-5.2.9.tar.bz2/from/a/mirror
 # wget ftp://ftp.cac.washington.edu/mail/imap.tar.Z
-# wget http://some-sourceforge-mirror/some-path/squirrelmail-1.4.5.tar.bz2
+# wget http://some-sourceforge-mirror/some-path/squirrelmail-1.4.17.tar.bz2
 </verb></tscreen>
 
-<sect2>Unpack and install apache
+<sect2>Unpack and install Apache
 <p>
 <tscreen><verb>
 # cd /usr/local/src
-# tar -xzvf /usr/local/src/downloads/httpd-2.0.54.tar.gz
-# cd httpd-2.0.54
+# tar -xzvf /usr/local/src/downloads/httpd-2.2.11.tar.gz
+# cd httpd-2.2.11
 # ./configure --prefix=/usr/local/apache --enable-module=so
 # make
 # make install
 </verb></tscreen>
 
-<sect2>Unpack and install php
+<sect2>Unpack and install PHP
 <p>
 <tscreen><verb>
 # cd /usr/local/src
-# tar --bzip2 -xvf /usr/local/src/downloads/php-4.3.11.tar.bz2
-# cd php-4.3.11
+# tar --bzip2 -xvf /usr/local/src/downloads/php-5.2.9.tar.bz2
+# cd php-5.2.9
 # ./configure --prefix=/usr/local/php \
 > --with-apxs2=/usr/local/apache/bin/apxs
 # make
 # make install
 </verb></tscreen>
 
-If you configure PHP compilation with <tt/--disable-all/ option, you must add
-<tt/--enable-session/ and  <tt/--with-pcre-regex/ options.
+Note that if you decide to configure your PHP compilation with the
+<tt/--disable-all/ option, you must also add the <tt/--enable-session/ and
+<tt/--with-pcre-regex/ options.
 
-<sect2>Add PHP support to apache
+<sect2>Add PHP support to Apache
 <p>
+In your main Apache configuration file (typically
+<tt>/etc/httpd/conf/httpd.conf</tt>), add this:
+
 <tscreen><verb>
-&lt;IfModule mod_php4.c&gt;
+&lt;IfModule mod_php5.c&gt;
   AddType application/x-httpd-php .php
 &lt;/IfModule&gt;
 </verb></tscreen>
 
-<sect2>Restart apache and check if php is working
+<sect2>Restart Apache and check if PHP is working
 <p>
+Execute the restart request from the command line:
+
 <tscreen><verb>
-/usr/local/apache/bin/apachectl graceful
+# /usr/local/apache/bin/apachectl graceful
 </verb></tscreen>
+
+Create a test file in the document root of Apache and put this in it:
 
 <tscreen><verb>
 &lt;?php phpinfo(); ?&gt;
 </verb></tscreen>
 
-<sect2>Unpack and install imap server
+Load that file in a web browser and make sure it displays a page describing
+your PHP system details.
+
+<sect2>Unpack and install IMAP server
 <p>
-Unpack UW IMAP archive.
+Unpack the UW IMAP package.
+
 <tscreen><verb>
 # cd /usr/local/src
 # tar -xzvf /usr/local/src/downloads/imap.tar.Z
 </verb></tscreen>
 
-Compile UW IMAP
+Compile UW IMAP:
+
 <tscreen><verb>
-cd /usr/local/src/imap-&lt;someversion&gt;
-make port-name EXTRADRIVERS='' SSLTYPE=unix
+# cd /usr/local/src/imap-&lt;some version&gt;
+# make port-name EXTRADRIVERS='' SSLTYPE=unix
 </verb></tscreen>
 
-Replace <tt>port-name</tt> with name that matches your system. Check Makefile
-for possible values. If you haven't installed OpenSSL libraries and headers, use
-<tt>SSLTYPE=none</tt> instead of <tt>SSLTYPE=unix</tt>.
+Replace "<tt>port-name</tt>" above with the name that matches your system.
+Check the file "<tt>Makefile</tt>" for possible values.  If you haven't
+installed OpenSSL libraries and headers, use "<tt>SSLTYPE=none</tt>" instead
+of "<tt>SSLTYPE=unix</tt>".
 
-Install IMAP server binary
+Install IMAP server binary:
+
 <tscreen><verb>
-strip imapd/imapd
-install -d /usr/local/libexec/
-cp imapd/imapd /usr/local/libexec/
+# strip imapd/imapd
+# install -d /usr/local/libexec/
+# cp imapd/imapd /usr/local/libexec/
 </verb></tscreen>
 
-Enable IMAP server in inetd.conf
+Enable IMAP server in <tt>inetd.conf</tt>:
+
 <tscreen><verb>
 imap2 stream tcp nowait root /usr/sbin/tcpd /usr/local/libexec/imapd
 </verb></tscreen>
 
-Restart inetd
+Now, restart inetd.
 
 <sect2>Prepare SquirrelMail directories
 <p>
+Make sure to change "nogroup" to whatever group Apache will be running as.
+You can check what that is by looking at the value of the "Group" setting
+in your Apache main configuration file (probably
+<tt>/etc/httpd/conf/httpd.conf</tt>).
+
 <tscreen><verb>
 # mkdir /usr/local/squirrelmail
 # cd /usr/local/squirrelmail
@@ -555,40 +651,96 @@ Restart inetd
 <p>
 <tscreen><verb>
 # cd /usr/local/squirrelmail
-# tar --bzip2 -xvf /usr/local/src/downloads/squirrelmail-1.4.5.tar.bz2
-# mv squirrelmail-1.4.5 www
+# tar --bzip2 -xvf /usr/local/src/downloads/squirrelmail-1.4.17.tar.bz2
+# mv squirrelmail-1.4.17 www
 </verb></tscreen>
 
 <sect2>Configure SquirrelMail
 <p>
-Start SquirrelMail configuration utility. Configure SquirrelMail with UW
-preset. Set data and attachment directories.
+Run the SquirrelMail configuration utility.
 
-<sect2>Configure access to SquirrelMail in Apache
+<tscreen><verb>
+# cd /usr/local/squirrelmail
+# www/configure
+</verb></tscreen>
+
+This is a Perl script, so if you do not have Perl installed, please refer
+to our notes about <ref id="configuration_without_shell_access"
+name="how to configure SquirrelMail without shell access">.
+
+Select the "D" option and then configure SquirrelMail with the "uw" preset.
+Also make sure to set the data and attachment directory settings
+("<tt>/usr/local/squirrelmail/data</tt>" and
+"<tt>/usr/local/squirrelmail/temp</tt>" respectively) under
+"<tt>4. General Options</tt>".  Make any other changes as you see fit,
+select "S" to save and then "Q" to quit.
+
+<sect2>Configure access to SquirrelMail in Apache<label id="apache_configuration">
 <p>
-Modify httpd.conf
+Modify your main Apache configuration file (typically
+<tt>/etc/httpd/conf/httpd.conf</tt>) by adding the following:
 
 <tscreen><verb>
 Alias /squirrelmail /usr/local/squirrelmail/www
 &lt;Directory /usr/local/squirrelmail/www&gt;
-  Options Indexes
-  AllowOverride none
+  Options None
+  AllowOverride None
   DirectoryIndex index.php
-  Order allow,deny
-  allow from all
+  Order Allow,Deny
+  Allow from all
+&lt;/Directory&gt;
+&lt;Directory /usr/local/squirrelmail/www/*&gt;
+  Deny from all
+&lt;/Directory&gt;
+&lt;Directory /usr/local/squirrelmail/www/images&gt;
+  Allow from all
+&lt;/Directory&gt;
+&lt;Directory /usr/local/squirrelmail/www/plugins&gt;
+  Allow from all
+&lt;/Directory&gt;
+&lt;Directory /usr/local/squirrelmail/www/src&gt;
+  Allow from all
+&lt;/Directory&gt;
+&lt;Directory /usr/local/squirrelmail/www/templates&gt;
+  Allow from all
+&lt;/Directory&gt;
+&lt;Directory /usr/local/squirrelmail/www/themes&gt;
+  Allow from all
+&lt;/Directory&gt;
+&lt;Directory /usr/local/squirrelmail/www/contrib&gt;
+  Order Deny,Allow
+  Deny from All
+  Allow from 127
+  Allow from 10
+  Allow from 192
+&lt;/Directory&gt;
+&lt;Directory /usr/local/squirrelmail/www/doc&gt;
+  Order Deny,Allow
+  Deny from All
+  Allow from 127
+  Allow from 10
+  Allow from 192
 &lt;/Directory&gt;
 </verb></tscreen>
 
+Now restart Apache from the command line:
+
+<tscreen><verb>
+# /usr/local/apache/bin/apachectl graceful
+</verb></tscreen>
+
+You also might be interested in <ref id="point_web_server_to_squirrelmail"
+name="how to alias different locations to your SquirrelMail installation">.
+
 <sect2>Log into SquirrelMail
 <p>
-After you add alias to SquirrelMail in apache configuration and restart apache,
-you should be able to access SquirrelMail by going to
-<tt>http://your-server/squirrelmail</tt>.
+Now you should be able to access SquirrelMail by going to
+<tt>http://example.com/squirrelmail</tt>.
 
 <sect1>Installing SquirrelMail on a hosted service without shell access
 <p>
-How to install SquirrelMail on a server where you do not have shell access or
-administrative access.
+This chapter discusses how to install SquirrelMail on a server where you do not
+have shell access or administrative access.
 
 <sect2>Requirements
 <p>
@@ -625,7 +777,7 @@ You will need:
 SquirrelMail is installed by copying all of its files to the web server. You
 should be able to do that with a FTP, SFTP or FTP-SSL client program.
 
-<sect2>Configuration
+<sect2>Configuration<label id="configuration_without_shell_access">
 <p>
 You need to create a configuration file for SquirrelMail. If you
 have Perl on your own computer, you can run the SquirrelMail
@@ -769,18 +921,29 @@ further configure SquirrelMail.
 <p>
 After you have uploaded <tt>config.php</tt> to the SquirrelMail
 <tt>config/</tt> directory, go to
-<tt>http://your-server/path-to-squirrelmail/src/configtest.php</tt>
-and check if the configuration is correct so far. Every time you
-change your configuration file, it is a good idea to re-visit
-this page to make sure everything is working correctly. This
-page includes making a test connection to the IMAP server, so
+<tt>http://example.com/squirrelmail/src/configtest.php</tt>
+and check if the configuration is correct so far.  You'll need to
+adjust the "squirrelmail" part to match the location where you
+installed it.  Note that in SquirrelMail versions 1.5.0 and up,
+if you are accessing configtest.php
+from any place other than the machine where SquirrelMail is installed,
+you'll need to make sure <tt>$allow_remote_configtest</tt> is
+enabled in your configuration file to do so (or see
+"<tt>11. Tweaks</tt>" ==> "<tt>7. Allow remote configtest</tt>" in
+the configuration utility).  If you do that, be sure to disable it
+again when you are finished.
+
+Every time you change your configuration file, it is a good idea
+to re-visit this page to make sure everything is working correctly.
+This page includes making a test connection to the IMAP server, so
 make sure it is working correctly and accepting connections.
 
 <sect2>First login
 <p>
 Go to
-<tt>http://your-server/path-to-squirrelmail/src/login.php</tt>
-and try logging in. You should use a user name and password that
+<tt>http://example.com/squirrelmail/src/login.php</tt> and try logging
+in.  You'll need to adjust the "squirrelmail" part to match the location
+where you installed it.  You should use a user name and password that
 are known to work with your IMAP server.
 
 <sect1>Prepackaged SquirrelMail installs
@@ -1031,10 +1194,13 @@ configuration utility and run theme detection command.
 <p>
 You should browse to <tt>http://example.com/squirrelmail/src/configtest.php</tt>
 (adjust the address to suit your system) and confirm that there are no
-configuration problems.  Note that in versions 1.5.0 and up, you'll need
-to make sure <tt>$allow_remote_configtest</tt> is enabled in your configuration
-file to do so (or see "<tt>11. Tweaks</tt>" ==> "<tt>7. Allow remote configtest</tt>" in
-the configuration utility).
+configuration problems.  Note that in versions 1.5.0 and up, if you are
+accessing configtest.php from any place other than the machine where
+SquirrelMail is installed, you'll need to make sure
+<tt>$allow_remote_configtest</tt> is enabled in your configuration file to do so
+(or see "<tt>11. Tweaks</tt>" ==> "<tt>7. Allow remote configtest</tt>" in
+the configuration utility).  If you do that, be sure to disable it again when
+you are finished.
 
 <sect1>Verify that the new installation works
 <p>
@@ -1066,16 +1232,17 @@ access it - if you don't do this, you may be leaving yourself exposed
 to known security exploits.
 
 <sect1>How to point the web server to different SquirrelMail installations
+<label id="point_web_server_to_squirrelmail">
 <p>
 In this guide, we assumed that your installation directories looked
 like "<tt>squirrelmail-1.4.17</tt>".  Most of the time, you'll want to allow
-your users to type in "<tt>squirrelmail</tt>" (or just "<tt>webmail</tt>" or "<tt>mail</tt>")
-without needing to know the version number.  Of course, you can simply
-change the name of the SquirrelMail installation directory:
+your users to type in "<tt>squirrelmail</tt>" (or just "<tt>webmail</tt>"
+or "<tt>mail</tt>") without needing to know the version number.  Of course,
+you can simply change the name of the SquirrelMail installation directory:
 
 <verb>
   $ cd /usr/share/
-  $ mv squirrelmail-1.4.8 mail
+  $ mv squirrelmail-1.4.17 mail
 </verb>
 
 ... but there are several more graceful ways you can achieve this.
@@ -1084,7 +1251,7 @@ In any Linux-like system, you can use symlinks to dynamically point
 
 <verb>
   $ cd /usr/share/
-  $ ln -s squirrelmail-1.4.8 mail
+  $ ln -s squirrelmail-1.4.17 mail
 </verb>
 
 Note that symlinks can point anywhere you need them to, so the installation
@@ -2133,7 +2300,7 @@ to detect preferred translation from browser's preferred language setting.
 
 SquirrelMail implements translations with gettext functions. Interface can use
 PHP gettext extension or internal gettext implementation. If PHP gettext
-extension is used, it might require special webserver setup. On Linux gettext
+extension is used, it might require a special web server setup. On Linux gettext
 functions work only when appropriate system locales are available. On BSD you
 should be able to set LC_ALL environment variable in PHP script. There are some
 differences between GNU Gettext and Solaris Gettext implementations.
@@ -2262,8 +2429,8 @@ for example:
 test|Testname|Testsurname|test@example.org|testinfo
 </verb></tscreen>
 
-4. If you want writable address book, file must be writable by webserver
-user.
+4. If you want a writable address book, the file must be writable by the user
+that the web server runs as.
 
 5. After you have created address book file, go to SquirrelMail configuration
 utility, select 6. Address Books option and configure address book in 3.
@@ -2325,7 +2492,7 @@ Used terms:
 SquirrelMail is webmail interface written in PHP. Webmail interface could be
 attacked through specifically crafted emails, interface programming mistakes
 and user information hijacking. It can be used to send unsolicited email
-messages from hijacked or abused email account.
+messages from a hijacked or abused email account.
 
 In order to prevent crafted email exploits SquirrelMail uses special <url
  url="http://linux.duke.edu/projects/mini/htmlfilter/" name="htmlfilter">
@@ -2337,7 +2504,7 @@ secured web browser version and SquirrelMail scripts are not outdated.
 
 Interface programming mistakes usually can exploited only by authenticated
 user. They can lead to hijacking of other users' data or executing scripts with
-webserver user privileges. SquirrelMail developers are trying to prevent such
+web server user privileges. SquirrelMail developers are trying to prevent such
 exploits. If you find some way to security of SquirrelMail scripts, inform about
 it SquirrelMail developers.
 
@@ -2423,7 +2590,7 @@ If you have SquirrelMail install in unsecured HTTP and secured HTTPS servers,
 SquirrelMail secure_login and show_ssl_link plugins can be used to warn users
 about insecure connections and/or provide automatic redirection to a secured server.
 
-In the Apache webserver, redirection can be implemented with Redirect directives and
+In the Apache web server, redirection can be implemented with Redirect directives and
 the mod_rewrite module. For example:
 
 <tscreen><verb>
@@ -2615,7 +2782,7 @@ When attempting to diagnose any issues with SquirrelMail, the first thing
 to do is load up http://example.org/squirrelmail/src/configtest.php and ensure
 that SquirrelMail can't already tell you what the problem is.
 
-Note that as of SquirrelMail version 1.5.2, you cannot view this page from
+Note that as of SquirrelMail version 1.5.0, you cannot view this page from
 any computer other than the one where SquirrelMail is installed unless you
 have enabled remote computers to view it by using the SquirrelMail
 configuration tool (config/conf.pl, which is usually aliased to "configure"
@@ -2725,10 +2892,10 @@ Your email fetching time must be within PHP max_execution_time limits.
 Default preference file (frequently named <tt/default_pref/) AND the default
 data directory (frequently <tt>/var/lib/squirrelmail/data/</tt>) must be owned
 by same user that owns other SquirrelMail scripts. The default preference file
-and the default data directory must be readable and writable by webserver's
-user. The webserver's user and the owner of the SquirrelMail scripts may be
-different (e.g. in Debian, SquirrelMail is owned by root, but the webserver runs
-as www-data).
+and the default data directory must be readable and writable by the user that
+the web server runs as.  The user that the web server runs as and the owner of
+the SquirrelMail scripts may be different (e.g. in Debian, SquirrelMail is
+owned by root, but the web server runs as www-data).
 
 <sect1>UW IMAP
 <sect2>Login Disabled
@@ -2791,8 +2958,8 @@ SquirrelMail can't do that due to specific limitations of PHP SSL module and
 restrictions of SquirrelMail IMAP implementation. You may be able to use the
 IMAPS port of 993.
 
-Please note, that if your IMAP server is on the same host as webserver with
-SquirrelMail, SSL adds security features that are useless. During connection to
+Please note, that if your IMAP server is on the same machine as the web server that
+hosts SquirrelMail, SSL adds security features that are useless. During connection to
 localhost password information is not transmitted over unsafe network. If you
 want to secure your IMAP server, bind it to localhost address only or use
 tcpwrappers or firewall to disable external connections.
@@ -2922,7 +3089,7 @@ SquirrelMail support.
 
 The bug report plugin (bundled with SquirrelMail) collects a number of useful
 details, as does the
-<tt>http://your-server/path-to-squirrelmail/src/configtest.php</tt> script
+<tt>http://example.com/path-to-squirrelmail/src/configtest.php</tt> script
 script. Make sure that the data provided by at least one of these is part of
 your request for support.
 
