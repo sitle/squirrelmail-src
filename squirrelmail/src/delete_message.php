@@ -75,7 +75,10 @@ if (isset($where) && isset($what)) {
            '&what=' . $what . '&mailbox=' . urlencode($mailbox));
 } else {
     if (!empty($saved_draft) || !empty($mail_sent)) {
-          header("Location: $location/compose.php?mail_sent=$mail_sent&saved_draft=$saved_draft");
+          if ($compose_new_win == '1')
+              header("Location: $location/compose.php?mail_sent=$mail_sent&saved_draft=$saved_draft");
+          else
+              header("Location: $location/right_main.php?mail_sent=$mail_sent&saved_draft=$saved_draft");
     }
     else {
         header("Location: $location/right_main.php?sort=$sort&startMessage=$startMessage&mailbox=" .
