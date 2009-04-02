@@ -9,7 +9,7 @@ Version 1.4.18 - SVN
   - Added informational type option widget.
   - Added password type option widget.
   - Fixed filters plugin to allow spam filters to scan multiple
-    messages, rather than the first message returned (#1634735).
+    messages, rather than the first message returned. (#1634735)
   - Removed code from spam filters plugin to stop if falling back
     to searching all messages when there was no new messages.
   - Altered filters plugin to issue single move/delete statement
@@ -24,15 +24,19 @@ Version 1.4.18 - SVN
   - Make address book file permissions 0600 - same as preference files.
   - Fix for address book nicknames that contain the : character.
   - Ensure that hash directory computation is the same on both 32 and
-    64 bit architectures (#2596879).
+    64 bit architectures. (#2596879)
   - Allow multiple addresses in one abook entry (separate with commas),
     although we HIGHLY DISCOURAGE grouping in this manner - note amongst
     other issues that can come up, sizing for large groups will be a
-    problem (#2611967)
+    problem. (#2611967)
   - Added Tamil translation (Thanks to Kengatharaiyer Sarveswaran).
   - Added Bengali (Bangladesh) translation (Thanks to Jamil Ahmed).
   - Moved documentation to doc/ directory and added example .htaccess
-    files in all directories that browsers don't need direct access to
+    files in all directories to which browsers don't need direct access.
+  - Date headers in outgoing messages have been brought into RFC 822
+    compliance (removed time zone name). (#1849410)
+  - Default Content-Transfer-Encoding is now RFC-compliant "7bit"
+    instead of "us-ascii". (#1942060)
 
 Version 1.4.17 - 03 December 2008
 ---------------------------------
