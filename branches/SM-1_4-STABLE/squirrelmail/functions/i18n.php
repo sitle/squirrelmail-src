@@ -601,34 +601,30 @@ function japanese_charset_xtra() {
             $ret = mb_strimwidth($ret, 0, $width, '...');
             break;
         case 'encodeheader':
-            $result = '';
-            if (strlen($ret) > 0) {
-                $tmpstr = mb_substr($ret, 0, 1);
-                $prevcsize = strlen($tmpstr);
-                for ($i = 1; $i < mb_strlen($ret); $i++) {
-                    $tmp = mb_substr($ret, $i, 1);
-                    if (strlen($tmp) == $prevcsize) {
-                        $tmpstr .= $tmp;
-                    } else {
-                        if ($prevcsize == 1) {
-                            $result .= $tmpstr;
-                        } else {
-                            $result .= str_replace(' ', '',
-                                                   mb_encode_mimeheader($tmpstr,'iso-2022-jp','B',''));
-                        }
-                        $tmpstr = $tmp;
-                        $prevcsize = strlen($tmp);
-                    }
-                }
-                if (strlen($tmpstr)) {
-                    if (strlen(mb_substr($tmpstr, 0, 1)) == 1)
-                        $result .= $tmpstr;
-                    else
-                        $result .= str_replace(' ', '',
-                                               mb_encode_mimeheader($tmpstr,'iso-2022-jp','B',''));
-                }
+            /**
+             * First argument ($ret) contains header string.
+             * SquirrelMail ja_JP translation uses euc-jp as internal encoding. euc-jp stores Japanese 
+             * letters in 0xA1-0xFE block (source: JIS X 0208 unicode.org mapping. see euc_jp.php 
+             * in extra decoding library). Standard SquirrelMail 8bit test should detect if text is 
+             * in euc or in ascii.
+             */
+            if (sq_is8bit($ret)) {
+                /**
+                 * Minimize dependency on mb_mime_encodeheader(). PHP 4.4.1 bug and maybe other bugs.
+                 *
+                 * Convert text from euc-jp (internal encoding) to iso-2022-jp (commonly used Japanese 
+                 * encoding) with mbstring functions.
+                 *
+                 * Use SquirrelMail internal B encoding function. 'encodeheader' XTRA_CODE is executed in 
+                 * encodeHeader() function, so functions/mime.php (encodeHeaderBase64) and functions/strings.php 
+                 * (sq_is8bit) are already loaded.
+                 */
+                $ret = encodeHeaderBase64(mb_convert_encoding($ret,'ISO-2022-JP','EUC-JP'),'iso-2022-jp');
             }
-            $ret = $result;
+            /**
+             * if text is in ascii, we leave it unchanged. If some ASCII chars must be encoded, 
+             * add code here in else statement.
+             */
             break;
         case 'decodeheader':
             $ret = str_replace("\t", "", $ret);
