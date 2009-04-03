@@ -488,7 +488,7 @@ class Deliver {
         $cnt = count($header);
         $hdr_s = '';
         for ($i = 0 ; $i < $cnt ; $i++)    {
-            $hdr_s .= $this->foldLine($header[$i], 78,str_pad('',4));
+            $hdr_s .= $this->foldLine($header[$i], 78);
         }
         $header = $hdr_s;
         $header .= $rn; /* One blank line to separate mimeheader and body-entity */
@@ -721,7 +721,7 @@ class Deliver {
             case 'From':
                 $hdr_s .= $header[$i];
                 break;
-            default: $hdr_s .= $this->foldLine($header[$i], 78, str_pad('',4)); break;
+            default: $hdr_s .= $this->foldLine($header[$i], 78); break;
             }
         }
         $header = $hdr_s;
