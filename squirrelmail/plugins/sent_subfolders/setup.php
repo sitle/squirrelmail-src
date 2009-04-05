@@ -63,6 +63,7 @@ function sent_subfolders_check_handleAsSent() {
     global $handleAsSent_result, $sent_subfolders_base,
            $use_sent_subfolders;
 
+    //FIXME: don't hard code base to INBOX.Sent!  Why is this???
     $sent_subfolders_base = 'INBOX.Sent';
     $args = func_get_arg(0);
     sqgetGlobalVar('delimiter', $delimiter, SQ_SESSION);
