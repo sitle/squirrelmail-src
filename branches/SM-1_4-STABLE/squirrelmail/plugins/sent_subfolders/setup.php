@@ -255,11 +255,14 @@ function sent_subfolders_update_sentfolder() {
                 $ic = sqimap_login
                 ($username, $key, $imapServerAddress, $imapPort, 10);
 
-                /* Auto-create the year folder, if it does not yet exist. */
-                if (!sqimap_mailbox_exists($ic, $year_folder)) {
-                    sqimap_mailbox_create($ic, $year_folder, ($level==1)?'':'noselect');
-                } else if (!sqimap_mailbox_is_subscribed($ic, $year_folder)) {
-                    sqimap_subscribe($ic, $year_folder);
+                /* Auto-create the year folder, if it does not yet exist.
+                   (only for monthly/quarterly modes */
+                if ($sent_subfolders_setting != SMPREF_SENT_SUBFOLDERS_YEARLY) {
+                    if (!sqimap_mailbox_exists($ic, $year_folder)) {
+                        sqimap_mailbox_create($ic, $year_folder, ($level==1)?'':'noselect');
+                    } else if (!sqimap_mailbox_is_subscribed($ic, $year_folder)) {
+                        sqimap_subscribe($ic, $year_folder);
+                    }
                 }
 
                 /* Auto-create the subfolder, if it does not yet exist. */
