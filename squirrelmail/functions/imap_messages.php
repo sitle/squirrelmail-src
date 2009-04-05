@@ -17,10 +17,15 @@
 /**
  * Copies a set of messages ($id) to another mailbox ($mailbox)
  * 
- * @param int $imap_stream The resource ID for the IMAP socket
- * @param mixed $id A string or array of messages to copy
- * @param string $mailbox The mailbox to copy messages to
+ * NOTE: Verions of this function BEFORE SquirrelMail 1.4.18
+ *       actually *moved* messages instead of copying them
+ * 
+ * @param int    $imap_stream The resource ID for the IMAP socket
+ * @param mixed  $id          A string or array of messages to copy
+ * @param string $mailbox     The mailbox to copy messages to
+ *
  * @return bool Returns true on successful copy, false on failure
+ *
  */
 function sqimap_msgs_list_copy($imap_stream, $id, $mailbox) {
     global $uid_support;
@@ -38,11 +43,15 @@ function sqimap_msgs_list_copy($imap_stream, $id, $mailbox) {
 /**
  * Moves a set of messages ($id) to another mailbox ($mailbox)
  * 
- * @param int $imap_stream The resource ID for the IMAP socket
- * @param mixed $id A string or array of messages to copy
- * @param string $mailbox The destination mailbox
- * @param bool $handle_errors Show error messages in case of a NO, BAD, or BYE response
+ * @param int    $imap_stream   The resource ID for the IMAP socket
+ * @param mixed  $id            A string or array of messages to copy
+ * @param string $mailbox       The destination mailbox
+ * @param bool   $handle_errors Show error messages in case of a NO, BAD, or BYE response
+ *
  * @return bool If move completed without error.
+ *
+ * @since 1.4.18
+ *
  */
 function sqimap_msgs_list_move($imap_stream, $id, $mailbox, $handle_errors = true) {
     if (sqimap_msgs_list_copy ($imap_stream, $id, $mailbox, $handle_errors)) {
@@ -55,9 +64,10 @@ function sqimap_msgs_list_move($imap_stream, $id, $mailbox, $handle_errors = tru
 /**
  * Deletes a message and move it to trash or expunge the mailbox
  * 
- * @param int $imap_stream The resource ID for the IMAP socket
- * @param string $mailbox The mailbox to delete messages from
- * @param mixed $id A string or array of messages to delete
+ * @param int    $imap_stream The resource ID for the IMAP socket
+ * @param string $mailbox     The mailbox to delete messages from
+ * @param mixed  $id          A string or array of messages to delete
+ *
  */
 function sqimap_msgs_list_delete($imap_stream, $mailbox, $id) {
     global $move_to_trash, $trash_folder, $uid_support;
