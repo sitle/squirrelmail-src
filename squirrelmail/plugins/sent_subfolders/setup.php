@@ -63,8 +63,6 @@ function sent_subfolders_check_handleAsSent() {
     global $handleAsSent_result, $sent_subfolders_base,
            $use_sent_subfolders;
 
-    //FIXME: don't hard code base to INBOX.Sent!  Why is this???
-    $sent_subfolders_base = 'INBOX.Sent';
     $args = func_get_arg(0);
     sqgetGlobalVar('delimiter', $delimiter, SQ_SESSION);
 
@@ -87,7 +85,7 @@ function sent_subfolders_check_handleAsSent() {
  * Loads sent_subfolders settings
  */
 function sent_subfolders_load_prefs() {
-    global $use_sent_subfolders, $data_dir, $username,
+    global $use_sent_subfolders, $data_dir, $username, $sent_folder,
            $sent_subfolders_setting, $sent_subfolders_base;
 
     $use_sent_subfolders = getPref
@@ -97,7 +95,7 @@ function sent_subfolders_load_prefs() {
     ($data_dir, $username, 'sent_subfolders_setting', SMPREF_SENT_SUBFOLDERS_DISABLED);
 
     $sent_subfolders_base = getPref
-    ($data_dir, $username, 'sent_subfolders_base', SMPREF_NONE);
+    ($data_dir, $username, 'sent_subfolders_base', $sent_folder);
 }
 
 /**
@@ -139,7 +137,8 @@ function sent_subfolders_optpage_loadhook_folders() {
         'caption' => _("Base Sent Folder"),
         'type'    => SMOPT_TYPE_FLDRLIST,
         'refresh' => SMOPT_REFRESH_FOLDERLIST,
-        'posvals' => $sent_subfolders_base_values
+        'posvals' => $sent_subfolders_base_values,
+        'save'    => 'save_option_sent_subfolders_base',
     );
 
     /* Add our option data to the global array. */
@@ -163,11 +162,13 @@ function filter_folders($fldr) {
  * Saves sent_subfolder_options
  */
 function save_option_sent_subfolders_setting($option) {
-    global $data_dir, $username, $use_sent_subfolders;
+    global $data_dir, $username, $use_sent_subfolders, $sent_subfolders_base;
 
     /* Set use_sent_subfolders as either on or off. */
     if ($option->new_value == SMPREF_SENT_SUBFOLDERS_DISABLED) {
         setPref($data_dir, $username, 'use_sent_subfolders', SMPREF_OFF);
+        // for lack of anything better
+        setPref($data_dir, $username, 'sent_folder', $sent_subfolders_base);
     } else {
         setPref($data_dir, $username, 'use_sent_subfolders', SMPREF_ON);
         setPref($data_dir, $username, 'move_to_sent', SMPREF_ON);
@@ -281,6 +282,17 @@ function sent_subfolders_update_sentfolder() {
 }
 
 /**
+ * Update the folder settings/auto-create new subfolder
+ */
+function save_option_sent_subfolders_base($option) {
+    // first save the option as normal
+    save_option($option);
+
+    // now update folder settings and auto-create first subfolder if needed
+    sent_subfolders_update_sentfolder();
+}
+
+/**
  * Sets quarter subfolder names
  *
  * @param string $month numeric month
@@ -323,7 +335,7 @@ function sent_subfolder_getQuarter($month) {
  * @return boolean 1 - is part of sent_subfolders, 0 - is not part of sent_subfolders
  */
 function sent_subfolders_special_mailbox($mb) {
-    global $data_dir, $username;
+    global $data_dir, $username, $sent_folder;
 
     sqgetGlobalVar('delimiter', $delimiter, SQ_SESSION);
 /*
@@ -337,7 +349,7 @@ function sent_subfolders_special_mailbox($mb) {
 
     $use_sent_subfolders = getPref
         ($data_dir, $username, 'use_sent_subfolders', SMPREF_OFF);
-    $sent_subfolders_base = getPref($data_dir, $username, 'sent_subfolders_base', 'na');
+    $sent_subfolders_base = getPref($data_dir, $username, 'sent_subfolders_base', $sent_folder);
 
     if ($use_sent_subfolders == SMPREF_ON && 
     ($mb == $sent_subfolders_base || stristr($mb,$sent_subfolders_base. $cnd_delimiter) ) ) {
