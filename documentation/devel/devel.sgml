@@ -2818,11 +2818,11 @@ svn copy https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/branches/
           that need to be verified for the translation to be acceptable:
     <enum>
          <item><bf/Copyright:/ Make sure it's OK to assign the copyright to the
-                   SquirrelMail project. We won't accept translations with other
+                   SquirrelMail Project. We won't accept translations with other
                    copyright holders.
          <item><bf/Validate what was translated:/ The typical starting point for
                    translating the SquirrelMail core is the most recent 1.4.x
-                   translation pack release squirrelmail.pot file, the most current
+                   translation pack release <tt>squirrelmail.pot</tt> file, the most current
                    of which is found in SVN
                    <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/branches/SM-1_4_15/locales/po/squirrelmail.pot?view=markup"
                    name="/branches/SM-1_4_15/locales/po">. However, the most
@@ -2855,41 +2855,41 @@ svn copy https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/branches/
                    <url url="http://wikipedia.org/wiki/List_of_ISO_639-1_codes"
                    name="ISO 639-1"> language code is used. If the region code is
                    needed, make sure the language code is lower case and the region
-                   code is upper case ("de_DE").
+                   code is upper case ("pt_BR").
          <item><bf/Sanity check:/ Have a look over the translation file(s) and make
                    sure they look reasonable.
          <item><bf/sec_remove image:/ Ask for a translated copy of the
-                   <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/squirrelmail/images/sec_remove_eng.png?view=markup"
-                   name="sec_remove_eng.png"> image file (renamed, of course, to
-                   sec_remove_&lt;language&gt;.png).
-         <item><bf/sec_remove strings:/ The sec_remove_eng.png string in the
-                   squirrelmail.po file should be "translated" to
-                   sec_remove_&lt;language&gt;.png. The string in the image itself
+                   <tt><url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/squirrelmail/images/sec_remove_eng.png?view=markup"
+                   name="sec_remove_eng.png"></tt> image file (renamed, of course, to
+                   <tt>sec_remove_&lt;language&gt;.png</tt>).
+         <item><bf/sec_remove strings:/ The <tt>sec_remove_eng.png</tt> string in the
+                   <tt>squirrelmail.po</tt> file should be "translated" to
+                   <tt>sec_remove_&lt;language&gt;.png</tt>. The string in the image itself
                    ("This image has been removed for security reasons") is also in
-                   the .pot file and should be translated in the .po file.
+                   the <tt>.pot</tt> file and should be translated in the <tt>.po</tt> file.
    </enum>
-<item><bf/Create setup.php:/ Each language has its own setup.php file found in
-          the top-level language directory (alongside LC_MESSAGES). A good starting
+<item><bf>Create <tt>setup.php</tt>:</bf> Each language has its own <tt>setup.php</tt> file found in
+          the top-level language directory (alongside <tt>LC_MESSAGES</tt>). A good starting
           point is to look at an existing example such as the Norwegian
           (<url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/locales/locale/nb_NO/setup.php?view=markup"
           name="nb_NO">) one. See our <ref id="languages_array" name="explanation of
           the $languages array"> manual section.
-<item><bf/Update i18n.php:/ Copy the contents of the language setup.php file created
+<item><bf>Update <tt>i18n.php</tt>:</bf> Copy the contents of the language <tt>setup.php</tt> file created
           in the previous step into a block in the STABLE branch
-          <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/branches/SM-1_4-STABLE/squirrelmail/functions/i18n.php?view=markup"
-          name="functions/i18n.php"> file.
-<item><bf/Place translations in SVN trunk:/ The main translations (.po files - .mo
+          <tt><url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/branches/SM-1_4-STABLE/squirrelmail/functions/i18n.php?view=markup"
+          name="functions/i18n.php"></tt> file.
+<item><bf/Place translations in SVN trunk:/ The main translations (<tt>.po</tt> files - <tt>.mo</tt>
           files don't belong in SVN) should go in SVN
-          <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/locales/locale/"
-          name="trunk/locales/locale">/&lt;language&gt;/LC_MESSAGES. There are two
-          directories in the LC_MESSAGES directory for most languages: "plugins",
+          <tt><url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/locales/locale/"
+          name="trunk/locales/locale">/&lt;language&gt;/LC_MESSAGES</tt>. There are two
+          directories in the <tt>LC_MESSAGES</tt> directory for most languages: "plugins",
           which contains translations for plugins that are still coded such that
           translation files need to be placed within the plugin itself (obsolete).
           The "extra" directory contains other translation files for broken things
           (mostly plugins with missing or incorrect internationalization efforts).
-          These all correspond to the .pot files we provide, so where the translated
+          These all correspond to the <tt>.pot</tt> files we provide, so where the translated
           files go should be rather obvious. Properly coded plugin translation files
-          belong in the top-level LC_MESSAGES directory.
+          belong in the top-level <tt>LC_MESSAGES</tt> directory.
 <item><bf/sec_remove image:/ The translated sec_remove image file should be placed
           in the main
           <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/locales/images/"
