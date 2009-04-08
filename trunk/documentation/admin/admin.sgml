@@ -449,12 +449,12 @@ by SquirrelMail.  Leaving the entire source tree open to outside access is
 not a problem or vulnerability, but some attackers have been known to snoop
 for old versions of SquirrelMail by trying to inspect things such as the
 ChangeLog file.  If you want to employ the maximum level of protection against
-snoops and would-be attackers, you can make use of the .htaccess files that
+snoops and would-be attackers, you can make use of the <tt>.htaccess</tt> files that
 come with the SquirrelMail source code by adding
 "<tt>AllowOverride AuthConfig</tt>" to the <tt>Directory</tt> settings for
 SquirrelMail in your Apache configuration file (if using the Apache web server),
 or you can use the <tt>Directory</tt> settings suggested in the
-<ref id="apache_configuration" name="apache configuration"> section below.
+<ref id="apache_configuration" name="Apache configuration"> section below.
 
 <sect2>Configure SquirrelMail
 <p>
@@ -469,11 +469,11 @@ the "Data Directory" and "Attachment Directory" settings).
 
 <sect2>Check your SquirrelMail configuration
 <p>
-Browse to http://example.com/squirrelmail/src/configtest.php
+Browse to <tt>http://example.com/squirrelmail/src/configtest.php</tt>
 to test your configuration for common errors.  You'll need to adjust the
-"example.com" and "squirrelmail" parts to match the location where you
+"<tt>example.com</tt>" and "<tt>squirrelmail</tt>" parts to match the location where you
 installed it.  Note that in SquirrelMail versions 1.5.0 and up, if you are
-accessing configtest.php from any place other than the machine where
+accessing <tt>configtest.php</tt> from any place other than the machine where
 SquirrelMail is installed, you'll need to make sure
 <tt>$allow_remote_configtest</tt> is enabled in your configuration file to
 do so (or see "<tt>11. Tweaks</tt>" ==> "<tt>7. Allow remote configtest</tt>"
@@ -482,8 +482,8 @@ when you are finished.
 
 <sect2>Log into SquirrelMail
 <p>
-Browse to http://example.com/squirrelmail/ to log in. Again, you'll need to
-change "example.com" and "squirrelmail" to whatever the location is that you
+Browse to <tt>http://example.com/squirrelmail/</tt> to log in. Again, you'll need to
+change "<tt>example.com</tt>" and "<tt>squirrelmail</tt>" to whatever the location is that you
 have it installed.
 
 <sect1>Installing SquirrelMail on Unix and Linux systems
@@ -925,9 +925,9 @@ After you have uploaded <tt>config.php</tt> to the SquirrelMail
 <tt>config/</tt> directory, go to
 <tt>http://example.com/squirrelmail/src/configtest.php</tt>
 and check if the configuration is correct so far.  You'll need to
-adjust the "example.com" and "squirrelmail" parts to match the
+adjust the "<tt>example.com</tt>" and "<tt>squirrelmail</tt>" parts to match the
 location where you installed it.  Note that in SquirrelMail versions
-1.5.0 and up, if you are accessing configtest.php from any place other
+1.5.0 and up, if you are accessing <tt>configtest.php</tt> from any place other
 than the machine where SquirrelMail is installed, you'll need to make
 sure <tt>$allow_remote_configtest</tt> is enabled in your configuration
 file to do so (or see
@@ -944,7 +944,7 @@ make sure it is working correctly and accepting connections.
 <p>
 Go to
 <tt>http://example.com/squirrelmail/src/login.php</tt> and try logging
-in.  You'll need to adjust the "example.com" and "squirrelmail" parts to
+in.  You'll need to adjust the "<tt>example.com</tt>" and "<tt>squirrelmail</tt>" parts to
 match the location where you installed it.  You should use a user name
 and password that are known to work with your IMAP server.
 
@@ -1915,7 +1915,7 @@ rewritten sorting code.
 
 <sect1>Mailbox format
 <p>
-Default Unix mailbox format is slower than other formats and can increase server
+The default Unix mailbox format is slower than other formats and can increase server
 loads when used with bigger mail folders. If you use UW IMAP server, you should
 try switching to mbx mailbox format. Maildir mailboxes have higher bottlenecks
 than formats that store entire mail folder in one file.
@@ -2781,13 +2781,13 @@ password"> plugin page.
 <sect1>Configtest
 <p>
 When attempting to diagnose any issues with SquirrelMail, the first thing
-to do is load up http://example.org/squirrelmail/src/configtest.php and ensure
+to do is load up <tt>http://example.org/squirrelmail/src/configtest.php</tt> and ensure
 that SquirrelMail can't already tell you what the problem is.
 
 Note that as of SquirrelMail version 1.5.0, you cannot view this page from
 any computer other than the one where SquirrelMail is installed unless you
 have enabled remote computers to view it by using the SquirrelMail
-configuration tool (config/conf.pl, which is usually aliased to "configure"
+configuration tool (<tt>config/conf.pl</tt>, which is usually aliased to <tt>configure</tt>
 in the main SquirrelMail directory) and going to "11. Tweaks" and then chossing
 "7. Allow remote configtest". You can also edit the <tt/$allow_remote_configtest/
 setting directly in <tt>config/config.php</tt> if you prefer. Before leaving
@@ -2891,7 +2891,7 @@ Your email fetching time must be within PHP max_execution_time limits.
 
 <em>6. File ownership restrictions</em>
 
-Default preference file (frequently named <tt/default_pref/) AND the default
+The default preference file (frequently named <tt/default_pref/) AND the default
 data directory (frequently <tt>/var/lib/squirrelmail/data/</tt>) must be owned
 by same user that owns other SquirrelMail scripts. The default preference file
 and the default data directory must be readable and writable by the user that
@@ -2972,6 +2972,9 @@ Configure SquirrelMail with UW preset and don't remove <tt>mail/</tt> prefix in
 Folder Options.
 
 <sect1>Common interface error messages
+<p>
+TODO: Clean the "Common interface error messages" section up.
+
 <sect2>Special folders (Sent/Drafts/Trash) are not translated
 <p>
 See <url url="http://squirrelmail.org/docs/translator/translator-3.html#ss3.6" name="http://squirrelmail.org/docs/translator/translator-3.html#ss3.6">
