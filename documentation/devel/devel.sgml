@@ -1286,7 +1286,6 @@ resided in the directory <tt>plugins/demo/</tt>):
 <label id="plugin_init_example"><tscreen><verb>
 /**
  * Register this plugin with SquirrelMail
- *
  */
 function squirrelmail_plugin_init_demo() {
     global $squirrelmail_plugin_hooks;
@@ -1314,7 +1313,6 @@ might look something like this:
 /**
  * Add link to the Demo options page on the SquirrelMail
  * main options page listing
- *
  */
 function plugin_demo_options() {
     include_once(SM_PATH . 'plugins/demo/functions.php');
@@ -2376,50 +2374,48 @@ was added to the SquirrelMail core as of version 1.4.10 and 1.5.2.
 
 <tscreen><verb>
 /**
-  * Returns info about this plugin
-  *
-  */
-function demo_info()
-{
+ * Returns info about this plugin
+ */
+function demo_info() {
 
    return array(
-             'english_name' => 'Demo Future Prediction',
-             'authors' => array(
+            'english_name' => 'Demo Future Prediction',
+            'authors' => array(
                 'Emma Goldman' => array(
-                   'email' => 'emma@sts.org',
-                   'sm_site_username' => 'emma',
+                    'email' => 'emma@example.org',
+                    'sm_site_username' => 'emma',
                 ),
-             ),
-             'summary' => 'Adds important information above the folder list.',
-             'details' => 'This plugin automatically sees into the user\'s '
-                        . 'future and places important details about upcoming '
-                        . 'events above the folder list.',
-             'version' => '2.5.1',
-             'required_sm_version' => '1.2.9',
-             'requires_configuration' => 0,
-             'requires_source_patch' => 0,
-             'per_version_requirements' => array(
+            ),
+            'summary' => 'Adds important information above the folder list.',
+            'details' => 'This plugin automatically sees into the user\'s '
+                       . 'future and places important details about upcoming '
+                       . 'events above the folder list.',
+            'version' => '2.5.1',
+            'required_sm_version' => '1.2.9',
+            'requires_configuration' => 0,
+            'requires_source_patch' => 0,
+            'per_version_requirements' => array(
                 '1.5.2' => array(
-                   'required_plugins' => array(),
+                    'required_plugins' => array(),
                 ),
                 '1.5.0' => array(
-                   'required_plugins' => array(
-                      'compatibility' => array(
-                         'version' => '2.0.7',
-                         'activate' => FALSE,
-                      )
-                   )
+                    'required_plugins' => array(
+                        'compatibility' => array(
+                            'version' => '2.0.7',
+                            'activate' => FALSE,
+                        )
+                    )
                 ),
                 '1.4.10' => array(
-                   'required_plugins' => array(),
+                    'required_plugins' => array(),
                 ),
                 '1.2.9' => array(
-                   'required_plugins' => array(
-                      'compatibility' => array(
-                         'version' => '2.0.7',
-                         'activate' => FALSE,
-                      )
-                   )
+                    'required_plugins' => array(
+                        'compatibility' => array(
+                            'version' => '2.0.7',
+                            'activate' => FALSE,
+                        )
+                    )
                 ),
              ),
           );
@@ -2435,7 +2431,6 @@ compatibility, it can be piggy-backed on top of the
 <tscreen><verb>
 /**
  * Returns version info about this plugin
- *
  */
 function demo_version() {
    $info = demo_info();
