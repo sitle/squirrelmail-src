@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 # conf.pl
 #
-# Copyright (c) 1999-2007 The SquirrelMail Project Team
+# Copyright (c) 1999-2009 The SquirrelMail Project Team
 # Licensed under the GNU GPL. For full terms see COPYING.
 #
 # A simple configure script to configure SquirrelMail
@@ -140,7 +140,7 @@ if ( -e "config.php" ) {
         print "  should get the 'config_default.php' that matches the version\n";
         print "  of SquirrelMail that you are running. You can get this from\n";
         print "  the SquirrelMail web page by going to the following URL:\n";
-        print "      http://www.squirrelmail.org.\n";
+        print "      http://squirrelmail.org.\n";
         print "\n";
         print "Continue loading with old config_default.php (a bad idea) [y/N]? ";
         $ctu = <STDIN>;
@@ -298,7 +298,7 @@ $delete_folder = "false"               if ( !$delete_folder );
 $noselect_fix_enable = "false"         if ( !$noselect_fix_enable );
 $frame_top = "_top"                    if ( !$frame_top );
 
-$provider_uri = "http://www.squirrelmail.org/" if ( !$provider_uri );
+$provider_uri = "http://squirrelmail.org/" if ( !$provider_uri );
 $provider_name = "SquirrelMail"        if ( !$provider_name );
 
 $edit_identity = "true"                if ( !$edit_identity );
@@ -842,7 +842,7 @@ sub command2 {
     print "    to use the default logo, use ../images/sm_logo.png\n";
     print "  - To specify a logo defined outside the SquirrelMail source tree\n";
     print "    use the absolute URL the webserver would use to include the file\n";
-    print "    e.g. http://www.example.com/images/mylogo.gif or /images/mylogo.jpg\n";
+    print "    e.g. http://example.com/images/mylogo.gif or /images/mylogo.jpg\n";
     print "\n";
     print "[$WHT$org_logo$NRM]: $WHT";
     $new_org_logo = <STDIN>;
@@ -940,12 +940,12 @@ sub command6 {
 # Default link to provider
 sub command7 {
     print "Here you can set the link on the right of the page.\n";
-    print "The default is 'http://www.squirrelmail.org/'\n";
+    print "The default is 'http://squirrelmail.org/'\n";
     print "\n";
     print "[$WHT$provider_uri$NRM]: $WHT";
     $new_provider_uri = <STDIN>;
     if ( $new_provider_uri eq "\n" ) {
-        $new_provider_uri = 'http://www.squirrelmail.org/';
+        $new_provider_uri = 'http://squirrelmail.org/';
     } else {
         $new_provider_uri =~ s/[\r|\n]//g;
         $new_provider_uri =~ s/^\s+$//g;
@@ -2623,7 +2623,7 @@ sub command42 {
     print "    to use the themes directory, use ../themes/css/newdefault.css\n";
     print "  - To specify a css file defined outside the SquirrelMail source tree\n";
     print "    use the absolute URL the webserver would use to include the file\n";
-    print "    e.g. http://www.example.com/css/mystyle.css or /css/mystyle.css\n";
+    print "    e.g. http://example.com/css/mystyle.css or /css/mystyle.css\n";
     print "\n";
     print "[$WHT$theme_css$NRM]: $WHT";
     $new_theme_css = <STDIN>;

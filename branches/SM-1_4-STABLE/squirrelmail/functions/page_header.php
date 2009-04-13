@@ -5,7 +5,7 @@
  *
  * Prints the page header (duh)
  *
- * @copyright &copy; 1999-2007 The SquirrelMail Project Team
+ * @copyright &copy; 1999-2009 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
@@ -293,7 +293,7 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
     if (!$hide_sm_attributions)
     {
         echo html_tag( 'td', '', 'right' ) ."\n";
-        if (!isset($provider_uri)) $provider_uri= 'http://www.squirrelmail.org/';
+        if (!isset($provider_uri)) $provider_uri= 'http://squirrelmail.org/';
         if (!isset($provider_name)) $provider_name= 'SquirrelMail';
         echo '<a href="'.$provider_uri.'" target="_blank">'.$provider_name.'</a>';
         echo "</td>\n";

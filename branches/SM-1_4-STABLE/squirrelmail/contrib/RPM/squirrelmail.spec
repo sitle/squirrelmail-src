@@ -23,7 +23,7 @@ Name:           squirrelmail
 Version:        1.4.3
 Release:        %{rpm_release}
 License:        GPL
-URL:            http://www.squirrelmail.org/
+URL:            http://squirrelmail.org/
 Vendor:         squirrelmail.org
 Group:          Applications/Internet
 Source:         %{name}-%{version}.tar.bz2
