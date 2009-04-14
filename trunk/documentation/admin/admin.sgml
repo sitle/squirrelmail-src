@@ -3026,26 +3026,41 @@ Some quota setups can ignore files placed in Trash folder.
 <p>
 <descrip>
   <tag>How do I migrate mails between servers?</tag><label id="mailmigration">
-    If you have IMAP access besides SquirrelMail it's recommend to use a tool
-    dedicated to migration, such as <url
-    url="http://linux-france.org/prj/imapsync/" name="imapsync"> or <url
+    If you are able to access your IMAP server using means other than
+    SquirrelMail (that is, if your server's IMAP or IMAP-SSL ports are
+    available from your location), it is recommended that you use a dedicated
+    migration tool, such as <url url="http://linux-france.org/prj/imapsync/"
+    name="imapsync"> or <url
     url="http://home.arcor.de/armin.diehl/imapcopy/imapcopy.html"
     name="IMAPCopy">. IMAP copying/migration tools are available for various
-    platforms, so if none of those two fits your requirements, use a search
+    platforms, so if neither of these two fits your requirements, use a search
     engine to find something to match your setup.
 
-    If you're migrating away from a POP3 server you might use the Mail Fetch
+    If you are able to use another IMAP client (such as <url
+    url="http://www.mozilla.com/thunderbird" name="Thunderbird">) to access
+    mail on your servers, you can add both the new and old accounts to it
+    and drag and drop messages between the old and new accounts. Note that
+    this requires each user to set up and migrate their own messages - you
+    cannot migrate multiple user accounts automatically using this method.
+
+    If you are migrating away from a POP3 server, you can use the Mail Fetch
     plugin (bundled with SquirrelMail). It'll transfer mail from your POP3 inbox
-    to your SquirrelMail installation, but it won't handle folders.
+    to your SquirrelMail installation, but it won't handle folders. Note that
+    this requires each user to set up and migrate their own messages; if you
+    need to automate the process for multiple users, use another tool or create
+    your own script to add the needed SquirrelMail settings for the Mail Fetch
+    plugin to each user's SquirrelMail preferences.
 
     If you're migrating away from SquirrelMail you can use the <url
     url="http://squirrelmail.org/plugin_view.php?id=121" name="Archive Mail">
     plugin to download mails from the server, but there might not be an easy way
     to upload those mails to the new server.
 
-    Make sure that the ports needed to access the servers are open. The system
-    administrator have to help you if you don't have access to open them
-    yourself of if the system use any non-standard ports.
+    When using tools other than SquirrelMail, you'll probably need to make sure
+    that the ports needed to access the servers are open. The system
+    administrator may need to help you if you don't have the access or ability
+    to open them yourself (or if any of the systems you are working with use
+    any non-standard ports).
 
     The standard ports to use for clients and/or migration tools are:
     <tabular ca="ll">
@@ -3056,10 +3071,13 @@ Some quota setups can ignore files placed in Trash folder.
       POP3|110@
       Secure POP3 (SSL-POP)|995
     </tabular>
+</descrip>
 
+<descrip>
+  <tag>How do I migrate address books between servers?</tag><label id="abookmigration">
     Use the SquirrelMail <url
     url="http://squirrelmail.org/plugin_view.php?id=29" name="Addressbook
-    Import-Export"> plugin to migrate the address book.
+    Import-Export"> plugin.
 </descrip>
 
 <sect>Support, feedback, and suggestions<label id="support">
