@@ -3,12 +3,13 @@
 /**
  * mail_fetch/fetch.php
  *
- * Copyright (c) 1999-2006 The SquirrelMail Project Team
- * Licensed under the GNU GPL. For full terms see the file COPYING.
- *
  * Fetch code.
  *
- * $Id$
+ * @copyright &copy; 1999-2009 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @version $Id$
+ * @package plugins
+ * @subpackage mail_fetch
  */
 
 define('SM_PATH','../../');
