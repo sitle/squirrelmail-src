@@ -3,7 +3,7 @@
 /**
  * bluesteel_theme.php
  *
- * @copyright &copy; 2000-2007 The SquirrelMail Project Team
+ * @copyright &copy; 2000-2009 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
@@ -24,4 +24,3 @@ $color[9]   = '#ababab'; // (mid-gray)       Lighter version of #0
 $color[10]  = '#666666'; // (dark gray)      Darker version of #0
 $color[11]  = '#770000'; // (dark red)       Special Folders color
 $color[15]  = '#ababab'; // (mid-gray)       Unselectable folders
-?>

@@ -13,7 +13,7 @@
  *          necessary.
  *
  * @author Ray Black
- * @copyright &copy; 2000-2007 The SquirrelMail Project Team
+ * @copyright &copy; 2000-2009 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
@@ -34,5 +34,3 @@ $color[9]   = '#909090'; // (darker gray)               Darker version of #0
 $color[10]  = '#606060'; // (darkest gray)              Darker version of #9
 $color[11]  = '#600000'; // (lighter red)               Special Folders color
 $color[15]  = '#602020'; // (some brown)                Unselectable folders
-
-?>

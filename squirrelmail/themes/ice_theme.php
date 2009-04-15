@@ -6,7 +6,7 @@
  * Date:    January 7 2000
  *
  * @author Luke Ehresman
- * @copyright &copy; 2000-2007 The SquirrelMail Project Team
+ * @copyright &copy; 2000-2009 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
@@ -27,5 +27,3 @@ $color[9]   = '#d0eaff'; // Darker version of #0
 $color[10]  = '#f0faff'; // Darker version of #9
 $color[11]  = '#770000'; // Special Folders color
 $color[15]  = '#006600'; // Unselectable folders
-
-?>

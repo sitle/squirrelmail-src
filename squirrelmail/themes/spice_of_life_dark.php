@@ -7,7 +7,7 @@
  *         featuring a dark background with light text.
  *
  * @author Jorey Bump
- * @copyright &copy; 2000-2007 The SquirrelMail Project Team
+ * @copyright &copy; 2000-2009 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
@@ -37,4 +37,3 @@ for ($i = 0; $i <= 16; $i++) {
     /** set array element as hex string with hashmark (for HTML output) **/
     $color[$i] = sprintf('#%02X%02X%02X',$r,$g,$b);
 }
-

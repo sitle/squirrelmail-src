@@ -1,10 +1,11 @@
 <?php
+
 /**
  * Author:      Lucas Austin-Howe <lucash@slic.com>
  * Name:        Blue on Blue
  * Date:        December 29, 2005
  * Theme Name:  "Blue on Blue"
- * @copyright &copy; 2005-2007 The SquirrelMail Project Team
+ * @copyright &copy; 2005-2009 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
@@ -27,5 +28,3 @@ $color[12] = '#1d1d26'; // Alternate List Item Color (alternates with #4)
 $color[13] = '#8a8aaf'; // Single-Quoted text
 $color[14] = '#8a8aaf'; // Two or more quotes
 $color[15] = '#ffffff'; // Unselectable Folders
-
-?>

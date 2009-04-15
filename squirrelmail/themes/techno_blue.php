@@ -1,11 +1,12 @@
 <?php
+
 /**
  * Author:       Jeremy Landes
  * Date:         December 10, 2005
  * Theme Name:   'Techno Blue'
  *
  * Theme posted on SquirrelMail tracker #1377567
- * @copyright &copy; 2005-2007 The SquirrelMail Project Team
+ * @copyright &copy; 2005-2009 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
@@ -29,4 +30,3 @@ $color[12]  = '#eaeff5'; // Alternate color for message list (alters between #4 
 $color[13]  = '#4d657d'; // Color for single-quoted text ('> text')
 $color[14]  = '#4d657d'; // Color for text with more than one quote ('>> text')
 $color[15]  = '#f6faff'; // Non-selectable folders in the left frame (defaults to #6)
-?>

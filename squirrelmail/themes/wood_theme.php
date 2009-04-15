@@ -5,7 +5,7 @@
  * Date: 2004/11/16
  *
  * @author Pavel Spatny
- * @copyright &copy; 2004-2007 The SquirrelMail Project Team
+ * @copyright &copy; 2004-2009 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
@@ -29,5 +29,3 @@ $color[12]  = '#e4dab0'; //       odd message background
 $color[13]  = '#ffffff'; //
 $color[14]  = '#ffffff'; //
 $color[15]  = '#D0D0D0'; //       Unselectable folders
-
-?>

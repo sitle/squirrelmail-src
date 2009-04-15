@@ -6,7 +6,7 @@
  *    Date:   August 15, 2000
  *
  * @author Ray Black
- * @copyright &copy; 2000-2007 The SquirrelMail Project Team
+ * @copyright &copy; 2000-2009 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
@@ -30,4 +30,3 @@ $color[12]  = '#202020'; // (dark gray)         Alternate color
 $color[13]  = '#ff7733'; // (orange-ish)        Single-quoted text
 $color[14]  = '#ff3377'; // (pink-ish)          2 or more quotes
 $color[15]  = '#414141'; // (darker gray)       unselectable folders
-?>

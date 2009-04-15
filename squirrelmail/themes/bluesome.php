@@ -9,7 +9,7 @@
  *
  * @author Saku Lehtiö
  * @copyright &copy; 2005 Saku Lehtiö
- * @copyright &copy; 2005-2007 The SquirrelMail Project Team
+ * @copyright &copy; 2005-2009 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
@@ -33,4 +33,3 @@ $color[12]  = '#9DB5CB';
 $color[13]  = '#800000';
 $color[14]  = '#FF0000';
 $color[15]  = '#CCCCCC';
-?>

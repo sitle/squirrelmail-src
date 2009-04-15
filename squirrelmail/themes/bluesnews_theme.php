@@ -8,7 +8,7 @@
  *          contrast colorset, easy to read with very little eye strain.
  *
  * @author Ray Black
- * @copyright &copy; 2000-2007 The SquirrelMail Project Team
+ * @copyright &copy; 2000-2009 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
@@ -30,5 +30,3 @@ $color[10]  = '#000080'; // (bright blue)       Darker version of #9
 $color[11]  = '#3333ff'; // (dull blue)         Special Folders color
 $color[12]  = '#808080'; //                     Alternate rows
 $color[15]  = '#c0c060'; // (dull yellow)       Unselectable folders
-
-?>
