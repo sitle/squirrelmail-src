@@ -5,7 +5,7 @@
  * This file contains euc-kr decoding function that is needed to read
  * euc-kr encoded mails in non-euc-kr locale.
  *
- * @copyright (c) 2005 The SquirrelMail Project Team
+ * @copyright (c) 2005-2009 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package decode

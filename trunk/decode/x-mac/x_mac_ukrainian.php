@@ -3,7 +3,7 @@
  * decode/x_mac_ukrainian.php
  * $Id$
  *
- * Copyright (c) 2003-2005 The SquirrelMail Project Team
+ * Copyright (c) 2003-2009 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This file contains x-mac-ukrainian decoding function that 
