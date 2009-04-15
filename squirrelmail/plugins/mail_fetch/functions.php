@@ -57,7 +57,7 @@ function mf_keyED( $txt ) {
 
 function encrypt( $txt ) {
     srand( (double) microtime() * 1000000 );
-    $encrypt_key = md5( rand( 0, 32000-2009 ) );
+    $encrypt_key = md5( rand( 0, 32000 ) );
     $ctr = 0;
     $tmp = "";
     for( $i = 0; $i < strlen( $txt ); $i++ ) {
