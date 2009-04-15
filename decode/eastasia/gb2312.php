@@ -30,7 +30,7 @@
  * internal or external distribution as long as this notice remains
  * attached.
  *
- * @copyright (c) 2003-2005 The SquirrelMail Project Team
+ * @copyright (c) 2003-2009 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package decode

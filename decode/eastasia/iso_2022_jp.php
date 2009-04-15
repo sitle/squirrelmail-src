@@ -4,7 +4,7 @@
  *
  * This script provides iso-2022-jp (rfc1468) decoding functions.
  *
- * @copyright (c) 2004-2005 The SquirrelMail Project Team
+ * @copyright (c) 2004-2009 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package decode
