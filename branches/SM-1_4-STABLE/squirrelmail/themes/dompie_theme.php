@@ -7,7 +7,7 @@
  * Comment: Has a dark blue left-bar and a white/grey right frame.
  *
  * @author M.J. Prinsen
- * @copyright &copy; 2001-2007 The SquirrelMail Project Team
+ * @copyright &copy; 2001-2009 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
@@ -29,5 +29,3 @@ $color[10]  = '#c0c0c0'; // (light grey)     Darker version of #9
 $color[11]  = '#a7c5f3'; // (light blue)     Special Folders color
 $color[12]  = '#c0c0c0'; //
 $color[15]  = '#788dd0'; // (darkish blue)   Unselectable folders
-
-?>

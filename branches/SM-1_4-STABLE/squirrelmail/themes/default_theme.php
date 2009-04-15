@@ -11,7 +11,7 @@
  * Be sure to rename the file and keep the original, just in case.
  *
  * @author Luke Ehresman
- * @copyright &copy; 2000-2007 The SquirrelMail Project Team
+ * @copyright &copy; 2000-2009 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
@@ -36,4 +36,3 @@
     $color[14]  = '#ff0000'; // (red)            Color for quoted text -- >> 2 or more
     $color[15]  = '#002266'; // (dark blue)      Unselectable folders
     $color[16]  = '#ff9933'; // (orange)         Highlight color
-?>

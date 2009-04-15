@@ -6,7 +6,7 @@
  * Date:    July 13, 2000
  *
  * @author Casey A. Peel
- * @copyright &copy; 2000-2007 The SquirrelMail Project Team
+ * @copyright &copy; 2000-2009 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
@@ -27,5 +27,3 @@ $color[9]   = '#c0c0c0'; // (mid-gray)       Darker version of #0
 $color[10]  = '#808080'; // (dark gray)      Darker version of #9
 $color[11]  = '#ffffff'; // (white)          Special Folders color
 $color[15]  = '#d0d070'; // (gold)           Unselectable folders
-
-?>

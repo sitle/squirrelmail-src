@@ -5,7 +5,7 @@
  * Date:   August 18, 2000
  *
  * @author Ondrej Sury <ondrej at globe.cz>
- * @copyright &copy; 2000-2007 The SquirrelMail Project Team
+ * @copyright &copy; 2000-2009 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
@@ -26,4 +26,3 @@ $color[9]   = '#c7b98b'; // (mid-gray)       Darker version of #0
 $color[10]  = '#f1eee3'; // (dark gray)      Darker version of #9
 $color[11]  = '#770000'; // (dark red)       Special Folders color
 $color[15]  = '#c7b98b'; // (mid-gray)       Unselectable folders
-?>

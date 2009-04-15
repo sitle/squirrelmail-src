@@ -6,7 +6,7 @@
  * Comment This Theme is composed entirely of shades of purple.
  *
  * @author Luke Ehresman
- * @copyright &copy; 2000-2007 The SquirrelMail Project Team
+ * @copyright &copy; 2000-2009 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
@@ -27,5 +27,3 @@ $color[9]   = '#877c9f'; // (mid purp)       Darker version of #0
 $color[10]  = '#726987'; // (dark purp)      Darker version of #9
 $color[11]  = '#770000'; // (dark red)       Special Folders color
 $color[12]  = '#e0d9f2';
-
-?>

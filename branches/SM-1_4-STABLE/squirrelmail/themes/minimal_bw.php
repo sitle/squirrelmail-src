@@ -9,7 +9,7 @@
  * Problem: $color[9] is used for background and for disabled links.
  *
  * @author Tomas Kuliavas
- * @copyright &copy; 2003-2007 The SquirrelMail Project Team
+ * @copyright &copy; 2003-2009 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
@@ -33,4 +33,3 @@
     $color[13]  = '#000000'; // (black)   Color for quoted text -- > 1 quote
     $color[14]  = '#000000'; // (black)   Color for quoted text -- >> 2 or more
     $color[15]  = '#000000'; // (black)   Unselectable folders
-?>

@@ -7,7 +7,7 @@
  * Comment: Deep Ocean is a theme that is very blue.
  *
  * @author M.J. Prinsen
- * @copyright &copy; 2000-2007 The SquirrelMail Project Team
+ * @copyright &copy; 2000-2009 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
@@ -29,5 +29,3 @@ $color[10]  = '#496e8b'; // (dark gray)      Darker version of #9
 $color[11]  = '#a7c5f3'; // (dark red)       Special Folders color
 $color[12]  = '#7092b4';
 $color[15]  = '#83a1da'; // (another blue)   Unselectable folders color
-
-?>

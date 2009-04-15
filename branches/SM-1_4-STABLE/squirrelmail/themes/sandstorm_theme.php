@@ -6,7 +6,7 @@
  * Comment: This is a theme using Tan as its main color.
  *
  * @author Luke Ehresman
- * @copyright &copy; 2000-2007 The SquirrelMail Project Team
+ * @copyright &copy; 2000-2009 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
@@ -27,5 +27,3 @@ $color[9]   = '#bfa779'; // (mid tan)        Darker version of #0
 $color[10]  = '#7f6729'; // (dark tan)       Darker version of #9
 $color[11]  = '#770000'; // (dark red)       Special Folders color
 $color[15]  = '#7f6729'; // (dark tan)       Unselectable folders
-
-?>

@@ -5,7 +5,7 @@
  * Date: 2004/09/20
  *
  * @author Paul Lesneiwski
- * @copyright &copy; 2004-2007 The SquirrelMail Project Team
+ * @copyright &copy; 2004-2009 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
@@ -29,5 +29,3 @@ $color[12] = "#EDEDED"; // (light gray) Alternate List Item Color (alternates wi
 $color[13] = "#800000"; // (dark red) > Quoted Message Text
 $color[14] = "#FF0000"; // (rec) >> Multi-Quoted Message Text (2 >'s or more)
 $color[15] = "#002266"; // (dark blue NOTE: not tested) L. Frame: unselectable folders
-
-?>

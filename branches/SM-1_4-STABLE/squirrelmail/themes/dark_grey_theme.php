@@ -6,7 +6,7 @@
  *    Date:   July 24, 2000
  *
  * @author Justin Miller
- * @copyright &copy; 2000-2007 The SquirrelMail Project Team
+ * @copyright &copy; 2000-2009 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
@@ -27,5 +27,3 @@ $color[9]   = '#929292'; // (mid-gray)       Darker version of #0
 $color[10]  = '#505050'; // (dark gray)      Darker version of #9
 $color[11]  = '#770010'; // (dark red)       Special Folders color
 $color[15]  = '#440000'; // (darker red)     Unselectable folders
-
-?>

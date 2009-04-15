@@ -7,7 +7,7 @@
  * Comment: A popular theme with Jim's users
  *
  * @author Jim Riffle
- * @copyright &copy; 2001-2007 The SquirrelMail Project Team
+ * @copyright &copy; 2001-2009 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
@@ -30,4 +30,3 @@ $color[11]  = '#7070ff'; // Special folders / Unseen messages color
 $color[12]  = '#3300cc'; // Alternate table row color
 $color[13]  = '#3333cc';
 $color[15]  = '#33ff66'; // Unselectable folders
-?>

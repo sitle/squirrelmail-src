@@ -8,7 +8,7 @@
  *          ever-popular Linux penguin.  :)
  *
  * @author Peter J. Vasquez Sr.
- * @copyright &copy; 2001-2007 The SquirrelMail Project Team
+ * @copyright &copy; 2001-2009 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
@@ -31,5 +31,3 @@ $color[12]  = '#eeeeee'; // b 12: Alternate color for message list [alters betwe
 $color[13]  = '#800000'; // f 13: Color for single-quoted text ('> text') when reading (default:  #800000)
 $color[14]  = '#ff0000'; // f 14: Color for text with more than one quote (default: #ff0000)
 $color[15]  = '#ffdd11'; // f 15: Non-selectable folders in the left frame (defaults to $color[6])
-
-?>

@@ -5,7 +5,7 @@
  * Date:    March 3, 2000
  *
  * @author Luke Ehresman
- * @copyright &copy; 2000-2007 The SquirrelMail Project Team
+ * @copyright &copy; 2000-2009 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
@@ -26,5 +26,3 @@ $color[9]   = '#78a0a0';
 $color[10]  = '#386060';
 $color[11]  = '#ffffb0';
 $color[15]  = '#b0ffff';
-
-?>
