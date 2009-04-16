@@ -1,5 +1,5 @@
 # LANGUAGE (xx_XX) SquirrelMail Translation
-# Copyright (c) 1999-2008 The SquirrelMail Project Team
+# Copyright (c) 1999-2009 The SquirrelMail Project Team
 # This file is distributed under the same license as the SquirrelMail package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # $Id$
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: SquirrelMail HEAD\n"
 "Report-Msgid-Bugs-To: SquirrelMail Internationalization <squirrelmail-"
 "i18n@lists.sourceforge.net>\n"
-"POT-Creation-Date: 2008-05-16 06:41+0200\n"
+"POT-Creation-Date: 2009-04-16 12:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -1817,15 +1817,6 @@ msgstr ""
 msgid "Prefix Signature with '-- ' Line"
 msgstr ""
 
-msgid "Take Address"
-msgstr ""
-
-msgid "Address Book Take:"
-msgstr ""
-
-msgid "Try to verify addresses"
-msgstr ""
-
 msgid "Config File Version"
 msgstr ""
 
@@ -2797,7 +2788,7 @@ msgid "Login OK: Inbox EMPTY"
 msgstr ""
 
 #, php-format
-msgid "Login OK: Inbox contains %s messages"
+msgid "Login OK: Inbox contains %s mails"
 msgstr ""
 
 msgid "Fetching UIDL..."
@@ -2806,13 +2797,13 @@ msgstr ""
 msgid "Server does not support UIDL."
 msgstr ""
 
-msgid "Leaving mail on server..."
+msgid "Leaving mails on server..."
 msgstr ""
 
-msgid "Deleting messages from server..."
+msgid "Deleting mails from server..."
 msgstr ""
 
-msgid "Fetching message "
+msgid "Fetching mail "
 msgstr ""
 
 msgid "Server error. Disconnect"
@@ -2824,10 +2815,10 @@ msgstr ""
 msgid "Saving UIDL"
 msgstr ""
 
-msgid "Refetching message "
+msgid "Refetching mail "
 msgstr ""
 
-msgid "Error Appending Message!"
+msgid "Error Appending Mail!"
 msgstr ""
 
 msgid "Closing POP"
@@ -2836,11 +2827,11 @@ msgstr ""
 msgid "Logging out from IMAP"
 msgstr ""
 
-msgid "Message appended to mailbox"
+msgid "Mail appended to mailbox"
 msgstr ""
 
 #, php-format
-msgid "Message %d deleted from remote server!"
+msgid "Mail %d deleted from remote server!"
 msgstr ""
 
 msgid "Delete failed:"
@@ -3081,9 +3072,7 @@ msgstr ""
 
 #, php-format
 msgid "%s New Message"
-msgid_plural "%s New Messages"
-msgstr[0] ""
-msgstr[1] ""
+msgstr ""
 
 msgid "Test Sound"
 msgstr ""
@@ -3877,6 +3866,9 @@ msgstr ""
 msgid "Compose Preferences"
 msgstr ""
 
+msgid "Accessibility Preferences"
+msgstr ""
+
 #, php-format
 msgid "Folder list should automatically %srefresh%s."
 msgstr ""
@@ -3888,6 +3880,9 @@ msgstr ""
 msgid ""
 "Control the behaviour and layout of writing new mail messages, replying to "
 "and forwarding messages."
+msgstr ""
+
+msgid "You can configure features that improve interface usability."
 msgstr ""
 
 #, php-format
@@ -4053,6 +4048,10 @@ msgstr ""
 msgid "Personal Address Book"
 msgstr ""
 
+#, php-format
+msgid "Unknown field name: %s"
+msgstr ""
+
 msgid "PHP install does not have LDAP support."
 msgstr ""
 
@@ -4098,6 +4097,9 @@ msgstr ""
 msgid "%s should be writable by user %s."
 msgstr ""
 
+msgid "Illegal filesystem access was requested"
+msgstr ""
+
 msgid "Illegal folder name."
 msgstr ""
 
@@ -4112,9 +4114,6 @@ msgid "You have not selected a folder to subscribe. Please do so."
 msgstr ""
 
 msgid "You have not selected a folder to unsubscribe. Please do so."
-msgstr ""
-
-msgid "Illegal filesystem access was requested"
 msgstr ""
 
 msgid "Possible reason:"
@@ -4158,10 +4157,10 @@ msgstr ""
 msgid "Unknown recipient"
 msgstr ""
 
-msgid "Unflag"
+msgid "Flag"
 msgstr ""
 
-msgid "Flag"
+msgid "Unflag"
 msgstr ""
 
 msgid "Undelete"
@@ -4240,6 +4239,57 @@ msgstr ""
 msgid "IMAP server closed the connection."
 msgstr ""
 
+msgid "Not used"
+msgstr ""
+
+msgid "Access Keys For Top Menu (All Screens)"
+msgstr ""
+
+msgid "Access Keys For Message List Screen"
+msgstr ""
+
+msgid "Show All/Paginate"
+msgstr ""
+
+msgid "Thread View/Unthreaded View"
+msgstr ""
+
+msgid "Move To"
+msgstr ""
+
+msgid "Toggle Selected"
+msgstr ""
+
+msgid "Access Keys For Read Message Screen"
+msgstr ""
+
+msgid "As Attachment"
+msgstr ""
+
+msgid "Access Keys For Compose Screen"
+msgstr ""
+
+msgid "Browse"
+msgstr ""
+
+msgid "Attach"
+msgstr ""
+
+msgid "Delete Selected Attachments"
+msgstr ""
+
+msgid "Access Keys For Folder List Screen"
+msgstr ""
+
+msgid "Refresh/Check Mail"
+msgstr ""
+
+msgid "Purge Trash"
+msgstr ""
+
+msgid "Access Keys For Options Screen"
+msgstr ""
+
 msgid "General Message Composition"
 msgstr ""
 
@@ -4285,6 +4335,9 @@ msgstr ""
 msgid "Use Compact Page Selector"
 msgstr ""
 
+msgid "Show Names Instead of Email Addresses"
+msgstr ""
+
 msgid "Custom Date Format"
 msgstr ""
 
@@ -4298,6 +4351,12 @@ msgid "Height of inline frame"
 msgstr ""
 
 msgid "Show 'Delete &amp; Prev/Next' Links"
+msgstr ""
+
+msgid "Address Book Display Options"
+msgstr ""
+
+msgid "Number of Addresses per Page"
 msgstr ""
 
 msgid "Translate Special Folders"
@@ -4316,9 +4375,6 @@ msgid "Show only subscribed folders"
 msgstr ""
 
 msgid "XP"
-msgstr ""
-
-msgid "Address Book Take"
 msgstr ""
 
 msgid "IMAP Connection Security"
@@ -4742,17 +4798,20 @@ msgstr ""
 msgid "Can't get mailbox status:"
 msgstr ""
 
-msgid "Fetching list of messages..."
+msgid "Fetching list of mails..."
+msgstr ""
+
+msgid "Login OK: No new mails"
 msgstr ""
 
 #, php-format
-msgid "Login OK: Inbox contains %s message"
-msgid_plural "Login OK: Inbox contains %s messages"
+msgid "Login OK: Inbox contains %s mail"
+msgid_plural "Login OK: Inbox contains %s mails"
 msgstr[0] ""
 msgstr[1] ""
 
 #, php-format
-msgid "Fetching message %s."
+msgid "Fetching mail %s."
 msgstr ""
 
 msgid "Warning:"
@@ -4782,9 +4841,30 @@ msgstr ""
 msgid "Use StartTLS"
 msgstr ""
 
+msgid "View Message Details"
+msgstr ""
+
+msgid "New Mail Options"
+msgstr ""
+
 msgid ""
-"The NewMail plugin will follow the Folder Preferences option &quot;Enable "
-"Unread Message Notification&quot;"
+"Based on the Folder Preferences option &quot;Enable Unread Message "
+"Notification&quot;, you can be notified when new messages arrive in your "
+"account."
+msgstr ""
+
+#, php-format
+msgid ""
+"Selecting the %s option will enable the showing of a popup window when "
+"unseen mail is in one of your folders (requires JavaScript)."
+msgstr ""
+
+#, php-format
+msgid ""
+"Selecting the %s option will change the browser title bar to let you know "
+"when you have new mail (requires JavaScript and may only work in some "
+"browsers). This will always tell you if you have new mail, even if you have %"
+"s enabled."
 msgstr ""
 
 msgid "Follow folder preferences"
@@ -4828,7 +4908,7 @@ msgstr ""
 msgid "There are some restrictions in Sent Subfolder options."
 msgstr ""
 
-msgid "Sent Subfolders plugin is misconfigured."
+msgid "Sent subfolders options are misconfigured."
 msgstr ""
 
 msgid "Save emails submitted to SpamCop:"
@@ -4900,19 +4980,13 @@ msgstr ""
 msgid "Address book is empty"
 msgstr ""
 
-msgid "Edit Selected"
-msgstr ""
-
-msgid "Compose to Selected"
+msgid "Compose To"
 msgstr ""
 
 msgid "Address book search"
 msgstr ""
 
 msgid "New attachment"
-msgstr ""
-
-msgid "Attach"
 msgstr ""
 
 msgid "Max."
@@ -4937,6 +5011,9 @@ msgid "No folders were found to unsubscribe from."
 msgstr ""
 
 msgid "No folders were found to subscribe to."
+msgstr ""
+
+msgid "Check Mail"
 msgstr ""
 
 msgid "Message Flags"
@@ -4975,12 +5052,6 @@ msgstr ""
 msgid "Viewing HTML formatted email"
 msgstr ""
 
-msgid "As Attachment"
-msgstr ""
-
-msgid "Move To"
-msgstr ""
-
 msgid "Delete &amp; Previous"
 msgstr ""
 
@@ -5014,13 +5085,10 @@ msgstr ""
 msgid "Folder List"
 msgstr ""
 
-msgid "Open all"
+msgid "Open All"
 msgstr ""
 
-msgid "Close all"
-msgstr ""
-
-msgid "Purge trash"
+msgid "Close All"
 msgstr ""
 
 msgid "The SquirrelMail logo"
