@@ -82,8 +82,6 @@ xgettext ${XGETTEXT_OPTIONS} -j \
 # ** Stable plugins
     
 xgettext ${XGETTEXT_OPTIONS} -j \
-    ${SM_STABLE_PATH}/plugins/abook_take/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
-xgettext ${XGETTEXT_OPTIONS} -j \
     ${SM_STABLE_PATH}/plugins/administrator/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext ${XGETTEXT_OPTIONS} -j \
     ${SM_STABLE_PATH}/plugins/bug_report/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
@@ -140,8 +138,6 @@ xgettext ${XGETTEXT_OPTIONS} -j \
     
 # ** Plugins
     
-xgettext ${XGETTEXT_OPTIONS} -j \
-    ${SM_DEVEL_PATH}/plugins/abook_take/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext ${XGETTEXT_OPTIONS} -j \
     ${SM_DEVEL_PATH}/plugins/administrator/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext ${XGETTEXT_OPTIONS} -j \
