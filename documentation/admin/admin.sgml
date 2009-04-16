@@ -3024,6 +3024,74 @@ Some quota setups can ignore files placed in Trash folder.
 
 <sect>FAQ
 
+<sect1>How can I diagnose blank pages?<label id="blankpage">
+<p>
+Under some circumstances, a page request can result in nothing more than
+a blank page.  In most cases, this happens after the installation of a
+plugin, but it can happen elsewhere as well. This problem is typically caused
+by fatal PHP errors that are simply not being shown on screen.
+
+You can find those errors by looking in your web server log file. The
+location of that file will be different on some machines, but one
+example is <tt>/var/log/httpd/error_log</tt>.
+
+Alternatively, you can tell PHP to display the errors on screen in one
+of a few ways described below (remember to turn them off again if you
+are doing this in a production environment):
+
+<itemize>
+  <item>Change the error reporting settings in <tt/php.ini/ (remember to
+        restart the web server after you make changes to <tt/php.ini/):
+    <tscreen><verb>
+      display_errors=On
+      error_reporting=E_ALL
+    </verb></tscreen>
+  <item>Change the error reporting settings just for SquirrelMail by
+        adding the following lines into an <tt/.htaccess/ file in the
+        main SquirrelMail directory (this is an Apache web server
+        feature that also requires that you have at least
+        "<tt/AllowOverride Options/" in the <tt>&lt;Directory&gt;</tt>
+        section that applies to your SquirrelMail installation
+        within the Apache configuration file).
+    <tscreen><verb>
+      php_flag display_errors On
+      php_value error_reporting E_ALL
+    </verb></tscreen>
+  <item>Install the SquirrelMail
+        <url url="http://squirrelmail.org/plugin_view.php?id=228"
+        name="Debugger plugin">
+</itemize>
+
+Note that if you still have trouble seeing errors on screen, make sure
+you have not overridden the error reporting settings in your Apache
+configuration file or in another .htaccess file or custom SquirrelMail
+plugin, etc.
+
+Some more common causes of blank pages are:
+
+<itemize>
+    <item>You installed a new plugin but forgot to install one of
+          its dependencies (such as the <url
+          url="http://squirrelmail.org/plugin_view.php?id=152"
+          name="Compatibility plugin">) or apply a required patch.
+          Please carefully consult all the documentation files that
+          came with your new plugin, including its <tt/README/ and
+          <tt/INSTALL/ files.
+    <item>You are attempting to view a folder with a very large number
+          of messages in it (perhaps as many as 10,000).  In this case,
+          you may hit the maximum PHP execution time limit or maximum
+          memory limit. If you find such errors, you may want to
+          review our <ref id="optimization" name="optimization tips">
+          or our <url url="http://squirrelmail.org/wiki/SquirrelMailPerformance"
+          name="performance hints">.
+    <item>You have installed SquirrelMail for the first time and it does
+          not work at all - even the configuration test page and the login
+          page come up blank. This can be caused by the lack of session
+          support in PHP (which SquirrelMail requires). See the
+          <url url="http://php.net/manual/session.installation.php"
+          name="PHP session extension installation manual">.
+</itemize>
+
 <sect1>How do I migrate mails between servers?<label id="mailmigration">
 <p>
 Here are several options for your consideration:
