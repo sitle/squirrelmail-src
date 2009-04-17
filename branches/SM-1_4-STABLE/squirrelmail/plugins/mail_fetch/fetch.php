@@ -189,7 +189,7 @@ for ($i_loop=$i_start;$i_loop<$i_stop;$i_loop++) {
         continue;
     } else {
         $newmsgcount = $Count - $i + 1;
-        Mail_Fetch_Status(sprintf(_("Login OK: Inbox contains %s mails"), $newmsgcount));
+        Mail_Fetch_Status(sprintf(_("Login OK: Inbox contains %s messages"), $newmsgcount));
     }
 
     Mail_Fetch_Status(_("Fetching UIDL..."));
@@ -200,15 +200,15 @@ for ($i_loop=$i_start;$i_loop<$i_stop;$i_loop++) {
         Mail_Fetch_Status(_("Server does not support UIDL."));
 
     if ($mailfetch_lmos == 'on') {
-        Mail_Fetch_Status(_("Leaving mails on server..."));
+        Mail_Fetch_Status(_("Leaving messages on server..."));
     } else {
-        Mail_Fetch_Status(_("Deleting mails from server..."));
+        Mail_Fetch_Status(_("Deleting messages from server..."));
     }
 
     for (; $i <= $Count; $i++) {
-        Mail_Fetch_Status(_("Fetching mail ") . "$i" );
+        Mail_Fetch_Status(_("Fetching message ") . "$i" );
         if (!ini_get('safe_mode'))
-            set_time_limit(20); // 20 seconds per mail max
+            set_time_limit(20); // 20 seconds per message max
         $Message = "";
         $MessArray = $pop3->get($i);
 
@@ -233,7 +233,7 @@ for ($i_loop=$i_start;$i_loop<$i_stop;$i_loop++) {
 
                 continue;
             }
-            Mail_Fetch_Status(_("Refetching mail ") . "$i" );
+            Mail_Fetch_Status(_("Refetching message ") . "$i" );
             $MessArray = $pop3->get($i);
 
         } // end while
@@ -249,7 +249,7 @@ for ($i_loop=$i_start;$i_loop<$i_stop;$i_loop++) {
             fputs($imap_stream, "\r\n");
             sqimap_read_data($imap_stream, "A3$i", false, $response, $message);
             if ( $response <> 'OK' ) {
-                Mail_Fetch_Status(_("Error Appending Mail!")." ".$message );
+                Mail_Fetch_Status(_("Error Appending Message!")." ".$message );
                 Mail_Fetch_Status(_("Closing POP"));
                 $pop3->quit();
                 Mail_Fetch_Status(_("Logging out from IMAP"));
@@ -259,19 +259,19 @@ for ($i_loop=$i_start;$i_loop<$i_stop;$i_loop++) {
                 setPref($data_dir,$username,"mailfetch_uidl_$i_loop", $mailfetch_uidl[$i-1]);
                 exit;
             } else {
-                Mail_Fetch_Status(_("Mail appended to mailbox"));
+                Mail_Fetch_Status(_("Message appended to mailbox"));
             }
 
             if ($mailfetch_lmos != 'on') {
                 if( $pop3->delete($i) ) {
-                    Mail_Fetch_Status(sprintf(_("Mail %d deleted from remote server!"), $i));
+                    Mail_Fetch_Status(sprintf(_("Message %d deleted from remote server!"), $i));
                 } else {
                     Mail_Fetch_Status(_("Delete failed:") . htmlspecialchars($pop3->ERROR) );
                 }
             }
         } else {
             echo "$Line";
-            Mail_Fetch_Status(_("Error Appending Mail!"));
+            Mail_Fetch_Status(_("Error Appending Message!"));
             Mail_Fetch_Status(_("Closing POP"));
             $pop3->quit();
             Mail_Fetch_Status(_("Logging out from IMAP"));

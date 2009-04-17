@@ -197,7 +197,7 @@ function mail_fetch_login() {
                     }
                 } else {
                     echo "$Line";
-                    $outMsg .= _("Error Appending Mail!");
+                    $outMsg .= _("Error Appending Message!");
                 }
             }
 
