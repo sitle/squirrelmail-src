@@ -784,9 +784,12 @@ $languages['el_GR']['CHARSET'] = 'iso-8859-7';
 $languages['el_GR']['LOCALE']  = array('el_GR.ISO8859-7','el_GR.ISO-8859-7','el_GR');
 $languages['el']['ALIAS']      = 'el_GR';
 
+/* This translation is disabled because it contains less than 50%
+ * translated strings
 $languages['en_GB']['NAME']    = 'British';
 $languages['en_GB']['CHARSET'] = 'iso-8859-15';
 $languages['en_GB']['LOCALE']  = array('en_GB.ISO8859-15','en_GB.ISO-8859-15','en_GB');
+*/
 
 $languages['en_US']['NAME']    = 'English';
 $languages['en_US']['CHARSET'] = 'iso-8859-1';
