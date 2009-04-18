@@ -1,0 +1,658 @@
+# LANGUAGE (xx_XX) avelsieve Translation (SquirrelMail plugin)
+# Copyright (c) 1999-2006 The SquirrelMail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# $Id$
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: avelsieve 1.0.1\n"
+"POT-Creation-Date: 2004-04-01 20:12+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "You have to define at least one header match text."
+msgstr ""
+
+msgid "You have not defined the name for the new folder."
+msgstr ""
+
+msgid "Please try again."
+msgstr ""
+
+msgid "Illegal folder name.  Please select a different name"
+msgstr ""
+
+msgid "Add New Rule"
+msgstr ""
+
+msgid "New Rule Wizard - Step"
+msgstr ""
+
+msgid "of"
+msgstr ""
+
+msgid "Rule Type"
+msgstr ""
+
+msgid "Condition"
+msgstr ""
+
+msgid "Action"
+msgstr ""
+
+msgid "Confirmation"
+msgstr ""
+
+msgid ""
+"<p>You have chosen to keep every mail. This is the default action anyway, so "
+"you might want to start over with a rule that makes more sense. Select &quot;"
+"finished&quot; to save this rule nonetheless.</p>"
+msgstr ""
+
+msgid ""
+"Please use the buttons on the bottom instead of your browser's reload, back "
+"and forward buttons, to build a rule."
+msgstr ""
+
+msgid "Clear this Form"
+msgstr ""
+
+msgid "Start Over"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Add SPAM Rule"
+msgstr ""
+
+msgid "Move back to step"
+msgstr ""
+
+msgid "Finished"
+msgstr ""
+
+msgid "Move on to step"
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+msgid "What kind of rule would you like to add?"
+msgstr ""
+
+msgid ""
+"The rule will trigger if the following addresses appear anywhere in the "
+"message's headers:"
+msgstr ""
+
+msgid "To: or Cc"
+msgstr ""
+
+msgid "AND (Every item must match)"
+msgstr ""
+
+msgid "OR (Either item will match)"
+msgstr ""
+
+msgid "The condition for the following rules is:"
+msgstr ""
+
+msgid "The header "
+msgstr ""
+
+msgid "Less..."
+msgstr ""
+
+msgid "More..."
+msgstr ""
+
+msgid "This rule will trigger if message is"
+msgstr ""
+
+msgid "bigger"
+msgstr ""
+
+msgid "smaller"
+msgstr ""
+
+msgid "than"
+msgstr ""
+
+msgid "KB (kilobytes)"
+msgstr ""
+
+msgid "MB (megabytes)"
+msgstr ""
+
+msgid ""
+"The following action will be applied to <strong>all</strong> incoming "
+"messages that do not match any of the previous rules."
+msgstr ""
+
+msgid ""
+"This rule will trigger upon the occurrence of one or more strings in the "
+"body of an e-mail message. "
+msgstr ""
+
+msgid "Choose what to do when this rule triggers, from one of the following:"
+msgstr ""
+
+msgid "Keep (Default action)"
+msgstr ""
+
+msgid "Discard Silently"
+msgstr ""
+
+msgid "Reject, sending this excuse to the sender:"
+msgstr ""
+
+msgid "Please do not send me large attachments."
+msgstr ""
+
+msgid "Redirect to the following email address:"
+msgstr ""
+
+msgid "someone@example.org"
+msgstr ""
+
+msgid "Keep a local copy as well."
+msgstr ""
+
+msgid "Move message into"
+msgstr ""
+
+msgid "the existing folder"
+msgstr ""
+
+msgid "a new folder, named"
+msgstr ""
+
+msgid "created as a subfolder of"
+msgstr ""
+
+msgid "Also keep copy in INBOX, marked as deleted."
+msgstr ""
+
+msgid "Vacation"
+msgstr ""
+
+msgid ""
+"The notice will be sent only once to each person that sends you mail, and "
+"will not be sent to a mailing list address."
+msgstr ""
+
+msgid "Addresses: Only reply if sent to these addresses:"
+msgstr ""
+
+msgid "Days: Reply message will be resent after"
+msgstr ""
+
+msgid "days"
+msgstr ""
+
+msgid "Use the following message:"
+msgstr ""
+
+msgid ""
+"This is an automated reply; I am away and will not be able to reply to you "
+"immediately."
+msgstr ""
+
+msgid "I will get back to you as soon as I return."
+msgstr ""
+
+msgid "Additional Actions"
+msgstr ""
+
+msgid "STOP"
+msgstr ""
+
+msgid "If this rule matches, do not check any rules after it."
+msgstr ""
+
+msgid "Notify me, using the following method:"
+msgstr ""
+
+msgid "Notification ID"
+msgstr ""
+
+msgid "Destination"
+msgstr ""
+
+msgid "Message"
+msgstr ""
+
+msgid "Help: Valid variables are:"
+msgstr ""
+
+msgid "Your new rule states:"
+msgstr ""
+
+msgid ""
+"If this is what you wanted, select Finished. You can also start over or "
+"cancel adding a rule altogether."
+msgstr ""
+
+msgid "Configure Anti-SPAM Protection"
+msgstr ""
+
+msgid ""
+"All incoming mail is checked for unsolicited commercial content (SPAM) and "
+"marked accordingly. This special rule allows you to configure what to do "
+"with such messages once they arrive to your Inbox."
+msgstr ""
+
+#, php-format
+msgid ""
+"Select %s to add the predefined rule, or select the advanced SPAM filter to "
+"customize the rule."
+msgstr ""
+
+msgid "Add Spam Rule"
+msgstr ""
+
+msgid "Advanced Spam Filter..."
+msgstr ""
+
+msgid "Target Score"
+msgstr ""
+
+#, php-format
+msgid ""
+"Messages with SPAM-Score higher than the target value, the maximum value "
+"being %s, will be considered SPAM."
+msgstr ""
+
+msgid "SPAM Lists to check against"
+msgstr ""
+
+msgid "Whitelist"
+msgstr ""
+
+msgid ""
+"Messages that match any of these header rules will never end up in Junk "
+"Folders or regarded as SPAM."
+msgstr ""
+
+msgid "Apply Changes"
+msgstr ""
+
+msgid "Error Encountered"
+msgstr ""
+
+msgid "is"
+msgstr ""
+
+msgid "is not"
+msgstr ""
+
+msgid "contains"
+msgstr ""
+
+msgid "does not contain"
+msgstr ""
+
+msgid "matches"
+msgstr ""
+
+msgid "does not match"
+msgstr ""
+
+msgid "is greater than"
+msgstr ""
+
+msgid "is greater or equal to"
+msgstr ""
+
+msgid "is lower than"
+msgstr ""
+
+msgid "is lower or equal to"
+msgstr ""
+
+msgid "is equal to"
+msgstr ""
+
+msgid "is not equal to"
+msgstr ""
+
+msgid "matches the regural expression"
+msgstr ""
+
+msgid "does not match the regural expression"
+msgstr ""
+
+msgid "exists"
+msgstr ""
+
+msgid "does not exist"
+msgstr ""
+
+msgid "For <strong>ALL</strong> incoming messages; "
+msgstr ""
+
+msgid ""
+"All messages considered as <strong>SPAM</strong> (unsolicited commercial "
+"messages)"
+msgstr ""
+
+msgid "unless"
+msgstr ""
+
+msgid "or"
+msgstr ""
+
+msgid "matching the Spam List(s):"
+msgstr ""
+
+#, php-format
+msgid "and with score greater than %s"
+msgstr ""
+
+msgid "will be"
+msgstr ""
+
+msgid "stored in the Junk Folder."
+msgstr ""
+
+msgid "stored in the Trash Folder."
+msgstr ""
+
+msgid "discarded."
+msgstr ""
+
+msgid "If"
+msgstr ""
+
+msgid "<em>any</em> of the following mail headers match: "
+msgstr ""
+
+msgid "<em>all</em> of the following mail headers match: "
+msgstr ""
+
+msgid "the header"
+msgstr ""
+
+msgid "the size of the message is"
+msgstr ""
+
+msgid " bigger"
+msgstr ""
+
+msgid " smaller"
+msgstr ""
+
+msgid "then"
+msgstr ""
+
+msgid "<em>keep</em> it."
+msgstr ""
+
+msgid "<em>discard</em> it."
+msgstr ""
+
+msgid "<em>reject</em> it, sending this excuse back to the sender:"
+msgstr ""
+
+msgid "<em>redirect</em> it to the email address"
+msgstr ""
+
+msgid "<em>file</em> it into the folder <strong>"
+msgstr ""
+
+msgid "reply with this vacation message: "
+msgstr ""
+
+msgid "Also keep a local copy."
+msgstr ""
+
+msgid " Also keep a copy in INBOX, marked as deleted."
+msgstr ""
+
+msgid " Also notify using the method"
+msgstr ""
+
+msgid "with"
+msgstr ""
+
+msgid "priority and the message"
+msgstr ""
+
+msgid " Then <strong>STOP</strong> processing rules."
+msgstr ""
+
+msgid "Address Match"
+msgstr ""
+
+msgid ""
+"Perform an action depending on email addresses appearing in message headers."
+msgstr ""
+
+msgid "Header Match"
+msgstr ""
+
+msgid ""
+"Perform an action on messages matching a specified header (From, To etc.)."
+msgstr ""
+
+msgid "Size"
+msgstr ""
+
+msgid "Perform an action on messages depending on their size."
+msgstr ""
+
+msgid "All Messages"
+msgstr ""
+
+msgid "Perform an action on <strong>all</strong> incoming messages."
+msgstr ""
+
+msgid "Body Match"
+msgstr ""
+
+msgid "Perform an action on messages depending on their content (body text)."
+msgstr ""
+
+msgid "wildcard"
+msgstr ""
+
+msgid "regexp"
+msgstr ""
+
+msgid "verbose"
+msgstr ""
+
+msgid "terse"
+msgstr ""
+
+msgid "Mobile Phone Message (SMS)"
+msgstr ""
+
+msgid "Email notification"
+msgstr ""
+
+msgid "Notification via Zephyr"
+msgstr ""
+
+msgid "Notification via ICQ"
+msgstr ""
+
+msgid "Low"
+msgstr ""
+
+msgid "Normal"
+msgstr ""
+
+msgid "High"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Duplicate"
+msgstr ""
+
+msgid "Move Up"
+msgstr ""
+
+msgid "Move to Top"
+msgstr ""
+
+msgid "Move Down"
+msgstr ""
+
+msgid "Move to Bottom"
+msgstr ""
+
+msgid "Junk Folder"
+msgstr ""
+
+#, php-format
+msgid ""
+"Store SPAM message in your Junk Folder. Messages older than %s days will be "
+"deleted automatically."
+msgstr ""
+
+msgid "Note that you can set the number of days in Folder Preferences."
+msgstr ""
+
+msgid "Trash Folder"
+msgstr ""
+
+msgid ""
+"Store SPAM message in your Trash Folder. You will have to purge the folder "
+"yourself."
+msgstr ""
+
+msgid "Discard"
+msgstr ""
+
+msgid ""
+"Discard SPAM message. You will get no indication that the message ever "
+"arrived."
+msgstr ""
+
+msgid "Editing Mail Filtering Rule"
+msgstr ""
+
+msgid "Message Filters"
+msgstr ""
+
+msgid ""
+"Server-Side mail filtering enables you to add criteria in order to "
+"automatically forward, delete or place a given message into a folder."
+msgstr ""
+
+msgid "Filters"
+msgstr ""
+
+msgid "Could not log on to timsieved daemon on your IMAP server"
+msgstr ""
+
+msgid "Please contact your administrator."
+msgstr ""
+
+msgid "Could not set active script on your IMAP server"
+msgstr ""
+
+msgid "Unable to load script to server."
+msgstr ""
+
+msgid "Server responded with:"
+msgstr ""
+
+msgid "Test for Forged Header"
+msgstr ""
+
+msgid "Current Mail Filtering Rules"
+msgstr ""
+
+msgid "No Filtering Rules Defined Yet"
+msgstr ""
+
+msgid "Could not get SIEVE script from your IMAP server"
+msgstr ""
+
+msgid "(Probably the script is size null)."
+msgstr ""
+
+msgid "All your rules have been deleted"
+msgstr ""
+
+msgid "Really delete this rule?"
+msgstr ""
+
+msgid "Delete Selected"
+msgstr ""
+
+msgid "Server-Side Mail Filtering"
+msgstr ""
+
+msgid ""
+"Here you can add or delete filtering rules for your email account. These "
+"filters will always apply to your incoming mail, wherever you check your "
+"email."
+msgstr ""
+
+msgid ""
+"You don't have any rules yet. Feel free to add any with the button &quot;Add "
+"a New Rule&quot;. When you are done, please select &quot;Save Changes&quot; "
+"to get back to the main options screen."
+msgstr ""
+
+msgid ""
+"When you are done with editing, <strong>remember to select &quot;Save "
+"Changes&quot;</strong> to activate your changes!"
+msgstr ""
+
+msgid "Successfully added new rule."
+msgstr ""
+
+msgid "Successfully updated rule #"
+msgstr ""
+
+msgid "Successfully deleted rules #"
+msgstr ""
+
+msgid "Successfully deleted rule #"
+msgstr ""
+
+msgid "The following table summarizes your current mail filtering rules."
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "Description of Rule"
+msgstr ""
+
+msgid "Display as:"
+msgstr ""
+
+msgid "Options"
+msgstr ""
+
+msgid "Add a New Rule"
+msgstr ""
+
+msgid ""
+"When you are done, please click the button below to return to your webmail."
+msgstr ""
+
+msgid "Save Changes"
+msgstr ""
+
+msgid "Created:"
+msgstr ""
+
+msgid "Last modified:"
+msgstr ""

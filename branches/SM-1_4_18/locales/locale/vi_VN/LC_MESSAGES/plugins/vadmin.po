@@ -1,0 +1,1117 @@
+# Vietnamese (vi_VI) vadmin Translation (SquirrelMail plugin)
+# Copyright (c) 1999-2008 The SquirrelMail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
+# Clytie Siddall <clytie@riverland.net.au>, 2008.
+# $Id: vadmin.pot 10877 2006-03-04 11:22:22Z jervfors $
+msgid ""
+msgstr ""
+"Project-Id-Version: vadmin 1.9.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-07-06 21:57-0400\n"
+"PO-Revision-Date: 2008-04-06 01:17+1030\n"
+"Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
+"Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#, c-format
+msgid "%s already exists!"
+msgstr "%s đã có."
+
+#, c-format
+msgid "Failed to create %s!"
+msgstr "Lỗi tạo %s."
+
+#, c-format
+msgid "Could not open %s for writing"
+msgstr "Không thể mở %s để ghi"
+
+#, c-format
+msgid "Could not write data in %s!"
+msgstr "Không thể ghi dữ liệu vào %s."
+
+#, c-format
+msgid "Vadmin is misconfigured: No writing permissions to %s"
+msgstr "Sai cấu hình Vadmin: không có quyền ghi vào %s"
+
+msgid ""
+"You have attempted an action that was flagged by the system as violating the "
+"security measures in place. Your access has been denied. If you believe it "
+"was an error on our part, please try your action again, or e-mail your "
+"system administrator."
+msgstr "Bạn đã thử làm một hành động bị nhãn bởi hệ thống do vi phạm bảo mật. Vì vậy truy cập của bạn đã bị từ chối. Nếu bạn đã làm lỗi, hãy thử làm hành động đúng, hoặc gửi thư cho quản trị hệ thống."
+
+#, c-format
+msgid "VADMIN SYSTEM ERROR: %s"
+msgstr "LỖI HỆ THỐNG VADMIN: %s"
+
+#, c-format
+msgid ""
+"<strong>SYSTEM ERROR: %s</strong>. We apologize for the inconvenience, but "
+"your request cannot be completed at this time. Please contact your system "
+"administrator if the problem persists."
+msgstr "<strong>LỖI HỆ THỐNG: %s</strong>. Xin lỗi vì làm phiền bạn, không thể xử lý yêu cầu của bạn vào lúc này. Lỗi này bền bỉ thì hãy liên lạc với quản trị hệ thống."
+
+msgid "SYSTEM ERROR"
+msgstr "LỖI HỆ THỐNG"
+
+#, c-format
+msgid ""
+"<strong>Error: %s</strong>. Please return to the previous page and try to "
+"correct your input. If you need assistance or believe this is a software "
+"error, please contact your system administrator."
+msgstr "<strong>Lỗi: %s</strong> Hãy trở về trang trước và thử sửa chữa dữ liệu nhập vào. Cần sự giúp đỡ hoặc thấy có lỗi hệ thống thì hãy liên lạc với quản trị hệ thống."
+
+msgid "Input Error"
+msgstr "Lỗi gõ"
+
+msgid "Back to &quot;Main Menu&quot;"
+msgstr "Trở về « Trình đơn Chính »"
+
+msgid "Logout"
+msgstr "Đăng xuất"
+
+#, c-format
+msgid "Vadmin Plugin version %s"
+msgstr "Phần bổ sung Vadmin phiên bản %s"
+
+msgid "Could not find CRYPTO_HASH_LINE! "
+msgstr "Không tìm thấy dòng mã hoá CRYPTO_HASH_LINE ! "
+
+msgid "Could not find MCRYPT_ALGO! "
+msgstr "Không tìm thấy thuật toán mã hoá MCRYPT_ALGO ! "
+
+#, c-format
+msgid "Vamin is misconfigured: %s"
+msgstr "Sai cấu hình Vadmin: %s"
+
+msgid ""
+"An algorithm other than 'rc4_builtin' specified, but mcrypt support not "
+"found."
+msgstr "Đã ghi rõ một thuật toán khác với « rc4_builtin », nhưng không tìm thấy hỗ trợ mcrypt."
+
+#, c-format
+msgid "Vadmin is misconfigured: %s"
+msgstr "Sai cấu hình Vadmin: %s"
+
+#, c-format
+msgid "Could not find virtual domains file %s!"
+msgstr "Không tìm thấy tập tin miền ảo %s."
+
+#, c-format
+msgid "No virtual domains defined in %s!"
+msgstr "Chưa xác định miền ảo trong %s."
+
+msgid "Error:"
+msgstr "Lỗi:"
+
+msgid "Success:"
+msgstr "Thành công:"
+
+msgid "Username/Alias"
+msgstr "Tên người dùng/Bí danh"
+
+msgid "Personal Info"
+msgstr "Thông tin Cá nhân"
+
+msgid "Mailbox"
+msgstr "Hộp thư"
+
+msgid "Forwards"
+msgstr "Chuyển tiếp"
+
+#, c-format
+msgid "%s (admin)"
+msgstr "%s (quản trị)"
+
+msgid "End of listing"
+msgstr "Cuối danh sách"
+
+#, c-format
+msgid "User listing for %s"
+msgstr "Danh sách người dùng đối với %s"
+
+#, c-format
+msgid "No such user or alias exists: %s"
+msgstr "Không có người dùng hoặc bí danh như vậy: %s"
+
+#, c-format
+msgid "You don't have permissions to edit user '%s'"
+msgstr "Bạn không có quyền chỉnh sửa người dùng « %s »"
+
+msgid "encrypted"
+msgstr "đã mã"
+
+msgid "a 'catchall' account"
+msgstr "một tài khoản « bắt tất cả »"
+
+#, c-format
+msgid "Listing for <em>%s</em>, created on <em>%s</em>"
+msgstr "Danh sách đối với <em>%s</em>, tạo vào <em>%s</em>"
+
+msgid "Change user attributes"
+msgstr "Đổi thuộc tính người dùng"
+
+msgid "Hard Quota"
+msgstr "Hạn ngạch cứng"
+
+msgid "MBytes"
+msgstr "MByte"
+
+msgid "Soft Quota"
+msgstr "Hạn ngạch mềm"
+
+msgid "Set Password"
+msgstr "Đặt mật khẩu"
+
+msgid "Size Limit"
+msgstr "Giới hạn kích cỡ"
+
+msgid "Expiry Time"
+msgstr "Thời gian mãn hạn"
+
+msgid "days"
+msgstr "ngày"
+
+msgid "Count Limit"
+msgstr "Giới hạn đếm"
+
+msgid "msgs"
+msgstr "thư"
+
+msgid "Can administer this domain"
+msgstr "Có quyền quản trị miền này"
+
+msgid "separate by commas"
+msgstr "định giới bằng dấu phẩy"
+
+msgid "Make these changes"
+msgstr "Làm các thay đổi này"
+
+msgid "Delete this account"
+msgstr "Xoá tài khoản này"
+
+msgid ""
+"Click here if you wish to delete this account. This will also delete any and "
+"all user files associated with it -- mailbox files, SquirrelMail "
+"preferences, etc."
+msgstr "Nhấn vào đây nếu bạn muốn xoá tài khoản này. Hành động này sẽ cũng xoá bất kỳ và tất cả các tập tin người dùng liên quan đến nó : tập tin hộp thư, tùy thích SquirrelMail v.v."
+
+msgid "Description of fields"
+msgstr "Mô tả trường"
+
+msgid ""
+"This is where you put full name of this user or some other information to "
+"help you better identify your users and aliases."
+msgstr "Ở đây thì bạn nhập họ tên của người dùng, hoặc thông tin khác sẽ giúp bạn phân biệt các người dùng và bí danh."
+
+msgid ""
+"This is a Maildir-format style mailbox. If you wish to change this user to "
+"an alias without a mailbox, then you will need to leave this setting blank. "
+"Please don't change setting unless you know what you are doing, as this can "
+"prevent users from accessing their mailboxes."
+msgstr "Đây là một hộp thư định dạng Maildir. Muốn thay đổi người dùng này thành một bí danh không có hộp thư thì bạn cần phải bỏ trống thiết lập này. Chưa quen với kết quả thì đừng sửa đổi thiết lập, vì nó có thể ngăn cản người dùng truy cập vào hộp thư."
+
+msgid ""
+"Since users' passwords are encrypted, it is impossible to see what it is in "
+"this listing. Leave it saying 'encrypted' or blank to keep the old value, or "
+"type in a new value to change this user's mailbox access password."
+msgstr "Vì người dùng có mật khẩu đã mã hoá, không thể thấy nội dung của danh sách này. Để lại nó nói « đã mã hoá », hoặc bỏ trống để giữ giá trị cũ, hoặc gõ một giá trị mới để thay đổi mật khẩu truy cập hộp thư của người dùng này."
+
+msgid "A '-' means that password for this user is not set."
+msgstr "Dấu trừ « - » có nghĩa là chưa đặt mật khẩu cho người dùng này."
+
+msgid ""
+"If you want to limit the availability of this mailbox by some amount of "
+"time, put in the number of days this box should be active."
+msgstr "Muốn hạn chế khả năng truy cập vào hộp thư này theo một khoảng thời gian thì nhập số ngày trong đó hộp này sẽ hoạt động."
+
+msgid "A '-' means there is no time limit on this box."
+msgstr "Dấu trừ « - » có nghĩa là hộp này không có giới hạn thời gian."
+
+msgid ""
+"The absolute limit of how many kilobytes this user may have in his or her "
+"mailbox. If this limit is ever reached, the system will not accept any more "
+"messages for this user."
+msgstr "Giới hạn tuyệt đối về kích cỡ hộp thư (theo kilô-byte) của người dùng này. Tới hạn ngạch này thì hệ thống không chấp nhận thư thêm nữa cho người dùng đó."
+
+msgid "A '-' means unlimited storage space."
+msgstr "Dấu trừ « - » có nghĩa là sức chứa vô hạn."
+
+msgid ""
+"This sets the size of user's mailbox in kilobytes. If this level is reached, "
+"the user is notified that his or her mailbox is at its limits and should be "
+"cleaned. The system will still accept messages until Hard Quota limit is "
+"reached. Soft Quota should be less than Hard Quota."
+msgstr "Đây đặt kích cỡ của hộp thư của người dùng, theo kilô-byte. Tới hạn ngạch này thì người dùng nhận thông báo rằng hộp thư đầy nên phải làm sạch nó. Hệ thống sẽ vẫn còn chấp nhận thư đến khi tới Hạn Ngạch Cứng. Hạn Ngạch Mềm thì nên nằm dưới Hạn Ngạch Cứng."
+
+msgid "A '-' means no limits are set on this user's mailbox."
+msgstr "Dấu trừ « - » có nghĩa là không đặt giới hạn về hộp thư của người dùng này."
+
+msgid ""
+"This limits the maximum size of any one message that this user is trying to "
+"receive in kilobytes. If a message arrives which is larger than the limit "
+"specified here, then it will be discarded."
+msgstr "Đây hạn chế kích cỡ tối đa (theo kilô-byte) của bất kỳ thư riêng lẻ mà người dùng này thử nhận. Thư gửi đến có kích cỡ lớn hơn giới hạn này thì nó bị hủy."
+
+msgid "A '-' means no limits on message sizes."
+msgstr "Dấu trừ « - » có nghĩa là kích cỡ thư vô hạn."
+
+msgid ""
+"This limits how many messages a user can have in his or her mailbox. If more "
+"messages accumulate than the amount allows, any incoming messages will be "
+"discarded until the user cleans the mailbox."
+msgstr "Đây giới hạn tổng số thư người dùng có trong hộp thư. Tổng số thư lớn hơn hạn ngạch này thì thư gửi đến sẽ bị hủy đến khi người dùng làm sạch hộp thư đó."
+
+msgid "A '-' means no limits."
+msgstr "Dấu trừ « - » có nghĩa là vô hạn."
+
+msgid ""
+"This specifies the forwarding addresses for this user or alias. You may put "
+"in as  many as you want, separating them by commas (comma-space is OK). "
+"Leave blank if you don't want to forward any copies."
+msgstr "Đây ghi rõ các địa chỉ chuyển tiếp cho người dùng này hoặc bí danh của họ. Bạn có thể nhập bất kỳ số địa chỉ, định giới bằng dấu phẩy (dấu phẩy và dấu cách cũng được). Không muốn chuyển tiếp bản sao thì bỏ trống trường này."
+
+msgid "Command"
+msgstr "Lệnh"
+
+msgid "Execution result"
+msgstr "Kết quả thực hiện"
+
+msgid "Marked as administrator"
+msgstr "Đánh dấu là quản trị"
+
+msgid "Setting administrator privileges"
+msgstr "Đang đặt quyền quản trị"
+
+msgid ""
+"This is currently not working due to a bug in include files provided by "
+"vmailmgr."
+msgstr "Hiện thời không hoạt động do lỗi trong tập tin bao gồm (include) được vmailmgr cung cấp."
+
+msgid ""
+"Invalid characters in password. Passwords can only contain latin characters, "
+"numbers, and underscores."
+msgstr "Mật khẩu chứa ký tự sai. Mật khẩu chỉ có thể chứa chữ cái, chữ số và dấu gạch dưới kiểu La-tinh."
+
+msgid "The password has been changed."
+msgstr "Mật khẩu đã được thay đổi."
+
+msgid "Changing Password"
+msgstr "Đang thay đổi mật khẩu"
+
+#, c-format
+msgid "Changed to '%s'"
+msgstr "Đã thay đổi thành « %s »"
+
+msgid "Changing Mailbox"
+msgstr "Đang thay đổi Hộp thư"
+
+#, c-format
+msgid "Updated to '%s'"
+msgstr "Đã cập nhật lên « %s »"
+
+msgid "Changing Aliases"
+msgstr "Đang thay đổi Bí danh"
+
+msgid "Changing Personal Info"
+msgstr "Đang thay đổi Thông tin Cá nhân"
+
+msgid "Unlimited quotas not permitted"
+msgstr "Không cho phép hạn ngạch vô hạn"
+
+msgid "Changed to unlimited."
+msgstr "Đã thay đổi thành vô hạn."
+
+#, c-format
+msgid "Quota above the limit of %d Mb"
+msgstr "Hạn ngạch vượt quá giới hạn %d MB"
+
+#, c-format
+msgid "Changed to %d MBytes."
+msgstr "Đã thay đổi thành %d MB."
+
+msgid "Changing Hard Quota"
+msgstr "Đang thay đổi Hạn Ngạch Cứng"
+
+msgid "Changing Soft Quota"
+msgstr "Đang thay đổi Hạn Ngạch Mềm"
+
+msgid "Unlimited message size not permitted"
+msgstr "Không cho phép kích cỡ thư vô hạn"
+
+#, c-format
+msgid "Size above the limit of %d Mb"
+msgstr "Kích cỡ vượt quá giới hạn %d MB"
+
+msgid "Changing Size Limit"
+msgstr "Đang thay đổi Giới hạn Kích cỡ"
+
+msgid "Unlimited message count not permitted"
+msgstr "Không cho phép số đếm thư vô hạn"
+
+#, c-format
+msgid "Message count above permitted %d"
+msgstr "Số đếm thư vượt quá giới hạn %d"
+
+#, c-format
+msgid "Changed to %s messages."
+msgstr "Đã thay đổi thành %s thư."
+
+msgid "Changing Count Limit"
+msgstr "Đang thay đổi Giới hạn Số đếm"
+
+#, c-format
+msgid "Changed to %s days."
+msgstr "Đã thay đổi thành %s ngày."
+
+msgid "Changing Expiry Time"
+msgstr "Đang thay đổi Thời gian Mãn hạn"
+
+msgid "Execution completed"
+msgstr "Đã thực hiện hoàn tất"
+
+msgid "No changes requested"
+msgstr "Không có thay đổi nào được yêu cầu"
+
+#, c-format
+msgid "Changing attributes for <em>%s</em>"
+msgstr "Đang thay đổi các thuộc tính đối với <em>%s</em>"
+
+msgid "Username:"
+msgstr "Tên người dùng:"
+
+msgid "Password:"
+msgstr "Mật khẩu :"
+
+msgid "[Optional] Also forward to (separate by commas):"
+msgstr "[Tùy chọn] Cũng chuyển tiếp tới địa chỉ (định giới bằng dấu phẩy):"
+
+msgid "Create new user"
+msgstr "Tạo người dùng mới"
+
+msgid "Creating new user"
+msgstr "Đang tạo người dùng mới"
+
+msgid "Forward to (separate by commas):"
+msgstr "Chuyển tiếp tới địa chỉ (định giới bằng dấu phẩy):"
+
+msgid "Create new alias"
+msgstr "Tạo bí danh mới"
+
+msgid "Creating new alias"
+msgstr "Đang tạo bí danh mới"
+
+msgid "Create new 'catchall' default forward"
+msgstr "Tạo sự chuyển tiếp « bắt tất cả » mới"
+
+msgid "Creating new 'catchall' account"
+msgstr "Đang tạo tài khoản « bắt tất cả » mới"
+
+msgid "'catchall'"
+msgstr "« bắt tất cả »"
+
+#, c-format
+msgid "Account %s created"
+msgstr "Tài khoản %s đã được tạo"
+
+#, c-format
+msgid ""
+"User <strong>%s</strong> has been successfully created and is ready to be "
+"used. If you would like to adjust settings for this newly created account, "
+"then please click the button below."
+msgstr "Người dùng <strong>%s</strong> đã được tạo thì sẵn sàng dùng. Nếu bạn muốn điều chỉnh thiết lập cho tài khoản mới tạo này, hãy bấm cái nút bên dưới."
+
+msgid "Customize this account"
+msgstr "Đặc chế tài khoản này"
+
+msgid "User created"
+msgstr "Người dùng đã tạo"
+
+msgid "Confirm action"
+msgstr "Xác nhận hành vi"
+
+#, c-format
+msgid ""
+"<strong>WARNING:</strong> You are about to delete user or alias <strong>%s</"
+"strong>. If it's a real user, this will delete his/her mailbox including all "
+"stored messages, and clear any SquirrelMail preferences this user has. "
+"Proceed?"
+msgstr "<strong>CẢNH BÁO :</strong> bạn sắp xoá người dùng hoặc bí danh <strong>%s</"
+"strong>. Nếu nó là một người dùng thật, hành vi này sẽ xoá hộp thư của họ, gồm có tất cả các thư đã lưu, và dọn tùy thích SquirrelMail nào của họ. Vẫn tiếp tục ?"
+
+msgid "No, cancel"
+msgstr "Thôi"
+
+msgid "Yes, delete"
+msgstr "Xoá"
+
+#, c-format
+msgid "About to delete account %s"
+msgstr "Sắp xoá tài khoản %s"
+
+#, c-format
+msgid "Account %s deleted"
+msgstr "Tài khoản %s bị xoá"
+
+#, c-format
+msgid "Account <strong>%s</strong> deleted successfully."
+msgstr "Tài khoản <strong>%s</strong> bị xoá."
+
+msgid "The following preference files have also been deleted:"
+msgstr "Những tập tin tùy thích sau cũng bị xoá:"
+
+msgid "Deletion Results"
+msgstr "Kết quả xoá"
+
+#, c-format
+msgid "Invalid request, handler for '%s' does not exist"
+msgstr "Yêu cầu không hợp lệ: bộ xử lý cho « %s » không tồn tại"
+
+msgid "Delete"
+msgstr "Xoá"
+
+msgid "Add"
+msgstr "Thêm"
+
+msgid "Editing instructions"
+msgstr "Đan chỉnh sửa hướng dẫn"
+
+msgid ""
+"To delete a cross-administrator, press the 'Delete' key next to the "
+"username. To add a cross-administrator, put in the full username into the "
+"field for the domain to which you wish to add one, and press 'Add'. The term "
+"'full username' means both the username and the domain name, e.g.: "
+"joe@domain.com."
+msgstr "Để xoá một quản trị chéo, bấm phím Delete (Xoá) kế bên tên người dùng. Để thêm một quản trị chéo, nhập tên người dùng đầy đủ vào trường cho miền vào đó bạn muốn thêm họ, rồi bấm nút « Thêm ». Thuật ngữ « tên người dùng đầy đủ » có nghĩa là cả hai tên người dùng và tên miền, v.d. « nguyen_van@vnoss.org »."
+
+msgid "Listing cross-admins for all configured domains"
+msgstr "Đang liệt kê các quản trị chéo đối với tất cả các miền đã cấu hình"
+
+#, c-format
+msgid "Listing cross-admins for %s"
+msgstr "Đang liệt kê các quản trị chéo đối với %s"
+
+msgid "Choose a cross-admin to view"
+msgstr "Chọn quản trị chéo cần xem"
+
+msgid "Cross-admin:"
+msgstr "Quản trị chéo :"
+
+msgid "Edit"
+msgstr "Sửa"
+
+msgid "Instructions"
+msgstr "Hướng dẫn"
+
+msgid ""
+"To edit a cross-admin, select the admin's username from the drop-down dialog "
+"box and then click 'Edit'. To add a new one, provide the full username in "
+"the text box and click the 'Add' button next to it. The 'full' username "
+"means both the user's name and the domain, e.g.: joe@domain.com."
+msgstr "Để chỉnh sửa một quản trị chéo, chọn tên người dùng của họ trong hộp thoại thả xuống, rồi bấm nút « Sửa ». Để thêm quản trị chéo mới, cung cấp tên người dùng đầy đủ trong hộp văn bản, rồi nhấn vào nút « Thêm » bên cạnh nó. Thuật ngữ « tên người dùng đầy đủ » có nghĩa là cả hai tên người dùng và tên miền, v.d. « nguyen_van@vnoss.org »."
+
+msgid "No cross-admins found. You should add some first."
+msgstr "Không tìm thấy quản trị chéo. Trước tiến bạn nên thêm họ."
+
+#, c-format
+msgid "Viewing domains for %s"
+msgstr "Đang xem các miền đối với %s"
+
+#, c-format
+msgid "Viewing Cross-administrator %s"
+msgstr "Đang xem quản trị chéo %s"
+
+msgid "The default squirrelmail image"
+msgstr "Ảnh SquirrelMail mặc định"
+
+msgid "Your custom login image"
+msgstr "Ảnh đăng nhập riêng của bạn"
+
+msgid "Restore the default login image"
+msgstr "Phục hồi ảnh đăng nhập mặc định"
+
+msgid "Upload custom image"
+msgstr "Tải lên ảnh riêng"
+
+msgid "Title"
+msgstr "Tựa đề"
+
+msgid "Customize the login page look"
+msgstr "Đặc chế diện mạo của trang đăng nhập"
+
+msgid "Only GIF, PNG, and JPEG type images are permitted"
+msgstr "Chỉ cho phép ảnh dạng GIF, PNG hoặc JPEG"
+
+#, c-format
+msgid "The image is over the limit of %d Kb"
+msgstr "Ảnh có kích cỡ vượt quá giới hạn %d KB"
+
+msgid "Login page preferences saved"
+msgstr "Tùy thích về trang đăng nhập đã được lưu"
+
+msgid "Login page image"
+msgstr "Ảnh trang đăng nhập"
+
+msgid "Login page preferences"
+msgstr "Tùy thích về trang đăng nhập"
+
+msgid "You may set the following permissions"
+msgstr "Bạn có quyền đặt các tùy thích theo đây"
+
+msgid "Users may change their passwords"
+msgstr "Người dùng có quyền thay đổi mật khẩu của mình"
+
+msgid "Users may use autoresponder"
+msgstr "Người dùng có quyền dùng bộ tự động đáp ứng"
+
+msgid "Set these permissions"
+msgstr "Đặt quyền hạn này"
+
+#, c-format
+msgid "Set user permissions for %s"
+msgstr "Đặt quyền hạn người dùng cho %s"
+
+msgid "Action taken"
+msgstr "Hành vi làm"
+
+msgid "Result"
+msgstr "Kết quả"
+
+msgid "Enabled"
+msgstr "Đã bật"
+
+msgid "Disabled"
+msgstr "Bị tắt"
+
+msgid "No change"
+msgstr "Chưa thay đổi gì"
+
+msgid "Changing password change settings"
+msgstr "Đang sửa đổi thiết lập thay đổi mật khẩu"
+
+msgid "Changing autoresponder settings"
+msgstr "Đang sửa đổi thiết lập bộ tự động đáp ứng"
+
+#, c-format
+msgid "Setting user preferences for %s"
+msgstr "Đang thiết lập tùy thích người dùng cho %s"
+
+msgid "This option requires domain password"
+msgstr "Tùy chọn này cần thiết mật khẩu miền"
+
+msgid ""
+"To let users change passwords and set autoresponders, there will need to be "
+"a copy of the system password saved on the disk."
+msgstr "Để cho phép người dùng thay đổi mật khẩu và đặt bộ tự động đáp ứng thì cần thiết một bản sao của mật khẩu hệ thống được lưu vào đĩa."
+
+msgid "Save domain password"
+msgstr "Lưu mật khẩu miền"
+
+msgid "Domain password required"
+msgstr "Cần thiết mật khẩu miền"
+
+msgid "Maximum number of mailboxes"
+msgstr "Số tối đa các hộp thư"
+
+msgid "Maximum user hard quota limit (Mb)"
+msgstr "Hạn ngạch trên cứng của người dùng (MB)"
+
+msgid "Maximum user message size limit (Mb)"
+msgstr "Giới hạn kích cỡ thư tối đa của người dùng (MB)"
+
+msgid "Maximum user message count limit"
+msgstr "Giới hạn số đếm thư tối đa của người dùng"
+
+msgid "Maxium login page image size (Kb)"
+msgstr "Kích cỡ tối đa của ảnh trang đăng nhập (KB)"
+
+msgid "Field Description"
+msgstr "Mô tả trường"
+
+msgid "Current value"
+msgstr "Giá trị hiện có"
+
+msgid "Set these limits"
+msgstr "Đặt các giới hạn này"
+
+#, c-format
+msgid "Set domain limits for %s"
+msgstr "Đặt các giới hạn miền cho %s"
+
+#, c-format
+msgid "%s is not an integer. Ignored"
+msgstr "%s không phải là số nguyên nên bị bỏ qua"
+
+#, c-format
+msgid "%d is over the master limit of %d. Maximum setting of %d used"
+msgstr "%d vượt quá giới hạn chủ %d nên dùng giá trị tối đa %d"
+
+msgid "OK, set to unlimited"
+msgstr "Đặt thành vô hạn"
+
+#, c-format
+msgid "OK, set to %d"
+msgstr "Đặt thành %d"
+
+#, c-format
+msgid "Recording domain limits for %s"
+msgstr "Đang ghi lưu các giới hạn miền cho %s"
+
+msgid ""
+"<strong>Password</strong> is the same as your <em>mailbox password</em> you "
+"used during login procedure. You are asked to type it in second time as an "
+"extra security precaution."
+msgstr "<strong>Mật khẩu</strong> này trùng với <em>mật khẩu hộp thư</em> bạn dùng khi đăng nhập. Bạn được nhắc gõ nó lần thứ hai để làm thêm bước bảo mật."
+
+msgid ""
+"<strong>Password</strong> is the <em>system password</em> corresponding to "
+"the domain you have selected. Once you type it in, it will be stored on the "
+"server in an encrypted format until you sign out of the vadmin interface."
+msgstr "<strong>Mật khẩu</strong> này là <em>mật khẩu hệ thống</em> tương ứng với miền bạn đã chọn. Một khi gõ vào thì nó được lưu vào máy phục vụ theo định dạng mã hoá đến khi bạn đăng xuất ra giao diện vadmin."
+
+msgid "Domain"
+msgstr "Miền"
+
+msgid "Password"
+msgstr "Mật khẩu"
+
+msgid "Log in"
+msgstr "Đăng nhập"
+
+msgid "Administrator Login"
+msgstr "Đăng nhập Quản trị"
+
+#, c-format
+msgid ""
+"Domain '%s' doesn't seem to be configured with qmail as a virtual domain"
+msgstr "Không có vẻ là miền « %s » được cấu hình với qmail như là miền ảo."
+
+#, c-format
+msgid ""
+"Sorry, domain password for %s is not stored within the system. Please "
+"contact your systems administrator."
+msgstr ""
+"Tiếc là mật khẩu miền cho %s không được hệ thống chứa. Hãy liên lạc với quản trị hệ thống."
+
+msgid "The password you provided is incorrect."
+msgstr "Bạn đã cung cấp mật khẩu không đúng."
+
+msgid "The password you provided did not verify."
+msgstr "Bạn đã cung cấp mật khẩu không thẩm tra được."
+
+#, c-format
+msgid ""
+"Domain %s is not configured with Vadmin. Please ask your administrator to "
+"configure it first."
+msgstr "Miền %s chưa được cấu hình với Vadmin. Trước tiên hãy yêu cầu quản trị cấu hình nó."
+
+msgid ""
+"The stored password file was invalid and has been removed. Please contact "
+"your systems administrator."
+msgstr ""
+"Tập tin mật khẩu đã lưu không phải hợp lệ nên bị gỡ bỏ. Hãy liên lạc với quản trị hệ thống."
+
+msgid ""
+"There is no stored password for this domain. Your admin will have to first "
+"finish all needed configuration for this domain, and only then you will be "
+"able to log in and administer users. Please contact the person in charge and "
+"remind them about this problem."
+msgstr "Không có mật khẩu được lưu cho miền này. Trước tiên quản trị cần phải kết thúc tất cả cấu hình cần thiết cho miền này, sau đó thì bạn có thể đăng nhập để quản lý người dùng. Hãy liên lạc với quản trị để nhắc nhở về vấn đề này."
+
+msgid "Cannot continue"
+msgstr "Không thể tiếp tục"
+
+msgid ""
+"You will need to store the domain password on the server before you can "
+"proceed. It will be stored in an encrypted format, so it's not easily "
+"hijacked. Please provide the password in the form below. If you don't know "
+"the password, please contact the people who do so they set it up to be "
+"stored on the server."
+msgstr "Trước khi tiếp tục thì bạn cần phải lưu mật khẩu miền vào máy phục vụ. Nó sẽ được lưu theo một định dạng đã mã hoá để làm cho khó ăn cắp. Hãy cung cấp mật khẩu trong biểu mẫu bên dưới. Không biết mật khẩu thì liên lạc với ai cũng biết và yêu cầu họ thiết lập nó được lưu vào máy phục vụ."
+
+msgid "Domain Password"
+msgstr "Mật khẩu miền"
+
+msgid "Store Password"
+msgstr "Lưu mật khẩu"
+
+#, c-format
+msgid "Need domain password for '%s'"
+msgstr "Cần mật khẩu miền cho « %s »"
+
+msgid "The password you provided did not validate."
+msgstr "Bạn đã cung cấp một mật khẩu không thẩm tra được."
+
+msgid ""
+"Sorry, but you cannot login over a clear-text HTTP connection. Please sign "
+"out and login using a secure HTTPS server instead. This is for your own "
+"protection. Thank you!"
+msgstr "Không cho phép bạn đăng nhập qua kết nối HTTP nhập thô. Hãy đăng xuất rồi đăng nhập lại vào địa chỉ HTTPS (bảo mật) thay vào đó. Kết nối HTTPS sẽ bảo vệ thông tin cá nhân của bạn."
+
+msgid "Secure connection required"
+msgstr "Cần thiết kết nối bảo mật"
+
+msgid "Cannot log in at this time"
+msgstr "Không thể đăng nhập vào lúc này"
+
+#, c-format
+msgid ""
+"Domain <strong>'%s'</strong> is currently not enabled with vadmin. If you "
+"would like to enable it, then click the button below, otherwise return to "
+"the previous page and choose a different domain."
+msgstr "Miền « <strong>%s</strong> » hiện thời không được hiệu lực với Vadmin. Muốn hiệu lực thì bấm cái nút bên dưới, không thì trở về trang trước và chọn miền khác."
+
+msgid "Use this template"
+msgstr "Dùng mẫu này"
+
+msgid "Domain not enabled"
+msgstr "Chưa bật miền"
+
+#, c-format
+msgid "Enable %s"
+msgstr "Bật %s"
+
+#, c-format
+msgid "%s is not enabled"
+msgstr "Chưa bật %s"
+
+#, c-format
+msgid ""
+"Sorry, the domain name you supplied, %s, is not configured among the virtual "
+"domains on this system"
+msgstr "Bạn đã cung cấp một tên miền (%s) chưa được cấu hình trong những miền ảo của hệ thống này."
+
+#, c-format
+msgid ""
+"Domain <strong>'%s'</strong> enabled successfully. Click the 'Admin' link at "
+"the top and log in again to access the domain."
+msgstr "Miền « <strong>%s</strong> » đã được hiệu lực. Nhấn vào liên kết « Quản trị » ở đầu và đăng nhập lại để truy cập miền này."
+
+msgid "Domain enabled successfully"
+msgstr "Miền đã được hiệu lực"
+
+msgid "Logged out"
+msgstr "Đã đăng xuất"
+
+msgid ""
+"You have been logged out of the Vadmin Plugin interface. You may still use "
+"your mailbox, but you will need to re-login to vadmin if you wish to "
+"administer users again."
+msgstr "Bạn đã bị đăng xuất ra giao diện Phần bổ sung Vadmin. Vẫn còn có thể sử dụng hộp thư, nhưng cần phải đăng nhập lại vào Vadmin nếu bạn muốn quản trị người dùng."
+
+msgid "Log back in"
+msgstr "Đăng nhập lại"
+
+msgid "Logged Out"
+msgstr "Đã đăng xuất"
+
+msgid "Make your selection:"
+msgstr "Hãy chọn:"
+
+msgid "Proceed"
+msgstr "Tiếp tục"
+
+msgid "List users"
+msgstr "Liệt kê người dùng"
+
+msgid "List accounts in this domain"
+msgstr "Liệt kê các tài khoản trong miền này"
+
+msgid "Add new user or alias"
+msgstr "Thêm người dùng/bí danh mới"
+
+msgid "Create new users or new aliases for this domain"
+msgstr "Tạo người dùng hoặc bí danh mới cho miền này"
+
+msgid "Customize this domain"
+msgstr "Đặc chế miền này"
+
+msgid "Change the look of your domain and set account defaults"
+msgstr "Thay đổi diện mạo của miền này, và đặt các giá trị mặc định về tài khoản"
+
+msgid "Set domain limits"
+msgstr "Đặt giới hạn miền"
+
+msgid ""
+"Set limits for this domain: maximum number of users, maximum quotas, etc."
+msgstr "Đặt các giới hạn về miền này: số tối đa người dùng, hạn ngạch trên v.v."
+
+msgid "Configure cross-admins"
+msgstr "Cấu hình quản trị chéo"
+
+msgid "Edit cross-administrators"
+msgstr "Sửa quản trị chéo"
+
+msgid "Set up domain templates"
+msgstr "Thiết lập mẫu miền"
+
+msgid "Set up some templates for new domains"
+msgstr "Thiết lập một số mẫu cho miền mới"
+
+#, c-format
+msgid "Vadmin Plugin: %s"
+msgstr "Phần bổ sung Vadmin: %s"
+
+msgid "List all users"
+msgstr "Liệt kê mọi người dùng"
+
+msgid "Show a listing of ALL users in this domain"
+msgstr "Hiển thị danh sách TẤT CẢ các người dùng trong miền này"
+
+msgid "Look up username"
+msgstr "Tra tìm tên người dùng"
+
+msgid "Look up a specific username"
+msgstr "Tra tìm một tên người dùng nào đó"
+
+#, c-format
+msgid "Accounts for %s"
+msgstr "Tài khoản cho %s"
+
+msgid "Mailbox Limit Reached"
+msgstr "Tới hạn ngạch hộp thư"
+
+msgid ""
+"Cannot add any more real users, please delete some or ask your administrator "
+"for a higher mailbox quota"
+msgstr "Không thể thêm người dùng thật thêm nữa: hãy xoá một số người dùng, hoặc xin quản trị tăng hạn ngạch hộp thư."
+
+msgid "Create a new user"
+msgstr "Tạo người dùng mới"
+
+msgid "Create a real user with a real mailbox"
+msgstr "Tạo một người dùng thật với một hộp thư thật"
+
+msgid "Create a new alias"
+msgstr "Tạo bí danh mới"
+
+msgid "Don't create a mailbox, just a forwarding address"
+msgstr "Đừng tạo hộp thư, chỉ một địa chỉ chuyển tiếp"
+
+msgid "Create a 'catchall' account"
+msgstr "Tạo tài khoản « bắt tất cả »"
+
+msgid "Create a default forwarding alias for this domain"
+msgstr "Tạo một bí danh chuyển tiếp mặc định cho miền này"
+
+msgid "Real user or Alias?"
+msgstr "Người dùng thât hoặc Bí danh ?"
+
+msgid "Configure your login screen"
+msgstr "Cấu hình màn hình đăng nhập"
+
+msgid "Set your login screen title and picture"
+msgstr "Đặt tựa đề và ảnh riêng cho màn hình đăng nhập của bạn"
+
+msgid "Set user permissions"
+msgstr "Đặt quyền hạn người dùng"
+
+msgid "Configure what your users are allowed to do"
+msgstr "Cấu hình các người dùng có quyền làm gì."
+
+msgid "Customize your domain"
+msgstr "Đặc chế miền"
+
+msgid "List all cross-admins by domain"
+msgstr "Liệt kê theo miền mọi quản trị chéo"
+
+msgid "Show a listing of ALL cross-admins on this system sorted by the domain"
+msgstr "Hiển thị danh sách TẤT CẢ các quản trị chéo trên hệ thống này, được sắp xếp theo miền."
+
+msgid "List cross-admins in a specific domain"
+msgstr "Liệt kê các quản trị chéo của miền"
+
+msgid "Lists all cross-admins in a domain you specify"
+msgstr "Liệt kê tất cả các quản trị chéo của một miền nào đó"
+
+msgid "List domains belonging to each cross-admin"
+msgstr "Liệt kê các miền thuộc về mỗi quản trị chéo"
+
+msgid "This lets you list all domians belonging to a certain cross-admin"
+msgstr "Chức năng này cho phép bạn liệt kê tất cả các miền thuộc về một quản trị chéo nào đó"
+
+msgid "Cross-admins administration menu"
+msgstr "Trình đơn quản lý Quản trị chéo"
+
+msgid "List cross-admins for a domain"
+msgstr "Liệt kê các quản trị chéo của miền"
+
+msgid "Choose a domain:"
+msgstr "Chọn miền:"
+
+msgid "Domain Creation Templates"
+msgstr "Mẫu Tạo Miền"
+
+#, c-format
+msgid "Template '%s' processed"
+msgstr "Mẫu « %s » đã được xử lý"
+
+msgid ""
+"No domain templates are currently defined. Please click the button below to "
+"create one"
+msgstr "Chưa xác định mẫu miền. Hãy nhấn vào cái nút bên dưới để tạo một miền."
+
+msgid "Create a New Template"
+msgstr "Tạo mẫu mới"
+
+msgid "Domain creation templates"
+msgstr "Mẫu tạo miền"
+
+#, c-format
+msgid "Editing template '%s'"
+msgstr "Đang chỉnh sửa mẫu « %s »"
+
+msgid "Creating a new domain template"
+msgstr "Đang tạo một mẫu miền mới"
+
+msgid "Set template parameters"
+msgstr "Đặt các tham số mẫu"
+
+msgid "Template name"
+msgstr "Tên mẫu"
+
+msgid "Maximum allowed mailboxes"
+msgstr "Số tối đa các hộp thư được phép"
+
+msgid "Maximum allowed hard quota per user (Mb)"
+msgstr "Hạn ngạch trên cứng được phép cho mỗi người dùng (MB)"
+
+msgid "Maximum allowed message size per user (Mb)"
+msgstr "Kích cỡ thư tối đa được phép cho mỗi người dùng (MB)"
+
+msgid "Maximum message count per user"
+msgstr "Số đếm thư tối đa cho mỗi người dùng"
+
+msgid "Maximum front page image size (Kb)"
+msgstr "Kích cỡ ảnh tối đa trên trang chính (KB)"
+
+msgid "Allow changing passwords by users"
+msgstr "Cho phép người dùng thay đổi mật khẩu"
+
+msgid "Let users use the autoresponder (requires qmail-autoresponder)"
+msgstr "Cho phép người dùng sử dụng bộ tự động đáp ứng (cũng cần thiết qmail-autoresponder)"
+
+msgid "Save template"
+msgstr "Lưu mẫu"
+
+msgid "Delete template"
+msgstr "Xoá mẫu"
+
+msgid ""
+"Domain templates let you specify a set of default parameters that can be "
+"applied to the domains you enable. These parameters include limits, "
+"restrictions, and some preferences as well"
+msgstr "Mẫu miền thì cho phép bạn ghi rõ một tập hợp các tham số mặc định có thể được áp dụng cho các miền bạn hiệu lực. Những tham số này bao gồm giới hạn, sự hạn chế và một số tùy thích."
+
+msgid "Please provide a template name"
+msgstr "Hãy cung cấp tên mẫu"
+
+msgid "Your autoresponder settings"
+msgstr "Thiết lập bộ tự động đáp ứng của bạn"
+
+msgid "Your autoresponder is enabled"
+msgstr "Bộ tự động đáp ứng đã được hiệu lực"
+
+msgid "Your message"
+msgstr "Thư của bạn"
+
+msgid "Disable autoresponder"
+msgstr "Tắt tự động đáp ứng"
+
+msgid ""
+"I am currently away from my email. I will respond to your message when I "
+"return."
+msgstr ""
+"Chào bạn. Hiện thời không thể tới hộp thư : một khi trở về thì tôi sẽ đọc "
+"thư của bạn."
+
+msgid "Your autoresponder is not enabled"
+msgstr "Chưa bật tự động đáp ứng"
+
+msgid "Enable autoresponder"
+msgstr "Bật tự động đáp ứng"
+
+msgid "Please provide an autoresponse message. It cannot be an empty string."
+msgstr "Hãy cung cấp thông điệp tự động đáp ứng. Không thể là chuỗi rỗng."
+
+msgid "Change Password"
+msgstr "Đổi mật khẩu"
+
+msgid "Old Password"
+msgstr "Mật khẩu cũ"
+
+msgid "New Password"
+msgstr "Mật khẩu mới"
+
+msgid "Repeat Password"
+msgstr "Gõ lại mật khẩu"
+
+msgid "Change your password"
+msgstr "Thay đổi mật khẩu của bạn"
+
+msgid "Your old password did not match"
+msgstr "Mật khẩu cũ không tương ứng"
+
+msgid "New password did not match repeat password"
+msgstr "Mật khẩu mới không trùng với mật khẩu gõ lại "
+
+msgid "New password is the same as old one"
+msgstr "Mật khẩu mới trùng với mật khẩu cũ"
+
+msgid ""
+"Invalid characters in password. Passwords can only contain latin characters "
+"and numbers"
+msgstr "Mật khẩu chứa ký tự sai. Mật khẩu chỉ có thể chứa các chữ cái và chữ số kiểu La-tinh."
+
+msgid "Password must be at least 6 characters long"
+msgstr "Mật khẩu phải chứa ít nhất 6 ký tự (dài hơn thì mạnh hơn)"
+
+msgid ""
+"Sorry, but this service is not available at this time. Please try again "
+"later, or notify somebody in charge that this feature is not working."
+msgstr "Tiếc là dịch vụ này hiện thời không sẵn sàng. Hãy thử lại sau, hoặc thông báo cho ai đó biết rằng tính năng này không chạy được."
+
+msgid "Password changed successfully"
+msgstr "Mật khẩu đã được thay đổi"
+
+msgid ""
+"Your password was changed successfully. Next time you log in, please use "
+"your new password."
+msgstr ""
+"Mật khẩu của bạn đã được thay đổi. Lần kế tiếp đăng nhập thì hãy dùng mật khẩu mới."
+
+msgid "Password changed"
+msgstr "Mật khẩu được thay đổi"
+
+msgid "Administrator Interface"
+msgstr "Giao diện Quản trị"
+
+msgid ""
+"Access the administrator interface to set up and configure users, mailboxes, "
+"and other domain settings."
+msgstr "Truy cập vào giao diện quản trị để thiết lập và cấu hình các người dùng, hộp thư và thiết lập miền khác."
+
+msgid ""
+"You may change the password that you use to log in and check your e-mail."
+msgstr "Bạn có quyền thay đổi mật khẩu được dùng để đăng nhập và kiểm tra có thư mới chưa."
+
+msgid "Configure autoresponder"
+msgstr "Cấu hình bộ tự động đáp ứng"
+
+msgid ""
+"You may set up an automatic responder, for example to notify your "
+"correspondents that you are on vacation."
+msgstr "Bạn có quyền thiết lập bộ tự động đáp ứng, chẳng hạn để thông báo các người nhận biết rằng bạn đã đi nghỉ."
+
+msgid "autoresponder&nbsp;on"
+msgstr "bộ tự động đáp ứng (đã bật)"
+
+#, c-format
+msgid "Could not load function file for storage type %s"
+msgstr "Không thể nạp tập tin chức năng đối với kiểu sức chứa %s"
+
+#, c-format
+msgid "No such module '%s' for level '%s'"
+msgstr "Không có mô-đun như vậy « %s » cho cấp « %s »"
