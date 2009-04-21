@@ -785,7 +785,9 @@ $languages['el_GR']['LOCALE']  = array('el_GR.ISO8859-7','el_GR.ISO-8859-7','el_
 $languages['el']['ALIAS']      = 'el_GR';
 
 /* This translation is disabled because it contains less than 50%
- * translated strings
+ * translated strings. In those cases where British and American English are
+ * spelled the same, the translation should indicate that by copy the "msgid" to
+ * the "msgstr" instead of leaving the "msgstr" blank.
 $languages['en_GB']['NAME']    = 'British';
 $languages['en_GB']['CHARSET'] = 'iso-8859-15';
 $languages['en_GB']['LOCALE']  = array('en_GB.ISO8859-15','en_GB.ISO-8859-15','en_GB');
