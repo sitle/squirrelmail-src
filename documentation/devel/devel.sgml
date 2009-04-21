@@ -896,9 +896,15 @@ Possible array key names:
               alias should contain the aliased language code and the 'value' should
               contain the language code SquirrelMail uses to store the actual translation.
               For example, the <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/locales/locale/nb_NO/setup.php?view=markup" name="Norwegian">
-              Translation is stored in SquirrelMail as "nb_NO", but it also has an
-              alias for its ISO-639-1 code "nb".
-              See: <url url="http://loc.gov/standards/iso639-2/langhome.html"
+              Translation is stored in SquirrelMail as "nb_NO", but it also has
+              an alias for its ISO-639-1 code "nb". Note that while you may
+              string together any number of aliases (for example, "xx" ==> "yy"
+              ==> "no" ==> "nb_NO"), the final code must point to a language
+              that has a NAME and CHARSET defined in the <tt>$languages</tt>
+              array. Aliases are generally used to unify two and four-letter
+              language codes for the same language (such as "sv" and "sv_SE",
+              which should both be the same Swedish translation). See:
+              <url url="http://loc.gov/standards/iso639-2/langhome.html"
               name="ISO 639 list"> and
               <url url="http://www.iso.org/iso/en/prods-services/iso3166ma/02iso-3166-code-lists/list-en1.html"
               name="country code list">
