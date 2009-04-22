@@ -1,287 +1,309 @@
+# Italian (it_IT) twc_weather Translation (SquirrelMail plugin)
+# Copyright (c) 2003-2009 The SquirrelMail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
+# Jason Novak <jason@sheffieldave.com>, 2003.
+# Andrea Volani <andreavola@gmail.com>, 2009.
+# $Id$
 msgid ""
 msgstr ""
-"Project-Id-Version: TWC Weather Squirrelmail Plugin\n"
-"POT-Creation-Date: 2004-11-21 17:32-0700\n"
-"PO-Revision-Date: 2003-11-21 19:56+0100\n"
-"Last-Translator: Jason Novak <jason@sheffieldave.com>\n"
-"Language-Team: ITALIAN <squirrelmail-i18n@lists.sourceforge.net>\n"
+"Project-Id-Version: twc_weather 1.3p3b-rc2\n"
+"Report-Msgid-Bugs-To: Jamuel P. Starkey <jamuel@my740il.com>\n"
+"POT-Creation-Date: 2007-10-27 18:38+0200\n"
+"PO-Revision-Date: 2009-04-22 17:08+0100\n"
+"Last-Translator: Andrea Volani <andreavola@gmail.com>\n"
+"Language-Team: Italian <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../options.php:1121
-msgid "&nbsp;"
-msgstr "&nbsp;"
+#: config.php.sample:246
+msgid "Today"
+msgstr "Oggi"
 
-#: ../options.php:784 ../options.php:789
-msgid "Above folder list"
-msgstr "Sopra la lista del cartelle"
+#: config.php.sample:247
+msgid "Tomorrow"
+msgstr "Domani"
 
-#: ../options.php:634
-msgid "Add Location"
-msgstr "aggiunga una locazione"
+#: config.php.sample:248
+msgid "Tonight"
+msgstr "Stasera"
 
-#: ../options.php:1360
-msgid "Add a new location to get started"
-msgstr "Aggiunga una nuova posizione per ottenere iniziato"
+#: config.php.sample:249
+msgid "Tomorrow night"
+msgstr "Domani sera"
 
-#: ../options.php:767 ../options.php:832
-msgid "Alias:"
-msgstr "Alias:"
+#: config.php.sample:250
+msgid "Monday"
+msgstr "Lunedi"
 
-#: ../options.php:1018 ../weather.php:990
-msgid "Barometer:"
-msgstr "Barometro:"
+#: config.php.sample:251
+msgid "Tuesday"
+msgstr "Martedì"
 
-#: ../options.php:785 ../options.php:790
-msgid "Below folder list"
-msgstr "Sotto la lista del cartelle"
+#: config.php.sample:252
+msgid "Wednesday"
+msgstr "Mercoledì"
 
-#: ../options.php:1186
-msgid "Box Width:"
-msgstr "Larghezza della scatola:"
+#: config.php.sample:253
+msgid "Thursday"
+msgstr "Giovedì"
 
-#: ../options.php:799
-msgid "Cache Time:"
-msgstr "Tempo del nascondiglio:"
+#: config.php.sample:254
+msgid "Friday"
+msgstr "Venerdi"
 
-#: ../options.php:1324
-msgid "Cancel"
-msgstr "Annullamento"
+#: config.php.sample:255
+msgid "Saturday"
+msgstr "Sabato"
 
-#: ../options.php:1260
-msgid "Color - Background:"
-msgstr "Colore - Priorità bassa:"
+#: config.php.sample:256
+msgid "Sunday"
+msgstr "Domenica"
 
-#: ../options.php:1274
-msgid "Color - Foreground:"
-msgstr "Colore - Priorità alta:"
+#: options.php:739 options.php:743 options.php:747
+msgid "Options"
+msgstr "Opzioni"
 
-#: ../options.php:1290
-msgid "Color - Labels:"
-msgstr "Colore - Etichette:"
+#: options.php:739 options.php:743 options.php:747 setup.php:117
+msgid "TWC Weather"
+msgstr "Tempo TWC"
 
-#: ../options.php:1304
-msgid "Color - Values:"
-msgstr "Colore - Valori:"
-
-#: ../options.php:913 ../weather.php:972
-msgid "Conditions:"
-msgstr "Circostanze:"
-
-#: ../options.php:1371
-msgid "Delete"
-msgstr "Cancellazione:"
-
-#: ../options.php:964 ../weather.php:981
-msgid "Dew Point:"
-msgstr "Punto di rugiada:"
-
-#: ../options.php:779
-msgid "Display Position:"
-msgstr "Posizione Di Esposizione:"
-
-#: ../options.php:641
-msgid "Done"
-msgstr "Fatto"
-
-#: ../options.php:1368
-msgid "Edit"
-msgstr "Pubblichi"
-
-#: ../options.php:630
+#: options.php:740
 msgid "Edit Location"
 msgstr "Pubblichi La Posizione"
 
-#: ../options.php:1071
-msgid "Extended Forecast Days:"
-msgstr "Giorni Estesi Di Previsione:"
+#: options.php:744
+msgid "Add Location"
+msgstr "aggiunga una locazione"
 
-#: ../options.php:895 ../weather.php:969
-msgid "Feels Like:"
-msgstr "Sensazione:"
+#: options.php:750
+msgid "New"
+msgstr "Nuovo"
 
-#: ../options.php:711
+#: options.php:751
+msgid "Done"
+msgstr "Fatto"
+
+#: options.php:822
 msgid ""
 "For the location, you can enter a US Zip code, a city, state/country (or "
 "some combination to search). For example you could use either: \"94521\", "
 "\"San Francisco, CA\", \"New York\", \"Rome, Italy\", etc."
 msgstr ""
-"Per la posizione, potete impostare un codice del postale degli Stati Uniti, una città, statti/paese (o"
-"una certa combinazione da cercare). Per esempio potreste usare uno:"
-"\"94521\", \"San Francisco, CA\", \"New York\", "
-"\"Roma, Italy\", etc."
+"Per la posizione, potete impostare un codice del postale degli Stati Uniti, "
+"una città, statti/paese (ouna certa combinazione da cercare). Per esempio "
+"potreste usare uno:\"94521\", \"San Francisco, CA\", \"New York\", \"Roma, "
+"Italy\", etc."
 
-#: ../options.php:1036 ../weather.php:996 ../weather.php:1000
-msgid "Forecast:"
-msgstr "Previsione:"
-
-#: ../config.php:239
-msgid "Friday"
-msgstr "Venerdi"
-
-#: ../options.php:1377
-msgid "Hide"
-msgstr "Pellame"
-
-#: ../options.php:982 ../weather.php:984
-msgid "Humidity:"
-msgstr "Umidità:"
-
-#: ../options.php:717 ../options.php:1053
+#: options.php:828 options.php:1191
 msgid "Location:"
 msgstr "Ubicación:"
 
-#: ../options.php:1396
-#, fuzzy, c-format
-msgid "Location: <b>%s</b>"
-msgstr "Posizione:"
+#: options.php:840
+msgid "* choose one!"
+msgstr "* Selezionane una!"
 
-#: ../options.php:1244
-msgid "Margin - Bottom:"
-msgstr "Margine - Parte inferiore:"
+#: options.php:886
+msgid "* location not found, try again!"
+msgstr "* località non trovata, riprova!"
 
-#: ../options.php:1214
-msgid "Margin - Left:"
-msgstr "Margine - Lasciato:"
+#: options.php:892 options.php:957
+msgid "Alias:"
+msgstr "Alias:"
 
-#: ../options.php:1200
-msgid "Margin - Right:"
-msgstr "Margine - Di destra:"
+#: options.php:904
+msgid "Display Position:"
+msgstr "Posizione Di Esposizione:"
 
-#: ../options.php:1230
-msgid "Margin - Top:"
-msgstr "Margine - Parte superiore:"
+#: options.php:909 options.php:914
+msgid "Above folder list"
+msgstr "Sopra la lista del cartelle"
 
-#: ../options.php:1092
-msgid "Metric SI Units:"
-msgstr "Unità Metriche di SI:"
+#: options.php:910 options.php:915
+msgid "Below folder list"
+msgstr "Sotto la lista del cartelle"
 
-#: ../config.php:235
-msgid "Monday"
-msgstr "Lunedi"
+#: options.php:924
+msgid "Cache Time:"
+msgstr "Tempo del nascondiglio:"
 
-#: ../options.php:1161
-msgid "Narrow Forecast:"
-msgstr "Previsione Dello Stretto:"
-
-#: ../options.php:640
-msgid "New"
-msgstr "Nuovo"
-
-#: ../options.php:629 ../options.php:633 ../options.php:637
-msgid "Options"
-msgstr "Opzioni"
-
-#: ../config.php:240
-msgid "Saturday"
-msgstr "Sabato"
-
-#: ../options.php:826
+#: options.php:951
 msgid ""
 "Select which of the following information you want displayed for this "
 "location:"
-msgstr "Selezioni che di seguenti informazioni desiderate visualizzato per questa posizione:"
+msgstr ""
+"Selezioni che di seguenti informazioni desiderate visualizzato per questa "
+"posizione:"
 
-#: ../setup.php:103
+#: options.php:983
+msgid "Weather Icon:"
+msgstr "Icona Del Tempo:"
+
+#: options.php:1003 weather.php:1092
+msgid "Temperature:"
+msgstr "Temperatura:"
+
+#: options.php:1020 weather.php:1095
+msgid "Feels Like:"
+msgstr "Sensazione:"
+
+#: options.php:1038 weather.php:1098
+msgid "Conditions:"
+msgstr "Circostanze:"
+
+#: options.php:1055 weather.php:1101
+msgid "UV Index:"
+msgstr "Indice UV:"
+
+#: options.php:1073 weather.php:1104
+msgid "Wind:"
+msgstr "Vento:"
+
+#: options.php:1089 weather.php:1107
+msgid "Dew Point:"
+msgstr "Punto di rugiada:"
+
+#: options.php:1107 weather.php:1110
+msgid "Humidity:"
+msgstr "Umidità:"
+
+#: options.php:1124 weather.php:1113
+msgid "Visibility:"
+msgstr "Visibilità:"
+
+#: options.php:1143 weather.php:1116
+msgid "Barometer:"
+msgstr "Barometro:"
+
+#: options.php:1174 weather.php:1122 weather.php:1126
+msgid "Forecast:"
+msgstr "Previsione:"
+
+#: options.php:1209
+msgid "Extended Forecast Days:"
+msgstr "Giorni Estesi Di Previsione:"
+
+#: options.php:1230
+msgid "Metric SI Units:"
+msgstr "Unità Metriche di SI:"
+
+#: options.php:1259
+msgid "&nbsp;"
+msgstr "&nbsp;"
+
+#: options.php:1275
+msgid "The following options are to control the appearance of the display"
+msgstr "Le seguenti opzioni devono controllare l'apparenza dell'esposizione"
+
+#: options.php:1276
+msgid "box. If the field is left blank, the default values will be used. In "
+msgstr ""
+"scatola. Se il campo è lasciato in bianco, i valori di difetto saranno "
+"usati. In "
+
+#: options.php:1277
+msgid "the case of the colors, the default values are based on the current "
+msgstr "il caso dei colori, i valori di difetto è basato sulla corrente "
+
+#: options.php:1278
+msgid "theme."
+msgstr "tema"
+
+#: options.php:1284
+msgid "Show this location:"
+msgstr "Mostri questa posizione:"
+
+#: options.php:1299
+msgid "Narrow Forecast:"
+msgstr "Previsione Dello Stretto:"
+
+#: options.php:1324
+msgid "Box Width:"
+msgstr "Larghezza della scatola:"
+
+#: options.php:1338
+msgid "Margin - Right:"
+msgstr "Margine - Di destra:"
+
+#: options.php:1352
+msgid "Margin - Left:"
+msgstr "Margine - Lasciato:"
+
+#: options.php:1368
+msgid "Margin - Top:"
+msgstr "Margine - Parte superiore:"
+
+#: options.php:1382
+msgid "Margin - Bottom:"
+msgstr "Margine - Parte inferiore:"
+
+#: options.php:1398
+msgid "Color - Background:"
+msgstr "Colore - Priorità bassa:"
+
+#: options.php:1412
+msgid "Color - Foreground:"
+msgstr "Colore - Priorità alta:"
+
+#: options.php:1428
+msgid "Color - Labels:"
+msgstr "Colore - Etichette:"
+
+#: options.php:1442
+msgid "Color - Values:"
+msgstr "Colore - Valori:"
+
+#: options.php:1461
+msgid "Submit"
+msgstr "Presenti"
+
+#: options.php:1462
+msgid "Cancel"
+msgstr "Annullamento"
+
+#: options.php:1473
+msgid "Changes saved."
+msgstr "Cambiamenti salvati."
+
+#: options.php:1497
+msgid "Add a new location to get started"
+msgstr "Aggiunga una nuova posizione per ottenere iniziato"
+
+#: options.php:1505
+msgid "Edit"
+msgstr "Pubblichi"
+
+#: options.php:1508
+msgid "Delete"
+msgstr "Cancellazione:"
+
+#: options.php:1514
+msgid "Hide"
+msgstr "Pellame"
+
+#: options.php:1519
+msgid "Show"
+msgstr "Esposizione"
+
+#: options.php:1533
+#, php-format
+msgid "Location: <b>%s</b>"
+msgstr "Località: <b>%s</b>"
+
+#: setup.php:119
 msgid ""
 "Setup the weather displaying options. You can add all the cities you want to "
 "monitor as well as various options to display."
 msgstr ""
-"Installi il tempo che visualizza le opzioni. Potete aggiungere tutte le città che "
-"desiderate controllare così come le varie opzioni per visualizzare."
-
-#: ../options.php:1382
-msgid "Show"
-msgstr "Esposizione"
-
-#: ../options.php:1146
-msgid "Show this location:"
-msgstr "Mostri questa posizione:"
-
-#: ../options.php:1323
-msgid "Submit"
-msgstr "Presenti"
-
-#: ../config.php:241
-msgid "Sunday"
-msgstr "Domenica"
-
-#: ../options.php:629 ../options.php:633 ../options.php:637 ../setup.php:101
-msgid "TWC Weather"
-msgstr "Tempo TWC"
-
-#: ../options.php:878 ../weather.php:966
-msgid "Temperature:"
-msgstr "Temperatura:"
-
-#: ../options.php:1137
-msgid "The following options are to control the appearance of the display"
-msgstr ""
-"Le seguenti opzioni devono controllare l'apparenza dell'esposizione"
-
-#: ../config.php:238
-msgid "Thursday"
-msgstr "Giovedì"
-
-#: ../config.php:231
-msgid "Today"
-msgstr "Oggi"
-
-#: ../config.php:232
-msgid "Tomorrow"
-msgstr "Domani"
-
-#: ../config.php:234
-msgid "Tomorrow night"
-msgstr "Domani sera"
-
-#: ../config.php:233
-msgid "Tonight"
-msgstr "Stasera"
-
-#: ../config.php:236
-msgid "Tuesday"
-msgstr "Martedì"
-
-#: ../options.php:930 ../weather.php:975
-msgid "UV Index:"
-msgstr "Indice UV:"
-
-#: ../options.php:999 ../weather.php:987
-msgid "Visibility:"
-msgstr "Visibilità:"
-
-#: ../options.php:858
-msgid "Weather Icon:"
-msgstr "Icona Del Tempo:"
-
-#: ../config.php:237
-msgid "Wednesday"
-msgstr "Mercoledì"
-
-#: ../options.php:948 ../weather.php:978
-msgid "Wind:"
-msgstr "Vento:"
-
-#: ../options.php:1138
-msgid "box. If the field is left blank, the default values will be used. In "
-msgstr ""
-"scatola. Se il campo è lasciato in bianco, i valori di difetto saranno usati. In "
-
-#: ../options.php:1139
-msgid "the case of the colors, the default values are based on the current "
-msgstr "il caso dei colori, i valori di difetto è basato sulla corrente "
-
-#: ../options.php:1140
-msgid "theme."
-msgstr "tema"
+"Installi il tempo che visualizza le opzioni. Potete aggiungere tutte le "
+"città che desiderate controllare così come le varie opzioni per visualizzare."
 
 #~ msgid ""
 #~ "The following options are to control the apperance of the display box. If "
 #~ "the field is left blank, the default values will be used. In the case of "
 #~ "the colors, the default values are based on the current theme."
 #~ msgstr ""
-#~ "Le seguenti opzioni devono controllare il apperance della scatola di presentazione. Se"
-#~ "il campo è lasciato in bianco, i valori di difetto sarà usato. Nel caso di "
-#~ "i colori, i valori di difetto sono basati sul tema corrente"
+#~ "Le seguenti opzioni devono controllare il apperance della scatola di "
+#~ "presentazione. Seil campo è lasciato in bianco, i valori di difetto sarà "
+#~ "usato. Nel caso di i colori, i valori di difetto sono basati sul tema "
+#~ "corrente"
