@@ -853,8 +853,9 @@ $languages['is_IS']['LOCALE']  = array('is_IS.ISO8859-1','is_IS.ISO-8859-1','is_
 $languages['is']['ALIAS']      = 'is_IS';
 
 $languages['it_IT']['NAME']    = 'Italian';
-$languages['it_IT']['CHARSET'] = 'iso-8859-1';
-$languages['it_IT']['LOCALE']  = array('it_IT.ISO8859-1','it_IT.ISO-8859-1','it_IT');
+$languages['it_IT']['ALTNAME'] = 'Italiano';
+$languages['it_IT']['CHARSET'] = 'utf-8';
+$languages['it_IT']['LOCALE']  = array('it_IT.UTF-8','it_IT');
 $languages['it']['ALIAS']      = 'it_IT';
 
 $languages['ja_JP']['NAME']    = 'Japanese';
