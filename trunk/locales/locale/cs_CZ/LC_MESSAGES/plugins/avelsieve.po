@@ -2,13 +2,14 @@
 # Copyright (c) 1999-2009 The SquirrelMail Project Team
 # This file is distributed under the same license as the SquirrelMail package.
 # Jiri Demel <demel@fsv.cvut.cz>, 2004.
+# Tomáš Drbohlav <tomas.drbohlav@mff.cuni.cz>, 2008.
 # $Id$
 msgid ""
 msgstr ""
-"Project-Id-Version: avelsieve\n"
+"Project-Id-Version: avelsieve 1.9.7\n"
 "POT-Creation-Date: 2004-04-01 20:12+0300\n"
-"PO-Revision-Date: 2004-04-01 20:15+0300\n"
-"Last-Translator: Jiri Demel <demel@fsv.cvut.cz>\n"
+"PO-Revision-Date: 2008-07-23 09:30+0200\n"
+"Last-Translator: Tomáš Drbohlav <tomas.drbohlav@mff.cuni.cz>\n"
 "Language-Team: Czech <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,7 +28,7 @@ msgid "Illegal folder name.  Please select a different name"
 msgstr "Chybné jméno složky. Zkuste jiné jméno."
 
 msgid "Add New Rule"
-msgstr "Přidejte nové pravidlo"
+msgstr "Přidat nové pravidlo"
 
 msgid "New Rule Wizard - Step"
 msgstr "Přidání pravidla - krok"
@@ -52,9 +53,11 @@ msgid ""
 "you might want to start over with a rule that makes more sense. Select &quot;"
 "finished&quot; to save this rule nonetheless.</p>"
 msgstr ""
-"<p>Zvolili jste, že chcete uschovat každý dopis, což je implicitní akce. "
-"Můžete chtít začít znova a vytvořit pravidlo, které má větší smysl.Nicméně i "
-"toto pravidlo můžete uložit tlačítkem &quot;Dokončit&quot;.</p>"
+"<p>Zvolili jste, že chcete uložit všechny příchozí zprávy, což je implicitní "
+"akce. Můžete chtít\n"
+"začít znova a vytvořit pravidlo, které má větší smysl. Nicméně i toto "
+"pravidlo můžete\n"
+"uložit tlačítkem &quot;Dokončit&quot;.</p>"
 
 msgid ""
 "Please use the buttons on the bottom instead of your browser's reload, back "
@@ -99,13 +102,13 @@ msgstr ""
 "v hlavičce dopisu:"
 
 msgid "To: or Cc"
-msgstr ""
+msgstr "To: nebo Cc:"
 
 msgid "AND (Every item must match)"
 msgstr "A (každá položka musí souhlasit)"
 
 msgid "OR (Either item will match)"
-msgstr "NEBO (kterákoli položka bude souhlasit)"
+msgstr "NEBO (kterákoli položka může souhlasit)"
 
 msgid "The condition for the following rules is:"
 msgstr "Podmínka pro následující pravidla je:"
@@ -141,8 +144,8 @@ msgid ""
 "The following action will be applied to <strong>all</strong> incoming "
 "messages that do not match any of the previous rules."
 msgstr ""
-"Následující akce bude provedena se <strong>všemi</strong> dopisy,na které se "
-"nevztahovalo žádné z předchozích pravidel."
+"Následující akce bude provedena se <strong>všemi</strong> zprávami, na které "
+"se nevztahovalo žádné z předchozích pravidel."
 
 msgid ""
 "This rule will trigger upon the occurrence of one or more strings in the "
@@ -156,7 +159,7 @@ msgstr ""
 "Z následujících možností vyberte co se má udělat při aktivaci pravidla:"
 
 msgid "Keep (Default action)"
-msgstr "Podržet (default)"
+msgstr "Ponechat (default)"
 
 msgid "Discard Silently"
 msgstr "Tiše zahodit"
@@ -177,7 +180,7 @@ msgid "Keep a local copy as well."
 msgstr "Uschovat také lokální kopii."
 
 msgid "Move message into"
-msgstr "Přesunout dopis do"
+msgstr "Přesunout zprávu do"
 
 msgid "the existing folder"
 msgstr "existující složky"
@@ -192,13 +195,13 @@ msgid "Also keep copy in INBOX, marked as deleted."
 msgstr "Také schovej kopii v INBOXu, označenou jako smazanou."
 
 msgid "Vacation"
-msgstr "Dovolená"
+msgstr "Automatická odpověd"
 
 msgid ""
 "The notice will be sent only once to each person that sends you mail, and "
 "will not be sent to a mailing list address."
 msgstr ""
-"Zpráva bude poslána pouze jedenkrát každému, kdo vám poslal maila nebude "
+"Zpráva bude (pouze jednou) poslána každému, kdo vám poslal zprávu, nebude "
 "poslána do emailových konferencí."
 
 msgid "Addresses: Only reply if sent to these addresses:"
@@ -217,8 +220,9 @@ msgid ""
 "This is an automated reply; I am away and will not be able to reply to you "
 "immediately."
 msgstr ""
-"Toto je automatická odpověď. Jsem pryč a nebudu moci ihned odpovědět. This "
-"is an automated reply; I am away and will not be able to reply to you "
+"Toto je automatická odpověď. Jsem pryč a nebudu moci ihned odpovědět.\n"
+"\n"
+"This is an automated reply; I am away and will not be able to reply to you "
 "immediately."
 
 msgid "I will get back to you as soon as I return."
@@ -249,14 +253,14 @@ msgid "Help: Valid variables are:"
 msgstr "Nápověda: Správné proměnné jsou:"
 
 msgid "Your new rule states:"
-msgstr "Vaše nové pravidlo říká:"
+msgstr "Nové pravidlo určuje:"
 
 msgid ""
 "If this is what you wanted, select Finished. You can also start over or "
 "cancel adding a rule altogether."
 msgstr ""
-"Je-li to to, co chcete, klikněte na Dokončit. Můžete také začít znovu "
-"nebozcela zrušit přidávání pravidla."
+"Je-li to to, co chcete, klikněte na Dokončit. Můžete také začít znovu nebo "
+"zcela zrušit přidávání pravidla."
 
 msgid "Configure Anti-SPAM Protection"
 msgstr "Konfigurace ochrany proti SPAMu"
@@ -266,9 +270,10 @@ msgid ""
 "marked accordingly. This special rule allows you to configure what to do "
 "with such messages once they arrive to your Inbox."
 msgstr ""
-"Veškerá přicházející pošta je testována, zda je to SPAM a podle toho "
-"označkována. Tímto speciálním pravidlem můžete určit co se má s takovým "
-"dopisem udělat."
+"Veškerá přichozí pošta je testována, zda jde o SPAM, a podle toho příslušně "
+"označena. Tímto\n"
+"speciálním pravidlem můžete určit, co se má s takto označenými zprávami "
+"udělat."
 
 #, php-format
 msgid ""
@@ -282,7 +287,7 @@ msgid "Add Spam Rule"
 msgstr "Přidej pravidlo pro spam"
 
 msgid "Advanced Spam Filter..."
-msgstr "Pokročilé pravidlo pro spam..."
+msgstr "Pokročilé nastavení pravidel pro spam..."
 
 msgid "Target Score"
 msgstr "Prahová hodnota"
@@ -292,25 +297,29 @@ msgid ""
 "Messages with SPAM-Score higher than the target value, the maximum value "
 "being %s, will be considered SPAM."
 msgstr ""
-"Dopisy s počtem bodů vyšším než tato prahová hodnota, přičemž maximumje %s, "
-"budou pokládány za SPAM."
+"Zprávy s počtem bodů (spam score) vyšším než tato prahová hodnota, přičemž "
+"maximum je %s,\n"
+"budou pokládány za nevyžádné (SPAM)."
 
 msgid "SPAM Lists to check against"
-msgstr ""
+msgstr "Použité seznamy spammerů (Spam Lists)"
 
 msgid "Whitelist"
-msgstr ""
+msgstr "Vyjímky"
 
 msgid ""
 "Messages that match any of these header rules will never end up in Junk "
 "Folders or regarded as SPAM."
 msgstr ""
+"Zprávy splňující libovolnou z následujících podmínek nebudou uloženy do "
+"Nevyžádané pošty ani považovány za SPAM."
 
 msgid "Apply Changes"
 msgstr "Použít změny"
 
+#, fuzzy
 msgid "Error Encountered"
-msgstr ""
+msgstr "Chyba:"
 
 msgid "is"
 msgstr "je"
@@ -361,23 +370,23 @@ msgid "does not exist"
 msgstr "neexistuje"
 
 msgid "For <strong>ALL</strong> incoming messages; "
-msgstr "Pro <strong>VŠECHNY</strong> příchozí dopisy; "
+msgstr "Pro <strong>VŠECHNY</strong> příchozí zprávy; "
 
 msgid ""
 "All messages considered as <strong>SPAM</strong> (unsolicited commercial "
 "messages)"
 msgstr ""
-"Všechny dopisy pokládané za <strong>SPAM</strong> (nevyžádané reklamní "
-"dopisy)"
+"Všechny zprávy pokládané za <strong>SPAM</strong> (nevyžádané reklamní "
+"sdělení)"
 
 msgid "unless"
-msgstr ""
+msgstr "ledaže"
 
 msgid "or"
-msgstr ""
+msgstr "nebo"
 
 msgid "matching the Spam List(s):"
-msgstr ""
+msgstr "odpovídající:"
 
 #, php-format
 msgid "and with score greater than %s"
@@ -387,10 +396,10 @@ msgid "will be"
 msgstr "budou"
 
 msgid "stored in the Junk Folder."
-msgstr "přesunuty do složky Junk"
+msgstr "přesunuty do složky Nevyžádaná pošta"
 
 msgid "stored in the Trash Folder."
-msgstr "uloženy do složky Trash"
+msgstr "uloženy do Koše"
 
 msgid "discarded."
 msgstr "zahozeny."
@@ -404,14 +413,15 @@ msgstr "<em>kterákoli</em> z následujících hlaviček souhlasí: "
 msgid "<em>all</em> of the following mail headers match: "
 msgstr "<em>každá</em> z následujících hlaviček souhlasí: "
 
+#, fuzzy
 msgid "the header"
-msgstr "hlavička"
+msgstr "hlavička %s"
 
 msgid "the size of the message is"
-msgstr "velikost dopisu je"
+msgstr "velikost zprávy je"
 
 msgid " bigger"
-msgstr "větší"
+msgstr " větší"
 
 msgid " smaller"
 msgstr "menší"
@@ -420,7 +430,7 @@ msgid "then"
 msgstr "pak"
 
 msgid "<em>keep</em> it."
-msgstr "<em>ponechej</em> jej."
+msgstr "<em>ponechat</em>."
 
 msgid "<em>discard</em> it."
 msgstr "<em>zahoď</em> jej."
@@ -429,13 +439,14 @@ msgid "<em>reject</em> it, sending this excuse back to the sender:"
 msgstr "<em>odmítni</em> jej s touto omluvou odesílateli:"
 
 msgid "<em>redirect</em> it to the email address"
-msgstr "<em>přesměruj</em> jej na emailovou adresu"
+msgstr "<em>přesměrovat</em> na adresu"
 
+#, fuzzy
 msgid "<em>file</em> it into the folder <strong>"
-msgstr "<em>ulož</em> jej do složky <strong>"
+msgstr "<em>uložit</em> do složky %s"
 
 msgid "reply with this vacation message: "
-msgstr "odpověz s touto prázdninovou zprávou:"
+msgstr "odpovědět touto automatickou zprávou:"
 
 msgid "Also keep a local copy."
 msgstr "Také ponechej lokální kopii."
@@ -444,7 +455,7 @@ msgid " Also keep a copy in INBOX, marked as deleted."
 msgstr "Také ponechej kopii v INBOXu, označenou jako smazanou."
 
 msgid " Also notify using the method"
-msgstr "Také mne upozorni metodou"
+msgstr " Také mne upozorni způsobem"
 
 msgid "with"
 msgstr "s"
@@ -452,9 +463,11 @@ msgstr "s"
 msgid "priority and the message"
 msgstr "prioritou a zprávou"
 
+#, fuzzy
 msgid " Then <strong>STOP</strong> processing rules."
-msgstr " Pak <strong>STOP</strong> zpracování pravidel."
+msgstr "Pak <strong>STOP</strong> zpracování dalších pravidel."
 
+#, fuzzy
 msgid "Address Match"
 msgstr "Shoda adres"
 
@@ -463,8 +476,9 @@ msgid ""
 msgstr ""
 "Vykonej akci v závislosti na emailových adresách obsažených v hlavičce."
 
+#, fuzzy
 msgid "Header Match"
-msgstr "Shoda hlavičky"
+msgstr "Hlavička"
 
 msgid ""
 "Perform an action on messages matching a specified header (From, To etc.)."
@@ -474,22 +488,22 @@ msgid "Size"
 msgstr "Velikost"
 
 msgid "Perform an action on messages depending on their size."
-msgstr "Vykonej akci v závislosti na velikosti dopisu."
+msgstr "Vykonej akci v závislosti na velikosti zprávy."
 
 msgid "All Messages"
-msgstr "Všechny dopisy"
+msgstr "Všechny zprávy"
 
 msgid "Perform an action on <strong>all</strong> incoming messages."
-msgstr "Vykonej akci se <strong>všemi</strong> příchozími dopisy."
+msgstr "Vykonej akci se <strong>všemi</strong> příchozími zprávami."
 
 msgid "Body Match"
 msgstr "Shoda v těle"
 
 msgid "Perform an action on messages depending on their content (body text)."
-msgstr "Vykonej akci s dopisem v závislosti na jeho obsahu (těle)."
+msgstr "Vykonej akci se zprávou v závislosti na jeho obsahu (těle)."
 
 msgid "wildcard"
-msgstr ""
+msgstr "masce"
 
 msgid "regexp"
 msgstr "regulární výraz"
@@ -531,37 +545,38 @@ msgid "Duplicate"
 msgstr "Duplikovat"
 
 msgid "Move Up"
-msgstr "Přesun nahoru"
+msgstr "Přesunout nahoru"
 
 msgid "Move to Top"
-msgstr "Přesun na začátek"
+msgstr "Přesunout na začátek"
 
 msgid "Move Down"
-msgstr "Přesun dolů"
+msgstr "Přesunout dolů"
 
 msgid "Move to Bottom"
-msgstr "Přesun na konec"
+msgstr "Přesunout na konec"
 
 msgid "Junk Folder"
-msgstr "Složka Nevyžádané dopisy"
+msgstr "Složka Nevyžádaná pošta"
 
 #, php-format
 msgid ""
 "Store SPAM message in your Junk Folder. Messages older than %s days will be "
 "deleted automatically."
 msgstr ""
-"Ulož SPAM do složky Junk. Dopisy starší než %s budou automaticky mazány."
+"Ulož SPAM do složky Nevyžádaná pošta (Junk). Zprávy starší než %s d. budou "
+"automaticky mazány."
 
 msgid "Note that you can set the number of days in Folder Preferences."
 msgstr "Počet dní můžete nastavit ve sekci Nastavení."
 
 msgid "Trash Folder"
-msgstr "Složka Trash"
+msgstr "Koš"
 
 msgid ""
 "Store SPAM message in your Trash Folder. You will have to purge the folder "
 "yourself."
-msgstr "Uložit SPAM do složky Trash. Složku budete muset čistit sami."
+msgstr "Uložit SPAM do Koše. Složku budete muset pomazávat sami."
 
 msgid "Discard"
 msgstr "Zahodit"
@@ -569,7 +584,7 @@ msgstr "Zahodit"
 msgid ""
 "Discard SPAM message. You will get no indication that the message ever "
 "arrived."
-msgstr "Zahodit SPAM. Nedostanete žádnou zprávu, že dopis vůbec přišel."
+msgstr "Zahodit SPAM. Vůbec se nedozvíte, že zpráva přišla."
 
 msgid "Editing Mail Filtering Rule"
 msgstr "Editace filtrovacího pravidla"
@@ -582,13 +597,13 @@ msgid ""
 "automatically forward, delete or place a given message into a folder."
 msgstr ""
 "Filtrace emailu na straně serveru dovoluje automaticky přeposlat, smazat "
-"nebo umístit daný dopis do složky."
+"nebo umístit příchozí zprávu do složky."
 
 msgid "Filters"
 msgstr "Filtry"
 
 msgid "Could not log on to timsieved daemon on your IMAP server"
-msgstr "Nepodařilo se přihlásit k démonu timsieved na IMAP serveru"
+msgstr "Nepodařilo se přihlásit k timsieved na IMAP serveru"
 
 msgid "Please contact your administrator."
 msgstr "Kontaktujte administrátora."
@@ -603,16 +618,16 @@ msgid "Server responded with:"
 msgstr "Odpověď serveru:"
 
 msgid "Test for Forged Header"
-msgstr ""
+msgstr "Kontrolovat podvržené hlavičky"
 
 msgid "Current Mail Filtering Rules"
-msgstr "Nyní platná filtrovací pravidla"
+msgstr "Přehled filtrovacích pravidel"
 
 msgid "No Filtering Rules Defined Yet"
 msgstr "Žádná filtrovací pravidla nejsou zatím definována"
 
 msgid "Could not get SIEVE script from your IMAP server"
-msgstr "Nepodařilo se získat SIEVE skript z tvého IMAP serveru"
+msgstr "Nepodařilo se získat SIEVE skript z IMAP serveru"
 
 msgid "(Probably the script is size null)."
 msgstr "(Skript má pravděpodobně nulovou velikost)."
@@ -623,8 +638,9 @@ msgstr "Všechna vaše pravidla byla smazána"
 msgid "Really delete this rule?"
 msgstr "Opravdu smazat toto pravidlo?"
 
+#, fuzzy
 msgid "Delete Selected"
-msgstr "Smazat označené"
+msgstr "Ponechat (označené jako smazané)"
 
 msgid "Server-Side Mail Filtering"
 msgstr "Filtrace pošty na straně serveru"
@@ -635,8 +651,8 @@ msgid ""
 "email."
 msgstr ""
 "Zde můžete přidávat nebo mazat filtrovací pravidla pro váš poštovní účet. "
-"Pravidla budou použita na vaše přicházející dopisy, nezávisle na tom, jak a "
-"odkud čtete poštu."
+"Pravidla budou použita na příchozí zprávy, nezávisle na tom, jak a odkud "
+"čtete poštu."
 
 msgid ""
 "You don't have any rules yet. Feel free to add any with the button &quot;Add "
@@ -652,7 +668,7 @@ msgid ""
 "Changes&quot;</strong> to activate your changes!"
 msgstr ""
 "Jste-li s editací hotovi, <strong>nezapomeňte zvolit &quot;Uložit změny&quot;"
-"</strong>, aby změny byly aktivovány!"
+"</strong>, bez toho nebudou provedené změny funkční!"
 
 msgid "Successfully added new rule."
 msgstr "Nové pravidlo úspěšně přidáno."
@@ -667,7 +683,7 @@ msgid "Successfully deleted rule #"
 msgstr "Úspěšně smazáno pravidlo #"
 
 msgid "The following table summarizes your current mail filtering rules."
-msgstr "Následující tabulka sumarizuje tvoje filtrovací pravidla."
+msgstr "Následující tabulka sumarizuje vaše filtrovací pravidla."
 
 msgid "No"
 msgstr "Ne"
@@ -697,3 +713,228 @@ msgstr "Vytvořeno:"
 
 msgid "Last modified:"
 msgstr "Naposledy změněno:"
+
+#~ msgid "Mail Filtering Scripts"
+#~ msgstr "Přehled skriptů s filtrovacími pravidly"
+
+#~ msgid "Could not delete script from server %s."
+#~ msgstr "Nepodařilo se odstranit SIEVE skript ze serveru %s."
+
+#~ msgid "Rule"
+#~ msgstr "Pravidlo"
+
+#~ msgid "Anti-SPAM"
+#~ msgstr "Pravidlo pro spam"
+
+#~ msgid "Envelope"
+#~ msgstr "Obálka zpávy (Envelope)"
+
+#~ msgid ""
+#~ "Perform an action on messages matching a specified envelope header "
+#~ "(Envelope FROM, TO)."
+#~ msgstr ""
+#~ "Vykonej akci v závislosti na hlavičce z obálky zprávy (Envelope FROM, TO)."
+
+#~ msgid "Body"
+#~ msgstr "Tělo"
+
+#~ msgid "All"
+#~ msgstr "Všechny"
+
+#~ msgid "Textual descriptions of the rules"
+#~ msgstr "Textový popis pravidel"
+
+#~ msgid "More suitable for viewing the table of rules at once"
+#~ msgstr "Stručný popis vhodnější pro prohlížení všech pravidel naráz"
+
+#~ msgid "tech"
+#~ msgstr "tech"
+
+#~ msgid "Even more terse description for technical people"
+#~ msgstr "Ještě stručnějsí výpis pro technicky zaměřené uživatele"
+
+#~ msgid "source"
+#~ msgstr "zdroj"
+
+#~ msgid "Display SIEVE source"
+#~ msgstr "Zdrojový kód SIEVE filtru"
+
+#~ msgid "Create New Mail Filtering Rule"
+#~ msgstr "Založení nového filtrovacího pravidla"
+
+#~ msgid "You must correct the above errors before continuing."
+#~ msgstr "Opravte prosím uvedené chyby."
+
+#~ msgid ""
+#~ "Warning: In your rules, you have defined an action that refers to a "
+#~ "folder that does not exist or a folder where you do not have permission "
+#~ "to append to."
+#~ msgstr ""
+#~ "Varování: Máte v pravidlech nastaveno uložení do složky, která neexistuje "
+#~ "nebo k ní nemáte práva pro ukládání zpráv."
+
+#~ msgid "Enable"
+#~ msgstr "Zapnout"
+
+#~ msgid "Disable"
+#~ msgstr "Vypnout"
+
+#~ msgid "Close"
+#~ msgstr "Zavřít"
+
+#~ msgid "Action for Selected Rules:"
+#~ msgstr "Operace s označenými pravidly:"
+
+#~ msgid "Automatically"
+#~ msgstr "Automaticky"
+
+#~ msgid "Sender"
+#~ msgstr "Odesílatel"
+
+#~ msgid "From"
+#~ msgstr "Od"
+
+#~ msgid "To"
+#~ msgstr "Komu"
+
+#~ msgid "Subject"
+#~ msgstr "Předmět"
+
+#~ msgid "Create Filter"
+#~ msgstr "Filtr ze zprávy"
+
+#~ msgid "You have to define at least one condition."
+#~ msgstr "Musíte definovat alespoň jednu podmínku."
+
+#~ msgid ""
+#~ "(Creates a new server-side filtering rule, based on the above criteria)"
+#~ msgstr ""
+#~ "(Vytvoří na serveru nové filtrovací pravidlo založené na výše uvedeném "
+#~ "kritériu)"
+
+#~ msgid ""
+#~ "Notice: The following criteria cannot be expressed as server-side "
+#~ "filtering rules:"
+#~ msgstr "Následující podmnínku/y není možné převést na filtrovací pravidlo:"
+
+#~ msgid "Reason:"
+#~ msgstr "Důvod:"
+
+#~ msgid "The Body extension is not supported in this server."
+#~ msgstr "Testování těla zprávy není tímto serverem podporováno."
+
+#~ msgid ""
+#~ "Note that Only From:, To:, Cc: and Subject: headers will be checked in "
+#~ "the server filter."
+#~ msgstr ""
+#~ "Ve filtru na serveru budou porovnávány pouze hlavičky Od:, Komu:, Kopie: "
+#~ "and Předmět:."
+
+#~ msgid "These search expressions are not applicable during message delivery."
+#~ msgstr "Výraz(y) z hledání nelze použít pro filtrování zpráv."
+
+#~ msgid ""
+#~ "Incorrect email address(es). You must enter one or more valid email "
+#~ "addresses, separated by comma."
+#~ msgstr ""
+#~ "Neplatná e-mailová adresa. Zadejte jednu nebo více platných e-mailových "
+#~ "adres oddělených čárkami."
+
+#~ msgid ""
+#~ "The number of days between vacation messages must be a positive number."
+#~ msgstr "Počet dní mezi automatickými odpověďmi musí být kladné číslo."
+
+#~ msgid ""
+#~ "Your email addresses for which a vacation message is returned must be "
+#~ "defined."
+#~ msgstr ""
+#~ "Adresy, pro které je nastavena automatická odpověď, je třeba explicitně "
+#~ "vyplnit."
+
+#~ msgid "Disable this rule"
+#~ msgstr "Vypnout toto pravidlo"
+
+#~ msgid "The rule will have no effect for as long as it is disabled."
+#~ msgstr "Dokud je pravidlo vypnuté, nemá na příchozí zprávy žádný vliv."
+
+#~ msgid "Header %s"
+#~ msgstr "Hlavička %s"
+
+#~ msgid "To or Cc"
+#~ msgstr "To: nebo Cc:"
+
+#~ msgid "the envelope %s"
+#~ msgstr "obálka %s"
+
+#~ msgid "Envelope %s"
+#~ msgstr "Obálka %s"
+
+#~ msgid "the address %s"
+#~ msgstr "adresa %s"
+
+#~ msgid "Address %s"
+#~ msgstr "Adresa %s"
+
+#~ msgid "message body"
+#~ msgstr "tělo zprávy"
+
+#~ msgid "This rule is currently <strong>DISABLED</strong>:"
+#~ msgstr "Toto pravidlo je v tuto chvíli <strong>VYPNUTO</strong>:"
+
+#~ msgid "DISABLED"
+#~ msgstr "VYPNUTO"
+
+#~ msgid "SPAM"
+#~ msgstr "SPAM"
+
+#~ msgid "Whitelist:"
+#~ msgstr "Výjimky:"
+
+#~ msgid "Spam List(s):"
+#~ msgstr "Seznam(y) spammerů:"
+
+#~ msgid "Score > %s"
+#~ msgstr "Skóre > %s"
+
+#~ msgid "Junk"
+#~ msgstr "Nevyžádaná pošta"
+
+#~ msgid "Trash"
+#~ msgstr "Koš"
+
+#~ msgid "ALL"
+#~ msgstr "Všechny"
+
+#~ msgid "and"
+#~ msgstr "a"
+
+#~ msgid "Keep"
+#~ msgstr "Ponechat"
+
+#~ msgid "Reject"
+#~ msgstr "Odmítnout"
+
+#~ msgid "Redirect to"
+#~ msgstr "Přesměrovat na"
+
+#~ msgid "<em>redirect</em> it to the email addresses: %s."
+#~ msgstr "<em>přesměrovat</em> na adresy: %s."
+
+#~ msgid "File into %s"
+#~ msgstr "Uložit do %s"
+
+#~ msgid "(Warning: Folder not available)"
+#~ msgstr "(pozor, složka neexistuje)"
+
+#~ msgid "Vacation Message"
+#~ msgstr "Automatická odpověd"
+
+#~ msgid "Notify %s"
+#~ msgstr "Upozornit %s"
+
+#~ msgid "Stop"
+#~ msgstr "Stop"
+
+#, fuzzy
+#~ msgid "Change Type"
+#~ msgstr "Typ pravidla"
