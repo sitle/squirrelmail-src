@@ -1,44 +1,43 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (c) 2005 SquirrelMail Project Team
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Czech (cs_CZ) bounce Translation (SquirrelMail plugin)
+# Copyright (c) 1999-2009 The SquirrelMail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
+# Tomas Drbohlav <tomas.drbohlav@mff.cuni.cz>, 2004.
 # $Id$
 msgid ""
 msgstr ""
-"Project-Id-Version: bounce localization\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-12-23 10:27+0100\n"
+"Project-Id-Version: bounce 0.5\n"
+"POT-Creation-Date: 2004-04-15 12:29-0600\n"
 "PO-Revision-Date: 2004-12-25 22:51+0100\n"
 "Last-Translator: Tomas Drbohlav <tomas.drbohlav@mff.cuni.cz>\n"
-"Language-Team: Czech <tomas.drbohlav@mff.cuni.cz>\n"
+"Language-Team: Czech <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-2\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-#
-# File: bounce.php, line: 79
-msgid "From"
-msgstr "Od"
-#
-# File: bounce.php, line: 93
-msgid "To"
-msgstr "Komu"
-#
-# File: bounce.php, line: 97
+
+#: ../bounce.php:101
+msgid "Bcc"
+msgstr "NeviditelnÃ¡ kopie"
+
+#: ../bounce_setup.php:23
+msgid "Bounce"
+msgstr "PÅ™esmÄ›rovat"
+
+#: ../bounce.php:97
 msgid "Cc"
 msgstr "Kopie"
-#
-# File: bounce.php, line: 101
-msgid "Bcc"
-msgstr "Neviditelná kopie"
-#
-# File: bounce.php, line: 106
+
+#: ../bounce.php:79
+msgid "From"
+msgstr "Od"
+
+#: ../bounce.php:106
 msgid "Send"
 msgstr "Odeslat"
-#
-# File: bounce_send.php, line: 207
+
+#: ../bounce_send.php:203
 msgid "Server replied: "
-msgstr "Server odpovìdìl: "
-#
-# File: bounce_setup.php, line: 23
-msgid "Bounce"
-msgstr "Pøesmìrovat"
+msgstr "Server odpovÄ›dÄ›l: "
+
+#: ../bounce.php:93
+msgid "To"
+msgstr "Komu"
