@@ -1,91 +1,91 @@
-# Czech Squirrelmail plugin for changing user passwords in an LDAP-directory.
-# Copyright (C) 2004
-# This file is distributed under the same license as the change_ldappass package.
+# Czech (cs_CZ) change_ldappass Translation (SquirrelMail plugin)
+# Copyright (c) 2001-2009 The SquirrelMail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
 # Toams Drbohlav <tomas.drbohlav@mff.cuni.cz>, 2004.
 # $Id$
 msgid ""
 msgstr ""
 "Project-Id-Version: change_ldappass\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: http://sourceforge.net/projects/sm-plugins/\n"
 "POT-Creation-Date: 2004-12-22 14:54+0100\n"
 "PO-Revision-Date: 2004-12-25 22:51+0100\n"
 "Last-Translator: Tomas Drbohlav <tomas.drbohlav@mff.cuni.cz>\n"
-"Language-Team: czech <tomas.drbohlav@mff.cuni.cz>\n"
+"Language-Team: Czech <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-2\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: options.php:81 options.php:109 setup.php:17
 msgid "Change Password"
-msgstr "Zmìna hesla"
+msgstr "ZmÄ›na hesla"
 
 #: options.php:97 options.php:273
 msgid "Old Password:"
-msgstr "Staré heslo:"
+msgstr "StarÃ© heslo:"
 
 #: options.php:101 options.php:298
 msgid "New Password:"
-msgstr "Nové heslo:"
+msgstr "NovÃ© heslo:"
 
 #: options.php:105
 msgid "Verify New Password:"
-msgstr "Ovìøení nového hesla:"
+msgstr "OvÄ›Å™enÃ­ novÃ©ho hesla:"
 
 #: options.php:128
 msgid "You must type in your old password."
-msgstr "Staré heslo není zadáno."
+msgstr "StarÃ© heslo nenÃ­ zadÃ¡no."
 
 #: options.php:129
 msgid "You must type in a new password."
-msgstr "Nové heslo není zadáno."
+msgstr "NovÃ© heslo nenÃ­ zadÃ¡no."
 
 #: options.php:130
 msgid "You must also type in your new password in the verify box."
-msgstr "Zadejte do políèka \"ovìøení\" znovu Va¹e nové heslo."
+msgstr "Zadejte do polÃ­Äka \"ovÄ›Å™enÃ­\" znovu VaÅ¡e novÃ© heslo."
 
 #: options.php:131
 msgid "Your new password doesn't match the verify password."
-msgstr "Va¹e nové heslo a heslo zadané pro ovìøení spolu nesouhlasí."
+msgstr "VaÅ¡e novÃ© heslo a heslo zadanÃ© pro ovÄ›Å™enÃ­ spolu nesouhlasÃ­."
 
 # options.php:143
 #: options.php:132
 msgid "Passwords can only contain the following characters:"
-msgstr "Heslo smí obsahovat pouze tyto znaky:"
+msgstr "Heslo smÃ­ obsahovat pouze tyto znaky:"
 
 #: options.php:146
 msgid "Connecting to LDAP Server"
-msgstr "Pøipojuji se k LDAP serveru"
+msgstr "PÅ™ipojuji se k LDAP serveru"
 
 #: options.php:150
 msgid "Can't connect to Directory Server, please try later!"
-msgstr "Nelze se pøipojit k severu s hesly, zkuste to prosím pozdìji!"
+msgstr "Nelze se pÅ™ipojit k severu s hesly, zkuste to prosÃ­m pozdÄ›ji!"
 
 #: options.php:155 options.php:185 options.php:200
 msgid "LDAP bind failed."
-msgstr "Navázání LDAP se nezdaøilo."
+msgstr "NavÃ¡zÃ¡nÃ­ LDAP se nezdaÅ™ilo."
 
 #: options.php:160 options.php:191 options.php:205
 msgid "LDAP bind successful."
-msgstr "Navázání LDAP probìhlo úspì¹nì."
+msgstr "NavÃ¡zÃ¡nÃ­ LDAP probÄ›hlo ÃºspÄ›Å¡nÄ›."
 
 #: options.php:168
 msgid "Duplicate login entries detected, cannot change password!"
 msgstr ""
-"Nalezeno nìkolik záznamù odpovídajících stejnému loginu, heslo nelze zmìnit!"
+"Nalezeno nÄ›kolik zÃ¡znamÅ¯ odpovÃ­dajÃ­cÃ­ch stejnÃ©mu loginu, heslo nelze zmÄ›nit!"
 
 #: options.php:172
 msgid ""
 "Your login account was not found in the LDAP database, cannot change "
 "password!"
-msgstr "Vá¹ login nebyl v LDAP databázi nalezen, heslo nelze zmìnit!"
+msgstr "VÃ¡Å¡ login nebyl v LDAP databÃ¡zi nalezen, heslo nelze zmÄ›nit!"
 
 #: options.php:183 options.php:272
 msgid "Your old password is not correct."
-msgstr "Staré heslo není platné."
+msgstr "StarÃ© heslo nenÃ­ platnÃ©."
 
 #: options.php:215
 msgid "We could not retrieve your old password from the LDAP server."
-msgstr "Nepodaøilo se naèíst Va¹e pùvodní heslo."
+msgstr "NepodaÅ™ilo se naÄÃ­st VaÅ¡e pÅ¯vodnÃ­ heslo."
 
 #: options.php:242 options.php:246 options.php:250 options.php:254
 #: options.php:260
@@ -94,23 +94,23 @@ msgstr "Typ hesla je"
 
 #: options.php:273
 msgid "Stored Password:"
-msgstr "Ulo¾ené heslo:"
+msgstr "UloÅ¾enÃ© heslo:"
 
 #: options.php:311 options.php:352
 msgid "SMB Password change was not successful, so LDAP not changed!"
-msgstr "SMB heslo se nepodaøilo zmìnit, tak¾e nebylo zmìnìno ani LDAP heslo!"
+msgstr "SMB heslo se nepodaÅ™ilo zmÄ›nit, takÅ¾e nebylo zmÄ›nÄ›no ani LDAP heslo!"
 
 #: options.php:330
 msgid "Password changed for user"
-msgstr "Zmìnìno heslo u¾ivatele"
+msgstr "ZmÄ›nÄ›no heslo uÅ¾ivatele"
 
 #: options.php:344
 msgid "Password changed successfully"
-msgstr "Zmìna hesla probìhla úspì¹nì"
+msgstr "ZmÄ›na hesla probÄ›hla ÃºspÄ›Å¡nÄ›"
 
 #: options.php:356
 msgid "LDAP Password change was not successful!"
-msgstr "Heslo se nepodaøilo zmìnit!"
+msgstr "Heslo se nepodaÅ™ilo zmÄ›nit!"
 
 #: options.php:357
 msgid "LDAP ERROR => "
@@ -120,7 +120,7 @@ msgstr "Chyba LDAP =>"
 msgid ""
 "This connects to your local Password Server to change your login password "
 "for all services."
-msgstr "Zde si mù¾ete zmìnit heslo pro pøihla¹ování."
+msgstr "Zde si mÅ¯Å¾ete zmÄ›nit heslo pro pÅ™ihlaÅ¡ovÃ¡nÃ­."
 
 #~ msgid "New Password: $newpass"
-#~ msgstr "Nové heslo: $newpass"
+#~ msgstr "NovÃ© heslo: $newpass"

@@ -1,18 +1,18 @@
-# Squirrelmail abook_import_export plugin Czech translation
-# Copyright (C) 2006 The SquirrelMail Project Team
+# Czech (cs_CZ) abook_import_export Translation (SquirrelMail plugin)
+# Copyright (c) 2000-2009 The SquirrelMail Project Team
 # This file is distributed under the same license as the SquirrelMail package.
 # Tomas Drbohlav <tomas.drbohlav@mff.cuni.cz>, 2006.
 # $Id$
 msgid ""
 msgstr ""
 "Project-Id-Version: abook_import_export 0.9\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: <http://sourceforge.net/projects/sm-plugins/>\n"
 "POT-Creation-Date: 2005-01-27 13:45+0200\n"
 "PO-Revision-Date: 2006-02-17 08:55+0100\n"
 "Last-Translator: Tomas Drbohlav <tomas.drbohlav@mff.cuni.cz>\n"
-"Language-Team: czech <tomas.drbohlav@mff.cuni.cz>\n"
+"Language-Team: Czech <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-2\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #. i18n: %s tags are used to create html link to main address book page.
@@ -21,7 +21,7 @@ msgstr ""
 msgid ""
 "Please select a file for uploading. You can do this by clicking on the "
 "browse button on the %sAddress Book%s page."
-msgstr "Vyberte soubor k importu, napøíklad pomocí tlaèítka Procházet... v %sAdresáøi%s"
+msgstr "Vyberte soubor k importu, napÅ™Ã­klad pomocÃ­ tlaÄÃ­tka ProchÃ¡zet... v %sAdresÃ¡Å™i%s"
 
 #. i18n: %s displays 'somenumber B', 'somenumber KB' or 'somenumber MB'.
 #: address_book_import.php:70
@@ -29,16 +29,16 @@ msgstr "Vyberte soubor k importu, napøíklad pomocí tlaèítka Procházet... v %sAdr
 msgid ""
 "Imported CSV file is too big. Contact your system administrator, if you want "
 "to import files, that are bigger than %s."
-msgstr "Vlo¾enı soubor je moc velkı. Obra»te se na správce Va¹eho systému, pokud potøebujete importovat soubor(y) vìt¹í ne¾ %s."
+msgstr "VloÅ¾enÃ½ soubor je moc velkÃ½. ObraÅ¥te se na sprÃ¡vce VaÅ¡eho systÃ©mu, pokud potÅ™ebujete importovat soubor(y) vÄ›tÅ¡Ã­ neÅ¾ %s."
 
 #: address_book_import.php:91
 msgid "Error, could not open address file."
-msgstr "Chyba, soubor s adresáøem není mo¾né otevøít."
+msgstr "Chyba, soubor s adresÃ¡Å™em nenÃ­ moÅ¾nÃ© otevÅ™Ã­t."
 
 #. Title of column with row numbers
 #: address_book_import.php:127
 msgid "No#"
-msgstr "Ø."
+msgstr "Å˜."
 
 #. Title of column with omit checkbox
 #: address_book_import.php:129
@@ -48,36 +48,36 @@ msgstr "Vynechat"
 #. display import button only after table is loaded
 #: address_book_import.php:176
 msgid "Finish"
-msgstr "Dokonèit"
+msgstr "DokonÄit"
 
 #: address_book_import.php:183
 msgid "Add to addressbook:"
-msgstr "Doplnit do adresáøe:"
+msgstr "Doplnit do adresÃ¡Å™e:"
 
 #: address_book_import.php:200
 msgid "The following rows have errors"
-msgstr "Následující øádky obsahují chybu"
+msgstr "NÃ¡sledujÃ­cÃ­ Å™Ã¡dky obsahujÃ­ chybu"
 
 #. displays row number that can't be imported. SquirrelMail
 #. address book backend error message is displayed after it.
 #: address_book_import.php:277
 #, c-format
 msgid "Row %d:"
-msgstr "Øádek %d:"
+msgstr "Å˜Ã¡dek %d:"
 
 #: address_book_import.php:298
 msgid ""
 "There were errors uploading the data, as listed below. Entries not listed "
 "here were uploaded."
-msgstr "Bìhem nahrávání do¹lo k problémùm. Øádky, které nejsou zobrazeny, byly úspì¹nì nahrány."
+msgstr "BÄ›hem nahrÃ¡vÃ¡nÃ­ doÅ¡lo k problÃ©mÅ¯m. Å˜Ã¡dky, kterÃ© nejsou zobrazeny, byly ÃºspÄ›Å¡nÄ› nahrÃ¡ny."
 
 #: address_book_import.php:302
 msgid "Upload Completed!"
-msgstr "Nahrání dokonèeno!"
+msgstr "NahrÃ¡nÃ­ dokonÄeno!"
 
 #: address_book_import.php:304
 msgid "Click on the link below to verify your work."
-msgstr "Zkontrolujte si svoji práci pomocí odkazu uvedeného ní¾e."
+msgstr "Zkontrolujte si svoji prÃ¡ci pomocÃ­ odkazu uvedenÃ©ho nÃ­Å¾e."
 
 #: address_book_import.php:308
 msgid "Addresses"
@@ -85,7 +85,7 @@ msgstr "Adresy"
 
 #: functions.php:71
 msgid "Import Address Book:"
-msgstr "Importovat adresáø:"
+msgstr "Importovat adresÃ¡Å™:"
 
 #: functions.php:73
 msgid "Max: "
@@ -97,7 +97,7 @@ msgstr "Importovat CSV soubor"
 
 #: functions.php:84
 msgid "Export Address Book:"
-msgstr "Exportovat adresáø:"
+msgstr "Exportovat adresÃ¡Å™:"
 
 #: functions.php:86
 msgid "Export to CSV File"
@@ -120,15 +120,15 @@ msgstr "%s B"
 
 #: functions.php:141
 msgid "Nickname"
-msgstr "Pøezdívka"
+msgstr "PÅ™ezdÃ­vka"
 
 #: functions.php:143
 msgid "First Name"
-msgstr "Jméno"
+msgstr "JmÃ©no"
 
 #: functions.php:145
 msgid "Last Name"
-msgstr "Pøíjmení"
+msgstr "PÅ™Ã­jmenÃ­"
 
 #: functions.php:147
 msgid "Email"
@@ -136,7 +136,7 @@ msgstr "E-mail"
 
 #: functions.php:149
 msgid "Additional Info"
-msgstr "Doplòující informace"
+msgstr "DoplÅˆujÃ­cÃ­ informace"
 
 #: functions.php:151
 msgid "Do Not Include"
@@ -146,4 +146,4 @@ msgstr "Ignorovat"
 #: functions.php:164
 #, c-format
 msgid "Row '%s' contains LDIF email address. This is not currently supported."
-msgstr "Øádek '%s' obsahuje e-mailovou adresu ve formátu LDIF. To není v souèasnosti podporováno."
+msgstr "Å˜Ã¡dek '%s' obsahuje e-mailovou adresu ve formÃ¡tu LDIF. To nenÃ­ v souÄasnosti podporovÃ¡no."
