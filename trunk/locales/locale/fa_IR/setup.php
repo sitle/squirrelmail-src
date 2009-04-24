@@ -29,5 +29,5 @@
 $languages['fa_IR']['NAME']    = 'Persian';
 $languages['fa_IR']['CHARSET'] = 'utf-8';
 $languages['fa_IR']['DIR']     = 'rtl';
-$languages['fa_IR']['LOCALE']  = array('fa_IR.UTF-8','fa_IR');
+$languages['fa_IR']['LOCALE']  = array('fa_IR.UTF-8', 'fa_IR.UTF8', 'fa_IR');
 $languages['fa']['ALIAS']      = 'fa_IR';

@@ -29,5 +29,5 @@
 $languages['ru_RU']['NAME']    = 'Russian';
 $languages['ru_RU']['ALTNAME'] = '&#1056;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081;';
 $languages['ru_RU']['CHARSET'] = 'utf-8';
-$languages['ru_RU']['LOCALE']  = 'ru_RU.UTF-8';
+$languages['ru_RU']['LOCALE']  = array('ru_RU.UTF-8', 'ru_RU.UTF8');
 $languages['ru']['ALIAS'] = 'ru_RU';

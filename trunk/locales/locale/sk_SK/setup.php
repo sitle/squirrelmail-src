@@ -28,5 +28,5 @@
 
 $languages['sk_SK']['NAME']    = 'Slovak';
 $languages['sk_SK']['CHARSET'] = 'utf-8';
-$languages['sk_SK']['LOCALE']  = array('sk_SK.UTF-8','sk_SK');
+$languages['sk_SK']['LOCALE']  = array('sk_SK.UTF-8', 'sk_SK.UTF8', 'sk_SK');
 $languages['sk']['ALIAS'] = 'sk_SK';

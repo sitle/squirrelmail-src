@@ -29,5 +29,5 @@
 $languages['ro_RO']['NAME']    = 'Romanian';
 $languages['ro_RO']['ALTNAME'] = 'Rom&acirc;n&#259;';
 $languages['ro_RO']['CHARSET'] = 'utf-8';
-$languages['ro_RO']['LOCALE']  = array('ro_RO.UTF-8','ro_RO');
+$languages['ro_RO']['LOCALE']  = array('ro_RO.UTF-8', 'ro_RO.UTF8', 'ro_RO');
 $languages['ro']['ALIAS'] = 'ro_RO';

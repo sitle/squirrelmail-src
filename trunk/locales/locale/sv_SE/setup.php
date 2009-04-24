@@ -29,5 +29,5 @@
 $languages['sv_SE']['NAME']    = 'Swedish';
 $languages['sv_SE']['ALTNAME'] = 'Svenska';
 $languages['sv_SE']['CHARSET'] = 'utf-8';
-$languages['sv_SE']['LOCALE']  = array('sv_SE.UTF-8','sv_SE');
+$languages['sv_SE']['LOCALE']  = array('sv_SE.UTF-8', 'sv_SE.UTF8', 'sv_SE');
 $languages['sv']['ALIAS'] = 'sv_SE';

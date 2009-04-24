@@ -29,5 +29,5 @@
 $languages['ta_LK']['NAME']    = 'Tamil';
 $languages['ta_LK']['ALTNAME'] = '&#2980;&#2990;&#3007;&#2996;&#3021;';
 $languages['ta_LK']['CHARSET'] = 'utf-8';
-$languages['ta_LK']['LOCALE']  = array('ta_LK.UTF-8', 'ta_LK', 'ta.UTF-8', 'ta');
+$languages['ta_LK']['LOCALE']  = array('ta_LK.UTF-8', 'ta_LK.UTF8', 'ta_LK', 'ta.UTF-8', 'ta.UTF8', 'ta');
 $languages['ta']['ALIAS'] = 'ta_LK';

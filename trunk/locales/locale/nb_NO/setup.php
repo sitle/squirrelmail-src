@@ -29,5 +29,5 @@
 $languages['nb_NO']['NAME']    = 'Norwegian (Bokm&aring;l)';
 $languages['nb_NO']['ALTNAME'] = 'Norsk (Bokm&aring;l)';
 $languages['nb_NO']['CHARSET'] = 'utf-8';
-$languages['nb_NO']['LOCALE']  = array('nb_NO.UTF-8','nb_NO');
+$languages['nb_NO']['LOCALE']  = array('nb_NO.UTF-8', 'nb_NO.UTF8', 'nb_NO');
 $languages['nb']['ALIAS'] = 'nb_NO';
