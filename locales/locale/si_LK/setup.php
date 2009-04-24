@@ -29,5 +29,5 @@
 $languages['si_LK']['NAME']    = 'Sinhala';
 $languages['si_LK']['ALTNAME'] = '&#3523;&#3538;&#3458;&#3524;&#3517;';
 $languages['si_LK']['CHARSET'] = 'utf-8';
-$languages['si_LK']['LOCALE']  = 'si_LK.UTF-8';
+$languages['si_LK']['LOCALE']  = array('si_LK.UTF-8', 'si_LK.UTF8');
 $languages['si']['ALIAS'] = 'si_LK';

@@ -28,4 +28,4 @@
 
 $languages['mk']['NAME']    = 'Macedonian';
 $languages['mk']['CHARSET'] = 'utf-8';
-$languages['mk']['LOCALE'] = array('mk.UTF-8','mk_MK.UTF-8');
+$languages['mk']['LOCALE'] = array('mk.UTF-8', 'mk.UTF8', 'mk_MK.UTF-8', 'mk_MK.UTF8');

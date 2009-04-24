@@ -29,5 +29,5 @@
 $languages['lv_LV']['NAME']    = 'Latvian';
 $languages['lv_LV']['ALTNAME'] = 'Latvi&#371;';
 $languages['lv_LV']['CHARSET'] = 'utf-8';
-$languages['lv_LV']['LOCALE'] = 'lv_LV.UTF-8';
+$languages['lv_LV']['LOCALE'] = array('lv_LV.UTF-8', 'lv_LV.UTF8');
 $languages['lv']['ALIAS'] = 'lv_LV';

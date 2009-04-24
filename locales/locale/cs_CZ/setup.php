@@ -29,5 +29,5 @@
 $languages['cs_CZ']['NAME']    = 'Czech';
 $languages['cs_CZ']['ALTNAME'] = '&#268;e&scaron;tina';
 $languages['cs_CZ']['CHARSET'] = 'utf-8';
-$languages['cs_CZ']['LOCALE']  = array('cs_CZ.UTF-8','cs_CZ');
+$languages['cs_CZ']['LOCALE']  = array('cs_CZ.UTF-8', 'cs_CZ.UTF8', 'cs_CZ');
 $languages['cs']['ALIAS']      = 'cs_CZ';

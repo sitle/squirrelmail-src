@@ -28,4 +28,4 @@
 
 $languages['bn_IN']['NAME']    = 'Bengali (India)';
 $languages['bn_IN']['CHARSET'] = 'utf-8';
-$languages['bn_IN']['LOCALE']  = 'bn_IN.UTF-8';
+$languages['bn_IN']['LOCALE']  = array('bn_IN.UTF-8', 'bn_IN.UTF8');

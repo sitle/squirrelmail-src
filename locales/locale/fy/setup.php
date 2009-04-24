@@ -29,4 +29,4 @@
 $languages['fy']['NAME']    = 'Frisian';
 $languages['fy']['ALTNAME'] = 'Frysk';
 $languages['fy']['CHARSET'] = 'utf-8';
-$languages['fy']['LOCALE']  = array('fy.UTF-8','fy_NL.UTF-8');
+$languages['fy']['LOCALE']  = array('fy.UTF-8', 'fy.UTF8', 'fy_NL.UTF-8', 'fy_NL.UTF8');
