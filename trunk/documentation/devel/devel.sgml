@@ -802,7 +802,7 @@ Valid language codes are (<em>list depends on SquirrelMail version</em>):
   <item>hu_HU - Hungarian, iso-8859-2 charset
   <item>id_ID - Indonesian, iso-8859-1 charset
   <item>is_IS - Icelandic, iso-8859-1 charset
-  <item>it_IT - Italian, iso-8859-1 charset
+  <item>it_IT - Italian, utf-8 charset
   <item>ja_JP - Japanese, euc-jp charset (emails are created in iso-2022-jp)
   <item>ka    - Georgian, utf-8 charset (since 1.5.1 and 1.4.6)
   <item>ko_KR - Korean, euc-kr charset
@@ -837,9 +837,9 @@ Valid language codes are (<em>list depends on SquirrelMail version</em>):
 
 Charset totals:
 <itemize>
-  <item>iso-8859-1   = 21
+  <item>iso-8859-1   = 20
   <item>iso-8859-2   = 8
-  <item>utf-8        = 13
+  <item>utf-8        = 14
   <item>iso-8859-15  = 2
   <item>iso-8859-7   = 1
   <item>iso-8859-9   = 1
