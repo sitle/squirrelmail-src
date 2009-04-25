@@ -62,7 +62,8 @@ function sqimap_msgs_list_move($imap_stream, $id, $mailbox, $handle_errors = tru
 }
 
 /**
- * Deletes a message and move it to trash or expunge the mailbox
+ * Deletes one or more message(s) and move
+ * it/them to trash or expunge the mailbox
  * 
  * @param int    $imap_stream The resource ID for the IMAP socket
  * @param string $mailbox     The mailbox to delete messages from
