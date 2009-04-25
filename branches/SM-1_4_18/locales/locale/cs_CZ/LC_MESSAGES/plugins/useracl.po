@@ -2,26 +2,42 @@
 # Copyright (c) 1999-2009 The SquirrelMail Project Team
 # This file is distributed under the same license as the SquirrelMail package.
 # Jiri Demel <demel@fsv.cvut.cz>, 2004.
+# Tomáš Drbohlav <tomas.drbohlav@mff.cuni.cz>, 2008.
 # $Id$
 msgid ""
 msgstr ""
-"Project-Id-Version: useracl 2.0\n"
-"POT-Creation-Date: 2004-02-16 13:34+0200\n"
-"PO-Revision-Date: 2004-03-10 10:30+0100\n"
-"Last-Translator: Jiri Demel <demel@fsv.cvut.cz>\n"
+"Project-Id-Version: useracl 2.1\n"
+"POT-Creation-Date: 2004-08-06 10:06+0300\n"
+"PO-Revision-Date: 2008-07-29 12:54+0200\n"
+"Last-Translator: Tomáš Drbohlav <tomas.drbohlav@mff.cuni.cz>\n"
 "Language-Team: Czech <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "Add New User Permission"
-msgstr "Přidej nové oprávnění"
+msgstr "Přidat nové oprávnění"
 
 msgid "Add New Share to User"
-msgstr "Přidej novou sdílenou složku uživateli"
+msgstr "Nasdílet novou složku pro uživatele"
 
 msgid "Close"
 msgstr "Zavřít"
+
+msgid "Read"
+msgstr "Číst"
+
+msgid "Insert"
+msgstr "Vkládat"
+
+msgid "Post"
+msgstr "Ukládat"
+
+msgid "Delete"
+msgstr "Mazat"
+
+msgid "Admin"
+msgstr "Spravovat"
 
 msgid "Folder"
 msgstr "Složka"
@@ -29,29 +45,17 @@ msgstr "Složka"
 msgid "User"
 msgstr "Uživatel"
 
-msgid "None"
-msgstr "Žádné"
+msgid "Fill in a username, &quot;anyone&quot; or &quot;anonymous&quot;"
+msgstr "Zadejte uživatele &quot;anyone&quot; nebo &quot;anonymous&quot;"
 
-msgid "Read"
-msgstr "Číst"
-
-msgid "Append"
-msgstr "Přidávat"
-
-msgid "Delete"
-msgstr "Mazat"
-
-msgid "Add User"
-msgstr "Přidat uživatele"
+msgid "Notify user(s) by email"
+msgstr "Upozornit uživatele emailem"
 
 msgid "Update"
 msgstr "Upravit"
 
-msgid "Notify user(s) by email"
-msgstr "Uvědomit uživatele emailem"
-
-msgid "Update All"
-msgstr "Upravit všechno"
+msgid "Add User"
+msgstr "Přidat uživatele"
 
 msgid "Search..."
 msgstr "Hledat..."
@@ -81,23 +85,29 @@ msgid ""
 "Cannot modify permissions on your own folder; you will always have full "
 "rights on your folders."
 msgstr ""
-"Nemůžete měnit vaše oprávnění k vašim vlastním složkám. "
-"Máte k nim automaticky plná práva."
+"Nemůžete měnit vaše oprávnění k vašim vlastním složkám. Máte k nim "
+"automaticky plná práva."
 
 #, php-format
-msgid "User %s already has %s permission for folder %s."
-msgstr "Uživatel %s již má oprávnění %s ke složce %s."
+msgid "No changes in permissions for user %s"
+msgstr "Nic nezměněno v oprávněních pro uživatele %s"
 
 #, php-format
-msgid "User %s has been given %s permisssion for folder %s."
-msgstr "Uživatel %s získal oprávnění %s ke složce %s."
+msgid "Successfully changed permissions for user %s."
+msgstr "Úspěšně změněna oprávnění pro uživatele %s"
 
 #, php-format
-msgid "Failed to give user %s %s permission for folder %s."
-msgstr "Nepodařilo se dát uživateli %s oprávnění %s ke složce %s."
+msgid "Failed to change permissions for user %s."
+msgstr "Nepodařilo se změnit oprávnění pro uživatele %s."
 
 msgid "Specified user does not exist."
 msgstr "Takový uživatel neexistuje."
+
+msgid "Anyone"
+msgstr "Kdokoli"
+
+msgid "Anonymous"
+msgstr "Anonym"
 
 #, php-format
 msgid "Failed to send notification message to user %s"
@@ -121,3 +131,27 @@ msgstr "Oprávnění uživatele"
 #, php-format
 msgid "Current Permissions for Folder: %s"
 msgstr "Nyní platná oprávnění ke složce: %s"
+
+#~ msgid "Modify"
+#~ msgstr "Měnit"
+
+#~ msgid "Shared by User: %s"
+#~ msgstr "Složka nasdílena uživatelem: %s"
+
+#~ msgid "IMAP server does not support the ACL capability, sorry."
+#~ msgstr "IMAP server bohužel nepodporuje sdílení složek (ACL)."
+
+#~ msgid "Append"
+#~ msgstr "Přidávat"
+
+#~ msgid "Update All"
+#~ msgstr "Upravit všechno"
+
+#~ msgid "User %s already has %s permission for folder %s."
+#~ msgstr "Uživatel %s již má oprávnění %s ke složce %s."
+
+#~ msgid "User %s has been given %s permisssion for folder %s."
+#~ msgstr "Uživatel %s získal oprávnění %s ke složce %s."
+
+#~ msgid "Failed to give user %s %s permission for folder %s."
+#~ msgstr "Nepodařilo se dát uživateli %s oprávnění %s ke složce %s."
