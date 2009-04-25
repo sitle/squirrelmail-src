@@ -15,4 +15,3 @@
 
 header('Location: ../index.php');
 
-?>
