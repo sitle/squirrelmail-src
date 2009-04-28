@@ -1,7 +1,7 @@
 # Hungarian (hu_HU) check_quota Translation (SquirrelMail plugin)
 # Copyright (c) 2005-2009 The SquirrelMail Project Team
 # This file is distributed under the same license as the SquirrelMail package.
-# Németh Tamás <nice@titanic.nyme.hu>, 2009.
+# NÃ©meth TamÃ¡s <nice@titanic.nyme.hu>, 2009.
 # $Id: check_quota.pot 12740 2007-10-24 21:31:21Z jervfors $
 msgid ""
 msgstr ""
@@ -9,20 +9,20 @@ msgstr ""
 "Report-Msgid-Bugs-To: Kerem Erkan <kerem@keremerkan.net>\n"
 "POT-Creation-Date: 2007-08-06 14:50+0300\n"
 "PO-Revision-Date: 2009-03-18 15:34+0100\n"
-"Last-Translator: Németh Tamás <nice@titanic.nyme.hu>\n"
+"Last-Translator: NÃ©meth TamÃ¡s <nice@titanic.nyme.hu>\n"
 "Language-Team: Hungarian <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-2\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: functions.php:185
 msgid "\"Check Quota\" Troubleshooting"
-msgstr "\"Kvótafigyelõ\" hibaelhárítás"
+msgstr "\"KvÃ³tafigyelÅ‘\" hibaelhÃ¡rÃ­tÃ¡s"
 
 #: functions.php:187
 msgid "This page can aid you in troubleshooting the \"Check Quota\" plugin."
 msgstr ""
-"Áttekintheti a kvótafigyelõ beállításait, feltárhatja az esetleges hibák "
+"Ãttekintheti a kvÃ³tafigyelÅ‘ beÃ¡llÃ­tÃ¡sait, feltÃ¡rhatja az esetleges hibÃ¡k "
 "okait."
 
 #: functions.php:292
@@ -32,65 +32,65 @@ msgstr "A 'quota' parancs kimenete:"
 #: functions.php:294 functions.php:401 functions.php:551 functions.php:626
 #: functions.php:654 functions.php:668 functions.php:689 functions.php:729
 msgid "Warning:"
-msgstr "Figyelmeztetés:"
+msgstr "FigyelmeztetÃ©s:"
 
 #: functions.php:294
 msgid "Quota binary did not give any output. Quotas may not be enabled."
 msgstr ""
-"A 'quota' parancs futtatása eredménytelen. Talán nincs kvótarendszer a "
-"levelezõszerveren?"
+"A 'quota' parancs futtatÃ¡sa eredmÃ©nytelen. TalÃ¡n nincs kvÃ³tarendszer a "
+"levelezÅ‘szerveren?"
 
 #: functions.php:401 functions.php:689
 msgid ""
 "You do not have quotas enabled for your username, you will not see any "
 "informative graphs."
 msgstr ""
-"Ön korlátlan tárhelyet használhat, ezért a kvótafigyelõ nem jelenít meg "
+"Ã–n korlÃ¡tlan tÃ¡rhelyet hasznÃ¡lhat, ezÃ©rt a kvÃ³tafigyelÅ‘ nem jelenÃ­t meg "
 "grafikonokat."
 
 #: functions.php:486
 msgid "IMAP Command Sent:"
-msgstr "Elküldött IMAP parancs:"
+msgstr "ElkÃ¼ldÃ¶tt IMAP parancs:"
 
 #: functions.php:487
 msgid "IMAP Response Received:"
-msgstr "Az IMAP szerver válasza:"
+msgstr "Az IMAP szerver vÃ¡lasza:"
 
 #: functions.php:551
 msgid "Your IMAP server does not have IMAP4 QUOTA extension. Quotas not enabled."
 msgstr ""
-"Az IMAP szerver nem rendelkezik IMAP4 QUOTA kiterjesztéssel, ezért a "
-"kvótafigyelés nem mûködik."
+"Az IMAP szerver nem rendelkezik IMAP4 QUOTA kiterjesztÃ©ssel, ezÃ©rt a "
+"kvÃ³tafigyelÃ©s nem mÅ±kÃ¶dik."
 
 #: functions.php:626
 msgid ""
 "Your username is not in user@domain format. cPanel quotas only work with "
 "that type of usernames for now."
 msgstr ""
-"A cPanel kvótarendszer jelenleg csak felhasználó@tartomány alakú "
-"felhasználónevekkel mûködik, és az öné sajnos nem ilyen."
+"A cPanel kvÃ³tarendszer jelenleg csak felhasznÃ¡lÃ³@tartomÃ¡ny alakÃº "
+"felhasznÃ¡lÃ³nevekkel mÅ±kÃ¶dik, Ã©s az Ã¶nÃ© sajnos nem ilyen."
 
 #: functions.php:654
 msgid "Reseller information for your domain cannot be obtained."
 msgstr ""
-"Nem sikerült az ön tartománynevéhez tartozó szolgáltatói információk "
-"lekérdezése."
+"Nem sikerÃ¼lt az Ã¶n tartomÃ¡nynevÃ©hez tartozÃ³ szolgÃ¡ltatÃ³i informÃ¡ciÃ³k "
+"lekÃ©rdezÃ©se."
 
 #: functions.php:661
 msgid "Quota File:"
-msgstr "Kvófafájl:"
+msgstr "KvÃ³fafÃ¡jl:"
 
 #: functions.php:668
 msgid "Quota file for your domain does not exist or not readable."
-msgstr "Az ön tartománynevéhez tartozó kvótafájl nem létezik, vagy nem olvasható."
+msgstr "Az Ã¶n tartomÃ¡nynevÃ©hez tartozÃ³ kvÃ³tafÃ¡jl nem lÃ©tezik, vagy nem olvashatÃ³."
 
 #: functions.php:695
 msgid "Your cPanel Quota:"
-msgstr "Az ön cPanel kvótája:"
+msgstr "Az Ã¶n cPanel kvÃ³tÃ¡ja:"
 
 #: functions.php:700
 msgid "Mail Files Location:"
-msgstr "A postaláda-fájlok elérési útja:"
+msgstr "A postalÃ¡da-fÃ¡jlok elÃ©rÃ©si Ãºtja:"
 
 #: functions.php:708
 msgid "&quot;du&quot; Binary Output:"
@@ -101,20 +101,20 @@ msgid ""
 "&quot;du&quot; binary did not give any output. There may be some problem "
 "with that binary."
 msgstr ""
-"A 'du' parancs futtatása eredménytelen. Valószínûleg valami próbléma van "
+"A 'du' parancs futtatÃ¡sa eredmÃ©nytelen. ValÃ³szÃ­nÅ±leg valami prÃ³blÃ©ma van "
 "ezzel a Unix paranccsal."
 
 #: functions.php:805 functions.php:816 functions.php:823
 msgid "Quota Usage:"
-msgstr "Tárhelyhasználat (adatmennyiség/bájt):"
+msgstr "TÃ¡rhelyhasznÃ¡lat (adatmennyisÃ©g/bÃ¡jt):"
 
 #: functions.php:807 functions.php:816 functions.php:823
 msgid "File Usage:"
-msgstr "Tárhelyhasználat (fájlok száma):"
+msgstr "TÃ¡rhelyhasznÃ¡lat (fÃ¡jlok szÃ¡ma):"
 
 #: functions.php:994
 msgid "OVER QUOTA!"
-msgstr "TÚLLÉPTE TÁRHELYKVÓTÁT!"
+msgstr "TÃšLLÃ‰PTE TÃRHELYKVÃ“TÃT!"
 
 #: functions.php:1174 functions.php:1193 functions.php:1221
 #: troubleshoot.php:308 troubleshoot.php:710
@@ -124,20 +124,20 @@ msgstr "FIGYELEM:"
 #: functions.php:1175
 #, php-format
 msgid "Your quota usage is currently <b>%s%%</b>."
-msgstr "Az ön tárhelyének foglaltsága jelenleg <b>%s%%</b>."
+msgstr "Az Ã¶n tÃ¡rhelyÃ©nek foglaltsÃ¡ga jelenleg <b>%s%%</b>."
 
 #: functions.php:1194 functions.php:1222
 #, php-format
 msgid "Your quota usage is currently %s%%."
-msgstr "Az ön tárhelyének foglaltsága jelenleg %s%%."
+msgstr "Az Ã¶n tÃ¡rhelyÃ©nek foglaltsÃ¡ga jelenleg %s%%."
 
 #: functions.php:1195
 msgid ""
 "To avoid losing any email, you should immediately empty out your \"Trash\" "
 "and \"Sent\" folders and delete emails with large attachments."
 msgstr ""
-"Azonnal szabadítson fel tárhelyet: ürítse ki a \"Trash\" mappát, és más "
-"mapákból is töröljön néhány nagyméretû levelet, különben nem kapja meg az új "
+"Azonnal szabadÃ­tson fel tÃ¡rhelyet: Ã¼rÃ­tse ki a \"Trash\" mappÃ¡t, Ã©s mÃ¡s "
+"mapÃ¡kbÃ³l is tÃ¶rÃ¶ljÃ¶n nÃ©hÃ¡ny nagymÃ©retÅ± levelet, kÃ¼lÃ¶nben nem kapja meg az Ãºj "
 "leveleket!"
 
 #: functions.php:1205
@@ -146,8 +146,8 @@ msgid ""
 "Trash&quot; and &quot;Sent&quot; folders and delete emails with large "
 "attachments."
 msgstr ""
-"Azonnal szabadítson fel tárhelyet: ürítse ki a \"Trash\" mappát, és más "
-"mapákból is töröljön néhány nagyméretû levelet, különben nem kapja meg az új "
+"Azonnal szabadÃ­tson fel tÃ¡rhelyet: Ã¼rÃ­tse ki a \"Trash\" mappÃ¡t, Ã©s mÃ¡s "
+"mapÃ¡kbÃ³l is tÃ¶rÃ¶ljÃ¶n nÃ©hÃ¡ny nagymÃ©retÅ± levelet, kÃ¼lÃ¶nben nem kapja meg az Ãºj "
 "leveleket!"
 
 #: functions.php:1223
@@ -155,20 +155,20 @@ msgid ""
 "You may want to make sure you empty out your \"Trash\" and clean your \"Sent"
 "\" folder."
 msgstr ""
-"Ajánlott a túl sok tárhelyet foglaló levelek törlése, fõleg a \"Trash\" "
-"mappából."
+"AjÃ¡nlott a tÃºl sok tÃ¡rhelyet foglalÃ³ levelek tÃ¶rlÃ©se, fÅ‘leg a \"Trash\" "
+"mappÃ¡bÃ³l."
 
 #: functions.php:1233
 msgid ""
 "You may want to make sure you empty out your &quot;Trash&quot; and clean "
 "your &quot;Sent&quot; folder."
 msgstr ""
-"Ajánlott a túl sok tárhelyet foglaló levelek törlése, fõleg a \"Trash\" "
-"mappából."
+"AjÃ¡nlott a tÃºl sok tÃ¡rhelyet foglalÃ³ levelek tÃ¶rlÃ©se, fÅ‘leg a \"Trash\" "
+"mappÃ¡bÃ³l."
 
 #: functions.php:1366
 msgid "%1 of %2"
-msgstr "%1 (korlát: %2)"
+msgstr "%1 (korlÃ¡t: %2)"
 
 #: functions.php:1368
 msgid "%1% of %2"
@@ -176,11 +176,11 @@ msgstr "%2 %1%-a"
 
 #: troubleshoot.php:64
 msgid "Mandatory Settings"
-msgstr "Kötelezõ paraméterek"
+msgstr "KÃ¶telezÅ‘ paramÃ©terek"
 
 #: troubleshoot.php:68
 msgid "Quota Type:"
-msgstr "A kvótarendszer típusa:"
+msgstr "A kvÃ³tarendszer tÃ­pusa:"
 
 #: troubleshoot.php:83 troubleshoot.php:104 troubleshoot.php:117
 #: troubleshoot.php:130 troubleshoot.php:149 troubleshoot.php:161
@@ -194,7 +194,7 @@ msgstr "A kvótarendszer típusa:"
 #: troubleshoot.php:535 troubleshoot.php:556 troubleshoot.php:620
 #: troubleshoot.php:640 troubleshoot.php:664
 msgid "INVALID!"
-msgstr "ÉRVÉNYTELEN PARAMÉTER!"
+msgstr "Ã‰RVÃ‰NYTELEN PARAMÃ‰TER!"
 
 #: troubleshoot.php:83 troubleshoot.php:104 troubleshoot.php:286
 #: troubleshoot.php:319 troubleshoot.php:338 troubleshoot.php:352
@@ -204,11 +204,11 @@ msgstr "ÉRVÉNYTELEN PARAMÉTER!"
 #: troubleshoot.php:535 troubleshoot.php:556 troubleshoot.php:620
 #: troubleshoot.php:640 troubleshoot.php:664
 msgid "Please read config.php file for possible values."
-msgstr "Az érvényes opciók listája a config.php fájlban található."
+msgstr "Az Ã©rvÃ©nyes opciÃ³k listÃ¡ja a config.php fÃ¡jlban talÃ¡lhatÃ³."
 
 #: troubleshoot.php:92
 msgid "Check UNIX Quotas:"
-msgstr "UNIX fájlrendszer kvóták ellenõrzése: "
+msgstr "UNIX fÃ¡jlrendszer kvÃ³tÃ¡k ellenÅ‘rzÃ©se: "
 
 #: troubleshoot.php:97
 msgid "On local server"
@@ -216,63 +216,63 @@ msgstr "a helyi szerveren"
 
 #: troubleshoot.php:100
 msgid "On remote server"
-msgstr "távoli szerveren (SSH)"
+msgstr "tÃ¡voli szerveren (SSH)"
 
 #: troubleshoot.php:110
 msgid "Remote Username:"
-msgstr "Távoli felhasználónév:"
+msgstr "TÃ¡voli felhasznÃ¡lÃ³nÃ©v:"
 
 #: troubleshoot.php:117 troubleshoot.php:130 troubleshoot.php:150
 #: troubleshoot.php:161 troubleshoot.php:179 troubleshoot.php:185
 #: troubleshoot.php:205 troubleshoot.php:216 troubleshoot.php:234
 #: troubleshoot.php:240 troubleshoot.php:258 troubleshoot.php:264
 msgid "Please read INSTALL for details on setting this variable."
-msgstr "A változóval kapcsolatos tudnivalók az INSTALL fájlban találhatók."
+msgstr "A vÃ¡ltozÃ³val kapcsolatos tudnivalÃ³k az INSTALL fÃ¡jlban talÃ¡lhatÃ³k."
 
 #: troubleshoot.php:123
 msgid "Remote Server:"
-msgstr "Távoli szerver:"
+msgstr "TÃ¡voli szerver:"
 
 #: troubleshoot.php:138
 msgid "SUDO Binary:"
-msgstr "A 'su' parancs elérési útja:"
+msgstr "A 'su' parancs elÃ©rÃ©si Ãºtja:"
 
 #: troubleshoot.php:149 troubleshoot.php:178 troubleshoot.php:204
 #: troubleshoot.php:233
 msgid "file does not exist or not executable."
-msgstr "Nem létezik vagy nem végrehajtható."
+msgstr "Nem lÃ©tezik vagy nem vÃ©grehajthatÃ³."
 
 #: troubleshoot.php:155 troubleshoot.php:210
 msgid "INFO:"
-msgstr "MEGJEGYZÉS:"
+msgstr "MEGJEGYZÃ‰S:"
 
 #: troubleshoot.php:155 troubleshoot.php:210
 msgid "Remote checking is enabled, cannot check validity of this variable."
-msgstr "A változó érvényessége nem ellenõrizhetõ távoli kvótafigyelés esetén."
+msgstr "A vÃ¡ltozÃ³ Ã©rvÃ©nyessÃ©ge nem ellenÅ‘rizhetÅ‘ tÃ¡voli kvÃ³tafigyelÃ©s esetÃ©n."
 
 #: troubleshoot.php:169
 msgid "SSH Binary:"
-msgstr "Az 'ssh' parancs elérési útja:"
+msgstr "Az 'ssh' parancs elÃ©rÃ©si Ãºtja:"
 
 #: troubleshoot.php:193
 msgid "QUOTA Binary:"
-msgstr "A 'quota' parancs elérési útja:"
+msgstr "A 'quota' parancs elÃ©rÃ©si Ãºtja:"
 
 #: troubleshoot.php:224
 msgid "DU Binary:"
-msgstr "A 'du' parancs elérési útja:"
+msgstr "A 'du' parancs elÃ©rÃ©si Ãºtja:"
 
 #: troubleshoot.php:248
 msgid "cPanel Root Folder:"
-msgstr "cPanel gyökérkönyvtár:"
+msgstr "cPanel gyÃ¶kÃ©rkÃ¶nyvtÃ¡r:"
 
 #: troubleshoot.php:257
 msgid "directory does not exist or not readable."
-msgstr "A könyvtár nem létezik vagy nem olvasható."
+msgstr "A kÃ¶nyvtÃ¡r nem lÃ©tezik vagy nem olvashatÃ³."
 
 #: troubleshoot.php:274
 msgid "Use Separate IMAP Connection:"
-msgstr "Külön IMAP kapcsolat használata:"
+msgstr "KÃ¼lÃ¶n IMAP kapcsolat hasznÃ¡lata:"
 
 #: troubleshoot.php:279 troubleshoot.php:386 troubleshoot.php:405
 #: troubleshoot.php:490 troubleshoot.php:509 troubleshoot.php:549
@@ -288,15 +288,15 @@ msgstr "Bekapcsolva"
 
 #: troubleshoot.php:292
 msgid "Display Settings"
-msgstr "Megjelenítés"
+msgstr "MegjelenÃ­tÃ©s"
 
 #: troubleshoot.php:296
 msgid "Graph Type:"
-msgstr "Grafikonrajzolás módja:"
+msgstr "GrafikonrajzolÃ¡s mÃ³dja:"
 
 #: troubleshoot.php:301
 msgid "Standard HTML tables"
-msgstr "Egyszerû HTML tábla"
+msgstr "EgyszerÅ± HTML tÃ¡bla"
 
 #: troubleshoot.php:304
 msgid "GD images"
@@ -304,15 +304,15 @@ msgstr "GD grafika"
 
 #: troubleshoot.php:308
 msgid "Your server does not have GD support."
-msgstr "Ezen a webszerveren nincs GD grafika támogatás."
+msgstr "Ezen a webszerveren nincs GD grafika tÃ¡mogatÃ¡s."
 
 #: troubleshoot.php:309
 msgid "Graph type will revert to standard HTML tables."
-msgstr "A grafikonrajzolás módja visszaváltva HTML táblára."
+msgstr "A grafikonrajzolÃ¡s mÃ³dja visszavÃ¡ltva HTML tÃ¡blÃ¡ra."
 
 #: troubleshoot.php:326
 msgid "Graph Location:"
-msgstr "A grafikonok elhelyezése:"
+msgstr "A grafikonok elhelyezÃ©se:"
 
 #: troubleshoot.php:331
 msgid "Below folders list"
@@ -324,11 +324,11 @@ msgstr "A mappalista felett."
 
 #: troubleshoot.php:345
 msgid "Font Size:"
-msgstr "Betûméret:"
+msgstr "BetÅ±mÃ©ret:"
 
 #: troubleshoot.php:359
 msgid "Graph Alignment:"
-msgstr "Grafikonok igazítása:"
+msgstr "Grafikonok igazÃ­tÃ¡sa:"
 
 #: troubleshoot.php:364
 msgid "Left"
@@ -340,19 +340,19 @@ msgstr "jobbra"
 
 #: troubleshoot.php:370
 msgid "Center"
-msgstr "középre"
+msgstr "kÃ¶zÃ©pre"
 
 #: troubleshoot.php:381
 msgid "Use Horizontal Rules:"
-msgstr "Vízszintes elválasztók használata:"
+msgstr "VÃ­zszintes elvÃ¡lasztÃ³k hasznÃ¡lata:"
 
 #: troubleshoot.php:400
 msgid "Show Intro Texts:"
-msgstr "Szöveges magyarázat:"
+msgstr "SzÃ¶veges magyarÃ¡zat:"
 
 #: troubleshoot.php:419
 msgid "Quota Details Location:"
-msgstr "Szöveges magyarázat helye:"
+msgstr "SzÃ¶veges magyarÃ¡zat helye:"
 
 #: troubleshoot.php:424
 msgid "Below quota graph"
@@ -364,19 +364,19 @@ msgstr "A grafikonok felett."
 
 #: troubleshoot.php:438
 msgid "Show Quantity or Percent:"
-msgstr "Abszolút vagy relatív kijelzés:"
+msgstr "AbszolÃºt vagy relatÃ­v kijelzÃ©s:"
 
 #: troubleshoot.php:443
 msgid "Show percent"
-msgstr "relatív (százalékos)"
+msgstr "relatÃ­v (szÃ¡zalÃ©kos)"
 
 #: troubleshoot.php:446
 msgid "Show quantity (size or count)"
-msgstr "abszolút (fájlméret vagy -szám)"
+msgstr "abszolÃºt (fÃ¡jlmÃ©ret vagy -szÃ¡m)"
 
 #: troubleshoot.php:457
 msgid "Yellow Alert Threshold:"
-msgstr "Sárga riasztás küszöbértéke:"
+msgstr "SÃ¡rga riasztÃ¡s kÃ¼szÃ¶bÃ©rtÃ©ke:"
 
 #: troubleshoot.php:460 troubleshoot.php:474
 #, php-format
@@ -385,79 +385,79 @@ msgstr "%s%%"
 
 #: troubleshoot.php:471
 msgid "Red Alert Threshold:"
-msgstr "Piros riasztás küszöbértéke:"
+msgstr "Piros riasztÃ¡s kÃ¼szÃ¶bÃ©rtÃ©ke:"
 
 #: troubleshoot.php:485
 msgid "Show Yellow Alert Warning:"
-msgstr "Sárga riasztás kijelzése:"
+msgstr "SÃ¡rga riasztÃ¡s kijelzÃ©se:"
 
 #: troubleshoot.php:504
 msgid "Show Red Alert Warning:"
-msgstr "Piros riasztás kijelzése:"
+msgstr "Piros riasztÃ¡s kijelzÃ©se:"
 
 #: troubleshoot.php:523
 msgid "KB/MB Conversion:"
-msgstr "KB/MB átváltás:"
+msgstr "KB/MB Ã¡tvÃ¡ltÃ¡s:"
 
 #: troubleshoot.php:544
 msgid "Show Filesystems:"
-msgstr "Fájlrendszerazonosítók kijelzése:"
+msgstr "FÃ¡jlrendszerazonosÃ­tÃ³k kijelzÃ©se:"
 
 #: troubleshoot.php:563
 msgid "Override Settings"
-msgstr "Módosító opciók:"
+msgstr "MÃ³dosÃ­tÃ³ opciÃ³k:"
 
 #: troubleshoot.php:569
 msgid "Filesystem Aliases:"
-msgstr "Egyedi blokkeszköznevek:"
+msgstr "Egyedi blokkeszkÃ¶znevek:"
 
 #: troubleshoot.php:572
 msgid "No aliases set"
-msgstr "Nincsenek megadva egyedi blokkeszköznevek."
+msgstr "Nincsenek megadva egyedi blokkeszkÃ¶znevek."
 
 #: troubleshoot.php:578
 msgid "will be shown as"
-msgstr "ilyen néven látható:"
+msgstr "ilyen nÃ©ven lÃ¡thatÃ³:"
 
 #: troubleshoot.php:590
 msgid "Excluded Filesystems:"
-msgstr "Figyelmen kívül hagyott fájlrendszerek:"
+msgstr "Figyelmen kÃ­vÃ¼l hagyott fÃ¡jlrendszerek:"
 
 #: troubleshoot.php:593
 msgid "All filesystems with quota enabled will be shown."
-msgstr "Minden kvótázó fájlrendszer megjelenítve."
+msgstr "Minden kvÃ³tÃ¡zÃ³ fÃ¡jlrendszer megjelenÃ­tve."
 
 #: troubleshoot.php:600
 msgid "will be excluded from quota information."
-msgstr "kikzárva a kvótafigyelésbõl."
+msgstr "kikzÃ¡rva a kvÃ³tafigyelÃ©sbÅ‘l."
 
 #: troubleshoot.php:612
 msgid "Override IMAP Size Quota:"
-msgstr "IMAP fájlméretkorlát felülbírálása:"
+msgstr "IMAP fÃ¡jlmÃ©retkorlÃ¡t felÃ¼lbÃ­rÃ¡lÃ¡sa:"
 
 #: troubleshoot.php:623 troubleshoot.php:643
 msgid "No override set"
-msgstr "Nincs felülbírálás."
+msgstr "Nincs felÃ¼lbÃ­rÃ¡lÃ¡s."
 
 #: troubleshoot.php:632
 msgid "Override IMAP Count Quota:"
-msgstr "IMAP fájlszámkorlát felülbírálása:"
+msgstr "IMAP fÃ¡jlszÃ¡mkorlÃ¡t felÃ¼lbÃ­rÃ¡lÃ¡sa:"
 
 #: troubleshoot.php:636
 msgid "Files"
-msgstr "fájl"
+msgstr "fÃ¡jl"
 
 #: troubleshoot.php:652
 msgid "Always Refresh cPanel:"
-msgstr "cPanel kvótaadatok folyamatos frissítése:"
+msgstr "cPanel kvÃ³taadatok folyamatos frissÃ­tÃ©se:"
 
 #: troubleshoot.php:673 troubleshoot.php:676 troubleshoot.php:679
 msgid "Quota Output"
-msgstr "kvótalekérdezés eredménye:"
+msgstr "kvÃ³talekÃ©rdezÃ©s eredmÃ©nye:"
 
 #: troubleshoot.php:711
 msgid "You have"
-msgstr "A konfigurációban"
+msgstr "A konfigurÃ¡ciÃ³ban"
 
 #: troubleshoot.php:713
 msgid "error or warning"
@@ -469,28 +469,28 @@ msgstr "kisebb-nagyobb"
 
 #: troubleshoot.php:713
 msgid "in your configuration. You can find the details below."
-msgstr "hiba van. A részleteket lásd lentebb!"
+msgstr "hiba van. A rÃ©szleteket lÃ¡sd lentebb!"
 
 #: troubleshoot.php:714
 msgid "Please correct"
-msgstr "Kérem javítsa ki"
+msgstr "KÃ©rem javÃ­tsa ki"
 
 #: troubleshoot.php:714
 msgid "this error or warning"
-msgstr "a hibát,"
+msgstr "a hibÃ¡t,"
 
 #: troubleshoot.php:714
 msgid "these errors or warnings"
-msgstr "a hibákat,"
+msgstr "a hibÃ¡kat,"
 
 #: troubleshoot.php:715
 msgid "in order to have &quot;Check Quota&quot; work properly."
-msgstr "hogy a \"Kvótafigyelõ\" tökéletesen mûködhessen."
+msgstr "hogy a \"KvÃ³tafigyelÅ‘\" tÃ¶kÃ©letesen mÅ±kÃ¶dhessen."
 
 #: troubleshoot.php:720
 msgid ""
 "Your configuration seems to be correct. &quot;Check Quota&quot; should work "
 "properly."
 msgstr ""
-"A konfiguráció tökéletesnek látszik, a \"Kvótafigyelõ\" elméletileg a helyes "
-"értékeket mutatja."
+"A konfigurÃ¡ciÃ³ tÃ¶kÃ©letesnek lÃ¡tszik, a \"KvÃ³tafigyelÅ‘\" elmÃ©letileg a helyes "
+"Ã©rtÃ©keket mutatja."

@@ -839,8 +839,9 @@ $languages['hr_HR']['LOCALE']  = array('hr_HR.ISO8859-2','hr_HR.ISO-8859-2','hr_
 $languages['hr']['ALIAS']      = 'hr_HR';
 
 $languages['hu_HU']['NAME']    = 'Hungarian';
+$languages['hu_HU']['ALTNAME'] = 'Magyar';
 $languages['hu_HU']['CHARSET'] = 'iso-8859-2';
-$languages['hu_HU']['LOCALE']  = array('hu_HU.ISO8859-2','hu_HU.ISO-8859-2','hu_HU');
+$languages['hu_HU']['LOCALE']  = array('hu_HU.UTF-8', 'hu_HU.UTF8', 'hu_HU');
 $languages['hu']['ALIAS']      = 'hu_HU';
 
 $languages['id_ID']['NAME']    = 'Bahasa Indonesia';
