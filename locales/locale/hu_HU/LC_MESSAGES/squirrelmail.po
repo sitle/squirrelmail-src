@@ -3,20 +3,21 @@
 # This file is distributed under the same license as the SquirrelMail package.
 # István-Attila András <bergkatten@netscape.net>, 2001.
 # Zoltán Levárdy <zoltan@levardy.org>, 2003.
-# Németh Tamás <nice@titanic.nyme.hu>, 2009.
+# Tamás Németh <nice@titanic.nyme.hu>, 2009.
 # $Id$
 msgid ""
 msgstr ""
-"Project-Id-Version: SquirrelMail 1.4.18\n"
+"Project-Id-Version: SquirrelMail HEAD\n"
 "Report-Msgid-Bugs-To: SquirrelMail Internationalization <squirrelmail-"
 "i18n@lists.sourceforge.net>\n"
-"POT-Creation-Date: 2008-05-16 06:46+0200\n"
-"PO-Revision-Date: 2009-04-24 17:41+0200\n"
-"Last-Translator: Németh Tamás <nice@titanic.nyme.hu>\n"
+"POT-Creation-Date: 2009-04-17 14:34+0200\n"
+"PO-Revision-Date: 2009-04-27 11:32+0200\n"
+"Last-Translator: Tamás Németh <nice@titanic.nyme.hu>\n"
 "Language-Team: Hungarian <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 msgid "Address Book"
 msgstr "Címjegyzékek"
@@ -69,6 +70,7 @@ msgstr "Keresés"
 msgid "List all"
 msgstr "Teljes lista"
 
+#, php-format
 msgid "Unable to list addresses from %s"
 msgstr "Ilyen cím nem található a %s címtárban"
 
@@ -144,9 +146,11 @@ msgstr "Rendezés e-mail cím szerint"
 msgid "sort by info"
 msgstr "Rendezés megjegyzés szerint"
 
+#, php-format
 msgid "Add to %s"
 msgstr "Cím felvétele ide: %s"
 
+#, php-format
 msgid "%s wrote:"
 msgstr "%s ezt írta:"
 
@@ -156,6 +160,7 @@ msgstr "quote"
 msgid "who"
 msgstr "who"
 
+#, php-format
 msgid "On %s, %s wrote:"
 msgstr "%s időpontban %s ezt írta:"
 
@@ -213,7 +218,9 @@ msgstr "Kijelölt mellékletek törlése"
 msgid ""
 "Because PHP file uploads are turned off, you can not attach files to this "
 "message. Please see your system administrator for details."
-msgstr "A szerveren nincs engedélyezve a PHP fájlfeltöltés, ezért nem lehet fájlokat csatolni a levelekhez. Forduljon a rendszergazdához!"
+msgstr ""
+"A szerveren nincs engedélyezve a PHP fájlfeltöltés, ezért nem lehet fájlokat "
+"csatolni a levelekhez. Forduljon a rendszergazdához!"
 
 msgid "Priority"
 msgstr "sürgősség"
@@ -248,19 +255,18 @@ msgstr "Mentés piszkozatként"
 msgid "You have not filled in the \"To:\" field."
 msgstr "Nem töltötte ki a \"Címzet:\" mezőt."
 
+#, php-format
 msgid "Error: Draft folder %s does not exist."
 msgstr "Hiba: A %s nevű piszkozatmappa nem létezik."
 
 msgid "Message not sent."
 msgstr "A levélküldés nem sikerült."
 
-#, fuzzy
 msgid "Server replied:"
-msgstr "A szerver válasza: "
+msgstr "A szerver válasza:"
 
-#, fuzzy
 msgid "Illegal folder name. Please select a different name."
-msgstr "Hibás mappanév. Válasszon más nevet."
+msgstr "Hibás mappanév. Válasszon más nevet!"
 
 msgid "Click here to go back"
 msgstr "Vissza"
@@ -271,6 +277,7 @@ msgstr "Nem választotta ki a törlendő mappá(ka)t. Kérjük válasszon!"
 msgid "Delete Folder"
 msgstr "Mappa törlése"
 
+#, php-format
 msgid "Are you sure you want to delete %s?"
 msgstr "Biztosan törli ezt a mapát: %s?"
 
@@ -370,7 +377,9 @@ msgstr "Súgó"
 msgid ""
 "Help is not available in the selected language. It will be displayed in "
 "English instead."
-msgstr "A súgó fejezet nincs lefordítva az ön választott nyelvére, ezért angolul fog megjelenni."
+msgstr ""
+"A súgó fejezet nincs lefordítva az ön választott nyelvére, ezért angolul fog "
+"megjelenni."
 
 msgid ""
 "Help is not available. Please contact your system administrator for "
@@ -380,11 +389,14 @@ msgstr "Hiányzik a súgó. Forduljon a rendszergazdához!"
 msgid ""
 "This chapter is not available in the selected language. It will be displayed "
 "in English instead."
-msgstr "A %s fejezet nincs lefordítva az ön választott nyelvére, ezért angolul fog megjelenni."
+msgstr ""
+"A %s fejezet nincs lefordítva az ön választott nyelvére, ezért angolul fog "
+"megjelenni."
 
 msgid "This chapter is missing"
 msgstr "Ez a fejezet hiányzik."
 
+#, php-format
 msgid "For some reason, chapter %s is not available."
 msgstr "A %s fejezet valami okból hiányzik."
 
@@ -424,15 +436,18 @@ msgstr "Levelek ellenőrzése"
 msgid "Login"
 msgstr "Belépés"
 
+#, php-format
 msgid "%s Logo"
 msgstr "%s Logo"
 
+#, php-format
 msgid "SquirrelMail version %s"
 msgstr "SquirrelMail (MókusPosta) %s verzió"
 
 msgid "By the SquirrelMail Project Team"
 msgstr "A SquirrelMail csapat munkája"
 
+#, php-format
 msgid "%s Login"
 msgstr "%s - belépés:"
 
@@ -538,6 +553,7 @@ msgstr "Az identitás(ok) módosítása nem engedélyezett."
 msgid "Default Identity"
 msgstr "Alapértelmezett identitás"
 
+#, php-format
 msgid "Alternate Identity %d"
 msgstr "Alternatív identitás %d"
 
@@ -581,7 +597,10 @@ msgid ""
 "The index order is the order that the columns are arranged in the message "
 "index. You can add, remove, and move columns around to customize them to fit "
 "your needs."
-msgstr "Itt lehet beállítani, hogy az üzenetlistán a levelek mely tulajdonságai szereplejenek, és milyen sorrendben. Törölheti, mozgathatja a lista oszlopait, vagy újat adhat hozzájuk."
+msgstr ""
+"Itt lehet beállítani, hogy az üzenetlistán a levelek mely tulajdonságai "
+"szereplejenek, és milyen sorrendben. Törölheti, mozgathatja a lista "
+"oszlopait, vagy újat adhat hozzájuk."
 
 msgid "up"
 msgstr "fel"
@@ -622,23 +641,30 @@ msgstr "Oldal frissítése"
 msgid ""
 "This contains personal information about yourself such as your name, your "
 "email address, etc."
-msgstr "Itt lehet beállítani a személyes adatokat, úgy mint név, e-mail cím stb..."
+msgstr ""
+"Itt lehet beállítani a személyes adatokat, úgy mint név, e-mail cím stb..."
 
 msgid ""
 "You can change the way that SquirrelMail looks and displays information to "
 "you, such as the colors, the language, and other settings."
 msgstr ""
-"Itt lehet testre szabni a SquirrelMail (MókusPosta) megjelenését, "
-"például a színeket, a használt nyelvet stb..."
+"Itt lehet testre szabni a SquirrelMail (MókusPosta) megjelenését, például a "
+"színeket, a használt nyelvet stb..."
 
 msgid ""
 "Based upon given criteria, incoming messages can have different background "
 "colors in the message list. This helps to easily distinguish who the "
 "messages are from, especially for mailing lists."
-msgstr "Az itt megadott szabályok alapján bizonyos leveleket a kívánt háttérszínnel kiemelhet az üzenetlistán, abból a célból, hogy könnyen megkülönböztethetőek legyenek a többi levéltől."
+msgstr ""
+"Az itt megadott szabályok alapján bizonyos leveleket a kívánt háttérszínnel "
+"kiemelhet az üzenetlistán, abból a célból, hogy könnyen megkülönböztethetőek "
+"legyenek a többi levéltől."
 
-msgid "These settings change the way your folders are displayed and manipulated."
-msgstr "Itt lehet testre szabni a mappalista megjelenítését, valamint kiválasztani a speciális célokat szolgáló mappákat (pl. az alküldött levelek mappáját)."
+msgid ""
+"These settings change the way your folders are displayed and manipulated."
+msgstr ""
+"Itt lehet testre szabni a mappalista megjelenítését, valamint kiválasztani a "
+"speciális célokat szolgáló mappákat (pl. az alküldött levelek mappáját)."
 
 msgid ""
 "The order of the message index can be rearranged and changed to contain the "
@@ -686,6 +712,7 @@ msgstr "Az ön alábbi üzenetét"
 msgid "Sent"
 msgstr "elküldve"
 
+#, php-format
 msgid "Was displayed on %s"
 msgstr "a címzett megynyitotta ekkor: %s"
 
@@ -711,8 +738,8 @@ msgid ""
 "The message sender has requested a response to indicate that you have read "
 "this message. Would you like to send a receipt?"
 msgstr ""
-"A levél küldője visszajelzést (tértivevényt) kért arról, hogy elolvasta ezt a levelet. Akar "
-"most visszaigazolást küldeni?"
+"A levél küldője visszajelzést (tértivevényt) kért arról, hogy elolvasta ezt "
+"a levelet. Akar most visszaigazolást küldeni?"
 
 msgid "Send read receipt now"
 msgstr "tértivevény (visszaigazolás) küldése"
@@ -795,7 +822,6 @@ msgstr "Nincs eredmény."
 msgid "Please enter something to search for"
 msgstr "Kérem, adja meg a keresendő szövegrészt!"
 
-#, fuzzy
 msgid "Signout"
 msgstr "Kilépés"
 
@@ -811,10 +837,13 @@ msgstr "Belépés újból"
 msgid "Viewing a Business Card"
 msgstr "Névjegy megtekintése"
 
+#, php-format
 msgid ""
 "vCard Version %s is not supported. Some information might not be converted "
 "correctly."
-msgstr "A %s verziójú vCard-ok megjelenítése nem teljesen megoldott, nem biztos, hogy minden információ helyesen jelenik meg."
+msgstr ""
+"A %s verziójú vCard-ok megjelenítése nem teljesen megoldott, nem biztos, "
+"hogy minden információ helyesen jelenik meg."
 
 msgid "Title"
 msgstr "megszólítás"
@@ -858,11 +887,15 @@ msgstr "Szöveges melléklet megjelenítése"
 msgid "View Unsafe Images"
 msgstr "Nem biztonságok képek megjelenítése"
 
-msgid "Could not include PEAR database functions required for the database backend."
+msgid ""
+"Could not include PEAR database functions required for the database backend."
 msgstr "Az adatbáziskezeléshez szükséges PEAR függvények elérése nem sikerült."
 
+#, php-format
 msgid "Is PEAR installed, and is the include path set correctly to find %s?"
-msgstr "Telepítve van a PEAR, és megfelelően be van állítva az include út a %s eléréséhez?"
+msgstr ""
+"Telepítve van a PEAR, és megfelelően be van állítva az include út a %s "
+"eléréséhez?"
 
 msgid "Please contact your system administrator and report this error."
 msgstr "Lépjen kapcsolatba a rendszergazdával és jelentse ezt a hibát."
@@ -870,20 +903,22 @@ msgstr "Lépjen kapcsolatba a rendszergazdával és jelentse ezt a hibát."
 msgid "Personal address book"
 msgstr "Saját címtár"
 
+#, php-format
 msgid "Database error: %s"
 msgstr "Adatbázis hiba: %s"
 
 msgid "Address book is read-only"
 msgstr "A címtár nem írható (csak olvasható)"
 
-#. i18n: don't use html formating in translation
+#, php-format
 msgid "User \"%s\" already exists"
 msgstr "'%s' nevű felhasználó már létezik"
 
-#. i18n: don't use html formating in translation
+#, php-format
 msgid "User \"%s\" does not exist"
 msgstr "'%s' nevű felhasználó nem létezik"
 
+#, php-format
 msgid "User '%s' already exist."
 msgstr "'%s' nevű felhasználó már létezik"
 
@@ -917,6 +952,7 @@ msgstr "A címtár írása nem sikerült."
 msgid "Error initializing address book database."
 msgstr "Hiba történt az adatbázishoz történő csatlakozáskor."
 
+#, php-format
 msgid "Error opening file %s"
 msgstr "Hiba a(z) %s állomány megnyitásakor."
 
@@ -926,6 +962,7 @@ msgstr "Közös címtár"
 msgid "Error initializing global address book."
 msgstr "Hiba történt a közös címtár megnyitásakor."
 
+#, php-format
 msgid "Error initializing LDAP server %s:"
 msgstr "Nem sikerült csatlakozni a(z) %s LDAP szerverhez."
 
@@ -951,7 +988,9 @@ msgid "View Business Card"
 msgstr "Névjegy megtekintése"
 
 msgid "Your session has expired, but will be resumed after logging in again."
-msgstr "A munkamenet érvényessége sajnos lejárt. Újbóli belépés után folytathatja a munkát."
+msgstr ""
+"A munkamenet érvényessége sajnos lejárt. Újbóli belépés után folytathatja a "
+"munkát."
 
 msgid "Sunday"
 msgstr "vasárnap"
@@ -1088,69 +1127,95 @@ msgstr "D. g:i a"
 msgid "D, H:i"
 msgstr "D. H:i"
 
+#, php-format
 msgid "Preference database error (%s). Exiting abnormally"
-msgstr "A személyes beállítások adatbázisában a következő végzetes hiba történt: %s."
+msgstr ""
+"A személyes beállítások adatbázisában a következő végzetes hiba történt: %s."
 
+#, php-format
 msgid "Click here to return to %s"
 msgstr "Visszatérés ide: %s"
 
 msgid "Go to the login page"
 msgstr "Ugrás a belépő oldalra"
 
+#, php-format
 msgid ""
 "Preference file, %s, does not exist. Log out, and log back in to create a "
 "default preference file."
-msgstr "Az ön személyes beállításait tároló %s fájl nincs meg. Új, alapértelmezett beállításokkal feltöltött fájl létrehozásához lépjen ki, majd be!"
+msgstr ""
+"Az ön személyes beállításait tároló %s fájl nincs meg. Új, alapértelmezett "
+"beállításokkal feltöltött fájl létrehozásához lépjen ki, majd be!"
 
+#, php-format
 msgid ""
 "Preference file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
-msgstr "Az ön személyes beállításait tároló %s fájl megnyitása nem sikerült. Forduljon a rendszergazdához!"
+msgstr ""
+"Az ön személyes beállításait tároló %s fájl megnyitása nem sikerült. "
+"Forduljon a rendszergazdához!"
 
+#, php-format
 msgid ""
 "Preference file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
-msgstr "Az ön személyes beállításait tároló %s fájl nem írható. Forduljon a rendszergazdához!"
+msgstr ""
+"Az ön személyes beállításait tároló %s fájl nem írható. Forduljon a "
+"rendszergazdához!"
 
+#, php-format
 msgid ""
 "Preference file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
-msgstr "Az ön személyes beállításait tároló %s fájljának létrehozása a %s sablonfájl alapján nem sikerült. Forduljon a rendszergazdához!"
+msgstr ""
+"Az ön személyes beállításait tároló %s fájljának létrehozása a %s sablonfájl "
+"alapján nem sikerült. Forduljon a rendszergazdához!"
 
+#, php-format
 msgid "Error opening %s"
 msgstr "Hiba történt a %s megnyitásakor."
 
 msgid "Default preference file not found or not readable!"
-msgstr "Az alapértelmezett beállításokat tároló fájl nincs meg, vagy nem olvasható!"
+msgstr ""
+"Az alapértelmezett beállításokat tároló fájl nincs meg, vagy nem olvasható!"
 
 msgid "Could not create initial preference file!"
 msgstr "Az ön személyes beállításait tároló fájl létrehozása nem sikerült."
 
+#, php-format
 msgid "%s should be writable by user %s"
 msgstr "A %s fájlnak írhatónak kell lennie %s felhasználó által."
 
 msgid "Signature is too big."
 msgstr "Az aláírás túl nagy."
 
+#, php-format
 msgid ""
 "Signature file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
-msgstr "A %s aláírásfájl megnyitása nem sikerült. Forduljon a rendszergazdához!"
+msgstr ""
+"A %s aláírásfájl megnyitása nem sikerült. Forduljon a rendszergazdához!"
 
+#, php-format
 msgid ""
 "Signature file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
 msgstr "A %s aláírásfájl nem írható. Forduljon a rendszergazdához!"
 
+#, php-format
 msgid ""
 "Signature file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
-msgstr "A %s aláírásfájl létrehozása a %s sablonfájl alapján nem sikerült. Forduljon a rendszergazdához!"
+msgstr ""
+"A %s aláírásfájl létrehozása a %s sablonfájl alapján nem sikerült. Forduljon "
+"a rendszergazdához!"
 
 msgid ""
 "You need to have PHP installed with the multibyte string function enabled "
 "(using configure option --enable-mbstring)."
-msgstr "Többbájtos string funkcióval rendelkező PHP-re van szükség. (Fordításkor meg kell adni a configure --enable-mbstring opciót.)"
+msgstr ""
+"Többbájtos string funkcióval rendelkező PHP-re van szükség. (Fordításkor meg "
+"kell adni a configure --enable-mbstring opciót.)"
 
 msgid "ERROR: No available IMAP stream."
 msgstr "HIBA: Nincs elérhető IMAP adatfolyam."
@@ -1158,16 +1223,14 @@ msgstr "HIBA: Nincs elérhető IMAP adatfolyam."
 msgid "ERROR: Connection dropped by IMAP server."
 msgstr "HIBA: A kapcsolatot az IMAP szerver eldobta."
 
-#, fuzzy
 msgid "ERROR: Could not complete request."
 msgstr "HIBA: A kérést nem sikerült teljesíteni."
 
 msgid "Query:"
 msgstr "Lekérdezés:"
 
-#, fuzzy
 msgid "Reason Given:"
-msgstr "Az ok a következö: "
+msgstr "Az ok a következö:"
 
 msgid "ERROR: Bad or malformed request."
 msgstr "HIBA: rossz formátumú kérés."
@@ -1181,11 +1244,13 @@ msgstr "HIBA: az IMAP szerver lezárta a kapcsolatot."
 msgid "ERROR: Unknown IMAP response."
 msgstr "HIBA: Ismeretlen IMAP válasz."
 
+#, php-format
 msgid "Error connecting to IMAP server: %s."
 msgstr "Nem sikerül csatlakozni a %s IMAP szerverhez."
 
 msgid "The IMAP server is reporting that plain text logins are disabled."
-msgstr "Az IMAP szerver nem engedélyezi a titkosítatlan jelszóval történő belépést."
+msgstr ""
+"Az IMAP szerver nem engedélyezi a titkosítatlan jelszóval történő belépést."
 
 msgid "Using CRAM-MD5 or DIGEST-MD5 authentication instead may work."
 msgstr "CRAM-MD5 vagy DIGEST-MD5 authentikációval sikerülhet a csatlakozás."
@@ -1193,9 +1258,11 @@ msgstr "CRAM-MD5 vagy DIGEST-MD5 authentikációval sikerülhet a csatlakozás."
 msgid "Also, the use of TLS may allow SquirrelMail to login."
 msgstr "A TLS titkosítás használata szintén eredményes lehet."
 
+#, php-format
 msgid "Bad request: %s"
 msgstr "Hibás kérés: %s"
 
+#, php-format
 msgid "Unknown error: %s"
 msgstr "Ismeretlen hiba: %s"
 
@@ -1208,13 +1275,14 @@ msgstr "Rossz felhasználónév vagy jelszó."
 msgid "ERROR: Could not append message to"
 msgstr "HIBA: A levelet nem lehetett ebbe a mappába másolni"
 
-#, fuzzy
 msgid "Solution:"
-msgstr "Megoldás: "
+msgstr "Megoldás:"
 
-msgid "Remove unneccessary messages from your folders. Start with your Trash folder."
+msgid ""
+"Remove unneccessary messages from your folders. Start with your Trash folder."
 msgstr "Törölje a felesleges leveleket! Kezdje a törölt elemek mappájával!"
 
+#, php-format
 msgid "Invalid mailbox name: %s"
 msgstr "A következő postafióknév érvénytelen: %s"
 
@@ -1224,9 +1292,8 @@ msgstr "(nincs tárgy)"
 msgid "Unknown Sender"
 msgstr "ismeretlen feladó"
 
-#, fuzzy
 msgid "Unknown response from IMAP server:"
-msgstr "Ismeretlen válasz az IMAP szervertől: "
+msgstr "Ismeretlen válaszüzenetet küldött az IMAP szerver:"
 
 msgid "The server couldn't find the message you requested."
 msgstr "A szerver nem találja kért üzenetet."
@@ -1235,7 +1302,10 @@ msgid ""
 "Most probably your message list was out of date and the message has been "
 "moved away or deleted (perhaps by another program accessing the same "
 "mailbox)."
-msgstr "A legvalószínűbb ok az, hogy az üzenetlista legutóbbi frissítése óta elkerült a helyéről a kért levél. Elképzelhető, hogy egy másik program mozdította el."
+msgstr ""
+"A legvalószínűbb ok az, hogy az üzenetlista legutóbbi frissítése óta "
+"elkerült a helyéről a kért levél. Elképzelhető, hogy egy másik program "
+"mozdította el."
 
 msgid "Unknown date"
 msgstr "ismeretlen dátum"
@@ -1285,9 +1355,11 @@ msgstr "Kijelölés megszüntetése"
 msgid "Select All"
 msgstr "Minden kijelölése"
 
+#, php-format
 msgid "Viewing Messages: %s to %s (%s total)"
 msgstr "Megjelenített levelek: %s. - %s. (össz: %s)"
 
+#, php-format
 msgid "Viewing Message: %s (%s total)"
 msgstr "Megjelenített levél: %s. (össz: %s)"
 
@@ -1332,12 +1404,14 @@ msgstr "sec_remove_hu_HU.png"
 msgid "This external link will open in a new window"
 msgstr "Ez a külső hivatkozés új ablakban fog megnyílni."
 
+#, php-format
 msgid "Option Type '%s' Not Found"
 msgstr "A(z) '%s' opció típus nem található"
 
 msgid "Delete Selected"
 msgstr "Kijelöltek törlése"
 
+#, php-format
 msgid "Edit List Layout Type '%s' Not Found"
 msgstr "Az '%s' listarendezési mód nem található."
 
@@ -1347,6 +1421,7 @@ msgstr "Aktuális mappa"
 msgid "Compose"
 msgstr "Új levél"
 
+#, php-format
 msgid "Error creating directory %s."
 msgstr "A %s könyvtár létrehozása nem sikerült."
 
@@ -1356,6 +1431,7 @@ msgstr "A gyorskereső könyvtárstruktúra létrehozása nem sikerült."
 msgid "Email delivery error"
 msgstr "Kézbesítési hiba"
 
+#, php-format
 msgid "Can't execute command '%s'."
 msgstr "A '%s' parancs végrehajtása nem sikerült."
 
@@ -1411,13 +1487,16 @@ msgid "Requested action not taken: mailbox unavailable"
 msgstr "A kérés végrahajtása nem sikerült: nincs ilyen postafiók."
 
 msgid "User not local; please try forwarding"
-msgstr "A kérés végrahajtása nem sikerült: a címzettnek a célszerveren nincs hozzáférése."
+msgstr ""
+"A kérés végrahajtása nem sikerült: a címzettnek a célszerveren nincs "
+"hozzáférése."
 
 msgid "Requested mail action aborted: exceeding storage allocation"
 msgstr "A kérés végrahajtása nem sikerült tárhelykorlátozás miatt."
 
 msgid "Requested action not taken: mailbox name not allowed"
-msgstr "A kérés végrahajtása nem sikerült: postafióknév megadása nem engedélyezett."
+msgstr ""
+"A kérés végrahajtása nem sikerült: postafióknév megadása nem engedélyezett."
 
 msgid "Transaction failed"
 msgstr "Sikertelen művelet."
@@ -1576,7 +1655,8 @@ msgid "Sort by Received Date"
 msgstr "érkezési dátum szerinti rendezés"
 
 msgid "Enable Thread Sort by References Header"
-msgstr "Téma (thread) szerinti sorbarendezés a \"Reference\" fejlécmező alapján"
+msgstr ""
+"Téma (thread) szerinti sorbarendezés a \"Reference\" fejlécmező alapján"
 
 msgid "Special Folder Options"
 msgstr "Speciális mappák"
@@ -1787,15 +1867,6 @@ msgstr "aláírás használata"
 
 msgid "Prefix Signature with '-- ' Line"
 msgstr "a '-- ' sor beszúrása az aláírás elé"
-
-msgid "Take Address"
-msgstr "Címmásolás címtárból"
-
-msgid "Address Book Take:"
-msgstr "cím(ek) a címtárból:"
-
-msgid "Try to verify addresses"
-msgstr "Próbálja ellenőrizni a címeket."
 
 msgid "Config File Version"
 msgstr "Konfigurációs fájl verziója"
@@ -2141,12 +2212,18 @@ msgid ""
 "not this plugin. conf.pl contains additional information regarding the "
 "purpose of variables and appropriate values, as well as additional "
 "verification steps."
-msgstr "Megjegyzés: Azt ajánljuk, hogy ehelyett a webes rendszergazdai felület helyett a conf.pl szkriptet használja, mert abban bővebb információkat talál, és a beállított értékek helyességének vizsgálata is alaposabb, ráadásul ennek felületnek az engedélyezése biztonsági kockázatokkal járhat."
+msgstr ""
+"Megjegyzés: Azt ajánljuk, hogy ehelyett a webes rendszergazdai felület "
+"helyett a conf.pl szkriptet használja, mert abban bővebb információkat "
+"talál, és a beállított értékek helyességének vizsgálata is alaposabb, "
+"ráadásul ennek felületnek az engedélyezése biztonsági kockázatokkal járhat."
 
 msgid ""
 "Run or consult conf.pl should you run into difficulty with your "
 "configuration."
-msgstr "Amennyiben itt problémái adódnak a beállításokkal, próbálkozzon a conf.pl szkripttel!"
+msgstr ""
+"Amennyiben itt problémái adódnak a beállításokkal, próbálkozzon a conf.pl "
+"szkripttel!"
 
 msgid "Theme Name"
 msgstr "téma neve"
@@ -2157,8 +2234,9 @@ msgstr "téma elérési útja"
 msgid "Plugins"
 msgstr "Beépülő modulok"
 
+#, php-format
 msgid "Plugin directory could not be found: %s"
-msgstr "Nem található a modilkönyvtár itt:"
+msgstr "Nem található a modulok (plugin-ek) könyvtára itt: %s"
 
 msgid "Change Settings"
 msgstr "Beállítások megváltoztatása"
@@ -2167,7 +2245,8 @@ msgid "Test Configuration"
 msgstr "Beállítások tesztelése"
 
 msgid "Config file can't be opened. Please check config.php."
-msgstr "A konfigfájl (config.php) megnyitása sikertelen. Nézze meg, rendben van-e!"
+msgstr ""
+"A konfigfájl (config.php) megnyitása sikertelen. Nézze meg, rendben van-e!"
 
 msgid "Administration"
 msgstr "Adminisztráció"
@@ -2175,7 +2254,9 @@ msgstr "Adminisztráció"
 msgid ""
 "This module allows administrators to manage SquirrelMail main configuration "
 "remotely."
-msgstr "Ez a modul a SquirrelMail weben keresztüli konfigurálását teszi lehetővé rendszergazdák számára."
+msgstr ""
+"Ez a modul a SquirrelMail weben keresztüli konfigurálását teszi lehetővé "
+"rendszergazdák számára."
 
 msgid "Plugin is not enabled"
 msgstr "modul kikapcsolva"
@@ -2186,30 +2267,45 @@ msgstr "Hibajelentés küldése"
 msgid ""
 "Before you send your bug report, please make sure to check this checklist "
 "for any common problems."
-msgstr "Mielőtt hibajelentést küldene, kérjük, győződjön meg róla, hogy nem követte el az alábbi listán szereplő gyakori hibák valamelyikét!"
+msgstr ""
+"Mielőtt hibajelentést küldene, kérjük, győződjön meg róla, hogy nem követte "
+"el az alábbi listán szereplő gyakori hibák valamelyikét!"
 
+#, php-format
 msgid ""
 "Make sure that you are running the most recent copy of %s. You are currently "
 "using version %s."
-msgstr "Győződjön meg róla, hogy a %s legújabb verzióját használja. Az ön jelenlegi verziója: %s."
+msgstr ""
+"Győződjön meg róla, hogy a %s legújabb verzióját használja. Az ön jelenlegi "
+"verziója: %s."
 
+#, php-format
 msgid ""
 "Check to see if your bug is already listed in the %sBug List%s on "
 "SourceForge. If it is, we already know about it and are trying to fix it."
 msgstr ""
 "Nézze meg, nem szerepel-e már az ön által talált hiba a %sBug List%s listán "
-"a SourceForge-on. Ha igen, akkor a hiba már ismert, és a megoldása folyamatban van."
+"a SourceForge-on. Ha igen, akkor a hiba már ismert, és a megoldása "
+"folyamatban van."
 
 msgid ""
 "Try to make sure that you can repeat it. If the bug happens sporatically, "
 "try to document what you did when it happened. If it always occurs when you "
 "view a specific message, keep that message around so maybe we can see it."
-msgstr "Próbálja ki, hogy a hiba megismételhető-e! Ha csak néha fordul elő, próbálja meg körülírni, mit csinált, amikor bekövetkezett! Ha mindig egy bizonyos levél megnyitásakor következik be, őrizze meg azt a levelet, hogy elemezhessük a tartalmát!"
+msgstr ""
+"Próbálja ki, hogy a hiba megismételhető-e! Ha csak néha fordul elő, próbálja "
+"meg körülírni, mit csinált, amikor bekövetkezett! Ha mindig egy bizonyos "
+"levél megnyitásakor következik be, őrizze meg azt a levelet, hogy "
+"elemezhessük a tartalmát!"
 
+#, php-format
 msgid ""
 "If there were warnings displayed above, try to resolve them yourself. Read "
 "the guides in the %s directory where SquirrelMail was installed."
-msgstr "Ha a fentiekben figyelmeztető üzeneteket látott, próbája megoldani a bennük szereplő hibákat! Segítségként olvassa el a SquirrelMail könyvtárának %s alkönyvtárban található útmutatókat!"
+msgstr ""
+"Ha a fentiekben figyelmeztető üzeneteket látott, próbája megoldani a bennük "
+"szereplő hibákat! Segítségként olvassa el a SquirrelMail könyvtárának %s "
+"alkönyvtárban található útmutatókat!"
 
 msgid ""
 "Pressing the button below will start a mail message to the developers of "
@@ -2217,14 +2313,23 @@ msgid ""
 "browser, how SquirrelMail is set up, and your IMAP server. It will also "
 "prompt you for information. Just fill out the sections at the top. If you "
 "like, you can scroll down in the message to see what else is being sent."
-msgstr "Az alábbi gomb megnyomásával üzenetet küldhet a SquirrelMail fejlesztőinek, sok információval az ön operációs rendszeréről, böngészőjéről, a SquirrelMail beállításairól és az IMAP kiszolgálóról. Néhány információt kézzel kell megadnia az üzenet felső részében, de lejjebb gördítve megnézheti, mi egyéb kerül még elküldésre!"
+msgstr ""
+"Az alábbi gomb megnyomásával üzenetet küldhet a SquirrelMail fejlesztőinek, "
+"sok információval az ön operációs rendszeréről, böngészőjéről, a "
+"SquirrelMail beállításairól és az IMAP kiszolgálóról. Néhány információt "
+"kézzel kell megadnia az üzenet felső részében, de lejjebb gördítve "
+"megnézheti, mi egyéb kerül még elküldésre!"
 
 msgid ""
 "Please make sure to fill out as much information as you possibly can to give "
 "everyone a good chance of finding and removing the bug. Submitting your bug "
 "like this will not have it automatically added to the bug list on "
 "SourceForge, but someone who gets your message may add it for you."
-msgstr "Kérem, adjon meg minden lehetséges információt, hogy elősegítse a hiba megtalálását és megoldását! Figyelem! A hibabejelentés nem kerül fel automatikusan a SourceForge hibalistájára, csak ha valaki, aki megkapta, kézileg felveszi."
+msgstr ""
+"Kérem, adjon meg minden lehetséges információt, hogy elősegítse a hiba "
+"megtalálását és megoldását! Figyelem! A hibabejelentés nem kerül fel "
+"automatikusan a SourceForge hibalistájára, csak ha valaki, aki megkapta, "
+"kézileg felveszi."
 
 msgid "This bug involves:"
 msgstr "A hiba helye:"
@@ -2247,6 +2352,7 @@ msgstr "Hibabejelentések"
 msgid "Show button in toolbar"
 msgstr "megjelenítés a eszközsávban"
 
+#, php-format
 msgid "Could not write calendar file %s"
 msgstr "A %s naptárfájl írása nem sikerül."
 
@@ -2388,19 +2494,27 @@ msgstr "megjelenítése alul"
 msgid ""
 "COMMERCIAL - This list contains servers that are verified spam senders. It "
 "is a pretty reliable list to scan spam from."
-msgstr "KERESKEDELMI - Bizonyítottan smapküldő szervereket tartalmaz. Kifejezetten megbízható szűrőlista."
+msgstr ""
+"KERESKEDELMI - Bizonyítottan smapküldő szervereket tartalmaz. Kifejezetten "
+"megbízható szűrőlista."
 
 msgid ""
 "COMMERCIAL - Servers that are configured (or misconfigured) to allow spam to "
 "be relayed through their system will be banned with this. Another good one "
 "to use."
-msgstr "KERESKEDELMI - Véletlenül vagy szándékosan open relay-ként beállított SMTP szerverek listája. Szintén jól használható."
+msgstr ""
+"KERESKEDELMI - Véletlenül vagy szándékosan open relay-ként beállított SMTP "
+"szerverek listája. Szintén jól használható."
 
 msgid ""
 "COMMERCIAL - Dial-up users are often filtered out since they should use "
 "their ISP's mail servers to send mail. Spammers typically get a dial-up "
 "account and send spam directly from there."
-msgstr "KERESKEDELMI - Végfelhasználói IP-címtartományok listája. Ezekről a címekről nem szabadna leveleknek érkezniük, mert az otthoni számítógépeknek csak a szolgáltatójuk levelezőszerverén keresztül szabadna levelet küldeniük. Sok spammer használja ezeket a címtartományokat levélküldésre."
+msgstr ""
+"KERESKEDELMI - Végfelhasználói IP-címtartományok listája. Ezekről a címekről "
+"nem szabadna leveleknek érkezniük, mert az otthoni számítógépeknek csak a "
+"szolgáltatójuk levelezőszerverén keresztül szabadna levelet küldeniük. Sok "
+"spammer használja ezeket a címtartományokat levélküldésre."
 
 msgid "COMMERCIAL - RBL+ Blackhole entries."
 msgstr "KERESKEDELMI - RBL+ Feketelyuk lista."
@@ -2415,10 +2529,14 @@ msgid "FREE - Five-Ten-sg.com - Direct SPAM sources."
 msgstr "INGYENES - Five-Ten-sg.com - Közvetlen spamforrások."
 
 msgid "FREE - Five-Ten-sg.com - Dial-up lists - includes some DSL IPs."
-msgstr "INGYENES - Five-Ten-sg.com - Betárcsázó kliensek listája és néhány DSL tartomány."
+msgstr ""
+"INGYENES - Five-Ten-sg.com - Betárcsázó kliensek listája és néhány DSL "
+"tartomány."
 
 msgid "FREE - Five-Ten-sg.com - Bulk mailers that do not use confirmed opt-in."
-msgstr "INGYENES - Five-Ten-sg.com - Felhasználói megerősítés (opt in) nélkül is kiküldött listalevelek forrásai."
+msgstr ""
+"INGYENES - Five-Ten-sg.com - Felhasználói megerősítés (opt in) nélkül is "
+"kiküldött listalevelek forrásai."
 
 msgid "FREE - Five-Ten-sg.com - Other misc. servers."
 msgstr "INGYENES - Five-Ten-sg.com - Mindenféle egyéb szerverek."
@@ -2436,7 +2554,10 @@ msgid ""
 "FREE - Dorkslayers appears to include only really bad open relays outside "
 "the US to avoid being sued. Interestingly enough, their website recommends "
 "you NOT use their service."
-msgstr "INGYENES - Dorkslayers - Úgy tűnik, az USA-n kívülről csak a legelvetemültebb open relay-eket listázzák, hogy elkerüljék a pereket. A weboldaluk érdekes módon NEM ajánlja a szolgáltatásuk használatát."
+msgstr ""
+"INGYENES - Dorkslayers - Úgy tűnik, az USA-n kívülről csak a "
+"legelvetemültebb open relay-eket listázzák, hogy elkerüljék a pereket. A "
+"weboldaluk érdekes módon NEM ajánlja a szolgáltatásuk használatát."
 
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr "INGYENES - SPAMhaus - Jól ismert SPAM források listája."
@@ -2444,13 +2565,20 @@ msgstr "INGYENES - SPAMhaus - Jól ismert SPAM források listája."
 msgid ""
 "FREE, for now - SpamCop - An interesting solution that lists servers that "
 "have a very high spam to legit email ratio (85 percent or more)."
-msgstr "(jelen esetben) INGYENES - SpamCop - Ez az érdekes módszert használó lista azokat a szervereket tartalmazza, amelyek esetében nagyon magas (85% feletti) a spam-ek legitim levelekhez viszonyított aránya."
+msgstr ""
+"(jelen esetben) INGYENES - SpamCop - Ez az érdekes módszert használó lista "
+"azokat a szervereket tartalmazza, amelyek esetében nagyon magas (85% "
+"feletti) a spam-ek legitim levelekhez viszonyított aránya."
 
 msgid "FREE - dev.null.dk - I don't have any detailed info on this list."
-msgstr "INGYENES - dev.null.dk - Nincs semmilyen részletes információ erről a listáról."
+msgstr ""
+"INGYENES - dev.null.dk - Nincs semmilyen részletes információ erről a "
+"listáról."
 
 msgid "FREE - visi.com - Relay Stop List. Very conservative OpenRelay List."
-msgstr "INGYENES - visi.com Relay Stop List - Különösen elvetemült open relay-ek listája."
+msgstr ""
+"INGYENES - visi.com Relay Stop List - Különösen elvetemült open relay-ek "
+"listája."
 
 msgid "FREE - ahbl.org Open Relays - Another list of Open Relays."
 msgstr "INGYENES - ahbl.org Open relays - Open relay lista."
@@ -2459,34 +2587,37 @@ msgid "FREE - ahbl.org SPAM Source - List of Direct SPAM Sources."
 msgstr "INGYENES - ahbl.org SPAM Source - Közvetlen spamforrások."
 
 msgid "FREE - ahbl.org SPAM ISPs - List of SPAM-friendly ISPs."
-msgstr ""
-"INGYENES - ahbl.org SPAM ISPs - Spambarát szolgaltatók "
-"listája."
+msgstr "INGYENES - ahbl.org SPAM ISPs - Spambarát szolgaltatók listája."
 
 msgid ""
 "FREE - Leadmon DUL - Another list of Dial-up or otherwise dynamically "
 "assigned IPs."
-msgstr "INGYENES - Leadmon DUL - Betárcsázó kliensek és egyéb dinamikus IP-tartományok listája."
+msgstr ""
+"INGYENES - Leadmon DUL - Betárcsázó kliensek és egyéb dinamikus IP-"
+"tartományok listája."
 
 msgid ""
 "FREE - Leadmon SPAM Source - List of IPs Leadmon.net has received SPAM "
 "directly from."
 msgstr ""
-"INGYENES - Leadmon SPAM Source - olyan IP-k ahonnan a Leadmon.net közvetlenül "
-"kapott SPAM-et."
+"INGYENES - Leadmon SPAM Source - olyan IP-k ahonnan a Leadmon.net "
+"közvetlenül kapott SPAM-et."
 
 msgid ""
 "FREE - Leadmon Bulk Mailers - Bulk mailers that do not require confirmed opt-"
 "in or that have allowed known spammers to become clients and abuse their "
 "services."
-msgstr "INGYENES - Leadmon Bulk Mailers - Felhasználói megerősítés (opt in) nélkül is kiküldött listalevelek forrásai, vagy olyan levelezőlisták, amelyeken szándékosan nincs spam-szűrés."
+msgstr ""
+"INGYENES - Leadmon Bulk Mailers - Felhasználói megerősítés (opt in) nélkül "
+"is kiküldött listalevelek forrásai, vagy olyan levelezőlisták, amelyeken "
+"szándékosan nincs spam-szűrés."
 
 msgid ""
 "FREE - Leadmon Open Relays - Single Stage Open Relays that are not listed on "
 "other active RBLs."
 msgstr ""
-"INGYENES - Leadmon Open Relays - Önálló open relay-ek, amelyek "
-"nincsenek egyéb aktív RBL listán."
+"INGYENES - Leadmon Open Relays - Önálló open relay-ek, amelyek nincsenek "
+"egyéb aktív RBL listán."
 
 msgid ""
 "FREE - Leadmon Multi-stage - Multi-Stage Open Relays that are not listed on "
@@ -2500,7 +2631,9 @@ msgid ""
 "direct SPAM from IPs in netblocks where the entire block has no DNS "
 "mappings. It's a list of BLOCKS of IPs being used by people who have SPAMmed "
 "Leadmon.net."
-msgstr "INGYENES - Leadmon SpamBlock - Olyan - DNS-ben nem szereplő - IP-címtartományok, ahonnan a Leadmon.net spamet kapott."
+msgstr ""
+"INGYENES - Leadmon SpamBlock - Olyan - DNS-ben nem szereplő - IP-"
+"címtartományok, ahonnan a Leadmon.net spamet kapott."
 
 msgid ""
 "FREE, for now - Not Just Another Blacklist - Both Open Relays and Direct "
@@ -2510,22 +2643,32 @@ msgstr ""
 "közvetlen spam források."
 
 msgid "FREE, for now - Not Just Another Blacklist - Dial-up IPs."
-msgstr "(jelen esetben) INGYENES - Not Just Another Blacklist - Betárcsázó IP-k."
+msgstr ""
+"(jelen esetben) INGYENES - Not Just Another Blacklist - Betárcsázó IP-k."
 
 msgid "FREE - Distributed Sender Boycott List - Confirmed Relays"
-msgstr "INGYENES - Distributed Sender Boycott List - Bizonyított open relay szerverek."
+msgstr ""
+"INGYENES - Distributed Sender Boycott List - Bizonyított open relay "
+"szerverek."
 
 msgid "FREE - Distributed Sender Boycott List - Confirmed Multi-stage Relays"
-msgstr "INGYENES - Distributed Sender Boycott List - Bizonyított többtagú open relay láncolatok."
+msgstr ""
+"INGYENES - Distributed Sender Boycott List - Bizonyított többtagú open relay "
+"láncolatok."
 
 msgid "FREE - Distributed Sender Boycott List - UN-Confirmed Relays"
-msgstr "INGYENES - Distributed Sender Boycott List - Nem bizonyított open relay szerverek."
+msgstr ""
+"INGYENES - Distributed Sender Boycott List - Nem bizonyított open relay "
+"szerverek."
 
 msgid "WARNING! You must enter something to search for."
 msgstr "FIGYELEM! A keresendő szövegrészlet megadása kötelező!"
 
-msgid "WARNING! Header filters should be of the format &quot;Header: value&quot;"
-msgstr "FIGYELEM! Az általános fejlécszűrők esetében a keresendő szövegrészletnek \"Fejlécmező: érték\" formátumúnak kell lennie!"
+msgid ""
+"WARNING! Header filters should be of the format &quot;Header: value&quot;"
+msgstr ""
+"FIGYELEM! Az általános fejlécszűrők esetében a keresendő szövegrészletnek "
+"\"Fejlécmező: érték\" formátumúnak kell lennie!"
 
 msgid "Saved Scan type"
 msgstr "Szűrés típusa elmentve."
@@ -2554,8 +2697,11 @@ msgstr "ÁLTALÁNOS FEJLÉCSZŰRŐ"
 msgid "Contains:"
 msgstr "keresendő szöveg:"
 
+#, php-format
 msgid "If %s contains %s then move to %s"
-msgstr "Ha a(z) %s tartalmazza a(z) \"%s\" szövegrészletet, akkor kerüljön a(z) %s mappába!"
+msgstr ""
+"Ha a(z) %s tartalmazza a(z) \"%s\" szövegrészletet, akkor kerüljön a(z) %s "
+"mappába!"
 
 msgid "Message Filters"
 msgstr "Üzenetszűrés"
@@ -2563,7 +2709,9 @@ msgstr "Üzenetszűrés"
 msgid ""
 "Filtering enables messages with different criteria to be automatically "
 "filtered into different folders for easier organization."
-msgstr "A szűrőlista különböző kritériumok alapján automatikusan a kívánt mappákba helyezi át a leveleket, ezáltal megkönnyítve a levelek közötti eligazodást."
+msgstr ""
+"A szűrőlista különböző kritériumok alapján automatikusan a kívánt mappákba "
+"helyezi át a leveleket, ezáltal megkönnyítve a levelek közötti eligazodást."
 
 msgid "SPAM Filters"
 msgstr "Spamszűrő"
@@ -2571,7 +2719,10 @@ msgstr "Spamszűrő"
 msgid ""
 "SPAM filters allow you to select from various DNS based blacklists to detect "
 "junk email in your INBOX and move it to another folder (like Trash)."
-msgstr "Kéretlen levelek szűrése DNS feketelisták segítségével. A szűrő a megtalált spameket a bejövő levelek közül egy meghatározott mappába (pl. törölt elemek) helyezi át."
+msgstr ""
+"Kéretlen levelek szűrése DNS feketelisták segítségével. A szűrő a megtalált "
+"spameket a bejövő levelek közül egy meghatározott mappába (pl. törölt "
+"elemek) helyezi át."
 
 msgid "You must select a spam folder."
 msgstr "Válassza ki a szűrés célmappáját!"
@@ -2582,8 +2733,10 @@ msgstr "Válassza ki a szűrés típusát!"
 msgid "Spam Filtering"
 msgstr "Spamszűrés"
 
+#, php-format
 msgid "WARNING! Tell the administrator to set the %s variable."
-msgstr "FIGYELEM! Kérje meg a rendszergazdát, hogy adjon értéket a %s változónak!"
+msgstr ""
+"FIGYELEM! Kérje meg a rendszergazdát, hogy adjon értéket a %s változónak!"
 
 msgid "Move spam to:"
 msgstr "spamszűrés célmappája:"
@@ -2594,7 +2747,12 @@ msgid ""
 "spam. Whatever folder you set this to, make sure that it gets cleaned out "
 "periodically, so that you don't have an excessively large mailbox hanging "
 "around."
-msgstr "A spamként osztályozott levelek közvetlenül a törölt elemek közé történő áthelyezése nem kifejezetten javasolt, mert néha előfordul, hogy ismerősöktől, legitim listákról érkező levelek is ide kerülnek. Fontos, hogy a spamszűrés célmappáját rendszeresen nézze át, és törölje belőle a spameket, ellenkező esetben a mappa mérete túlságosan megnőhet."
+msgstr ""
+"A spamként osztályozott levelek közvetlenül a törölt elemek közé történő "
+"áthelyezése nem kifejezetten javasolt, mert néha előfordul, hogy "
+"ismerősöktől, legitim listákról érkező levelek is ide kerülnek. Fontos, hogy "
+"a spamszűrés célmappáját rendszeresen nézze át, és törölje belőle a "
+"spameket, ellenkező esetben a mappa mérete túlságosan megnőhet."
 
 msgid "Unread messages only"
 msgstr "csak az olvasatlanok"
@@ -2606,14 +2764,23 @@ msgid ""
 "set it to scan unread messages only. That way, the new spam filters will be "
 "applied and even the spam you didn't catch with the old filters will be "
 "scanned."
-msgstr "Minél nagyobb a feldolgozott levelek száma, annál több időt vesz igénybe a szűrés, ezért általában csak az olvasatlan levelek szűrése ajánlott, viszont ha változtat a szűrőlistán, akkor érdemes a szűrt levelek körét átmenetileg kiterjeszteni az összes levélre, majd belépni a bejövő levelek mappájába, utána visszatérni ebbe a menübe, és újra leszűkíteni a vizsgált levelek körét. Ezzel a módszerrel elérhető, hogy az új szűrőlista alapján kiszűrésre kerüljenek a korábban fel nem ismert spamek is."
+msgstr ""
+"Minél nagyobb a feldolgozott levelek száma, annál több időt vesz igénybe a "
+"szűrés, ezért általában csak az olvasatlan levelek szűrése ajánlott, viszont "
+"ha változtat a szűrőlistán, akkor érdemes a szűrt levelek körét átmenetileg "
+"kiterjeszteni az összes levélre, majd belépni a bejövő levelek mappájába, "
+"utána visszatérni ebbe a menübe, és újra leszűkíteni a vizsgált levelek "
+"körét. Ezzel a módszerrel elérhető, hogy az új szűrőlista alapján kiszűrésre "
+"kerüljenek a korábban fel nem ismert spamek is."
 
+#, php-format
 msgid "Spam is sent to %s."
 msgstr "Spamszűrés célmappája: %s."
 
 msgid "not set yet"
 msgstr "NINCS MÉG BEÁLLÍTVA"
 
+#, php-format
 msgid "Spam scan is limited to %s."
 msgstr "A spamszűrő által ellenőrzött levelek köre: %s"
 
@@ -2623,6 +2790,7 @@ msgstr "BEKAPCSOLVA"
 msgid "OFF"
 msgstr "KIKAPCSOLVA"
 
+#, php-format
 msgid "%s is not found."
 msgstr "A(z) %s program nem található."
 
@@ -2645,23 +2813,38 @@ msgid ""
 "Run some test IMAP commands, displaying both the command and the result. "
 "These tests use the SquirrelMail IMAP commands and your current SquirrelMail "
 "configuration. Custom command strings can be used."
-msgstr "Ez a modul IMAP parancsokat küld a szervernek, és megjeleníti mind a parancsokat, mind a szervertől kapott válaszokat. A szerver tesztelése a SquirrelMail jelenlegi beállításai alapján történik, de egyedi IMAP parancs is kiadható."
+msgstr ""
+"Ez a modul IMAP parancsokat küld a szervernek, és megjeleníti mind a "
+"parancsokat, mind a szervertől kapott válaszokat. A szerver tesztelése a "
+"SquirrelMail jelenlegi beállításai alapján történik, de egyedi IMAP parancs "
+"is kiadható."
 
+#, php-format
 msgid ""
 "This will send a message to %s requesting help for this list. You will "
 "receive an emailed response at the address below."
-msgstr "Üzenetet küldhet a %s címre, amelyben segítséget kér a levelezőlistával kapcsolatban. Állítsa be, melyik e-mail címéről szeretné elküldeni az üzenetet! A válasz is erre a címre érkezik majd."
+msgstr ""
+"Üzenetet küldhet a %s címre, amelyben segítséget kér a levelezőlistával "
+"kapcsolatban. Állítsa be, melyik e-mail címéről szeretné elküldeni az "
+"üzenetet! A válasz is erre a címre érkezik majd."
 
+#, php-format
 msgid ""
 "This will send a message to %s requesting that you will be subscribed to "
 "this list. You will be subscribed with the address below."
-msgstr "Üzenetet küldhet a %s címre, amelyben a levelezőlistára történő felvételét kéri. Állítsa be, melyik e-mail címét szeretné feliratni a listára!"
+msgstr ""
+"Üzenetet küldhet a %s címre, amelyben a levelezőlistára történő felvételét "
+"kéri. Állítsa be, melyik e-mail címét szeretné feliratni a listára!"
 
+#, php-format
 msgid ""
 "This will send a message to %s requesting that you will be unsubscribed from "
 "this list. It will try to unsubscribe the adress below."
-msgstr "Üzenetet küldhet a %s címre, amelyben a levelezőlistáról történő törlését kéri. Állítsa be, melyik e-mail címét szeretné töröltetni a listáról!"
+msgstr ""
+"Üzenetet küldhet a %s címre, amelyben a levelezőlistáról történő törlését "
+"kéri. Állítsa be, melyik e-mail címét szeretné töröltetni a listáról!"
 
+#, php-format
 msgid "Unknown action: %s"
 msgstr "A következő művelet ismeretlen: %s"
 
@@ -2764,6 +2947,7 @@ msgstr "Sikeres belépés: Nincs új levél."
 msgid "Login OK: Inbox EMPTY"
 msgstr "Sikeres belépés: Üres a bejövő levelek mappája."
 
+#, php-format
 msgid "Login OK: Inbox contains %s messages"
 msgstr "Sikeres belépés: A bejövő levelek mappájában %s levél van."
 
@@ -2773,8 +2957,8 @@ msgstr "Az UIDL lekérése..."
 msgid "Server does not support UIDL."
 msgstr "A szerver nem támogatja az UIDL-t."
 
-msgid "Leaving mail on server..."
-msgstr "Levélmásolatok megtartása a szerveren..."
+msgid "Leaving messages on server..."
+msgstr "Levélmásolatok megőrzése a szerveren..."
 
 msgid "Deleting messages from server..."
 msgstr "Levelek törlése a szerverről..."
@@ -2806,6 +2990,7 @@ msgstr "Kilépés az IMAP szerverről"
 msgid "Message appended to mailbox"
 msgstr "A levél a mappához sikeresen hozzáadva"
 
+#, php-format
 msgid "Message %d deleted from remote server!"
 msgstr "A %d üzenet a távoli szerverről törölve!"
 
@@ -2820,10 +3005,15 @@ msgid ""
 "perfectly secure. However, if you are using pop, there is inherently no "
 "encryption anyway. Additionally, the encryption that we do to save it on the "
 "server can be undone by a hacker reading the source to this file."
-msgstr "Figyelmeztetés: A jelszó tárolásánál használt titkosítás nem biztonságos, jóllehet a POP protokoll egyébként is titkosítatlanul küldi át a jelszót a hálózaton. Ezen felül a szerveren eltárolt titkosított jelszó könnyen visszafejthető a SquirrelMail forráskódjának ismeretében."
+msgstr ""
+"Figyelmeztetés: A jelszó tárolásánál használt titkosítás nem biztonságos, "
+"jóllehet a POP protokoll egyébként is titkosítatlanul küldi át a jelszót a "
+"hálózaton. Ezen felül a szerveren eltárolt titkosított jelszó könnyen "
+"visszafejthető a SquirrelMail forráskódjának ismeretében."
 
 msgid "If you leave password empty, it will be asked when you fetch mail."
-msgstr "Ha nem ad meg jelszót, a SquirrelMail minden POP letöltéskor kérni fogja."
+msgstr ""
+"Ha nem ad meg jelszót, a SquirrelMail minden POP letöltéskor kérni fogja."
 
 msgid "Encrypt passwords (informative only)"
 msgstr "jelszó titkosítása (csak informatív)"
@@ -2906,7 +3096,9 @@ msgstr "POP3 letöltés"
 msgid ""
 "This configures settings for downloading email from a POP3 mailbox to your "
 "account on this server."
-msgstr "A modul segítségével POP3 szerverekről tölthet át leveleket a SquirrelMail által kezelt postafiókokba."
+msgstr ""
+"A modul segítségével POP3 szerverekről tölthet át leveleket a SquirrelMail "
+"által kezelt postafiókokba."
 
 msgid "Message Details"
 msgstr "A levél szerkezete"
@@ -2938,54 +3130,75 @@ msgstr "MIME szerkezet & forráskód"
 msgid "New Mail Notification"
 msgstr "Értesítés új levelekről"
 
+#, php-format
 msgid ""
 "The %s option will check ALL of your folders for unseen mail, not just the "
 "inbox for notification."
-msgstr "A %s opciót engedélyezve minden mappa újonnan érkezett leveleiről értesítést kap."
+msgstr ""
+"A %s opciót engedélyezve minden mappa újonnan érkezett leveleiről értesítést "
+"kap."
 
 msgid "Check all boxes, not just INBOX"
 msgstr "minden mappa ellenőrzése, nem csak a bejövő leveleké"
 
+#, php-format
 msgid ""
 "Selecting the %s option will enable the showing of a popup window when "
 "unseen mail is in your folders (requires JavaScript)."
-msgstr "A %s opciót engedélyezve felugró ablakok formájában kap értesítést az új levelekről. (JavaScript kell hozzá.)"
+msgstr ""
+"A %s opciót engedélyezve felugró ablakok formájában kap értesítést az új "
+"levelekről. (JavaScript kell hozzá.)"
 
 msgid "Show popup window on new mail"
 msgstr "felugró ablakkal figyelmeztessen az új levelekre"
 
+#, php-format
 msgid ""
 "Use the %s option to only check for messages that are recent. Recent "
 "messages are those that have just recently showed up and have not been "
 "\"viewed\" or checked yet. This can prevent being continuously annoyed by "
 "sounds or popups for unseen mail."
-msgstr "A %s opciót engedélyezve elkerülheti, hogy folyamatos tájékoztatást kapjon a felhalmozódott olvasatlan levelek számáról. Ilyenkor kizárólag az újonnan érkező levelekről kap értesítést."
+msgstr ""
+"A %s opciót engedélyezve elkerülheti, hogy folyamatos tájékoztatást kapjon a "
+"felhalmozódott olvasatlan levelek számáról. Ilyenkor kizárólag az újonnan "
+"érkező levelekről kap értesítést."
 
 msgid "Count only messages that are RECENT"
 msgstr "csak az újonnan érkezett levelek figyelése"
 
+#, php-format
 msgid ""
 "Selecting the %s option will change the title in some browsers to let you "
 "know when you have new mail (requires JavaScript). This will always tell you "
 "if you have new mail, even if you have %s enabled."
-msgstr "A %s opciót engedélyezve a böngésző címsorában (és ezáltal a futó programok listáján) is megjelenik az új/olvasatlan levelek száma, akkor is ha a %s opció engedélyezve van. (Csak bizonyos böngészőkkel működik és JavaScript kell hozzá.)"
+msgstr ""
+"A %s opciót engedélyezve a böngésző címsorában (és ezáltal a futó programok "
+"listáján) is megjelenik az új/olvasatlan levelek száma, akkor is ha a %s "
+"opció engedélyezve van. (Csak bizonyos böngészőkkel működik és JavaScript "
+"kell hozzá.)"
 
 msgid "Change title on supported browsers"
 msgstr "tájékoztatás a böngészőablak címsorában"
 
+#, php-format
 msgid ""
 "Select %s to turn on playing a media file when unseen mail is in your "
 "folders. When enabled, you can specify the media file to play in the "
 "provided file box."
-msgstr "A %s opciót engedélyezve a SquirrelMail egy legördülő listából kiválasztható médiafájl lejátszásával figyelmeztet az új levelekre."
+msgstr ""
+"A %s opciót engedélyezve a SquirrelMail egy legördülő listából kiválasztható "
+"médiafájl lejátszásával figyelmeztet az új levelekre."
 
 msgid "Enable Media Playing"
 msgstr "hangjelzés engedélyezése"
 
+#, php-format
 msgid ""
 "Select from the list of %s the media file to play when new mail arrives. If "
 "no file is specified, %s, no sound will be used."
-msgstr "A %s listából választhatja ki, melyik médiafájl kerüljön lejátszásra új levél érkezésekor. %s kiválasztásakor nincs hanglejátszás."
+msgstr ""
+"A %s listából választhatja ki, melyik médiafájl kerüljön lejátszásra új "
+"levél érkezésekor. %s kiválasztásakor nincs hanglejátszás."
 
 msgid "Select server file"
 msgstr "lejátszandó médiafájl"
@@ -3017,9 +3230,13 @@ msgstr "Új levél!"
 msgid "SquirrelMail Notice:"
 msgstr "SquirrelMail (MókusPosta) téjékoztatás:"
 
+#, fuzzy, php-format
 msgid "You have %s new message"
-msgstr "Önnek %s új üzenete van."
+msgid_plural "You have %s new messages"
+msgstr[0] "Önnek %s új üzenete van."
+msgstr[1] "Önnek %s új üzenete van."
 
+#, php-format
 msgid "You have %s new messages"
 msgstr "Önnek %s új üzenete van."
 
@@ -3029,11 +3246,15 @@ msgstr "Értesítés új levelekről"
 msgid ""
 "This configures settings for playing sounds and/or showing popup windows "
 "when new mail arrives."
-msgstr "Beállíthatja, hogy új levél érkezésekor felugró ablak, illetve hangjelzés formájában értesítést kapjon."
+msgstr ""
+"Beállíthatja, hogy új levél érkezésekor felugró ablak, illetve hangjelzés "
+"formájában értesítést kapjon."
 
+#, php-format
 msgid "%s New Messages"
 msgstr "%s új levél"
 
+#, php-format
 msgid "%s New Message"
 msgstr "%s új levél"
 
@@ -3115,16 +3336,22 @@ msgstr "Röviden SpamCop-ról:"
 msgid ""
 "SpamCop is a free service that greatly assists in finding the true source of "
 "the spam and helps in letting the proper people know about the abuse."
-msgstr "A SpamCop ingyenes szolgáltatás, amely nagyban megkönnyíti a spam valódi forrásának megtalálását, és a megfelelő illetékesek értesítését."
+msgstr ""
+"A SpamCop ingyenes szolgáltatás, amely nagyban megkönnyíti a spam valódi "
+"forrásának megtalálását, és a megfelelő illetékesek értesítését."
 
+#, php-format
 msgid ""
 "To use it, you must get a SpamCop authorization code. There is a free %ssign "
 "up page%s so you can use SpamCop."
-msgstr "A SpamCop használatához azonosító kódra van szükség, amely ingyenesen beszerezhető a %sfeliratkozó oldalon%s."
+msgstr ""
+"A SpamCop használatához azonosító kódra van szükség, amely ingyenesen "
+"beszerezhető a %sfeliratkozó oldalon%s."
 
 msgid "Before you sign up, be warned"
 msgstr "Feliratkozás előtt kérjük, vegye figyelembe a következőket!"
 
+#, php-format
 msgid ""
 "Some users have reported that the email addresses used with SpamCop find "
 "their way onto spam lists. To be safe, you can just create an email "
@@ -3133,7 +3360,13 @@ msgid ""
 "worries about losing your real email address. Just go create an email "
 "forwarder somewhere (%s has a %slist of places%s) so that messages from "
 "system administrators and what not can be sent to you."
-msgstr "Néhány felhasználó megfigyelései szerint a SpamCop jelentéseknél használt e-mail címeik spammerek listáira kerültek. Ha teljes biztonságban szeretné tudni magát, hozzon létre egy továbbító postafiókot a SpamCop jelentések céljára, és ha túl sok spam érkezik rá, megszüntetheti. (A %s által karbantartott %slistán felsorolt szolgáltatóknál%s egyszerűen létrehozhat a célnak megfelelő levéltovábbító fiókot.)"
+msgstr ""
+"Néhány felhasználó megfigyelései szerint a SpamCop jelentéseknél használt e-"
+"mail címeik spammerek listáira kerültek. Ha teljes biztonságban szeretné "
+"tudni magát, hozzon létre egy továbbító postafiókot a SpamCop jelentések "
+"céljára, és ha túl sok spam érkezik rá, megszüntetheti. (A %s által "
+"karbantartott %slistán felsorolt szolgáltatóknál%s egyszerűen létrehozhat a "
+"célnak megfelelő levéltovábbító fiókot.)"
 
 msgid ""
 "Once you have signed up with SpamCop and have received your SpamCop "
@@ -3144,7 +3377,13 @@ msgid ""
 "message as spam. Clicking on it brings you to a confirmation page. "
 "Confirming that you want the spam report sent will do different things with "
 "different reporting methods."
-msgstr "Ha már van SpamCop azonosító kódja, engedélyezheti a szolgáltatást a fenti linkre kattintva. A SpamCop modul bekapcsolása után a megszokott módon használhatja a SquirrelMailt. Ha spamet talál a levelei között, nyissa meg, és az üzenetablak felső részén, az opciók között található link segítségével jelentést tehet róla a SpamCop-nál. A jelentés az itt beállított jelentési módnak megfelelő módon, egy párbeszédablakban történik."
+msgstr ""
+"Ha már van SpamCop azonosító kódja, engedélyezheti a szolgáltatást a fenti "
+"linkre kattintva. A SpamCop modul bekapcsolása után a megszokott módon "
+"használhatja a SquirrelMailt. Ha spamet talál a levelei között, nyissa meg, "
+"és az üzenetablak felső részén, az opciók között található link segítségével "
+"jelentést tehet róla a SpamCop-nál. A jelentés az itt beállított jelentési "
+"módnak megfelelő módon, egy párbeszédablakban történik."
 
 msgid "Email-based reporting"
 msgstr "E-mail alapú jelentés"
@@ -3156,13 +3395,23 @@ msgid ""
 "account you registered with, so make sure that your mail forwarder works!) "
 "Open it up, click on the appropriate link at the top, and a new browser "
 "window will open."
-msgstr "A jelentés során az üzenet továbbításra kerül a SpamCop részére, ezután a beállításoktól függően törlődhet a mappából. Miután megtörtént a jelentés, várja meg a SpamCop által küldendő válaszlevelet (a regisztrációkor megadott címre küldik, ha ez egy továbbító postafiók, ügyelni kell rá, hogy mindig működőképes legyen), nyissa meg, és kattintson a benne található megfelelő linkre!"
+msgstr ""
+"A jelentés során az üzenet továbbításra kerül a SpamCop részére, ezután a "
+"beállításoktól függően törlődhet a mappából. Miután megtörtént a jelentés, "
+"várja meg a SpamCop által küldendő válaszlevelet (a regisztrációkor megadott "
+"címre küldik, ha ez egy továbbító postafiók, ügyelni kell rá, hogy mindig "
+"működőképes legyen), nyissa meg, és kattintson a benne található megfelelő "
+"linkre!"
 
 msgid ""
 "Currently, the quick reporting just forwards the request to the thorough "
 "reporting. Also, it appears that this is for members (non-free) only. "
 "Hopefully this will change soon."
-msgstr "A gyors jelentéseket a SpamCop jelenleg egyszerűen átirányítja a részletes jelentések számára fenntartott címre, ráadásul úgy tűnik, ingyenesen regisztrált felhasználók nem is küldhetnek gyors jelentést. Ez a jövőben remélhetőleg változni fog."
+msgstr ""
+"A gyors jelentéseket a SpamCop jelenleg egyszerűen átirányítja a részletes "
+"jelentések számára fenntartott címre, ráadásul úgy tűnik, ingyenesen "
+"regisztrált felhasználók nem is küldhetnek gyors jelentést. Ez a jövőben "
+"remélhetőleg változni fog."
 
 msgid "Web-based reporting"
 msgstr "Web alapú jelentés"
@@ -3172,7 +3421,10 @@ msgid ""
 "browser window and the SpamCop service should appear inside. The message "
 "will not be deleted (working on that part), but you won't need to wait for a "
 "response email to start the spam reporting."
-msgstr "A megerősítő oldalon található gomb megnyomására egy felugró böngészőablak jelenik meg a SpamCop oldalával. A levél ekkor nem kerül törlésre, de nem kell válaszlevélre várnia a jelentés megtételéhez."
+msgstr ""
+"A megerősítő oldalon található gomb megnyomására egy felugró böngészőablak "
+"jelenik meg a SpamCop oldalával. A levél ekkor nem kerül törlésre, de nem "
+"kell válaszlevélre várnia a jelentés megtételéhez."
 
 msgid ""
 "The SpamCop service will display information as it finds it, so scroll down "
@@ -3180,7 +3432,13 @@ msgid ""
 "information, so be a little patient. Read what it says, and submit the spam. "
 "Close the browser window. Press Cancel or click on the appropriate mail "
 "folder to see messages and/or delete the spam."
-msgstr "A SpamCop szolgáltatás folyamatosan jeleníti meg a beérkező információkat. Gördítse le az oldalt, amíg egy űrlap gombot talál! Az információgyűjtés időbe telik, kérjük legyen türelmes! Olvassa el a megjelenő utasításokat, és azoknak megfelelően végezze el a jelentést, majd zárja be az ablakot! A \"Mégse\" gombra vagy a megfelelő mappára kattintva visszatérhet a levelekhez, és akár törölheti is a spamet."
+msgstr ""
+"A SpamCop szolgáltatás folyamatosan jeleníti meg a beérkező információkat. "
+"Gördítse le az oldalt, amíg egy űrlap gombot talál! Az információgyűjtés "
+"időbe telik, kérjük legyen türelmes! Olvassa el a megjelenő utasításokat, és "
+"azoknak megfelelően végezze el a jelentést, majd zárja be az ablakot! A "
+"\"Mégse\" gombra vagy a megfelelő mappára kattintva visszatérhet a "
+"levelekhez, és akár törölheti is a spamet."
 
 msgid "SpamCop service type"
 msgstr "SpamCop szolgáltatástípus"
@@ -3189,15 +3447,23 @@ msgid ""
 "Service type option allows selecting which SpamCop services you are using. "
 "Member services use different web reporting forms and does not display nags. "
 "You can purchase these services, if you want to support SpamCop."
-msgstr "A szolgáltatástípus opció segítségével választhatja ki, mely SpamCop szolgáltatásokat szeretné igénybe venni. A fizető ügyfelek web űrlapjai mentesek az esetleges zavaró üzenetektől. Fizessen elő a szolgáltatásokra, ha szeretné a SpamCop-ot támogatni!"
+msgstr ""
+"A szolgáltatástípus opció segítségével választhatja ki, mely SpamCop "
+"szolgáltatásokat szeretné igénybe venni. A fizető ügyfelek web űrlapjai "
+"mentesek az esetleges zavaró üzenetektől. Fizessen elő a szolgáltatásokra, "
+"ha szeretné a SpamCop-ot támogatni!"
 
 msgid "More information"
 msgstr "További információk"
 
+#, php-format
 msgid ""
 "For more information about SpamCop, it's services, spam in general, and many "
 "related topics, try reading through SpamCop's %sHelp and Feedback%s section."
-msgstr "A SpamCop %ssegítség és visszajelzés%s oldalán további információkat talál az elérhető szolgáltatásokról, a spamekről általában, és sok más ehhez kapcsolódó témáról."
+msgstr ""
+"A SpamCop %ssegítség és visszajelzés%s oldalán további információkat talál "
+"az elérhető szolgáltatásokról, a spamekről általában, és sok más ehhez "
+"kapcsolódó témáról."
 
 msgid "Report as Spam"
 msgstr "levél jelentése a SpamCop-nál"
@@ -3209,14 +3475,22 @@ msgid ""
 "Help fight the battle against unsolicited email. SpamCop reads the spam "
 "email and determines the correct addresses to send complaints to. Quite "
 "fast, really smart, and easy to use."
-msgstr "Segítsen a kéretlen levelek elleni harcban! A SpamCop elemzi a beküldött a spameket, és megállapítja milyen hálózatból erednek, így megfelelő óvintézkedéseket lehet tenni. Meglehetősen gyors, intelligens, és könnyen használható eszköz."
+msgstr ""
+"Segítsen a kéretlen levelek elleni harcban! A SpamCop elemzi a beküldött a "
+"spameket, és megállapítja milyen hálózatból erednek, így megfelelő "
+"óvintézkedéseket lehet tenni. Meglehetősen gyors, intelligens, és könnyen "
+"használható eszköz."
 
 msgid ""
 "Sending this spam report will give you back a reply with URLs that you can "
 "click on to properly report this spam message to the proper authorities. "
 "This is a free service. By pressing the \"Send Spam Report\" button, you "
 "agree to follow SpamCop's rules/terms of service/etc."
-msgstr "Az itt elküldött jelentésre válaszként egy levelet fog kapni, amelyben megtalálható lesz a további információk megadásához szükséges űrlap URL-je. A \"Jelentés küldése\" gombra kattintva ön elismeri, hogy tudomásul vette a SpamCop szolgáltatásainak felhasználási feltételeit."
+msgstr ""
+"Az itt elküldött jelentésre válaszként egy levelet fog kapni, amelyben "
+"megtalálható lesz a további információk megadásához szükséges űrlap URL-je. "
+"A \"Jelentés küldése\" gombra kattintva ön elismeri, hogy tudomásul vette a "
+"SpamCop szolgáltatásainak felhasználási feltételeit."
 
 msgid "Cancel / Done"
 msgstr "Mégse"
@@ -3230,7 +3504,10 @@ msgstr "A helyesírás-ellenőrző beállításai"
 msgid ""
 "Here you may set up how your personal dictionary is stored, edit it, or "
 "choose which languages should be available to you when spell-checking."
-msgstr "Itt állíthatja be, milyen formátumban tárolódjon az ön személyes szótára, szerkesztheti a szótárt, és kiválaszthatja a helyesírás-ellenőrzés során használt nyelveket."
+msgstr ""
+"Itt állíthatja be, milyen formátumban tárolódjon az ön személyes szótára, "
+"szerkesztheti a szótárt, és kiválaszthatja a helyesírás-ellenőrzés során "
+"használt nyelveket."
 
 msgid "Check Spelling"
 msgstr "Helyesírás-ellenőrzés"
@@ -3250,7 +3527,16 @@ msgid ""
 "mangled and is no longer valid. You will have to delete it and start anew. "
 "This is also true if you don't remember your old password -- without it, the "
 "encrypted data is no longer accessible."
-msgstr "Az ön személyes szótárának kriptográfiai visszafejtése nem sikerült. Ez leggyakrabban a postafiók jelszavának megváltoztatásakor fordul elő. A hiba kiküszöbölésének érdekében meg kell adnia a régi jelszavát, hogy a SquirrelSpell visszafejthesse a szótárfájlt. A szótár ezután újra titkosításra kerül, ezúttal már az új, jelenlegi jelszóval. Ha a szótár nem volt titkosítva, akkor minden valószínűség szerint meghibásodott a fájl, ezért sajnos törölni kell, és új szótárt kell létrehozni. Ugyanez a helyzet akkor is, ha elfelejtette a régi jelszót, annak hiányában ugyanis a titkosított adatok visszafejtése lehetetlen."
+msgstr ""
+"Az ön személyes szótárának kriptográfiai visszafejtése nem sikerült. Ez "
+"leggyakrabban a postafiók jelszavának megváltoztatásakor fordul elő. A hiba "
+"kiküszöbölésének érdekében meg kell adnia a régi jelszavát, hogy a "
+"SquirrelSpell visszafejthesse a szótárfájlt. A szótár ezután újra "
+"titkosításra kerül, ezúttal már az új, jelenlegi jelszóval. Ha a szótár nem "
+"volt titkosítva, akkor minden valószínűség szerint meghibásodott a fájl, "
+"ezért sajnos törölni kell, és új szótárt kell létrehozni. Ugyanez a helyzet "
+"akkor is, ha elfelejtette a régi jelszót, annak hiányában ugyanis a "
+"titkosított adatok visszafejtése lehetetlen."
 
 msgid "Delete my dictionary and start a new one"
 msgstr "Személyes szótár törlése, új szótár létrehozása"
@@ -3264,8 +3550,11 @@ msgstr "Folyamatban"
 msgid "You must make a choice"
 msgstr "Válasszon"
 
-msgid "You can either delete your dictionary or type in the old password. Not both."
-msgstr "Vagy törölheti a szótárát, vagy megadhatja a régi jelszavát, de a kettőt egyszerre nem."
+msgid ""
+"You can either delete your dictionary or type in the old password. Not both."
+msgstr ""
+"Vagy törölheti a szótárát, vagy megadhatja a régi jelszavát, de a kettőt "
+"egyszerre nem."
 
 msgid "This will delete your personal dictionary file. Proceed?"
 msgstr "Ezzel törli a személyes szótár állományát. Folytatja?"
@@ -3273,18 +3562,22 @@ msgstr "Ezzel törli a személyes szótár állományát. Folytatja?"
 msgid "Error Decrypting Dictionary"
 msgstr "Hiba a szótár visszafejtésében."
 
+#, php-format
 msgid "Could not run the spellchecker command (%s)."
 msgstr "A %s helyesírás-ellenőrző program futtatása nem sikerült."
 
 msgid "Error while writing to pipe."
 msgstr "A cső (pipe) írása sikertelen."
 
+#, php-format
 msgid "Could not open temporary file '%s'."
 msgstr "A '%s' átmeneti fájl megnyitása sikertelen."
 
+#, php-format
 msgid "Error while writing to temporary file '%s'."
 msgstr "A '%s' átmeneti fájl írása sikertelen."
 
+#, php-format
 msgid "I tried to execute '%s', but it returned:"
 msgstr "A '%s' parancs futtatása a következő hibaüzenettel zárult:"
 
@@ -3303,6 +3596,7 @@ msgstr "Személyes szótár mentése folyamatban... Kérem, várjon!"
 msgid "SquirrelSpell Results"
 msgstr "A SquirrelSpell futásának eredménye"
 
+#, php-format
 msgid "Found %s errors"
 msgstr "%s hiba történt"
 
@@ -3359,16 +3653,16 @@ msgstr "Bezárás és mentés"
 
 msgid "The spellcheck is not finished. Really close and commit changes?"
 msgstr ""
-"A helyesírás ellenőrzésnek még nincs vége. Biztosan bezárja, és "
-"menti a változtatásokat?"
+"A helyesírás ellenőrzésnek még nincs vége. Biztosan bezárja, és menti a "
+"változtatásokat?"
 
 msgid "Close and Cancel"
 msgstr "Bezár és elvet"
 
 msgid "The spellcheck is not finished. Really close and discard changes?"
 msgstr ""
-"A helyesírás ellenőrzésnek még nincs vége. Biztosan bezárja, és "
-"elveti a változtatásokat?"
+"A helyesírás ellenőrzésnek még nincs vége. Biztosan bezárja, és elveti a "
+"változtatásokat?"
 
 msgid "No errors found"
 msgstr "Nem történt hiba."
@@ -3395,9 +3689,11 @@ msgstr "Az ablak bezárása"
 msgid ""
 "Your personal dictionary was re-encrypted successfully. Now return to the "
 "&quot;SpellChecker options&quot; menu and make your selection again."
-msgstr "Az ön személyes szótárának újratitkosítása sikeres volt. Térjen vissza \"A helyesírás-ellenőrző beállításai\" menübe, és végezze el a beállításokat újra!"
+msgstr ""
+"Az ön személyes szótárának újratitkosítása sikeres volt. Térjen vissza \"A "
+"helyesírás-ellenőrző beállításai\" menübe, és végezze el a beállításokat "
+"újra!"
 
-#, fuzzy
 msgid "Successful re-encryption"
 msgstr "Sikeres újratitkosítás"
 
@@ -3408,9 +3704,9 @@ msgid ""
 "window and click \"Check Spelling\" button again to start your spellcheck "
 "over."
 msgstr ""
-"Az ön személyes szótárának újratitkosítása sikeres volt. Kérjük, zárja be ezt az "
-"ablakot, és kattintson újra a \"Helyesírás-ellenőrzés\" gombra, hogy elölről "
-"kezdje az ellenőrzést!"
+"Az ön személyes szótárának újratitkosítása sikeres volt. Kérjük, zárja be "
+"ezt az ablakot, és kattintson újra a \"Helyesírás-ellenőrzés\" gombra, hogy "
+"elölről kezdje az ellenőrzést!"
 
 msgid "Dictionary re-encrypted"
 msgstr "Szótár újratitkosítva"
@@ -3418,10 +3714,15 @@ msgstr "Szótár újratitkosítva"
 msgid ""
 "Your personal dictionary has been encrypted and is now stored in an "
 "encrypted format."
-msgstr "Az ön személyes szótára titkosítva lett, így most titkosított formában van eltárolva."
+msgstr ""
+"Az ön személyes szótára titkosítva lett, így most titkosított formában van "
+"eltárolva."
 
-msgid "Your personal dictionary has been decrypted and is now stored as plain text."
-msgstr "Az ön személyes szótárának titkosítása visszafejtésre került, így most nyílt formában van eltárolva."
+msgid ""
+"Your personal dictionary has been decrypted and is now stored as plain text."
+msgstr ""
+"Az ön személyes szótárának titkosítása visszafejtésre került, így most nyílt "
+"formában van eltárolva."
 
 msgid "No action requested."
 msgstr "Nincs végrehajtandó művelet."
@@ -3438,6 +3739,7 @@ msgstr "Az ön személyes szótára üres."
 msgid "Please check any words you wish to delete from your dictionary."
 msgstr "Kérjük, válassza ki azon szavakat, amelyeket törölni kíván!"
 
+#, php-format
 msgid "%s dictionary"
 msgstr "%s szótár"
 
@@ -3453,12 +3755,16 @@ msgstr "Kérjük, előbb válasszon!"
 msgid ""
 "This will encrypt your personal dictionary and store it in an encrypted "
 "format. Proceed?"
-msgstr "Ezzel titkosítja, és titkosított formában tárolja a személyes szótárát. Biztosan ezt szeretné?"
+msgstr ""
+"Ezzel titkosítja, és titkosított formában tárolja a személyes szótárát. "
+"Biztosan ezt szeretné?"
 
 msgid ""
 "This will decrypt your personal dictionary and store it in a plain text "
 "format. Proceed?"
-msgstr "Ezzel visszafejti a személyes szótárának titkosítását, és nyílt formában tárolja azt. Biztosan ezt szeretné?"
+msgstr ""
+"Ezzel visszafejti a személyes szótárának titkosítását, és nyílt formában "
+"tárolja azt. Biztosan ezt szeretné?"
 
 msgid "Your personal dictionary is currently encrypted."
 msgstr "Az ön személyes szótára jelenleg titkosított."
@@ -3468,16 +3774,25 @@ msgid ""
 "and your personal dictionary ends up stolen. It is currently encrypted with "
 "the password you use to access your mailbox, making it hard for anyone to "
 "see what is stored in your personal dictionary."
-msgstr "Ez elősegíti az ön személyes adatainak védelmét abban az esetben is, ha valaki illetéktelenül behatol a rendszerbe, és ellopja az ön szótárát. A szótár titkosítása jelenleg az ön postafiókjának jelszavával történik, ami megnehezíti a szótár tartalmának illetéktelen kinyerését."
+msgstr ""
+"Ez elősegíti az ön személyes adatainak védelmét abban az esetben is, ha "
+"valaki illetéktelenül behatol a rendszerbe, és ellopja az ön szótárát. A "
+"szótár titkosítása jelenleg az ön postafiókjának jelszavával történik, ami "
+"megnehezíti a szótár tartalmának illetéktelen kinyerését."
 
 msgid ""
 "If you forget your password, your personal dictionary will become "
 "unaccessible, since it can no longer be decrypted. If you change your "
 "mailbox password, SquirrelSpell will recognize it and prompt you for your "
 "old password in order to re-encrypt the dictionary with a new key."
-msgstr "Ha elfelejti a jelszavát, azzal a személyes szótára elérhetetlené válik, mert a jelszó hiányában a titkosítás visszafejthetelen. Ha megváltoztatja a postafiókjának jelszavát, azt a SquirrelSpell felismeri, és kérni fogja a régi jelszót, hogy újratitkosíthassa a szótárt."
+msgstr ""
+"Ha elfelejti a jelszavát, azzal a személyes szótára elérhetetlené válik, "
+"mert a jelszó hiányában a titkosítás visszafejthetelen. Ha megváltoztatja a "
+"postafiókjának jelszavát, azt a SquirrelSpell felismeri, és kérni fogja a "
+"régi jelszót, hogy újratitkosíthassa a szótárt."
 
-msgid "Please decrypt my personal dictionary and store it in a clear-text format."
+msgid ""
+"Please decrypt my personal dictionary and store it in a clear-text format."
 msgstr "A személyes szótár visszafejtése, és nyílt formában való tárolása."
 
 msgid "Change crypto settings"
@@ -3491,7 +3806,12 @@ msgid ""
 "case the webmail system gets compromized and your personal dictionary file "
 "gets stolen. When encrypted, the file's contents look garbled and are hard "
 "to decrypt without knowing the correct key (which is your mailbox password)."
-msgstr "Titkosíthatja a személyes szótárát, hogy elősegítse a személyes adatainak védelmét abban az esetben is, ha valaki illetéktelenül behatol a rendszerbe, és ellopja az ön szótárát. A titkosított szótárfájlok látszólag értelmetlen információt tárolnak, és visszafejtésük rendkívül nehéz az ön jelszavának ismerete nélkül."
+msgstr ""
+"Titkosíthatja a személyes szótárát, hogy elősegítse a személyes adatainak "
+"védelmét abban az esetben is, ha valaki illetéktelenül behatol a rendszerbe, "
+"és ellopja az ön szótárát. A titkosított szótárfájlok látszólag értelmetlen "
+"információt tárolnak, és visszafejtésük rendkívül nehéz az ön jelszavának "
+"ismerete nélkül."
 
 msgid ""
 "If you decide to encrypt your personal dictionary, you must remember that it "
@@ -3501,11 +3821,20 @@ msgid ""
 "However, if you or your system administrator change your mailbox password "
 "but you still have the old password at hand, you will be able to enter the "
 "old key to re-encrypt the dictionary with the new value."
-msgstr "A szótár titkosításakor a SquirrelSpell az ön jelszavát használja kriptográfiai kulcsként. Ha ön elfelejti a jelszót, és ezért a rendszergazdák megváltoztatják, akkor a levelezőrendszerbe be tud lépni ugyan, de a szótárat nem fogja tudni megnyitni, így azt törölni kell, és újat kell létrehozni helyette. Ha megváltozik az ön jelszava, de emlékszik a régi jelszóra is, akkor lehetséges a szótár újratitkosítása a SquirrelSpell segítségével."
+msgstr ""
+"A szótár titkosításakor a SquirrelSpell az ön jelszavát használja "
+"kriptográfiai kulcsként. Ha ön elfelejti a jelszót, és ezért a "
+"rendszergazdák megváltoztatják, akkor a levelezőrendszerbe be tud lépni "
+"ugyan, de a szótárat nem fogja tudni megnyitni, így azt törölni kell, és "
+"újat kell létrehozni helyette. Ha megváltozik az ön jelszava, de emlékszik a "
+"régi jelszóra is, akkor lehetséges a szótár újratitkosítása a SquirrelSpell "
+"segítségével."
 
-msgid "Please encrypt my personal dictionary and store it in an encrypted format."
+msgid ""
+"Please encrypt my personal dictionary and store it in an encrypted format."
 msgstr "A személyes szótár titkosítása, és titkosított formában való tárolása."
 
+#, php-format
 msgid "Deleting the following entries from %s dictionary:"
 msgstr "A következő bejegyzések törlése a(z) %s szótárból:"
 
@@ -3524,7 +3853,8 @@ msgstr "Kérjük, várjon, kommunikáció a szerverrel folyamatban..."
 msgid ""
 "Please choose which dictionary you would like to use to spellcheck this "
 "message:"
-msgstr "Kérjük, válassza ki az üzenet helyesírás-ellenőrzéséhez használandó szótárat:"
+msgstr ""
+"Kérjük, válassza ki az üzenet helyesírás-ellenőrzéséhez használandó szótárat:"
 
 msgid "SquirrelSpell Initiating"
 msgstr "SquirrelSpell indítása"
@@ -3532,9 +3862,11 @@ msgstr "SquirrelSpell indítása"
 msgid ", "
 msgstr ", "
 
+#, php-format
 msgid "Settings adjusted to: %s with %s as default dictionary."
 msgstr "Új beállítás: %s, alapértelmezett szótár: %s."
 
+#, php-format
 msgid "Using %s dictionary (system default) for spellcheck."
 msgstr "Helyesírás-ellenőrzés a(z) %s (alapértelmezett) szótárral"
 
@@ -3585,6 +3917,7 @@ msgstr "A következő fordítószerverek közül választhat:"
 msgid "Maximum of 150 words translated, powered by Systran"
 msgstr "Legfeljebb 150 szó fordítása Systran motorral."
 
+#, php-format
 msgid "Number of supported language pairs: %s"
 msgstr "támogatott nyelvpárok száma: %s"
 
@@ -3594,6 +3927,7 @@ msgstr "Korlátlan számú szó fordítása Systran motorral."
 msgid "No known limits, powered by Translation Experts' InterTran"
 msgstr "Korlátlan számú szó fordítása Translation Experts' motorral."
 
+#, php-format
 msgid "Number of supported languages: %s"
 msgstr "támogatott nyelvek száma: %s"
 
@@ -3601,12 +3935,15 @@ msgid "Hellenic translations, no known limits, powered by Systran"
 msgstr "Görög nyelvű rendszer, korlátlan számú szó fordítása Systran motorral."
 
 msgid "Russian translations, maximum of 500 characters translated"
-msgstr "Orosz nyelvű rendszer, legfeljebb 500 karakter fordítása Systran motorral."
+msgstr ""
+"Orosz nyelvű rendszer, legfeljebb 500 karakter fordítása Systran motorral."
 
 msgid ""
 "You also decide if you want the translation box displayed, and where it will "
 "be located."
-msgstr "Az alábbiakban be- és kikapcsolhatja a fordítódobozt, és meghatározhtja, hol helyezkedjen el a levél ablakán belül."
+msgstr ""
+"Az alábbiakban be- és kikapcsolhatja a fordítódobozt, és meghatározhtja, hol "
+"helyezkedjen el a levél ablakán belül."
 
 msgid "Select your translator:"
 msgstr "tolmácsrendszer kiválasztása:"
@@ -3635,8 +3972,10 @@ msgstr "Fordítási beállítások"
 msgid ""
 "Which translator should be used when you get messages in a different "
 "language?"
-msgstr "Az idegennyelvű üzenetek fordításához használt tolmácsrendszerek beállításai."
+msgstr ""
+"Az idegennyelvű üzenetek fordításához használt tolmácsrendszerek beállításai."
 
+#, php-format
 msgid "%s to %s"
 msgstr "%s nyelvről %s nyelvre"
 
@@ -3757,6 +4096,1523 @@ msgstr "fordítási irány"
 msgid "Arabic"
 msgstr "arab"
 
+#, fuzzy, php-format
+msgid "About SquirrelMail %s"
+msgstr "SquirrelMail verzió"
+
+msgid ""
+"SquirrelMail is the name of the program that provides access to your email "
+"via the web."
+msgstr ""
+
+#, php-format
+msgid ""
+"If you have questions about or problems with your mail account, passwords, "
+"abuse etc, please refer to your system administrator or provider%s."
+msgstr ""
+
+#, php-format
+msgid ""
+"They can assist you adequately with these issues. The SquirrelMail Project "
+"Team cannot help you with that. The %shelp system%s provides answers to "
+"frequently asked questions."
+msgstr ""
+
+#, php-format
+msgid ""
+"SquirrelMail is a feature rich, standards compliant webmail application "
+"written in PHP. It was made by a group of volunteers united in the "
+"SquirrelMail Project Team and is released as open source, free software "
+"under the %sGNU General Public License%s."
+msgstr ""
+
+#, php-format
+msgid ""
+"For more information about SquirrelMail and the SquirrelMail Project Team, "
+"see %sthe SquirrelMail website%s."
+msgstr ""
+
+#, fuzzy
+msgid "System information"
+msgstr "További információk"
+
+#, fuzzy, php-format
+msgid "You are using SquirrelMail version: %s"
+msgstr "SquirrelMail (MókusPosta) %s verzió"
+
+msgid "The administrator installed the following plugins:"
+msgstr ""
+
+msgid "none installed"
+msgstr ""
+
+#, fuzzy
+msgid "Nothing to search"
+msgstr "Nincs mit törölni!"
+
+#, fuzzy
+msgid "SquirrelMail Webmail"
+msgstr "SquirrelMail verzió"
+
+#, fuzzy, php-format
+msgid "The %s logo"
+msgstr "%s Logo"
+
+#, fuzzy
+msgid "Add New Identity"
+msgstr "Új identitás hozzáadása"
+
+#, fuzzy
+msgid "Received"
+msgstr "Visszaigazolást kérek"
+
+#, fuzzy
+msgid "Compose Preferences"
+msgstr "A mappák beállításai"
+
+#, fuzzy
+msgid "Accessibility Preferences"
+msgstr "Megjelenítési beállítások"
+
+#, php-format
+msgid "Folder list should automatically %srefresh%s."
+msgstr ""
+
+#, php-format
+msgid "This page should automatically %srefresh%s."
+msgstr ""
+
+msgid ""
+"Control the behaviour and layout of writing new mail messages, replying to "
+"and forwarding messages."
+msgstr ""
+
+msgid "You can configure features that improve interface usability."
+msgstr ""
+
+#, php-format
+msgid "Welcome to %s. Please supply your full name and email address."
+msgstr ""
+
+#, fuzzy
+msgid "Read Receipt"
+msgstr "tértivevény"
+
+#, fuzzy
+msgid "deleted"
+msgstr "Törlés"
+
+msgid "answered"
+msgstr ""
+
+#, fuzzy
+msgid "draft"
+msgstr "mérsékelt"
+
+msgid "flagged"
+msgstr ""
+
+#, fuzzy
+msgid "Status"
+msgstr "Szo"
+
+#, fuzzy
+msgid "View as plain text"
+msgstr "LOGIN"
+
+msgid "View as HTML"
+msgstr ""
+
+msgid "There must be at least one criteria to search for"
+msgstr ""
+
+#, fuzzy
+msgid "Error in criteria argument"
+msgstr "Szintaktikus hiba a parametérekben vagy argumentumokban."
+
+msgid "(Illegal date)"
+msgstr ""
+
+msgid "(Wrong date)"
+msgstr ""
+
+#, fuzzy
+msgid "In"
+msgstr "megjegyzés"
+
+msgid "(Missing argument)"
+msgstr ""
+
+msgid "(Spurious argument)"
+msgstr ""
+
+msgid "Missing"
+msgstr ""
+
+#, fuzzy
+msgid "Standard Search"
+msgstr "Elmentett keresések:"
+
+#, fuzzy
+msgid "Advanced search"
+msgstr "Elmentett keresések:"
+
+#, fuzzy
+msgid "Add New Criteria"
+msgstr "Szerver felvétele"
+
+msgid "Remove Excluded Criteria"
+msgstr ""
+
+msgid "Remove All Criteria"
+msgstr ""
+
+#, fuzzy
+msgid "Not"
+msgstr "megjegyzés mezőbe"
+
+msgid "Answered"
+msgstr ""
+
+#, fuzzy
+msgid "Before"
+msgstr "Elfelejt"
+
+#, fuzzy
+msgid "Message Body"
+msgstr "RFC822 levéltörzs"
+
+#, fuzzy
+msgid "Deleted"
+msgstr "Törlés"
+
+#, fuzzy
+msgid "Draft"
+msgstr "dátum"
+
+#, fuzzy
+msgid "Flagged"
+msgstr "állapojelző"
+
+#, fuzzy
+msgid "Sent By"
+msgstr "elküldve"
+
+#, fuzzy
+msgid "Header Field"
+msgstr "ÁLTALÁNOS FEJLÉCSZŰRŐ"
+
+msgid "Keyword"
+msgstr ""
+
+msgid "Larger Than"
+msgstr ""
+
+msgid "Old"
+msgstr ""
+
+msgid "On"
+msgstr ""
+
+#, fuzzy
+msgid "Recent"
+msgstr "Visszaigazolást kérek"
+
+#, fuzzy
+msgid "Seen"
+msgstr "Elküld"
+
+#, fuzzy
+msgid "Sent Before"
+msgstr "elküldött levelek mappája"
+
+#, fuzzy
+msgid "Sent On"
+msgstr "elküldve"
+
+msgid "Sent Since"
+msgstr ""
+
+#, fuzzy
+msgid "Since"
+msgstr "méret"
+
+msgid "Smaller Than"
+msgstr ""
+
+#, fuzzy
+msgid "Subject Contains"
+msgstr "keresendő szöveg:"
+
+msgid "Header and Body"
+msgstr ""
+
+#, fuzzy
+msgid "Sent To"
+msgstr "elküldve"
+
+msgid "And In"
+msgstr ""
+
+msgid "Or In"
+msgstr ""
+
+#, fuzzy
+msgid "And"
+msgstr "Csatolás"
+
+msgid "Or"
+msgstr ""
+
+#, fuzzy
+msgid "No RPC action given"
+msgstr "nincs idézés"
+
+msgid "No deletion ID given"
+msgstr ""
+
+msgid "No mailbox given"
+msgstr ""
+
+msgid "RPC action not understood"
+msgstr ""
+
+#, fuzzy
+msgid "Personal Address Book"
+msgstr "Saját címtár"
+
+#, fuzzy, php-format
+msgid "Unknown field name: %s"
+msgstr "A következő művelet ismeretlen: %s"
+
+msgid "PHP install does not have LDAP support."
+msgstr ""
+
+#, fuzzy
+msgid "Removing entry from address book failed"
+msgstr "A címtár írása nem sikerült."
+
+msgid "LDAP rename is not supported by used protocol version"
+msgstr ""
+
+msgid ""
+"LDAP rename is not supported by used LDAP library. You can't change nickname"
+msgstr ""
+
+#, fuzzy
+msgid "LDAP rename failed"
+msgstr "A levéltörtlés sikertelen. Az ok:"
+
+msgid "Unable to remove some field values"
+msgstr ""
+
+#, fuzzy, php-format
+msgid "Unable to rename user \"%s\" to \"%s\""
+msgstr "Ilyen cím nem található a %s címtárban"
+
+#, fuzzy
+msgid "Global Address Book"
+msgstr "Közös címtár"
+
+#, fuzzy
+msgid "Error initializing other address books."
+msgstr "Hiba történt a közös címtár megnyitásakor."
+
+#, fuzzy
+msgid "Unknown address book backend"
+msgstr "A címtár írása nem sikerült."
+
+#, fuzzy, php-format
+msgid "%s %s"
+msgstr "%s nyelvről %s nyelvre"
+
+#, fuzzy
+msgid ""
+"Could not open temporary file to store attachment. Contact your system "
+"administrator to resolve this issue."
+msgstr ""
+"A %s aláírásfájl létrehozása a %s sablonfájl alapján nem sikerült. Forduljon "
+"a rendszergazdához!"
+
+#, fuzzy, php-format
+msgid "%s should be writable by user %s."
+msgstr "A %s fájlnak írhatónak kell lennie %s felhasználó által."
+
+msgid "Illegal filesystem access was requested"
+msgstr ""
+
+msgid "Illegal folder name."
+msgstr ""
+
+#, php-format
+msgid "The name may not contain any of the following: %s"
+msgstr ""
+
+#, fuzzy
+msgid "Please select a different name."
+msgstr "Hibás mappanév. Válasszon más nevet!"
+
+#, fuzzy
+msgid "You have not selected a folder to subscribe. Please do so."
+msgstr "Nem választott ki átnevezendő mappát. Kérem, válasszon!"
+
+#, fuzzy
+msgid "You have not selected a folder to unsubscribe. Please do so."
+msgstr "Nem választott ki átnevezendő mappát. Kérem, válasszon!"
+
+msgid "Possible reason:"
+msgstr ""
+
+msgid "ERROR: Bad function call."
+msgstr ""
+
+#, fuzzy
+msgid "Reason:"
+msgstr "Válasz:"
+
+msgid ""
+"TLS is enabled, but this version of PHP does not support TLS sockets, or is "
+"missing the openssl extension."
+msgstr ""
+
+msgid ""
+"IMAP STARTTLS is enabled in SquirrelMail configuration, but used IMAP server "
+"does not support STARTTLS."
+msgstr ""
+
+#, fuzzy
+msgid "Unable to start TLS."
+msgstr "Módosítás sikertelen."
+
+msgid ""
+"IMAP STARTTLS is enabled in SquirrelMail configuration, but used PHP version "
+"does not support functions that allow to enable encryption on open socket."
+msgstr ""
+
+msgid ""
+"Your mailbox is not located at this server. Try a different server or "
+"consult your system administrator"
+msgstr ""
+
+#, fuzzy
+msgid "Trash"
+msgstr "török"
+
+#, fuzzy
+msgid "Drafts"
+msgstr "Mentés piszkozatként"
+
+#, fuzzy
+msgid "Unknown recipient"
+msgstr "Ismeretlen válasz."
+
+#, fuzzy
+msgid "Flag"
+msgstr "állapojelző"
+
+msgid "Unflag"
+msgstr ""
+
+#, fuzzy
+msgid "Undelete"
+msgstr "Törlés"
+
+msgid "Bypass Trash"
+msgstr ""
+
+msgid "Copy"
+msgstr ""
+
+msgid "unavailable"
+msgstr ""
+
+msgid "KiB"
+msgstr ""
+
+msgid "MiB"
+msgstr ""
+
+#, fuzzy
+msgid "Error"
+msgstr "Hiba "
+
+msgid "Terminating SquirrelMail due to a fatal error"
+msgstr ""
+
+msgid ""
+"Secure SMTP (TLS) is enabled in SquirrelMail configuration, but used PHP "
+"version does not support it."
+msgstr ""
+
+msgid "TLS session is already activated."
+msgstr ""
+
+msgid ""
+"SMTP STARTTLS is enabled in SquirrelMail configuration, but used SMTP server "
+"does not support it"
+msgstr ""
+
+msgid ""
+"SMTP STARTTLS is enabled in SquirrelMail configuration, but used PHP version "
+"does not support functions that allow to enable encryption on open socket."
+msgstr ""
+
+msgid ""
+"Run \"configure\", choose option 4 (General options) and set option 10 "
+"(Disable server thread sort) to true)."
+msgstr ""
+
+msgid ""
+"Run \"configure\", choose option 4 (General options) and set option 11 "
+"(Disable server-side sorting) to true."
+msgstr ""
+
+#, fuzzy
+msgid "Your used charset is not supported by your IMAP server."
+msgstr "Az IMAP szerver nem képes a téma szerinti levélrendezésre."
+
+msgid ""
+"Run \"configure\", choose option 4 (General options) and set option 12 "
+"(Allow server charset search) to false) or choose option 10 (Language "
+"settings) and set option 2 (Default charset) to a charset supported by your "
+"IMAP server."
+msgstr ""
+
+msgid "Out of quota error."
+msgstr ""
+
+msgid ""
+"An error occured when SquirrelMail appended a message to the mailbox as "
+"listed in this message."
+msgstr ""
+
+msgid "Your IMAP server returned an error."
+msgstr ""
+
+#, fuzzy
+msgid "IMAP server closed the connection."
+msgstr "HIBA: az IMAP szerver lezárta a kapcsolatot."
+
+#, fuzzy
+msgid "Not used"
+msgstr "megjegyzés mezőbe"
+
+msgid "Access Keys For Top Menu (All Screens)"
+msgstr ""
+
+msgid "Access Keys For Message List Screen"
+msgstr ""
+
+#, fuzzy
+msgid "Show All/Paginate"
+msgstr "Oldalakra tördelés"
+
+#, fuzzy
+msgid "Thread View/Unthreaded View"
+msgstr "Normál rendezés"
+
+#, fuzzy
+msgid "Move To"
+msgstr "Áthelyezés ide:"
+
+#, fuzzy
+msgid "Toggle Selected"
+msgstr "Kijelöltek törlése"
+
+msgid "Access Keys For Read Message Screen"
+msgstr ""
+
+#, fuzzy
+msgid "As Attachment"
+msgstr "Melléklet(ek)"
+
+msgid "Access Keys For Compose Screen"
+msgstr ""
+
+msgid "Browse"
+msgstr ""
+
+#, fuzzy
+msgid "Attach"
+msgstr "Melléklet:"
+
+#, fuzzy
+msgid "Delete Selected Attachments"
+msgstr "Kijelölt mellékletek törlése"
+
+msgid "Access Keys For Folder List Screen"
+msgstr ""
+
+#, fuzzy
+msgid "Refresh/Check Mail"
+msgstr "Levelek ellenőrzése"
+
+#, fuzzy
+msgid "Purge Trash"
+msgstr "Végleges törlés"
+
+msgid "Access Keys For Options Screen"
+msgstr ""
+
+#, fuzzy
+msgid "General Message Composition"
+msgstr "Levél megjelenítés és szerkesztés"
+
+#, fuzzy
+msgid "Pop-up window"
+msgstr "felugró ablak szélessége"
+
+msgid "In-page"
+msgstr ""
+
+msgid "Replying and Forwarding Messages"
+msgstr ""
+
+#, fuzzy
+msgid "Strip signature when replying"
+msgstr "kurzor helyzete válasz írásakor"
+
+#, fuzzy
+msgid "Skin"
+msgstr "hol:"
+
+#, fuzzy
+msgid "Icon Theme"
+msgstr "téma"
+
+#, fuzzy
+msgid "Default font style"
+msgstr "Alapértelmezett identitás"
+
+#, fuzzy
+msgid "Font style"
+msgstr "NINCS MÉG BEÁLLÍTVA"
+
+#, fuzzy
+msgid "Font size"
+msgstr "Havi nézet"
+
+#, fuzzy
+msgid "Default font size"
+msgstr "mappalista-keret alapértelmezett szélessége"
+
+msgid "Enable Fancy Row Mouseover Highlighting"
+msgstr ""
+
+msgid "Show Flag / Unflag Buttons"
+msgstr ""
+
+#, fuzzy
+msgid "Enable Message Copy Buttons"
+msgstr "levelek számának kijelzése a mappalistán"
+
+#, fuzzy
+msgid "Use Compact Page Selector"
+msgstr "oldalválasztó engedélyezése"
+
+msgid "Show Names Instead of Email Addresses"
+msgstr ""
+
+msgid "Custom Date Format"
+msgstr ""
+
+msgid "(Uses format of PHP date() function)"
+msgstr ""
+
+#, fuzzy
+msgid "Message Display Options"
+msgstr "Általános megjelenítési beállítások"
+
+msgid "Height of inline frame"
+msgstr ""
+
+#, fuzzy
+msgid "Show 'Delete &amp; Prev/Next' Links"
+msgstr "Törlés & előző"
+
+#, fuzzy
+msgid "Address Book Display Options"
+msgstr "címjegyzék előhívásának módja levélíráskor"
+
+#, fuzzy
+msgid "Number of Addresses per Page"
+msgstr "egy oldalon megjelenített üzenetek száma"
+
+#, fuzzy
+msgid "Translate Special Folders"
+msgstr "speciális mappák automatikus létrehozása"
+
+#, fuzzy
+msgid "Save Replies with Original Message"
+msgstr "Eredeti üzenet"
+
+#, fuzzy, php-format
+msgid "%d Minute"
+msgid_plural "%d Minutes"
+msgstr[0] "perc"
+msgstr[1] "perc"
+
+msgid "Show only subscribed folders"
+msgstr ""
+
+msgid "XP"
+msgstr ""
+
+msgid "IMAP Connection Security"
+msgstr ""
+
+msgid "Plain text connection"
+msgstr ""
+
+#, fuzzy
+msgid "Secure IMAP (TLS) connection"
+msgstr "TLS használata az IMAP kapcsolathoz"
+
+msgid "IMAP STARTTLS connection"
+msgstr ""
+
+msgid ""
+"Requires higher PHP version and special functions. See SquirrelMail "
+"documentation."
+msgstr ""
+
+msgid "SMTP Connection Security"
+msgstr ""
+
+#, fuzzy
+msgid "Disable server-side sorting"
+msgstr "szerveroldali levélrendezés"
+
+#, fuzzy
+msgid "Disable server-side thread sorting"
+msgstr "téma (THREAD) szerinti levélrendezés szerveroldalon"
+
+#, fuzzy
+msgid "Search functions"
+msgstr "Kit keressünk:"
+
+msgid "Only basic search"
+msgstr ""
+
+msgid "Only advanced search"
+msgstr ""
+
+msgid "Both search functions"
+msgstr ""
+
+#, fuzzy
+msgid "Time Zone Configuration"
+msgstr "Beállítások tesztelése"
+
+msgid "Standard GNU C time zones"
+msgstr ""
+
+#, fuzzy
+msgid "Strict time zones"
+msgstr "Kezdet:"
+
+msgid "Custom GNU C time zones"
+msgstr ""
+
+msgid "Custom strict time zones"
+msgstr ""
+
+#, fuzzy
+msgid "Size of username field"
+msgstr "felhasználónév mező"
+
+#, fuzzy
+msgid "Size of key field"
+msgstr "attribútumnév mező"
+
+#, fuzzy
+msgid "Size of value field"
+msgstr "attribútumérték mező"
+
+msgid "Show alternative language names"
+msgstr ""
+
+#, fuzzy
+msgid "Enable aggressive decoding"
+msgstr "ismeretlen karakterek kihagyásának engedélyezése"
+
+msgid "Tweaks"
+msgstr ""
+
+#, fuzzy
+msgid "Use icons"
+msgstr "másodperc"
+
+msgid "Use inline frames with HTML mails"
+msgstr ""
+
+msgid "Use PHP recode functions"
+msgstr ""
+
+msgid "Use PHP iconv functions"
+msgstr ""
+
+#, fuzzy
+msgid "Allow remote configuration test"
+msgstr "Beállítások tesztelése"
+
+#, fuzzy
+msgid "Address book file line length"
+msgstr "címtár adattáblája"
+
+#, fuzzy
+msgid "Templates"
+msgstr "Témabeállítások"
+
+#, fuzzy
+msgid "Default font set"
+msgstr "mappalista-keret alapértelmezett szélessége"
+
+#, fuzzy
+msgid "Default template"
+msgstr "alapértelmezett téma"
+
+msgid "Fallback template"
+msgstr ""
+
+msgid "Warnings were reported in your setup:"
+msgstr ""
+
+#, php-format
+msgid "%d warning(s) reported."
+msgstr ""
+
+msgid "Show System Specifications"
+msgstr ""
+
+msgid "my email account"
+msgstr ""
+
+msgid "You must type in a new password."
+msgstr ""
+
+msgid "You must also type in your new password in the verify box."
+msgstr ""
+
+msgid "Your new password does not match the verify password."
+msgstr ""
+
+msgid "You must type in your current password."
+msgstr ""
+
+#, fuzzy
+msgid "Your current password is not correct."
+msgstr "Rossz felhasználónév vagy jelszó."
+
+#, php-format
+msgid "Your new password should be %s to %s characters long."
+msgstr ""
+
+#, fuzzy
+msgid "Your new password contains invalid characters."
+msgstr "Az azonosító nem megfelelő karaktereket (is) tartalmaz."
+
+#, fuzzy
+msgid "Change Password"
+msgstr "A szó megváltoztatása"
+
+#, fuzzy
+msgid "Current Password:"
+msgstr "jelszó:"
+
+#, fuzzy
+msgid "New Password:"
+msgstr "jelszó:"
+
+#, fuzzy
+msgid "Verify New Password:"
+msgstr "jelszó:"
+
+msgid "Use this to change your email password."
+msgstr ""
+
+#, fuzzy
+msgid "User's Password"
+msgstr "jelszó:"
+
+msgid "Current configuration requires LDAP support in PHP."
+msgstr ""
+
+#, fuzzy
+msgid "Plugin is not configured correctly."
+msgstr "modul kikapcsolva"
+
+#, php-format
+msgid "Setting of LDAP connection option %s to value %s failed."
+msgstr ""
+
+#, php-format
+msgid "Incorrect LDAP connection option: %s"
+msgstr ""
+
+msgid ""
+"Current PHP LDAP extension does not allow use of ldap_set_option() function."
+msgstr ""
+
+#, fuzzy
+msgid "Unable to use TLS."
+msgstr "Módosítás sikertelen."
+
+#, fuzzy, php-format
+msgid "Error: %s"
+msgstr "Hiba "
+
+msgid "Unable to use LDAP TLS in current setup."
+msgstr ""
+
+msgid "Unable to bind to LDAP server."
+msgstr ""
+
+#, fuzzy, php-format
+msgid "Server replied: %s"
+msgstr "A szerver válasza:"
+
+msgid "Unable to find user's password attribute."
+msgstr ""
+
+msgid "Unable to rebind to LDAP server."
+msgstr ""
+
+msgid "LDAP server uses different attribute to store user's password."
+msgstr ""
+
+#, fuzzy
+msgid "Unable to connect to LDAP server."
+msgstr "Nincs kapcsolat a szerverhez"
+
+msgid "Unable to find user's DN."
+msgstr ""
+
+#, fuzzy
+msgid "Search error."
+msgstr "Kit keressünk:"
+
+msgid "Multiple userid matches found."
+msgstr ""
+
+msgid "ldap_get_dn error."
+msgstr ""
+
+#, php-format
+msgid "Unsupported crypto: %s"
+msgstr ""
+
+msgid "PHP mhash extension is missing or does not support selected crypto."
+msgstr ""
+
+msgid "System crypt library doesn't support standard DES crypt."
+msgstr ""
+
+msgid "System crypt library doesn't have MD5 support."
+msgstr ""
+
+msgid "System crypt library doesn't support extended DES crypt."
+msgstr ""
+
+msgid "System crypt library doesn't have Blowfish support."
+msgstr ""
+
+#, fuzzy
+msgid "unknown"
+msgstr "ismeretlen dátum"
+
+msgid "Unable to validate user's password."
+msgstr ""
+
+msgid "Blowfish is not supported by webserver's system crypt library."
+msgstr ""
+
+msgid "MD5 is not supported by webserver's system crypt library."
+msgstr ""
+
+msgid ""
+"Extended DES crypt is not supported by webserver's system crypt library."
+msgstr ""
+
+msgid ""
+"Standard DES crypt is not supported by webserver's system crypt library."
+msgstr ""
+
+msgid "PHP Curl extension is NOT available! Unable to change password!"
+msgstr ""
+
+msgid "Cannot change password! (Is user 'Self Configurable User' ?) (401)"
+msgstr ""
+
+#, fuzzy
+msgid "Cannot change password!"
+msgstr "A szó megváltoztatása"
+
+msgid "Cannot connect to Database Server, please try later!"
+msgstr ""
+
+msgid "Database not found on server"
+msgstr ""
+
+msgid "SQL call failed, try again later."
+msgstr ""
+
+msgid "Duplicate login entries detected, cannot change password!"
+msgstr ""
+
+msgid "Password change was not successful!"
+msgstr ""
+
+msgid ""
+"Plugin is unable to use PHP Pear DB libraries. PHP Pear includes must be "
+"available in your PHP include_path setting."
+msgstr ""
+
+msgid "Required change password backend configuration options are missing."
+msgstr ""
+
+#, fuzzy, php-format
+msgid "Connection error: %s"
+msgstr "Ismeretlen hiba: %s"
+
+#, fuzzy, php-format
+msgid "Invalid table name: %s"
+msgstr "A következő postafióknév érvénytelen: %s"
+
+msgid "User table is empty."
+msgstr ""
+
+#, fuzzy
+msgid "Invalid uid field."
+msgstr "Helytelen adatmegadás."
+
+#, fuzzy
+msgid "Invalid password field"
+msgstr "A jelszó nem lett elküldve"
+
+#, fuzzy
+msgid "Invalid domain field"
+msgstr "Helytelen adatmegadás."
+
+#, fuzzy, php-format
+msgid "Query failed: %s"
+msgstr "A levéltörtlés sikertelen. Az ok:"
+
+msgid "Unable to find user in user table."
+msgstr ""
+
+msgid "Too many matches found in user table."
+msgstr ""
+
+msgid "Unable to detect password crypto algorithm."
+msgstr ""
+
+msgid "Unable to encrypt new password."
+msgstr ""
+
+#, fuzzy, php-format
+msgid "Unable to set new password: %s"
+msgstr "Ilyen cím nem található a %s címtárban"
+
+msgid "Unable to use digest-md5 crypto."
+msgstr ""
+
+msgid "Closing Connection"
+msgstr ""
+
+#, fuzzy
+msgid "Connecting to Password Server"
+msgstr "Nincs kapcsolat a szerverhez"
+
+msgid "No valid backend defined."
+msgstr ""
+
+msgid "Incorrent path to vmail.inc file."
+msgstr ""
+
+msgid "Invalid or corrupted vmail.inc file."
+msgstr ""
+
+#, fuzzy
+msgid "Invalid user."
+msgstr "Érvénytelen URL"
+
+#, fuzzy
+msgid "Empty domain"
+msgstr "Üres parancskifejezés"
+
+#, fuzzy
+msgid "Empty domain password"
+msgstr "Üres parancskifejezés"
+
+#, fuzzy
+msgid "Empty username"
+msgstr "felhasználói név:"
+
+msgid "Empty new password"
+msgstr ""
+
+#, fuzzy, php-format
+msgid "Unable to execute \"%s\"."
+msgstr "Módosítás sikertelen."
+
+#, fuzzy
+msgid "Fortunes:"
+msgstr "Véletlen szólásmondások (fortune)"
+
+#, fuzzy
+msgid "Server Capability response:"
+msgstr "A szerver válasza:"
+
+msgid ""
+"Select the IMAP commands you would like to run. Most commands require a "
+"selected mailbox so the select command is already setup. You can clear all "
+"the commands and test your own IMAP command strings. The commands are "
+"executed in order. The default values are simple IMAP commands using your "
+"default_charset and folder_prefix from SquirrelMail when needed."
+msgstr ""
+
+msgid ""
+"NOTE: These commands are live, any changes made will effect your current "
+"email account."
+msgstr ""
+
+#, fuzzy
+msgid "Select"
+msgstr "Minden kijelölése"
+
+#, fuzzy
+msgid "Test Name"
+msgstr "téma neve"
+
+#, fuzzy
+msgid "IMAP command string"
+msgstr "Üres parancskifejezés"
+
+#, fuzzy
+msgid "Request:"
+msgstr "küldendő!"
+
+msgid "Execution time:"
+msgstr ""
+
+#, fuzzy, php-format
+msgid "%s ms"
+msgstr "%s nyelvről %s nyelvre"
+
+#, fuzzy
+msgid "Mailing Lists"
+msgstr "levlista opciók"
+
+msgid ""
+"Manage the (non-RFC-compliant) mailing lists that you are subscribed to for "
+"the purpose of providing one-click list replies when responding to list "
+"messages."
+msgstr ""
+
+#, fuzzy
+msgid "No POP3 servers configured yet."
+msgstr "Nincs megadva szerver"
+
+#, fuzzy
+msgid "Click here to go to the options page."
+msgstr "Belépés újból"
+
+#, fuzzy, php-format
+msgid "Fetching from %s"
+msgstr "Letöltés innen:"
+
+msgid "Can't get mailbox status:"
+msgstr ""
+
+#, fuzzy
+msgid "Fetching list of messages..."
+msgstr "Üzenet letöltése "
+
+#, fuzzy, php-format
+msgid "Login OK: Inbox contains %s message"
+msgid_plural "Login OK: Inbox contains %s messages"
+msgstr[0] "Sikeres belépés: A bejövő levelek mappájában %s levél van."
+msgstr[1] "Sikeres belépés: A bejövő levelek mappájában %s levél van."
+
+#, fuzzy, php-format
+msgid "Fetching message %s."
+msgstr "Üzenet letöltése "
+
+#, fuzzy
+msgid "Warning:"
+msgstr "Figyelmeztetés, "
+
+#, fuzzy
+msgid "Authentication type:"
+msgstr "IMAP hitelesítési típus"
+
+msgid "USER"
+msgstr ""
+
+msgid "APOP"
+msgstr ""
+
+msgid "APOP or USER"
+msgstr ""
+
+#, fuzzy
+msgid "Connection type:"
+msgstr "tartalom típusa"
+
+#, fuzzy
+msgid "Plain text"
+msgstr "Oldalakra tördelés"
+
+msgid "Use TLS"
+msgstr ""
+
+msgid "Use StartTLS"
+msgstr ""
+
+#, fuzzy
+msgid "View Message Details"
+msgstr "MIME szerkezet & forráskód"
+
+#, fuzzy
+msgid "New Mail Options"
+msgstr "Értesítés új levelekről"
+
+msgid ""
+"Based on the Folder Preferences option &quot;Enable Unread Message "
+"Notification&quot;, you can be notified when new messages arrive in your "
+"account."
+msgstr ""
+
+#, fuzzy, php-format
+msgid ""
+"Selecting the %s option will enable the showing of a popup window when "
+"unseen mail is in one of your folders (requires JavaScript)."
+msgstr ""
+"A %s opciót engedélyezve felugró ablakok formájában kap értesítést az új "
+"levelekről. (JavaScript kell hozzá.)"
+
+#, fuzzy, php-format
+msgid ""
+"Selecting the %s option will change the browser title bar to let you know "
+"when you have new mail (requires JavaScript and may only work in some "
+"browsers). This will always tell you if you have new mail, even if you have %"
+"s enabled."
+msgstr ""
+"A %s opciót engedélyezve a böngésző címsorában (és ezáltal a futó programok "
+"listáján) is megjelenik az új/olvasatlan levelek száma, akkor is ha a %s "
+"opció engedélyezve van. (Csak bizonyos böngészőkkel működik és JavaScript "
+"kell hozzá.)"
+
+#, fuzzy
+msgid "Follow folder preferences"
+msgstr "A mappák beállításai"
+
+#, fuzzy
+msgid "All folders"
+msgstr "MINDEN MAPPA"
+
+#, fuzzy
+msgid "Special folders"
+msgstr "Speciális mappák"
+
+#, fuzzy
+msgid "Regular folders"
+msgstr "VÁLASSZON MAPPÁT!"
+
+#, fuzzy
+msgid "Check for new messages in:"
+msgstr "Önnek %s új üzenete van."
+
+msgid "uploaded media file"
+msgstr ""
+
+#, fuzzy
+msgid "none"
+msgstr "(egyik sem)"
+
+msgid "Upload Media File:"
+msgstr ""
+
+msgid "Uploaded Media File:"
+msgstr ""
+
+#, php-format
+msgid "Media file %s will be removed, if you upload other media file."
+msgstr ""
+
+#, fuzzy, php-format
+msgid "%s notice:"
+msgstr "%s ezt írta:"
+
+#, fuzzy
+msgid "Warning"
+msgstr "Figyelmeztetés, "
+
+msgid "There are some restrictions in Sent Subfolder options."
+msgstr ""
+
+#, fuzzy
+msgid "Sent subfolders options are misconfigured."
+msgstr "Elküldött levelek mappájának bontása több almappára"
+
+msgid "Save emails submitted to SpamCop:"
+msgstr ""
+
+#, fuzzy
+msgid "SpamCop reporting"
+msgstr "Spam jelentés"
+
+#, php-format
+msgid ""
+"Your %s dictionary is encrypted with password that differs from your current "
+"password."
+msgstr ""
+
+#, fuzzy
+msgid "Invalid SquirrelSpell module."
+msgstr "A SquirrelSpell futásának eredménye"
+
+#, fuzzy
+msgid "Unknown error"
+msgstr "Ismeretlen hiba: %s"
+
+#, fuzzy
+msgid "SquirrelSpell error."
+msgstr "A SquirrelSpell futásának eredménye"
+
+#, fuzzy, php-format
+msgid "Found %d error"
+msgid_plural "Found %d errors"
+msgstr[0] "%s hiba történt"
+msgstr[1] "%s hiba történt"
+
+#, fuzzy, php-format
+msgid "Using %s dictionary for spellcheck."
+msgstr "Helyesírás-ellenőrzés a(z) %s (alapértelmezett) szótárral"
+
+#, fuzzy
+msgid "Translation Theme:"
+msgstr "Sikertelen művelet."
+
+msgid ""
+"Selected translation engine is disabled. Please update your translation "
+"preferences."
+msgstr ""
+
+#, fuzzy
+msgid "Translation Preferences"
+msgstr "Intézményi beállítások"
+
+#, fuzzy
+msgid "Maximum of 25 kilobytes translated, powered by Systran"
+msgstr "Legfeljebb 150 szó fordítása Systran motorral."
+
+#, fuzzy
+msgid "No known limits, powered by GPLTrans (free, open source)"
+msgstr "Korlátlan számú szó fordítása Systran motorral."
+
+msgid "Transliterate unknown words:"
+msgstr ""
+
+#, fuzzy
+msgid "When composing:"
+msgstr "a levél olvasásakor:"
+
+msgid "Not yet functional, currently does nothing"
+msgstr ""
+
+#, fuzzy
+msgid "Update Address"
+msgstr "Címet frissít"
+
+#, fuzzy
+msgid "Add to Address Book"
+msgstr "Címtárba vétel"
+
+#, fuzzy
+msgid "Add Address"
+msgstr "Mentés a címtárba"
+
+#, fuzzy
+msgid "Address book is empty"
+msgstr "A címtár nem írható (csak olvasható)"
+
+#, fuzzy
+msgid "Compose To"
+msgstr "Új levél"
+
+#, fuzzy
+msgid "Address book search"
+msgstr "Keresés a címtárakban"
+
+#, fuzzy
+msgid "New attachment"
+msgstr "Melléklet(ek)"
+
+msgid "Max."
+msgstr ""
+
+#, fuzzy
+msgid "Receipts"
+msgstr "Visszaigazolást kérek"
+
+#, fuzzy
+msgid "SquirrelMail notice messages"
+msgstr "SquirrelMail (MókusPosta) téjékoztatás:"
+
+msgid "Category:"
+msgstr ""
+
+#, fuzzy
+msgid "Tip:"
+msgstr "típus:"
+
+#, fuzzy
+msgid "More info:"
+msgstr "További információk"
+
+#, fuzzy
+msgid "No folders were found to unsubscribe from."
+msgstr "Nincsenek mappák amelyekről le lehetne iratkozni."
+
+#, fuzzy
+msgid "No folders were found to subscribe to."
+msgstr "Nincsenek mappák amelyekre fel lehetne iratkozni."
+
+#, fuzzy
+msgid "Check Mail"
+msgstr "Levelek ellenőrzése"
+
+#, fuzzy
+msgid "Message Flags"
+msgstr "Üzenetszűrés"
+
+#, fuzzy
+msgid "Attachment"
+msgstr "Melléklet(ek)"
+
+#, fuzzy
+msgid "Click here to change the sorting of the message list"
+msgstr "Kattintson ide a címlista rendezési módjának megváltoztatásához!"
+
+#, fuzzy
+msgid "Add/Edit"
+msgstr "szerkeszt"
+
+#, fuzzy
+msgid "Rule Conditions"
+msgstr "Beállítások tesztelése"
+
+#, fuzzy
+msgid "Identifying Name"
+msgstr "szabály neve"
+
+#, fuzzy
+msgid "To or cc"
+msgstr "címzett vagy másolat"
+
+#, fuzzy
+msgid "Other"
+msgstr "HTML RGB:"
+
+#, fuzzy
+msgid "Save Changes"
+msgstr "Levél mentése fájlba"
+
+#, fuzzy
+msgid "Requested"
+msgstr "küldendő!"
+
+#, fuzzy
+msgid "Send Read Receipt Now"
+msgstr "tértivevény (visszaigazolás) küldése"
+
+msgid "Viewing HTML formatted email"
+msgstr ""
+
+#, fuzzy
+msgid "Delete &amp; Previous"
+msgstr "Törlés & előző"
+
+msgid ""
+"Use your web browser's Print button or File -&gt; Print menu option to print "
+"this email. Afterwards, you can close this browser window again to return to "
+"SquirrelMail."
+msgstr ""
+
+#, fuzzy
+msgid "and subfolders"
+msgstr "almappaként az alábbi mappában:"
+
+msgid "Exclude"
+msgstr ""
+
+#, fuzzy
+msgid "Fold"
+msgstr "mappa"
+
+#, fuzzy
+msgid "Unfold"
+msgstr "megjegyzés"
+
+#, fuzzy
+msgid "Forget"
+msgstr "Elfelejt"
+
+#, fuzzy
+msgid "Email"
+msgstr "e-mail"
+
+#, fuzzy
+msgid "Additional Info"
+msgstr "megjegyzés"
+
+#, fuzzy
+msgid "Folder List"
+msgstr "Mappák"
+
+#, fuzzy
+msgid "Open All"
+msgstr "Megnyitás sikertelen."
+
+#, fuzzy
+msgid "Close All"
+msgstr "Bezár"
+
+#, fuzzy
+msgid "The SquirrelMail logo"
+msgstr "SquirrelMail verzió"
+
+msgid "OR"
+msgstr ""
+
+#, fuzzy
+msgid "Reset"
+msgstr "Visszaigazolást kérek"
+
+msgid "Reorder indexes"
+msgstr ""
+
+#, fuzzy
+msgid "Add an index"
+msgstr "Mentés a címtárba"
+
+#, php-format
+msgid "%s from %s on %s"
+msgstr ""
+
+#, fuzzy
+msgid "Expand Header"
+msgstr "ÁLTALÁNOS FEJLÉCSZŰRŐ"
+
+msgid "Collapse Header"
+msgstr ""
+
+#, fuzzy
+msgid "Message Preview"
+msgstr "Üzenetek listája"
+
 msgid "Delivery error report"
 msgstr "Kézbesítési hiba jelentés"
 
@@ -3765,4 +5621,3 @@ msgstr "Kézbesítetlen üzenet fejléce"
 
 msgid "This image has been removed for security reasons"
 msgstr "Ez a kép biztonsági okokból el lett távolítva."
-

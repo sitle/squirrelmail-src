@@ -1,7 +1,7 @@
 # Hungarian (hu_HU) folder_sizes Translation (SquirrelMail plugin)
 # Copyright (c) 1999-2009 The SquirrelMail Project Team
 # This file is distributed under the same license as the SquirrelMail package.
-# Németh Tamás <nice@titanic.nyme.hu>, 2009.
+# Tamás Németh <nice@titanic.nyme.hu>, 2009.
 # $Id: folder_sizes.pot 11163 2006-05-28 08:48:13Z jervfors $
 msgid ""
 msgstr ""
@@ -9,12 +9,13 @@ msgstr ""
 "Report-Msgid-Bugs-To: The SquirrelMail Internationalization List "
 "<squirrelmail-i18n@lists.sourceforge.net>\n"
 "POT-Creation-Date: 2006-05-01 10:34+0300\n"
-"PO-Revision-Date: 2009-03-21 23:56+0100\n"
-"Last-Translator: Németh Tamás <nice@titanic.nyme.hu>\n"
+"PO-Revision-Date: 2009-04-27 16:07+0200\n"
+"Last-Translator: Tamás Németh <nice@titanic.nyme.hu>\n"
 "Language-Team: Hungarian <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: functions.php:43 functions.php:46 functions.php:349
 msgid "Folder Sizes"
@@ -40,10 +41,12 @@ msgstr "a mappalistával egy helyen"
 msgid "Show subtotals"
 msgstr "részösszegek kijelzése"
 
-#: functions.php:237
+#: functions.php:238
 #, php-format
 msgid "%d Folder"
-msgstr "%d mappa"
+msgid_plural "%d Folders"
+msgstr[0] "%d mappa"
+msgstr[1] "%d mappa"
 
 #: functions.php:356
 msgid "Folder"
