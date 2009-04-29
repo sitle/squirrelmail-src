@@ -28,6 +28,6 @@
 
 $languages['hu_HU']['NAME']    = 'Hungarian';
 $languages['hu_HU']['ALTNAME'] = 'Magyar';
-$languages['hu_HU']['CHARSET'] = 'iso-8859-2';
+$languages['hu_HU']['CHARSET'] = 'utf-8';
 $languages['hu_HU']['LOCALE']  = array('hu_HU.UTF-8', 'hu_HU.UTF8', 'hu_HU');
 $languages['hu']['ALIAS']      = 'hu_HU';
