@@ -1,0 +1,188 @@
+# translation of local_autorespond_forward.po to Hungarian
+# <your language> SquirrelMail Local User Autoresponder and Mail Forwarder Plugin Translation File
+# Copyright (c) 2007 The Squirrelmail Development Team
+# This file is distributed under the same license as the SquirrelMail package.
+#
+# Tamás Németh <nice@titanic.nyme.hu>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: local_autorespond_forward\n"
+"Report-Msgid-Bugs-To: SquirrelMail Internationalization <squirrelmail-i18n@lists.sourceforge.net>\n"
+"POT-Creation-Date: 2007-07-17 21:09-0700\n"
+"PO-Revision-Date: 2009-04-29 18:04+0200\n"
+"Last-Translator: Tamás Németh <nice@titanic.nyme.hu>\n"
+"Language-Team: Hungarian <hu@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+
+msgid "Autoresponder / Mail Forwarding"
+msgstr "Autoválasz / levéltovábbítás"
+
+msgid "Set up an auto-reply message and optionally forward your incoming email to other addresses. This can be useful when you are away on vacation."
+msgstr "Automatikus válaszüzenet megadását és a beérkező levelek más e-mail címekre történő továbbítását teszi lehetővé. Különösen hasznos, ha huzamosabb ideig nem olvassa a leveleit, pl. szabadság esetén."
+
+msgid "Autoresponder"
+msgstr "Autoválasz"
+
+msgid "Set up an auto-reply message for you incoming email. This can be useful when you are away on vacation."
+msgstr "Automatikus válaszüzenet megadását teszi lehetővé. Különösen hasznos, ha huzamosabb ideig nem olvassa a leveleit, pl. szabadság esetén."
+
+msgid "Mail Forwarding"
+msgstr "Levéltovábbítás"
+
+msgid "Set up other email addresses to which your incoming messages will be forwarded."
+msgstr "A beérkező levelek más e-mail címekre történő továbbítását teszi lehetővé."
+
+msgid "Bad characters in list of forwarding addresses"
+msgstr "Érvénytelen karakterek a továbbítási címek listájában."
+
+msgid "Forwarding has not been activated (no addresses given)"
+msgstr "A levéltovábbítás bekapcsolása elmaradt (nincsenek megadva továbbítási címek)."
+
+msgid "Forwarding has been activated"
+msgstr "Levéltovábbítás bekapcsolva."
+
+msgid "Forwarding has been deactivated"
+msgstr "Levéltovábbítás kikapcsolva."
+
+msgid "Autoresponder has been deactivated"
+msgstr "Automatikus válaszküldés kikapcsolva."
+
+msgid "Autoresponder has not been activated (message is empty)"
+msgstr "Az automatikus válaszküldés bekapcsolása elmaradt (a válaszlevél szövege nem lett megadva)."
+
+msgid "Autoresponder has been activated"
+msgstr "Automatikus válaszküldés bekapcsolva."
+
+msgid "Autoresponder has been initialized"
+msgstr "Az automatikus válaszküldő rendszer adatbázisának inicializálása megtörtént."
+
+msgid "Autoresponder has been re-initialized"
+msgstr "Az automatikus válaszküldő rendszer adatbázisának újra-inicializálása megtörtént."
+
+msgid "Messages will be saved in this account (no forwarding is active)"
+msgstr "A bejövő levelek csak ebben a postafiókban lesznek tárolva (nincs továbbítás beállítva)."
+
+msgid "Messages will be saved in this account (no forwarding or auto-reply is active)"
+msgstr "A bejövő levelek csak ebben a postafiókban lesznek tárolva (nincs továbbítás vagy autoválasz beállítva)."
+
+msgid "Error: Could not bind to LDAP server"
+msgstr "Hiba: Nem sikerült belépni a LDAP szerverre."
+
+#, php-format
+msgid "Error: Could not find FTP server for %s in LDAP server"
+msgstr "Hiba: A(z) %s FTP szervere nem található az LDAP adatbázisban."
+
+msgid "Error: Could not connect to LDAP server"
+msgstr "Hiba: Nem sikerült csatlakozni az LDAP szerverhez."
+
+msgid "Error: Unable to connect to FTP server. Please try again later"
+msgstr "Hiba: Nem sikerült csatlakozni az FTP szerverhez. Kérjük, próbálja meg később!"
+
+msgid "Error: Unable to log in to FTP server. Please contact your system administrator"
+msgstr "Hiba: Nem sikerült belépni az FTP szerverre. Lépjen kapcsolatba a rendszergazdával!"
+
+msgid "Error: Unable to switch to passive FTP mode. Please contact your system administrator"
+msgstr "Hiba: A passzív FTP módra történő átváltás sikertelen. Lépjen kapcsolatba a rendszergazdával!"
+
+msgid "Error: Unable to establish connection. Please contact your system administrator"
+msgstr "Hiba: Nem sikerült a kapcsolat felépítése. Lépjen kapcsolatba a rendszergazdával!"
+
+msgid "Error: Unable to send password. Please contact your system administrator"
+msgstr "Hiba: Nem sikerült a jelszó elküldése. Lépjen kapcsolatba a rendszergazdával!"
+
+#, php-format
+msgid "Error: Unable to handle list request (%s)"
+msgstr "Hiba: A listázási utasítás feldolgozása sikertelen (%s)."
+
+msgid "Error: Unable to upload file. Please contact your system administrator"
+msgstr "Hiba: Nem sikerült a fájl feltöltése. Lépjen kapcsolatba a rendszergazdával!"
+
+#, php-format
+msgid "Error: Unable to handle upload request (%s)"
+msgstr "Hiba: A feltöltési utasítás feldolgozása sikertelen (%s)."
+
+msgid "Error: unable to download file. Please contact your system administrator"
+msgstr "Hiba: Nem sikerült a fájl letöltése. Lépjen kapcsolatba a rendszergazdával!"
+
+#, php-format
+msgid "Error: Unable to handle download request (%s)"
+msgstr "Hiba: A letöltési utasítás feldolgozása sikertelen (%s)."
+
+msgid "Error: unable to delete file. Please contact your system administrator"
+msgstr "Hiba: Nem sikerült a fájl törlése. Lépjen kapcsolatba a rendszergazdával!"
+
+#, php-format
+msgid "Error: Unable to handle delete request (%s)"
+msgstr "Hiba: A törlési utasítás feldolgozása sikertelen (%s)."
+
+#, php-format
+msgid "Error: Unable to handle init request (%s); you might need to configure with --enable-vacation"
+msgstr "Hiba: Az autoválasz (vacation) adatbázis inicializálása sikertelen (%s). A probléma legvalószínűbb oka az, hogy az ún. suid backend konfigurálása az --enable-vacation opció nélkül történt."
+
+#, php-format
+msgid "Error: Unable to handle init request (%s)"
+msgstr "Hiba: Az autoválasz (vacation) adatbázis inicializálása sikertelen (%s)."
+
+#, php-format
+msgid "An error occurred initializing the autoresponder: %s"
+msgstr "Az autoválasz (vacation) inicializálásakor a következő hiba történt: %s"
+
+#, php-format
+msgid "Unknown action: %s"
+msgstr "A következő művelet értelmezése sikertelen: %s"
+
+msgid "An error occurred attempting to read temp file; check permissions on attachments directory"
+msgstr "Az átmeneti fájl olvasása nem sikerült. Kérjük, vizsgálja meg a csatolmánykönyvtár jogosultsági beállításait!"
+
+msgid "An error occurred attempting to create temp file; check permissions on attachments directory"
+msgstr "Az átmeneti fájl létrehozása nem sikerült. Kérjük, vizsgálja meg a csatolmánykönyvtár jogosultsági beállításait!"
+
+msgid "Options - Autoresponder / Mail Forwarding"
+msgstr "Opciók - Autoválasz / levéltovábbítás"
+
+msgid "Options - Autoresponder"
+msgstr "Opciók - Autoválasz"
+
+msgid "Options - Mail Forwarding"
+msgstr "Opciók - Levéltovábbítás"
+
+msgid "ERROR:"
+msgstr "HIBA:"
+
+msgid "Settings Saved"
+msgstr "Beállítások elmentve."
+
+msgid "Enable auto-reply to sender"
+msgstr "automatikus válaszlevelek küldése"
+
+msgid "Send from:"
+msgstr "válaszlevél forrás e-mail címe:"
+
+msgid "Subject:"
+msgstr "válaszlevél tárgya:"
+
+msgid "Message:"
+msgstr "válaszlevél szövege:"
+
+msgid "Forward incoming messages to addresses listed below"
+msgstr "bejövő levelek továbbítása az alábbi címekre"
+
+msgid "Forwarding email addresses (one address per line):"
+msgstr "továbbítási címek (soronként egy e-mail cím):"
+
+msgid "Keep copies of incoming messages in this account"
+msgstr "ebben a postafiókban is maradjon meg a bejövő levelekből egy-egy példány"
+
+msgid "(must have at least one forwarding address to disable)"
+msgstr "(Legalább egy továbbítási címet meg kell adni, hogy ezt ki lehessen kapcsolni.)"
+
+msgid "(must have at least one forwarding address or an active auto-reply to disable)"
+msgstr "(Legalább egy továbbítási címre vagy az autoválasz bekapcsolására van szükség ahhoz, hogy ezt ki lehessen kapcsolni.)"
+
+msgid "Submit"
+msgstr "Beállítások mentése"
+
