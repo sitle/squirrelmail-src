@@ -1,4 +1,4 @@
-# Hungarian (xx_XX) local_autorespond_forward Translation (SquirrelMail plugin)
+# Hungarian (hu_HU) local_autorespond_forward Translation (SquirrelMail plugin)
 # Copyright (c) 2007-2009 The SquirrelMail Project Team
 # This file is distributed under the same license as the SquirrelMail package.
 # Tamás Németh <nice@titanic.nyme.hu>, 2009.
@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: local_autorespond_forward 3.0\n"
 "Report-Msgid-Bugs-To: Paul Lesniewski <paul@squirrelmail.org>\n"
 "POT-Creation-Date: 2007-10-27 11:58+0200\n"
-"PO-Revision-Date: 2009-04-29 18:04+0200\n"
+"PO-Revision-Date: 2009-04-30 16:40+0200\n"
 "Last-Translator: Tamás Németh <nice@titanic.nyme.hu>\n"
 "Language-Team: Hungarian <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -264,15 +264,16 @@ msgstr "automatikus válaszlevelek küldése"
 
 #: templates/default/options.tpl:163
 msgid "Send from:"
-msgstr "válaszlevél forrás e-mail címe:"
+msgstr ""
+"válaszlevél forrás e-mail címe (Kerülje az ékezetes karakterek használatát!):"
 
 #: templates/default/options.tpl:185
 msgid "Subject:"
-msgstr "válaszlevél tárgya:"
+msgstr "válaszlevél tárgya (Kerülje az ékezetes karakterek használatát!):"
 
 #: templates/default/options.tpl:191
 msgid "Message:"
-msgstr "válaszlevél szövege:"
+msgstr "válaszlevél szövege (Kerülje az ékezetes karakterek használatát!):"
 
 #: templates/default/options.tpl:207
 msgid "Forward incoming messages to addresses listed below"
