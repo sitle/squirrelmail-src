@@ -1,112 +1,173 @@
-# <your language> (xx_XX) SquirrelMail Bypass Trash Plugin Translation
-# Copyright (c) 2009 The Squirrelmail Project Team
+# LANGUAGE (xx_XX) bypass_trash Translation (SquirrelMail plugin)
+# Copyright (c) 2009 The SquirrelMail Project Team
 # This file is distributed under the same license as the SquirrelMail package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
 # $Id$
-#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: bypass_trash 1.0\n"
 "Report-Msgid-Bugs-To: Paul Lesniewski <paul@squirrelmail.org>\n"
-"POT-Creation-Date: 2009-04-21 13:54-0700\n"
+"POT-Creation-Date: 2009-05-01 16:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: SquirrelMail Language Team <squirrelmail-i18n@lists.sourceforge.net>\n"
+"Language-Team: LANGUAGE <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: setup.php:188
 msgid "Wipe"
 msgstr ""
 
+#: setup.php:189
 msgid "Purge"
 msgstr ""
 
+#: setup.php:190
 msgid "Skip Trash"
 msgstr ""
 
+#: setup.php:191
 msgid "Bypass Trash"
 msgstr ""
 
+#: setup.php:192
 msgid "Permanent Delete"
 msgstr ""
 
+#: setup.php:193
 msgid "Permanently remove the selected message(s)"
 msgstr ""
 
+#: setup.php:194
 msgid "Purge the selected message(s)"
 msgstr ""
 
+#: setup.php:195
 msgid "Delete the selected message(s), bypassing the trash"
 msgstr ""
 
+#: setup.php:196
 msgid "Delete the selected message(s), skipping the trash"
 msgstr ""
 
-msgid "When enabled, the Delete button will permanently remove the selected message(s)"
+#: setup.php:197
+msgid ""
+"When enabled, the Delete button will permanently remove the selected message"
+"(s)"
 msgstr ""
 
-msgid "When enabled, the Delete button will permanently remove the selected message(s), skipping the trash"
+#: setup.php:198
+msgid ""
+"When enabled, the Delete button will permanently remove the selected message"
+"(s), skipping the trash"
 msgstr ""
 
-msgid "When enabled, the Delete button will permanently remove the selected message(s), bypassing the trash"
+#: setup.php:199
+msgid ""
+"When enabled, the Delete button will permanently remove the selected message"
+"(s), bypassing the trash"
 msgstr ""
 
+#: setup.php:200
 msgid "When enabled, the Delete button will purge the selected message(s)"
 msgstr ""
 
-msgid "When enabled, the Delete button will purge the selected message(s), skipping the trash"
+#: setup.php:201
+msgid ""
+"When enabled, the Delete button will purge the selected message(s), skipping "
+"the trash"
 msgstr ""
 
-msgid "When enabled, the Delete button will purge the selected message(s), bypassing the trash"
+#: setup.php:202
+msgid ""
+"When enabled, the Delete button will purge the selected message(s), "
+"bypassing the trash"
 msgstr ""
 
-msgid "Wipe checkboxes on the message list page make the Delete button remove selected messages permanently."
+#: setup.php:203
+msgid ""
+"Wipe checkboxes on the message list page make the Delete button remove "
+"selected messages permanently."
 msgstr ""
 
-msgid "Purge checkboxes on the message list page make the Delete button remove selected messages permanently."
+#: setup.php:204
+msgid ""
+"Purge checkboxes on the message list page make the Delete button remove "
+"selected messages permanently."
 msgstr ""
 
-msgid "Skip Trash checkboxes on the message list page make the Delete button remove selected messages permanently."
+#: setup.php:205
+msgid ""
+"Skip Trash checkboxes on the message list page make the Delete button remove "
+"selected messages permanently."
 msgstr ""
 
-msgid "Bypass Trash checkboxes on the message list page make the Delete button remove selected messages permanently."
+#: setup.php:206
+msgid ""
+"Bypass Trash checkboxes on the message list page make the Delete button "
+"remove selected messages permanently."
 msgstr ""
 
-msgid "Permanent Delete checkboxes on the message list page make the Delete button remove selected messages permanently."
+#: setup.php:207
+msgid ""
+"Permanent Delete checkboxes on the message list page make the Delete button "
+"remove selected messages permanently."
 msgstr ""
 
-msgid "Wipe buttons on the message list page remove the selected messages from the folder permanently."
+#: setup.php:208
+msgid ""
+"Wipe buttons on the message list page remove the selected messages from the "
+"folder permanently."
 msgstr ""
 
-msgid "Purge buttons on the message list page remove the selected messages from the folder permanently."
+#: setup.php:209
+msgid ""
+"Purge buttons on the message list page remove the selected messages from the "
+"folder permanently."
 msgstr ""
 
-msgid "Skip Trash buttons on the message list page remove the selected messages from the folder permanently."
+#: setup.php:210
+msgid ""
+"Skip Trash buttons on the message list page remove the selected messages "
+"from the folder permanently."
 msgstr ""
 
-msgid "Bypass Trash buttons on the message list page remove the selected messages from the folder permanently."
+#: setup.php:211
+msgid ""
+"Bypass Trash buttons on the message list page remove the selected messages "
+"from the folder permanently."
 msgstr ""
 
-msgid "Permanent Delete buttons on the message list page remove the selected messages from the folder permanently."
+#: setup.php:212
+msgid ""
+"Permanent Delete buttons on the message list page remove the selected "
+"messages from the folder permanently."
 msgstr ""
 
+#: templates/default/bypass_trash_options.tpl:49
 msgid "Bypass Trash Button/Checkbox"
 msgstr ""
 
+#: templates/default/bypass_trash_options.tpl:51
 msgid "Bypass Trash Checkbox"
 msgstr ""
 
+#: templates/default/bypass_trash_options.tpl:53
 msgid "Bypass Trash Button"
 msgstr ""
 
+#: templates/default/bypass_trash_options.tpl:99
+#: templates/default/bypass_trash_options.tpl:143
 msgid "Toggle Special Folders"
 msgstr ""
 
+#: templates/default/bypass_trash_options.tpl:102
+#: templates/default/bypass_trash_options.tpl:146
 msgid "Toggle All"
 msgstr ""
 
+#: templates/default/bypass_trash_options.tpl:158
 msgid "Save"
 msgstr ""
