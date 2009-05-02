@@ -2,15 +2,15 @@
 # Copyright (c) 1999-2009 The SquirrelMail Project Team
 # This file is distributed under the same license as the SquirrelMail package.
 # Kaspars Namnieks <kasparsn@rozalinde.lv>, 2006.
-# Ivars Strazdiņš <ivars.strazdins@gmail.com>, 2008.
-# $Id: squirrelmail.pot 13149 2008-05-16 04:42:43Z jervfors $
+# Ivars Strazdiņš <ivars.strazdins@gmail.com>, 2008-2009.
+# $Id: squirrelmail.pot 13560 2009-04-17 14:16:04Z jervfors $
 msgid ""
 msgstr ""
 "Project-Id-Version: SquirrelMail HEAD\n"
 "Report-Msgid-Bugs-To: SquirrelMail Internationalization <squirrelmail-"
 "i18n@lists.sourceforge.net>\n"
-"POT-Creation-Date: 2008-05-16 06:41+0200\n"
-"PO-Revision-Date: 2008-06-17 13:06+0300\n"
+"POT-Creation-Date: 2009-04-17 14:34+0200\n"
+"PO-Revision-Date: 2009-04-27 11:49+0300\n"
 "Last-Translator: Ivars Strazdiņš <ivars.strazdins@gmail.com>\n"
 "Language-Team: Latvian <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -450,7 +450,7 @@ msgstr "SquirrelMail projekta komanda"
 
 #, php-format
 msgid "%s Login"
-msgstr "%s Pieteikšanās"
+msgstr "Pieteikšanās %s"
 
 msgid "Name:"
 msgstr "Lietotāja vārds:"
@@ -1866,15 +1866,6 @@ msgstr "Lietot parakstu"
 msgid "Prefix Signature with '-- ' Line"
 msgstr "Sākt parakstu ar '--' atdalošo līniju"
 
-msgid "Take Address"
-msgstr "Paņemt adresi"
-
-msgid "Address Book Take:"
-msgstr "Paņemt no adrešu grāmatas:"
-
-msgid "Try to verify addresses"
-msgstr "Mēģināt pārbaudīt adreses"
-
 msgid "Config File Version"
 msgstr "Konfigurācijas datnes versija"
 
@@ -2964,7 +2955,7 @@ msgstr "Savācu UIDL...."
 msgid "Server does not support UIDL."
 msgstr "Serveris neatbalsta IUDL."
 
-msgid "Leaving mail on server..."
+msgid "Leaving messages on server..."
 msgstr "Atstāju ziņojumus uz servera..."
 
 msgid "Deleting messages from server..."
@@ -3263,11 +3254,9 @@ msgstr ""
 msgid "%s New Messages"
 msgstr "%s jauni ziņojumi"
 
-#, fuzzy, php-format
+#, php-format
 msgid "%s New Message"
-msgid_plural "%s New Messages"
-msgstr[0] "%s jauns ziņojums"
-msgstr[1] "%s jauns ziņojums"
+msgstr "%s jauns ziņojums"
 
 msgid "Test Sound"
 msgstr "Izmēģināt skaņu"
@@ -4093,7 +4082,7 @@ msgstr "Arābu"
 
 #, php-format
 msgid "About SquirrelMail %s"
-msgstr "Par SquirrelMail versiju %s"
+msgstr "Par Squirrelmail versiju %s"
 
 msgid ""
 "SquirrelMail is the name of the program that provides access to your email "
@@ -4162,6 +4151,10 @@ msgstr "Saņemts"
 msgid "Compose Preferences"
 msgstr "Ziņojuma sastādīšanas iestatījumi"
 
+#, fuzzy
+msgid "Accessibility Preferences"
+msgstr "Izskata iestatījumi"
+
 #, php-format
 msgid "Folder list should automatically %srefresh%s."
 msgstr ""
@@ -4173,6 +4166,9 @@ msgstr ""
 msgid ""
 "Control the behaviour and layout of writing new mail messages, replying to "
 "and forwarding messages."
+msgstr ""
+
+msgid "You can configure features that improve interface usability."
 msgstr ""
 
 #, php-format
@@ -4380,6 +4376,10 @@ msgstr ""
 msgid "Personal Address Book"
 msgstr "personiskajai adrešu grāmatai"
 
+#, fuzzy, php-format
+msgid "Unknown field name: %s"
+msgstr "Nezināma darbība: %s"
+
 msgid "PHP install does not have LDAP support."
 msgstr ""
 
@@ -4433,6 +4433,9 @@ msgstr ""
 msgid "%s should be writable by user %s."
 msgstr "%s jābūt rakstīšanas tiesībām lietotājam %s"
 
+msgid "Illegal filesystem access was requested"
+msgstr ""
+
 #, fuzzy
 msgid "Illegal folder name."
 msgstr "Jaunais mapes nosaukums nav derīgs."
@@ -4452,9 +4455,6 @@ msgstr "Nav izvēlēta mape dzēšanai. Lūdzu, izvēlieties mapi."
 #, fuzzy
 msgid "You have not selected a folder to unsubscribe. Please do so."
 msgstr "Nav izvēlēta mape dzēšanai. Lūdzu, izvēlieties mapi."
-
-msgid "Illegal filesystem access was requested"
-msgstr ""
 
 #, fuzzy
 msgid "Possible reason:"
@@ -4505,11 +4505,11 @@ msgid "Unknown recipient"
 msgstr "Nezināma kļūda"
 
 #, fuzzy
-msgid "Unflag"
+msgid "Flag"
 msgstr "Ka_rodziņš:"
 
 #, fuzzy
-msgid "Flag"
+msgid "Unflag"
 msgstr "Ka_rodziņš:"
 
 #, fuzzy
@@ -4594,6 +4594,66 @@ msgid "IMAP server closed the connection."
 msgstr "KĻŪDA: IMAP serveris ir aizvēris sesiju."
 
 #, fuzzy
+msgid "Not used"
+msgstr "Piezīme"
+
+msgid "Access Keys For Top Menu (All Screens)"
+msgstr ""
+
+msgid "Access Keys For Message List Screen"
+msgstr ""
+
+#, fuzzy
+msgid "Show All/Paginate"
+msgstr "Numurēt lappuses"
+
+#, fuzzy
+msgid "Thread View/Unthreaded View"
+msgstr "Dokumenta skats"
+
+#, fuzzy
+msgid "Move To"
+msgstr "Pārvietot uz:"
+
+#, fuzzy
+msgid "Toggle Selected"
+msgstr "Nodzēst izvēlēto"
+
+msgid "Access Keys For Read Message Screen"
+msgstr ""
+
+msgid "As Attachment"
+msgstr "Kā pielikumu"
+
+msgid "Access Keys For Compose Screen"
+msgstr ""
+
+msgid "Browse"
+msgstr ""
+
+#, fuzzy
+msgid "Attach"
+msgstr "Pielikumi:"
+
+#, fuzzy
+msgid "Delete Selected Attachments"
+msgstr "Nodzēst izvēlētos pielikumus"
+
+msgid "Access Keys For Folder List Screen"
+msgstr ""
+
+#, fuzzy
+msgid "Refresh/Check Mail"
+msgstr "Pārbaudīt ziņojumus"
+
+#, fuzzy
+msgid "Purge Trash"
+msgstr "Iztīrīt dzēstos ziņojumus"
+
+msgid "Access Keys For Options Screen"
+msgstr ""
+
+#, fuzzy
 msgid "General Message Composition"
 msgstr "<b>Ārpus biroja ziņojums:</b>"
 
@@ -4650,6 +4710,9 @@ msgstr "<b>Ārpus biroja ziņojums:</b>"
 msgid "Use Compact Page Selector"
 msgstr "Iestatīt lappušu izvēli"
 
+msgid "Show Names Instead of Email Addresses"
+msgstr ""
+
 msgid "Custom Date Format"
 msgstr ""
 
@@ -4666,6 +4729,14 @@ msgstr ""
 #, fuzzy
 msgid "Show 'Delete &amp; Prev/Next' Links"
 msgstr "Nodzēst &amp; iepr."
+
+#, fuzzy
+msgid "Address Book Display Options"
+msgstr "Adrešu grāmatas formāts"
+
+#, fuzzy
+msgid "Number of Addresses per Page"
+msgstr "Ziņojumu skaits lappusē"
 
 #, fuzzy
 msgid "Translate Special Folders"
@@ -4687,10 +4758,6 @@ msgstr "_Parādīt tikai mapes uz, kurām esmu parakstījies"
 
 msgid "XP"
 msgstr ""
-
-#, fuzzy
-msgid "Address Book Take"
-msgstr "Paņemt no adrešu grāmatas:"
 
 msgid "IMAP Connection Security"
 msgstr ""
@@ -5226,10 +5293,38 @@ msgstr ""
 msgid "Use StartTLS"
 msgstr ""
 
+#, fuzzy
+msgid "View Message Details"
+msgstr "Rādīt ziņojuma detaļas"
+
+#, fuzzy
+msgid "New Mail Options"
+msgstr "Jauna ziņojuma iestatījumi"
+
 msgid ""
-"The NewMail plugin will follow the Folder Preferences option &quot;Enable "
-"Unread Message Notification&quot;"
+"Based on the Folder Preferences option &quot;Enable Unread Message "
+"Notification&quot;, you can be notified when new messages arrive in your "
+"account."
 msgstr ""
+
+#, fuzzy, php-format
+msgid ""
+"Selecting the %s option will enable the showing of a popup window when "
+"unseen mail is in one of your folders (requires JavaScript)."
+msgstr ""
+"Ja jūsu mapēs būs nelasīti ziņojumi, Izvēloties %s uzstādījumu, parādīsies "
+"uznirstošs logs (pieprasa JavaScript)."
+
+#, fuzzy, php-format
+msgid ""
+"Selecting the %s option will change the browser title bar to let you know "
+"when you have new mail (requires JavaScript and may only work in some "
+"browsers). This will always tell you if you have new mail, even if you have %"
+"s enabled."
+msgstr ""
+"Iestatījot %s, dažas pārlūkprogrammas mainīs virsrakstu, ļaujot jums "
+"pamanīt, ka pienācis jauns ziņojums (pieprasa Javascript). Tas vienmēr "
+"parādīs, ka pienācis jauns ziņojums, pat ja %s būs iestatīts."
 
 #, fuzzy
 msgid "Follow folder preferences"
@@ -5283,8 +5378,8 @@ msgid "There are some restrictions in Sent Subfolder options."
 msgstr ""
 
 #, fuzzy
-msgid "Sent Subfolders plugin is misconfigured."
-msgstr "SquirrelSpell ir konfigurēts kļūdaini."
+msgid "Sent subfolders options are misconfigured."
+msgstr "Nosūtnes apakšmapes iestatījumi"
 
 msgid "Save emails submitted to SpamCop:"
 msgstr ""
@@ -5369,12 +5464,8 @@ msgid "Address book is empty"
 msgstr "Adrešu grāmata ir tikai lasīšanas režīmā"
 
 #, fuzzy
-msgid "Edit Selected"
-msgstr "Labot izvēlēto"
-
-#, fuzzy
-msgid "Compose to Selected"
-msgstr "Jauns ziņojums izvēlētajam"
+msgid "Compose To"
+msgstr "Rakstīt jaunu"
 
 #, fuzzy
 msgid "Address book search"
@@ -5383,10 +5474,6 @@ msgstr "Meklēt adrešu grāmatā"
 #, fuzzy
 msgid "New attachment"
 msgstr "Kā pielikumu"
-
-#, fuzzy
-msgid "Attach"
-msgstr "Pielikumi:"
 
 msgid "Max."
 msgstr ""
@@ -5415,6 +5502,10 @@ msgstr "Nevar atteikt abonēšanu - nav atrasta neviena mape!"
 
 msgid "No folders were found to subscribe to."
 msgstr "Nevar abonēt - nav atrasta neviena mape!"
+
+#, fuzzy
+msgid "Check Mail"
+msgstr "Pārbaudīt ziņojumus"
 
 #, fuzzy
 msgid "Message Flags"
@@ -5463,13 +5554,6 @@ msgstr "Nosūtīt ziņojuma lasīšanas apstiprinājumu"
 msgid "Viewing HTML formatted email"
 msgstr ""
 
-msgid "As Attachment"
-msgstr "Kā pielikumu"
-
-#, fuzzy
-msgid "Move To"
-msgstr "Pārvietot uz:"
-
 #, fuzzy
 msgid "Delete &amp; Previous"
 msgstr "Nodzēst &amp; iepr."
@@ -5511,16 +5595,12 @@ msgid "Folder List"
 msgstr "atjaunot mapju sarasktu"
 
 #, fuzzy
-msgid "Open all"
+msgid "Open All"
 msgstr "Nevarēja atvērt"
 
 #, fuzzy
-msgid "Close all"
-msgstr "Aizvēršanas datums"
-
-#, fuzzy
-msgid "Purge trash"
-msgstr "Iztīrīt dzēstos ziņojumus"
+msgid "Close All"
+msgstr "Aizvērt"
 
 #, fuzzy
 msgid "The SquirrelMail logo"
@@ -5563,6 +5643,15 @@ msgstr "Nepiegādāto ziņojumu sākumi"
 
 msgid "This image has been removed for security reasons"
 msgstr "Drošības dēļ attēls tika aizvākts "
+
+#~ msgid "Take Address"
+#~ msgstr "Paņemt adresi"
+
+#~ msgid "Address Book Take:"
+#~ msgstr "Paņemt no adrešu grāmatas:"
+
+#~ msgid "Try to verify addresses"
+#~ msgstr "Mēģināt pārbaudīt adreses"
 
 #~ msgid "Draft Saved"
 #~ msgstr "Melnraksts saglabāts"
@@ -5715,6 +5804,9 @@ msgstr "Drošības dēļ attēls tika aizvākts "
 
 #~ msgid "Open Date"
 #~ msgstr "Atvēršanas datums"
+
+#~ msgid "Close Date"
+#~ msgstr "Aizvēršanas datums"
 
 #~ msgid "Order:"
 #~ msgstr "Kārtība:"
