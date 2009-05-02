@@ -9,10 +9,10 @@ fi
 # html header
 echo "<html>" > ${SM_LOCALES_PATH}/status.tmp
 echo "<head>" >> ${SM_LOCALES_PATH}/status.tmp
-echo "    <title>Squirrelmail i18n status report</title>" >> ${SM_LOCALES_PATH}/status.tmp
+echo "    <title>SquirrelMail i18n status report</title>" >> ${SM_LOCALES_PATH}/status.tmp
 echo "    </head>" >> ${SM_LOCALES_PATH}/status.tmp
 echo "<body>" >> ${SM_LOCALES_PATH}/status.tmp
-echo "<h1>Squirrelmail i18n status report</h1>" >> ${SM_LOCALES_PATH}/status.tmp
+echo "<h1>SquirrelMail i18n status report</h1>" >> ${SM_LOCALES_PATH}/status.tmp
 echo "<pre>" >> ${SM_LOCALES_PATH}/status.tmp
 cat  ${SM_LOCALES_PATH}/version >> ${SM_LOCALES_PATH}/status.tmp
 echo "------------------------------" >> ${SM_LOCALES_PATH}/status.tmp
