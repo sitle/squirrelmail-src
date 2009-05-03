@@ -412,6 +412,7 @@ if ($action == 'edit' || $action == 'add') {
         addInput('newcolor_input',
             (($selected_input && isset($theid)) ? $message_highlight_list[$theid]['color'] : ''),
             '7');
+    // i18n: This is an example on how to write a color in RGB.
     echo _("Ex: 63aa7f")."<br />\n";
     echo "      </td>\n";
     echo "   </tr>\n";
