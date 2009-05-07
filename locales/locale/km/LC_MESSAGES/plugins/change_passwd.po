@@ -1,0 +1,149 @@
+# Khmer (km) change_passwd Translation
+# Auk Piseth <piseth_dv@khmeros.info>, 2008.
+# Khoem Sokhem <khoemsokhem@khmeros.info>, 2009.
+# Copyright (c) 2008-2009 KhmerOS Project
+# Copyright (c) 1999-2009 The SquirrelMail Project Team
+msgid ""
+msgstr ""
+"Project-Id-Version: change_passwd\n"
+"POT-Creation-Date: 2004-04-25 11:23-0700\n"
+"PO-Revision-Date: 2009-04-24 09:12+0700\n"
+"Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
+"Language-Team: Khmer <en@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: functions.php:39 options.php:274
+msgid "Change Password"
+msgstr "ផ្លាស់ប្ដូរ​ពាក្យ​សម្ងាត់"
+
+#: functions.php:41
+msgid "Use this to change your email password."
+msgstr "ប្រើ​វា ដើម្បី​ផ្លាស់ប្ដូរ​ពាក្យសម្ងាត់​អ៊ីមែល​របស់​អ្នក ។"
+
+#: options.php:80
+msgid "Could not determine your username."
+msgstr "មិនអាច​កំណត់​ឈ្មោះ​អ្នកប្រើ​របស់​អ្នក​បាន​ទេ ។"
+
+#: options.php:81 options.php:245
+msgid "Please contact your system administrator."
+msgstr "សូម​ទាក់ទង​អ្នក​គ្រប់គ្រង​ប្រព័ន្ធ​របស់​អ្នក ។"
+
+#: options.php:86
+msgid "Please enter your current password."
+msgstr "សូម​បញ្ចូល​ពាក្យ​សម្ងាត់​បច្ចុប្បន្ន​របស់​អ្នក​។"
+
+#: options.php:91
+msgid "Please enter your new password."
+msgstr "សូម​បញ្ចូល​ពាក្យ​សម្ងាត់​ថ្មី​របស់​អ្នក ។"
+
+#: options.php:96
+msgid "Please re-enter your new password."
+msgstr "សូម​បញ្ចូល​ពាក្យ​សម្ងាត់​ថ្មី​របស់​អ្នក​ម្ដងទៀត ។"
+
+#: options.php:105 options.php:293
+#, c-format
+msgid "Your new password must be at least %s characters long."
+msgstr "ពាក្យ​សម្ងាត់​ថ្មី​របស់​អ្នក​ត្រូវ​តែ​មាន​តួអក្សរ​យ៉ាងហោចណាស់ %s តួ ។"
+
+#: options.php:117
+msgid "The confirmation of your new password did not match."
+msgstr "ការ​អះអាង​ពាក្យ​សម្ងាត់​ថ្មី​របស់​អ្នក មិន​ត្រូវ​គ្នា​ទេ ។"
+
+#: options.php:142
+msgid "Your current password is not correct."
+msgstr "ពាក្យ​សម្ងាត់​បច្ចុប្បន្ន​របស់​អ្នក​មិន​ត្រឹមត្រូវ​ទេ ។"
+
+#: options.php:213
+msgid "Your password was changed successfully."
+msgstr "ពាក្យ​សម្ងាត់​របស់​អ្នក​ត្រូវបាន​ផ្លាស់ប្ដូរ​ដោយ​ជោគជ័យ ។"
+
+#: options.php:227
+msgid "The password was modified successfully"
+msgstr "ពាក្យ​សម្ងាត់​ត្រូវបាន​កែប្រែ​ដោយ​ជោគជ័យ"
+
+#: options.php:228
+msgid "Missing new password"
+msgstr "បាត់​ពាក្យ​សម្ងាត់​ថ្មី"
+
+#: options.php:229
+msgid "Missing current password"
+msgstr "បាត់​ពាក្យ​សម្ងាត់​​បច្ចុប្បន្ន"
+
+#: options.php:230
+#, c-format
+msgid "The password for this user cannot be changed due to security constraints: %s"
+msgstr "ពាក្យ​សម្ងាត់​សម្រាប់​អ្នកប្រើ​នេះ មិន​ត្រូវបាន​ផ្លាស់ប្ដូរ​ទេ ដោយសារ​តែ​កម្រិត​សុវត្ថិភាព ៖ %s"
+
+#: options.php:231
+msgid "The new password is equal to the current password. Choose another password."
+msgstr "ពាក្យ​សម្ងាត់​ថ្មី គឺ​ដូច​គ្នា​នឹង​ពាក្យ​សម្ងាត់​បច្ចុប្បន្ន ។ ជ្រើស​ពាក្យ​សម្ងាត់​ផ្សេង ។"
+
+#: options.php:232 options.php:233
+msgid "Could not read password file"
+msgstr "មិនអាច​អាន​ឯកសារ​ពាក្យ​សម្ងាត់​បាន​ទេ"
+
+#: options.php:234
+msgid "Temporary file could not be opened"
+msgstr "មិនអាច​បើក​ឯកសារ​បណ្ដោះ​អាសន្ន​បានទេ"
+
+#: options.php:235
+msgid "Current password is incorrect"
+msgstr "ពាក្យ​សម្ងាត់​បច្ចុប្បន្ន គឺ​មិន​ត្រឹមត្រូវទេ"
+
+#: options.php:236
+#, c-format
+msgid "User does not exist: %s"
+msgstr "អ្នកប្រើ​មិនមាន ៖ %s"
+
+#: options.php:237
+msgid "Virtual memory exhausted"
+msgstr "អស់​សតិនិម្មិត"
+
+#: options.php:238
+msgid "Missing username"
+msgstr "បាត់​ឈ្មោះ​អ្នកប្រើ"
+
+#: options.php:244
+msgid "An error has occurred while attempting to change your password."
+msgstr "មាន​កំហុស នៅពេល​ផ្លាស់ប្ដូរ​ពាក្យ​សម្ងាត់​របស់​អ្នក ។"
+
+#: options.php:253
+msgid "Command output:"
+msgstr "លទ្ធផល​ពាក្យ​បញ្ជា ៖"
+
+#: options.php:258
+msgid "Return code:"
+msgstr "ត្រឡប់​កូដ ៖"
+
+#: options.php:284
+msgid "Please read the following instructions before editing your password:"
+msgstr "សូម​អាន​សេចក្ដី​ណែនាំ​ខាងក្រោម មុនពេល​កែសម្រួល​ពាក្យ​សម្ងាត់ ៖"
+
+#: options.php:287
+msgid "You may use letters, numbers, and other special characters on your keyboard."
+msgstr "អ្នក​អាច​ប្រើ​អក្សរ លេខ និង​តួអក្សរ​ពិសេស​ផ្សេងទៀត​នៅលើ​ក្ដារចុច​របស់​អ្នក ។"
+
+#: options.php:289
+msgid "Passwords are case-sensititve, so an 'A' is not the same as an 'a'."
+msgstr "ពាក្យ​សម្ងាត់ គឺ​ប្រកាន់​តួអក្សរ​តូចធំ ដូច្នេះ 'A' ធំ គឺ​មិន​ដូច​គ្នា​នឹង 'a' តូច​ទេ ។"
+
+#: options.php:310
+msgid "Your user name:"
+msgstr "ឈ្មោះ​អ្នកប្រើ​របស់​អ្នក ៖"
+
+#: options.php:317
+msgid "Current password:"
+msgstr "ពាក្យ​សម្ងាត់​បច្ចុប្បន្ន ៖"
+
+#: options.php:322
+msgid "New password:"
+msgstr "ពាក្យ​សម្ងាត់​ថ្មី ៖"
+
+#: options.php:327
+msgid "Confirm new password:"
+msgstr "អះអាង​ពាក្យ​សម្ងាត់​ថ្មី ៖"
+
