@@ -1,0 +1,2367 @@
+# Khmer (km) gpg Translation
+# Auk Piseth <piseth_dv@khmeros.info>, 2008.
+# Khoem Sokhem <khoemsokhem@khmeros.info>, 2009.
+# Copyright (c) 2008-2009 KhmerOS Project
+# Copyright (c) 1999-2009 The SquirrelMail Project Team
+msgid ""
+msgstr ""
+"Project-Id-Version: gpg\n"
+"Report-Msgid-Bugs-To: <http://www.braverock.com/bugzilla/index.cgi>\n"
+"POT-Creation-Date: 2007-10-27 18:04+0200\n"
+"PO-Revision-Date: 2009-04-24 09:14+0700\n"
+"Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
+"Language-Team: Khmer <en@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: gpg.php:830 gpg_encrypt_functions.php:172
+msgid ""
+"GPG Plugin: You must specify a signing key in the Options screen to sign "
+"messages."
+msgstr "កម្មវិធី​ជំនួយ GPG ៖ អ្នក​ត្រូវ​តែ​បញ្ជាក់​សោ​​ហត្ថលេខា​នៅ​ក្នុង​អេក្រង់​ជម្រើស ដើម្បី​ចុះហត្ថលេខា​សារ ។"
+
+#: gpg.php:1065 gpg_key_functions.php:874 gpg_key_functions.php:921
+msgid ""
+"Keys did not generate.  Please contact your system administrator for "
+"assistance debugging this."
+msgstr "សោ​មិន​បាន​បង្កើត​ទេ ។ សូម​ទាក់ទង​អ្នក​គ្រប់គ្រង​ប្រព័ន្ធ​របស់​អ្នក សម្រាប់​ជំនួយ​ក្នុង​ការ​បំបាត់​កំហុស​នេះ ។"
+
+#: gpg.php:1290
+msgid "Key with Fingerprint "
+msgstr "សោ មាន​ស្នាម​ម្រាមដៃ "
+
+#: gpg.php:1290
+msgid " has no secret key associated with it."
+msgstr " គ្មាន​សោ​សម្ងាត់​ដែល​ទាក់ទង​នឹង​វា​ទេ ។"
+
+#. if not correct, return an error
+#: gpg.php:1318
+msgid "Bad Passphrase"
+msgstr "ឃ្លា​សម្ងាត់​មិន​ល្អ"
+
+#: gpg.php:1923 gpg.php:1928
+msgid "No Key Found"
+msgstr "រក​សោ​មិន​ឃើញ​ទេ"
+
+#: gpg.php:2358
+msgid ""
+"Problem with interaction with GPG, probably trying to execute a command with "
+"no pipes that requires pipes for interaction"
+msgstr "បញ្ហា​ទាក់ទង​នឹង​អន្តរអំពើ GPG ដែល​ប្រហែល ជា​ត្រូវ​ប្រតិបត្តិ​ពាក្យ​បញ្ជា​ដែល​គ្មាន​ផ្លូវ ដែល​តម្រូវ​ឲ្យ​មាន​ផ្លូវ​សម្រាប់​អន្តរ​កម្ម"
+
+#: gpg.php:2373 gpg.php:2490 gpg_functions.php:1020 gpg_functions.php:1137
+msgid "Problem with command syntax. Check Debug Output"
+msgstr "មាន​បញ្ហា​ទាក់ទង​នឹង​វាក្យ​សម្ព័ន្ធ​ពាក្យ​បញ្ជា ។ ពិនិត្យ​មើល​លទ្ធផល​បំបាត់​កំហុស"
+
+#: gpg.php:2443 gpg_functions.php:1090
+msgid "WARNING: This key is not certified with a trusted signature!"
+msgstr "ព្រមាន ៖ សោ​នេះ មិន​ត្រូវបាន​បញ្ជាក់​ជាមួយ​ហត្ថលេខា​ដែល​ទុកចិត្ត​ទេ !"
+
+#: gpg.php:2444 gpg.php:2566 gpg.php:2573 gpg_functions.php:1091
+#: gpg_functions.php:1213 gpg_functions.php:1220
+msgid "There is no indication that this key really belongs to the owner"
+msgstr "គ្មាន​ការ​ចង្អុល​បង្ហាញ​ថា សោ​នេះ​គឺ​ពិត​ជា​ជា​របស់​ម្ចាស់​នោះ​ទេ"
+
+#: gpg.php:2567 gpg.php:2574 gpg_functions.php:1214 gpg_functions.php:1221
+msgid ""
+"This error usually occurs because you have not set a trusted key, or because "
+"you have not signed the key you are trying to encrypt to."
+msgstr "កំហុស​នេះ តែង​តែ​កើត​ឡើង ព្រោះ​អ្នក​មិន​បាន​កំណត់​សោ​ដែល​ទុកចិត្ត ឬ​ដោយ​សារ​តែ​អ្នក​មិន​បាន​ចុះហត្ថលេខា​ដែល​អ្នក​ចង់​អ៊ិនគ្រីប ។"
+
+#: gpg.php:2895
+msgid ""
+"proc_open is not available in this environment.  PHP 4.3 or greater is "
+"require for this functionality."
+msgstr "មិនមាន proc_open នៅ​ក្នុង​បរិស្ថាន​នេះ​ទេ ។ PHP កំណែ ៤.៣ ឬ​​ថ្មី​ជាង​នេះ គឺ​តម្រូវ​ឲ្យ​មាន​សម្រាប់​មុខងារ​នេះ ។"
+
+#: gpg_decrypt_attach.php:176 gpg_decrypt_attach.php:446
+#: gpg_hook_functions.php:219
+msgid "Could not write to temporary file: "
+msgstr "មិនអាច​សរសេរ​ឯកសារ​បណ្ដោះ​អាសន្ន​ទេ ៖ "
+
+#: gpg_decrypt_attach.php:273 modules/adduid.php:96 modules/genkey.php:285
+#: modules/keygen.php:172 modules/keysign.php:107 modules/passpop.mod:151
+msgid "Enter Passphrase"
+msgstr "បញ្ចូល​ឃ្លា​សម្ងាត់"
+
+#: gpg_decrypt_attach.php:307 gpg_view_verify_text.php:59
+msgid "Viewing signature verification output for attachment: "
+msgstr "មើល​លទ្ធផល​បញ្ជាក់​ហត្ថលេខា​សម្រាប់​ឯកសារ​ភ្ជាប់ ៖ "
+
+#: gpg_decrypt_attach.php:312 gpg_encrypt.php:196
+msgid "Warnings:"
+msgstr "ព្រមាន ៖"
+
+#: gpg_decrypt_attach.php:326
+msgid "The signature could not be verified due to errors."
+msgstr "ហត្ថលេខា​​មិនអាច​បញ្ជាក់​បាន​ទេ ដោយសារ​មាន​កំហុស ។"
+
+#: gpg_decrypt_attach.php:327 gpg_encrypt.php:208
+msgid "Errors:"
+msgstr "កំហុស ៖"
+
+#: gpg_decrypt_attach.php:333
+msgid "This encrypted attachment is not signed."
+msgstr "ឯកសារ​ភ្ជាប់​ដែល​បាន​អ៊ិនគ្រីប​នេះ មិន​ត្រូវបាន​ចុះ​ហត្ថលេខា​ទេ ។"
+
+#: gpg_decrypt_attach.php:339 gpg_encrypt.php:234
+msgid "Info:"
+msgstr "ព័ត៌មាន ៖"
+
+#: gpg_decrypt_attach.php:425
+msgid "Error: No filename found to save attachment"
+msgstr "កំហុស ៖ រក​មិនឃើញ​ឈ្មោះ​ឯកសារ​ដើម្បី​រក្សាទុក​ឯកសារ​ភ្ជាប់​ទេ"
+
+#: gpg_encrypt.php:108
+msgid "Your Request to Encrypt on Send encountered a problem, details below:"
+msgstr "សំណើរ​របស់​អ្នក​ដែល​ត្រូវ​អ៊ិនគ្រីប​លើ​ការ​ផ្ញើ មាន​បញ្ហា សេចក្ដី​លម្អិត​នៅ​ខាងក្រោម ៖"
+
+#: gpg_encrypt.php:221
+msgid ""
+"You do not have a public key for the following email addresses and so your "
+"message will NOT be readable by these recipients."
+msgstr "អ្នក​មិន​មាន​សោ​សាធារណៈ​សម្រាប់​អាសយដ្ឋាន​អ៊ីមែល​ខាងក្រោម ដូច្នេះ​សារ​របស់​អ្នក​នឹង​មិន​អាច​អាន​បាន​ដោយ​អ្នក​ទទួល​ទាំងនេះ​​ទេ ។"
+
+#: gpg_encrypt.php:222
+msgid "Here are the keys which GPG reported as missing:"
+msgstr "នេះ​គឺ​ជា​សោ​ដែល GPG បាន​រាយការណ៍​ថា​បាត់ ៖"
+
+#: gpg_encrypt.php:332
+msgid "Unable to rename temporary file"
+msgstr "មិនអាច​ប្ដូរ​ឈ្មោះ​ឯកសារ​បណ្ដោះ​អាសន្ន​បានទេ"
+
+#: gpg_encrypt.php:344
+msgid "Unable to rename encrypted file"
+msgstr "មិនអាច​ប្ដូរ​ឈ្មោះ​ឯកសារ​ដែល​បាន​អ៊ិនគ្រីប​បានទេ"
+
+#: gpg_encrypt.php:375
+msgid "GPG Plugin: Plain-text Attachment file not deleted due to error in Encrypt."
+msgstr "កម្មវិធី​ជំនួយ GPG ៖ ឯកសារ​ភ្ជាប់​អត្ថបទ​ធម្មតា មិន​បាន​លុប​ទេ ដោយ​សារ​មាន​កំហុស​នៅ​ក្នុង​ការ​អ៊ិនគ្រីប ។"
+
+#: gpg_encrypt.php:379
+msgid "Unable to rename temporary file after failed encrypt"
+msgstr "មិន​អាច​ប្ដូរ​ឈ្មោះ​ឯកសារ​បណ្ដោះ​អាសន្ន​បានទេ​បន្ទាប់​ពី​បរាជ័យ​ក្នុង​ការ​អ៊ិនគ្រីប"
+
+#: gpg_encrypt_functions.php:64
+msgid "The attachment file was not found"
+msgstr "ឯកសារ​ភ្ជាប់​រក​មិន​ឃើញ​ទេ"
+
+#: gpg_encrypt_functions.php:70
+msgid ""
+"GPG Plugin: Your recipient list is empty. After parsing, there are no valid "
+"recipients."
+msgstr "កម្មវិធី​ជំនួយ GPG ៖ បញ្ជី​អ្នក​ទទួល​របស់​អ្នក​គឺ​ទទេ ។ បន្ទាប់​ពី​ញែក មិន​មាន​អ្នក​ទទួល​ដែល​ត្រឹមត្រូវ​ទេ ។"
+
+#: gpg_encrypt_functions.php:85 gpg_encrypt_functions.php:325
+#: gpg_key_functions.php:861 modules/changepass.php:28 modules/genkey.php:45
+#: modules/genkey_keygen.php:53
+msgid "You are not using a secure connection."
+msgstr "អ្នក​មិន​កំពុង​ប្រើ​ការ​តភ្ជាប់​ដែល​មាន​សុវត្ថិភាព​ទេ ។"
+
+#: gpg_encrypt_functions.php:85 gpg_encrypt_functions.php:325
+msgid "SSL connection required to use passphrase functions."
+msgstr "ការ​តភ្ជាប់ SSL តម្រូវ​ឲ្យ​ប្រើ​មុខងារ​ឃ្លា​សម្ងាត់ ។"
+
+#: gpg_encrypt_functions.php:107
+msgid "GPG Plugin: No Trusted Key Selected, but Use Trusted Key Feature Set."
+msgstr "កម្មវិធី​ជំនួយ GPG ៖ គ្មាន​សោ​ទុក​ចិត្ត​ដែល​បាន​ជ្រើស​ទេ ប៉ុន្តែ​ប្រើ​សំណុំ​លក្ខណៈ​ពិសេស​សោ​​ដែល​ទុកចិត្ត ។"
+
+#: gpg_encrypt_functions.php:108
+msgid "GPG Plugin: Check your preferences from the Trusted Key Screen in Options."
+msgstr "កម្មវិធី​ជំនួយ GPG ៖ ពិនិត្យ​មើល​ចំណង់ចំណូលចិត្ត​ពី​អេក្រង់​សោ​ដែល​ទុក​ចិត្ត​នៅ​ក្នុង​ជម្រើស ។"
+
+#: gpg_encrypt_functions.php:232
+msgid "GPG Plugin: No cyphertext was generated."
+msgstr "កម្មវិធី GPG ៖ គ្មាន cyphertext ដែល​បាន​បង្កើត​ទេ ។"
+
+#: gpg_encrypt_functions.php:238 gpg_encrypt_functions.php:418
+#: gpg_sign_functions.php:264 gpg_sign_functions.php:284
+msgid "GPG Plugin: gpg returned a non-clean return value of: "
+msgstr "កម្មវិធី​ជំនួយ GPG ៖ gpg បាន​ត្រឡប់​តម្លៃ​ត្រឡប់​មិន​ល្អ​នៃ ៖ "
+
+#. we should reopen the window or check for passphrase with javascript
+#. instead of just throwing an error here
+#: gpg_encrypt_functions.php:389
+msgid "You did not provide a passphrase!"
+msgstr "អ្នក​មិនបាន​ផ្ដល់​ឃ្លា​សម្ងាត់​ទេ !"
+
+#: gpg_functions.php:232
+msgid "Cute."
+msgstr "ស្អាត !"
+
+#. ===============================================================
+#: gpg_help.php:51 gpg_help.php:56 gpg_help_base.php:54 gpg_help_base.php:59
+#: setup.php:187 modules/options_main.mod:43
+msgid "GPG Plugin Help"
+msgstr "ជំនួយ​កម្មវិធី​ជំនួយ GPG"
+
+#: gpg_help.php:74 gpg_help_base.php:81
+msgid "Help file not found."
+msgstr "រក​មិនឃើញ​ឯកសារ​ជំនួយ​ទេ ។"
+
+#: gpg_help.php:75 gpg_help_base.php:82
+msgid "You searched for:"
+msgstr "អ្នក​បាន​ស្វែងរក ៖"
+
+#: gpg_help.php:86 modules/gpg_recipientlist.php:81
+#: modules/keyring_main.php:313
+msgid "Done"
+msgstr "ធ្វើ​រួច"
+
+#: gpg_help_base.php:66
+msgid "Table of Contents"
+msgstr "តារាង​មាតិកា"
+
+#: gpg_hook_functions.php:169
+msgid "GPG Key"
+msgstr "សោ GPG"
+
+#: gpg_hook_functions.php:258
+msgid "Decrypt Attachment"
+msgstr "ឌិគ្រីប​ឯកសារ​ភ្ជាប់"
+
+#: gpg_hook_functions.php:260
+msgid "Verify Signature"
+msgstr "អះអាង​ហត្ថលេខា"
+
+#: gpg_hook_functions.php:305
+msgid "Good Signature"
+msgstr "ហត្ថលេខា​ល្អ"
+
+#: gpg_hook_functions.php:307
+msgid "Bad Signature"
+msgstr "ហត្ថលេខា​មិន​ល្អ"
+
+#: gpg_hook_functions.php:313
+msgid "Signature verification process failed."
+msgstr "ដំណើរការ​បញ្ជាក់​ហត្ថលេខា​បាន​បរាជ័យ ។"
+
+#: gpg_hook_functions.php:416
+msgid "OpenPGP"
+msgstr "OpenPGP"
+
+#: gpg_hook_functions.php:419
+msgid "Add key"
+msgstr "បន្ថែម​សោ"
+
+#: gpg_hook_functions.php:557
+msgid "The System Administrator has disabled private key functions."
+msgstr "អ្នក​គ្រប់គ្រង​ប្រព័ន្ធ​បាន​បិទ​មុខងារ​សោ​សម្ងាត់ ។"
+
+#: gpg_hook_functions.php:565
+msgid "This message contains encrypted content."
+msgstr "សារ​នេះ មាន​មាតិកា​ដែល​បាន​អ៊ិនគ្រីប ។"
+
+#: gpg_hook_functions.php:567
+msgid "To decrypt this message inside Squirrelmail:"
+msgstr "ដើម្បី​ឌិគ្រីប​សារ​នេះ​នៅ​ក្នុង​ Squirrelmail ៖"
+
+#: gpg_hook_functions.php:570
+msgid "Setup the GPG Plugin with a secret key."
+msgstr "រៀបចំ​កម្មវិធី​ជំនួយ GPG ជាមួយ​នឹង​សោ​សម្ងាត់ ។"
+
+#: gpg_hook_functions.php:581 modules/gpg_err.php:12
+msgid "There was a problem with your request"
+msgstr "មាន​បញ្ហា​មួយ​ជាមួយ​សំណើរ​របស់​អ្នក"
+
+#: gpg_hook_functions.php:607
+msgid "Decrypt Message Now"
+msgstr "ឌិគ្រីប​សារ​ឥឡូវ​នេះ"
+
+#: gpg_hook_functions.php:657
+msgid "Import Key contained in this email now"
+msgstr "នាំចូល​សោ​ដែល​មាន​នៅ​ក្នុង​អ៊ីមែល​នេះ​នៅពេល​ឥឡូវ"
+
+#: gpg_hook_functions.php:685 gpg_hook_functions.php:862
+#: modules/gpgdecrypt.mod:598 modules/gpgdecrypt.mod:601
+#: modules/gpgdecrypt.mod:604
+msgid "Signature"
+msgstr "ហត្ថលេខា"
+
+#: gpg_hook_functions.php:716 gpg_hook_functions.php:722
+#: gpg_hook_functions.php:871 modules/gpgdecrypt.mod:604
+msgid "Unsigned"
+msgstr "មិន​បាន​ចុះ​ហត្ថលេខា"
+
+#: gpg_hook_functions.php:725
+msgid "Encrypted"
+msgstr "បាន​អ៊ិនគ្រីប"
+
+#: gpg_hook_functions.php:1056
+msgid "Problems with the cyphertext output:"
+msgstr "បញ្ហា​ដែល​មាន​លទ្ធផល​បង្ហាញ​ជា​អត្ថបទ​កូដ​សម្ងាត់ ៖"
+
+#: gpg_hook_functions.php:1082
+msgid "evil_muppets killed your encryption"
+msgstr "evil_muppet បាន​ផ្ដាច់​ការ​អ៊ិនគ្រីប​របស់​អ្នក"
+
+#: gpg_hook_functions.php:1132
+msgid ""
+"Some functions of the GPG Plugin require Javascript to be enabled in your "
+"browser.  Some functions may not work correctly without Javascript."
+msgstr "មុខងារ​កម្មវិធី​ជំនួយ GPG មួយ​ចំនួន​​ត្រូវការ Javascript ដើម្បី​បើក​ម្មវិធី​រុករក​របស់​អ្នក ។ មុខងារ​មួយ​ចំនួន​មិន​ដំណើរការ​ត្រឹមត្រូវ​ទេ បើ​គ្មាន Javascript ។"
+
+#: gpg_hook_functions.php:1139 modules/keyring_main.php:1056
+msgid "GPG Plugin Options"
+msgstr "ជម្រើស​កម្មវិធី​ជំនួយ"
+
+#: gpg_hook_functions.php:1141 setup.php:189 modules/options_main.mod:29
+msgid ""
+"The GPG Encryption Plugin will allow you to encrypt, sign, and decrypt "
+"messages in accordance with the OpenPGP standard for email security and "
+"authentication."
+msgstr "កម្មវិធី​ជំនួយ​ការ​អ៊ិនគ្រីប GPG នឹង​អនុញ្ញាត​ឲ្យ​អ្នក​អ៊ិនគ្រីប ចុះហត្ថលេខា និង​ឌិគ្រីប​សារ​ដើម្បី​អនុញ្ញាត​ជាមួយ​នឹង​ស្តង់ដារ OpenPGP សម្រាប់​សុវត្ថិភាព​អ៊ីមែល និង​ការ​ផ្ទៀងផ្ទាត់​ភាព​ត្រឹមត្រូវ ។"
+
+#: gpg_hook_functions.php:1272
+msgid "Encrypt Now"
+msgstr "អ៊ិនគ្រីប​ឥឡូវ"
+
+#: gpg_hook_functions.php:1338
+msgid "Encrypt&Sign Now"
+msgstr "អ៊ិនគ្រីប​ហត្ថលេខា​ឥឡូវ"
+
+#: gpg_hook_functions.php:1341
+msgid "Always Sign on Send"
+msgstr "តែងតែ​​ចុះហត្ថលេខា​នៅពេល​ផ្ញើ"
+
+#: gpg_hook_functions.php:1343
+msgid "Sign on Send"
+msgstr "ចុះហត្ថលេខា​នៅពេល​ផ្ញើ"
+
+#: gpg_hook_functions.php:1360
+msgid "Always Encrypt on Send"
+msgstr "តែងតែ​អ៊ិនគ្រីប​នៅ​ពេល​ផ្ញើ"
+
+#: gpg_hook_functions.php:1363
+msgid "Encrypt on Send"
+msgstr "អ៊ិនគ្រីប​នៅពេល​ផ្ញើ"
+
+#: gpg_key_functions.php:118 gpg_key_functions.php:574
+msgid "Unexpected Error."
+msgstr "កំហុស​មិន​បាន​រំពឹងទុក ។"
+
+#: gpg_key_functions.php:120
+msgid "Did not receive valid keyring_type in gpg_list_keys function."
+msgstr "មិនបានទទួល keyring_type ត្រឹមត្រូវ​នៅ​ក្នុង​មុខងារ gpg_list_keys ទេ ។"
+
+#: gpg_key_functions.php:121 gpg_key_functions.php:577
+msgid "Received"
+msgstr "បានទទួល"
+
+#: gpg_key_functions.php:121 gpg_key_functions.php:577
+msgid "Please Notify GPG Plugin Developers"
+msgstr "សូម​ជូន​ដំណឹង​ដល់​អ្នក​អភិវឌ្ឍ​​កម្មវិធី​ជំនួយ GPG"
+
+#: gpg_key_functions.php:340
+msgid "Using signing key:"
+msgstr "ប្រើ​សោ​ចុះហត្ថលេខា ៖"
+
+#: gpg_key_functions.php:344
+msgid "Your current signing key: "
+msgstr "សោ​ចុះហត្ថលេខា​បច្ចុប្បន្ន​របស់​អ្នក ៖ "
+
+#: gpg_key_functions.php:348 gpg_key_functions.php:361
+msgid "Key Details:"
+msgstr "សេចក្ដី​លម្អិត​របស់​សោ ៖"
+
+#: gpg_key_functions.php:353
+msgid "Using trusted key:"
+msgstr "ប្រើ​សោ​ទុកចិត្ត ៖"
+
+#: gpg_key_functions.php:357
+msgid "You currently trust key:"
+msgstr "សោ​ទុកចិត្ត​បច្ចុប្បន្ន​របស់​អ្នក ៖"
+
+#: gpg_key_functions.php:387
+msgid ""
+"If you do not see the key you want to trust in the list above, or if there "
+"is no list:"
+msgstr "ប្រសិន​បើ​អ្នក​មិន​ឃើញ​សោ​​ដែល​អ្នក​ចង់​ទុកចិត្ត​នៅ​ក្នុង​បញ្ជី​ខាង​លើ ឬ​​បើ​គ្មាន​បញ្ជី ៖"
+
+#: gpg_key_functions.php:389
+msgid "Enter a search string for the key you would like to trust in the box below."
+msgstr "បញ្ចូល​ខ្សែអក្សរ​ស្វែងរក​សម្រាប់​សោ​ដែល​ចង់​ទុកចិត្ត​នៅ​ក្នុង​ប្រអប់​ខាងក្រោម ។"
+
+#: gpg_key_functions.php:391
+msgid ""
+"This will usually be the email address of the account that you use as your "
+"primary signing key."
+msgstr "វា​នឹង​ជា​អាសយដ្ឋាន​អ៊ីមែល​នៃ​គណនី​ដែ​អ្នក​ប្រើ​ជា​សោ​ចុះហត្ថលេខា​ច្បង ។"
+
+#: gpg_key_functions.php:393
+msgid "Search String:"
+msgstr "ខ្សែអក្សរ​ស្វែងតរក ៖"
+
+#: gpg_key_functions.php:396
+msgid "Search my keyring for a new trusted key using the search string above:"
+msgstr "ស្វែងរក​ keyring របស់​ខ្ញុំ​សម្រាប់​សោ​ដែល​ទុក​ចិត្ត​ដោយប្រើ​ខ្សែអក្សរ​ស្វែងរក​ខាង​លើ ៖"
+
+#: gpg_key_functions.php:467
+msgid "Unable to connect to the keyserver you specified."
+msgstr "មិនអាច​តភ្ជាប់​ទៅ​ម៉ាស៊ីន​បម្រើ​សោ​ដែល​អ្នក​បាន​បញ្ជាក់​ទេ ។"
+
+#: gpg_key_functions.php:469
+msgid "Please try a different keyserver or contact your system administrator."
+msgstr "សូម​ព្យាយាម​​ម៉ាស៊ីន​ប្រើ​សោ​ផ្សេង ឬ​ទាក់ទង​នឹង​អ្នក​គ្រប់គ្រង​ប្រព័ន្ធ​របស់​អ្នក ។"
+
+#: gpg_key_functions.php:576
+msgid "Did not receive valid export_type in gpg_export_key function."
+msgstr "អ្នក​មិនបាន​ទទួល export_type នៅ​ក្នុង​មុខងារ gpg_export_key ។"
+
+#: gpg_key_functions.php:861 modules/changepass.php:30 modules/genkey.php:47
+#: modules/genkey_keygen.php:53
+msgid "SSL connection required to generate keypair."
+msgstr "ការ​តភ្ជាប់ SSL ទាមទារ​ឲ្យ​បង្កើត keypair ។"
+
+#: gpg_key_functions.php:872 gpg_key_functions.php:923
+msgid "Key generated"
+msgstr "បាន​បង្កើត​សោ"
+
+#: gpg_key_functions.php:885
+msgid "Key generated on public webmail server"
+msgstr "បាន​បង្កើត​សោ​នៅ​លើ​ម៉ាស៊ីន​ប្រើ​សំបុត្រ​បណ្ដាញ"
+
+#: gpg_key_functions.php:901
+msgid "Unable to open command pipe."
+msgstr "មិនអាច​បើក​បំពង់​ពាក្យ​បញ្ជា​បាន​ទេ ។"
+
+#. end foreach
+#: gpg_pref_functions.php:67
+msgid "No GPG Plugin preferences could be found"
+msgstr "រក​មិន​ឃើញ​ចំណូលចិត្ត​កម្មវិធី​ជំនួយ GPG ទេ"
+
+#: gpg_sign_functions.php:206
+msgid "GPG Plugin Error:No body text received from Compose page"
+msgstr "កំហុស​កម្មវិធី​ជំនួយ GPG ៖ គ្មាន​អត្ថបទ​តួរ​ដែល​បាន​ទទួល​ពី​ទំព័រ តែង​ទេ"
+
+#. we should reopen the window or check for passphrase with javascript
+#. instead of just throwing an error here
+#: gpg_sign_functions.php:245
+msgid ""
+"You did not provide a passphrase! Please right-click and select 'Back' and "
+"try again"
+msgstr "អ្នក​មិន​បាន​ផ្ដល់​ឃ្លា​សម្ងាត់​ទេ ! សូម​ចុច​កណ្ដុរ​ខាង​ស្ដាំ ហើយ​ជ្រើស 'ថយក្រោយ' ហើយ​ព្យាយាម​ម្ដងទៀត"
+
+#. That $filename is undefined
+#: gpg_view_verify_text.php:60
+msgid "View message"
+msgstr "មើល​សារ"
+
+#: gpg_view_verify_text.php:64
+msgid "Download signed attachment"
+msgstr "ទាញយក​ឯកសារ​ភ្ជាប់​ដែល​បាន​ចុះហត្ថលេខា"
+
+#: setup.php:160
+msgid "Keyring"
+msgstr "Keyring"
+
+#: help/base.php:7 modules/options_main.mod:35
+msgid "Getting Started with the GPG Plugin"
+msgstr "ចាប់ផ្ដើម​ជាមួយ​កម្មវិធី​ជំនួយ GPG"
+
+#: help/base.php:14 help/what_keystrength.php:5
+msgid "What is a good key strength?"
+msgstr "តើ​អ្វី​ជា​​​​សមត្ថភាព​របស់​សោ ?"
+
+#: help/base.php:19 help/what_passphrase.php:5
+msgid "How do I choose a passphrase?"
+msgstr "តើ​ខ្ញុំ​ត្រូវ​ជ្រើស​ឃ្លា​សម្ងាត់​ដោយ​របៀប​ណា ?"
+
+#: help/base.php:24 help/disc_keystore.php:4
+msgid "Should I store my private keys on the server?"
+msgstr "តើ​ខ្ញុំ​គួរតែ​ទុក​សោ​ផ្ទាល់ខ្លួន​របស់​ខ្ញុំ​នៅ​លើ​ម៉ាស៊ីន​បម្រើ​ឬ​ទេ ?"
+
+#: help/base.php:29
+msgid "What is a 'Signing Key'?"
+msgstr "តើ​អ្វី​ជា 'សោ​ចុះហត្ថលេខា' ?"
+
+#: help/base.php:34
+msgid "What is a 'Trusted Key'?"
+msgstr "តើ​អ្វី​ជា 'សោ​ទុកចិត្ត' ?"
+
+#. *
+#. * Troubleshooting page.
+#. *
+#. * @todo Convert most of this file to HTML, and only use
+#. *       parts of in inside PHP tags
+#. *
+#. * $Id$
+#.
+#: help/base.php:39 help/troubleshooting.php:11
+msgid "Troubleshooting"
+msgstr "ការ​ដោះស្រាយ​បញ្ហា"
+
+#: help/base.php:44
+msgid "View README file - includes contact information"
+msgstr "មើល​ឯកសារ README ដោយ​រួមបញ្ចូល​ព័ត៌មាន​ទំនាក់ទំនង​ផង"
+
+#: help/base.php:49
+msgid "View INSTALL file"
+msgstr "មើល​ឯកសារ INSTALL"
+
+#: help/base.php:54 help/external_resources.php:4
+msgid "External Resources"
+msgstr "ធនធាន​ខាងក្រៅ"
+
+#: help/base.php:59
+msgid "Report a bug on the GPG Plugin Bugzilla"
+msgstr "រាយការណ៍​កំហុស​នៅលើ GPG Plugin Bugzilla"
+
+#: help/disc_keystore.php:7
+msgid "Public web servers are not always secure!"
+msgstr "ម៉ាស៊ីន​បម្រើ​បណ្ដាញ​សាធារណៈ គឺមិន​មាន​សុវត្ថិភាព​ជានិច្ច​នោះ​ទេ !"
+
+#: help/disc_keystore.php:8
+msgid ""
+"Web-based email programs are very convenient, and using your web email to "
+"send encrypted emails adds to that convenience."
+msgstr "កម្មវិធី​អ៊ីមែល​ដែល​មាន​មូលដ្ឋាន​លើ​បណ្ដាញ​គឺ​ងាយស្រួល​ណាស់ ហើយការ​ប្រើប្រាស់​អ៊ីមែល​បណ្ដាញ​​​ដើម្បី​ផ្ញើ​អ៊ីមែល​ដែល​បាន​អ៊ិនគ្រីប បន្ថែម​ទៅ​ភាព​ងាយស្រួល​នោះ ។"
+
+#: help/disc_keystore.php:10
+msgid ""
+"It would be dangerous to simply assume that any web server (like this one) "
+"is secure."
+msgstr "ងា​អាច​មាន​គ្រោះ​ថ្នាក់ ដែល​សន្មត់​ម៉ាស៊ីន​បម្រើ​បណ្ដាញ​ណាមួយ​នោះ​មាន​សុវត្ថិភាព ។"
+
+#: help/disc_keystore.php:12
+msgid "If it is not secure, your identity can be stolen!"
+msgstr "ប្រសិន​បើ​គ្មាន​សុវត្ថិភាព​ទេ អត្តសញ្ញាណ​របស់​អ្នក​អាច​លួច​បាន !"
+
+#: help/disc_keystore.php:14
+msgid ""
+"If you do not trust the people that are hosting this email service it is "
+"recommended that you do not upload your existing private key until trust can "
+"be established."
+msgstr "ប្រសិន​បើ​អ្នក​មិន​ទុក​ចិត្ត​អ្នក​ដែល​បង្ហោះ​សេវា​អ៊ីមែល​នេះ វា​គឺ​ត្រូវ​ផ្ដល់​អនុសាសន៍​​ថា អ្នក​មិន​ត្រូវ​ផ្ទុក​សោ​ដែល​មាន​របស់​អ្នក​ឡើង​ទេ លុះត្រា​តែ​មាន​ការ​ទុកចិត្ត ។"
+
+#: help/disc_keystore.php:16
+msgid ""
+"A new Keypair can be generated for this account on the webserver for use "
+"here."
+msgstr "Keypair ថ្មី​អាច​បង្កើត​បាន​សម្រាប់​គណនី​នេះ​នៅលើ​ម៉ាស៊ីន​បម្រើ​បណ្ដាញ​សម្រាប់​ប្រើ​នៅ​ទីនេះ ។"
+
+#: help/external_resources.php:7
+msgid ""
+"This page provides links to external resources about the technologies used "
+"by the GPG Plugin."
+msgstr "ទំព័រ​នេះ​ផ្ដល់​នូវ​តំណ​ទៅ​កាន់​ធនធាន​ខាងក្រៅ​អំពី​បច្ចេកវិទ្យា​ដែល​បាន​ប្រើ​ដោយ​កម្មវិធី​ជំនួយ GPG ។"
+
+#: help/external_resources.php:14
+msgid ""
+"<a href=\"http://www.gnupg.org/gph/en/manual.html\">The GNU Privacy "
+"Handbook</a>"
+msgstr "<a href=\"http://www.gnupg.org/gph/en/manual.html\">សៀវភៅ​ដៃ​ភាព​ឯកជន​របស់ GNU</a>"
+
+#: help/what_keystrength.php:9
+msgid ""
+"Key strength is a measure of how difficult it is for an eavesdropper to "
+"compromise the security of your encrypted messages."
+msgstr "សមត្ថភាព​របស់​សោ គឺ​ជា​រង្វាស់​នៃ​ភាព​លំបាក​សម្រាប់​ការ​ពារ​ពីការ​លួច និង​ចូ​ល​ទៅកាន់​សារ​ដែល​បាន​អ៊ិនគ្រីប​របស់​អ្នក ។"
+
+#: help/what_keystrength.php:11
+msgid ""
+"Higher strength keys (those with more 'bits') are harder to compromise, but "
+"they also take more time to use.  It will take longer to decrypt and sign "
+"with a stronger key."
+msgstr "សមត្ថភាព​សោ​កាន់តែ​ខ្ពស់ គឺ (មាន​ច្រើន 'ប៊ីត') កាន់តែ​ពិបាក​ក្នុង​ការ​លួច ប៉ុន្តែ​គែ​អាច​ប្រើ​បាន​ដដែល​ដោយ​ប្រើ​ពេល​យូរ ។ វា​នឹង​ត្រូវ​ចំណាយ​ពេល​យូរ​ដើម្បី​ឌិគ្រីប និង​ចុះហត្ថលេខា​ជាមួយ​សោ​ដែល​មាន​សមត្ថភាព​ខ្ពស់ ។"
+
+#: help/what_keystrength.php:13
+msgid ""
+"A 1024 bit key is often acceptable, 2048 is generally seen as a good "
+"compromise between security and usability, and 4096 is very strong and can "
+"be noticeably slower."
+msgstr "សោ ១០២៤ ប៊ីត គឺ​ជាញឹកញាប់​អាច​ទទួល​យកបាន ចំណែក ២០៤៨ គឺ​ជាទូទៅ​គឺ​ល្អប្រើ​សើរ​ចំពោះ​ការ​យល់ព្រម​​សម្រប​សម្រួល​រវាង​សុវត្ថិភាព និង​ភាព​ដែល​អាច​ប្រើ​បាន និង ៤០៩៦ គឺ​​មាន​សុវត្ថិភាព​ខ្ពស់ និង​អាច​កំណត់​សម្គាល់​ថា​យឺត ។"
+
+#: help/what_passphrase.php:8
+msgid ""
+"Your secret passphrase should be as long as possible and easy for you to "
+"remember, but hard for someone else to guess."
+msgstr "ឃ្លា​សម្ងាត់​របស់​អ្នក​គួរ​តែ​វែង​តាម​ដែល​អាច​ធ្វើ​ទៅ​បាន ហើយ​ងាយស្រួល​ចាំ​ទៀត ប៉ុន្តែ​ធ្វើ​ឲ្យ​ពិបាក​ដល់​អ្នក​ផ្សេង​ក្នុង​ការ​ស្មាន ។"
+
+#: help/what_passphrase.php:10
+msgid ""
+"If you forget your passphrase, you will not be able to decrypt messages "
+"encrypted with this public key."
+msgstr "ប្រសិន​បើ​អ្នក​ភ្លេច​ពាក្យ​សម្ងាត់​របស់​អ្នក គឺ​អ្នក​មិន​អាច​ឌិគ្រីប​សារ​ដែល​បាន​អ៊ិនគ្រីប​ជាមួយ​សោ​សាធារណៈ​បានទេ ។"
+
+#: help/what_passphrase.php:12
+msgid ""
+"Choosing a good passphrase is one of the most important tasks for secure "
+"communications."
+msgstr "ការ​ជ្រើស​ឃ្លា​សម្ងាត់​ល្អ គឺ​ជា​កិច្ចការ​សំខាន់​មួយ​សម្រាប់​ទំនាក់ទំនង​ដែល​មាន​សុវត្ថិភាព ។"
+
+#: help/what_passphrase.php:15
+msgid "Here are a few tips on choosing a good passphrase:"
+msgstr "នេះ​គឺ​ជា​ព័ត៌មាន​ជំនួយ​មួយ​ចំនួន​អំពី​ការ​ជ្រើសរើស​ឃ្លា​សម្ងាត់​ដែល​ល្អ ៖"
+
+#: help/what_passphrase.php:20
+msgid "Choose a complete sentence that you will be able to remember."
+msgstr "ជ្រើស​ប្រយោគ​ពេញលេញ ដែល​អ្នក​អាច​ចាំ​បាន ។"
+
+#: help/what_passphrase.php:22
+msgid ""
+"You should change the capitalization and punctuation so that others cannot "
+"easily guess it, even if they guess the phrase you chose."
+msgstr "អ្នក​គួរតែ​ប្ដូរ​ប្រើ​តួរអក្សរ​ធំ និង​សញ្ញា​វណ្ណយុត្ត​ ដូច្នេះ​អ្នក​ដទៃ​ទៀត​មិនអាច​ទាយ​វា​បាន​ដោយ​ងាយស្រួល ទោះបី​ជា​គេ​ទាយ​ដឹង​ថា​យើង​បាន​ជ្រើស​ឃ្លា​សម្ងាត់​អ្វី​ក៏ដោយ ។"
+
+#: help/what_passphrase.php:24
+msgid ""
+"You may also choose to replace letters with numbers and symbols. For "
+"example: 'A dove of peace is here.' where 'e'='3', 'i'='1' and 'o'='0' "
+"becomes 'A d0v3 0f p3ac3 1s h3r3.' which becomes 'ad0v30fp3ac31sh3r3.'"
+msgstr "អ្នក​ក៏អាច​ជ្រើស​ជំនួស​តួអក្សរ​ដោយ​លេខ និង​និមិត្តសញ្ញាផង​ដែរ ។ ឧទាហរណ៍ ៖ 'A dove of peace is here.' ដែល 'e'='3', 'i'='1' និង 'o'='0' ដូច្នេះ​យើងបាន 'A d0v3 0f p3ac3 1s h3r3.' ដែល​ប្រើ​ជា​ឃ្លា​សម្ងាត់​គឺ 'ad0v30fp3ac31sh3r3.'"
+
+#: help/what_passphrase.php:26
+msgid ""
+"If you are inventing a new passphrase that you have never used before, you "
+"should consider writing it down until you are comfortable that you will not "
+"forget it."
+msgstr "ប្រសិន​បើ​អ្នក​កំពុង​បង្កើត​ឃ្លា​សម្ងាត់​ថ្មី ដែល​អ្នក​មិន​ធ្លាប់​ប្រើ​ពី​មុន​មក អ្នក​គួរតែ​គិត រួច​សរសេរ​រហូត​ដល់​អ្នក​ច្បាស់​ថា​អ្នក​មិន​ភ្លេច ។"
+
+#: help/what_passphrase.php:28
+msgid ""
+"If you do choose to write down your passphrase, be careful about where you "
+"store it, and destroy your paper copy as soon as you are sure that you will "
+"remember your passphrase."
+msgstr "ប្រសិន​បើ​សរសេរ​ឃ្លា​សម្ងាត់​របស់​អ្នក ត្រូវ​ប្រយ័ត្ន​ពី​កន្លែង​ដែល​អ្នក​ទុក​វា ហើយ​ត្រូវ​ហែក ឬ​ដុត​ក្រដាស់​ដែល​អ្នក​សរសេរ​នោះ ធ្វើ​យ៉ាង​ណា​កុំ​ឲ្យ​មាន​នៅ​សល់​រូបរាង​ពាក្យ​សម្ងាត់​នោះ តែ​អ្នក​ត្រូវ​ចងចាំ​ខ្លួន​ឯង​ផង ។"
+
+#: help/what_signing.php:4
+msgid "What is a Signing Key?"
+msgstr "អ្វី​ទៅ​ជា​សោ​ចុះហត្ថលេខា ?"
+
+#: help/what_signing.php:8
+msgid ""
+"Your signing key is the key you use to 'sign' a message you are sending, to "
+"prove that it is from you."
+msgstr "សោ​ចុះហត្ថលេខា​របស់​អ្នក គឺ​ជា​សោ​ដែល​អ្នក​ប្រើ​ដើម្បី 'ចុះហត្ថលេខា' សារ​ដែល​អ្នក​ផ្ញើ ដើម្បី​បញ្ជាក់​ឲ្យ​ច្បាស់​ថា សារ​គឺ​ផ្ញើ​ចេញ​ពី​អ្នក ។"
+
+#: help/what_signing.php:10
+msgid "You can only have one primary signing key at any given time."
+msgstr "អ្នក​អាច​មាន​សោ​ចុះហត្ថលេខា​ចម្បង​តែ​មួយ​ទេ ។"
+
+#: help/what_signing.php:13 modules/getstart.php:123
+msgid ""
+"You must select a signing key to use the GPG Plugin to securely sign "
+"messages."
+msgstr "អ្នក​ត្រូវ​តែ​ជ្រើស​សោ​ចុះហត្ថលេខា​ដើម្បី​ប្រើ​កម្មវិធី​ជំនួយ​ GPG ចំពោះ​សារ​ដែល​ចុះហត្ថលេខា​ដែល​មាន​សុវត្ថិភាព ។"
+
+#: help/what_signing.php:15
+msgid "Select this option to set the key as your signing key."
+msgstr "ជ្រើស​ជម្រើស​នេះ ដើម្បី​កំណត់​សោ​ជា​សោ​ចុះហត្ថលេខា​របស់​អ្នក ។"
+
+#: help/what_signing.php:17
+msgid "Setting a new primary signing key will replace any previously chosen key."
+msgstr "ការ​កំណត់​សោ​ចុះហត្ថលេខា​ចម្បង​ថ្មី​នឹង​ជំនួស​សោ​ដែល​បាន​ជ្រើស​ពី​មុន ។"
+
+#: help/what_signing.php:20
+msgid ""
+"Once a primary signing key is selected, a signing key can be selected for "
+"each squirrelmail identity."
+msgstr "នៅពេល​ដែល​បាន​ជ្រើស​សោ​ចុះហត្ថលេខា​ចម្បង សោ​ចុះហត្ថលេខា​អាច​ត្រូវបាន​ជ្រើស​សម្រាប់​អត្តសញ្ញាណ squirrelmail នីមួយៗ ។"
+
+#: help/what_trusted.php:4
+msgid "What is a Trusted Key?"
+msgstr "តើ​អ្វី​ជា​សោ​ទុកចិត្ត ?"
+
+#: help/what_trusted.php:8
+msgid ""
+"Web-based email programs are very convenient, and using your web email to "
+"send encrypted email adds to that convenience."
+msgstr "កម្មវិធី​អ៊ីមែល​ដែល​មាន​មូលដ្ឋាន​លើ​បណ្ដាញ គឺ​ងាយស្រួល​បំផុត ហើយ​ការ​ប្រើ​អ៊ីមែល​បណ្ដាញ​របស់​អ្នក​ដើម្បី​ផ្ញើ​អ៊ីមែល​ដែល​បាន​អ៊ិនគ្រីប បន្ថែម​ទៅកាន់​ភាព​ងាយស្រួល​នោះ ។"
+
+#: help/what_trusted.php:10
+msgid ""
+"It may be dangerous to believe that any web server (like this one) may be "
+"presumed secure."
+msgstr "វា​អាច​មាន​គ្រោះថ្នាក់ បើ​ជឿ​ថា​ម៉ាស៊ីន​បម្រើ​បណ្ដាញ​នោះ​​មាន​សុវត្ថិភាព ។"
+
+#: help/what_trusted.php:12
+msgid ""
+"In fact, most security experts recommend that web servers be presumed to be "
+"at risk of compromise."
+msgstr "តាម​ពិត អនុសាសន៍​ជំនាញ​ដែល​មាន​សុវត្ថិភាព​បំផុត​ដែល​ម៉ាស៊ីន​បម្រើ​បណ្ដាញ​អាច​កំណត់​ជាមុន​គឺ​ជា​គ្រោះថ្នាក់ ។"
+
+#: help/what_trusted.php:14
+msgid ""
+"Because of this risk of compromise and lack of security, you may not want to "
+"store your private key on the web server."
+msgstr "ដោយសារ​តែ​មាន​គ្រោះថ្នាក់ និង​ខ្វះ​សុវត្ថិភាព អ្នក​អាច​ទុក​សោ​ផ្ទាល់ខ្លួន​នៅលើ​ម៉ាស៊ីន​បម្រើ​បណ្ដាញ​បាន ។"
+
+#: help/what_trusted.php:17
+msgid ""
+"To allow you to use the GPG plugin optimally without storing your private key"
+"(s) on the web server, the GPG Plugin allows you to specify a special option "
+"called 'Trusted Key ID'."
+msgstr "ដើម្បី​អនុញ្ញាត​ឲ្យ​អ្នក​ប្រើ​កម្មវិធី​ជំនួយ GPG ស្រេចចិត្ត​ដោយ​មិន​ទុក​សោ​ផ្ទល់ខ្លួន​នៅលើ​ម៉ាស៊ីន​បម្រើ​បណ្ដាញ កម្មវិធី​ជំនួយ GPG អនុញ្ញាត​ឲ្យ​អ្នក​បញ្ជាក់​នូវ​ជម្រើស​ពិសេស​ដែល​ហៅ​ថា 'លេខ​សម្គាល់​សោ​ទុកចិត្ត' ។"
+
+#: help/what_trusted.php:19
+msgid ""
+"This option allows you to indicate to GPG which key on your public keyring "
+"should be treated as a fully trusted key."
+msgstr "ជម្រើស​នេះ​អនុញ្ញាត​ឲ្យ​អ្នក​ចង្អុល​បង្ហាញ​ទៅ GPG ដែល​សោ​នៅ​លើ​ keyring សាធារណៈ​របស់​អ្នក ដែល​គួរ​តែ​ត្រូវបានចាត់ទុក​ថា​ជា​សោ​ដែល​បាន​ទុក​ចិត្ត​ទាំងស្រុង ។"
+
+#: help/what_trusted.php:21 modules/getstart.php:100
+msgid ""
+"Any key signed with your trusted key ID will be allowed for encryption "
+"without generating errors."
+msgstr "សោ​ដែល​បាន​ចុះហត្ថលេខា​ណាមួយ​ដែល​មាន​លេខ​សម្គាល់​សោ​ដែល​ទុកចិត្ត​នឹង​ត្រូវបាន​អនុញ្ញាត​សម្រាប់​ការ​អ៊ិនគ្រីប​ដោយ​គ្មាន​កំហុស ។"
+
+#: help/what_trusted.php:23
+msgid ""
+"Usually, this will be your primary public key, the key you use to sign other "
+"people's keys."
+msgstr "ជាទូទៅ វា​នឹង​ជា​សោ​សាធារណៈ​ចម្បង​របស់​អ្នក ដែលជា​សោ​ដែល​អ្នក​ប្រើ​ដើម្បី​ចុះហត្ថលេខា​​លើ​សោ​របស់​អ្នក​ដទៃ​ទៀត ។"
+
+#: help/what_trusted.php:26
+msgid ""
+"If you choose a trusted key and store a keypair on the web server, all keys "
+"that you wish to encrypt to will need to be signed by a trusted key."
+msgstr "ប្រសិន​បើ​អ្នក​ជ្រើស​សោ​ដែល​ទុក​ចិត្ត ហើយ​ទុក keypair នៅ​លើ​ម៉ាស៊ីន​បម្រើ​បណ្ដាញ នោះ​សោ​ទាំងអស់​ដែល​អ្នក​ចង់​អ៊ិនគ្រីប​នឹង​ត្រូវ​បាន​ចុះហត្ថលេខា​ដោយ​សោ​ទុកចិត្ត ។"
+
+#: help/what_trusted.php:28
+msgid ""
+"The signing key may be one of: a key that you have explicitly marked as a "
+"trusted key, a keypair that you have on your public and secret keyrings, or "
+"a shared system trusted key defined by your system administrator."
+msgstr "សោ​ចុះហត្ថលេខា​ប្រហែលជា ៖ សោ​ដែល​អ្នក​បាន​សម្គាល់​ដាច់​ដោយ​ឡែក​ជា​សោ​ទុក​ចិត្ត ជា​ keypair ដែល​អ្នក​មាន​នៅលើ​ keyring សម្ងាត់ និង​សាធារណៈ​របស់​អ្នក ឬ​ជា​ប្រព័ន្ធ​ដែល​បាន​ចែក​រំលែក ដែល​សោ​ទុក​ចិត្ត​ត្រូវបាន​កំណត់​ដោយ​អ្នក​គ្រប់គ្រង​ប្រព័ន្ធ​របស់​អ្នក ។"
+
+#: help/what_trusted.php:30
+msgid ""
+"If you try to encrypt to a key not signed by one of these keys, you will not "
+"be allowed to do so, because the identity of the recipient is unverifiable."
+msgstr "ប្រសិន​បើ​អ្នក​អ៊ិនគ្រីប​ទៅ​កាន់​សោ​​ដែល​មិន​ទាន់​បាន​ចុះហត្ថលេខា​ដោយ​សោ​ណាមួយ អ្នក​នឹង​មិន​ត្រូវបាន​អនុញ្ញាត​ឲ្យ​ធ្វើ​ដូចនេះ​ទេ ព្រោះ​អត្តសញ្ញាណ​របស់​អ្នក​ទទួល​គឺ​មិន​អាច​បញ្ជាក់​បាន ។"
+
+#: help/what_trusted.php:33
+msgid "Select this option to set the key as your trusted key."
+msgstr "ជ្រើស​ជម្រើស​នេះ ដើម្បី​កំណត់​សោ​ជា​សោ​ទុកចិត្ត​របស់​អ្នក ។"
+
+#: help/what_trusted.php:35
+msgid "Setting a new trusted key will replace any previously chosen key."
+msgstr "ការ​កំនត់​សោ​ទុកចិត្ត​ថ្មី នឹង​ជំនួស​សោ​ដែល​បាន​ជ្រើស​ពី​មុន ។"
+
+#: help/what_trusted.php:38
+msgid "To disable the trusted key option, select no key as trusted."
+msgstr "ដើម្បី​បិទ​ជម្រើស​សោ​ទុកចិត្ត គឺ​ត្រូវ​ជ្រើស​ គ្មាន​សោ​ដែល​បាន​ទុកចិត្ត​ទេ ។"
+
+#: help/what_trusted.php:40 modules/getstart.php:102
+msgid "You can only have one trusted key at any given time."
+msgstr "អ្នក​អាច​មាន​សោ​ទុក​ចិត្ត​តែ​មួយ​ទេ នៅ​ពេល​ដែល​បាន​ផ្ដល់ ។"
+
+#. ===============================================================
+#: modules/adduid.php:33
+msgid "Add UID"
+msgstr "បន្ថែម​លេខ​សម្គាល់​អ្នក​ប្រើ"
+
+#: modules/adduid.php:55 modules/genkey.php:131 modules/genkey_keygen.php:117
+msgid "Full Name"
+msgstr "ឈ្មោះ​ពេញ"
+
+#: modules/adduid.php:70 modules/genkey.php:146 modules/genkey_keygen.php:102
+#: modules/keyserver.mod:140
+msgid "Email Address"
+msgstr "អាសយដ្ឋាន​អ៊ីមែល"
+
+#: modules/adduid.php:83 modules/genkey.php:266 modules/genkey_keygen.php:170
+msgid "Comment"
+msgstr "មតិយោបល់"
+
+#: modules/adduid.php:109 modules/genkey_keygen.php:134 modules/keygen.php:185
+#: modules/keysign.php:120
+msgid "Passphrase"
+msgstr "ឃ្លា​សម្ងាត់"
+
+#: modules/adduid.php:114
+msgid "Add New UID"
+msgstr "បន្ថែម​លេខ​សម្គាល់​អ្នក​ប្រើ​ថ្មី"
+
+#: modules/adduid.php:115 modules/changepass.php:112 modules/genkey.php:325
+#: modules/import_key_file.php:78 modules/import_key_text.php:90
+#: modules/keygen.php:201 modules/keyring_main.php:993 modules/keysign.php:126
+#: modules/uploadkey.php:70 modules/general.mod:432
+msgid "Cancel"
+msgstr "បោះបង់"
+
+#. ===============================================================
+#: modules/changepass.php:16 modules/changepass.php:111
+#: modules/keyview.php:213
+msgid "Change Passphrase"
+msgstr "ផ្លាស់ប្ដូរ​ឃ្លា​សម្ងាត់"
+
+#: modules/changepass.php:24
+msgid ""
+"You can change your passphrase from this screen.  More help will be "
+"available in the future."
+msgstr "អ្នក​អាច​ផ្លាស់ប្ដូរ​ឃ្លា​សម្ងាត់​របស់​អ្នក​ពី​អេក្រង់​នេះ​បាន ។ ជំនួយ​បន្ថែម​នឹង​មាន​នៅពេល​ខាង​មុខ ។"
+
+#: modules/changepass.php:39 modules/genkey_keygen.php:221
+#: modules/gpgdecrypt.mod:681
+msgid "Error: "
+msgstr "កំហុស ៖ "
+
+#: modules/changepass.php:64
+msgid "Please type your old passphrase: "
+msgstr "សូម​បញ្ចូល​ឃ្លា​សម្ងាត់​ចាស់​របស់​អ្នក ៖ "
+
+#: modules/changepass.php:78
+msgid "Enter New Passphrase:"
+msgstr "បញ្ចូល​ឃ្លា​សម្ងាត់​ថ្មី ៖"
+
+#: modules/changepass.php:95
+msgid "Retype New Passphrase:"
+msgstr "បញ្ចូល​ឃ្លា​សម្ងាត់​ថ្មី​ឡើងវិញ ៖"
+
+#. ===============================================================
+#: modules/genkey.php:69 modules/genkey_keygen.php:83
+msgid "GPG Options - Create a Personal Keypair"
+msgstr "ជម្រើស GPG - បង្កើត Keypair ផ្ទាល់​ខ្លួន"
+
+#: modules/genkey.php:78
+msgid ""
+"To sign outgoing mail and receive encrypted messages, you must have a "
+"personal Keypair."
+msgstr "ដើម្បី​ចុះហត្ថលេខា​សំបុត្រ​ផ្ញើ​ចេញ និង​ទទួល​សារ​ដែល​បាន​អ៊ិនគ្រីប អ្នក​ត្រូវ​តែ​មាន Keypair ផ្ទាល់ខ្លួន ។"
+
+#: modules/genkey.php:80
+msgid ""
+"A Keypair consists of a <b>public key</b>, which people will use to send "
+"encrypted messages to you and verify your signature, and a <b>secret key</"
+"b>, which will never be shared with others."
+msgstr "Keypair មាន​<b>សោ​សាធារណៈ</b> ដែល​គេ​នឹង​ប្រើ​វា​ដើម្បី​ផ្ញើ​សារ​ដែល​បាន​អ៊ិនគ្រីប​ទៅ​អ្នក និង​អះអាង​ហត្ថលេខា​របស់​អ្នក ហើយ​<b>សោ​សម្ងាត់</b> ដែល​នឹង​មិន​ត្រូវ​បាន​ចែក​រំលែក​ជាមួយ​អ្នក​ផ្សេងទៀត​ទេ ។"
+
+#: modules/genkey.php:84
+msgid "Do you already have a personal Keypair?"
+msgstr "តើ​អ្នក​មាន Keypair រួចហើយ​ឬ​នៅ ?"
+
+#: modules/genkey.php:88 modules/getstart.php:70 modules/keyring_main.php:1025
+msgid "Import keys to your personal keyring via: "
+msgstr "នាំចូល​សោ​ទៅកាន់ keyring ផ្ទាល់​ខ្លួន​របស់​អ្នក​តាមរយៈ ៖ "
+
+#: modules/genkey.php:90 modules/getstart.php:72 modules/keyring_main.php:1027
+msgid "file"
+msgstr "ឯកសារ"
+
+#: modules/genkey.php:92 modules/getstart.php:74 modules/keyring_main.php:1029
+msgid "or"
+msgstr "ឬ"
+
+#: modules/genkey.php:94 modules/getstart.php:76 modules/keyring_main.php:1031
+msgid "text"
+msgstr "អត្ថបទ"
+
+#: modules/genkey.php:101
+msgid ""
+"Storing a private key on a remote host can be insecure if you do not trust "
+"the host!"
+msgstr "ការ​រក្សាទុក​សោ​ឯកជន​នៅលើ​ម៉ាស៊ីន​ពី​ចម្ងាយ គឺ​អាច​មិនមាន​សុវត្ថិភាព​ទេ ប្រសិន​បើ​អ្នក​មិន​ទុកចិត្ត​នឹង​ម៉ាស៊ីន​នោះ !"
+
+#: modules/genkey.php:106
+msgid "disclaimer"
+msgstr "ចំពោះ​អ្នក​មិនយល់​ស្រប"
+
+#: modules/genkey.php:123
+msgid "Generate New Keypair"
+msgstr "បង្កើត Keypair ថ្មី"
+
+#: modules/genkey.php:160 modules/keygen.php:76
+msgid "Keystrength"
+msgstr "សមត្ថភាព​សោ"
+
+#: modules/genkey.php:182 modules/genkey.php:275 modules/keygen.php:98
+#: modules/keysign.php:90 modules/keyview.php:258 modules/keyview.php:276
+msgid "What's this?"
+msgstr "នេះ​ជា​អ្វី ?"
+
+#: modules/genkey.php:190 modules/genkey_keygen.php:156 modules/keygen.php:110
+msgid "Key Expires"
+msgstr "កាល​ផុត​កំណត់​របស់​សោ"
+
+#: modules/genkey.php:204 modules/genkey_keygen.php:161 modules/keygen.php:124
+msgid "Never"
+msgstr "មិន​មាន"
+
+#: modules/genkey.php:215 modules/genkey.php:226 modules/genkey.php:237
+#: modules/genkey_keygen.php:166 modules/keygen.php:135 modules/keygen.php:146
+#: modules/keygen.php:157
+msgid "Days"
+msgstr "ថ្ងៃ"
+
+#: modules/genkey.php:247 modules/keygen.php:167
+msgid "1 Year"
+msgstr "១ ឆ្ឋាំ"
+
+#: modules/genkey.php:255
+msgid "Add Revocation"
+msgstr "បន្ថែម​ការ​ដកហូត"
+
+#: modules/genkey.php:258
+msgid "Yes, allow the system revocation key to revoke this key"
+msgstr "បាទ​/​ចាស អនុញ្ញាត​ឲ្យ​សោ​ដក​ហូត​របស់​ប្រព័ន្ធ​ដកហូត​សោ​នេះ"
+
+#: modules/genkey.php:259
+msgid "No, do not allow the system revocation key to revoke this key"
+msgstr "ទេ កុំ​អនុញ្ញាត​សោ​ដកហូត​របស់​ប្រព័ន្ធ​ឲ្យ​ដកហូត​សោ​នេះ"
+
+#: modules/genkey.php:303
+msgid "Retype Passphrase"
+msgstr "វាយ​បញ្ចូល​ឃ្លា​សម្ងាត់​ឡើងវិញ"
+
+#: modules/genkey.php:321
+msgid "Create New Personal Keypair"
+msgstr "បង្កើត Keypair ផ្ទាល់​ខ្លួន​ថ្មី"
+
+#: modules/genkey_keygen.php:37
+msgid "Your passphrases do not match."
+msgstr "ឃ្លា​សម្ងាត់​របស់​អ្នក​មិន​ត្រូវ​គ្នា ។"
+
+#: modules/genkey_keygen.php:39 modules/gpg_module_header.php:31
+#: modules/gpg_popup_header.php:32 modules/keyring_main.php:343
+#: modules/keyring_main.php:905
+msgid "Please try again."
+msgstr "សូម​ព្យាយាម​ម្ដងទៀត ។"
+
+#: modules/genkey_keygen.php:90
+msgid "Generating Keypair based on:"
+msgstr "បង្កើត Keypair ដោយ​ផ្អែក​លើ ៖"
+
+#: modules/genkey_keygen.php:111 modules/genkey_keygen.php:126
+#: modules/genkey_keygen.php:141
+msgid "Unassigned"
+msgstr "មិន​បាន​ផ្ដល់"
+
+#: modules/genkey_keygen.php:130
+msgid "Adding system key as revoker for this key."
+msgstr "ការ​បន្ថែម​សោ​ប្រព័ន្ធ​ជា​សោ​អ្នក​ដកហូត​សម្រាប់​សោ​នេះ ។"
+
+#: modules/genkey_keygen.php:138
+msgid "Assigned"
+msgstr "បាន​ផ្ដល់"
+
+#: modules/genkey_keygen.php:148
+msgid "Key Strength"
+msgstr "សមត្ថភាព​សោ"
+
+#: modules/genkey_keygen.php:163
+msgid "One Year"
+msgstr "មួយ​ឆ្នាំ"
+
+#: modules/genkey_keygen.php:181
+msgid "Your key is being generated... please be patient!"
+msgstr "សោ​របស់​អ្នក​កំពុង​បង្កើត... សូម​រង់ចាំ !"
+
+#: modules/genkey_keygen.php:226
+msgid "Required data missing."
+msgstr "ទាមទារ​ទិន្នន័យ​ដែល​បាត់ ។"
+
+#: modules/genkey_keygen.php:227
+msgid "Please"
+msgstr "សូម​មេត្តា"
+
+#: modules/genkey_keygen.php:230
+msgid "try again"
+msgstr "ព្យាយាម​ម្ដងទៀត"
+
+#: modules/genkey_keygen.php:262
+msgid "Success!"
+msgstr "ជោគជ័យ !"
+
+#: modules/genkey_keygen.php:263
+msgid "A new personal Keypair has been generated."
+msgstr "Keypair ផ្ទាល់ខ្លួន​ថ្មី​ត្រូវបាន​បង្កើត ។"
+
+#: modules/genkey_keygen.php:271 modules/keyview.php:200
+msgid "View Key"
+msgstr "មើល​សោ"
+
+#: modules/genkey_keygen.php:276
+msgid "Added system revocation key to keys allowed to revoke this key."
+msgstr "បាន​បន្ថែម​សោ​ដកហូត​របស់​ប្រព័ន្ធ​ទៅកាន់​សោ​ដែល​បាន​អនុញ្ញាត​ឲ្យ​ដកហូត​សោ​នេះ ។"
+
+#: modules/genkey_keygen.php:288
+msgid "Back to Keyring Management"
+msgstr "ត្រឡប់​ទៅការ​គ្រប់គ្រង​ Keyring"
+
+#. ===============================================================
+#: modules/getstart.php:40
+msgid "Encryption Options - Getting Started"
+msgstr "ជម្រើស​ការ​អ៊ិនគ្រីប - ចាប់ផ្ដើម"
+
+#: modules/getstart.php:49
+msgid "Welcome to the GPG Encryption Plugin for Squirrelmail! "
+msgstr "សូម​ស្វាគមន៍​ការ​មកកាន់​កម្មវិធី​ជំនួយ​ការ​អ៊ិនគ្រីប GPG សម្រាប់ Squirrelmail ! "
+
+#: modules/getstart.php:51
+msgid ""
+"This screen will help you set up the various options you need to get started "
+"using encryption. "
+msgstr "អេក្រង់​នេះ នឹង​ជួយ​អ្នក​ក្នុង​ការ​រៀបចំ​ជម្រើស​ផ្សេងៗ​ដែល​អ្នក​ត្រូវ​ចាប់ផ្ដើម​ដោយ​ប្រើ​ការ​អ៊ិនគ្រីប ។ "
+
+#: modules/getstart.php:53
+msgid ""
+"With this interface, you will be able to encrypt, decrypt, and sign your "
+"email and attachments from the comfort of the Squirrelmail web mail "
+"interface."
+msgstr "ជាមួយ​នឹង​ចំណុច​ប្រទាក់​នេះ អ្នក​នឹង​អាច​អ៊ិនគ្រីប ឌិគ្រីប និង​ចុះហត្ថលេខា​លើ​អ៊ីមែល និង​ឯកសារ​ភ្ជាប់​របស់​អ្នក​ពី​ចំណុច​ប្រទាក់​អ៊ីមែល​បណ្ដាញ​របស់ Squirrelmail ។"
+
+#: modules/getstart.php:58
+msgid "The following is a list of suggested steps you can take to get started:"
+msgstr "ខាងក្រោម​នេះ គឺ​ជា​បញ្ជី​នៃ​ជំហាន​ដែល​បាន​ផ្ដល់​យោបល់ ដែល​អ្នកអាច​ទទួល​យក​បាន​ដើម្បី​ចាប់ផ្ដើម ៖"
+
+#: modules/getstart.php:66
+msgid "Import external keys"
+msgstr "នាំចូល​សោ​ខាងក្រៅ"
+
+#: modules/getstart.php:68
+msgid "Do you already have a keyring, or individual keys you would like to use?"
+msgstr "តើ​អ្នក​មាន keyring ឬ​សោ​ទោល​ដែល​ចង់​ប្រើ​ហើយ​ឬ​នៅ ?"
+
+#: modules/getstart.php:79
+msgid "If not, skip this step."
+msgstr "ប្រសិន​បើ​មិន​មាន​ទេ រំលង​ជំហាន​នេះ​ចុះ ។"
+
+#: modules/getstart.php:84
+msgid "Your personal Keypair"
+msgstr "Keypair ផ្ទាល់ខ្លួន​របស់​អ្នក"
+
+#: modules/getstart.php:87
+msgid "Did you import a personal Keypair in Step 1?"
+msgstr "តើ​អ្នក​បាន​នាំចូល Keypair ផ្ទាល់ខ្លួន​នៅ​ក្នុង​ជំហាន​ទី ១ ឬ​ទេ ?"
+
+#: modules/getstart.php:89
+msgid "If not, you should"
+msgstr "ប្រសិន​បើ​មិន​ទាន់​ទេ អ្នក​គួរ​តែ"
+
+#: modules/getstart.php:91
+msgid "generate a personal Keypair"
+msgstr "បង្កើត Keypair ផ្ទាល់ខ្លួន​មួយ"
+
+#: modules/getstart.php:97
+msgid "Configure a Trusted Key"
+msgstr "កំណត់​រចនា​សម្ព័ន្ធ​សោ​ទុកចិត្ត"
+
+#: modules/getstart.php:104
+msgid ""
+"To set your trusted key, find the desired key in the 'public' or 'system' "
+"ring of the"
+msgstr "ដើម្បី​កំណត់​សោ​ទុកចិត្ត ត្រូវ​រក​សោ​ដែល​ត្រូវការ​នៅ​ក្នុង ring 'សាធារណៈ' ឬ 'ប្រព័ន្ធ' នៃ "
+
+#: modules/getstart.php:106 modules/getstart.php:127
+msgid "keyring"
+msgstr "keyring"
+
+#: modules/getstart.php:109 modules/getstart.php:130
+msgid "click on it to view the details,"
+msgstr "ដោយ​ចុច​លើ​វា​ដើម្បី​មើល​សេចក្ដី​លម្អិត "
+
+#: modules/getstart.php:111
+msgid "check 'This is my trusted key', and save."
+msgstr "ប្រអប់​ធីក 'នេះ​ជា​សោ​ទុកចិត្ត​របស់​ខ្ញុំ' ហើយ​រក្សាទុក ។"
+
+#: modules/getstart.php:116
+msgid "Select a Signing Key"
+msgstr "ជ្រើស​សោ​ចុះហត្ថលេខា"
+
+#: modules/getstart.php:119
+msgid ""
+"Your signing key is the key you use to 'sign' a message you are sending, to "
+"prove that is from you."
+msgstr "សោ​ចុះហត្ថលេខា​របស់​អ្នក គឺ​ជា​សោ​ដែល​អ្នក​ប្រើ​ដើម្បី 'ចុះហត្ថលេខា' សារ​ដែល​អ្នក​ផ្ញើ ដើម្បី​បញ្ជាក់​ឲ្យ​ច្បាស់​ថា សារ​គឺ​ផ្ញើ​ចេញ​ពី​អ្នក ។"
+
+#: modules/getstart.php:121
+msgid "You can only have one signing key at any given time."
+msgstr "អ្នក​អាច​មាន​សោ​ចុះហត្ថលេខា ១ នៅពេល​ដែល​ផ្ដល់​ឲ្យ ។"
+
+#: modules/getstart.php:125
+msgid "To set your signing key, find the desired key in the 'secret' ring of the"
+msgstr "ដើម្បី​កំណត់​សោ​ចុះហត្ថលេខា គឺ​ត្រូវ​រក​សោ​ដែល​ត្រូវការ​នៅ​ក្នុង ring 'សម្ងាត់' នៃ"
+
+#: modules/getstart.php:132
+msgid "check 'This is my signing key' and save."
+msgstr "ប្រអប់​ធីក 'នេះ​ជា​សោ​ចុះហត្ថលេខា​របស់​ខ្ញុំ' ហើយ​រក្សាទុក ។"
+
+#: modules/getstart.php:134
+msgid ""
+"If you generated a personal Keypair in step 2, this is probably the key you "
+"want."
+msgstr "ប្រសិន​បើ​អ្នក​បាន​បង្កើត Keypair ផ្ទាល់ខ្លួន​នៅ​ក្នុង​​ជំហាន​ទី ២ ហើយ​នោះ វា​ប្រហែល​ជា​សោ​ដែល​អ្នក​ចង់ ។"
+
+#: modules/getstart.php:140
+msgid "Find the public keys of people you want to communicate securely with"
+msgstr "រក​សោ​សាធារណៈ​របស់​នរណា​ម្នាក់​ដែល​អ្នក​ចង់​ទាក់ទង​ដោយ​មាន​សុវត្ថិភាព"
+
+#: modules/getstart.php:143
+msgid "You can"
+msgstr "អ្នក​អាច"
+
+#: modules/getstart.php:145 modules/keyring_main.php:1044
+msgid "Look up keys on a public keyserver"
+msgstr "រកមើល​សោ​នៅ​លើ​ម៉ាស៊ីន​បម្រើ​សោ​សាធារណៈ"
+
+#: modules/getstart.php:148 modules/keyring_main.php:1047
+msgid "and import them to your keyring."
+msgstr "និង​នាំចូល​ពួកវា​ទៅកាន់ keyring របស់​អ្នក ។"
+
+#: modules/gpg_err.php:29
+msgid "Your request returned this information:"
+msgstr "សំណើរ​របស់​អ្នក​បាន​ត្រឡប់​ព័ត៌មាន​នេះ ៖"
+
+#: modules/gpg_module_footer.php:22
+msgid "Back to Main Squirrelmail Options"
+msgstr "ថយក្រោយ​ទៅកាន់​ជម្រើស Squirrelmail ចម្បង"
+
+#: modules/gpg_module_footer.php:26
+msgid "Back to GPG Plugin Options"
+msgstr "ថយក្រោយ​ទៅកាន់​ជម្រើស​កម្មវិធី​ជំនួយ GPG"
+
+#: modules/gpg_module_footer.php:30
+msgid "Back to Keyring Management Options"
+msgstr "ថយក្រោយ​ទៅកាន់​ជម្រើស​គ្រប់គ្រង Keyring"
+
+#: modules/gpg_module_footer.php:41
+msgid "GPG Plugin"
+msgstr "កម្មវិធី​ជំនួយ GPG"
+
+#: modules/gpg_module_header.php:30 modules/gpg_popup_header.php:31
+msgid "There was a problem with your request."
+msgstr "មាន​បញ្ហា​ជាមួយ​នឹង​សំណើរ​របស់​អ្នក ។"
+
+#. ===============================================================
+#: modules/gpg_recipientlist.php:58
+msgid "GPG Recipient List"
+msgstr "បញ្ជី​អ្នក​ទទួល GPG"
+
+#. ===============================================================
+#: modules/import_key_file.php:41
+msgid "Import ASCII-Armored Key Text to Keyring"
+msgstr "នាំចូល​អត្ថបទ​សោ ASCII-Armored ទៅកាន់ Keyring"
+
+#: modules/import_key_file.php:50 modules/import_key_text.php:49
+msgid ""
+"You can add keys to your keyring with blocks of ASCII-armored key text "
+"(encoded text which contains all the necessary information for a key)."
+msgstr ""
+"អ្នក​អាច​បន្ថែម​សោ​ទៅកាន់ keyring របស់​អ្នក​ជាមួយ​បណ្ដុំ​អត្ថបទ​សោ ASCII-armored "
+"(អត្ថបទ​បាន​អ៊ិនកូដ​ដែល​មាន​ព័ត៌មាន​ចាំបាច់​​ទាំងអស់​សម្រាប់​សោ) ។"
+
+#: modules/import_key_file.php:62
+msgid "Please choose a file containing one or more ASCII-armored key blocks"
+msgstr "សូម​ជ្រើស​ឯកសារ​ដែល​មាន​បណ្ដុំ​សោ ASCII-armored មួយ ឬ​ច្រើន"
+
+#: modules/import_key_file.php:66
+msgid "Tip: this is typically a '.asc' or '.pkr' file"
+msgstr "ព័ត៌មាន​ជំនួយ ៖ នៃ​ជាឯកសារ '.asc' ឬ '.pkr' ជា​តួយ៉ាង"
+
+#: modules/import_key_file.php:74 modules/import_key_text.php:86
+msgid "Add Keys"
+msgstr "បន្ថែម​សោ"
+
+#. ===============================================================
+#: modules/import_key_text.php:41
+msgid "Import Key File to Keyring"
+msgstr "នាំចូល​ឯកសារ​សោ​ទៅ Keyring"
+
+#: modules/import_key_text.php:79
+msgid "Paste one or more ASCII-armored keys below:"
+msgstr "បិទភ្ជាប់​សោ ASCII-armored មួយ ឬ​ច្រើន​នៅ​ខាងក្រោម ៖"
+
+#. ===============================================================
+#: modules/keygen.php:34 modules/keygen.php:43
+msgid "Generate SubKey"
+msgstr "បង្កើត​សោ​រង"
+
+#: modules/keygen.php:39 modules/keyview.php:223
+msgid "Set Expiration"
+msgstr "កំណត់​កាលបរិច្ឆេទ​ផុត​កំណត់"
+
+#: modules/keygen.php:62 modules/keyview.php:413
+msgid "Algorithm"
+msgstr "ក្បួន​ដោះស្រាយ"
+
+#: modules/keygen.php:65
+msgid "DSA (sign only)"
+msgstr "DSA (បាន​តែ​ចុះហត្ថលេខា​ប៉ុណ្នោះ)"
+
+#: modules/keygen.php:66 modules/keyview.php:419
+msgid "ElGamal (encrypt only)"
+msgstr "ElGamal (បាន​តែ​អ៊ិនគ្រីប​ប៉ុណ្ណោះ)"
+
+#: modules/keygen.php:67
+msgid "RSA (sign only)"
+msgstr "RSA (បាន​តែ​ចុះហត្ថលេខា​ប៉ុណ្នោះ)"
+
+#: modules/keygen.php:68
+msgid "RSA (encrypt only)"
+msgstr "RSA (បាន​តែ​អ៊ិនគ្រីប​ប៉ុណ្ណោះ)"
+
+#: modules/keygen.php:193
+msgid "Generate New SubKey"
+msgstr "បង្កើត​សោ​រង​ថ្មី"
+
+#: modules/keygen.php:198
+msgid "Set New Expiration"
+msgstr "កំណត់​កាល​ផុត​កំណត់​ថ្មី"
+
+#: modules/keyring_main.php:141
+msgid "New SubKey added with fingerprint "
+msgstr "គ្មាន​សោ​រង​ដែល​បាន​បន្ថែម​ជាមួយ​ស្នាម​ម្រាម​ដៃ​ទេ "
+
+#: modules/keyring_main.php:144
+msgid "Error adding new SubKey"
+msgstr "កំហុស​ក្នុង​ការ​បន្ថែម​សោ​រង​ថ្មី"
+
+#: modules/keyring_main.php:146
+msgid "No Secret Key available to add a subkey to"
+msgstr "គ្មាន​សោ​សម្ងាត់​ដែល​ត្រូវបន្ថែម​សោ​រង​ទេ"
+
+#: modules/keyring_main.php:287
+msgid "Could not export your key.  Please contact gpg development."
+msgstr "មិនអាច​នាំចេញ​សោ​របស់​អ្នក​បានទេ ។ សូម​ទាក់ទង​ការ​អភិវឌ្ឍ gpg ។"
+
+#. ===============================================================
+#: modules/keyring_main.php:295 modules/keyview.php:168
+msgid "GPG Options - Display Key"
+msgstr "ជម្រើស GPG - បង្ហាញ​សោ"
+
+#: modules/keyring_main.php:324
+msgid ""
+"This action can only be performed on a secure connection (https).  Please "
+"change the 'http' in your address bar to 'https', and try again."
+msgstr "អំពើ​នេះ អាច​ធ្វើ​បាន​តែ​នៅ​លើ​ការ​តភ្ជាប់​ដែល​មាន​សុវត្ថិភាព​ប៉ុណ្នោះ (https) ។ សូម​ប្ដូរ 'http' នៅ​ក្នុង​របារ​អាសយដ្ឋាន​របស់​អ្នក​ទៅជា 'https' ហើយ​ព្យាយាម​ម្ដងទៀត ។"
+
+#: modules/keyring_main.php:334
+msgid "Cannot change passphrase on key: "
+msgstr "មិនអាច​ប្ដូរ​ឃ្លា​សម្ងាត់​នៅ​លើ​សោ​បានទេ ៖ "
+
+#: modules/keyring_main.php:355
+msgid "No old passphrase passed.  Possibly blank password?"
+msgstr "គ្មាន​ឃ្លា​សម្ងាត់​ចាស់​ទេ ។ តើ​អាច​គ្មាន​ពាក្យ​សម្ងាត់​ទេ ?"
+
+#: modules/keyring_main.php:367 modules/keyring_main.php:399
+#: modules/cachepass.mod:38
+msgid "Bad Passphrase."
+msgstr "ឃ្លា​សម្ងាត់​មិន​ល្អ ។"
+
+#: modules/keyring_main.php:379
+msgid "Passphrase change successful."
+msgstr "ផ្លាស់ប្ដូរ​ឃ្លា​សម្ងាត់​ដោយ​ជោគជ័យ ។"
+
+#: modules/keyring_main.php:394
+msgid "No secret key found."
+msgstr "គ្មាន​សោ​សម្ងាត់​ដែល​បាន​រក​ឃើញ​ទេ ។"
+
+#: modules/keyring_main.php:448
+msgid "Unsupported url or unable to parse url"
+msgstr "មិន​គាំទ្រ url ឬ​មិន​អាច​ញែក url"
+
+#: modules/keyring_main.php:453
+msgid "Unable to connect to the server to retrieve key"
+msgstr "មិនអាច​តភ្ជាប់​ទៅកាន់​ម៉ាស៊ីន​បម្រើ​ដើម្បី​ប្រមូល​យក​សោ​ទេ"
+
+#: modules/keyring_main.php:464
+msgid "Could not find key in data"
+msgstr "មិនអាច​រក​សោ​នៅ​ក្នុង​ទិន្នន័យ​បានទេ"
+
+#: modules/keyring_main.php:490
+msgid "No key with specified fingerprint found at address"
+msgstr "រក​មិនឃើញ​សោ​ដែល​មាន​ស្នាម​ម្រាមដៃ​ដែល​បាន​បញ្ជាក់​នៅ​អាសយដ្ឋាន​ទេ"
+
+#: modules/keyring_main.php:507
+msgid "No key with specified id found at address"
+msgstr "រក​មិនឃើញ​លេខ​សម្គាល់​ដែល​បាន​បញ្ជាក់​នៅ​អាសយដ្ឋាន​ទេ"
+
+#: modules/keyring_main.php:542
+msgid "filename:"
+msgstr "ឈ្មោះ​ឯកសារ ៖"
+
+#: modules/keyring_main.php:549
+msgid "This file exceeds the maximum size allowed."
+msgstr "ឯកសារ​នេះ​បាន​លើក​ទំហំ​អតិបរមា​ដែល​អនុញ្ញាត​ហើយ ។"
+
+#: modules/keyring_main.php:552
+msgid "This file was only partially uploaded."
+msgstr "ឯកសារ​នេះ​This file was only partially uploaded."
+
+#: modules/keyring_main.php:555
+msgid "No file was uploaded."
+msgstr "គ្មាន​ឯកសារ​ដែល​បាន​ផ្ទុក​ឡើង​ទេ ។"
+
+#. ===============================================================
+#: modules/keyring_main.php:598
+msgid "GPG Options - Keyring Management"
+msgstr "ជម្រើស GPG - ការ​គ្រប់គ្រង Keyring"
+
+#: modules/keyring_main.php:726
+msgid "Showing keys in"
+msgstr "បង្ហាញ​សោ​នៅ​ក្នុង"
+
+#: modules/keyring_main.php:731
+msgid "Your Public Keyring"
+msgstr "Keyring សាធារណៈ​របស់​អ្នក"
+
+#: modules/keyring_main.php:737
+msgid "Newly Imported Keys"
+msgstr "សោ​ដែល​បាន​នាំចូល​ថ្មីៗ"
+
+#: modules/keyring_main.php:749
+msgid "System Keyring"
+msgstr "Keyring របស់​ប្រព័ន្ធ"
+
+#: modules/keyring_main.php:760
+msgid "Your Secret Keyring"
+msgstr "Keyring សម្ងាត់​របស់​អ្នក"
+
+#: modules/keyring_main.php:766
+msgid "Go"
+msgstr "ទៅ"
+
+#: modules/keyring_main.php:777 modules/keyring_main.php:969
+msgid "Search results for"
+msgstr "ស្វែងរក​លទ្ធផល"
+
+#: modules/keyring_main.php:783 modules/keyring_main.php:976
+msgid "New Search"
+msgstr "ការ​ស្វែងរក​ថ្មី"
+
+#: modules/keyring_main.php:811 modules/keyring_main.php:826
+msgid "Key"
+msgstr "សោ"
+
+#: modules/keyring_main.php:836 modules/keyring_main.php:851
+msgid "Email"
+msgstr "អ៊ីមែល"
+
+#: modules/keyring_main.php:861 modules/keyring_main.php:876
+msgid "Generation Date"
+msgstr "កាលបរិច្ឆេទ​បង្កើត"
+
+#: modules/keyring_main.php:884
+msgid "Extras"
+msgstr "បន្ថែម"
+
+#. Search returned nothing.
+#: modules/keyring_main.php:901
+msgid "There are no keys containing the string "
+msgstr "គ្មាន​សោ​ដែល​មាន​នៅ​ក្នុង​ខ្សែអក្សរ​ទេ "
+
+#. Secret ring, no search, empty.  Just say so.
+#: modules/keyring_main.php:910
+msgid "You have no secret keys in your ring"
+msgstr "អ្នក​មិនមាន​សោ​សម្ងាត់​នៅ​ក្នុង​ ring របស់​អ្នក​ទេ"
+
+#: modules/keyring_main.php:912
+msgid "Please import a keypair containing a secret key if you wish to continue."
+msgstr "សូម​នាំចូល keypair ដែល​មាន​សោ​សម្ងាត់ ប្រសិន​បើ​អ្នក​ចង់​បន្ត ។"
+
+#. No search.  Ask them to specify one.
+#. Note that we don't tell them if their keyring is really empty.
+#. This sucks, but it's gpg's fault.  In order to know the number of keys,
+#. we have to ask gpg to give us the whole ring.  Which would destroy the
+#. effectiveness of this time-saving hack.
+#: modules/keyring_main.php:921
+msgid "To locate a key or keys, please enter a search string below."
+msgstr "ដើម្បី​ដាក់​សោ សូម​បញ្ចូល​ខ្សែអក្សរ​ស្វែងរក​​នៅ​ខាងក្រោម ។"
+
+#: modules/keyring_main.php:938
+msgid "None"
+msgstr "គ្មាន"
+
+#: modules/keyring_main.php:945
+msgid "trusted key"
+msgstr "សោ​ដែល​ទុកចិត្ត"
+
+#: modules/keyring_main.php:951
+msgid "signing key"
+msgstr "សោ​ចុះហត្ថលេខា"
+
+#: modules/keyring_main.php:993
+msgid "Select Key"
+msgstr "ជ្រើស​សោ"
+
+#: modules/keyring_main.php:1009
+msgid "Key Search"
+msgstr "សោ​ស្វែងរក"
+
+#: modules/keyring_main.php:1037
+msgid "Generate new personal key pair"
+msgstr "បង្កើត​ key pair ផ្ទាល់ខ្លួន​ថ្មី"
+
+#: modules/keyring_main.php:1052
+msgid "Keyring not editable, keyring functions disabled."
+msgstr "Keyring មិនអាច​កែសម្រួល​បានទេ ហើយ​មុខងារ keyring ត្រូវបាន​បិទ ។"
+
+#. *
+#. * keyring_main_chunk.php
+#. *
+#. * Included by keyring to show first previous next last interface
+#. * in keyring_main.php
+#. *
+#. *
+#. * Copyright (c) 1999-2005 The SquirrelMail development team
+#. * Licensed under the GNU GPL. For full terms see the file COPYING.
+#. *
+#. * Copyright (c) 2002-2005 Braverock Ventures
+#. *
+#. * $Id$
+#. *
+#.
+#. Showing
+#: modules/keyring_main_chunk.php:20
+msgid "Showing"
+msgstr "បង្ហាញ"
+
+#. of total number
+#: modules/keyring_main_chunk.php:28
+msgid "of"
+msgstr "នៃ"
+
+#: modules/keyring_main_chunk.php:31 modules/keyring_main_chunk.php:34
+msgid "First"
+msgstr "មុន​គេ"
+
+#: modules/keyring_main_chunk.php:38 modules/keyring_main_chunk.php:41
+#: modules/gpgdecrypt.mod:274 modules/gpgdecrypt.mod:280
+#: modules/gpgdecrypt.mod:282
+msgid "Previous"
+msgstr "មុន"
+
+#: modules/keyring_main_chunk.php:45 modules/keyring_main_chunk.php:48
+#: modules/gpgdecrypt.mod:275 modules/gpgdecrypt.mod:289
+#: modules/gpgdecrypt.mod:291
+msgid "Next"
+msgstr "បន្ទាប់"
+
+#: modules/keyring_main_chunk.php:52 modules/keyring_main_chunk.php:55
+msgid "Last"
+msgstr "ចុងក្រោយ"
+
+#. ===============================================================
+#: modules/keysign.php:32
+msgid "Sign Public Key"
+msgstr "ចុះហត្ថលេខា​សោ​សាធារណៈ"
+
+#: modules/keysign.php:40
+msgid "Signing all User Identities on the public key."
+msgstr "ចុះហត្ថលេខា​អត្តសញ្ញាណ​អ្នកប្រើ​ទាំងអស់​នៅលើ​សោ​សាធារណៈ ។"
+
+#: modules/keysign.php:43
+msgid "Signing User Identities:"
+msgstr "ចុះហត្ថលេខា​អត្តសញ្ញាណ​អ្នកប្រើ ៖"
+
+#: modules/keysign.php:71
+msgid "Secret Key"
+msgstr "សោ​សម្ងាត់"
+
+#: modules/keysign.php:82
+msgid "Signature Revokable?"
+msgstr "អាច​ដកហូត​ហត្ថលេខា​វិញ​បានទេ ?"
+
+#: modules/keysign.php:98
+msgid "Signature Exportable?"
+msgstr "អាច​នាំចេញ​ហត្ថលេខា​បានទេ ?"
+
+#: modules/keysign.php:125 modules/keyview.php:209
+msgid "Sign Key"
+msgstr "សោ​ចុះហត្ថលេខា"
+
+#: modules/keyview.php:48
+msgid "Remove this key from your keyring?  This action cannot be undone!"
+msgstr "យក​សោ​នេះ​ចេញ​ពី keyring ? អំពើ​នេះ មិនអាច​មិន​ធ្វើ​វិញ​បានទេ !"
+
+#: modules/keyview.php:49
+msgid ""
+"Remove the selected user identies from your keyring?  This action cannot be "
+"undone!"
+msgstr "យក​អត្តសញ្ញាណ​អ្នកប្រើ​ដែល​បាន​ជ្រើស​ពី keyring របស់​អ្នក​ឬ ? អំពើ​នេះ មិនអាច​មិន​ធ្វើ​វិញ​បានទេ !"
+
+#: modules/keyview.php:50
+msgid "Sign the selected User Identities?"
+msgstr "ចុះហត្ថលេខា​អត្តសញ្ញាណ​អ្នកប្រើ​ដែល​បាន​ជ្រើស ?"
+
+#: modules/keyview.php:51
+msgid ""
+"Remove the selected subkey from this private key?  This action cannot be "
+"undone!"
+msgstr "យក​សោ​រង​ដែល​បាន​ជ្រើស​ចេញ​ពី​សោ​ឯកជន​នេះ ? អំពើ​នេះ​មិនអាច​មិន​ធ្វើ​វិញ​បានទេ !"
+
+#: modules/keyview.php:52
+msgid "Please select a SubKey to perform an action on"
+msgstr "សូម​ជ្រើស​សោ​រង ដើម្បី​ធ្វើ​អំពើ​នោះ"
+
+#: modules/keyview.php:53
+msgid "Please select a User Identity to perform an action on"
+msgstr "សូម​ជ្រើស​អត្តសញ្ញាណ​អ្នក​ប្រើ​ដើម្បី​ធ្វើ​អំពើ​នោះ"
+
+#: modules/keyview.php:173
+msgid "Errors occured"
+msgstr "មាន​កំហុស​បាន​កើតឡើង"
+
+#: modules/keyview.php:177
+msgid "Your request returned the following information"
+msgstr "សំណើរ​របស់​អ្នក​បាន​ត្រឡប់​ព័ត៌មាន​ដូច​ខាងក្រោម"
+
+#: modules/keyview.php:206
+msgid "Email Key"
+msgstr "សោ​អ៊ីមែល"
+
+#: modules/keyview.php:207 modules/uploadkey.php:66
+msgid "Upload Key"
+msgstr "ផ្ទុក​សោ​ឡើង"
+
+#: modules/keyview.php:221
+msgid "Delete Keypair"
+msgstr "លុប Keypair"
+
+#: modules/keyview.php:227
+msgid "Delete Key"
+msgstr "លុប​សោ"
+
+#: modules/keyview.php:253
+msgid "This is my SIGNING key"
+msgstr "នេះ​ជា​សោ​ចុះហត្ថលេខា​របស់​ខ្ញុំ"
+
+#: modules/keyview.php:270
+msgid "This is my TRUSTED key"
+msgstr "នេះ​ជា​សោ​ទុកចិត្ត​របស់​ខ្ញុំ"
+
+#: modules/keyview.php:287
+msgid "Signatures"
+msgstr "ហត្ថលេខា"
+
+#: modules/keyview.php:297
+msgid "User Identities"
+msgstr "អត្តសញ្ញាណ​អ្នកប្រើ"
+
+#: modules/keyview.php:301
+msgid "Sign User Identities"
+msgstr "ចុះហត្ថលេខា​អត្តសញ្ញាណ​របស់​អ្នក"
+
+#: modules/keyview.php:306
+msgid "Add User Identity"
+msgstr "បន្ថែម​អត្តសញ្ញាណ​អ្នកប្រើ"
+
+#: modules/keyview.php:311
+msgid "Delete User Identities"
+msgstr "លុប​អត្តសញ្ញាណ​អ្នកប្រើ"
+
+#: modules/keyview.php:334
+msgid "Subkeys"
+msgstr "សោ​រង"
+
+#: modules/keyview.php:339
+msgid "Add New SubKey"
+msgstr "បន្ថែម​សោ​រង​ថ្មី"
+
+#: modules/keyview.php:342
+msgid "Revoke SubKey"
+msgstr "ដកហូត​សោ​រង"
+
+#: modules/keyview.php:345
+msgid "Delete SubKey"
+msgstr "លុប​សោ​រង"
+
+#: modules/keyview.php:349
+msgid "Expire SubKey"
+msgstr "ផុត​កំណត់​សោ​រង"
+
+#: modules/keyview.php:361
+msgid "Subkey"
+msgstr "សោ​រង"
+
+#: modules/keyview.php:369
+msgid "Error loading key data."
+msgstr "កំហុស​ក្នុង​ការ​ផ្ទុក​ទិន្នន័យ​សោ ។"
+
+#: modules/keyview.php:381
+msgid "Signed by"
+msgstr "បាន​ចុះហត្ថលេខា​ដោយ"
+
+#: modules/keyview.php:387
+msgid "unknown key"
+msgstr "សោ​មិន​ស្គាល់"
+
+#: modules/keyview.php:389
+msgid "on"
+msgstr "នៅ"
+
+#: modules/keyview.php:397
+msgid "Type"
+msgstr "ប្រភេទ"
+
+#: modules/keyview.php:400
+msgid "Public"
+msgstr "សាធារណៈ"
+
+#: modules/keyview.php:403
+msgid "SubKey"
+msgstr "សោ​រង"
+
+#: modules/keyview.php:406
+msgid "Secret"
+msgstr "សម្ងាត់"
+
+#: modules/keyview.php:416
+msgid "RSA"
+msgstr "RSA"
+
+#: modules/keyview.php:422
+msgid "DSA/DH"
+msgstr "DSA/DH"
+
+#: modules/keyview.php:425
+msgid "ElGamal (sign and encrypt)"
+msgstr "ElGamal (ចុះហត្ថលេខា និង​អ៊ិនគ្រីប)"
+
+#: modules/keyview.php:428
+msgid "UNKNOWN"
+msgstr "មិនស្គាល់"
+
+#: modules/keyview.php:433
+msgid "Length"
+msgstr "ប្រវែង"
+
+#: modules/keyview.php:435 modules/keyserver.mod:138
+msgid "Key ID"
+msgstr "លេខ​សម្គាល់​សោ"
+
+#: modules/keyview.php:438
+msgid "Created"
+msgstr "បាន​បង្កើត"
+
+#: modules/keyview.php:440
+msgid "Expires"
+msgstr "ផុត​កំណត់"
+
+#: modules/keyview.php:443
+msgid "Fingerprint"
+msgstr "ស្នាម​ម្រាម​ដៃ"
+
+#. ===============================================================
+#: modules/uploadkey.php:33
+msgid "Upload Key to Keyserver"
+msgstr "ផ្ទុក​ឡើង​សោ​ទៅកាន់​ម៉ាស៊ីន​បម្រើ​សោ"
+
+#: modules/uploadkey.php:48 modules/keyserver.mod:56
+msgid "Choose your Default Keyserver"
+msgstr "ជ្រើស​ម៉ាស៊ីន​បម្រើ​សោ​លំនាំដើម"
+
+#: modules/uploadkey.php:62 modules/keyserver.mod:70
+msgid "Make this my default keyserver"
+msgstr "ដាក់​វា​ជា​ម៉ាស៊ីន​សោ​លំនាំដើម​របស់​ខ្ញុំ"
+
+#: modules/cachepass.mod:38
+msgid " Please try again."
+msgstr " សូម​ព្យាយាម​ម្ដងទៀត ។"
+
+#: modules/general.mod:124
+msgid "GPG Plugin - General Options"
+msgstr "កម្មវិធី​ជំនួយ GPG - ជម្រើស​ទូទៅ"
+
+#: modules/general.mod:128
+msgid "This screen allows you to set general GPG Plugin options."
+msgstr "អេក្រង់​នេះ អនុញ្ញាត​ឲ្យ​អ្នក​កំណត់​ជម្រើស​កម្មវិធី​ជំនួយ GPG ទូទៅ ។"
+
+#: modules/general.mod:130
+msgid ""
+"These options have broad effects on how the plugin works, and can help you "
+"be more productive."
+msgstr "ជម្រើស​ទាំងនេះ​មាន​ប្រសិទ្ធិភាព​យ៉ាង​ទូលំទូលាយ​លើ​របៀប​ដំណើរការ​របស់​កម្មវិធី​ជំនួយ និង​អាច​ជួយ​អ្នក​ឲ្យ​កាន់​តែ​មាន​ផលិតភាព​ថែម​ទៀត ។"
+
+#: modules/general.mod:140
+msgid "Keyring Link in Main Menu Bar"
+msgstr "តំណ Keyring នៅ​ក្នុង​របារ​ម៉ឺនុយ​មេ"
+
+#: modules/general.mod:142
+msgid "Should the GPG Plugin place a link to the Keyring in the main menu bar?"
+msgstr "តើ​កម្មវិធី​ជំនួយ GPG គួរ​តែ​ដាក់​តំណ​ទៅ Keyring នៅ​ក្នុង​របារ​ម៉ឺនុយ​មេ​ឬ​ទេ ?"
+
+#: modules/general.mod:145 modules/general.mod:148 modules/general.mod:166
+#: modules/general.mod:171 modules/general.mod:195 modules/general.mod:200
+#: modules/general.mod:290 modules/general.mod:295 modules/general.mod:324
+#: modules/general.mod:329 modules/general.mod:360 modules/general.mod:365
+#: modules/general.mod:396 modules/general.mod:400 modules/general.mod:414
+#: modules/general.mod:418
+msgid "Yes"
+msgstr "បាទ​/​ចាស"
+
+#: modules/general.mod:146 modules/general.mod:149 modules/general.mod:167
+#: modules/general.mod:172 modules/general.mod:196 modules/general.mod:201
+#: modules/general.mod:291 modules/general.mod:296 modules/general.mod:325
+#: modules/general.mod:330 modules/general.mod:361 modules/general.mod:366
+#: modules/general.mod:397 modules/general.mod:401 modules/general.mod:415
+#: modules/general.mod:419
+msgid "No"
+msgstr "ទេ"
+
+#: modules/general.mod:155
+msgid "Partial Recipient Encryption Option"
+msgstr "ជម្រើស​ការ​អ៊ិនគ្រីប​អ្នក​ទទួល​តាម​ផ្នែក"
+
+#: modules/general.mod:157
+msgid ""
+"Sometimes, you may not have public keys for all of the email addresses in "
+"your To, CC, and BCC fields in the Compose window."
+msgstr "ពេល​ខ្លះ អ្នក​មិនអាច​មាន​សោ​សាធារណៈ​សម្រាប់​អាសយដ្ឋាន​អ៊ីមែល​នៅ​ក្នុង​វាល ជូន​ចំពោះ ចម្លង​ជូន និង​ចម្លង​ជា​សម្ងាត់​ជូន នៅ​ក្នុង​បង្អួច​តែង ។"
+
+#: modules/general.mod:159
+msgid ""
+"When this happens, the GPG plugin can either display an error and return to "
+"your plaintext, or encrypt the message to the recipients that you do have "
+"keys for, and inform you of the email addresses that you did not have keys "
+"for."
+msgstr "នៅពេល​ដែល​វា​កើតឡើង កម្មវិធី​ជំនួយ GPG អាច​បង្ហាញ​កំហុសត និង​ត្រឡប់​ទៅ​ជា​អត្ថបទ​ធម្មតា​របស់​អ្នក​វិញ ឬ​អ៊ិនគ្រីប​សារ​ទៅ​អ្នក​ទទួល​ដែល​អ្នក​មាន​សោ​សម្រាប់​ពួក​គេ និង​ជូន​ដំណឹង​ដល់​អ្នក​អំពី​អាសយដ្ឋាន​អ៊ីមែល​ដែល​អ្នក​គ្មាន​សោ​សម្រាប់​គេ ។"
+
+#: modules/general.mod:161
+msgid ""
+"Do you want the GPG plugin to encrypt the message to only some recipients, "
+"if you do not have public keys for everyone?"
+msgstr "តើ​អ្នក​ចង់​ឲ្យ​កម្មវិធី​ជំនួយ GPG អ៊ិនគ្រីប​សារ​ទៅ​តែ​អ្នក​ទទួល​មួយ​ចំនួន​ទេ ប្រសិន​បើ​អ្នក​មិនមាន​សោ​សាធារណៈ​សម្រាប់​គ្រប់គ្នា​ទេ​នោះ ?"
+
+#: modules/general.mod:179
+msgid "Encrypt to Self"
+msgstr "អ៊ិនគ្រីប​ទៅ​ខ្លួន​ឯង"
+
+#: modules/general.mod:181
+msgid ""
+"When you encrypt an email message, the plugin can be set to automatically "
+"include your email address in the recipient list."
+msgstr "នៅពេល​ដែល​អ្នក​អ៊ិនគ្រីប​សារ​អ៊ីមែល កម្មវិធី​ជំនួយ​អាចត្រូវបាន​កំណត់​ឲ្យ​រួមបញ្ចូល​អាសយដ្ឋាន​អ៊ីមែល​​នៅ​ក្នុង​បញ្ជី​អ្នក​ទទួល​ដោយ​ស្វ័យប្រវត្តិ ។"
+
+#: modules/general.mod:183
+msgid ""
+"If your keyring has a public key for this email address on it, then all "
+"messages you encrypt will be readable by you later."
+msgstr "ប្រសិន​បើ keyring របស់​អ្នក​មាន​សោ​សាធារណៈ​សម្រាប់​អាសយដ្ឋាន​អ៊ីមែល​នេះ​លើ​វា នោះ​សារ​ទាំងអស់​ដែល​អ្នក​អ៊ិនគ្រីប នឹង​អាច​អាន​បាន​នៅ​ពេលក្រោយ ។"
+
+#: modules/general.mod:185
+msgid ""
+"If you wish to encrypt all messages to multiple keys, you may separate a "
+"list of email addresses or public keyids with commas."
+msgstr "ប្រសិន​បើ​អ្នក​ចង់​អ៊ិនគ្រីប​សារ​ទាំងអស់​ទៅ​សោ​ច្រើន អ្នក​អាច​បំបែក​បញ្ជី​អាសយដ្ឋាន​អ៊ីមែល ឬ​លេខ​សម្គាល់​សោ​សាធារណៈ​ជាមួយ​នឹង​សញ្ញា​ក្បៀស (,) ។"
+
+#: modules/general.mod:187
+msgid ""
+"If you set this option to 'No', you will not be able to decrypt messages "
+"encrypted with the plugin unless you add your email address in the To, CC, "
+"or BCC line of the email before encrypting it."
+msgstr "ប្រសិន​បើ​អ្នក​កំណត់​ជម្រើស​នេះ​ទៅ 'ទេ' អ្នក​នឹង​មិនអាច​ឌិគ្រីប​សារ​ដែល​បាន​អ៊ិនគ្រីប​កម្មវិធី​ជំនួយ​ទេ លុះត្រា​តែ​អ្នក​បន្ថែម​អាសយដ្ឋាន​អ៊ីមែល​នៅ​ក្នុង​បន្ទាត់ ជូន​ចំពោះ ចម្លង​ជូន ឬ​ចម្លង​ជា​សម្ងាត់​ជូន មុនពេល​អ៊ិនគ្រីប ។"
+
+#: modules/general.mod:189
+msgid ""
+"Do you want the plugin to encrypt mail to your address, in addition to the "
+"recipients?"
+msgstr "តើ​អ្នក​ចង់​ឲ្យ​កម្មវិធី​ជំនួយ​អ៊ិនគ្រីប​អ៊ីមែល​ទៅ​អាសយដ្ឋាន​របស់​អ្នក​ទេ ដោយ​បន្ថែម​ទៅ​អ្នក​ទទួល ?"
+
+#: modules/general.mod:205
+msgid ""
+"If you selected 'Yes', what is the email address you would like to encrypt "
+"to:"
+msgstr "ប្រសិន​បើ​អ្នក​​ជ្រើស 'បាទ​/​ចាស' តើ​អាសយដ្ឋាន​អ៊ីមែល​អ្វី​ដែល​អ្នក​ចង់​អ៊ិនគ្រីប​ទៅ ៖"
+
+#: modules/general.mod:228
+msgid "'On Send' Defaults"
+msgstr "'នៅពេល​ផ្ញើ' លំនាំដើម"
+
+#: modules/general.mod:230
+msgid ""
+"The plugin supports the ability to set default options to be applied every "
+"time you send a message."
+msgstr "កម្មវិធី​ជំនួយ គាំទ្រ​លទ្ធផល​ដែល​កំណត់​ជម្រើស​លំនាំដើម​ដើម្បី​ឲ្យ​អនុវត្ត​ពេលវេលា​ដែល​អ្នក​ផ្ញើ​សារ ។"
+
+#: modules/general.mod:232
+msgid ""
+"You have the option to attempt to Encrypt, Sign, or Encrypt and Sign every "
+"message that you send, by default. "
+msgstr "តាម​លំនាំដើម អ្នក​មាន​ជម្រើស​ក្នុង​ការ​អ៊ិនគ្រីប ចុះហត្ថលេខា ឬ​អ៊ិនគ្រីប និង​ចុះហត្ថលេខា​រាល់សារ​ដែល​អ្នក​ផ្ញើ ។"
+
+#: modules/general.mod:234
+msgid ""
+"You may encrypt your email either after you press the 'Encrypt Now' button "
+"from the Compose page, or at the time you send the message."
+msgstr "អ្នក​អាច​អ៊ិនគ្រីប​អ៊ីមែល​របស់​អ្នក​បាន​បន្ទាប់​ពី​អ្នក​សង្កត់​ប៊ូតុង 'អ៊ិនគ្រីប​ឥឡូវ' ពី​ទំព័រ តែង ឬ​នៅពេល​ដែល​អ្នក​ផ្ញើ​សារ ។"
+
+#: modules/general.mod:236
+msgid ""
+"If you with to Encrypt all messages by default, select the 'Encrypt on Send' "
+"option below."
+msgstr "ប្រសិន​បើអ្នក​ត្រូវ​អ៊ិនគ្រីប​សារ​ទាំងអស់​តាម​លំនាំដើម ត្រូវ​ជ្រើស​ជម្រើស 'អ៊ិនគ្រីប​នៅ​ពេល​ផ្ញើ' ខាងក្រោម ។"
+
+#: modules/general.mod:238
+msgid ""
+"Be aware that using this option in combination with the partial recipients "
+"option, above, may result in unintended consequences."
+msgstr "ត្រូវ​ដឹង​ថា ការ​ប្រើ​ជម្រើស​នេះ​ក្នុង​ការ​បន្សំ​ចូល​គ្នា​ជាមួយ​ជម្រើស​អ្នក​ទទួល​តាម​ផ្នែក​ៗ គឺ​អាច​មាន​លទ្ធផល​មិន​តាម​លំដាប់ ។"
+
+#: modules/general.mod:240
+msgid "Your message may be sent without being readable by some recipients."
+msgstr "សារ​របស់​អ្នក​អាច​ត្រូវបាន​ផ្ញើ​ដោយ​គ្មាន​សិទ្ធិ​អាច​អាន​បាន ដោយ​អ្នក​ទទួល ។"
+
+#: modules/general.mod:242
+msgid ""
+"If you wish to Sign all of your messages by default, you may also select the "
+"'Sign on Send' option below."
+msgstr ""
+"ប្រសិន​បើ​អ្នក​ចង់​ចុះហត្ថលេខា​សារ​ទាំងអស់​របស់​អ្នក​តាម​លំនាំដើម អ្នក​អាច​ជ្រើស​ជម្រើស "
+"'ចុះហត្ថលេខា​នៅ​ពេល​ផ្ញើ' ខាងក្រោម ។"
+
+#: modules/general.mod:244
+msgid ""
+"If you Sign your messages, the message will be verifiable as being from you, "
+"and the recipient will be able to make sure that the message was not "
+"tampered with in transit."
+msgstr "ប្រសិន​បើ​អ្នក​ចុះហត្ថលេខា​សារ​របស់​អ្នក សារ​នឹង​អាច​បញ្ជាក់​បាន​ថា អ្នក​ជា​អ្នក​ផ្ញើ និង​អ្នក​ទទួល​នឹង​អាច​ដឹង​ច្បាស់​ថា សារ​មិនត្រូវ​បាន​ក្លែង​បន្លំ​នៅពេល​បញ្ជូន​ទេ ។"
+
+#: modules/general.mod:246
+msgid ""
+"If you set one of these options below, you will have the opportunity on the "
+"Compose page to turn it off on a message by message basis."
+msgstr "ប្រសិន​បើ​អ្នក​កំនត់​ជម្រើស​ខាងក្រោម​ទាំង​នេះ អ្នក​នឹង​មាន​ឱកាស​នៅលើ​ទំព័រ​តែង ដើម្បី​បិទ​វា​នៅ​លើ​សារ ដោយ​មូលដ្ឋាន​សារ ។"
+
+#: modules/general.mod:248
+msgid "This preference only sets the default behavior."
+msgstr "ចំណង់ចំណូល​ចិត្ត​នេះ កំណត់​តែ​ឥរិយាបទ​លំនាំដើ​ប៉ុណ្ណោះ ។"
+
+#: modules/general.mod:250
+msgid ""
+"The plugin will return you to the Compose page with your original message "
+"(plaintext) preserved if there is an error that requires your attention "
+"after you press 'Send'."
+msgstr "កម្មវិធី​ជំនួយ នឹង​ត្រឡប់​អ្នក​ទៅកាន់​ទំព័រ​តែង ជាមួយ​នឹង​សារ​ដើម (អត្ថបទ​ធម្មតា) ដែល​បាន​ការពារ ប្រសិន​បើ​មាន​កំហុស​ដែល​តម្រូវ​ឲ្យ​អ្នក​ប្រុងប្រយ័ត្ន​បន្ទាប់​ពី​ចុច​ 'ផ្ញើ' ។"
+
+#: modules/general.mod:255 modules/general.mod:257
+msgid "Encrypt on Send by Default"
+msgstr "អ៊ិនគ្រីប​នៅពេល​ផ្ញើ​តាម​​លំនាំដើម"
+
+#: modules/general.mod:255 modules/general.mod:260
+msgid "Your system administrator has made this option mandatory."
+msgstr "អ្នក​គ្រប់គ្រង​ប្រព័ន្ធ​របស់​អ្នក បាន​បង្កើត​ជម្រើស​នេះ​ជា​ចាំបាច់ ។"
+
+#: modules/general.mod:260 modules/general.mod:262
+msgid "Sign on Send by Default"
+msgstr "ចុះហត្ថលេខា​នៅពេល​ផ្ញើ​តាម​លំនាំដើម"
+
+#: modules/general.mod:273
+msgid "Shared System Keyring"
+msgstr "បាន​ចែក​រំលែក Keyring របស់​ប្រព័ន្ធ"
+
+#: modules/general.mod:275
+msgid ""
+"Your System administrator has indicated that there is a 'system-wide' public "
+"keyring."
+msgstr "អ្នក​គ្រប់គ្រង​ប្រព័ន្ធ​របស់​អ្នក បាន​ចង្អុល​បង្ហាញ​ថា មាន keyring សាធារណៈ 'system-wide' ។"
+
+#: modules/general.mod:277
+msgid ""
+"Usually, this would suggest that a keyring is maintained for some group "
+"which you are a part of, such as an organization or corporation."
+msgstr "តាម​ធម្មតា វា​គួរ​តែ​ស្នើ​ថា keyring ត្រូវបាន​ថែទាំ​សម្រាប់​ក្រុម​ណាមួយ ដែល​អ្នក​ចូល​រួម ដូចជា​ការ​រៀបចំ ឬ​សហការ ។"
+
+#: modules/general.mod:279
+msgid ""
+"You must choose whether to trust this keyring and use it in your public key "
+"lookups."
+msgstr "អ្នក​ត្រូវតែ​ជ្រើស​ថាតើ ត្រូវ​ទុកចិត្ត keyring នេះ និង​ប្រើ​វា​នៅ​ក្នុង​ការ​រកមើល​សោ​សាធារណៈ​របស់អ្នក​ឬ​អត់ ។"
+
+#: modules/general.mod:281
+msgid ""
+"If you select 'Yes' below, the plugin will search the 'system-wide' keyring "
+"for public keys after looking at your public keyring."
+msgstr "ប្រសិន​បើ​បាន​ជ្រើស 'បាទ​/​ចាស' ខាងក្រោម កម្មវិធី​ជំនួយ​នឹង​ស្វែងរក keyring 'system-wide' សម្រាប់​សោ​សាធារណៈ​បន្ទាប់​ពី​មើល keyring សាធារណៈ​របស់​អ្នក ។"
+
+#: modules/general.mod:283
+msgid ""
+"If you set this option to 'No', you will not have access to any keys stored "
+"on the system keyring, which may include keys for members of a group to "
+"which you belong."
+msgstr "ប្រសិន​បើ​បាន​កំណត់​ជម្រើស​នេះ​ទៅ 'ទេ' អ្នក​នឹង​មិន​មាន​សិទ្ធិ​ចូល​ដំណើរការ​ទៅកាន់​សោ​ណាមួយ​ដែល​បាន​ទុក​នៅ​លើ keyring របស់​ប្រព័ន្ធ​ទេ ដែល​អាច​រួមបញ្ចូល​សោ​សម្រាប់​សមាជិក​របស់​ក្រុម​ដែល​ជា​ក្រុម​របស់​អ្នក ។"
+
+#: modules/general.mod:285
+msgid ""
+"Do you want to trust the system-wide keyring that has been defined by your "
+"system administrator?"
+msgstr "តើ​អ្នក​ចង់​ទុកចិត្ត keyring របស់ system-wide ដែល​ត្រូវបាន​កំណត់​ដោយ​អ្នក​គ្រប់គ្រង​ប្រព័ន្ធ​របស់​អ្នក​ឬ ?"
+
+#: modules/general.mod:302
+msgid ""
+"Your system administrator has also defined an Alternate Decryption Key (ADK) "
+"for the system."
+msgstr ""
+"អ្នក​គ្រប់គ្រង​ប្រព័ន្ធ​របស់​អ្នក ក៏​បាន​កំណត់ Alternate Decryption Key (ADK) សម្រាប់​ប្រព័ន្ធ ។"
+"for the system."
+
+#: modules/general.mod:304
+msgid "This key has the properties:"
+msgstr "សោ​នេះ​មាន​លក្ខណៈ​សម្បត្តិ ៖"
+
+#: modules/general.mod:310
+msgid "You must choose whether to use this ADK."
+msgstr "អ្នក​ត្រូវ​តែ​ជ្រើសរើស​ថាតើ​ត្រូវប្រើ ADK ។"
+
+#: modules/general.mod:312
+msgid ""
+"If you select 'Yes' below, all messages that you encrypt will also be "
+"encrypted to the ADK."
+msgstr "ប្រសិន​បើ​អ្នក​ជ្រើស 'បាទ​/​ចាស' ខាងក្រោម សារ​ទាំងអស់​ដែល​អ្នក​អ៊ិនគ្រីប នឹង​ត្រូវបាន​អ៊ិនគ្រីប​ទៅ​ជា ADK ។"
+
+#: modules/general.mod:314
+msgid "The holder of the ADK will be able to decrypt these messages."
+msgstr "អ្នក​កាន់ ADK នឹង​អាច​ឌិគ្រីប​សារ​ទាំងនេះ ។"
+
+#: modules/general.mod:316
+msgid ""
+"If you select 'No' below, the holder of the ADK will not be able to decrypt "
+"your messages."
+msgstr "ប្រសិន​បើ​ជ្រើស 'ទេ' ខាងក្រោម នោះ​អ្នក​កាន់ ADK នឹង​មិនអាច​ឌិគ្រីប​សារ​របស់​អ្នក​បានទេ ។"
+
+#: modules/general.mod:319
+msgid ""
+"Do you want to use the system-wide ADK that has been defined by your system "
+"administrator?"
+msgstr "តើ​អ្នក​ចង់​ប្រើ ADK របស់ system-wide ដែល​បាន​កំណត់​ដោយ​អ្នក​គ្រប់គ្រង​ប្រព័ន្ធ​របស់​អ្នក​ឬ​ទេ ?"
+
+#: modules/general.mod:341
+msgid "Passphrase Caching"
+msgstr "ឃ្លាំង​សម្ងាត់​ឃ្លា​សម្ងាត់"
+
+#: modules/general.mod:344
+msgid ""
+"The system has the ability to cache (store) the passphrase for your secret "
+"key."
+msgstr "ប្រព័ន្ធ​មាន​លទ្ធភាព​ក្នុង​ការ​ទុក​​ឃ្លា​សម្ងាត់​សម្រាប់​សោ​សម្ងាត់​របស់​អ្នក ។"
+
+#: modules/general.mod:346
+msgid ""
+"Caching the passphrase can be very convenient, but many security experts "
+"recommend against storing the passphrase on the server because it may be "
+"more susceptible to an attack."
+msgstr "ការ​ដាក់​ឃ្លា​សម្ងាត់​ក្នុង​ឃ្លាំង​សម្ងាត់ គឺ​ងាយស្រួល​ណាស់ ប៉ុន្តែ​អ្នក​ជំនាញ​ខាង​សុវត្ថិភាព​ជា​ច្រើន គឺ​មិន​ចង់​ឲ្យ​ទុក​ឃ្លា​សម្ងាត់​នៅ​លើ​ម៉ាស៊ីន​បម្រើ​ទេ ព្រោះ​វា​អាច​ទទួល​រង​នូវការ​វាយប្រហារ ។"
+
+#: modules/general.mod:348
+msgid ""
+"If you choose to cache your passphrase, your passphrase will be stored on "
+"the Web Mail server in secure storage for use by you while you are logged in."
+msgstr "ប្រសិន​បើ​អ្នក​ជ្រើស​ដាក់​ឃ្លា​សម្ងាត់​របស់​អ្នក​ក្នុង​ឃ្លា​សម្ងាត់ នោះ​ឃ្លា​សម្ងាត់​របស់​អ្នក​នឹង​ត្រូវបាន​រក្សាទុក​នៅ​លើ​ម៉ាស៊ីន​បម្រើ​សំបុត្រ​បណ្ដាញ​ក្នុង​កន្លែង​ដែល​មាន​សុវត្ថិភាព សម្រាប់​ប្រើ​នៅពេល​ដែល​អ្នក​បាន​ចូល ។"
+
+#: modules/general.mod:350
+msgid ""
+"If you select 'Yes' below, you will only be prompted for your passphrase "
+"once during a session."
+msgstr "ប្រសិន​បើ​អ្នក​ជ្រើស 'បាទ​/​ចាស' ខាងក្រោម អ្នក​នឹង​មើលឃើញ​ឃ្លា​សម្ងាត់​របស់​អ្នក នៅពេល​នៅ​ក្នុង​សម័យ ។"
+
+#: modules/general.mod:352
+msgid ""
+"If you select 'No' below, you will be prompted for your passphrase every "
+"time it is needed for decryption or signing of messages."
+msgstr "ប្រសិន​បើ​អ្នក​ជ្រើស 'ទេ' ខាងក្រោម អ្នក​នឹង​មើល​ឃើញ​ឃ្លា​សម្ងាត់​របស់​អ្នក​នៅ​រាល់ពេល​ដែល​វា​ត្រូវ​ការ​សម្រាប់​ឌិគ្រីប ឬ​ចុះហត្ថលេខា​សារ ។"
+
+#: modules/general.mod:354
+msgid "Do you want the system to cache your passphrase?"
+msgstr "តើ​អ្នក​ចង់​​ឲ្យ​ប្រព័ន្ធ​ទុក​ឃ្លា​សម្ងាត់​របស់​អ្នក​នៅ​ក្នុង​ឃ្លាំង​សម្ងាត់​ទេ ?"
+
+#: modules/general.mod:376
+msgid "OpenPGP Header Option"
+msgstr "ជម្រើស​បឋមកថា OpenPGP"
+
+#: modules/general.mod:379
+msgid ""
+"The OpenPGP header allows users the oppportunity to advertise their key id "
+"and optionally a url where their key may be fetched."
+msgstr "បឋមកថា OpenPGP អនុញ្ញាត​ឲ្យ​អ្នកប្រើ​មាន​ឱកាស​ក្នុង​ការ​ផ្ដល់​លេខ​សម្គាល់​សោ​របស់​គេ និង url ដែល​ត្រូវ​ទៅ​ប្រមូល​យក​សោ​របស់​គេ ។"
+
+#: modules/general.mod:381
+msgid ""
+"This is very convenient, as you can simply click a button and add the key of "
+"any user that emails you."
+msgstr "វា​ងាយស្រួល​ណាស់ ព្រោះ​អ្នក​អាច​ចុច​ប៊ូតុង​តាម​ធម្មតា ហើយ​បន្ថែម​សោ​របស់​អ្នក​ប្រើ​ដែល​ផ្ញើ​អ៊ីមែល​មក​អ្នក ។"
+
+#: modules/general.mod:383
+msgid ""
+"However, through a sophisticated type of attack, known as a \"man in the "
+"middle\" attack, a user could pretend to be someone else and send you his "
+"public key instead."
+msgstr "ទោះ​យ៉ាងណា តាម​​ប្រភេទ​នៃ​ការ​វាយប្រហារ​ដ៏​ស្មុគស្មាញ គឺ​ត្រូវបាន​ស្គាល់​ជា​ការ​វាយ​ប្រហារ \"អ្នក​នៅ​កណ្ដាល\" ដែល​ជា​អ្នក​ប្រើ​បន្លំ​ធ្វើ​ជា​នរណា​ម្នាក់ ហើយ​ផ្ញើ​សោ​សាធារណៈ​របស់​គាត់​ជំនួស​វិញ ។"
+
+#: modules/general.mod:385
+msgid ""
+"This type of attack would require this user to redirect every single email "
+"you send and receive, from now until eternity, otherwise something would go "
+"wrong and those parties who were communicating would discover the attack."
+msgstr "ប្រភេទ​នៃ​ការ​វាយប្រហារ​នេះ នឹង​តម្រូវ​ឲ្យ​​អ្នកប្រើ​នេះ​ប្ដូរទិស​អ៊ីមែល​ដែល​អ្នក​ផ្ញើ និង​ទទួល ពី​ពេល​នេះ​រហូត​ដល់​ពេល​ក្រោយ​ទៀត បើ​មិន​ដូច្នោះ​ទេ នឹង​អាច​មាន​បញ្ហា​កើតឡើង ហើយ​អ្នក​ដែល​ទាក់ទង​នឹង​វា នឹង​ទទួល​រង​ការ​វាយប្រហារ ។"
+
+#: modules/general.mod:388
+msgid ""
+"Those with high security needs should disable this option -- but those "
+"people will also probably not want to use email on a web server."
+msgstr "ប្រសិន​បើ​វា​ត្រូវការ​មាន​សុវត្ថិភាព​ខ្ពស់ គឺ​គួរតែ​បិទ​ជម្រើស​នេះ ប៉ុន្តែ​អ្នក​ទាំងនោះ​ក៏​នឹង​​មិន​ប្រើ​អ៊ីមែល​នៅលើ​ម៉ាស៊ីន​បម្រើ​បណ្ដាញ​ដែរ ។"
+
+#: modules/general.mod:391
+msgid "Do you want the system to parse the OpenPGP header?"
+msgstr "តើ​អ្នក​ចង់​ឲ្យ​ប្រព័ន្ធ​ញែក​បឋមកថា OpenPGP ឬ ?"
+
+#: modules/general.mod:407
+msgid "Do you want the system to generate an OpenPGP header?"
+msgstr "តើ​អ្នក​ពិតជា​ចង់​ឲ្យ​ប្រព័ន្ធ​បង្កើត​បឋមកថា OpenPGP ឬ ?"
+
+#: modules/general.mod:409
+msgid "You will have to select a public key to advertise to make this work."
+msgstr "អ្នក​នឹង​ត្រូវ​ជ្រើស​សោ​សាធារណៈ​ដើម្បី​បង្ហាញ​អំពី​ការ​ធ្វើ​ការងារ​នេះ ។"
+
+#: modules/general.mod:423
+msgid ""
+"Optional: if you want to give a url where your key may be fetched, do so "
+"here."
+msgstr "ស្រេចចិត្ត ៖ ប្រសិន​បើ​អ្នក​ចង់​ផ្ដល់ url ដែល​អាច​ទៅ​ប្រមូល​យក​សោ​របស់​អ្នក​បាន គឺ​ធ្វើ​ដូច្នេះ​បាន​នៅ​ទីនេះ ។"
+
+#: modules/general.mod:431
+msgid "Save"
+msgstr "រក្សាទុក"
+
+#: modules/general.mod:448
+msgid "Your Preference to allow partial encryption has been saved."
+msgstr "ចំណង់ចំណូល​ចិត្ត​របស់​អ្នក​ដែលត្រូវ​អនុញ្ញាត​ការ​អ៊ិនគ្រីប​តាម​ផ្នែក គឺ​ត្រូវ​បាន​រក្សាទុក ។"
+
+#: modules/general.mod:451
+msgid "Your Preference to not allow partial encryption has been saved."
+msgstr "ចំណង់ចំណូលចិត្ត​របស់​អ្នក ដែល​មិនត្រូវ​អនុញ្ញាត​ការអ៊ិនគ្រីប​ជា​ផ្នែក ត្រូវបាន​រក្សាទុក ។"
+
+#: modules/general.mod:462
+msgid "Your Preference to encrypt a copy of all messages to"
+msgstr "ចំណង់ចំណូលចិត្ត​របស់​អ្នក​ដែលត្រូវ​អ៊ិនគ្រីប​ច្បាប់​ចម្លង​សារ​ទាំងអស់"
+
+#: modules/general.mod:462
+msgid "has been saved."
+msgstr "ត្រូវបាន​រក្សាទុក"
+
+#: modules/general.mod:465
+msgid ""
+"Your Preference to not encrypt a copy of every message to yourself has been "
+"saved."
+msgstr "ចំណង់ចំណូលចិត្ត​របស់​អ្នក​ដែល​មិន​ត្រូវ​អ៊ិនគ្រីប​ច្បាប់​ចម្លង​រាល់​សារ​ទាំងអស់​ទៅ​ខ្លួន​អ្នក គឺ​ត្រូវបាន​រក្សាទុក ។"
+
+#: modules/general.mod:475
+msgid "Your Preference to request automatic key lookup has been saved"
+msgstr "ចំណង់ចំណូលចិត្ត​របស់​អ្នក​ដែលត្រូវ​ស្នើ​ការ​រកមើល​សោ​ស្វ័យប្រវត្តិ គឺ​ត្រូវបាន​រក្សាទុក"
+
+#: modules/general.mod:486
+msgid "Your Preference to show the keyring link in the main menu bar has been saved."
+msgstr "ចំណង់ចំណូលចិត្ត​របស់​អ្នក​ដែលត្រូវ​បង្ហាញ​តំណ keyring នៅ​ក្នុង​របារ​ម៉ឺនុយ​មេ ត្រូវបាន​រក្សាទុក ។"
+
+#: modules/general.mod:489
+msgid ""
+"Your Preference to not show the keyring link in the main menu bar has been "
+"saved."
+msgstr "ចំណង់ចំណូលចិត្ត​របស់​អ្នក​ដែល​មិន​ត្រូវ​បង្ហាញ​​តំណ keyring នៅ​ក្នុង​របារ​ម៉ឺនុយ​មេ ត្រូវបាន​រក្សាទុក ។"
+
+#: modules/general.mod:494
+msgid "Your Preference to attempt to Encrypt on Send by default has been saved."
+msgstr "ចំណង់ចំណូលចិត្ត​របស់​អ្នក​ដែលត្រូវ​អ៊ិនគ្រីប​នៅ​ពេល​ផ្ញើ​តាម​លំនាំដើម ត្រូវបាន​រក្សាទុក ។"
+
+#: modules/general.mod:497
+msgid "Your Preference to not Encrypt on Send by default has been saved."
+msgstr "ចំណង់ចំណូលចិត្ត​របស់​អ្នក​ដែល​មិនត្រូវ​អ៊ិនគ្រីប​នៅ​ពេល​ផ្ញើ​តាម​លំនាំដើម ត្រូវបាន​រក្សាទុក ។"
+
+#: modules/general.mod:501
+msgid "Your Preference to attempt to Sign on Send by default has been saved."
+msgstr "ចំណង់ចំណូលចិត្ត​របស់​អ្នក​ដែល​ត្រូវ​ចុះហត្ថលេខា​នៅពេល​ផ្ញើ​តាម​លំនាំដើម ត្រូវបាន​រក្សាទុក ។"
+
+#: modules/general.mod:504
+msgid "Your Preference to not Sign on Send by default has been saved."
+msgstr "ចំណង់ចំណូលចិត្ត​របស់​អ្នក​ដែល​មិន​ត្រូវ​ចុះហត្ថលេខា​នៅ​ពេល​ផ្ញើ​តាម​លំនាំដើម ត្រូវបាន​រក្សាទុក ។"
+
+#: modules/general.mod:511
+msgid "Your Preference to trust the system keyring has been saved."
+msgstr "ចំណង់ចំណូលចិត្ត​របស់​អ្នក​ដែលត្រូវ​ទុកចិត្ត​លើ keyring របស់​ប្រព័ន្ធ​ត្រូវបាន​រក្សាទុក ។"
+
+#: modules/general.mod:514
+msgid "Your Preference to not trust the system keyring has been saved."
+msgstr "ចំណង់ចំណូលចិត្ត​របស់​អ្នក​ដែល​មិនត្រូវ​ទុកចិត្ត​លើ keyring របស់​ប្រព័ន្ធ ត្រូវបាន​រក្សាទុក ។"
+
+#: modules/general.mod:521
+msgid "Your Preference to use the system ADK has been saved."
+msgstr "ចំណង់ចំណូលចិត្ត​ដែល​ត្រូវ​ប្រើ ADK របស់​ប្រព័ន្ធ​ត្រូវបាន​រក្សាទុក ។"
+
+#: modules/general.mod:524
+msgid "Your Preference to not use the system ADK has been saved."
+msgstr "ចំណង់ចំណូលចិត្ត​របស់​អ្នក​ដែលមិនត្រូវ​ប្រើ​ ADK របស់​ប្រព័ន្ធ ត្រូវបាន​រក្សាទុក ។"
+
+#: modules/general.mod:537
+msgid "Your Preference to cache your passphrase has been saved."
+msgstr "ចំណង់ចំណូលចិត្ត​របស់​អ្នក​ដែលត្រូវ​ទុក​ឃ្លា​សម្ងាត់​របស់​អ្នក​នៅ​ក្នុង​ឃ្លាំង​សម្ងាត់ ត្រូវបាន​រក្សាទុក ។"
+
+#: modules/general.mod:540
+msgid "Your Preference to not cache your passphrase has been saved."
+msgstr "ចំណង់ចំណូលចត្ត​របស់​អ្នក​ដែល​មិន​ត្រូវ​ទុក​ឃ្លា​សម្ងាត់​របស់​អ្នក​នៅ​ក្នុង​ឃ្លាំង​សម្ងាត់ ត្រូវបាន​រក្សាទុក ។"
+
+#: modules/general.mod:543
+msgid "Your cached passphrase has been securely erased."
+msgstr "ឃ្លា​សម្ងាត់​របស់​អ្នក​ដែល​បាន​ទុក​ក្នុង​ឃ្លាំង​សម្ងាត់ ត្រូវបាន​លុប​ចេញ​ដោយ​សុវត្ថិភាព ។"
+
+#: modules/general.mod:555
+msgid "Your preference to parse the OpenPGP header has been saved."
+msgstr "ចំណង់ចំណូលចិត្ត​របស់​អ្នក​ដែលត្រូវ​ញែក​បឋមកថា OpenPGP ត្រូវបាន​រក្សាទុក ។"
+
+#: modules/general.mod:558
+msgid "Your preference not to parse the OpenPGP header has been saved."
+msgstr "ចំណង់ចំណូលចិត្ត​របស់​អ្នក​ដែល​មិនត្រូវ​ញែក​បឋមកថា OpenPGP ត្រូវបាន​រក្សាទុក ។"
+
+#: modules/general.mod:569
+msgid "Your preference to generate an OpenPGP header has been saved."
+msgstr "ចំណង់ចំណូលចិត្ត​របស់​អ្នក​ដែលត្រូវ​បង្កើត​បឋមកថា OpenPGP ត្រូវបាន​រក្សាទុក ។"
+
+#: modules/general.mod:572
+msgid "Your preference not to generate an OpenPGP header has been saved."
+msgstr "ចំណង់ចំណូលចិត្ត​របស់​អ្នក​ដែល​មិនត្រូវ​បង្កើត​បឋមកថា OpenPGP គឺ​ត្រូវបាន​រក្សាទុក ។"
+
+#: modules/gpgdecrypt.mod:117 modules/gpgdecrypt.mod:470
+msgid "Unknown sender"
+msgstr "មិនស្គាល់​អ្នក​ផ្ញើ"
+
+#: modules/gpgdecrypt.mod:227
+msgid "Search results"
+msgstr "ស្វែងរក​លទ្ធផល"
+
+#: modules/gpgdecrypt.mod:232
+msgid "Message List"
+msgstr "បញ្ជី​សារ"
+
+#: modules/gpgdecrypt.mod:246
+msgid "Delete"
+msgstr "លុប"
+
+#: modules/gpgdecrypt.mod:261
+msgid "Resume Draft"
+msgstr "សរសេរ​បន្ត​លើ​សេចក្ដី​ព្រាង"
+
+#: modules/gpgdecrypt.mod:304
+msgid "Forward"
+msgstr "បញ្ជូន​បន្ត"
+
+#: modules/gpgdecrypt.mod:309
+msgid "Forward as Attachment"
+msgstr "បញ្ជូន​បន្ត​ជា​ឯកសារ​ភ្ជាប់"
+
+#: modules/gpgdecrypt.mod:335
+msgid "Reply"
+msgstr "ឆ្លើយតប"
+
+#: modules/gpgdecrypt.mod:338
+msgid "Reply All"
+msgstr "ឆ្លើយតប​ទាំងអស់"
+
+#: modules/gpgdecrypt.mod:344
+msgid "Move to:"
+msgstr "ផ្លាស់ទី​ទៅ ៖"
+
+#: modules/gpgdecrypt.mod:353
+msgid "Move"
+msgstr "ផ្លាស់ទី"
+
+#: modules/gpgdecrypt.mod:452
+msgid "Connection to IMAP Server to retrieve message body failed."
+msgstr "ការ​តភ្ជាប់​ទៅ​ម៉ាស៊ីន​បម្រើ IMAP ដែល​ត្រូវ​ទៅ​ប្រមូលយក​តួ​សារ ត្រូវបាន​បរាជ័យ ។"
+
+#. display the page title
+#. ===============================================================
+#: modules/gpgdecrypt.mod:510
+msgid "GPG Decryption Results"
+msgstr "លទ្ធផល​ការ​ឌិគ្រីប GPG"
+
+#: modules/gpgdecrypt.mod:591
+msgid "Subject"
+msgstr "ប្រធានបទ"
+
+#: modules/gpgdecrypt.mod:592
+msgid "From"
+msgstr "ពី"
+
+#: modules/gpgdecrypt.mod:593
+msgid "Date"
+msgstr "កាលបរិច្ឆេទ"
+
+#: modules/gpgdecrypt.mod:594
+msgid "To"
+msgstr "ជូន​ចំពោះ"
+
+#: modules/gpgdecrypt.mod:595
+msgid "Cc"
+msgstr "ចម្លង​ជូន"
+
+#: modules/gpgdecrypt.mod:596
+msgid "Bcc"
+msgstr "ចម្លង​ជា​សម្ងាត់​ជូន"
+
+#: modules/gpgdecrypt.mod:597
+msgid "Priority"
+msgstr "អាទិភាព"
+
+#. put a header row here
+#. echo '<p><br>&nbsp;<br>&nbsp;</p>';
+#: modules/gpgdecrypt.mod:619
+msgid "Decrypted Message"
+msgstr "សារ​ដែល​បាន​ឌិគ្រីប"
+
+#: modules/gpgdecrypt.mod:655
+msgid "Attachments"
+msgstr "ឯកសារ​ភ្ជាប់"
+
+#: modules/gpgdecrypt.mod:673
+msgid "Warning: "
+msgstr "ព្រមាន ៖ "
+
+#: modules/gpgdecrypt.mod:690
+msgid "Info: "
+msgstr "ព័ត៌មាន"
+
+#: modules/gpgdecrypt.mod:716
+msgid "writes"
+msgstr "សរសេរ"
+
+#: modules/keyserver.mod:50
+msgid "Keyserver Options"
+msgstr "ជម្រើស​ម៉ាស៊ីន​បម្រើ​សោ"
+
+#: modules/keyserver.mod:72
+msgid "Enter Search text below to search for a key to import"
+msgstr "បញ្ចូល​អត្ថបទ​ស្វែងរក​ខាងក្រោម​ ដើម្បី​ស្វែងរក​សោ​ដែល​ត្រូវ​នាំចូល"
+
+#: modules/keyserver.mod:74
+msgid "Search text may be an email address or an OpenPGP(PGP/GPG) Key ID"
+msgstr "ស្វែងរក​អត្ថបទ​ដែល​ជា​អាសយដ្ឋាន​អ៊ីមែល ឬ​លេខ​សម្គាល់​សោ OpenPGP(PGP/GPG)"
+
+#: modules/keyserver.mod:77
+msgid "Search for Key"
+msgstr "ស្វេងរក​សោ"
+
+#: modules/keyserver.mod:93
+msgid "Choose a Key to Import"
+msgstr "ជ្រើស​សោ​ដែល​ត្រូវ​នាំចូល"
+
+#: modules/keyserver.mod:97
+msgid "Default Keyserver set to:"
+msgstr "ម៉ាស៊ីន​បម្រើ​សោ​លំនាំដើម​បាន​កំណត់​ទៅ ៖"
+
+#: modules/keyserver.mod:106 modules/keyserver.mod:115
+#: modules/keyserver.mod:173
+msgid "Using Keyserver: "
+msgstr "ការ​ប្រើ​ម៉ាស៊ីន​បម្រើ​សោ ៖ "
+
+#: modules/keyserver.mod:112
+msgid "Default Keyserver: "
+msgstr "ម៉ាស៊ីន​បម្រើ​សោ​លំនាំដើម ៖ "
+
+#: modules/keyserver.mod:131
+msgid "Select a key to import from the list below."
+msgstr "ជ្រើស​សោ ដែលត្រូវ​នាំចូល​ពី​បញ្ជី​ខាងក្រោម ។"
+
+#: modules/keyserver.mod:133
+msgid ""
+"If you do not see the key you wish to import, you may go back and enter "
+"different search terms or select a different keyserver."
+msgstr "ប្រសិន​បើ​អ្នក​រក​មិនឃើញ​សោ​ដែល​អ្នក​ចង់​នាំចូល​ទេ អ្នក​អាច​ត្រឡប់​ក្រោយវិញ ហើយ​បញ្ចូល​ពាក្យ​ស្វែងរក​ផ្សេង​វិញ ឬ​ជ្រើស​ម៉ាស៊ីន​បម្រើ​សោ​ផ្សេង ។"
+
+#: modules/keyserver.mod:139
+msgid "Name"
+msgstr "ឈ្មោះ"
+
+#: modules/keyserver.mod:141
+msgid "Key Date"
+msgstr "កាលបរិច្ឆេទ​សោ"
+
+#: modules/keyserver.mod:153
+msgid "Import Selected Key"
+msgstr "នាំចូល​សោ​ដែល​បាន​ជ្រើស"
+
+#: modules/keyserver.mod:170
+msgid "Import Key"
+msgstr "នាំ​ចូល​សោ"
+
+#: modules/keyserver.mod:175
+msgid "Importing key with KeyID: "
+msgstr "នាំចូល​សោ​ជាមួយ​លេខ​សម្គាល់​សោ ៖ "
+
+#. *
+#. * options_main.mod
+#. * ----------------
+#. * GPG module
+#. * Copyright (c) 2002-2005 Baverock Ventures
+#. * Licensed under the GNU GPL. For full terms see the file COPYING.
+#. *
+#. * Default page called when accessing GPG plugin options.
+#. *
+#. * $Id$
+#.
+#. *
+#. * assume that system prefs and user prefs have already been loaded
+#. * we'll use variables from these to set the defaults
+#. *
+#.
+#. ===============================================================
+#: modules/options_main.mod:21
+msgid "GPG Options - Main Options"
+msgstr "ជម្រើស GPG - ជម្រើស​មេ"
+
+#: modules/options_main.mod:27
+msgid "From this screen, you may select options for setting up the GPG Plugin."
+msgstr "នៅ​ក្នុង​អេក្រង់​នេះ អ្នក​អាច​​ជ្រើស​ជម្រើស​សម្រាប់​ដំឡើង​កម្មវិធី​ជំនួយ GPG ។"
+
+#: modules/options_main.mod:31
+msgid "Please choose the GPG Encryption Plugin options you wish to set up:"
+msgstr "សូម​ជ្រើស​ជម្រើស​កម្មវិធី​ជំនួយ​អ៊ិនគ្រីប GPG ដែល​អ្នក​ចង់​ដំឡើង ៖"
+
+#: modules/options_main.mod:37
+msgid "General Options about how the plugin works"
+msgstr "ជម្រើស​ទូទៅ​អំពី​របៀប​ដំណើរការ​កម្មវិធី​ជំនួយ"
+
+#: modules/options_main.mod:39
+msgid "Keyring Management Functions"
+msgstr "មុខងារ​គ្រប់គ្រង Keyring"
+
+#: modules/passpop.mod:53
+msgid "script file not found, exiting abnormally."
+msgstr "រក​មិនឃើញ​ឯកសារ​ស្គ្រីប​ទេ មិន​ប្រក្រតី ។"
+
+#: modules/passpop.mod:65
+msgid "GPG Signing Initiating"
+msgstr "ការ​ចាប់ផ្ដើម​ចុះហត្ថលេខា GPG"
+
+#: modules/passpop.mod:75
+msgid "GPG Draft Signing Initiating"
+msgstr "ការ​ចាប់ផ្ដើម​ចុះហត្ថលេខា​ពង្រាង GPG"
+
+#: modules/passpop.mod:85
+msgid "GPG Encrypt and Sign Initiating"
+msgstr "ការ​ចាប់ផ្ដើម​ចុះហត្ថលេខា និង​អ៊ិនគ្រីប GPG"
+
+#: modules/passpop.mod:95
+msgid "GPG Decryption Initiating"
+msgstr "ការ​ចាប់ផ្ដើម​ឌិគ្រីប GPG"
+
+#: modules/passpop.mod:100
+msgid "Confirm Delete Key"
+msgstr "អះអាង​ការ​លុប​សោ"
+
+#: modules/passpop.mod:105
+msgid "Confirm Delete Keypair"
+msgstr "អះអាង​ការ​លុប Keypair"
+
+#: modules/passpop.mod:156
+msgid "Submit"
+msgstr "ដាក់ស្នើ"
+
+#: modules/passpop.mod:160
+msgid "Virtual Keyboard"
+msgstr "ក្ដារចុច​និម្មិត"
+
+#: modules/passpop.mod:165
+msgid "You are not connected using a secure connection."
+msgstr "អ្នក​មិនត្រូវបាន​តភ្ជាប់​​ដោយប្រើ​ការ​តភ្ជាប់​សុវត្ថិភាព​ទេ ។"
+
+#: modules/passpop.mod:167
+msgid "Signing functions not allowed from an insecure connection."
+msgstr "មុខងារ​ការ​ចុះហត្ថលេខា​មិន​ត្រូវបាន​អនុញ្ញាត​ពី​ការ​តភ្ជាប់​ដែល​គ្មាន​សុវត្ថិភាព ។"
+
+#: modules/passpop.mod:169
+msgid "Close Window"
+msgstr "បិទ​បង្អួច"
+
