@@ -870,6 +870,12 @@ $languages['ka']['CHARSET']    = 'utf-8';
 $languages['ka']['LOCALE']     = array('ka_GE.UTF-8', 'ka_GE.UTF8', 'ka_GE', 'ka');
 $languages['ka_GE']['ALIAS']   = 'ka';
 
+$languages['km']['NAME']       = 'Khmer';
+$languages['km']['ALTNAME']    = '&#6017;&#6098;&#6040;&#6082;&#6042;';
+$languages['km']['CHARSET']    = 'utf-8';
+$languages['km']['LOCALE']     = array('km.UTF-8', 'km.UTF8', 'km_KH.UTF-8', 'km_KH.UTF8', 'km', 'km_KH');
+$languages['km_KH']['ALIAS']   = 'km';
+
 $languages['ko_KR']['NAME']    = 'Korean';
 $languages['ko_KR']['CHARSET'] = 'euc-KR';
 // Function does not provide all needed options
