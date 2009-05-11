@@ -1,4 +1,4 @@
-delete_move_next -- Version 2.1
+delete_move_next -- Version 3.0
 By Ben Brillat <brillat-sqplugin@mainsheet.org>
 
 This is a modified version of Delete Move Next by Bryan Stalcup <bryan@stalcup.net>
@@ -35,9 +35,10 @@ Limitations (Known bugs)
  top left of the header, the message list is pulled from cache, and does
  not reflect the deleted/moved email(s). To view the current list, click
  the mailbox link in the left-hand navigation bar.
--"Delete & Prev" has trouble with the very last message and the next-to-
- last message when you are using any sort order other than 0 (the sort
- that you get when there are no blue arrows at the top of the message list)
+-"Delete & Prev" or "Delete & Next" can result in strange behavior when
+ deleting the last or next to last message in a mailbox when using any
+ sort order other than 0.  It won't kill anything, you just might arrive
+ at a message other than the one you were expecting to see.
  If anyone has any suggestions on this one, please let me know.
 
 
@@ -67,7 +68,7 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program ("gpl.txt"); if not, write to the Free Software
-Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301, USA
 
 Contact
 =======
