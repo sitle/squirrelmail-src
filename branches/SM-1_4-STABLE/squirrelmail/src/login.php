@@ -36,8 +36,6 @@ require_once(SM_PATH . 'functions/forms.php');
  */
 set_up_language($squirrelmail_language, TRUE, TRUE);
 
-$base_uri = sqm_baseuri();
-
 /**
  * In case the last session was not terminated properly, make sure
  * we get a new one, but make sure we preserve session_expired_*
