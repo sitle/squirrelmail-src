@@ -973,7 +973,7 @@ function sqimap_get_user_server ($imap_server, $username) {
  * LDAP whatever way to find the users IMAP server.
  */
 function map_yp_alias($username) {
-   $yp = `ypmatch $username aliases`;
+   $yp = `ypmatch ' . escapeshellarg($username) . ' aliases`;
    return chop(substr($yp, strlen($username)+1));
 }
 

@@ -52,6 +52,8 @@ Version 1.4.18 - 11 May 2009
   - Fixed the lack of sanitizing of contrib/decrypt_headers.php input;
     also includes general cleanup of that page (Thanks to Niels Teusink).
     [also CVE-2009-1578]
+  - Fixed unsanitized shell command in example IMAP username mapping
+    function (map_yp_alias) (Thanks to Niels Teusink). [CVE-2009-1579]
 
 Version 1.4.17 - 03 December 2008
 ---------------------------------
