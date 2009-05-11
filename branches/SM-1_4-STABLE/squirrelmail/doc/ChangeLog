@@ -47,8 +47,11 @@ Version 1.4.18 - 11 May 2009
   - Remove ability for HTML emails to use CSS positioning to overlay
     SquirrelMail content (Thanks to Luc Beurton). (#2723196) [CVE-2009-1581]
   - Fixed improper sanitizing of PHP_SELF and the lack of sanitizing of
-    QUERY_STRING server environment variables. (Thanks to Niels Teusink
+    QUERY_STRING server environment variables (Thanks to Niels Teusink
     and Christian Balzer). [CVE-2009-1578]
+  - Fixed the lack of sanitizing of contrib/decrypt_headers.php input;
+    also includes general cleanup of that page (Thanks to Niels Teusink).
+    [also CVE-2009-1578]
 
 Version 1.4.17 - 03 December 2008
 ---------------------------------
