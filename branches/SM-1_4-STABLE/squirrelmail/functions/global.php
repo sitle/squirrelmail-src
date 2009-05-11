@@ -64,14 +64,28 @@ if ((bool) ini_get('register_globals') &&
     unset($GLOBALS['value']);
 }
 
-/*
- * strip any tags added to the url from PHP_SELF.
+/**
+ * Strip any tags added to the url from PHP_SELF.
  * This fixes hand crafted url XXS expoits for any
- * page that uses PHP_SELF as the FORM action
+ * page that uses PHP_SELF as the FORM action.
  * Must be executed before strings.php is loaded (php_self() call in strings.php).
+ * Update: strip_tags() won't catch something like
+ * src/right_main.php?sort=0&startMessage=1&mailbox=INBOX&xxx="><script>window.open("http://example.com")</script>
+ * or
+ * contrib/decrypt_headers.php/%22%20onmouseover=%22alert(%27hello%20world%27)%22%3E
+ * because it doesn't bother with broken tags.
+ * htmlspecialchars() is the preferred method.
  */
 if (isset($_SERVER['PHP_SELF'])) {
-    $_SERVER['PHP_SELF'] = strip_tags($_SERVER['PHP_SELF']);
+    $_SERVER['PHP_SELF'] = htmlspecialchars($_SERVER['PHP_SELF']);
+}
+/*
+ * same needed for QUERY_STRING because SquirrelMail
+ * uses it along with PHP_SELF when using location
+ * strings
+ */
+if (isset($_SERVER['QUERY_STRING'])) {
+    $_SERVER['QUERY_STRING'] = htmlspecialchars($_SERVER['QUERY_STRING']);
 }
 
 /**
@@ -526,7 +540,7 @@ function is_ssl_secured_connection()
  * @param string $filename   The full file path of the file to inspect
  * @param int    $max_length If any lines in the file are GREATER THAN
  *                           this number, this function returns TRUE.
- *                           
+ *
  * @return boolean TRUE as explained above, otherwise, (no long lines
  *                 found) FALSE is returned.
  *
@@ -541,7 +555,7 @@ function file_has_long_lines($filename, $max_length) {
             if (strlen($buffer) > $max_length) {
                 fclose($FILE);
                 return TRUE;
-            } 
+            }
         }
         fclose($FILE);
     }
