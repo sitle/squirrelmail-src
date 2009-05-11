@@ -42,7 +42,6 @@ if (!isset($frame_top)) {
  * because it was deleted with the session. */
 if (! sqgetGlobalVar('base_uri', $base_uri, SQ_SESSION) ) {
     require_once(SM_PATH . 'functions/display_messages.php');
-    $base_uri = sqm_baseuri();
 }
 
 do_hook('logout');
