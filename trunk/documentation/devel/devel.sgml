@@ -2720,8 +2720,7 @@ about the plugin and what it does.
          <item> Tag SVN with the release number in the format rel-X_Y_Z (rel-1_2_1). Example:
             <tscreen><verb>
 svn copy https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/branches/SM-1_4-STABLE/squirrelmail \
-https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/rel-1_2_1
-            </verb></tscreen>
+https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/rel-1_2_1</verb></tscreen>
          <item> Use the script <tt>make-release</tt> <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/util/make-release" name="found in SVN"> under the <tt>util/</tt> dir. The only parameter
          is the version to release. It will download the tagged SVN copy, pack it up nicely and upload it to SF.net (CORRECTION - the upload commands are currently commented out, so you'll need to do that manually or edit the script to do that for you).
          You will need the following tools: bash, svn, ssh, curl, tar, gzip, zip, bzip2 and optionally rpmbuild.
@@ -2735,7 +2734,7 @@ https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/rel-1_2_1
              <enum>
                  <item><tt>gpg --verify squirrelmail-X.Y.Z.tar.gz.sig squirrelmail-X.Y.Z.tar.gz</tt>
              </enum>
-         <item> Upload the release files (including the md5, sha and GPG signatures) to Sourceforge.net, see <url url="http://apps.sourceforge.net/trac/sourceforge/wiki/Release%20files%20for%20download#Uploadafile" name="sf.net instructions">.
+         <item> Upload the release files (including the md5, sha and GPG signatures) to Sourceforge.net, see <url url="http://apps.sourceforge.net/trac/sourceforge/wiki/Release%20files%20for%20download#Uploadafile" name="sf.net instructions"> or see <url url="http://apps.sourceforge.net/trac/sourceforge/wiki/File%20management%20service" name="sf.net upload protocols">.
          <item> (huh: don't go to sleep before you're finished making the release)
      </enum>
 <item><bf/Defrosting:/ Prepare SVN for continued development
@@ -2751,12 +2750,14 @@ https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/rel-1_2_1
     <enum>
          <item> Create the new release of files
             <enum>
-               <item> Log into SourceForge and go to the Admin section, File Releases.
-               <item> Click on the "add release" button for the correct package.
-               <item> Enter the release name in the box show in X.Y.Z format (no SquirrelMail or anything, just X.Y.Z).
+               <item> Log into SourceForge and go to the SquirrelMail project page.
+               <item> Under the "Project Admin" menu, select "Feature Settings".
+               <item> Now click the "Manage" link to the right of "File Release System".
+               <item> Click "Add Release" for the correct package.
+               <item> Enter the release name in X.Y.Z format (no SquirrelMail or anything, just X.Y.Z) and click the "Create This Release" button.
                <item> The next page it shows you will be the same page you get to if you clicked on "edit release" from the "Edit/Release Files" page earlier and selected a release name.
          </enum>
-         <item> Enter the ChangeLog and ReleaseNotes for this SourceForge file release.
+         <item> Enter the ChangeLog (only the part of that file for this release, not the whole file) and ReleaseNotes (the whole file) for this SourceForge file release.
          <item> Add the newly uploaded files to the release
             <enum>
                <item> Go down to the "add files to this release" section
