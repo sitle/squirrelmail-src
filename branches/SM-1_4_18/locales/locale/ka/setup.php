@@ -2,7 +2,7 @@
 /**
  * Language configuration file
  *
- * Copyright (c) 2006 The SquirrelMail Project Team
+ * Copyright (c) 2006-2009 The SquirrelMail Project Team
  *
  * This file is part of SquirrelMail webmail interface. It is distributed
  * together with other translation files and is used to enable 
@@ -28,5 +28,5 @@
 
 $languages['ka']['NAME']     = 'Georgian';
 $languages['ka']['CHARSET']  = 'utf-8';
-$languages['ka']['LOCALE']   = array('ka_GE.UTF-8','ka_GE','ka');
+$languages['ka']['LOCALE']   = array('ka_GE.UTF-8', 'ka_GE.UTF8', 'ka_GE', 'ka');
 $languages['ka_GE']['ALIAS'] = 'ka';
