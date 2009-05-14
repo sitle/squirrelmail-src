@@ -1200,10 +1200,10 @@ function showInputForm ($session, $values=false) {
         }
 
         if(count($sizes) > 0) {
-            $maxsize = '(max.&nbsp;' . show_readable_size( min( $sizes ) ) . ')' .
-                addHidden('MAX_FILE_SIZE', min( $sizes ));
+            $maxsize_text = '(max.&nbsp;' . show_readable_size( min( $sizes ) ) . ')';
+            $maxsize_input = addHidden('MAX_FILE_SIZE', min( $sizes ));
         } else {
-            $maxsize = '';
+            $maxsize_text = $maxsize_input = '';
         }
         echo '   <tr>' . "\n" .
             '      <td colspan="2">' . "\n" .
@@ -1217,10 +1217,11 @@ function showInputForm ($session, $values=false) {
             html_tag( 'td', '', 'right', '', 'valign="middle"' ) .
             _("Attach:") . '</td>' . "\n" .
             html_tag( 'td', '', 'left', '', 'valign="middle"' ) .
+            $maxsize_input .
             '                          <input name="attachfile" size="48" type="file" />' . "\n" .
             '                          &nbsp;&nbsp;<input type="submit" name="attach"' .
             ' value="' . _("Add") .'" />' . "\n" .
-            $maxsize .
+            $maxsize_text .
             '                       </td>' . "\n" .
             '                    </tr>' . "\n";
 
