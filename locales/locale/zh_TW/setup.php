@@ -2,7 +2,7 @@
 /**
  * Language configuration file
  *
- * Copyright (c) 2005-2006 The SquirrelMail Project Team
+ * Copyright (c) 2005-2009 The SquirrelMail Project Team
  *
  * This file is part of SquirrelMail webmail interface. It is distributed
  * together with other translation files and is used to enable 
@@ -28,5 +28,5 @@
 
 $languages['zh_TW']['NAME']    = 'Chinese Trad';
 $languages['zh_TW']['CHARSET'] = 'utf-8';
-$languages['zh_TW']['LOCALE']  = array('zh_TW.UTF-8','zh_TW');
+$languages['zh_TW']['LOCALE']  = array('zh_TW.UTF-8', 'zh_TW.UTF8', 'zh_TW');
 $languages['tw']['ALIAS'] = 'zh_TW';
