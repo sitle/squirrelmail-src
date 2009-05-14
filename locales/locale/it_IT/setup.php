@@ -29,5 +29,5 @@
 $languages['it_IT']['NAME']    = 'Italian';
 $languages['it_IT']['ALTNAME'] = 'Italiano';
 $languages['it_IT']['CHARSET'] = 'utf-8';
-$languages['it_IT']['LOCALE']  = array('it_IT.UTF-8','it_IT');
+$languages['it_IT']['LOCALE']  = array('it_IT.UTF-8','it_IT-UTF8','it_IT');
 $languages['it']['ALIAS'] = 'it_IT';
