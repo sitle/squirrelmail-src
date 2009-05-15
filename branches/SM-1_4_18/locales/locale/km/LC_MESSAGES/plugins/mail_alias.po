@@ -1,0 +1,138 @@
+# Khmer (km) mail_alias Translation
+# Auk Piseth <piseth_dv@khmeros.info>, 2008.
+# Khoem Sokhem <khoemsokhem@khmeros.info>, 2009.
+# Copyright (c) 2008-2009 KhmerOS Project
+# Copyright (c) 1999-2009 The SquirrelMail Project Team
+msgid ""
+msgstr ""
+"Project-Id-Version: mail_alias\n"
+"POT-Creation-Date: 2005-09-01 18:24+0300\n"
+"PO-Revision-Date: 2009-04-24 09:15+0700\n"
+"Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
+"Language-Team: Khmer <en@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: functions.php:29 mail_alias_opt.php:71
+msgid "Mail Aliases"
+msgstr "ឈ្មោះ​ក្លែងក្លាយ​សំបុត្រ"
+
+#: functions.php:31
+msgid ""
+"You may define your mail aliases here. A mail alias is an email address the "
+"mail for which will arrive in this account"
+msgstr "អ្នក​អាច​កំណត់​ឈ្មោះ​ក្លែងក្លាយ​សំបុត្រ​របស់​អ្នក​នៅ​ទីនេះ ។ ឈ្មោះ​ក្លែងក្លាយ​សំបុត្រ​គឺ​ជា​អាសយដ្ឋាន​អ៊ីមែល​ដែល​​​គណនី​នឹង​ទទួល​សំបុត្រ​នោះ"
+
+#: functions.php:50
+msgid "Error - Database connection failed."
+msgstr "កំហុស - ការ​តភ្ជាប់​មូលដ្ឋាន​ទិន្នន័យ​បរាជ័យ ។"
+
+#: functions.php:51 functions.php:82 functions.php:123 functions.php:153
+#: functions.php:216 functions.php:222 functions.php:282 functions.php:288
+#: functions.php:370
+msgid "Please contact the system administrator."
+msgstr "សូម​ទាក់ទង​អ្នក​គ្រប់គ្រង​ប្រព័ន្ធ ។"
+
+#: functions.php:81
+msgid "Error - Could not retrieve permitted domains."
+msgstr "កំហុស - មិនអាច​ទៅ​យក​ដែន​ដែល​បាន​អនុញ្ញាត​ទេ ។"
+
+#: functions.php:122
+msgid "Error - Could not retrieve current aliases."
+msgstr "កំហុស - មិនអាច​ទៅ​ប្រមូល​យក​ឈ្មោះ​ក្លែងក្លាយ​បច្ចុប្បន្ន​ទេ ។"
+
+#: functions.php:152
+msgid "Error - Could not retrieve maximum aliases."
+msgstr "កំហុស - មិនអាច​ទៅ​ប្រមូល​យក​ឈ្មោះ​ក្លែងក្លាយ​អតិបរមា​ទេ ។"
+
+#: functions.php:171 functions.php:179
+msgid "Error"
+msgstr "កំហុស"
+
+#: functions.php:172
+msgid "is not a valid Alias"
+msgstr "គឺ​មិនមែន​ជា​ឈ្មោះ​ក្លែងក្លាយ​ត្រឹមត្រូវ​ទេ"
+
+#: functions.php:180
+msgid "is already in use and cannot be used as an Alias"
+msgstr "ត្រូវបាន​ប្រើ​រួចហើយ ហើយ​មិនអាច​ប្រើ​ជា​ឈ្មោះ​ក្លែងក្លាយ​បាន​ទេ"
+
+#: functions.php:215
+msgid "Error - Could not insert the alias record into the user table."
+msgstr "កំហុស - មិនអាច​បញ្ចូល​កំណត់ត្រា​ឈ្មោះ​ក្លែងក្លាយ​ទៅ​ក្នុង​តារាង​អ្នកប្រើ​បាន​ទេ ។"
+
+#: functions.php:221
+msgid "Error - Could not insert the alias record into the forward table."
+msgstr "កំហុស - មិនអាច​បញ្ចូល​កំណត់ត្រា​​ឈ្មោះ​ក្លែងក្លាយ​​ទៅ​ក្នុង​តារាង​បញ្ជូន​បន្ត​បាន​ទេ ។"
+
+#: functions.php:281
+msgid "Error - Could not delete the alias record from the user table."
+msgstr "កំហុស - មិនអាច​លុប​កំណត់ត្រា​ឈ្មោះ​ក្លែងក្លាយ​ពី​តារាង​អ្នកប្រើ​បាន​ទេ ។"
+
+#: functions.php:287
+msgid "Error - Could not delete the alias record from the forward table."
+msgstr "កំហុស - មិនអាច​លុប​កំណត់​ត្រា​ឈ្មោះ​ក្លែងក្លាយ​ពី​តារាង​បញ្ជូន​បន្ត​បាន​ទេ ។"
+
+#: functions.php:369
+msgid "Error - Could not retrieve existing users."
+msgstr "កំហុស - មិនអាច​ទៅ​ប្រមូល​យក​អ្នកប្រើ​ដែល​មាន​រួច​ទេ ។"
+
+#: mail_alias_opt.php:71
+msgid "Options"
+msgstr "ជម្រើស"
+
+#: mail_alias_opt.php:76
+msgid "Mail aliases consist of:"
+msgstr "ឈ្មោះ​ក្លែងក្លាយ​សំបុត្រ​មាន ៖"
+
+#: mail_alias_opt.php:77
+msgid "username, domain "
+msgstr "ឈ្មោះ​អ្នកប្រើ ដែន "
+
+#: mail_alias_opt.php:78
+msgid "in the format"
+msgstr "ជា​ទ្រង់ទ្រាយ"
+
+#: mail_alias_opt.php:79
+msgid "username@domain"
+msgstr "ឈ្មោះ​អ្នកប្រើ@ដែន"
+
+#: mail_alias_opt.php:80
+msgid "Permitted domains are :"
+msgstr "ដែន​ដែល​អនុញ្ញាត​រួម​មាន ៖"
+
+#: mail_alias_opt.php:92
+msgid "You may add Aliases up to a maximum of"
+msgstr "អ្នក​អាច​បន្ថែម​ឈ្មោះ​ក្លែងក្លាយ​បាន​រហូត​ដល់​ចំនួន​អតិបរមា"
+
+#: mail_alias_opt.php:97
+msgid "Alias"
+msgstr "ឈ្មោះ​ក្លែងក្លាយ"
+
+#: mail_alias_opt.php:100
+msgid "Synchronize Identities"
+msgstr "អត្តសញ្ញាណ​សមកាលកម្ម"
+
+#: mail_alias_opt.php:101
+msgid "Action"
+msgstr "សកម្មភាព"
+
+#: mail_alias_opt.php:104
+msgid "Add"
+msgstr "បន្ថែម"
+
+#: mail_alias_opt.php:105
+msgid "Delete"
+msgstr "លុប"
+
+#: mail_alias_opt.php:141
+msgid "You have set up your maximum number of aliases."
+msgstr "អ្នក​បាន​ដំឡើង​ចំនួន​ឈ្មោះ​ក្លែង​ក្លាយ​អតិបរមា ។"
+
+#: mail_alias_opt.php:142
+msgid "You must delete one of your existing aliases before adding a new one."
+msgstr "អ្នក​ត្រូវ​តែ​លុប​ឈ្មោះ​ក្លែងក្លាយ​ដែល​មាន​ស្រាប់​មួយ មុនពេល​បន្ថែម​ឈ្មោះ​ថ្មី ។"
+
