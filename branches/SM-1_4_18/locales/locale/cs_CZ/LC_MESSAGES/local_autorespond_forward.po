@@ -2,13 +2,14 @@
 # Copyright (c) 2007-2009 The SquirrelMail Project Team
 # This file is distributed under the same license as the SquirrelMail package.
 # Michal Kminek <mkminek@getnet.cz>, 2009.
-# $Id: local_autorespond_forward.pot 12740 2007-10-24 21:31:21Z jervfors $
+# Tomas Drbohlav <tomas.drbohlav@mff.cuni.cz>, 2007.
+# $Id: $
 msgid ""
 msgstr ""
 "Project-Id-Version: local_autorespond_forward\n"
 "Report-Msgid-Bugs-To: Paul Lesniewski <paul@squirrelmail.org>\n"
 "POT-Creation-Date: 2007-07-17 21:09-0700\n"
-"PO-Revision-Date: 2009-04-15 23:34+0100\n"
+"PO-Revision-Date: 2009-05-04 23:10-0800\n"
 "Last-Translator: Michal Kminek <mkminek@getnet.cz>\n"
 "Language-Team: Czech <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -31,13 +32,13 @@ msgid "Mail Forwarding"
 msgstr "Přeposílání emailů"
 
 msgid "Set up other email addresses to which your incoming messages will be forwarded."
-msgstr "Nastavení přeposílání přicházející pošty na jiné emailové adresy."
+msgstr "Nastavení dalších emailových adres, na které budou přeposílány příchozí zprávy."
 
 msgid "Bad characters in list of forwarding addresses"
-msgstr "Nevhodný znak v seznamu adres, kam se maji emaily preposilat"
+msgstr "Seznam adres obsahuje nepovolené znaky"
 
 msgid "Forwarding has not been activated (no addresses given)"
-msgstr "Přeposílání nebylo aktivováno (nebyla zadaná žádná adresa)"
+msgstr "Přeposílání nebylo aktivováno (nebyla zadána žádná adresa)"
 
 msgid "Forwarding has been activated"
 msgstr "Přeposílání bylo aktivováno"
@@ -77,56 +78,56 @@ msgid "Error: Could not connect to LDAP server"
 msgstr "Chyba: Nepodařilo se připojit k LDAP serveru"
 
 msgid "Error: Unable to connect to FTP server. Please try again later"
-msgstr "Chyba: Nepodařilo se připojit s FTP serverem. Opakujte akci později"
+msgstr "Chyba: Nelze se připojit k FTP serveru. Zkuste to později."
 
 msgid "Error: Unable to log in to FTP server. Please contact your system administrator"
-msgstr "Chyba: Nepodařilo se přihlásit k FTP serveru. Prosim kontaktujte vašeho správce"
+msgstr "Chyba: Nelze se přihlásit k FTP serveru. Prosím kontaktujte vašeho správce"
 
 msgid "Error: Unable to switch to passive FTP mode. Please contact your system administrator"
-msgstr "Chyba: Nepodařilo se přepnutí do režimu pasivního FTP. Prosim kontaktujte vašeho správce"
+msgstr "Chyba: FTP spojení nelze přepnout do pasivního režimu. Prosím kontaktujte vašeho správce"
 
 msgid "Error: Unable to establish connection. Please contact your system administrator"
-msgstr "Chyba: Nepodařilo se ustanovenit spojení. Prosim kontaktujte vašeho správce"
+msgstr "Chyba: Nelze se připojit. Prosím kontaktujte vašeho správce"
 
 msgid "Error: Unable to send password. Please contact your system administrator"
-msgstr "Chyba: Nepodařilo se poslat heslo. Prosim kontaktujte vašeho správce"
+msgstr "Chyba: Nelze odeslat heslo. Prosím kontaktujte vašeho správce"
 
 #, php-format
 msgid "Error: Unable to handle list request (%s)"
-msgstr "Chyba: Nepodařilo se zpracovat seznam požadavků (%s)"
+msgstr "Chyba: Požadavek nelze zpracovat (%s)"
 
 msgid "Error: Unable to upload file. Please contact your system administrator"
-msgstr "Chyba: Nepodařilo se nahrát soubor. Prosim kontaktujte vašeho správce"
+msgstr "Chyba: Soubor není možné nahrát. Prosím kontaktujte vašeho správce"
 
 #, php-format
 msgid "Error: Unable to handle upload request (%s)"
-msgstr "Chyba: Nepodařilo se zpracovat požadavek na nahrání. (%s)"
+msgstr "Chyba: Požadavek na nahrání souboru není možné zpracovat (%s)"
 
 msgid "Error: unable to download file. Please contact your system administrator"
-msgstr "Chyba: Nepodařilo se stáhnout soubor. Prosim kontaktujte vašeho správce"
+msgstr "Chyba: Soubor není možné nahrát. Prosím kontaktujte vašeho správce"
 
 #, php-format
 msgid "Error: Unable to handle download request (%s)"
-msgstr "Chyba: Nepodařilo se zpracovat požadavek na stažení (%s)"
+msgstr "Chyba: Požadavek na stažení souboru není možné zpracovat (%s)"
 
 msgid "Error: unable to delete file. Please contact your system administrator"
-msgstr "Chyba: Nepodařilo se smazat soubor. Prosim kontaktujte vašeho správce"
+msgstr "Chyba: Soubor není možné smazat. Prosím kontaktujte vašeho správce"
 
 #, php-format
 msgid "Error: Unable to handle delete request (%s)"
-msgstr "Chyba: Nepodařilo se zpracovat požadavek na smazání (%s)"
+msgstr "Chyba: Požadavek na smazání souboru není možné zpracovat (%s)"
 
 #, php-format
 msgid "Error: Unable to handle init request (%s); you might need to configure with --enable-vacation"
-msgstr "Chyba: Nepodařilo se zpracovat požadavek na inicializaci (%s); možná potřebujete konfiguraci s --enable-vacation"
+msgstr "Chyba: Požadavek na inicializaci není možné zpracovat (%s); možná bude třeba pustit configure s parametrem --enable-vacation"
 
 #, php-format
 msgid "Error: Unable to handle init request (%s)"
-msgstr "Chyba: Nepodařilo se zpracovat požadavek na inicializaci (%s)"
+msgstr "Chyba: Požadavek na inicializaci není možné zpracovat (%s)"
 
 #, php-format
 msgid "An error occurred initializing the autoresponder: %s"
-msgstr "Při inicializaci automatické odpovědi došlo k chybě: %s"
+msgstr "Během inicializace automatické odpovědi došlo k chybě: %s"
 
 #, php-format
 msgid "Unknown action: %s"
@@ -157,22 +158,22 @@ msgid "Enable auto-reply to sender"
 msgstr "Povolit automatickou odpověď pro odesílatele"
 
 msgid "Send from:"
-msgstr "Poslat z:"
+msgstr "Odesílatel pro odpovědi:"
 
 msgid "Subject:"
 msgstr "Předmět:"
 
 msgid "Message:"
-msgstr "Zpráva:"
+msgstr "Text automatické odpovědi:"
 
 msgid "Forward incoming messages to addresses listed below"
-msgstr "Přeposílat přicházející emaily na níže uvedené adresy"
+msgstr "Přeposílat příchozí zprávy na níže uvedené adresy"
 
 msgid "Forwarding email addresses (one address per line):"
-msgstr "Emailové adresy, kam se má pošta přeposílat (jedna adresa na řádek):"
+msgstr "Přeposílat na tyto adresy (na každý řádek jednu adresu):"
 
 msgid "Keep copies of incoming messages in this account"
-msgstr "Zachovat kopie příchazejících emailů na serveru pod tímto účtem"
+msgstr "Uchovávat kopie příchozích zpráv na serveru"
 
 msgid "(must have at least one forwarding address to disable)"
 msgstr "(musíte mít uvedenou alespoň jednu adresu pro přeposílání, aby šla volba vypnout)"
