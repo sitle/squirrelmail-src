@@ -1,5 +1,5 @@
-# Hungarian (hu_HU) SquirrelMail Change Passowrd Plugin Translation
-# Copyright (C) 2009 The SquirrelMail Development Team
+# Hungarian (hu_HU) change_pass Translation (SquirrelMail plugin)
+# Copyright (c) 1999-2009 The SquirrelMail Project Team
 # This file is distributed under the same license as the SquirrelMail package.
 # Tamás Németh <nice@titanic.nyme.hu>, 2009.
 # $Id$
@@ -21,7 +21,7 @@ msgid "Change Password"
 msgstr "Jelszóváltoztatás"
 
 #: functions.php:35
-#, c-format
+#, php-format
 msgid "Connection error: %s"
 msgstr "Kapcsolódás közben a következő hiba történt: %s"
 
@@ -70,7 +70,7 @@ msgid "Your new password does not match the verify password."
 msgstr "Az új jelszó két példánya nem egyezik!"
 
 #: options.php:61
-#, c-format
+#, php-format
 msgid "Your new password should be %s to %s characters long."
 msgstr "Az új jelszónak legalább %s, legfeljebb %s karakteresnek kell lennie!"
 
