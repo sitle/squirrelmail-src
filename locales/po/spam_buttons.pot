@@ -1,4 +1,4 @@
-# LANGUAGE (xx_XX) spam_buttons Translation (SquirrelMail plugin)
+# LANGUAGE (xx_XX) SquirrelMail Spam Buttons Plugin Translation
 # Copyright (c) 2005-2009 The SquirrelMail Project Team
 # This file is distributed under the same license as the SquirrelMail package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
@@ -6,42 +6,55 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: spam_buttons 2.1\n"
+"Project-Id-Version: spam_buttons 2.3\n"
 "Report-Msgid-Bugs-To: Paul Lesniewski <paul@squirrelmail.org>\n"
-"POT-Creation-Date: 2008-02-01 09:12+0100\n"
+"POT-Creation-Date: 2009-05-17 08:40-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: bounce_send.php:81
+#: bounce_send.php:83
 msgid "No resend destination specified"
 msgstr ""
 
-#: bounce_send.php:210
+#: bounce_send.php:212
 msgid "Could not establish connection to outgoing mail server"
 msgstr ""
 
-#: bounce_send.php:312 report.php:1521
+#: bounce_send.php:314 report.php:1660
 #, php-format
 msgid "Could not find requested message: %s"
 msgstr ""
 
-#: bounce_send.php:347
+#: bounce_send.php:349
 msgid ""
 "Could not send report: \n"
 "%1\n"
 "%2 %3"
 msgstr ""
 
-#: bounce_send.php:349
+#: bounce_send.php:351
 msgid "Could not send report: <blockquote>%1<br />%2 %3</blockquote>"
 msgstr ""
 
+#: buttons.php:687 buttons.php:701 buttons.php:745 buttons.php:801
+#, php-format
+msgid ""
+"Spam Buttons plugin is not configured correctly!  Check custom button "
+"configuration array for \"%s\""
+msgstr ""
+
+#: buttons.php:803
+#, php-format
+msgid "Function \"%s\" not found in Spam Buttons plugin"
+msgstr ""
+
 #: compose_functions-1.4.10.php:481 compose_functions-1.4.11.php:521
-#: compose_functions-1.4.14.php:522 compose_functions-1.5.2.php:480
+#: compose_functions-1.4.14.php:532 compose_functions-1.5.2.php:494
 #, php-format
 msgid "Error: Draft folder %s does not exist."
 msgstr ""
@@ -79,14 +92,24 @@ msgstr ""
 msgid "Original Message"
 msgstr ""
 
-#: compose_functions-1.4.11.php:533 compose_functions-1.4.14.php:534
-#: compose_functions-1.5.2.php:492
+#: compose_functions-1.4.11.php:533 compose_functions-1.4.14.php:544
+#: compose_functions-1.5.2.php:506
 msgid "Message not sent."
 msgstr ""
 
-#: compose_functions-1.4.11.php:533 compose_functions-1.4.14.php:534
-#: compose_functions-1.5.2.php:498
+#: compose_functions-1.4.11.php:533 compose_functions-1.4.14.php:544
+#: compose_functions-1.5.2.php:512
 msgid "Server replied:"
+msgstr ""
+
+#: config_example.php:1253 config_example.php:1366 config.php:1298
+#: config.php:1411
+msgid "ERROR: Problem reporting message ID %1: %2"
+msgstr ""
+
+#: config_example.php:1257 config_example.php:1370 config.php:1302
+#: config.php:1415
+msgid "ERROR: Problem reporting message ID %1 (entity %2): %3"
 msgstr ""
 
 #: options.php:60
@@ -97,7 +120,7 @@ msgstr ""
 msgid "Delete Spam After Reporting"
 msgstr ""
 
-#: options.php:98 options.php:99 options.php:196 options.php:197
+#: options.php:98 options.php:99 options.php:161 options.php:162
 msgid "[Do not move]"
 msgstr ""
 
@@ -109,38 +132,38 @@ msgstr ""
 msgid "Move Spam After Reporting To"
 msgstr ""
 
-#: options.php:135 options.php:234
+#: options.php:135 options.php:199
 msgid "Copy Instead of Moving"
 msgstr ""
 
-#: options.php:169
-msgid "Move To Next Message After Reporting"
-msgstr ""
-
-#: options.php:172
-msgid "Return to Message List"
-msgstr ""
-
-#: options.php:173
-msgid "Next"
-msgstr ""
-
-#: options.php:174
-msgid "Previous"
-msgstr ""
-
-#: options.php:211
+#: options.php:176
 msgid "Copy Non-Spam After Reporting To"
 msgstr ""
 
-#: options.php:213
+#: options.php:178
 msgid "Move Non-Spam After Reporting To"
 msgstr ""
 
+#: options.php:233
+msgid "Move To Next Message After Reporting"
+msgstr ""
+
+#: options.php:236
+msgid "Return to Message List"
+msgstr ""
+
+#: options.php:237
+msgid "Next"
+msgstr ""
+
+#: options.php:238
+msgid "Previous"
+msgstr ""
+
 #: options.php:259 options.php:260 options.php:271 options.php:272
-#: options.php:348 options.php:349 options.php:362 options.php:363
-#: options.php:438 options.php:439 options.php:453 options.php:454
-#: options.php:529 options.php:530 options.php:545 options.php:546
+#: options.php:349 options.php:350 options.php:363 options.php:364
+#: options.php:440 options.php:441 options.php:455 options.php:456
+#: options.php:532 options.php:533 options.php:548 options.php:549
 msgid "[Always Display]"
 msgstr ""
 
@@ -148,57 +171,62 @@ msgstr ""
 msgid "Display Spam Button in Folders"
 msgstr ""
 
-#: options.php:322
+#: options.php:323
 msgid "Display Spam Button in Folder"
 msgstr ""
 
-#: options.php:395
+#: options.php:396
 msgid "Display Non-Spam Button in Folders"
 msgstr ""
 
-#: options.php:412
+#: options.php:414
 msgid "Display Non-Spam Button in Folder"
 msgstr ""
 
-#: options.php:486
+#: options.php:488
 msgid "Don't Display Spam Button in Folders"
 msgstr ""
 
-#: options.php:503
+#: options.php:506
 msgid "Don't Display Spam Button in Folder"
 msgstr ""
 
-#: options.php:579
+#: options.php:582
 msgid "Don't Display Non-Spam Button in Folders"
 msgstr ""
 
-#: options.php:596
+#: options.php:600
 msgid "Don't Display Non-Spam Button in Folder"
 msgstr ""
 
-#: options.php:609
+#: options.php:613
 msgid "Spam Reporting"
 msgstr ""
 
-#: report.php:1198
+#: report.php:1328
 msgid "The reported message is no longer available in this folder"
 msgstr ""
 
-#: report.php:1422
+#: report.php:1560
 msgid "ERROR: Report could not be delivered"
 msgstr ""
 
-#: report.php:1587
+#: report.php:1726
 msgid ""
 "ERROR: Could not open temp file; check attachments directory permissions"
 msgstr ""
 
-#: report.php:1599
+#: report.php:1738
 msgid "ERROR %1: Problem reporting message ID %2: %3"
 msgstr ""
 
-#: report.php:1603
+#: report.php:1742
 msgid "ERROR %1: Problem reporting message ID %2 (entity %4): %3"
+msgstr ""
+
+#: report.php:1973
+#, php-format
+msgid "Function %s not found in Spam Buttons plugin"
 msgstr ""
 
 #: setup.php:112
@@ -206,13 +234,53 @@ msgid "Spam"
 msgstr ""
 
 #: setup.php:113
-msgid "Not Spam"
+msgid "Report Spam"
 msgstr ""
 
 #: setup.php:114
-msgid "Successfully reported as spam"
+msgid "Not Spam"
 msgstr ""
 
 #: setup.php:115
+msgid "Successfully reported as spam"
+msgstr ""
+
+#: setup.php:116
 msgid "Successfully reported as non-spam"
+msgstr ""
+
+#: setup.php:117
+msgid "Whitelist"
+msgstr ""
+
+#: setup.php:118
+msgid "Whitelist Sender"
+msgstr ""
+
+#: setup.php:119
+msgid "Blacklist"
+msgstr ""
+
+#: setup.php:120 setup.php:121
+msgid "Blacklist Sender"
+msgstr ""
+
+#: setup.php:122 setup.php:123
+msgid "Sender has been blacklisted"
+msgid_plural "Senders have been blacklisted"
+msgstr[0] ""
+msgstr[1] ""
+
+#: setup.php:124
+msgid "Senders have been blacklisted"
+msgstr ""
+
+#: setup.php:125 setup.php:126
+msgid "Sender has been whitelisted"
+msgid_plural "Senders have been whitelisted"
+msgstr[0] ""
+msgstr[1] ""
+
+#: setup.php:127
+msgid "Senders have been whitelisted"
 msgstr ""
