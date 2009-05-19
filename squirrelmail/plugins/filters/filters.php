@@ -416,6 +416,7 @@ function spam_filters($imap_stream) {
     
     $bulkquery = (strlen($SpamFilters_BulkQuery) > 0 ? true : false);
 
+    $aSpamIds = array();
     foreach($messages as $id=>$message) {
         if (isset($message['UID'])) {
             $MsgNum = $message['UID'];
