@@ -86,6 +86,11 @@ class Deliver_SMTP extends Deliver {
             $helohost = $domain;
         }
 
+        // if the host is an IPv4 address, enclose it in brackets
+        //
+        if (preg_match('/\d+\.\d+\.\d+\.\d+/', $helohost))
+            $helohost = '[' . $helohost . ']';
+
         /* Lets introduce ourselves */
         fputs($stream, "EHLO $helohost\r\n");
         $tmp = fgets($stream,1024);
