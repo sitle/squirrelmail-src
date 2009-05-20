@@ -80,6 +80,10 @@ if (!sqsession_is_registered('user_is_logged_in')) {
      */
     if (function_exists('session_regenerate_id')) {
         session_regenerate_id();
+
+        // re-send session cookie so we get the right parameters on it
+        // (such as HTTPOnly, if necessary - PHP doesn't do this itself
+        sqsetcookie(session_name(),session_id(),false,$base_uri);
     }
 
     $onetimepad = OneTimePadCreate(strlen($secretkey));
