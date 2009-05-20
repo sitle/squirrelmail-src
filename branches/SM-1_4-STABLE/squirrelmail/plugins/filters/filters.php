@@ -412,7 +412,7 @@ function spam_filters($imap_stream) {
         return;
     }
     
-    $messages = parseFetch($read, $search_array);
+    $messages = parseFetch($read);
     
     $bulkquery = (strlen($SpamFilters_BulkQuery) > 0 ? true : false);
 
