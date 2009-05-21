@@ -2734,6 +2734,7 @@ https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/rel-1_2_1</ve
              <enum>
                  <item><tt>gpg --verify squirrelmail-X.Y.Z.tar.gz.sig squirrelmail-X.Y.Z.tar.gz</tt>
              </enum>
+         <item> Upload your GPG signatures to Sourceforge.net. See <url url="http://apps.sourceforge.net/trac/sourceforge/wiki/Release%20files%20for%20download#Uploadafile" name="sf.net instructions"> or see <url url="http://apps.sourceforge.net/trac/sourceforge/wiki/File%20management%20service" name="sf.net upload protocols">.
          <item> (huh: don't go to sleep before you're finished making the release)
      </enum>
 <item><bf/Defrosting:/ Prepare SVN for continued development
@@ -2777,7 +2778,7 @@ https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/rel-1_2_1</ve
          <item> Change to the web directory for SquirrelMail (currently /srv/www/www/htdocs).
          <item> Edit download.php and change the version number as necessary. This is a php variable in the top part of the file.
          <item> Edit plugin_query.php file and change version number. This file informs pupdate plugin users about new release.
-         <item> Upload the md5sums that make-release calculated into the <tt>sums/</tt> dir.
+         <item> Upload the md5 checksums and sha1 checksums that make-release calculated and your GPG signatures into the <tt>sums/</tt> dir.
     </enum>
 <!--<item><bf/Get porting assistance:/ contact our people who know how to make decent .deb and .rpm files
     <enum>
