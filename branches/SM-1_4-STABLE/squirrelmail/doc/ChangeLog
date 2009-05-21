@@ -11,6 +11,8 @@ Version 1.4.19 - SVN
   - Resend cookie to browser after session ID regeneration so it gets the
     right cookie parameters.
   - In SMTP, when we EHLO with an IP, wrap it in brackets (#2793154).
+  - The shell escaping fix in map_yp_alias (CVE-2009-1579) was incomplete.
+    Thanks Michal Hlavinka for noticing this. [CVE-2009-1381]
 
 Version 1.4.18 - 11 May 2009
 ----------------------------
