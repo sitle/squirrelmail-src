@@ -1,7 +1,7 @@
 /*****************************************************************
- * Release Notes: SquirrelMail 1.4.18                            *
- * The "Karate Kid" Release                                      *
- * 11 May 2009                                                   *
+ * Release Notes: SquirrelMail 1.4.19                            *
+ * The "Backticking Timebomb" Release                            *
+ * 21 May 2009                                                   *
  *****************************************************************/
 
 In this edition of SquirrelMail Release Notes:
@@ -15,47 +15,22 @@ In this edition of SquirrelMail Release Notes:
 All about this release
 ======================
 
-This release addresses some security problems in SquirrelMail, adds
-several new language translations, makes some improvements to the
-filters plugin and the address book system, and addresses several
-other small bug fixes and improvements.
+This release was made to address an incomplete fix to a security
+issue, and regressions in the filters plugin introduced in the
+previous release, plus some small other fixes.
 
-Notable changes:
- * Security fixes - see below.
- * New languages: Bangladeshi Bengali, Khmer, Tamil
-
-For a more complete list of changes, please see the file "ChangeLog"
+For a complete list of changes, please see the file "ChangeLog"
 in the doc/ directory.
 
 Security issues
 ===============
 
-Two issues were fixed that both allowed an attacker to run arbitrary
-script (XSS) on most any SquirrelMail page by getting the user to
-click on specially crafted SquirrelMail links.  We would like to thank
-Niels Teusink and Christian Balzer for reporting these issues to us.
-These are tracked as CVE-2009-1578.
-
-An issue was fixed wherein input to the contrib/decrypt_headers.php
-script was not sanitized and allowed arbitrary script execution upon
-submission of certain values. We would like to thank Niels Teusink for
-reporting this issue to us.  This is also tracked as CVE-2009-1578.
-
 An issue was fixed that allowed arbitrary server-side code execution
 when SquirrelMail was configured to use the example "map_yp_alias"
-username mapping functionality.  We would like to thank Niels Teusink
-for reporting this issue to us.  This is tracked as CVE-2009-1579.
-
-An issue was fixed that allowed an attacker to possibly steal user
-data by hijacking the SquirrelMail login session.  We would like to
-thank Tomas Hoger for reporting this issue to us.  This is tracked
-as CVE-2009-1580.
-
-An issue was fixed that allowed phishing and cross-site scripting
-(XSS) attacks to be run by surreptitious placement of content in
-specially-crafted emails sent to SquirrelMail users.  We would like to
-thank Luc Beurton for reporting this issue to us.  This is tracked
-as CVE-2009-1581.
+username mapping functionality.  This was originally repaired in 
+1.4.18 but the fix turned out to be incomplete. Thanks go to Michal
+Hlavinka for spotting this. The issue was originally tracked as
+CVE-2009-1579, the fix being incomplete is named CVE-2009-1381.
 
 Locales / Translations / Charsets
 =================================
