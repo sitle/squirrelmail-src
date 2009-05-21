@@ -2722,8 +2722,8 @@ about the plugin and what it does.
 svn copy https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/branches/SM-1_4-STABLE/squirrelmail \
 https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/rel-1_2_1</verb></tscreen>
          <item> Use the script <tt>make-release</tt> <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/util/make-release" name="found in SVN"> under the <tt>util/</tt> dir. The only parameter
-         is the version to release. It will download the tagged SVN copy, pack it up nicely and upload it to SF.net (CORRECTION - the upload commands are currently commented out, so you'll need to do that manually or edit the script to do that for you).
-         You will need the following tools: bash, svn, ssh, curl, tar, gzip, zip, bzip2 and optionally rpmbuild.
+         is the version to release. It will download the tagged SVN copy, pack it up nicely and upload it to SF.net.
+         You will need the following tools: bash, svn, ssh, rsync, tar, gzip, zip, bzip2 and optionally rpmbuild.
          <item> Create a GPG signature for each of the newly created release packages. Typically, this can be done with:
              <enum>
                  <item><tt>gpg -a --detach-sign --output squirrelmail-X.Y.Z.tar.gz.sig squirrelmail-X.Y.Z.tar.gz</tt>
@@ -2734,7 +2734,6 @@ https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/rel-1_2_1</ve
              <enum>
                  <item><tt>gpg --verify squirrelmail-X.Y.Z.tar.gz.sig squirrelmail-X.Y.Z.tar.gz</tt>
              </enum>
-         <item> Upload the release files (including the md5, sha and GPG signatures) to Sourceforge.net, see <url url="http://apps.sourceforge.net/trac/sourceforge/wiki/Release%20files%20for%20download#Uploadafile" name="sf.net instructions"> or see <url url="http://apps.sourceforge.net/trac/sourceforge/wiki/File%20management%20service" name="sf.net upload protocols">.
          <item> (huh: don't go to sleep before you're finished making the release)
      </enum>
 <item><bf/Defrosting:/ Prepare SVN for continued development
@@ -2780,20 +2779,19 @@ https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/rel-1_2_1</ve
          <item> Edit plugin_query.php file and change version number. This file informs pupdate plugin users about new release.
          <item> Upload the md5sums that make-release calculated into the <tt>sums/</tt> dir.
     </enum>
-<item><bf/Get porting assistance:/ contact our people who know how to make decent .deb and .rpm files
+<!--<item><bf/Get porting assistance:/ contact our people who know how to make decent .deb and .rpm files
     <enum>
          <item> For Debian, this is taken care of by Thijs Kinkhorst and Jeroen van Wolffelaar
          <item> RPM's are created by Konstantin Ryabitsev
          <item> Mail or IM them, and ask them very politlely to take the time to create their files. point them to the download page where they can already grab the .tar.gz
-    </enum>
+    </enum>-->
 <item><bf/Blatant yelling:/ Announce the release to the World.
     <enum>
          <item> Post the release to the SourceForge news system. (you need to be a "forum moderator" to do this)
             <enum>
                <item> Log into SourceForge.net and proceed to the SquirrelMail project page.
-               <item> Under the "Project Admin" menu, select "Feature Settings".
-               <item> Click the "Submit" link to the right of "Project News".
-               <item> Add a news item for this release in the SourceForge news system. (The 3 to 8 line message you've made)
+               <item> <url name="Add a news item for this release in the SourceForge news system." url="https://sourceforge.net/news/submit.php?group_id=311">
+               (The 3 to 8 line message you've made)
                <item> Submit the news, go preview it, and fix it if you did something silly. :)
             </enum>
          <item> Add a news item to the SquirrelMail webpage.
@@ -2817,8 +2815,8 @@ https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/rel-1_2_1</ve
                      <item> Log out
                     </enum>
              </enum>
-          <item>Update <url name="freshmeat.net" url="http://freshmeat.net/projects/squirrelmail/">.
-          <item>Update <url name="Wikipedia" url="http://en.wikipedia.org/wiki/SquirrelMail">.
+          <item>Update <url name="freshmeat.net" url="http://freshmeat.net/projects/squirrelmail/releases/new">.
+          <item>Update <url name="Wikipedia" url="http://en.wikipedia.org/w/index.php?title=SquirrelMail&action=edit">.
      </enum>
 </enum>
 
