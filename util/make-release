@@ -58,7 +58,5 @@ echo -- uploading to upload.sf.net --
 # Use a ~/.ssh/config snippet to set it correctly for frs.sourceforge.net
 rsync -avP -e ssh \
     squirrelmail-$1.tar.gz squirrelmail-$1.tar.bz2 squirrelmail-$1.zip \
-    squirrelmail-$1.tar.gz.md5 squirrelmail-$1.tar.bz2.md5 squirrelmail-$1.zip.md5 \
-    squirrelmail-$1.tar.gz.sha1 squirrelmail-$1.tar.bz2.sha1 squirrelmail-$1.zip.sha1 \
     frs.sourceforge.net:uploads/
 echo -- finished so far --
