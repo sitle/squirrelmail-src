@@ -1,0 +1,404 @@
+# translation of file_manager.po to Nynorsk
+# translation of file_manager.po to
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (c) 2004-2009 The SquirrelMail Project Team
+# Ola Ketil Siqveland <olaketil@hotmail.com>, 2004
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: file_manager\n"
+"POT-Creation-Date: 2002-10-24 22:19-0700\n"
+"PO-Revision-Date: 2004-06-15 11:21+0200\n"
+"Last-Translator: Ola Ketil Siqveland <olaketil@hotmail.com>\n"
+"Language-Team: Nynorsk <nn@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.0.1\n"
+
+#: functions.php
+msgid "appears to be binary."
+msgstr "ser ut til å vera binart"
+
+#: functions.php
+msgid "You can only open text files."
+msgstr "Du kan berre opne tekstfiler."
+
+#: functions.php
+msgid "Click"
+msgstr "Trykk"
+
+#: functions.php
+msgid "here"
+msgstr "her"
+
+#: functions.php
+msgid "to open anyway."
+msgstr "opne same kva."
+
+#: functions.php
+msgid "Unlimited"
+msgstr "Uavgrensa"
+
+#: file_manager.php:1060 file_manager.php:1295
+msgid "Refresh"
+msgstr "Frisk opp"
+
+#: file_manager.php:1058 file_manager.php:1293
+msgid "Delete"
+msgstr "Slett"
+
+#: file_manager.php:1056 file_manager.php:1291
+msgid "New File"
+msgstr "Ny fil"
+
+#: file_manager.php:1054 file_manager.php:1289
+msgid "New Folder"
+msgstr "Ny mappe:"
+
+#: file_manager.php:1052 file_manager.php:1287
+msgid "Move/Rename"
+msgstr "Flytt/omdøyp"
+
+#: file_manager.php:1050 file_manager.php:1285
+msgid "Copy"
+msgstr "Kopier"
+
+#: file_manager.php:1038 file_manager.php:1273
+msgid "Move"
+msgstr "Flytt"
+
+#: file_manager.php:1036 file_manager.php:1271
+msgid "Edit"
+msgstr "Rediger"
+
+#: file_manager.php:1011
+msgid "Upload"
+msgstr "Lastar opp"
+
+#: file_manager.php:1099 file_manager.php:1240
+msgid "<--BACK"
+msgstr "<--TILBAKE"
+
+#: file_manager.php:1018
+msgid "Allow Overwrite"
+msgstr "Tillat overskriving"
+
+#: file_manager.php:1043 file_manager.php:1278
+msgid "CHMOD"
+msgstr "CHMOD"
+
+#: file_manager.php:790
+msgid "Cannot Copy File Or Folder - Destination Already Exists"
+msgstr "kan ikkje kopiera fil/mappe - Mål eksistere alt"
+
+#: file_manager.php:736
+msgid "Cannot Rename Or Move File Or Folder - Destination Already Exists"
+msgstr "Kan ikkje omdøype/flytte fil/mappe - Mål eksiterer alt"
+
+#: file_manager.php:920
+msgid "Cannot overwrite a directory with a file."
+msgstr "Kan ikkje skriva over ei mappe med ei fil."
+
+#: file_manager.php:908
+msgid "Current usage ="
+msgstr "Nåverande bruk ="
+
+#: file_manager.php:659
+msgid "Error - Bad Syntax For CHMOD Permissions."
+msgstr "Feil - Feil syntaks for CHMOD."
+
+#: file_manager.php:908
+msgid "Error - Quota Exceeded."
+msgstr "Feil - kvoten overskriden."
+
+#: file_manager.php:641
+msgid "Error Occurred Attempting To Change Permissions On:"
+msgstr "Feil Prøvde å endra løyve på"
+
+#: file_manager.php:807
+msgid "Error Occurred Attempting To Copy File Or Folder."
+msgstr "Feil  Prøvde å kopiera fil/mappe."
+
+#: file_manager.php:572
+msgid "Error Occurred Attempting To Create File."
+msgstr "Feil Prøvde å oppretta fila"
+
+#: file_manager.php:700
+msgid "Error Occurred Attempting To Create Folder."
+msgstr "Feil Prøvde å oppretta ei mappe."
+
+#: file_manager.php:979
+msgid "Error Occurred Attempting To Delete:"
+msgstr "Feil Prøvde å sletta:"
+
+#: file_manager.php:754
+msgid "Error Occurred Attempting To Move Or Rename File Or Folder."
+msgstr "Feil Prøvde å flytte/omdøype fil/mappe"
+
+#: file_manager.php:834 save_attachment.php:61
+msgid "Error Occurred Attempting To Save File."
+msgstr "Feil Prøvde å lagre fil."
+
+#: file_manager.php:188
+msgid "Error Occurred Attempting To Send File As Attachment."
+msgstr "Feil Prøvde å senda fil som vedlegg."
+
+#: file_manager.php:902
+msgid "Error determining upload quota."
+msgstr "Feil i å setja kvoten for opplasting."
+
+#: download.php:34
+msgid "FILE DOES NOT EXIST OR PROBLEM OPENING FILE"
+msgstr "FIL EKSITERER IKKJE ELLER PROBLEM VED OPNING AV FILA"
+
+#: file_manager.php:544 setup.php:88
+msgid "File Manager"
+msgstr "Filbehandlar"
+
+#: file_manager.php:828
+msgid "File Saved"
+msgstr "Fil lagra"
+
+#: file_manager.php:989
+msgid "File(s) Successfully Deleted"
+msgstr "Fil(er) vellukka sletting"
+
+#: file_manager.php:188 file_manager.php:572 file_manager.php:644
+#: file_manager.php:659 file_manager.php:700 file_manager.php:754
+#: file_manager.php:807 file_manager.php:834 file_manager.php:902
+#: file_manager.php:908 file_manager.php:933 file_manager.php:982
+#: save_attachment.php:61
+msgid "If this problem persists, please send a message to"
+msgstr "Viss problemet held fram, send ei melding til"
+
+#: file_manager.php:1412
+msgid "KB"
+msgstr "KB"
+
+#: file_manager.php:1032
+msgid "Listing for"
+msgstr "Liste for"
+
+#: file_manager.php:1410
+msgid "MB"
+msgstr "MB"
+
+#: file_manager.php:566
+msgid "New File Successfully Created"
+msgstr "Ny fil laga"
+
+#: file_manager.php:694
+msgid "New Folder Successfully Created"
+msgstr "Ny mappe laga"
+
+#: file_manager.php:668
+msgid "Permissions Successfully Changed"
+msgstr "Løyve endra"
+
+#: file_manager.php:908
+msgid "Please delete other files first."
+msgstr "Slett andre filer først."
+
+#: file_manager.php:920
+msgid "Please rename one or the other."
+msgstr "Endra ein eller annan."
+
+#: file_manager.php:908
+msgid "Quota ="
+msgstr "Kvoten ="
+
+#: file_manager.php:863
+msgid "Revert"
+msgstr "Omvendt"
+
+#: file_manager.php:864
+msgid "Save"
+msgstr "Lagra"
+
+#: file_manager.php:746 file_manager.php:799
+msgid "Success!"
+msgstr "Suksess!"
+
+#: file_manager.php:1414
+msgid "bytes"
+msgstr "byte"
+
+#: file_manager.php:1205
+msgid "download"
+msgstr "last ned"
+
+#: file_manager.php:1214
+msgid "edit"
+msgstr "rediger"
+
+#: setup.php:125
+msgid "save locally"
+msgstr "lagre lokalt"
+
+#: file_manager.php:1218
+msgid "send"
+msgstr "send"
+
+#: file_manager.php:1210
+msgid "view"
+msgstr "vis"
+
+# file_manager.php:
+msgid "Upload Multiple Files"
+msgstr "Last opp mange filer"
+
+# file_manager.php:
+msgid "File Upload"
+msgstr "Fil lasta opp"
+
+# file_manager.php:
+msgid "Max Size"
+msgstr "Maksimal storleik"
+
+# file_manager.php:
+msgid "(per file)"
+msgstr "(per fil)"
+
+# file_manager.php:
+msgid "File:"
+msgstr "Fil:"
+
+#: file_manager.php:914
+msgid "already exists!  Check the \"Allow Overwrite\" checkbox to replace it."
+msgstr "eksisterer!  Merk av \"Tillat overskriving\" for å bytta ut"
+
+#: file_manager.php:927
+msgid "File(s) Successfully Uploaded"
+msgstr "Fil(er) lasta opp"
+
+#: file_manager.php:933
+msgid "Error Occurred Attempting To Upload"
+msgstr "Feil Prøvde å laste opp"
+
+# file_manager.php:
+msgid "Go"
+msgstr "Gå"
+
+#: file_manager.php:775
+msgid "Error Occurred Attempting To Change File/Folder Permissions."
+msgstr "Feil Prøvde å endra fil/mappe løyve."
+
+#: setup.php:157
+msgid "Add Attachment From File Manager"
+msgstr "Legg til vedlegg frå filbehandlaren"
+
+#: file_manager.php:1283
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: file_manager.php:1282
+msgid "Save And Close"
+msgstr "Lagra og Lukk"
+
+#: file_manager.php:1250
+msgid "Error - Size Must Be Numeric."
+msgstr "Feil - Storleik må vera numerisk."
+
+#: file_manager.php:2021
+msgid "Change view links to show in"
+msgstr "Endra vis lenkje for å visa i"
+
+#: file_manager.php:2022
+msgid "this window"
+msgstr "dette vindauge"
+
+#: file_manager.php:2023
+msgid "a separate window"
+msgstr "eit seperat vindauge"
+
+#: file_manager.php:1301
+msgid "Columns"
+msgstr "Kolonnar"
+
+#: file_manager.php:1302
+msgid "Rows"
+msgstr "Rader"
+
+#: file_manager.php:1303
+msgid "Change Size"
+msgstr "Endra storleik"
+
+#: file_manager.php:1398
+msgid "Error - Virus found in"
+msgstr "Feil - Fant Virus i"
+
+# ####################################
+#
+#  Strings below are used in javascript
+#  and need to be escaped for use in
+#  HTML (e.g., German umlautes are "&uuml;")
+#
+#  than the ones above
+#: file_manager.php:315
+msgid ""
+"You can't upload a file that has the same name as a folder.  Try anyway?"
+msgstr "Kan ikkje opp ei fil som har same namn som ei mappe.  Prøv likevel?"
+
+#: file_manager.php:325
+msgid ""
+"It looks like you want to upload a file that already exists in this "
+"directory.  Do you want to overwrite it?"
+msgstr ""
+"Ser ut som ein prøver å last opp ei fil som allereie eksisterer i denne "
+"mappa.  Skriv over?"
+
+#: file_manager.php:259
+msgid "Click the browse button to select a file to upload."
+msgstr "Trykk på «Bla gjennom»-knappen for å velja ei fil å laste opp."
+
+#: file_manager.php:367
+msgid "Select a file or folder to move or rename."
+msgstr "Vel ei fil/mappe som skal flyttast/bytta namn."
+
+#: file_manager.php:390
+msgid "Please enter new file name:"
+msgstr "Gi inn nytt filnamn:"
+
+#: file_manager.php:373
+msgid ""
+"Please enter new file name (with optional folder where file will be moved):"
+msgstr "Gi inn nytt filnamn (med valfri mappe der fila skal flyttast til):"
+
+#: file_manager.php:405
+msgid "Please enter new folder name:"
+msgstr "Nytt mappe namn:"
+
+#: file_manager.php:428
+msgid "Please enter desired permission:"
+msgstr "Gi inn passande løyve:"
+
+#: file_manager.php:438
+msgid "Select a file to change permissions on."
+msgstr "Vel fil som ein skal endra løyve til."
+
+#: file_manager.php:449
+msgid "Select a file to view."
+msgstr "Vel fila som skal visast."
+
+#: file_manager.php:558
+msgid "You cannot edit folders.  Please select a file to edit."
+msgstr "Kan ikkje redigera mappe. Vel fila som skal redigerast."
+
+#: file_manager.php:593
+msgid "Select a file or folder to copy."
+msgstr "Vel fil/mappe som skal kopierast."
+
+#: file_manager.php:599
+msgid ""
+"Please enter target name (with optional folder where file will be moved):"
+msgstr "Gi inn målnamnet ( med valfri mappe der fila skal flyttast til)"
+
+#: file_manager.php:628
+msgid "Select a file to delete."
+msgstr "Vel fil som skal slettast."
+
+#: file_manager.php:533
+msgid ""
+"You sure?  There's no turning back once you delete any files or folders!"
+msgstr "Heilt sikker? Det er ingen veg tilbake etter sletting av filer/mapper!"

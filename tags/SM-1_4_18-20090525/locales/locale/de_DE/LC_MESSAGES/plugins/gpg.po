@@ -1,0 +1,1566 @@
+# translation of gpg.po to 
+# Deutsch (German) Translation File for GPG Plugin
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (c) 2003-2009 The SquirrelMail Project Team
+# Roland Fritz <roland.fritz@fritz-internet.de>, 2003.
+# Ralf Hildebrandt <Ralf.Hildebrandt@charite.de>, 2005.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gpg\n"
+"POT-Creation-Date: 2004-01-28 09:53-0600\n"
+"PO-Revision-Date: 2005-01-05 14:07+0100\n"
+"Last-Translator: Ralf Hildebrandt <Ralf.Hildebrandt@charite.de>\n"
+"Language-Team:  <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.9.1\n"
+
+msgid " Please try again."
+msgstr " Bitte nochmal versuchen."
+
+msgid " selected"
+msgstr " ausgewählt"
+
+msgid "'On Send' Defaults"
+msgstr "Voreinstellung"
+
+msgid "1 Year"
+msgstr "1 Jahr"
+
+msgid ""
+"<a href=\"http://www.gnupg.org/gph/en/manual.html\">The GNU Privacy "
+"Handbook</a>"
+msgstr "<a href=\"http://www.gnupg.org/gph/de/manual/index.html\">Das GNU-Handbuch zum Schutze der Privatsphäre</a>"
+
+msgid ""
+"A 1024 bit key is often acceptable, 2048 is generally seen as a good "
+"compromise between security and usability, and 4096 is very strong and can "
+"be noticeably slower."
+msgstr ""
+"Ein 1024 bit Schlüssel ist oft ausreichend, 2048 wird als guter Kompromiß "
+"zwischen Sicherheit und Geschwindigkeit gesehen, 4096 ist sehr stark "
+"verschlüsselt und merkbar langsamer."
+
+msgid ""
+"A Keypair consists of a <b>public key</b>, which people will use to send "
+"encrypted messages to you and verify your signature, and a <b>secret key</"
+"b>, which will never be shared with others."
+msgstr ""
+"Ein Schlüsselpaar besteht aus dem <b>öffentlichen Schlüssel</b>, den andere "
+"benutzen, um Nachrichten für Sie zu verschlüsseln und ihre Signatur zu "
+"verifizieren und einem <b>geheimen Schlüssel</b>, den nur Sie nutzen."
+
+msgid ""
+"A new Keypair can be generated for this account on the webserver for use "
+"here."
+msgstr ""
+"Ein neues Schlüsselpaar für dieses Konto auf dem Webserver kann hier erzeugt "
+"werden."
+
+msgid "A new personal Keypair has been generated."
+msgstr "Ein neues persönliches Schlüsselpaar wurde erzeugt."
+
+msgid "Add Keys"
+msgstr "Schlüssel hinzufügen"
+
+msgid "Algorithm"
+msgstr "Algorithmus"
+
+msgid ""
+"Any key signed with your trusted key ID will be allowed for encryption "
+"without generating errors."
+msgstr ""
+"Jeder mit ihrer Vertrauten Key ID verschlüsselte Schlüssel kann zur "
+"Verschlüsselung verwendet werden."
+
+msgid "Attachments"
+msgstr "Anhänge"
+
+msgid "Back to GPG Plugin Options"
+msgstr "Zurück zu den GPG Optionen"
+
+msgid "Back to Keyring Management"
+msgstr "Zurück zur Schlüsselring-Verwaltung"
+
+msgid "Back to Keyring Management Options"
+msgstr "Zurück zu den Optionen der Schlüsselring-Verwaltung"
+
+msgid "Back to Main Squirrelmail Options"
+msgstr "Zurück zu dem SquirrelMail Optionen"
+
+msgid "Bad Passphrase."
+msgstr "Falsche Passphrase"
+
+msgid "Bad Signature"
+msgstr "Falsche Signatur"
+
+msgid "Bcc"
+msgstr "Bcc"
+
+msgid ""
+"Be aware that using this option in combination with the partial recipients "
+"option, above, may result in unintended consequences."
+msgstr ""
+"Achtung! Diese Option kann in Kombination mit der teilweisen Verschlüsselung "
+"zu unerwünschten Konsequenzen führen."
+
+msgid ""
+"Because of this risk of compromise and lack of security, you may not want to "
+"store your private key on the web server."
+msgstr ""
+"Sie sollten Ihren privaten Schlüssel nicht auf dem Webserver speichern, da "
+"hier ein Sicherheitsrisiko und die Gefahr der Kompromittierung besteht."
+
+msgid ""
+"Caching the passphrase can be very convenient, but many security experts "
+"recommend against storing the passphrase on the server because it may be "
+"more susceptible to an attack."
+msgstr ""
+"Speichern der Passphrase ist sehr bequem, aber Sicherheitsexperten warnen "
+"davor, da dies die Möglichkeit eines erfolgreichen Angriffs erhöht."
+
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgid "Cannot change passphrase on key: "
+msgstr "Kann Passphrase nicht ändern für Schlüssel: "
+
+msgid "Cc"
+msgstr "Cc"
+
+msgid "Change Passphrase"
+msgstr "Passphrase ändern"
+
+msgid "Choose a Key to Import"
+msgstr "Bitte Schlüssel zum Import auswählen"
+
+msgid "Choose a complete sentence that you will be able to remember."
+msgstr "Bitte einen Satz wählen, den sie sich gut merken können."
+
+msgid "Choose your Default Keyserver"
+msgstr "Bitte Standard-Schlüsselserver wählen"
+
+msgid ""
+"Choosing a good passphrase is one of the most important tasks for secure "
+"communications."
+msgstr ""
+"Die Wahl einer guten Passphrase ist die wichtigste Voraussetzung für sichere "
+"Kommunikation."
+
+msgid "Close Window"
+msgstr "Fenster schliessen"
+
+msgid "Configure a Trusted Key"
+msgstr "Vertrauten Schlüssel konfigurieren"
+
+msgid "Confirm Delete Key"
+msgstr "Löschen des Schlüssels bestätigen"
+
+msgid "Confirm Delete Keypair"
+msgstr "Löschen des Schlüsselpaars bestätigen"
+
+msgid "Connection to IMAP Server to retrieve message body failed."
+msgstr "Verbindung zum IMAP Server fehlgeschlagen."
+
+msgid "Could not export your key.  Please contact gpg development."
+msgstr ""
+"Export des Schlüssels fehlgeschlagen. Bitte gpg Entwicklungsteam "
+"kontaktieren."
+
+msgid "Could not write to temporary file: "
+msgstr "Konnte temporäre Datei nicht schreiben: "
+
+msgid "Create New Personal Keypair"
+msgstr "Neues privates Schlüsselpaar generieren"
+
+msgid "Cute."
+msgstr "Super."
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Days"
+msgstr "Tage"
+
+msgid "Decrypt Attachment"
+msgstr "Anhang entschlüsseln"
+
+msgid "Decrypt Message Now"
+msgstr "Nachricht jetzt entschlüsseln"
+
+msgid "Decrypted Message"
+msgstr "Entschlüsselte Nachricht"
+
+msgid "Default Keyserver set to:"
+msgstr "Bevorzugter Schlüsselserver:"
+
+msgid "Default Keyserver: "
+msgstr "Bevorzugter Schlüsselserver:"
+
+msgid "Delete"
+msgstr "Löschen"
+
+msgid "Delete Keypair"
+msgstr "Schlüsselpaar löschen"
+
+msgid "Did not receive valid export_type in gpg_export_key function."
+msgstr "Kein gültiger export_type in Funktion gpg_export_key."
+
+msgid "Did not receive valid keyring_type in gpg_list_keys function."
+msgstr "Keingültiger keyring_type in Funktion gpg_list_keys."
+
+msgid "Did you import a personal Keypair in Step 1?"
+msgstr "Haben Sie ein persönliches Schlüsselpaar in Schritt 1 importiert?"
+
+msgid "Do you already have a keyring, or individual keys you would like to use?"
+msgstr ""
+"Haben Sie schon einen Schlüsselring oder individuelle Schlüssel, die Sie "
+"verwenden wollen?"
+
+msgid "Do you already have a personal Keypair?"
+msgstr "Haben Sie schon ein persönliches Schlüsselpaar?"
+
+msgid ""
+"Do you want the GPG plugin to encrypt the message to only some recipients, "
+"if you do not have public keys for everyone?"
+msgstr ""
+"Soll das gpg Plugin die Nachricht nur für diejenigen verschlüsseln dessen "
+"öffentliche Schlüssel Sie besitzen?"
+
+msgid ""
+"Do you want the plugin to encrypt mail to your address, in addition to the "
+"recipients?"
+msgstr ""
+"Sollen auch Nachrichten an Sie verschlüsselt werden, zusätzlich zu den "
+"anderen Empfängern?"
+
+msgid "Do you want the system to cache your passphrase?"
+msgstr "Wollen Sie die Passphrase abspeichern?"
+
+msgid ""
+"Do you want to trust the system-wide keyring that has been defined by your "
+"system administrator?"
+msgstr ""
+"Wollen Sie dem systemweiten Schlüsselring, den Ihr Administrator definiert "
+"hat, vertrauen?"
+
+msgid ""
+"Do you want to use the system-wide ADK that has been defined by your system "
+"administrator?"
+msgstr ""
+"Wollen Sie dem systemweiten ADK, den Ihr Administrator definiert hat, "
+"vertrauen?"
+
+msgid "Done"
+msgstr "Fertig"
+
+msgid "Download signed attachment"
+msgstr "Signierten Anhang herunterladen"
+
+msgid "Email"
+msgstr "email"
+
+msgid "Email Address"
+msgstr "email Adresse"
+
+msgid "Email Key"
+msgstr "email Schlüssel"
+
+msgid "Encrypt Now"
+msgstr "Jetzt verschlüsseln"
+
+msgid "Encrypt on Send"
+msgstr "Beim Senden verschlüsseln"
+
+msgid "Encrypt on Send by Default"
+msgstr "Immer beim Senden verschlüsseln"
+
+msgid "Encrypt to Self"
+msgstr "Selbstadressierte Nachrichten verschlüsseln"
+
+msgid "Encrypt&Sign Now"
+msgstr "Jetzt verschlüsseln und Signieren"
+
+msgid "Encrypted"
+msgstr "Verschlüsselt"
+
+msgid "Encryption Options - Getting Started"
+msgstr "Verschlüsselungs-Optionen - Grundlagen"
+
+msgid "Enter New Passphrase:"
+msgstr "Neue Passphrase eingeben:"
+
+msgid "Enter Passphrase"
+msgstr "Passphrase eingeben"
+
+msgid "Enter Search text below to search for a key to import"
+msgstr "Hier Suchbegriff für zu importierenden Schlüsseln angeben"
+
+msgid "Enter a search string for the key you would like to trust in the box below."
+msgstr "Hier Suchbegriff für vertraute Schlüsseln angeben."
+
+msgid "Error: "
+msgstr "Fehler: "
+
+msgid "Error: No filename found to save attachment"
+msgstr "Fehler: Kein Name gefunden um Anhang zu speichern"
+
+msgid "Errors:"
+msgstr "Fehler:"
+
+msgid "Expiration Date"
+msgstr "Ablaufdatum"
+
+msgid "External Resources"
+msgstr "Externe Datenquellen"
+
+msgid "Extras"
+msgstr "Extras"
+
+msgid "Find the public keys of people you want to communicate securely with"
+msgstr "Öffentliche Schlüssel finden"
+
+msgid "First"
+msgstr "Erste"
+
+msgid "Forward"
+msgstr "Weiterleiten"
+
+msgid "Forward as Attachment"
+msgstr "Als Anhang weiterleiten"
+
+msgid "From"
+msgstr "Von"
+
+msgid "From this screen, you may select options for setting up the GPG Plugin."
+msgstr ""
+"Auf dieser Seite können Sie Optionen für die Einrichtung des GPG Plugins "
+"setzen."
+
+msgid "Full Name"
+msgstr "Vollständiger Name"
+
+msgid "GPG Decryption Initiating"
+msgstr "GPG Entschlüsselung: gestartet"
+
+msgid "GPG Decryption Results"
+msgstr "GPG Entschlüsselung: Ergebnis"
+
+msgid "GPG Draft Signing Initiating"
+msgstr "GPG Entwurf signieren: gestartet"
+
+msgid "GPG Encrypt and Sign Initiating"
+msgstr "GPG Verschlüsselung und Signatur: gestartet"
+
+msgid "GPG Options - Create a Personal Keypair"
+msgstr "GPG Optionen - Persönliches Schlüsselpaar erzeugen"
+
+msgid "GPG Options - Display Key"
+msgstr "GPG Optionen - Schlüssel anzeigen"
+
+msgid "GPG Options - Keyring Management"
+msgstr "GPG Optionen - Schlüsselring Verwaltung"
+
+msgid "GPG Options - Main Options"
+msgstr "GPG Optionen - Haupt-Optionen"
+
+msgid "GPG Plugin"
+msgstr "GPG Plugin"
+
+msgid "GPG Plugin - General Options"
+msgstr "GPG Plugin - allgemeine Optionen"
+
+msgid "GPG Plugin Error:No body text received from Compose page"
+msgstr "GPG Plugin Fehler: Keine Nachricht vorhanden"
+
+msgid "GPG Plugin Help"
+msgstr "GPG Plugin Hilfe"
+
+msgid "GPG Plugin Options"
+msgstr "GPG Plugin Optionen"
+
+msgid "GPG Plugin: Check your preferences from the Trusted Key Screen in Options."
+msgstr "GPG Plugin: Bitte Einstellung - vertraute Schlüssel prüfen."
+
+msgid "GPG Plugin: No Trusted Key Selected, but Use Trusted Key Feature Set."
+msgstr "GPG Plugin: Kein vertrauter Schlüssel gewählt, aber Option aktiviert."
+
+msgid "GPG Plugin: No cyphertext was generated."
+msgstr "GPG Plugin: kein verschlüsselter Text erzeugt."
+
+msgid "GPG Plugin: Plain-text Attachment file not deleted due to error in Encrypt."
+msgstr "GPG Plugin: Fehler beim Verschlüsseln."
+
+msgid ""
+"GPG Plugin: You must specify a signing key in the Options screen to sign "
+"messages."
+msgstr "GPG Plugin: Signatur-Schlüssel fehlt in den Optionen."
+
+msgid ""
+"GPG Plugin: Your recipient list is empty. After parsing, there are no valid "
+"recipients."
+msgstr "GPG Plugin: Empfängerliste ist leer bzw. enthält keine gültigen Empfänger."
+
+msgid "GPG Plugin: gpg returned a non-clean return value of: "
+msgstr "GPG Plugin: gpg gab Fehler zurück: "
+
+msgid "GPG Recipient List"
+msgstr "GPG Empfängerliste"
+
+msgid "GPG Signing Initiating"
+msgstr "GPG Signierung initialisiert"
+
+msgid "General Options about how the plugin works"
+msgstr "Allgemeine Optionen"
+
+msgid "Generate New Keypair"
+msgstr "Neues Schlüsselpaar erzeugen"
+
+msgid "Generate new personal key pair"
+msgstr "Neues persönliches Schlüsselpaar erzeugen"
+
+msgid "Generating Keypair based on:"
+msgstr "Schlüsselpaar erzeugt basierend auf:"
+
+msgid "Generation Date"
+msgstr "Erzeugungsdatum"
+
+msgid "Getting Started with the GPG Plugin"
+msgstr "Erste Schritte mit dem GPG Plugin"
+
+msgid "Go"
+msgstr "Start"
+
+msgid "Good Signature"
+msgstr "Gute Signatur"
+
+msgid "Here are a few tips on choosing a good passphrase:"
+msgstr "Tips für eine gute Passphrase:"
+
+msgid "Here are the keys which GPG reported as missing:"
+msgstr "Diese Schlüssel fehlen GPG:"
+
+msgid ""
+"Higher strength keys (those with more 'bits') are harder to compromise, but "
+"they also take more time to use.  It will take longer to decrypt and sign "
+"with a stronger key."
+msgstr ""
+"Längere Schlüssel (größere bit-Anzahl) sind schwerer zu knacken, benötigen "
+"aber länger zum Ver- und Entschlüsseln und Signieren."
+
+msgid "How do I choose a passphrase?"
+msgstr "Wie sollte die Passphrase aussehen?"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "If it is not secure, your identity can be stolen!"
+msgstr "Ohne SSL kann ihre Identität missbraucht werden!"
+
+msgid "If not, skip this step."
+msgstr "Überspringen falls nicht benötigt."
+
+msgid "If not, you should"
+msgstr "Wenn nicht sollten Sie"
+
+msgid ""
+"If you Sign your messages, the message will be verifiable as being from you, "
+"and the recipient will be able to make sure that the message was not "
+"tampered with in transit."
+msgstr ""
+"Signieren stellt sicher, das die Nachricht wirklich vom angegebenen Absender "
+"stammt und nicht unterwegs verfälscht wurde."
+
+msgid ""
+"If you are inventing a new passphrase that you have never used before, you "
+"should consider writing it down until you are comfortable that you will not "
+"forget it."
+msgstr ""
+"Noch nie benutzte Passphrases sollte man sich evt. aufschreiben, bis man sie "
+"sich sicher merken kann."
+
+msgid ""
+"If you choose a trusted key and store a keypair on the web server, all keys "
+"that you wish to encrypt to will need to be signed by a trusted key."
+msgstr ""
+"Wenn Schlüsselpaare auf dem Webserver gespeichert werden, sind diese mit "
+"einem vertrauten Schlüssel signiert."
+
+msgid ""
+"If you choose to cache your passphrase, your passphrase will be stored on "
+"the Web Mail server in secure storage for use by you while you are logged in."
+msgstr ""
+"Wenn die Passphrase auf dem Webmail Server abgespeichert wird, steht sie "
+"solange sie angemeldet sind zur Verfügung."
+
+msgid ""
+"If you do choose to write down your passphrase, be careful about where you "
+"store it, and destroy your paper copy as soon as you are sure that you will "
+"remember your passphrase."
+msgstr ""
+"Wenn die Passphrase niedergeschrieben wird, sollte man auf einen sicheren "
+"Aufbewahrungsort achten und den Zettel vernichten, wenn man sich sicher an "
+"sie erinnert."
+
+msgid ""
+"If you do not see the key you want to trust in the list above, or if there "
+"is no list:"
+msgstr "Wenn der vertrauete Schlüssel nicht in der Liste steht:"
+
+msgid ""
+"If you do not see the key you wish to import, you may go back and enter "
+"different search terms or select a different keyserver."
+msgstr ""
+"Wenn der zu importierende Schlüssel nicht vorhanden ist, sollten sie einen "
+"anderen Suchbegriff  oder anderen Schlüsselserver angeben."
+
+msgid ""
+"If you do not trust the people that are hosting this email service it is "
+"recommended that you do not upload your existing private key until trust can "
+"be established."
+msgstr ""
+"Wenn sie dem Betreiber des Webmail-Servers nicht vertrauen, sollten sie "
+"keine vorhandenen privaten Schlüssel importieren. Stellen sie dieses "
+"Vertrauen zuerst her."
+
+msgid ""
+"If you forget your passphrase, you will not be able to decrypt messages "
+"encrypted with this public key."
+msgstr ""
+"Wenn sie ihre Passphrase vergessen, können sie keine mit diesem Schlüssel "
+"verschlüsselten Nachrichten mehr entschlüsseln."
+
+msgid ""
+"If you generated a personal Keypair in step 2, this is probably the key you "
+"want."
+msgstr ""
+"Wenn sie in Schritt 2 ein privates Schlüsselpaar erzeugt haben, ist es evt. "
+"der gewünschte."
+
+msgid ""
+"If you select 'No' below, the holder of the ADK will not be able to decrypt "
+"your messages."
+msgstr ""
+"Wenn sie 'Nein' wählen, kann der Besitzer des ADK keine ihrer Nachrichten "
+"entschlüsseln."
+
+msgid ""
+"If you select 'No' below, you will be prompted for your passphrase every "
+"time it is needed for decryption or signing of messages."
+msgstr ""
+"Wenn sie 'Nein' wählen werden sie bei jedem Ver- und Entschlüsseln und "
+"Signieren nach der Passphrase gefragt."
+
+msgid ""
+"If you select 'Yes' below, all messages that you encrypt will also be "
+"encrypted to the ADK."
+msgstr ""
+"Wenn sie 'Ja' wählen, werden alle verschlüsselten Nachrichten auch im ADK "
+"verschlüsselt."
+
+msgid ""
+"If you select 'Yes' below, the plugin will search the 'system-wide' keyring "
+"for public keys after looking at your public keyring."
+msgstr ""
+"Wenn sie 'Ja' wählen, sucht das Plugin zuerst in ihrem öffentlichen "
+"Schlüsselring, dann im systemweiten Schlüsselring."
+
+msgid ""
+"If you select 'Yes' below, you will only be prompted for your passphrase "
+"once during a session."
+msgstr ""
+"Wenn sie 'Ja' wählen werden sie nur 1x pro Sitzung nach der Passphrase "
+"gefragt."
+
+msgid ""
+"If you selected 'Yes', what is the email address you would like to encrypt "
+"to:"
+msgstr ""
+"Wenn sie 'Ja' wählen, an welche Email-Adresse soll die verschlüsselte "
+"Nachricht gesandt werden:"
+
+msgid ""
+"If you set one of these options below, you will have the opportunity on the "
+"Compose page to turn it off on a message by message basis."
+msgstr ""
+"Alle gewählten Optionen können beim Erstellen neuer Nachrichten ausgewählt "
+"werden."
+
+msgid ""
+"If you set this option to 'No', you will not be able to decrypt messages "
+"encrypted with the plugin unless you add your email address in the To, CC, "
+"or BCC line of the email before encrypting it."
+msgstr ""
+"Wenn sie diese Option auf 'Nein' setzen, können sie keine Nachrichten "
+"entschlüsseln bei denenihre Email-Adresse weder im An-, CC- noch BCC-Feld "
+"steht."
+
+msgid ""
+"If you set this option to 'No', you will not have access to any keys stored "
+"on the system keyring, which may include keys for members of a group to "
+"which you belong."
+msgstr ""
+"Wenn sie diese Option auf 'Nein' setzen, haben sie keinen Zugriff auf den "
+"systemweiten Schlüsselring. Dort stehen evt. die Schlüssel ihrer Gruppe."
+
+msgid ""
+"If you try to encrypt to a key not signed by one of these keys, you will not "
+"be allowed to do so, because the identity of the recipient is unverifiable."
+msgstr ""
+"Es ist nicht erlaubt mit nicht hier gelisteten Schlüsseln zu verschlüsseln, "
+"da die Identität des Empfängers nicht überprüfbar ist."
+
+msgid ""
+"If you wish to Sign all of your messages by default, you may also select the "
+"'Sign on Send' option below."
+msgstr ""
+"Wenn sie ALLE Nachrichten signieren wollen, sollten sie die 'Beim Senden "
+"signieren' Option setzen."
+
+msgid ""
+"If you with to Encrypt all messages by default, select the 'Encrypt on Send' "
+"option below."
+msgstr ""
+"Wenn sie ALLE Nachrichten verschlüsseln wollen, sollten sie die 'Beim Senden "
+"verschlüsseln' Option setzen."
+
+msgid ""
+"If your keyring has a public key for this email address on it, then all "
+"messages you encrypt will be readable by you later."
+msgstr ""
+"Wenn ihr Schlüsselring einen öffentlichen Schlüssel für diese email-Adresse "
+"besitzt, können sie alle verschlüsselten Nachrichten später lesen."
+
+msgid "Import ASCII-Armored Key Text to Keyring"
+msgstr "ASCII-Armored Key Text importieren"
+
+msgid "Import Key"
+msgstr "Schlüssel importieren"
+
+msgid "Import Key File to Keyring"
+msgstr "Schlüssel zu Schlüsselring hinzufügen"
+
+msgid "Import Key contained in this email now"
+msgstr "Importierter Schlüssel ist nun in dieser email enthalten"
+
+msgid "Import Selected Key"
+msgstr "Ausgewählten Schlüssel importieren"
+
+msgid "Import external keys"
+msgstr "Externe Schlüssel importieren"
+
+msgid "Import keys to your personal keyring via: "
+msgstr "Schlüssel zu persönlichen Schlüsselring hinzufügen:"
+
+msgid "Importing key with KeyID: "
+msgstr "Importiere Schlüssel mit der ID: "
+
+msgid ""
+"In fact, most security experts recommend that web servers be presumed to be "
+"at risk of compromise."
+msgstr "Die meisten Sicherheitsexperten raten Webserver als unsicher einzustufen"
+
+msgid "Info:"
+msgstr "Info:"
+
+msgid "Info: "
+msgstr "Info: "
+
+msgid ""
+"It may be dangerous to believe that any web server (like this one) may be "
+"presumed secure."
+msgstr "Es ist gefährlich zu glauben das Webserver (wie dieser) sicher sein könnten."
+
+msgid ""
+"It would be dangerous to simply assume that any web server (like this one) "
+"is secure."
+msgstr "Es ist gefährlich zu glauben das Webserver (wie dieser) sicher sein könnten."
+
+msgid "Key"
+msgstr "Schlüssel"
+
+msgid "Key Date"
+msgstr "Schlüssel Datum"
+
+msgid "Key Details:"
+msgstr "Schlüssel Eigenschaften:"
+
+msgid "Key Expires"
+msgstr "Schlüssel läuft ab"
+
+msgid "Key ID"
+msgstr "Schlüssel ID"
+
+msgid "Key Length"
+msgstr "Schlüssel Länge"
+
+msgid "Key Search"
+msgstr "Schlüssel Suche"
+
+msgid "Key Strength"
+msgstr "Verschlüsselungsstärke"
+
+msgid "Key generated on public webmail server"
+msgstr "Schlüssel auf öffentlichem Webmail-Server generiert"
+
+msgid ""
+"Key strength is a measure of how difficult it is for an eavesdropper to "
+"compromise the security of your encrypted messages."
+msgstr ""
+"Die Verschlüsselungsstärke ist ein Maß, wie schwer es ist, den Schlüssel zu "
+"knacken."
+
+msgid "Keyring"
+msgstr "Schlüsselring"
+
+msgid "Keyring Management Functions"
+msgstr "Schlüsselring Verwaltung"
+
+msgid "Keyring not editable, keyring functions disabled."
+msgstr "Schlüsselring nicht änderbar, Verwaltung deaktiviert"
+
+msgid "Keyserver Options"
+msgstr "Schlüsselserver Optionen"
+
+msgid "Keystrength"
+msgstr "Verschlüsselungsstärke"
+
+msgid "Last"
+msgstr "Letzter"
+
+msgid "Look up keys on a public keyserver"
+msgstr "Schlüssel an öffentlichem Schlüsselserver nachschlagen"
+
+msgid "Make this my default keyserver"
+msgstr "Setzen als Standard Schlüssel-Server"
+
+msgid "Message List"
+msgstr "Nachrichtenliste"
+
+msgid "Move"
+msgstr "Verschieben"
+
+msgid "Move to:"
+msgstr "Verschiebe nach:"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Never"
+msgstr "Niemals"
+
+msgid "New Search"
+msgstr "Neue Suche"
+
+msgid "Newly Imported Keys"
+msgstr "Gerade importierte Schlüssel"
+
+msgid "Next"
+msgstr "Nächster"
+
+msgid "No"
+msgstr "Nein"
+
+msgid "No GPG Plugin preferences could be found"
+msgstr "Es konnten keine Voreinstellungen für das GPG Plugin gefunden werden"
+
+msgid "No file was uploaded."
+msgstr "Keine Datei vorhanden."
+
+msgid "No old passphrase passed.  Possibly blank password?"
+msgstr "Keine bisherige Passphrase. Ist das Passwort leer?"
+
+msgid "No secret key found."
+msgstr "Keinen privaten Schlüssel gefunden."
+
+msgid "None"
+msgstr "Keinen"
+
+msgid "One Year"
+msgstr "1 Jahr"
+
+msgid "Owner Email"
+msgstr "Email des Besitzers"
+
+msgid "Partial Recipient Encryption Option"
+msgstr "Option: teilweise Verschlüsselung"
+
+msgid "Passphrase"
+msgstr "Passphrase"
+
+msgid "Passphrase Caching"
+msgstr "Passphrase speichern"
+
+msgid "Paste one or more ASCII-armored keys below:"
+msgstr "Ein oder mehrere ASCII-armored Keys unten einfügen:"
+
+msgid "Please"
+msgstr "Bitte"
+
+msgid "Please Notify GPG Plugin Developers"
+msgstr "Bitte GPG Entwickler informieren"
+
+msgid "Please choose a file containing one or more ASCII-armored key blocks"
+msgstr "Bitte Datei mit ein oder mehreren ASCII-armored Keys wählen"
+
+msgid "Please choose the GPG Encryption Plugin options you wish to set up:"
+msgstr "Bitte gewünschte Optionen auswählen:"
+
+msgid "Please import a keypair containing a secret key if you wish to continue."
+msgstr "Bitte Schlüsselpaar mit privatem Schlüssel importieren zum fortsetzen."
+
+msgid "Please try a different keyserver or contact your system administrator."
+msgstr "Bitte anderen Schlüsselserver verwenden oder ihren Administator fragen."
+
+msgid "Please try again."
+msgstr "Bitte nochmal versuchen."
+
+msgid "Please type your old passphrase: "
+msgstr "Bitte alte Passphrase eingeben: "
+
+msgid "Previous"
+msgstr "Vorheriger"
+
+msgid "Priority"
+msgstr "Priorität"
+
+msgid "Problem with command syntax. Check Debug Output"
+msgstr "Problem mit Befehlssyntax. Bitte Debugausgabe prüfen"
+
+msgid "Problems with the cyphertext output:"
+msgstr "Problem mit der Ausgabe des verschlüsselten Textes:"
+
+msgid "Public web servers are not always secure!"
+msgstr "Öffentliche Webserver sind nicht sicher!"
+
+msgid "Received"
+msgstr "Empfangen"
+
+msgid "Remove this key from your keyring?  This action cannot be undone!"
+msgstr "Diesen Schlüssel wirklich löschen? Kann nicht rückgängig gemacht werden!"
+
+msgid "Reply"
+msgstr "Antworten"
+
+msgid "Reply All"
+msgstr "Allen antworten"
+
+msgid "Report a bug on the GPG Plugin Bugzilla"
+msgstr "Fehler an GPG Plugin Bugzilla melden"
+
+msgid "Required data missing."
+msgstr "Daten fehlen."
+
+msgid "Resume Draft"
+msgstr "Entwurf fortsetzen"
+
+msgid "Retype New Passphrase:"
+msgstr "Verifizierung neue Passphrase:"
+
+msgid "Retype Passphrase"
+msgstr "Verifizierung Passphrase"
+
+msgid "SSL connection required to generate keypair."
+msgstr "SSL Verbindung benötigt um Schlüsselpaar zu erzeugen."
+
+msgid "SSL connection required to use passphrase functions."
+msgstr "SSL Verbindung benötigt für Passphrase Funktionen"
+
+msgid "Save"
+msgstr "Speichern"
+
+msgid "Search String:"
+msgstr "Suchbegriff:"
+
+msgid "Search for Key"
+msgstr "Suche nach Schlüssel"
+
+msgid "Search my keyring for a new trusted key using the search string above:"
+msgstr ""
+"Schlüsselring nach einem neuen vertrauten Schlüssel mit dem obigen "
+"Suchbegriff durchsuchen:"
+
+msgid "Search results"
+msgstr "Suchergebnisse"
+
+msgid "Search results for"
+msgstr "Suchergebnisse für"
+
+msgid "Search text may be an email address or an OpenPGP(PGP/GPG) Key ID"
+msgstr "Es kann nach email-Adressen oder Schlüssel-IDs gesucht werden"
+
+msgid "Secret Key: "
+msgstr "Privater Schlüssel: "
+
+msgid "Select a Signing Key"
+msgstr "Schlüssel zum Signieren auswählen"
+
+msgid "Select a key to import from the list below."
+msgstr "Zu importierenden Schlüssel aus der Liste wählen."
+
+msgid "Select this option to set the key as your signing key."
+msgstr "Mit dieser Option setzen sie diesen Schlüssel zum Signieren ein."
+
+msgid "Select this option to set the key as your trusted key."
+msgstr "Mit dieser Option setzen sie diesen Schlüssel als vertrauten Schlüssel."
+
+msgid "Setting a new signing key will replace any previously chosen key."
+msgstr "Der neue Signatur-Schlüssel ersetzt den bisherigen."
+
+msgid "Setting a new trusted key will replace any previously chosen key."
+msgstr "Der neue vertraute Schlüssel ersetzt den bisherigen."
+
+msgid "Setup the GPG Plugin with a secret key."
+msgstr "GPG Plugin mit einem privaten Schlüssel konfigurieren."
+
+msgid "Shared System Keyring"
+msgstr "Gemeinsamer Schlüsselring"
+
+msgid "Should I store my private keys on the server?"
+msgstr "Sollen die privaten Schlüssel auf dem Server gespeichert werden?"
+
+msgid "Showing"
+msgstr "anzeigen"
+
+msgid "Showing keys in"
+msgstr "Schlüssel anzeigen"
+
+msgid "Sign on Send"
+msgstr "Beim Senden signieren"
+
+msgid "Sign on Send by Default"
+msgstr "Immer beim Senden signieren"
+
+msgid "Signature"
+msgstr "Signatur"
+
+msgid "Signature verification process failed."
+msgstr "Signatur konnte nicht verifiziert werden."
+
+msgid "Signing functions not allowed from an insecure connection."
+msgstr "Signieren ist über unsichere Verbindungen nicht erlaubt."
+
+msgid ""
+"Sometimes, you may not have public keys for all of the email addresses in "
+"your To, CC, and BCC fields in the Compose window."
+msgstr "Manchmal sind nicht alle öffentlichen Schlüssel der Adressaten bekannt."
+
+msgid ""
+"Storing a private key on a remote host can be insecure if you do not trust "
+"the host!"
+msgstr ""
+"Speichern privater Schlüssel auf einem anderen Server ist nicht zu "
+"empfehlen, wenn sie dem Server nicht trauen!"
+
+msgid "Subject"
+msgstr "Betreff"
+
+msgid "Subkey"
+msgstr "Unterschlüssel"
+
+msgid "Submit"
+msgstr "Absenden"
+
+msgid "Success!"
+msgstr "OK!"
+
+msgid "System Keyring"
+msgstr "Systemweiter Schlüsselring"
+
+msgid "Table of Contents"
+msgstr "Inhaltsverzeichniss"
+
+msgid ""
+"The GPG Encryption Plugin will allow you to encrypt, sign, and decrypt "
+"messages in accordance with the OpenPGP standard for email security and "
+"authentication."
+msgstr ""
+"Das GPG Plugin erlaubt es, Nachrichten entsprechend dem OpenPGP Standard zu "
+"ver-/entschlüsseln und zu signieren."
+
+msgid "The System Administrator has disabled private key functions."
+msgstr "Ihr Systemadministrator hat die Funktionen für private Schlüssel deaktiviert."
+
+msgid "The attachment file was not found"
+msgstr "Kein Anhang gefunden"
+
+msgid "The following is a list of suggested steps you can take to get started:"
+msgstr "Folgende Schritte sollten als erstes beachtet werden:"
+
+msgid "The holder of the ADK will be able to decrypt these messages."
+msgstr "Nur der Besitzer des ADK kann diese Nachrichten entschlüsseln."
+
+msgid ""
+"The plugin supports the ability to set default options to be applied every "
+"time you send a message."
+msgstr "Es können Default-Einstellungen für dieses Plugin vorgenommen werden."
+
+msgid ""
+"The plugin will return you to the Compose page with your original message "
+"(plaintext) preserved if there is an error that requires your attention "
+"after you press 'Send'."
+msgstr ""
+"Im Fehlerfall kehren sie nach Betätigen von 'Senden' zum unverschlüsselten "
+"Text zurück."
+
+msgid ""
+"The signing key may be one of: a key that you have explicitly marked as a "
+"trusted key, a keypair that you have on your public and secret keyrings, or "
+"a shared system trusted key defined by your system administrator."
+msgstr ""
+"Der zum Signieren verwendete Schlüssel ist einer der folgenden: Ihr "
+"vertrauter Schlüssel, ein Schlüsselpaar ihres öffentlichen/privaten "
+"Schlüsselrings, ein systemweiter vertrauter Schlüssel, den Ihr Administrator "
+"festgelegt hat."
+
+msgid ""
+"The system has the ability to cache (store) the passphrase for your secret "
+"key."
+msgstr ""
+"Es besteht die Möglichkeit die Passphrase ihres privaten Schlüssels zu "
+"speichern."
+
+msgid "There are no keys containing the string "
+msgstr "Keine Schlüssel vorhanden die den Suchbegriff enthalten: "
+
+msgid "There is no indication that this key really belongs to the owner"
+msgstr "Es gibt keinen Hinweis, das der Schlüssel wirklich dem Besitzer gehört"
+
+msgid "There was a problem with your request"
+msgstr "Es ist ein Problem aufgetreten"
+
+msgid "There was a problem with your request."
+msgstr "Es ist ein Problem aufgetreten"
+
+msgid ""
+"These options have broad effects on how the plugin works, and can help you "
+"be more productive."
+msgstr ""
+"Diese Optionen bestimmen, wie das Plugin arbeitet und erlaubt ihnen "
+"produktiver zu sein."
+
+msgid ""
+"This action can only be performed on a secure connection (https).  Please "
+"change the 'http' in your address bar to 'https', and try again."
+msgstr ""
+"Diese Funktion benötigt eine sichere Verbindung (https). Bitte ersetzen sie "
+"in der Adresse http durch https und versuchen sie es erneut."
+
+msgid ""
+"This error usually occurs because you have not set a trusted key, or because "
+"you have not signed the key you are trying to encrypt to."
+msgstr ""
+"Dieser Fehler tritt auf, wenn sie keinen vertrauten Schlüssel gesetzt haben "
+"oder vergessen haben den Schlüssel zu signieren."
+
+msgid "This file exceeds the maximum size allowed."
+msgstr "Diese Datei ist zu gross."
+
+msgid "This file was only partially uploaded."
+msgstr "Diese Datei ist nicht vollständig."
+
+msgid "This is my SIGNING key"
+msgstr "Dies ist der SIGNATUR Schlüssel"
+
+msgid "This is my TRUSTED key"
+msgstr "Dies ist der VERTRAUTE Schlüssel"
+
+msgid "This key has the properties:"
+msgstr "Schlüsseleigenschaften:"
+
+msgid "This message contains encrypted content."
+msgstr "Diese Nachricht enthält verschlüsselten Inhalt."
+
+msgid ""
+"This option allows you to indicate to GPG which key on your public keyring "
+"should be treated as a fully trusted key."
+msgstr ""
+"Diese Option gibt an, welchen Schlüssel des öffentlichen Schlüsselrings "
+"vertraut werden soll."
+
+msgid ""
+"This page provides links to external resources about the technologies used "
+"by the GPG Plugin."
+msgstr "Diese Seite enthält Links zu weitergehenden Quellen über das GPG Plugin."
+
+msgid "This preference only sets the default behavior."
+msgstr "Diese option setzt nur die Standard-Funktionsweise."
+
+msgid "This screen allows you to set general GPG Plugin options."
+msgstr "Diese Seite enthält allgemeine GPG Plugin Optionen."
+
+msgid ""
+"This screen will help you set up the various options you need to get started "
+"using encryption. "
+msgstr "Diese Seite hilft beim ersten Einrichten der Verschlüsselung. "
+
+msgid ""
+"This will usually be the email address of the account that you use as your "
+"primary signing key."
+msgstr ""
+"Dies wird normalerweise die email sein, mit deren Schlüssel sie bevorzugt "
+"verschlüsseln."
+
+msgid "Tip: this is typically a '.asc' or '.pkr' file"
+msgstr "Tip: Die Endung dieser Datei lautet '.asc' oder '.pkr'"
+
+msgid "To"
+msgstr "An"
+
+msgid ""
+"To allow you to use the GPG plugin optimally without storing your private key"
+"(s) on the web server, the GPG Plugin allows you to specify a special option "
+"called 'Trusted Key ID'."
+msgstr ""
+"Um das GPG Plugin zu nutzen ohne private Schlüssel auf dem Server zu "
+"speichern, können sie die folgende Option verwenden: 'ID des vertrauten "
+"Schlüssels'."
+
+msgid "To decrypt this message inside Squirrelmail:"
+msgstr "Um diese Nachricht in SquirrelMail zu entschlüsseln:"
+
+msgid "To disable the trusted key option, select no key as trusted."
+msgstr "Um diese Option zu deaktivieren, wählen sie keinen vertrauten Schlüssel."
+
+msgid "To locate a key or keys, please enter a search string below."
+msgstr "Zum Auffinden von Schlüsseln geben sie bitte unten den Suchbegriff ein."
+
+msgid "To set your signing key, find the desired key in the 'secret' ring of the"
+msgstr ""
+"Zum Setzen des Signatur-Schlüssels, wählen sie den gewünschten Schlüssel im "
+"privaten Schlüsselring"
+
+msgid ""
+"To set your trusted key, find the desired key in the 'public' or 'system' "
+"ring of the"
+msgstr ""
+"Zum Setzen des vertrauten Schlüssels, wählen sie den gewünschten Schlüssel "
+"im öffentlichen oder systemweiten Schlüsselring"
+
+msgid ""
+"To sign outgoing mail and receive encrypted messages, you must have a "
+"personal Keypair."
+msgstr ""
+"Zum Signieren ausgehender Nachrichten und Empfangen verschlüsselter "
+"Nachrichten benötigen sie ein privates Schlüsselpaar."
+
+msgid "Troubleshooting"
+msgstr "Fehlererkennung"
+
+msgid "Unable to connect to the keyserver you specified."
+msgstr "Kann nicht zu Keyserver verbinden."
+
+msgid "Unable to open command pipe."
+msgstr "Befehl kann nicht ausgeführt werden."
+
+msgid "Unable to rename encrypted file"
+msgstr "Kann verschlüsselte Datei nicht umbenennen"
+
+msgid "Unable to rename temporary file"
+msgstr "Kann temporäre Datei nicht umbenennen"
+
+msgid "Unable to rename temporary file after failed encrypt"
+msgstr "Kann verschlüsselte Datei nicht umbenennen (verschlüsselung fehlgeschlagen)"
+
+msgid "Unassigned"
+msgstr "Freier"
+
+msgid "Unexpected Error."
+msgstr "Unerwarteter Fehler."
+
+msgid "Unknown sender"
+msgstr "Unbekannter Absender"
+
+msgid "Unsigned"
+msgstr "Unsigniert"
+
+msgid "Using Keyserver: "
+msgstr "Bevorzugter Schlüsselserver:"
+
+msgid "Using signing key:"
+msgstr "Verwende Signatur-Schlüssel:"
+
+msgid "Using trusted key:"
+msgstr "Verwende vertrauten Schlüssel:"
+
+msgid ""
+"Usually, this will be your primary public key, the key you use to sign other "
+"people's keys."
+msgstr ""
+"Dies ist normalerweise ihr bevorzugter öffentlicher Schlüssel, er wird "
+"verwendet um Schlüssel anderer Leute zu signieren."
+
+msgid ""
+"Usually, this would suggest that a keyring is maintained for some group "
+"which you are a part of, such as an organization or corporation."
+msgstr ""
+"Dieser Schlüsselring wird von Ihrer Firma oder Organisation gemeinsam "
+"genutzt."
+
+msgid "View INSTALL file"
+msgstr "INSTALL ansehen"
+
+msgid "View Key"
+msgstr "Zeige Schlüssel"
+
+msgid "View README file - includes contact information"
+msgstr "README ansehen - enthält Kontakt-Informationen"
+
+msgid "View message"
+msgstr "Nachricht anzeigen"
+
+msgid "Viewing signature verification output for attachment: "
+msgstr "Ausgabe der Signatur-Verifikation für Anhang: "
+
+msgid "Warning: "
+msgstr "Warnung: "
+
+msgid "Warnings:"
+msgstr "Warnungen:"
+
+msgid ""
+"Web-based email programs are very convenient, and using your web email to "
+"send encrypted email adds to that convenience."
+msgstr ""
+"Web-basierte email-Programme sind sehr bequem, Verschlüsselung hierfür "
+"steigert die Bequemlichkeit."
+
+msgid ""
+"Web-based email programs are very convenient, and using your web email to "
+"send encrypted emails adds to that convenience."
+msgstr ""
+"Web-basierte email-Programme sind sehr bequem, Verschlüsselung hierfür "
+"steigert die Bequemlichkeit."
+
+msgid "Welcome to the GPG Encryption Plugin for Squirrelmail! "
+msgstr "Willkommen beim GPG Plugin für SquirrelMail! "
+
+msgid "What is a 'Signing Key'?"
+msgstr "Was ist ein Signatur Schlüssel?"
+
+msgid "What is a 'Trusted Key'?"
+msgstr "Was ist ein vertrauter Schlüssel?"
+
+msgid "What is a Signing Key?"
+msgstr "Was ist ein Signatur Schlüssel?"
+
+msgid "What is a Trusted Key?"
+msgstr "Was ist ein vertrauter Schlüssel?"
+
+msgid "What is a good key strength?"
+msgstr "Was ist gute Verschlüsselungsstärke?"
+
+msgid "What's this?"
+msgstr "Was ist das?"
+
+msgid ""
+"When this happens, the GPG plugin can either display an error and return to "
+"your plaintext, or encrypt the message to the recipients that you do have "
+"keys for, and inform you of the email addresses that you did not have keys "
+"for."
+msgstr ""
+"Wenn dies passiert kann das GPG Plugin entweder einen Fehler berichten oder "
+"nur die Nachrichten verschlüsseln für dessen Empfänger Schlüssel vorliegen "
+"und über die nicht-verschlüsselten Adressaten informieren."
+
+msgid ""
+"When you encrypt an email message, the plugin can be set to automatically "
+"include your email address in the recipient list."
+msgstr ""
+"Es kann eine automatische (verschlüsselte) Kopie an sie selbst konfiguriert "
+"werden."
+
+msgid ""
+"With this interface, you will be able to encrypt, decrypt, and sign your "
+"email and attachments from the comfort of the Squirrelmail web mail "
+"interface."
+msgstr ""
+"Mit dieser Erweiterung ist es möglich, von SquirrelMail aus Nachrichten zu "
+"ver- und entschlüsseln sowie zu signieren."
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "You are not connected using a secure connection."
+msgstr "Sie nutzen keine sichere Verbindung."
+
+msgid "You are not using a secure connection."
+msgstr "Sie nutzen keine sichere Verbindung."
+
+msgid "You can"
+msgstr "Sie können"
+
+msgid ""
+"You can add keys to your keyring with blocks of ASCII-armored key text "
+"(encoded text which contains all the necessary information for a key)."
+msgstr ""
+"Schlüssel können mittels ASCII-armored Key Text (verschlüsselter Text, der "
+"alle notwendigen Informationen eines Schlüssels enthält) zum Schlüsselring "
+"hinzugefügt werden."
+
+msgid ""
+"You can change your passphrase from this screen.  More help will be "
+"available in the future."
+msgstr "Die Passphrase kann hier geändert werden."
+
+msgid "You can only have one signing key at any given time."
+msgstr "Es ist immer nur ein Signatur Schlüssel erlaubt."
+
+msgid "You can only have one trusted key at any given time."
+msgstr "Es ist immer nur ein vertrauter Schlüssel erlaubt."
+
+msgid "You currently trust key:"
+msgstr "Aktueller vertrauer Schlüssel:"
+
+msgid "You did not provide a passphrase!"
+msgstr "Keine Passphrase vorhanden!"
+
+msgid ""
+"You did not provide a passphrase! Please right-click and select 'Back' and "
+"try again"
+msgstr ""
+"Keine Passphrase vorhanden! Bitte gehen sie zurück und versuchen sie es "
+"nochmal"
+
+msgid ""
+"You do not have a public key for the following email addresses and so your "
+"message will NOT be readable by these recipients."
+msgstr ""
+"Für die folgenden Adressaten fehlt der öffentliche Schlüssel in ihrem "
+"Schlüsselring. Sie werden die Nachricht nicht entschlüsseln können."
+
+msgid "You have no secret keys in your ring"
+msgstr "Sie haben keine privaten Schlüssel in ihrem Ring"
+
+msgid ""
+"You have the option to attempt to Encrypt, Sign, or Encrypt and Sign every "
+"message that you send, by default. "
+msgstr ""
+"Sie können Standards beim Senden festlegen: Verschlüsseln, Signieren oder "
+"beides."
+
+msgid ""
+"You may also choose to replace letters with numbers and symbols. For "
+"example: 'A dove of peace is here.' where 'e'='3', 'i'='1' and 'o'='0' "
+"becomes 'A d0v3 0f p3ac3 1s h3r3.' which becomes 'ad0v30fp3ac31sh3r3.'"
+msgstr ""
+"Sie können Buchstaben durch Zahlen oder Symbole ersetzen. Bsp: 'A dove of "
+"peace is here.' mit 'e'='3', 'i'='1' und 'o'='0' wird zu 'A d0v3 0f p3ac3 1s "
+"h3r3.' und damit zu 'ad0v30fp3ac31sh3r3.'"
+
+msgid ""
+"You may encrypt your email either after you press the 'Encrypt Now' button "
+"from the Compose page, or at the time you send the message."
+msgstr ""
+"Nachrichten können entweder durch 'Jetzt verschlüsseln' oder beim Senden "
+"verschlüsselt werden."
+
+msgid ""
+"You must choose whether to trust this keyring and use it in your public key "
+"lookups."
+msgstr ""
+"Wählen sie ob sie diesem Schlüsselring vertrauen und zum Suchen öffentlicher "
+"Schlüssel verwenden wollen."
+
+msgid "You must choose whether to use this ADK."
+msgstr "Wählen sie ob sie diesen ADK verwenden wollen."
+
+msgid ""
+"You must select a signing key to use the GPG Plugin to securely sign "
+"messages."
+msgstr "Sie müssen einen Schlüssel zum Signieren auswählen, um das GPG Plugin: zum Signieren nutzen zu können."
+
+msgid ""
+"You should change the capitalization and punctuation so that others cannot "
+"easily guess it, even if they guess the phrase you chose."
+msgstr ""
+"Sie sollten Gross/Kleinschreibung und Interpunktation variieren, sodass "
+"selbst bei erratener Passphrase diese nicht sofort bekannt wird."
+
+msgid "Your Preference to allow partial encryption has been saved."
+msgstr "Teilweise Verschlüsselung aktiviert."
+
+msgid "Your Preference to attempt to Encrypt on Send by default has been saved."
+msgstr "'Beim Senden verschlüsseln' aktiviert."
+
+msgid "Your Preference to attempt to Sign on Send by default has been saved."
+msgstr "'Beim Senden Signieren' aktiviert."
+
+msgid "Your Preference to cache your passphrase has been saved."
+msgstr "Passphrase speichern aktiviert."
+
+msgid "Your Preference to encrypt a copy of all messages to"
+msgstr "Kopie aller Nachrichten aktiviert an"
+
+msgid "Your Preference to not Encrypt on Send by default has been saved."
+msgstr "'Beim Senden verschlüsseln' deaktiviert."
+
+msgid "Your Preference to not Sign on Send by default has been saved."
+msgstr "'Beim Senden Signieren' deaktiviert."
+
+msgid "Your Preference to not allow partial encryption has been saved."
+msgstr "Teilweise Verschlüsselung deaktiviert."
+
+msgid "Your Preference to not cache your passphrase has been saved."
+msgstr "Passphrase speichern deaktiviert."
+
+msgid ""
+"Your Preference to not encrypt a copy of every message to yourself has been "
+"saved."
+msgstr "Kopie aller Nachrichten deaktiviert."
+
+msgid "Your Preference to not trust the system keyring has been saved."
+msgstr "Systemweitem Schlüsselring vertrauen deaktiviert."
+
+msgid "Your Preference to not use the system ADK has been saved."
+msgstr "System ADK verwenden deaktiviert."
+
+msgid "Your Preference to request automatic key lookup has been saved"
+msgstr "Automatische Schlüsselsuche aktiviert."
+
+msgid "Your Preference to trust the system keyring has been saved."
+msgstr "Systemweitem Schlüsselring vertrauen aktiviert."
+
+msgid "Your Preference to use the system ADK has been saved."
+msgstr "System ADK verwenden aktiviert."
+
+msgid "Your Public Keyring"
+msgstr "Ihr öffentlicher Schlüsselring"
+
+msgid "Your Request to Encrypt on Send encountered a problem, details below:"
+msgstr "Problem beim Verschlüsseln. Details:"
+
+msgid "Your Secret Keyring"
+msgstr "Ihr privater Schlüsselring"
+
+msgid ""
+"Your System administrator has indicated that there is a 'system-wide' public "
+"keyring."
+msgstr "Es besteht ein systemweiter öffentlicher Schlüsselring."
+
+msgid "Your cached passphrase has been securely erased."
+msgstr "Ihre gespeicherte Passphrase wurde gelöscht."
+
+msgid "Your current signing key: "
+msgstr "Ihr Signatur Schlüssel: "
+
+msgid "Your key is being generated... please be patient!"
+msgstr "Ihr Schlüssel wird erzeugt... bitte warten!"
+
+msgid "Your message may be sent without being readable by some recipients."
+msgstr ""
+"Sie können die Nachricht senden, obwohl nicht alle Adressaten sie "
+"entschlüsseln können."
+
+msgid "Your passphrases do not match."
+msgstr "Passphrasen passen nicht zusammen."
+
+msgid "Your personal Keypair"
+msgstr "Ihr privates Schlüsselpaar"
+
+msgid "Your request returned this information:"
+msgstr "Ihre Anfrage gab folgendes zurück:"
+
+msgid ""
+"Your secret passphrase should be as long as possible and easy for you to "
+"remember, but hard for someone else to guess."
+msgstr ""
+"Ihre Passphrase sollte so lang wie möglich und gut zu behalten sein, aber "
+"nicht für leicht andere zu erraten!"
+
+msgid ""
+"Your signing key is the key you use to 'sign' a message you are sending, to "
+"prove that is from you."
+msgstr ""
+"Ihr Signatur Schlüssel wird benötigt, um eine ausgehende Nachricht zu "
+"signieren, d.h. sicherzustellen, dass sie wirklich von ihnen stammt."
+
+msgid ""
+"Your signing key is the key you use to 'sign' a message you are sending, to "
+"prove that it is from you."
+msgstr ""
+"Ihr Signatur Schlüssel wird benötigt, um eine ausgehende Nachricht zu "
+"signieren, d.h. sicherzustellen, dass sie wirklich von ihnen stammt."
+
+msgid ""
+"Your system administrator has also defined an Alternate Decryption Key (ADK) "
+"for the system."
+msgstr "Ihr Systemadministrator hat einen Alternate Decryption Key (ADK) definiert."
+
+msgid "and import them to your keyring."
+msgstr "und diese zu ihrem Schlüsselring hinzu zu fügen."
+
+msgid "check 'This is my signing key' and save."
+msgstr "'Dies ist mein Signatur Schlüssel' anwählen und speichern."
+
+msgid "check 'This is my trusted key', and save."
+msgstr "'Dies ist mein vertrauter Schlüssel' anwählen und speichern."
+
+msgid "click on it to view the details,"
+msgstr "Hier klicken um Details zu sehen,"
+
+msgid "disclaimer"
+msgstr "Disclaimer"
+
+msgid "evil_muppets killed your encryption"
+msgstr "evil_muppets killed your encryption"
+
+msgid "file"
+msgstr "Datei"
+
+msgid "filename:"
+msgstr "Dateiname:"
+
+msgid "generate a personal Keypair"
+msgstr "Privates Schlüsselpaar generieren"
+
+msgid "has been saved."
+msgstr "gespeichert."
+
+msgid "keyring"
+msgstr "Schlüsselring"
+
+msgid "of"
+msgstr "von"
+
+msgid "or"
+msgstr "oder"
+
+msgid "script file not found, exiting abnormally."
+msgstr "Script nicht gefunden, Fehler!"
+
+msgid "selected"
+msgstr "ausgewählt"
+
+msgid "signing key"
+msgstr "Signatur Schlüssel"
+
+msgid "text"
+msgstr "Text"
+
+msgid "trusted key"
+msgstr "vertrauter Schlüssel"
+
+msgid "try again"
+msgstr "Bitte nochmal versuchen"
+
+msgid "writes"
+msgstr "schreibt"
+
+#~ msgid ""
+#~ "Unexpected Error. Did not receive valid export_type in gpg_export_key "
+#~ "function."
+#~ msgstr "Unerwarteter Fehler. Kein gültiger export_type in gpg_export_key."
+
+#~ msgid ""
+#~ "Web-based email programs are very convenient, using your web email to "
+#~ "send encrypted emails adds to that convenience."
+#~ msgstr ""
+#~ "Web-basierte email-Programme sind sehr bequem, Verschlüsselung hierfür "
+#~ "steigert die Bequemlichkeit."
+
+#~ msgid "What is Key Strength?"
+#~ msgstr "Was ist Verschlüsselungsstärke?"
+

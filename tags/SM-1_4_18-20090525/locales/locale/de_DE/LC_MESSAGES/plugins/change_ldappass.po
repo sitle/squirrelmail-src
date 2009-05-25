@@ -1,0 +1,96 @@
+# SquirrelMail change_ldappass plugin
+# German translation
+# Copyright (c) 2004-2009 The SquirrelMail Project Team
+# This file is distributed under the same license as the plugin's package.
+# Ferdie Ferdsen <ferdie@despam.de>, 2004.
+# Ralf Hildebrandt <Ralf.Hildebrandt@charite.de>, 2005.
+# $Id$
+msgid ""
+msgstr ""
+"Project-Id-Version: change_ldappass\n"
+"POT-Creation-Date: 2004-12-28 16:52+0200\n"
+"PO-Revision-Date: 2005-01-11 04:15+0100\n"
+"Last-Translator: Ralf Hildebrandt <Ralf.Hildebrandt@charite.de>\n"
+"Language-Team: German <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "You must type in your old password."
+msgstr "Sie müssen Ihr altes Passwort eingeben."
+
+msgid "You must type in a new password."
+msgstr "Sie müssen ein neues Passwort eingeben."
+
+msgid "You must also type in your new password in the verify box."
+msgstr "Bitte das neue Passwort zur Sicherheit wiederholen."
+
+msgid "Your new password doesn't match the verify password."
+msgstr "Das neue Passwort stimmt nicht mit der Bestätigungseingabe überein."
+
+msgid "Connecting to LDAP Server"
+msgstr "LDAP-Server-Verbindung wird hergestellt..."
+
+msgid "Can't connect to Directory Server, please try later!"
+msgstr ""
+"Verbindung zum Directory Server ist nicht möglich, bitte versuchen sie es "
+"später erneut."
+
+msgid "LDAP bind failed."
+msgstr "LDAP bind() fehlgeschlagen"
+
+msgid "LDAP bind successful."
+msgstr "LDAP bind() erfolgreich."
+
+msgid "Duplicate login entries detected, cannot change password!"
+msgstr ""
+"Es wurden doppelte Login-Einträge gefunden, Passwort kann nicht geändert "
+"werden."
+
+msgid ""
+"Your login account was not found in the LDAP database, cannot change "
+"password!"
+msgstr ""
+"Ihr Loginaccount wurde in der LDAP Datenbank nicht gefunden, kann das "
+"Passwort nicht ändern!"
+
+msgid "Your old password is not correct."
+msgstr "Das alte Passwort ist nicht korrekt."
+
+msgid "We could not retrieve your old password from the LDAP server."
+msgstr "Wir konnten Ihr altes Passwort nicht vom LDAP Server holen."
+
+msgid "Password type is"
+msgstr "Passwort Typ ist"
+
+msgid "Stored Password:"
+msgstr "Gespeichertes Passwort:"
+
+msgid "Old Password:"
+msgstr "Altes Passwort:"
+
+msgid "New Password:"
+msgstr "Neues Passwort:"
+
+msgid "SMB Password change was not successful, so LDAP not changed!"
+msgstr "SMB Passwortänderung war nicht erfolgreich, LDAP wurde nicht geändert!"
+
+msgid "Password changed for user"
+msgstr "Das Passwort wurde geändert für den Benutzer"
+
+msgid "Password changed successfully"
+msgstr "Das Paßwort wurde erfolgreich geändert"
+
+msgid "LDAP Password change was not successful!"
+msgstr "LDAP Passwortänderung war nicht erfolgreich!"
+
+msgid "LDAP ERROR => "
+msgstr "LDAP Fehler =>"
+
+msgid "Change Password"
+msgstr "Passwort ändern"
+
+msgid ""
+"This connects to your local Password Server to change your login password "
+"for all services."
+msgstr "Dies stellt eine Verbindung zu Ihrem lokalen Passwortserver her und lässt Sie Ihr Passwort für alle Dienste ändern."

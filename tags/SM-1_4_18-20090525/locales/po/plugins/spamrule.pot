@@ -1,0 +1,436 @@
+# LANGUAGE (xx_XX) spamrule Translation (SquirrelMail plugin)
+# Copyright (c) 2002-2009 The SquirrelMail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# $Id: proon.pot 10877 2006-03-04 11:22:22Z jervfors $
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: spamrule 0.5\n"
+"Report-Msgid-Bugs-To: O'Shaughnessy Evans <shaug-sqml@wumpus.org>\n"
+"POT-Creation-Date: 2007-10-22 23:19+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Only From"
+msgstr ""
+
+msgid ""
+"Only accept mail from an <em>Allowed Sender</em>.  Mail from them will "
+"always go through; mail from <em>everyone else will be sent to your &quot;"
+"Junk&quot; mailbox.</em>  <em>Please note!</em>  This supercedes all other "
+"filters.  IF YOU ENABLE THIS, NONE OF YOUR OTHER FILTERS WILL BE USED."
+msgstr ""
+
+msgid "Update your:"
+msgstr ""
+
+msgid "Allowed Senders"
+msgstr ""
+
+msgid "Always From"
+msgstr ""
+
+msgid ""
+"Always accept mail from an <em>Allowed Sender</em>.  Mail from them will "
+"always go through, no matter what other filters are in use."
+msgstr ""
+
+msgid "Subject Passwords"
+msgstr ""
+
+msgid ""
+"Always accept mail with one of your <em>Subject Passwords</em>.  Create one "
+"or more secret words, and then tell them to your friends.  All they have to "
+"do is include a secret word in the <b>Subject</b> and the message will get "
+"past your filters."
+msgstr ""
+
+msgid "Only To Me"
+msgstr ""
+
+msgid "If"
+msgstr ""
+
+msgid ""
+"or one of your <em>aliases</em> isn't in the <b>To</b> or <b>Cc</b> headers, "
+"send the message to your &quot;Junk&quot; mailbox.  This <em>may</em> catch "
+"some mailing lists, so if you're subscribed to a list, enable the <em>Always "
+"From</em> filter and add the list sender to your <em>Allowed Senders</em> "
+"before using this."
+msgstr ""
+
+msgid "Aliases"
+msgstr ""
+
+msgid "No Ads"
+msgstr ""
+
+msgid ""
+"Catch any mail with a subject that starts with &quot;AD&quot; or &quot;"
+"ADV&quot;, or mail that has an <b>X-Advertisement</b> or <b>X-Promotion</b> "
+"header.  Some spammers will announce their unsolicited mail this way."
+msgstr ""
+
+msgid "No Bulk Mail"
+msgstr ""
+
+msgid ""
+"Block any mail that has a &quot;bulk&quot; or &quot;low&quot; <b>Priority</"
+"b> header.  This is almost always junk mail."
+msgstr ""
+
+msgid "No Broken Messages"
+msgstr ""
+
+msgid ""
+"Filter any mail that isn't properly formatted email (called &quot;RFC 822-"
+"compliant&quot;).  Most Internet Providers will make sure the mail from "
+"their servers complies with this and other standards because it's more "
+"likely to get delivered correctly, and less likely to break mail programs "
+"like Outlook or Eudora.  Spammers, on the other hand, don't seem to care "
+"quite as much."
+msgstr ""
+
+msgid "Never From Me"
+msgstr ""
+
+msgid "Never accept mail that was sent from your own address, &quot;"
+msgstr ""
+
+msgid ""
+"&quot;.  Some spammers will fake the sender and make it appear that the "
+"message is coming <em>from</em> you as well as being sent <em>to</em> you.  "
+"Unless you send yourself email, this is a safe way to stop some junk from "
+"getting through."
+msgstr ""
+
+msgid "Never From"
+msgstr ""
+
+msgid ""
+"Filter any mail from a <em>Blocked Sender</em>.  Add the addresses of people "
+"from whom you never want to get mail."
+msgstr ""
+
+msgid "Blocked Senders"
+msgstr ""
+
+msgid "Bad Subjects"
+msgstr ""
+
+msgid ""
+"Filter any mail that has a <em>Blocked Subject</em>.  Edit your list of "
+"subject words, then any mail with a subject that matches your list will be "
+"filtered."
+msgstr ""
+
+msgid "Blocked Subjects"
+msgstr ""
+
+msgid "SpamAssassin"
+msgstr ""
+
+msgid "Use"
+msgstr ""
+
+msgid ""
+"a comprehensive program that applies many advanced tests, to check whether a "
+"message is junk.  Note that if a message is filtered by this rule, you'll "
+"see a description of why it was caught in the first part of your message."
+msgstr ""
+
+msgid "System-Wide Filters"
+msgstr ""
+
+msgid "These filters are used for all incoming mail at "
+msgstr ""
+
+msgid ""
+".  They utilize various tools to stop junk mail, including sophisticated "
+"tests to look for common spam characteristics and blacklists that block mail "
+"from known Internet abusers and stop a lot of junk before it gets inside the "
+"HOL computers.  Occasionally, though, they may block legitimate email.  We "
+"<em>strongly</em> recommend that you leave this enabled, but if you know "
+"that mail from a contact is getting blocked, you may want to opt out by "
+"disabling this option via the &quot;Custom&quot; filters."
+msgstr ""
+
+msgid "No Personal Filtering"
+msgstr ""
+
+msgid "Don't do any special filtering."
+msgstr ""
+
+msgid "Careful"
+msgstr ""
+
+msgid "Only filter out messages that clearly look like junk mail."
+msgstr ""
+
+msgid ""
+"If you have any other email addresses that go to this mailbox, make sure to "
+"return here and customize your aliases when you're finished."
+msgstr ""
+
+msgid "Strict"
+msgstr ""
+
+msgid "Be aggressive:  use all the available filters."
+msgstr ""
+
+msgid ""
+"... including your own lists of Allowed Senders, Blocked Senders, Blocked "
+"Subjects, and Subject Passwords that can be very useful."
+msgstr ""
+
+msgid "Custom"
+msgstr ""
+
+msgid "Choose your own set of filters."
+msgstr ""
+
+msgid "Use this to select from all the filters we have available."
+msgstr ""
+
+msgid ""
+"Here you can control the way your incoming mail will be filtered.  All "
+"messages caught by the rules you select will be delivered to your &quot;"
+"Junk&quot; mail folder."
+msgstr ""
+
+msgid "Please note:"
+msgstr ""
+
+msgid ""
+"Messages in your &quot;Trash&quot; mail folder <u>do not</u> count against "
+"your storage."
+msgstr ""
+
+msgid ""
+"Messages in your &quot;Junk&quot; mail folder <u>do</u> count against your "
+"storage."
+msgstr ""
+
+msgid ""
+"Messages more than a few days old are removed from both of these folders to "
+"keep them from getting too large.  Be sure to check your &quot;Junk&quot; "
+"mailbox periodically to make sure you don't miss any mail that you want to "
+"get."
+msgstr ""
+
+msgid ""
+"No junk mail filter is perfect.  Spammers are always trying to come up with "
+"new ways to get around the things we do to block them.  It's possible that "
+"some legitimate mail will be caught by our filters, so check your Junk "
+"mailbox regularly.  The stricter the filter you choose, the more likely it "
+"will be to catch good email, but of course it should also catch a lot more "
+"spam."
+msgstr ""
+
+msgid "Your preferences have been saved.  Here's the ruleset you've selected:"
+msgstr ""
+
+msgid "Back to the beginning"
+msgstr ""
+
+msgid ""
+"Here you can choose exactly which filters you want to use.  If you "
+"customized your filters before now, your old settings will already be "
+"loaded.  If this is your first time, our recommended list will be selected."
+msgstr ""
+
+msgid "Make sure you press &quot;Finish&quot; to save your changes."
+msgstr ""
+
+msgid "Allowed/Exclusive Senders"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid ""
+"Here you can list addresses from which you <strong><em>never</em></strong> "
+"want to get email.  For example, if you add &quot;<tt>some_joker@example."
+"org</tt>&quot;, then any mail from that address will always be put into your "
+"&quot;Junk&quot; mailbox."
+msgstr ""
+
+msgid "Allowed Recipients"
+msgstr ""
+
+msgid ""
+"Here you can list alternative addresses, a.k.a. &quot;aliases&quot;, that "
+"get sent to"
+msgstr ""
+
+msgid "If you are forwarding mail from other Internet Providers to your"
+msgstr ""
+
+msgid ""
+"account, or you have an alias or mailbox-only account with us, and you chose "
+"the <em>Only To Me</em> filter, we recommend that you add those other "
+"addresses here."
+msgstr ""
+
+msgid ""
+"For example, if you have a Yahoo! account and forward your messages here, "
+"you should add &quot;<tt>yourname@yahoo.com</tt>&quot; to this list so that "
+"messages for <em>yourname@yahoo.com</em> won't get caught by the <em>Only to "
+"Me</em> filter."
+msgstr ""
+
+msgid ""
+"Here you can create a list of subject words that you want to block.  Any "
+"message that has one of these phrases in the <b>Subject</b> field will be "
+"filtered.  For example, if you add &quot;<tt>some bad phrase</tt>&quot;, "
+"then any mail that says &quot;<em>some bad phrase</em>&quot; anywhere in the "
+"subject will be put into your &quot;Junk&quot; mail folder."
+msgstr ""
+
+msgid ""
+"Here you can create a list of secret keywords that will let email go "
+"straight past your filters and right into your Inbox.  Any message that has "
+"one of these phrases in the <b>Subject</b> field will <strong><em>always</"
+"em></strong> be allowed.  For example, if you add <tt>(My Friends)</tt>, "
+"then any mail that says &quot;<em>(My Friends)</em>&quot; anywhere in the "
+"<b>Subject</b> line will make it past your spam filters.  You can create "
+"more than one secret:  give one to your friends and family and another to "
+"business associates."
+msgstr ""
+
+msgid "For example:"
+msgstr ""
+
+msgid ""
+"Add <tt>(Friends)</tt> and tell your friends to use that tag in the Subject "
+"line whenever they send you mail."
+msgstr ""
+
+msgid ""
+"Create a entry like <tt>short term secret:</tt>, then give it to someone "
+"that you want to send you mail for just a limited time."
+msgstr ""
+
+msgid ""
+"If you're on a mailing list that tags Subject lines, add that tag to your "
+"keywords list below."
+msgstr ""
+
+msgid "Options"
+msgstr ""
+
+msgid "Spam Rules"
+msgstr ""
+
+msgid "You may choose one of these options:"
+msgstr ""
+
+msgid "Allowed senders"
+msgstr ""
+
+msgid "Blocked senders"
+msgstr ""
+
+msgid "Show my current filters"
+msgstr ""
+
+msgid "Update my:"
+msgstr ""
+
+msgid "Next"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "What Does It Do?"
+msgstr ""
+
+msgid "Finish"
+msgstr ""
+
+msgid "Reset"
+msgstr ""
+
+msgid "You have selected"
+msgstr ""
+
+msgid "filters"
+msgstr ""
+
+msgid "There is no further information for this group."
+msgstr ""
+
+msgid "Whoops!  There was trouble installing your filters."
+msgstr ""
+
+msgid "Here's the message:"
+msgstr ""
+
+msgid "Sorry, there was a problem downloading your list:"
+msgstr ""
+
+msgid ""
+"Warning:  We found some entries in your list that don't look like email "
+"addresses.  In the future, please include just the &quot;user@domain&quot; "
+"part of an email address, without any extra comments, real name, or quotes.  "
+"These have been ignored:"
+msgstr ""
+
+msgid "Remove?"
+msgstr ""
+
+msgid "Address"
+msgstr ""
+
+msgid "Add a new entry:"
+msgstr ""
+
+msgid "Update"
+msgstr ""
+
+msgid ""
+"Sorry, but this plugin is not completely set up.  Please contact your "
+"support department about configuring the Spam Rules plugin."
+msgstr ""
+
+msgid "no file was given to upload"
+msgstr ""
+
+msgid "cannot connect to"
+msgstr ""
+
+msgid "cannot log in to"
+msgstr ""
+
+msgid "cannot read"
+msgstr ""
+
+msgid "error creating"
+msgstr ""
+
+msgid "error changing"
+msgstr ""
+
+msgid "error removing"
+msgstr ""
+
+msgid "Sorry, there was a problem downloading your forward file:"
+msgstr ""
+
+msgid "Spam Rules:"
+msgstr ""
+
+msgid ""
+"Decide how you want to control the incoming flood of mail you didn't ask "
+"for.  These filters work all the time, whether you use webmail or your own "
+"program to read email."
+msgstr ""
+
+msgid "Spam Filters"
+msgstr ""

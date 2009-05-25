@@ -1,0 +1,228 @@
+# Czech (cs_CZ) change_ldappass Translation (SquirrelMail plugin)
+# Copyright (c) 2001-2009 The SquirrelMail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
+# Tomáš Drbohlav <tomas.drbohlav@mff.cuni.cz>, 2004-2008.
+# $Id$
+msgid ""
+msgstr ""
+"Project-Id-Version: change_ldappass 2.2\n"
+"Report-Msgid-Bugs-To: http://sourceforge.net/projects/sm-plugins/\n"
+"POT-Creation-Date: 2007-10-28 11:24+0100\n"
+"PO-Revision-Date: 2008-07-17 14:05+0200\n"
+"Last-Translator: Tomáš Drbohlav <tomas.drbohlav@mff.cuni.cz>\n"
+"Language-Team: Czech <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: functions.php:32 options.php:60
+msgid "PHP LDAP extension is not available."
+msgstr "V PHP není dostupná podpora pro LDAP."
+
+#: functions.php:35
+msgid "You must type in your old password."
+msgstr "Staré heslo není zadáno."
+
+#: functions.php:38
+msgid "You must type in a new password."
+msgstr "Nové heslo není zadáno."
+
+#: functions.php:42
+msgid "You must also type in your new password in the verify box."
+msgstr "Zadejte do políčka \"ověření\" znovu Vaše nové heslo."
+
+#: functions.php:46
+msgid "Your new password doesn't match the verify password."
+msgstr "Vaše nové heslo a heslo zadané pro ověření spolu nesouhlasí."
+
+# options.php:143
+#: functions.php:52
+msgid "Passwords can only contain the following characters:"
+msgstr "Heslo smí obsahovat pouze tyto znaky:"
+
+#: functions.php:59
+msgid "PHP Crack extension is not available."
+msgstr "Rozšíření Crack PHP není k dispozici."
+
+#: functions.php:66
+msgid "Please choose stronger password."
+msgstr "Zvolte složitější heslo."
+
+#: functions.php:70
+#, php-format
+msgid "Could not open crack dictionary: %s"
+msgstr "Neni možné otevřít crack knihovnu: %s"
+
+#: functions.php:102
+msgid "Can't connect to Directory Server, please try later!"
+msgstr "Nelze se připojit k severu s hesly, zkuste to prosím později!"
+
+#: functions.php:108
+msgid "Unable to set LDAP bind protocol version."
+msgstr "Nejde nastavit verzi LDAP bind."
+
+#: functions.php:123 functions.php:201
+msgid "LDAP bind failed."
+msgstr "Navázání LDAP se nezdařilo."
+
+#: functions.php:124 functions.php:153 functions.php:356
+#, php-format
+msgid "Error: %s"
+msgstr "Chyba: %s"
+
+#: functions.php:152
+msgid "LDAP search failed."
+msgstr "Hledání LDAP se nezdařilo."
+
+#: functions.php:163
+msgid "Duplicate login entries detected, cannot change password!"
+msgstr ""
+"Nalezeno několik záznamů odpovídajících stejnému loginu, heslo nelze změnit!"
+
+#: functions.php:171
+msgid ""
+"Your login account was not found in the LDAP database, cannot change "
+"password!"
+msgstr "Váš login nebyl v LDAP databázi nalezen, heslo nelze změnit!"
+
+#. if we can't bind as the user then the old passwd must be wrong
+#: functions.php:184 functions.php:296
+msgid "Your old password is not correct."
+msgstr "Staré heslo není platné."
+
+#: functions.php:225
+msgid "We could not retrieve your old password from the LDAP server."
+msgstr "Nepodařilo se načíst Vaše původní heslo."
+
+#: functions.php:256 functions.php:260 functions.php:264 functions.php:273
+#: functions.php:279
+msgid "Password type is"
+msgstr "Typ hesla je"
+
+#: functions.php:267 functions.php:282
+msgid ""
+"Unsupported password schema. Insufficient PHP version or PHP mhash extension "
+"is not available."
+msgstr ""
+"Nepodporované schéma hesla. Nedostatečná verze PHP nebo nedsotupné PHP mhash "
+"rozšíření."
+
+#. could not generate ntlm passwords
+#: functions.php:353
+msgid "Could not generate NTLM password hashes!"
+msgstr "Nelze vygenerovat hash NTLM hesla!"
+
+#: functions.php:417
+msgid "Password changed successfully"
+msgstr "Změna hesla proběhla úspěšně"
+
+#: functions.php:424
+msgid "SMB Password change was not successful, so LDAP not changed!"
+msgstr "SMB heslo se nepodařilo změnit, takže nebylo změněno ani LDAP heslo!"
+
+#: functions.php:426
+msgid ""
+"Due to numerous password modification errors your LDAP and SMB passwords are "
+"out of sync. Please contact your administrator."
+msgstr ""
+"Vzhledem k četným chybám při úpravě LDAP a SMB hesel jsou tyto nyýní "
+"nesynchronní. Kontaktujte správce."
+
+#: functions.php:431
+msgid "LDAP Password change was not successful!"
+msgstr "Heslo se nepodařilo změnit!"
+
+#: functions.php:432
+msgid "LDAP ERROR => "
+msgstr "Chyba LDAP =>"
+
+#: functions.php:599
+msgid "Password is too short."
+msgstr "Heslo je příliš krátké."
+
+#: functions.php:602
+msgid "New password is too simplistic/systematic."
+msgstr "Nové heslo je příliš jednoduché/triviální."
+
+#. password looks like personal identification number used
+#. in UK's social security system (aa000000a).
+#: functions.php:607
+msgid "New password looks like a National Insurance number."
+msgstr ""
+"Nové heslo vypadá jako indetifikátor sociálního pojištění ve Velké Británii."
+
+#: functions.php:610
+msgid "New password contains only whitespace."
+msgstr "Nové heslo obsahuje pouze mezery."
+
+# options.php:143
+#: functions.php:613
+msgid "New password does not contain enough DIFFERENT characters."
+msgstr "Heslo neobsahuje dostatek navzájem ODLIŠNÝCH znaků."
+
+#: functions.php:616
+msgid "New password is based on a dictionary word."
+msgstr "Nové heslo je založeno na slovu ze slovníku."
+
+#: functions.php:619
+msgid "New password is based on a (reversed) dictionary word."
+msgstr "Nové heslo je založeno na slovu (pozpátku) ze slovníku."
+
+#: functions.php:622
+msgid "You are not registered in the password file."
+msgstr "Nejste registrován(a) v souboru s hesly."
+
+#: functions.php:625
+msgid "New password is based on your username."
+msgstr "Nové heslo je založeno na loginu."
+
+#. combines five error messages.
+#. password is derivable/derived/based upon your password entry
+#: functions.php:634
+msgid "New password is similar to your current password entry."
+msgstr "Nové heslo je podobné tomu stávajícímu."
+
+#: options.php:70
+msgid "Please create plugin configuration file."
+msgstr "Vytvořte prosím konfigurační soubor."
+
+#: options.php:80 options.php:128 setup.php:28
+msgid "Change Password"
+msgstr "Změna hesla"
+
+#: options.php:99
+msgid "Old Password:"
+msgstr "Staré heslo:"
+
+#: options.php:103
+msgid "New Password:"
+msgstr "Nové heslo:"
+
+#: options.php:107
+msgid "Verify New Password:"
+msgstr "Ověření nového hesla:"
+
+#: options.php:121
+msgid "Sync with local network password"
+msgstr "Synchornizovat s místním síťovým heslem"
+
+#: setup.php:30
+msgid ""
+"This connects to your local Password Server to change your login password "
+"for all services."
+msgstr "Zde si můžete změnit heslo pro přihlašování."
+
+#~ msgid "Connecting to LDAP Server"
+#~ msgstr "Připojuji se k LDAP serveru"
+
+#~ msgid "LDAP bind successful."
+#~ msgstr "Navázání LDAP proběhlo úspěšně."
+
+#~ msgid "Stored Password:"
+#~ msgstr "Uložené heslo:"
+
+#~ msgid "Password changed for user"
+#~ msgstr "Změněno heslo uživatele"
+
+#~ msgid "New Password: $newpass"
+#~ msgstr "Nové heslo: $newpass"

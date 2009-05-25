@@ -1,0 +1,232 @@
+$Date$
+name          = plugin name
+version       = current plugin version
+dir           = place that stores translations
+                (0 = squirrelmail.po,
+                 1 = plugins/plugin-name/locale,
+                 2 = locale)
+i18n comments = Internationalization related comments
+
+name                        version    dir  i18n comments
+abook_group                 0.51.1      1   added
+abook_import_export         1.1         2   added
+abook_take                  1.5         0   part of core
+abook_utils                 4.0         -   untranslated
+addgraphics                 2.2         -   untranslated
+address_add                 2.1         1   added (rtl ?)
+admin_add                   0.1         1   added (rtl ?)
+advanced_settings           1.2.1.sm    2   added
+amavisnewsql                0.8.0       1   added
+annotatemore                0.1         0   not added (rtl and string issues, partly untranslated)
+annotatemore                0.2         1   added
+archive_mail                1.2         2   added (rtl, date and string issues)
+askuserinfo                 1.0         1   added
+attachment_doc              1.2         1   added
+attachment_tnef             0.7         0   partly translated (sm domain)
+auto_cc                     2.0         0   added (sm domain)
+auto_prune_sent             1.1         -   untranslated
+autocomplete                2.0         0   added (sm domain)
+autorespond                 0.4         -   untranslated (rtl issues)
+autosubscribe               1.1         -   no translatable strings
+avelsieve                   1.0.1       1   added
+bayesspam                   3.7.1       1   added (rtl issues, floating numbers issues)
+block_attach                0.7         1   added
+block_sender                2.02        0   added (sm domain)
+bookmarks                   2.0.3       -   untranslated (cr and rtl issues)
+bounce                      0.5         1   added
+browser_info                3.0         -   utility, no translatable strings
+bypass_trash                1.0         2   added
+calendar                    0.2         0   part of core
+calendar_file_backend       1.0         -   untranslated
+calendar_sql_backend        1.1         -   untranslated
+canadian_weather            3.1.0       0   added (sm domain, font and rtl issues)
+captcha                     1.0         2   added
+censor                      1.0         2   added
+change_ldappass             2.2         1   added
+change_merakpass            0.9         1   added
+change_mysqlpass            3.2         0   see change_sqlpass
+change_pass                 2.7         1   added
+change_passwd               4.1         1   added
+change_qldforward           1.00        -   untranslated (rtl issues)
+change_sqlpass              3.3         2   added
+check_quota                 2.2         2   added
+chg_sasl_passwd             1.4.1       1   added
+cleanup                     0.2         -   utility, no translatable strings
+click_menu                              -   untranslated
+collapsing_folders_list     1.0         -   no translatable strings
+compatibility               2.0.9       2   added
+compose_chars               0.1         -   untranslated
+compose_fix                 0.3         2   added
+contactclean                3.3.1       2   added
+cookie_warning              1.1         2   added
+courier_vacation            1.1         0   added (sm domain)
+cpanel_pw_changer           1.3         1   added
+cpanel_vacation             0.2         1   added
+custom_charset              1.1         2   added
+custom_from                 1.1         0   added (sm domain)
+debugger                    1.2         2   added
+deref_ldap                  1.0         -   patch, not plugin
+dictionary                  0.6         0   part translated (sm domain, rtl)
+disk_quota                  3.1.1       1   added
+download_all                0.1         -   untranslated
+email_footer                0.4         -   utility, no translatable strings
+emoticons                   1.1         -   untranslated (rtl issues)
+empty_folders               1.2         2   added (rtl issues)
+empty_trash                 1.4         -   utility, no translatable strings
+exchange_meeting            0.3         -   untranslated (cr and multibyte charsets issues)
+expire                      1.3.1       2   added
+extract                     0.1         0   added (sm domain)
+file_manager                2.0         1   added
+filters                     0.853       0   part of core
+folder_settings             0.3         2   added
+folder_sizes                1.5         2   added
+folder_synch                0.8         -   untranslated (rtl issues)
+forced_prefs                1.2         -   utility, no translatable strings
+form_validation             1.1         -   untranslated
+forum                       1.1         2   added
+freecell                    1.0         -   untranslated
+get_uuencode                3.1         -   utility, no translatable strings
+global_sql_addressbook.tar.gz           -   patch
+got_hotmail                 0.6.2       0   added (sm domain)
+gpg                         2.1         1   added
+gzip                        2.02        1   added (rtl issues)
+hancock                     1.4         -   untranslated (rtl issues)
+html_mail                   2.3         2   added
+htmlarea                    5.5         -   untranslated
+http_auth                   1.1         -   utility, no translated strings
+image_buttons               1.4         1   added (gd font issues)
+ip_restrict                 0.1         0   added (sm domain)
+ip_users                    1.1
+japanese_input              1.1         2   added
+jsclock                     0.7         -   untranslated (rtl issues)
+jump_to_folder              0.3         -   untranslated (rtl issues)
+junkfolder                  1.0         1   added
+ldap_abook                  1.02        1   added (see ftp://datanom.net/pub/squirrelmail/)
+                                          Author: Michael Rasmussen <mir at datanom.net>
+ldapquery                   2.1         2   added
+ldapuserdata                0.4         -   untranslated
+ldifimport                  1.4         0   only option page translated (sm domain)
+left_css                    0.2         0   added (sm domain, rtl issues)
+legend                      1.2         0   part translated (sm domain)
+limit_languages             1.0         2   added
+Links.tar.gz
+listcommands                1.3         0   part of sm
+local_autorespond_forward   3.0         2   added
+lock_down                   2.1         -   untranslated
+lockout                     1.4         2   added
+login_alias                 2.4         2   added
+login_auth                  2.0         0   part translated (sm domain)
+login_auto                  1.1         0   part translated (sm domain)
+login_extra                 1.1         -   untranslated
+login_image                 0.2         -   no translatable strings
+login_notes                 1.2         -   strings are in config
+login_redirect              1.2         -   no translatable strings
+mail_alias                  2.0.0       1   added
+mail_fetch                  1.3         0   part of sm
+mail_fetchmail              0.4         -   untranslated
+mail_fwd                    0.4.1       0   part translated (sm domain)
+mail_utilities              0.4         0   part translated (sm domain)
+mailbox_usage               1.0         -   no translatable strings
+mark_read                   1.4.2       2   added (rtl issues?)
+message_source              1.3         0   part of sm 1.4
+metea                       1.7         -   uses French strings
+meteosat                    0.9         -   template based translation (strings mixed with functions)
+mini                        0.3         2   added (see sm-plugins project)
+motd                        1.2         0   part of sm
+move_all_messages           0.1         -   untranslated
+msg_flags                   1.4.10      2   added (one patch modifies strings in sm domain)
+multilogin                  2.3.3       2   added
+naguser                     1.2         2   added
+newuser_wiz                 1.3.2       2   added (rtl issues)
+nntp                        0.0.5       -   variable based translation
+notes                       1.2         1   added
+notify                      1_3         -   untranslated
+old_accounts                0.4         -   untranslated
+online_users                1.2.1       1   added
+ottawagasprices             1.0.1       -   untranslated
+password_forget             2.0         -   no translatable strings
+picons                      1.0         -   untranslated
+pref_convert.tar.gz                     -   utility
+preview_pane                1.2         1   added
+procfilter                  2.0         -   untranslated
+proon                       7.0.1       2   added
+pupdate                     0.7         0   part translated (sm domain and cr issues)
+pushed_look                 4.1         -   untranslated
+qmailadmin_login            1.1         2   added
+qotd_login                  0.6         -   untranslated
+quicksave                   2.4.2       2   added
+quota_usage                 1.3.1       1   added
+reply_buttons               1.0         2   added
+restrict_senders            1.2         2   added
+retrieveuserdata            0.9         -   untranslated (only error messages)
+rewrap                      1.2         1   added
+rootly_news                 1.0         2   added
+saconf                      1.0         -   part translated
+same_ip                     1.0         2   added
+sasql                       3.2.0       2   added
+secure_login                1.2         -   a
+select_language             1.1         2   added
+select_range                3.7         1   added
+send_to_semicolon           1.4         -   util, no translateable strings
+sent_confirmation           1.6         1   added
+serversidefilter            1.42        2   added
+shared_calendars            2.0.1       2   added (calendar domain)
+sharedtodolists             1.4         -   untranslated
+show_headers                1.3         0   added (sm domain, rtl issues)
+show_ssl_link               2.2         2   added
+show_thumb                  1.05        -   no translatable strings
+show_user_and_ip            3.3         1   added
+signout                     2.0         -   patch
+sigtag                      1.1         -   untranslated
+smallcal                    0.8         2   added 0.9patch
+smime                       0.6         0   added (sm domain)
+smrestradmin                0.11        -   untranslated
+smrestrict                  0.10        -   untranslated
+spam_buttons                2.0         2   added
+spamassassin                2.02        -   untranslated
+spamrule                    0.5         1   added
+sql_squirrel_logger         1.1         -   untranslated
+squirrel_logger             2.0         2   added
+squirrelspell.tar.gz                    0   part of core
+startup_folder              2.0         1   added
+subject_warn                1.0         -   untranslated
+taglines                    0.4         1   added
+templates                   1.2         2   added
+time                        2.1         -   untranslated
+timeout_user                1.1.1       0   added (sm domain)
+tmda                        0.2         0   added (sm domain)
+tmdatools                   1.02        0   added (sm domain)
+todo                        0.5         0   part translated (sm domain)
+translate                   1.3         0   part of sm
+trueaday                    1.1         -   no translatable strings
+twc_weather                 1.3p3b-rc2  1   added
+undelete                    1.0         0   adds one button to sm, all function are part of sm
+unframe                     1.0         -   utility, no strings
+unsafe_image_rules          0.8         2   added
+user_logo                   1.1         -   no translatable strings
+user_special_mailboxes      0.1         0   added (sm domain)
+useracl                     2.1         1   added
+username                    2.3         0   added (smdomain, part untranslated)
+vacation                    1.41        0   added (sm domain)
+vacation     (qmail ldap)   0.3         1   added
+vacation_local              2.0         2   added
+vadmin                      1.9.2       1   added
+variable_sent_folder        0.4         -   untranslated
+verify_reply_to             1.0         2   added
+view_as_html                3.7a        1   added
+virtual_hosts               1.0         -   untranslated
+virtusertable               0.3         -   no translatable strings
+virus_scan                  0.5         1   added
+vkeyboard                   0.9         2   added
+vlogin                      3.9.2       -   untranslated
+vpopmail                    1.00        1   added
+weather                     4.1.2       0   part translated (sm domain)
+weather_uk.tar.gz           0.2         -   untranslated
+web_search                  0.1.6       2   added
+webcalendar.tar.gz          1.7         -   own translation functions
+wetteronline                0.1         -   strings in German
+windows                     1.6         0   added (sm domain)
+wordcheck.tar.gz                        -   untranslated
+wx200                       1.0         -   part translated (font issues)
+xmailer                     0.2         0   part of sm core
+yelp                        1.0         -   untranslated (rtl issues)

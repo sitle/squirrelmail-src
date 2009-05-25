@@ -1,0 +1,49 @@
+#!/bin/sh
+
+if [ ! ${SM_LOCALES_PATH} ];
+    then
+        echo "You need to set SM_LOCALES_PATH before running this script" ;
+    exit 1
+fi
+
+# html header
+echo "<html>" > ${SM_LOCALES_PATH}/status.tmp
+echo "<head>" >> ${SM_LOCALES_PATH}/status.tmp
+echo "    <title>SquirrelMail i18n status report</title>" >> ${SM_LOCALES_PATH}/status.tmp
+echo "    </head>" >> ${SM_LOCALES_PATH}/status.tmp
+echo "<body>" >> ${SM_LOCALES_PATH}/status.tmp
+echo "<h1>SquirrelMail i18n status report</h1>" >> ${SM_LOCALES_PATH}/status.tmp
+echo "<pre>" >> ${SM_LOCALES_PATH}/status.tmp
+cat  ${SM_LOCALES_PATH}/version >> ${SM_LOCALES_PATH}/status.tmp
+echo "------------------------------" >> ${SM_LOCALES_PATH}/status.tmp
+
+# update all po files
+for locale in `ls --ignore=index.php --ignore=CVS --ignore=timezones.cfg ${SM_LOCALES_PATH}/locale`; do
+		  echo "<h3>Locale: ${locale} </h3>" >> ${SM_LOCALES_PATH}/status.tmp
+		  echo -n "<b>.po file date: </b>" >> ${SM_LOCALES_PATH}/status.tmp
+		  ls -l ${SM_LOCALES_PATH}/locale/${locale}/LC_MESSAGES/squirrelmail.po | awk '{print $6, $7, $8}' >> ${SM_LOCALES_PATH}/status.tmp
+		  cat ${SM_LOCALES_PATH}/locale/${locale}/LC_MESSAGES/squirrelmail.po | grep -i "PO-Revision-Date:" | tr -d '"' | sed s/'\\n'// >> ${SM_LOCALES_PATH}/status.tmp
+		  if [ -d ${SM_LOCALES_PATH}/help/${locale} ] ; then echo "Help files are available" >> ${SM_LOCALES_PATH}/status.tmp ; fi
+		  echo "<b>File check</b>" >> ${SM_LOCALES_PATH}/status.tmp
+		  msgfmt --statistics -c -o /dev/null ${SM_LOCALES_PATH}/locale/${locale}/LC_MESSAGES/squirrelmail.po 2>> ${SM_LOCALES_PATH}/status.tmp
+		  echo "<b>Stats before merge</b>" >> ${SM_LOCALES_PATH}/status.tmp
+		  msgfmt --statistics -v -o /dev/null ${SM_LOCALES_PATH}/locale/${locale}/LC_MESSAGES/squirrelmail.po 2>> ${SM_LOCALES_PATH}/status.tmp
+		  echo "" >> ${SM_LOCALES_PATH}/status.tmp
+		  echo "<i>Merging</i>" >> ${SM_LOCALES_PATH}/status.tmp
+		  msgmerge ${SM_LOCALES_PATH}/locale/${locale}/LC_MESSAGES/squirrelmail.po \
+		   ${SM_LOCALES_PATH}/po/squirrelmail.pot \
+		   > ${SM_LOCALES_PATH}/locale/${locale}/LC_MESSAGES/squirrelmail-merged.po \
+		   2>> ${SM_LOCALES_PATH}/status.tmp
+		  echo "" >> ${SM_LOCALES_PATH}/status.tmp
+		  echo "<b>Stats after merge</b>" >> ${SM_LOCALES_PATH}/status.tmp
+		  msgfmt --statistics -v -o /dev/null ${SM_LOCALES_PATH}/locale/${locale}/LC_MESSAGES/squirrelmail-merged.po 2>> ${SM_LOCALES_PATH}/status.tmp
+		  rm ${SM_LOCALES_PATH}/locale/${locale}/LC_MESSAGES/squirrelmail-merged.po
+		  echo "------------------------------" >> ${SM_LOCALES_PATH}/status.tmp
+done
+
+# html footer
+echo "</pre></body></html>" >> ${SM_LOCALES_PATH}/status.tmp
+
+# Remove "...done"
+cat ${SM_LOCALES_PATH}/status.tmp | grep -v -F ... > ${SM_LOCALES_PATH}/status.html
+rm ${SM_LOCALES_PATH}/status.tmp

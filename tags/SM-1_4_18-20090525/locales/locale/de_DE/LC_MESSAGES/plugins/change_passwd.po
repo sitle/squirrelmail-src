@@ -1,0 +1,152 @@
+# SquirrelMail change_passwd plugin
+# German translation
+# Copyright (c) 2004-2009 The SquirrelMail Project Team
+# This file is distributed under the same license as the plugin's package.
+# Ferdie Ferdsen <ferdie@despam.de>, 2004.
+# $Id$
+msgid ""
+msgstr ""
+"Project-Id-Version: change_passwd\n"
+"POT-Creation-Date: 2004-04-25 11:23-0700\n"
+"PO-Revision-Date: 2004-08-07 19:25+0100\n"
+"Last-Translator: ferdie ferdsen <ferdie@despam.de>\n"
+"Language-Team: German <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: functions.php:39
+#: options.php:274
+msgid "Change Password"
+msgstr "Passwort ändern"
+
+#: functions.php:41
+msgid "Use this to change your email password."
+msgstr "Hier können Sie das Passwort Ihres Mailaccounts ändern."
+
+#: options.php:80
+msgid "Could not determine your username."
+msgstr "Konnte den Benutzernamen nicht ermitteln."
+
+#: options.php:81
+#: options.php:245
+msgid "Please contact your system administrator."
+msgstr "Bitte wenden Sie sich an den Systemadministrator."
+
+#: options.php:86
+msgid "Please enter your current password."
+msgstr "Bitte geben Sie ihr aktuelles Passwort ein."
+
+#: options.php:91
+msgid "Please enter your new password."
+msgstr "Bitte geben Sie ihr neues Passwort ein."
+
+#: options.php:96
+msgid "Please re-enter your new password."
+msgstr "Bitte geben Sie ihr neues Passwort nochmals ein."
+
+#: options.php:105
+#: options.php:293
+#, c-format
+msgid "Your new password must be at least %s characters long."
+msgstr "Ihr neues Passwort muss mindestens %s Zeichen lang sein."
+
+#: options.php:117
+msgid "The confirmation of your new password did not match."
+msgstr "Das neue Passwort stimmt nicht mit der Bestätigungseingabe überein."
+
+#: options.php:142
+msgid "Your current password is not correct."
+msgstr "Ihr aktuelles Passwort ist nicht korrekt."
+
+#: options.php:213
+msgid "Your password was changed successfully."
+msgstr "Das Passwort wurde erfolgreich geändert"
+
+#: options.php:227
+msgid "The password was modified successfully"
+msgstr "Ihr Passwort wurde erfolgreich geändert"
+
+#: options.php:228
+msgid "Missing new password"
+msgstr "Neues Passwort fehlt"
+
+#: options.php:229
+msgid "Missing current password"
+msgstr "Aktuelles Passwort fehlt"
+
+#: options.php:230
+#, c-format
+msgid "The password for this user cannot be changed due to security constraints: %s"
+msgstr "Das Passwort für diesen User kann aus Sicherheitsgründen nicht geändert werden: %s"
+
+#: options.php:231
+msgid "The new password is equal to the current password. Choose another password."
+msgstr "Das neue Passwort ist identisch mit dem jetzigen Passwort. Bitte ein anderes Passwort wählen."
+
+#: options.php:232
+#: options.php:233
+msgid "Could not read password file"
+msgstr "Kann die Passwortdatei nicht lesen"
+
+#: options.php:234
+msgid "Temporary file could not be opened"
+msgstr "Die temporäre Datei konnte nicht geöffnet werden"
+
+#: options.php:235
+msgid "Current password is incorrect"
+msgstr "Das Passwort ist fehlerhaft."
+
+#: options.php:236
+#, c-format
+msgid "User does not exist: %s"
+msgstr "Benutzer %s existiert nicht"
+
+#: options.php:237
+msgid "Virtual memory exhausted"
+msgstr "Der virtuelle Arbeitsspeicher ist erschöpft."
+
+#: options.php:238
+msgid "Missing username"
+msgstr "Fehlender Benutzername"
+
+#: options.php:244
+msgid "An error has occurred while attempting to change your password."
+msgstr "Ein Fehler ist beim ändern Ihres Passwortes aufgetreten."
+
+#: options.php:253
+msgid "Command output:"
+msgstr "Befehlsausgabe:"
+
+#: options.php:258
+msgid "Return code:"
+msgstr "Rückgabewert:"
+
+#: options.php:284
+msgid "Please read the following instructions before editing your password:"
+msgstr "Bitte lesen Sie die folgende Anleitung, bevor Sie ihr Passwort ändern:"
+
+#: options.php:287
+msgid "You may use letters, numbers, and other special characters on your keyboard."
+msgstr "Benutzen Sie Buchstaben, Nummern und andere spezielle Zeichen auf ihrer Tastatur."
+
+#: options.php:289
+msgid "Passwords are case-sensititve, so an 'A' is not the same as an 'a'."
+msgstr "Bei Passwörtern wird zwischen groß- und kleinschreibung unterschieden, ein 'A' ist also nicht das selbe, wie ein 'a'."
+
+#: options.php:310
+msgid "Your user name:"
+msgstr "Benutzername:"
+
+#: options.php:317
+msgid "Current password:"
+msgstr "Aktuelles Passwort:"
+
+#: options.php:322
+msgid "New password:"
+msgstr "Neues Passwort:"
+
+#: options.php:327
+msgid "Confirm new password:"
+msgstr "Neues Passwort wiederholen"
+

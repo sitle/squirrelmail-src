@@ -1,0 +1,328 @@
+# translation of bayesspam.po to Norwegian Nynorsk
+# Copyright (c) 2006-2009 The SquirrelMail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
+# $Id$
+# Ola Ketil Siqveland <olaketil@hotmail.com>, 2006
+msgid ""
+msgstr ""
+"Project-Id-Version: bayesspam\n"
+"POT-Creation-Date: 2004-12-07 17:06+0200\n"
+"PO-Revision-Date: 2006-08-10 13:10+0200\n"
+"Last-Translator: Ola Ketil Siqveland <olaketil@hotmail.com>\n"
+"Language-Team: Norwegian Nynorsk <nn@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.0.1\n"
+
+#: bayesspam_functions.php:27
+msgid "BayesSpam improperly configured. Check DB Information."
+msgstr "BayesSpam feil oppsett. Sjekk DB informasjonen."
+
+#: bayesspam_functions.php:117 bayesspam_functions.php:1336
+msgid "Spam"
+msgstr "Søppelpost"
+
+#: bayesspam_functions.php:118 bayesspam_functions.php:1341
+msgid "NonSpam"
+msgstr "Ikkje søppelpost"
+
+#: bayesspam_functions.php:1205
+msgid "Recalculate score to view interesting tokens."
+msgstr "Rekn om treff for å sjå interssante symbol."
+
+#: bayesspam_functions.php:1245
+#, fuzzy
+msgid "BayesSpam Probability"
+msgstr "ByesSpam "
+
+#: bayesspam_functions.php:1255 bayesspam_functions.php:1276
+msgid "Cached"
+msgstr "Hurtiglager"
+
+#: bayesspam_functions.php:1261 bayesspam_functions.php:1282
+msgid "Calculated"
+msgstr "Rekna ut"
+
+#: bayesspam_functions.php:1306 bayesspam_functions.php:1309
+msgid "BayesSpam Links"
+msgstr "BayesSpam Lenkje"
+
+#: bayesspam_functions.php:1320
+msgid "Known As Spam"
+msgstr "Kjent som søppelpost"
+
+#: bayesspam_functions.php:1324
+msgid "Move to NonSpam"
+msgstr "Flytt til vanleg post"
+
+#: bayesspam_functions.php:1326
+msgid "Known As NonSpam"
+msgstr "Kjent som vanleg post"
+
+#: bayesspam_functions.php:1330
+msgid "Move to Spam"
+msgstr "Flytt til søppelpost"
+
+#: bayesspam_functions.php:1332
+msgid "Not In DB"
+msgstr "Ikkje i DB"
+
+#: bayesspam_functions.php:1347
+msgid "Recalculate Score"
+msgstr "Rekn på ny treffa"
+
+#: bayesspam_functions.php:1366
+msgid "BayesSpam - Intelligent Spam Filtering"
+msgstr "BayesSpam - Intellegent søppelpostfilter"
+
+#: bayesspam_functions.php:1368
+msgid ""
+"An intelligent mail filter that actually learns what you consider to be "
+"spam. Uses Bayesian filtering to very accurately filter out your spam."
+msgstr ""
+"Eit intellegent postfilter som ein lærer kva som er søppelpost. Bruk "
+"Bayesian filtrering for nøyaktig filtrering av søppelpost."
+
+#: options.php:152
+msgid "Options"
+msgstr "Val"
+
+#: options.php:152
+msgid "BayesSpam Filtering"
+msgstr "BayesSpam Filtrering"
+
+#: options.php:161
+msgid "Spam/Nonspam Message List Buttons are"
+msgstr "Søppelpost/Ikkje søppelpost  Meldingslisteknappar er"
+
+#: options.php:165 options.php:178 options.php:190 options.php:202
+#: options.php:219 options.php:235 options.php:252 options.php:264
+#: options.php:276 options.php:378
+msgid "Enabled"
+msgstr "På"
+
+#: options.php:165 options.php:178 options.php:190 options.php:202
+#: options.php:219 options.php:235 options.php:252 options.php:264
+#: options.php:276 options.php:378
+msgid "Disable it"
+msgstr "Slå det av"
+
+#: options.php:167 options.php:180 options.php:192 options.php:205
+#: options.php:207 options.php:222 options.php:224 options.php:238
+#: options.php:240 options.php:254 options.php:266 options.php:278
+#: options.php:380
+msgid "Disabled"
+msgstr "Av"
+
+#: options.php:167 options.php:180 options.php:192 options.php:205
+#: options.php:222 options.php:238 options.php:254 options.php:266
+#: options.php:278 options.php:380
+msgid "Enable it"
+msgstr "Slå det på"
+
+#: options.php:174
+#, fuzzy
+msgid "BayesSpam Probability Display is"
+msgstr "BayesSpam Probability viser"
+
+#: options.php:186
+msgid "BayesSpam Links are"
+msgstr "BayesSpam lenkjer"
+
+#: options.php:198
+msgid "BayesSpam Filtering is"
+msgstr "BayesSpam Filtrering"
+
+#: options.php:215
+msgid "Filtering Uncertain Messages is"
+msgstr "Filtrering usikremeldinger"
+
+#: options.php:231
+msgid "Spam Deletion is"
+msgstr "Søppelpost sletting"
+
+#: options.php:248
+msgid "Rebuild On Folder Refresh is"
+msgstr "Byggjer på oppfriskmappe"
+
+#: options.php:260
+msgid "Rebuild On Login is"
+msgstr "Byggjer på logg inn"
+
+#: options.php:272
+msgid "Stats Tracking is"
+msgstr "Statistikk sporing"
+
+#: options.php:287
+msgid "Bytes of message to scan"
+msgstr "Byte av meldingar å skanne"
+
+#: options.php:288
+msgid "Maximum"
+msgstr "Maksimalt"
+
+#: options.php:302
+msgid "Delete Spam older than X Days"
+msgstr "Slett søppelpost eldre enn X dagar"
+
+#: options.php:303
+msgid "0 to disable"
+msgstr "o til å slå av"
+
+#: options.php:316
+msgid "Folder To Filter Into"
+msgstr "Mappe til å filtrere til"
+
+#: options.php:345
+msgid "Folder To Filter Uncertain Messages Into"
+msgstr "Mappe til å filtrere uskikre meldingar til"
+
+#: options.php:374
+msgid "Check Inbox Only"
+msgstr "Sjekk berre innboks"
+
+#: options.php:387
+msgid "Add Folder To Ignore List"
+msgstr "Legg til mappe til ignorerliste"
+
+#: options.php:411
+msgid "Remove Folder From Ignore List"
+msgstr "Fjern mappe frå ignorerliste"
+
+#: options.php:437
+msgid "Spam Database Stats"
+msgstr "Søppelpost databasestatistikk"
+
+#: options.php:442
+msgid "Total Mail Filtered"
+msgstr "Totalt post filtrert"
+
+#: options.php:458
+msgid "Total Filtered as Spam"
+msgstr "Totalt filtrert som søppelpost"
+
+#: options.php:474
+msgid "Total Filtered as NonSpam"
+msgstr "Totaltl filtrert som vanleg post"
+
+#: options.php:490
+msgid "Filtered As Unsure"
+msgstr "Filtrert som usikker"
+
+#: options.php:506
+msgid "False Positives"
+msgstr "Falske posetive"
+
+#: options.php:522
+msgid "False Negatives"
+msgstr "Falske negative"
+
+#: options.php:538
+msgid "Overall Accuracy (Based on Corrections)"
+msgstr "Samla kor nøye (basert på korreksjonar)"
+
+#: options.php:555
+msgid "Average Parse Time / Message"
+msgstr "Gjennomsnitt tolketid tid/melding"
+
+#: options.php:573
+msgid "NonSpam Emails in Corpus"
+msgstr "Ikkje søppelpost i mengda"
+
+#: options.php:581
+msgid "Spam Emails in Corpus"
+msgstr "Søppelpost i mengda"
+
+#: options.php:589
+msgid "Last Database Rebuild"
+msgstr "Siste Databasebygging"
+
+#: options.php:605
+msgid "Last Mail Added"
+msgstr "Siste post lagt til"
+
+#: options.php:629
+msgid "Rebuild Filtering Database Now"
+msgstr "Bygg om fiterdatabasen nå"
+
+#: options.php:636
+msgid "Empty Database Now"
+msgstr "Tøm databasen nå"
+
+#: options.php:641
+msgid ""
+"To start using BayesSpam Intelligent Filtering, you must first build up a "
+"database of what you consider to be spam, and what you consider to not be "
+"spam."
+msgstr ""
+"For å starta å bruka ByesSpam inteligent filtrering, så må ein først byggja "
+"opp ein database over kva som er søppel, og kva som ikkje er søppel."
+
+#: options.php:642
+msgid ""
+"To do this, enable the links. When you read an email, there will be two new "
+"links to the upper right, to let you mark the mail as Spam or NonSpam."
+msgstr ""
+"For å gjera dette bruk lenkja Nåe ein les ein e-post vil det vera to nye "
+"lenkje oppe til høgre, som lar ein merka e-posten som søppel eller ikkje."
+
+#: options.php:643
+msgid ""
+"Use them a few dozen times on both spam and nonspam emails before going any "
+"further. The more times you use them, the more accurate your filtering will "
+"become."
+msgstr ""
+"Bruk deinokre dusin ganger på både søppelpost og vanleg post før ein går "
+"vidare. Til fleire ganger ein brukar dei til meir korrekt vert filtreringa."
+
+#: options.php:644
+msgid ""
+"Once you have a few dozen emails in your database (Come here to check your "
+"DB stats) you can enable the filtering itself."
+msgstr ""
+"Etter nokre dusin e-postar i databasen (Kom her for å sjekka DB status) kan "
+"ein slå på sjølve filtreringa."
+
+#: options.php:646
+msgid "Spam Deletion"
+msgstr "Søppelstryking"
+
+#: options.php:646
+msgid ""
+"This option is somewhat dangerous, since if you get a false positive, it "
+"would delete the message without ever telling you. False positives should "
+"not happen, but you use this option at your own risk. This option requires "
+"Filtering to be turned on as well."
+msgstr ""
+"Dette valet er litt farleg, sidan viss ein får falke posetive, så slettar "
+"ein meldinga utan varsel. Falske posetive skal ikkje skje, men bruk valet på "
+"eigen risiko. Dette valet krev at filtreringa er slått på"
+
+#: options.php:647
+msgid "Ignore List"
+msgstr "Ignorer liste"
+
+#: options.php:647
+msgid ""
+"Folders to not run the filtering on. This is not 100% reliable, since "
+"BayesSpam may load before the main Filters plugin, thus giving it a chance "
+"to run on the messages in the inbox before they've been moved to their own "
+"folders."
+msgstr ""
+"Mapper som ikkje skal gjennom filteret. Dette er ikkje 100% påliteleg sidan "
+"BayesSpam kan lastast inn før hovedfilterprogramtillegget, som gir filteret "
+"ein sjans til å kjøra på meldingar i innboksen før dei vert flytta til eigne "
+"mapper."
+
+#: options.php:650
+msgid "Empty Database"
+msgstr "Tom databasen"
+
+#: options.php:650
+msgid ""
+"Do this if you for some reason want to wipe out your current spam DB and "
+"start all over."
+msgstr ""
+"Gjer dette viss ein av ein eller anna grunn vil viska ut noverande søppeø DB "
+"og starta på nytt."

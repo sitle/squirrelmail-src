@@ -1,0 +1,150 @@
+# translation of change_passwd.po to Nynorsk
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (c) 2004-2009 The SquirrelMail Project Team
+# Ola Ketil Siqveland <olaketil@hotmail.com>, 2004
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: change_passwd\n"
+"POT-Creation-Date: 2004-04-25 11:23-0700\n"
+"PO-Revision-Date: 2004-05-24 11:22+0200\n"
+"Last-Translator: Ola Ketil Siqveland <olaketil@hotmail.com>\n"
+"Language-Team: Nynorsk <nn@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.0.1\n"
+
+#: functions.php:39 options.php:274
+msgid "Change Password"
+msgstr "Endra passord"
+
+#: functions.php:41
+msgid "Use this to change your email password."
+msgstr "Bruk denne for å endra ditt e-post passord"
+
+#: options.php:80
+msgid "Could not determine your username."
+msgstr "Kunne ikkje finna brukarnamnet."
+
+#: options.php:81 options.php:245
+msgid "Please contact your system administrator."
+msgstr "Ta kontakt med systemadministartor."
+
+#: options.php:86
+msgid "Please enter your current password."
+msgstr "Gi inn noverande passord."
+
+#: options.php:91
+msgid "Please enter your new password."
+msgstr "Gi inn nytt passord."
+
+#: options.php:96
+msgid "Please re-enter your new password."
+msgstr "Skriv inn nytt passord ein gong til."
+
+#: options.php:105 options.php:293
+#, c-format
+msgid "Your new password must be at least %s characters long."
+msgstr "Nytt passord må vera minst %s karakterer langt."
+
+#: options.php:117
+msgid "The confirmation of your new password did not match."
+msgstr "Stadfestinga av nytt passord samsvara ikkje."
+
+#: options.php:142
+msgid "Your current password is not correct."
+msgstr "Noverande passord er ikkje korrekt."
+
+#: options.php:213
+msgid "Your password was changed successfully."
+msgstr "Vellukka endring av passord."
+
+#: options.php:227
+msgid "The password was modified successfully"
+msgstr "Vellukk modifisering av passordet."
+
+#: options.php:228
+msgid "Missing new password"
+msgstr "Manglande nytt passord"
+
+#: options.php:229
+msgid "Missing current password"
+msgstr "Manglande npverande passord"
+
+#: options.php:230
+#, c-format
+msgid ""
+"The password for this user cannot be changed due to security constraints: %s"
+msgstr "Kan ikkje endra passordet pga tryggleik restriksjonar: %s"
+
+#: options.php:231
+msgid ""
+"The new password is equal to the current password. Choose another password."
+msgstr "Nytt passord er lik noverande passord. Vel eit anna passord."
+
+#: options.php:232 options.php:233
+msgid "Could not read password file"
+msgstr "Klarte ikkje lesa passordfila."
+
+#: options.php:234
+msgid "Temporary file could not be opened"
+msgstr "Mellombels fil kunne ikkje opnast."
+
+#: options.php:235
+msgid "Current password is incorrect"
+msgstr "Noverande passord er feil"
+
+#: options.php:236
+#, c-format
+msgid "User does not exist: %s"
+msgstr "Brukar eksiterer ikkje: %s"
+
+#: options.php:237
+msgid "Virtual memory exhausted"
+msgstr "Virtuelt minne oppbrukt"
+
+#: options.php:238
+msgid "Missing username"
+msgstr "Manglande brukarnamn"
+
+#: options.php:244
+msgid "An error has occurred while attempting to change your password."
+msgstr "Ein feil oppstod når du prøvde å endra passordet."
+
+#: options.php:253
+msgid "Command output:"
+msgstr "Kommando:"
+
+#: options.php:258
+msgid "Return code:"
+msgstr "Retur koce:"
+
+#: options.php:284
+msgid "Please read the following instructions before editing your password:"
+msgstr "Les følgjande instuksjonar før du redigerer passordet."
+
+#: options.php:287
+msgid ""
+"You may use letters, numbers, and other special characters on your keyboard."
+msgstr "Kan bruka bokstavar, tal og andre spesialteikn  på tastaturet."
+
+#: options.php:289
+msgid "Passwords are case-sensititve, so an 'A' is not the same as an 'a'."
+msgstr "Passord skil mellom store og små bokstavar."
+
+#: options.php:310
+msgid "Your user name:"
+msgstr "Brukarnamn:"
+
+#: options.php:317
+msgid "Current password:"
+msgstr "Noverande passord:"
+
+#: options.php:322
+msgid "New password:"
+msgstr "Nytt passord:"
+
+#: options.php:327
+msgid "Confirm new password:"
+msgstr "Stadfest nytt passord:"

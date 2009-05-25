@@ -1,0 +1,148 @@
+# Vietnamese (vi_VI) mail_alias Translation (SquirrelMail plugin)
+# Copyright (c) 1999-2009 The SquirrelMail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
+# Clytie Siddall <clytie@riverland.net.au>, 2008.
+# $Id: mail_alias.pot 10877 2006-03-04 11:22:22Z jervfors $
+msgid ""
+msgstr ""
+"Project-Id-Version: mail_alias 2.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-09-01 18:24+0300\n"
+"PO-Revision-Date: 2008-04-02 23:07+1030\n"
+"Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
+"Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: functions.php:29
+#: mail_alias_opt.php:71
+msgid "Mail Aliases"
+msgstr "Bí danh thư"
+
+#: functions.php:31
+msgid ""
+"You may define your mail aliases here. A mail alias is an email address the "
+"mail for which will arrive in this account"
+msgstr "Ở đây thì bạn có thể xác định các bí danh thư. Bí danh thư là một địa chỉ thư điện tử cũng nhận thư ở tài khoản này.\n"
+"\n"
+"Chẳng hạn, một gia đình có một tài khoản với nhà cung cấp dịch vụ Internet (ISP) và một địa chỉ thư điện tử chính « nguyen@isp.com », cả gia đình có thể có địa chỉ thư riêng (bí danh thư): cha (nguyen_van_minh@isp.com), mẹ (le_thi_hoa@isp.com), con gái (nguyen_thi_mai@isp.com), con trái (nguyen_van_tuan@isp.com), ngay cả ống nội (nguyen_van_vu) và bà nội (tran_thi_thu_nguyet) đều nhận thư ở tài khoản riêng lẻ này. Gia đình này có thể đặt quy tắc lọc để di chuyển thư của mỗi người vào hộp thư riêng.\n"
+"\n"
+"Phần lớn tài khoản ISP có sẵn vài địa chỉ thư điện tử, nhưng vẫn còn có ích trong một số trường hợp nào đó khi dùng bí danh thư, ví dụ để bảo vệ trẻ con chống thư rác tục tĩu, hoặc tiết kiệm tiền ở tổ chức phi lợi nhuận (có nhiều địa chỉ thư hơn cho cùng một số tiền)."
+
+#: functions.php:50
+msgid "Error - Database connection failed."
+msgstr "Lỗi: kết nối cơ sở dữ liệu đã thất bại."
+
+#: functions.php:51
+#: functions.php:82
+#: functions.php:123
+#: functions.php:153
+#: functions.php:216
+#: functions.php:222
+#: functions.php:282
+#: functions.php:288
+#: functions.php:370
+msgid "Please contact the system administrator."
+msgstr "Hãy liên lạc với quản trị hệ thống."
+
+#: functions.php:81
+msgid "Error - Could not retrieve permitted domains."
+msgstr "Lỗi: không thể lấy các miền được phép."
+
+#: functions.php:122
+msgid "Error - Could not retrieve current aliases."
+msgstr "Lỗi: không thể lấy các bí danh được phép."
+
+#: functions.php:152
+msgid "Error - Could not retrieve maximum aliases."
+msgstr "Lỗi: không thể lấy các bí danh tối đa."
+
+#: functions.php:171
+#: functions.php:179
+msgid "Error"
+msgstr "Lỗi"
+
+#: functions.php:172
+msgid "is not a valid Alias"
+msgstr "%s không phải là bí danh hợp lệ"
+
+#: functions.php:180
+msgid "is already in use and cannot be used as an Alias"
+msgstr "đang được dùng nên không thể được đặt là bí danh"
+
+#: functions.php:215
+msgid "Error - Could not insert the alias record into the user table."
+msgstr "Lỗi: không thể chèn mục ghi bí danh vào bảng người dùng."
+
+#: functions.php:221
+msgid "Error - Could not insert the alias record into the forward table."
+msgstr "Lỗi: không thể chèn mục ghi bí danh vào bảng chuyển tiếp."
+
+#: functions.php:281
+msgid "Error - Could not delete the alias record from the user table."
+msgstr "Lỗi: không thể xoá mục ghi bí danh khỏi bảng người dùng."
+
+#: functions.php:287
+msgid "Error - Could not delete the alias record from the forward table."
+msgstr "Lỗi: không thể xoá mục ghi bí danh khỏi bảng chuyển tiếp."
+
+#: functions.php:369
+msgid "Error - Could not retrieve existing users."
+msgstr "Lỗi: không thể lấy các người dùng đã có."
+
+#: mail_alias_opt.php:71
+msgid "Options"
+msgstr "Tùy chọn"
+
+#: mail_alias_opt.php:76
+msgid "Mail aliases consist of:"
+msgstr "Bí danh thư bao gồm:"
+
+#: mail_alias_opt.php:77
+msgid "username, domain "
+msgstr "tên người dùng, miền"
+
+#: mail_alias_opt.php:78
+msgid "in the format"
+msgstr "theo định dạng"
+
+#: mail_alias_opt.php:79
+msgid "username@domain"
+msgstr "tên_người_dùng@miền"
+
+#: mail_alias_opt.php:80
+msgid "Permitted domains are :"
+msgstr "Các miền được phép:"
+
+#: mail_alias_opt.php:92
+msgid "You may add Aliases up to a maximum of"
+msgstr "Bạn có thể thêm bí danh đến số tối đa"
+
+#: mail_alias_opt.php:97
+msgid "Alias"
+msgstr "Bí danh"
+
+#: mail_alias_opt.php:100
+msgid "Synchronize Identities"
+msgstr "Đồng bộ hoá chứng minh"
+
+#: mail_alias_opt.php:101
+msgid "Action"
+msgstr "Hành vi"
+
+#: mail_alias_opt.php:104
+msgid "Add"
+msgstr "Thêm"
+
+#: mail_alias_opt.php:105
+msgid "Delete"
+msgstr "Xoá"
+
+#: mail_alias_opt.php:141
+msgid "You have set up your maximum number of aliases."
+msgstr "Bạn đã tới số tối đa các bí danh."
+
+#: mail_alias_opt.php:142
+msgid "You must delete one of your existing aliases before adding a new one."
+msgstr "Bạn cần phải xoá một của những bí danh đã có trước khi thêm bí danh mới."

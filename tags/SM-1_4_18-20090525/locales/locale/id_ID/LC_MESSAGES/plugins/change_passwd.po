@@ -1,0 +1,153 @@
+# translation of change_passwd.po to
+# translation of change_passwd.po to Bahasa Indonesia
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (c) 2004-2009 The SquirrelMail Project Team
+# Arief S Fitrianto <arief@gurame.fisika.ui.ac.id>, 2004.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: change_passwd\n"
+"POT-Creation-Date: 2004-04-25 11:23-0700\n"
+"PO-Revision-Date: 2004-08-25 18:37+0700\n"
+"Last-Translator: Arief S Fitrianto <arief@gurame.fisika.ui.ac.id>\n"
+"Language-Team: Bahasa Indonesia <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.3.1\n"
+
+#: functions.php:39 options.php:274
+msgid "Change Password"
+msgstr "Ganti Sandi"
+
+#: functions.php:41
+msgid "Use this to change your email password."
+msgstr "Gunakan ini untuk mengganti sandi surate (email) Anda."
+
+#: options.php:80
+msgid "Could not determine your username."
+msgstr "Tidak dapat menentukan nama pengguna Anda"
+
+#: options.php:81 options.php:245
+msgid "Please contact your system administrator."
+msgstr "Silakan hubungi administrator sistem Anda."
+
+#: options.php:86
+msgid "Please enter your current password."
+msgstr "Silakan masukkan sandi lama Anda."
+
+#: options.php:91
+msgid "Please enter your new password."
+msgstr "Silakan masukkan sandi baru Anda."
+
+#: options.php:96
+msgid "Please re-enter your new password."
+msgstr "Silakan masukkan ulang sandi baru Anda."
+
+#: options.php:105 options.php:293
+#, c-format
+msgid "Your new password must be at least %s characters long."
+msgstr "Sandi baru Anda minimal harus %s karakter."
+
+#: options.php:117
+msgid "The confirmation of your new password did not match."
+msgstr "Konfirmasi sandi baru Anda tidak cocok."
+
+#: options.php:142
+msgid "Your current password is not correct."
+msgstr "Sandi lama Anda tidak betul."
+
+#: options.php:213
+msgid "Your password was changed successfully."
+msgstr "Sandi Anda telah berhasil diganti."
+
+#: options.php:227
+msgid "The password was modified successfully"
+msgstr "Sandi telah berhasil diubah"
+
+#: options.php:228
+msgid "Missing new password"
+msgstr "Sandi baru hilang"
+
+#: options.php:229
+msgid "Missing current password"
+msgstr "Sandi lama hilang"
+
+#: options.php:230
+#, c-format
+msgid "The password for this user cannot be changed due to security constraints: %s"
+msgstr ""
+"Sandi untuk pengguna ini tidak dapat diganti karena kendala "
+"keamanan: %s"
+
+#: options.php:231
+msgid "The new password is equal to the current password. Choose another password."
+msgstr "Sandi baru sama dengan sandi lama. Pilih sandi yang lain."
+
+#: options.php:232 options.php:233
+msgid "Could not read password file"
+msgstr "Tidak dapat membaca berkas sandi"
+
+#: options.php:234
+msgid "Temporary file could not be opened"
+msgstr "Berkas sementara tidak dapat dibuka"
+
+#: options.php:235
+msgid "Current password is incorrect"
+msgstr "Sandi lama tidak betul"
+
+#: options.php:236
+#, c-format
+msgid "User does not exist: %s"
+msgstr "Pengguna tidak ada: %s"
+
+#: options.php:237
+msgid "Virtual memory exhausted"
+msgstr "Memory Virtual tidak memadai"
+
+#: options.php:238
+msgid "Missing username"
+msgstr "Nama pengguna hilang"
+
+#: options.php:244
+msgid "An error has occurred while attempting to change your password."
+msgstr "Sebuah kesalahan terjadi saat mencoba mengganti sandi Anda."
+
+#: options.php:253
+msgid "Command output:"
+msgstr "Hasil perintah: "
+
+#: options.php:258
+msgid "Return code:"
+msgstr "Kode keluaran: "
+
+#: options.php:284
+msgid "Please read the following instructions before editing your password:"
+msgstr "silakan baca petunjuk berikut ini sebelum mengubah sandi Anda: "
+
+#: options.php:287
+msgid "You may use letters, numbers, and other special characters on your keyboard."
+msgstr ""
+"Anda dapat menggunakan huruf, angka, dan karakter khusus lainnya "
+"pada keyboard Anda."
+
+#: options.php:289
+msgid "Passwords are case-sensititve, so an 'A' is not the same as an 'a'."
+msgstr "Sandi sangat sensitif, sehingga sebuah 'A' tidak sama dengan 'a'."
+
+#: options.php:310
+msgid "Your user name:"
+msgstr "Nama pengguna Anda: "
+
+#: options.php:317
+msgid "Current password:"
+msgstr "Sandi Lama: "
+
+#: options.php:322
+msgid "New password:"
+msgstr "Sandi Baru: "
+
+#: options.php:327
+msgid "Confirm new password:"
+msgstr "Konfirmasi Sandi Baru: "
+

@@ -1,0 +1,237 @@
+# SquirrelMail AmavisnewSQL plugin German translation.
+# Copyright (c) 2005-2009 The SquirrelMail Project Team
+# This file is distributed under the same license as the PACKAGE package.
+# Jens Gutzeit <jens@gutzet.at>, 2003.
+# $Id$
+msgid ""
+msgstr ""
+"Project-Id-Version: amavisnewsql VERSION\n"
+"POT-Creation-Date: 2004-05-05 05:44+0200\n"
+"PO-Revision-Date: 2003-15-12 10:45+0100\n"
+"Last-Translator: Jens Gutzeit <jens@gutzet.at>\n"
+"Language-Team: German <jens@gutzeit.at>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Quarantine"
+msgstr "Quarantine"
+
+msgid "Here you may define your own white/black lists and customize your spam scoring rules."
+msgstr "Hier können Sie eigene Positiv/Negativ-Listen anlegen und Ihre Scoring Regeln anpassen."
+
+msgid "Options"
+msgstr "Optionen"
+
+msgid "SpamAssassin Configuration"
+msgstr "SpamAssassin Konfiguration"
+
+msgid "Global Address List"
+msgstr "Globale Adress Liste"
+
+msgid "Personal Allow / Deny Addresses List"
+msgstr "Persönliche Positiv/Negativ Liste"
+
+msgid "No Personal Addresses Defined"
+msgstr "Sie haben keine eigenen Adressen angelegt"
+
+msgid "Address"
+msgstr "Adresse"
+
+msgid "Address:"
+msgstr "Adresse:"
+
+msgid "Type"
+msgstr "Typ"
+
+msgid "Type:"
+msgstr "Typ:"
+
+msgid "Action"
+msgstr "Aktion"
+
+msgid "Edit"
+msgstr "Bearbeiten"
+
+msgid "Delete"
+msgstr "Entfernen"
+
+msgid "Add New Address"
+msgstr "Neue Adressen anlegen"
+
+msgid "Examples"
+msgstr "Beispiele"
+
+msgid "complete address"
+msgstr "komplette adresse"
+
+msgid " OR"
+msgstr " oder"
+
+msgid "complete part before domain"
+msgstr "teil der Adresse vor dem @"
+
+msgid "domain only including the "
+msgstr "gesammte Domain inklusive dem "
+
+msgid "Whitelist"
+msgstr "Positiv-Liste"
+
+msgid "Blacklist"
+msgstr "Negativ-Liste"
+
+msgid "Description"
+msgstr "Beschreibung"
+
+msgid "Whitelist / Blacklist"
+msgstr "Positiv / Negativ-Liste"
+
+msgid "Here you may list the addresses you wish to protect and those you wish to block. Please keep in mind that spammers often have throw-away or fake addresses so blacklisting these is pointless. The listed addresses appear in the same order as they will be applied by the mail server. Please read the section on priority to understand why this is important."
+msgstr "Hier können Sie Adressen einstellen die Sie vor der Spam und Virenerkennung schützen wollen, aber auch Adressen von denen Sie keine Mail mehr erhalten wollen. Sie sollten allerdings Beachten das Spammer oftmals Wegwerfdomains oder sogar gefälschte Adressen verwenden, diese zu Blocken ist daher nutzlos oder zeitweilen sogar gefährlich. Die Adressen erscheinen hier in der selben Reihenfolge wie Sie von unserem Mailserver angewendet werden. Bitte lesen Sie den Abschnitt über Priorität, um herauszufinden warum dies wichtig ist."
+
+msgid "Priority"
+msgstr "Priorität"
+
+msgid "Priority:"
+msgstr "Priorität:"
+
+msgid "The priority determines the order of the list with the search stopping at the first matching address.  Overlapping addresses should be listed from specific to general.  E.g. if you want to allow one person from aol to mail you and block everyone else you would use two rules. The higher priority one set to whitelist friend@aol.com and a lower priority one set to blacklist @aol.com. The server will match the specific higher priority address first and end the search.  Addresses that are whitelisted for the whole company appear above with the lowest priorities.. your settings can always override the global ones."
+msgstr "Die Priorität bestimmt die Reihenfolge in der die Liste abgearbeitet wird, der erste Treffer gewinnt.Bei überlappenden Adressen sollten Sie zuerst genaue angaben machen und dann die ungenauen. Sie wollen z.B. einer Person von aol erlauben an Sie zu mailen, aber alle anderen unterhalb @aol.com verbieten, dann müssten Sie 2 Regeln benutzen, die erste mit hoher Priorität um freund@aol.com zu erlauben und die 2. mit niedrigerer Priorität um @aol.com zu verbieten. Der Server wird zuerst die Regel mit hoher Priorität prüfen und wenn die Adresse passt die weitere Suche überspringen. Adressen die für alle User erlaubt sind, sehen Sie oben, diese sind allesamt niedrig priorisiert und können daher von Ihnen überschrieben werden."
+
+msgid "No Policies Defined"
+msgstr "Keine Strategier eingestellt"
+
+msgid "Quarantine Settings"
+msgstr "Quarantine einstellungen"
+
+msgid "Currently:"
+msgstr "Aktuell:"
+
+msgid "How often should you receive quarantine reports?"
+msgstr "Wie oft wollen Sie Quarantine Berichte erhalten?"
+
+msgid "Week Days"
+msgstr "Wochentage"
+
+msgid "Week Days (Default)"
+msgstr "Wochentage (Standard)"
+
+msgid "Never"
+msgstr "Nie"
+
+msgid "Daily"
+msgstr "Täglich"
+
+msgid "Weekly (Friday)"
+msgstr "Wöchendlich (Freitags)"
+
+msgid "Monthly (1st)"
+msgstr "Monatlich (am 1.)"
+
+msgid "How long should mail stay in the quarantine before being automatically removed?"
+msgstr "Wie lange soll Mail in der Quarantine bleiben bis Sie automatisch gelöscht wird?"
+
+msgid "3 Days"
+msgstr "3 Tage"
+
+msgid "5 Days"
+msgstr "5 Tage"
+
+msgid "7 Days"
+msgstr "7 Tage"
+
+msgid "10 Days"
+msgstr "10 Tage"
+
+msgid "14 Days"
+msgstr "14 Tage"
+
+msgid "20 Days"
+msgstr "20 Tage"
+
+msgid "30 Days"
+msgstr "30 Tage"
+
+msgid "Set Quarantine Policy"
+msgstr "Quarantine Strategie"
+
+msgid "Message Scoring Policy"
+msgstr "Mail Scoring Strategie"
+
+msgid "Define Custom Policy"
+msgstr "Eigene Strategie einstellen"
+
+msgid "Set Custom Policy"
+msgstr "Eigene Strategie einstellen"
+
+msgid "Directions"
+msgstr "Anordnung"
+
+msgid "Policies"
+msgstr "Strategien"
+
+msgid "Predefined Policies"
+msgstr "Voreingestellte Strategien"
+
+msgid "Your Current Policy"
+msgstr "Ihre aktuelle Strategie"
+
+msgid "Click To Select"
+msgstr "Anklicken zum auswählen"
+
+msgid "You may select from one of several predefined scoring policies or you may define your own. Each email is assigned a numerical score based on the characteristics it shares with those common to spam."
+msgstr "Sie können eine der Voreingestellten Scoring Strategien auswählen oder Ihre eigene einstellen. Jede Mail bekommt eine numerische Punktzahl, basierend auf den eigenschafften die Sie mit typischem Spam teilt."
+
+msgid "Tag Level"
+msgstr "Markier Level"
+
+msgid "Quarantine Level"
+msgstr "Quarantine Level"
+
+msgid "Kill Level"
+msgstr "Wegwerf Level"
+
+msgid "Custom Policy"
+msgstr "Eigene Strategie"
+
+msgid "The tag level is the numerical score required to identify a message as being spam.  This will cause *SPAM* to be added to the subject line and the X-Spam-Flag header to be set to YES."
+msgstr "Das Tag Level ist die Anzahl der Punkte einer Mail die nötig sind um sie als Spam zu identifizieren, wird diese Punktzahl erreicht wird *SPAM* in den Header geschrieben."
+
+msgid "The $tag2_label is the numerical score required to prevent delivery of a message at the server.  This level should be higher or equal to Tag Level and high enough to avoid catching legitimate email. As your custom whitelist grows you should adjust these two levels to tag and block more spam."
+msgstr "$tag2_label ist die benötigte Punktzahl um zu verhindern das Mail zugestellt wird. Dieses Level sollte höher oder gleich dem Markierungs Level und hoch genug um möglicherweise wichtige Mail nicht zu gefährden. Wenn Ihre eigene Poitiv Liste größer wird, sollten Sie diese beiden Level anpassen um mehr Spam zu blocken."
+
+msgid "No Messages in Quarantine"
+msgstr "Keine Mails in der Quarantine"
+
+msgid "Select Action"
+msgstr "Aktion auswählen"
+
+msgid "DELETE"
+msgstr "Löschen"
+
+msgid "Release"
+msgstr "Freigeben"
+
+msgid "Submit"
+msgstr "Bestätigen"
+
+msgid "Messages hilighted in RED likely contain viruses!"
+msgstr "Rot markierte Mails enthalten möglicherweise Viren!"
+
+msgid "Spam Assassin Settings"
+msgstr "Spam Assassin einstellungen"
+
+msgid "From"
+msgstr "Von"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Subject"
+msgstr "Betreff"
+
+msgid "Score"
+msgstr "Punkte"
+
+msgid "Whitelist Everyone In Your Address Book"
+msgstr "Jeden aus meinem Adressbuch auf die Positiv Liste setzen"

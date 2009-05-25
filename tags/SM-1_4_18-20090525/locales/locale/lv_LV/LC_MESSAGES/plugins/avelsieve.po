@@ -1,0 +1,1089 @@
+# Latvian (lv_LV) avelsieve Translation (SquirrelMail plugin)
+# Copyright (c) 1999-2009 The SquirrelMail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
+# Ivars Strazdiņš <ivars.strazdins@gmail.com>, 2008.
+# $Id: avelsieve.pot 10877 2006-03-04 11:22:22Z jervfors $
+msgid ""
+msgstr ""
+"Project-Id-Version: avelsieve 1.9.7\n"
+"POT-Creation-Date: 2007-05-04 15:51+0300\n"
+"PO-Revision-Date: 2008-06-16 22:42+0300\n"
+"Last-Translator: Ivars Strazdiņš <ivars.strazdins@gmail.com>\n"
+"Language-Team: Latvian <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "You have to define at least one header match text."
+msgstr "Jums jāuzstāda vismaz viens ziņojuma sākuma sakritības nosacījums."
+
+msgid "Add New Rule"
+msgstr "Pievienot jaunu kārtulu"
+
+msgid "New Rule Wizard - Step"
+msgstr "Jaunas kārtulas vednis - solis"
+
+msgid "of"
+msgstr "no"
+
+msgid "Rule Type"
+msgstr "Kārtulas tips"
+
+msgid "Condition"
+msgstr "Nosacījums"
+
+msgid "Action"
+msgstr "Darbība"
+
+msgid "Confirmation"
+msgstr "Apstiprinājums"
+
+msgid "<p>You have chosen to keep every mail. This is the default action anyway, so you might want to start over with a rule that makes more sense. Select &quot;finished&quot; to save this rule nonetheless.</p>"
+msgstr "<p>Izveidotā kārtula patur visus ziņojumus. Pēc noklusējuma tik un tā tiek paturēti visi ziņojumi, tāpēc, iespējams, jūs gribiet sākt no jauna ar kārtulu, kurai ir lielāka jēga. Iezīmējiet  &quot;pabeigts&quot; lai tik un tā saglabātu šo kārtulu.</p>"
+
+msgid "Please use the buttons on the bottom instead of your browser's reload, back and forward buttons, to build a rule."
+msgstr "Lai izveidotu kārtulu, lūdzu, pārlūkprogrammas pogu \"Atpakaļ\", \"Uz priekšu\" un \"Pārlādēt\" vietā izmantojiet pogas lapas apakšā."
+
+msgid "Mail Filtering Scripts"
+msgstr "Ziņojumu filtrēšanas skripti"
+
+msgid "Message Filters"
+msgstr "Ziņojuma filtrs"
+
+msgid "Server-Side mail filtering enables you to add criteria in order to automatically forward, delete or place a given message into a folder."
+msgstr "Servera puses ziņojumu filtrēšana ļauj jums pievienot nosacījumus lai automātiski pārsūtītu, nodzēstu vai pārvietotu ziņojumus mapēs."
+
+msgid "Junk Mail Options"
+msgstr "Nederīgo ziņojumu iestatījumi"
+
+msgid "The Junk Mail Filter gathers all unwanted SPAM / Junk messages in your Junk folder."
+msgstr "Drazu filtrs savāc visus mēstules un drazu jūsu drazu mapē."
+
+msgid "Filters"
+msgstr "Filtri"
+
+msgid "Could not set active script on your IMAP server"
+msgstr "Nevarēja uzstādīt aktīvo skriptu uz jūsu IMAP servera."
+
+msgid "Please contact your administrator."
+msgstr "Lūdzu sazinieties ar jūsu sistēmas administratoru."
+
+#, php-format
+msgid "Could not delete rule #%s: This type of rule cannot be deleted."
+msgstr "Nav iespējams nodzēst kārtulu #%s: šī tipa kārtulas nav dzēšamas."
+
+#, php-format
+msgid "Could not delete rules #%s: This type of rule cannot be deleted."
+msgstr "Nav iespējams nodzēst kārtulas #%s: šī tipa kārtulas nav dzēšamas."
+
+#, php-format
+msgid "The entered position, %s, is not valid."
+msgstr "Iestatītā pozīcija, %s, nav derīga."
+
+#, php-format
+msgid "The entered position, %s, is greater than the current number of rules."
+msgstr "Ievadītā pozīcija, %s, ir lielāka nekā tekošais kārtulu skaits."
+
+msgid "Could not get SIEVE script from your IMAP server"
+msgstr "Nevarēja saņemt SIEVE skriptu no jūsu IMAP servera."
+
+msgid "Error Encountered:"
+msgstr "Notikusi kļūda:"
+
+msgid "Unable to load script to server."
+msgstr "Nevarēja ielādēt skriptu serverī."
+
+#, php-format
+msgid "Could not delete script from server %s."
+msgstr "Nevarēja nodzēst skriptu no servera %s."
+
+msgid "Could not set active script on your IMAP server "
+msgstr "Nevarēja uzstādīt aktīvo skriptu uz jūsu IMAP servera."
+
+msgid "Could not delete script from server "
+msgstr "Nevarēja nodzēst skriptu no servera %s"
+
+msgid "Could not log on to timsieved daemon on your IMAP server"
+msgstr "Nevarēja pieteikties timsieved dēmonam uz jūsu IMAP servera"
+
+msgid "Server responded with:"
+msgstr "Serveris atbildēja:"
+
+msgid "AND (Every item must match)"
+msgstr "UN (jāizpildās visiem nosacījumiem)"
+
+msgid "OR (Either item will match)"
+msgstr "VAI (izpildīsies jebkurš nosacījums)"
+
+msgid "Rule"
+msgstr "Kārtula"
+
+#, php-format
+msgid "Add a new %s"
+msgstr "Pievienot jaunu %s"
+
+msgid "SPAM Rule"
+msgstr "Mēstuļu kārtula"
+
+msgid "Junk Mail Rule"
+msgstr "Nederīgo ziņojumu kārtula"
+
+#, php-format
+msgid "Edit %s"
+msgstr "Labot %s"
+
+msgid "Whitelist"
+msgstr "Atļautais saraksts"
+
+#, php-format
+msgid "Add new %s"
+msgstr "Pievienot jaunu %s"
+
+msgid "Sieve Code"
+msgstr "Sieve izejas kods"
+
+msgid "Address"
+msgstr "Adrese"
+
+msgid "Perform an action depending on email addresses appearing in message headers."
+msgstr "Veikt darbību vadoties pēc ziņojuma sākuma e-pasta adresēm."
+
+msgid "Header"
+msgstr "Ziņojuma sākums"
+
+msgid "Perform an action on messages matching a specified header (From, To etc.)."
+msgstr "Veikt darbību ar ziņojumiem, sakrītot nosacījumiem norādītajā ziņojuma sākuma laukā (No:, Kam: utt.)"
+
+msgid "Envelope"
+msgstr "Aploksne"
+
+msgid "Perform an action on messages matching a specified envelope header (Envelope FROM, TO)."
+msgstr "Veikt darbību ar ziņojumiem, sakrītot nosacījumiem norādītajā aploksnes sākuma laukā (Aploksnes No:, Kam:)"
+
+msgid "Size"
+msgstr "Lielums"
+
+msgid "Perform an action on messages depending on their size."
+msgstr "Veikt darbību ar ziņojumiem, ja izpildās ziņojuma lieluma kritērijs."
+
+msgid "Body"
+msgstr "satura daļa"
+
+msgid "Perform an action on messages depending on their content (body text)."
+msgstr "Veikt darbību ar ziņojumiem, ja izpildās ziņojuma satura kritēriji."
+
+msgid "All"
+msgstr "Visi"
+
+msgid "Perform an action on <strong>all</strong> incoming messages."
+msgstr "Veikt darbību ar <strong>visiem</strong> ienākošajiem ziņojumiem."
+
+msgid "contains"
+msgstr "satur"
+
+msgid "does not contain"
+msgstr "nesatur"
+
+msgid "is"
+msgstr "ir"
+
+msgid "is not"
+msgstr "nav"
+
+msgid "matches"
+msgstr "sakrīt"
+
+msgid "wildcard"
+msgstr "aizstājējzīme"
+
+msgid "does not match"
+msgstr "nesakrīt"
+
+msgid "regexp"
+msgstr "regulārā izteiksme"
+
+msgid "is greater than"
+msgstr "ir lielāks nekā"
+
+msgid "is greater or equal to"
+msgstr "ir lielāks vai vienāds ar"
+
+msgid "is lower than"
+msgstr "ir zemāks nekā"
+
+msgid "is lower or equal to"
+msgstr "ir mazāks vai vienāds ar"
+
+msgid "is equal to"
+msgstr "ir vienāds ar"
+
+msgid "is not equal to"
+msgstr "nav vienāds ar"
+
+msgid "verbose"
+msgstr "detalizēts"
+
+msgid "Textual descriptions of the rules"
+msgstr "Kārtulas apraksts"
+
+msgid "terse"
+msgstr "saīsināts apraksts"
+
+msgid "More suitable for viewing the table of rules at once"
+msgstr "Piemērotāks lai apskatītu visu kārtulu tabulu uzreiz."
+
+msgid "source"
+msgstr "izejas kods"
+
+msgid "Display SIEVE source"
+msgstr "Rādīt SIEVE skriptu izejas kodu"
+
+msgid "Low"
+msgstr "Zems"
+
+msgid "Normal"
+msgstr "Normāls"
+
+msgid "High"
+msgstr "Augsts"
+
+msgid "Delete"
+msgstr "Dzēst"
+
+msgid "Edit"
+msgstr "Labot"
+
+msgid "Duplicate"
+msgstr "Dublēt"
+
+msgid "Move Up"
+msgstr "Pārvietot augšup"
+
+msgid "Move to Top"
+msgstr "Pārvietot uz augšu"
+
+msgid "Move Down"
+msgstr "Pārvietot lejup"
+
+msgid "Move to Bottom"
+msgstr "Pārvietot uz leju"
+
+msgid "Junk Folder"
+msgstr "Mēstules"
+
+#, php-format
+msgid "Store SPAM message in your Junk Folder. Messages older than %s days will be deleted automatically."
+msgstr "%s"
+
+msgid "Trash Folder"
+msgstr "Miskaste"
+
+msgid "Store SPAM message in your Trash Folder. You will have to purge the folder yourself."
+msgstr "Glabāt mēstules miskastē. Atcerieties, ka miskaste būs jātīra jums pašam."
+
+msgid "Discard"
+msgstr "Izmest"
+
+msgid "Discard SPAM message. You will get no indication that the message ever arrived."
+msgstr "Neglabāt mēstuli. Jūs vispār nesaņemsiet nekādu paziņojumu, ka ziņojums tika piegādāts."
+
+msgid "Server-Side Mail Filtering"
+msgstr "Ziņojumu filtrēšana uz servera"
+
+msgid "Successfully added new rule."
+msgstr "Jauna kārtula sekmīgi pievienota."
+
+#, php-format
+msgid "Successfully updated rule #%s"
+msgstr "Kārtula #%s sekmīgi izlabota"
+
+#, php-format
+msgid "Successfully deleted rules #%s"
+msgstr "Kārtulas #%s sekmīgi nodzēstas "
+
+#, php-format
+msgid "Successfully deleted rule #%s"
+msgstr "Kārtula #%s sekmīgi nodzēsta "
+
+msgid "You must correct the above errors before continuing."
+msgstr "Pirms turpināt, jāizlabo augstākminētās kļūdas."
+
+msgid "No check"
+msgstr "Nepārbaudīt"
+
+#, php-format
+msgid "Editing %s"
+msgstr "Laboju %s"
+
+#, php-format
+msgid "(Rule #%s)"
+msgstr "(Kārtula #%s)"
+
+#, php-format
+msgid "Add a new %s "
+msgstr "Pievienot jaunu %s"
+
+msgid "Configure Anti-SPAM Protection"
+msgstr "Iestatīt pret-mēstuļu aizsardzību"
+
+msgid "All incoming mail is checked for unsolicited commercial content (SPAM) and marked accordingly. This special rule allows you to configure what to do with such messages once they arrive to your Inbox."
+msgstr "Visi ienākošie ziņojumi tiek pārbaudīti ar mēstuļu filtru un attiecīgi iezīmēti. Šī speciālā kārtula ļauj jums noteikt, ko darīt ar ziņojumiem jūsu Iesūtnē, kuri ir iezīmēti kā mēstules."
+
+#, php-format
+msgid "Select %s to add the predefined rule, or select the advanced SPAM filter to customize the rule."
+msgstr "Iezīmēt %s, lai pievienotu kārtulu vai iezīmējiet paplašināto mēstuļu filtru lai izmainītu kārtulu."
+
+msgid "Add Spam Rule"
+msgstr "Pievienot mēstuļu kārtulu"
+
+msgid "Advanced Spam Filter..."
+msgstr "Papildināts mēstuļu filtrs..."
+
+msgid "Target Score"
+msgstr "Mēstuļu punkti"
+
+#, php-format
+msgid "Messages with SPAM-Score higher than the target value, the maximum value being %s, will be considered SPAM."
+msgstr "Ziņojumi ar mēstuļu punktu skaitu lielāku nekā maksimālā vērtība, un maksimālā vērtība pašlaik ir %s, tiks uzskatīti par mēstulēm."
+
+msgid "SPAM Lists to check against"
+msgstr "Mēstuļu saraksti, ar kuriem salīdzināt"
+
+msgid "Messages that match any of these header rules will never end up in Junk Folders or regarded as SPAM."
+msgstr "Ziņojumi, kuru sākumi sakritīs ar jebkuru no šīm kārtulām, nekad netiks uzskatīti par mēstulēm un nenonāks drazu mapē."
+
+msgid "STOP"
+msgstr "APTURĒT"
+
+msgid "If this rule matches, do not check any rules after it."
+msgstr "Ja izpildās šī kārtula, pārējās kārtulas nepārbaudīt."
+
+msgid "Apply Changes"
+msgstr "Pielietot izmaiņas"
+
+msgid "Cancel"
+msgstr "Atcelt"
+
+msgid "Information..."
+msgstr "Informācija..."
+
+#, php-format
+msgid "There is currently no Junk Mail Filter, so we are suggesting the following default settings. To add the Junk Mail Filter, simply choose <em>&quot;%s&quot;</em>."
+msgstr "Pašlaik drazu filtra nav, mēs piedāvājam sekojošus noklusētos iestatījumus. Lai pievienotu drazu filtru, vienkārši izvēlieties <em>&quot;%s&quot;</em>."
+
+msgid "Enable Junk Mail Filtering"
+msgstr "Iespējot mēstuļu filtrēšanu"
+
+msgid "Automatically delete Junk Messages"
+msgstr "Automātiski dzēst drazu ziņojumus"
+
+#, php-format
+msgid "when they are older than %s days"
+msgstr "kad tie kļūst vecāki par %s dienām."
+
+msgid "Enable Whitelist"
+msgstr "Iespējot atļauto sarakstu"
+
+msgid "Messages sent from the addresses in your Whitelist will never end up in your Junk Mail folder, or considered as SPAM."
+msgstr "Ziņojumi, kuru sākumi sakritīs ar jebkuru no šīm kārtulām, nekad netiks uzskatīti par mēstulēm vai nenonāks drazu mapē."
+
+msgid "Edit Whitelist...."
+msgstr "Labot atļauto sarakstu..."
+
+msgid "Automatically add all your Address Book Contacts in the Whitelist"
+msgstr "Automātiski pievienot atļautajam sarakstam visus jūsu adrešu grāmatas kontaktus"
+
+msgid "Configure Advanced Junk Mail Tests"
+msgstr "Izveidot papildus mēstuļu pārbaudes kārtulas"
+
+msgid "You have to enable at least one Junk Mail Test."
+msgstr "Jums jāuzstāda vismaz vienu mēstuļu pārbaudi."
+
+msgid "Junk Mail Options have been saved."
+msgstr "Drazu filtrēšanas iestatījumi ir saglabāti."
+
+msgid "Editing Whitelist"
+msgstr "Atļautā saraksta labošana"
+
+msgid "Messages coming from the email addresses that you enter here will never end up in your Junk folder or be considered as SPAM."
+msgstr "Ziņojumi, kuru sākumi sakritīs ar jebkuru no šīm kārtulām, nekad nenonāks drazu mapē vai netiks uzskatīti par mēstulēm."
+
+msgid "Enter <strong>one (1) email address per line</strong>. Note that you can also enter an incomplete address or a mail domain."
+msgstr "Ievadiet <strong>vienu e-pasta adresi vienā rindiņā</strong>. Ņemiet vērā, ka var ievadīt arī nepilnu e-pasta adresi vai pasta domēnu."
+
+msgid "Example:"
+msgstr "Piemērs:"
+
+msgid "Whitelist has been updated."
+msgstr "Atļautais saraksts ir labots."
+
+#, php-format
+msgid "Editing Sieve Code (Rule #%s)"
+msgstr "Labojam Sieve izejas kodu (kārtula #%s)"
+
+msgid "Create New Custom Sieve Rule"
+msgstr "Izveidot jaunu pielāgotu Sieve ziņojumu filtrēšanas kārtulu"
+
+msgid "Custom Rule"
+msgstr "Pielāgota kārtula"
+
+msgid "Please enter valid Sieve code in the textbox below."
+msgstr "Lūdzu, ievadiet sintaktiski pareizu Sieve izejas kodu teksta logā zemāk."
+
+msgid "Note: The <tt>require</tt> command is not needed; it will be added automatically at the start of the script."
+msgstr "Piezīme: komanda <tt>pieprasīt</tt> nav nepieciešama; tā tiks automātiski pievienota skripta sākumā."
+
+#, php-format
+msgid "Sieve Capabilities supported: %s"
+msgstr "Atbalstītās Sieve iespējas: %s "
+
+msgid "Please enter a valid Sieve code snippet."
+msgstr "Lūdzu, ievadiet sintaktiski pareizu Sieve izejas koda gabalu."
+
+msgid "To: or Cc"
+msgstr "Kam: vai Kopija:"
+
+msgid "The condition for the following rules is:"
+msgstr "Nosacījums šīm kārtulām ir:"
+
+msgid "Less..."
+msgstr "Mazāk..."
+
+msgid "More..."
+msgstr "Vairāk..."
+
+msgid "bigger"
+msgstr "lielāks"
+
+msgid "smaller"
+msgstr "mazāks"
+
+msgid "than"
+msgstr "nekā"
+
+msgid "KB (kilobytes)"
+msgstr "KB (kilobaiti)"
+
+msgid "MB (megabytes)"
+msgstr "MB (megabaiti)"
+
+msgid "All Messages"
+msgstr "Visi ziņojumi"
+
+msgid "The following action will be applied to <strong>all</strong> incoming messages that do not match any of the previous rules."
+msgstr "Sekojošā darbība tiks veikta ar <strong>visiem</strong> ziņojumiem, kuriem nederēja neviena no iepriekšējām kārtulām."
+
+msgid "Choose what to do when this rule triggers, from one of the following:"
+msgstr "Izvēlieties no zemāk minētajām iespējām, kā rīkoties, izpildoties šīs kārtulas nosacījumiem."
+
+msgid "Add SPAM Rule"
+msgstr "Pievienot mēstuļu kārtulu"
+
+msgid "Editing Mail Filtering Rule"
+msgstr "Labot ziņojumu filtrēšanas kārtulu"
+
+msgid "Create New Mail Filtering Rule"
+msgstr "Izveidot jaunu ziņojumu filtrēšanas kārtulu"
+
+msgid "Additional Actions"
+msgstr "Papildus darbības"
+
+msgid "You have to define at least one condition."
+msgstr "Jums jāuzstāda vismaz vienu nosacījumu."
+
+msgid "Clear this Form"
+msgstr "Notīrīt šo formu"
+
+msgid "Start Over"
+msgstr "Sākt no jauna"
+
+msgid "Move back to step"
+msgstr "Dodieties atpakaļ uz soli"
+
+msgid "Finished"
+msgstr "Pabeigts"
+
+msgid "Move on to step"
+msgstr "Dodieties uz soli"
+
+msgid "Your new rule states:"
+msgstr "Jūsu jaunā kārtula nosaka:"
+
+msgid "If this is what you wanted, select Finished. You can also start over or cancel adding a rule altogether."
+msgstr "Ja ir sanācis tas, ko gribējāt, iezīmējiet Pabeigts. Jūs variet arī sākt no jauna vai vispār pārtraukt pievienot jaunu kārtulu."
+
+msgid "Here you can add or delete filtering rules for your email account. These filters will always apply to your incoming mail, wherever you check your email."
+msgstr "Te jūs variet pievienot jaunus vai nodzēst jau definētos filtrēšanas kārtulu filtrus. Šie filtri tiks vienmēr pielietoti ienākošajiem ziņojumiem, lai kā jūs arī pārbaudītu savus ienākošos ziņojumus."
+
+msgid "You don't have any rules yet. Feel free to add any with the button &quot;Add a New Rule&quot;. When you are done, please select &quot;Save Changes&quot; to get back to the main options screen."
+msgstr "Jums vēl nav definēta neviena kārtula. Variet pievienot jebkādu kārtulu ar pogu &quot;Pievienot jaunu&quot;. Pabeidzot labot, <strong>atcerieties iezīmēt &quot;Saglabāt izmaiņas&quot;</strong>, lai aktivizētu izmaiņas!"
+
+msgid "When you are done with editing, <strong>remember to select &quot;Save Changes&quot;</strong> to activate your changes!"
+msgstr "Pabeidzot labot, <strong>atcerieties iezīmēt &quot;Saglabāt izmaiņas&quot;</strong>, lai aktivizētu izmaiņas!"
+
+msgid "The following table summarizes your current mail filtering rules."
+msgstr "Sekojoša tabula apkopo jūsu tekošās ziņojumu filtrēšanas kārtulas."
+
+msgid "Warning: In your rules, you have defined an action that refers to a folder that does not exist or a folder where you do not have permission to append to."
+msgstr "Brīdinājums: jūsu kārtulās ir definēta darbība ar mapi, kura neeksistē vai kurai jums nav tiesību pievienot datnes."
+
+#, php-format
+msgid "Note: A <a href=\"%s\">Vacation Autoresponder</a> is active (<a href=\"%s\">Rule #%s</a> in your current Mail Filtering Rules).<br/>Don't forget to disable it or delete it when you are back."
+msgstr "Piezīme: <a href=\"%s\">Atvaļinājumu autoatbildētājs</a> ir aktīvs (<a href=\"%s\">Kārtula #%s</a> jūsu tekošajos ziņojumu filtros).<br/> Neaizmirstiet to atspējot vai nodzēst pēc atgriešanās. "
+
+msgid "No"
+msgstr "Nē"
+
+msgid "Options"
+msgstr "Iestatījumi"
+
+msgid "Description of Rule"
+msgstr "Kārtulas apraksts"
+
+msgid "Display as:"
+msgstr "Rādīt kā:"
+
+msgid "Position"
+msgstr "Pozīcija"
+
+msgid "Add a new Rule"
+msgstr " Jauna kārtula"
+
+msgid "Really delete selected rules?"
+msgstr "Tiešām dzēšam iezīmētās kārtulas?"
+
+msgid "Enable"
+msgstr "Iespējot"
+
+msgid "Disable"
+msgstr "Atspējot"
+
+msgid "When you are done, please click the button below to return to your webmail."
+msgstr "Ja esat beidzis darbu, lūdzu, nospiediet pogu apakšā, lai atgrieztos pārlūkprogrammas pasta logā."
+
+msgid "Save Changes"
+msgstr "Saglabāt izmaiņas"
+
+msgid "Created:"
+msgstr "Izveidots:"
+
+msgid "Last modified:"
+msgstr "Pēdējo reizi labots:"
+
+msgid "Current Mail Filtering Rules"
+msgstr "Tekošās ziņojumu filtrēšanas kārtulas"
+
+msgid "Close"
+msgstr "Aizvērt"
+
+msgid "No Filtering Rules Defined Yet"
+msgstr "Pagaidām neviena filtrēšanas kārtula nav definēta"
+
+msgid "Really delete this rule?"
+msgstr "Jūs tiešām vēlaties dzēst šo kārtulu?"
+
+msgid "More Options..."
+msgstr "Papildus iestatījumi..."
+
+msgid "Move to Position..."
+msgstr "Pārvietot uz pozīciju..."
+
+msgid "--------"
+msgstr "--------"
+
+msgid "Duplicate this Rule"
+msgstr "Kopēt kārtulu"
+
+msgid "Insert a New Rule here"
+msgstr "Pievienot jaunu kārtulu šiet"
+
+msgid "Send this Rule by Email"
+msgstr "Nosūtīt šo kārtulu pa e-pastu"
+
+msgid "Go"
+msgstr "Iet"
+
+msgid "Action for Selected Rules:"
+msgstr "Darbība izvēlētajām kārtulām:"
+
+msgid "Junk Folder Information"
+msgstr "Drazu mapes informācija"
+
+msgid "Messages in this folder have been identified as SPAM / Junk."
+msgstr "Ziņojumi šajā mapē ir atpazīti kā mēstules vai nederīgi."
+
+#, php-format
+msgid "Note: Junk Mail is currently not enabled. Select &quot;%s&quot; to enable it."
+msgstr "Piezīme: Mēstuļu filtrēšana nav iestatīta. Iezīmējiet &quot;%s&quot; lai iestatītu."
+
+msgid "Edit Junk Mail Options..."
+msgstr "Labot mēstuļu iestatījumus..."
+
+#, php-format
+msgid "Any messages older than %s days are automatically deleted."
+msgstr "Visi par %s dienām vecāki ziņojumi tiks automātiski nodzēsti."
+
+msgid "Test for Forged Header"
+msgstr "Viltotu ziņojuma sākumu pārbaude"
+
+msgid "Automatically"
+msgstr "Automātiski"
+
+msgid "Sender"
+msgstr "Sūtītājs"
+
+msgid "From"
+msgstr "No"
+
+msgid "To"
+msgstr "Kam"
+
+msgid "Subject"
+msgstr "Tēma"
+
+msgid "Create Filter"
+msgstr "Izveidot filtru"
+
+msgid "Vacation Filter Reminder"
+msgstr "Atvaļinājuma ziņojuma atgādinājums"
+
+msgid "(Creates a new server-side filtering rule, based on the above criteria)"
+msgstr "(Vadoties pēc norādītajiem kritērijiem, izveido jaunu servera puses filtrēšanas kārtulu)"
+
+msgid "Notice: The following criteria cannot be expressed as server-side filtering rules:"
+msgstr "Piezīme: sekojoši kritēriji nevar tikt izveidoti par servera puses ziņojuma filtriem:"
+
+msgid "Reason:"
+msgstr "Iemesls:"
+
+msgid "The Body extension is not supported in this server."
+msgstr "Serveris neatbalsta norādīto ziņojuma paplašinājumu"
+
+msgid "Note that Only From:, To:, Cc: and Subject: headers will be checked in the server filter."
+msgstr "Ņemiet vērā, ka servera filtrā tiks pārbaudīti tikai Kam:, No:, Kopija: un Tēma: ziņojuma sākumi."
+
+msgid "These search expressions are not applicable during message delivery."
+msgstr "Šīs meklēšanas izteiksmes nav pielietojamas ziņojuma piegādes laikā."
+
+msgid "Keep Message"
+msgstr "Paturēt ziņojumu"
+
+msgid "Save the message in your INBOX."
+msgstr "Saglabāt ziņojumu IESŪTNĒ."
+
+msgid "Silently discards the message; use with caution."
+msgstr "Izdzēš ziņojumu bez paziņojuma; lietojiet uzmanīgi."
+
+msgid "Reject"
+msgstr "Noraidīt"
+
+msgid "Send the message back to the sender, along with an excuse"
+msgstr "Nosūtīt ziņojumu atpakaļ nosūtītājam, kopā ar atvainošanos"
+
+msgid "Please do not send me large attachments."
+msgstr "Lūdzu nesūtīt man lielus ziņojuma pielikumus."
+
+msgid "Redirect"
+msgstr "Pārsūtīt uz"
+
+msgid "Automatically redirect the message to a different email address"
+msgstr "Automātiski pārsūtīt ziņojumu uz citu e-pasta adresi"
+
+msgid "someone@example.org"
+msgstr "kāds@piemērs.org"
+
+msgid "Keep a local copy as well."
+msgstr "Un paturēt lokālo kopiju"
+
+msgid "Incorrect email address(es). You must enter one or more valid email addresses, separated by comma."
+msgstr "Nepareizas e-pasta adrese(-s). Jāievada viena vai vairākas pareizas e-pasta adreses, atdalītas ar komatu."
+
+msgid "Move to Folder"
+msgstr "Pārvietot uz mapi"
+
+#, php-format
+msgid "Or specify a new folder: %s to be created under %s"
+msgstr "Vai norādiet jaunu mapi: %s tiks izveidota zem %s"
+
+msgid "Vacation"
+msgstr "Atvaļinājums"
+
+msgid "This is an automated reply; I am away and will not be able to reply to you immediately."
+msgstr "Šis ir automātisks atbildes ziņojums; neesmu pie datora un  nevaru atbildēt uzreiz. "
+
+msgid "I will get back to you as soon as I return."
+msgstr "Es atbildēšu tūlīt pēc atgriešanās."
+
+msgid "The notice will be sent only once to each person that sends you mail, and will not be sent to a mailing list address."
+msgstr "Šis paziņojums tiks nosūtīts vienu reizi katrai personai, kas nosūtījusi jums ziņojumu un netiks sūtīts uz vēstkopām (adresātu sarakstiem). "
+
+msgid "Subject:"
+msgstr "Tēma:"
+
+msgid "Optional subject of the vacation message."
+msgstr "Izvēles tēma atvaļinājuma paziņojumam."
+
+msgid "Your Addresses:"
+msgstr "Jūsu adreses:"
+
+msgid "A vacation message will be sent only if an email is sent explicitly to one of these addresses."
+msgstr "Atvaļinājuma ziņojums tiks nosūtīts tikai tad, ja ziņojums būs nosūtīts tieši uz kādu no šim adresēm."
+
+msgid "Days:"
+msgstr "Dienas:"
+
+msgid "days"
+msgstr "dienām (-as)"
+
+msgid "A vacation message will not be resent to the same address, within this number of days."
+msgstr "Norādīto dienu laika periodā atvaļinājuma ziņojums netiks atkārtoti nosūtīts uz to pašu adresi."
+
+msgid "Message:"
+msgstr "Ziņojums:"
+
+msgid "The number of days between vacation messages must be a positive number."
+msgstr "Dienu starpībai starp atkārtotiem atvaļinājuma paziņojumiem jābūt pozitīvam skaitlim. "
+
+msgid "Notify"
+msgstr "Paziņot"
+
+msgid "Send a notification "
+msgstr "Nosūtīt paziņojumu"
+
+msgid "Mobile Phone Message (SMS)"
+msgstr "Īsziņa (SMS)"
+
+msgid "Email notification"
+msgstr "E-pasta paziņojums"
+
+msgid "Notification via Zephyr"
+msgstr "Paziņojums ar Zephyr"
+
+msgid "Notification via ICQ"
+msgstr "Paziņojums ar ICQ"
+
+msgid "Method"
+msgstr "Metode"
+
+msgid "Notification ID"
+msgstr "Paziņojuma ID"
+
+msgid "Destination"
+msgstr "Adresāts"
+
+msgid "Priority"
+msgstr "Prioritāte"
+
+msgid "Message"
+msgstr "Ziņojums"
+
+msgid "Help: Valid variables are:"
+msgstr "Palīdzība: atļauti mainīgie ir:"
+
+msgid "Also keep copy in INBOX, marked as deleted."
+msgstr "Un paturēt kopiju IESŪTNĒ, iezīmētu kā nodzēstu."
+
+msgid "The rule will have no effect for as long as it is disabled."
+msgstr "Kamēr šī kārtula būs atspējota, tā nedarbosies."
+
+msgid "Move to Junk"
+msgstr "Pārvietot uz drazu mapi"
+
+#, php-format
+msgid "Store message in your Junk Folder. Messages older than %s days will be deleted automatically."
+msgstr "Glabāt ziņojumu drazu mapē. Par %s dienām vecāki ziņojumi tiks automātiski izdzēsti."
+
+msgid "Note that you can set the number of days in Folder Preferences."
+msgstr "Ņemiet vērā, ka dienu skaitu var norādīt pie iestatījumiem."
+
+msgid "Move to Trash"
+msgstr "Pārvietot uz miskasti"
+
+msgid "Store message in your Trash Folder. You will have to purge the folder yourself."
+msgstr "Glabāt ziņojumu miskastē. Atcerieties, ka miskaste būs jātīra jums pašam."
+
+msgid "All messages considered as <strong>SPAM</strong> (unsolicited commercial messages)"
+msgstr "Visi ziņojumi, uzskatīti par <strong>mēstulēm</strong> (neprasīti komerciāli ziņojumi)"
+
+msgid "SPAM"
+msgstr "MĒSTULE"
+
+msgid "unless"
+msgstr "kamēr"
+
+msgid "Whitelist:"
+msgstr "Atļautais saraksts:"
+
+msgid "or"
+msgstr "vai"
+
+msgid "matching the Spam List(s):"
+msgstr "saskan ar mēstuļu sarakstu(-iem):"
+
+msgid "Spam List(s):"
+msgstr "Mēstuļu saraksts(-i):"
+
+#, php-format
+msgid "and with score greater than %s"
+msgstr "un ar rezultātu lielāku nekā %s"
+
+#, php-format
+msgid "Score > %s"
+msgstr "Rezultāts > %s"
+
+msgid "will be"
+msgstr "būs"
+
+msgid "stored in the Junk Folder."
+msgstr "ir noglabāta(-i) miskastē."
+
+msgid "Junk"
+msgstr "Mēstules"
+
+msgid "stored in the Trash Folder."
+msgstr "ir noglabāta(-i) miskastē."
+
+msgid "Trash"
+msgstr "Miskaste"
+
+msgid "discarded."
+msgstr "izmesti."
+
+msgid "Junk Mail Rule is Disabled"
+msgstr "Mēstuļu pārbaudes kārtula ir atspējota"
+
+msgid "<s></s>"
+msgstr "<s></s>"
+
+msgid "Junk Mail"
+msgstr "Mēstules"
+
+msgid "matching any one of the Spam tests as follows:"
+msgstr "sakrīt ar kādu no mēstuļu sarakstiem:"
+
+msgid "Spam Tests:"
+msgstr "Mēstuļu pārbaudes:"
+
+msgid "and where the sender does <em>not</em> match any of the addresses / expressions in your <strong>Whitelist</strong>"
+msgstr "un kuriem nosūtītāja adrese <em>neatbilst</em> nevienai adresei / izteiksmei jūsu <strong>atļautajā sarakstā</strong>"
+
+msgid "The messages that match the system's default <strong>SPAM</strong> checks"
+msgstr "Zinojumi, kuriem izpildās sistēmas noklusētās <strong>mēstuļu</strong> pārbaudes"
+
+msgid "stored in the <strong>Junk</strong> Folder."
+msgstr "ir noglabāts(-i) <strong>drazu</strong> mapē."
+
+msgid "stored in the <strong>Trash</strong> Folder."
+msgstr "ir noglabāts(-i) <strong>miskastē</strong>."
+
+msgid "<strong>Whitelist</strong> - The following email addresses are whitelisted and will not end up in Junk folders or considered as SPAM:"
+msgstr "<strong>Atļautais saraksts</strong> - Sekojošas e-pasta adreses ir atļautas un ziņojumi no tām netiks pārvietoti uz drazu mapi vai marķēti kā mēstules."
+
+#, php-format
+msgid "and %s more email addresses / expressions."
+msgstr "un %s papildus e-pasta adreses / izteiksmes."
+
+#, php-format
+msgid "%s more entries..."
+msgstr "%s vairāk ierakstu..."
+
+msgid "Custom Sieve Code"
+msgstr "Pielāgots Sieve kods"
+
+msgid "View Source"
+msgstr "Skatīt izejas kodu"
+
+#, php-format
+msgid "the header %s"
+msgstr "ziņojuma sākums %s"
+
+#, php-format
+msgid "Header %s"
+msgstr "Ziņojuma sākums %s"
+
+msgid "To or Cc"
+msgstr "Kam vai Kopija"
+
+#, php-format
+msgid "the envelope %s"
+msgstr "šī aploksne %s"
+
+#, php-format
+msgid "Envelope %s"
+msgstr "Aploksne %s"
+
+#, php-format
+msgid "the address %s"
+msgstr "adrese %s"
+
+#, php-format
+msgid "Address %s"
+msgstr "Adrese %s"
+
+msgid "message body"
+msgstr "ziņojuma saturs"
+
+msgid "matches the regular expression"
+msgstr "atbilst regulārajai izteiksmei  "
+
+msgid "does not match the regular expression"
+msgstr "neatbilst regulārajai izteiksmei"
+
+msgid "exists"
+msgstr "eksistē"
+
+msgid "does not exist"
+msgstr "neeksistē"
+
+msgid "This rule is currently <strong>DISABLED</strong>:"
+msgstr "Šī kārtula pašlaik ir <strong>ATSPĒJOTA</strong>:"
+
+msgid "DISABLED"
+msgstr "ATSPĒJOTAS"
+
+msgid "If"
+msgstr "Ja"
+
+msgid "<em>any</em> of the following mail headers match: "
+msgstr "<em>jebkurš</em> no sekojošajiem ziņojumu sākumiem ir saderīgi ar: "
+
+msgid "<em>all</em> of the following mail headers match: "
+msgstr "<em>visi</em> no sekojošajiem ziņojumu sākumiem ir saderīgi ar: "
+
+msgid "the size of the message is"
+msgstr "ziņojuma lielums ir"
+
+msgid " bigger"
+msgstr "lielāks"
+
+msgid " smaller"
+msgstr "mazāks"
+
+msgid "For <strong>ALL</strong> incoming messages; "
+msgstr "<strong>Visiem</strong> ienākošajiem ziņojumiem;"
+
+msgid "ALL"
+msgstr "VISI"
+
+msgid "and"
+msgstr "un"
+
+msgid "then"
+msgstr "tad"
+
+msgid "<em>keep</em> the message."
+msgstr "<em>paturēt<em> ziņojumu."
+
+msgid "Keep"
+msgstr "Paturēt"
+
+msgid "<em>discard</em> the message."
+msgstr "<em>izmest</em> ziņojumu."
+
+msgid "<em>reject</em> it, sending this excuse back to the sender:"
+msgstr "<em>noraidīt</em> un nosūtītājam paziņot:"
+
+msgid "Redirect to"
+msgstr "Pārsūtīt uz"
+
+#, php-format
+msgid "<em>redirect</em> it to the email addresses: %s."
+msgstr "<em>pārsūtīt</em> uz e-pasta adresi: %s."
+
+msgid "<em>redirect</em> it to the email address"
+msgstr "<em>pārsūtīt</em> uz e-pasta adresi"
+
+#, php-format
+msgid "<em>file</em> it into the folder %s"
+msgstr "<em>glabāt</em> mapē %s"
+
+#, php-format
+msgid "File into %s"
+msgstr "Glabāt iekš %s"
+
+msgid "(Warning: Folder not available)"
+msgstr "(Brīdinājums: mape nav pieejama)"
+
+msgid "reply with this vacation message: "
+msgstr "atbildēt ar šo atvaļinājuma paziņojumu:"
+
+msgid "Vacation Message"
+msgstr "Atvaļinājuma paziņojums"
+
+msgid "Also keep a local copy."
+msgstr "Glabāt vietējo kopiju."
+
+msgid " Also keep a copy in INBOX, marked as deleted."
+msgstr "Paturēt kopiju IESŪTNĒ, iezīmētu kā nodzēstu."
+
+msgid "Keep Deleted"
+msgstr "Glabāt nodzēstos"
+
+msgid " Also notify using the method"
+msgstr "Papildus ziņot, lietojot metodi"
+
+msgid "with"
+msgstr "ar"
+
+msgid "priority and the message"
+msgstr "prioritāte un ziņojums"
+
+#, php-format
+msgid "Notify %s"
+msgstr "Paziņot par %s"
+
+msgid "Then <strong>STOP</strong> processing rules."
+msgstr "Pēc tam <strong>beigt</strong> izpildīt kārtulas."
+
+msgid "Stop"
+msgstr "Apturēt"
+
+msgid "You have not defined the name for the new folder."
+msgstr "Nav norādīts jaunās mapes nosaukums."
+
+msgid "Please try again."
+msgstr "Lūdzu mēģiniet vēlreiz."
+
+msgid "Illegal folder name.  Please select a different name"
+msgstr "Neatļauts mapes nosaukums. Lūdzu, izmantojiet citu vārdu."
+
+msgid "None"
+msgstr "Nekas"
+
+#~ msgid "Anti-SPAM"
+#~ msgstr "Pret-mēstuļu"
+#~ msgid "tech"
+#~ msgstr "tech"
+#~ msgid "Even more terse description for technical people"
+#~ msgstr "Vēl kompaktāks apraksts tehniķiem."
+#~ msgid "Keep (Default action)"
+#~ msgstr "Paturēt (noklusētā darbība)"
+#~ msgid "Discard Silently"
+#~ msgstr "Izmest bez paziņojuma"
+#~ msgid "Reject, sending this excuse to the sender:"
+#~ msgstr "Noraidīt un nosūtītājam paziņot:"
+#~ msgid "Redirect to the following email address:"
+#~ msgstr "Pārsūtīt uz sekojošu e-pasta adresi:"
+#~ msgid "Move message into"
+#~ msgstr "Pārvietot ziņojumu uz mapi"
+#~ msgid "the existing folder"
+#~ msgstr "jau izveidotā mapē"
+#~ msgid "a new folder, named"
+#~ msgstr "jauna mape ar vārdu"
+#~ msgid "created as a subfolder of"
+#~ msgstr "izveidots kā apakšmape mapei"
+#~ msgid "Addresses: Only reply if sent to these addresses:"
+#~ msgstr "Adreses: atbildēt tikai, ja adresēts šīm adresēm:"
+#~ msgid "Days: Reply message will be resent after"
+#~ msgstr "Dienas: atbilde tiks nosūtīta vēlreiz pēc"
+#~ msgid "Use the following message:"
+#~ msgstr "Lietot šo ziņojumu:"
+#~ msgid ""
+#~ "Your email addresses for which a vacation message is returned must be "
+#~ "defined."
+#~ msgstr ""
+#~ "Jābūt uzstādītai jūsu e-pasta adresei, no kuras tiks atbildēts ar "
+#~ "atvaļinājuma paziņojumu."
+#~ msgid "Notify me, using the following method:"
+#~ msgstr "Paziņot man, lietojot:"
+

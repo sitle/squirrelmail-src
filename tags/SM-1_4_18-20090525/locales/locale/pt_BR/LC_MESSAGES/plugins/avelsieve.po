@@ -1,0 +1,717 @@
+# avelsieve - SIEVE Mail Filters for SquirrelMail - Translation file
+# Copyright (C) 2003 Alexandros Vellis
+# This file is distributed under the same license as the PACKAGE package.
+# Gleydson Mazioli da Silva <gleydson@debian.org>, 2003.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: avelsieve 0.9.2\n"
+"POT-Creation-Date: 2003-06-09 09:32+0300\n"
+"PO-Revision-Date: 2003-06-09 16:29-0300\n"
+"Last-Translator: Gleydson Mazioli da Silva <gleydson@debian.org>\n"
+"Language-Team:  <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../addrule.php:82 ../process_input.php:39
+msgid "You have to define at least one header match text."
+msgstr "Você precisa definir pelo menos um cabeçalho que confira com o texto"
+
+#: ../addrule.php:134
+msgid "You have not defined the name for the new folder."
+msgstr "Você ainda não definiu o nome para a nova pasta"
+
+#: ../addrule.php:135
+msgid "Please try again."
+msgstr "Por favor tente novamente."
+
+#: ../addrule.php:146
+msgid "Illegal folder name.  Please select a different name"
+msgstr "Nome ilegal de pasta. Por favor selecione um nome diferente"
+
+#: ../addrule.php:391 ../addrule.php:396 ../addrule.php:463 ../addrule.php:473
+msgid "New Rule Wizard - Step"
+msgstr "Assistente de nova regra - Passo"
+
+#: ../addrule.php:391 ../addrule.php:396 ../addrule.php:463 ../addrule.php:473
+msgid "of"
+msgstr "de"
+
+#: ../addrule.php:391
+msgid "Rule Type"
+msgstr "Tipo de Regra"
+
+#: ../addrule.php:396 ../edit.php:168
+msgid "Condition"
+msgstr "Condição"
+
+#: ../addrule.php:463 ../edit.php:197
+msgid "Action"
+msgstr "Ação"
+
+#: ../addrule.php:473
+msgid "Confirmation"
+msgstr "Confirmação"
+
+#: ../addrule.php:476
+msgid ""
+"<p>You have chosen to keep every mail. This is the default action anyway, so "
+"you might want to start over with a rule that makes more sense. Select "
+"&quot;finished&quot; to save this rule nonetheless.</p>"
+msgstr ""
+"<p>Você optou por manter cada mensagem. Esta é a ação padrão, assim você pode "
+"querer \n"
+"iniciar com uma regra que faz mais sentido. Selecione &quot;finished&quot; "
+"para mesmo assim salvar estar regra."
+
+#: ../addrule.php:485
+msgid ""
+"Please use the buttons on the bottom instead of your browser's reload, back "
+"and forward buttons, to build a rule."
+msgstr ""
+"Por favor utilize os botões na parte de baixo ao invés do reload, voltar e "
+"avançar do navegador para fazer uma regra."
+
+#: ../addrule_html.php:41
+msgid "Clear this Form"
+msgstr "Limpar este formulário"
+
+#: ../addrule_html.php:46
+msgid "Start Over"
+msgstr "Iniciar novamente"
+
+#: ../addrule_html.php:51 ../edit.php:218
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: ../addrule_html.php:60
+msgid "Move back to step"
+msgstr "Voltar um passo"
+
+#: ../addrule_html.php:66
+msgid "Finished"
+msgstr "Finalizado"
+
+#: ../addrule_html.php:70
+msgid "Move on to step"
+msgstr "Avançar um passo"
+
+#: ../addrule_html.php:120
+msgid "What kind of rule would you like to add?"
+msgstr "Que tipo de regra deseja adicionar?"
+
+#: ../addrule_html.php:153
+msgid ""
+"The rule will trigger if the following addresses appear anywhere in the "
+"message's headers:"
+msgstr ""
+"A regra funcionará caso os seguintes endereços apareçam em algum lugar no "
+"cabeçalho da mensagem:"
+
+#: ../addrule_html.php:238
+msgid "AND (Every item must match)"
+msgstr "E (Cada item deve conferir)"
+
+#: ../addrule_html.php:239
+msgid "OR (Either item will match)"
+msgstr "OU (Um ou outro item deve conferir)"
+
+#: ../addrule_html.php:242
+msgid "The condition for the following rules is:"
+msgstr "A condição para a seguinte regra é:"
+
+#: ../addrule_html.php:308
+msgid "The header "
+msgstr "O cabeçalho"
+
+#: ../addrule_html.php:333
+msgid "Less..."
+msgstr "Menos..."
+
+#: ../addrule_html.php:339
+msgid "More..."
+msgstr "Mais..."
+
+#: ../addrule_html.php:355
+msgid "This rule will trigger if message is"
+msgstr "A regra funcionará caso a mensagem seja"
+
+#: ../addrule_html.php:365
+msgid "bigger"
+msgstr "maior"
+
+#: ../addrule_html.php:373
+msgid "smaller"
+msgstr "menor"
+
+#: ../addrule_html.php:375 ../buildrule.php:250
+msgid "than"
+msgstr "que"
+
+#: ../addrule_html.php:393
+msgid "KB (kilobytes)"
+msgstr "KB (kilobytes)"
+
+#: ../addrule_html.php:401
+msgid "MB (megabytes)"
+msgstr "MB (megabytes)"
+
+#: ../addrule_html.php:409
+msgid ""
+"The following action will be applied to <strong>all</strong> incoming "
+"messages that do not match any of the previous rules."
+msgstr ""
+"A seguinte ação será aplicada para <strong>todas</strong> as mensagens de "
+"entrada que não conferem com qualquer uma das seguintes regras."
+
+#: ../addrule_html.php:416
+msgid ""
+"This rule will trigger upon the occurrence of one or more strings in the body "
+"of an e-mail message. "
+msgstr ""
+"Esta regra funcionará caso aconteça a ocorrência de uma ou mais strings no "
+"corpo de uma mensagem de email."
+
+#: ../addrule_html.php:453
+msgid "Choose what to do when this rule triggers, from one of the following:"
+msgstr "Escola o que fazer quando esta regra conferir, de uma das seguintes:"
+
+#: ../addrule_html.php:459 ../constants.php:44
+msgid "Keep (Default action)"
+msgstr "Manter (Ação padrão)"
+
+#: ../addrule_html.php:465 ../constants.php:47
+msgid "Discard Silently"
+msgstr "Descartar Silenciosamente"
+
+#: ../addrule_html.php:473 ../constants.php:50
+msgid "Reject, sending this excuse to the sender:"
+msgstr "Rejeitar, envitando esta desculpa para o remetente:"
+
+#: ../addrule_html.php:480
+msgid "Please do not send me large attachments."
+msgstr "Por favor não me envie anexos grandes."
+
+#: ../addrule_html.php:492 ../constants.php:53
+msgid "Redirect to the following email address:"
+msgstr "Redirecionar para o seguinte endereço de email:"
+
+#: ../addrule_html.php:498
+msgid "someone@example.org"
+msgstr "alguem@example.org"
+
+#: ../addrule_html.php:510 ../constants.php:56
+msgid "Move message into"
+msgstr "Mover mensagem em"
+
+#: ../addrule_html.php:517 ../addrule_html.php:526
+msgid "the existing folder"
+msgstr "A pasta existente"
+
+#: ../addrule_html.php:533
+msgid "a new folder, named"
+msgstr "uma nova pasta com o nome"
+
+#: ../addrule_html.php:535
+msgid "created as a subfolder of"
+msgstr "criada como uma subpasta de"
+
+#: ../addrule_html.php:554
+msgid "Also keep copy in INBOX, marked as deleted."
+msgstr "Também manter uma cópia na INBOX, marcada como deletada."
+
+#: ../addrule_html.php:574
+msgid "Vacation"
+msgstr "Férias"
+
+#: ../addrule_html.php:576
+msgid ""
+"The notice will be sent only once to each person that sends you mail, and "
+"will not be sent to a mailing list address."
+msgstr ""
+"A notificação será somente enviada para cada pessoa que enviar seu e-mail e "
+"não será \n"
+"enviada para um endereço de lista de discussão."
+
+#: ../addrule_html.php:578
+msgid "Addresses: Only reply if sent to these addresses:"
+msgstr "Endereços: Somente responder se enviado para estes endereços:"
+
+#: ../addrule_html.php:587
+msgid "Days: Reply message will be resent after"
+msgstr "Dias: Responder mensagem que foi reenviada após"
+
+#: ../addrule_html.php:595
+msgid "days"
+msgstr "dias"
+
+#: ../addrule_html.php:597
+msgid "Use the following message:"
+msgstr "Usar a seguinte mensagem:"
+
+#: ../addrule_html.php:603
+msgid ""
+"This is an automated reply; I am away and will not be able to reply to you "
+"immediately."
+msgstr ""
+"Esta é uma resposta automática; Estou fora e não serei capaz de responde-lo "
+"imediatamente"
+
+#: ../addrule_html.php:604
+msgid "I will get back to you as soon as I return."
+msgstr "Lhe darei um retorno assim que retornar."
+
+#: ../addrule_html.php:616
+msgid "Additional Actions"
+msgstr "Ações Adicionais"
+
+#: ../addrule_html.php:627 ../addrule_html.php:630
+msgid "STOP"
+msgstr "PARAR"
+
+#: ../addrule_html.php:632
+msgid "If this rule matches, do not check any rules after it."
+msgstr "Caso a regra confira, não verificar quaisquer regras após ela."
+
+#: ../addrule_html.php:645
+msgid "Notify me, using the following method:"
+msgstr "Me notificar, usando o seguinte método:"
+
+#: ../addrule_html.php:681
+msgid "Notification ID"
+msgstr "ID da notificação"
+
+#: ../addrule_html.php:690
+msgid "Parameters"
+msgstr "Parâmetros"
+
+#: ../addrule_html.php:717
+msgid "Message"
+msgstr "Mensagem"
+
+#: ../addrule_html.php:726
+msgid "Help: Valid variables are:"
+msgstr "Ajuda: Variáveis válidas são:"
+
+#: ../addrule_html.php:742
+msgid "Your new rule states:"
+msgstr "O estado de sua nova regra:"
+
+#: ../addrule_html.php:744
+msgid ""
+"If this is what you wanted, select Finished. You can also start over or "
+"cancel adding a rule altogether."
+msgstr ""
+"Se isto é o que deseja, selecione Finalizado. Você pode também iniciar denovo "
+"ou cancelar a adição da regra."
+
+#: ../avelsieve_support.inc.php:42 ../avelsieve_support.inc.php:44
+msgid "Error Encountered"
+msgstr "Foi encontrado um erro"
+
+#: ../buildrule.php:54
+msgid "For <strong>ALL</strong> incoming messages; "
+msgstr "Para <strong>TODAS</strong> as mensagens de entrada;"
+
+#: ../buildrule.php:57
+msgid "If"
+msgstr "Se"
+
+#: ../buildrule.php:75
+msgid "<em>any</em> of the following mail headers match: "
+msgstr "<em>qualquer</em> um dos seguintes cabeçalhos de e-mail conferem:"
+
+#: ../buildrule.php:80
+msgid "<em>all</em> of the following mail headers match: "
+msgstr "<em>todos</em> os seguintes cabeçalhos de e-mail confiram:"
+
+#: ../buildrule.php:93
+msgid "the header"
+msgstr "o cabeçalho"
+
+#: ../buildrule.php:101 ../constants.php:63
+msgid "is"
+msgstr "é"
+
+#: ../buildrule.php:106 ../constants.php:64
+msgid "is not"
+msgstr "não é"
+
+#: ../buildrule.php:111 ../constants.php:61
+msgid "contains"
+msgstr "contém"
+
+#: ../buildrule.php:116 ../constants.php:62
+msgid "does not contain"
+msgstr "não contém"
+
+#: ../buildrule.php:121
+msgid "matches"
+msgstr "confere"
+
+#: ../buildrule.php:127
+msgid "does not match"
+msgstr "não confere"
+
+#: ../buildrule.php:133 ../constants.php:76
+msgid "is greater than"
+msgstr "é maior que"
+
+#: ../buildrule.php:138 ../constants.php:77
+msgid "is greater or equal to"
+msgstr "é maior ou igual a"
+
+#: ../buildrule.php:143 ../constants.php:78
+msgid "is lower than"
+msgstr "é menor que"
+
+#: ../buildrule.php:148 ../constants.php:79
+msgid "is lower or equal to"
+msgstr "é menor ou igual a"
+
+#: ../buildrule.php:153 ../constants.php:80
+msgid "is equal to"
+msgstr "é igual a"
+
+#: ../buildrule.php:158 ../constants.php:81
+msgid "is not equal to"
+msgstr "é diferente de"
+
+#: ../buildrule.php:163
+msgid "matches the regural expression"
+msgstr "confere com a expressão regular"
+
+#: ../buildrule.php:169
+msgid "does not match the regural expression"
+msgstr "não confere com a expressão regular"
+
+#: ../buildrule.php:175
+msgid "exists"
+msgstr "existe"
+
+#: ../buildrule.php:180
+msgid "does not exist"
+msgstr "não existe"
+
+#: ../buildrule.php:237
+msgid "the size of the message is"
+msgstr "o tamanho da mensagem é"
+
+#: ../buildrule.php:244
+msgid " bigger"
+msgstr " maior"
+
+#: ../buildrule.php:248
+msgid " smaller"
+msgstr " menor"
+
+#: ../buildrule.php:278
+msgid "then"
+msgstr "então"
+
+#: ../buildrule.php:285
+msgid "<em>keep</em> it."
+msgstr "a <em>mantenha</em>."
+
+#: ../buildrule.php:291
+msgid "<em>discard</em> it."
+msgstr "<em>descartar</em>."
+
+#: ../buildrule.php:298
+msgid "<em>reject</em> it, sending this excuse back to the sender:"
+msgstr "<em>rejeitar</em>, enviando esta desculpa para o remetente:"
+
+#: ../buildrule.php:304
+msgid "<em>redirect</em> it to the email address"
+msgstr "<em>redirecionar</em> para o endereço de email"
+
+#: ../buildrule.php:311
+msgid "<em>file</em> it into the folder <strong>"
+msgstr "<em>arquiva-lo</em> na pasta <strong>"
+
+#: ../buildrule.php:328
+msgid "reply with this vacation message: "
+msgstr "responder com esta mensagem de viagem:"
+
+#: ../buildrule.php:337
+msgid " Also keep a copy in INBOX, marked as deleted."
+msgstr " Também manter uma cópia na pasta INBOX, marcada como apagada."
+
+#: ../buildrule.php:343
+msgid " Then <strong>STOP</strong> processing rules."
+msgstr " Então <strong>INTERROMPA</strong> o processamento das regras."
+
+#: ../buildrule.php:365
+msgid " Also notify using the method"
+msgstr " Também notificar usando o método"
+
+#: ../buildrule.php:367
+msgid "with"
+msgstr "com"
+
+#: ../buildrule.php:369
+msgid "priority and the message"
+msgstr "prioridade e a mensagem"
+
+#: ../constants.php:16
+msgid "Address Match"
+msgstr "Endereços que conferem"
+
+#: ../constants.php:17 ../constants.php:22
+msgid ""
+"Perform an action on messages matching a specified header (From, To etc.)."
+msgstr ""
+"Realizer uma ação nas mensagens que conferem com um cabeçalho específico "
+"(From, To, etc)"
+
+#: ../constants.php:21
+msgid "Header Match"
+msgstr "Conferência de Cabeçalho"
+
+#: ../constants.php:26
+msgid "Size"
+msgstr "Tamanho"
+
+#: ../constants.php:27
+msgid "Perform an action on messages depending on their size."
+msgstr "Realizar uma ação nas mensagens dependendo do seu tamanho"
+
+#: ../constants.php:31
+msgid "All Messages"
+msgstr "Todas as mensagens"
+
+#: ../constants.php:32
+msgid "Perform an action on <strong>all</strong> incoming messages."
+msgstr "Realizar a ação em <strong>todas</strong> as mensagens de entrada"
+
+#: ../constants.php:37
+msgid "Body Match"
+msgstr "Conferência com o corpo da mensagem"
+
+#: ../constants.php:38
+msgid "Perform an action on messages depending on their content (body text)."
+msgstr ""
+"Realizar uma ação em mensagens dependendo do seu conteúdo (texto do corpo)"
+
+#: ../constants.php:65
+msgid "matches wildcard"
+msgstr "conferir com coringas"
+
+#: ../constants.php:66
+msgid "does not match wildcard"
+msgstr "não conferir com coringas"
+
+#: ../constants.php:70
+msgid "matches regexp"
+msgstr "conferir com a expressão regular"
+
+#: ../constants.php:87
+msgid "verbose"
+msgstr "detalhado"
+
+#: ../constants.php:88
+msgid "terse"
+msgstr "resumo"
+
+#: ../constants.php:96
+msgid "Mobile Phone Message (SMS)"
+msgstr "Mensagem para telefone celular (SMS)"
+
+#: ../constants.php:97
+msgid "Email notification"
+msgstr "Notificação por Email"
+
+#: ../constants.php:98
+msgid "Notification via Zephyr"
+msgstr "Notificação via Zephyr"
+
+#: ../constants.php:99
+msgid "Notification via ICQ"
+msgstr "Notificaçã via ICQ"
+
+#: ../constants.php:103
+msgid "Low"
+msgstr "Baixa"
+
+#: ../constants.php:104
+msgid "Normal"
+msgstr "Norma"
+
+#: ../constants.php:105
+msgid "High"
+msgstr "Alta"
+
+#: ../edit.php:135
+msgid "Editing Mail Filtering Rule"
+msgstr "Editando a regra de Filtragem de Mensagens"
+
+#: ../edit.php:214
+msgid "Add New Rule"
+msgstr "Adicionar uma Nova Regra"
+
+#: ../edit.php:216
+msgid "Apply Changes"
+msgstr "Aplicar Mudanças"
+
+#: ../setup.php:40
+msgid "Message Filters"
+msgstr "Filtros de Mensagem"
+
+#: ../setup.php:42
+msgid ""
+"Server-Side mail filtering enables you to add criteria in order to "
+"automatically forward, delete or place a given message into a folder."
+msgstr ""
+"A filtragem de mensagens do lado do servidor lhe permite adicionar critérios "
+"para redirecionar, \n"
+"apagar ou colocar uma data mensagem em uma pasta."
+
+#: ../setup.php:86
+msgid "Filters"
+msgstr "Filtros"
+
+#: ../table.php:73 ../table.php:136
+msgid "Could not log on to timsieved daemon on your IMAP server"
+msgstr "Não foi possível logar no daemon timsieved me seu servidor IMAP"
+
+#: ../table.php:75 ../table.php:139 ../table.php:154 ../table.php:198
+msgid "Please contact your administrator."
+msgstr "Por favor contacte seu administrador."
+
+#: ../table.php:90 ../table.php:359
+msgid "Current Mail Filtering Rules"
+msgstr "Regras atuais de Filtragem de Mensagens"
+
+#: ../table.php:92 ../table.php:215
+msgid "No Filtering Rules Defined Yet"
+msgstr "Nenhuma regra de Filtagem ainda foi Definida"
+
+#: ../table.php:138
+msgid "in order to save your rules."
+msgstr "para salvar suas regras."
+
+#: ../table.php:152
+msgid "Could not set active script on your IMAP server"
+msgstr "Não foi possível ajustar scripts ativos em seu servidor IMAP"
+
+#: ../table.php:195
+msgid "Could not get SIEVE script from your IMAP server"
+msgstr "Não foi possível obter o script SIEVE de seu servidor IMAP"
+
+#: ../table.php:197
+msgid "(Probably the script is size null)."
+msgstr "(Provavelmente o tamanho do script é nulo)."
+
+#: ../table.php:269
+msgid "All your rules have been deleted"
+msgstr "Todas as regras foram apagadas"
+
+#: ../table.php:392 ../table.php:394
+msgid "Edit"
+msgstr "Editar"
+
+#: ../table.php:402 ../table.php:404
+msgid "Delete"
+msgstr "Apagar"
+
+#: ../table.php:412 ../table.php:414
+msgid "Duplicate"
+msgstr "Duplicar"
+
+#: ../table.php:422 ../table.php:425
+msgid "Move Up"
+msgstr "Mover para Cima"
+
+#: ../table.php:435 ../table.php:438
+msgid "Move Down"
+msgstr "Mover para Baixo"
+
+#: ../table.php:453
+msgid "Delete Selected"
+msgstr "Apagar as Selecionadas"
+
+#: ../table_html.php:17 ../table_html.php:33
+msgid "Server-Side Mail Filtering"
+msgstr "Filtragem de Mensagens no lado do Servidor"
+
+#: ../table_html.php:114 ../table_html.php:125
+msgid ""
+"Here you can add or delete filtering rules for your email account. These "
+"filters will always apply to your incoming mail, wherever you check your "
+"email."
+msgstr ""
+"Aqui você poderá adicionar ou apagar regras de filtragem para sua conta de "
+"email. Estes filtros serão sempre aplicados em seus e-mails de entrada, "
+"sempre que verificar suas mensagens."
+
+#: ../table_html.php:117
+msgid ""
+"You don't have any rules yet. Feel free to add any with the button &quot;Add "
+"a New Rule&quot;. When you are done, please select &quot;Save Changes&quot; "
+"to get back to the main options screen."
+msgstr ""
+"Você ainda não tem quaisquer regra.s Sinta-se livr epara adicionar qualquer "
+"uma com o botão&quot;Adicionar uma Nova Regra&quot;. Quando concluir, por "
+"favor selecione &quot;Salvar Modificações&quot; para voltar para a tela "
+"principal de opções."
+
+#: ../table_html.php:128
+msgid ""
+"When you are done with editing, <strong>remember to select &quot;Save "
+"Changes&quot;</strong> to activate your changes!"
+msgstr ""
+"Quando terminar a edição <strong>lembre-se de selecionar &quot;Save "
+"Changes&quot;</strong> para ativar suas mudanças!"
+
+#: ../table_html.php:137
+msgid "Successfully added new rule."
+msgstr "Nova regra adicionada com sucesso."
+
+#: ../table_html.php:140
+msgid "Successfully updated rule #"
+msgstr "Sucesso ao atualizar a regra #"
+
+#: ../table_html.php:145
+msgid "Successfully deleted rules #"
+msgstr "As regras # foram apagadas com sucesso"
+
+#: ../table_html.php:153
+msgid "Successfully deleted rule #"
+msgstr "A regra # foi apagada com sucesso"
+
+#: ../table_html.php:163
+msgid "The following table summarizes your current mail filtering rules."
+msgstr "A seguinte tabela resume suas regras atuais de filtragem de mensagem."
+
+#: ../table_html.php:173
+msgid "No"
+msgstr "Não"
+
+#: ../table_html.php:178
+msgid "Description of Rule"
+msgstr "Descrição da Regra"
+
+#: ../table_html.php:181
+msgid "Display as:"
+msgstr "Mostrar como:"
+
+#: ../table_html.php:193
+msgid "Options"
+msgstr "Opções"
+
+#: ../table_html.php:223
+msgid "Add a New Rule"
+msgstr "Adicionar uma nova regra"
+
+#: ../table_html.php:229
+msgid ""
+"When you are done, please click the button below to return to your webmail."
+msgstr ""
+"Quando terminar, por favor clique no botão abaixo para retornar para seu "
+"webmail."
+
+#: ../table_html.php:231
+msgid "Save Changes"
+msgstr "Salvar Alterações"
+

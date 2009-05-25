@@ -1,0 +1,156 @@
+# Vietnamese (vi_VI) change_passwd Translation (SquirrelMail plugin)
+# Copyright (c) 1999-2009 The SquirrelMail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
+# Clytie Siddall <clytie@riverland.net.au>, 2008.
+# $Id: change_passwd.pot 10877 2006-03-04 11:22:22Z jervfors $
+msgid ""
+msgstr ""
+"Project-Id-Version: change_passwd 4.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-04-25 11:23-0700\n"
+"PO-Revision-Date: 2008-03-28 17:48+1030\n"
+"Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
+"Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: functions.php:39
+#: options.php:274
+msgid "Change Password"
+msgstr "Đổi mật khẩu"
+
+#: functions.php:41
+msgid "Use this to change your email password."
+msgstr "Dùng cái này để thay đổi mật khẩu thư điện tử của bạn."
+
+#: options.php:80
+msgid "Could not determine your username."
+msgstr "Không thể quyết định tên người dùng của bạn."
+
+#: options.php:81
+#: options.php:245
+msgid "Please contact your system administrator."
+msgstr "Hãy liên lạc với quản trị hệ thống."
+
+#: options.php:86
+msgid "Please enter your current password."
+msgstr "Hãy nhập mật khẩu hiện thời của bạn."
+
+#: options.php:91
+msgid "Please enter your new password."
+msgstr "Hãy nhập mật khẩu mới của bạn."
+
+#: options.php:96
+msgid "Please re-enter your new password."
+msgstr "Hãy nhập lại mật khẩu mới của bạn."
+
+#: options.php:105
+#: options.php:293
+#, c-format
+msgid "Your new password must be at least %s characters long."
+msgstr "Mật khẩu mới phải chứa ít nhất %s ký tự."
+
+#: options.php:117
+msgid "The confirmation of your new password did not match."
+msgstr "Mật khẩu mới và mật khẩu xác nhận không trùng."
+
+#: options.php:142
+msgid "Your current password is not correct."
+msgstr "Mật khẩu hiện thời của bạn không đúng."
+
+#: options.php:213
+msgid "Your password was changed successfully."
+msgstr "Mật khẩu đã được thay đổi."
+
+#: options.php:227
+msgid "The password was modified successfully"
+msgstr "Mật khẩu đã được sửa đổi."
+
+#: options.php:228
+msgid "Missing new password"
+msgstr "Thiếu mật khẩu mới"
+
+#: options.php:229
+msgid "Missing current password"
+msgstr "Thiếu mật khẩu hiện thời"
+
+#: options.php:230
+#, c-format
+msgid ""
+"The password for this user cannot be changed due to security constraints: %s"
+msgstr "Không thể thay đổi mật khẩu cho người dùng này do rằng buộc bảo mật: %s"
+
+#: options.php:231
+msgid ""
+"The new password is equal to the current password. Choose another password."
+msgstr ""
+"Mật khẩu mới và mật khẩu cũ là trùng. Hãy chọn mật khẩu khác."
+
+#: options.php:232
+#: options.php:233
+msgid "Could not read password file"
+msgstr "Không thể đọc tập tin mật khẩu"
+
+#: options.php:234
+msgid "Temporary file could not be opened"
+msgstr "Không thể mở tập tin tạm thời"
+
+#: options.php:235
+msgid "Current password is incorrect"
+msgstr "Bạn đã gõ sai mật khẩu cũ"
+
+#: options.php:236
+#, c-format
+msgid "User does not exist: %s"
+msgstr "Người dùng không tồn tại: %s"
+
+#: options.php:237
+msgid "Virtual memory exhausted"
+msgstr "Cạn bộ nhớ ảo"
+
+#: options.php:238
+msgid "Missing username"
+msgstr "Thiếu tên người dùng"
+
+#: options.php:244
+msgid "An error has occurred while attempting to change your password."
+msgstr "Gặp lỗi khi thử thay đổi mật khẩu của bạn."
+
+#: options.php:253
+msgid "Command output:"
+msgstr "Kết xuất câu lệnh:"
+
+#: options.php:258
+msgid "Return code:"
+msgstr "Mã trả về"
+
+#: options.php:284
+msgid "Please read the following instructions before editing your password:"
+msgstr ""
+"Hãy đọc hướng dẫn theo đây trước khi chỉnh sửa mật khẩu :"
+
+#: options.php:287
+msgid ""
+"You may use letters, numbers, and other special characters on your keyboard."
+msgstr "Bạn có thể dùng các chữ cái, chữ số và các ký tự đặc biệt khác trên bàn phím."
+
+#: options.php:289
+msgid "Passwords are case-sensititve, so an 'A' is not the same as an 'a'."
+msgstr "Mật khẩu phân biệt chữ hoa/thường: « A » khác với « a »."
+
+#: options.php:310
+msgid "Your user name:"
+msgstr "Tên người dùng của bạn:"
+
+#: options.php:317
+msgid "Current password:"
+msgstr "Mật khẩu hiện thời:"
+
+#: options.php:322
+msgid "New password:"
+msgstr "Mật khẩu mới:"
+
+#: options.php:327
+msgid "Confirm new password:"
+msgstr "Xác nhận mật khẩu mới:"

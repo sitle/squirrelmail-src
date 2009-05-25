@@ -1,0 +1,260 @@
+# Vietnamese (vi_VI) got_hotmail Translation (SquirrelMail plugin)
+# Copyright (c) 1999-2009 The SquirrelMail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
+# Clytie Siddall <clytie@riverland.net.au>, 2008.
+# $Id: got_hotmail.pot 10877 2006-03-04 11:22:22Z jervfors $
+msgid ""
+msgstr ""
+"Project-Id-Version: got_hotmail 0.6.2\n"
+"POT-Creation-Date: 2005-03-12 16:51+0100\n"
+"PO-Revision-Date: 2008-05-30 19:53+0930\n"
+"Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
+"Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: LocFactoryEditor 1.7b3\n"
+
+#: functions.php:102
+msgid "Logging in"
+msgstr "Đang đăng nhập"
+
+#: functions.php:104
+msgid "Getting folder info"
+msgstr "Đang lấy thông tin về thư mục"
+
+#: functions.php:106
+msgid " has "
+msgstr " có "
+
+#: functions.php:106
+msgid " unread messages of "
+msgstr " thư chưa đọc của "
+
+#: functions.php:111
+msgid "Getting msg "
+msgstr "Đang lấy thư"
+
+#: functions.php:111
+#: functions.php:115
+msgid " from "
+msgstr " từ "
+
+#: functions.php:113
+msgid "Marking msg "
+msgstr "Đang đánh dấu vào thư "
+
+#: functions.php:113
+msgid " as read"
+msgstr " như là Đã Đọc"
+
+#: functions.php:115
+msgid "Removing msg "
+msgstr "Đang gỡ bỏ thư "
+
+#: functions.php:117
+msgid "Closing connection"
+msgstr "Đang đóng kết nối"
+
+#: functions.php:127
+msgid "No messages to get"
+msgstr "Không có thư cần lấy"
+
+#: functions.php:129
+#: functions.php:133
+msgid "All the messages should be delivered to "
+msgstr "Tất cả các thư nên được phát cho "
+
+#: functions.php:129
+#: functions.php:133
+msgid " shortly"
+msgstr " không lâu nữa"
+
+#: functions.php:135
+#: functions.php:149
+msgid "Some errors have occured"
+msgstr "Một số lỗi đã xảy ra"
+
+#: functions.php:136
+msgid "Please notify your administrator"
+msgstr "Hãy thông báo cho quản trị"
+
+#: functions.php:150
+msgid "Please make sure all fields for this account"
+msgstr "Hãy kiểm tra xem tất cả các trường cho tài khoản này"
+
+#: functions.php:151
+msgid "Are complete and true, all fields are REQUIRED!!!"
+msgstr "được điền nốt và đúng: mọi trường đều bắt buộc phải điền vào."
+
+#: gothotmail.php:63
+msgid "Get HotMail Messages"
+msgstr "Lấy thư HotMail"
+
+#: gothotmail.php:74
+msgid "Select Account:"
+msgstr "Chọn tài khoản:"
+
+#: gothotmail.php:77
+msgid "All"
+msgstr "Tất cả"
+
+#: gothotmail.php:91
+msgid "Password for"
+msgstr "Mmk cho"
+
+#: gothotmail.php:101
+msgid "Get HotMail"
+msgstr "Lấy HotMail"
+
+#: gothotmail.php:136
+msgid "Getting mail from "
+msgstr "Đang lấy thư từ "
+
+#: gothotmail.php:146
+msgid "Running gotmail"
+msgstr "Đang chạy gotmail"
+
+#: gothotmail.php:159
+msgid "HotMail Account Checked"
+msgstr "Tài khoản HotMail được kiểm tra"
+
+#: gothotmail.php:163
+msgid "ERROR: Please re-run setup and define and address to send to"
+msgstr "LỖI: hãy chạy lại tiến trình thiết lập và xác định một địa chỉ đích đến"
+
+#: options.php:195
+msgid "Got HotMail account settings"
+msgstr "Đã lấy thiết lập tài khoản HotMail"
+
+#: options.php:202
+msgid ""
+"You should be aware that the encryption used to store your password is not "
+"perfectly secure.  Additionally, the encryption that we do to save it on the "
+"server can be undone by a hacker reading the source to this file."
+msgstr "Ghi chú : thuật toán mật mã hoá được dùng để lưu mật khẩu của bạn không phải an toàn hoàn toàn. Hơn nữa, chức năng mật mã hoá được làm để lưu nó trên máy phục vụ vẫn còn có thể bị xâm nhập bởi một người có thể đọc mã nguồn của tập tin này."
+
+#: options.php:210
+msgid ""
+"If you leave password empty, it will be required when SquirrelMail  tries to "
+"fetch your Hotmail."
+msgstr "Nếu bạn bỏ trống trường mật khẩu này, nó sẽ được yêu cầu khi chương trình SquirrelMail thử lấy thư HotMail của bạn."
+
+#: options.php:221
+#: options.php:271
+msgid "Add Account"
+msgstr "Thêm tài khoản"
+
+#: options.php:230
+#: options.php:286
+#: options.php:342
+msgid "Account:"
+msgstr "Tài khoản:"
+
+#: options.php:234
+#: options.php:355
+msgid "Password:"
+msgstr "Mật khẩu :"
+
+#: options.php:238
+#: options.php:359
+msgid "Account to send mail to:"
+msgstr "Tài khoản cho đó cần gửi thư :"
+
+#: options.php:242
+#: options.php:363
+msgid "Folders:"
+msgstr "Thư mục:"
+
+#: options.php:251
+#: options.php:374
+msgid "Delete from Hotmail after pick up"
+msgstr "Một khi lấy thư thì xoá khỏi Hotmail"
+
+#: options.php:255
+#: options.php:381
+msgid "Mark as read on Hotmail after pick up"
+msgstr "Một khi lấy thư thì đánh dấu là Đã Đọc ở Hotmail"
+
+#: options.php:259
+#: options.php:388
+msgid "Pick up only new mail from Hotmail"
+msgstr "Lấy chỉ thư mới từ Hotmail"
+
+#: options.php:263
+#: options.php:395
+msgid "Check this account for mail at login"
+msgstr "Đang nhập được thì kiểm tra tài khoản này có thư mới chưa"
+
+#: options.php:267
+#: options.php:402
+msgid "Check this account for mail during folder refresh"
+msgstr "Cập nhật thư mục thì kiểm tra tài khoản này có thư mới chưa"
+
+#: options.php:280
+#: options.php:407
+msgid "Modify Account"
+msgstr "Sửa tài khoản"
+
+#: options.php:292
+#: options.php:325
+msgid "Modify"
+msgstr "Sửa"
+
+#: options.php:293
+#: options.php:301
+msgid "Delete"
+msgstr "Xoá"
+
+#: options.php:296
+msgid "No accounts in use. Try adding."
+msgstr "Không có tài khoản đang dùng. Hãy thử thêm."
+
+#: options.php:304
+#: options.php:328
+#: options.php:417
+msgid "Retreving Accounts"
+msgstr "Đang lấy các tài khoản"
+
+#: options.php:310
+msgid "Confirm Deletion of an Account"
+msgstr "Xác nhận việc xoá một tài khoản"
+
+#: options.php:316
+msgid "Selected Account:"
+msgstr "Tài khoản được chọn:"
+
+#: options.php:317
+msgid "Confirm deletion of selected account?"
+msgstr "Xác nhận việc xoá tài khoản được chọn không?"
+
+#: options.php:318
+msgid "Confirm Delete"
+msgstr "Xác nhân xoá"
+
+#: options.php:334
+msgid "Modify an Account"
+msgstr "Sửa một tài khoản"
+
+#: options.php:423
+msgid "Undefined Function"
+msgstr "Chức năng chưa xác định"
+
+#: options.php:424
+msgid "Something went wrong!!  Women and children first!!  Abandon SHIP!!!"
+msgstr "Lỗi nghiêm trọng !"
+
+#: setup.php:37
+msgid "Got Hotmail Options"
+msgstr "Đã lấy các tùy chọn về Hotmail"
+
+#: setup.php:39
+msgid ""
+"This configures settings for retrieving mail from hotmail and/or MSN "
+"accounts to your current mailbox."
+msgstr "Cái này cấu hình thiết lập để lấy thư từ tài khoản kiểu Hotmail và/hay MSN vào hộp thư của bạn."
+
+#: setup.php:47
+msgid "Hotmail"
+msgstr "Hotmail"
