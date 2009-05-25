@@ -2,15 +2,15 @@
 # Copyright (c) 1999-2009 The SquirrelMail Project Team
 # This file is distributed under the same license as the SquirrelMail package.
 # Johan Fernberger <johan@fernberger.com>, 2002.
-# Fredrik Jervfors <jervfors@squirrelmail.org>, 2004-2007.
+# Fredrik Jervfors <jervfors@squirrelmail.org>, 2004-2009.
 # $Id$
 msgid ""
 msgstr ""
 "Project-Id-Version: SquirrelMail HEAD\n"
 "Report-Msgid-Bugs-To: SquirrelMail Internationalization <squirrelmail-"
 "i18n@lists.sourceforge.net>\n"
-"POT-Creation-Date: 2007-11-09 08:43+0100\n"
-"PO-Revision-Date: 2007-11-09 09:19+0100\n"
+"POT-Creation-Date: 2009-05-15 16:59+0200\n"
+"PO-Revision-Date: 2009-05-25 14:22+0200\n"
 "Last-Translator: Fredrik Jervfors <jervfors@squirrelmail.org>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -128,7 +128,10 @@ msgid "Edit selected"
 msgstr "Ändra vald"
 
 msgid "Delete selected"
-msgstr "Kasta valda"
+msgstr "Ta bort valda"
+
+msgid "Compose to selected"
+msgstr "Skriv till valda"
 
 msgid "sort by nickname"
 msgstr "Sortera efter kortnamn"
@@ -146,6 +149,7 @@ msgstr "Sortera efter information"
 msgid "Add to %s"
 msgstr "Lägg till i %s"
 
+#. i18n: %s is for author's name
 #, php-format
 msgid "%s wrote:"
 msgstr "%s skrev:"
@@ -156,6 +160,14 @@ msgstr "citat"
 msgid "who"
 msgstr "vem"
 
+#. i18n:
+#. The first %s is for date string, the second %s is for author's name.
+#. The date uses formating from "D, F j, Y g:i a" and "D, F j, Y H:i"
+#. translations.
+#. Example string:
+#. "On Sat, December 24, 2004 23:59, Santa wrote:"
+#. If you have to put author's name in front of date string, check comments about
+#. argument swapping at http://php.net/sprintf
 #, php-format
 msgid "On %s, %s wrote:"
 msgstr "Den %s skrev %s:"
@@ -209,7 +221,7 @@ msgid "Add"
 msgstr "Lägg till"
 
 msgid "Delete selected attachments"
-msgstr "Kasta valda bilagor"
+msgstr "Ta bort valda bilagor"
 
 msgid ""
 "Because PHP file uploads are turned off, you can not attach files to this "
@@ -272,11 +284,11 @@ msgid "You have not selected a folder to delete. Please do so."
 msgstr "Du har inte valt vilken mapp som ska tas bort."
 
 msgid "Delete Folder"
-msgstr "Kasta mapp"
+msgstr "Ta bort mapp"
 
 #, php-format
 msgid "Are you sure you want to delete %s?"
-msgstr "Är du säker på att du vill kasta %s?"
+msgstr "Är du säker på att du vill ta bort %s?"
 
 msgid "Yes"
 msgstr "Ja"
@@ -336,7 +348,7 @@ msgid "No folders found"
 msgstr "Inga mappar hittades"
 
 msgid "Delete"
-msgstr "Kasta"
+msgstr "Ta bort"
 
 msgid "Unsubscribe"
 msgstr "Avaktivera"
@@ -446,6 +458,7 @@ msgstr "SquirrelMail version %s"
 msgid "By the SquirrelMail Project Team"
 msgstr "Av SquirrelMails utvecklingsteam"
 
+#. i18n: The %s represents the service provider's name
 #, php-format
 msgid "%s Login"
 msgstr "%s Logga in"
@@ -540,6 +553,7 @@ msgstr "Vit"
 msgid "Other:"
 msgstr "Annat:"
 
+#. i18n: This is an example on how to write a color in RGB, literally meaning "For example: 63aa7f".
 msgid "Ex: 63aa7f"
 msgstr "T.ex. 63aa7f"
 
@@ -627,8 +641,10 @@ msgstr "Fel uppstod när inställningarna sparades"
 msgid "Some of your preference changes were not applied."
 msgstr "En del av ändringarna kommer inte att tillämpas."
 
-msgid "Successfully Saved Options"
-msgstr "Inställningarna sparades"
+#. i18n: The %s represents the name of the option page saving the options
+#, php-format
+msgid "Successfully Saved Options: %s"
+msgstr "Inställningarna sparades: %s"
 
 msgid "Refresh Folder List"
 msgstr "Uppdatera mapplistan"
@@ -700,6 +716,7 @@ msgstr "Läst:"
 msgid "Your message"
 msgstr "Ditt brev"
 
+#. i18n: Name of Sent folder
 msgid "Sent"
 msgstr "Skickat"
 
@@ -899,10 +916,12 @@ msgstr "Databasfel: %s"
 msgid "Address book is read-only"
 msgstr "Adressboken är skrivskyddad"
 
+#. i18n: don't use html formating in translation
 #, php-format
 msgid "User \"%s\" already exists"
 msgstr "Användaren \"%s\" finns redan"
 
+#. i18n: don't use html formating in translation
 #, php-format
 msgid "User \"%s\" does not exist"
 msgstr "Användaren \"%s\" finns inte"
@@ -1269,7 +1288,7 @@ msgstr "Lösning:"
 
 msgid ""
 "Remove unneccessary messages from your folders. Start with your Trash folder."
-msgstr "Kasta onödiga brev. Börja med brev i din papperskorg."
+msgstr "Ta bort onödiga brev. Börja med brev i din papperskorg."
 
 #, php-format
 msgid "Invalid mailbox name: %s"
@@ -1293,7 +1312,7 @@ msgid ""
 "mailbox)."
 msgstr ""
 "Antagligen är listan med dina brev för gammal och brevet flyttat eller "
-"kastat (kanske av ett annat program som använder samma brevlåda)."
+"borttaget (kanske av ett annat program som använder samma brevlåda)."
 
 msgid "Unknown date"
 msgstr "Okänt datum"
@@ -1397,6 +1416,13 @@ msgstr "Denna externa länk kommer att öppnas i ett nytt fönster"
 #, php-format
 msgid "Option Type '%s' Not Found"
 msgstr "Valet '%s' finns inte"
+
+msgid "Delete Selected"
+msgstr "Ta bort valda"
+
+#, php-format
+msgid "Edit List Layout Type '%s' Not Found"
+msgstr "Layouttypen '%s' för listval finns inte"
 
 msgid "Current Folder"
 msgstr "Aktiv mapp"
@@ -1651,7 +1677,7 @@ msgid "Do not use Trash"
 msgstr "Ingen"
 
 msgid "Trash Folder"
-msgstr "Mapp för kastade brev"
+msgstr "Mapp för borttagna brev"
 
 msgid "Do not use Drafts"
 msgstr "Ingen"
@@ -1780,7 +1806,7 @@ msgid "Delimited:"
 msgstr "Begränsad:"
 
 msgid "You can't select INBOX as Trash folder."
-msgstr "Inkorgen kan inte användas som en mapp för kastade brev."
+msgstr "Inkorgen kan inte användas som en mapp för borttagna brev."
 
 msgid "You can't select INBOX as Sent folder."
 msgstr "Inkorgen kan inte användas som en mapp för skickade brev."
@@ -1850,15 +1876,6 @@ msgstr "Använd brevfot"
 
 msgid "Prefix Signature with '-- ' Line"
 msgstr "Inled brevfoten med avskiljaren '---'"
-
-msgid "Take Address"
-msgstr "Spara adress"
-
-msgid "Address Book Take:"
-msgstr "Spara till adressboken:"
-
-msgid "Try to verify addresses"
-msgstr "Försök att verifiera adresser"
 
 msgid "Config File Version"
 msgstr "Version av inställningsfil"
@@ -2017,7 +2034,7 @@ msgid "Show Folder Prefix Option"
 msgstr "Visa mapparnas prefix"
 
 msgid "By default, move to trash"
-msgstr "Förinställ flytt till mappen för kastade brev"
+msgstr "Förinställ flytt till mappen för borttagna brev"
 
 msgid "By default, move to sent"
 msgstr "Förinställ flytt till mappen för skickade brev"
@@ -2032,7 +2049,7 @@ msgid "Show Special Folders Color"
 msgstr "Visa de särskilda mapparnas färg"
 
 msgid "Auto Expunge"
-msgstr "Kasta breven automatiskt"
+msgstr "Ta bort breven automatiskt"
 
 msgid "Default Sub. of INBOX"
 msgstr "Förvald undermapp till Inkorg"
@@ -2050,7 +2067,7 @@ msgid "Auto Create Special Folders"
 msgstr "Skapa särskilda mappar automatiskt"
 
 msgid "Auto delete folders"
-msgstr "Kasta mappar automatiskt"
+msgstr "Ta bort mappar automatiskt"
 
 msgid "Enable /NoSelect folder fix"
 msgstr "Aktivera /NoSelect fix för mappar"
@@ -2251,6 +2268,9 @@ msgstr ""
 "Denna modul tillåter administratörer att ändra SquirrelMails gemensamma "
 "konfiguration."
 
+msgid "Plugin is not enabled"
+msgstr "Insticksmodulen är inte aktiverad."
+
 msgid "Submit a Bug Report"
 msgstr "Skicka in en felrapport"
 
@@ -2336,8 +2356,8 @@ msgstr "Förbered felrapportsformuläret"
 msgid "Bug"
 msgstr "Felrapportera"
 
-msgid "Bug Reports:"
-msgstr "Felrapporter:"
+msgid "Bug Reports"
+msgstr "Felrapporter"
 
 msgid "Show button in toolbar"
 msgstr "Visa knappen i knappraden"
@@ -2461,16 +2481,16 @@ msgid "Calendar"
 msgstr "Kalender"
 
 msgid "Delete &amp; Prev"
-msgstr "Kasta och visa föregående"
+msgstr "Ta bort och visa föregående"
 
 msgid "Delete &amp; Next"
-msgstr "Kasta och visa nästa"
+msgstr "Ta bort och visa nästa"
 
 msgid "Move to:"
 msgstr "Flytta till:"
 
 msgid "Delete/Move/Next Buttons:"
-msgstr "Knappar för Kasta/Flytta/Nästa:"
+msgstr "Knappar för Ta bort/Flytta/Nästa:"
 
 msgid "Display at top"
 msgstr "Visa högst upp"
@@ -2728,8 +2748,8 @@ msgid ""
 msgstr ""
 "Att ange papperskorgen som mottagare för filtrerad skräppost rekommenderas "
 "inte, då vanliga brev ibland kan tolkas som skräppost av misstag. Gå igenom "
-"skräppostmappen med jämna mellanrum och kasta oönskade brev, så att de inte "
-"tar plats i onödan."
+"skräppostmappen med jämna mellanrum och ta bort oönskade brev, så att de "
+"inte tar plats i onödan."
 
 msgid "Unread messages only"
 msgstr "Bara olästa brev"
@@ -2772,8 +2792,8 @@ msgstr "Hittade inte %s."
 msgid "Today's Fortune"
 msgstr "Dagens spådom"
 
-msgid "Fortunes:"
-msgstr "Spådomar:"
+msgid "Fortunes"
+msgstr "Spådomar"
 
 msgid "Show fortunes at top of mailbox"
 msgstr "Visa spådomar överst i brevlådan"
@@ -2933,11 +2953,11 @@ msgstr "Hämtar UIDL..."
 msgid "Server does not support UIDL."
 msgstr "Servern stödjer inte UIDL."
 
-msgid "Leaving mail on server..."
+msgid "Leaving messages on server..."
 msgstr "Lämnar brev på servern..."
 
 msgid "Deleting messages from server..."
-msgstr "Kastar brev från servern..."
+msgstr "Tar bort brev från servern..."
 
 msgid "Fetching message "
 msgstr "Hämtar brev "
@@ -2968,7 +2988,7 @@ msgstr "Brevet har lagts till i inkorgen"
 
 #, php-format
 msgid "Message %d deleted from remote server!"
-msgstr "Brev %d har kastats från fjärrservern!"
+msgstr "Brev %d har tagits bort från fjärrservern!"
 
 msgid "Delete failed:"
 msgstr "Radering misslyckades:"
@@ -3143,14 +3163,12 @@ msgstr "Kontrollera bara de nyaste breven"
 #, php-format
 msgid ""
 "Selecting the %s option will change the title in some browsers to let you "
-"know when you have new mail (requires JavaScript, and only works in IE but "
-"you won't see errors with other browsers). This will always tell you if you "
-"have new mail, even if you have %s enabled."
+"know when you have new mail (requires JavaScript). This will always tell you "
+"if you have new mail, even if you have %s enabled."
 msgstr ""
 "Om du slår på %s kommer titelraden i vissa webbläsare att ändras då du har "
-"nya brev (kräver JavaScript, och fungerar bara med Internet Explorer men "
-"visar inga fel med andra webbläsare). Detta visar alltid om du har nyinkomna "
-"brev, även om du har valt %s."
+"nya brev (kräver JavaScript). Detta visar alltid om du har nyinkomna brev, "
+"även om du har valt %s."
 
 msgid "Change title on supported browsers"
 msgstr "Byt rubriken på webbläsare som stödjer detta"
@@ -3230,9 +3248,7 @@ msgstr "%s nya brev"
 
 #, php-format
 msgid "%s New Message"
-msgid_plural "%s New Messages"
-msgstr[0] "%s nytt brev"
-msgstr[1] "%s nya brev"
+msgstr "%s nytt brev"
 
 msgid "Test Sound"
 msgstr "Testa ljud"
@@ -3277,7 +3293,7 @@ msgid "SpamCop link is:"
 msgstr "Länken till SpamCop är:"
 
 msgid "Delete spam when reported:"
-msgstr "Kasta skräppost som rapporterats:"
+msgstr "Ta bort skräppost som rapporterats:"
 
 msgid "Only works with email-based reporting"
 msgstr "Fungerar bara med e-postbaserad rapportering"
@@ -3374,8 +3390,8 @@ msgid ""
 "Open it up, click on the appropriate link at the top, and a new browser "
 "window will open."
 msgstr ""
-"När du trycker på knappen skickas brevet till SpamCop och om så önskas "
-"kastas originalet. Relativt snart kommer ett brev från SpamCop till din "
+"När du trycker på knappen skickas brevet till SpamCop och om så önskas tas "
+"originalet bort. Relativt snart kommer ett brev från SpamCop till din "
 "inkorg. (Det skickas till den adress som du registrerade hos SpamCop, så se "
 "till att vidarebefordran fungerar som den ska.) När du öppnat brevet klickar "
 "du på tillämpbar länk, vilket öppnar ett nytt fönster."
@@ -3399,7 +3415,7 @@ msgid ""
 "response email to start the spam reporting."
 msgstr ""
 "När du trycker på knappen på bekräftelsesidan öppnas ett nytt fönster, vari "
-"SpamCop-tjänsten visas. Brevet kommer inte att kastas (detta kommer i "
+"SpamCop-tjänsten visas. Brevet kommer inte att tas bort (detta kommer i "
 "framtiden), men du behöver inte vänta på ett svar via e-post för att kunna "
 "rapportera skräppost."
 
@@ -3413,8 +3429,8 @@ msgstr ""
 "SpamCop-tjänsten visar informationen som den fått den, så bläddra nedåt till "
 "dess du ser en knapp. Det kan ta ett tag medan informationen kontrolleras, "
 "så ha tålamod. Läs vad det står och skicka in rapporten. Stäng fönstret. "
-"Klicka på avbryt eller tillämpbar mapp för att se skräpposten och/eller "
-"kasta den."
+"Klicka på avbryt eller tillämpbar mapp för att se skräpposten och/eller ta "
+"bort den."
 
 msgid "SpamCop service type"
 msgstr "Typ av SpamCop-tjänst"
@@ -3507,11 +3523,11 @@ msgstr ""
 "gamla lösenord så att SquirrelSpell kan dekryptera din personliga ordlista. "
 "Ordlistan kommer sedan att krypteras med ditt nya lösenord. Om du inte har "
 "bytt lösenordet så har din ordlista förmodligen blivit korrupt. I så fall "
-"måste du tyvärr kasta den och skapa en ny. Detta gäller också om du har "
+"måste du tyvärr ta bort den och skapa en ny. Detta gäller också om du har "
 "glömt ditt gamla lösenord."
 
 msgid "Delete my dictionary and start a new one"
-msgstr "Kasta min ordlista och skapa en ny"
+msgstr "Ta bort min ordlista och skapa en ny"
 
 msgid "Decrypt my dictionary with my old password:"
 msgstr "Dekryptera min ordlista med mitt gamla lösenord:"
@@ -3525,11 +3541,11 @@ msgstr "Du måste göra ett val"
 msgid ""
 "You can either delete your dictionary or type in the old password. Not both."
 msgstr ""
-"Du kan antingen kasta din ordlista eller ange det gamla lösenordet. Inte "
+"Du kan antingen ta bort din ordlista eller ange det gamla lösenordet. Inte "
 "både och."
 
 msgid "This will delete your personal dictionary file. Proceed?"
-msgstr "Vill du kasta din personliga ordlista?"
+msgstr "Vill du ta bort din personliga ordlista?"
 
 msgid "Error Decrypting Dictionary"
 msgstr "Fel vid dekryptering av ordlista"
@@ -3636,17 +3652,17 @@ msgid "No errors found"
 msgstr "Inga fel funna"
 
 msgid "Your personal dictionary was erased."
-msgstr "Din personliga ordlista har kastats."
+msgstr "Din personliga ordlista har tagits bort."
 
 msgid "Dictionary Erased"
-msgstr "Ordlistan kastad"
+msgstr "Ordlistan borttagen"
 
 msgid ""
 "Your personal dictionary was erased. Please close this window and click "
 "\"Check Spelling\" button again to start your spellcheck over."
 msgstr ""
-"Din personliga ordlista har kastats. Stäng detta fönster och klicka på &quot;"
-"Kontrollera stavning&quot; för att starta stavningskontrollen."
+"Din personliga ordlista har tagits bort. Stäng detta fönster och klicka på "
+"&quot;Kontrollera stavning&quot; för att starta stavningskontrollen."
 
 msgid "Close this Window"
 msgstr "Stäng detta fönster"
@@ -4057,6 +4073,7 @@ msgstr ""
 "SquirrelMail är namnet på det program som ger dig tillgång till din e-post "
 "via webben."
 
+#. i18n: %s displays org_name variable value enclosed in () or empty string.
 #, php-format
 msgid ""
 "If you have questions about or problems with your mail account, passwords, "
@@ -4066,6 +4083,7 @@ msgstr ""
 "tjänsten eller liknande, kontakta systemadministratörerna eller -leverantören"
 "%s."
 
+#. i18n: %s tags are used in order to remove html URL attributes from translation
 #, php-format
 msgid ""
 "They can assist you adequately with these issues. The SquirrelMail Project "
@@ -4076,6 +4094,7 @@ msgstr ""
 "kan inte hjälpa dig med detta. %sHjälpsidorna%s svarar på de vanligaste "
 "frågorna. Läs därför dessa sidor innan du kontaktar administratören."
 
+#. i18n: %s tags are used in order to remove html URL attributes from translation
 #, php-format
 msgid ""
 "SquirrelMail is a feature rich, standards compliant webmail application "
@@ -4089,6 +4108,7 @@ msgstr ""
 "öppen källkod, d.v.s. gratis programvara med de licensregler som "
 "specificeras av %sGNU General Public License%s."
 
+#. i18n: %s tags are used in order to remove html URL attributes from translation
 #, php-format
 msgid ""
 "For more information about SquirrelMail and the SquirrelMail Project Team, "
@@ -4116,6 +4136,7 @@ msgstr "Inget att söka efter"
 msgid "SquirrelMail Webmail"
 msgstr "SquirrelMail webbpost"
 
+#. i18n: The %s represents the service provider's name
 #, php-format
 msgid "The %s logo"
 msgstr "Logotyp för %s"
@@ -4129,6 +4150,10 @@ msgstr "Mottaget"
 msgid "Compose Preferences"
 msgstr "Brevskrivning"
 
+#, fuzzy
+msgid "Accessibility Preferences"
+msgstr "Utseende"
+
 #, php-format
 msgid "Folder list should automatically %srefresh%s."
 msgstr "Listan över mappar bör %suppdateras%s automatiskt."
@@ -4141,6 +4166,9 @@ msgid ""
 "Control the behaviour and layout of writing new mail messages, replying to "
 "and forwarding messages."
 msgstr "Hur brev skrivs, besvaras och vidarebefordras."
+
+msgid "You can configure features that improve interface usability."
+msgstr ""
 
 #, php-format
 msgid "Welcome to %s. Please supply your full name and email address."
@@ -4302,6 +4330,13 @@ msgstr "Ingen brevlåda angiven"
 msgid "RPC action not understood"
 msgstr "Fjärranropsaktiviteten förstods inte"
 
+msgid "Personal Address Book"
+msgstr "Personlig adressbok"
+
+#, fuzzy, php-format
+msgid "Unknown field name: %s"
+msgstr "Okänd åtgärd: %s"
+
 msgid "PHP install does not have LDAP support."
 msgstr "Denna installation av PHP stödjer inte LDAP."
 
@@ -4325,12 +4360,22 @@ msgstr "Det gick inte att ta bort vissa fältvärden"
 msgid "Unable to rename user \"%s\" to \"%s\""
 msgstr "Det gick inte att namnbyta användare \"%s\" till \"%s\""
 
+msgid "Global Address Book"
+msgstr "Global adressbok"
+
 msgid "Error initializing other address books."
 msgstr "Fel vid initiering av andra adressböcker."
 
 msgid "Unknown address book backend"
 msgstr "Okänd bakände för adressboken"
 
+#. i18n: allows to control fullname layout in address book listing
+#. first %s is for first name, second %s is for last name.
+#. Translate it to '%2$s %1$s', if surname must be displayed first in your language.
+#. Please note that variables can be set to empty string and extra formating
+#. (for example '%2$s, %1$s' as in 'Smith, John') might break. Use it only for
+#. setting name and surname order. scripts will remove all prepended and appended
+#. whitespace.
 #, php-format
 msgid "%s %s"
 msgstr "%s %s"
@@ -4343,8 +4388,11 @@ msgstr ""
 "till systemadministratören."
 
 #, php-format
-msgid "%s should be writable by user %s."
+msgid "%s should be writable by the user %s."
 msgstr "%s måste ha skrivrättigheter för användaren %s."
+
+msgid "Illegal filesystem access was requested"
+msgstr "En otillåten filsystemsaccess begärdes"
 
 msgid "Illegal folder name."
 msgstr "Otillåtet mappnamn."
@@ -4361,9 +4409,6 @@ msgstr "Du har inte valt vilken mapp du vill aktivera."
 
 msgid "You have not selected a folder to unsubscribe. Please do so."
 msgstr "Du har inte valt vilken mapp du vill avaktivera."
-
-msgid "Illegal filesystem access was requested"
-msgstr "En otillåten filsystemsaccess begärdes"
 
 msgid "Possible reason:"
 msgstr "Trolig orsak:"
@@ -4406,20 +4451,22 @@ msgstr ""
 "Din brevlåda finns inte på denna server. Försök med en annan server eller "
 "konsultera din systemadministratör."
 
+#. i18n: Name of Trash folder
 msgid "Trash"
 msgstr "Papperskorg"
 
+#. i18n: Name of Drafts folder
 msgid "Drafts"
 msgstr "Utkast"
 
 msgid "Unknown recipient"
 msgstr "Okänd mottagare"
 
-msgid "Unflag"
-msgstr "Avmarkera"
-
 msgid "Flag"
 msgstr "Markera"
+
+msgid "Unflag"
+msgstr "Avmarkera"
 
 msgid "Undelete"
 msgstr "Ta tillbaka"
@@ -4432,6 +4479,12 @@ msgstr "Kopiera"
 
 msgid "unavailable"
 msgstr "inte tillgänglig"
+
+msgid "KiB"
+msgstr "KiB"
+
+msgid "MiB"
+msgstr "MiB"
 
 msgid "Error"
 msgstr "Fel"
@@ -4508,6 +4561,62 @@ msgstr "IMAP-servern returnerade ett fel."
 msgid "IMAP server closed the connection."
 msgstr "IMAP-servern stängde förbindelsen."
 
+msgid "Not used"
+msgstr ""
+
+msgid "Access Keys For Top Menu (All Screens)"
+msgstr ""
+
+msgid "Access Keys For Message List Screen"
+msgstr ""
+
+#, fuzzy
+msgid "Show All/Paginate"
+msgstr "Sidbryt"
+
+#, fuzzy
+msgid "Thread View/Unthreaded View"
+msgstr "Normal vy"
+
+msgid "Move To"
+msgstr "Flytta till"
+
+#, fuzzy
+msgid "Toggle Selected"
+msgstr "Flytta valda brev till"
+
+msgid "Access Keys For Read Message Screen"
+msgstr ""
+
+msgid "As Attachment"
+msgstr "som bilaga"
+
+msgid "Access Keys For Compose Screen"
+msgstr ""
+
+msgid "Browse"
+msgstr ""
+
+msgid "Attach"
+msgstr "Bifoga"
+
+msgid "Delete Selected Attachments"
+msgstr "Kasta valda bilagor"
+
+msgid "Access Keys For Folder List Screen"
+msgstr ""
+
+#, fuzzy
+msgid "Refresh/Check Mail"
+msgstr "Uppdatera"
+
+#, fuzzy
+msgid "Purge Trash"
+msgstr "Töm"
+
+msgid "Access Keys For Options Screen"
+msgstr ""
+
 msgid "General Message Composition"
 msgstr "Allmänt"
 
@@ -4553,6 +4662,16 @@ msgstr "Aktivera brevkopieringsknapparna"
 msgid "Use Compact Page Selector"
 msgstr "Använd kompakt sidväljare"
 
+msgid "Show Names Instead of Email Addresses"
+msgstr ""
+
+msgid "Custom Date Format"
+msgstr ""
+
+#, fuzzy
+msgid "(Uses format of PHP date() function)"
+msgstr "Använd PHP-omkodningsfunktioner"
+
 msgid "Message Display Options"
 msgstr "Brevvisning"
 
@@ -4561,6 +4680,14 @@ msgstr "Den invändiga ramens höjd"
 
 msgid "Show 'Delete &amp; Prev/Next' Links"
 msgstr "Visa Kasta och visa föregående/nästa-länkar."
+
+#, fuzzy
+msgid "Address Book Display Options"
+msgstr "Adressbokens utseende"
+
+#, fuzzy
+msgid "Number of Addresses per Page"
+msgstr "Antal brev per sida"
 
 msgid "Translate Special Folders"
 msgstr "Översätt särskilda mappar"
@@ -4579,9 +4706,6 @@ msgstr "Visa endast aktiverade mappar"
 
 msgid "XP"
 msgstr "XP"
-
-msgid "Address Book Take"
-msgstr "Spara till adressboken"
 
 msgid "IMAP Connection Security"
 msgstr "Anslutningssäkerhet för IMAP-servern"
@@ -4686,14 +4810,18 @@ msgstr "Förvald mall"
 msgid "Fallback template"
 msgstr "Reservmall"
 
+msgid "Warnings were reported in your setup:"
+msgstr ""
+
+#, php-format
+msgid "%d warning(s) reported."
+msgstr ""
+
 msgid "Show System Specifications"
 msgstr "Visa systemspecifikationerna"
 
 msgid "my email account"
 msgstr "mitt e-postkonto"
-
-msgid "Bug Reports"
-msgstr "Felrapporter"
 
 msgid "You must type in a new password."
 msgstr "Du måste ange ditt nya lösenord."
@@ -4732,6 +4860,7 @@ msgstr "Verifiera det nya lösenordet:"
 msgid "Use this to change your email password."
 msgstr "Byt lösenordet till ditt e-postkonto."
 
+#. i18n: is displayed after "Successfully Saved Options:"
 msgid "User's Password"
 msgstr "Användarens lösenord"
 
@@ -4951,9 +5080,13 @@ msgstr "Användarnamn saknas"
 msgid "Empty new password"
 msgstr "Lösenord saknas"
 
+#. i18n: %s shows executed fortune cookie command.
 #, php-format
 msgid "Unable to execute \"%s\"."
 msgstr "Kunde inte exekvera \"%s\"."
+
+msgid "Fortunes:"
+msgstr "Spådomar:"
 
 msgid "Server Capability response:"
 msgstr "Serverns kapabilitetssvar:"
@@ -5062,12 +5195,42 @@ msgstr "Använd TLS"
 msgid "Use StartTLS"
 msgstr "Använd StartTLS"
 
+#, fuzzy
+msgid "View Message Details"
+msgstr "Visa brevets detaljer"
+
+#, fuzzy
+msgid "New Mail Options"
+msgstr "Avisering vid nyinkomna brev"
+
+#, fuzzy
 msgid ""
-"The NewMail plugin will follow the Folder Preferences option &quot;Enable "
-"Unread Message Notification&quot;"
+"Based on the Folder Preferences option &quot;Enable Unread Message "
+"Notification&quot;, you can be notified when new messages arrive in your "
+"account."
 msgstr ""
 "Aviseringen vid nyinkomna brev följer mappinställningen &quot;Avisering av "
 "olästa brev&quot;"
+
+#, fuzzy, php-format
+msgid ""
+"Selecting the %s option will enable the showing of a popup window when "
+"unseen mail is in one of your folders (requires JavaScript)."
+msgstr ""
+"Slå på %s för att visa en dialogruta då du har olästa brev i dina mappar "
+"(kräver JavaScript)."
+
+#, fuzzy, php-format
+msgid ""
+"Selecting the %s option will change the browser title bar to let you know "
+"when you have new mail (requires JavaScript and may only work in some "
+"browsers). This will always tell you if you have new mail, even if you have %"
+"s enabled."
+msgstr ""
+"Om du slår på %s kommer titelraden i vissa webbläsare att ändras då du har "
+"nya brev (kräver JavaScript, och fungerar bara med Internet Explorer men "
+"visar inga fel med andra webbläsare). Detta visar alltid om du har nyinkomna "
+"brev, även om du har valt %s."
 
 msgid "Follow folder preferences"
 msgstr "[enligt förval för mappar]"
@@ -5100,6 +5263,7 @@ msgstr "Uppladdad mediafil:"
 msgid "Media file %s will be removed, if you upload other media file."
 msgstr "Mediafilen %s kommer att tas bort om en annan mediafil laddas upp."
 
+#. i18n: %s inserts the organisation name (typically SquirrelMail)
 #, php-format
 msgid "%s notice:"
 msgstr "Avisering från %s:"
@@ -5110,7 +5274,8 @@ msgstr "Varning"
 msgid "There are some restrictions in Sent Subfolder options."
 msgstr "Det finns vissa begränsningar i akriveringen av skickade brev."
 
-msgid "Sent Subfolders plugin is misconfigured."
+#, fuzzy
+msgid "Sent subfolders options are misconfigured."
 msgstr "Arkiveringen av skickade brev är felkonfigurerad."
 
 msgid "Save emails submitted to SpamCop:"
@@ -5174,17 +5339,31 @@ msgstr "Vid skrivning:"
 msgid "Not yet functional, currently does nothing"
 msgstr "Ej implementerat"
 
+#, fuzzy
+msgid "Update Address"
+msgstr "Uppdatera adress"
+
+#, fuzzy
+msgid "Add to Address Book"
+msgstr "Lägg till i adressboken"
+
+#, fuzzy
+msgid "Add Address"
+msgstr "Lägg till adress"
+
 msgid "Address book is empty"
 msgstr "Adressboken är tom"
+
+#, fuzzy
+msgid "Compose To"
+msgstr "Nytt brev"
 
 msgid "Address book search"
 msgstr "Sök i adressbok"
 
-msgid "Attachment"
+#, fuzzy
+msgid "New attachment"
 msgstr "Bilaga"
-
-msgid "Attach"
-msgstr "Bifoga"
 
 msgid "Max."
 msgstr "Max."
@@ -5210,8 +5389,15 @@ msgstr "Inga mappar att avaktivera."
 msgid "No folders were found to subscribe to."
 msgstr "Inga mappar att aktivera."
 
+#, fuzzy
+msgid "Check Mail"
+msgstr "Uppdatera"
+
 msgid "Message Flags"
 msgstr "Ikoner"
+
+msgid "Attachment"
+msgstr "Bilaga"
 
 msgid "Click here to change the sorting of the message list"
 msgstr "Ändra sorteringen av index"
@@ -5234,9 +5420,6 @@ msgstr "Annan"
 msgid "Save Changes"
 msgstr "Spara ändringar"
 
-msgid "Type"
-msgstr "Typ"
-
 msgid "Requested"
 msgstr "Begärt"
 
@@ -5246,14 +5429,14 @@ msgstr "Skicka mottagningsbevis nu"
 msgid "Viewing HTML formatted email"
 msgstr "Visar HTML-formaterat brev"
 
-msgid "As Attachment"
-msgstr "som bilaga"
-
-msgid "Move To"
-msgstr "Flytta till"
-
 msgid "Delete &amp; Previous"
 msgstr "Kasta och visa föregående"
+
+msgid ""
+"Use your web browser's Print button or File -&gt; Print menu option to print "
+"this email. Afterwards, you can close this browser window again to return to "
+"SquirrelMail."
+msgstr ""
 
 msgid "and subfolders"
 msgstr "och undermappar"
@@ -5279,6 +5462,48 @@ msgstr "Extra information"
 msgid "Folder List"
 msgstr "Lista över mappar"
 
+#, fuzzy
+msgid "Open All"
+msgstr "Kunde inte öppna"
+
+#, fuzzy
+msgid "Close All"
+msgstr "Stäng"
+
+#, fuzzy
+msgid "The SquirrelMail logo"
+msgstr "Version av SquirrelMail"
+
+msgid "OR"
+msgstr ""
+
+#, fuzzy
+msgid "Reset"
+msgstr "Nyligen"
+
+msgid "Reorder indexes"
+msgstr ""
+
+#, fuzzy
+msgid "Add an index"
+msgstr "Lägg till adress"
+
+#. i18n: The parameters are: subject, sender, and date.
+#, php-format
+msgid "%s from %s on %s"
+msgstr ""
+
+#, fuzzy
+msgid "Expand Header"
+msgstr "Brevhuvud"
+
+msgid "Collapse Header"
+msgstr ""
+
+#, fuzzy
+msgid "Message Preview"
+msgstr "Index"
+
 msgid "Delivery error report"
 msgstr "Rapport om leveransfel"
 
@@ -5287,3 +5512,21 @@ msgstr "Brevhuvud för olevererade brev"
 
 msgid "This image has been removed for security reasons"
 msgstr "Av säkerhetsskäl är denna bild avlägsnad"
+
+#~ msgid "Take Address"
+#~ msgstr "Spara adress"
+
+#~ msgid "Address Book Take:"
+#~ msgstr "Spara till adressboken:"
+
+#~ msgid "Try to verify addresses"
+#~ msgstr "Försök att verifiera adresser"
+
+#~ msgid "Bug Reports:"
+#~ msgstr "Felrapporter:"
+
+#~ msgid "Address Book Take"
+#~ msgstr "Spara till adressboken"
+
+#~ msgid "Type"
+#~ msgstr "Typ"
