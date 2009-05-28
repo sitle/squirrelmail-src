@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: SquirrelMail HEAD\n"
 "Report-Msgid-Bugs-To: SquirrelMail Internationalization <squirrelmail-"
 "i18n@lists.sourceforge.net>\n"
-"POT-Creation-Date: 2009-05-26 13:44+0200\n"
+"POT-Creation-Date: 2009-05-28 08:17+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -877,6 +877,82 @@ msgstr ""
 msgid "View Unsafe Images"
 msgstr ""
 
+msgid "Email delivery error"
+msgstr ""
+
+#, php-format
+msgid "Can't execute command '%s'."
+msgstr ""
+
+msgid "Can't open SMTP stream."
+msgstr ""
+
+msgid "Service not available, closing channel"
+msgstr ""
+
+msgid "A password transition is needed"
+msgstr ""
+
+msgid "Requested mail action not taken: mailbox unavailable"
+msgstr ""
+
+msgid "Requested action aborted: error in processing"
+msgstr ""
+
+msgid "Requested action not taken: insufficient system storage"
+msgstr ""
+
+msgid "Temporary authentication failure"
+msgstr ""
+
+msgid "Syntax error; command not recognized"
+msgstr ""
+
+msgid "Syntax error in parameters or arguments"
+msgstr ""
+
+msgid "Command not implemented"
+msgstr ""
+
+msgid "Bad sequence of commands"
+msgstr ""
+
+msgid "Command parameter not implemented"
+msgstr ""
+
+msgid "Authentication required"
+msgstr ""
+
+msgid "Authentication mechanism is too weak"
+msgstr ""
+
+msgid "Authentication failed"
+msgstr ""
+
+msgid "Encryption required for requested authentication mechanism"
+msgstr ""
+
+msgid "Requested action not taken: mailbox unavailable"
+msgstr ""
+
+msgid "User not local; please try forwarding"
+msgstr ""
+
+msgid "Requested mail action aborted: exceeding storage allocation"
+msgstr ""
+
+msgid "Requested action not taken: mailbox name not allowed"
+msgstr ""
+
+msgid "Transaction failed"
+msgstr ""
+
+msgid "Unknown response"
+msgstr ""
+
+msgid "(no subject)"
+msgstr ""
+
 msgid ""
 "Could not include PEAR database functions required for the database backend."
 msgstr ""
@@ -1258,9 +1334,6 @@ msgstr ""
 msgid "Invalid mailbox name: %s"
 msgstr ""
 
-msgid "(no subject)"
-msgstr ""
-
 msgid "Unknown Sender"
 msgstr ""
 
@@ -1279,6 +1352,7 @@ msgstr ""
 msgid "Unknown date"
 msgstr ""
 
+#. i18n: "A" is short for "Answered". Make sure that two icon strings aren't translated to the same character (only in 1.5).
 msgid "A"
 msgstr ""
 
@@ -1395,79 +1469,6 @@ msgid "Error creating directory %s."
 msgstr ""
 
 msgid "Could not create hashed directory structure!"
-msgstr ""
-
-msgid "Email delivery error"
-msgstr ""
-
-#, php-format
-msgid "Can't execute command '%s'."
-msgstr ""
-
-msgid "Can't open SMTP stream."
-msgstr ""
-
-msgid "Service not available, closing channel"
-msgstr ""
-
-msgid "A password transition is needed"
-msgstr ""
-
-msgid "Requested mail action not taken: mailbox unavailable"
-msgstr ""
-
-msgid "Requested action aborted: error in processing"
-msgstr ""
-
-msgid "Requested action not taken: insufficient system storage"
-msgstr ""
-
-msgid "Temporary authentication failure"
-msgstr ""
-
-msgid "Syntax error; command not recognized"
-msgstr ""
-
-msgid "Syntax error in parameters or arguments"
-msgstr ""
-
-msgid "Command not implemented"
-msgstr ""
-
-msgid "Bad sequence of commands"
-msgstr ""
-
-msgid "Command parameter not implemented"
-msgstr ""
-
-msgid "Authentication required"
-msgstr ""
-
-msgid "Authentication mechanism is too weak"
-msgstr ""
-
-msgid "Authentication failed"
-msgstr ""
-
-msgid "Encryption required for requested authentication mechanism"
-msgstr ""
-
-msgid "Requested action not taken: mailbox unavailable"
-msgstr ""
-
-msgid "User not local; please try forwarding"
-msgstr ""
-
-msgid "Requested mail action aborted: exceeding storage allocation"
-msgstr ""
-
-msgid "Requested action not taken: mailbox name not allowed"
-msgstr ""
-
-msgid "Transaction failed"
-msgstr ""
-
-msgid "Unknown response"
 msgstr ""
 
 msgid "General Display Options"
@@ -3805,6 +3806,15 @@ msgstr ""
 msgid "Arabic"
 msgstr ""
 
+msgid "Delivery error report"
+msgstr ""
+
+msgid "Undelivered Message Headers"
+msgstr ""
+
+msgid "This image has been removed for security reasons"
+msgstr ""
+
 #, php-format
 msgid "About SquirrelMail %s"
 msgstr ""
@@ -4057,6 +4067,33 @@ msgstr ""
 msgid "RPC action not understood"
 msgstr ""
 
+msgid "Error"
+msgstr ""
+
+msgid "Terminating SquirrelMail due to a fatal error"
+msgstr ""
+
+msgid ""
+"Secure SMTP (TLS) is enabled in SquirrelMail configuration, but used PHP "
+"version does not support it."
+msgstr ""
+
+msgid "TLS session is already activated."
+msgstr ""
+
+msgid ""
+"SMTP STARTTLS is enabled in SquirrelMail configuration, but used SMTP server "
+"does not support it"
+msgstr ""
+
+msgid "Unable to start TLS."
+msgstr ""
+
+msgid ""
+"SMTP STARTTLS is enabled in SquirrelMail configuration, but used PHP version "
+"does not support functions that allow to enable encryption on open socket."
+msgstr ""
+
 msgid "Personal Address Book"
 msgstr ""
 
@@ -4154,9 +4191,6 @@ msgid ""
 "does not support STARTTLS."
 msgstr ""
 
-msgid "Unable to start TLS."
-msgstr ""
-
 msgid ""
 "IMAP STARTTLS is enabled in SquirrelMail configuration, but used PHP version "
 "does not support functions that allow to enable encryption on open socket."
@@ -4202,28 +4236,63 @@ msgstr ""
 msgid "MiB"
 msgstr ""
 
-msgid "Error"
+msgid "Sort by nickname"
 msgstr ""
 
-msgid "Terminating SquirrelMail due to a fatal error"
+msgid "Sort by name"
 msgstr ""
 
-msgid ""
-"Secure SMTP (TLS) is enabled in SquirrelMail configuration, but used PHP "
-"version does not support it."
+msgid "Sort by email"
 msgstr ""
 
-msgid "TLS session is already activated."
+msgid "Sort by info"
 msgstr ""
 
-msgid ""
-"SMTP STARTTLS is enabled in SquirrelMail configuration, but used SMTP server "
-"does not support it"
+#. i18n: "<<" is for the first page in the paginator. "<" is for the previous page.
+msgid "<<"
 msgstr ""
 
-msgid ""
-"SMTP STARTTLS is enabled in SquirrelMail configuration, but used PHP version "
-"does not support functions that allow to enable encryption on open socket."
+msgid "<"
+msgstr ""
+
+#. i18n: ">>" is for the last page in the paginator. ">" is for the next page.
+msgid ">"
+msgstr ""
+
+msgid ">>"
+msgstr ""
+
+#. i18n: "D" is short for "Deleted". Make sure that two icon strings aren't translated to the same character (only in 1.5).
+msgid "D"
+msgstr ""
+
+#. i18n: "F" is short for "Flagged". Make sure that two icon strings aren't translated to the same character (only in 1.5).
+msgid "F"
+msgstr ""
+
+#. i18n: "O" is short for "Forwarded". Make sure that two icon strings aren't translated to the same character (only in 1.5).
+msgid "O"
+msgstr ""
+
+msgid "Forwarded"
+msgstr ""
+
+msgid "High priority"
+msgstr ""
+
+msgid "Low priority"
+msgstr ""
+
+msgid "Normal priority"
+msgstr ""
+
+msgid "Attachment"
+msgstr ""
+
+msgid "No attachment"
+msgstr ""
+
+msgid "XP"
 msgstr ""
 
 msgid ""
@@ -4393,9 +4462,6 @@ msgstr[0] ""
 msgstr[1] ""
 
 msgid "Show only subscribed folders"
-msgstr ""
-
-msgid "XP"
 msgstr ""
 
 msgid "IMAP Connection Security"
@@ -4808,6 +4874,24 @@ msgid ""
 "messages."
 msgstr ""
 
+msgid ""
+"Manage the (non-RFC-compliant) mailing lists that you are subscribed to for "
+"the purpose of providing one-click list replies when responding to list "
+"messages.  You only need to enter any lists you are subscribed to that do "
+"not already comply with RFC 2369."
+msgstr ""
+
+msgid ""
+"When entering a new list, input the full email address for the address from "
+"which list postings are delivered."
+msgstr ""
+
+msgid "Enter new mailing list"
+msgstr ""
+
+msgid "Existing mailing lists"
+msgstr ""
+
 msgid "No POP3 servers configured yet."
 msgstr ""
 
@@ -4921,6 +5005,24 @@ msgstr ""
 #. i18n: %s inserts the organisation name (typically SquirrelMail)
 #, php-format
 msgid "%s notice:"
+msgstr ""
+
+msgid "Show Message Preview Pane"
+msgstr ""
+
+msgid "Split Preview Pane Vertically"
+msgstr ""
+
+msgid "Message Preview Pane Size"
+msgstr ""
+
+msgid "Always Refresh Message List<br />When Using Preview Pane"
+msgstr ""
+
+msgid "Automatically Hide Preview Pane<br />When Not Reading Messages"
+msgstr ""
+
+msgid "Clear Preview"
 msgstr ""
 
 msgid "Warning"
@@ -5040,9 +5142,6 @@ msgstr ""
 msgid "Message Flags"
 msgstr ""
 
-msgid "Attachment"
-msgstr ""
-
 msgid "Click here to change the sorting of the message list"
 msgstr ""
 
@@ -5139,13 +5238,4 @@ msgid "Collapse Header"
 msgstr ""
 
 msgid "Message Preview"
-msgstr ""
-
-msgid "Delivery error report"
-msgstr ""
-
-msgid "Undelivered Message Headers"
-msgstr ""
-
-msgid "This image has been removed for security reasons"
 msgstr ""

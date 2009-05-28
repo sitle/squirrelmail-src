@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: SquirrelMail STABLE\n"
 "Report-Msgid-Bugs-To: SquirrelMail Internationalization <squirrelmail-"
 "i18n@lists.sourceforge.net>\n"
-"POT-Creation-Date: 2009-05-26 13:37+0200\n"
+"POT-Creation-Date: 2009-05-28 08:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -865,6 +865,82 @@ msgstr ""
 msgid "View Unsafe Images"
 msgstr ""
 
+msgid "Email delivery error"
+msgstr ""
+
+#, php-format
+msgid "Can't execute command '%s'."
+msgstr ""
+
+msgid "Can't open SMTP stream."
+msgstr ""
+
+msgid "Service not available, closing channel"
+msgstr ""
+
+msgid "A password transition is needed"
+msgstr ""
+
+msgid "Requested mail action not taken: mailbox unavailable"
+msgstr ""
+
+msgid "Requested action aborted: error in processing"
+msgstr ""
+
+msgid "Requested action not taken: insufficient system storage"
+msgstr ""
+
+msgid "Temporary authentication failure"
+msgstr ""
+
+msgid "Syntax error; command not recognized"
+msgstr ""
+
+msgid "Syntax error in parameters or arguments"
+msgstr ""
+
+msgid "Command not implemented"
+msgstr ""
+
+msgid "Bad sequence of commands"
+msgstr ""
+
+msgid "Command parameter not implemented"
+msgstr ""
+
+msgid "Authentication required"
+msgstr ""
+
+msgid "Authentication mechanism is too weak"
+msgstr ""
+
+msgid "Authentication failed"
+msgstr ""
+
+msgid "Encryption required for requested authentication mechanism"
+msgstr ""
+
+msgid "Requested action not taken: mailbox unavailable"
+msgstr ""
+
+msgid "User not local; please try forwarding"
+msgstr ""
+
+msgid "Requested mail action aborted: exceeding storage allocation"
+msgstr ""
+
+msgid "Requested action not taken: mailbox name not allowed"
+msgstr ""
+
+msgid "Transaction failed"
+msgstr ""
+
+msgid "Unknown response"
+msgstr ""
+
+msgid "(no subject)"
+msgstr ""
+
 msgid ""
 "Could not include PEAR database functions required for the database backend."
 msgstr ""
@@ -1246,9 +1322,6 @@ msgstr ""
 msgid "Invalid mailbox name: %s"
 msgstr ""
 
-msgid "(no subject)"
-msgstr ""
-
 msgid "Unknown Sender"
 msgstr ""
 
@@ -1267,6 +1340,7 @@ msgstr ""
 msgid "Unknown date"
 msgstr ""
 
+#. i18n: "A" is short for "Answered". Make sure that two icon strings aren't translated to the same character (only in 1.5).
 msgid "A"
 msgstr ""
 
@@ -1383,79 +1457,6 @@ msgid "Error creating directory %s."
 msgstr ""
 
 msgid "Could not create hashed directory structure!"
-msgstr ""
-
-msgid "Email delivery error"
-msgstr ""
-
-#, php-format
-msgid "Can't execute command '%s'."
-msgstr ""
-
-msgid "Can't open SMTP stream."
-msgstr ""
-
-msgid "Service not available, closing channel"
-msgstr ""
-
-msgid "A password transition is needed"
-msgstr ""
-
-msgid "Requested mail action not taken: mailbox unavailable"
-msgstr ""
-
-msgid "Requested action aborted: error in processing"
-msgstr ""
-
-msgid "Requested action not taken: insufficient system storage"
-msgstr ""
-
-msgid "Temporary authentication failure"
-msgstr ""
-
-msgid "Syntax error; command not recognized"
-msgstr ""
-
-msgid "Syntax error in parameters or arguments"
-msgstr ""
-
-msgid "Command not implemented"
-msgstr ""
-
-msgid "Bad sequence of commands"
-msgstr ""
-
-msgid "Command parameter not implemented"
-msgstr ""
-
-msgid "Authentication required"
-msgstr ""
-
-msgid "Authentication mechanism is too weak"
-msgstr ""
-
-msgid "Authentication failed"
-msgstr ""
-
-msgid "Encryption required for requested authentication mechanism"
-msgstr ""
-
-msgid "Requested action not taken: mailbox unavailable"
-msgstr ""
-
-msgid "User not local; please try forwarding"
-msgstr ""
-
-msgid "Requested mail action aborted: exceeding storage allocation"
-msgstr ""
-
-msgid "Requested action not taken: mailbox name not allowed"
-msgstr ""
-
-msgid "Transaction failed"
-msgstr ""
-
-msgid "Unknown response"
 msgstr ""
 
 msgid "General Display Options"
