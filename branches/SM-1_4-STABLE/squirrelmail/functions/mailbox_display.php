@@ -261,6 +261,7 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
                 $td_str = "<b><small>";
 
                 if (isset($msg['FLAG_ANSWERED']) && $msg['FLAG_ANSWERED'] == true) {
+                    // i18n: "A" is short for "Answered". Make sure that two icon strings aren't translated to the same character (only in 1.5).
                     $td_str .= _("A");
                     $stuff = true;
                 }
