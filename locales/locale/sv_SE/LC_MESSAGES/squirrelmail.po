@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: SquirrelMail HEAD\n"
 "Report-Msgid-Bugs-To: SquirrelMail Internationalization <squirrelmail-"
 "i18n@lists.sourceforge.net>\n"
-"POT-Creation-Date: 2009-05-15 16:59+0200\n"
+"POT-Creation-Date: 2009-05-29 00:42+0200\n"
 "PO-Revision-Date: 2009-05-26 12:47+0200\n"
 "Last-Translator: Fredrik Jervfors <jervfors@squirrelmail.org>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -895,6 +895,86 @@ msgstr "Visar en bifogad text"
 msgid "View Unsafe Images"
 msgstr "Visa osäkra bilder"
 
+msgid "Email delivery error"
+msgstr "E-postleveransfel"
+
+#, php-format
+msgid "Can't execute command '%s'."
+msgstr "Kan inte exekvera kommandot '%s'."
+
+msgid "Can't open SMTP stream."
+msgstr "Kan inte öppna SMTP-strömmen."
+
+msgid "Service not available, closing channel"
+msgstr "Tjänsten är inte tillgänglig. Stänger kanalen."
+
+msgid "A password transition is needed"
+msgstr "Lösenordet behöver bytas"
+
+msgid "Requested mail action not taken: mailbox unavailable"
+msgstr ""
+"Den begärda åtgärden utfördes ej eftersom brevlådan inte är tillgänglig."
+
+msgid "Requested action aborted: error in processing"
+msgstr "Den begärda åtgärden avbröts p.g.a. ett fel i databehandlingen."
+
+msgid "Requested action not taken: insufficient system storage"
+msgstr "Den begärda åtgärden utfördes ej p.g.a. otillräckligt lagringsutrymme."
+
+msgid "Temporary authentication failure"
+msgstr "Temporär validering misslyckades"
+
+msgid "Syntax error; command not recognized"
+msgstr "Syntaxfel. Okänt kommando."
+
+msgid "Syntax error in parameters or arguments"
+msgstr "Syntaxfel i parametrarna."
+
+msgid "Command not implemented"
+msgstr "Kommandot är inte implementerat"
+
+msgid "Bad sequence of commands"
+msgstr "Kommandona utförs i felaktig ordning"
+
+msgid "Command parameter not implemented"
+msgstr "Parametern är inte implementerad."
+
+msgid "Authentication required"
+msgstr "Valideringen misslyckades"
+
+msgid "Authentication mechanism is too weak"
+msgstr "Valideringsfunktionen är för svag."
+
+msgid "Authentication failed"
+msgstr "Validering misslyckades"
+
+msgid "Encryption required for requested authentication mechanism"
+msgstr "Kryptering krävs för den begärda valideringen"
+
+msgid "Requested action not taken: mailbox unavailable"
+msgstr ""
+"Den begärda åtgärden utfördes ej eftersom brevlådan inte är tillgänglig."
+
+msgid "User not local; please try forwarding"
+msgstr "Inte en lokal användare. Försök vidarebefordra."
+
+msgid "Requested mail action aborted: exceeding storage allocation"
+msgstr ""
+"Den begärda åtgärden avbröts p.g.a. att lagringsutrymmet är överskridet."
+
+msgid "Requested action not taken: mailbox name not allowed"
+msgstr ""
+"Den begärda åtgärden utfördes ej eftersom brevlådans namn inte är tillåtet"
+
+msgid "Transaction failed"
+msgstr "Transaktionen misslyckades"
+
+msgid "Unknown response"
+msgstr "Okänt svar"
+
+msgid "(no subject)"
+msgstr "(ärende saknas)"
+
 msgid ""
 "Could not include PEAR database functions required for the database backend."
 msgstr "Det gick inte att använda nödvändiga PEAR databasfunktioner."
@@ -1294,9 +1374,6 @@ msgstr "Ta bort onödiga brev. Börja med brev i din papperskorg."
 msgid "Invalid mailbox name: %s"
 msgstr "Ogiltigt brevlådenamn: %s"
 
-msgid "(no subject)"
-msgstr "(ärende saknas)"
-
 msgid "Unknown Sender"
 msgstr "Okänd avsändare"
 
@@ -1317,6 +1394,7 @@ msgstr ""
 msgid "Unknown date"
 msgstr "Okänt datum"
 
+#. i18n: "A" is short for "Answered". Make sure that two icon strings aren't translated to the same character (only in 1.5).
 msgid "A"
 msgstr "B"
 
@@ -1437,83 +1515,6 @@ msgstr "Kunde inte skapa katalogen %s."
 msgid "Could not create hashed directory structure!"
 msgstr "Kunde inte skapa katalogstruktur!"
 
-msgid "Email delivery error"
-msgstr "E-postleveransfel"
-
-#, php-format
-msgid "Can't execute command '%s'."
-msgstr "Kan inte exekvera kommandot '%s'."
-
-msgid "Can't open SMTP stream."
-msgstr "Kan inte öppna SMTP-strömmen."
-
-msgid "Service not available, closing channel"
-msgstr "Tjänsten är inte tillgänglig. Stänger kanalen."
-
-msgid "A password transition is needed"
-msgstr "Lösenordet behöver bytas"
-
-msgid "Requested mail action not taken: mailbox unavailable"
-msgstr ""
-"Den begärda åtgärden utfördes ej eftersom brevlådan inte är tillgänglig."
-
-msgid "Requested action aborted: error in processing"
-msgstr "Den begärda åtgärden avbröts p.g.a. ett fel i databehandlingen."
-
-msgid "Requested action not taken: insufficient system storage"
-msgstr "Den begärda åtgärden utfördes ej p.g.a. otillräckligt lagringsutrymme."
-
-msgid "Temporary authentication failure"
-msgstr "Temporär validering misslyckades"
-
-msgid "Syntax error; command not recognized"
-msgstr "Syntaxfel. Okänt kommando."
-
-msgid "Syntax error in parameters or arguments"
-msgstr "Syntaxfel i parametrarna."
-
-msgid "Command not implemented"
-msgstr "Kommandot är inte implementerat"
-
-msgid "Bad sequence of commands"
-msgstr "Kommandona utförs i felaktig ordning"
-
-msgid "Command parameter not implemented"
-msgstr "Parametern är inte implementerad."
-
-msgid "Authentication required"
-msgstr "Valideringen misslyckades"
-
-msgid "Authentication mechanism is too weak"
-msgstr "Valideringsfunktionen är för svag."
-
-msgid "Authentication failed"
-msgstr "Validering misslyckades"
-
-msgid "Encryption required for requested authentication mechanism"
-msgstr "Kryptering krävs för den begärda valideringen"
-
-msgid "Requested action not taken: mailbox unavailable"
-msgstr ""
-"Den begärda åtgärden utfördes ej eftersom brevlådan inte är tillgänglig."
-
-msgid "User not local; please try forwarding"
-msgstr "Inte en lokal användare. Försök vidarebefordra."
-
-msgid "Requested mail action aborted: exceeding storage allocation"
-msgstr ""
-"Den begärda åtgärden avbröts p.g.a. att lagringsutrymmet är överskridet."
-
-msgid "Requested action not taken: mailbox name not allowed"
-msgstr ""
-"Den begärda åtgärden utfördes ej eftersom brevlådans namn inte är tillåtet"
-
-msgid "Transaction failed"
-msgstr "Transaktionen misslyckades"
-
-msgid "Unknown response"
-msgstr "Okänt svar"
-
 msgid "General Display Options"
 msgstr "Allmänt"
 
@@ -1590,7 +1591,7 @@ msgid "After message body"
 msgstr "Efter brevtexten"
 
 msgid "Address Book Display Format"
-msgstr "Adressbokens utseende"
+msgstr "Adressbokens visningsformat"
 
 msgid "Javascript"
 msgstr "JavaScript"
@@ -2651,17 +2652,6 @@ msgid "FREE, for now - Not Just Another Blacklist - Dial-up IPs."
 msgstr ""
 "FRI, för närvarande - Not Just Another Blacklist - IP-nummer för uppringda "
 "internetanslutningar."
-
-msgid "FREE - Distributed Sender Boycott List - Confirmed Relays"
-msgstr "FRI - Distributed Sender Boycott List - Bekräftade vidarebefordrare."
-
-msgid "FREE - Distributed Sender Boycott List - Confirmed Multi-stage Relays"
-msgstr ""
-"FRI - Distributed Sender Boycott List - Bekräftade 'multi-stage-"
-"vidarebefordrare'"
-
-msgid "FREE - Distributed Sender Boycott List - UN-Confirmed Relays"
-msgstr "FRI - Distributed Sender Boycott List - Obekräftade vidarebefordrare."
 
 msgid "WARNING! You must enter something to search for."
 msgstr "VARNING! Du måste ange något att söka efter."
@@ -4062,6 +4052,15 @@ msgstr "Översättningsriktning"
 msgid "Arabic"
 msgstr "Arabiska"
 
+msgid "Delivery error report"
+msgstr "Rapport om leveransfel"
+
+msgid "Undelivered Message Headers"
+msgstr "Brevhuvud för olevererade brev"
+
+msgid "This image has been removed for security reasons"
+msgstr "Av säkerhetsskäl är denna bild avlägsnad"
+
 #, php-format
 msgid "About SquirrelMail %s"
 msgstr "Om SquirrelMail %s"
@@ -4150,9 +4149,8 @@ msgstr "Mottaget"
 msgid "Compose Preferences"
 msgstr "Brevskrivning"
 
-#, fuzzy
 msgid "Accessibility Preferences"
-msgstr "Utseende"
+msgstr "Tillgänglighet"
 
 #, php-format
 msgid "Folder list should automatically %srefresh%s."
@@ -4169,6 +4167,7 @@ msgstr "Hur brev skrivs, besvaras och vidarebefordras."
 
 msgid "You can configure features that improve interface usability."
 msgstr ""
+"Konfigurera egenskaper som förbättrar användargränssnittets användbarhet."
 
 #, php-format
 msgid "Welcome to %s. Please supply your full name and email address."
@@ -4330,12 +4329,46 @@ msgstr "Ingen brevlåda angiven"
 msgid "RPC action not understood"
 msgstr "Fjärranropsaktiviteten förstods inte"
 
+msgid "Error"
+msgstr "Fel"
+
+msgid "Terminating SquirrelMail due to a fatal error"
+msgstr "SquirrelMail avslutas på grund av ett fatalt fel"
+
+msgid ""
+"Secure SMTP (TLS) is enabled in SquirrelMail configuration, but used PHP "
+"version does not support it."
+msgstr ""
+"Säker SMTP (TLS) är aktiverat i SquirrelMails konfiguration, men den PHP-"
+"version som används saknar stöd för detta."
+
+msgid "TLS session is already activated."
+msgstr "TLS-sessionen är redan aktiverad."
+
+msgid ""
+"SMTP STARTTLS is enabled in SquirrelMail configuration, but used SMTP server "
+"does not support it"
+msgstr ""
+"SMTP STARTTLS är aktiverat i SquirrelMails konfiguration, men den valda SMTP-"
+"servern stödjer inte STARTTLS."
+
+msgid "Unable to start TLS."
+msgstr "Kunde inte starta TLS."
+
+msgid ""
+"SMTP STARTTLS is enabled in SquirrelMail configuration, but used PHP version "
+"does not support functions that allow to enable encryption on open socket."
+msgstr ""
+"SMTP STARTTLS är aktiverat i SquirrelMails konfiguration, men den PHP-"
+"version som används stödjer inte funktioner som tillåter kryptering över "
+"öppna socklar."
+
 msgid "Personal Address Book"
 msgstr "Personlig adressbok"
 
-#, fuzzy, php-format
+#, php-format
 msgid "Unknown field name: %s"
-msgstr "Okänd åtgärd: %s"
+msgstr "Okänd fältnamn: %s"
 
 msgid "PHP install does not have LDAP support."
 msgstr "Denna installation av PHP stödjer inte LDAP."
@@ -4433,9 +4466,6 @@ msgstr ""
 "IMAP STARTTLS är aktiverat i SquirrelMails konfiguration, men den valda IMAP-"
 "servern stödjer inte STARTTLS."
 
-msgid "Unable to start TLS."
-msgstr "Kunde inte starta TLS."
-
 msgid ""
 "IMAP STARTTLS is enabled in SquirrelMail configuration, but used PHP version "
 "does not support functions that allow to enable encryption on open socket."
@@ -4486,36 +4516,64 @@ msgstr "KiB"
 msgid "MiB"
 msgstr "MiB"
 
-msgid "Error"
-msgstr "Fel"
+msgid "Sort by nickname"
+msgstr "Sortera efter kortnamn"
 
-msgid "Terminating SquirrelMail due to a fatal error"
-msgstr "SquirrelMail avslutas på grund av ett fatalt fel"
+msgid "Sort by name"
+msgstr "Sortera efter namn"
 
-msgid ""
-"Secure SMTP (TLS) is enabled in SquirrelMail configuration, but used PHP "
-"version does not support it."
-msgstr ""
-"Säker SMTP (TLS) är aktiverat i SquirrelMails konfiguration, men den PHP-"
-"version som används saknar stöd för detta."
+msgid "Sort by email"
+msgstr "Sortera efter e-postadress"
 
-msgid "TLS session is already activated."
-msgstr "TLS-sessionen är redan aktiverad."
+msgid "Sort by info"
+msgstr "Sortera efter information"
 
-msgid ""
-"SMTP STARTTLS is enabled in SquirrelMail configuration, but used SMTP server "
-"does not support it"
-msgstr ""
-"SMTP STARTTLS är aktiverat i SquirrelMails konfiguration, men den valda SMTP-"
-"servern stödjer inte STARTTLS."
+#. i18n: "<<" is for the first page in the paginator. "<" is for the previous page.
+msgid "<<"
+msgstr "<<"
 
-msgid ""
-"SMTP STARTTLS is enabled in SquirrelMail configuration, but used PHP version "
-"does not support functions that allow to enable encryption on open socket."
-msgstr ""
-"SMTP STARTTLS är aktiverat i SquirrelMails konfiguration, men den PHP-"
-"version som används stödjer inte funktioner som tillåter kryptering över "
-"öppna socklar."
+msgid "<"
+msgstr "<"
+
+#. i18n: ">>" is for the last page in the paginator. ">" is for the next page.
+msgid ">"
+msgstr ">"
+
+msgid ">>"
+msgstr ">>"
+
+#. i18n: "D" is short for "Deleted". Make sure that two icon strings aren't translated to the same character (only in 1.5).
+msgid "D"
+msgstr "R"
+
+#. i18n: "F" is short for "Flagged". Make sure that two icon strings aren't translated to the same character (only in 1.5).
+msgid "F"
+msgstr "M"
+
+#. i18n: "O" is short for "Forwarded". Make sure that two icon strings aren't translated to the same character (only in 1.5).
+msgid "O"
+msgstr "V"
+
+msgid "Forwarded"
+msgstr "Vidarebefordrat"
+
+msgid "High priority"
+msgstr "Hög prioritet"
+
+msgid "Low priority"
+msgstr "Låg prioritet"
+
+msgid "Normal priority"
+msgstr "Normal prioritet"
+
+msgid "Attachment"
+msgstr "Bilaga"
+
+msgid "No attachment"
+msgstr "Ingen bilaga"
+
+msgid "XP"
+msgstr "XP"
 
 msgid ""
 "Run \"configure\", choose option 4 (General options) and set option 10 "
@@ -4562,36 +4620,34 @@ msgid "IMAP server closed the connection."
 msgstr "IMAP-servern stängde förbindelsen."
 
 msgid "Not used"
-msgstr ""
+msgstr "Ej använd"
 
 msgid "Access Keys For Top Menu (All Screens)"
-msgstr ""
+msgstr "Tangentbordskommandon för huvudmenyn (alla sidor)."
 
 msgid "Access Keys For Message List Screen"
-msgstr ""
+msgstr "Tangentbordskommandon för indexsidan"
 
 msgid "Show All/Paginate"
 msgstr "Visa alla/sidbryt"
 
-#, fuzzy
 msgid "Thread View/Unthreaded View"
-msgstr "Normal vy"
+msgstr "Korrespondensvy/normal vy"
 
 msgid "Move To"
 msgstr "Flytta till"
 
-#, fuzzy
 msgid "Toggle Selected"
-msgstr "Flytta valda brev till"
+msgstr "Växla valda"
 
 msgid "Access Keys For Read Message Screen"
-msgstr ""
+msgstr "Tangentbordskommandon för brevvisningssidan"
 
 msgid "As Attachment"
 msgstr "som bilaga"
 
 msgid "Access Keys For Compose Screen"
-msgstr ""
+msgstr "Tangentbordskommandon för brevskrivning"
 
 msgid "Browse"
 msgstr ""
@@ -4603,7 +4659,7 @@ msgid "Delete Selected Attachments"
 msgstr "Ta bort valda bilagor"
 
 msgid "Access Keys For Folder List Screen"
-msgstr ""
+msgstr "Tangentbordskommandon för mappsidan"
 
 msgid "Refresh/Check Mail"
 msgstr "Uppdatera/Kontrollera e-post"
@@ -4612,16 +4668,16 @@ msgid "Purge Trash"
 msgstr "Töm papperskorgen"
 
 msgid "Access Keys For Options Screen"
-msgstr ""
+msgstr "Tangentbordskommandon för inställningsidan"
 
 msgid "General Message Composition"
 msgstr "Allmänt"
 
 msgid "Pop-up window"
-msgstr "Som dialogruta"
+msgstr "Dialogruta"
 
 msgid "In-page"
-msgstr "Som sida"
+msgstr "Sida"
 
 msgid "Replying and Forwarding Messages"
 msgstr "Besvara och vidarebefordra brev"
@@ -4660,14 +4716,13 @@ msgid "Use Compact Page Selector"
 msgstr "Använd kompakt sidväljare"
 
 msgid "Show Names Instead of Email Addresses"
-msgstr ""
+msgstr "Visa namn istället för e-postadresser"
 
 msgid "Custom Date Format"
-msgstr ""
+msgstr "Egendefinierat datumformat"
 
-#, fuzzy
 msgid "(Uses format of PHP date() function)"
-msgstr "Använd PHP-omkodningsfunktioner"
+msgstr "(Använder samma format som PHP:s date-funktion)"
 
 msgid "Message Display Options"
 msgstr "Brevvisning"
@@ -4678,13 +4733,11 @@ msgstr "Den invändiga ramens höjd"
 msgid "Show 'Delete &amp; Prev/Next' Links"
 msgstr "Visa ta bort och visa föregående/nästa-länkar."
 
-#, fuzzy
 msgid "Address Book Display Options"
 msgstr "Adressbokens utseende"
 
-#, fuzzy
 msgid "Number of Addresses per Page"
-msgstr "Antal brev per sida"
+msgstr "Antal adresser per sida"
 
 msgid "Translate Special Folders"
 msgstr "Översätt särskilda mappar"
@@ -4700,9 +4753,6 @@ msgstr[1] "%d minuter"
 
 msgid "Show only subscribed folders"
 msgstr "Visa endast aktiverade mappar"
-
-msgid "XP"
-msgstr "XP"
 
 msgid "IMAP Connection Security"
 msgstr "Anslutningssäkerhet för IMAP-servern"
@@ -5139,6 +5189,29 @@ msgstr ""
 "Administrera de (icke-RFC-kompatibla) e-postlistor du prenumererar på, för "
 "att kunna svara till dem med bara ett klick."
 
+msgid ""
+"Manage the (non-RFC-compliant) mailing lists that you are subscribed to for "
+"the purpose of providing one-click list replies when responding to list "
+"messages. You only need to enter any lists you are subscribed to that do not "
+"already comply with RFC 2369."
+msgstr ""
+"Administrera de (icke-RFC-kompatibla) e-postlistor du prenumererar på, för "
+"att kunna svara till dem med bara ett klick. Du behöver endast lägga till de "
+"listor du prenumererar på som inte redan är kompatibla med RFC 2369."
+
+msgid ""
+"When entering a new list, input the full email address for the address from "
+"which list postings are delivered."
+msgstr ""
+"När du anger en lista måste du ange hela den e-postadress som e-postlistan "
+"skickar sina brev från."
+
+msgid "Enter new mailing list"
+msgstr "Ange en ny e-postlista"
+
+msgid "Existing mailing lists"
+msgstr "Existerande e-postlistor"
+
 msgid "No POP3 servers configured yet."
 msgstr "Inga POP3-servrar är konfigurerade."
 
@@ -5264,6 +5337,27 @@ msgstr "Mediafilen %s kommer att tas bort om en annan mediafil laddas upp."
 #, php-format
 msgid "%s notice:"
 msgstr "Avisering från %s:"
+
+#, fuzzy
+msgid "Show Message Preview Pane"
+msgstr "Index"
+
+msgid "Split Preview Pane Vertically"
+msgstr ""
+
+#, fuzzy
+msgid "Message Preview Pane Size"
+msgstr "Index"
+
+msgid "Always Refresh Message List<br />When Using Preview Pane"
+msgstr ""
+
+msgid "Automatically Hide Preview Pane<br />When Not Reading Messages"
+msgstr ""
+
+#, fuzzy
+msgid "Clear Preview"
+msgstr "Index"
 
 msgid "Warning"
 msgstr "Varning"
@@ -5391,9 +5485,6 @@ msgstr "Kontrollera e-post"
 msgid "Message Flags"
 msgstr "Ikoner"
 
-msgid "Attachment"
-msgstr "Bilaga"
-
 msgid "Click here to change the sorting of the message list"
 msgstr "Ändra sorteringen av index"
 
@@ -5498,14 +5589,19 @@ msgstr ""
 msgid "Message Preview"
 msgstr "Index"
 
-msgid "Delivery error report"
-msgstr "Rapport om leveransfel"
+#~ msgid "FREE - Distributed Sender Boycott List - Confirmed Relays"
+#~ msgstr ""
+#~ "FRI - Distributed Sender Boycott List - Bekräftade vidarebefordrare."
 
-msgid "Undelivered Message Headers"
-msgstr "Brevhuvud för olevererade brev"
+#~ msgid ""
+#~ "FREE - Distributed Sender Boycott List - Confirmed Multi-stage Relays"
+#~ msgstr ""
+#~ "FRI - Distributed Sender Boycott List - Bekräftade 'multi-stage-"
+#~ "vidarebefordrare'"
 
-msgid "This image has been removed for security reasons"
-msgstr "Av säkerhetsskäl är denna bild avlägsnad"
+#~ msgid "FREE - Distributed Sender Boycott List - UN-Confirmed Relays"
+#~ msgstr ""
+#~ "FRI - Distributed Sender Boycott List - Obekräftade vidarebefordrare."
 
 #~ msgid "Take Address"
 #~ msgstr "Spara adress"
