@@ -1,18 +1,14 @@
 #!/bin/sh
 ##########################
 # Configuration vars
-SM_CVSPATH='/home/tomas/smstats/cvs/'
+SM_SVNPATH='/home/tomas/smstats/cvs/'
 SM_STATSPATH='/home/tomas/smstats/scripts/'
 SM_WORKPATH='/home/tomas/smstats/work/'
 SM_SITEPATH='/home/tomas/smstats/www/'
 SM_WORKSITEPATH='/home/tomas/smstats/workwww/'
 SM_BRANCHES='HEAD SM-1_4_5'
-CVSROOT=':pserver:anonymous@cvs.sourceforge.net:/cvsroot/squirrelmail'
-CVSFLAGS='-Q -z3'
 # End of configuration vars
 ###########################
-
-export CVSROOT
 
 #PATH=$PATH:/usr/local/bin:/usr/bin:/bin
 #export PATH
@@ -21,24 +17,28 @@ DATE=`date +%Y%m%d`
 
 for BRANCH in $SM_BRANCHES; do
   # Create branch if it does not exist
-  if [ ! -d ${SM_CVSPATH}${BRANCH}/locales ]; then
-    mkdir -p ${SM_CVSPATH}${BRANCH}
-    cd ${SM_CVSPATH}${BRANCH}
-    cvs ${CVSFLAGS} co -r ${BRANCH} locales
+  if [ ! -d ${SM_SVNPATH}${BRANCH}/locales ]; then
+    mkdir -p ${SM_SVNPATH}${BRANCH}
+    cd ${SM_SVNPATH}${BRANCH}
+    if [ "${BRANCH}" = "HEAD" ]; then
+      svn co -q https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/trunk/locales
+    else
+      svn co -q https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/branches/${BRANCH}/locales
+    fi
   fi
 
-  # Update local CVS copy 
-  cd ${SM_CVSPATH}${BRANCH}/locales
-  cvs ${CVSFLAGS} up -Pd
+  # Update local SVN copy 
+  cd ${SM_SVNPATH}${BRANCH}/locales
+  svn up -q
 
   # Clean work directory
   if [ -d ${SM_WORKPATH}${BRANCH} ]; then
     rm -rf ${SM_WORKPATH}${BRANCH}
   fi
 
-  # Copy CVS to working directory
+  # Copy SVN to working directory
   mkdir -p ${SM_WORKPATH}${BRANCH}
-  rsync -r -q --exclude *CVS/ ${SM_CVSPATH}${BRANCH}/locales ${SM_WORKPATH}${BRANCH}
+  rsync -r -q --exclude *svn/ ${SM_SVNPATH}${BRANCH}/locales ${SM_WORKPATH}${BRANCH}
 
   # Merge all branches
   cd ${SM_WORKPATH}${BRANCH}/locales
@@ -96,9 +96,11 @@ rm ${SM_WORKSITEPATH}files/HEAD/locales/locale/*/LC_MESSAGES/extra/*.mo
 # gzip all .po files
 for BRANCH in $SM_BRANCHES; do
   gzip -9 ${SM_WORKSITEPATH}files/${BRANCH}/locales/locale/*/LC_MESSAGES/*.po
-  gzip -9 ${SM_WORKSITEPATH}files/${BRANCH}/locales/locale/*/LC_MESSAGES/plugins/*.po
   gzip -9 ${SM_WORKSITEPATH}files/${BRANCH}/locales/locale/*/LC_MESSAGES/extra/*.po
+  gzip -9 ${SM_WORKSITEPATH}files/${BRANCH}/locales/locale/*/LC_MESSAGES/plugins/*.po
   gzip -9 ${SM_WORKSITEPATH}files/${BRANCH}/locales/po/*.pot
+  gzip -9 ${SM_WORKSITEPATH}files/${BRANCH}/locales/po/extra/*.pot
+  gzip -9 ${SM_WORKSITEPATH}files/${BRANCH}/locales/po/plugins/*.pot
 done
 
 # sync generated files with main www directory
