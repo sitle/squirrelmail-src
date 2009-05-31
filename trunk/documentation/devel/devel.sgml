@@ -386,8 +386,8 @@ This includes to initialize variables (just <tt/$a = 0/ is initialization) and
 to use <tt/isset()/ or <tt/empty()/ in tests. Use <tt>ini_get("safe_mode")</tt>
 to determine if you can use <tt>putenv()</tt>.
 
-Since coding to elimnate the warnings produced by <tt/E_STRICT/ will result in
-code that's not backwards compatible all the way to SquirrelMail's mimimal PHP
+Since coding to eliminate the warnings produced by <tt/E_STRICT/ will result in
+code that's not backwards compatible all the way to SquirrelMail's minimal PHP
 requirements, <tt/E_STRICT/ should be off. Note that <tt/E_STRICT/ is part of
 <tt/E_ALL/ since PHP 6.0.0, so <tt/php.ini/ must be configured like this:
 
