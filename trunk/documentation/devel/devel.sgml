@@ -107,7 +107,7 @@ runs in a protective environment or "sandbox". Input validation should always be
 performed in server-side code despite the temptation to do so in client code in
 order to leverage libraries that allow "easier" client-side data validation.
 Google "Cross Site Scripting", "SQL Injection", and "client-side trust" for an
-explanation of the pitfalls associated with weak client-side input validation. 
+explanation of the pitfalls associated with weak client-side input validation.
 
 This doesn't mean that it's not allowed to make use of JavaScript in
 SquirrelMail or its plugins, but as much of the functionality as possible
@@ -252,9 +252,9 @@ people who use other languages still can use SquirrelMail. Who cares about some
 fancy new feature that a developer implements - if it is only available in
 English, it can not be globally used.
 
-<bf/User support:/ Thank goodness for our precious user support people. These 
-people patiently, repeatedly, respond to people's inquiries on the SquirrelMail 
-mailing lists. They often answer the same questions over and over, and are very 
+<bf/User support:/ Thank goodness for our precious user support people. These
+people patiently, repeatedly, respond to people's inquiries on the SquirrelMail
+mailing lists. They often answer the same questions over and over, and are very
 patient and consistent with their help. Without these people, where would we be?
 
 So, in short and again, the point is that SquirrelMail is simply a lot more then
@@ -1320,7 +1320,7 @@ function squirrelmail_plugin_init_demo() {
 }
 </verb></tscreen>
 
-Again, please note that as of SquirrelMail 1.5.2, this function is no longer 
+Again, please note that as of SquirrelMail 1.5.2, this function is no longer
 called at run time and is instead called (actually, it is only parsed, never
 executed) only once at configuration time. Thus, the inclusion of any dynamic
 code (anything except hook registration) here is strongly discouraged.
@@ -1359,7 +1359,7 @@ implemented - where in the SquirrelMail source code does the plugin need to
 execute its own code?
 
 Hooks themselves are functions executed by the SquirrelMail core using one of
-just a few hook types which in turn pass execution to the plugins that have 
+just a few hook types which in turn pass execution to the plugins that have
 registered themselves against the current hook as explained
 <ref id="plugin_implementation" name="above">.
 
@@ -1621,7 +1621,6 @@ TODO: List is very out-of-synch with newest 1.5.2 and all its changes, as is the
 
 <tscreen><verb>
 % = This hook is used in multiple places in the given file
-# = Called with hook type (see below)
 O = Optional hook provided by a particular plugin
 
 &ero; = See "Identity hooks" below
@@ -1646,8 +1645,8 @@ stores the return value of the <tt/$abook-&gt;add_backend()/ method.
 <p>
 When a message has attachments, this hook is called for each attachment according
 to its MIME type. For instance, a ZIP file will trigger a hook call to a hook
-named "attachment application/x-zip". A plugin registered on such a hook typically 
-will show a link to do a specific action, such as "Verify" or "View" for a ZIP 
+named <tt>attachment application/x-zip</tt>. A plugin registered on such a hook typically
+will show a link to do a specific action, such as "Verify" or "View" for a ZIP
 file. Thus, to register your plugin for ZIP attachments, you'd do this in
 <tt>setup.php</tt> (assuming your plugin is called "demo"):
 
@@ -1660,14 +1659,14 @@ This is a breakdown of the data passed in the array to the hook that is called:
 
 <tscreen><verb>
 [0] = An array of links for actions (see below) (alterable).
-[1] = The message index of the first message on the message list page within 
-      which the current message is found (startMessage). Can be used herein 
+[1] = The message index of the first message on the message list page within
+      which the current message is found (startMessage). Can be used herein
       for building URLs that point to the correct message list page.
-[2] = The ID of the current message (id). Can be used herein to build URLs 
+[2] = The ID of the current message (id). Can be used herein to build URLs
       that point to the correct message.
 [3] = The mailbox name, encoded with urlencode() (urlMailbox). Can be used
       herein to build URLs that point to the correct message list page.
-[4] = The entity ID of the attachment inside the mail message (ent). Can 
+[4] = The entity ID of the attachment inside the mail message (ent). Can
       be used herein to build URLs that point to the correct attachment.
 [5] = The default URL to go to when the filename is clicked upon (alterable,
       but only one URL is allowed, thus, the last plugin to execute for
@@ -1675,10 +1674,10 @@ This is a breakdown of the data passed in the array to the hook that is called:
       new action to array element 1 above).
 [6] = The filename that is displayed for the attachment.
 [7] = The "where" criteria that was used to find the current message (where)
-      (only applicable when the message was in fact found using a search). 
-      Can be used herein to build URLs that point to the correct message list 
+      (only applicable when the message was in fact found using a search).
+      Can be used herein to build URLs that point to the correct message list
       page.
-[8] = The "what" criteria that was used to find the current message (what) 
+[8] = The "what" criteria that was used to find the current message (what)
       (only applicable when the message was in fact found using a search).
       Can be used herein to build URLs that point to the correct message list
       page.
@@ -1785,8 +1784,8 @@ printed with a <tt/do_err('error message', FALSE)/ function call or with any
 standard PHP inline output function.
 
 The configtest script is executed in an anonymous, unauthenticated environment, so
-username and password information isn't available as it would be in all other 
-SquirrelMail scripts. Only a limited set of functions are loaded. The 
+username and password information isn't available as it would be in all other
+SquirrelMail scripts. Only a limited set of functions are loaded. The
 <tt/do_err()/ function is a special configtest script
 function, which is used to print error messages. If a plugin uses the
 <tt/do_err()/ function, it is recommended to set the second function argument to
@@ -1868,7 +1867,7 @@ function demo_identities_table(&ero;$args) {
 </verb></tscreen>
 
 The first hook argument was modified in 1.4.5 and 1.5.1. In SquirrelMail
-1.4.1-1.4.4 and 1.5.0i, the argument only contains the background color. You
+1.4.1--1.4.4 and 1.5.0, the argument only contains the background color. You
 should use <tt/&lt;tr bgcolor="&lt;?php echo $args[0]; ?&gt;"&gt;/ in these
 SquirrelMail versions.
 
@@ -1910,11 +1909,11 @@ pages. See <ref id="preferences" name="Preferences">.
 
 <sect2>Requesting new hooks
 <p>
-It's impossible for the SquirrelMail team to foresee all of the places where 
-hooks might be useful, so you might need to negotiate the insertion of a new 
-hook to make your plugin work. Start by writing a patch which will insert the 
-hook you want to add, and mail your request (with the patch attached) to the 
-SquirrelMail development mailing list. Don't forget to explain the need for the 
+It's impossible for the SquirrelMail team to foresee all of the places where
+hooks might be useful, so you might need to negotiate the insertion of a new
+hook to make your plugin work. Start by writing a patch which will insert the
+hook you want to add, and mail your request (with the patch attached) to the
+SquirrelMail development mailing list. Don't forget to explain the need for the
 new hook in your message.
 
 <sect1>Preferences<label id="preferences">
@@ -2055,10 +2054,10 @@ For <tt/SMOPT_TYPE_COMMENT/ type preferences, this is the text displayed to the
 user.
 
 <tag><tt/extra_attributes/</tag>
-This is where you may add any additional JavaScript or other attributes to the 
-preference element. The value of this setting should be an array, where the 
+This is where you may add any additional JavaScript or other attributes to the
+preference element. The value of this setting should be an array, where the
 keys of the array are the attribute names as you expect them to show up in the
-resulting HTML, and the values are the corresponding attribute values. For 
+resulting HTML, and the values are the corresponding attribute values. For
 example, you could add an "onchange" JavaScript handler to a drop-down list:
 
 <tscreen><verb>
@@ -2111,7 +2110,6 @@ function demo_options_do() {
         'save'    =&gt; 'save_plugin_demo_favorite_color'
     );
 }
-
 </verb></tscreen>
 
 If you indicated a <tt/save/ attribute for any of your preferences, you must
@@ -2247,7 +2245,7 @@ page. Note that the text domain has to be changed to properly translate this tex
 The URI that points to your plugin's custom preferences page.
 <tag/desc/
 A description of what the preferences page offers the user. This is displayed at
-the Options page below the title. Note that the text domain has to be changed to 
+the Options page below the title. Note that the text domain has to be changed to
 properly translate this text.
 <tag/js/
 Indicates if this preference page requires the client browser to be
@@ -2255,9 +2253,9 @@ JavaScript-capable. Should be <tt/TRUE/ or <tt/FALSE/.
 </descrip>
 
 The next step is to create your custom options page, keeping in mind the guidelines
-in <ref id="pagescalleddirectly" name="pages called directly"> and possibly using 
+in <ref id="pagescalleddirectly" name="pages called directly"> and possibly using
 the techniques described in <ref id="savepref" name="Saving and retrieving
-preferences"> below. 
+preferences"> below.
 
 <sect2>Saving and retrieving preferences<label id="savepref">
 <p>
@@ -2266,9 +2264,9 @@ plugin.txt?)
 
 <sect1>Plugin pages called directly by the client browser<label id="pagescalleddirectly">
 <p>
-There are a few places in a plugin, such as when hooking into the "menuline" or 
+There are a few places in a plugin, such as when hooking into the "menuline" or
 "optpage_register_block" hooks, where you can provide a link to a file that is
-called directly by the client browser. No matter what that page does, it should 
+called directly by the client browser. No matter what that page does, it should
 always validate that the calling client has a current login session. Thus, all
 such pages should start with the following code:
 
@@ -2313,7 +2311,7 @@ behavioral settings should be placed in a configuration file that is isolated
 from the rest of the plugin code. A typical file name to use is
 <tt/config.php/. The plugin should allow the administrator to store this file
 in either the plugin directory or in the main SquirrelMail configuration
-directory, giving precedence to the latter. 
+directory, giving precedence to the latter.
 
 Plugins that make use of configuration files should <it/not/ include a file
 called <tt/config.php/ in distribution packages; instead, a copy of that file
@@ -2339,13 +2337,13 @@ it is installed, remove the third line in this example.
 <sect1>Versioning
 <sect2>Version numbering
 <p>
-In order to facilitate easier (and possibly automated) plugin management by 
+In order to facilitate easier (and possibly automated) plugin management by
 system administrators as well as in-SquirrelMail functionality that enables
-cross-plugin compatibility and communication, plugin versioning should remain 
+cross-plugin compatibility and communication, plugin versioning should remain
 consistent with that of SquirrelMail itself. While SquirrelMail does its
 best to work with non-standard version strings, versioning such as that
-explained in <ref id="versionformat" name="Version numbering">, with the 
-possible addition of an applicable SquirrelMail version, is the best way 
+explained in <ref id="versionformat" name="Version numbering">, with the
+possible addition of an applicable SquirrelMail version, is the best way
 to track your plugin's development (i.e., "1.0.4-1.4.5" or just "1.0.4").
 Versions with only two digits ("1.0-1.4.5" or just "1.0") are also acceptable
 (a third digit of zero is implied).
@@ -2354,11 +2352,11 @@ Versions with only two digits ("1.0-1.4.5" or just "1.0") are also acceptable
 <p>
 The way any automated process gets its hands on the plugin version string
 depends on the SquirrelMail version being used. As of SquirrelMail 1.5.2,
-plugins should include an administrative function in <tt/setup.php/ that 
-returns an array of details that describe the plugin, including its version 
-number. The function must be named <tt/&lt;plugin name&gt;_info()/ and 
+plugins should include an administrative function in <tt/setup.php/ that
+returns an array of details that describe the plugin, including its version
+number. The function must be named <tt/&lt;plugin name&gt;_info()/ and
 should return an associative array of version and requirements information.
-Currently, at least the following elements are required, but the more 
+Currently, at least the following elements are required, but the more
 information returned, the better.
 
 <tabular ca="lll">
@@ -2462,10 +2460,10 @@ function demo_version() {
 </verb></tscreen>
 
 There is also a legacy version reporting mechanism that we would like plugin
-authors to implement, since we are still in a transition period between the 
-older and newer reporting usages. The now deprecated reporting mechanism  is to 
-create a file called <tt/version/ in the plugin directory. That file should 
-have only two lines: the first line should have the name of the plugin as 
+authors to implement, since we are still in a transition period between the
+older and newer reporting usages. The now deprecated reporting mechanism  is to
+create a file called <tt/version/ in the plugin directory. That file should
+have only two lines: the first line should have the name of the plugin as
 named on the SquirrelMail web site (this is often a prettified version of the plugin
 directory name), and the second line must have the version and nothing more. So
 for our "demo" plugin, whose name on the web site might be something like "Demo
@@ -2497,7 +2495,7 @@ configuration data is not PHP code itself):
 <tscreen><verb>
 <?php /*
 
-# below is example non-PHP configuration 
+# below is example non-PHP configuration
 # data that is secured from prying eyes
 
 username_1 = admin
@@ -2506,25 +2504,25 @@ username_2 = super_admin
 */ ?>
 </verb></tscreen>
 
-Another approach is to store sensitive configuration data in SquirrelMail's 
-own <tt/$data/ directory, since most system administrators (at least those who 
-have read the installation instructions) know that the <tt/$data/ directory 
+Another approach is to store sensitive configuration data in SquirrelMail's
+own <tt/$data/ directory, since most system administrators (at least those who
+have read the installation instructions) know that the <tt/$data/ directory
 needs to be protected and (hopefully) have made sure that it has been.
 
-Never store unsecured configuration data that contains any user or system-specific 
+Never store unsecured configuration data that contains any user or system-specific
 information in your plugin directory. Even the above suggestions
-may not be sufficient depending on how sensitive the data is that you are 
+may not be sufficient depending on how sensitive the data is that you are
 storing. In such a situation, you might think about a more complex encryption
 scheme such as the one provided by the <bf/vadmin/ plugin.
 
-Note that just shipping unsecured configuration files along with a 
-configuration file for Apache (<tt/.htaccess/) is not sufficient because 
+Note that just shipping unsecured configuration files along with a
+configuration file for Apache (<tt/.htaccess/) is not sufficient because
 not every system uses Apache as its web server.
 
 <sect2>Disallowing access for diabled plugins
 <p>
 
-In some cases, it is also prudent to make sure that the plugin doesn't perform 
+In some cases, it is also prudent to make sure that the plugin doesn't perform
 its function when it is not enabled. Any functions or files that contain PHP
 code that is <tt/not/ wrapped inside a function can be protected from being
 executed when the plugin is not activated by adding code similar to this:
@@ -2535,7 +2533,7 @@ if ( !is_plugin_enabled('my_plugin_name') ) {
 }
 </verb></tscreen>
 
-Note, however, that sometimes <tt/other/ plugins can legitimately access a 
+Note, however, that sometimes <tt/other/ plugins can legitimately access a
 disabled plugin, so don't shoot yourself in the foot with too much protection.
 
 <sect1>Coding tips<label id="plugin_coding_tips">
@@ -2559,24 +2557,24 @@ to accommodate them both.
 One way to keep both sides happy is to keep two different versions of
 your plugin up to date, one that runs under the older SquirrelMail, and one that
 requires the newest SquirrelMail. This is inconvenient, however, especially if
-you are continuing to develop the plugin. 
+you are continuing to develop the plugin.
 
 Depending on the changes implemented in the new SquirrelMail version, another
-approach you may be able to use is to include code that can auto-sense the 
-SquirrelMail version and make adjustments on the fly. There is a function called 
-<tt/check_sm_version()/ available which does that. Read more about it in the 
+approach you may be able to use is to include code that can auto-sense the
+SquirrelMail version and make adjustments on the fly. There is a function called
+<tt/check_sm_version()/ available which does that. Read more about it in the
 <url
 url="http://squirrelmail.org/docs/stable-code/squirrelmail/_functions---global.php.html#functioncheck_sm_version"
 name="stable"> and <url
 url="http://squirrelmail.org/docs/devel-code/squirrelmail/_functions---global.php.html#functioncheck_sm_version"
 name="development"> API documentation.
 
-Finally, there is a plugin called "Compatibility" that is intended to solve 
-this problem without requiring any special coding on the part of plugin authors. 
-Authors can develop one version of their plugin and seamlessly support any 
-SquirrelMail version. Plugin code is typically developed against the newest 
-SquirrelMail release, and users running older versions of SquirrelMail can 
-use said plugin as long as they also have the "Compatibility" plugin. For 
+Finally, there is a plugin called "Compatibility" that is intended to solve
+this problem without requiring any special coding on the part of plugin authors.
+Authors can develop one version of their plugin and seamlessly support any
+SquirrelMail version. Plugin code is typically developed against the newest
+SquirrelMail release, and users running older versions of SquirrelMail can
+use said plugin as long as they also have the "Compatibility" plugin. For
 more inforamtion, please download "Compatibility" and read its README file.
 
 <sect1>Documentation files
@@ -2585,9 +2583,6 @@ Two more files are needed in your plugin directory. One file shall describes
 your plugin and offers detailed instructions for configuration or help with
 troubleshooting, etc. This file is usually entitled <tt/README/. Some useful
 sections to include might be:
-
-There are a few files that you should make sure to include when you build your
-final plugin distribution.
 
 <itemize>
   <item>Plugin name and author
@@ -2635,8 +2630,8 @@ Upgrading the Demo plugin
 1) Start with untaring the file into the plugins directory. Here is a example
    for the 3.1 version of the demo plugin.
 
-  cd plugins
-  tar -zxvf demo-3.1-1.4.0.tar.gz
+      cd plugins
+      tar -zxvf demo-3.1-1.4.0.tar.gz
 
 2) Change into the demo directory, check your "config.php" file against the new
    version, to see if there are any new settings that you must add to your
@@ -2696,11 +2691,11 @@ Make sure the plugin meets the SquirrelMail plugin requirements explained throug
 <p>
 When the plugin is ready to be reviewed by the SquirrelMail plugin team, mail it
 to the SquirrelMail plugin team members (who may be found by consulting the
-<url url="http://www.squirrelmail.org/docs/devel/devel-1.html#ss1.2"
+<url url="http://squirrelmail.org/docs/devel/devel-1.html#ss1.2"
 name="SquirrelMail team list">).
 
 When the plugin is approved and you're granted access to upload it, all you have
-to do is the actual uploading along with filling out some general information 
+to do is the actual uploading along with filling out some general information
 about the plugin and what it does.
 
 <sect>Project Administration
@@ -2814,7 +2809,7 @@ https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/rel-1_2_1</ve
             </enum>
          <item> Send a message to squirrelmail-announce telling people about the release.
             <enum>
-               <item> Also, currently, it seems to have become convention that the message gets sent to all our other mailing lists: <tt>squirrelmail-announce@lists.sourceforge.net,  squirrelmail-users@lists.sourceforge.net, squirrelmail-plugins@lists.sourceforge.net, squirrelmail-devel@lists.sourceforge.net, squirrelmail-i18n@lists.sourceforge.net</tt> 
+               <item> Also, currently, it seems to have become convention that the message gets sent to all our other mailing lists: <tt>squirrelmail-announce@lists.sourceforge.net,  squirrelmail-users@lists.sourceforge.net, squirrelmail-plugins@lists.sourceforge.net, squirrelmail-devel@lists.sourceforge.net, squirrelmail-i18n@lists.sourceforge.net</tt>
                <item> Again, use your brief 3 to 8 line message
                <item> The subject should read "ANNOUNCE: SquirrelMail X.Y.Z Released"
                <item> Approve the message
