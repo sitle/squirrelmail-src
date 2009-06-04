@@ -535,7 +535,9 @@ therefore those files need to be included. Files that are included by
 SquirrelMail, such as <tt>functions/global.php</tt> or a plugin's
 <tt/setup.php/, already have much of the functionality available, but files that
 are requested directly by the client browser, such as files in <tt>src/</tt> or
-a plugin's custom options page, <it/must/ have the initialization file included.
+a plugin's custom options page (see <ref id="pagescalleddirectly" name="Plugin
+pages called directly by the client browser">), <it/must/ have the
+initialization file included.
 
 The initialization file will set up the SquirrelMail environment automatically
 to ensure that the user has been authenticated and is currently logged in, all
