@@ -528,7 +528,7 @@ If you have any questions about security or are unsure, please contact the maili
 list or IRC channel, because security is very important for a widely used
 application like SquirrelMail!
 
-<sect1>Including files
+<sect1>Including files<label id="including_files">
 <p>
 It's sometimes needed to reference functionality provided in other files, and
 therefore those files need to be included. Files that are included by
@@ -2301,7 +2301,9 @@ if (file_exists('../../include/init.php')) {
 }
 </verb></tscreen>
 
-TODO: Possibly provide link to the include hierarchy provided by init.php/validate.php
+Don't forget to follow the instructions in <ref id="including_files"
+name="Including files">. The list of files that are included by the code above
+are also there.
 
 <sect1>Configuration<label id="plugin_configuration">
 <p>
