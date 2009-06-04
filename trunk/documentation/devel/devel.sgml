@@ -2353,7 +2353,7 @@ Versions with only two digits ("1.0-1.4.5" or just "1.0") are also acceptable
 <sect2>Version reporting<label id="plugin_version_reporting">
 <p>
 The way any automated process gets its hands on the plugin version string
-depends on the SquirrelMail version being used. As of SquirrelMail 1.5.2,
+depends on the SquirrelMail version being used. All
 plugins should include an administrative function in <tt/setup.php/ that
 returns an array of details that describe the plugin, including its version
 number. The function must be named <tt/&lt;plugin name&gt;_info()/ and
@@ -2446,10 +2446,11 @@ function demo_info() {
 }
 </verb></tscreen>
 
-Prior to SquirrelMail 1.5.2, a function called
-<tt>&lt;plugin name&gt;_version()</tt> was required. For the sake of
-compatibility, it can be piggy-backed on top of the
-<tt>&lt;plugin name&gt;_info()</tt> function very simply as follows:
+A function called <tt>&lt;plugin name&gt;_version()</tt> is required in all
+versions of SquirrelMail prior to SquirrelMail 1.5.2. This function provides a
+subset of the information in <tt>&lt;plugin name&gt;_info()</tt> (the version
+number), so the easiest thing to do is to piggy-back it on top of the
+<tt>&lt;plugin name&gt;_info()</tt> function like this:
 
 <tscreen><verb>
 /**
