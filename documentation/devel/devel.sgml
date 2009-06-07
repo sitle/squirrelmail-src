@@ -2464,7 +2464,7 @@ function demo_version() {
 
 There is also a legacy version reporting mechanism that we would like plugin
 authors to implement, since we are still in a transition period between the
-older and newer reporting usages. The now deprecated reporting mechanism  is to
+older and newer reporting usages. The now deprecated reporting mechanism is to
 create a file called <tt/version/ in the plugin directory. That file should
 have only two lines: the first line should have the name of the plugin as
 named on the SquirrelMail web site (this is often a prettified version of the plugin
@@ -2486,7 +2486,6 @@ Great care must always be taken if the plugin calls external programs, especiall
 ones that require set-uid permissions.
 
 FIXME: more here about how to secure exec() calls with escapeshellarg() and named pipes method vs exec()
-
 
 <sect2>Storing sensitive data
 <p>
@@ -2524,14 +2523,20 @@ not every system uses Apache as its web server.
 
 <sect2>Disallowing access for diabled plugins
 <p>
-
 In some cases, it is also prudent to make sure that the plugin doesn't perform
 its function when it is not enabled. Any functions or files that contain PHP
 code that is <tt/not/ wrapped inside a function can be protected from being
 executed when the plugin is not activated by adding code similar to this:
 
 <tscreen><verb>
+# Since SquirrelMail 1.5.1.
 if ( !is_plugin_enabled('my_plugin_name') ) {
+    exit('The plugin my_plugin_name isn't enabled in the SquirrelMail configuration.');
+}
+
+# In SquirrelMail 1.4 and 1.5.0.
+global $plugins;
+if ( !in_array('mypluginname', $plugins) ) {
     exit('The plugin my_plugin_name isn't enabled in the SquirrelMail configuration.');
 }
 </verb></tscreen>
