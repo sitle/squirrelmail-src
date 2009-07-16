@@ -65,6 +65,16 @@ if ((bool) ini_get('register_globals') &&
 }
 
 /**
+ * There are some PHP settings that SquirrelMail is incompatible with
+ * and cannot be changed by software at run-time; refuse to run if such
+ * settings are being used...
+ */
+$php_session_auto_start = ini_get('session.auto_start');
+if ((bool)$php_session_auto_start && $php_session_auto_start != 'off') {
+    die('SquirrelMail 1.4.x is not compatible with PHP\'s session.auto_start setting.  Please disable it at least for the location where SquirrelMail is installed.');
+}
+
+/**
  * Strip any tags added to the url from PHP_SELF.
  * This fixes hand crafted url XXS expoits for any
  * page that uses PHP_SELF as the FORM action.
