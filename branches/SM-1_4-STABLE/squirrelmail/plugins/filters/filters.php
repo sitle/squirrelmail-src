@@ -113,12 +113,12 @@ function filters_bulkquery($filters_spam_scan, $filters, $read) {
             // Check to see if this line is the right "Received from" line
             // to check
             if (is_int(strpos($read[$i], $SpamFilters_YourHop))) {
-                $read[$i] = ereg_replace('[^0-9\.]', ' ', $read[$i]);
+                $read[$i] = preg_replace('/[^0-9\.]/', ' ', $read[$i]);
                 $elements = explode(' ', $read[$i]);
                 foreach ($elements as $value) {
                     if ($value != '' &&
-                        ereg('[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}',
-                            $value, $regs)) {
+                        preg_match('/((\d{1,3}\.){3}\d{1,3})/',
+                            $value)) {
                         $Chunks = explode('.', $value);
                         $IP = $Chunks[3] . '.' . $Chunks[2] . '.' .
                               $Chunks[1] . '.' . $Chunks[0];
@@ -256,6 +256,12 @@ function user_filters($imap_stream) {
     $id = array();
     // For every rule
     for ($i=0, $num = count($filters); $i < $num; $i++) {
+    	// Don't attempt to run filters if folder does not exist //
+    	if (!sqimap_mailbox_exists($imap_stream, $filters[$i]['folder'])) {
+    		continue;
+    	}
+    	
+    	
         // If it is the "combo" rule
         if ($filters[$i]['where'] == 'To or Cc') {
             /*
@@ -326,13 +332,17 @@ function filter_search_and_delete($imap, $where, $what, $where_to, $user_scan,
     // see comments in squirrelmail sqimap_search function
     if ($imap_server_type == 'macosx' || $imap_server_type == 'hmailserver') {
         $search_str .= ' ' . $where . ' ' . $what;
+        $read = sqimap_run_command_list($imap, $search_str, true, $response, $message, $uid_support);        
     } else {
-        $search_str .= ' ' . $where . ' {' . strlen($what) . "}\r\n"
-                    . $what;
+    	$lit = array();
+    	$lit['command'] = $search_str . ' ' . $where;
+    	$lit['literal_args'][] = $what;
+    	
+		$read = sqimap_run_literal_command($imap, $lit, true, $response, $message, $uid_support );
     }
 
     /* read data back from IMAP */
-    $read = sqimap_run_command($imap, $search_str, true, $response, $message, $uid_support);
+    
 
     // This may have problems with EIMS due to it being goofy
 
