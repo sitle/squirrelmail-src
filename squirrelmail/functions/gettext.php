@@ -96,7 +96,7 @@ function gettext_php_load_strings() {
             $SkipRead = false;
         }
         
-        if (ereg('^msgid "(.*)"$', $line, $match)) {
+        if (preg_match('/^msgid "(.*)"$/', $line, $match)) {
             if ($match[1] == '') {
                 /*
                  * Potential multi-line
@@ -106,7 +106,7 @@ function gettext_php_load_strings() {
                  */
                 $key = '';
                 $line = trim(fgets($file, 4096));
-                while (ereg('^[ ]*"(.*)"[ ]*$', $line, $match)) {
+                while (preg_match('/^[ ]*"(.*)"[ ]*$/', $line, $match)) {
                     $key .= $match[1];
                     $line = trim(fgets($file, 4096));
                 }
@@ -115,7 +115,7 @@ function gettext_php_load_strings() {
                 /* msgid "string string" */
                 $key = $match[1];
             }
-        } elseif (ereg('^msgstr "(.*)"$', $line, $match)) {
+        } elseif (preg_match('/^msgstr "(.*)"$/', $line, $match)) {
             if ($match[1] == '') {
                 /*
                  * Potential multi-line
@@ -125,7 +125,7 @@ function gettext_php_load_strings() {
                  */
                 $gettext_php_translateStrings[$key] = '';
                 $line = trim(fgets($file, 4096));
-                while (ereg('^[ ]*"(.*)"[ ]*$', $line, $match)) {
+                while (preg_match('/^[ ]*"(.*)"[ ]*$/', $line, $match)) {
                     $gettext_php_translateStrings[$key] .= $match[1];
                     $line = trim(fgets($file, 4096));
                 }

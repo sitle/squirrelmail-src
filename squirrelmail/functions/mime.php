@@ -117,7 +117,7 @@ function mime_fetch_body($imap_stream, $id, $ent_id=1, $fetch_size=0) {
     } while($topline && ($topline[0] == '*') && !preg_match('/\* [0-9]+ FETCH.*/i', $topline)) ;
 
     $wholemessage = implode('', $data);
-    if (ereg('\\{([^\\}]*)\\}', $topline, $regs)) {
+    if (preg_match('/\{([^\}]*)\}/', $topline, $regs)) {
         $ret = substr($wholemessage, 0, $regs[1]);
         /* There is some information in the content info header that could be important
          * in order to parse html messages. Let's get them here.
@@ -125,7 +125,7 @@ function mime_fetch_body($imap_stream, $id, $ent_id=1, $fetch_size=0) {
 //        if ($ret{0} == '<') {
 //            $data = sqimap_run_command ($imap_stream, "FETCH $id BODY[$ent_id.MIME]", true, $response, $message, $uid_support);
 //        }
-    } else if (ereg('"([^"]*)"', $topline, $regs)) {
+    } else if (preg_match('/"([^"]*)"/', $topline, $regs)) {
         $ret = $regs[1];
     } else if ((stristr($topline, 'nil') !== false) && (empty($wholemessage))) {
         $ret = $wholemessage;

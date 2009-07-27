@@ -793,7 +793,7 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
                 $cnt = count($body_ary) ;
                 $body = '';
                 for ($i=0; $i < $cnt; $i++) {
-                    if (!ereg("^[>\\s]*$", $body_ary[$i])  || !$body_ary[$i]) {
+                    if (!preg_match('/^[>\s]*$/', $body_ary[$i])  || !$body_ary[$i]) {
                         sqWordWrap($body_ary[$i], $editor_size, $default_charset );
                         $body .= $body_ary[$i] . "\n";
                     }
@@ -1473,7 +1473,7 @@ function deliverMessage(&$composeMessage, $draft=false) {
     }
     $composeMessage->setBody($body);
 
-    if (ereg("^([^@%/]+)[@%/](.+)$", $username, $usernamedata)) {
+    if (preg_match('|^([^@%/]+)[@%/](.+)$|', $username, $usernamedata)) {
         $popuser = $usernamedata[1];
         $domain  = $usernamedata[2];
         unset($usernamedata);
