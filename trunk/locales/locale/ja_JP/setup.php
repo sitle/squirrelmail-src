@@ -137,7 +137,7 @@ function japanese_xtra_encodeheader($ret) {
 function japanese_xtra_decodeheader($ret) {
     if (function_exists('mb_detect_encoding')) {
         $ret = str_replace("\t", "", $ret);
-        if (eregi('=\\?([^?]+)\\?(q|b)\\?([^?]+)\\?=', $ret))
+        if (preg_match('/=\?([^?]+)\?(q|b)\?([^?]+)\?=/i', $ret))
             $ret = @mb_decode_mimeheader($ret);
         $ret = @mb_convert_encoding($ret, 'EUC-JP', 'AUTO');
     }
