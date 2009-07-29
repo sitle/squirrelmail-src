@@ -319,8 +319,6 @@ function sqimap_mailbox_delete ($imap_stream, $mailbox) {
  */
 function sqimap_mailbox_is_subscribed($imap_stream, $folder) {
     $boxesall = sqimap_mailbox_list ($imap_stream);
-//LEFT OFF HERE DEBUGGING
-if (!is_array($boxesall)) sm_print_r('boxesall is not an array!', 'Folder: ' . $folder, 'boxesall: ' . $boxesall, debug_backtrace());
     foreach ($boxesall as $ref) {
         if ($ref['unformatted'] == $folder) {
             return true;
