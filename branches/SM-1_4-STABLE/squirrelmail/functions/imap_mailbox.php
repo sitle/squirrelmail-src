@@ -319,6 +319,8 @@ function sqimap_mailbox_delete ($imap_stream, $mailbox) {
  */
 function sqimap_mailbox_is_subscribed($imap_stream, $folder) {
     $boxesall = sqimap_mailbox_list ($imap_stream);
+//LEFT OFF HERE DEBUGGING
+if (!is_array($boxesall)) sm_print_r('boxesall is not an array!', 'Folder: ' . $folder, 'boxesall: ' . $boxesall, debug_backtrace());
     foreach ($boxesall as $ref) {
         if ($ref['unformatted'] == $folder) {
             return true;
@@ -734,7 +736,7 @@ function sqimap_mailbox_list_all($imap_stream) {
     for ($i = 0, $cnt = count($read_ary); $i < $cnt; $i++) {
         /* Another workaround for EIMS */
         if (isset($read_ary[$i + 1]) &&
-            ereg('/^(\* [A-Z]+.*)\{[0-9]+\}([ \n\r\t]*)$/',
+            preg_match('/^(\* [A-Z]+.*)\{[0-9]+\}([ \n\r\t]*)$/',
                  $read_ary[$i], $regs)) {
             $i ++;
             $read_ary[$i] = $regs[1] . '"' . addslashes(trim($read_ary[$i])) . '"' . $regs[2];
@@ -785,7 +787,7 @@ function sqimap_mailbox_list_all($imap_stream) {
 
             /* Another workaround for EIMS */
 //            if (isset($read_mlbx[1]) &&
-//                ereg("^(\\* [A-Z]+.*)\\{[0-9]+\\}([ \n\r\t]*)$", $read_mlbx[0], $regs)) {
+//                preg_match('/^(\* [A-Z]+.*)\{[0-9]+\}([ \n\r\t]*)$/', $read_mlbx[0], $regs)) {
 //                $read_mlbx[0] = $regs[1] . '"' . addslashes(trim($read_mlbx[1])) . '"' . $regs[2];
 //            }
 //            echo  $read_mlbx[0] .' raw 2 <br>';
