@@ -169,7 +169,7 @@ function parseUrl (&$body) {
             $url = substr($body, $target_pos, $end-$target_pos);
 
             /* Needed since lines are not passed with \n or \r */
-            while ( preg_match('/[,\.]$/', $url) ) {
+            while ( preg_match('/[,.]$/', $url) ) {
                 $url = substr( $url, 0, -1 );
                 $end--;
             }
