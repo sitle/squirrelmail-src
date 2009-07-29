@@ -34,7 +34,7 @@ function sqimap_search($imapConnection, $search_where, $search_what, $mailbox,
     /* construct the search query, taking multiple search terms into account */
     $multi_search = array();
     $search_what  = trim($search_what);
-    $search_what  = ereg_replace('[ ]{2,}', ' ', $search_what);
+    $search_what  = preg_replace('/[ ]{2,}/', ' ', $search_what);
     $multi_search = explode(' ', $search_what);
     $search_string = '';
 

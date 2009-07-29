@@ -675,7 +675,7 @@ function japanese_charset_xtra() {
             break;
         case 'decodeheader':
             $ret = str_replace("\t", "", $ret);
-            if (eregi('=\\?([^?]+)\\?(q|b)\\?([^?]+)\\?=', $ret))
+            if (preg_match('/=\?([^?]+)\?(q|b)\?([^?]+)\?=/', $ret))
                 $ret = @mb_decode_mimeheader($ret);
             $ret = @mb_convert_encoding($ret, 'EUC-JP', 'AUTO');
             break;

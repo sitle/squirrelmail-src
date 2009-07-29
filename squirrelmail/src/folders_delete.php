@@ -100,7 +100,7 @@ else
 /** lets see if we CAN move folders to the trash.. otherwise,
     ** just delete them **/
 if ((isset($delete_folder) && $delete_folder) ||
-    eregi('^'.$trash_folder.'.+', $mailbox) ) {
+    preg_match('/^' . $trash_folder . '.+/', $mailbox) ) {
     $can_move_to_trash = FALSE;
 }
 
