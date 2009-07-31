@@ -2546,7 +2546,7 @@ function SendDownloadHeaders($type0, $type1, $filename, $force, $filesize=0) {
         $filename =
             $languages[$squirrelmail_language]['XTRA_CODE']('downloadfilename', $filename, $HTTP_USER_AGENT);
     } else {
-        $filename = preg_replace('/[\\\/:*?"<>|;]/', '_', str_replace('&#32;', ' ', $filename));
+        $filename = preg_replace('/[\\\\\/:*?"<>|;]/', '_', str_replace('&#32;', ' ', $filename));
     }
 
     // A Pox on Microsoft and it's Internet Explorer!
