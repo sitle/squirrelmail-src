@@ -9,6 +9,9 @@ Version 1.4.20 - SVN
   - Updated INSTALL doc to remove possible bad system admin typos (#2827153).
   - PHP 5.3 deprecates ereg functions (#2820952).
   - Filters plugin uses badly formatted literals request (#2805201).
+  - Provide option for complete removal of usernames and user IP addresses
+    from message headers, and remove personal data from Message ID seed.
+    (#880029/847107)
 
 Version 1.4.19 - 21 May 2009
 ----------------------------
