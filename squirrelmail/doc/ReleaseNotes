@@ -1,66 +1,64 @@
 /*****************************************************************
- * Release Notes: SquirrelMail 1.4.19                            *
- * The "Backticking Timebomb" Release                            *
- * 21 May 2009                                                   *
+ * Release Notes: SquirrelMail 1.4.20RC1                         *
+ * The "Empire's Dying Breath" Release                           *
+ * 12 Aug 2009                                                   *
  *****************************************************************/
 
 In this edition of SquirrelMail Release Notes:
    * All about this Release!
-   * Locales / Translations / Charsets
    * Security issues
-   * Major updates
+   * Locales / Translations / Charsets
    * Reporting your favorite SquirrelMail bug
 
 
 All about this release
 ======================
 
-This release was made to address an incomplete fix to a security
-issue, and regressions in the filters plugin introduced in the
-previous release, plus some small other fixes.
+This release addresses a security hole, removes the use of some
+deprecated PHP functions, fixes a problem in the filters plugin
+and addresses some privacy issues. 
+
+Because of the somewhat invasive nature of the changes required
+for the security and deprecation issues addressed herein, we are
+issuing a "release candidate" before we officially move to version
+1.4.20.  While we have been very careful to ensure the stability
+of SquirrelMail, this version, 1.4.20 release candidate 1, has
+undergone limited testing, and we'd like to have more feedback
+before we make version 1.4.20 final.
 
 For a complete list of changes, please see the file "ChangeLog"
 in the doc/ directory.
 
+
 Security issues
 ===============
 
-An issue was fixed that allowed arbitrary server-side code execution
-when SquirrelMail was configured to use the example "map_yp_alias"
-username mapping functionality.  This was originally repaired in 
-1.4.18 but the fix turned out to be incomplete. Thanks go to Michal
-Hlavinka for spotting this. The issue was originally tracked as
-CVE-2009-1579, the fix being incomplete is named CVE-2009-1381.
+All form submissions (send message, change preferences, etc.) in
+SquirrelMail were previously subject to cross-site request forgery
+(CSRF), wherein data could be sent to them from an offsite location,
+which could allow an attacker to inject malicious content into user
+preferences or possibly send emails without user consent.  This
+issue is tracked as Secunia Advisory SA34627.
+
+Two fixes for this issue are available as of SquirrelMail 1.4.20RC1.
+A security token system is enabled by default which protects all
+page requests that change user state in any meaningful way.  An
+additional page referal verification system is available but not
+enabled by default due to the less controllable nature of the
+page "referer" (sic) that is sent by most browsers.  In many cases,
+it can be enabled without trouble, which can be done with the
+configuration tool or in the SquirrelMail configuration file.  The
+administrator can also disable the security token system therein,
+which we DO NOT recommend.
+
 
 Locales / Translations / Charsets
 =================================
 
-Since the release of SquirrelMail 1.4.4, translations are no longer
-a part of the main package.  They are now downloaded separately; you
-can obtain all languages in one package or get an individual language.
-You can find these packages on our web site. They also contain
-installation instructions.
-
-The release of SquirrelMail 1.4.4 also introduced a backport of the
-new Character set decoding functions from our development code branch,
-vastly increasing the decoding performance and the number of supported
-character sets.
-
-
-Major updates in 1.4
-====================
-
-The 1.4.x series (as a result of 1.3 developent series) brings:
-
-* A complete rewrite of the way we send mail (Deliver class),
-  and of the way we parse mail (MIME bodystructure parsing).
-  This makes SquirrelMail more reliable and more efficient
-  at the same time!
-* Support for IMAP UID which makes SquirrelMail more reliable.
-* Optimizations to code and the number of IMAP calls; SquirrelMail
-  is now a very scalable webmail solution.
-* Support for a wider range of authentication mechanisms.
-* Lots of bugfixes, some new features and a couple of UI-tweaks.
+Translations are not a part of the main SquirrelMail package.  They
+are downloaded separately; you can obtain all languages in one
+package or get an individual language.  You can find these packages
+on our web site.  They also contain installation instructions.
 
 
 Reporting your favorite SquirrelMail bug
