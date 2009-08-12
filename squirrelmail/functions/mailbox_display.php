@@ -514,6 +514,7 @@ function showMessagesForMailbox($imapConnection, $mailbox, $num_msgs,
     $safe_name = preg_replace("/[^0-9A-Za-z_]/", '_', $mailbox);
     $form_name = "FormMsgs" . $safe_name;
     echo '<form name="' . $form_name . '" method="post" action="move_messages.php">' ."\n" .
+        '<input type="hidden" name="smtoken" value="'.sm_generate_security_token().'">' . "\n" .
         '<input type="hidden" name="mailbox" value="'.htmlspecialchars($mailbox).'">' . "\n" .
         '<input type="hidden" name="startMessage" value="'.htmlspecialchars($start_msg).'">' . "\n";
     
