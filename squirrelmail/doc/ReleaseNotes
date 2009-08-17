@@ -1,7 +1,7 @@
 /*****************************************************************
- * Release Notes: SquirrelMail 1.4.20RC1                         *
- * The "Empire's Dying Breath" Release                           *
- * 12 Aug 2009                                                   *
+ * Release Notes: SquirrelMail 1.4.20-RC2                        *
+ * The "Squirrels Would Rather Be Outdoors" Release              *
+ * 17 Aug 2009                                                   *
  *****************************************************************/
 
 In this edition of SquirrelMail Release Notes:
@@ -14,17 +14,15 @@ In this edition of SquirrelMail Release Notes:
 All about this release
 ======================
 
-This release addresses a security hole, removes the use of some
-deprecated PHP functions, fixes a problem in the filters plugin
-and addresses some privacy issues. 
+This release extends the security fixes in the previous release
+candidate package to protect delete message functionalities.
 
-Because of the somewhat invasive nature of the changes required
-for the security and deprecation issues addressed herein, we are
-issuing a "release candidate" before we officially move to version
-1.4.20.  While we have been very careful to ensure the stability
-of SquirrelMail, this version, 1.4.20 release candidate 1, has
-undergone limited testing, and we'd like to have more feedback
-before we make version 1.4.20 final.
+The risk of using the 1.4.20 release candidate 1 package instead
+of this one is very low, since a user's message IDs would need
+to be a known quantity to an attacker.  However, the intent of
+release candidates is to encourage the SquirrelMail community to
+test code that we hope to release as officially stable in the
+near future, so those who can upgrade are encouraged to do so.
 
 For a complete list of changes, please see the file "ChangeLog"
 in the doc/ directory.
@@ -33,23 +31,12 @@ in the doc/ directory.
 Security issues
 ===============
 
-All form submissions (send message, change preferences, etc.) in
-SquirrelMail were previously subject to cross-site request forgery
-(CSRF), wherein data could be sent to them from an offsite location,
-which could allow an attacker to inject malicious content into user
-preferences or possibly send emails without user consent.  This
-issue is tracked as Secunia Advisory SA34627.
-
-Two fixes for this issue are available as of SquirrelMail 1.4.20RC1.
-A security token system is enabled by default which protects all
-page requests that change user state in any meaningful way.  An
-additional page referal verification system is available but not
-enabled by default due to the less controllable nature of the
-page "referer" (sic) that is sent by most browsers.  In many cases,
-it can be enabled without trouble, which can be done with the
-configuration tool or in the SquirrelMail configuration file.  The
-administrator can also disable the security token system therein,
-which we DO NOT recommend.
+The security token system in 1.4.20 release candidate 1 did not
+protect message deletion actions, which, under this release
+candidate, are now protected.  For more details about the
+vulnerability being addressed and how it was fixed, please see
+the release notes for 1.4.20 release candidate 1 or Secunia
+Advisory SA34627.
 
 
 Locales / Translations / Charsets
