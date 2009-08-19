@@ -48,7 +48,7 @@ sqgetGlobalVar('deladdr',    $deladdr,    SQ_POST);
 sqgetGlobalVar('compose_to', $compose_to, SQ_POST);
 sqgetGlobalVar('sel',        $sel,        SQ_POST);
 // renumber $sel array
-if (!empty($sel)) $sel = array_merge($sel);
+if (!empty($sel)) $sel = array_merge($sel, array());
 sqgetGlobalVar('oldnick',    $oldnick,    SQ_POST);
 sqgetGlobalVar('backend',    $backend,    SQ_POST);
 sqgetGlobalVar('doedit',     $doedit,     SQ_POST);
