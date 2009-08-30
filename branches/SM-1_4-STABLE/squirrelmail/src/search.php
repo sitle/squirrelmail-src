@@ -68,7 +68,7 @@ if (sqgetGlobalVar('count',$count,SQ_GET)) {
 } else {
     unset($count);
 }
-if (!sqgetGlobalVar('smtoken',$submitted_token, SQ_GET)) {
+if (!sqgetGlobalVar('smtoken',$submitted_token, SQ_FORM)) {
     $submitted_token = '';
 }
 /* end of get globals */
@@ -221,7 +221,7 @@ function save_recent($save_index, $username, $data_dir) {
 
 function printSearchMessages($msgs,$mailbox, $cnt, $imapConnection, $where, $what, $usecache = false, $newsort = false) {
     global $sort, $color, $allow_server_sort, $allow_server_thread;
-    
+
     if ($cnt > 0) {
         if ((!empty($allow_server_sort) && $allow_server_sort) || (!empty($allow_server_thread) && $allow_server_thread)) {
             $msort = $msgs;
@@ -234,12 +234,12 @@ function printSearchMessages($msgs,$mailbox, $cnt, $imapConnection, $where, $wha
         } else {
             $showbox = imap_utf7_decode_local($mailbox);
         }
-        echo html_tag( 'div', '<b><big>' . _("Folder:") . ' '. 
+        echo html_tag( 'div', '<b><big>' . _("Folder:") . ' '.
             htmlspecialchars($showbox) .'</big></b>','center') . "\n";
 
         $msg_cnt_str = get_msgcnt_str(1, $cnt, $cnt);
         $toggle_all = get_selectall_link(1, $sort);
-    
+
         $safe_name = preg_replace("/[^0-9A-Za-z_]/", '_', $mailbox);
         $form_name = "FormMsgs" . $safe_name;
         echo '<form name="' . $form_name . '" method="post" action="move_messages.php">' ."\n" .
@@ -250,11 +250,11 @@ function printSearchMessages($msgs,$mailbox, $cnt, $imapConnection, $where, $wha
         echo '<table border="0" width="100%" cellpadding="0" cellspacing="0">';
         echo '<tr><td>';
 
-        mail_message_listing_beginning($imapConnection, $mailbox, $sort, 
+        mail_message_listing_beginning($imapConnection, $mailbox, $sort,
                                        $msg_cnt_str, $toggle_all, 1);
 
         echo '</td></tr>';
-        echo '<tr><td height="5" bgcolor="'.$color[4].'"></td></tr>';  
+        echo '<tr><td height="5" bgcolor="'.$color[4].'"></td></tr>';
         echo '<tr><td>';
         echo '    <table width="100%" cellpadding="1" cellspacing="0" align="center"'.' border="0" bgcolor="'.$color[9].'">';
         echo '     <tr><td>';
@@ -263,11 +263,11 @@ function printSearchMessages($msgs,$mailbox, $cnt, $imapConnection, $where, $wha
 
         printHeader($mailbox, 6, $color, false);
 
-        displayMessageArray($imapConnection, $cnt, 1, 
+        displayMessageArray($imapConnection, $cnt, 1,
             $msort, $mailbox, $sort, $color, $cnt, $where, $what);
 
         echo '</td></tr></table></td></tr></table>';
-        mail_message_listing_end($cnt, '', $msg_cnt_str, $color); 
+        mail_message_listing_end($cnt, '', $msg_cnt_str, $color);
         echo "\n</table></form>\n\n";
     }
 }
@@ -395,7 +395,7 @@ if ($recent_count > 0) {
        . html_tag( 'td' )
        . html_tag( 'table', '', 'center', '', 'width="100%" cellpadding="0" cellspacing="0" border="0"' );
     for ($i=1; $i <= $recent_count; ++$i) {
-            if (isset($attributes['search_folder'][$i])) { 
+            if (isset($attributes['search_folder'][$i])) {
             if ($attributes['search_folder'][$i] == "") {
                 $attributes['search_folder'][$i] = "INBOX";
             }
@@ -527,7 +527,7 @@ if ($search_all == 'all') {
                 sqimap_mailbox_select($imapConnection, $mailbox);
                 $msgs = sqimap_search($imapConnection, $where, $what, $mailbox, $color, 0, $search_all, $count_all);
                 $count_all = count($msgs);
-                printSearchMessages($msgs, $mailbox, $count_all, $imapConnection, 
+                printSearchMessages($msgs, $mailbox, $count_all, $imapConnection,
                                     $where, $what, false, false);
                 array_push($perbox_count, $count_all);
             }
