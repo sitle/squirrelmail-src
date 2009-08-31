@@ -68,7 +68,7 @@ if (sqgetGlobalVar('count',$count,SQ_GET)) {
 } else {
     unset($count);
 }
-if (!sqgetGlobalVar('smtoken',$submitted_token, SQ_FORM)) {
+if (!sqgetGlobalVar('smtoken',$submitted_token, SQ_GET)) {
     $submitted_token = '';
 }
 /* end of get globals */
