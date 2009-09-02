@@ -368,6 +368,7 @@ if ($saved_count > 0) {
         .     '?mailbox=' . urlencode($saved_attributes['saved_folder'][$i + 1])
         .     '&amp;what=' . urlencode($saved_attributes['saved_what'][$i + 1])
         .     '&amp;where=' . urlencode($saved_attributes['saved_where'][$i + 1])
+        .     '&amp;smtoken=' . sm_generate_security_token()
         .   '">' . _("edit") . '</a>'
         .   '&nbsp;|&nbsp;'
         .   '<a href="search.php'
@@ -375,9 +376,10 @@ if ($saved_count > 0) {
         .     '&amp;what=' . urlencode($saved_attributes['saved_what'][$i + 1])
         .     '&amp;where=' . urlencode($saved_attributes['saved_where'][$i + 1])
         .     '&amp;submit=Search_no_update'
+        .     '&amp;smtoken=' . sm_generate_security_token()
         .   '">' . _("search") . '</a>'
         .   '&nbsp;|&nbsp;'
-        .   "<a href=\"search.php?count=$i&amp;submit=delete\">"
+        .   "<a href=\"search.php?count=$i&amp;submit=delete&amp;smtoken=" . sm_generate_security_token() .'">'
         .     _("delete")
         .   '</a>'
         . '</td></tr>';
@@ -411,7 +413,7 @@ if ($recent_count > 0) {
                . html_tag( 'td', htmlspecialchars($attributes['search_what'][$i]), 'left' )
                . html_tag( 'td', htmlspecialchars($attributes['search_where'][$i]), 'center' )
                . html_tag( 'td', '', 'right' )
-               .   "<a href=\"search.php?count=$i&amp;submit=save\">"
+               .   "<a href=\"search.php?count=$i&amp;submit=save&amp;smtoken=" . sm_generate_security_token() . '">'
                .     _("save")
                .   '</a>'
                .   '&nbsp;|&nbsp;'
@@ -420,9 +422,10 @@ if ($recent_count > 0) {
                .     '&amp;what=' . urlencode($attributes['search_what'][$i])
                .     '&amp;where=' . urlencode($attributes['search_where'][$i])
                .     '&amp;submit=Search_no_update'
+               .     '&amp;smtoken=' . sm_generate_security_token()
                .   '">' . _("search") . '</a>'
                .   '&nbsp;|&nbsp;'
-               .   "<a href=\"search.php?count=$i&amp;submit=forget\">"
+               .   "<a href=\"search.php?count=$i&amp;submit=forget&amp;smtoken=" . sm_generate_security_token() . '">'
                .     _("forget")
                .   '</a>'
                . '</td></tr>';
