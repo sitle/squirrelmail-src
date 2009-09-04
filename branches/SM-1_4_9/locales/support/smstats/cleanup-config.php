@@ -13,7 +13,7 @@ $debug=100;
 
 
 $prog="cleanup-guistats";
-$adminemail="tomas@topolis.lt";
+$adminemail="example@example.com";
 
 // MySQL connection data
 $sql_user   = "smstats";

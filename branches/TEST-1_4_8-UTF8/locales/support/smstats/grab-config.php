@@ -19,7 +19,7 @@ $debug=0;
 
 
 $prog="grab-guistats";
-$adminemail="tomas@topolis.lt";
+$adminemail="example@example.com";
 
 // MySQL connection data
 $sql_user   = "smstats";
