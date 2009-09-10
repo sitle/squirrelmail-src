@@ -755,8 +755,8 @@ function sqimap_mailbox_list_all($imap_stream) {
             $boxesallbyname[$mailbox] = $g;
             $parentfolder = readMailboxParent($mailbox, $delimiter);
 			/* @FIXME shouldn't use preg_match for simple string matching */
-            if((preg_match('/^inbox'.quotemeta($delimiter).'/i', $mailbox)) ||
-               (preg_match('/^'.$folder_prefix.'/', $mailbox)) ||
+            if((preg_match('|^inbox'.quotemeta($delimiter).'|i', $mailbox)) ||
+               (preg_match('|^'.$folder_prefix.'|', $mailbox)) ||
                ( isset($boxesallbyname[$parentfolder]) && (strlen($parentfolder) > 0) ) ) {
                 if ($dm_count) {
                     $boxes[$g]['formatted']  = str_repeat('&nbsp;&nbsp;', $dm_count);
