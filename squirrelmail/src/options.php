@@ -143,7 +143,7 @@ sqgetGlobalVar('delimiter', $delimiter,     SQ_SESSION);
 sqgetGlobalVar('optpage',     $optpage);
 sqgetGlobalVar('optmode',     $optmode,      SQ_FORM);
 sqgetGlobalVar('optpage_data',$optpage_data, SQ_POST);
-if (!sqgetGlobalVar('smtoken',$submitted_token, SQ_POST)) {
+if (!sqgetGlobalVar('smtoken',$submitted_token, SQ_FORM)) {
     $submitted_token = '';
 }
 /* end of getting globals */
