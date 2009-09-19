@@ -78,6 +78,7 @@ $location = get_location();
 
 if (isset($where) && isset($what)) {
     header("Location: $location/search.php?where=" . $where .
+           '&smtoken=' . sm_generate_security_token() .
            '&what=' . $what . '&mailbox=' . urlencode($mailbox));
 } else {
     if (!empty($saved_draft) || !empty($mail_sent)) {
