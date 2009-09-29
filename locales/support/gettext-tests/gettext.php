@@ -6,7 +6,7 @@
  * translated string when locale is working correctly. If you want to test 
  * script in PHP safe_mode = on environment, disable all putenv calls.
  *
- * @copyright &copy; 2005 The SquirrelMail Project Team
+ * @copyright 2005-2009 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package locales
