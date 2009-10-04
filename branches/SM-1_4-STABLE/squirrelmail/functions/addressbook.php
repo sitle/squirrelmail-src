@@ -520,7 +520,7 @@ class AddressBook {
             $userdata['nickname'] = $userdata['email'];
         }
 
-        if (preg_match('/[ :|#"!]/i', $userdata['nickname'])) {
+        if (preg_match('/[ :|#"!]/', $userdata['nickname'])) {
             $this->error = _("Nickname contains illegal characters");
             return false;
         }
@@ -604,7 +604,7 @@ class AddressBook {
             return false;
         }
 
-        if (preg_match('/[: |#"!]/i', $userdata['nickname'])) {
+        if (preg_match('/[: |#"!]/', $userdata['nickname'])) {
             $this->error = _("Nickname contains illegal characters");
             return false;
         }
