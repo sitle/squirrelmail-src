@@ -71,6 +71,7 @@ echo '</td></tr>' .
             html_tag( 'td', '', 'center', $color[4] ) . "\n" . '<hr style="width: 25%; height: 1px;" />' . "\n";
 
 echo '<form action="'.sqm_baseuri().'src/options.php" method="post">' . "\n" .
+        '<input type="hidden" name="smtoken" value="' . sm_generate_security_token() . '">' . "\n" .
         html_tag( 'table', '', '', '', 'width="100%" cellpadding="5" cellspacing="0" border="0"' ) . "\n";
 
 // Option: media_allbox
