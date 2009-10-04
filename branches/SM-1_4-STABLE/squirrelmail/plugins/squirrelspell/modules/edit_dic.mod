@@ -96,7 +96,7 @@ if (!$words){
   /**
    * Check if all dictionaries were empty.
    */
-  if (!$msg) {
+  if (empty($msg)) {
     $msg = '<p>' . _("No words in your personal dictionary.") . '</p>';
   } else {
     $msg .= '</table>';
@@ -112,4 +112,3 @@ if (!$words){
  * vim: syntax=php
  */
 
-?>
