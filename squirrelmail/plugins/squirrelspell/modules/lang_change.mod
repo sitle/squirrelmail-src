@@ -16,6 +16,11 @@
  * @subpackage squirrelspell
  */
 
+if (!sqgetGlobalVar('smtoken',$submitted_token, SQ_POST)) {
+    $submitted_token = '';
+}
+sm_validate_security_token($submitted_token, 3600, TRUE);
+
 global $SQSPELL_APP_DEFAULT;
 
 $use_langs = $_POST['use_langs'];
@@ -101,4 +106,4 @@ sqspell_makePage(_("International Dictionaries Preferences Updated"),
  * End:
  * vim: syntax=php
  */
-?>
+
