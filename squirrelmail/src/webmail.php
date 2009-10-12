@@ -48,8 +48,6 @@ if(sqgetGlobalVar('mailtodata', $mailtodata)) {
     $mailtourl = '';
 }
 
-is_logged_in();
-
 // this value may be changed by a plugin, but initialize
 // it first to avoid register_globals headaches
 //
