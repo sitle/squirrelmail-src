@@ -604,7 +604,7 @@ class POP3 {
         if( empty($cmd) )
             return false;
         else
-            return( stripos('+OK', $cmd ) !== false );
+            return( stripos($cmd, '+OK') !== false );
     }
 
     function strip_clf ($text = "") {
