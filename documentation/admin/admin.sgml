@@ -1335,6 +1335,10 @@ configuration tool, using the Administrator plugin, or editing the configuration
 file manually. The first of these ways is the one recommended by the
 SquirrelMail Project.
 
+Please note that if there are users logged in when the configuration is changed,
+those users might not be affected by the changes until after they have logged
+out. This is a side effect of the caching of data for logged in users.
+
 <sect2>The configuration tool
 <p>
 Included in the SquirrelMail distribution is a Perl script, located at
