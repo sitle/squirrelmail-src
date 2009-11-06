@@ -1205,8 +1205,8 @@ to SquirrelMail, this is the best place to start.
 
 <sect1>Before embarking<label id="before_developing_plugins">
 <p>
-One of the most fun parts about programming is seeing an idea turn into a
-working product - the transition from "what if SquirrelMail could do..."
+One of the most enjoyable parts of programming is seeing an idea turn into
+a working product - the transition from "what if SquirrelMail could do..."
 to "SquirrelMail <em/can/ do..." The SquirrelMail team can appreciate and
 relate to that kind of enthusiasm, but we also don't want to see it go to
 waste. Therefore, the first thing to be done before considering the development
@@ -1218,13 +1218,13 @@ it is implemented.
 
 Additionally, in keeping with the SquirrelMail theme of providing a product
 that is simple to install and maintain, the team's philosophy regarding
-plugins is to avoid the "Firefox syndrome", wherein it can take hours for
-an administrator to understand what plugin is the right one for them.
-Plugins that contain similar feature sets should be merged and authors should
-work collaboratively instead of duplicating each others' efforts. If there
-is a plugin on the SquirrelMail web site that <em/almost/ does what you
-want to do, please inquire with its author and/or the SquirrelMail team
-about enhancing it with your ideas.
+plugins is to avoid the "Firefox Syndrome", wherein it can take hours for
+an administrator to find the right plugin to suit a single need. Plugins
+that contain similar feature sets should be merged and authors should work
+collaboratively instead of duplicating each others' efforts. If there is a
+plugin on the SquirrelMail web site that <em/almost/ does what you want to
+do, please inquire with its author and/or the SquirrelMail team about
+enhancing it with your ideas.
 
 <sect1>The plugin architecture<label id="plugin_architecture">
 <p>
@@ -1243,8 +1243,8 @@ the functionality of SquirrelMail. The places where plugin code can be executed
 are called "hooks".
 
 There are some limitations with what these hooks can do. It is difficult to use
-them to change the layout and to change functionality that already is in
-SquirrelMail.
+them to change the layout and to change some functionalities that are hard-coded
+in SquirrelMail.
 
 <sect2>The implementation<label id="plugin_implementation">
 <p>
@@ -1272,7 +1272,7 @@ $plugins[] = 'plugin_name';
 
 <label id="plugin_registration">When a plugin is registered, the file
 <tt>plugins/plugin_name/setup.php</tt> is loaded and the function
-<tt/squirrelmail_plugin_init_&lt;plugin_name&gt;()/ is called with no parameters.
+<tt/squirrelmail_plugin_init_&lt;plugin name&gt;()/ is called with no parameters.
 That function is where the plugin may register itself against any hooks it
 wishes to take advantage of.
 
@@ -1291,7 +1291,7 @@ TODO: Add a description on how to manually create the file <tt/plugin_hooks.php/
 <sect2>Plugin initialization<label id="plugin_setup_file">
 <p>
 All plugins must contain a file called <tt/setup.php/ and must include a
-function called <tt/squirrelmail_plugin_init_&lt;plugin_name&gt;()/ therein.
+function called <tt/squirrelmail_plugin_init_&lt;plugin name&gt;()/ therein.
 Since including numerous plugins can slow SquirrelMail's performance
 considerably, the <tt/setup.php/ file should contain little else. Any functions
 that are registered against plugin hooks should do little more than call another
@@ -1301,7 +1301,7 @@ scope of <tt/setup.php/, as this defeats the purpose of keeping it streamlined.
 Any other files used by the plugin should also be placed in the plugin directory
 (or a subdirectory thereof) and should contain the bulk of the plugin logic.
 
-The function <tt/squirrelmail_plugin_init_&lt;plugin_name&gt;()/ is called to
+The function <tt/squirrelmail_plugin_init_&lt;plugin name&gt;()/ is called to
 initalize a plugin as explained <ref id="plugin_registration" name="above">. This
 function could look something like this (if the plugin was named "demo" and
 resided in the directory <tt>plugins/demo/</tt>):
@@ -1314,9 +1314,9 @@ function squirrelmail_plugin_init_demo() {
     global $squirrelmail_plugin_hooks;
 
     $squirrelmail_plugin_hooks['optpage_register_block']['demo']
-        = 'plugin_demo_options';
+        = 'plugin_demo_options_stub';
     $squirrelmail_plugin_hooks['login_cookie']['demo']
-        = 'plugin_demo_login';
+        = 'plugin_demo_login_stub';
 }
 </verb></tscreen>
 
@@ -1329,24 +1329,24 @@ code (anything except hook registration) here is strongly discouraged.
 <p>
 In the example <ref id="plugin_init_example" name="above">, the "demo" plugin
 should also have two other functions in its <tt/setup.php/ file called
-<tt/plugin_demo_options()/ and <tt/plugin_demo_login()/. The first of these
-might look something like this:
+<tt/plugin_demo_options_stub()/ and <tt/plugin_demo_login_stub()/. The first
+of these might look something like this:
 
 <tscreen><verb>
 /**
  * Add link to the Demo options page on the SquirrelMail
  * main options page listing
  */
-function plugin_demo_options() {
+function plugin_demo_options_stub() {
     include_once(SM_PATH . 'plugins/demo/functions.php');
-    plugin_demo_options_do();
+    plugin_demo_options();
 }
 </verb></tscreen>
 
-The function called <tt/plugin_demo_options_do()/ in the file
+The function called <tt/plugin_demo_options()/ in the file
 <tt>plugins/demo/functions.php</tt> contains the plugin's core logic for the
-<tt/optpage_register_block/ hook. Aside from <tt/plugin_demo_options()/ and
-<tt/plugin_demo_login()/ and the
+<tt/optpage_register_block/ hook. Aside from <tt/plugin_demo_options_stub()/
+and <tt/plugin_demo_login_stub()/ and the
 <ref id="plugin_version_reporting" name="version reporting information explained below">,
 there should be little-to-nothing else in <tt/setup.php/.
 
@@ -1406,7 +1406,7 @@ Read more about the <tt/do_hook()/ function in the
 
 The <tt/concat_hook_function()/ is used in places where the SquirrelMail
 core needs to aggregate return data from all plugins on the same hook.
-Plugins are provided with the same (modifyable) parameter as with <tt/do_hook/.
+Plugins are provided with the same (modifiable) parameter as with <tt/do_hook/.
 In some places, the core will expect all plugins to return strings, which will
 be concatenated together and returned to the SquirrelMail core. In other cases,
 arbitrary values are used by the core, which will be placed into an array of
@@ -1432,7 +1432,7 @@ in the hook call in the core:
 </itemize>
 
 Plugins using <tt/boolean_hook_function/ are provided with the same
-(modifyable) parameter as with <tt/do_hook/. Please remember NEVER to output
+(modifiable) parameter as with <tt/do_hook/. Please remember NEVER to output
 any HTML directly during hook execution.
 
 Read more about the <tt/boolean_hook_function()/ function in the
@@ -1515,9 +1515,15 @@ file.
 
 TODO: Update this list. (especially in 1.5.2, we are removing a great number of hooks to be replaced with the template_construct_&lt;template&gt; hook)
 
+TODO: For 1.5.2, the template_construct_&lt;template&gt; hook deserves special attention (explanation) below - briefly, plugins can add output in templates by hooking into the template_construct_&lt;template file&gt; hook -- the "template file" is the template file name that is to be modified by the plugin, and the plugin points of modification in that file are found by looking for "plugin_output" in the template code - e.g.:  <?php if (!empty($plugin_output['menuline'])) echo $plugin_output['menuline']; ?>  The plugin can then add its output at the desired array index by returning it from the hook in a one-element array with the key being the desired "plugin_output" index in the template file and the value being the output:  return array('menuline' => $output);
+
 TODO: Reduce list of hooks by grouping them into separate chapters.
 
 TODO: List is very out-of-synch with newest 1.5.2 and all its changes, as is the rest of the plugin documentation... much needs to be re-written
+
+TODO: Even for 1.4.x, this list may no longer accurate
+
+TODO: The hook explanations below this list are also out of date!  Need to update!
 
 <tabular ca="llll">
 <bf/Hook name/|<bf/Found in/|<bf/Called with/|<bf/Notes/@
@@ -1687,9 +1693,9 @@ To set up links for actions, add them to the array data passed in to the hook
 like this:
 
 <tscreen><verb>
-$args[0]['&lt;plugin_name&gt;']['href'] = 'link URL';
-$args[0]['&lt;plugin_name&gt;']['text'] = _("Text to display");
-$args[0]['&lt;plugin_name&gt;']['extra'] =
+$args[0]['&lt;plugin name&gt;']['href'] = 'link URL';
+$args[0]['&lt;plugin name&gt;']['text'] = _("Text to display");
+$args[0]['&lt;plugin name&gt;']['extra'] =
     'extra stuff, such as an &lt;img ...&gt; tag (will be part of the clickable link)';
 </verb></tscreen>
 
@@ -1726,12 +1732,12 @@ function demo_handle_zip_attachment_do(&ero;$args) {
     bindtextdomain('demo', SM_PATH . 'locale');
     textdomain('demo');
 
-    $args[0]['demo']['href'] = SM_PATH . 'plugins/demo/zip_handler.php?' .
+    $args[0]['demo']['href'] = sqm_baseuri() . 'plugins/demo/zip_handler.php?' .
         'passed_id=' . $args[2] . '&ero;mailbox=' . $args[3] .
         '&ero;passed_ent_id=' . $args[4];
     $args[0]['demo']['text'] = _("Show zip contents");
 
-    bindtextdomain('squirrelmail', SM_PATH . 'locale');
+    bindtextdomain('squirrelmail', sqm_baseuri() . 'locale');
     textdomain('squirrelmail');
 }
 </verb></tscreen>
@@ -1924,11 +1930,12 @@ too many preferences can be confusing. Thinking from the user's perspective,
 will the proposed preferences actually be used? Will users understand what these
 preferences are for? Consider this carefully.
 
-If you decide that more preferences really are needed for your plugin, there are
-two ways to add them. When there's only a few preferences that doesn't merit an
+If you decide that more preferences are needed for your plugin, there are two
+ways to add them. When there's only a few preferences that don't merit an
 entirely new preferences page, you can incorporate them as a section in an
 existing SquirrelMail preference section ("Personal Information", "Display
-Preferences", "Message Highlighting", "Folder Preferences", or "Index Order").
+Preferences", "Message Highlighting", "Folder Preferences", or "Index Order";
+in 1.5.2 and above, there is also a section called "Compose Preferences").
 If there's an extensive number of preferences, a separate page might be needed.
 There may also be other reasons to create a separate page for the user to
 interact with.
@@ -1936,12 +1943,13 @@ interact with.
 <sect2>Adding preferences to an existing page
 <p>
 There are two ways to accomplish the integration of your plugin's settings into
-another preferences page. The first, and preferred, way to add preferences to an
-existing preference page is to use one of the <tt/"optpage_loadhook_&lt;pref
+another preferences page. The first, and preferred, way to add preferences to
+an existing preference page is to use one of the <tt/"optpage_loadhook_&lt;pref
 page&gt;/ hooks. The <tt/sent_subfolders/ plugin has an excellent example of
-this method. Briefly, this way of adding preferences consists of adding some
-plugin-specific information to a predefined data structure which SquirrelMail
-then uses to build the HTML input forms for you.
+this method (although beware that several other aspects of it are not currently
+conformant to plugin specifications). Briefly, this way of adding preferences
+consists of adding some plugin-specific information to a predefined data
+structure which SquirrelMail then uses to build the HTML input forms for you.
 
 As an example, we'll use the <tt/optpage_loadhook_display/ hook to add a new
 group of preferences to the display preferences page. First, we inform
@@ -1950,14 +1958,14 @@ SquirrelMail that we want to use this hook by adding a line to the
 <tt>plugins/demo/setup.php</tt>:
 
 <tscreen><verb>
-$squirrelmail_plugin_hooks['optpage_loadhook_display']['demo'] = 'demo_options';
+$squirrelmail_plugin_hooks['optpage_loadhook_display']['demo'] = 'demo_options_stub';
 </verb></tscreen>
 
-Make sure that the function <tt/demo_options()/ calls another function, located
-elsewhere, called <tt/demo_options_do()/. The <tt/demo_options()/ function needs
-to add a new key to two arrays: <tt/$optpage_data['grps']/ and
+Make sure that the function <tt/demo_options_stub()/ calls another function,
+located elsewhere, called <tt/demo_options()/. The <tt/demo_options()/ function
+needs to add a new key to two arrays: <tt/$optpage_data['grps']/ and
 <tt/$optpage_data['vals']/. The value associated with the key in
-<tt/$optpage_data['grps']/ should simply be the plugin's section heading at the
+<tt/$optpage_data['grps']/ should simply be the plugin's section heading on the
 preferences page, and the value associated with the key in
 <tt/$optpage_data['vals']/ an array with all the plugin's preferences. (Yes,
 that's four levels of nested arrays.) The specified preference attributes are
@@ -1965,8 +1973,9 @@ used by SquirrelMail to build the HTML input elements automatically. This
 example includes just one input element, a <tt/select/ (drop-down) list:
 
 <tscreen><verb>
-function demo_options_do() {
+function demo_options() {
     global $optpage_data;
+    sq_change_text_domain('demo');
     $optpage_data['grps']['demo'] = _("Demo Options");
     $optionValues = array();
     $optionValues[] = array(
@@ -1981,6 +1990,7 @@ function demo_options_do() {
         'save'    =&gt; 'save_plugin_demo_favorite_color'
     );
     $optpage_data['vals']['demo'] = $optionValues;
+    sq_change_text_domain('squirrelmail');
 }
 </verb></tscreen>
 
@@ -2008,12 +2018,13 @@ The type of input element, which should be one of:
   <item><tt><bf/SMOPT_TYPE_TEXTAREA/</tt> for a text area.
   <item><tt><bf/SMOPT_TYPE_INTEGER/</tt> for an integer.
   <item><tt><bf/SMOPT_TYPE_FLOAT/</tt> for a floating point number.
-  <item><tt><bf/SMOPT_TYPE_BOOLEAN/</tt> for a boolean (yes/no) radio buttons.
+  <item><tt><bf/SMOPT_TYPE_BOOLEAN/</tt> for a boolean (off/on) checkbox.
   <item><tt><bf/SMOPT_TYPE_HIDDEN/</tt> for a hidden input (not actually shown on preferences page).
   <item><tt><bf/SMOPT_TYPE_COMMENT/</tt> for a showing the text specified by the <tt/comment/ attribute, but no user input is needed.
   <item><tt><bf/SMOPT_TYPE_FLDRLIST/</tt> for a select list of IMAP folders.
   <item><tt><bf/SMOPT_TYPE_FLDRLIST_MULTI/</tt> for a select list of IMAP folders where the user can select more than one folder.
 </itemize>
+TODO: Version 1.5.2+ have some new option types: SMOPT_TYPE_EDIT_LIST, SMOPT_TYPE_STRLIST_MULTI, SMOPT_TYPE_BOOLEAN_CHECKBOX, SMOPT_TYPE_BOOLEAN_RADIO, SMOPT_TYPE_STRLIST_RADIO, SMOPT_TYPE_SUBMIT, SMOPT_TYPE_INFO, SMOPT_TYPE_PASSWORD
 
 <tag><tt/refresh/ (optional)</tag>
 Indicates if a link should be shown to refresh part or all of the window after
@@ -2082,7 +2093,7 @@ Available since 1.5.1.
 
 </descrip>
 
-Note that you do not have to create a whole new section at the preferences page
+Note that you do not have to create a whole new section on the preferences page
 if you merely want to add a simple input item or two to a preferences section
 that already exists. For example, the "Display Options" page has these groups:
 
@@ -2096,8 +2107,9 @@ To add our previous input drop-down to the "Mailbox Display Options", don't
 create your own group - just add it to the existing one.
 
 <tscreen><verb>
-function demo_options_do() {
+function demo_options() {
     global $optpage_data;
+    sq_change_text_domain('demo');
     $optpage_data['vals'][1][] = array(
         'name'    =&gt; 'plugin_demo_favorite_color',
         'caption' =&gt; _("Please choose your favorite color"),
@@ -2109,6 +2121,7 @@ function demo_options_do() {
                            3 =&gt; _("orange")),
         'save'    =&gt; 'save_plugin_demo_favorite_color'
     );
+    sq_change_text_domain('squirrelmail');
 }
 </verb></tscreen>
 
@@ -2121,7 +2134,7 @@ current value for this setting) is the most useful attribute in this context:
 
 <tscreen><verb>
 function save_plugin_demo_favorite_color($option) {
-    // if user chose orange, make note that they are really dumb
+    // if user chose orange, do something special
     if ($option-&gt;new_value == 3) {
         // more code here as needed
     }
@@ -2138,17 +2151,19 @@ function save_plugin_demo_favorite_color($option) {
 
 The second, deprecated, legacy method is to add the HTML code for your
 preferences directly to the preferences page of your choice. Although currently
-very popular, avoid it if you can. That said, here is how it works. Look for any
-of the hooks named as <tt/options_&lt;pref page&gt;_inside/, where &lt;pref
-page&gt; is "display", "personal", etc. For this example, we'll use
-<tt/options_display_inside/ and, as above, "demo" as our plugin name:
+very popular, please avoid it if you can. The SquirrelMail team may refuse
+to publish plugins using such code, but we provide this information for the
+rare case where the method above may not work. Look for any of the hooks named
+as <tt/options_&lt;pref page&gt;_inside/, where &lt;pref page&gt; is "display",
+"personal", etc. For this example, we'll use <tt/options_display_inside/ and,
+as above, "demo" as our plugin name:
 
 Inform SquirrelMail that we want to use this hook by adding a line to the
 <tt/squirrelmail_plugin_init_demo()/ function in
 <tt>plugins/demo/setup.php</tt>:
 
 <tscreen><verb>
-$squirrelmail_plugin_hooks['options_display_inside']['demo'] = 'demo_show_options';
+$squirrelmail_plugin_hooks['options_display_inside']['demo'] = 'demo_show_options_stub';
 </verb></tscreen>
 
 Note that there are also hooks such as <tt/options_display_bottom/, however,
@@ -2157,7 +2172,7 @@ usually not desirable (mostly because they also come <it/after/ the closure of
 the HTML <tt/form/ element). It is possible to use these hooks if you want to
 create your own form with custom submission logic.
 
-The function <tt/demo_show_options_do()/ should have output similar to this
+The function <tt/demo_show_options()/ should have output similar to this
 (note that you will be inserting code into a table that is already defined with
 two columns, so please be sure to keep this framework in your plugin):
 
@@ -2165,17 +2180,17 @@ two columns, so please be sure to keep this framework in your plugin):
      ------cut here-------
      &lt;tr&gt;
         &lt;td&gt;
-           OPTION_NAME
+           OPTION NAME
         &etago;td&gt;
         &lt;td&gt;
-           OPTION_INPUT
+           OPTION INPUT
         &etago;td&gt;
      &etago;tr&gt;
      ------cut here-------
 </verb></tscreen>
 
-Of course, you can place any text where "OPTION_NAME" is and any input tags
-where "OPTION_INPUT" is.
+Of course, you can place any text where "OPTION NAME" is and any input tags
+where "OPTION INPUT" is.
 
 You will want to use the <tt/options_&lt;pref page&gt;_save/ hook (in this case,
 <tt/options_display_save/) to save the user's settings after they have pressed
@@ -2184,19 +2199,21 @@ adding a line to the <tt/squirrelmail_plugin_init_demo()/ function in
 <tt>plugins/demo/setup.php</tt>:
 
 <tscreen><verb>
-$squirrelmail_plugin_hooks['options_display_save']['demo'] = 'demo_save_options';
+$squirrelmail_plugin_hooks['options_display_save']['demo'] = 'demo_save_options_stub';
 </verb></tscreen>
 
-The function <tt/demo_save_options_do()/ should put the user's settings into
+The function <tt/demo_save_options()/ should put the user's settings into
 permanent storage (see <ref id="savepref" name="Saving and retrieving
 preferences"> below for more information). This example assumes that in the
 preferences page, the input element's <tt/name/ attribute was set to
 "demo_option":
 
 <tscreen><verb>
-global $data_dir, $username;
-sqgetGlobalVar('demo_option', $demo_option);
-setPref($data_dir, $username, 'demo_option', $demo_option);
+function demo_save_options() {
+    global $data_dir, $username;
+    sqgetGlobalVar('demo_option', $demo_option);
+    setPref($data_dir, $username, 'demo_option', $demo_option);
+}
 </verb></tscreen>
 
 <sect2>Creating a custom preference page
@@ -2206,7 +2223,7 @@ particularly useful when the plugin has numerous preferences or needs to offer
 special interaction with the user (for things such as changing password, etc.).
 Here is an outline of how to do so (again, using the "demo" plugin name):
 
-First of all you have to add a new listing to the main "Options page". Always
+First of all, you have to add a new listing to the main "Options" page. Always
 use the <tt/optpage_register_block/ hook where you create a simple array that
 lets SquirrelMail build the HTML to add the plugin preferences entry
 automatically. Inform SquirrelMail that we want to use this hook by adding a
@@ -2214,25 +2231,25 @@ line to the <tt/squirrelmail_plugin_init_demo()/ function in
 <tt>plugins/demo/setup.php</tt>:
 
 <tscreen><verb>
-$squirrelmail_plugin_hooks['optpage_register_block']['demo'] = 'demo_options_block';
+$squirrelmail_plugin_hooks['optpage_register_block']['demo'] = 'demo_options_block_stub';
 </verb></tscreen>
 
-Assuming the function <tt/demo_options_block()/ calls another function elsewhere
-called <tt/demo_options_block_do()/, that function only needs to create a simple
-array and add it to the <tt/$optpage_blocks/ array:
+Assuming the function <tt/demo_options_block_stub()/ calls another function
+elsewhere called <tt/demo_options_block()/, that function only needs to create
+a simple array and add it to the <tt/$optpage_blocks/ array:
 
 <tscreen><verb>
-global $optpage_blocks;
-bindtextdomain('demo', SM_PATH . 'locale');
-textdomain('demo');
-$optpage_blocks[] = array(
-    'name' =&gt; _("Favorite Color Settings"),
-    'url'  =&gt; SM_PATH . 'plugins/demo/options.php',
-    'desc' =&gt; _("Change your favorite color and find new exciting colors"),
-    'js'   =&gt; FALSE
-);
-bindtextdomain('squirrelmail', SM_PATH . 'locale');
-textdomain('squirrelmail');
+function demo_options_block() {
+    global $optpage_blocks;
+    sq_change_text_domain('demo');
+    $optpage_blocks[] = array(
+        'name' =&gt; _("Favorite Color Settings"),
+        'url'  =&gt; sqm_baseuri() . 'plugins/demo/options.php',
+        'desc' =&gt; _("Change your favorite color and find new exciting colors"),
+        'js'   =&gt; FALSE
+    );
+    sq_change_text_domain('squirrelmail');
+}
 </verb></tscreen>
 
 The array must have four elements:
@@ -2249,13 +2266,18 @@ the Options page below the title. Note that the text domain has to be changed to
 properly translate this text.
 <tag/js/
 Indicates if this preference page requires the client browser to be
-JavaScript-capable. Should be <tt/TRUE/ or <tt/FALSE/.
+JavaScript-capable. Should be <tt/TRUE/ or <tt/FALSE/. If given as <tt/TRUE/
+and a user accesses SquirrelMail with JavaScript disabled in their browser
+(or turns it off in their SquirrelMail user preferences), this preferences
+"block" will not be shown on the "Options" page.
 </descrip>
 
 The next step is to create your custom options page, keeping in mind the guidelines
 in <ref id="pagescalleddirectly" name="pages called directly"> and possibly using
 the techniques described in <ref id="savepref" name="Saving and retrieving
 preferences"> below.
+
+TODO: It is both possible AND RECOMMENDED for a plugin to have its custom preferences page auto-generated by SquirrelMail using the same code explained above plus some extra magic. We need to explain how to do that. For now, see the Server Settings plugin as a reference.
 
 <sect2>Saving and retrieving preferences<label id="savepref">
 <p>
@@ -2267,42 +2289,148 @@ There are a few places in a plugin, such as when hooking into the "menuline" or
 "optpage_register_block" hooks, where you can provide a link to a file that is
 called directly by the client browser. No matter what that page does, it should
 always validate that the calling client has a current login session. Thus, all
-such pages should start with the following code:
+such pages should start with almost identical code as shown in the example below.
+
+Note that the code that loads the SquirrelMail framework shown below works for
+SquirrelMail versions from 1.2.x to 1.5.x; if your plugin does not support the
+1.2.x series, for example, that part can be left out.
 
 <tscreen><verb>
-/*
- * Pages that are called directly by the client browser need to load the
- * SquirrelMail framework. This differs between various SquirrelMail versions.
- * Plugins that don't support all SquirrelMail versions can strip some of this
- * code away.
- */
+// Load the SquirrelMail framework
+//
+// include/init.php contains the SquirelMail startup code starting
+// with SquirrelMail 1.5.2
+//
 if (file_exists('../../include/init.php')) {
-    /*
-     * "include/init.php" is used since SquirrelMail 1.5.2. This isn't needed
-     * for plugins that don't support SquirrelMail 1.5.2 and later.
-     */
     include_once('../../include/init.php');
+
+// include/validate.php contains the SquirelMail startup code from
+// SquirrelMail 1.4.0 up to SquirrelMail 1.5.1
+//
 } elseif (file_exists('../../include/validate.php')) {
-    /*
-     * "include/validate.php" is used since SquirrelMail 1.4.0 until version
-     * 1.5.1.
-     */
     define('SM_PATH', '../../');
     include_once(SM_PATH . 'include/validate.php');
+
+// src/validate.php contains the SquirelMail startup code for the
+// SquirrelMail 1.2.x series
+//
 } else {
-    /*
-     * "src/validate.php" is used in SquirrelMail 1.2. This isn't needed for
-     * plugins that don't support SquirrelMail 1.2.
-     */
     chdir('..');
     define('SM_PATH', '../');
     include_once(SM_PATH . 'src/validate.php');
 }
+
+
+// Make sure this plugin is activated
+//
+global $plugins;
+if (!in_array('demo', $plugins))
+   exit;
 </verb></tscreen>
 
-Don't forget to follow the instructions in <ref id="including_files"
-name="Including files">. The list of files that are included by the code above
-are also there.
+Here, the plugin's name would be "demo". There is more information about
+the files and functionality that are loaded using the code above in the
+<ref id="including_files" name="&quot;including files&quot; section of the SquirrelMail coding guidelines">.
+
+<sect1>Internationalization<label id="plugin_internationalization">
+<p>
+Although this document may only be available in English, we sure hope that you
+are thinking about making your plugin useful to the thousands of non-English
+speaking SquirrelMail users out there! It isn't much trouble, so failing to do
+so could be considered almost rude.
+
+This document will only describe how you can accomplish the
+internationalization of a plugin. For more general information about PHP and
+SquirrelMail translation facilities, see the
+<url url="http://squirrelmail.org/wiki/LanguageTranslation"
+name="SquirrelMail language translation resources">.
+
+The steps to fully internationalizing your plugin are quite easy, especially
+if you follow them from the beginning of the plugin's development:
+
+<sect2>Text Domains
+<p>
+Switch to what's called a "text domain" for your plugin before any text
+output. After the output, you will want to switch back to the SquirrelMail
+text domain. You switch text domains by using <tt/sq_change_text_domain()/.
+
+Note that if, in the middle of a translated function in your plugin, you use
+any SquirrelMail functions that generate output, you'll need to temporarily
+switch back to the SquirrelMail domain as well.
+
+<sect2>Output Syntax
+<p>
+<em/ALL/ textual output must be echoed using standard gettext syntax. This
+includes hyperlink text, page titles, etc. Including the use of
+<tt/sq_change_text_domain()/, here is the needed syntax:
+
+<tscreen><verb>
+   sq_change_text_domain('demo');
+   echo _("Hello!");
+   sq_change_text_domain('squirrelmail');
+</verb></tscreen>
+
+You must use double quotes around your strings - <em/not/ single quotes.
+Also, please do not break up sentences (including punctuation such as colons)
+into fragments that might cause problems when translating into languages with
+different syntactic structure. That is, <em/DO NOT/ do this:
+
+<tscreen><verb>
+   echo _("I want to eat a ") . $fruitName . _(" before noon.");
+</verb></tscreen>
+
+Instead, do this:
+
+<tscreen><verb>
+   echo sprintf(_("I want to eat a %s before noon."), $fruitName);
+</verb></tscreen>
+
+<sect2>Translation Template
+<p>
+Now you just need to provide a file that contains all the strings in your
+plugin that need to be translated into any given language. There is a tool
+that is available on most *nix systems that can build this file for you:
+
+
+<tscreen><verb>
+   $ xgettext --keyword=_ -L php --default-domain=demo *.php --output=demo.pot
+</verb></tscreen>
+
+Many plugin authors keep a special script file on hand in a "locale" directory
+called "getpot" that does this automatically for them. You can borrow one such
+file for your plugin. Please also store the resultant .pot file in the "locale"
+directory, with a slightly modified header as follows:
+
+<tscreen><verb>
+# <your language> SquirrelMail Demo Plugin Translation File
+# Copyright (c) 2005-2009 The Squirrelmail Development Team
+# This file is distributed under the same license as the SquirrelMail package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: demo\n"
+"Report-Msgid-Bugs-To: SquirrelMail Internationalization <squirrelmail-i18n@lists.sourceforge.net>\n"
+"POT-Creation-Date: 2008-12-19 16:09-0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: SquirrelMail Language Team <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Hello!"
+msgstr ""
+
+msgid "Favorite Color"
+msgstr ""
+</verb></tscreen>
+
+When your plugin is accepted and published on the SquirrelMail web site,
+this template file will be added to the main SquirrelMail repository and
+any translations of it should be submitted to the SquirrelMail
+Internationalization team for inclusion in future language packs.
 
 <sect1>Configuration<label id="plugin_configuration">
 <p>
@@ -2332,8 +2460,9 @@ if (!@include_once(SM_PATH . 'config/config_demo.php'))
       @include_once(SM_PATH . 'plugins/demo/config_default.php');
 </verb></tscreen>
 
-If the plugin <it/must/ be configured specifically for the system upon which
-it is installed, remove the third line in this example.
+Here, the plugin's name would be "demo". If the plugin <it/must/ be configured
+specifically for the system upon which it is installed, remove the third
+line in this example.
 
 <sect1>Versioning
 <sect2>Version numbering
@@ -2390,8 +2519,8 @@ Other optional elements include:
 A typical implementation of this function is as follows. Note that
 this example shows a conditional requirement for the Compatibility
 plugin that is due to the (required) use of <tt/sq_change_text_domain()/
-[FIXME: PROVIDE LINK FOR THE FOLLOWING]
-(explained in the plugin internationalization section below), which
+(explained in the <ref id="plugin_internationalization"
+name="plugin internationalization section"> below), which
 was added to the SquirrelMail core as of version 1.4.10 and 1.5.2.
 
 <tscreen><verb>
@@ -2514,7 +2643,7 @@ Never store unsecured configuration data that contains any user or system-specif
 information in your plugin directory. Even the above suggestions
 may not be sufficient depending on how sensitive the data is that you are
 storing. In such a situation, you might think about a more complex encryption
-scheme such as the one provided by the <bf/vadmin/ plugin.
+scheme such as the one provided by the <bf/Vadmin/ plugin.
 
 Note that just shipping unsecured configuration files along with a
 configuration file for Apache (<tt/.htaccess/) is not sufficient because
@@ -2527,16 +2656,22 @@ its function when it is not enabled. Any functions or files that contain PHP
 code that is <tt/not/ wrapped inside a function can be protected from being
 executed when the plugin is not activated by adding code similar to this:
 
-<tscreen><verb>
-# Since SquirrelMail 1.5.1.
-if ( !is_plugin_enabled('my_plugin_name') ) {
-    exit('The plugin my_plugin_name isn't enabled in the SquirrelMail configuration.');
-}
+For SquirrelMail 1.5.1 and up:
 
-# In SquirrelMail 1.4 and 1.5.0.
+<tscreen><verb>
+if (!is_plugin_enabled('my_plugin_name')) {
+    echo 'Security Violation';
+    exit;
+}
+</verb></tscreen>
+
+For SquirrelMail versions 1.4.0 to 1.5.0:
+
+<tscreen><verb>
 global $plugins;
-if ( !in_array('mypluginname', $plugins) ) {
-    exit('The plugin my_plugin_name isn't enabled in the SquirrelMail configuration.');
+if (!in_array('mypluginname', $plugins)) {
+    echo 'Security Violation';
+    exit;
 }
 </verb></tscreen>
 
@@ -2545,11 +2680,28 @@ disabled plugin, so don't shoot yourself in the foot with too much protection.
 
 <sect1>Coding tips<label id="plugin_coding_tips">
 <p>
-Listed below are several useful tips to keep in mind while coding plugins. Some of these items will be scrutinized and possibly treated as mandatory by the plugin team when evaluating new plugins.
+Listed below are several useful tips to keep in mind while coding plugins.
+Some of these items will be scrutinized and possibly treated as mandatory by
+the plugin team when evaluating new plugins.
 
 <sect2>Knowing what hook is running
 <p>
-Some plugins may register the same function against multiple hooks or otherwise run the same library code for more than one hook. If that code needs to make a hook-specific decision, it can look at the global variable called <tt/$currentHookName/. However, this variable is only available in SquirrelMail versions 1.5.1 and above, so it is more portable to use the function <tt/get_current_hook_name()/, which is provided by the Compatibility plugin (see elsewhere for more information about using the Compatibility plugin[FIXME: provide a link for this]).
+Some plugins may register the same function against multiple hooks or otherwise
+run the same library code for more than one hook. If that code needs to make a
+hook-specific decision, it can look at the global variable called
+<tt/$currentHookName/. However, this variable is only available in SquirrelMail
+versions 1.5.1 and above, so it is more portable to use the function
+<tt/get_current_hook_name()/, which is provided by the Compatibility plugin
+(see elsewhere for more information about using the Compatibility
+plugin[FIXME: provide a link for this]).
+
+<sect2>No global code<label id="no_global_code">
+<p>
+All plugin code should be contained in functions that are only executed when
+needed. Even constant declarations and other setup code should <em/not/ be
+executed unconditionally. The only two exceptions to this rule are
+configuration files (where only configuration variables should be set) and
+pages that are accessed directly by the browser (e.g., options pages).
 
 <sect1>Compatibility with older versions of SquirrelMail
 <p>
@@ -2586,8 +2738,9 @@ more inforamtion, please download "Compatibility" and read its README file.
 
 <sect1>Documentation files
 <p>
-Two more files are needed in your plugin directory. One file shall describes
-your plugin and offers detailed instructions for configuration or help with
+Two more files must be included with your plugin. It is recommended that they
+be placed in a subdirectory called "docs". One file shall describe your plugin
+and offer detailed instructions for configuration or help with
 troubleshooting, etc. This file is usually entitled <tt/README/. Some useful
 sections to include might be:
 
@@ -2595,13 +2748,14 @@ sections to include might be:
   <item>Plugin name and author
   <item>Current version
   <item>Plugin features
+  <item>Plugin requirements
   <item>Detailed plugin description
   <item>How-to for plugin configuration
   <item>Change log
   <item>Future ideas/enhancements/to do list
 </itemize>
 
-The other files shall explain how to install your plugin. This file is typically
+Another file shall explain how to install your plugin. This file is typically
 called <tt/INSTALL/. If you do not require any special installation actions, you
 can probably copy one from another plugin or use this as a template:
 
@@ -2609,57 +2763,70 @@ can probably copy one from another plugin or use this as a template:
 Installing the Demo plugin
 ==========================
 
-1) Start with untaring the file into the plugins directory. Here is an example
-   for the 1.0 version of the Demo plugin.
+1) Start with untaring the file into the plugins directory. Here
+   is an example for the 1.0 version of the Demo plugin.
 
-  cd plugins
-  tar -zxvf demo-1.0-1.4.0.tar.gz
+   $ cd plugins
+   $ tar -zxvf demo-1.0-1.4.0.tar.gz
 
-2) Change into the demo directory, copy "config.php.sample" to "config.php" and
-   edit "config.php", making adjustments as you deem necessary. For more
-   detailed explanations about each of these parameters, consult the README
-   file.
+2) Decide if you want to store the plugin configuration file in
+   the plugin directory or in the main SquirrelMail config directory.
 
-      cd demo
-      cp config.php.sample config.php
-      vi config.php
+   A) To store the configuration file in the plugin directory,
+      change into the demo directory, copy config_example.php
+      to config.php and edit config.php, making adjustments as
+      you deem necessary.
 
-3) Then go to your config directory and run "conf.pl". Choose option 8 and move
-   the plugin from the "Available Plugins" category to the "Installed Plugins"
-   category. Save and exit.
+      $ cd demo
+      $ cp config_example.php config.php
+      $ vi config.php
 
-      cd ../../config/
-      ./conf.pl
+   B) To store the configuration file in the main SquirrelMail
+      config directory, change into the demo directory,
+      copy config_example.php to ../../config/config_demo.php
+      and edit ../../config/config_demo.php, making
+      adjustments as you deem necessary.
+
+      $ cd demo
+      $ cp config_example.php ../../config/config_demo.php
+      $ vi ../../config/config_demo.php
+
+3) Then go to your config directory and run "conf.pl". Choose
+   option 8 and move the plugin from the "Available Plugins"
+   category to the "Installed Plugins" category. Save and exit.
+
+   $ cd ../../config/
+   $ ./conf.pl
+
 
 Upgrading the Demo plugin
 =========================
 
-1) Start with untaring the file into the plugins directory. Here is a example
-   for the 3.1 version of the demo plugin.
+1) Start with untaring the file into the plugins directory. Here
+   is a example for the 1.0 version of the Demo plugin.
 
-      cd plugins
-      tar -zxvf demo-3.1-1.4.0.tar.gz
+   $ cd plugins
+   $ tar -zxvf demo-1.0-1.4.0.tar.gz
 
-2) Change into the demo directory, check your "config.php" file against the new
-   version, to see if there are any new settings that you must add to your
-   "config.php" file.
+2) Change into the demo directory and check your config.php file
+   against the new version to see if there are any new settings
+   that you must add to your config.php file.
 
-      diff -Nau config.php config.php.sample
+   $ diff -u config.php config_example.php
 
-   Or simply replace your "config.php" file with the provided sample and
-   reconfigure the plugin from scratch (see step 2 under the installation
-   procedure above).
+   If you store your configuration file in the main SquirrelMail
+   config directory, adjust this command as follows:
+
+   $ diff -u ../../config/config_demo.php config_example.php
+
+   Or simply replace your configuration file with the provided
+   example and reconfigure the plugin from scratch (see step two
+   under the installation procedure above).
 </verb></tscreen>
 
 <sect1>Storing code
 <p>
 [FIXME: expand this section]
-Due to the large number and wide range of functions plugins can cover it is
-impractical to add all but the most popular of these to the SquirrelMail
-core project.
-There is a separate <url url="http://sourceforge.net/projects/sm-plugins/"
-name="SM Plugins"> project registered at SourceForge to house plugin code,
-developers should consider joining this project.
 
 <sect1>Additional Resources
 <p>
@@ -2688,11 +2855,56 @@ tar -czvf demo-1.0-1.4.0.tar.gz demo
 <sect2>Requirements Checklist
 <p>
 Make sure the plugin meets the SquirrelMail plugin requirements explained throughout this document. Here is a quick checklist to help summarize the various requirements.
+TODO: some of these items need more explanation (the old plugin.txt file has some useful text for some of this)
 
 <itemize>
-  <item>FIXME: WHERE SHOULD THIS CHECKLIST BE BEST PLACED IN THIS DOCUMENT?
+  <item>Plugins must be developed in an environment with PHP error reporting
+        set to <tt/E_ALL/ and PHP <tt/register_globals/ turned off.  PHP
+        notices in plugin code are not acceptable.
+  <item>Do not access superglobals directly. Always use <tt/sqgetGlobalVar()/
+        and <tt/sqsession_*()/ functions. Code that accesses <tt/$_GET/,
+        <tt/$_POST/, <tt/$_SESSION/ or <tt/$_SERVER/ directly will be rejected.
+        TODO: provide more info or a link to how to use sqgetGlobalVar()
+  <item>No PHP files may end with the closing PHP tag <tt/?>/.
+  <item>Fallbacks must be provided for all JavaScript-based functionality
+        (check using the global $javascript_on value).
+  <item>Use <tt/include_once()/ and not <tt/include()/, <tt/require()/, or
+        <tt/require_once()/.
   <item>Keep <tt/setup.php/ <ref id="plugin_setup_file" name="small and efficient">
+  <item><ref id="plugin_internationalization" name="Internationalize"> all
+        output
+  <item>All plugin directories should have <tt/index.php/ files copied from the
+        SquirrelMail "plugins" directory itself.
+  <item>All plugin directories should have <tt/.htaccess/ files with
+        "Deny from All" in them, the only exception being a directory that
+        contains a file accessed directly from the client browser (an option
+        page, for example).
+  <item>README file that points to the "docs" directory
+  <item>COPYING, README and INSTALL files
+  <item>"locale" directory with translation tools and .pot template file
+  <item>Plugin <ref id="plugin_version_reporting"
+        name="&quot;info&quot; function and &quot;version&quot; function"> in <tt/setup.php/
+  <item>Example (and possibly default) <ref id="plugin_configuration"
+        name="configuration"> files.
+  <item><ref id="no_global_code" name="No global code">
+  <item>Correct syntax for <ref id="pagescalleddirectly"
+        name="pages accessed directly by client browser">.
+  <item><tt/displayPageHeader()/ with no applicable mailbox must NOT use
+        "None" - instead use an empty string:
+        <tt/displayPageHeader($color, '');/
+  <item><tt/SM_PATH/ only for use when referencing other files, such as in
+        <tt/include_once()/ calls.
+  <item><tt/sqm_baseuri()/ only for use when constructing relative hyperlinks
+        given to the client browser
+  <item><tt/get_location()/ only for use when constructing absolute hyperlinks
+        given to the client browser, such as for <tt/header('Location...')/
+        redirects.
+  <item>Plugins that create user preference settings that are sensitive
+        from a security standpoint and should <em/not/ be controllable by
+        users directly should be specified in a hook called "reset_user_prefs".
+        Please see the README file for the Reset User Preferences plugin.
 </itemize>
+TODO: there's more here I'm sure
 
 <sect2>Submitting the plugin
 <p>
