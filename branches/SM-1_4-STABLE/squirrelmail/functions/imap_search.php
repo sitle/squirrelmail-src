@@ -38,31 +38,17 @@ function sqimap_search($imapConnection, $search_where, $search_what, $mailbox,
     $multi_search = explode(' ', $search_what);
     $search_string = '';
 
-    /* it seems macosx and hmailserver do not support the prefered search
-       syntax so we fall back to the older style. This IMAP
-       server has a problem with multiple search terms. Instead
-       of returning the messages that match all the terms it
-       returns the messages that match each term. Could be fixed
-       on the client side, but should be fixed on the server
-       as per the RFC */
-
     if (strtoupper($languages[$squirrelmail_language]['CHARSET'] == 'ISO-2022-JP')) {
         foreach($multi_search as $idx=>$search_part) {
             $multi_search[$idx] = mb_convert_encoding($search_parth, 'JIS', 'auto');
         }
     }
 
-    $search_lit = array();
-
-    if ($imap_server_type == 'macosx' || $imap_server_type == 'hmailserver') {
-        $search_string .= $search_where . ' ' . implode(' ', $multi_search);
-    }
-    else {
-        $search_string .= $search_where;
-        $search_lit = array(
-                    'command' => '',
-                    'literal_args' => $multi_search
-                );
+    foreach ($multi_search as $string) {
+       $search_string .= $search_where
+                      . ' "'
+                      . str_replace(array('\\', '"'), array('\\\\', '\\"'), $string)
+                      . '" ';
     }
 
     $search_string = trim($search_string);
@@ -77,13 +63,8 @@ function sqimap_search($imapConnection, $search_where, $search_what, $mailbox,
         $ss = "SEARCH ALL $search_string";
     }
 
-    if (empty($search_lit)) {
-        /* read data back from IMAP */
-        $readin = sqimap_run_command($imapConnection, $ss, false, $result, $message, $uid_support);
-    } else {
-        $search_lit['command'] = $ss;
-        $readin = sqimap_run_literal_command($imapConnection, $search_lit, false, $result, $message, $uid_support);
-    }
+    /* read data back from IMAP */
+    $readin = sqimap_run_command($imapConnection, $ss, false, $result, $message, $uid_support);
 
     /* try US-ASCII charset if search fails */
     if (isset($languages[$squirrelmail_language]['CHARSET'])
