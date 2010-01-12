@@ -226,7 +226,7 @@ function printSearchMessages($msgs,$mailbox, $cnt, $imapConnection, $where, $wha
         if ((!empty($allow_server_sort) && $allow_server_sort) || (!empty($allow_server_thread) && $allow_server_thread)) {
             $msort = $msgs;
         } else {
-            $msort = calc_msort($msgs, $sort);
+            $msort = calc_msort($msgs, $sort, $mailbox);
         }
 
         if ( $mailbox == 'INBOX' ) {

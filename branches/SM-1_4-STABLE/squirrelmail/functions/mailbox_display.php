@@ -487,7 +487,7 @@ function showMessagesForMailbox($imapConnection, $mailbox, $num_msgs,
                 if (!$use_cache) {
                     $msgs = getSelfSortMessages($imapConnection, $start_msg, $show_num,
                                                 $num_msgs, $sort, $mbxresponse);
-                    $msort = calc_msort($msgs, $sort);
+                    $msort = calc_msort($msgs, $sort, $mailbox);
                 } /* !use cache */
                 break;
         } // switch
@@ -545,7 +545,7 @@ function showMessagesForMailbox($imapConnection, $mailbox, $num_msgs,
     //echo("elapsed time = $t seconds\n");
 }
 
-function calc_msort($msgs, $sort) {
+function calc_msort($msgs, $sort, $mailbox = 'INBOX') {
 
     /*
      * 0 = Date (up)
@@ -565,8 +565,9 @@ function calc_msort($msgs, $sort) {
             $msort[] = $item['TIME_STAMP'];
         }
     } elseif (($sort == 2) || ($sort == 3)) {
+        $fld_sort = (handleAsSent($mailbox)?'TO-SORT':'FROM-SORT');
         foreach ($msgs as $item) {
-            $msort[] = $item['FROM-SORT'];
+            $msort[] = $item[$fld_sort];
         }
     } elseif (($sort == 4) || ($sort == 5)) {
         foreach ($msgs as $item) {
