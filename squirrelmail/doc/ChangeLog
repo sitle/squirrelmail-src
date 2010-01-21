@@ -11,6 +11,8 @@ Version 1.4.20 - SVN
   - Fix sort in Sent folder to sort by "To" field instead of "From" field (#2907412).
   - Fix for mailto: urls containing + characters, thanks to Michael Puls II for the 
     patch.
+  - Make base URL autodetection more robust; fixes some lighttpd issues
+    (probably #1741469).
 
 Version 1.4.20 RC2 - 17 Aug 2009
 --------------------------------
