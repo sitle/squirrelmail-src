@@ -210,47 +210,53 @@ function readShortMailboxName($haystack, $needle) {
 /**
  * php_self
  *
- * Creates an URL for the page calling this function, using either the PHP global
- * REQUEST_URI, or the PHP global PHP_SELF with QUERY_STRING added.
+ * Attempts to determine the path and filename and any arguments
+ * for the currently executing script.  This is usually found in
+ * $_SERVER['REQUEST_URI'], but some environments may differ, so
+ * this function tries to standardize this value.
  *
- * @return string the complete url for this page
+ * @since 1.2.3
+ * @return string The path, filename and any arguments for the
+ *                current script
  */
-function php_self () {
+function php_self() {
 
-    if (sqgetGlobalVar('PHP_SELF', $php_self, SQ_SERVER)
-     && !empty($php_self)) {
+    $request_uri = '';
 
-        // need to add query string to end of PHP_SELF to match REQUEST_URI
-        //
-        if (sqgetGlobalVar('QUERY_STRING', $query_string, SQ_SERVER)
-         && !empty($query_string)) {
-            $php_self .= '?' . $query_string;
-        }
-
-        return $php_self;
-    }
-
-    // some versions of PHP, perhaps specifically in use with lighttpd,
-    // return a blank string for PHP_SELF, so we use REQUEST_URI as a backup:
+    // first try $_SERVER['PHP_SELF'], which seems most reliable
+    // (albeit it usually won't include the query string)
     //
-    else if (sqgetGlobalVar('REQUEST_URI', $req_uri, SQ_SERVER)
-          && !empty($req_uri)) {
+    $request_uri = '';
+    if (!sqgetGlobalVar('PHP_SELF', $request_uri, SQ_SERVER)
+     || empty($request_uri)) {
 
-        // some versions of PHP (such as 4.4.4) don't include the query
-        // string in REQUEST_URI, but most do... here's a fix for the
-        // odd ones out (assuming QUERY_STRING is reliable in those cases)
+        // well, then let's try $_SERVER['REQUEST_URI']
         //
-        if (strpos($req_uri, '?') === FALSE
-         && sqgetGlobalVar('QUERY_STRING', $query_string, SQ_SERVER)
-         && !empty($query_string)) {
+        $request_uri = '';
+        if (!sqgetGlobalVar('REQUEST_URI', $request_uri, SQ_SERVER)
+         || empty($request_uri)) {
 
-            $req_uri .= '?' . $query_string;
+            // TODO: anyone have any other ideas?  maybe $_SERVER['SCRIPT_NAME']???
+            //
+            return '';
         }
 
-        return $req_uri;
     }
 
-    return '';
+    // we may or may not have any query arguments, depending on
+    // which environment variable was used above, and the PHP
+    // version, etc., so let's check for it now
+    //
+    $query_string = '';
+    if (strpos($request_uri, '?') === FALSE
+     && sqgetGlobalVar('QUERY_STRING', $query_string, SQ_SERVER)
+     && !empty($query_string)) {
+
+        $request_uri .= '?' . $query_string;
+    }
+
+    return $request_uri;
+
 }
 
 
