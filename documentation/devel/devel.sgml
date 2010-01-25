@@ -3146,6 +3146,57 @@ https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/rel-1_2_1</ve
 <item><bf/Changelog:/ Add the new translation to the Changelog for both STABLE and DEVEL.
 </enum>
 
+<sect1>Updating Copyright Dates
+<p>
+Every year, the copyright dates should be updated.  Here is an example bash script
+that can be used for that purpose.
+<tscreen><verb>
+#!/bin/bash
+
+update_copyrights()
+{
+
+   if [ -z $1 ] || [ ! -d $1 ]; then
+      echo
+      echo "Error: update_copyrights expects valid directory, got $1"
+      echo
+      exit 1;
+   fi
+
+   cd $1
+
+   for file in `ls`; do
+
+      if [ -d $file ]; then
+         echo "Traversing $PWD/$file"
+         update_copyrights $file
+         cd ..
+      else
+         echo "   Updating $file"
+         `sed -i "s/\(copyright .*\)-$last_year/\1-$this_year/i" $file`
+      fi
+
+   done
+
+}
+
+if [ -z $1 ] || [ ! -d $1 ]; then
+   echo
+   echo "Usage: $0 [directory]"
+else
+   this_year=`date +%Y`
+   last_year=$((this_year - 1))
+   echo
+   echo "Updating Copyrights from $last_year to $this_year"
+   echo
+   update_copyrights $1
+fi
+
+echo
+echo "Done"
+echo
+</verb></tscreen>
+
 <sect>Miscellaneous
 <p>
 TODO: This is a quick and dirty import of the documents in "/doc/Development". They all need to be cleand up and in the LinuxDoc format.
