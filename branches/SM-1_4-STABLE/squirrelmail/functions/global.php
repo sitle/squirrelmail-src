@@ -97,6 +97,12 @@ if (isset($_SERVER['PHP_SELF'])) {
 if (isset($_SERVER['QUERY_STRING'])) {
     $_SERVER['QUERY_STRING'] = htmlspecialchars($_SERVER['QUERY_STRING']);
 }
+/*
+ * same needed for REQUEST_URI because it's used in php_self()
+ */
+if (isset($_SERVER['REQUEST_URI'])) {
+    $_SERVER['REQUEST_URI'] = htmlspecialchars($_SERVER['REQUEST_URI']);
+}
 
 /**
  * Bring in the config file
