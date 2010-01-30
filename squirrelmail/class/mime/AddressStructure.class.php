@@ -60,12 +60,13 @@ class AddressStructure {
                                   : $this->mailbox);
             $personal = trim($this->personal);
             $is_encoded = false;
+            // FIXME: I don't think the U modifier below does anything at all
             if (preg_match('/(=\?([^?]*)\?(Q|B)\?([^?]*)\?=)(.*)/Ui',$personal,$reg)) {
                 $is_encoded = true;
             }
             if ($personal) {
                 if ($encoded && !$is_encoded) {
-                    $personal_encoded = encodeHeader($personal);
+                    $personal_encoded = encodeHeader('"' . $personal . '"');
                     if ($personal !== $personal_encoded) {
                         $personal = $personal_encoded;
                     } else {
