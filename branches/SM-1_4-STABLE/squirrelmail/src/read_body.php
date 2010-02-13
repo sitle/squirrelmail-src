@@ -545,7 +545,16 @@ function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_resp
 
     $delete_url = $base_uri . 'src/delete_message.php?mailbox=' . $urlMailbox .
                   '&amp;message=' . $passed_id . '&amp;smtoken=' . sm_generate_security_token() . '&amp;';
+    $unread_url = $base_uri . 'src/';
     if (!(isset($passed_ent_id) && $passed_ent_id)) {
+        if ($where && $what) {
+            $unread_url .= 'search.php?unread_passed_id=' . $passed_id . '&amp;smtoken=' . sm_generate_security_token() . '&amp;where=' . urlencode($where) . '&amp;what=' . urlencode($what) . '&amp;mailbox=' . $urlMailbox;
+        } else {
+            $unread_url .= 'right_main.php?unread_passed_id=' . $passed_id . '&amp;sort=' . $sort . '&amp;startMessage=' . $startMessage . '&amp;mailbox=' . $urlMailbox;
+        }
+        $s .= $topbar_delimiter;
+        $s .= '<a href="' . $unread_url . '">' . _("Unread") . '</a>';
+
         if ($where && $what) {
             $delete_url .= 'where=' . urlencode($where) . '&amp;what=' . urlencode($what);
         } else {

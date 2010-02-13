@@ -15,6 +15,8 @@
  * @subpackage delete_move_next
  */
 
+//FIXME: all functionality needs to be moved out of the setup.php file!
+
 /**
  * Initialize the plugin
  * @return void
@@ -122,10 +124,12 @@ function delete_move_expunge_from_all($id) {
 
 function delete_move_next_action() {
 
-    if ( sqgetGlobalVar('delete_id', $delete_id, SQ_GET) ) {
+    if ( sqgetGlobalVar('unread_id', $unread_id, SQ_GET) ) {
+        delete_move_next_unread();
+    } else if ( sqgetGlobalVar('delete_id', $delete_id, SQ_GET) ) {
         delete_move_next_delete();
         fix_sort_array();
-    } elseif ( sqgetGlobalVar('move_id', $move_id, SQ_POST) ) {
+    } else if ( sqgetGlobalVar('move_id', $move_id, SQ_POST) ) {
         delete_move_next_move();
         fix_sort_array();
     }
@@ -154,7 +158,7 @@ function delete_move_next_read($currloc) {
            $color, $where, $what, $currentArrayIndex, $passed_id,
            $mailbox, $sort, $startMessage, $delete_id, $move_id,
            $imapConnection, $auto_expunge, $move_to_trash, $mbx_response,
-           $uid_support, $passed_ent_id;
+           $uid_support, $passed_ent_id, $delete_move_next_show_unread;
 
     $urlMailbox = urlencode($mailbox);
 
@@ -182,15 +186,27 @@ function delete_move_next_read($currloc) {
                  "<td bgcolor=\"$color[9]\" width=\"100%\" align=\"center\"><small>";
 
         if ($prev > 0){
-            echo "<a href=\"read_body.php?passed_id=$prev_if_del&amp;mailbox=$urlMailbox&amp;sort=$sort&amp;startMessage=$startMessage&amp;show_more=0&amp;delete_id=$passed_id&amp;smtoken=" . sm_generate_security_token() . "\">" . _("Delete &amp; Prev") . "</a>" . "&nbsp;|&nbsp;\n";
+            echo "<a href=\"read_body.php?passed_id=$prev_if_del&amp;mailbox=$urlMailbox&amp;sort=$sort&amp;startMessage=$startMessage&amp;show_more=0&amp;delete_id=$passed_id&amp;smtoken=" . sm_generate_security_token() . "\">" . _("Delete &amp; Prev") . "</a>" . "&nbsp;|&nbsp;";
+            if ($delete_move_next_show_unread == 'on') {
+                echo "<a href=\"read_body.php?passed_id=$prev_if_del&amp;mailbox=$urlMailbox&amp;sort=$sort&amp;startMessage=$startMessage&amp;show_more=0&amp;unread_id=$passed_id&amp;smtoken=" . sm_generate_security_token() . "\">" . _("Unread &amp; Prev") . "</a>" . "&nbsp;|&nbsp;";
+            }
         }
         else {
             echo _("Delete &amp; Prev") . "&nbsp;|&nbsp;";
+            if ($delete_move_next_show_unread == 'on') {
+                echo _("Unread &amp; Prev") . "&nbsp;|&nbsp;";
+            }
         }
         if ($next > 0){
-            echo "<a href=\"read_body.php?passed_id=$next_if_del&amp;mailbox=$urlMailbox&amp;sort=$sort&amp;startMessage=$startMessage&amp;show_more=0&amp;delete_id=$passed_id&amp;smtoken=" . sm_generate_security_token() . "\">" . _("Delete &amp; Next") . "</a>\n";
+            echo "<a href=\"read_body.php?passed_id=$next_if_del&amp;mailbox=$urlMailbox&amp;sort=$sort&amp;startMessage=$startMessage&amp;show_more=0&amp;unread_id=$passed_id&amp;smtoken=" . sm_generate_security_token() . "\">" . _("Unread &amp; Next") . "</a>";
+            if ($delete_move_next_show_unread == 'on') {
+                echo "&nbsp;|&nbsp;<a href=\"read_body.php?passed_id=$next_if_del&amp;mailbox=$urlMailbox&amp;sort=$sort&amp;startMessage=$startMessage&amp;show_more=0&amp;delete_id=$passed_id&amp;smtoken=" . sm_generate_security_token() . "\">" . _("Delete &amp; Next") . "</a>";
+            }
         } else {
             echo _("Delete &amp; Next");
+            if ($delete_move_next_show_unread == 'on') {
+                echo "&nbsp;|&nbsp;" . _("Unread &amp; Next");
+            }
         }
         echo '</small></td></tr>';
 
@@ -274,6 +290,20 @@ function delete_move_next_moveRightMainForm() {
          '</tr>';
 }
 
+function delete_move_next_unread() {
+    global $imapConnection;
+
+    sqgetGlobalVar('unread_id', $unread_id, SQ_GET);
+    if (!sqgetGlobalVar('smtoken',$submitted_token, SQ_GET)) {
+        $submitted_token = '';
+    }
+
+    // first, validate security token
+    sm_validate_security_token($submitted_token, 3600, TRUE);
+
+    sqimap_toggle_flag($imapConnection, $unread_id, '\\Seen', false, true);
+}
+
 function delete_move_next_delete() {
     global $imapConnection, $auto_expunge;
 
@@ -320,11 +350,12 @@ function delete_move_next_move() {
 }
 
 function delete_move_next_display_inside() {
-    global $username,$data_dir,
+    global $username,$data_dir, $delete_move_next_show_unread,
         $delete_move_next_t, $delete_move_next_formATtop,
         $delete_move_next_b, $delete_move_next_formATbottom;
 
-    echo "<tr>" . html_tag('td',_("Delete/Move/Next Buttons:"),'right','','valign=top') . "\n".
+//FIXME: This HTML really needs to be fixed...
+    echo "<tr>" . html_tag('td',_("Delete/Unread/Move/Next Buttons:"),'right','','valign=top') . "\n".
          "<td><input type=checkbox name=delete_move_next_ti";
 
     if ($delete_move_next_t == 'on') {
@@ -349,6 +380,11 @@ function delete_move_next_display_inside() {
         echo ' checked';
     }
     echo '> ' . _("with move option") . '<br>'.
+         '<input type=checkbox name=delete_move_next_show_unread';
+    if($delete_move_next_show_unread != 'off') {
+        echo ' checked';
+    }
+    echo '> ' . _("Show unread options") .
          "</td></tr>\n";
 }
 
@@ -380,10 +416,16 @@ function delete_move_next_display_save() {
     } else {
         setPref($data_dir, $username, 'delete_move_next_formATbottom', "off");
     }
+
+    if ( sqgetGlobalVar('delete_move_next_show_unread', $delete_move_next_show_unread, SQ_POST) ) {
+        setPref($data_dir, $username, 'delete_move_next_show_unread', 'on');
+    } else {
+        setPref($data_dir, $username, 'delete_move_next_show_unread', "off");
+    }
 }
 
 function delete_move_next_loading_prefs() {
-    global $username,$data_dir,
+    global $username,$data_dir, $delete_move_next_show_unread,
            $delete_move_next_t, $delete_move_next_formATtop,
            $delete_move_next_b, $delete_move_next_formATbottom;
 
@@ -391,7 +433,7 @@ function delete_move_next_loading_prefs() {
     $delete_move_next_b = getPref($data_dir, $username, 'delete_move_next_b');
     $delete_move_next_formATtop = getPref($data_dir, $username, 'delete_move_next_formATtop');
     $delete_move_next_formATbottom = getPref($data_dir, $username, 'delete_move_next_formATbottom');
+    $delete_move_next_show_unread = getPref($data_dir, $username, 'delete_move_next_show_unread');
 
 }
 
-?>

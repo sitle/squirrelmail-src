@@ -294,6 +294,14 @@ if ($mailbox == 'All Folders') {
     $search_all = 'all';
 }
 
+// the preg_match() is a fix for Dovecot wherein UIDs can be bigger than
+// normal integers - this isn't in 1.4 yet, but when adding new code, why not...
+if (sqgetGlobalVar('unread_passed_id', $unread_passed_id, SQ_GET)
+ && preg_match('/^[0-9]+$/', $unread_passed_id)) {
+    sqimap_mailbox_select($imapConnection, $mailbox);
+    sqimap_toggle_flag($imapConnection, $unread_passed_id, '\\Seen', false, true);
+}
+
 if (isset($composenew) && $composenew) {
     $comp_uri = "../src/compose.php?mailbox=". urlencode($mailbox).
         "&amp;session=$composesession&amp";
