@@ -645,3 +645,12 @@ class POP3 {
     }
 
 }   // End class
+
+// For php4 compatibility
+if (!function_exists("stripos")) {
+    function stripos($haystack, $needle){
+        return strpos($haystack, stristr( $haystack, $needle ));
+    }
+}
+
+
