@@ -331,7 +331,7 @@ function load_optpage_data_display() {
     );
 
     $optvals[SMOPT_GRP_MESSAGE][] = array(
-        'name'    => 'trim_signature_on_reply',
+        'name'    => 'strip_sigs',
         'caption' => _("Remove Original Signature when Replying"),
         'type'    => SMOPT_TYPE_BOOLEAN,
         'refresh' => SMOPT_REFRESH_NONE

@@ -688,7 +688,7 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
     global $editor_size, $default_use_priority, $body, $idents,
         $use_signature, $composesession, $data_dir, $username,
         $username, $key, $imapServerAddress, $imapPort, 
-        $composeMessage, $body_quote, $trim_signature_on_reply;
+        $composeMessage, $body_quote, $strip_sigs;
     global $languages, $squirrelmail_language, $default_charset;
 
     /*
@@ -895,7 +895,7 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
 
                     // we could use a regular expression if we want to
                     // catch more possible signature indicators
-                    if ($trim_signature_on_reply
+                    if ($strip_sigs
                      && ($rewrap_body[$i] == '-- ' || $rewrap_body[$i] == '--')) {
                         break;
                     }
