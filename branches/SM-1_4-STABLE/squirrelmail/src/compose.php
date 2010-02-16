@@ -892,14 +892,9 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
                 $body = '';
                 $cnt = count($rewrap_body);
                 for ($i=0;$i<$cnt;$i++) {
-
-                    // we could use a regular expression if we want to
-                    // catch more possible signature indicators
-                    if ($strip_sigs
-                     && ($rewrap_body[$i] == '-- ' || $rewrap_body[$i] == '--')) {
+                    if ($strip_sigs && $rewrap_body[$i] == '-- ') {
                         break;
                     }
-
                     sqWordWrap($rewrap_body[$i], $editor_size, $default_charset);
                     if (preg_match("/^(>+)/", $rewrap_body[$i], $matches)) {
                         $gt = $matches[1];
