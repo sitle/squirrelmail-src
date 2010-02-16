@@ -891,22 +891,15 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
                 sqUnWordWrap($body);
                 $body = '';
                 $cnt = count($rewrap_body);
-                if ($trim_signature_on_reply) {
-                    $skiplines = $cnt;
-                    for ($i = $cnt - 1; $i >= 0; $i--) {
-                        // we could use a regular expression if we want to
-                        // catch more possible signature indicators
-                        if ($rewrap_body[$i]  == '-- ' || $rewrap_body[$i]  == '--') {
-                            $skiplines = $i;
-                            break;
-                        }
-                    }
-                    for ($i = $skiplines; $i < $cnt; $i++) {
-                        unset($rewrap_body[$i]);
-                    }
-                    $cnt = $skiplines;
-                }
                 for ($i=0;$i<$cnt;$i++) {
+
+                    // we could use a regular expression if we want to
+                    // catch more possible signature indicators
+                    if ($trim_signature_on_reply
+                     && ($rewrap_body[$i] == '-- ' || $rewrap_body[$i] == '--')) {
+                        break;
+                    }
+
                     sqWordWrap($rewrap_body[$i], $editor_size, $default_charset);
                     if (preg_match("/^(>+)/", $rewrap_body[$i], $matches)) {
                         $gt = $matches[1];
