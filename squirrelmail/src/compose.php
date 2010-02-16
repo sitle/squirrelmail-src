@@ -688,7 +688,7 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
     global $editor_size, $default_use_priority, $body, $idents,
         $use_signature, $composesession, $data_dir, $username,
         $username, $key, $imapServerAddress, $imapPort, 
-        $composeMessage, $body_quote;
+        $composeMessage, $body_quote, $trim_signature_on_reply;
     global $languages, $squirrelmail_language, $default_charset;
 
     /*
@@ -891,6 +891,21 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
                 sqUnWordWrap($body);
                 $body = '';
                 $cnt = count($rewrap_body);
+                if ($trim_signature_on_reply) {
+                    $skiplines = $cnt;
+                    for ($i = $cnt - 1; $i >= 0; $i--) {
+                        // we could use a regular expression if we want to
+                        // catch more possible signature indicators
+                        if ($rewrap_body[$i]  == '-- ' || $rewrap_body[$i]  == '--') {
+                            $skiplines = $i;
+                            break;
+                        }
+                    }
+                    for ($i = $skiplines; $i < $cnt; $i++) {
+                        unset($rewrap_body[$i]);
+                    }
+                    $cnt = $skiplines;
+                }
                 for ($i=0;$i<$cnt;$i++) {
                     sqWordWrap($rewrap_body[$i], $editor_size, $default_charset);
                     if (preg_match("/^(>+)/", $rewrap_body[$i], $matches)) {

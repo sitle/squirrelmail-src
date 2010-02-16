@@ -331,6 +331,13 @@ function load_optpage_data_display() {
     );
 
     $optvals[SMOPT_GRP_MESSAGE][] = array(
+        'name'    => 'trim_signature_on_reply',
+        'caption' => _("Remove Original Signature when Replying"),
+        'type'    => SMOPT_TYPE_BOOLEAN,
+        'refresh' => SMOPT_REFRESH_NONE
+    );
+
+    $optvals[SMOPT_GRP_MESSAGE][] = array(
         'name'    => 'body_quote',
         'caption' => _("Prefix for Original Message when Replying"),
         'type'    => SMOPT_TYPE_STRING,
