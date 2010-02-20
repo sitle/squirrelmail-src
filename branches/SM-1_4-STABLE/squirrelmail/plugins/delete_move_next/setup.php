@@ -198,15 +198,15 @@ function delete_move_next_read($currloc) {
             }
         }
         if ($next > 0){
-            echo "<a href=\"read_body.php?passed_id=$next_if_del&amp;mailbox=$urlMailbox&amp;sort=$sort&amp;startMessage=$startMessage&amp;show_more=0&amp;unread_id=$passed_id&amp;smtoken=" . sm_generate_security_token() . "\">" . _("Unread &amp; Next") . "</a>";
             if ($delete_move_next_show_unread == 'on') {
-                echo "&nbsp;|&nbsp;<a href=\"read_body.php?passed_id=$next_if_del&amp;mailbox=$urlMailbox&amp;sort=$sort&amp;startMessage=$startMessage&amp;show_more=0&amp;delete_id=$passed_id&amp;smtoken=" . sm_generate_security_token() . "\">" . _("Delete &amp; Next") . "</a>";
+                echo "<a href=\"read_body.php?passed_id=$next_if_del&amp;mailbox=$urlMailbox&amp;sort=$sort&amp;startMessage=$startMessage&amp;show_more=0&amp;unread_id=$passed_id&amp;smtoken=" . sm_generate_security_token() . "\">" . _("Unread &amp; Next") . "</a>&nbsp;|&nbsp;";
             }
+            echo "<a href=\"read_body.php?passed_id=$next_if_del&amp;mailbox=$urlMailbox&amp;sort=$sort&amp;startMessage=$startMessage&amp;show_more=0&amp;delete_id=$passed_id&amp;smtoken=" . sm_generate_security_token() . "\">" . _("Delete &amp; Next") . "</a>";
         } else {
-            echo _("Delete &amp; Next");
             if ($delete_move_next_show_unread == 'on') {
-                echo "&nbsp;|&nbsp;" . _("Unread &amp; Next");
+                echo _("Unread &amp; Next") . "&nbsp;|&nbsp;";
             }
+            echo _("Delete &amp; Next");
         }
         echo '</small></td></tr>';
 
@@ -354,38 +354,37 @@ function delete_move_next_display_inside() {
         $delete_move_next_t, $delete_move_next_formATtop,
         $delete_move_next_b, $delete_move_next_formATbottom;
 
-//FIXME: This HTML really needs to be fixed...
-    echo "<tr>" . html_tag('td',_("Delete/Unread/Move/Next Buttons:"),'right','','valign=top') . "\n".
-         "<td><input type=checkbox name=delete_move_next_ti";
+    echo "<tr>" . html_tag('td',_("Delete/Unread/Move/Next Buttons:"),'right','','valign="top"') . "\n".
+         '<td><input type="checkbox" name="delete_move_next_ti" id="delete_move_next_ti"';
 
     if ($delete_move_next_t == 'on') {
-        echo " checked";
+        echo ' checked="checked"';
     }
-    echo '> ' . _("Display at top").
-         " <input type=checkbox name=delete_move_next_formATtopi";
+    echo '><label for="delete_move_next_ti"> ' . _("Display at top").
+         '</label> <input type="checkbox" name="delete_move_next_formATtopi" id="delete_move_next_formATtopi"';
 
     if ($delete_move_next_formATtop == 'on') {
-        echo ' checked';
+        echo ' checked="checked"';
     }
-    echo '> ' . _("with move option") . '<br>';
+    echo '><label for="delete_move_next_formATtopi"> ' . _("with move option") . '</label><br>';
 
-    echo '<input type=checkbox name=delete_move_next_bi';
+    echo '<input type="checkbox" name="delete_move_next_bi" id="delete_move_next_bi"';
     if($delete_move_next_b != 'off') {
-        echo ' checked';
+        echo ' checked="checked"';
     }
-    echo '> ' . _("Display at bottom") .
-         '<input type=checkbox name=delete_move_next_formATbottomi';
+    echo '><label for="delete_move_next_bi"> ' . _("Display at bottom") .
+         '</label> <input type="checkbox" name="delete_move_next_formATbottomi" id="delete_move_next_formATbottomi"';
 
     if ($delete_move_next_formATbottom != 'off') {
-        echo ' checked';
+        echo ' checked="checked"';
     }
-    echo '> ' . _("with move option") . '<br>'.
-         '<input type=checkbox name=delete_move_next_show_unread';
+    echo '><label for="delete_move_next_formATbottomi"> ' . _("with move option") . '</label><br>'.
+         '<input type="checkbox" name="delete_move_next_show_unread" id="delete_move_next_show_unread"';
     if($delete_move_next_show_unread != 'off') {
-        echo ' checked';
+        echo ' checked="checked"';
     }
-    echo '> ' . _("Show unread options") .
-         "</td></tr>\n";
+    echo '><label for="delete_move_next_show_unread"> ' . _("Show unread options") .
+         "</label></td></tr>\n";
 }
 
 function delete_move_next_display_save() {
