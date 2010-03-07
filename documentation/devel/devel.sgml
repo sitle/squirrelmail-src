@@ -3007,7 +3007,7 @@ put 1.4.20/squirrelmail-1.4.20/doc/ReleaseNotes
 <item><bf/Defrosting:/ Prepare SVN for continued development
     <enum>
          <item> Go back to your regular SVN development directory.
-         <item> Update the version number variable in functions/strings.php by incrementing the incremental release number by 1 and adding <tt>' [SVN]'</tt> after it (<tt>$version = '1.4.21 [SVN]';</tt>).
+         <item> Update the version number variable in functions/strings.php by incrementing the incremental release number by 1 and adding <tt>' [SVN]'</tt> after it (<tt>$version = '1.4.21 [SVN]';</tt>). Also, don't forget to update the <tt>$SQM_INTERNAL_VERSION</tt> array!
          <item> Add a new section in doc/ChangeLog for the new release, followed by <tt>' - SVN'</tt>
          <item> Archive the doc/ReleaseNotes for this release like this:
          <tscreen>svn copy doc/ReleaseNotes doc/release_notes_archive/X.Y/Notes-X.Y.Z.txt</tscreen>
