@@ -5,10 +5,11 @@ set -e
 
 if [ -z $1 ]; then
     echo You need to specify the version to be released:
-    echo make-release 1.2.2
+    echo make-release 1.4.20
     exit
 fi
 dashver=`echo $1 | sed 's/\./_/g'`
+dashver=`echo $dashver | sed 's/-/_/g'`
 
 echo == Releasing version $1 with tag rel-$dashver ==
 
@@ -53,10 +54,10 @@ md5sum squirrelmail-$1.zip > squirrelmail-$1.zip.md5
 sha1sum squirrelmail-$1.zip > squirrelmail-$1.zip.sha1
 echo -- optionally making .rpm s --
 rpmbuild -ta squirrelmail-$1.tar.gz || true
-echo -- uploading to upload.sf.net --
+#echo -- uploading to upload.sf.net --
 # Is your sf.net username different from your local username?
 # Use a ~/.ssh/config snippet to set it correctly for frs.sourceforge.net
-rsync -avP -e ssh \
-    squirrelmail-$1.tar.gz squirrelmail-$1.tar.bz2 squirrelmail-$1.zip \
-    frs.sourceforge.net:uploads/
+#rsync -avP -e ssh \
+#    squirrelmail-$1.tar.gz squirrelmail-$1.tar.bz2 squirrelmail-$1.zip \
+#    frs.sourceforge.net:uploads/
 echo -- finished so far --
