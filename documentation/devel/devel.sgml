@@ -2958,13 +2958,13 @@ https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/rel-1_4_20</v
              <enum>
                  <item><tt>gpg --verify squirrelmail-X.Y.Z.tar.gz.sig squirrelmail-X.Y.Z.tar.gz</tt>
              </enum>
-         <item> Upload your GPG signatures to Sourceforge.net. See the next (optional) step or see <url url="http://apps.sourceforge.net/trac/sourceforge/wiki/Release%20files%20for%20download#Uploadafile" name="sf.net instructions"> or see <url url="http://apps.sourceforge.net/trac/sourceforge/wiki/File%20management%20service" name="sf.net upload protocols">.
-         <item> The make-release script's upload feature is dated and is currently commented out.  SourceForge has made changes to their file management and release system more than once recently, not without much frustration for us.  The following steps are how version 1.4.20 was uploaded in March, 2010.
+         <item> Upload your GPG signatures to Sourceforge.net. See the next step or see <url url="http://apps.sourceforge.net/trac/sourceforge/wiki/Release%20files%20for%20download#Uploadafile" name="sf.net instructions"> or see <url url="http://apps.sourceforge.net/trac/sourceforge/wiki/File%20management%20service" name="sf.net upload protocols">.
+         <item> The make-release script's upload feature is dated and is currently commented out (even if you get that to work, you still need to upload your GPG signatures and use the instructions below to set the release file properties, etc.).  SourceForge has made changes to their file management and release system more than once recently, not without much frustration for us.  The following steps are how version 1.4.20 was uploaded in March, 2010.
              <enum>
                  <item>Since when logged in by sftp, creating directories seems to fail
                        with a permission denied (sigh), first create the release directory
                        ahead of time by using web interface at:
-                       <tscreen><url url="http://apps.sourceforge.net/trac/sourceforge/wiki/File%20management%20service" name="https://sourceforge.net/project/admin/explorer.php?group_id=311"></tscreen>
+                       <tscreen><url url="https://sourceforge.net/project/admin/explorer.php?group_id=311" name="https://sourceforge.net/project/admin/explorer.php?group_id=311"></tscreen>
                        For example, click to expand the "stable" directory and then
                        click on the "gear" icon next to the "stable" directory and
                        select to create a new folder, naming it with the release version
@@ -2985,7 +2985,7 @@ put 1.4.20/squirrelmail-1.4.20/doc/ReleaseNotes
 </verb></tscreen>
                  <item>Now you have to use the web interface to assign properties to the
                        uploaded files:
-                       <tscreen><url url="http://apps.sourceforge.net/trac/sourceforge/wiki/File%20management%20service" name="https://sourceforge.net/project/admin/explorer.php?group_id=311"></tscreen>
+                       <tscreen><url url="https://sourceforge.net/project/admin/explorer.php?group_id=311" name="https://sourceforge.net/project/admin/explorer.php?group_id=311"></tscreen>
                      <enum>
                          <item>Navigate to the new release folder (e.g., stable ==> 1.4.20).
                          <item>Click on the ReleaseNotes file and tick the Release
@@ -3013,32 +3013,6 @@ put 1.4.20/squirrelmail-1.4.20/doc/ReleaseNotes
          <tscreen>svn copy doc/ReleaseNotes doc/release_notes_archive/X.Y/Notes-X.Y.Z.txt</tscreen>
          <item> Commit all these changes to SVN with a note saying that it is ready for continued development.
     </enum>
-<item><bf/sf.net admin stuff:/ Post the release files on SourceForge (you need to be a "release technician" to do this)
-    <enum>
-         <item> Create the new release of files
-            <enum>
-               <item> Log into SourceForge and go to the SquirrelMail project page.
-               <item> Under the "Project Admin" menu, select "Feature Settings".
-               <item> Now click the "Manage" link to the right of "File Release System".
-               <item> Click "Add Release" for the correct package.
-               <item> Enter the release name in X.Y.Z format (no SquirrelMail or anything, just X.Y.Z) and click the "Create This Release" button.
-               <item> The next page it shows you will be the same page you get to if you clicked on "edit release" from the "Edit/Release Files" page earlier and selected a release name.
-         </enum>
-         <item> Enter the ChangeLog (only the part of that file for this release, not the whole file) and ReleaseNotes (the whole file) for this SourceForge file release.
-         <item> Add the newly uploaded files to the release
-            <enum>
-               <item> Go down to the "add files to this release" section
-               <item> Select the files you recently uploaded (be nice and leave other peoples files alone).
-               <item> Click the "Add Files and/or Refresh View" button.
-            </enum>
-         <item> For each files added (tar.gz, tar.bz2, and zip), one at a time, set the file info correctly.
-            <enum>
-               <item> Set the processor to 'Platform-Independent'.
-               <item> Set the file type (.bz2 for the tar.bz2 file, .gz for the tar.gz file, .zip for the zip file, and .rpm for the .rpm files).
-               <item> Click the "Update/Refresh" button for that file.
-             </enum>
-         <item> Annouce the file release to those monitoring it with the button on the bottom of the page.
-     </enum>
 <item><bf/Enable downloading:/ Update the download page for the SquirrelMail website.
     <enum>
         <item> SSH into sciurida
