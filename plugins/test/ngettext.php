@@ -1,42 +1,42 @@
 <?php
+
 /**
- * ngettext test script - string generator
- * @copyright 2006-2009 The SquirrelMail Project Team
+ * SquirrelMail Test Plugin
+ *
+ * This page tests the ngettext() function.
+ *
+ * @copyright 2006-2010 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package plugins
  * @subpackage test
  */
 
-/**/
-if (file_exists('../../include/init.php')) {
-    include_once('../../include/init.php');
-} else if (file_exists('../../include/validate.php')) {
-    //if (!defined('SM_PATH')) define('SM_PATH', '../../');
-    define('SM_PATH', '../../');
-    include_once(SM_PATH . 'include/validate.php');
-} else {
-    chdir('..');
-    include_once('../src/validate.php');
-}
+define('SM_PATH', '../../');
+include_once(SM_PATH . 'include/validate.php');
 
-displayPageHeader($color,'none');
+global $color;
 
-/** sm 1.5.1 code */
-sq_bindtextdomain('test',SM_PATH . 'locale');
-sq_textdomain('test');
+displayPageHeader($color, 'none');
+
+sq_change_text_domain('test');
+
 ?>
-<h3 align="center">ngettext test strings</h3>
-<p>Test depends on selected translation and translated strings in 
-locale/xx/LC_MESSAGES/test.mo files.</p>
+<strong>ngettext Test Strings:</strong>
+
+<p>The results of this test depend on your current language (translation) selection (see Options==>Display Preferences) and the corresponding translation strings in locale/xx/LC_MESSAGES/test.mo</p>
+
+<pre>
 
 <?php
-echo "<pre>";
-for ($i=-10;$i<=250;$i++) {
-    echo sprintf(ngettext("%s squirrel on the tree.","%s squirrels on the tree.",$i),$i);
+
+for ($i = -10 ; $i <= 250 ; $i++) {
+    echo sprintf(ngettext("%s squirrel is on the tree.", "%s squirrels are on the tree.", $i), $i);
     echo "\n";
 }
-echo "</pre>";
-sq_textdomain('squirrelmail');
-echo "</body></html>";
-?>
+
+echo "</pre></body></html>";
+
+sq_change_text_domain('squirrelmail');
+
+
