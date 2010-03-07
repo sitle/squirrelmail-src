@@ -2958,7 +2958,50 @@ https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/rel-1_4_20</v
              <enum>
                  <item><tt>gpg --verify squirrelmail-X.Y.Z.tar.gz.sig squirrelmail-X.Y.Z.tar.gz</tt>
              </enum>
-         <item> Upload your GPG signatures to Sourceforge.net. See <url url="http://apps.sourceforge.net/trac/sourceforge/wiki/Release%20files%20for%20download#Uploadafile" name="sf.net instructions"> or see <url url="http://apps.sourceforge.net/trac/sourceforge/wiki/File%20management%20service" name="sf.net upload protocols">.
+         <item> Upload your GPG signatures to Sourceforge.net. See the next (optional) step or see <url url="http://apps.sourceforge.net/trac/sourceforge/wiki/Release%20files%20for%20download#Uploadafile" name="sf.net instructions"> or see <url url="http://apps.sourceforge.net/trac/sourceforge/wiki/File%20management%20service" name="sf.net upload protocols">.
+         <item> The make-release script's upload feature is dated and is currently commented out.  SourceForge has made changes to their file management and release system more than once recently, not without much frustration for us.  The following steps are how version 1.4.20 was uploaded in March, 2010.
+             <enum>
+                 <item>Since when logged in by sftp, creating directories seems to fail
+                       with a permission denied (sigh), first create the release directory
+                       ahead of time by using web interface at:
+                       <tscreen><url url="http://apps.sourceforge.net/trac/sourceforge/wiki/File%20management%20service" name="https://sourceforge.net/project/admin/explorer.php?group_id=311"></tscreen>
+                       For example, click to expand the "stable" directory and then
+                       click on the "gear" icon next to the "stable" directory and
+                       select to create a new folder, naming it with the release version
+                       (e.g., 1.4.20).
+                 <item>Now, you can sftp to the release directory (this assumes you are
+                       in the (local) directory where you ran the make-release script):
+                       <tscreen>sftp username@frs.sourceforge.net</tscreen>
+                       Once logged in, here are the needed sftp commands:
+<tscreen><verb>
+cd /home/frs/project/s/sq/squirrelmail/stable/1.4.20
+put 1.4.20/squirrelmail-1.4.20.tar.bz2
+put 1.4.20/squirrelmail-1.4.20.tar.bz2.sig
+put 1.4.20/squirrelmail-1.4.20.tar.gz
+put 1.4.20/squirrelmail-1.4.20.tar.gz.sig
+put 1.4.20/squirrelmail-1.4.20.zip
+put 1.4.20/squirrelmail-1.4.20.zip.sig
+put 1.4.20/squirrelmail-1.4.20/doc/ReleaseNotes
+</verb></tscreen>
+                 <item>Now you have to use the web interface to assign properties to the
+                       uploaded files:
+                       <tscreen><url url="http://apps.sourceforge.net/trac/sourceforge/wiki/File%20management%20service" name="https://sourceforge.net/project/admin/explorer.php?group_id=311"></tscreen>
+                     <enum>
+                         <item>Navigate to the new release folder (e.g., stable ==> 1.4.20).
+                         <item>Click on the ReleaseNotes file and tick the Release
+                               Notes checkbox.
+                         <item>Currently, the interface seems to only support
+                               assigning properties to one of the release files,
+                               so click on the .bz2 file and check ALL the platforms,
+                               and select the correct release notes file.
+                         <item>Click on each of the .sig files and label it as
+                               "GPG signature".
+                     </enum>
+                 <item>Verify that SourceForge has automatically chosen to display the
+                       new release as the official release on the main SquirrelMail
+                       project page:
+                       <tscreen><url url="http://sourceforge.net/projects/squirrelmail/" name="https://sourceforge.net/projects/squirrelmail/"></tscreen>
+             </enum>
          <item> (huh: don't go to sleep before you're finished making the release)
      </enum>
 <item><bf/Defrosting:/ Prepare SVN for continued development
