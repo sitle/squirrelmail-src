@@ -406,7 +406,16 @@ function getTimeStamp($dateParts) {
     **        and everything would be bumped up one.
     **/
     if (count($dateParts) <2) {
-       return -1;
+        return -1;
+    } else if (count($dateParts) ==3) {
+        if (substr_count($dateParts[0],'-') == 2 &&
+            substr_count($dateParts[1],':') == 2) {
+            //  dd-Month-yyyy 23:19:05 +0200
+            //  redefine the date
+            $aDate = explode('-',$dateParts[0]);
+            $newDate = array($aDate[0],$aDate[1],$aDate[2],$dateParts[1],$dateParts[2]);
+            $dateParts = $newDate;
+        }
     }
 
     /*
