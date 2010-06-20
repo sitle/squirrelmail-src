@@ -45,6 +45,11 @@ require_once(SM_PATH . 'functions/html.php');
  *                                                         *
  ***********************************************************/
 
+// Disable Browser Caching //
+header('Cache-Control: no-cache, no-store, must-revalidate');
+header('Pragma: no-cache');
+header('Expires: ' . gmdate(DATE_RFC1123, time()-1));
+
 
 /* lets get the global vars we may need */
 sqgetGlobalVar('key',       $key,           SQ_COOKIE);
