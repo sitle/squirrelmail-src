@@ -103,8 +103,7 @@ spamcop_load();
 			echo ">"._("Quick email-based reporting");
 			echo '</option>';
 		    }
-	        ?>
-		<?php
+
 		    $selected = '';
 		    if ($spamcop_method == 'thorough_email') {
 		        $selected = ' selected';
