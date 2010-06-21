@@ -11,6 +11,13 @@ Version 1.4.21 - SVN
   - Fix error with SpamCop reporting plugin not being able to send report as
     emails (#1795310).
   - Fix typo in SpamCop plugin.
+  - Reduced default time security tokens stay valid from 30 days to 2 days
+    (reduces chances of session data growing too large)
+  - Several speed enhancements for recent fixes regarding the display of
+    encoded subjects, including a fix for messages with invalid subject
+    encoding (includes #2987016 amongst several other issues reported via
+    mailing list, etc.) (Many thanks to Zdenek Pytela for the untiring help
+    diagnosing and testing.)
 
 Version 1.4.20 - 06 Mar 2010
 ---------------------------
