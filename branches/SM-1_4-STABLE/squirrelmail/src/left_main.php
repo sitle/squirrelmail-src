@@ -305,7 +305,7 @@ sqgetGlobalVar('auto_create_done',$auto_create_done,SQ_SESSION);
 // Disable browser caching //
 header('Cache-Control: no-cache, no-store, must-revalidate');
 header('Pragma: no-cache');
-header('Expires: ' . gmdate(DATE_RFC1123, time()-1));
+header('Expires: Sat, 1 Jan 2000 00:00:00 GMT');
 
 // open a connection on the imap port (143)
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 10); // the 10 is to hide the output
