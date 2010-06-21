@@ -660,6 +660,12 @@ elseif (isset($sigappend)) {
 
     $values = newMail($mailbox,$passed_id,$passed_ent_id, $action, $session);
 
+    // forward as attachment - subject is in the message in session
+    //
+    if (sqgetGlobalVar('forward_as_attachment_init', $forward_as_attachment_init, SQ_GET)
+     && $forward_as_attachment_init)
+        $subject = $composeMessage->rfc822_header->subject;
+
     /* in case the origin is not read_body.php */
     if (isset($send_to)) {
         $values['send_to'] = $send_to;
@@ -856,6 +862,11 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
                 $body = "\n" . $body;
                 break;
             case ('forward_as_attachment'):
+                $subject = decodeHeader($orig_header->subject,false,false,true);
+                $subject = trim($subject);
+                if (substr(strtolower($subject), 0, 4) != 'fwd:') {
+                    $subject = 'Fwd: ' . $subject;
+                }
                 $composeMessage = getMessage_RFC822_Attachment($message, $composeMessage, $passed_id, $passed_ent_id, $imapConnection);
                 $body = '';
                 break;
