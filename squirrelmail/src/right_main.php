@@ -48,7 +48,7 @@ require_once(SM_PATH . 'functions/html.php');
 // Disable Browser Caching //
 header('Cache-Control: no-cache, no-store, must-revalidate');
 header('Pragma: no-cache');
-header('Expires: ' . gmdate(DATE_RFC1123, time()-1));
+header('Expires: Sat, 1 Jan 2000 00:00:00 GMT');
 
 
 /* lets get the global vars we may need */

@@ -114,7 +114,7 @@ if (!empty($sel)) {
 //
 header('Cache-Control: no-cache, no-store, must-revalidate');
 header('Pragma: no-cache');
-header('Expires: ' . gmdate(DATE_RFC1123, time()-1));
+header('Expires: Sat, 1 Jan 2000 00:00:00 GMT');
 
 do_hook('login_cookie');
 
