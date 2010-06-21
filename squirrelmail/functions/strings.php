@@ -900,9 +900,7 @@ function sq_strpos($haystack, $needle, $offset=0, $charset='auto')
       if (!isset($sq_string_func_auto_charset))
       {
          global $default_charset, $squirrelmail_language;
-echo "### SET CHARSET BEFORE $default_charset<BR>";
          set_my_charset();
-echo "### SET CHARSET AFTER $default_charset<BR>";
          $sq_string_func_auto_charset = $default_charset;
          if ($squirrelmail_language == 'ja_JP') $sq_string_func_auto_charset = 'euc-jp';
       }
