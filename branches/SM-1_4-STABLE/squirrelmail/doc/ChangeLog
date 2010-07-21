@@ -23,8 +23,9 @@ Version 1.4.21 - SVN
   - Now fill in default subject when forwarding as attachment (#2936541).
   - Implement header folding that doesn't add extraneous spaces so unfolding
     is less ambiguous (#1951776).
-  - Fix issues caused by use of PostgreSQL keyword "user" in SquirrelMail's
+  - Fixed issues caused by use of PostgreSQL keyword "user" in SquirrelMail's
     default preferences database schema (#2943483).
+  - Fixed attachment filename decoding problems (#2994865).
 
 Version 1.4.20 - 06 Mar 2010
 ---------------------------

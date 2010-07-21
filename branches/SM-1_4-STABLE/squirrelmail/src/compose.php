@@ -963,7 +963,7 @@ function getAttachments($message, &$composeMessage, $passed_id, $entities, $imap
                     break;
             }
 
-            $filename = decodeHeader($filename, false, false);
+            $filename = decodeHeader($filename, false, false, true);
             if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
                     function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
                 $filename =  $languages[$squirrelmail_language]['XTRA_CODE']('encode', $filename);
