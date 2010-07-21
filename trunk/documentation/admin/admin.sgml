@@ -1699,15 +1699,20 @@ CREATE TABLE userprefs (
 and for PostgreSQL:
 
 <tscreen><verb>
--- Note: Change the SquirrelMail config variable $prefs_user_field in
---       "config/config.php" from the default "user" to "username" since "user"
---       is a reserved word in PostgreSQL.
 CREATE TABLE "userprefs" (
-   "username" varchar(128) NOT NULL,
+   "user" varchar(128) NOT NULL,
    "prefkey" varchar(64) NOT NULL,
    "prefval" text,
    CONSTRAINT "userprefs_pkey" PRIMARY KEY ("prefkey", "username")
 );
+
+-- Note: "user" is a reserved keyword in PostgreSQL and it could cause
+--       problems when it is used as a column name as above.  SquirrelMail
+--       knows about this issue and should work OK with "user", but if you
+--       decide to change it to something else (such as "username"), you'll
+--       also need to change the SquirrelMail config variable $prefs_user_field
+--       in "config/config.php" to match (or use the configuration tool,
+--       9. Database --> 5. Field for username).
 </verb></tscreen>
 
 Note the difference in the table column definitions between the MySQL and the
