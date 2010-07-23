@@ -27,6 +27,7 @@ Version 1.4.21 - SVN
     default preferences database schema (#2943483).
   - Fixed attachment filename decoding problems (#2994865).
   - Now default search criteria to the TO header when searching the sent folder.
+  - Fixed literal processing of 8-bit usernames/passwords during login [CVE-2010-2813]
 
 Version 1.4.20 - 06 Mar 2010
 ---------------------------
