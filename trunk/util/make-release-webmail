@@ -111,8 +111,6 @@ execute_command "cd ${release_directory}" || {
 # (don't use the "execute_command" function so SVN errors & status show on screen
 #
 echo "+ Exporting svn"
-# LEFT OFF HERE REMOVE THIS LINE
-svn_tag=rel-${parsed_version}
 svn export https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/${svn_tag} ${package}
 if [ $? != 0 ]; then
     echo "${self}: Error: Failed to export svn.  Exiting."
