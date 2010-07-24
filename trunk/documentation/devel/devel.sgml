@@ -2945,7 +2945,7 @@ about the plugin and what it does.
             <tscreen><verb>
 svn copy https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/branches/SM-1_4-STABLE/squirrelmail \
 https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/rel-1_4_20</verb></tscreen>
-         <item> Use the script <tt>make-release</tt> <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/util/make-release" name="found in SVN"> under the <tt>util/</tt> dir. The only parameter
+         <item> Use the script <tt>make-release-webmail</tt> <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/util/make-release-webmail" name="found in SVN"> under the <tt>util/</tt> dir. The only parameter
          is the version to release. It will download the tagged SVN copy, pack it up nicely and upload it to SF.net.
          You will need the following tools: bash, svn, ssh, rsync, tar, gzip, zip, bzip2 and optionally rpmbuild.
          <item> Create a GPG signature for each of the newly created release packages. Typically, this can be done with:
@@ -2959,7 +2959,7 @@ https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/rel-1_4_20</v
                  <item><tt>gpg --verify squirrelmail-X.Y.Z.tar.gz.sig squirrelmail-X.Y.Z.tar.gz</tt>
              </enum>
          <item> Upload your GPG signatures to Sourceforge.net. See the next step or see <url url="http://apps.sourceforge.net/trac/sourceforge/wiki/Release%20files%20for%20download#Uploadafile" name="sf.net instructions"> or see <url url="http://apps.sourceforge.net/trac/sourceforge/wiki/File%20management%20service" name="sf.net upload protocols">.
-         <item> The make-release script's upload feature is dated and is currently commented out (even if you get that to work, you still need to upload your GPG signatures and use the instructions below to set the release file properties, etc.).  SourceForge has made changes to their file management and release system more than once recently, not without much frustration for us.  The following steps are how version 1.4.20 was uploaded in March, 2010.
+         <item> The make-release-webmail script's upload feature is dated and is currently commented out (even if you get that to work, you still need to upload your GPG signatures and use the instructions below to set the release file properties, etc.).  SourceForge has made changes to their file management and release system more than once recently, not without much frustration for us.  The following steps are how version 1.4.20 was uploaded in March, 2010.
              <enum>
                  <item>Since when logged in by sftp, creating directories seems to fail
                        with a permission denied (sigh), first create the release directory
@@ -2970,7 +2970,8 @@ https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/rel-1_4_20</v
                        select to create a new folder, naming it with the release version
                        (e.g., 1.4.20).
                  <item>Now, you can sftp to the release directory (this assumes you are
-                       in the (local) directory where you ran the make-release script):
+                       in the (local) directory where you ran the make-release-webmail
+                       script):
                        <tscreen>sftp username@frs.sourceforge.net</tscreen>
                        Once logged in, here are the needed sftp commands:
 <tscreen><verb>
@@ -3019,7 +3020,7 @@ put 1.4.20/squirrelmail-1.4.20/doc/ReleaseNotes
          <item> Change to the web directory for SquirrelMail (currently /srv/www/www/htdocs).
          <item> Edit download.php and change the version number as necessary. This is a php variable in the top part of the file.
          <item> Edit plugin_query.php file and change version number. This file informs pupdate plugin users about new release.
-         <item> Upload the md5 checksums and sha1 checksums that make-release calculated and your GPG signatures into the <tt>sums/</tt> dir.
+         <item> Upload the md5 checksums and sha1 checksums that make-release-webmail calculated and your GPG signatures into the <tt>sums/</tt> dir.
     </enum>
 <!--<item><bf/Get porting assistance:/ contact our people who know how to make decent .deb and .rpm files
     <enum>
