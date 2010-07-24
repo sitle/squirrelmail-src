@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# This script creates a release package for the SquirrelMail Webmail.
+# This script creates a release package for the SquirrelMail IMAP proxy server.
 #
 # It requires one argument -- the version number.
 #
@@ -70,12 +70,12 @@ execute_command() {
 #
 parsed_version=`echo ${version} | sed 's/\./_/g'`
 parsed_version=`echo ${parsed_version} | sed 's/-/_/g'`
-package="squirrelmail-webmail-${version}"
+package="squirrelmail-imap_proxy-${version}"
 release_directory="${package}-release_work_area"
-svn_tag="webmail-release-${parsed_version}"
+svn_tag="imap_proxy-release-${parsed_version}"
 
 
-echo ==== Releasing SquirrelMail Webmail version ${version} with tag ${svn_tag} ====
+echo ==== Releasing SquirrelMail IMAP Proxy version ${version} with tag ${svn_tag} ====
 
 echo "+ Creating \"${release_directory}\""
 
@@ -111,8 +111,6 @@ execute_command "cd ${release_directory}" || {
 # (don't use the "execute_command" function so SVN errors & status show on screen
 #
 echo "+ Exporting svn"
-# LEFT OFF HERE REMOVE THIS LINE
-svn_tag=rel-${parsed_version}
 svn export https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/${svn_tag} ${package}
 if [ $? != 0 ]; then
     echo "${self}: Error: Failed to export svn.  Exiting."
@@ -125,16 +123,6 @@ fi
 #
 execute_command "cd ${package}" || {
     echo "${self}: Error: Failed to change into directory \"${release_directory}/${package}\".  Exiting."
-    echo
-    exit 1
-}
-
-
-# remove dot-files (except .htaccess and friends)
-#
-echo "+ Removing .anything files \(except .ht*\)"
-execute_command 'find -iregex .*/\.[^ht].*    -exec rm -rf {} ;' || {
-    echo "${self}: Error: Failed to seek and destroy dot-files.  Exiting."
     echo
     exit 1
 }
@@ -170,34 +158,25 @@ execute_command 'find -type d    -exec chmod ugo+x {} ;' || {
 }
 
 
-# add execute permission to Perl configuration utility
+# add execute permissions to scripts and executables
 #
-echo "+ Adding execute permission to Perl configuration utility"
-execute_command 'find -name *.pl    -exec chmod ugo+x {} ;' || {
-    echo "${self}: Error: Failed to set Perl permissions.  Exiting."
-    echo
-    exit 1
-}
-
-
-# add group write permission on data and config directories
-#
-echo "+ Adding group write permission to data and config directories"
-execute_command "chmod ug+w ./data ./config" || {
-    echo "${self}: Error: Failed to set data or config permissions.  Exiting."
-    echo
-    exit 1
-}
-
-
-# add execute permissions to other special executables
-#
-echo "+ Adding execute permissions to special executables"
-execute_command "chmod ugo+x ./configure ./po/compilepo ./po/mergepo ./po/xgetpo" || {
-    echo "${self}: Error: Failed to set special executable permissions.  Exiting."
-    echo
-    exit 1
-}
+echo "+ Adding execute permissions to scripts and executables"
+while read path; do
+    execute_command "chmod ugo+x ${path}" || {
+        echo "${self}: Error: Failed to set execute permission on ${path}.  Exiting."
+        echo
+        exit 1
+    }
+done <<EOF
+config.guess
+config.sub
+configure
+install-sh
+mkinstalldirs
+scripts/rc.pimpdaddy
+scripts/pimpdaddy
+scripts/imapproxy.init
+EOF
 
 
 # cd
@@ -207,6 +186,88 @@ execute_command "cd .." || {
     echo
     exit 1
 }
+
+
+# mv
+#
+execute_command "mv ${package} ${package}.orig" || {
+    echo "${self}: Error: Failed to rename directory from \"${release_directory}/${package}\" to \"${release_directory}/${package}.orig\".  Exiting."
+    echo
+    exit 1
+}
+
+
+# mkdir
+#
+execute_command "mkdir ${package}" || {
+    echo "${self}: Error: Failed to make directory \"${release_directory}/${package}\".  Exiting."
+    echo
+    exit 1
+}
+
+
+# make all the necessary subdirectories.
+#
+echo "+ Creating subdirectories"
+while read dir; do
+    execute_command "mkdir ${package}/${dir}" || {
+        echo "${self}: Error: Failed to make directory \"${release_directory}/${package}/${dir}\".  Exiting."
+        exit 1
+    }
+done <<EOF
+bin
+include
+scripts
+src
+EOF
+
+
+# copy all the files into place
+#
+echo "+ Copying files"
+while read source dest; do
+    execute_command "cp -p ${package}.orig/${source} ${package}/${dest}" || {
+        echo "${self}: Error: Failed to copy file ${source}.  Exiting."
+        exit 1
+    }
+done <<EOF
+Makefile.in Makefile.in
+imapproxy.spec imapproxy.spec
+configure configure
+configure.in configure.in
+config.guess config.guess
+config.sub config.sub
+config.h.in config.h.in
+acconfig.h acconfig.h
+aclocal.m4 aclocal.m4
+install-sh install-sh
+stamp-h stamp-h
+mkinstalldirs mkinstalldirs
+include/common.h include/common.h
+include/imapproxy.h include/imapproxy.h
+scripts/imapproxy.init scripts/imapproxy.init
+scripts/imapproxy.conf scripts/imapproxy.conf
+src/becomenonroot.c src/becomenonroot.c
+src/config.c src/config.c
+src/hash.c src/hash.c
+src/icc.c src/icc.c
+src/select.c src/select.c
+src/imapcommon.c src/imapcommon.c
+src/main.c src/main.c
+src/pimpstat.c src/pimpstat.c
+src/request.c src/request.c
+src/logging.c src/logging.c
+src/threads.c src/threads.c
+README README
+README.debian README.debian
+README.ssl README.ssl
+README.known_issues README.known_issues
+COPYING COPYING
+copyright copyright
+pkginfo pkginfo
+prototype prototype
+ChangeLog ChangeLog
+EOF
 
 
 # create archive files
@@ -267,12 +328,6 @@ execute_command "sha1sum ${package}.zip" "${package}.zip.sha1" || {
     echo
     exit 1
 }
-
-
-# create RPM
-#
-echo "+ Creating .rpm s (if possible)"
-rpmbuild -ta ${package}.tar.gz || true
 
 
 # Upload
