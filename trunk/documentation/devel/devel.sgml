@@ -2941,10 +2941,10 @@ about the plugin and what it does.
 <item><bf/SVN packaging:/
     <enum>
          <item> Commit final changes to Subversion (doc/ChangeLog, doc/ReleaseNotes, functions/strings.php)
-         <item> Tag SVN with the release number in the format rel-X_Y_Z (rel-1_4_20). Example:
+         <item> Tag SVN with the release number in the format webmail-release-X_Y_Z (webmail-release-1_4_20). Example:
             <tscreen><verb>
 svn copy https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/branches/SM-1_4-STABLE/squirrelmail \
-https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/rel-1_4_20</verb></tscreen>
+https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/webmail-release-1_4_20</verb></tscreen>
          <item> Use the script <tt>make-release-webmail</tt> <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/util/make-release-webmail" name="found in SVN"> under the <tt>util/</tt> dir. The only parameter
          is the version to release. It will download the tagged SVN copy, pack it up nicely and upload it to SF.net.
          You will need the following tools: bash, svn, ssh, rsync, tar, gzip, zip, bzip2 and optionally rpmbuild.
