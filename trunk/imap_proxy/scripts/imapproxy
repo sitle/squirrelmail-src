@@ -1,0 +1,91 @@
+#!/bin/sh
+##
+##      Copyright (c) 2002 University of Pittsburgh
+##
+##                      All Rights Reserved
+##
+## Permission to use, copy, modify, and distribute this software and its 
+## documentation for any purpose and without fee is hereby granted, 
+## provided that the above copyright notice appears in all copies and that
+## both that copyright notice and this permission notice appear in 
+## supporting documentation, and that the name of the University of
+## Pittsburgh not be used in advertising or publicity pertaining to
+## distribution of this software without specific written prior permission.  
+## 
+## THE UNIVERSITY OF PITTSBURGH DISCLAIMS ALL WARRANTIES WITH REGARD TO
+## THIS SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND
+## FITNESS, IN NO EVENT SHALL THE UNIVERSITY OF PITTSBURGH BE LIABLE FOR
+## ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER
+## RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF
+## CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
+## CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+##
+##
+##  Facility:
+##
+##	imapproxy
+##
+##  Abstract:
+##
+##	in.imapproxyd startup script
+##
+##  Authors:
+##
+##      Dave McMurtrie (dgm@pitt.edu)
+##
+##  RCS:
+##
+##      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/scripts/RCS/imapproxy,v $
+##      $Id: imapproxy,v 1.2 2002/12/19 21:48:07 dgm Exp $
+##      
+##  Modification History:
+##
+##      $Log: imapproxy,v $
+##      Revision 1.2  2002/12/19 21:48:07  dgm
+##      Removed the notion of the startup script reading the config file and
+##      passing arguments to the server process on startup.
+##
+##      Revision 1.1  2002/07/03 14:02:55  dgm
+##      Initial revision
+##
+##
+
+Pgm=`/bin/basename $0`
+
+
+case $1 in
+
+    'start')
+
+	# make sure the executable exists.
+
+	if [ ! -f /usr/local/sbin/in.imapproxyd ]; then
+	    /bin/echo "$Pgm: /usr/local/sbin/in.imapproxyd does not exist.  Not starting IMAP proxy server." 1>&2
+	    exit 1
+	fi
+
+	/bin/echo "$Pgm: Starting IMAP proxy server." 1>&2
+
+	/usr/local/sbin/in.imapproxyd 
+
+	;;
+
+
+
+    'stop')
+
+	/bin/echo "$Pgm: Shutting down IMAP proxy server." 1>&2
+
+	pkill -x in.imapproxyd
+
+	;;
+
+
+    *)
+	/bin/echo "usage: $Pgm {start|stop}" 1>&2
+
+	exit 0
+
+	;;
+
+esac
