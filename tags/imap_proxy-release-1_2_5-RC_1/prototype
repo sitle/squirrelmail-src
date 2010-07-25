@@ -1,0 +1,16 @@
+i pkginfo
+i copyright
+v none /etc/imapproxy.conf=scripts/imapproxy.conf 0644 root sys
+f none /etc/init.d/imapproxy=scripts/imapproxy.init 0744 root sys
+l none /etc/rc0.d/K10imapproxy=/etc/init.d/imapproxy
+l none /etc/rc1.d/K10imapproxy=/etc/init.d/imapproxy
+l none /etc/rc2.d/K10imapproxy=/etc/init.d/imapproxy
+l none /etc/rc3.d/S99imapproxy=/etc/init.d/imapproxy
+l none /etc/rcS.d/K10imapproxy=/etc/init.d/imapproxy
+d none doc 0755 root sys
+d none doc/up-imapproxy 0755 root sys
+f none doc/up-imapproxy/ChangeLog=ChangeLog 0644 root sys
+f none doc/up-imapproxy/README=README 0644 root sys
+d none sbin 0755 root sys
+f none sbin/in.imapproxyd=bin/in.imapproxyd 0755 root sys
+f none sbin/pimpstat=bin/pimpstat 0755 root sys

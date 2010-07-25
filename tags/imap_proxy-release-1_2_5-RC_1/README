@@ -1,0 +1,252 @@
+                 Copyright (c) 2002,2003 Dave McMurtrie
+
+
+This directory contains the source distribution of up-imapproxy.
+
+If you find any bugs in up-imapproxy, please subscribe to the imapproxy-info
+mailing list and post your bug there.
+
+If you want to subscribe to the imapproxy-info mailing list, visit:
+
+http://lists.andrew.cmu.edu/mailman/listinfo/imapproxy-info
+
+For some Debian specific issues that have come up, read the file README.debian.
+
+To read a little bit about SSL support in imapproxy, read README.ssl.
+
+
+##############################################################################
+HOW TO BUILD
+##############################################################################
+
+Before you build imapproxy, you're going to need to obtain the OpenSSL
+libraries.  Build and install them, then you're ready to move on.
+
+It should be pretty painless:
+
+./configure
+make
+
+If you encounter any problems with this, check out README.known_issues to
+see if your problem is addressed in there.  If not, ask on the list or file
+a bug report.
+
+"make install" will attempt to install the following files:
+
+/usr/local/sbin/in.imapproxyd
+/usr/local/sbin/pimpstat
+
+"make install-conf" will attempt to install the sample configuration file:
+
+/etc/imapproxy.conf
+
+"make install-init" will attempt to install the startup script and symlinks:
+
+/etc/init.d/imapproxy
+/etc/rc2.d/S99imapproxy
+/etc/rc0.d/K10imapproxy
+
+"make pkg" will attempt to install a sun package into /var/spool/package.
+
+After you successfully build the proxy server, you'll need to edit the
+global configuration file to suit your needs.  By default, the proxy
+server looks at /etc/imapproxy.conf as his default configuration file.  You
+can change this at runtime by supplying the -f argument to
+/usr/local/sbin/in.imapproxyd.
+
+/usr/local/sbin/pimpstat is the Polling Imap Mail Proxy Statistical tool.  It's
+a curses-based application that you can use to monitor the proxy server.  It's
+aware of the same global configuration file as the proxy server, and can also
+be told to look at a different configuration file by supplying it as a 
+parameter with the -f argument.  Both pimpstat and in.imapproxyd must be using
+the same configuration file, since the stat file that they both rely on is
+set in the configuration file.
+
+
+##############################################################################
+CONFIGURATION OPTIONS
+##############################################################################
+
+server_hostname
+---------------
+This determines which imap server you want to proxy connections to.
+
+cache_size
+----------
+A slightly misleading configuration option.  It's really the total number of
+in-core connections that the server can handle, so it will include all of the
+active connections and all of the cached connections.  For performance, no
+memory is dynamically allocated within the proxy server once it starts to 
+accept connections.  That means that all of the IMAP connection structures have
+to be allocated at server startup.  This configuration setting allows you to
+control how many of these structures are allocated.  The higher you make this
+number, the more memory the server will allocate.  Also, since the proxy
+server is multi-threaded it will need to increase the total number of allowed
+file descriptors it can have open.  We run with a default setting of 3072
+here.  I don't know how big you can make this number before you'd have
+problems with setrlimit().
+
+listen_port
+-----------
+The port that the server binds to and accepts connections on.  This is the
+tcp port that IMAP clients will connect to.
+
+cache_expiration_time
+---------------------
+This is the number of seconds that we keep a connection open to the IMAP server
+after a client logs out.  Once a client logs out, the in-core IMAP connection
+structure is marked as "cached" instead of "active" and a timestamp is set on
+the structure.  Once "cache_expiration_time" seconds have elapsed, this
+connection to the server will be closed and any future logins from the user
+that was connected on this socket will require a new connection to the server.
+
+proc_username
+-------------
+The proxy server will NOT run as root.  This is quite simply for security
+reasons.  You can specify which user you want the proxy to run as here.
+
+proc_groupname
+--------------
+This is the groupname that the proxy server will run as.
+
+stat_filename
+-------------
+The proxy server opens a file and mmap()s a statistical structure when it
+starts.  It keeps some really simple numbers in here.  You can use the
+pimpstat application to display these numbers and monitor the usage of the
+proxy server.
+
+protocol_log_filename
+---------------------
+The proxy server allows you to turn on protocol logging on a per-user basis.
+All proxied traffic for one user will be logged to this file, differentiated
+by client or server.  This file is opened at server startup, and is held open
+until the server is shut down.
+
+syslog_facility
+---------------
+The logging facility to be used for all syslog calls.  Any of the possible
+facilities listed in the syslog(3C) manpage may be specified here except
+for LOG_KERN.
+
+syslog_prioritymask
+-------------------
+The syslog LOG_UPT() priority mask.  Read more about what this does in the
+syslog(3C) manpage.  Any of the possible priorities specified in the
+syslog(3C) manpage my be specified here.
+
+send_tcp_keepalives
+-------------------
+Allows tcp keepalives to be enabled on all sockets if the tcp implementation
+supports it.
+
+tls_ca_file
+-----------
+File containing one or more Certificate Authority (CA) certificates.
+See README.ssl for more information.
+
+tls_ca_path
+-----------
+Path to directory with certificates of CAs.  This directory must have
+filenames with the hashed value of the certificate (see openssl(1)).
+See README.ssl for more information.
+
+tls_cert_file
+-------------
+File containing the certificate presented by imapproxy to the server for
+client authentication during STARTTLS.  See README.ssl for more information.
+
+tls_key_file
+------------
+File containing the private key belonging to the client certificate.  See
+README.ssl for more information.
+
+enable_select_cache
+-------------------
+Allows SELECT data caching to be enabled or disabled.
+
+foreground_mode
+---------------
+When enabled, this will prevent imapproxy from detaching from his parent
+process and controlling terminal.
+
+chroot_directory
+----------------
+If this value is set to anything, it implicitly causes imapproxy to run in
+a chroot jail.
+
+enable_admin_commands
+---------------------
+The internal admin commands that imapproxy provides (p_dumpicc, p_trace,
+etc) are a security vulnerability if you do not restrict access to the
+listen_port using tcp wrappers, iptables, ipchains, ipfilter, an external
+firewall, or some other mechanism.  Because of this, the internal admin
+commands are disabled by default.
+
+
+##############################################################################
+ADDITIONAL COMMANDS:
+##############################################################################
+
+There are a few additional commands that have been added to allow you to
+administer the proxy server.  They're implemented through the same mechanism
+as regular imap protocol commands, so they require you to telnet to your
+proxy server on whatever port you choose to bind to and type them like a
+regular protocol transaction.  At our site, we've severely limited access to
+the proxy port such that only our webmail machines and one internal admin
+machine can access it.  The proxy server software offers no way to limit the
+usage of these commands by username so they're not implemented by default.
+If you secure the listen_port, you can then set the enable_admin_commands
+option in imapproxy.conf to enable the use of these commands.
+
+P_NEWLOG
+--------
+Since the protocol log file is held open as long as the server is running,
+it's difficult to clear the logfile.  This command was added to take care of
+that for you.  It doesn't accept any arguments.
+
+P_DUMPICC
+---------
+The Dump ICC command allows you to display the internal data structures of the
+proxy server.  It can tell you how many connections you currently have open,
+what users they're for, and the status of the connections (active or cached).
+Use this sparingly if the proxy server is extremely busy.
+
+P_TRACE
+-------
+This is used to turn on or off protocol logging.  If issued without any
+arguments, it will disable protocol logging.  If issued with a username
+argument, it will turn on logging for that particular user.  Protocol log
+output will show up in the file configured as "protocol_log_filename" in the
+configuration file.
+
+P_RESETCOUNTERS
+---------------
+This allows you to reset the internal counters that pimpstat reports on
+without having to restart the server.  These are the counters that are mmap()ed
+to the file configured as "stat_filename" in the configuration file.
+
+P_VERSION
+-------
+This is used to show the version number of the IMAP proxy.
+
+
+Happy proxying,
+
+Dave  <davemcmurtrie@gmail.com>
+
+
+                              _________
+                             /        |
+                            /         |
+                           /    ______|
+                          /    /       ________
+                         |    |        |      /
+                         |    |        |_____/
+                         |    |        ______
+                         |    |        |     \
+                         |    |        |______\
+                          \    \_______
+                           \           |
+                            \          |
+                             \_________|
