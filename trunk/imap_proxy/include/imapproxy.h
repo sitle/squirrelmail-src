@@ -34,11 +34,14 @@
 **  RCS:
 **
 **      $Source: /afs/andrew.cmu.edu/usr18/dave64/work/IMAP_Proxy/include/RCS/imapproxy.h,v $
-**      $Id: imapproxy.h,v 1.26 2007/05/31 12:07:41 dave64 Exp $
+**      $Id: imapproxy.h,v 1.27 2007/11/15 11:11:46 dave64 Exp $
 **      
 **  Modification History:
 **
 **      $Log: imapproxy.h,v $
+**      Revision 1.27  2007/11/15 11:11:46  dave64
+**      Added pidfile support patch by Jose Luis Tallón.
+**
 **      Revision 1.26  2007/05/31 12:07:41  dave64
 **      Applied ipv6 patch by Antonio Querubin.
 **
@@ -176,6 +179,9 @@
 
 #ifndef DEFAULT_CONFIG_FILE
 #define DEFAULT_CONFIG_FILE     "/etc/imapproxy.conf"
+#endif
+#ifndef DEFAULT_PID_FILE
+#define DEFAULT_PID_FILE       "/var/run/imapproxy.pid"
 #endif
 
 #define LITERAL_PASSWORD        1
