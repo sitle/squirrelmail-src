@@ -35,11 +35,15 @@
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/config.c,v $
-**      $Id: config.c,v 1.12 2004/11/10 15:26:25 dgm Exp $
+**      $Id: config.c,v 1.13 2005/01/12 17:49:51 dgm Exp $
 **      
 **  Modification History:
 **
 **      $Log: config.c,v $
+**      Revision 1.13  2005/01/12 17:49:51  dgm
+**      Applied patch by David Lancaster to provide force_tls config
+**      option.
+**
 **      Revision 1.12  2004/11/10 15:26:25  dgm
 **      Explictly NULL terminate all strings that are the result of an strncpy.
 **
@@ -402,8 +406,10 @@ extern void SetConfigOptions( char *ConfigFile )
 
     ADD_TO_TABLE( "foreground_mode", SetBooleanValue,
 		  &PC_Struct.foreground_mode, index );
-    
 
+    ADD_TO_TABLE( "force_tls", SetBooleanValue,
+		  &PC_Struct.force_tls, index );
+    
     ConfigTable[index].Keyword[0] = '\0';
     
     FP = fopen( ConfigFile, "r" );

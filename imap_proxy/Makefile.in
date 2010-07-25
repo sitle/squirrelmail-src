@@ -78,6 +78,7 @@ distclean: clean
 	rm -f config.cache config.log config.h Makefile
 
 install: $(XYD_BIN) $(TAT_BIN)
+	mkdir -p $(EBIN)
 	$(INSTALL) -o bin -g bin -m 0755 $(XYD_BIN) $(EBIN)
 	$(INSTALL) -o bin -g bin -m 0755 $(TAT_BIN) $(EBIN)
 

@@ -1,3 +1,30 @@
+2005-01-12  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* configure.in: Applied patch by Frederic Olivie to detect ncurses
+	  as well as curses.
+
+	* imapproxy.h: cache_size and cache_expiration_time in struct
+	  ProxyConfig now declared as unsigned int instead of unsigned
+	  long.  Patch by Cameron Schaus to fix 64-bit issues since
+	  SetNumericValue accepts int * as an argument.  Added patch
+	  by David Lancaster to provide force_tls config option.
+
+	* main.c: Applied patch by Joseph Tam to prevent SIGSEGV in 
+	  RAND_egd().  Applied patch by David Lancaster to provide
+	  force_tls config option.
+
+	* imapcommon.c: Applied patch by David Lancaster to provide
+	  force_tls config option.
+
+	* config.c: Applied patch by David Lancaster to provide
+	  force_tls config option.
+
+	* README.ssl: Added documentation provided by Steve Lidie.
+
+2004-11-24  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* Makefile.in:  Applied patch by Matt Selsky to create $prefix/bin
+	
 2004-11-10  Dave McMurtrie  <davemcmurtrie@hotmail.com>
 
 	* config.c: Explictly NULL terminate all strings that are the
