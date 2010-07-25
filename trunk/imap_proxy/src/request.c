@@ -41,11 +41,15 @@
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/request.c,v $
-**	$Id: request.c,v 1.5 2002/08/30 13:24:43 dgm Exp $
+**	$Id: request.c,v 1.6 2003/01/22 13:03:25 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: request.c,v $
+**	Revision 1.6  2003/01/22 13:03:25  dgm
+**	Changes to HandleRequest() and cmd_login() to support clients that
+**	send the password as a literal string on login.
+**
 **	Revision 1.5  2002/08/30 13:24:43  dgm
 **	Added support for total client logins counter
 **
@@ -110,7 +114,7 @@ static int cmd_noop( ITD_Struct *, char * );
 static int cmd_logout( ITD_Struct *, char * );
 static int cmd_capability( ITD_Struct *, char * );
 static int cmd_authenticate( ITD_Struct *, char * );
-static int cmd_login( ITD_Struct *, char *, char *, int, char * );
+static int cmd_login( ITD_Struct *, char *, char *, int, char *, unsigned char );
 static int cmd_trace( ITD_Struct *, char *, char * );
 static int cmd_dumpicc( ITD_Struct *, char * );
 static int cmd_newlog( ITD_Struct *, char * );
@@ -133,6 +137,8 @@ static int Raw_Proxy( ITD_Struct *, ITD_Struct * );
  *
  * Returns:	0 on success
  *		-1 on failure
+ *
+ * Authors:     dgm
  *--
  */
 static int cmd_newlog( ITD_Struct *itd, char *Tag )
@@ -225,6 +231,8 @@ static int cmd_resetcounters( ITD_Struct *itd, char *Tag )
  *
  * Returns:	0 on success
  *		-1 on failure
+ *
+ * Authors:     dgm
  *--
  */
 static int cmd_dumpicc( ITD_Struct *itd, char *Tag )
@@ -284,6 +292,8 @@ static int cmd_dumpicc( ITD_Struct *itd, char *Tag )
  *
  * Returns:	0 on success
  *		-1 on failure
+ *
+ * Authors:     dgm
  *--
  */
 static int cmd_trace( ITD_Struct *itd, char *Tag, char *Username )
@@ -370,6 +380,8 @@ static int cmd_trace( ITD_Struct *itd, char *Tag, char *Username )
  *
  * Returns:	0 on success
  *		-1 on failure
+ *
+ * Authors:     dgm
  *--
  */
 static int cmd_noop( ITD_Struct *itd, char *Tag )
@@ -401,6 +413,8 @@ static int cmd_noop( ITD_Struct *itd, char *Tag )
  *
  * Returns:	0 on success
  *		-1 on failure
+ *
+ * Authors:     dgm
  *--
  */
 static int cmd_logout( ITD_Struct *itd, char *Tag )
@@ -433,6 +447,8 @@ static int cmd_logout( ITD_Struct *itd, char *Tag )
  *
  * Returns:	0 on success
  *		-1 on failure
+ *
+ * Authors:     dgm
  *--
  */
 static int cmd_capability( ITD_Struct *itd, char *Tag )
@@ -465,6 +481,8 @@ static int cmd_capability( ITD_Struct *itd, char *Tag )
  *
  * Returns:	0 on success
  *		-1 on failure
+ *
+ * Authors:     dgm
  *
  * Notes:	This will need to be changed such that the entire
  *		session is proxied.  For now, we'll just drop it.
@@ -500,10 +518,14 @@ static int cmd_authenticate( ITD_Struct *itd, char *Tag )
  *              ptr to password
  *              int length of password buffer
  *              ptr to client tag
+ *              unsigned char - flag to indicate literal password in login
+ *                              command.
  *
  * Returns:	0 on success prior to authentication
  *              1 on success after authentication (we caught a logout)
  *		-1 on failure
+ *
+ * Authors:     dgm
  *
  * Note:        Not too many things are really considered "failure" in the
  *              context of this routine, because returning failure would
@@ -519,7 +541,8 @@ static int cmd_login( ITD_Struct *Client,
 		      char *Username, 
 		      char *Password,
 		      int passlen,
-		      char *Tag )
+		      char *Tag,
+		      unsigned char LiteralLogin )
 {
     char *fn = "cmd_login()";
     char SendBuf[BUFSIZE];
@@ -550,7 +573,7 @@ static int cmd_login( ITD_Struct *Client,
 	return( -1 );
     }
     
-    sd = Get_Server_sd( Username, Password, hostaddr );
+    sd = Get_Server_sd( Username, Password, hostaddr, LiteralLogin );
 
     /*
      * wipe out the passwd so we don't have it sitting in memory somewhere.
@@ -608,7 +631,7 @@ static int cmd_login( ITD_Struct *Client,
 	Server.TraceOn = 0;
     }
     UnLockMutex( &trace );
-	 
+
     rc = Raw_Proxy( Client, &Server );
 
     /*
@@ -670,8 +693,6 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server )
     
     fds[ SERVER ].events = POLLIN;
     fds[ CLIENT ].events = POLLIN;
-
-    
 
     /*
      * POLL loop
@@ -850,8 +871,8 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server )
 			 * make a half-hearted attempt to eat whatever the
 			 * server sends back.
 			 */
-			send( Server->sd, "ZZZ CLOSE\r\n",
-			      strlen("ZZZ CLOSE\r\n"), 0 );
+			send( Server->sd, "C64 CLOSE\r\n",
+			      strlen("C64 CLOSE\r\n"), 0 );
 			recv( Server->sd, Server->ReadBuf, 
 			      sizeof Server->ReadBuf, 0 );
 			memset( Server->ReadBuf, 0, sizeof Server->ReadBuf );
@@ -991,16 +1012,15 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server )
  * Notes:	This function actually only handles unauthenticated
  *		traffic from an imap client.  As such it can only make sense
  *		of the following IMAP commands (rfc 2060):  NOOP, CAPABILITY,
- *		AUTHENTICATE, LOGIN, and LOGOUT.  None of these commands should
- *		ever send enough data to fill our buffer.  None of these
- *		commands should ever send a string literal specifier.  For
- *		these reasons, you'll notice that both of these conditions are
- *		checked after our call to IMAP_Line_Read() such that we can
- *		boot any client trying to send us rubbish.  Our behaviour
- *		may not be identical to a "real" IMAP server implementation
- *		in this regard, but a "real" client should never send us
- *		crap like this in the first place.  This is a simple, but
- *              not graceful way to handle the problem.
+ *		AUTHENTICATE, LOGIN, and LOGOUT.  Also, it handles the
+ *              commands that are internal to the proxy server such as
+ *              P_TRACE, P_NEWLOG, P_DUMPICC and P_RESETCOUNTERS.
+ *
+ *              None of these commands should ever have the need to send
+ *              a boatload of data, so we avoid some error checking and
+ *              undue complexity in this routine by just making sure that
+ *              any given read from the client doesn't fill our read
+ *              buffer.  If it does, we just drop the connection.
  *--
  */
 extern void HandleRequest( int clientsd )
@@ -1013,6 +1033,7 @@ extern void HandleRequest( int clientsd )
     char *Password;
     char *Lasts;
     char *EndOfLine;
+    char *CP;
     char SendBuf[BUFSIZE];
     int BytesRead;
     int rc;
@@ -1020,6 +1041,9 @@ extern void HandleRequest( int clientsd )
     char S_UserName[MAXUSERNAMELEN];
     char S_Tag[MAXTAGLEN];
     char S_Password[MAXPASSWDLEN];
+    unsigned char LiteralFlag;          /* flag to deal with passwords sent */
+					/* as string literals */
+    
     
     struct pollfd fds[1];
     nfds_t nfds;
@@ -1051,6 +1075,8 @@ extern void HandleRequest( int clientsd )
     /* start a command loop */
     for ( ; ; )
     {
+	LiteralFlag = 0;
+
 	fds[ 0 ].revents = 0;
 	
 	rc = poll( fds, nfds, POLL_TIMEOUT );
@@ -1104,16 +1130,16 @@ extern void HandleRequest( int clientsd )
 
 	BytesRead = IMAP_Line_Read( &Client );
 	
-	if ( Client.MoreData || Client.LiteralBytesRemaining )
+	if ( BytesRead == -1 )
 	{
-	    syslog(LOG_WARNING, "%s: Received junk from unauthenticated client.  Disconnecting.", fn );
 	    IMAPCount->CurrentClientConnections--;
 	    close( Client.sd );
 	    return;
 	}
 	
-	if ( BytesRead == -1 )
+	if ( Client.MoreData )
 	{
+	    syslog( LOG_WARNING, "%s: Too much data read from unauthenticated client.  Dropping the connection.", fn );
 	    IMAPCount->CurrentClientConnections--;
 	    close( Client.sd );
 	    return;
@@ -1123,7 +1149,7 @@ extern void HandleRequest( int clientsd )
     	/* First grab the tag */
 	
 	EndOfLine = Client.ReadBuf + BytesRead;
-	
+
 	Tag = memtok( Client.ReadBuf, EndOfLine, &Lasts );
 	if ( ( !Tag ) ||
 	     ( !imparse_isatom( Tag ) ) ||
@@ -1222,41 +1248,130 @@ extern void HandleRequest( int clientsd )
 		}
 		continue;
 	    }
+	    strncpy( S_UserName, Username, sizeof S_UserName - 1 );	    
 	    
-	    Password = memtok( NULL, EndOfLine, &Lasts );
-	    if ( !Password )
+	    /*
+	     * Clients can send the password as a literal bytestream.  Check
+	     * for that here.
+	     */
+	    if ( Client.LiteralBytesRemaining )
 	    {
-		/* no password -- complain back to the client */
-		snprintf( SendBuf, BufLen, "%s BAD Missing required argument to Login\r\n", Tag );
-		if ( send( Client.sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+		if ( ( sizeof S_Password - 1 ) < Client.LiteralBytesRemaining )
 		{
-		    IMAPCount->CurrentClientConnections--;
-		    close( Client.sd );
-		    return;
+		    syslog( LOG_ERR, "%s: password length would cause buffer overflow.", fn );
+		    /*
+		     * we have to at least eat the literal bytestream because
+		     * of the way our I/O routines work.
+		     */
+		    memset( &Client.ReadBuf, 0, sizeof Client.ReadBuf );
+		    Client.BytesInReadBuffer = 0;
+		    Client.ReadBytesProcessed = 0;
+		    Client.LiteralBytesRemaining = 0;
+		    Client.NonSyncLiteral = 0;
+		    Client.MoreData = 0;
+		    
+		    snprintf( SendBuf, BufLen, "%s NO LOGIN failed\r\n", Tag );
+		    if ( send( Client.sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+		    {
+			IMAPCount->CurrentClientConnections--;
+			close( Client.sd );
+			return;
+		    }
+		    continue;
 		}
-		continue;
+	
+		LiteralFlag = 1;
+		
+		CP = S_Password;
+
+		if ( ! Client.NonSyncLiteral )
+		{
+		    sprintf( SendBuf, "+ go ahead\r\n" );
+		    if ( send( Client.sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+		    {
+			IMAPCount->CurrentClientConnections--;
+			close( Client.sd );
+			return;
+		    }
+		}
+
+		while ( Client.LiteralBytesRemaining )
+		{
+		    BytesRead = IMAP_Literal_Read( &Client );
+		    
+		    if ( BytesRead == -1 )
+		    {
+			syslog( LOG_NOTICE, "%s: Failed to read string literal from client on login." );
+			snprintf( SendBuf, BufLen, "%s NO LOGIN failed\r\n", Tag );
+			if ( send( Client.sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+			{
+			    IMAPCount->CurrentClientConnections--;
+			    close( Client.sd );
+			    return;
+			}
+			continue;
+		    }
+		    
+		    memcpy ( (void *)CP, (const void *)Client.ReadBuf, BytesRead );
+		    CP += BytesRead;
+		}
+		*CP = '\0';
+
+		/*
+		 * I'm not sure if IMAP_Literal_Read() is written entirely
+		 * in a correct fashion.  There will be a CRLF at the end
+		 * of the literal bytestream that it doesn't deal with.
+		 * If we don't eat that here, it will be read as a separate
+		 * (Null) command...  Reading it here is more of a hack than
+		 * a real solution, but I hesitate to fiddle with 
+		 * IMAP_Literal_Read() right now since it works properly
+		 * otherwise.
+		 */
+		rc = IMAP_Line_Read( &Client );
+	    }
+	    else
+	    {
+		/*
+		 * The password is just being sent as a plain old string.
+		 * Can't use memtok() because it uses a single space as the
+		 * token delimeter and any password with a space in it would
+		 * break.
+		 */
+		CP = EndOfLine - 2;
+		Lasts++;
+		
+		if ( Lasts >= CP )
+		{
+		    /* no password -- complain back to the client */
+		    snprintf( SendBuf, BufLen, "%s BAD Missing required argument to Login\r\n", Tag );
+		    if ( send( Client.sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+		    {
+			IMAPCount->CurrentClientConnections--;
+			close( Client.sd );
+			return;
+		    }
+		    continue;
+		}
+		
+		*CP = '\0';
+		strncpy( S_Password, Lasts, sizeof S_Password - 1 );
 	    }
 	    
-	    /* 
-	     * All looks well at this point.  We're almost ready to call our
-	     * login handler.  It's key to note, however that the pointer to
-	     * our Username is pointing to storage allocated in our client
-	     * read buffer.  That's storage that's likely to be wiped out as
-	     * soon as we read more data from the client.  Since we'll need to
-	     * keep track of the username, make a static copy of it first and
-	     * then pass a pointer to the static copy into our login handler.
-	     * Do the same for the password...
-	     */
-	    strncpy( S_UserName, Username, sizeof S_UserName - 1 );
-	    strncpy( S_Password, Password, sizeof S_Password - 1 );
+
 	    
 	    /*
 	     * wipe out the the client read buffer since a copy of the
 	     * password lives in there.
 	     */
 	    memset( &Client.ReadBuf, 0, sizeof Client.ReadBuf );
+	    Client.BytesInReadBuffer = 0;
+	    Client.ReadBytesProcessed = 0;
+	    Client.LiteralBytesRemaining = 0;
+	    Client.NonSyncLiteral = 0;
+	    Client.MoreData = 0;
 	    
-	    rc = cmd_login( &Client, S_UserName, S_Password, sizeof S_Password, S_Tag );
+	    
+	    rc = cmd_login( &Client, S_UserName, S_Password, sizeof S_Password, S_Tag, LiteralFlag );
 	    
 	    if ( rc == 0)
 		continue;

@@ -37,11 +37,18 @@
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/imapcommon.c,v $
-**	$Id: imapcommon.c,v 1.5 2002/12/18 14:39:55 dgm Exp $
+**	$Id: imapcommon.c,v 1.7 2003/01/23 16:24:31 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: imapcommon.c,v $
+**	Revision 1.7  2003/01/23 16:24:31  dgm
+**	NonSyncLiteral flag was not being cleared properly.
+**
+**	Revision 1.6  2003/01/22 12:56:30  dgm
+**	Changes to Get_Server_sd() so it can support login attempts where
+**	the client sends the password as a string literal.
+**
 **	Revision 1.5  2002/12/18 14:39:55  dgm
 **	Fixed bug in for loop for string literal processing.
 **
@@ -160,6 +167,8 @@ extern void UnLockMutex( pthread_mutex_t *mutex )
  * Parameters:	ptr to username string
  *		ptr to password string
  *              const ptr to client hostname or IP string (for logging only)
+ *              unsigned char - flag to indicate that the client sent the
+ *                              password as a string literal.
  *
  * Returns:	int sd on success
  *              -1 on failure
@@ -170,7 +179,8 @@ extern void UnLockMutex( pthread_mutex_t *mutex )
  */
 extern int Get_Server_sd( char *Username, 
 			  char *Password,
-			  const char *ClientAddr )
+			  const char *ClientAddr,
+			  unsigned char LiteralPasswd )
 {
     char *fn = "Get_Server_sd()";
     unsigned int HashIndex;
@@ -313,25 +323,73 @@ extern int Get_Server_sd( char *Username,
     
     if ( IMAP_Line_Read( &Server ) == -1 )
     {
-	syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: No banner line received from IMAP server",
-		Username, ClientAddr );
+	syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: No banner line received from IMAP server", Username, ClientAddr );
 	close( Server.sd );
 	return( -1 );
     }
     
     /*
-     * Send the login command off to the IMAP server.
+     * Send the login command off to the IMAP server.  Have to treat a literal
+     * password different.
      */
-    snprintf( SendBuf, BufLen, "A0001 LOGIN %s %s\r\n", 
-	      Username, Password );
-    
-    if ( send( Server.sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+    if ( LiteralPasswd )
     {
-	syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: send() failed attempting to send LOGIN command to IMAP server: %s", Username, ClientAddr, strerror( errno ) );
-	close( Server.sd );
-	return( -1 );
+	snprintf( SendBuf, BufLen, "A0001 LOGIN %s {%d}\r\n", 
+		  Username, strlen( Password ) );
+	if ( send( Server.sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+	{
+	    syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: send() failed attempting to send LOGIN command to IMAP server: %s", Username, ClientAddr, strerror( errno ) );
+	    close( Server.sd );
+	    return( -1 );
+	}
+	
+	/*
+	 * the server response should be a go ahead
+	 */
+	if ( ( rc = IMAP_Line_Read( &Server ) ) == -1 )
+	{
+	    syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: Failed to receive go-ahead from IMAP server after sending LOGIN command", Username, ClientAddr );
+	    close( Server.sd );
+	    return( -1 );
+	}
+	
+
+	if ( strncasecmp( "+ go ahead\r\n", Server.ReadBuf, rc ) )
+	{
+	    syslog( LOG_INFO, "LOGIN: '%s' (%s) failed: bad response from server after sending string literal specifier", Username, ClientAddr );
+	    close( Server.sd );
+	    return( -1 );
+	}
+	
+	/* 
+	 * now send the password
+	 */
+	snprintf( SendBuf, BufLen, "%s\r\n", Password );
+	
+	if ( send( Server.sd, SendBuf, strlen( SendBuf ), 0 ) == -1 )
+	{
+	    syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: send() failed attempting to send literal password to IMAP server: %s", Username, ClientAddr, strerror( errno ) );
+	    close( Server.sd );
+	    return( -1 );
+	}
+    }
+    else
+    {
+	/*
+	 * just send the login command via normal means.
+	 */
+	snprintf( SendBuf, BufLen, "A0001 LOGIN %s %s\r\n", 
+		  Username, Password );
+	
+	if ( send( Server.sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+	{
+	    syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: send() failed attempting to send LOGIN command to IMAP server: %s", Username, ClientAddr, strerror( errno ) );
+	    close( Server.sd );
+	    return( -1 );
+	}
     }
     
+	
     /*
      * Read the server response
      */
@@ -824,7 +882,13 @@ extern int IMAP_Line_Read( ITD_Struct *ITD )
 			 * sending a literal to a server.
 			 */
 			if ( *(LiteralEnd - 1) == '+' )
+			{
 			    ITD->NonSyncLiteral = 1;
+			}
+			else
+			{
+			    ITD->NonSyncLiteral = 0;
+			}
 			
 
 			/* To grab the number, bump our

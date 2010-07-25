@@ -9,8 +9,10 @@ or hostile words to:
 
 dgm@pitt.edu
 
-For that matter, if you decide to use this software, pop me an email and let me
-know how it works for you.
+
+If you want to subscribe to the imapproxy-info mailing list, visit:
+
+http://lists.pitt.edu/mailman/listinfo/imapproxy-info
 
 ##############################################################################
 KNOWN ISSUES
@@ -32,7 +34,7 @@ To build the proxy server on a Solaris platform, just run "make" in
 this directory.  "make install" will attempt to install the following files:
 
 /usr/local/sbin/in.imapproxyd
-/usr/local/bin/pimpstat
+/usr/local/sbin/pimpstat
 /etc/init.d/imapproxy
 /etc/rc2.d/S99imapproxy
 /etc/rc0.d/K10imapproxy

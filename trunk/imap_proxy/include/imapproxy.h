@@ -36,11 +36,15 @@
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/include/RCS/imapproxy.h,v $
-**      $Id: imapproxy.h,v 1.4 2002/12/19 21:41:32 dgm Exp $
+**      $Id: imapproxy.h,v 1.5 2003/01/22 15:33:53 dgm Exp $
 **      
 **  Modification History:
 **
 **      $Log: imapproxy.h,v $
+**      Revision 1.5  2003/01/22 15:33:53  dgm
+**      Changed Get_Server_sd() function prototype to reflect the addition of
+**      the literal password flag.
+**
 **      Revision 1.4  2002/12/19 21:41:32  dgm
 **      Added support for global configuration.
 **
@@ -187,7 +191,7 @@ extern int IMAP_Literal_Read( ITD_Struct * );
 extern void HandleRequest( int );
 extern char *memtok( char *, char *, char ** );
 extern int imparse_isatom( const char * );
-extern int Get_Server_sd( char *, char *, const char * );
+extern int Get_Server_sd( char *, char *, const char *, unsigned char );
 extern void ICC_Logout( char *, int );
 extern void ICC_Recycle( unsigned int );
 extern void ICC_Recycle_Loop( void );
