@@ -39,11 +39,14 @@
 **  RCS:
 **
 **	$Source: /afs/andrew.cmu.edu/usr18/dave64/work/IMAP_Proxy/src/RCS/request.c,v $
-**	$Id: request.c,v 1.22 2006/02/16 18:38:36 dave64 Exp $
+**	$Id: request.c,v 1.23 2007/05/31 12:11:24 dave64 Exp $
 **      
 **  Modification History:
 **
 **	$Log: request.c,v $
+**	Revision 1.23  2007/05/31 12:11:24  dave64
+**	Applied ipv6 patch by Antonio Querubin.
+**
 **	Revision 1.22  2006/02/16 18:38:36  dave64
 **	Patch to add internal version command by Matt Selsky.
 **
@@ -697,14 +700,13 @@ static int cmd_authenticate_login( ITD_Struct *Client,
     int rc;
     ITD_Struct Server;
     int BytesRead;
-    struct sockaddr_in cli_addr;
-    int addrlen;
-    char *hostaddr;
-    in_port_t sin_port;
+    struct sockaddr_storage cli_addr;
+    int sockaddrlen;
+    char hostaddr[INET6_ADDRSTRLEN], portstr[NI_MAXSERV];
     
     unsigned int BufLen = BUFSIZE - 1;
     memset ( &Server, 0, sizeof Server );
-    addrlen = sizeof( struct sockaddr_in );
+    sockaddrlen = sizeof( struct sockaddr_storage );
     
     /*
      * send a base64 encoded username prompt to the client.  Note that we're
@@ -807,18 +809,20 @@ static int cmd_authenticate_login( ITD_Struct *Client,
     rc = EVP_DecodeBlock( Password, EncodedPassword, BytesRead - 2 );
     Password[rc] = '\0';
     
-    if ( getpeername( Client->conn->sd, (struct sockaddr *)&cli_addr, &addrlen ) < 0 )
+    if ( getpeername( Client->conn->sd, (struct sockaddr *)&cli_addr, 
+		      &sockaddrlen ) < 0 )
     {
 	syslog( LOG_WARNING, "AUTH_LOGIN: failed: getpeername() failed for client sd: %s", Username, strerror( errno ) );
 	return( -1 );
     }
     
-    hostaddr = inet_ntoa( ( ( struct sockaddr_in *)&cli_addr )->sin_addr );
-    sin_port = ntohs( cli_addr.sin_port );
-    
-    if ( !hostaddr )
+    if ( getnameinfo( (struct sockaddr *) &cli_addr, sockaddrlen,
+		      hostaddr, sizeof hostaddr, portstr, sizeof portstr,
+		      NI_NUMERICHOST | NI_NUMERICSERV ) )
     {
-        syslog(LOG_WARNING, "AUTH_LOGIN: '%s' failed: inet_ntoa() failed for client sd: %s", Username, strerror( errno ) );
+        syslog( LOG_WARNING,
+		"AUTH_LOGIN: '%s' failed: getnameinfo() failed for client sd: %s",
+		Username, strerror( errno ) );
         return( -1 );
     }
     
@@ -828,7 +832,7 @@ static int cmd_authenticate_login( ITD_Struct *Client,
      * he needs to login.  This is just in case there are any special
      * characters in the password that we decoded.
      */
-    conn = Get_Server_conn( Username, Password, hostaddr, sin_port, LITERAL_PASSWORD );
+    conn = Get_Server_conn( Username, Password, hostaddr, portstr, LITERAL_PASSWORD );
     
     /*
      * all the code from here to the end is basically identical to that
@@ -930,31 +934,32 @@ static int cmd_login( ITD_Struct *Client,
     ITD_Struct Server;
     int rc;
     ICD_Struct *conn;
-    struct sockaddr_in cli_addr;
-    int addrlen;
-    char *hostaddr;
-    in_port_t sin_port;
+    struct sockaddr_storage cli_addr;
+    int sockaddrlen;
+    char hostaddr[INET6_ADDRSTRLEN], portstr[NI_MAXSERV];
 
     memset( &Server, 0, sizeof Server );
 
-    addrlen = sizeof( struct sockaddr_in );
+    sockaddrlen = sizeof( struct sockaddr_storage );
 
-    if ( getpeername( Client->conn->sd, (struct sockaddr *)&cli_addr, &addrlen ) < 0 )
+    if ( getpeername( Client->conn->sd, (struct sockaddr *)&cli_addr, 
+		      &sockaddrlen ) < 0 )
     {
 	syslog(LOG_INFO, "LOGIN: '%s' failed: getpeername() failed for client sd: %s", Username, strerror( errno ) );
 	return( -1 );
     }
     
-    hostaddr = inet_ntoa( ( ( struct sockaddr_in *)&cli_addr )->sin_addr );
-    sin_port = ntohs( cli_addr.sin_port );
-
-    if ( !hostaddr )
+    if ( getnameinfo( (struct sockaddr *) &cli_addr, sockaddrlen,
+		      hostaddr, sizeof hostaddr, portstr, sizeof portstr,
+		      NI_NUMERICHOST | NI_NUMERICSERV ) )
     {
-	syslog(LOG_INFO, "LOGIN: '%s' failed: inet_ntoa() failed for client sd: %s", Username, strerror( errno ) );
+        syslog( LOG_INFO,
+		"LOGIN: '%s' failed: getnameinfo() failed for client sd: %s",
+		Username, strerror( errno ) );
 	return( -1 );
     }
     
-    conn = Get_Server_conn( Username, Password, hostaddr, sin_port, LiteralLogin );
+    conn = Get_Server_conn( Username, Password, hostaddr, portstr, LiteralLogin );
 
     /*
      * wipe out the passwd so we don't have it sitting in memory somewhere.

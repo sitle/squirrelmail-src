@@ -35,11 +35,18 @@
 **  RCS:
 **
 **	$Source: /afs/andrew.cmu.edu/usr18/dave64/work/IMAP_Proxy/src/RCS/imapcommon.c,v $
-**	$Id: imapcommon.c,v 1.22 2006/08/15 13:13:08 dave64 Exp $
+**	$Id: imapcommon.c,v 1.24 2007/05/31 12:09:46 dave64 Exp $
 **      
 **  Modification History:
 **
 **	$Log: imapcommon.c,v $
+**	Revision 1.24  2007/05/31 12:09:46  dave64
+**	Applied ipv6 patch by Antonio Querubin.
+**
+**	Revision 1.23  2007/05/31 11:50:49  dave64
+**	Patch by Matt Selsky (include openssl/md5.h) to prevent compilation
+**	failure with newer OpenSSL versions.
+**
 **	Revision 1.22  2006/08/15 13:13:08  dave64
 **	No longer exit() from IMAP_Line_Read.  Just return failure.
 **
@@ -139,6 +146,7 @@
 
 #include <openssl/evp.h>
 #include <openssl/err.h>
+#include <openssl/md5.h>
 
 #include <pthread.h>
 #include <sys/types.h>
@@ -353,7 +361,7 @@ extern void UnLockMutex( pthread_mutex_t *mutex )
  * Parameters:	ptr to username string
  *		ptr to password string
  *              const ptr to client hostname or IP string (for logging only)
- *              in_port_t, client port number (for logging only)
+ *              ptr to client port string (for logging only)
  *              unsigned char - flag to indicate that the client sent the
  *                              password as a string literal.
  *
@@ -369,7 +377,7 @@ extern void UnLockMutex( pthread_mutex_t *mutex )
 extern ICD_Struct *Get_Server_conn( char *Username, 
 				    char *Password,
 				    const char *ClientAddr,
-				    in_port_t sin_port,
+				    const char *portstr,
 				    unsigned char LiteralPasswd )
 {
     char *fn = "Get_Server_conn()";
@@ -422,7 +430,10 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 	     */
 	    if ( memcmp( md5pw, ICC_Active->hashedpw, sizeof md5pw ) )
 	    {
-		syslog( LOG_NOTICE, "%s: Unable to reuse server sd [%d] for user '%s' (%s:%d) because password doesn't match.", fn, ICC_Active->server_conn->sd, Username, ClientAddr, sin_port );
+		syslog( LOG_NOTICE,
+			"%s: Unable to reuse server sd [%d] for user '%s' (%s:%s) because password doesn't match.",
+			fn, ICC_Active->server_conn->sd, Username,
+			ClientAddr, portstr );
 		ICC_Active->logouttime = 1;
 	    }
 	    else
@@ -454,14 +465,20 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 		
 		if ( !rc )
 		{
-		    syslog(LOG_NOTICE, "%s: Unable to reuse server sd [%d] for user '%s' (%s:%d).  Connection closed by server.", fn, ICC_Active->server_conn->sd, Username, ClientAddr, sin_port );
+		    syslog( LOG_NOTICE,
+			    "%s: Unable to reuse server sd [%d] for user '%s' (%s:%s).  Connection closed by server.",
+			    fn, ICC_Active->server_conn->sd, Username,
+			    ClientAddr, portstr );
 		    ICC_Active->logouttime = 1;
 		    continue;
 		}
 	    
 		if ( errno != EWOULDBLOCK )
 		{
-		    syslog(LOG_NOTICE, "%s: Unable to reuse server sd [%d] for user '%s' (%s:%d). IMAP_read() error: %s", fn, ICC_Active->server_conn->sd, Username, ClientAddr, sin_port, strerror( errno ) );
+		    syslog( LOG_NOTICE,
+			    "%s: Unable to reuse server sd [%d] for user '%s' (%s:%s). IMAP_read() error: %s",
+			    fn, ICC_Active->server_conn->sd, Username, 
+			    ClientAddr, portstr, strerror( errno ) );
 		    ICC_Active->logouttime = 1;
 		    continue;
 		}
@@ -484,7 +501,10 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 		     IMAPCount->PeakInUseServerConnections )
 		    IMAPCount->PeakInUseServerConnections = IMAPCount->InUseServerConnections;
 	    
-		syslog(LOG_INFO, "LOGIN: '%s' (%s:%d) on existing sd [%d]", Username, ClientAddr, sin_port, ICC_Active->server_conn->sd );
+		syslog( LOG_INFO,
+			"LOGIN: '%s' (%s:%s) on existing sd [%d]",
+			Username, ClientAddr, portstr,
+			ICC_Active->server_conn->sd );
 		return( ICC_Active->server_conn );
 	    }
 	}
@@ -500,10 +520,13 @@ extern ICD_Struct *Get_Server_conn( char *Username,
      */
     Server.conn = ( ICD_Struct * ) malloc( sizeof ( ICD_Struct ) );
     memset( Server.conn, 0, sizeof ( ICD_Struct ) );
-    Server.conn->sd = socket( PF_INET, SOCK_STREAM, IPPROTO_TCP );
+    Server.conn->sd = socket( ISD.srv->ai_family, ISD.srv->ai_socktype, 
+			      ISD.srv->ai_protocol );
     if ( Server.conn->sd == -1 )
     {
-	syslog(LOG_INFO, "LOGIN: '%s' (%s:%d) failed: Unable to open server socket: %s", Username, ClientAddr, sin_port, strerror( errno ) );
+	syslog( LOG_INFO,
+		"LOGIN: '%s' (%s:%s) failed: Unable to open server socket: %s",
+		Username, ClientAddr, portstr, strerror( errno ) );
 	goto fail;
     }
 
@@ -513,10 +536,12 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 	setsockopt( Server.conn->sd, SOL_SOCKET, SO_KEEPALIVE, &onoff, sizeof onoff );
     }
     
-    if ( connect( Server.conn->sd, (struct sockaddr *)&ISD.srv, 
-		  sizeof(ISD.srv) ) == -1 )
+    if ( connect( Server.conn->sd, (struct sockaddr *)ISD.srv->ai_addr, 
+		  ISD.srv->ai_addrlen ) == -1 )
     {
-	syslog(LOG_INFO, "LOGIN: '%s' (%s:%d) failed: Unable to connect to IMAP server: %s", Username, ClientAddr, sin_port, strerror( errno ) );
+	syslog( LOG_INFO,
+		"LOGIN: '%s' (%s:%s) failed: Unable to connect to IMAP server: %s",
+		Username, ClientAddr, portstr, strerror( errno ) );
 	goto fail;
     }
     
@@ -525,7 +550,9 @@ extern ICD_Struct *Get_Server_conn( char *Username,
     
     if ( IMAP_Line_Read( &Server ) == -1 )
     {
-	syslog(LOG_INFO, "LOGIN: '%s' (%s:%d) failed: No banner line received from IMAP server", Username, ClientAddr, sin_port );
+	syslog( LOG_INFO,
+		"LOGIN: '%s' (%s:%s) failed: No banner line received from IMAP server",
+ 		Username, ClientAddr, portstr );
 	goto fail;
     }
 
@@ -662,7 +689,9 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 		  Username, strlen( Password ) );
 	if ( IMAP_Write( Server.conn, SendBuf, strlen(SendBuf) ) == -1 )
 	{
-	    syslog(LOG_INFO, "LOGIN: '%s' (%s:%d) failed: IMAP_Write() failed attempting to send LOGIN command to IMAP server: %s", Username, ClientAddr, sin_port, strerror( errno ) );
+	    syslog( LOG_INFO,
+		    "LOGIN: '%s' (%s:%s) failed: IMAP_Write() failed attempting to send LOGIN command to IMAP server: %s",
+		    Username, ClientAddr, portstr, strerror( errno ) );
 	    goto fail;
 	}
 	
@@ -671,7 +700,9 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 	 */
 	if ( ( rc = IMAP_Line_Read( &Server ) ) == -1 )
 	{
-	    syslog(LOG_INFO, "LOGIN: '%s' (%s:%d) failed: Failed to receive go-ahead from IMAP server after sending LOGIN command", Username, ClientAddr, sin_port );
+	    syslog( LOG_INFO,
+		    "LOGIN: '%s' (%s:%s) failed: Failed to receive go-ahead from IMAP server after sending LOGIN command",
+		    Username, ClientAddr, portstr );
 	    goto fail;
 	}
 
@@ -684,7 +715,9 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 	
 	if ( Server.ReadBuf[0] != '+' )
 	{
-	    syslog( LOG_INFO, "LOGIN: '%s' (%s:%d) failed: bad response from server after sending string literal specifier", Username, ClientAddr, sin_port );
+	    syslog( LOG_INFO,
+		    "LOGIN: '%s' (%s:%s) failed: bad response from server after sending string literal specifier",
+		    Username, ClientAddr, portstr );
 	    goto fail;
 	}
 	
@@ -695,7 +728,9 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 	
 	if ( IMAP_Write( Server.conn, SendBuf, strlen( SendBuf ) ) == -1 )
 	{
-	    syslog(LOG_INFO, "LOGIN: '%s' (%s:%d) failed: IMAP_Write() failed attempting to send literal password to IMAP server: %s", Username, ClientAddr, sin_port, strerror( errno ) );
+	    syslog( LOG_INFO,
+		    "LOGIN: '%s' (%s:%s) failed: IMAP_Write() failed attempting to send literal password to IMAP server: %s",
+		    Username, ClientAddr, portstr, strerror( errno ) );
 	    goto fail;
 	}
     }
@@ -709,7 +744,9 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 	
 	if ( IMAP_Write( Server.conn, SendBuf, strlen(SendBuf) ) == -1 )
 	{
-	    syslog(LOG_INFO, "LOGIN: '%s' (%s:%d) failed: IMAP_Write() failed attempting to send LOGIN command to IMAP server: %s", Username, ClientAddr, sin_port, strerror( errno ) );
+	    syslog( LOG_INFO,
+		    "LOGIN: '%s' (%s:%s) failed: IMAP_Write() failed attempting to send LOGIN command to IMAP server: %s",
+		    Username, ClientAddr, portstr, strerror( errno ) );
 	    goto fail;
 	}
     }
@@ -734,7 +771,9 @@ extern ICD_Struct *Get_Server_conn( char *Username,
     {
 	if ( ( rc = IMAP_Line_Read( &Server ) ) == -1 )
 	{
-	    syslog(LOG_INFO, "LOGIN: '%s' (%s:%d) failed: No response from IMAP server after sending LOGIN command", Username, ClientAddr, sin_port );
+	    syslog( LOG_INFO,
+		    "LOGIN: '%s' (%s:%s) failed: No response from IMAP server after sending LOGIN command",
+		    Username, ClientAddr, portstr );
 	    goto fail;
 	}
 
@@ -763,7 +802,9 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 	 * no tokens found in server response?  Not likely, but we still
 	 * have to check.
 	 */
-	syslog(LOG_INFO, "LOGIN: '%s' (%s:%d) failed: server response to LOGIN command contained no tokens.", Username, ClientAddr, sin_port );
+	syslog( LOG_INFO,
+		"LOGIN: '%s' (%s:%s) failed: server response to LOGIN command contained no tokens.",
+		Username, ClientAddr, portstr );
 	goto fail;
     }
     
@@ -774,7 +815,9 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 	 * non-matching tag read back from the server... Lord knows what this
 	 * is, so we'll fail.
 	 */
-	syslog(LOG_INFO, "LOGIN: '%s' (%s:%d) failed: server response to LOGIN command contained non-matching tag.", Username, ClientAddr, sin_port );
+	syslog( LOG_INFO,
+		"LOGIN: '%s' (%s:%s) failed: server response to LOGIN command contained non-matching tag.",
+		Username, ClientAddr, portstr );
 	goto fail;
     }
     
@@ -787,7 +830,9 @@ extern ICD_Struct *Get_Server_conn( char *Username,
     if ( !tokenptr )
     {
 	/* again, not likely but we still have to check... */
-	syslog(LOG_INFO, "LOGIN: '%s' (%s:%d) failed: Malformed server response to LOGIN command", Username, ClientAddr, sin_port );
+	syslog( LOG_INFO,
+		"LOGIN: '%s' (%s:%s) failed: Malformed server response to LOGIN command",
+		Username, ClientAddr, portstr );
 	goto fail;
     }
     
@@ -798,7 +843,9 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 	 * server logs to figure out why.  We don't have to break our ass here
 	 * putting the string back together just for the sake of logging.
 	 */
-	syslog(LOG_INFO, "LOGIN: '%s' (%s:%d) failed: non-OK server response to LOGIN command", Username, ClientAddr, sin_port );
+	syslog( LOG_INFO,
+		"LOGIN: '%s' (%s:%s) failed: non-OK server response to LOGIN command",
+		Username, ClientAddr, portstr );
 	goto fail;
     }
     
@@ -848,7 +895,9 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 	    if ( IMAPCount->InUseServerConnections >
 		 IMAPCount->PeakInUseServerConnections )
 		IMAPCount->PeakInUseServerConnections = IMAPCount->InUseServerConnections;
-	    syslog(LOG_INFO, "LOGIN: '%s' (%s:%d) on new sd [%d]", Username, ClientAddr, sin_port, Server.conn->sd );
+	    syslog( LOG_INFO,
+		    "LOGIN: '%s' (%s:%s) on new sd [%d]",
+		    Username, ClientAddr, portstr, Server.conn->sd );
 	    return( Server.conn );
 	}
 	
@@ -865,7 +914,9 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 	 */
 	if ( Expiration <= 2 )
 	{
-	    syslog(LOG_INFO, "LOGIN: '%s' (%s:%d) failed: Out of free ICC structs.", Username, ClientAddr, sin_port );
+	    syslog( LOG_INFO,
+		    "LOGIN: '%s' (%s:%s) failed: Out of free ICC structs.",
+		    Username, ClientAddr, portstr );
 	    goto fail;
 	}
 	

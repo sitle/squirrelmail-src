@@ -33,12 +33,18 @@
 **
 **  RCS:
 **
-**      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/include/RCS/imapproxy.h,v $
-**      $Id: imapproxy.h,v 1.24 2005/07/06 11:51:25 dgm Exp $
+**      $Source: /afs/andrew.cmu.edu/usr18/dave64/work/IMAP_Proxy/include/RCS/imapproxy.h,v $
+**      $Id: imapproxy.h,v 1.26 2007/05/31 12:07:41 dave64 Exp $
 **      
 **  Modification History:
 **
 **      $Log: imapproxy.h,v $
+**      Revision 1.26  2007/05/31 12:07:41  dave64
+**      Applied ipv6 patch by Antonio Querubin.
+**
+**      Revision 1.25  2007/05/31 11:46:00  dave64
+**      Applied OpenSSL threads patch by Jan Grant.
+**
 **      Revision 1.24  2005/07/06 11:51:25  dgm
 **      Added enable_admin_commands to struct ProxyConfig
 **
@@ -184,13 +190,13 @@
 /*
  * One IMAPServerDescriptor will be globally allocated such that each thread
  * can save the time of doing host lookups, service lookups, and filling
- * in the sockaddr_in struct.
+ * in the sockaddr_storage struct.
  */
 struct IMAPServerDescriptor
 {
-    struct hostent host;             /* IMAP host entry                    */
-    struct servent serv;             /* IMAP service entry                 */
-    struct sockaddr_in srv;          /* IMAP socket address                */
+    struct addrinfo *airesults; /* IMAP server info (top of addrinfo
+				   list from getaddrinfo() */
+    struct addrinfo *srv;	/* IMAP server active socket info */
 };
 
 
@@ -259,10 +265,10 @@ struct IMAPConnectionContext
  */
 struct ProxyConfig
 {
-    unsigned int listen_port;                 /* port we bind to */
+    char *listen_port;         	              /* port we bind to */
     char *listen_addr;                        /* address we bind to */
     char *server_hostname;                    /* server we proxy to */
-    unsigned int server_port;                 /* port we proxy to */
+    char *server_port;                        /* port we proxy to */
     unsigned int cache_size;                  /* number of cache slots */
     unsigned int cache_expiration_time;       /* cache exp time in seconds */
     unsigned int send_tcp_keepalives;         /* flag to send keepalives */
@@ -337,7 +343,7 @@ extern int IMAP_Literal_Read( ITD_Struct * );
 extern void HandleRequest( int );
 extern char *memtok( char *, char *, char ** );
 extern int imparse_isatom( const char * );
-extern ICD_Struct *Get_Server_conn( char *, char *, const char *, in_port_t, unsigned char );
+extern ICD_Struct *Get_Server_conn( char *, char *, const char *, const char *, unsigned char );
 extern void ICC_Logout( char *, ICD_Struct * );
 extern void ICC_Recycle( unsigned int );
 extern void ICC_Recycle_Loop( void );
@@ -349,6 +355,13 @@ extern int Handle_Select_Command( ITD_Struct *, ITD_Struct *, ISC_Struct *, char
 extern unsigned int Is_Safe_Command( char *Command );
 extern void Invalidate_Cache_Entry( ISC_Struct * );
 extern int atoui( const char *, unsigned int * );
+
+
+#ifndef MD5_DIGEST_LENGTH
+#define MD5_DIGEST_LENGTH 16	/* When would it ever be different? */
+#endif
+extern void ssl_thread_setup(const char * fn);
+
 
 #endif /* __IMAPPROXY_H */
 

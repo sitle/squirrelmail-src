@@ -34,12 +34,15 @@
 **
 **  RCS:
 **
-**      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/config.c,v $
-**      $Id: config.c,v 1.15 2005/07/06 12:17:44 dgm Exp $
+**      $Source: /afs/andrew.cmu.edu/usr18/dave64/work/IMAP_Proxy/src/RCS/config.c,v $
+**      $Id: config.c,v 1.16 2007/05/31 12:08:32 dave64 Exp $
 **      
 **  Modification History:
 **
 **      $Log: config.c,v $
+**      Revision 1.16  2007/05/31 12:08:32  dave64
+**      Applied ipv6 patch by Antonio Querubin.
+**
 **      Revision 1.15  2005/07/06 12:17:44  dgm
 **      Add enable_admin_commands to ConfigTable.
 **
@@ -360,13 +363,13 @@ extern void SetConfigOptions( char *ConfigFile )
     ADD_TO_TABLE( "server_hostname", SetStringValue, 
 		  &PC_Struct.server_hostname, index );
 
-    ADD_TO_TABLE( "listen_port", SetNumericValue, 
+    ADD_TO_TABLE( "listen_port", SetStringValue, 
 		  &PC_Struct.listen_port, index );
 
     ADD_TO_TABLE( "listen_address", SetStringValue,
 		  &PC_Struct.listen_addr, index );
 
-    ADD_TO_TABLE( "server_port", SetNumericValue, 
+    ADD_TO_TABLE( "server_port", SetStringValue, 
 		  &PC_Struct.server_port, index );
 
     ADD_TO_TABLE( "cache_size", SetNumericValue, 

@@ -48,6 +48,7 @@ TAT_LIB = @LIB_CURSES@
 
 XYD_OBJ = ./src/icc.o ./src/main.o ./src/imapcommon.o ./src/request.o \
 	  ./src/hash.o ./src/becomenonroot.o ./src/config.o ./src/logging.o \
+	  ./src/threads.o \
           ./src/select.o
 TAT_OBJ = ./src/pimpstat.o ./src/config.o
 
