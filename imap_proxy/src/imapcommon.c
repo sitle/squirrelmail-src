@@ -37,11 +37,16 @@
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/imapcommon.c,v $
-**	$Id: imapcommon.c,v 1.9 2003/02/19 12:47:31 dgm Exp $
+**	$Id: imapcommon.c,v 1.10 2003/02/20 13:52:16 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: imapcommon.c,v $
+**	Revision 1.10  2003/02/20 13:52:16  dgm
+**	Logic changed in Get_Server_sd() such that authentication is attempted to the
+**	real server when the md5 checksums don't match instead of just dropping
+**	the connection.
+**
 **	Revision 1.9  2003/02/19 12:47:31  dgm
 **	Replaced check for server response of "+ go ahead" with a check for
 **	"+".  the "go ahead" appears to be cyrus specific and not RFC compliant
@@ -256,79 +261,80 @@ extern int Get_Server_sd( char *Username,
 	     */
 	    if ( memcmp( md5pw, ICC_Active->hashedpw, sizeof md5pw ) )
 	    {
-		/* the passwords don't match.  Shake this guy. */
+		syslog( LOG_NOTICE, "%s: Unable to reuse server sd [%d] for user '%s' (%s) because password doesn't match.", fn, ICC_Active->server_sd, Username, ClientAddr );
+		ICC_Active->logouttime = 1;
+	    }
+	    else
+	    {
+		/*
+		 * We found a matching password on an inactive server socket.
+		 * We can use this guy.  Before we release the mutex, set the
+		 * logouttime such that we mark this connection as "active"
+		 * again.
+		 */
+		ICC_Active->logouttime = 0;
+	
+		/*
+		 * The fact that we have this stored in a table as an open
+		 * server socket doesn't really mean that it's open.  The
+		 * server could've closed it on us.
+		 * We need a speedy way to make sure this is still open.
+		 * We'll set the fd to non-blocking and try to read from it.
+		 * If we get a zero back, the connection is closed.  If we get
+		 * EWOULDBLOCK (or some data) we know it's still open.  If we
+		 * do read data, make sure we read all the data so we "drain"
+		 * any puss that may be left on this socket.
+		 */
+		fcntl( ICC_Active->server_sd, F_SETFL,
+		       fcntl( ICC_Active->server_sd, F_GETFL, 0) | O_NONBLOCK );
+		
+		while ( ( rc = recv( ICC_Active->server_sd, Server.ReadBuf, 
+				     sizeof Server.ReadBuf, 0 ) ) > 0 );
+		
+		if ( !rc )
+		{
+		    syslog(LOG_NOTICE, "%s: Unable to reuse server sd [%d] for user '%s' (%s).  Connection closed by server.", fn, ICC_Active->server_sd, Username, ClientAddr );
+		    ICC_Active->logouttime = 1;
+		    continue;
+		}
+	    
+		if ( errno != EWOULDBLOCK )
+		{
+		    syslog(LOG_NOTICE, "%s: Unable to reuse server sd [%d] for user '%s' (%s). recv() error: %s", fn, ICC_Active->server_sd, Username, ClientAddr, strerror( errno ) );
+		    ICC_Active->logouttime = 1;
+		    continue;
+		}
+		
+		fcntl( ICC_Active->server_sd, F_SETFL, 
+		       fcntl( ICC_Active->server_sd, F_GETFL, 0) & ~O_NONBLOCK );
+		
+		/* now release the mutex and return the sd to the caller */
 		UnLockMutex( &mp );
-		syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: password incorrect", Username, ClientAddr );
-		return( -1 );
-	    }
-	
-	    /*
-	     * We found a matching password on an inactive server socket.  We
-	     * can use this guy.  Before we release the mutex, set the
-	     * logouttime such that we mark this connection as "active" again.
-	     */
-	    ICC_Active->logouttime = 0;
-	
-	    /*
-	     * The fact that we have this stored in a table as an open server
-	     * socket doesn't really mean that it's open.  The server could've
-	     * closed it on us.
-	     * We need a speedy way to make sure this is still open.
-	     * We'll set the fd to non-blocking and try to read from it.  If we
-	     * get a zero back, the connection is closed.  If we get
-	     * EWOULDBLOCK (or some data) we know it's still open.  If we do
-	     * read data, make sure we read all the data so we "drain" any
-	     * puss that may be left on this socket.
-	     */
-	    fcntl( ICC_Active->server_sd, F_SETFL,
-		   fcntl( ICC_Active->server_sd, F_GETFL, 0) | O_NONBLOCK );
-	    
-	    while ( ( rc = recv( ICC_Active->server_sd, Server.ReadBuf, 
-				 sizeof Server.ReadBuf, 0 ) ) > 0 );
-	    
-	    if ( !rc )
-	    {
-		syslog(LOG_NOTICE, "%s: Unable to reuse server sd [%d] for user '%s' (%s).  Connection closed by server.", fn, ICC_Active->server_sd, Username, ClientAddr );
-		ICC_Active->logouttime = 1;
-		continue;
-	    }
-	    
-	    if ( errno != EWOULDBLOCK )
-	    {
-		syslog(LOG_NOTICE, "%s: Unable to reuse server sd [%d] for user '%s' (%s). recv() error: %s", fn, ICC_Active->server_sd, Username, ClientAddr, strerror( errno ) );
-		ICC_Active->logouttime = 1;
-		continue;
-	    }
-	    
-	    
-	    fcntl( ICC_Active->server_sd, F_SETFL, 
-		   fcntl( ICC_Active->server_sd, F_GETFL, 0) & ~O_NONBLOCK );
-	    
-	    
-	    /* now release the mutex and return the sd to the caller */
-	    UnLockMutex( &mp );
 
-	    /*
-	     * We're reusing an existing server socket.  There are a few
-	     * counters we have to deal with.
-	     */
-	    IMAPCount->RetainedServerConnections--;
-	    IMAPCount->InUseServerConnections++;
-	    IMAPCount->TotalServerConnectionsReused++;
+		/*
+		 * We're reusing an existing server socket.  There are a few
+		 * counters we have to deal with.
+		 */
+		IMAPCount->RetainedServerConnections--;
+		IMAPCount->InUseServerConnections++;
+		IMAPCount->TotalServerConnectionsReused++;
+		
+		if ( IMAPCount->InUseServerConnections >
+		     IMAPCount->PeakInUseServerConnections )
+		    IMAPCount->PeakInUseServerConnections = IMAPCount->InUseServerConnections;
 	    
-	    if ( IMAPCount->InUseServerConnections >
-		 IMAPCount->PeakInUseServerConnections )
-		IMAPCount->PeakInUseServerConnections = IMAPCount->InUseServerConnections;
-	    
-	    syslog(LOG_INFO, "LOGIN: '%s' (%s) on existing sd [%d]", Username, ClientAddr, ICC_Active->server_sd );
-	    return( ICC_Active->server_sd );
+		syslog(LOG_INFO, "LOGIN: '%s' (%s) on existing sd [%d]", Username, ClientAddr, ICC_Active->server_sd );
+		return( ICC_Active->server_sd );
+	    }
 	}
     }
+    
     
     UnLockMutex( &mp );
     
     /*
-     * We don't have an active connection for this user.
+     * We don't have an active connection for this user, or the password
+     * didn't match.
      * Open a connection to the IMAP server so we can attempt to login 
      */
     Server.sd = socket( AF_INET, SOCK_STREAM, IPPROTO_TCP );

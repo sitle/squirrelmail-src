@@ -36,11 +36,14 @@
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/include/RCS/imapproxy.h,v $
-**      $Id: imapproxy.h,v 1.6 2003/02/19 13:03:35 dgm Exp $
+**      $Id: imapproxy.h,v 1.7 2003/02/20 12:40:08 dgm Exp $
 **      
 **  Modification History:
 **
 **      $Log: imapproxy.h,v $
+**      Revision 1.7  2003/02/20 12:40:08  dgm
+**      Added UNSELECT support.
+**
 **      Revision 1.6  2003/02/19 13:03:35  dgm
 **      Added LITERAL_PASSWORD and NON_LITERAL_PASSWORD definitions.
 **
@@ -88,6 +91,8 @@
 #define DEFAULT_CONFIG_FILE     "/etc/imapproxy.conf"
 #define LITERAL_PASSWORD        1
 #define NON_LITERAL_PASSWORD    0
+#define UNSELECT_SUPPORTED      1
+#define UNSELECT_NOT_SUPPORTED  0
 
 /*
  * One IMAPServerDescriptor will be globally allocated such that each thread
@@ -135,7 +140,9 @@ struct IMAPConnectionContext
 
 /*
  * One ProxyConfig structure will be used globally to keep track of
- * configurable options.
+ * configurable options.  All of these options are set by reading values
+ * from the global config file except for support_unselect.  That's set
+ * based on the CAPABILITY string from the real imap server.
  */
 struct ProxyConfig
 {
@@ -148,6 +155,7 @@ struct ProxyConfig
     char *proc_groupname;                     /* groupname to run as */
     char *stat_filename;                      /* mmap()ed stat filename */
     char *protocol_log_filename;              /* global trace filename */
+    unsigned char support_unselect;           /* unselect support flag */
 };
 
 

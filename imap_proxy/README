@@ -17,18 +17,23 @@ http://lists.pitt.edu/mailman/listinfo/imapproxy-info
 KNOWN ISSUES
 ##############################################################################
 
-Though this should now build on Solaris and Linux, it's still
-Makefile based and hence, quite hokey.  It's better than before when
-it only built on Solaris.
+More than ever before, this thing really needs to be autoconfed.  It now
+should build on linux and solaris, and I've also received patches for
+FreeBSD that I'm hoping to incorporate very soon.  Before I do, I'd really
+like to get autoconf thrown into the picture because if I continuously add
+support for new platforms by adding new Makefiles it'll eventually become
+a trainwreck.
 
-I'm working to autoconf this whole thing, but I've been a little busy lately.
+If anyone has the time to throw together an autoconf solution for
+up-imapproxy, I'd really appreciate it.  Until then, I'll try to find the
+time to do it myself.
 
 ##############################################################################
 HOW TO BUILD
 ##############################################################################
 
 By default, Makefile will only work on solaris platforms.  Use Makefile.linux
-for others.  Again, once this is autoconf'd it shouldn't be as ugly to build.
+for others.
 
 After you're sure that you're using the correct Makefile, just run "make" 
 in this directory to build the proxy server.
