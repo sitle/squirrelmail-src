@@ -36,11 +36,15 @@
 **  RCS:
 **
 **	$Source: /afs/andrew.cmu.edu/usr18/dave64/work/IMAP_Proxy/src/RCS/main.c,v $
-**	$Id: main.c,v 1.33 2007/05/31 12:10:59 dave64 Exp $
+**	$Id: main.c,v 1.34 2007/11/15 11:14:16 dave64 Exp $
 **      
 **  Modification History:
 **
 **	$Log: main.c,v $
+**	Revision 1.34  2007/11/15 11:14:16  dave64
+**	Patch by Jose Luis Tallón to add pidfile support and
+**	enhance daemon behavior.
+**
 **	Revision 1.33  2007/05/31 12:10:59  dave64
 **	Applied ipv6 patch by Antonio Querubin.
 **
@@ -177,7 +181,7 @@
 */
 
 
-static char *rcsId = "$Id: main.c,v 1.33 2007/05/31 12:10:59 dave64 Exp $";
+static char *rcsId = "$Id: main.c,v 1.34 2007/11/15 11:14:16 dave64 Exp $";
 static char *rcsSource = "$Source: /afs/andrew.cmu.edu/usr18/dave64/work/IMAP_Proxy/src/RCS/main.c,v $";
 static char *rcsAuthor = "$Author: dave64 $";
 
@@ -262,13 +266,14 @@ static void SetBannerAndCapability( void );
 static int ParseBannerAndCapability( char *, unsigned int,
 				      char *, unsigned int );
 static void ServerInit( void );
+static void Daemonize( const char* );
 static void Usage( void );
 
 
 
 int main( int argc, char *argv[] )
 {
-    char *fn = "main()";
+    const char *fn = "main()";
     char f_randfile[ PATH_MAX ];
     int listensd;                      /* socket descriptor we'll bind to */
     int clientsd;                      /* incoming socket descriptor */
@@ -280,13 +285,13 @@ int main( int argc, char *argv[] )
     pthread_attr_t attr;               /* generic thread attribute struct */
     int rc, i, fd;
     unsigned int ui;
-    pid_t pid;                         /* used just for a fork call */
     struct linger lingerstruct;        /* for the socket reuse stuff */
     int flag;                          /* for the socket reuse stuff */
     ICC_Struct *ICC_tptr;             
     extern char *optarg;
     extern int optind;
     char ConfigFile[ MAXPATHLEN ];     /* path to our config file */
+    char PidFile[ MAXPATHLEN ];		/* path to our pidfile */
 #ifdef HAVE_LIBWRAP
     struct request_info r;             /* request struct for libwrap */
 #endif
@@ -295,6 +300,7 @@ int main( int argc, char *argv[] )
 
     flag = 1;
     ConfigFile[0] = '\0';
+    strncpy( PidFile, DEFAULT_PID_FILE, sizeof PidFile -1 );
 
     /*
      * Ignore signals we don't want to die from but we don't care enough
@@ -304,7 +310,7 @@ int main( int argc, char *argv[] )
     signal( SIGHUP, SIG_IGN );
     
 
-    while (( i = getopt( argc, argv, "f:h" ) ) != EOF )
+    while (( i = getopt( argc, argv, "f:p:h" ) ) != EOF )
     {
 	switch( i )
 	{
@@ -315,7 +321,15 @@ int main( int argc, char *argv[] )
 	    syslog( LOG_INFO, "%s: Using configuration file '%s'",
 		    fn, ConfigFile );
 	    break;
-	    
+        
+        case 'p':
+            /* user specified a pidfile */
+            strncpy( PidFile, optarg, sizeof PidFile -1 );
+            PidFile[ sizeof PidFile - 1 ] = '\0';
+            syslog( LOG_INFO, "%s: Using pidfile '%s'",
+            fn, PidFile );
+            break;
+        
 	case 'h':
 	    Usage();
 	    exit( 0 );
@@ -419,43 +433,8 @@ int main( int argc, char *argv[] )
     memset( ICC_HashTable, 0, sizeof ICC_HashTable );
 
     ServerInit();
-
-    /* detach from our parent if necessary */
-    if (! (getppid() == 1) && ( ! PC_Struct.foreground_mode ) )
-    {
-	syslog( LOG_INFO, "%s: Configured to run in background mode.", fn );
-	
-	if ( (pid = fork()) < 0)
-	{
-	    syslog(LOG_ERR, "%s: initial call to fork() failed: %s", fn, strerror(errno));
-	    exit( 1 );
-	}
-	else if ( pid > 0)
-	{
-	    exit( 0 );
-	}
-	
-	if (setsid() == -1)
-	{
-	    syslog(LOG_WARNING, "%s: setsid() failed: %s", 
-		   fn, strerror(errno));
-	}
-	if ( (pid = fork()) < 0)
-	{
-	    syslog(LOG_ERR, "%s: secondary call to fork() failed: %s", fn, 
-		   strerror(errno));
-	    exit( 1 );
-	}
-	else if ( pid > 0)
-	{
-	    exit( 0 );
-	}
-    }
-    else
-    {
-	syslog( LOG_INFO, "%s: Configured to run in foreground mode.", fn );
-    }
     
+    /* Daemonize() would go here */
 
     SetBannerAndCapability();
     
@@ -610,6 +589,12 @@ int main( int argc, char *argv[] )
     IMAPCount->StartTime = time( 0 );
     IMAPCount->CountTime = time( 0 );
 
+    /*
+     * Daemonize as late as possible, so that connection failures can be caught
+     * and startup aborted before dettaching from parent
+     */
+    Daemonize( PidFile );
+
     if ( BecomeNonRoot() )
 	exit( 1 );
 
@@ -718,7 +703,7 @@ int main( int argc, char *argv[] )
  */
 void Usage( void )
 {
-    printf("Usage: %s [-f config filename] [-h]\n", PGM );
+    printf("Usage: %s [-f config filename] [-p pidfile] [-h]\n", PGM );
     return;
 }
 
@@ -846,7 +831,94 @@ static void ServerInit( void )
 }
 
 
+/*++
+ * Function:   Daemonize
+ *
+ * Purpose:    Daemonize, closing all unneeded descriptors.
+ *             Write the daemon's PID into 'pidfile'
+ *
+ * Parameters: pidfile -- where to write our PID.
+ *
+ * Returns:    nada -- exits on error
+ *
+ * Authors:    Jose Luis Tallon <jltallon@adv-solutions.net>
+ *
+ * Notes:
+ *--
+ */
+void Daemonize( const char* pidfile )
+{
+ const char* fn="Daemonize()";
+ FILE* fp=NULL;
+ pid_t pid;                         /* used just for a fork call */
+ int i;
 
+    /* detach from our parent if necessary */
+    if (! (getppid() == 1) && ( ! PC_Struct.foreground_mode ) )
+    {
+	syslog( LOG_INFO, "%s: Configured to run in background mode.", fn );
+
+	if ( (pid = fork()) < 0)
+	{
+		syslog(LOG_ERR, "%s: initial call to fork() failed: %s",
+			fn, strerror(errno));
+		exit( 1 );
+	}
+	else if ( pid > 0)
+	{
+		exit( 0 );
+	}
+
+	if (setsid() == -1)
+	{
+		syslog(LOG_WARNING, "%s: setsid() failed: %s",
+			fn, strerror(errno));
+	}
+	if ( (pid = fork()) < 0)
+	{
+		syslog(LOG_ERR, "%s: secondary call to fork() failed: %s",
+			fn, strerror(errno));
+		exit( 1 );
+	}
+	else if ( pid > 0)
+	{
+		exit( 0 );
+	}
+	if ( (fp=fopen(pidfile,"wt")) == NULL )
+	{
+		syslog(LOG_ERR, "%s: creating pidfile '%s' failed: %s", fn,
+			pidfile, strerror(errno));
+		exit(1);
+	}
+	if( fprintf(fp, "%u\n", (unsigned)getpid()) < 0 )
+	{
+		syslog(LOG_ERR, "%s: fprintf on pidfile failed: %s", fn,
+			strerror(errno));
+		exit(1);
+	}
+	fclose(fp);
+	if( chdir("/") < 0 )
+	{
+		syslog(LOG_ERR, "%s: chdir(\"/\") failed: %s", fn,
+			strerror(errno));
+		exit( 1 );
+	}
+	if( (i=open("/dev/null",O_RDWR)) < 0 )
+	{
+		syslog(LOG_ERR, "%s: open(\"/dev/null\") failed: %s", fn,
+		strerror(errno));
+		exit( 1 );
+	}
+	close(2); dup(i);
+	close(1); dup(i);
+	close(0); dup(i);
+	close(i);
+    }
+    else
+    {
+	syslog( LOG_INFO, "%s: Configured to run in foreground mode.", fn );
+    }
+}
 
 /*++
  * Function:	ParseBannerAndCapability
