@@ -41,11 +41,18 @@
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/request.c,v $
-**	$Id: request.c,v 1.6 2003/01/22 13:03:25 dgm Exp $
+**	$Id: request.c,v 1.8 2003/02/19 12:57:15 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: request.c,v $
+**	Revision 1.8  2003/02/19 12:57:15  dgm
+**	Added support for "AUTHENTICATE LOGIN".
+**
+**	Revision 1.7  2003/02/14 18:25:40  dgm
+**	Fixed bug in cmd_newlog.  ftruncate doesn't reset file pointer so
+**	I added an lseek.
+**
 **	Revision 1.6  2003/01/22 13:03:25  dgm
 **	Changes to HandleRequest() and cmd_login() to support clients that
 **	send the password as a literal string on login.
@@ -113,7 +120,7 @@ extern ICC_Struct *ICC_HashTable[ HASH_TABLE_SIZE ];
 static int cmd_noop( ITD_Struct *, char * );
 static int cmd_logout( ITD_Struct *, char * );
 static int cmd_capability( ITD_Struct *, char * );
-static int cmd_authenticate( ITD_Struct *, char * );
+static int cmd_authenticate_login( ITD_Struct *, char * );
 static int cmd_login( ITD_Struct *, char *, char *, int, char *, unsigned char );
 static int cmd_trace( ITD_Struct *, char *, char * );
 static int cmd_dumpicc( ITD_Struct *, char * );
@@ -156,19 +163,44 @@ static int cmd_newlog( ITD_Struct *itd, char *Tag )
     {
 	syslog(LOG_ERR, "%s: ftruncate() failed: %s", fn, strerror( errno ) );
 	snprintf( SendBuf, BufLen, "%s NO internal server error\r\n", Tag );
+
+	if ( send( itd->sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+	{
+	    syslog(LOG_WARNING, "%s: send() failed: %s", fn, strerror(errno) );
+	    return( -1 );
+	}
+	
+	return( -1 );
     }
-    else
+    
+    /*
+     * bugfix.  ftruncate doesn't reset the file pointer...
+     */
+    rc = lseek( Tracefd, 0, SEEK_SET );
+    
+    if ( rc < 0 )
     {
-	snprintf( SendBuf, BufLen, "%s OK Completed\r\n", Tag );
+	syslog(LOG_ERR, "%s: lseek() failed: %s", fn, strerror( errno ) );
+	snprintf( SendBuf, BufLen, "%s NO internal server error\r\n", Tag );
+	
+	if ( send( itd->sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+	{
+	    syslog(LOG_WARNING, "%s: send() failed: %s", fn, strerror(errno) );
+	    return( -1 );
+	}
+	
+	return( -1 );
     }
 
+    snprintf( SendBuf, BufLen, "%s OK Completed\r\n", Tag );
+    
     if ( send( itd->sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
     {
 	syslog(LOG_WARNING, "%s: send() failed: %s", fn, strerror(errno) );
 	return( -1 );
     }
-
-    return( rc );
+    
+    return( 0 );
 }
 
 
@@ -470,41 +502,210 @@ static int cmd_capability( ITD_Struct *itd, char *Tag )
 }
 
 
-
-
 /*++
- * Function:	cmd_authenticate
+ * Function:	cmd_authenticate_login
  *
- * Purpose:	implement the AUTHENTICATE IMAP command.
+ * Purpose:	implement the AUTHENTICATE LOGIN mechanism
  *
  * Parameters:	ptr to ITD_Struct for client connection.
+ *              ptr to client tag
  *
- * Returns:	0 on success
- *		-1 on failure
+ * Returns:	0 on success prior to authentication
+ *              1 on success after authentication (we caught a logout)
+ *              -1 on failure	
  *
- * Authors:     dgm
+ * Authors:	dgm
  *
- * Notes:	This will need to be changed such that the entire
- *		session is proxied.  For now, we'll just drop it.
+ * Notes:
  *--
  */
-static int cmd_authenticate( ITD_Struct *itd, char *Tag )
+static int cmd_authenticate_login( ITD_Struct *Client,
+				   char *Tag )
 {
-    char *fn = "cmd_authenticate";
+    char *fn = "cmd_authenticate_login()";
     char SendBuf[BUFSIZE];
+    char Username[MAXUSERNAMELEN];
+    char EncodedUsername[BUFSIZE];
+    char Password[MAXPASSWDLEN];
+    char EncodedPassword[BUFSIZE];
+    int sd;
+    int rc;
+    ITD_Struct Server;
+    int BytesRead;
+    struct sockaddr_in cli_addr;
+    int addrlen;
+    char *hostaddr;
+    
     unsigned int BufLen = BUFSIZE - 1;
+    memset ( &Server, 0, sizeof Server );
+    addrlen = sizeof( struct sockaddr_in );
     
-    SendBuf[BUFSIZE - 1] = '\0';
+    /*
+     * send a base64 encoded username prompt to the client.  Note that we're
+     * using our Username and EncodedUsername buffers temporarily here to
+     * avoid allocating additional buffers.  Keep this in mind for future
+     * code modification...
+     */
+    snprintf( Username, BufLen, "Username:" );
     
-    snprintf( SendBuf, BufLen, "%s NO AUTHENTICATE failed\r\n", Tag );
-    if ( send( itd->sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+    to64frombits( EncodedUsername, Username, strlen( Username ) );
+    
+    snprintf( SendBuf, BufLen, "+ %s\r\n", EncodedUsername );
+    
+    if ( send( Client->sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
     {
-	syslog(LOG_WARNING, "%s: send() failed: %s", fn, strerror(errno) );
+	syslog(LOG_ERR, "%s: Unable to send base64 encoded username prompt to client: %s", fn, strerror(errno) );
+	return( -1 );
+    }
+
+    /*
+     * The response from the client should be a base64 encoded version of the
+     * username.
+     */
+    BytesRead = IMAP_Line_Read( Client );
+    
+    if ( BytesRead == -1 )
+    {
+	syslog( LOG_NOTICE, "%s: Failed to read base64 encoded username from client on socket %d", fn, Client->sd );
 	return( -1 );
     }
     
-    return( 0 );
+    /*
+     * Easy, but not perfect sanity check.  If the client sent enough data
+     * to fill our entire buffer, we're not even going to bother looking at it.
+     */
+    if ( Client->MoreData ||
+	 BytesRead > BufLen )
+    {
+	syslog( LOG_NOTICE, "%s: Base64 encoded username sent from client on sd %d is too large.", fn, Client->sd );
+	return( -1 );
+    }
+    
+    /*
+     * copy BytesRead -2 so we don't include the CRLF.
+     */
+    memcpy( (void *)EncodedUsername, (const void *)Client->ReadBuf, 
+	    BytesRead - 2 );
+    EncodedUsername[BytesRead - 2] = '\0';
+    
+    rc = from64tobits( Username, EncodedUsername );
+    Username[rc] = '\0';
+    
+    /*
+     * Same drill all over again, except this time it's for the password.
+     */
+    snprintf( Password, BufLen, "Password:" );
+    
+    to64frombits( EncodedPassword, Password, strlen( Password ) );
+    
+    snprintf( SendBuf, BufLen, "+ %s\r\n", EncodedPassword );
+    
+    if ( send( Client->sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+    {
+        syslog(LOG_ERR, "%s: Unable to send base64 encoded password prompt to 
+client: %s", fn, strerror(errno) );
+        return( -1 );
+    }
+
+    BytesRead = IMAP_Line_Read( Client );
+    
+    if ( BytesRead == -1 )
+    {
+        syslog( LOG_NOTICE, "%s: Failed to read base64 encoded password from client on socket %d", fn, Client->sd );
+	return( -1 );
+    }
+    
+    if ( Client->MoreData ||
+	 BytesRead > BufLen )
+    {
+	syslog( LOG_NOTICE, "%s: Base64 encoded password sent from client on sd %d is too large.", fn, Client->sd );
+	return( -1 );
+    }
+    
+    memcpy( (void *)EncodedPassword, (const void *)Client->ReadBuf, 
+	    BytesRead - 2 );
+    EncodedPassword[BytesRead - 2] = '\0';
+
+    rc = from64tobits( Password, EncodedPassword );
+    Password[rc] = '\0';
+    
+    if ( getpeername( Client->sd, (struct sockaddr *)&cli_addr, &addrlen ) < 0 )
+    {
+	syslog( LOG_WARNING, "AUTH_LOGIN: failed: getpeername() failed for client sd: %s", Username, strerror( errno ) );
+	return( -1 );
+    }
+    
+    hostaddr = inet_ntoa( ( ( struct sockaddr_in *)&cli_addr )->sin_addr );
+    
+    if ( !hostaddr )
+    {
+        syslog(LOG_WARNING, "AUTH_LOGIN: '%s' failed: inet_ntoa() failed for client sd: %s", Username, strerror( errno ) );
+        return( -1 );
+    }
+    
+
+    /*
+     * Tell Get_Server_sd() to send the password as a string literal if
+     * he needs to login.  This is just in case there are any special
+     * characters in the password that we decoded.
+     */
+    sd = Get_Server_sd( Username, Password, hostaddr, LITERAL_PASSWORD );
+    
+    /*
+     * all the code from here to the end is basically identical to that
+     * in cmd_login().
+     */
+    
+    memset( Password, 0, MAXPASSWDLEN );
+    
+    if ( sd == -1 )
+    {
+	snprintf( SendBuf, BufLen, "%s NO AUTHENTICATE failed\r\n", Tag );
+	
+	if ( send( Client->sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+	{
+	    syslog( LOG_ERR, "%s: Unable to send failure message back to client: %s", fn, strerror( errno ) );
+	    return( -1 );
+	}
+	return( 0 );
+    }
+    
+    Server.sd = sd;
+    
+    snprintf( SendBuf, BufLen, "%s OK User authenticated\r\n", Tag );
+    if ( send( Client->sd, SendBuf, strlen( SendBuf ), 0 ) == -1 )
+    {
+	IMAPCount->InUseServerConnections--;
+	close( Server.sd );
+	syslog( LOG_ERR, "%s: Unable to send successful authentication message back to client: %s -- closing connection.", fn, strerror( errno ) );
+	return( -1 );
+    }
+    
+    IMAPCount->TotalClientLogins++;
+    
+    LockMutex ( &trace );
+    if ( ! strcmp( Username, TraceUser ) )
+    {
+	Client->TraceOn = 1;
+	Server.TraceOn = 1;
+    }
+    else
+    {
+	Client->TraceOn = 0;
+	Server.TraceOn = 0;
+    }
+    UnLockMutex( &trace );
+
+    rc = Raw_Proxy( Client, &Server );
+    
+    Client->TraceOn = 0;
+    Server.TraceOn = 0;
+    
+    ICC_Logout( Username, Server.sd );
+    
+    return( rc );
 }
+
 
 
 
@@ -1031,6 +1232,7 @@ extern void HandleRequest( int clientsd )
     char *Command;
     char *Username;
     char *Password;
+    char *AuthMech;
     char *Lasts;
     char *EndOfLine;
     char *CP;
@@ -1075,7 +1277,7 @@ extern void HandleRequest( int clientsd )
     /* start a command loop */
     for ( ; ; )
     {
-	LiteralFlag = 0;
+	LiteralFlag = NON_LITERAL_PASSWORD;
 
 	fds[ 0 ].revents = 0;
 	
@@ -1197,8 +1399,56 @@ extern void HandleRequest( int clientsd )
 	}
 	else if ( ! strcasecmp( (const char *)Command, "AUTHENTICATE" ) )
 	{
-	    cmd_authenticate( &Client, S_Tag );
-	    continue;
+	    AuthMech = memtok( NULL, EndOfLine, &Lasts );
+	    if ( !AuthMech )
+	    {
+		snprintf( SendBuf, BufLen, "%s BAD Missing required argument to Authenticate\r\n", Tag );
+		if ( send( Client.sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+		{
+		    IMAPCount->CurrentClientConnections--;
+		    close( Client.sd );
+		    return;
+		}
+		continue;
+	    }
+
+	    if ( !strcasecmp( (const char *)AuthMech, "LOGIN" ) )
+	    {
+		rc = cmd_authenticate_login( &Client, S_Tag );
+
+		if ( rc == 0 )
+		    continue;
+		
+		if ( rc == 1 )
+		{
+		    /* caught a logout */
+		    Tag = memtok( Client.ReadBuf, EndOfLine, &Lasts );
+		    if ( Tag )
+		    {
+			strncpy( S_Tag, Tag, MAXTAGLEN - 1 );
+			cmd_logout( &Client, S_Tag );
+		    }
+		}
+		
+		IMAPCount->CurrentClientConnections--;
+		close( Client.sd );
+		return;
+	    }
+	    else
+	    {
+		/*
+		 * an auth mechanism we can't handle.
+		 */
+		snprintf( SendBuf, BufLen, "%s NO no mechanism available\r\n", Tag, Command );
+		if ( send( Client.sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+		{
+		    IMAPCount->CurrentClientConnections--;
+		    close( Client.sd );
+		    return;
+		}
+		continue;
+	    }
+
 	}
 	else if ( ! strcasecmp( (const char *)Command, "LOGOUT" ) )
 	{
@@ -1280,7 +1530,7 @@ extern void HandleRequest( int clientsd )
 		    continue;
 		}
 	
-		LiteralFlag = 1;
+		LiteralFlag = LITERAL_PASSWORD;
 		
 		CP = S_Password;
 

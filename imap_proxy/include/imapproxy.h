@@ -36,11 +36,14 @@
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/include/RCS/imapproxy.h,v $
-**      $Id: imapproxy.h,v 1.5 2003/01/22 15:33:53 dgm Exp $
+**      $Id: imapproxy.h,v 1.6 2003/02/19 13:03:35 dgm Exp $
 **      
 **  Modification History:
 **
 **      $Log: imapproxy.h,v $
+**      Revision 1.6  2003/02/19 13:03:35  dgm
+**      Added LITERAL_PASSWORD and NON_LITERAL_PASSWORD definitions.
+**
 **      Revision 1.5  2003/01/22 15:33:53  dgm
 **      Changed Get_Server_sd() function prototype to reflect the addition of
 **      the literal password flag.
@@ -83,7 +86,8 @@
 #define POLL_TIMEOUT_MINUTES    30                /* Poll timeout in minutes */
 #define POLL_TIMEOUT            (POLL_TIMEOUT_MINUTES * 60000)
 #define DEFAULT_CONFIG_FILE     "/etc/imapproxy.conf"
-
+#define LITERAL_PASSWORD        1
+#define NON_LITERAL_PASSWORD    0
 
 /*
  * One IMAPServerDescriptor will be globally allocated such that each thread
