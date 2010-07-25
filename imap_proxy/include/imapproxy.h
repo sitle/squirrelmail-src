@@ -36,11 +36,20 @@
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/include/RCS/imapproxy.h,v $
-**      $Id: imapproxy.h,v 1.7 2003/02/20 12:40:08 dgm Exp $
+**      $Id: imapproxy.h,v 1.9 2003/04/16 12:19:29 dgm Exp $
 **      
 **  Modification History:
 **
 **      $Log: imapproxy.h,v $
+**      Revision 1.9  2003/04/16 12:19:29  dgm
+**      Added support for syslog configuration.
+**      Added base64 routine prototypes that I previously forgot.
+**
+**      Revision 1.8  2003/03/19 13:24:50  dgm
+**      Applied patch by Devrim Seral  <devrim@gazi.edu.tr> to allow
+**      the default configfile to be configurable via a configure script.
+**      (Lots of configures in that sentence, huh?)
+**
 **      Revision 1.7  2003/02/20 12:40:08  dgm
 **      Added UNSELECT support.
 **
@@ -79,6 +88,7 @@
 /* 
  * Common definitions 
  */
+#define PGM                     "in.imapproxyd"
 #define IMAP_UNTAGGED_OK        "* OK "           /* untagged OK response    */
 #define IMAP_TAGGED_OK          "1 OK "           /* tagged OK response      */
 #define BUFSIZE                 1024              /* default buffer size     */
@@ -88,7 +98,11 @@
 #define MAXPASSWDLEN            64                /* max passwd length       */
 #define POLL_TIMEOUT_MINUTES    30                /* Poll timeout in minutes */
 #define POLL_TIMEOUT            (POLL_TIMEOUT_MINUTES * 60000)
+
+#ifndef DEFAULT_CONFIG_FILE
 #define DEFAULT_CONFIG_FILE     "/etc/imapproxy.conf"
+#endif
+
 #define LITERAL_PASSWORD        1
 #define NON_LITERAL_PASSWORD    0
 #define UNSELECT_SUPPORTED      1
@@ -155,6 +169,8 @@ struct ProxyConfig
     char *proc_groupname;                     /* groupname to run as */
     char *stat_filename;                      /* mmap()ed stat filename */
     char *protocol_log_filename;              /* global trace filename */
+    char *syslog_facility;                    /* syslog log facility */
+    char *syslog_prioritymask;                /* syslog priority mask */
     unsigned char support_unselect;           /* unselect support flag */
 };
 
@@ -210,6 +226,9 @@ extern void ICC_Recycle_Loop( void );
 extern void LockMutex( pthread_mutex_t * );
 extern void UnLockMutex( pthread_mutex_t * );
 extern void SetConfigOptions( char * );
+extern void SetLogOptions( void );
+extern void to64frombits( unsigned char *, const unsigned char *, int );
+extern int from64tobits( char *, const char * );
 
 #endif /* __IMAPPROXY_H */
 

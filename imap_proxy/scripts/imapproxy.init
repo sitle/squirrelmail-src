@@ -49,9 +49,16 @@
 ##      Initial revision
 ##
 ##
+# Init file for imapproxy server daemon
+#
+# chkconfig: 2345 99 10
+# description:  Imapproxy Daemon 
+#
+# processname: in.imapproxyd
+# config: /etc/imapproxy.conf
 
 Pgm=`/bin/basename $0`
-
+PROXY_BIN=/usr/local/sbin/in.imapproxyd
 
 case $1 in
 
@@ -59,15 +66,14 @@ case $1 in
 
 	# make sure the executable exists.
 
-	if [ ! -f /usr/local/sbin/in.imapproxyd ]; then
-	    /bin/echo "$Pgm: /usr/local/sbin/in.imapproxyd does not exist.  Not starting IMAP proxy server." 1>&2
+	if [ ! -f $PROXY_BIN ]; then
+	    /bin/echo "$Pgm: $PROXY_BIN does not exist.  Not starting IMAP proxy server." 1>&2
 	    exit 1
 	fi
 
 	/bin/echo "$Pgm: Starting IMAP proxy server." 1>&2
 
-	/usr/local/sbin/in.imapproxyd 
-
+	$PROXY_BIN
 	;;
 
 

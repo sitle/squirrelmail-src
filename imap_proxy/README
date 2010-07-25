@@ -17,26 +17,19 @@ http://lists.pitt.edu/mailman/listinfo/imapproxy-info
 KNOWN ISSUES
 ##############################################################################
 
-More than ever before, this thing really needs to be autoconfed.  It now
-should build on linux and solaris, and I've also received patches for
-FreeBSD that I'm hoping to incorporate very soon.  Before I do, I'd really
-like to get autoconf thrown into the picture because if I continuously add
-support for new platforms by adding new Makefiles it'll eventually become
-a trainwreck.
-
-If anyone has the time to throw together an autoconf solution for
-up-imapproxy, I'd really appreciate it.  Until then, I'll try to find the
-time to do it myself.
+Currently, the proxy has only been tested on Solaris and Linux.
+I received FreeBSD patches that I still haven't had time to incorporate.
+Sorry...  If enough people need it and bug me about it, I'll probably
+find the motivation to finish it.  
 
 ##############################################################################
 HOW TO BUILD
 ##############################################################################
 
-By default, Makefile will only work on solaris platforms.  Use Makefile.linux
-for others.
+It should be pretty painless:
 
-After you're sure that you're using the correct Makefile, just run "make" 
-in this directory to build the proxy server.
+./configure
+make
 
 "make install" will attempt to install the following files:
 
@@ -129,6 +122,17 @@ All proxied traffic for one user will be logged to this file, differentiated
 by client or server.  This file is opened at server startup, and is held open
 until the server is shut down.
 
+syslog_facility
+---------------
+The logging facility to be used for all syslog calls.  Any of the possible
+facilities listed in the syslog(3C) manpage may be specified here except
+for LOG_KERN.
+
+syslog_prioritymask
+-------------------
+The syslog LOG_UPT() priority mask.  Read more about what this does in the
+syslog(3C) manpage.  Any of the possible priorities specified in the
+syslog(3c) manpage my be specified here.
 
 ##############################################################################
 ADDITIONAL COMMANDS:

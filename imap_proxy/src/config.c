@@ -37,11 +37,15 @@
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/config.c,v $
-**      $Id: config.c,v 1.3 2003/02/17 14:08:42 dgm Exp $
+**      $Id: config.c,v 1.4 2003/04/16 12:13:34 dgm Exp $
 **      
 **  Modification History:
 **
 **      $Log: config.c,v $
+**      Revision 1.4  2003/04/16 12:13:34  dgm
+**      Added commodore logo ascii-art comment at the end.
+**      Added support for syslog configuration options.
+**
 **      Revision 1.3  2003/02/17 14:08:42  dgm
 **      added an fclose() that I forgot.
 **
@@ -233,6 +237,12 @@ extern void SetConfigOptions( char *ConfigFile )
     index = LineNumber = 0;
 
     /*
+     * initialize the proxy config struct
+     */
+    memset( &PC_Struct, 0, sizeof PC_Struct );
+    
+
+    /*
      * Build our config option table.
      */
     ADD_TO_TABLE( "server_hostname", SetStringValue, 
@@ -258,9 +268,16 @@ extern void SetConfigOptions( char *ConfigFile )
     
     ADD_TO_TABLE( "stat_filename", SetStringValue,
 		  &PC_Struct.stat_filename, index );
+
+    ADD_TO_TABLE( "syslog_facility", SetStringValue,
+		  &PC_Struct.syslog_facility, index );
     
     ADD_TO_TABLE( "protocol_log_filename", SetStringValue,
 		  &PC_Struct.protocol_log_filename, index );
+
+    ADD_TO_TABLE( "syslog_prioritymask", SetStringValue,
+		  &PC_Struct.syslog_prioritymask, index );
+    
 
     ConfigTable[index].Keyword[0] = '\0';
     
@@ -345,3 +362,21 @@ extern void SetConfigOptions( char *ConfigFile )
 
     fclose( FP );
 }
+
+
+/*
+ *                            _________
+ *                           /        |
+ *                          /         |
+ *                         /    ______|
+ *                        /    /       ________
+ *                       |    |        |      /
+ *                       |    |        |_____/
+ *                       |    |        ______
+ *                       |    |        |     \
+ *                       |    |        |______\
+ *                        \    \_______
+ *                         \           |
+ *                          \          |
+ *                           \_________|
+ */
