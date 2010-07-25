@@ -35,11 +35,15 @@
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/config.c,v $
-**      $Id: config.c,v 1.13 2005/01/12 17:49:51 dgm Exp $
+**      $Id: config.c,v 1.14 2005/06/15 12:12:26 dgm Exp $
 **      
 **  Modification History:
 **
 **      $Log: config.c,v $
+**      Revision 1.14  2005/06/15 12:12:26  dgm
+**      Patch by Dave Steinberg and Jarno Huuskonen to add chroot_directory
+**      config option.
+**
 **      Revision 1.13  2005/01/12 17:49:51  dgm
 **      Applied patch by David Lancaster to provide force_tls config
 **      option.
@@ -400,6 +404,9 @@ extern void SetConfigOptions( char *ConfigFile )
 
     ADD_TO_TABLE( "send_tcp_keepalives", SetBooleanValue,
 		  &PC_Struct.send_tcp_keepalives, index );
+
+    ADD_TO_TABLE( "chroot_directory", SetStringValue,
+		  &PC_Struct.chroot_directory, index );
 
     ADD_TO_TABLE( "enable_select_cache", SetBooleanValue,
 		  &PC_Struct.enable_select_cache, index );

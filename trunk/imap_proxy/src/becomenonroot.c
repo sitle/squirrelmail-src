@@ -35,11 +35,16 @@
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/becomenonroot.c,v $
-**      $Id: becomenonroot.c,v 1.3 2003/05/20 18:42:39 dgm Exp $
+**      $Id: becomenonroot.c,v 1.4 2005/06/15 12:10:12 dgm Exp $
 **      
 **  Modification History:
 **
 **      $Log: becomenonroot.c,v $
+**      Revision 1.4  2005/06/15 12:10:12  dgm
+**      Conditionally include unistd.h.  Include config.h.  Patch
+**      by Jarno Huuskonen to drop any supplemental group memberships.
+**      Patch by Dave Steinberg and Jarno Huuskonen to allow chroot.
+**
 **      Revision 1.3  2003/05/20 18:42:39  dgm
 **      comment changes only
 **
@@ -52,6 +57,8 @@
 **
 */
 
+#include <config.h>
+
 #include <sys/types.h>
 #include <strings.h>
 #include <errno.h>
@@ -60,6 +67,10 @@
 #include <pwd.h>
 #include <grp.h>
 #include <syslog.h>
+#if HAVE_UNISTD_H
+#include <unistd.h>
+#endif
+
 #include "imapproxy.h"
 
 extern ProxyConfig_Struct PC_Struct;
@@ -84,7 +95,11 @@ extern ProxyConfig_Struct PC_Struct;
  *              between doing a passwd and group lookup twice (and further
  *              cluttering main) or doing the chown here where it
  *              doesn't logically belong.  I chose to put it here, but at
- *              least I documented it...  
+ *              least I documented it...
+ *
+ *              In addition to becoming non-root, this function now also
+ *              does a chroot() if so configured.  Soon I'll rename this
+ *              function to something more fitting...
  *--
  */
 extern int BecomeNonRoot( void )
@@ -141,17 +156,40 @@ extern int BecomeNonRoot( void )
 
     /*
      * Now the whole reason this function exists...  setgid and setuid.
+     *
+     * Patch by Jarno Huuskonen -- also drop any supplementary groups.
      */
 
     syslog( LOG_INFO, "%s: Process will run as uid %d (%s) and gid %d (%s).",
 	    fn, newuid, PC_Struct.proc_username, 
 	    newgid, PC_Struct.proc_groupname );
     
+    if ( setgroups( 0, NULL ) < 0 )
+    {
+	syslog( LOG_WARNING, "%s: setgroups() failed: %s", fn, strerror( errno ) );
+	return( -1 );
+    }
+    
     if ((setgid(newgid)) < 0 )
     {
 	syslog(LOG_WARNING, "%s: setgid(%d) failed: %s", fn, 
 	       newgid, strerror(errno));
 	return(-1);
+    }
+
+    /*
+     * Patch originally by Dave Steinberg, and later modified by
+     * Jarno Huuskonen -- chroot() if so configured.
+     */
+    if ( PC_Struct.chroot_directory ) 
+    {
+	if ( chroot( PC_Struct.chroot_directory ) < 0 || chdir( "/" ) < 0 ) 
+	{
+	    syslog( LOG_WARNING, "%s: chroot(%s) failed: %s", fn, PC_Struct.chroot_directory, strerror( errno ) );
+	    return( -1 );
+	}
+	
+	syslog( LOG_INFO, "%s: Process chrooted in %s", fn, PC_Struct.chroot_directory );
     }
     
     if ((setuid(newuid)) < 0 )

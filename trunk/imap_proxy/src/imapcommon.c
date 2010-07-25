@@ -35,11 +35,16 @@
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/imapcommon.c,v $
-**	$Id: imapcommon.c,v 1.20 2005/01/12 17:50:16 dgm Exp $
+**	$Id: imapcommon.c,v 1.21 2005/06/15 12:06:31 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: imapcommon.c,v $
+**	Revision 1.21  2005/06/15 12:06:31  dgm
+**	Added missing include directive for openssl/err.h.
+**	atoui function added to replace calls to atoi.
+**	Include limits.h and config.h.
+**
 **	Revision 1.20  2005/01/12 17:50:16  dgm
 **	Applied patch by David Lancaster to provide force_tls
 **	config option.
@@ -121,14 +126,16 @@
 
 #define _REENTRANT
 
+#include <config.h>
+
 #include <stdio.h>
 #include <stdlib.h>
-#include "common.h"
-#include "imapproxy.h"
 #include <string.h>
 #include <errno.h>
+#include <limits.h>
 
 #include <openssl/evp.h>
+#include <openssl/err.h>
 
 #include <pthread.h>
 #include <sys/types.h>
@@ -139,6 +146,9 @@
 #include <fcntl.h>
 #include <syslog.h>
 #include <poll.h>
+
+#include "common.h"
+#include "imapproxy.h"
 
 /*
  * External globals
@@ -194,6 +204,79 @@ static const char *SSLerrmessage( void )
 }
 
 #endif	/* HAVE_LIBSSL */
+
+/*++
+ * Function:     atoui
+ *
+ * Purpose:      Convert a char array to an unsigned int value.
+ *
+ * Parameters:   const char ptr -- the NULL terminated string to convert
+ *               unsigned int ptr -- where the converted value will be stored.
+ *
+ * Returns:      0 on success
+ *               -1 on failure
+ *
+ * Authors:      Dave McMurtrie <davemcmurtrie@gmail.com>
+ *
+ * Notes:        Will tolerate trailing plus sign since IMAP rfc allows that as
+ *               part of a literal specifier.
+ */
+extern int atoui( const char *Value, unsigned int *ConvertedValue )
+{
+    unsigned int Digit;
+    
+#define MAX_TENTH ( UINT_MAX / 10 )
+    
+    *ConvertedValue = 0;
+    
+    while ( *Value >= '0' && *Value <='9') 
+    {
+	Digit = *Value - '0';
+	
+	/*
+	 * Check for overflow before multiplying.
+	 */
+	if ( *ConvertedValue > MAX_TENTH )
+	{
+	    *ConvertedValue = 0;
+	    return( -1 );
+	}
+	*ConvertedValue *= 10;
+	
+	/*
+	 * Check for overflow before adding.
+	 */
+	if ( Digit > ( UINT_MAX - *ConvertedValue ) )
+	{
+	    *ConvertedValue = 0;
+	    return( -1 );
+	}
+	*ConvertedValue += Digit;
+
+	Value++;
+    }
+    
+    if ( *Value == '+' )
+    {
+	if ( *(Value + 1) == '\0' )
+	{
+	    return( 0 );
+	}
+	else
+	{
+	    *ConvertedValue = 0;
+	    return( -1 );
+	}
+    }
+
+    if ( *Value != '\0' )
+    {
+	*ConvertedValue = 0;
+	return( -1 );
+    }
+    
+    return( 0 );
+}
 
 
 /*++
@@ -963,9 +1046,6 @@ extern int IMAP_Write( ICD_Struct *ICD, const void *buf, int count )
  */
 extern int IMAP_Read( ICD_Struct *ICD, void *buf, int count )
 {
-    char *fn = "IMAP_Read()";
-
-
 #if HAVE_LIBSSL
     if ( ICD->tls )
 	return SSL_read( ICD->tls, buf, count );
@@ -1129,6 +1209,7 @@ extern int IMAP_Line_Read( ITD_Struct *ITD )
     char *CP;
     int Status;
     unsigned int i, j;
+    int rc;
     char *fn = "IMAP_Line_Read()";
     char *EndOfBuffer;
 
@@ -1254,16 +1335,16 @@ extern int IMAP_Line_Read( ITD_Struct *ITD )
 			    /* To grab the number, bump our
 			     * starting char pointer forward a byte and temporarily
 			     * turn the closing '}' into a NULL.  Don't worry about
-			     * the potential '+' sign, atol won't care.
+			     * the potential '+' sign, atoui won't care.
 			     */
 			    LiteralStart++;
 			    *LiteralEnd = '\0';
-			    errno = 0;
-			    ITD->LiteralBytesRemaining = atol( LiteralStart );
+
+			    rc = atoui( LiteralStart, &ITD->LiteralBytesRemaining );
 			    
-			    if ( ! ITD->LiteralBytesRemaining && errno )
+			    if ( rc == -1 )
 			    {
-				syslog(LOG_WARNING, "%s: atol() failed on string '%s': %s.", fn, CP, strerror(errno) );
+				syslog(LOG_WARNING, "%s: atoui() failed on string '%s'", fn, LiteralStart );
 				*LiteralEnd = '}';
 				return(0);
 			    }
@@ -1306,6 +1387,7 @@ extern int IMAP_Line_Read( ITD_Struct *ITD )
 		    ITD->ReadBytesProcessed = 1;
 		    return( ITD->ReadBytesProcessed );
 		}
+		
 		else
 		{
 		    syslog(LOG_WARNING, "%s: Protocol error.  Line begins with LF.", fn);

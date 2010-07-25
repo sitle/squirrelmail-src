@@ -3,7 +3,8 @@
 
 This directory contains the source distribution of up-imapproxy.
 
-If you find any bugs in up-imapproxy, please visit http://bugs.imapproxy.org
+If you find any bugs in up-imapproxy, please subscribe to the imapproxy-info
+mailing list and post your bug there.
 
 If you want to subscribe to the imapproxy-info mailing list, visit:
 
@@ -12,9 +13,7 @@ http://lists.pitt.edu/mailman/listinfo/imapproxy-info
 For some Debian specific issues that have come up, read the file README.debian.
 
 To read a little bit about SSL support in imapproxy, read README.ssl.
-There's not much in the README.ssl file except a pointer to better
-documentation that's already available.  Please feel free to contribute more
-complete documentation if you have the time.
+
 
 ##############################################################################
 HOW TO BUILD
@@ -171,6 +170,11 @@ foreground_mode
 When enabled, this will prevent imapproxy from detaching from his parent
 process and controlling terminal.
 
+chroot_directory
+----------------
+If this value is set to anything, it implicitly causes imapproxy to run in
+a chroot jail.
+
 ##############################################################################
 ADDITIONAL COMMANDS:
 ##############################################################################
@@ -214,7 +218,7 @@ to the file configured as "stat_filename" in the configuration file.
 
 Happy proxying,
 
-Dave  <davemcmurtrie@hotmail.com>
+Dave  <davemcmurtrie@gmail.com>
 
 
                               _________

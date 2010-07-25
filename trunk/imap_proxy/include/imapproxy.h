@@ -34,11 +34,17 @@
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/include/RCS/imapproxy.h,v $
-**      $Id: imapproxy.h,v 1.22 2005/01/12 17:51:19 dgm Exp $
+**      $Id: imapproxy.h,v 1.23 2005/06/15 12:13:40 dgm Exp $
 **      
 **  Modification History:
 **
 **      $Log: imapproxy.h,v $
+**      Revision 1.23  2005/06/15 12:13:40  dgm
+**      Changed all long int values to int.  Changed logouttime in
+**      IMAPConnectionContext to time_t.  Added atoui function
+**      prototype.  Patch by Dave Steinberg and Jarno Huuskonen to
+**      allow chroot.
+**
 **      Revision 1.22  2005/01/12 17:51:19  dgm
 **      Applied patch by David Lancaster to provide force_tls
 **      config option.
@@ -129,6 +135,7 @@
 #include <netdb.h>
 #include <pthread.h>
 #include <netinet/in.h>
+#include <time.h>
 #include "config.h"
 
 #if HAVE_LIBSSL
@@ -220,7 +227,7 @@ struct IMAPTransactionDescriptor
     char ReadBuf[ BUFSIZE ];         /* Read Buffer                          */
     unsigned int BytesInReadBuffer;  /* bytes left in read buffer            */
     unsigned int ReadBytesProcessed; /* bytes already processed in read buf  */
-    unsigned long LiteralBytesRemaining; /* num of bytes left as literal     */
+    unsigned int LiteralBytesRemaining; /* num of bytes left as literal     */
     unsigned char NonSyncLiteral;    /* rfc2088 alert flag                   */
     unsigned char MoreData;          /* flag to tell caller "more data"      */
     unsigned char TraceOn;           /* trace this transaction?              */
@@ -236,7 +243,7 @@ struct IMAPConnectionContext
     struct IMAPConnectionDescriptor *server_conn;
     char username[64];                  /* username connected on this sd     */
     char hashedpw[16];                  /* md5 hash copy of password         */
-    unsigned long logouttime;           /* time the user logged out last     */
+    time_t logouttime;                  /* time the user logged out last     */
     struct IMAPConnectionContext *next; /* linked list next pointer          */
 };
 
@@ -272,6 +279,7 @@ struct ProxyConfig
     unsigned char support_unselect;           /* unselect support flag */
     unsigned char support_starttls;           /* starttls support flag */
     unsigned char login_disabled;             /* login disabled flag */
+    char *chroot_directory;                   /* chroot(2) into this dir */
 };
 
 
@@ -296,13 +304,13 @@ struct IMAPCounter
     unsigned int PeakInUseServerConnections;
     unsigned int RetainedServerConnections;
     unsigned int PeakRetainedServerConnections;
-    unsigned long TotalClientConnectionsAccepted;
-    unsigned long TotalClientLogins;
-    unsigned long TotalServerConnectionsCreated;
-    unsigned long TotalServerConnectionsReused;
-    unsigned long TotalSelectCommands;
-    unsigned long SelectCacheHits;
-    unsigned long SelectCacheMisses;
+    unsigned int TotalClientConnectionsAccepted;
+    unsigned int TotalClientLogins;
+    unsigned int TotalServerConnectionsCreated;
+    unsigned int TotalServerConnectionsReused;
+    unsigned int TotalSelectCommands;
+    unsigned int SelectCacheHits;
+    unsigned int SelectCacheMisses;
 };
 
    
@@ -336,6 +344,7 @@ extern void SetLogOptions( void );
 extern int Handle_Select_Command( ITD_Struct *, ITD_Struct *, ISC_Struct *, char *, int );
 extern unsigned int Is_Safe_Command( char *Command );
 extern void Invalidate_Cache_Entry( ISC_Struct * );
+extern int atoui( const char *, unsigned int * );
 
 #endif /* __IMAPPROXY_H */
 

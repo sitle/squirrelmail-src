@@ -36,11 +36,17 @@
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/main.c,v $
-**	$Id: main.c,v 1.23 2005/01/12 17:50:45 dgm Exp $
+**	$Id: main.c,v 1.25 2005/06/15 12:05:25 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: main.c,v $
+**	Revision 1.25  2005/06/15 12:05:25  dgm
+**	Included config.h.
+**
+**	Revision 1.24  2005/06/07 12:08:44  dgm
+**	Added missing include directives to avoid implicit declarations.
+**
 **	Revision 1.23  2005/01/12 17:50:45  dgm
 **	Applied patch by David Lancaster to provide force_tls
 **	config option.
@@ -145,11 +151,13 @@
 */
 
 
-static char *rcsId = "$Id: main.c,v 1.23 2005/01/12 17:50:45 dgm Exp $";
+static char *rcsId = "$Id: main.c,v 1.25 2005/06/15 12:05:25 dgm Exp $";
 static char *rcsSource = "$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/main.c,v $";
 static char *rcsAuthor = "$Author: dgm $";
 
 #define _REENTRANT
+
+#include <config.h>
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -164,8 +172,6 @@ static char *rcsAuthor = "$Author: dgm $";
 #include <string.h>
 #include <errno.h>
 #include <netdb.h>
-#include "common.h"
-#include "imapproxy.h"
 #include <pthread.h>
 #include <sys/resource.h>
 #include <sys/mman.h>
@@ -173,6 +179,8 @@ static char *rcsAuthor = "$Author: dgm $";
 #include <syslog.h>
 #include <signal.h>
 #include <openssl/rand.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
 
 #if HAVE_SYS_PARAM_H
 #include <sys/param.h>
@@ -181,6 +189,10 @@ static char *rcsAuthor = "$Author: dgm $";
 #ifdef HAVE_LIBWRAP
 #include <tcpd.h>
 #endif
+
+#include "common.h"
+#include "imapproxy.h"
+
 
 /*
  * Global variables.  Many of these things are global just as an optimization.
@@ -241,6 +253,7 @@ int main( int argc, char *argv[] )
     pthread_t RecycleThread;           /* used just for the recycle thread */
     pthread_attr_t attr;               /* generic thread attribute struct */
     int rc, i, fd;
+    unsigned int ui;
     pid_t pid;                         /* used just for a fork call */
     struct linger lingerstruct;        /* for the socket reuse stuff */
     int flag;                          /* for the socket reuse stuff */
@@ -341,7 +354,7 @@ int main( int argc, char *argv[] )
     syslog( LOG_INFO, "%s: Allocating %d IMAP connection structures.", 
 	    fn, PC_Struct.cache_size );
 
-    ICC_free = malloc( ( sizeof ( ICC_Struct ) ) 
+    ICC_free = (ICC_Struct *)malloc( ( sizeof ( ICC_Struct ) ) 
 		       * PC_Struct.cache_size );
     
     if ( ! ICC_free )
@@ -360,7 +373,7 @@ int main( int argc, char *argv[] )
      * incorrectly, since I never had a problem with this.  Gary had the
      * problem with cc, so it's fixed here.
      */
-    for ( i = 0; i < PC_Struct.cache_size - 1; i++ )
+    for ( ui = 0; ui < PC_Struct.cache_size - 1; ui++ )
     {
 	ICC_tptr->next = ICC_tptr + 1;
 	ICC_tptr++;
@@ -465,19 +478,22 @@ int main( int argc, char *argv[] )
 	}
     }
     
-
-
     memset( (char *) &srvaddr, 0, sizeof srvaddr );
     srvaddr.sin_family = PF_INET;
     if ( !PC_Struct.listen_addr )
     {
 	srvaddr.sin_addr.s_addr = htonl(INADDR_ANY);
     }
-    else if ( ( srvaddr.sin_addr.s_addr = inet_addr( PC_Struct.listen_addr) ) == -1 )
+    else 
     {
-	syslog( LOG_ERR, "%s: bad bind address: '%s' specified in config file.  Exiting.", fn, PC_Struct.listen_addr );
-	exit( 1 );
+	srvaddr.sin_addr.s_addr = inet_addr( PC_Struct.listen_addr ); 
+	if ( srvaddr.sin_addr.s_addr  == -1 )
+	{
+	    syslog( LOG_ERR, "%s: bad bind address: '%s' specified in config file.  Exiting.", fn, PC_Struct.listen_addr );
+	    exit( 1 );
+	}
     }
+    
 
     syslog(LOG_INFO, "%s: Binding to tcp %s:%d", fn, PC_Struct.listen_addr ?
 	   PC_Struct.listen_addr : "*", PC_Struct.listen_port );
@@ -680,7 +696,6 @@ static void ServerInit( void )
 {
     char *fn = "ServerInit()";
     struct hostent *hp;
-    struct servent *sp;
     struct rlimit rl;
     int rc;
     struct passwd *pw;

@@ -34,11 +34,18 @@
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/icc.c,v $
-**	$Id: icc.c,v 1.6 2004/02/24 15:14:44 dgm Exp $
+**	$Id: icc.c,v 1.8 2005/06/15 12:02:08 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: icc.c,v $
+**	Revision 1.8  2005/06/15 12:02:08  dgm
+**	Include config.h.
+**
+**	Revision 1.7  2005/06/07 12:02:36  dgm
+**	Conditionally include unistd.h (for close prototype).  Clean
+**	up a few unused variables.
+**
 **	Revision 1.6  2004/02/24 15:14:44  dgm
 **	Send LOGOUT to server when closing a connection.
 **
@@ -63,9 +70,14 @@
 
 #define _REENTRANT
 
+#include <config.h>
+
 #include <errno.h>
 #include <string.h>
 #include <syslog.h>
+#if HAVE_UNISTD_H
+#include <unistd.h>
+#endif
 
 #include "common.h"
 #include "imapproxy.h"
@@ -101,9 +113,7 @@ static void _ICC_Recycle( unsigned int );
  */
 static void _ICC_Recycle( unsigned int Expiration )
 {
-    char *fn = "_ICC_Recycle()";
     time_t CurrentTime;
-    int rc;
     unsigned int HashIndex;
     ICC_Struct *HashEntry;
     ICC_Struct *Previous;
@@ -205,8 +215,6 @@ static void _ICC_Recycle( unsigned int Expiration )
  */
 extern void ICC_Recycle( unsigned int Expiration )
 {
-    char *fn = "ICC_Recycle()";
-    
     _ICC_Recycle( Expiration );
 }
 
@@ -230,8 +238,6 @@ extern void ICC_Recycle( unsigned int Expiration )
  */
 extern void ICC_Recycle_Loop( void )
 {
-    char *fn = "ICC_Recycle_Loop()";
-
     for( ;; )
     {
 	sleep( 60 );
@@ -260,7 +266,6 @@ extern void ICC_Logout( char *Username, ICD_Struct *conn )
     unsigned int HashIndex;
     ICC_Struct *HashEntry = NULL;
     ICC_Struct *ICC_Active = NULL;
-    int rc;
     
     IMAPCount->InUseServerConnections--;
     IMAPCount->RetainedServerConnections++;
