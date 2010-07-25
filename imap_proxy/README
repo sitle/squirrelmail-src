@@ -175,6 +175,15 @@ chroot_directory
 If this value is set to anything, it implicitly causes imapproxy to run in
 a chroot jail.
 
+enable_admin_commands
+---------------------
+The internal admin commands that imapproxy provides (p_dumpicc, p_trace,
+etc) are a security vulnerability if you do not restrict access to the
+listen_port using tcp wrappers, iptables, ipchains, ipfilter, an external
+firewall, or some other mechanism.  Because of this, the internal admin
+commands are disabled by default.
+
+
 ##############################################################################
 ADDITIONAL COMMANDS:
 ##############################################################################
@@ -186,7 +195,9 @@ proxy server on whatever port you choose to bind to and type them like a
 regular protocol transaction.  At our site, we've severely limited access to
 the proxy port such that only our webmail machines and one internal admin
 machine can access it.  The proxy server software offers no way to limit the
-usage of these commands by username.
+usage of these commands by username so they're not implemented by default.
+If you secure the listen_port, you can then set the enable_admin_commands
+option in imapproxy.conf to enable the use of these commands.
 
 P_NEWLOG
 --------

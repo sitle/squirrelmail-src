@@ -39,11 +39,14 @@
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/request.c,v $
-**	$Id: request.c,v 1.20 2005/06/15 12:07:12 dgm Exp $
+**	$Id: request.c,v 1.21 2005/07/06 11:53:19 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: request.c,v $
+**	Revision 1.21  2005/07/06 11:53:19  dgm
+**	Added support for enable_admin_commands config option.
+**
 **	Revision 1.20  2005/06/15 12:07:12  dgm
 **	Remove unused variables.  Fixed snprintf argument lists.
 **	Include missing config.h directive.
@@ -211,6 +214,18 @@ static int cmd_newlog( ITD_Struct *itd, char *Tag )
     int rc;
     
     SendBuf[BUFSIZE - 1] = '\0';
+    
+    if ( ! PC_Struct.enable_admin_commands )
+    {
+	snprintf( SendBuf, BufLen, "%s BAD Unrecognized command\r\n", Tag );
+	if ( IMAP_Write( itd->conn, SendBuf, strlen( SendBuf ) ) == -1 )
+	{
+	    syslog( LOG_WARNING, "%s: IMAP_Write() failed: %s", fn, strerror( errno ) );
+	    return( -1 );
+	}
+	return( 0 );
+    }
+    
 
     rc = ftruncate( Tracefd, 0 );
     
@@ -287,6 +302,17 @@ static int cmd_resetcounters( ITD_Struct *itd, char *Tag )
     
     SendBuf[BufLen] = '\0';
 
+    if ( ! PC_Struct.enable_admin_commands )
+    {
+	snprintf( SendBuf, BufLen, "%s BAD Unrecognized command\r\n", Tag );
+	if ( IMAP_Write( itd->conn, SendBuf, strlen( SendBuf ) ) == -1 )
+	{
+	    syslog( LOG_WARNING, "%s: IMAP_Write() failed: %s", fn, strerror( errno ) );
+	    return( -1 );
+	}
+	return( 0 );
+    }
+    
     /*
      * Bugfix by Geoffrey Hort <g.hort@unsw.edu.au> -- I forgot to zero
      * out TotalClientLogins...
@@ -336,6 +362,17 @@ static int cmd_dumpicc( ITD_Struct *itd, char *Tag )
     unsigned int BufLen = BUFSIZE - 1;
     
     SendBuf[BUFSIZE - 1] = '\0';
+
+    if ( ! PC_Struct.enable_admin_commands )
+    {
+	snprintf( SendBuf, BufLen, "%s BAD Unrecognized command\r\n", Tag );
+	if ( IMAP_Write( itd->conn, SendBuf, strlen( SendBuf ) ) == -1 )
+	{
+	    syslog( LOG_WARNING, "%s: IMAP_Write() failed: %s", fn, strerror( errno ) );
+	    return( -1 );
+	}
+	return( 0 );
+    }
     
     LockMutex( &mp );
     
@@ -395,6 +432,17 @@ static int cmd_trace( ITD_Struct *itd, char *Tag, char *Username )
     unsigned int BufLen = BUFSIZE - 1;
     
     SendBuf[BUFSIZE - 1] = '\0';
+
+    if ( ! PC_Struct.enable_admin_commands )
+    {
+	snprintf( SendBuf, BufLen, "%s BAD Unrecognized command\r\n", Tag );
+	if ( IMAP_Write( itd->conn, SendBuf, strlen( SendBuf ) ) == -1 )
+	{
+	    syslog( LOG_WARNING, "%s: IMAP_Write() failed: %s", fn, strerror( errno ) );
+	    return( -1 );
+	}
+	return( 0 );
+    }
     
     /*
      * Here are the tracing semantics:
