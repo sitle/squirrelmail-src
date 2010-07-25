@@ -88,10 +88,10 @@ install-init:
 	ln -s ../init.d/imapproxy /etc/rc0.d/K10imapproxy
 
 install-conf:
-	$(INSTALL) -o root -g bin -m 0755 ./scripts/imapproxy.conf $(ETC)
+	$(INSTALL) -o root -g bin -m 0644 ./scripts/imapproxy.conf $(ETC)
 
 rpm-install: install 
-	$(INSTALL) -o root -g sys -m 0755 ./scripts/imapproxy.conf $(rpm_prefix)/etc
+	$(INSTALL) -o root -g sys -m 0644 ./scripts/imapproxy.conf $(rpm_prefix)/etc
 	$(INSTALL) -o root -g sys -m 0755 ./scripts/imapproxy.init $(rpm_prefix)/etc/init.d/imapproxy
 
 pkg:
