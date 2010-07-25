@@ -66,3 +66,13 @@ Fix:     This is not yet resolved.  If you have a lot of free time, you can
          argument to gcc.  Ultimately, this will need to be fixed so the
          configure script does the right thing.  Patches welcome.
 -------------------------------------------------------------------------------
+
+
+-------------------------------------------------------------------------------
+Problem: Attempting to build rpm on RedHat 9 or RedHat Enterprise Linux 3 fails
+         because the kerberos include files can't be found.
+
+Symptom:  
+
+Fix:     rpmbuild -tb up-imapproxy-1.2.3.tar.gz --define 'with_krb5 1'
+-------------------------------------------------------------------------------

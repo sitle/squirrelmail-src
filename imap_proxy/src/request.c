@@ -39,11 +39,15 @@
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/request.c,v $
-**	$Id: request.c,v 1.19 2004/11/10 15:33:04 dgm Exp $
+**	$Id: request.c,v 1.20 2005/06/15 12:07:12 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: request.c,v $
+**	Revision 1.20  2005/06/15 12:07:12  dgm
+**	Remove unused variables.  Fixed snprintf argument lists.
+**	Include missing config.h directive.
+**
 **	Revision 1.19  2004/11/10 15:33:04  dgm
 **	Explictly NULL terminate all strings that are the result
 **	of strncpy.  Also enforce checking of LiteralBytesRemaining
@@ -123,10 +127,10 @@
 
 #define _REENTRANT
 
+#include <config.h>
+
 #include <errno.h>
 #include <string.h>
-#include "common.h"
-#include "imapproxy.h"
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/uio.h>
@@ -144,6 +148,9 @@
 #endif
 
 #include <openssl/evp.h>
+
+#include "common.h"
+#include "imapproxy.h"
 
 /*
  * There are a few global variables that we care about.  Make sure we know
@@ -819,7 +826,6 @@ static int cmd_login( ITD_Struct *Client,
     ITD_Struct Server;
     int rc;
     ICD_Struct *conn;
-    char TraceFileName[ MAXPATHLEN ];
     struct sockaddr_in cli_addr;
     int addrlen;
     char *hostaddr;
@@ -1393,7 +1399,6 @@ extern void HandleRequest( int clientsd )
     char *Tag;
     char *Command;
     char *Username;
-    char *Password;
     char *AuthMech;
     char *Lasts;
     char *EndOfLine;
@@ -1628,7 +1633,7 @@ extern void HandleRequest( int clientsd )
 		/*
 		 * an auth mechanism we can't handle.
 		 */
-		snprintf( SendBuf, BufLen, "%s NO no mechanism available\r\n", Tag, Command );
+		snprintf( SendBuf, BufLen, "%s NO no mechanism available\r\n", Tag );
 		if ( IMAP_Write( Client.conn, SendBuf, strlen(SendBuf) ) == -1 )
 		{
 		    IMAPCount->CurrentClientConnections--;
@@ -1890,7 +1895,7 @@ extern void HandleRequest( int clientsd )
 		return;
 	    }
 	    
-	    snprintf( SendBuf, BufLen, "%s BAD Please login first\r\n", Tag, Command );
+	    snprintf( SendBuf, BufLen, "%s BAD Please login first\r\n", Tag );
 	    if ( IMAP_Write( Client.conn, SendBuf, strlen(SendBuf) ) == -1 )
 	    {
 		IMAPCount->CurrentClientConnections--;

@@ -1,3 +1,47 @@
+2005-06-14  Dave McMurtrie  <davemcmurtrie@gmail.com>
+
+	* imapproxy.spec: Patch by William Hooper to remove obsolete Copyright
+	  tag, add license tag and remove extra source tags.
+	
+2005-06-07  Dave McMurtrie  <davemcmurtrie@gmail.com>
+
+	* icc.c: Conditionally include unistd.h for close prototype.
+	  Remove a few unused variables.  Include missing config.h 
+	  include directive.
+
+        * main.c: Added missing include directives to avoid implicit
+	  declarations.  Assed missing config.h include directive.
+
+	* imapcommon.c: Added missing include directive for openssl/err.h to
+	  avoid implicit declarations.  Added atoui function.  Added include
+	  directive for limits.h to accomodate atoui.  Include missing
+	  config.h directive.
+
+	* request.c: Removed unused variables.  Fixed snprintf argument lists.
+	  Include missing config.h directive.
+
+	* becomenonroot.c: Conditionally include unistd.h to avoid
+	  implicit declarations.  Include missing config.h directive.  Patch
+	  by Jarno Huuskonen to drop any supplemental group memberships.
+	  Patch by Dave Steinberg (modified by Jarno Huuskonen) to allow
+	  chroot.
+
+	* logging.c: Include string.h to avoid implicit declarations.
+
+	* select.c: Remove unused variables.
+
+	* pimpstat.c: Patch by Mathew Anderson to add -c flag and behavior.
+
+	* imapproxy.h: Changed all long values to int values.  Changed
+	  logouttime in IMAPConnectionContext to time_t.  Added atoui
+	  function prototype.  Patch by Jarno Huuskonen to allow chroot.
+
+	* imapproxy.conf: Added chroot_directory option (Patch by Dave
+	  Steinberg and Jarno Huuskonen).
+
+	* config.c: Added chroot_directory option (Patch by Dave Steinberg
+	  and Jarno Huuskonen).
+	
 2005-02-21  Dave McMurtrie  <davemcmurtrie@gmail.com>
 
 	* Version 1.2.3 released.

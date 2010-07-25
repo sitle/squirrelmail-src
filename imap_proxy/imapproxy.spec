@@ -14,11 +14,12 @@ Summary:	Imapproxy Daemon
 Name:		up-imapproxy
 Version:	%ver
 Release:	%rel
-Copyright:	Dave McMurtrie
+#Copyright:	Dave McMurtrie
+License:        GPL
 Group:		Networking/Daemons
 Source0:	http://www.imapproxy.org/downloads/up-imapproxy-%{ver}.tar.gz
-Source1:	imapproxy.conf
-Source2:	imapproxy.init
+#Source1:	imapproxy.conf
+#Source2:	imapproxy.init
 Url:		http://www.imapproxy.org
 Packager:	Devrim SERAL <devrim@gazi.edu.tr>
 #BuildRoot:	/var/tmp/imapproxy-%{ver}-root
@@ -74,5 +75,10 @@ fi
 %attr(750,root,root) 		%{prefix}/sbin/pimpstat
 
 %changelog
+* Fri Jun 10 2005 William Hooper <whooper@freeshell.org>
+- Removed obsolete Copyright tag
+- Added License tag
+- Removed extra Source tags
+
 * Tue Mar 18 2003 Devrim SERAL<devrim@gazi.edu.tr>
 - Created imapproxy.spec file

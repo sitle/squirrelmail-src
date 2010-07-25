@@ -34,11 +34,14 @@
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/select.c,v $
-**      $Id: select.c,v 1.3 2004/11/10 15:34:14 dgm Exp $
+**      $Id: select.c,v 1.4 2005/06/15 12:11:12 dgm Exp $
 **      
 **  Modification History:
 **  
 **      $Log: select.c,v $
+**      Revision 1.4  2005/06/15 12:11:12  dgm
+**      Remove unused variables.
+**
 **      Revision 1.3  2004/11/10 15:34:14  dgm
 **      Explictly NULL terminate all strings that are the result of strncpy.
 **
@@ -326,7 +329,6 @@ static int Populate_Select_Cache( ITD_Struct *Server,
 				  unsigned int Length )
 {
     char *fn = "Populate_Select_Cache()";
-    char SendBuf[ BUFSIZE ];
     int rc;
     int BytesLeftInBuffer = SELECT_BUF_SIZE;
     char *BufPtr;
@@ -448,8 +450,6 @@ static int Populate_Select_Cache( ITD_Struct *Server,
  */
 extern unsigned int Is_Safe_Command( char *Command )
 {
-    char *fn = "Is_Safe_Command";
-    
     unsigned int i;
     
     /*

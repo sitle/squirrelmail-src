@@ -34,11 +34,14 @@
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/logging.c,v $
-**      $Id: logging.c,v 1.3 2004/11/10 15:30:17 dgm Exp $
+**      $Id: logging.c,v 1.4 2005/06/15 12:10:39 dgm Exp $
 **      
 **  Modification History:
 **
 **      $Log: logging.c,v $
+**      Revision 1.4  2005/06/15 12:10:39  dgm
+**      Include string.h.
+**
 **      Revision 1.3  2004/11/10 15:30:17  dgm
 **      Explictly NULL terminate all strings that are the result
 **      of strncpy.
@@ -53,6 +56,8 @@
 */
 
 #include <syslog.h>
+#include <string.h>
+
 #include "imapproxy.h"
 
 #define _REENTRANT
