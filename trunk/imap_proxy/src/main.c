@@ -35,12 +35,18 @@
 **
 **  RCS:
 **
-**	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/main.c,v $
-**	$Id: main.c,v 1.27 2005/07/06 11:49:40 dgm Exp $
+**	$Source: /afs/andrew.cmu.edu/usr18/dave64/work/IMAP_Proxy/src/RCS/main.c,v $
+**	$Id: main.c,v 1.29 2006/02/16 18:43:42 dave64 Exp $
 **      
 **  Modification History:
 **
 **	$Log: main.c,v $
+**	Revision 1.29  2006/02/16 18:43:42  dave64
+**	Added IMAP_PROXY_VERSION string to startup log message.
+**
+**	Revision 1.28  2006/02/16 18:30:14  dave64
+**	Fixed string format bug (Debian DSA 852-1) found by Steve Kemp.
+**
 **	Revision 1.27  2005/07/06 11:49:40  dgm
 **	Add support for enable_admin_commands config option.
 **
@@ -157,9 +163,9 @@
 */
 
 
-static char *rcsId = "$Id: main.c,v 1.27 2005/07/06 11:49:40 dgm Exp $";
-static char *rcsSource = "$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/main.c,v $";
-static char *rcsAuthor = "$Author: dgm $";
+static char *rcsId = "$Id: main.c,v 1.29 2006/02/16 18:43:42 dave64 Exp $";
+static char *rcsSource = "$Source: /afs/andrew.cmu.edu/usr18/dave64/work/IMAP_Proxy/src/RCS/main.c,v $";
+static char *rcsAuthor = "$Author: dave64 $";
 
 #define _REENTRANT
 
@@ -615,7 +621,7 @@ int main( int argc, char *argv[] )
 	exit( 1 );
     }
 
-    syslog( LOG_INFO, "%s: Normal server startup.", fn );
+    syslog( LOG_INFO, "%s: imapproxy version %s normal server startup.", fn, IMAP_PROXY_VERSION );
 
     /*
      * Main server loop
@@ -849,7 +855,7 @@ static int ParseBannerAndCapability( char *DestBuf,
 	exit( 1 );
     }
     
-    sprintf( DestBuf, CP );
+    sprintf( DestBuf, "%s", CP );
     
     /*
      * initially assume that the server doesn't support UNSELECT.
