@@ -34,7 +34,7 @@
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/icc.c,v $
-**	$Id: icc.c,v 1.5 2003/05/20 18:46:49 dgm Exp $
+**	$Id: icc.c,v 1.5 2003/05/20 18:46:49 dgm Exp dgm $
 **      
 **  Modification History:
 **
@@ -134,7 +134,11 @@ static void _ICC_Recycle( unsigned int Expiration )
 		   Expiration ) )
 	    {
 		syslog(LOG_INFO, "Expiring server sd [%d]", HashEntry->server_conn->sd);
-		/* Close the server socket. */
+		/* Logout of the imap server and close the server socket. */
+
+		IMAP_Write( HashEntry->server_conn, "VIC20 LOGOUT\r\n",
+			    strlen( "VIC20 LOGOUT\r\n" ) );
+
 #if HAVE_LIBSSL
 		if ( HashEntry->server_conn->tls )
 		{

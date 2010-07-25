@@ -39,7 +39,7 @@
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/request.c,v $
-**	$Id: request.c,v 1.17 2003/10/09 14:11:13 dgm Exp $
+**	$Id: request.c,v 1.17 2003/10/09 14:11:13 dgm Exp dgm $
 **      
 **  Modification History:
 **
@@ -166,7 +166,7 @@ static int cmd_trace( ITD_Struct *, char *, char * );
 static int cmd_dumpicc( ITD_Struct *, char * );
 static int cmd_newlog( ITD_Struct *, char * );
 static int cmd_resetcounters( ITD_Struct *, char * );
-static int Raw_Proxy( ITD_Struct *, ITD_Struct * );
+static int Raw_Proxy( ITD_Struct *, ITD_Struct *, ISC_Struct * );
 
 
 
@@ -740,7 +740,7 @@ static int cmd_authenticate_login( ITD_Struct *Client,
     }
     UnLockMutex( &trace );
 
-    rc = Raw_Proxy( Client, &Server );
+    rc = Raw_Proxy( Client, &Server, &Server.conn->ISC );
     
     Client->TraceOn = 0;
     Server.TraceOn = 0;
@@ -879,7 +879,7 @@ static int cmd_login( ITD_Struct *Client,
     }
     UnLockMutex( &trace );
 
-    rc = Raw_Proxy( Client, &Server );
+    rc = Raw_Proxy( Client, &Server, &Server.conn->ISC );
 
     /*
      * It's not necessary to take out the trace mutex here.  The reason
@@ -915,7 +915,8 @@ static int cmd_login( ITD_Struct *Client,
  * Authors:	Dave McMurtrie <davemcmurtrie@hotmail.com>
  *--
  */
-static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server )
+static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server,
+		      ISC_Struct *ISC )
 {
     char *fn = "Raw_Proxy()";
     struct pollfd fds[2];
@@ -926,6 +927,7 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server )
     char *CP;
     char TraceBuf[ BUFSIZE ];
     char SendBuf[ BUFSIZE ];
+    int rc;
     
 #define SERVER 0
 #define CLIENT 1
@@ -1108,9 +1110,11 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server )
 		}
 		
 	    
-		/* this is a command -- is it logout? */
-		CP = memchr(Client->ReadBuf, ' ',
-			    Client->ReadBytesProcessed );
+		/* 
+		 * This is a command.  What command is it?
+		 */
+		CP = memchr( Client->ReadBuf, ' ',
+			     Client->ReadBytesProcessed );
 	    
 		if ( CP )
 		{
@@ -1122,61 +1126,101 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server )
 			 * Since we want to potentially reuse this server
 			 * connection, we want to return it to an unselected 
 			 * state.  Use UNSELECT if the server supports it.
-			 * Otherwise, EXAMINE a null mailbox.
+			 * Otherwise, EXAMINE a null mailbox.  If SELECT
+			 * caching is enabled, don't do this.
 			 */
-			snprintf( SendBuf, sizeof SendBuf - 1,
-				  "C64 %s\r\n", ( (PC_Struct.support_unselect) ? "UNSELECT" : "EXAMINE \"\"" ) );
-			
-			IMAP_Write( Server->conn, SendBuf,
-				    strlen(SendBuf) );
-			/*
-			 * To be more correct, we should send any untagged
-			 * data back to the client before we're done.
-			 */
-			for( ;; )
+			if ( ! PC_Struct.enable_select_cache )
 			{
-			    /*
-			     * If the server wants to send a literal for
-			     * some reason, bag it...
-			     */
-			    if ( Server->LiteralBytesRemaining )
-				break;
+			    snprintf( SendBuf, sizeof SendBuf - 1,
+				      "C64 %s\r\n", ( (PC_Struct.support_unselect) ? "UNSELECT" : "EXAMINE \"\"" ) );
 			    
-			    status = IMAP_Line_Read( Server );
-			    
+			    IMAP_Write( Server->conn, SendBuf,
+					strlen(SendBuf) );
 			    /*
-			     * If there's an error reading from the server,
-			     * we'll catch it when (if) we try to reuse this
-			     * connection.
+			     * To be more correct, we should send any untagged
+			     * data back to the client before we're done.
 			     */
-			    if ( ( status == -1 ) || ( status == 0 ) )
-				break;
-			    
-			    /*
-			     * If it's not untagged data, we're done.
-			     */
-			    if ( Server->ReadBuf[0] != '*' )
-				break;
-
-			    BytesSent = IMAP_Write( Client->conn, 
-						    Server->ReadBuf, status );
-			    if ( BytesSent == -1 )
+			    for( ;; )
 			    {
-				syslog( LOG_ERR, "%s: IMAP_Write() failed sending data to client on sd [%d]: %s", fn, Client->conn->sd, strerror( errno ) );
-			    }
+				/*
+				 * If the server wants to send a literal for
+				 * some reason, bag it...
+				 */
+				if ( Server->LiteralBytesRemaining )
+				    break;
+				
+				status = IMAP_Line_Read( Server );
+				
+				/*
+				 * If there's an error reading from the server,
+				 * we'll catch it when (if) we try to reuse this
+				 * connection.
+				 */
+				if ( ( status == -1 ) || ( status == 0 ) )
+				    break;
 			    
-			}
+				/*
+				 * If it's not untagged data, we're done.
+				 */
+				if ( Server->ReadBuf[0] != '*' )
+				    break;
+				
+				BytesSent = IMAP_Write( Client->conn, 
+							Server->ReadBuf, status );
+				if ( BytesSent == -1 )
+				{
+				    syslog( LOG_ERR, "%s: IMAP_Write() failed sending data to client on sd [%d]: %s", fn, Client->conn->sd, strerror( errno ) );
+				}
+			    }
+			} /* if ( ! PC_Struct.enable_select_cache ) */
 
 			memset( Server->ReadBuf, 0, sizeof Server->ReadBuf );
 			
 			return( 1 );
 		    }
-		}
 		
-		/*
-		 * it's some command other than a LOGOUT...
-		 * just ship it over
-		 */
+		    /*
+		     * it's some command other than a LOGOUT...
+		     * If we care about SELECT caching, do that now.
+		     */
+		    if ( PC_Struct.enable_select_cache )
+		    {
+			if ( !strncasecmp( CP, "SELECT ", 7 ) )
+			{
+			    rc = Handle_Select_Command( Client, Server,
+							ISC, Client->ReadBuf,
+							status );
+			    
+			    if ( rc == 0 )
+				continue;
+
+			    if ( rc == -1 )
+				return( -1 );
+
+			    /* 
+			     * if Handle_Select_Command() returned 1,
+			     * fall through the rest of the logic and the
+			     * SELECT command should be proxied without
+			     * looking at the cache.
+			     */
+			    
+			} /* if the command is SELECT */
+
+			/*
+			 * SELECT caching is enabled and we've encountered
+			 * a command other than SELECT.  See if we should
+			 * invalidate the SELECT cache or not.
+			 */
+			if ( ! Is_Safe_Command( CP ) )
+			{
+			    Invalidate_Cache_Entry( ISC );
+			}
+			
+		    } /* if ( PC_Struct.enable_select_cache ) */
+		    
+		} /* if ( CP ) */
+		
+
 		for ( ; ; )
 		{
 		    BytesSent = IMAP_Write( Server->conn, Client->ReadBuf, status );
@@ -1185,7 +1229,7 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server )
 			if ( errno == EINTR )
 			    continue;
 			
-			syslog(LOG_ERR, "%s: IMAP_Write() failed sending data to client on sd [%d]: %s", fn, Client->conn->sd, strerror( errno ) );
+			syslog(LOG_ERR, "%s: IMAP_Write() failed sending data to server on sd [%d]: %s", fn, Server->conn->sd, strerror( errno ) );
 			return( -1 );
 		    }
 		    break;

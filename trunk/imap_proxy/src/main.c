@@ -36,11 +36,17 @@
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/main.c,v $
-**	$Id: main.c,v 1.17 2003/10/10 15:07:02 dgm Exp $
+**	$Id: main.c,v 1.18 2003/11/14 14:59:44 dgm Exp dgm $
 **      
 **  Modification History:
 **
 **	$Log: main.c,v $
+**	Revision 1.18  2003/11/14 14:59:44  dgm
+**	Applied patches by Geoffrey Hort <g.hort@unsw.edu.au> to allow
+**	configurable listen address.  Discard token "SASL-IR" if server
+**	advertises it as a capability (previously, we were discarding
+**	"SASL").  Reference Revision 1.17 of this source module.
+**
 **	Revision 1.17  2003/10/10 15:07:02  dgm
 **	Patch by Ken Murchison <ken@oceana.com> applied.  Discard "SASL"
 **	capability if advertised by the server.  This is a new extension
@@ -116,7 +122,7 @@
 */
 
 
-static char *rcsId = "$Id: main.c,v 1.17 2003/10/10 15:07:02 dgm Exp $";
+static char *rcsId = "$Id: main.c,v 1.18 2003/11/14 14:59:44 dgm Exp dgm $";
 static char *rcsSource = "$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/main.c,v $";
 static char *rcsAuthor = "$Author: dgm $";
 
@@ -190,7 +196,9 @@ char *service;
 /*
  * Internal Prototypes
  */
-static int SetBannerAndCapability( void );
+static void SetBannerAndCapability( void );
+static int ParseBannerAndCapability( char *, unsigned int,
+				      char *, unsigned int );
 static void ServerInit( void );
 static void Usage( void );
 
@@ -266,7 +274,15 @@ int main( int argc, char *argv[] )
     
     SetConfigOptions( ConfigFile );
     SetLogOptions();
-    
+
+    /*
+     * Just for logging purposes, are we doing SELECT caching or not?
+     */
+    if ( PC_Struct.enable_select_cache )
+	syslog( LOG_INFO, "%s: SELECT caching is enabled", fn );
+    else
+	syslog( LOG_INFO, "%s: SELECT caching is disabled", fn );
+	
 #ifdef HAVE_LIBWRAP
     /*
      * Set our tcpd service name
@@ -358,13 +374,8 @@ int main( int argc, char *argv[] )
 	}
     }
 
+    SetBannerAndCapability();
     
-    if ( SetBannerAndCapability() )
-    {
-	syslog(LOG_ERR, "%s: Failed to get banner string and capability from imap server.  Exiting.", fn);
-	exit( 1 );
-    }
-
     if ( PC_Struct.login_disabled )
     {
 #if HAVE_LIBSSL
@@ -424,9 +435,18 @@ int main( int argc, char *argv[] )
 
     memset( (char *) &srvaddr, 0, sizeof srvaddr );
     srvaddr.sin_family = PF_INET;
-    srvaddr.sin_addr.s_addr = htonl(INADDR_ANY);
+    if ( !PC_Struct.listen_addr )
+    {
+	srvaddr.sin_addr.s_addr = htonl(INADDR_ANY);
+    }
+    else if ( ( srvaddr.sin_addr.s_addr = inet_addr( PC_Struct.listen_addr) ) == -1 )
+    {
+	syslog( LOG_ERR, "%s: bad bind address: '%s' specified in config file.  Exiting.", fn, PC_Struct.listen_addr );
+	exit( 1 );
+    }
 
-    syslog(LOG_INFO, "%s: Binding to tcp port %d", fn, PC_Struct.listen_port );
+    syslog(LOG_INFO, "%s: Binding to tcp %s:%d", fn, PC_Struct.listen_addr ?
+	   PC_Struct.listen_addr : "*", PC_Struct.listen_port );
     srvaddr.sin_port = htons(PC_Struct.listen_port);
 
     listensd = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
@@ -708,158 +728,57 @@ static void ServerInit( void )
 
 
 
-
 /*++
- * Function:	SetBannerAndCapability
+ * Function:	ParseBannerAndCapability
  *
- * Purpose:	Connect to an IMAP server as a client and fetch the initial
- *		banner string and the output from a CAPABILITY command.
+ * Purpose:	Weed out stuff that imapproxy does not support from a banner
+ *              line or a capability line.
  *
- * Parameters:	none
+ * Parameters:	char * - Buffer for storing the cleaned up string.
+ *              unsigned int - buflen
+ *              char * - ptr to the string that needs to be cleaned up.
+ *              unsigned int - buflen
  *
- * Returns:	0 on success
- *              -1 on failure
+ * Returns:	Number of bytes in the output string.
+ *              exit()s on failure.
  *
  * Authors:	Dave McMurtrie <davemcmurtrie@hotmail.com>
  *
- * Notes:       All AUTH mechanisms will be stripped from the capability
- *              string.  AUTH=LOGIN will be added.
- *              The support_unselect flag in the global copy of the
- *              ProxyConfig struct will be set in this function depending on
- *              whether the server supports UNSELECT or not.
+ * Notes:       The buffer that the third argument points to will be tokenized
+ *              so make a copy of it first if you care about that.
  *--
  */
-static int SetBannerAndCapability( void )
+static int ParseBannerAndCapability( char *DestBuf,
+				      unsigned int DestBufSize,
+				      char *SourceBuf,
+				      unsigned int SourceBufSize )
 {
-    int sd;
-    ITD_Struct itd;
-    ICD_Struct conn;
-    int BytesRead;
-    char *fn = "SetBannerAndCapability()";
+    char *fn = "ParseBannerAndCapability";
     char *CP;
-    int NumRef = 0;
-
-    /* initialize some stuff */
-    memset( &itd, 0, sizeof itd );
-
-    for ( ;; )
-    {
-	sd = socket( PF_INET, SOCK_STREAM, IPPROTO_TCP );
-	if ( sd == -1 )
-	{
-	    syslog(LOG_ERR, "%s: socket() failed: %s", fn, strerror(errno) );
-	    return( -1 );
-	}
-	
-	if ( connect( sd, (struct sockaddr *)&ISD.srv, sizeof(ISD.srv) ) == -1 )
-	{
-	    syslog(LOG_ERR, "%s: connect() to imap server on socket [%d] failed: %s", fn, sd, strerror(errno));
-	    close( sd );
-	    
-	    if ( errno == ECONNREFUSED && ++NumRef < 10 )
-	    {
-		sleep( 60 );    /* IMAP server may not be started yet. */
-		continue;
-	    }
-	    return( -1 );
-	}
-	break;  /* Success */
-    }
-
     
-    memset( &conn, 0, sizeof ( ICD_Struct ) );
-    itd.conn = &conn;
-    itd.conn->sd = sd;
-    
-    /*
-     * The first thing we get back from the server should be the
-     * banner string.
-     */
-    BytesRead = IMAP_Line_Read( &itd );
-    if ( BytesRead == -1 )
+    if ( SourceBufSize >= DestBufSize )
     {
-	close( itd.conn->sd );
-	return( -1 );
+	syslog( LOG_ERR, "%s: Unable to parse banner or capability because it would cause a buffer overflow -- exiting.", fn );
+	exit( 1 );
     }
     
     
-    if ( sizeof Banner < BytesRead )
-    {
-	syslog(LOG_ERR, "%s: Storing %d byte banner string from IMAP server would cause buffer overflow.", fn, BytesRead );
-	close( itd.conn->sd );
-	return( -1 );
-    }
-    
-    memcpy( Banner, itd.ReadBuf, BytesRead );
-    BannerLen = BytesRead;
-	
-	      
-    /*
-     * See if the string we got back starts with "* OK" by comparing the
-     * first 4 characters of the buffer.
-     */
-    if ( strncasecmp( Banner, IMAP_UNTAGGED_OK, strlen(IMAP_UNTAGGED_OK)) )
-    {
-	syslog(LOG_ERR, "%s: Unexpected response from imap server on initial connection: %s", fn, Banner);
-	close( itd.conn->sd );
-	return( -1 );
-    }
-
-
-    /* Now we send a CAPABILITY command to the server. */
-    if ( IMAP_Write( itd.conn, "1 CAPABILITY\r\n", strlen("1 CAPABILITY\r\n") ) == -1 )
-    {
-	syslog(LOG_ERR, "%s: IMAP_Write() failed: %s", fn, strerror(errno) );
-	close( itd.conn->sd );
-	return( -1 );
-    }
-    
-    /*
-     * From RFC2060:
-     * The server MUST send a single untagged
-     * CAPABILITY response with "IMAP4rev1" as one of the listed
-     * capabilities before the (tagged) OK response.
-     *
-     * The means we should read exactly 2 lines of data back from the server.
-     * The first will be the untagged capability line.
-     * The second will be the OK response with the tag in it.
-     */
-
-    BytesRead = IMAP_Line_Read( &itd );
-    if ( BytesRead == -1 )
-    {
-	close( itd.conn->sd );
-	return( -1 );
-    }
-    
-    /*
-     * The read buffer should now contain the 
-     * untagged response line.  
-     */
-    if ( sizeof Capability < BytesRead )
-    {
-	syslog(LOG_ERR, "%s: Storing %d byte capability string from IMAP server would cause buffer overflow.", fn, BytesRead );
-	close( itd.conn->sd );
-	return( -1 );
-    }
-
     /*
      * strip out all of the AUTH mechanisms except the ones that we support.
      * Right now, this is just AUTH=LOGIN.  Note that the use of
      * non-MT safe strtok is okay here.  This function is called before any
      * other threads are launched and should never be called again.
      */
-    itd.ReadBuf[BytesRead - 2] = '\0';
-    CP = strtok( itd.ReadBuf, " " );
+    SourceBuf[SourceBufSize - 2] = '\0';
+    CP = strtok( SourceBuf, " " );
     
     if ( !CP )
     {
-	syslog( LOG_ERR, "%s: No tokens found in capability string sent from IMAP server.", fn);
-	close( itd.conn->sd );
-	return( -1 );
+	syslog( LOG_ERR, "%s: No tokens found in banner or capability from IMAP server -- exiting.", fn);
+	exit( 1 );
     }
     
-    sprintf( Capability, CP );
+    sprintf( DestBuf, CP );
     
     /*
      * initially assume that the server doesn't support UNSELECT.
@@ -899,10 +818,10 @@ static int SetBannerAndCapability( void )
 	}
 	
 	/*
-	 * If this token happens to be SASL, we want to discard it
+	 * If this token happens to be SASL-IR, we want to discard it
 	 * since we don't support any auth mechs that can use it.
 	 */
-	if ( !strncasecmp( CP, "SASL", strlen( "SASL" ) ) )
+	if ( !strncasecmp( CP, "SASL-IR", strlen( "SASL-IR" ) ) )
 	{
 	    continue;
 	}
@@ -927,47 +846,171 @@ static int SetBannerAndCapability( void )
 	    continue;
 	}
 	
-	strcat( Capability, " ");
-	strcat( Capability, CP );
+	strcat( DestBuf, " ");
+	strcat( DestBuf, CP );
     }
     
-    strcat( Capability, "\r\n" );
     
-    CapabilityLen = strlen( Capability );
+    strcat( DestBuf, "\r\n" );
     
+    return( strlen( DestBuf ) );
+}
+
+
+/*++
+ * Function:	SetBannerAndCapability
+ *
+ * Purpose:	Connect to an IMAP server as a client and fetch the initial
+ *		banner string and the output from a CAPABILITY command.
+ *
+ * Parameters:	none
+ *
+ * Returns:	nuttin -- exits if there's a problem
+ *
+ * Authors:	Dave McMurtrie <davemcmurtrie@hotmail.com>
+ *
+ * Notes:       All AUTH mechanisms will be stripped from the capability
+ *              string.  AUTH=LOGIN will be added.
+ *              The support_unselect flag in the global copy of the
+ *              ProxyConfig struct will be set in this function depending on
+ *              whether the server supports UNSELECT or not.
+ *--
+ */
+static void SetBannerAndCapability( void )
+{
+    int sd;
+    ITD_Struct itd;
+    ICD_Struct conn;
+    int BytesRead;
+    char *fn = "SetBannerAndCapability()";
+    int NumRef = 0;
+
+    /* initialize some stuff */
+    memset( &itd, 0, sizeof itd );
+
+    for ( ;; )
+    {
+	sd = socket( PF_INET, SOCK_STREAM, IPPROTO_TCP );
+	if ( sd == -1 )
+	{
+	    syslog(LOG_ERR, "%s: socket() failed: %s -- exiting", fn, 
+		   strerror(errno) );
+	    exit( 1 );
+	}
+	
+	if ( connect( sd, (struct sockaddr *)&ISD.srv, sizeof(ISD.srv) ) == -1 )
+	{
+	    syslog(LOG_ERR, "%s: connect() to imap server on socket [%d] failed: %s", fn, sd, strerror(errno));
+	    close( sd );
+	    
+	    if ( errno == ECONNREFUSED && ++NumRef < 10 )
+	    {
+		sleep( 60 );    /* IMAP server may not be started yet. */
+		continue;
+	    }
+	    syslog( LOG_ERR, "%s: unable to connect() to imap server and retry limit exceeded -- exiting.", fn );
+	    exit( 1 );
+	}
+	break;  /* Success */
+    }
+
+    
+    memset( &conn, 0, sizeof ( ICD_Struct ) );
+    itd.conn = &conn;
+    itd.conn->sd = sd;
+    
+    /*
+     * The first thing we get back from the server should be the
+     * banner string.
+     */
+    BytesRead = IMAP_Line_Read( &itd );
+    if ( BytesRead == -1 )
+    {
+	syslog( LOG_ERR, "%s: Error reading banner line from server on initial connection: %s -- Exiting.", fn, strerror( errno ) );
+	close( itd.conn->sd );
+	exit( 1 );
+    }
+    
+    BannerLen = ParseBannerAndCapability( Banner, sizeof Banner - 1,
+					  itd.ReadBuf, BytesRead );
+    
+    /*
+     * See if the string we got back starts with "* OK" by comparing the
+     * first 4 characters of the buffer.
+     */
+    if ( strncasecmp( Banner, IMAP_UNTAGGED_OK, strlen(IMAP_UNTAGGED_OK)) )
+    {
+	syslog(LOG_ERR, "%s: Unexpected response from imap server on initial connection: %s -- Exiting.", fn, Banner);
+	close( itd.conn->sd );
+	exit( 1 );
+    }
+
+
+    /* Now we send a CAPABILITY command to the server. */
+    if ( IMAP_Write( itd.conn, "1 CAPABILITY\r\n", strlen("1 CAPABILITY\r\n") ) == -1 )
+    {
+	syslog(LOG_ERR, "%s: Unable to send capability command to server: %s -- exiting.", fn, strerror(errno) );
+	close( itd.conn->sd );
+	exit( 1 );
+    }
+    
+    /*
+     * From RFC2060:
+     * The server MUST send a single untagged
+     * CAPABILITY response with "IMAP4rev1" as one of the listed
+     * capabilities before the (tagged) OK response.
+     *
+     * The means we should read exactly 2 lines of data back from the server.
+     * The first will be the untagged capability line.
+     * The second will be the OK response with the tag in it.
+     */
+
+    BytesRead = IMAP_Line_Read( &itd );
+    if ( BytesRead == -1 )
+    {
+	syslog( LOG_ERR, "%s: Failed to read capability response from server: %s --  exiting.", fn, strerror( errno ) );
+	close( itd.conn->sd );
+	exit( 1 );
+    }
+
+    CapabilityLen = ParseBannerAndCapability( Capability, sizeof Capability - 1,
+					      itd.ReadBuf, BytesRead );
+    
+
     /* Now read the tagged response and make sure it's OK */
     BytesRead = IMAP_Line_Read( &itd );
     if ( BytesRead == -1 )
     {
+	syslog( LOG_ERR, "%s: Failed to read capability response from server: %s -- exiting.", fn, strerror( errno ) );
 	close( itd.conn->sd );
-	return( -1 );
+	exit( 1 );
     }
     
     
     if ( strncasecmp( itd.ReadBuf, IMAP_TAGGED_OK, strlen(IMAP_TAGGED_OK) ) )
     {
-	syslog(LOG_ERR, "%s: Received non-OK tagged reponse from imap server on CAPABILITY command", fn );
+	syslog(LOG_ERR, "%s: Received non-OK tagged reponse from imap server on CAPABILITY command -- exiting.", fn );
 	close( itd.conn->sd );
-	return( -1 );
+	exit( 1 );
     }
     
     /* Be nice and logout */
     if ( IMAP_Write( itd.conn, "2 LOGOUT\r\n", strlen("2 LOGOUT\r\n") ) == -1 )
     {
-	syslog(LOG_WARNING, "%s: IMAP_Write() failed on LOGOUT: %s -- Returning success anyway.", fn, strerror(errno) );
+	syslog(LOG_WARNING, "%s: IMAP_Write() failed on LOGOUT: %s -- Ignoring", fn, strerror(errno) );
 	close( itd.conn->sd );
-	return( 0 );
+	return;
     }
     
     /* read the final OK logout */
     BytesRead = IMAP_Line_Read( &itd );
     if ( BytesRead == -1 )
     {
-	syslog(LOG_WARNING, "%s: IMAP_Line_Read() failed on LOGOUT.  Returning success anyway.", fn );
+	syslog(LOG_WARNING, "%s: IMAP_Line_Read() failed on LOGOUT -- Ignoring", fn );
     }
     
     close( itd.conn->sd );
-    return( 0 );
+    return;
 }
     
 

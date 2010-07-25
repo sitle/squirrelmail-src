@@ -47,7 +47,8 @@ TAT_LIB = @LIB_CURSES@
 # Object files
 
 XYD_OBJ = ./src/icc.o ./src/main.o ./src/imapcommon.o ./src/request.o \
-	  ./src/hash.o ./src/becomenonroot.o ./src/config.o ./src/logging.o
+	  ./src/hash.o ./src/becomenonroot.o ./src/config.o ./src/logging.o \
+          ./src/select.o
 TAT_OBJ = ./src/pimpstat.o ./src/config.o
 
 # Final targets
