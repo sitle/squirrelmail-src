@@ -34,11 +34,16 @@
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/select.c,v $
-**      $Id: select.c,v 1.1 2004/02/24 15:13:21 dgm Exp $
+**      $Id: select.c,v 1.2 2004/03/11 15:14:06 dgm Exp $
 **      
 **  Modification History:
 **  
 **      $Log: select.c,v $
+**      Revision 1.2  2004/03/11 15:14:06  dgm
+**      Behavior of calling code when Populate_Select_Cache() fails
+**      modified to not send error back to client.
+**      "safe" command list updated.
+**
 **      Revision 1.1  2004/02/24 15:13:21  dgm
 **      Initial revision
 **
@@ -190,9 +195,7 @@ extern int Handle_Select_Command( ITD_Struct *Client,
 	
 	if ( Populate_Select_Cache( Server, ISC, Mailbox, SelectCmd, SelectCmdLength ) == -1 )
 	{
-	    snprintf( Buf, sizeof Buf - 1, "%s BAD internal proxy server error\r\n", Tag );
-	    IMAP_Write( Client->conn, Buf, strlen( Buf ) );
-	    return( 0 );
+	    return( 1 );
 	}
 	
 	if ( Send_Cached_Select_Response( Client, ISC, Tag ) == -1 )
@@ -231,9 +234,7 @@ extern int Handle_Select_Command( ITD_Struct *Client,
     
     if ( Populate_Select_Cache( Server, ISC, Mailbox, SelectCmd, SelectCmdLength ) == -1 )
     {
-	snprintf( Buf, sizeof Buf - 1, "%s BAD internal proxy server error\r\n", Tag );
-	IMAP_Write( Client->conn, Buf, strlen( Buf ) );
-	return( 0 );
+	return( 1 );
     }	
     
     if ( Send_Cached_Select_Response( Client, ISC, Tag ) == -1 )
@@ -447,20 +448,33 @@ extern unsigned int Is_Safe_Command( char *Command )
     
     unsigned int i;
     
+    /*
+     * The safety of some of these is very questionable, particularly
+     * APPEND.  Since time also invalidates the cache, hopefully the
+     * contents will be accurate enough to not break stuff...
+     */
     char *SafeCommands[] = 
 	{
 	    "CAPABILITY",
 	    "NOOP",
 	    "LOGOUT",
+	    "STARTTLS",
+	    "AUTHENTICATE",
+	    "LOGIN",
+	    "SELECT",
+	    "EXAMINE",
 	    "CREATE",
-	    "FETCH",
+	    "DELETE",
+	    "RENAME",
 	    "SUBSCRIBE",
 	    "UNSUBSCRIBE",
 	    "LIST",
 	    "LSUB",
 	    "STATUS",
+	    "APPEND",
 	    "CHECK",
 	    "SEARCH",
+	    "FETCH",
 	    "COPY",
 	    "UID",
 	    NULL

@@ -1,4 +1,12 @@
+2004-03-11  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* imapproxy.h: Changed size of select cache buffer.
+
+	* select.c: updated "safe" command list.  Changed behavior when
+	  Populate_Select_Cache() fails so the client isn't sent a BAD.
+	
 2004-02-24  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
 	* config.c: Added 'enable_select_cache' config option.
 
 	* pimpstat.c: Added SELECT cache stuff.
