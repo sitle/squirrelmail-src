@@ -33,7 +33,7 @@ TAT_LIB = -lcurses
 
 # Object files
 
-XYD_OBJ = ./src/icc.o ./src/main.o ./src/imapcommon.o ./src/request.o ./src/hash.o ./src/becomenonroot.o ./src/config.o
+XYD_OBJ = ./src/icc.o ./src/main.o ./src/imapcommon.o ./src/request.o ./src/hash.o ./src/becomenonroot.o ./src/config.o ./src/base64.o
 TAT_OBJ = ./src/pimpstat.o ./src/config.o
 
 # Final targets

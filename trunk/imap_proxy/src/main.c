@@ -38,11 +38,15 @@
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/main.c,v $
-**	$Id: main.c,v 1.6 2003/01/27 13:58:18 dgm Exp $
+**	$Id: main.c,v 1.7 2003/02/19 13:01:40 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: main.c,v $
+**	Revision 1.7  2003/02/19 13:01:40  dgm
+**	Changes to SetBannerAndCapability() to strip out unsupported AUTH=
+**	mechanisms from the capability string.
+**
 **	Revision 1.6  2003/01/27 13:58:18  dgm
 **	patch by Frode Nordahl <frode@powertech.no> to allow
 **	compilation on Linux platforms.
@@ -70,7 +74,7 @@
 */
 
 
-static char *rcsId = "$Id: main.c,v 1.6 2003/01/27 13:58:18 dgm Exp $";
+static char *rcsId = "$Id: main.c,v 1.7 2003/02/19 13:01:40 dgm Exp $";
 static char *rcsSource = "$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/main.c,v $";
 static char *rcsAuthor = "$Author: dgm $";
 
@@ -570,6 +574,9 @@ static void ServerInit( void )
  *              -1 on failure
  *
  * Authors:	dgm
+ *
+ * Notes:       All AUTH mechanisms will be stripped from the capability
+ *              string.  AUTH=LOGIN will be added.
  *--
  */
 static int SetBannerAndCapability( void )
@@ -578,7 +585,8 @@ static int SetBannerAndCapability( void )
     ITD_Struct itd;
     int BytesRead;
     char *fn = "SetBannerAndCapability()";
-    
+    char *CP;
+
     /* initialize some stuff */
     memset( &itd, 0, sizeof itd );
 
@@ -669,9 +677,47 @@ static int SetBannerAndCapability( void )
 	close( itd.sd );
 	return( -1 );
     }
+
+    /*
+     * strip out all of the AUTH mechanisms except the ones that we support.
+     * Right now, this is just AUTH=LOGIN.  Note that the use of
+     * non-MT safe strtok is okay here.  This function is called before any
+     * other threads are launched and should never be called again.
+     */
+    itd.ReadBuf[BytesRead - 2] = '\0';
+    CP = strtok( itd.ReadBuf, " " );
     
-    memcpy( Capability, itd.ReadBuf, BytesRead );
-    CapabilityLen = BytesRead;
+    if ( !CP )
+    {
+	syslog( LOG_ERR, "%s: No tokens found in capability string sent from IMAP server.", fn);
+	close( itd.sd );
+	return( -1 );
+    }
+    
+    sprintf( Capability, CP );
+    
+    for( ; ; )
+    {
+	CP = strtok( NULL, " " );
+	
+	if ( !CP )
+	    break;
+
+	/*
+	 * If this token happens to be an auth mechanism, we want to
+	 * discard it unless it's an auth mechanism we can support.
+	 */
+	if ( ! strncasecmp( CP, "AUTH=", strlen( "AUTH=" ) ) &&
+	     ( strncasecmp( CP, "AUTH=LOGIN", strlen( "AUTH=LOGIN" ) ) ) )
+	    continue;
+	
+	strcat( Capability, " ");
+	strcat( Capability, CP );
+    }
+    
+    strcat( Capability, "\r\n" );
+    
+    CapabilityLen = strlen( Capability );
     
     /* Now read the tagged response and make sure it's OK */
     BytesRead = IMAP_Line_Read( &itd );

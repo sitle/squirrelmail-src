@@ -18,13 +18,10 @@ KNOWN ISSUES
 ##############################################################################
 
 Though this should now build on Solaris and Linux, it's still
-Makefile based and hence, quite hokey.  It's still better than before when
+Makefile based and hence, quite hokey.  It's better than before when
 it only built on Solaris.
 
 I'm working to autoconf this whole thing, but I've been a little busy lately.
-
-Also note that the proxy server only supports LOGIN, not AUTHENTICATE.  I
-want to change this, also.
 
 ##############################################################################
 HOW TO BUILD

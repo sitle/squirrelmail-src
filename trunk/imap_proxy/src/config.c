@@ -37,11 +37,14 @@
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/config.c,v $
-**      $Id: config.c,v 1.2 2003/01/27 13:59:15 dgm Exp $
+**      $Id: config.c,v 1.3 2003/02/17 14:08:42 dgm Exp $
 **      
 **  Modification History:
 **
 **      $Log: config.c,v $
+**      Revision 1.3  2003/02/17 14:08:42  dgm
+**      added an fclose() that I forgot.
+**
 **      Revision 1.2  2003/01/27 13:59:15  dgm
 **      Patch by Gary Mills <mills@cc.UManitoba.CA> to allow compilation
 **      using Sun's cc instead of gcc.
@@ -339,7 +342,6 @@ extern void SetConfigOptions( char *ConfigFile )
 	}
 	
     }
-    
+
+    fclose( FP );
 }
-
-

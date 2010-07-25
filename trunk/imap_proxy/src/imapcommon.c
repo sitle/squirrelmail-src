@@ -37,11 +37,16 @@
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/imapcommon.c,v $
-**	$Id: imapcommon.c,v 1.8 2003/01/27 13:59:53 dgm Exp $
+**	$Id: imapcommon.c,v 1.9 2003/02/19 12:47:31 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: imapcommon.c,v $
+**	Revision 1.9  2003/02/19 12:47:31  dgm
+**	Replaced check for server response of "+ go ahead" with a check for
+**	"+".  the "go ahead" appears to be cyrus specific and not RFC compliant
+**	on my part.
+**
 **	Revision 1.8  2003/01/27 13:59:53  dgm
 **	Patch by Frode Nordahl <frode@powertech.no> to allow
 **	compilation on Linux platforms.
@@ -377,8 +382,7 @@ extern int Get_Server_sd( char *Username,
 	    return( -1 );
 	}
 	
-
-	if ( strncasecmp( "+ go ahead\r\n", Server.ReadBuf, rc ) )
+	if ( Server.ReadBuf[0] != '+' )
 	{
 	    syslog( LOG_INFO, "LOGIN: '%s' (%s) failed: bad response from server after sending string literal specifier", Username, ClientAddr );
 	    close( Server.sd );

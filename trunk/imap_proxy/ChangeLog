@@ -1,3 +1,31 @@
+2003-02-19  Dave McMurtrie  <dgm@pitt.edu>
+
+	* imapcommon.c: Was previously checking for "+ go ahead" server
+	  response after sending string literal specifier in Get_Server_sd().
+	  Now I'm just checking for "+" instead.
+
+	* imapproxy.h: Added definitions for LITERAL_PASSWORD and
+	  NON_LITERAL_PASSWORD to remove ambiguous 1 and 0 flags from the
+	  code.
+
+	* base64.c: Newly introduced base64 encoding and decoding routines
+	  by Eric S. Raymond.
+
+	* COPYING: license file that must accompany base64.c added into
+	  src directory.
+
+	* request.c: Removed cmd_authenticate() function.  Added
+	  cmd_authenticate_login() function and additional code necessary to
+	  support "AUTHENTICATE LOGIN".
+	
+2003-02-17  Dave McMurtrie  <dgm@pitt.edu>
+	
+	* config.c: added an fclose() for the config file that I had forgotten.
+
+2003-02-14  Dave McMurtrie  <dgm@pitt.edu>
+
+	* request.c: added lseek() call in cmd_newlog().
+	
 2003-01-27  Dave McMurtrie  <dgm@pitt.edu>
 
 	* Version 1.1.2 released.
