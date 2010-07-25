@@ -2920,7 +2920,7 @@ about the plugin and what it does.
 <sect>Project Administration
 <p>
 
-<sect1>Release Instructions
+<sect1>Webmail Release Instructions
 <p>
 
 <enum>
@@ -2943,7 +2943,8 @@ about the plugin and what it does.
          <item> Commit final changes to Subversion (doc/ChangeLog, doc/ReleaseNotes, functions/strings.php)
          <item> Tag SVN with the release number in the format webmail-release-X_Y_Z (webmail-release-1_4_20). Example:
             <tscreen><verb>
-svn copy https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/branches/SM-1_4-STABLE/squirrelmail \
+svn copy -m "Webmail version 1.4.20" \
+https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/branches/SM-1_4-STABLE/squirrelmail \
 https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/webmail-release-1_4_20</verb></tscreen>
          <item> Use the script <tt>make-release-webmail</tt> <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/util/make-release-webmail" name="found in SVN"> under the <tt>util/</tt> dir. The only parameter
          is the version to release. It will download the tagged SVN copy, pack it up nicely and upload it to SF.net.
@@ -3061,6 +3062,23 @@ put 1.4.20/squirrelmail-1.4.20/doc/ReleaseNotes
           <item>Update <url name="freshmeat.net" url="http://freshmeat.net/projects/squirrelmail/releases/new">.
           <item>Update <url name="Wikipedia" url="http://en.wikipedia.org/w/index.php?title=SquirrelMail&amp;action=edit">.
      </enum>
+</enum>
+
+<sect1>IMAP Proxy Release Instructions
+<p>
+
+<enum>
+<item><bf/SVN packaging:/
+    <enum>
+         <item> Tag SVN with the release number in the format imap_proxy-release-X_Y_Z (imap_proxy-release-1_2_8). Example:
+            <tscreen><verb>
+svn copy -m "IMAP Proxy version 1.2.8" \
+https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/trunk/imap_proxy \
+https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/imap_proxy-release-1_2_8</verb></tscreen>
+         <item> Use the script <tt>make-release-imap-proxy</tt> <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/util/make-release-imap-proxy" name="found in SVN"> under the <tt>util/</tt> dir. The only parameter
+         is the version to release. It will download the tagged SVN copy, pack it up nicely and upload it to SF.net.
+         You will need the following tools: bash, svn, ssh, rsync, tar, gzip, zip, bzip2 and optionally rpmbuild.
+    </enum>
 </enum>
 
 <sect1>Adding New Languages
