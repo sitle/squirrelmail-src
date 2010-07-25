@@ -1,0 +1,566 @@
+2007-05-31  Dave McMurtrie  <davemcmurtrie@gmail.com>
+	* main.c: Applied OpenSSL threads patch by Jan Grant.  Applied ipv6
+	  patch by Antonio Querubin.
+
+	* imapproxy.h: Applied OpenSSL threads patch by Jan Grant.  Applied
+	  ipv6 patch by Antonio Querubin.
+
+	* threads.c: New file, from OpenSSL threads patch by Jan Grant.
+
+	* Makefile.in: Applied OpenSSL threads patch by Jan Grant.
+
+	* imapcommon.c: Applied patch by Matt Selsky to prevent compilation
+	  errors due to missing md5.h include directive.  Applied ipv6 patch
+	  by Antonio Querubin.
+
+	* config.c: Applied ipv6 patch by Antonio Querubin.
+
+	* request.c: Applied ipv6 patch by Antonio Querubin.
+
+	* common.h: Updated version string to 1.2.6rc1
+
+2007-01-30  Dave McMurtrie  <davemcmurtrie@gmail.com>
+
+	* Version 1.2.5 released.
+
+2007-01-30  Dave McMurtrie  <davemcmurtrie@gmail.com>
+
+	* common.h: Updated version string to 1.2.5.
+
+2006-10-03  Dave McMurtrie  <davemcmurtrie@gmail.com>
+
+	* common.h: Updated version string to 1.2.5rc2.
+
+	* main.c: Patch by Matt Selsky to log ssl peer verify at Debug
+	  level instead of err level.
+
+	* Makefile.in: Patch by Matt Selsky to set the permissions on
+	  the configuration files to 755 instead of 644.
+
+2006-08-15  Dave McMurtrie  <davemcmurtrie@gmail.com>
+
+	* imapcommon.c: No longer exit() from IMAP_Line_Read() on
+	  failed sanity check.
+
+2006-02-16  Dave McMurtrie  <davemcmurtrie@gmail.com>
+
+	* pimpstat.c: Patch by Matt Selsky to fix spelling error.
+
+	* main.c: Fixed string format bug (Debian DSA 852-1) found by
+	  Steve Kemp.  Added version string to startup log message.
+
+	* common.h: Patch by Matt Selsky to add a version string.
+
+	* request.c: Patch by Matt Selsky to add cmd_version function.
+
+	* README: Patch by Matt Selsky to add info about p_version command.
+          Updated the imapproxy-info mailing list URL.
+
+2005-08-31  Dave McMurtrie  <davemcmurtrie@gmail.com>
+
+        * Version 1.2.4 released.
+ 
+2005-07-05  Dave McMurtrie  <davemcmurtrie@gmail.com>
+
+	* main.c: Add logging of enable_admin_commands config setting.
+
+	* imapproxy.h: Add enable_admin_commands to struct ProxyConfig.
+
+	* config.c: Add enable_admin_commands to ConfigTable.
+
+	* request.c: Added support for enable_admin_commands config option.
+	
+2005-06-22  Dave McMurtrie  <davemcmurtrie@gmail.com>
+
+	* main.c: Made initial imap server connection and DNS lookup
+	  more robust.
+	
+2005-06-14  Dave McMurtrie  <davemcmurtrie@gmail.com>
+
+	* imapproxy.spec: Patch by William Hooper to remove obsolete Copyright
+	  tag, add license tag and remove extra source tags.
+	
+2005-06-07  Dave McMurtrie  <davemcmurtrie@gmail.com>
+
+	* icc.c: Conditionally include unistd.h for close prototype.
+	  Remove a few unused variables.  Include missing config.h 
+	  include directive.
+
+        * main.c: Added missing include directives to avoid implicit
+	  declarations.  Assed missing config.h include directive.
+
+	* imapcommon.c: Added missing include directive for openssl/err.h to
+	  avoid implicit declarations.  Added atoui function.  Added include
+	  directive for limits.h to accomodate atoui.  Include missing
+	  config.h directive.
+
+	* request.c: Removed unused variables.  Fixed snprintf argument lists.
+	  Include missing config.h directive.
+
+	* becomenonroot.c: Conditionally include unistd.h to avoid
+	  implicit declarations.  Include missing config.h directive.  Patch
+	  by Jarno Huuskonen to drop any supplemental group memberships.
+	  Patch by Dave Steinberg (modified by Jarno Huuskonen) to allow
+	  chroot.
+
+	* logging.c: Include string.h to avoid implicit declarations.
+
+	* select.c: Remove unused variables.
+
+	* pimpstat.c: Patch by Mathew Anderson to add -c flag and behavior.
+
+	* imapproxy.h: Changed all long values to int values.  Changed
+	  logouttime in IMAPConnectionContext to time_t.  Added atoui
+	  function prototype.  Patch by Jarno Huuskonen to allow chroot.
+
+	* imapproxy.conf: Added chroot_directory option (Patch by Dave
+	  Steinberg and Jarno Huuskonen).
+
+	* config.c: Added chroot_directory option (Patch by Dave Steinberg
+	  and Jarno Huuskonen).
+	
+2005-02-21  Dave McMurtrie  <davemcmurtrie@gmail.com>
+
+	* Version 1.2.3 released.
+	
+2005-01-12  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* configure.in: Applied patch by Frederic Olivie to detect ncurses
+	  as well as curses.
+
+	* imapproxy.h: cache_size and cache_expiration_time in struct
+	  ProxyConfig now declared as unsigned int instead of unsigned
+	  long.  Patch by Cameron Schaus to fix 64-bit issues since
+	  SetNumericValue accepts int * as an argument.  Added patch
+	  by David Lancaster to provide force_tls config option.
+
+	* main.c: Applied patch by Joseph Tam to prevent SIGSEGV in 
+	  RAND_egd().  Applied patch by David Lancaster to provide
+	  force_tls config option.
+
+	* imapcommon.c: Applied patch by David Lancaster to provide
+	  force_tls config option.
+
+	* config.c: Applied patch by David Lancaster to provide
+	  force_tls config option.
+
+	* README.ssl: Added documentation provided by Steve Lidie.
+
+2004-11-24  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* Makefile.in:  Applied patch by Matt Selsky to create $prefix/bin
+	
+2004-11-10  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* config.c: Explictly NULL terminate all strings that are the
+	  result of strncpy.
+
+	* imapcommon.c: Explictly NULL terminate all strings that are the
+	  result of strncpy.  Also enforce checking of LiteralBytesRemaining
+	  after any call to IMAP_Line_Read.  Changed some signed
+	  data types to unsigned.
+
+	* logging.c: Explictly NULL terminate all strings that are the
+	  result of strncpy.
+
+	* main.c: Explictly NULL terminate all strings that are the
+	  result of strncpy.  Also enforce checking of LiteralBytesRemaining
+	  after any call to IMAP_Line_Read.
+
+	* request.c: Explictly NULL terminate all strings that are the
+	  result of strncpy.  Also enforce checking of LiteralBytesRemaining
+	  after any call to IMAP_Line_Read.
+
+	* select.c: Explictly NULL terminate all strings that are the
+	  result of strncpy.
+	
+2004-10-11  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* config.c: Added foreground_mode option.
+
+	* imapproxy.h: Added foreground_mode option.
+
+	* main.c: Added foreground_mode option.
+
+	* imapproxy.conf: Added foreground_mode option.
+	
+2004-07-23  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* Version 1.2.2 released. 
+	
+2004-03-11  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* imapproxy.h: Changed size of select cache buffer.
+
+	* select.c: updated "safe" command list.  Changed behavior when
+	  Populate_Select_Cache() fails so the client isn't sent a BAD.
+	
+2004-02-24  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* config.c: Added 'enable_select_cache' config option.
+
+	* pimpstat.c: Added SELECT cache stuff.
+
+	* icc.c: Send LOGOUT to imap server before closing a connection.
+
+	* select.c: newly added to the distribution.  Source file containing
+	  routines to allow SELECT caching.
+
+	* main.c: Added new function ParseBannerAndCapability.  Added SELECT
+	  caching stuff.
+
+	* request.c: Added support for SELECT caching.
+
+	* imapproxy.h: Added support for SELECT caching.
+
+	* imapproxy.conf: Added 'enable_select_cache' option to the default
+	  configuration file.
+	
+2003-11-14  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* imapproxy.h: Included patches by Geoffrey Hort <g.hort@unsw.edu.au>
+	  to allow configurable listen address.
+
+	* imapproxy.h: Changed default buffer size from 1024 to 4096.
+
+	* imapproxy.conf: Patch by Geoffrey Hort <g.hort@unsw.edu.au> to
+	  include default listen_address config option.
+
+	* config.c: Patch by Geoffrey Hort <g.hort@unsw.edu.au> to allow
+	  configurable listen address.
+
+	* main.c: Patch by Geoffrey Hort <g.hort@unsw.edu.au> to allow
+	  configurable listen address.
+
+	* main.c: Updated prior patch (2003-10-10) by Ken Murchison.  The
+	  token we're discarding is now "SASL-IR" instead of "SASL".
+	
+2003-11-07  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* Version 1.2.1 released.
+	
+2003-10-23  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* config.c: Fixed bug in SetBooleanValue doing upcase of Value.
+	
+2003-10-22  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* imapcommon.c: Fixed for loop for string literal detection.
+	  explicitly clear errno prior to atol() call.
+	
+2003-10-10  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* main.c: Applied patch by Ken Murchison <ken@oceana.com> to
+	  discard "SASL" capability if advertised by a server.
+	
+2003-10-09  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* config.c: Added the ability to handle boolean config file options.
+
+	* imapcommon.c: Added source port number to syslog messages.
+	  Added the ability to send tcp keepalives.  Added a poll() call
+	  in IMAP_Literal_Read() so read calls can't block forever.
+
+	* main.c: Changes to allow configurable tcp keelalive support.
+	  Added retry logic for the initial socket connection to the
+	  real imap server (patch submitted by Gary Mills 
+	  <mills@cc.UManitoba.CA>).
+
+	* request.c: Bugfix by Geoffrey Hort <g.hort@unsw.edu.au> submitted
+	  to set TotalClientLogins to 0 in cmd_resetcounters.  Changes to
+	  allow syslogging of the client source port.  Added timestamps
+	  to protocol log entries.
+
+	* README: Pruned some things from here and added to 
+	  README.known_issues.
+
+	* README.known_issues: Newly added to the distribution.
+	
+2003-07-14  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* main.c: Applied patch by Gary Windham
+	  <windhamg@email.arizona.edu> to add tcp wrappers support.
+
+	* imapproxy.spec: Applied patch by William Hooper 
+	  <whooper@freeshell.org> to enhance rpm support.
+
+	* main.c, imapcommon.c, imapproxy.h: Applied patch by William
+	  Yodlowsky <wyodlows@andromeda.rutgers.edu>
+	  to allow TLS to work on machines without /dev/random.
+
+	* request.c: Removed erroneous newline from syslog() call to
+	  prevent compiler warning.
+	
+2003-07-07  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* request.c: Applied patch by Gary Windham
+	  <windhamg@email.arizona.edu> so Raw_Proxy() correctly deals
+	  with string literals when the server responds with a NO or BAD
+	  instead of a +.
+	
+2003-05-22  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* Version 1.2 released.
+
+2003-05-21  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* Many many many comment changes to GPL the distribution.
+	
+2003-05-15  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* imapproxy.h: included netinet/in.h.
+
+	* configure.in: Applied patch by Ken Murchison <ken@oceana.com>
+	  to fix build issues on FreeBSD and SUSE.
+
+	* acconfig.h: Newly contributed by Ken Murchison <ken@oceana.com>
+	  to clean up build process.
+
+	* pimpstat.c: Patch by Ken Murchison <ken@oceana.com> to clean up
+	  build process.
+
+	* main.c: Patch by Ken Murchison <ken@oceana.com> to clean up build
+	  process.
+
+	* request.c: Patch by Ken Murchison <ken@oceana.com> to clean up
+	  build process.
+
+	* imapcommon.c: Modified Get_Server_conn() to deal with possible
+	  unsolicited, untagged capability response from server on 
+	  successful login.
+
+2003-05-13  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* imapproxy.h, imapcommon.c, main.c, request.c, pimpstat.c,
+	  configure.in, Makefile.in:  Applied patches by Ken Murchison
+	  <ken@oceana.com> to clean up build process.
+
+	* imapcommon.c, main.c: Replaced all AF_INET constant usage with
+	  PF_INET constants.
+	
+2003-05-08  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* configure.in: Applied patch by Ken Murchison <ken@oceana.com> to
+	  deal with krb5/openssl issue.
+
+	* request.c: Added code to send any untagged server responses back to
+	  a client on logout.
+
+2003-05-06  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* prototype: Added by Ken Murchison <ken@oceana.com> to allow
+	  building Sun packages.
+
+	* pkginfo: Added by Ken Murchison <ken@oceana.com> to allow building
+	  Sun packages.
+
+	* copyright: Added by Ken Murchison <ken@oceana.com> to allow building
+	  Sun packages.
+	
+	* base64.c: Removed this source file.  It's no longer needed.
+
+	* COPYING: Removed this file.  It was only related to base64.c.
+
+	* imapproxy.h: Applied patch by Ken Murchison  <ken@oceana.com> to
+	  remove base64 function prototypes.
+
+	* imapcommon.c: Applied patch by Ken Murchison  <ken@oceana.com> to
+	  remove Solaris md5 library dependencies (use openssl instead).
+
+	* request.c: Applied patch by Ken Murchison  <ken@oceana.com> to 
+	  replace base64 calls with openssl routines.
+
+2003-04-29  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* imapproxy.h: Applied patch by Ken Murchison  <ken@oceana.com> to
+	  add SSL/TLS support.
+
+	* config.c: Applied patch by Ken Murchison  <ken@oceana.com> to add
+	  SSL/TLS support.
+
+	* icc.c: Applied patch by Ken Murchison  <ken@oceana.com> to add
+	  SSL/TLS support.
+
+	* main.c: Applied patch by Ken Murchison  <ken@oceana.com> to add
+	  SSL/TLS support.
+
+	* request.c: Applied patch by Ken Murchison  <ken@oceana.com> to add
+	  SSL/TLS support.
+
+	* imapcommon.c: Applied patch by Ken Murchison  <ken@oceana.com> to
+	  add SSL/TLS support.
+	
+2003-04-16  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* Version 1.1.5 released.
+	
+	* logging.c: Newly introduced to allow syslog configuration.
+
+	* config.c: Added commodore logo ascii art comment block at the
+	  end.  How could I have forgotten that?!?
+	
+	* config.c: Added syslog_facility and syslog_prioritymask keywords
+	  to allow for syslog configuration.
+
+	* main.c: Added call to SetLogOptions().
+
+	* main.c: Removed 2 "ifdef LINUX" directives by always storing the
+	  tcp service port as a network short.
+
+	* imapproxy.h: Added syslog_facility and syslog_prioritymask fields
+	  to struct ProxyConfig.
+
+	* imapproxy.h: Added base64 routine prototypes that I previously
+	  forgot.
+	
+2003-03-18  Devrim Seral  <devrim@gazi.edu.tr>
+
+	* Added autoconf capability
+
+	* Added spec file for rpm based systems
+	
+2003-02-25  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* Version 1.1.4 released.
+
+2003-02-20  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* imapcommon.c: Get_Server_sd() now attempts to re-authenticate to the
+	  real server if it encounters a non-matching password.
+
+	* imapproxy.h: Added support for UNSELECT.
+
+	* main.c: SetBannerAndCapability() modified to set a flag in the
+	  global proxy config struct if the server supports UNSELECT.
+
+	* request.c: Raw_Proxy() now sends the server an UNSELECT instead of
+	  a CLOSE if the server supports it.
+
+2003-02-19  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* Version 1.1.3 released.
+
+	* imapcommon.c: Was previously checking for "+ go ahead" server
+	  response after sending string literal specifier in Get_Server_sd().
+	  Now I'm just checking for "+" instead.
+
+	* imapproxy.h: Added definitions for LITERAL_PASSWORD and
+	  NON_LITERAL_PASSWORD to remove ambiguous 1 and 0 flags from the
+	  code.
+
+	* base64.c: Newly introduced base64 encoding and decoding routines
+	  by Eric S. Raymond.
+
+	* COPYING: license file that must accompany base64.c added into
+	  src directory.
+
+	* request.c: Removed cmd_authenticate() function.  Added
+	  cmd_authenticate_login() function and additional code necessary to
+	  support "AUTHENTICATE LOGIN".
+	
+2003-02-17  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+	
+	* config.c: added an fclose() for the config file that I had forgotten.
+
+2003-02-14  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* request.c: added lseek() call in cmd_newlog().
+	
+2003-01-27  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* Version 1.1.2 released.
+
+	* Makefile: added patches by Gary Mills <mills@cc.UManitoba.CA>
+
+	* Makefile: added patches for linux support by 
+	  Frode Nordahl <frode@powertech.no>
+
+	* config.c: added patch by Gary Mills <mills@cc.UManitoba.CA> so it
+	  will compile properly using Sun's cc.
+
+	* imapcommon.c: added patch for linux support by
+	  Frode Nordahl <frode@powertech.no>
+
+	* main.c: added patch for linux support by
+	  Frode Nordahl <frode@powertech.no>
+
+	* pimpstat.c: added patch for linux support by
+	  Frode Nordahl <frode@powertech.no>
+
+2003-01-23  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* imapcommon.c: NonSyncLiteral flag was not being cleared properly.
+	
+2003-01-22  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* Version 1.1.1 released.
+
+	* imapproxy.h: function prototype for Get_Server_sd updated
+	  to reflect the literal password flag argument.
+
+	* request.c: Added logic to support passwords sent as string
+	  literals on login.  Also fixed bug that prevented passwords
+	  with space characters from working.
+
+	* imapcommon.c: Added logic to support passwords sent as string
+	  literals on login.
+
+2002-12-18  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* imapcommon.c: Fixed bug in for loop that does string literal
+	  processing.
+
+2002-12-17  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* Global configuration file support added.
+	
+	* Version 1.1 released.
+
+	* main.c: minor bugfixes from Gary Mills <mills@cc.UManitoba.CA>
+	  incorporated.
+
+	* main.c: changed accepted command line arguments.
+
+2002-09-06  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* main.c: added code to ignore SIGPIPE so EPIPE on a
+	  failed send() won't kill us.  Also ignore SIGHUP.
+	
+2002-08-30  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* main.c: added initialization of the trace mutex that I forgot.
+
+	* pimpstat.c newly introduced.
+
+	* added total client logins counter.
+
+2002-08-29  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+	
+	* Pitt common functions moved out of external libraries into this
+	  source tree.
+
+	* imapcommon.c: fixed nasty socket descriptor leak.
+
+2002-08-28  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* replaced all internal logging calls with standard syslog
+	  calls.
+
+	* main.c: made call to setrlimit dynamic.
+
+	* request.c: added p_resetcounters command.
+
+	* request.c: added poll() timeout in raw proxy loop.
+
+2002-08-27  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* request.c: no longer do a hostname lookup.  Just log IP instead.
+
+2002-07-18  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* request.c: added p_dumpicc and p_newlog commands.  renamed trace
+	  command to p_trace.
+
+2002-07-03  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* Version 1.0 released.
