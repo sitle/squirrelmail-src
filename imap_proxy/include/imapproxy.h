@@ -1,24 +1,22 @@
 /*
-**
-**      Copyright (c) 2002 University of Pittsburgh
-**
-**                      All Rights Reserved
-**
-** Permission to use, copy, modify, and distribute this software and its 
-** documentation for any purpose and without fee is hereby granted, 
-** provided that the above copyright notice appears in all copies and that
-** both that copyright notice and this permission notice appear in 
-** supporting documentation, and that the name of the University of
-** Pittsburgh not be used in advertising or publicity pertaining to
-** distribution of this software without specific written prior permission.  
 ** 
-** THE UNIVERSITY OF PITTSBURGH DISCLAIMS ALL WARRANTIES WITH REGARD TO
-** THIS SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND
-** FITNESS, IN NO EVENT SHALL THE UNIVERSITY OF PITTSBURGH BE LIABLE FOR
-** ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER
-** RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF
-** CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
-** CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+**               Copyright (c) 2002,2003 Dave McMurtrie
+**
+** This file is part of imapproxy.
+**
+** imapproxy is free software; you can redistribute it and/or modify
+** it under the terms of the GNU General Public License as published by
+** the Free Software Foundation; either version 2 of the License, or
+** (at your option) any later version.
+**
+** imapproxy is distributed in the hope that it will be useful,
+** but WITHOUT ANY WARRANTY; without even the implied warranty of
+** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+** GNU General Public License for more details.
+**
+** You should have received a copy of the GNU General Public License
+** along with imapproxy; if not, write to the Free Software
+** Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 **
 **
 **  Facility:
@@ -31,16 +29,29 @@
 **
 **  Authors:
 **
-**      Dave McMurtrie (dgm@pitt.edu)
+**      Dave McMurtrie <davemcmurtrie@hotmail.com>
 **
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/include/RCS/imapproxy.h,v $
-**      $Id: imapproxy.h,v 1.9 2003/04/16 12:19:29 dgm Exp $
+**      $Id: imapproxy.h,v 1.13 2003/05/20 19:18:00 dgm Exp $
 **      
 **  Modification History:
 **
 **      $Log: imapproxy.h,v $
+**      Revision 1.13  2003/05/20 19:18:00  dgm
+**      Comment changes only.
+**
+**      Revision 1.12  2003/05/15 12:30:39  dgm
+**      include netinet/in.h
+**
+**      Revision 1.11  2003/05/13 11:38:53  dgm
+**      Patches by Ken Murchison <ken@oceana.com> to clean up build process.
+**
+**      Revision 1.10  2003/05/06 12:09:12  dgm
+**      Applied patches by Ken Murchison <ken@oceana.com> to add SSL
+**      support and remove old base64 functions.
+**
 **      Revision 1.9  2003/04/16 12:19:29  dgm
 **      Added support for syslog configuration.
 **      Added base64 routine prototypes that I previously forgot.
@@ -83,6 +94,13 @@
 #define __IMAPPROXY_H
 
 #include <netdb.h>
+#include <pthread.h>
+#include <netinet/in.h>
+#include "config.h"
+
+#if HAVE_LIBSSL
+#include <openssl/ssl.h>
+#endif
 
 
 /* 
@@ -107,6 +125,10 @@
 #define NON_LITERAL_PASSWORD    0
 #define UNSELECT_SUPPORTED      1
 #define UNSELECT_NOT_SUPPORTED  0
+#define STARTTLS_SUPPORTED      1
+#define STARTTLS_NOT_SUPPORTED  0
+#define LOGIN_DISABLED          1
+#define LOGIN_NOT_DISABLED      0
 
 /*
  * One IMAPServerDescriptor will be globally allocated such that each thread
@@ -122,12 +144,25 @@ struct IMAPServerDescriptor
 
 
 /*
+ * IMAPConnectionDescriptors contain the info needed to communicate on an
+ * IMAP connection.
+ */
+struct IMAPConnectionDescriptor
+{
+    int sd;                          /* socket descriptor                    */
+#if HAVE_LIBSSL
+    SSL *tls;                        /* TLS connection context               */
+#endif
+};
+
+
+/*
  * IMAPTransactionDescriptors facilitate multi-line buffered reads from
  * IMAP servers and clients.
  */
 struct IMAPTransactionDescriptor
 {
-    int sd;                          /* socket descriptor                    */
+    struct IMAPConnectionDescriptor *conn;
     char ReadBuf[ BUFSIZE ];         /* Read Buffer                          */
     unsigned int BytesInReadBuffer;  /* bytes left in read buffer            */
     unsigned int ReadBytesProcessed; /* bytes already processed in read buf  */
@@ -144,7 +179,7 @@ struct IMAPTransactionDescriptor
  */
 struct IMAPConnectionContext
 {
-    int server_sd;                      /* server-side socket descriptor     */
+    struct IMAPConnectionDescriptor *server_conn;
     char username[64];                  /* username connected on this sd     */
     char hashedpw[16];                  /* md5 hash copy of password         */
     unsigned long logouttime;           /* time the user logged out last     */
@@ -171,7 +206,13 @@ struct ProxyConfig
     char *protocol_log_filename;              /* global trace filename */
     char *syslog_facility;                    /* syslog log facility */
     char *syslog_prioritymask;                /* syslog priority mask */
+    char *tls_ca_file;                        /* file with CA certs */
+    char *tls_ca_path;                        /* path to directory CA certs */
+    char *tls_cert_file;                      /* file with client cert */
+    char *tls_key_file;                       /* file with client priv key */
     unsigned char support_unselect;           /* unselect support flag */
+    unsigned char support_starttls;           /* starttls support flag */
+    unsigned char login_disabled;             /* login disabled flag */
 };
 
 
@@ -206,6 +247,7 @@ struct IMAPCounter
 
 typedef struct IMAPServerDescriptor ISD_Struct;
 typedef struct IMAPTransactionDescriptor ITD_Struct;
+typedef struct IMAPConnectionDescriptor ICD_Struct;
 typedef struct IMAPConnectionContext ICC_Struct;
 typedef struct IMAPCounter IMAPCounter_Struct;
 typedef struct ProxyConfig ProxyConfig_Struct;
@@ -214,21 +256,21 @@ typedef struct ProxyConfig ProxyConfig_Struct;
 /*
  * Function prototypes for external entry points.
  */
+extern int IMAP_Write( ICD_Struct *, const void *, int );
+extern int IMAP_Read( ICD_Struct *, void *, int );
 extern int IMAP_Line_Read( ITD_Struct * );
 extern int IMAP_Literal_Read( ITD_Struct * );
 extern void HandleRequest( int );
 extern char *memtok( char *, char *, char ** );
 extern int imparse_isatom( const char * );
-extern int Get_Server_sd( char *, char *, const char *, unsigned char );
-extern void ICC_Logout( char *, int );
+extern ICD_Struct *Get_Server_conn( char *, char *, const char *, unsigned char );
+extern void ICC_Logout( char *, ICD_Struct * );
 extern void ICC_Recycle( unsigned int );
 extern void ICC_Recycle_Loop( void );
 extern void LockMutex( pthread_mutex_t * );
 extern void UnLockMutex( pthread_mutex_t * );
 extern void SetConfigOptions( char * );
 extern void SetLogOptions( void );
-extern void to64frombits( unsigned char *, const unsigned char *, int );
-extern int from64tobits( char *, const char * );
 
 #endif /* __IMAPPROXY_H */
 

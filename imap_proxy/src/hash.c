@@ -1,24 +1,22 @@
 /*
-**
-**      Copyright (c) 2002 University of Pittsburgh
-**
-**                      All Rights Reserved
-**
-** Permission to use, copy, modify, and distribute this software and its 
-** documentation for any purpose and without fee is hereby granted, 
-** provided that the above copyright notice appears in all copies and that
-** both that copyright notice and this permission notice appear in 
-** supporting documentation, and that the name of the University of
-** Pittsburgh not be used in advertising or publicity pertaining to
-** distribution of this software without specific written prior permission.  
 ** 
-** THE UNIVERSITY OF PITTSBURGH DISCLAIMS ALL WARRANTIES WITH REGARD TO
-** THIS SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND
-** FITNESS, IN NO EVENT SHALL THE UNIVERSITY OF PITTSBURGH BE LIABLE FOR
-** ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER
-** RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF
-** CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
-** CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+**               Copyright (c) 2002,2003 Dave McMurtrie
+**
+** This file is part of imapproxy.
+**
+** imapproxy is free software; you can redistribute it and/or modify
+** it under the terms of the GNU General Public License as published by
+** the Free Software Foundation; either version 2 of the License, or
+** (at your option) any later version.
+**
+** imapproxy is distributed in the hope that it will be useful,
+** but WITHOUT ANY WARRANTY; without even the implied warranty of
+** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+** GNU General Public License for more details.
+**
+** You should have received a copy of the GNU General Public License
+** along with imapproxy; if not, write to the Free Software
+** Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 **
 **
 **  Facility:
@@ -36,11 +34,14 @@
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/hash.c,v $
-**      $Id: hash.c,v 1.1 2002/08/29 16:27:23 dgm Exp $
+**      $Id: hash.c,v 1.2 2003/05/20 18:43:52 dgm Exp $
 **      
 **  Modification History:
 **
 **      $Log: hash.c,v $
+**      Revision 1.2  2003/05/20 18:43:52  dgm
+**      comment changes only.
+**
 **      Revision 1.1  2002/08/29 16:27:23  dgm
 **      Initial revision
 **
@@ -101,3 +102,21 @@ unsigned int Hash(char *Input_Key, unsigned int	Table_Size )
   
   return(Hash_Value);
 }
+
+
+/*
+ *                            _________
+ *                           /        |
+ *                          /         |
+ *                         /    ______|
+ *                        /    /       ________
+ *                       |    |        |      /
+ *                       |    |        |_____/
+ *                       |    |        ______
+ *                       |    |        |     \
+ *                       |    |        |______\
+ *                        \    \_______
+ *                         \           |
+ *                          \          |
+ *                           \_________|
+ */

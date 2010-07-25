@@ -1,4 +1,96 @@
-2003-04-16  Dave McMurtrie  <dgm@pitt.edu>
+2003-05-22  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* Version 1.2 released.
+
+2003-05-21  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* Many many many comment changes to GPL the distribution.
+	
+2003-05-15  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* imapproxy.h: included netinet/in.h.
+
+	* configure.in: Applied patch by Ken Murchison <ken@oceana.com>
+	  to fix build issues on FreeBSD and SUSE.
+
+	* acconfig.h: Newly contributed by Ken Murchison <ken@oceana.com>
+	  to clean up build process.
+
+	* pimpstat.c: Patch by Ken Murchison <ken@oceana.com> to clean up
+	  build process.
+
+	* main.c: Patch by Ken Murchison <ken@oceana.com> to clean up build
+	  process.
+
+	* request.c: Patch by Ken Murchison <ken@oceana.com> to clean up
+	  build process.
+
+	* imapcommon.c: Modified Get_Server_conn() to deal with possible
+	  unsolicited, untagged capability response from server on 
+	  successful login.
+
+2003-05-13  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* imapproxy.h, imapcommon.c, main.c, request.c, pimpstat.c,
+	  configure.in, Makefile.in:  Applied patches by Ken Murchison
+	  <ken@oceana.com> to clean up build process.
+
+	* imapcommon.c, main.c: Replaced all AF_INET constant usage with
+	  PF_INET constants.
+	
+2003-05-08  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* configure.in: Applied patch by Ken Murchison <ken@oceana.com> to
+	  deal with krb5/openssl issue.
+
+	* request.c: Added code to send any untagged server responses back to
+	  a client on logout.
+
+2003-05-06  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* prototype: Added by Ken Murchison <ken@oceana.com> to allow
+	  building Sun packages.
+
+	* pkginfo: Added by Ken Murchison <ken@oceana.com> to allow building
+	  Sun packages.
+
+	* copyright: Added by Ken Murchison <ken@oceana.com> to allow building
+	  Sun packages.
+	
+	* base64.c: Removed this source file.  It's no longer needed.
+
+	* COPYING: Removed this file.  It was only related to base64.c.
+
+	* imapproxy.h: Applied patch by Ken Murchison  <ken@oceana.com> to
+	  remove base64 function prototypes.
+
+	* imapcommon.c: Applied patch by Ken Murchison  <ken@oceana.com> to
+	  remove Solaris md5 library dependencies (use openssl instead).
+
+	* request.c: Applied patch by Ken Murchison  <ken@oceana.com> to 
+	  replace base64 calls with openssl routines.
+
+2003-04-29  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* imapproxy.h: Applied patch by Ken Murchison  <ken@oceana.com> to
+	  add SSL/TLS support.
+
+	* config.c: Applied patch by Ken Murchison  <ken@oceana.com> to add
+	  SSL/TLS support.
+
+	* icc.c: Applied patch by Ken Murchison  <ken@oceana.com> to add
+	  SSL/TLS support.
+
+	* main.c: Applied patch by Ken Murchison  <ken@oceana.com> to add
+	  SSL/TLS support.
+
+	* request.c: Applied patch by Ken Murchison  <ken@oceana.com> to add
+	  SSL/TLS support.
+
+	* imapcommon.c: Applied patch by Ken Murchison  <ken@oceana.com> to
+	  add SSL/TLS support.
+	
+2003-04-16  Dave McMurtrie  <davemcmurtrie@hotmail.com>
 
 	* Version 1.1.5 released.
 	
@@ -27,11 +119,11 @@
 
 	* Added spec file for rpm based systems
 	
-2003-02-25  Dave McMurtrie  <dgm@pitt.edu>
+2003-02-25  Dave McMurtrie  <davemcmurtrie@hotmail.com>
 
 	* Version 1.1.4 released.
 
-2003-02-20  Dave McMurtrie  <dgm@pitt.edu>
+2003-02-20  Dave McMurtrie  <davemcmurtrie@hotmail.com>
 
 	* imapcommon.c: Get_Server_sd() now attempts to re-authenticate to the
 	  real server if it encounters a non-matching password.
@@ -44,7 +136,7 @@
 	* request.c: Raw_Proxy() now sends the server an UNSELECT instead of
 	  a CLOSE if the server supports it.
 
-2003-02-19  Dave McMurtrie  <dgm@pitt.edu>
+2003-02-19  Dave McMurtrie  <davemcmurtrie@hotmail.com>
 
 	* Version 1.1.3 released.
 
@@ -66,15 +158,15 @@
 	  cmd_authenticate_login() function and additional code necessary to
 	  support "AUTHENTICATE LOGIN".
 	
-2003-02-17  Dave McMurtrie  <dgm@pitt.edu>
+2003-02-17  Dave McMurtrie  <davemcmurtrie@hotmail.com>
 	
 	* config.c: added an fclose() for the config file that I had forgotten.
 
-2003-02-14  Dave McMurtrie  <dgm@pitt.edu>
+2003-02-14  Dave McMurtrie  <davemcmurtrie@hotmail.com>
 
 	* request.c: added lseek() call in cmd_newlog().
 	
-2003-01-27  Dave McMurtrie  <dgm@pitt.edu>
+2003-01-27  Dave McMurtrie  <davemcmurtrie@hotmail.com>
 
 	* Version 1.1.2 released.
 
@@ -95,11 +187,11 @@
 	* pimpstat.c: added patch for linux support by
 	  Frode Nordahl <frode@powertech.no>
 
-2003-01-23  Dave McMurtrie  <dgm@pitt.edu>
+2003-01-23  Dave McMurtrie  <davemcmurtrie@hotmail.com>
 
 	* imapcommon.c: NonSyncLiteral flag was not being cleared properly.
 	
-2003-01-22  Dave McMurtrie  <dgm@pitt.edu>
+2003-01-22  Dave McMurtrie  <davemcmurtrie@hotmail.com>
 
 	* Version 1.1.1 released.
 
@@ -113,12 +205,12 @@
 	* imapcommon.c: Added logic to support passwords sent as string
 	  literals on login.
 
-2002-12-18  Dave McMurtrie  <dgm@pitt.edu>
+2002-12-18  Dave McMurtrie  <davemcmurtrie@hotmail.com>
 
 	* imapcommon.c: Fixed bug in for loop that does string literal
 	  processing.
 
-2002-12-17  Dave McMurtrie  <dgm@pitt.edu>
+2002-12-17  Dave McMurtrie  <davemcmurtrie@hotmail.com>
 
 	* Global configuration file support added.
 	
@@ -129,12 +221,12 @@
 
 	* main.c: changed accepted command line arguments.
 
-2002-09-06  Dave McMurtrie  <dgm@pitt.edu>
+2002-09-06  Dave McMurtrie  <davemcmurtrie@hotmail.com>
 
 	* main.c: added code to ignore SIGPIPE so EPIPE on a
 	  failed send() won't kill us.  Also ignore SIGHUP.
 	
-2002-08-30  Dave McMurtrie  <dgm@pitt.edu>
+2002-08-30  Dave McMurtrie  <davemcmurtrie@hotmail.com>
 
 	* main.c: added initialization of the trace mutex that I forgot.
 
@@ -142,14 +234,14 @@
 
 	* added total client logins counter.
 
-2002-08-29  Dave McMurtrie  <dgm@pitt.edu>
+2002-08-29  Dave McMurtrie  <davemcmurtrie@hotmail.com>
 	
 	* Pitt common functions moved out of external libraries into this
 	  source tree.
 
 	* imapcommon.c: fixed nasty socket descriptor leak.
 
-2002-08-28  Dave McMurtrie  <dgm@pitt.edu>
+2002-08-28  Dave McMurtrie  <davemcmurtrie@hotmail.com>
 
 	* replaced all internal logging calls with standard syslog
 	  calls.
@@ -160,15 +252,15 @@
 
 	* request.c: added poll() timeout in raw proxy loop.
 
-2002-08-27  Dave McMurtrie  <dgm@pitt.edu>
+2002-08-27  Dave McMurtrie  <davemcmurtrie@hotmail.com>
 
 	* request.c: no longer do a hostname lookup.  Just log IP instead.
 
-2002-07-18  Dave McMurtrie  <dgm@pitt.edu>
+2002-07-18  Dave McMurtrie  <davemcmurtrie@hotmail.com>
 
 	* request.c: added p_dumpicc and p_newlog commands.  renamed trace
 	  command to p_trace.
 
-2002-07-03  Dave McMurtrie  <dgm@pitt.edu>
+2002-07-03  Dave McMurtrie  <davemcmurtrie@hotmail.com>
 
 	* Version 1.0 released.

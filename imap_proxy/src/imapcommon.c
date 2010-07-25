@@ -1,24 +1,22 @@
 /*
-**
-**      Copyright (c) 2002 University of Pittsburgh
-**
-**                      All Rights Reserved
-**
-** Permission to use, copy, modify, and distribute this software and its 
-** documentation for any purpose and without fee is hereby granted, 
-** provided that the above copyright notice appears in all copies and that
-** both that copyright notice and this permission notice appear in 
-** supporting documentation, and that the name of the University of
-** Pittsburgh not be used in advertising or publicity pertaining to
-** distribution of this software without specific written prior permission.  
 ** 
-** THE UNIVERSITY OF PITTSBURGH DISCLAIMS ALL WARRANTIES WITH REGARD TO
-** THIS SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND
-** FITNESS, IN NO EVENT SHALL THE UNIVERSITY OF PITTSBURGH BE LIABLE FOR
-** ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER
-** RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF
-** CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
-** CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+**               Copyright (c) 2002,2003 Dave McMurtrie
+**
+** This file is part of imapproxy.
+**
+** imapproxy is free software; you can redistribute it and/or modify
+** it under the terms of the GNU General Public License as published by
+** the Free Software Foundation; either version 2 of the License, or
+** (at your option) any later version.
+**
+** imapproxy is distributed in the hope that it will be useful,
+** but WITHOUT ANY WARRANTY; without even the implied warranty of
+** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+** GNU General Public License for more details.
+**
+** You should have received a copy of the GNU General Public License
+** along with imapproxy; if not, write to the Free Software
+** Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 **
 **
 **  Facility:
@@ -32,16 +30,33 @@
 **
 **  Authors:
 **
-**	Dave McMurtrie (dgm@pitt.edu)
+**	Dave McMurtrie <davemcmurtrie@hotmail.com>
 **
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/imapcommon.c,v $
-**	$Id: imapcommon.c,v 1.10 2003/02/20 13:52:16 dgm Exp $
+**	$Id: imapcommon.c,v 1.15 2003/05/20 18:49:53 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: imapcommon.c,v $
+**	Revision 1.15  2003/05/20 18:49:53  dgm
+**	Comment changes only.
+**
+**	Revision 1.14  2003/05/15 11:47:59  dgm
+**	Added code to deal with possible unsolicited, untagged capability
+**	response from server in Get_Server_conn().  Added credit comment in
+**	function header block, also.
+**
+**	Revision 1.13  2003/05/13 14:19:27  dgm
+**	Changed AF_INET constant reference to PF_INET.
+**
+**	Revision 1.12  2003/05/13 11:39:58  dgm
+**	Patches by Ken Murchison <ken@oceana.com> to clean up build process.
+**
+**	Revision 1.11  2003/05/06 12:09:57  dgm
+**	Applied patches by Ken Murchison <ken@oceana.com> to add SSL support.
+**
 **	Revision 1.10  2003/02/20 13:52:16  dgm
 **	Logic changed in Get_Server_sd() such that authentication is attempted to the
 **	real server when the md5 checksums don't match instead of just dropping
@@ -91,16 +106,14 @@
 #include <string.h>
 #include <errno.h>
 
-#ifndef LINUX
-#include <md5.h>
-#else
 #include <openssl/evp.h>
-#endif
 
 #include <pthread.h>
 #include <sys/types.h>
 #include <sys/socket.h>
+#if HAVE_UNISTD_H
 #include <unistd.h>
+#endif
 #include <fcntl.h>
 #include <syslog.h>
 
@@ -115,6 +128,10 @@ extern pthread_mutex_t trace;
 extern IMAPCounter_Struct *IMAPCount;
 extern ProxyConfig_Struct PC_Struct;
 
+#if HAVE_LIBSSL
+extern SSL_CTX *tls_ctx;
+#endif
+
 
 /*++
  * Function:	LockMutex
@@ -125,7 +142,7 @@ extern ProxyConfig_Struct PC_Struct;
  *
  * Returns:	nada -- exits on failure
  *
- * Authors:	dgm
+ * Authors:	Dave McMurtrie <davemcmurtrie@hotmail.com>
  *
  * Notes:
  *--
@@ -154,7 +171,7 @@ extern void LockMutex( pthread_mutex_t *mutex )
  *
  * Returns:	nada -- exits on failure
  *
- * Authors:	dgm
+ * Authors:	Dave McMurtrie <davemcmurtrie@hotmail.com>
  *
  * Notes:
  *--
@@ -177,11 +194,11 @@ extern void UnLockMutex( pthread_mutex_t *mutex )
     
 
 /*++
- * Function:	Get_Server_sd
+ * Function:	Get_Server_conn
  *
  * Purpose:	When a client login attempt is made, fetch a usable server
- *              socket descriptor.  This means that either we reuse an
- *              existing sd, or we open a new one.  Hide that abstraction from
+ *              connection descriptor.  This means that either we reuse an
+ *              existing ICD, or we open a new one.  Hide that abstraction from
  *              the caller...
  *
  * Parameters:	ptr to username string
@@ -190,24 +207,26 @@ extern void UnLockMutex( pthread_mutex_t *mutex )
  *              unsigned char - flag to indicate that the client sent the
  *                              password as a string literal.
  *
- * Returns:	int sd on success
- *              -1 on failure
+ * Returns:	ICD * on success
+ *              NULL on failure
  *
- * Authors:	dgm
+ * Authors:	Dave McMurtrie <davemcmurtrie@hotmail.com>
+ *
+ * Credit:      Major SSL additions by Ken Murchison <ken@oceana.com>
  *
  *--
  */
-extern int Get_Server_sd( char *Username, 
-			  char *Password,
-			  const char *ClientAddr,
-			  unsigned char LiteralPasswd )
+extern ICD_Struct *Get_Server_conn( char *Username, 
+				    char *Password,
+				    const char *ClientAddr,
+				    unsigned char LiteralPasswd )
 {
-    char *fn = "Get_Server_sd()";
+    char *fn = "Get_Server_conn()";
     unsigned int HashIndex;
     ICC_Struct *HashEntry = NULL;
     char SendBuf[BUFSIZE];
     unsigned int BufLen = BUFSIZE - 1;
-    char md5pw[16];
+    char md5pw[MD5_DIGEST_LENGTH];
     char *tokenptr;
     char *endptr;
     char *last;
@@ -217,25 +236,16 @@ extern int Get_Server_sd( char *Username,
     int rc;
     unsigned int Expiration;
 
-#ifdef LINUX
     EVP_MD_CTX mdctx;
-    const EVP_MD *md;
-    unsigned char md_value[EVP_MAX_MD_SIZE];
     int md_len;
-#endif
 
     Expiration = PC_Struct.cache_expiration_time;
     memset( &Server, 0, sizeof Server );
     
     /* need to md5 the passwd regardless, so do that now */
-#ifndef LINUX
-    md5_calc( md5pw, Password, strlen( Password ) );
-#else
     EVP_DigestInit(&mdctx, EVP_md5());
     EVP_DigestUpdate(&mdctx, Password, strlen(Password));
-    EVP_DigestFinal(&mdctx, md_value, &md_len);
-    strcat(md5pw, md_value);
-#endif
+    EVP_DigestFinal(&mdctx, md5pw, &md_len);
     
     /* see if we have a reusable connection available */
     ICC_Active = NULL;
@@ -261,7 +271,7 @@ extern int Get_Server_sd( char *Username,
 	     */
 	    if ( memcmp( md5pw, ICC_Active->hashedpw, sizeof md5pw ) )
 	    {
-		syslog( LOG_NOTICE, "%s: Unable to reuse server sd [%d] for user '%s' (%s) because password doesn't match.", fn, ICC_Active->server_sd, Username, ClientAddr );
+		syslog( LOG_NOTICE, "%s: Unable to reuse server sd [%d] for user '%s' (%s) because password doesn't match.", fn, ICC_Active->server_conn->sd, Username, ClientAddr );
 		ICC_Active->logouttime = 1;
 	    }
 	    else
@@ -285,28 +295,28 @@ extern int Get_Server_sd( char *Username,
 		 * do read data, make sure we read all the data so we "drain"
 		 * any puss that may be left on this socket.
 		 */
-		fcntl( ICC_Active->server_sd, F_SETFL,
-		       fcntl( ICC_Active->server_sd, F_GETFL, 0) | O_NONBLOCK );
+		fcntl( ICC_Active->server_conn->sd, F_SETFL,
+		       fcntl( ICC_Active->server_conn->sd, F_GETFL, 0) | O_NONBLOCK );
 		
-		while ( ( rc = recv( ICC_Active->server_sd, Server.ReadBuf, 
-				     sizeof Server.ReadBuf, 0 ) ) > 0 );
+		while ( ( rc = IMAP_Read( ICC_Active->server_conn, Server.ReadBuf, 
+				     sizeof Server.ReadBuf ) ) > 0 );
 		
 		if ( !rc )
 		{
-		    syslog(LOG_NOTICE, "%s: Unable to reuse server sd [%d] for user '%s' (%s).  Connection closed by server.", fn, ICC_Active->server_sd, Username, ClientAddr );
+		    syslog(LOG_NOTICE, "%s: Unable to reuse server sd [%d] for user '%s' (%s).  Connection closed by server.", fn, ICC_Active->server_conn->sd, Username, ClientAddr );
 		    ICC_Active->logouttime = 1;
 		    continue;
 		}
 	    
 		if ( errno != EWOULDBLOCK )
 		{
-		    syslog(LOG_NOTICE, "%s: Unable to reuse server sd [%d] for user '%s' (%s). recv() error: %s", fn, ICC_Active->server_sd, Username, ClientAddr, strerror( errno ) );
+		    syslog(LOG_NOTICE, "%s: Unable to reuse server sd [%d] for user '%s' (%s). IMAP_read() error: %s", fn, ICC_Active->server_conn->sd, Username, ClientAddr, strerror( errno ) );
 		    ICC_Active->logouttime = 1;
 		    continue;
 		}
 		
-		fcntl( ICC_Active->server_sd, F_SETFL, 
-		       fcntl( ICC_Active->server_sd, F_GETFL, 0) & ~O_NONBLOCK );
+		fcntl( ICC_Active->server_conn->sd, F_SETFL, 
+		       fcntl( ICC_Active->server_conn->sd, F_GETFL, 0) & ~O_NONBLOCK );
 		
 		/* now release the mutex and return the sd to the caller */
 		UnLockMutex( &mp );
@@ -323,8 +333,8 @@ extern int Get_Server_sd( char *Username,
 		     IMAPCount->PeakInUseServerConnections )
 		    IMAPCount->PeakInUseServerConnections = IMAPCount->InUseServerConnections;
 	    
-		syslog(LOG_INFO, "LOGIN: '%s' (%s) on existing sd [%d]", Username, ClientAddr, ICC_Active->server_sd );
-		return( ICC_Active->server_sd );
+		syslog(LOG_INFO, "LOGIN: '%s' (%s) on existing sd [%d]", Username, ClientAddr, ICC_Active->server_conn->sd );
+		return( ICC_Active->server_conn );
 	    }
 	}
     }
@@ -337,20 +347,21 @@ extern int Get_Server_sd( char *Username,
      * didn't match.
      * Open a connection to the IMAP server so we can attempt to login 
      */
-    Server.sd = socket( AF_INET, SOCK_STREAM, IPPROTO_TCP );
-    if ( Server.sd == -1 )
+    Server.conn = ( ICD_Struct * ) malloc( sizeof ( ICD_Struct ) );
+    memset( Server.conn, 0, sizeof ( ICD_Struct ) );
+    Server.conn->sd = socket( PF_INET, SOCK_STREAM, IPPROTO_TCP );
+    if ( Server.conn->sd == -1 )
     {
 	syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: Unable to open server socket: %s", 
 		Username, ClientAddr, strerror( errno ) );
-	return( -1 );
+	goto fail;
     }
     
-    if ( connect( Server.sd, (struct sockaddr *)&ISD.srv, 
+    if ( connect( Server.conn->sd, (struct sockaddr *)&ISD.srv, 
 		  sizeof(ISD.srv) ) == -1 )
     {
 	syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: Unable to connect to IMAP server: %s", Username, ClientAddr, strerror( errno ) );
-	close( Server.sd );
-	return( -1 );
+	goto fail;
     }
     
     
@@ -359,10 +370,113 @@ extern int Get_Server_sd( char *Username,
     if ( IMAP_Line_Read( &Server ) == -1 )
     {
 	syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: No banner line received from IMAP server", Username, ClientAddr );
-	close( Server.sd );
-	return( -1 );
+	goto fail;
     }
+
+
+    /*
+     * Do STARTTLS if necessary.
+     */
+#if HAVE_LIBSSL
+    if ( PC_Struct.login_disabled )
+    {
+	snprintf( SendBuf, BufLen, "S0001 STARTTLS\r\n" );
+	if ( IMAP_Write( Server.conn, SendBuf, strlen(SendBuf) ) == -1 )
+	{
+	    syslog(LOG_INFO, "STARTTLS failed: IMAP_Write() failed attempting to send STARTTLS command to IMAP server: %s", strerror( errno ) );
+	    goto fail;
+	}
+
+	/*
+	 * Read the server response
+	 */
+	if ( ( rc = IMAP_Line_Read( &Server ) ) == -1 )
+	{
+	    syslog(LOG_INFO, "STARTTLS failed: No response from IMAP server after sending STARTTLS command" );
+	    goto fail;
+	}
     
+	/*
+	 * Try to match up the tag in the server response to the client tag.
+	 */
+	endptr = Server.ReadBuf + rc;
+    
+	tokenptr = memtok( Server.ReadBuf, endptr, &last );
+    
+	if ( !tokenptr )
+	{
+	    /* 
+	     * no tokens found in server response?  Not likely, but we still
+	     * have to check.
+	     */
+	    syslog(LOG_INFO, "STARTTLS failed: server response to STARTTLS command contained no tokens." );
+	    goto fail;
+	}
+    
+	if ( memcmp( (const void *)tokenptr, (const void *)"S0001", 
+		     strlen( tokenptr ) ) )
+	{
+	    /* 
+	     * non-matching tag read back from the server... Lord knows what this
+	     * is, so we'll fail.
+	     */
+	    syslog(LOG_INFO, "STARTTLS failed: server response to STARTTLS command contained non-matching tag." );
+	    goto fail;
+	}
+    
+	/*
+	 * Now that we've matched the tags up, see if the response was 'OK'
+	 */
+	tokenptr = memtok( NULL, endptr, &last );
+    
+	if ( !tokenptr )
+	{
+	    /* again, not likely but we still have to check... */
+	    syslog(LOG_INFO, "STARTTLS failed: Malformed server response to STARTTLS command" );
+	    goto fail;
+	}
+    
+	if ( memcmp( (const void *)tokenptr, "OK", 2 ) )
+	{
+	    /*
+	     * If the server sent back a "NO" or "BAD", we can look at the actual
+	     * server logs to figure out why.  We don't have to break our ass here
+	     * putting the string back together just for the sake of logging.
+	     */
+	    syslog(LOG_INFO, "STARTTLS failed: non-OK server response to STARTTLS command" );
+	    goto fail;
+	}
+    
+	Server.conn->tls = SSL_new( tls_ctx );
+	if ( Server.conn->tls == NULL )
+	{
+	    syslog(LOG_INFO, "STARTTLS failed: SSL_new() failed" );
+	    goto fail;
+	}
+	    
+	SSL_clear( Server.conn->tls );
+	rc = SSL_set_fd( Server.conn->tls, Server.conn->sd );
+	if ( rc == 0 )
+	{
+	    syslog(LOG_INFO, "STARTTLS failed: SSL_set_fd() failed: %d",
+		   SSL_get_error( Server.conn->tls, rc ) );
+	    goto fail;
+	}
+
+	SSL_set_connect_state( Server.conn->tls );
+	rc = SSL_connect( Server.conn->tls );
+	if ( rc <= 0 )
+	{
+	    syslog(LOG_INFO, "STARTTLS failed: SSL_connect() failed: %d",
+		   SSL_get_error( Server.conn->tls, rc ) );
+	    goto fail;
+	}
+
+	/* XXX Should we grab the session id for later reuse? */
+    }
+#endif /* HAVE_LIBSSL */
+
+
     /*
      * Send the login command off to the IMAP server.  Have to treat a literal
      * password different.
@@ -371,11 +485,10 @@ extern int Get_Server_sd( char *Username,
     {
 	snprintf( SendBuf, BufLen, "A0001 LOGIN %s {%d}\r\n", 
 		  Username, strlen( Password ) );
-	if ( send( Server.sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+	if ( IMAP_Write( Server.conn, SendBuf, strlen(SendBuf) ) == -1 )
 	{
-	    syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: send() failed attempting to send LOGIN command to IMAP server: %s", Username, ClientAddr, strerror( errno ) );
-	    close( Server.sd );
-	    return( -1 );
+	    syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: IMAP_Write() failed attempting to send LOGIN command to IMAP server: %s", Username, ClientAddr, strerror( errno ) );
+	    goto fail;
 	}
 	
 	/*
@@ -384,15 +497,13 @@ extern int Get_Server_sd( char *Username,
 	if ( ( rc = IMAP_Line_Read( &Server ) ) == -1 )
 	{
 	    syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: Failed to receive go-ahead from IMAP server after sending LOGIN command", Username, ClientAddr );
-	    close( Server.sd );
-	    return( -1 );
+	    goto fail;
 	}
 	
 	if ( Server.ReadBuf[0] != '+' )
 	{
 	    syslog( LOG_INFO, "LOGIN: '%s' (%s) failed: bad response from server after sending string literal specifier", Username, ClientAddr );
-	    close( Server.sd );
-	    return( -1 );
+	    goto fail;
 	}
 	
 	/* 
@@ -400,11 +511,10 @@ extern int Get_Server_sd( char *Username,
 	 */
 	snprintf( SendBuf, BufLen, "%s\r\n", Password );
 	
-	if ( send( Server.sd, SendBuf, strlen( SendBuf ), 0 ) == -1 )
+	if ( IMAP_Write( Server.conn, SendBuf, strlen( SendBuf ) ) == -1 )
 	{
-	    syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: send() failed attempting to send literal password to IMAP server: %s", Username, ClientAddr, strerror( errno ) );
-	    close( Server.sd );
-	    return( -1 );
+	    syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: IMAP_Write() failed attempting to send literal password to IMAP server: %s", Username, ClientAddr, strerror( errno ) );
+	    goto fail;
 	}
     }
     else
@@ -415,23 +525,39 @@ extern int Get_Server_sd( char *Username,
 	snprintf( SendBuf, BufLen, "A0001 LOGIN %s %s\r\n", 
 		  Username, Password );
 	
-	if ( send( Server.sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+	if ( IMAP_Write( Server.conn, SendBuf, strlen(SendBuf) ) == -1 )
 	{
-	    syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: send() failed attempting to send LOGIN command to IMAP server: %s", Username, ClientAddr, strerror( errno ) );
-	    close( Server.sd );
-	    return( -1 );
+	    syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: IMAP_Write() failed attempting to send LOGIN command to IMAP server: %s", Username, ClientAddr, strerror( errno ) );
+	    goto fail;
 	}
     }
     
 	
     /*
-     * Read the server response
+     * Read the server response.  From RFC 3501:
+     *
+     * A server MAY include a CAPABILITY response code in the tagged OK
+     * response to a successful LOGIN command in order to send
+     * capabilities automatically.  It is unnecessary for a client to
+     * send a separate CAPABILITY command if it recognizes these
+     * automatic capabilities.
+     *
+     * We have to be ready for the possibility that this might be an 
+     * untagged response...  In an ideal world, we'd want to pass the
+     * untagged stuff back to the client.  For now, since the RFC doesn't
+     * mandate that behaviour, we're not going to since we don't have a client
+     * socket descriptor to send it to.
      */
-    if ( ( rc = IMAP_Line_Read( &Server ) ) == -1 )
+    for ( ;; )
     {
-	syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: No response from IMAP server after sending LOGIN command", Username, ClientAddr );
-	close( Server.sd );
-	return( -1 );
+	if ( ( rc = IMAP_Line_Read( &Server ) ) == -1 )
+	{
+	    syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: No response from IMAP server after sending LOGIN command", Username, ClientAddr );
+	    goto fail;
+	}
+    
+	if ( Server.ReadBuf[0] != '*' )
+	    break;
     }
     
     
@@ -449,8 +575,7 @@ extern int Get_Server_sd( char *Username,
 	 * have to check.
 	 */
 	syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: server response to LOGIN command contained no tokens.", Username, ClientAddr );
-	close( Server.sd );
-	return( -1 );
+	goto fail;
     }
     
     if ( memcmp( (const void *)tokenptr, (const void *)"A0001", 
@@ -461,8 +586,7 @@ extern int Get_Server_sd( char *Username,
 	 * is, so we'll fail.
 	 */
 	syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: server response to LOGIN command contained non-matching tag.", Username, ClientAddr );
-	close( Server.sd );
-	return( -1 );
+	goto fail;
     }
     
     
@@ -475,8 +599,7 @@ extern int Get_Server_sd( char *Username,
     {
 	/* again, not likely but we still have to check... */
 	syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: Malformed server response to LOGIN command", Username, ClientAddr );
-	close( Server.sd );
-	return( -1 );
+	goto fail;
     }
     
     if ( memcmp( (const void *)tokenptr, "OK", 2 ) )
@@ -487,8 +610,7 @@ extern int Get_Server_sd( char *Username,
 	 * putting the string back together just for the sake of logging.
 	 */
 	syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: non-OK server response to LOGIN command", Username, ClientAddr );
-	close( Server.sd );
-	return( -1 );
+	goto fail;
     }
     
     /*
@@ -526,7 +648,7 @@ extern int Get_Server_sd( char *Username,
 		     sizeof ICC_Active->username );
 	    memcpy( ICC_Active->hashedpw, md5pw, sizeof ICC_Active->hashedpw );
 	    ICC_Active->logouttime = 0;    /* zero means, "it's active". */
-	    ICC_Active->server_sd = Server.sd;
+	    ICC_Active->server_conn = Server.conn;
 	    
 	    UnLockMutex( &mp );
 	    
@@ -536,8 +658,8 @@ extern int Get_Server_sd( char *Username,
 	    if ( IMAPCount->InUseServerConnections >
 		 IMAPCount->PeakInUseServerConnections )
 		IMAPCount->PeakInUseServerConnections = IMAPCount->InUseServerConnections;
-	    syslog(LOG_INFO, "LOGIN: '%s' (%s) on new sd [%d]", Username, ClientAddr, Server.sd );
-	    return( Server.sd );
+	    syslog(LOG_INFO, "LOGIN: '%s' (%s) on new sd [%d]", Username, ClientAddr, Server.conn->sd );
+	    return( Server.conn );
 	}
 	
 	/*
@@ -554,14 +676,24 @@ extern int Get_Server_sd( char *Username,
 	if ( Expiration <= 2 )
 	{
 	    syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: Out of free ICC structs.", Username, ClientAddr );
-	    close( Server.sd );
-	    return( -1 );
+	    goto fail;
 	}
 	
 	ICC_Recycle( Expiration );
 	
     }
     
+  fail:
+#if HAVE_LIBSSL
+    if ( Server.conn->tls )
+    {
+	SSL_shutdown( Server.conn->tls );
+	SSL_free( Server.conn->tls );
+    }
+#endif
+    close( Server.conn->sd );
+    free( Server.conn );
+    return( NULL );
 }
 
     
@@ -618,7 +750,7 @@ extern int imparse_isatom( const char *s )
  * Returns:	char pointer to the first character of the token.
  *		NULL pointer if no tokens are found.
  *
- * Authors:     dgm
+ * Authors:     Dave McMurtrie <davemcmurtrie@hotmail.com>
  *--
  */
 extern char *memtok( char *Begin, char *End, char **Last )
@@ -679,6 +811,63 @@ extern char *memtok( char *Begin, char *End, char **Last )
 
 	
     
+/*++
+ * Function:	IMAP_Write
+ *
+ * Purpose:	Write a buffer to a socket.
+ *
+ * Parameters:	ptr to a IMAPTransactionDescriptor structure
+ *		ptr to buffer
+ *		number of bytes in buffer
+ * 
+ * Returns:	number of bytes written on success
+ *		-1 on failure
+ *
+ * Authors:	Ken Murchison (ken@oceana.com)
+ *
+ * Notes:	
+ *--
+ */
+extern int IMAP_Write( ICD_Struct *ICD, const void *buf, int count )
+{
+#if HAVE_LIBSSL
+    if ( ICD->tls )
+	return SSL_write( ICD->tls, buf, count );
+    else
+#endif
+	return write( ICD->sd, buf, count );
+}
+
+
+
+/*++
+ * Function:	IMAP_Read
+ *
+ * Purpose:	Read IMAP data from a socket.
+ *
+ * Parameters:	ptr to a IMAPTransactionDescriptor structure
+ *		ptr to buffer
+ *		number of bytes to read
+ * 
+ * Returns:	number of bytes read on success
+ *		-1 on failure
+ *
+ * Authors:	Ken Murchison (ken@oceana.com)
+ *
+ * Notes:	
+ *--
+ */
+extern int IMAP_Read( ICD_Struct *ICD, void *buf, int count )
+{
+#if HAVE_LIBSSL
+    if ( ICD->tls )
+	return SSL_read( ICD->tls, buf, count );
+    else
+#endif
+	return read( ICD->sd, buf, count );
+}
+
+
 
 /*++
  * Function:	IMAP_Literal_Read
@@ -689,7 +878,8 @@ extern char *memtok( char *Begin, char *End, char **Last )
  * 
  * Returns:	number of bytes read on success
  *		-1 on failure
- * Authors:	dgm
+ *
+ * Authors:	Dave McMurtrie <davemcmurtrie@hotmail.com>
  *
  * Notes:	
  *--
@@ -740,8 +930,8 @@ extern int IMAP_Literal_Read( ITD_Struct *ITD )
      * the number of literal bytes left, or the rest of our buffer --
      * whichever is smaller.
      */
-    Status = recv(ITD->sd, &ITD->ReadBuf[ITD->BytesInReadBuffer],
-		  (sizeof ITD->ReadBuf - ITD->BytesInReadBuffer ), 0 );
+    Status = IMAP_Read(ITD->conn, &ITD->ReadBuf[ITD->BytesInReadBuffer],
+		  (sizeof ITD->ReadBuf - ITD->BytesInReadBuffer ) );
     
     
     if ( Status == 0 )
@@ -751,7 +941,7 @@ extern int IMAP_Literal_Read( ITD_Struct *ITD )
     }
     else if ( Status == -1 )
     {
-	syslog(LOG_ERR, "%s: recv() failed: %s", fn, strerror(errno) );
+	syslog(LOG_ERR, "%s: IMAP_Read() failed: %s", fn, strerror(errno) );
 	return(-1);
     }
     
@@ -788,7 +978,7 @@ extern int IMAP_Literal_Read( ITD_Struct *ITD )
  * Returns:	Number of bytes on success
  *              -1 on error
  *
- * Authors:	dgm
+ * Authors:	Dave McMurtrie <davemcmurtrie@hotmail.com>
  *
  * Notes:	caller must be certain that the IMAPTransactionDescriptor
  *		is initialized to zero on the first call.
@@ -987,11 +1177,11 @@ extern int IMAP_Line_Read( ITD_Struct *ITD )
 	
 	/* 
 	 * There weren't any "lines" in our buffer.  We need to get more data
-	 * from the server.  Ultimately, we'll want to call recv and
+	 * from the server.  Ultimately, we'll want to call IMAP_Read and
 	 * add on to the end of the existing buffer.  
 	 *
-	 * Before we go off and wildly start calling recv() we should really
-	 * make sure that we have space left in our buffer.  If not,
+	 * Before we go off and wildly start calling IMAP_Read() we should
+	 * really make sure that we have space left in our buffer.  If not,
 	 * set the "more to come" flag and return what we have to the caller.
 	 */
 	if ( ( sizeof ITD->ReadBuf - ITD->BytesInReadBuffer ) < 1 )
@@ -1018,8 +1208,8 @@ extern int IMAP_Line_Read( ITD_Struct *ITD )
 	    return( ITD->ReadBytesProcessed );
 	}
 	
-	Status = recv(ITD->sd, &ITD->ReadBuf[ITD->BytesInReadBuffer],
-		      (sizeof ITD->ReadBuf - ITD->BytesInReadBuffer ), 0 );
+	Status = IMAP_Read(ITD->conn, &ITD->ReadBuf[ITD->BytesInReadBuffer],
+		      (sizeof ITD->ReadBuf - ITD->BytesInReadBuffer ) );
 	
 	if ( Status == 0 )
 	{
@@ -1028,7 +1218,7 @@ extern int IMAP_Line_Read( ITD_Struct *ITD )
 	}
 	else if ( Status == -1 )
 	{
-	    syslog(LOG_ERR, "%s: recv() failed: %s", fn, strerror(errno) );
+	    syslog(LOG_ERR, "%s: IMAP_Read() failed: %s", fn, strerror(errno) );
 	    return(-1);
 	}
 		
