@@ -39,11 +39,16 @@
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/request.c,v $
-**	$Id: request.c,v 1.18 2004/02/24 15:19:06 dgm Exp $
+**	$Id: request.c,v 1.19 2004/11/10 15:33:04 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: request.c,v $
+**	Revision 1.19  2004/11/10 15:33:04  dgm
+**	Explictly NULL terminate all strings that are the result
+**	of strncpy.  Also enforce checking of LiteralBytesRemaining
+**	after any call to IMAP_Line_Read.
+**
 **	Revision 1.18  2004/02/24 15:19:06  dgm
 **	Added support for SELECT caching.
 **
@@ -433,6 +438,7 @@ static int cmd_trace( ITD_Struct *itd, char *Tag, char *Username )
     }
     
     strncpy( TraceUser, Username, sizeof TraceUser - 1 );
+    TraceUser[ sizeof TraceUser - 1 ] = '\0';
     
     snprintf( SendBuf, BufLen, "%s OK Tracing enabled\r\n", Tag );
     if ( IMAP_Write( itd->conn, SendBuf, strlen(SendBuf) ) == -1 )
@@ -618,6 +624,15 @@ static int cmd_authenticate_login( ITD_Struct *Client,
 	syslog( LOG_NOTICE, "%s: Failed to read base64 encoded username from client on socket %d", fn, Client->conn->sd );
 	return( -1 );
     }
+
+    /*
+     * Don't accept literals from the client here.
+     */
+    if ( Client->LiteralBytesRemaining )
+    {
+	syslog( LOG_NOTICE, "%s: Read unexpected literal specifier from client on socket %d", fn, Client->conn->sd );
+	return( -1 );
+    }
     
     /*
      * Easy, but not perfect sanity check.  If the client sent enough data
@@ -655,6 +670,12 @@ static int cmd_authenticate_login( ITD_Struct *Client,
     }
 
     BytesRead = IMAP_Line_Read( Client );
+
+    if ( Client->LiteralBytesRemaining )
+    {
+	syslog( LOG_ERR, "%s: received unexpected literal specifier from client on socket %d", fn, Client->conn->sd );
+	return( -1 );
+    }
     
     if ( BytesRead == -1 )
     {
@@ -1474,7 +1495,7 @@ extern void HandleRequest( int clientsd )
 	PollFailCount = 0;
 
 	BytesRead = IMAP_Line_Read( &Client );
-	
+
 	if ( BytesRead == -1 )
 	{
 	    IMAPCount->CurrentClientConnections--;
@@ -1530,18 +1551,42 @@ extern void HandleRequest( int clientsd )
 	 * appropriate...
 	 */
 	strncpy( S_Tag, Tag, MAXTAGLEN - 1 );
+	S_Tag[ MAXTAGLEN - 1 ] = '\0';
+	
 	if ( ! strcasecmp( (const char *)Command, "NOOP" ) )
 	{
+	    if ( Client.LiteralBytesRemaining )
+	    {
+		syslog( LOG_ERR, "%s: Unexpected literal specifier read from client on socket %d as part of NOOP command -- disconnecting client", fn, Client.conn->sd );
+		IMAPCount->CurrentClientConnections--;
+		close( Client.conn->sd );
+		return;
+	    }
+	    
 	    cmd_noop( &Client, S_Tag );
 	    continue;
 	}
 	else if ( ! strcasecmp( (const char *)Command, "CAPABILITY" ) )
 	{
+	    if ( Client.LiteralBytesRemaining )
+	    {
+		syslog( LOG_ERR, "%s: Unexpected literal specifier read from client on socket %d as part of CAPABILITY command -- disconnecting client", fn, Client.conn->sd );
+		IMAPCount->CurrentClientConnections--;
+		close( Client.conn->sd );
+		return;
+	    }
 	    cmd_capability( &Client, S_Tag );
 	    continue;
 	}
 	else if ( ! strcasecmp( (const char *)Command, "AUTHENTICATE" ) )
 	{
+	    if ( Client.LiteralBytesRemaining )
+	    {
+		syslog( LOG_ERR, "%s: Unexpected literal specifier read from client on socket %d as part of AUTHENTICATE command -- disconnecting client", fn, Client.conn->sd );
+		IMAPCount->CurrentClientConnections--;
+		close( Client.conn->sd );
+		return;
+	    }
 	    AuthMech = memtok( NULL, EndOfLine, &Lasts );
 	    if ( !AuthMech )
 	    {
@@ -1554,7 +1599,7 @@ extern void HandleRequest( int clientsd )
 		}
 		continue;
 	    }
-
+	    
 	    if ( !strcasecmp( (const char *)AuthMech, "LOGIN" ) )
 	    {
 		rc = cmd_authenticate_login( &Client, S_Tag );
@@ -1569,6 +1614,7 @@ extern void HandleRequest( int clientsd )
 		    if ( Tag )
 		    {
 			strncpy( S_Tag, Tag, MAXTAGLEN - 1 );
+			S_Tag[ MAXTAGLEN - 1 ] = '\0';
 			cmd_logout( &Client, S_Tag );
 		    }
 		}
@@ -1591,10 +1637,17 @@ extern void HandleRequest( int clientsd )
 		}
 		continue;
 	    }
-
+	    
 	}
 	else if ( ! strcasecmp( (const char *)Command, "LOGOUT" ) )
 	{
+	    if ( Client.LiteralBytesRemaining )
+	    {
+		syslog( LOG_ERR, "%s: Unexpected literal specifier read from client on socket %d as part of LOGOUT command -- disconnecting client", fn, Client.conn->sd );
+		IMAPCount->CurrentClientConnections--;
+		close( Client.conn->sd );
+		return;
+	    }
 	    cmd_logout( &Client, S_Tag );
 	    IMAPCount->CurrentClientConnections--;
 	    close( Client.conn->sd );
@@ -1602,22 +1655,50 @@ extern void HandleRequest( int clientsd )
 	}
 	else if ( ! strcasecmp( (const char *)Command, "P_TRACE" ) )
 	{
+	    if ( Client.LiteralBytesRemaining )
+	    {
+		syslog( LOG_ERR, "%s: Unexpected literal specifier read from client on socket %d as part of P_TRACE command -- disconnecting client", fn, Client.conn->sd );
+		IMAPCount->CurrentClientConnections--;
+		close( Client.conn->sd );
+		return;
+	    }
 	    Username = memtok( NULL, EndOfLine, &Lasts );
 	    cmd_trace( &Client, S_Tag, Username );
 	    continue;
 	}
 	else if ( ! strcasecmp( (const char *)Command, "P_DUMPICC" ) )
 	{
+	    if ( Client.LiteralBytesRemaining )
+	    {
+		syslog( LOG_ERR, "%s: Unexpected literal specifier read from client on socket %d as part of P_DUMPICC command -- disconnecting client", fn, Client.conn->sd );
+		IMAPCount->CurrentClientConnections--;
+		close( Client.conn->sd );
+		return;
+	    }
 	    cmd_dumpicc( &Client, S_Tag );
 	    continue;
 	}
 	else if ( ! strcasecmp( (const char *)Command, "P_RESETCOUNTERS" ) )
 	{
+	    if ( Client.LiteralBytesRemaining )
+	    {
+		syslog( LOG_ERR, "%s: Unexpected literal specifier read from client on socket %d as part of P_RESETCOUNTERS command -- disconnecting client", fn, Client.conn->sd );
+		IMAPCount->CurrentClientConnections--;
+		close( Client.conn->sd );
+		return;
+	    }
 	    cmd_resetcounters( &Client, S_Tag );
 	    continue;
 	}
 	else if ( ! strcasecmp( (const char *)Command, "P_NEWLOG" ) )
 	{
+	    if ( Client.LiteralBytesRemaining )
+	    {
+		syslog( LOG_ERR, "%s: Unexpected literal specifier read from client on socket %d as part of P_NEWLOG command -- disconnecting client", fn, Client.conn->sd );
+		IMAPCount->CurrentClientConnections--;
+		close( Client.conn->sd );
+		return;
+	    }
 	    cmd_newlog( &Client, S_Tag );
 	    continue;
 	}
@@ -1641,7 +1722,8 @@ extern void HandleRequest( int clientsd )
 		}
 		continue;
 	    }
-	    strncpy( S_UserName, Username, sizeof S_UserName - 1 );	    
+	    strncpy( S_UserName, Username, sizeof S_UserName - 1 );
+	    S_UserName[ sizeof S_UserName - 1 ] = '\0';
 	    
 	    /*
 	     * Clients can send the password as a literal bytestream.  Check
@@ -1748,6 +1830,7 @@ extern void HandleRequest( int clientsd )
 		
 		*CP = '\0';
 		strncpy( S_Password, Lasts, sizeof S_Password - 1 );
+		S_Password[ sizeof S_Password - 1 ] = '\0';
 	    }
 	    
 
@@ -1779,6 +1862,7 @@ extern void HandleRequest( int clientsd )
 		if ( Tag )
 		{
 		    strncpy( S_Tag, Tag, MAXTAGLEN - 1 );
+		    S_Tag[ MAXTAGLEN - 1 ] = '\0';
 		    cmd_logout( &Client, S_Tag );
 		}
 	    }
@@ -1798,6 +1882,14 @@ extern void HandleRequest( int clientsd )
 	     * same way the cyrus implementation does -- tell the client to
 	     * log in first.
 	     */
+	    if ( Client.LiteralBytesRemaining )
+	    {
+		syslog( LOG_ERR, "%s: Unexpected literal specifier read from client on socket %d as part of unknown command -- disconnecting client", fn, Client.conn->sd );
+		IMAPCount->CurrentClientConnections--;
+		close( Client.conn->sd );
+		return;
+	    }
+	    
 	    snprintf( SendBuf, BufLen, "%s BAD Please login first\r\n", Tag, Command );
 	    if ( IMAP_Write( Client.conn, SendBuf, strlen(SendBuf) ) == -1 )
 	    {
