@@ -24,5 +24,50 @@ can find a wealth of information here:
 
 http://www.sendmail.org/~ca/email/starttls.html
 
-If anyone wants to contribute to this project by submitting some good
-documentation about configuring up-imapproxy with TLS, it would be appreciated.
+
+Steve Lidie from lehigh.edu contributed the following information
+that should help you along, also:
+
+The only change I found necessary was in the OpenSSL configuration file:
+
+# diff openssl.cnf~ openssl.cnf
+37c37
+< dir           = ./demoCA              # Where everything is kept
+---
+> dir           = .             # Where everything is kept
+
+Copied here vebatim, are the required steps:
+
+To make certificate authority:
+
+ mkdir CA
+ cd CA
+ mkdir certs crl newcerts private
+ echo "01" > serial
+ cp /dev/null index.txt
+ cp /usr/local/openssl/openssl.cnf.sample openssl.cnf
+ vi openssl.cnf   (set values)
+ openssl req -new -x509 -keyout private/cakey.pem -out cacert.pem -days 365 -config openssl.cnf
+
+To make a new certificate:
+
+ cd CA        (same directory created above)
+ openssl req -nodes -new -x509 -keyout newreq.pem -out newreq.pem -days 365 -config openssl.cnf
+
+Certificate and private key in file newreq.pem.
+To sign new certificate with certificate authority:
+
+ cd CA        (same directory created above)
+ openssl x509 -x509toreq -in newreq.pem -signkey newreq.pem -out tmp.pem
+ openssl ca -config openssl.cnf -policy policy_anything -out newcert.pem -infiles tmp.pem
+ rm -f tmp.pem
+
+newcert.pem contains the signed certificate, newreq.pem still
+contains the unsigned certificate and private key.
+
+The resulting imapproxy.config lines then look like this:
+
+tls_ca_path   /usr/local/etc/CA/
+tls_ca_file   /usr/local/etc/CA/cacert.pem
+tls_cert_file /usr/local/etc/CA/newcert.pem
+tls_key_file  /usr/local/etc/CA/newreq.pem

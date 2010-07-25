@@ -35,11 +35,15 @@
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/imapcommon.c,v $
-**	$Id: imapcommon.c,v 1.19 2004/11/10 15:29:23 dgm Exp $
+**	$Id: imapcommon.c,v 1.20 2005/01/12 17:50:16 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: imapcommon.c,v $
+**	Revision 1.20  2005/01/12 17:50:16  dgm
+**	Applied patch by David Lancaster to provide force_tls
+**	config option.
+**
 **	Revision 1.19  2004/11/10 15:29:23  dgm
 **	Explicitly NULL terminate all strings that are the result of
 **	strncpy.  Also enforce checking of LiteralBytesRemaining
@@ -455,7 +459,7 @@ extern ICD_Struct *Get_Server_conn( char *Username,
      * Do STARTTLS if necessary.
      */
 #if HAVE_LIBSSL
-    if ( PC_Struct.login_disabled )
+    if ( PC_Struct.login_disabled || PC_Struct.force_tls )
     {
 	snprintf( SendBuf, BufLen, "S0001 STARTTLS\r\n" );
 	if ( IMAP_Write( Server.conn, SendBuf, strlen(SendBuf) ) == -1 )

@@ -36,11 +36,18 @@
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/main.c,v $
-**	$Id: main.c,v 1.21 2004/11/10 15:32:02 dgm Exp $
+**	$Id: main.c,v 1.23 2005/01/12 17:50:45 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: main.c,v $
+**	Revision 1.23  2005/01/12 17:50:45  dgm
+**	Applied patch by David Lancaster to provide force_tls
+**	config option.
+**
+**	Revision 1.22  2005/01/12 17:11:30  dgm
+**	Patch by Joseph Tam to prevent SIGSEGV in RAND_egd().
+**
 **	Revision 1.21  2004/11/10 15:32:02  dgm
 **	Explictly NULL terminate all strings that are the result
 **	of strncpy.  Also enforce checking of LiteralBytesRemaining
@@ -138,7 +145,7 @@
 */
 
 
-static char *rcsId = "$Id: main.c,v 1.21 2004/11/10 15:32:02 dgm Exp $";
+static char *rcsId = "$Id: main.c,v 1.23 2005/01/12 17:50:45 dgm Exp $";
 static char *rcsSource = "$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/main.c,v $";
 static char *rcsAuthor = "$Author: dgm $";
 
@@ -165,6 +172,7 @@ static char *rcsAuthor = "$Author: dgm $";
 #include <pwd.h>
 #include <syslog.h>
 #include <signal.h>
+#include <openssl/rand.h>
 
 #if HAVE_SYS_PARAM_H
 #include <sys/param.h>
@@ -401,8 +409,9 @@ int main( int argc, char *argv[] )
 
     SetBannerAndCapability();
     
-    if ( PC_Struct.login_disabled )
+    if ( PC_Struct.login_disabled || PC_Struct.force_tls )
     {
+	syslog( LOG_INFO, "%s: Enabling STARTTLS.", fn );
 #if HAVE_LIBSSL
 	if ( PC_Struct.support_starttls )
 	{
@@ -410,13 +419,13 @@ int main( int argc, char *argv[] )
 	    SSL_library_init();
 	    
             /* Need to seed PRNG, too! */
-            if ( RAND_egd( RAND_file_name( f_randfile, sizeof( f_randfile ) ) ) < 0) 
+            if ( RAND_egd( ( RAND_file_name( f_randfile, sizeof( f_randfile ) ) == f_randfile ) ? f_randfile : "/.rnd" ) ) 
 	    {
                 /* Not an EGD, so read and write it. */
                 if ( RAND_load_file( f_randfile, -1 ) )
                     RAND_write_file( f_randfile );
             }
-	    
+	
 	    SSL_load_error_strings();
 	    tls_ctx = SSL_CTX_new( TLSv1_client_method() );
 	    if ( tls_ctx == NULL )

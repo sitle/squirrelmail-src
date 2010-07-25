@@ -34,11 +34,19 @@
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/include/RCS/imapproxy.h,v $
-**      $Id: imapproxy.h,v 1.20 2004/11/10 15:35:13 dgm Exp $
+**      $Id: imapproxy.h,v 1.22 2005/01/12 17:51:19 dgm Exp $
 **      
 **  Modification History:
 **
 **      $Log: imapproxy.h,v $
+**      Revision 1.22  2005/01/12 17:51:19  dgm
+**      Applied patch by David Lancaster to provide force_tls
+**      config option.
+**
+**      Revision 1.21  2005/01/12 16:50:59  dgm
+**      cache_size and cache_expiration_time in struct ProxyConfig now
+**      declared as unsigned int instead of unsigned long.
+**
 **      Revision 1.20  2004/11/10 15:35:13  dgm
 **      Changed LiteralBytesRemaining from signed long to unsigned long.
 **
@@ -245,8 +253,8 @@ struct ProxyConfig
     char *listen_addr;                        /* address we bind to */
     char *server_hostname;                    /* server we proxy to */
     unsigned int server_port;                 /* port we proxy to */
-    unsigned long cache_size;                 /* number of cache slots */
-    unsigned long cache_expiration_time;      /* cache exp time in seconds */
+    unsigned int cache_size;                  /* number of cache slots */
+    unsigned int cache_expiration_time;       /* cache exp time in seconds */
     unsigned int send_tcp_keepalives;         /* flag to send keepalives */
     unsigned int enable_select_cache;         /* flag to enable select cache */
     unsigned int foreground_mode;             /* flag to enable fg mode */
@@ -260,6 +268,7 @@ struct ProxyConfig
     char *tls_ca_path;                        /* path to directory CA certs */
     char *tls_cert_file;                      /* file with client cert */
     char *tls_key_file;                       /* file with client priv key */
+    unsigned int force_tls;                   /* flag to force TLS */
     unsigned char support_unselect;           /* unselect support flag */
     unsigned char support_starttls;           /* starttls support flag */
     unsigned char login_disabled;             /* login disabled flag */
