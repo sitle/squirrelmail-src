@@ -1,0 +1,145 @@
+2003-02-25  Dave McMurtrie  <dgm@pitt.edu>
+
+	* Version 1.1.4 released.
+
+2003-02-20  Dave McMurtrie  <dgm@pitt.edu>
+
+	* imapcommon.c: Get_Server_sd() now attempts to re-authenticate to the
+	  real server if it encounters a non-matching password.
+
+	* imapproxy.h: Added support for UNSELECT.
+
+	* main.c: SetBannerAndCapability() modified to set a flag in the
+	  global proxy config struct if the server supports UNSELECT.
+
+	* request.c: Raw_Proxy() now sends the server an UNSELECT instead of
+	  a CLOSE if the server supports it.
+
+2003-02-19  Dave McMurtrie  <dgm@pitt.edu>
+
+	* Version 1.1.3 released.
+
+	* imapcommon.c: Was previously checking for "+ go ahead" server
+	  response after sending string literal specifier in Get_Server_sd().
+	  Now I'm just checking for "+" instead.
+
+	* imapproxy.h: Added definitions for LITERAL_PASSWORD and
+	  NON_LITERAL_PASSWORD to remove ambiguous 1 and 0 flags from the
+	  code.
+
+	* base64.c: Newly introduced base64 encoding and decoding routines
+	  by Eric S. Raymond.
+
+	* COPYING: license file that must accompany base64.c added into
+	  src directory.
+
+	* request.c: Removed cmd_authenticate() function.  Added
+	  cmd_authenticate_login() function and additional code necessary to
+	  support "AUTHENTICATE LOGIN".
+	
+2003-02-17  Dave McMurtrie  <dgm@pitt.edu>
+	
+	* config.c: added an fclose() for the config file that I had forgotten.
+
+2003-02-14  Dave McMurtrie  <dgm@pitt.edu>
+
+	* request.c: added lseek() call in cmd_newlog().
+	
+2003-01-27  Dave McMurtrie  <dgm@pitt.edu>
+
+	* Version 1.1.2 released.
+
+	* Makefile: added patches by Gary Mills <mills@cc.UManitoba.CA>
+
+	* Makefile: added patches for linux support by 
+	  Frode Nordahl <frode@powertech.no>
+
+	* config.c: added patch by Gary Mills <mills@cc.UManitoba.CA> so it
+	  will compile properly using Sun's cc.
+
+	* imapcommon.c: added patch for linux support by
+	  Frode Nordahl <frode@powertech.no>
+
+	* main.c: added patch for linux support by
+	  Frode Nordahl <frode@powertech.no>
+
+	* pimpstat.c: added patch for linux support by
+	  Frode Nordahl <frode@powertech.no>
+
+2003-01-23  Dave McMurtrie  <dgm@pitt.edu>
+
+	* imapcommon.c: NonSyncLiteral flag was not being cleared properly.
+	
+2003-01-22  Dave McMurtrie  <dgm@pitt.edu>
+
+	* Version 1.1.1 released.
+
+	* imapproxy.h: function prototype for Get_Server_sd updated
+	  to reflect the literal password flag argument.
+
+	* request.c: Added logic to support passwords sent as string
+	  literals on login.  Also fixed bug that prevented passwords
+	  with space characters from working.
+
+	* imapcommon.c: Added logic to support passwords sent as string
+	  literals on login.
+
+2002-12-18  Dave McMurtrie  <dgm@pitt.edu>
+
+	* imapcommon.c: Fixed bug in for loop that does string literal
+	  processing.
+
+2002-12-17  Dave McMurtrie  <dgm@pitt.edu>
+
+	* Global configuration file support added.
+	
+	* Version 1.1 released.
+
+	* main.c: minor bugfixes from Gary Mills <mills@cc.UManitoba.CA>
+	  incorporated.
+
+	* main.c: changed accepted command line arguments.
+
+2002-09-06  Dave McMurtrie  <dgm@pitt.edu>
+
+	* main.c: added code to ignore SIGPIPE so EPIPE on a
+	  failed send() won't kill us.  Also ignore SIGHUP.
+	
+2002-08-30  Dave McMurtrie  <dgm@pitt.edu>
+
+	* main.c: added initialization of the trace mutex that I forgot.
+
+	* pimpstat.c newly introduced.
+
+	* added total client logins counter.
+
+2002-08-29  Dave McMurtrie  <dgm@pitt.edu>
+	
+	* Pitt common functions moved out of external libraries into this
+	  source tree.
+
+	* imapcommon.c: fixed nasty socket descriptor leak.
+
+2002-08-28  Dave McMurtrie  <dgm@pitt.edu>
+
+	* replaced all internal logging calls with standard syslog
+	  calls.
+
+	* main.c: made call to setrlimit dynamic.
+
+	* request.c: added p_resetcounters command.
+
+	* request.c: added poll() timeout in raw proxy loop.
+
+2002-08-27  Dave McMurtrie  <dgm@pitt.edu>
+
+	* request.c: no longer do a hostname lookup.  Just log IP instead.
+
+2002-07-18  Dave McMurtrie  <dgm@pitt.edu>
+
+	* request.c: added p_dumpicc and p_newlog commands.  renamed trace
+	  command to p_trace.
+
+2002-07-03  Dave McMurtrie  <dgm@pitt.edu>
+
+	* Version 1.0 released.
