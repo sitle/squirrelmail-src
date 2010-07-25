@@ -33,12 +33,15 @@
 **
 **  RCS:
 **
-**      $Source$
-**      $Id$
+**      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/select.c,v $
+**      $Id: select.c,v 1.1 2004/02/24 15:13:21 dgm Exp $
 **      
 **  Modification History:
 **  
-**      $Log$
+**      $Log: select.c,v $
+**      Revision 1.1  2004/02/24 15:13:21  dgm
+**      Initial revision
+**
 **
 **
 */

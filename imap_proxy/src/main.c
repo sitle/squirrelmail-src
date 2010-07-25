@@ -36,11 +36,19 @@
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/main.c,v $
-**	$Id: main.c,v 1.18 2003/11/14 14:59:44 dgm Exp dgm $
+**	$Id: main.c,v 1.19 2004/02/24 15:17:20 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: main.c,v $
+**	Revision 1.19  2004/02/24 15:17:20  dgm
+**	Added ParseBannerAndCapability() function to allow for
+**	parsing the banner string and capability strings.  Can
+**	now handle capability string in explicit capability
+**	response, or as part of the banner string.
+**
+**	Added SELECT caching stuff.
+**
 **	Revision 1.18  2003/11/14 14:59:44  dgm
 **	Applied patches by Geoffrey Hort <g.hort@unsw.edu.au> to allow
 **	configurable listen address.  Discard token "SASL-IR" if server
@@ -122,7 +130,7 @@
 */
 
 
-static char *rcsId = "$Id: main.c,v 1.18 2003/11/14 14:59:44 dgm Exp dgm $";
+static char *rcsId = "$Id: main.c,v 1.19 2004/02/24 15:17:20 dgm Exp $";
 static char *rcsSource = "$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/main.c,v $";
 static char *rcsAuthor = "$Author: dgm $";
 

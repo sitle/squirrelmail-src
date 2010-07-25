@@ -35,11 +35,14 @@
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/config.c,v $
-**      $Id: config.c,v 1.9 2003/11/14 15:03:58 dgm Exp dgm $
+**      $Id: config.c,v 1.10 2004/02/24 14:57:47 dgm Exp $
 **      
 **  Modification History:
 **
 **      $Log: config.c,v $
+**      Revision 1.10  2004/02/24 14:57:47  dgm
+**      Added new config option 'enable_select_cache'.
+**
 **      Revision 1.9  2003/11/14 15:03:58  dgm
 **      Patch by Geoffrey Hort <g.hort@unsw.edu.au> to allow
 **      configurable listen address.
