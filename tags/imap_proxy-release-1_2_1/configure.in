@@ -1,0 +1,155 @@
+dnl This file written by Devrim SERAL for imapproxy daemon
+dnl
+dnl Rewritten by Ken Murchison
+
+AC_INIT()
+
+dnl Checks for programs.
+AC_PROG_MAKE_SET
+AC_PROG_CC
+AC_PROG_INSTALL
+
+dnl Check for Host information
+AC_CANONICAL_SYSTEM()
+
+
+dnl Check for BSD sockets
+AC_CHECK_FUNC(connect, ,
+	AC_CHECK_LIB(nsl, gethostbyname, ,)
+	AC_CHECK_LIB(socket, connect, ,
+		AC_ERROR([Can't compile without BSD sockets!!!])
+	)
+)
+
+
+dnl Check for pthreads
+AC_CHECK_LIB(pthread, pthread_create, ,
+	AC_CHECK_LIB(c_r, pthread_create, ,
+		AC_ERROR([Can't compile without pthreads!!!])
+	)
+)
+
+dnl Check for mmap
+AC_CHECK_FUNC(mmap, , AC_ERROR([Can't compile without mmap!!!]))
+
+
+dnl Set location of OpenSSL (for -lcrypto and -lssl)	
+AC_ARG_WITH(openssl, [  --with-openssl=DIR      use OpenSSL rooted in DIR],
+        with_openssl=$withval, with_openssl=yes)
+
+if test -d $with_openssl; then
+	CPPFLAGS="${CPPFLAGS} -I${with_openssl}/include"
+	LDFLAGS="${LDFLAGS} -L${with_openssl}/lib"
+        case "$target_os" in
+        solaris2*)
+                LDFLAGS="${LDFLAGS} -R${with_openssl}/lib"
+                ;;
+        esac
+fi
+
+AC_ARG_WITH(openssl-inc, [  --with-openssl-inc=DIR  use OpenSSL headers from DIR],
+        with_openssl_inc=$withval, with_openssl_inc=no)
+
+if test -d $with_openssl_inc; then
+	CPPFLAGS="${CPPFLAGS} -I${with_openssl_inc}"
+fi
+
+AC_ARG_WITH(openssl-lib, [  --with-openssl-lib=DIR  use OpenSSL libs from DIR],
+        with_openssl_lib=$withval, with_openssl_lib=no)
+
+if test -d $with_openssl_lib; then
+	LDFLAGS="${LDFLAGS} -L${with_openssl_lib}"
+        case "$target_os" in
+        solaris2*)
+                LDFLAGS="${LDFLAGS} -R${with_openssl_lib}"
+                ;;
+        esac
+fi
+
+
+dnl Set location of Kerberos5 (needed for some compilations of OpenSSL)	
+AC_ARG_WITH(krb5, [  --with-krb5=DIR         use Kerberos5 rooted in DIR],
+        with_krb5=$withval, with_krb5=yes)
+
+if test -d $with_krb5; then
+	CPPFLAGS="${CPPFLAGS} -I${with_krb5}/include"
+	LDFLAGS="${LDFLAGS} -L${with_krb5}/lib"
+fi
+
+
+dnl Set location of libwrap, the access control library
+AC_ARG_WITH(libwrap, [  --with-libwrap=DIR     use libwrap rooted in DIR],
+        with_libwrap=$withval, with_libwrap=yes)
+
+if test -d $with_libwrap; then
+        CPPFLAGS="${CPPFLAGS} -I${with_libwrap}/include"
+        LDFLAGS="${LDFLAGS} -L${with_libwrap}/lib"
+fi
+
+
+dnl Check for libwrap
+save_LIBS="$LIBS"
+if test "$with_libwrap" != no; then
+  AC_CHECK_LIB(nsl, yp_get_default_domain, , [
+        with_libwrap=no
+        AC_WARN([nsl library not found!!!  Wrappers will be disabled.])
+  ])
+  if test "$with_libwrap" != no; then
+     AC_CHECK_LIB(wrap, request_init, , [
+        LIBS="$save_LIBS"
+        AC_WARN([Wrappers library not found!!!  Wrappers will be disabled.])
+     ])
+  fi
+fi
+
+
+dnl Check for crypto library
+AC_CHECK_LIB(crypto, EVP_DigestInit, ,
+	AC_ERROR([Can't compile without OpenSSL crypto library!!!])
+)
+
+
+dnl Check for SSL
+save_LIBS="$LIBS"
+LIB_SSL=""
+AC_CHECK_LIB(ssl, SSL_new, ,
+	AC_WARN([OpenSSL library not found!!!  STARTTLS will be disabled.]),
+	-lcrypto)
+
+
+dnl Check for curses
+save_LIBS="$LIBS"
+LIB_CURSES=""
+AC_CHECK_LIB(curses, initscr, LIB_CURSES="-lcurses",
+	AC_ERROR([Can't compile without curses!!!])
+)
+LIBS="$save_LIBS"
+AC_SUBST(LIB_CURSES)
+
+
+AC_CONFIG_HEADER(config.h)
+
+
+dnl insert defines to Makefile 
+AC_SUBST(DEFINES)
+
+
+dnl Checks for header files.
+AC_HEADER_STDC
+AC_CHECK_HEADERS(unistd.h sys/mman.h sys/param.h)
+
+
+dnl Check for typedefs
+AC_CHECK_TYPEDEF(nfds_t, poll.h)
+
+
+dnl Checks for typedefs, structures, and compiler characteristics.
+AC_C_CONST
+
+
+dnl Checks for library functions.
+AC_PROG_GCC_TRADITIONAL
+AC_TYPE_SIGNAL
+AC_CHECK_FUNCS(socket poll)
+
+AC_OUTPUT(Makefile  , echo timestamp > stamp-h)
