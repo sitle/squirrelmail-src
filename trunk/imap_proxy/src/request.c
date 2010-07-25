@@ -41,11 +41,14 @@
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/request.c,v $
-**	$Id: request.c,v 1.8 2003/02/19 12:57:15 dgm Exp $
+**	$Id: request.c,v 1.9 2003/02/20 12:57:26 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: request.c,v $
+**	Revision 1.9  2003/02/20 12:57:26  dgm
+**	Raw_Proxy() sends UNSELECT instead of CLOSE if the server supports it.
+**
 **	Revision 1.8  2003/02/19 12:57:15  dgm
 **	Added support for "AUTHENTICATE LOGIN".
 **
@@ -113,6 +116,7 @@ extern pthread_mutex_t trace;
 extern char TraceUser[MAXUSERNAMELEN];
 extern int Tracefd;
 extern ICC_Struct *ICC_HashTable[ HASH_TABLE_SIZE ];
+extern ProxyConfig_Struct PC_Struct;
 
 /*
  * Function prototypes for internal entry points.
@@ -879,6 +883,7 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server )
     int BytesSent;
     char *CP;
     char TraceBuf[ BUFSIZE ];
+    char SendBuf[ BUFSIZE ];
     
 #define SERVER 0
 #define CLIENT 1
@@ -1065,15 +1070,19 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server )
 			/*
 			 * Since we want to potentially reuse this server
 			 * connection, we want to return it to an unselected 
-			 * state.  
+			 * state.  Use UNSELECT if the server supports it,
+			 * otherwise use CLOSE.
 			 *
 			 * This may not be entirely necessary, so don't go
 			 * crazy trying to check return codes, etc...  Also,
 			 * make a half-hearted attempt to eat whatever the
 			 * server sends back.
 			 */
-			send( Server->sd, "C64 CLOSE\r\n",
-			      strlen("C64 CLOSE\r\n"), 0 );
+			snprintf( SendBuf, sizeof SendBuf - 1,
+				  "C64 %s\r\n", ( (PC_Struct.support_unselect) ? "UNSELECT" : "CLOSE" ) );
+			
+			send( Server->sd, SendBuf,
+			      strlen(SendBuf), 0 );
 			recv( Server->sd, Server->ReadBuf, 
 			      sizeof Server->ReadBuf, 0 );
 			memset( Server->ReadBuf, 0, sizeof Server->ReadBuf );

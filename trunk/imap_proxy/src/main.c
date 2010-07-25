@@ -38,11 +38,15 @@
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/main.c,v $
-**	$Id: main.c,v 1.7 2003/02/19 13:01:40 dgm Exp $
+**	$Id: main.c,v 1.8 2003/02/20 12:55:03 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: main.c,v $
+**	Revision 1.8  2003/02/20 12:55:03  dgm
+**	SetBannerAndCapability() now checks to see if the server supports
+**	UNSELECT and sets a flag in the global proxy config struct.
+**
 **	Revision 1.7  2003/02/19 13:01:40  dgm
 **	Changes to SetBannerAndCapability() to strip out unsupported AUTH=
 **	mechanisms from the capability string.
@@ -74,7 +78,7 @@
 */
 
 
-static char *rcsId = "$Id: main.c,v 1.7 2003/02/19 13:01:40 dgm Exp $";
+static char *rcsId = "$Id: main.c,v 1.8 2003/02/20 12:55:03 dgm Exp $";
 static char *rcsSource = "$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/main.c,v $";
 static char *rcsAuthor = "$Author: dgm $";
 
@@ -577,6 +581,9 @@ static void ServerInit( void )
  *
  * Notes:       All AUTH mechanisms will be stripped from the capability
  *              string.  AUTH=LOGIN will be added.
+ *              The support_unselect flag in the global copy of the
+ *              ProxyConfig struct will be set in this function depending on
+ *              whether the server supports UNSELECT or not.
  *--
  */
 static int SetBannerAndCapability( void )
@@ -696,6 +703,11 @@ static int SetBannerAndCapability( void )
     
     sprintf( Capability, CP );
     
+    /*
+     * initially assume that the server doesn't support UNSELECT.
+     */
+    PC_Struct.support_unselect = UNSELECT_NOT_SUPPORTED;
+
     for( ; ; )
     {
 	CP = strtok( NULL, " " );
@@ -703,6 +715,11 @@ static int SetBannerAndCapability( void )
 	if ( !CP )
 	    break;
 
+	if ( !strncasecmp( CP, "UNSELECT", strlen( "UNSELECT" ) ) )
+	{
+	    PC_Struct.support_unselect = UNSELECT_SUPPORTED;
+	}
+	
 	/*
 	 * If this token happens to be an auth mechanism, we want to
 	 * discard it unless it's an auth mechanism we can support.

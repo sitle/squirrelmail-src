@@ -1,4 +1,23 @@
+2003-02-25  Dave McMurtrie  <dgm@pitt.edu>
+
+	* Version 1.1.4 released.
+
+2003-02-20  Dave McMurtrie  <dgm@pitt.edu>
+
+	* imapcommon.c: Get_Server_sd() now attempts to re-authenticate to the
+	  real server if it encounters a non-matching password.
+
+	* imapproxy.h: Added support for UNSELECT.
+
+	* main.c: SetBannerAndCapability() modified to set a flag in the
+	  global proxy config struct if the server supports UNSELECT.
+
+	* request.c: Raw_Proxy() now sends the server an UNSELECT instead of
+	  a CLOSE if the server supports it.
+
 2003-02-19  Dave McMurtrie  <dgm@pitt.edu>
+
+	* Version 1.1.3 released.
 
 	* imapcommon.c: Was previously checking for "+ go ahead" server
 	  response after sending string literal specifier in Get_Server_sd().
