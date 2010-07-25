@@ -35,11 +35,16 @@
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/imapcommon.c,v $
-**	$Id: imapcommon.c,v 1.18 2003/10/22 13:39:24 dgm Exp $
+**	$Id: imapcommon.c,v 1.19 2004/11/10 15:29:23 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: imapcommon.c,v $
+**	Revision 1.19  2004/11/10 15:29:23  dgm
+**	Explicitly NULL terminate all strings that are the result of
+**	strncpy.  Also enforce checking of LiteralBytesRemaining
+**	after any calls to IMAP_Line_Read.
+**
 **	Revision 1.18  2003/10/22 13:39:24  dgm
 **	Fixed really bad bug in for loop for string literal detection.
 **	Explicitly clear errno prior to calling atol().
@@ -434,6 +439,17 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 	goto fail;
     }
 
+    /*
+     * Sanity check.  We don't deal with literal responses in the
+     * banner string.
+     */
+    if ( Server.LiteralBytesRemaining )
+    {
+	syslog(LOG_ERR, "%s: Unexpected string literal in server banner response.", fn );
+	goto fail;
+	
+    }
+    
 
     /*
      * Do STARTTLS if necessary.
@@ -456,6 +472,14 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 	    syslog(LOG_INFO, "STARTTLS failed: No response from IMAP server after sending STARTTLS command" );
 	    goto fail;
 	}
+
+	if ( Server.LiteralBytesRemaining )
+	{
+	    syslog(LOG_ERR, "%s: Unexpected string literal in server response.", fn );
+	    goto fail;
+	
+	}
+	
     
 	/*
 	 * Try to match up the tag in the server response to the client tag.
@@ -560,6 +584,13 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 	    syslog(LOG_INFO, "LOGIN: '%s' (%s:%d) failed: Failed to receive go-ahead from IMAP server after sending LOGIN command", Username, ClientAddr, sin_port );
 	    goto fail;
 	}
+
+	if ( Server.LiteralBytesRemaining )
+	{
+	    syslog(LOG_ERR, "%s: Unexpected string literal in server banner response.  Should be a continuation response.", fn );
+	    goto fail;
+	    
+	}
 	
 	if ( Server.ReadBuf[0] != '+' )
 	{
@@ -616,7 +647,14 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 	    syslog(LOG_INFO, "LOGIN: '%s' (%s:%d) failed: No response from IMAP server after sending LOGIN command", Username, ClientAddr, sin_port );
 	    goto fail;
 	}
-    
+
+	if ( Server.LiteralBytesRemaining )
+	{
+	    syslog(LOG_ERR, "%s: Unexpected string literal in server LOGIN response.", fn );
+	    goto fail;
+	    
+	}
+	
 	if ( Server.ReadBuf[0] != '*' )
 	    break;
     }
@@ -707,6 +745,7 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 	    /* fill in the newest used (oxymoron?) structure */
 	    strncpy( ICC_Active->username, Username, 
 		     sizeof ICC_Active->username );
+	    ICC_Active->username[ sizeof ICC_Active->username - 1 ] = '\0';
 	    memcpy( ICC_Active->hashedpw, md5pw, sizeof ICC_Active->hashedpw );
 	    ICC_Active->logouttime = 0;    /* zero means, "it's active". */
 	    ICC_Active->server_conn = Server.conn;
@@ -951,7 +990,8 @@ extern int IMAP_Read( ICD_Struct *ICD, void *buf, int count )
 extern int IMAP_Literal_Read( ITD_Struct *ITD )
 {
     char *fn = "IMAP_Literal_Read()";
-    int Status, i, j;
+    int Status;
+    unsigned int i, j;
     struct pollfd fds[2];
     nfds_t nfds;
     int pollstatus;
@@ -1083,7 +1123,8 @@ extern int IMAP_Literal_Read( ITD_Struct *ITD )
 extern int IMAP_Line_Read( ITD_Struct *ITD )
 {
     char *CP;
-    int Status, i, j;
+    int Status;
+    unsigned int i, j;
     char *fn = "IMAP_Line_Read()";
     char *EndOfBuffer;
 

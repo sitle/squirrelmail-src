@@ -1,3 +1,27 @@
+2004-11-10  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* config.c: Explictly NULL terminate all strings that are the
+	  result of strncpy.
+
+	* imapcommon.c: Explictly NULL terminate all strings that are the
+	  result of strncpy.  Also enforce checking of LiteralBytesRemaining
+	  after any call to IMAP_Line_Read.  Changed some signed
+	  data types to unsigned.
+
+	* logging.c: Explictly NULL terminate all strings that are the
+	  result of strncpy.
+
+	* main.c: Explictly NULL terminate all strings that are the
+	  result of strncpy.  Also enforce checking of LiteralBytesRemaining
+	  after any call to IMAP_Line_Read.
+
+	* request.c: Explictly NULL terminate all strings that are the
+	  result of strncpy.  Also enforce checking of LiteralBytesRemaining
+	  after any call to IMAP_Line_Read.
+
+	* select.c: Explictly NULL terminate all strings that are the
+	  result of strncpy.
+	
 2004-10-11  Dave McMurtrie  <davemcmurtrie@hotmail.com>
 
 	* config.c: Added foreground_mode option.

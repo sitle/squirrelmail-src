@@ -36,11 +36,16 @@
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/main.c,v $
-**	$Id: main.c,v 1.20 2004/10/11 18:23:19 dgm Exp $
+**	$Id: main.c,v 1.21 2004/11/10 15:32:02 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: main.c,v $
+**	Revision 1.21  2004/11/10 15:32:02  dgm
+**	Explictly NULL terminate all strings that are the result
+**	of strncpy.  Also enforce checking of LiteralBytesRemaining
+**	after any calls to IMAP_Line_Read.
+**
 **	Revision 1.20  2004/10/11 18:23:19  dgm
 **	Added foreground_mode option.
 **
@@ -133,7 +138,7 @@
 */
 
 
-static char *rcsId = "$Id: main.c,v 1.20 2004/10/11 18:23:19 dgm Exp $";
+static char *rcsId = "$Id: main.c,v 1.21 2004/11/10 15:32:02 dgm Exp $";
 static char *rcsSource = "$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/main.c,v $";
 static char *rcsAuthor = "$Author: dgm $";
 
@@ -257,6 +262,7 @@ int main( int argc, char *argv[] )
 	case 'f':
 	    /* user specified a config filename */
 	    strncpy( ConfigFile, optarg, sizeof ConfigFile -1 );
+	    ConfigFile[ sizeof ConfigFile - 1 ] = '\0';
 	    syslog( LOG_INFO, "%s: Using configuration file '%s'",
 		    fn, ConfigFile );
 	    break;
@@ -279,6 +285,7 @@ int main( int argc, char *argv[] )
     if ( ! ConfigFile[0] )
     {
 	strncpy( ConfigFile, DEFAULT_CONFIG_FILE, sizeof ConfigFile -1 );
+	ConfigFile[ sizeof ConfigFile - 1 ] = '\0';
 	syslog( LOG_INFO, "%s: Using default configuration file '%s'.",
 		fn, ConfigFile );
     }
@@ -948,7 +955,14 @@ static void SetBannerAndCapability( void )
 	close( itd.conn->sd );
 	exit( 1 );
     }
+
+    if ( itd.LiteralBytesRemaining )
+    {
+	syslog( LOG_ERR, "%s: Server sent unexpected literal specifier in banner response -- Exiting.", fn );
+	exit( 1 );
+    }
     
+
     BannerLen = ParseBannerAndCapability( Banner, sizeof Banner - 1,
 					  itd.ReadBuf, BytesRead );
     
@@ -991,10 +1005,18 @@ static void SetBannerAndCapability( void )
 	exit( 1 );
     }
 
+    if ( itd.LiteralBytesRemaining )
+    {
+	syslog( LOG_ERR, "%s: Server sent unexpected literal specifier in CAPABILITY response -- Exiting.", fn );
+	close( itd.conn->sd );
+	exit ( 1 );
+	
+    }
+    
     CapabilityLen = ParseBannerAndCapability( Capability, sizeof Capability - 1,
 					      itd.ReadBuf, BytesRead );
     
-
+    
     /* Now read the tagged response and make sure it's OK */
     BytesRead = IMAP_Line_Read( &itd );
     if ( BytesRead == -1 )
@@ -1003,7 +1025,12 @@ static void SetBannerAndCapability( void )
 	close( itd.conn->sd );
 	exit( 1 );
     }
-    
+
+    if ( itd.LiteralBytesRemaining )
+    {
+	syslog( LOG_ERR, "%s: Server sent unexpected literal specifier in tagged CAPABILITY response -- exiting.", fn );
+	exit( 1 );
+    }
     
     if ( strncasecmp( itd.ReadBuf, IMAP_TAGGED_OK, strlen(IMAP_TAGGED_OK) ) )
     {
@@ -1026,7 +1053,12 @@ static void SetBannerAndCapability( void )
     {
 	syslog(LOG_WARNING, "%s: IMAP_Line_Read() failed on LOGOUT -- Ignoring", fn );
     }
-    
+
+    if ( itd.LiteralBytesRemaining )
+    {
+	syslog( LOG_WARNING, "%s: Server sent unexpected literal specifier in LOGOUT response -- Ignoring", fn );
+    }
+        
     close( itd.conn->sd );
     return;
 }

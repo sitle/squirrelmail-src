@@ -34,11 +34,15 @@
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/logging.c,v $
-**      $Id: logging.c,v 1.2 2003/05/20 19:01:49 dgm Exp $
+**      $Id: logging.c,v 1.3 2004/11/10 15:30:17 dgm Exp $
 **      
 **  Modification History:
 **
 **      $Log: logging.c,v $
+**      Revision 1.3  2004/11/10 15:30:17  dgm
+**      Explictly NULL terminate all strings that are the result
+**      of strncpy.
+**
 **      Revision 1.2  2003/05/20 19:01:49  dgm
 **      Comment changes only.
 **
@@ -84,6 +88,7 @@ struct SyslogPriorityMap_Struct SyslogPriorityTable[ NUM_OF_PRIORITIES ];
            exit( 1 ); \
         } \
         strncpy( SyslogFacilityTable[ INDEX ].FacilityString, #FACILITY, MAX_FACILITY_STRINGLEN - 1 ); \
+        SyslogFacilityTable[ INDEX ].FacilityString[ MAX_FACILITY_STRINGLEN - 1 ] = '\0'; \
         SyslogFacilityTable[ INDEX ].FacilityValue = FACILITY; \
         INDEX++;
 
@@ -98,6 +103,7 @@ struct SyslogPriorityMap_Struct SyslogPriorityTable[ NUM_OF_PRIORITIES ];
            exit( 1 ); \
         } \
         strncpy( SyslogPriorityTable[ INDEX ].PriorityString, #PRIORITY, MAX_PRIORITY_STRINGLEN - 1 ); \
+        SyslogPriorityTable[ INDEX ].PriorityString[ MAX_PRIORITY_STRINGLEN - 1 ] = '\0'; \
         SyslogPriorityTable[ INDEX ].PriorityValue = PRIORITY; \
         INDEX++;
 

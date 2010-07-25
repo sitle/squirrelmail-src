@@ -35,11 +35,14 @@
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/config.c,v $
-**      $Id: config.c,v 1.11 2004/10/11 18:01:29 dgm Exp $
+**      $Id: config.c,v 1.12 2004/11/10 15:26:25 dgm Exp $
 **      
 **  Modification History:
 **
 **      $Log: config.c,v $
+**      Revision 1.12  2004/11/10 15:26:25  dgm
+**      Explictly NULL terminate all strings that are the result of an strncpy.
+**
 **      Revision 1.11  2004/10/11 18:01:29  dgm
 **      Added foreground mode configuration option.
 **
@@ -129,6 +132,7 @@ struct Config_Struct ConfigTable[ 100 ];
  */
 #define ADD_TO_TABLE( KEYWORD, SETFUNCTION, STA, INDEX ) \
         strncpy( ConfigTable[ INDEX ].Keyword, KEYWORD, MAX_KEYWORD_LEN -1 ); \
+        ConfigTable[ INDEX ].Keyword[ MAX_KEYWORD_LEN - 1 ] = '\0'; \
         ConfigTable[ INDEX ].SetFunction = SETFUNCTION; \
         ConfigTable[ INDEX ].StorageAddress = STA; \
         INDEX++;

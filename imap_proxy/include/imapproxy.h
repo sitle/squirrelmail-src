@@ -34,11 +34,14 @@
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/include/RCS/imapproxy.h,v $
-**      $Id: imapproxy.h,v 1.19 2004/10/11 18:00:42 dgm Exp $
+**      $Id: imapproxy.h,v 1.20 2004/11/10 15:35:13 dgm Exp $
 **      
 **  Modification History:
 **
 **      $Log: imapproxy.h,v $
+**      Revision 1.20  2004/11/10 15:35:13  dgm
+**      Changed LiteralBytesRemaining from signed long to unsigned long.
+**
 **      Revision 1.19  2004/10/11 18:00:42  dgm
 **      Added foreground_mode configuration option.
 **
@@ -209,7 +212,7 @@ struct IMAPTransactionDescriptor
     char ReadBuf[ BUFSIZE ];         /* Read Buffer                          */
     unsigned int BytesInReadBuffer;  /* bytes left in read buffer            */
     unsigned int ReadBytesProcessed; /* bytes already processed in read buf  */
-    long LiteralBytesRemaining;      /* num of bytes left to read as literal */
+    unsigned long LiteralBytesRemaining; /* num of bytes left as literal     */
     unsigned char NonSyncLiteral;    /* rfc2088 alert flag                   */
     unsigned char MoreData;          /* flag to tell caller "more data"      */
     unsigned char TraceOn;           /* trace this transaction?              */

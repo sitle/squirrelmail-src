@@ -34,11 +34,14 @@
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/select.c,v $
-**      $Id: select.c,v 1.2 2004/03/11 15:14:06 dgm Exp $
+**      $Id: select.c,v 1.3 2004/11/10 15:34:14 dgm Exp $
 **      
 **  Modification History:
 **  
 **      $Log: select.c,v $
+**      Revision 1.3  2004/11/10 15:34:14  dgm
+**      Explictly NULL terminate all strings that are the result of strncpy.
+**
 **      Revision 1.2  2004/03/11 15:14:06  dgm
 **      Behavior of calling code when Populate_Select_Cache() fails
 **      modified to not send error back to client.
@@ -417,6 +420,7 @@ static int Populate_Select_Cache( ITD_Struct *Server,
     ISC->ISCTime = time( 0 );
 
     strncpy( (char *)ISC->MailboxName, (const char *)MailboxName, MAXMAILBOXNAME - 1 );
+    ISC->MailboxName[ MAXMAILBOXNAME - 1 ] = '\0';
 
     return( 0 );
     
