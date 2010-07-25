@@ -37,11 +37,15 @@
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/imapcommon.c,v $
-**	$Id: imapcommon.c,v 1.7 2003/01/23 16:24:31 dgm Exp $
+**	$Id: imapcommon.c,v 1.8 2003/01/27 13:59:53 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: imapcommon.c,v $
+**	Revision 1.8  2003/01/27 13:59:53  dgm
+**	Patch by Frode Nordahl <frode@powertech.no> to allow
+**	compilation on Linux platforms.
+**
 **	Revision 1.7  2003/01/23 16:24:31  dgm
 **	NonSyncLiteral flag was not being cleared properly.
 **
@@ -76,7 +80,13 @@
 #include "imapproxy.h"
 #include <string.h>
 #include <errno.h>
+
+#ifndef LINUX
 #include <md5.h>
+#else
+#include <openssl/evp.h>
+#endif
+
 #include <pthread.h>
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -197,11 +207,25 @@ extern int Get_Server_sd( char *Username,
     int rc;
     unsigned int Expiration;
 
+#ifdef LINUX
+    EVP_MD_CTX mdctx;
+    const EVP_MD *md;
+    unsigned char md_value[EVP_MAX_MD_SIZE];
+    int md_len;
+#endif
+
     Expiration = PC_Struct.cache_expiration_time;
     memset( &Server, 0, sizeof Server );
     
     /* need to md5 the passwd regardless, so do that now */
+#ifndef LINUX
     md5_calc( md5pw, Password, strlen( Password ) );
+#else
+    EVP_DigestInit(&mdctx, EVP_md5());
+    EVP_DigestUpdate(&mdctx, Password, strlen(Password));
+    EVP_DigestFinal(&mdctx, md_value, &md_len);
+    strcat(md5pw, md_value);
+#endif
     
     /* see if we have a reusable connection available */
     ICC_Active = NULL;

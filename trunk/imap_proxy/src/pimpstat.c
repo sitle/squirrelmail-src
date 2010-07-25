@@ -36,11 +36,15 @@
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/pimpstat.c,v $
-**      $Id: pimpstat.c,v 1.2 2002/12/17 14:24:11 dgm Exp $
+**      $Id: pimpstat.c,v 1.3 2003/01/27 13:49:36 dgm Exp $
 **      
 **  Modification History:
 **
 **      $Log: pimpstat.c,v $
+**      Revision 1.3  2003/01/27 13:49:36  dgm
+**      Added patch by Frode Nordahl <frode@powertech.no> to allow
+**      compilation on Linux platforms.
+**
 **      Revision 1.2  2002/12/17 14:24:11  dgm
 **      Added support for global configuration structure.
 **
@@ -63,6 +67,10 @@
 #include <time.h>
 #include <strings.h>
 #include <signal.h>
+
+#ifdef LINUX
+#include <sys/param.h>
+#endif
 
 #define DIGITS 11
 
