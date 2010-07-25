@@ -35,11 +35,14 @@
 **  RCS:
 **
 **      $Source: /afs/andrew.cmu.edu/usr18/dave64/work/IMAP_Proxy/include/RCS/common.h,v $
-**      $Id: common.h,v 1.8 2007/11/15 11:13:13 dave64 Exp $
+**      $Id: common.h,v 1.9 2008/01/28 13:11:55 dave64 Exp $
 **      
 **  Modification History:
 **
 **      $Log: common.h,v $
+**      Revision 1.9  2008/01/28 13:11:55  dave64
+**      updated version to 1.2.6
+**
 **      Revision 1.8  2007/11/15 11:13:13  dave64
 **      updated version to 1.2.6rc2.
 **
@@ -72,7 +75,7 @@
 
 
 #define HASH_TABLE_SIZE         1024
-#define IMAP_PROXY_VERSION      "1.2.6rc2"
+#define IMAP_PROXY_VERSION      "1.2.6"
 
 /*
  * Misc. function prototypes.
