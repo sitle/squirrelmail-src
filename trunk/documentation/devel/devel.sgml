@@ -3018,7 +3018,7 @@ put 1.4.20/squirrelmail-1.4.20/doc/ReleaseNotes
     <enum>
         <item> SSH into sciurida
          <item> Change to the web directory for SquirrelMail (currently /srv/www/www/htdocs).
-         <item> Edit download.php and change the version number as necessary. This is a php variable in the top part of the file.
+         <item> Edit download.php and change the version number as necessary (specifically, you need to update <tt>$stable</tt> and <tt>$stable_svn</tt>).
          <item> Edit plugin_query.php file and change version number. This file informs pupdate plugin users about new release.
          <item> Upload the md5 checksums and sha1 checksums that make-release-webmail calculated and your GPG signatures into the <tt>sums/</tt> dir.
     </enum>
