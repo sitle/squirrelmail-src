@@ -36,11 +36,29 @@
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/main.c,v $
-**	$Id: main.c,v 1.14 2003/05/20 19:04:23 dgm Exp $
+**	$Id: main.c,v 1.17 2003/10/10 15:07:02 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: main.c,v $
+**	Revision 1.17  2003/10/10 15:07:02  dgm
+**	Patch by Ken Murchison <ken@oceana.com> applied.  Discard "SASL"
+**	capability if advertised by the server.  This is a new extension
+**	that will be supported in Cyrus v2.2.2.
+**
+**	Revision 1.16  2003/10/09 13:03:52  dgm
+**	Added configurable tcp keepalive support.  Added retry logic for
+**	initial socket connection to imap server in SetBannerAndCapability()
+**	so it won't just fatally exit on ECONNREFUSED (submitted by Gary
+**	Mills <mills@cc.UManitoba.CA>).
+**
+**	Revision 1.15  2003/07/14 16:39:58  dgm
+**	Applied patch by William Yodlowsky <wyodlows@andromeda.rutgers.edu>
+**	to allow TLS to work on machines without /dev/random.
+**
+**	Applied patch by Gary Windham <windhamg@email.arizona.edu> to add
+**	tcp wrappers support.
+**
 **	Revision 1.14  2003/05/20 19:04:23  dgm
 **	Comment changes only.
 **
@@ -98,7 +116,7 @@
 */
 
 
-static char *rcsId = "$Id: main.c,v 1.14 2003/05/20 19:04:23 dgm Exp $";
+static char *rcsId = "$Id: main.c,v 1.17 2003/10/10 15:07:02 dgm Exp $";
 static char *rcsSource = "$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/main.c,v $";
 static char *rcsAuthor = "$Author: dgm $";
 
@@ -130,6 +148,9 @@ static char *rcsAuthor = "$Author: dgm $";
 #include <sys/param.h>
 #endif
 
+#ifdef HAVE_LIBWRAP
+#include <tcpd.h>
+#endif
 
 /*
  * Global variables.  Many of these things are global just as an optimization.
@@ -160,6 +181,12 @@ static int verify_callback( int, X509_STORE_CTX *);
 static int set_cert_stuff( SSL_CTX *, const char *, const char * );
 #endif
 
+#ifdef HAVE_LIBWRAP
+int allow_severity = LOG_DEBUG;
+int deny_severity = LOG_ERR;
+char *service;
+#endif
+
 /*
  * Internal Prototypes
  */
@@ -172,6 +199,7 @@ static void Usage( void );
 int main( int argc, char *argv[] )
 {
     char *fn = "main()";
+    char f_randfile[ PATH_MAX ];
     int listensd;                      /* socket descriptor we'll bind to */
     int clientsd;                      /* incoming socket descriptor */
     int addrlen;                       
@@ -188,6 +216,9 @@ int main( int argc, char *argv[] )
     extern char *optarg;
     extern int optind;
     char ConfigFile[ MAXPATHLEN ];     /* path to our config file */
+#ifdef HAVE_LIBWRAP
+    struct request_info r;             /* request struct for libwrap */
+#endif
 
     flag = 1;
     ConfigFile[0] = '\0';
@@ -236,6 +267,15 @@ int main( int argc, char *argv[] )
     SetConfigOptions( ConfigFile );
     SetLogOptions();
     
+#ifdef HAVE_LIBWRAP
+    /*
+     * Set our tcpd service name
+     */
+    if (service = strrchr(argv[0], '/'))
+	    service++;
+    else
+	    service = argv[0];
+#endif
 
     /*
      * Initialize some stuff.
@@ -287,6 +327,37 @@ int main( int argc, char *argv[] )
     memset( ICC_HashTable, 0, sizeof ICC_HashTable );
 
     ServerInit();
+
+    /* detach from our parent if necessary */
+    if (! (getppid() == 1) )
+    {
+	if ( (pid = fork()) < 0)
+	{
+	    syslog(LOG_ERR, "%s: initial call to fork() failed: %s", fn, strerror(errno));
+	    exit( 1 );
+	}
+	else if ( pid > 0)
+	{
+	    exit( 0 );
+	}
+	
+	if (setsid() == -1)
+	{
+	    syslog(LOG_WARNING, "%s: setsid() failed: %s", 
+		   fn, strerror(errno));
+	}
+	if ( (pid = fork()) < 0)
+	{
+	    syslog(LOG_ERR, "%s: secondary call to fork() failed: %s", fn, 
+		   strerror(errno));
+	    exit( 1 );
+	}
+	else if ( pid > 0)
+	{
+	    exit( 0 );
+	}
+    }
+
     
     if ( SetBannerAndCapability() )
     {
@@ -301,6 +372,15 @@ int main( int argc, char *argv[] )
 	{
 	    /* Initialize SSL_CTX */
 	    SSL_library_init();
+	    
+            /* Need to seed PRNG, too! */
+            if ( RAND_egd( RAND_file_name( f_randfile, sizeof( f_randfile ) ) ) < 0) 
+	    {
+                /* Not an EGD, so read and write it. */
+                if ( RAND_load_file( f_randfile, -1 ) )
+                    RAND_write_file( f_randfile );
+            }
+	    
 	    SSL_load_error_strings();
 	    tls_ctx = SSL_CTX_new( TLSv1_client_method() );
 	    if ( tls_ctx == NULL )
@@ -340,35 +420,7 @@ int main( int argc, char *argv[] )
 	}
     }
     
-    /* detach from our parent if necessary */
-    if (! (getppid() == 1) )
-    {
-	if ( (pid = fork()) < 0)
-	{
-	    syslog(LOG_ERR, "%s: initial call to fork() failed: %s", fn, strerror(errno));
-	    exit( 1 );
-	}
-	else if ( pid > 0)
-	{
-	    exit( 0 );
-	}
-	
-	if (setsid() == -1)
-	{
-	    syslog(LOG_WARNING, "%s: setsid() failed: %s", 
-		   fn, strerror(errno));
-	}
-	if ( (pid = fork()) < 0)
-	{
-	    syslog(LOG_ERR, "%s: secondary call to fork() failed: %s", fn, 
-		   strerror(errno));
-	    exit( 1 );
-	}
-	else if ( pid > 0)
-	{
-	    exit( 0 );
-	}
-    }
+
 
     memset( (char *) &srvaddr, 0, sizeof srvaddr );
     srvaddr.sin_family = PF_INET;
@@ -390,7 +442,15 @@ int main( int argc, char *argv[] )
     lingerstruct.l_linger = 5;
     setsockopt(listensd, SOL_SOCKET, SO_LINGER, (void *)&lingerstruct, 
 	       sizeof(lingerstruct));
-   
+
+    if ( PC_Struct.send_tcp_keepalives )
+    {
+	lingerstruct.l_onoff = 1;
+	syslog( LOG_INFO, "%s: Enabling SO_KEEPALIVE.", fn );
+	setsockopt( listensd, SOL_SOCKET, SO_KEEPALIVE, (void *)&lingerstruct.l_onoff, sizeof lingerstruct.l_onoff );
+    }
+
+	    
     if ( bind(listensd, (struct sockaddr *)&srvaddr, sizeof( srvaddr ) ) < 0 )
     {
 	syslog(LOG_ERR, "%s: bind() failed: %s", fn, strerror(errno) );
@@ -490,6 +550,19 @@ int main( int argc, char *argv[] )
 	    sleep( 1 );
 	    continue;
 	}
+
+#ifdef HAVE_LIBWRAP
+	request_init(&r, RQ_DAEMON, service, 0);
+	request_set(&r, RQ_FILE, clientsd, 0);
+	sock_host(&r);
+	if (!hosts_access(&r))
+	{
+	    shutdown(clientsd, SHUT_RDWR);
+	    close(clientsd);
+	    syslog(deny_severity, "refused connection from %s", eval_client(&r));
+	    continue;
+	}
+#endif
 
 	IMAPCount->TotalClientConnectionsAccepted++;
 	IMAPCount->CurrentClientConnections++;
@@ -664,23 +737,35 @@ static int SetBannerAndCapability( void )
     int BytesRead;
     char *fn = "SetBannerAndCapability()";
     char *CP;
+    int NumRef = 0;
 
     /* initialize some stuff */
     memset( &itd, 0, sizeof itd );
 
-    sd = socket( PF_INET, SOCK_STREAM, IPPROTO_TCP );
-    if ( sd == -1 )
+    for ( ;; )
     {
-	syslog(LOG_ERR, "%s: socket() failed: %s", fn, strerror(errno) );
-	return( -1 );
+	sd = socket( PF_INET, SOCK_STREAM, IPPROTO_TCP );
+	if ( sd == -1 )
+	{
+	    syslog(LOG_ERR, "%s: socket() failed: %s", fn, strerror(errno) );
+	    return( -1 );
+	}
+	
+	if ( connect( sd, (struct sockaddr *)&ISD.srv, sizeof(ISD.srv) ) == -1 )
+	{
+	    syslog(LOG_ERR, "%s: connect() to imap server on socket [%d] failed: %s", fn, sd, strerror(errno));
+	    close( sd );
+	    
+	    if ( errno == ECONNREFUSED && ++NumRef < 10 )
+	    {
+		sleep( 60 );    /* IMAP server may not be started yet. */
+		continue;
+	    }
+	    return( -1 );
+	}
+	break;  /* Success */
     }
 
-    if ( connect( sd, (struct sockaddr *)&ISD.srv, sizeof(ISD.srv) ) == -1 )
-    {
-	syslog(LOG_ERR, "%s: connect() to imap server on socket [%d] failed: %s", fn, sd, strerror(errno));
-	close( sd );
-	return(-1);
-    }
     
     memset( &conn, 0, sizeof ( ICD_Struct ) );
     itd.conn = &conn;
@@ -809,8 +894,19 @@ static int SetBannerAndCapability( void )
 	 */
 	if ( ! strncasecmp( CP, "AUTH=", strlen( "AUTH=" ) ) &&
 	     ( strncasecmp( CP, "AUTH=LOGIN", strlen( "AUTH=LOGIN" ) ) ) )
+	{
 	    continue;
+	}
 	
+	/*
+	 * If this token happens to be SASL, we want to discard it
+	 * since we don't support any auth mechs that can use it.
+	 */
+	if ( !strncasecmp( CP, "SASL", strlen( "SASL" ) ) )
+	{
+	    continue;
+	}
+
 	/*
 	 * If this token happens to be STARTTLS, we want to discard it
 	 * since we don't support it on the client-side.

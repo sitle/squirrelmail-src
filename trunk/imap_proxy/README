@@ -28,13 +28,9 @@ It should be pretty painless:
 ./configure
 make
 
-If the configure script yells about not being able to find libcrypto or
-other SSL related stuff, you'll have to specify the location of your OpenSSL
-libraries when you invoke the configure script.  Something like this should do
-it:
-
-./configure --with-openssl=/usr/local/ssl
-
+If you encounter any problems with this, check out README.known_issues to
+see if your problem is addressed in there.  If not, ask on the list or file
+a bug report.
 
 "make install" will attempt to install the following files:
 
@@ -139,6 +135,11 @@ syslog_prioritymask
 The syslog LOG_UPT() priority mask.  Read more about what this does in the
 syslog(3C) manpage.  Any of the possible priorities specified in the
 syslog(3C) manpage my be specified here.
+
+send_tcp_keepalives
+-------------------
+Allows tcp keepalives to be enabled on all sockets if the tcp implementation
+supports it.
 
 tls_ca_file
 -----------

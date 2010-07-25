@@ -39,11 +39,25 @@
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/request.c,v $
-**	$Id: request.c,v 1.14 2003/05/20 19:11:25 dgm Exp $
+**	$Id: request.c,v 1.17 2003/10/09 14:11:13 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: request.c,v $
+**	Revision 1.17  2003/10/09 14:11:13  dgm
+**	bugfix: set TotalClientLogins to zero in cmd_resetcounters, submitted
+**	by Geoffrey Hort <g.hort@unsw.edu.au>.  Changes to allow syslogging of the
+**	client source port.  Added timestamps to protocol log entries.
+**
+**	Revision 1.16  2003/07/14 16:26:02  dgm
+**	Removed erroneous newline from syslog() call to prevent compiler
+**	warning.
+**
+**	Revision 1.15  2003/07/07 13:31:09  dgm
+**	Bugfix by Gary Windham <windhamg@email.arizona.edu>.  Raw_Proxy() loop
+**	was not dealing with string literals correctly when the server
+**	responded with something other than a '+'.
+**
 **	Revision 1.14  2003/05/20 19:11:25  dgm
 **	Comment changes only.
 **
@@ -257,7 +271,11 @@ static int cmd_resetcounters( ITD_Struct *itd, char *Tag )
     unsigned int BufLen = BUFSIZE -1;
     
     SendBuf[BufLen] = '\0';
-    
+
+    /*
+     * Bugfix by Geoffrey Hort <g.hort@unsw.edu.au> -- I forgot to zero
+     * out TotalClientLogins...
+     */
     IMAPCount->CountTime = time( 0 );
     IMAPCount->PeakClientConnections = 0;
     IMAPCount->PeakInUseServerConnections = 0;
@@ -265,6 +283,7 @@ static int cmd_resetcounters( ITD_Struct *itd, char *Tag )
     IMAPCount->TotalClientConnectionsAccepted = 0;
     IMAPCount->TotalServerConnectionsCreated = 0;
     IMAPCount->TotalServerConnectionsReused = 0;
+    IMAPCount->TotalClientLogins = 0;
     
     snprintf( SendBuf, BufLen, "%s OK Completed\r\n", Tag );
     
@@ -377,7 +396,7 @@ static int cmd_trace( ITD_Struct *itd, char *Tag, char *Username )
     
     if ( !Username )
     {
-	snprintf( SendBuf, BufLen, "\n\n-----> C= %s PROXY: user tracing disabled. Expect further output until client logout.\n", TraceUser );
+	snprintf( SendBuf, BufLen, "\n\n-----> C= %d %s PROXY: user tracing disabled. Expect further output until client logout.\n", time( 0 ), TraceUser );
 	write( Tracefd, SendBuf, strlen( SendBuf ) );
 	
 	memset( TraceUser, 0, sizeof TraceUser );
@@ -420,7 +439,7 @@ static int cmd_trace( ITD_Struct *itd, char *Tag, char *Username )
 	return( -1 );
     }
 
-    snprintf( SendBuf, BufLen, "\n\n-----> C= %s PROXY: user tracing enabled.\n", TraceUser );
+    snprintf( SendBuf, BufLen, "\n\n-----> C= %d %s PROXY: user tracing enabled.\n", time( 0 ), TraceUser );
     write( Tracefd, SendBuf, strlen( SendBuf ) );
     
     UnLockMutex( &trace );
@@ -561,6 +580,7 @@ static int cmd_authenticate_login( ITD_Struct *Client,
     struct sockaddr_in cli_addr;
     int addrlen;
     char *hostaddr;
+    in_port_t sin_port;
     
     unsigned int BufLen = BUFSIZE - 1;
     memset ( &Server, 0, sizeof Server );
@@ -627,8 +647,7 @@ static int cmd_authenticate_login( ITD_Struct *Client,
     
     if ( IMAP_Write( Client->conn, SendBuf, strlen(SendBuf) ) == -1 )
     {
-        syslog(LOG_ERR, "%s: Unable to send base64 encoded password prompt to 
-client: %s", fn, strerror(errno) );
+        syslog(LOG_ERR, "%s: Unable to send base64 encoded password prompt to client: %s", fn, strerror(errno) );
         return( -1 );
     }
 
@@ -660,6 +679,7 @@ client: %s", fn, strerror(errno) );
     }
     
     hostaddr = inet_ntoa( ( ( struct sockaddr_in *)&cli_addr )->sin_addr );
+    sin_port = ntohs( cli_addr.sin_port );
     
     if ( !hostaddr )
     {
@@ -673,7 +693,7 @@ client: %s", fn, strerror(errno) );
      * he needs to login.  This is just in case there are any special
      * characters in the password that we decoded.
      */
-    conn = Get_Server_conn( Username, Password, hostaddr, LITERAL_PASSWORD );
+    conn = Get_Server_conn( Username, Password, hostaddr, sin_port, LITERAL_PASSWORD );
     
     /*
      * all the code from here to the end is basically identical to that
@@ -779,6 +799,7 @@ static int cmd_login( ITD_Struct *Client,
     struct sockaddr_in cli_addr;
     int addrlen;
     char *hostaddr;
+    in_port_t sin_port;
 
     memset( &Server, 0, sizeof Server );
 
@@ -791,6 +812,7 @@ static int cmd_login( ITD_Struct *Client,
     }
     
     hostaddr = inet_ntoa( ( ( struct sockaddr_in *)&cli_addr )->sin_addr );
+    sin_port = ntohs( cli_addr.sin_port );
 
     if ( !hostaddr )
     {
@@ -798,7 +820,7 @@ static int cmd_login( ITD_Struct *Client,
 	return( -1 );
     }
     
-    conn = Get_Server_conn( Username, Password, hostaddr, LiteralLogin );
+    conn = Get_Server_conn( Username, Password, hostaddr, sin_port, LiteralLogin );
 
     /*
      * wipe out the passwd so we don't have it sitting in memory somewhere.
@@ -809,7 +831,7 @@ static int cmd_login( ITD_Struct *Client,
     if ( conn == NULL )
     {
 	/*
-	 * All logging is done in Get_Server_sd, so don't bother to
+	 * All logging is done in Get_Server_conn, so don't bother to
 	 * log anything here.
 	 */
 	snprintf( SendBuf, BufLen, "%s NO LOGIN failed\r\n", Tag );
@@ -1034,7 +1056,7 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server )
 	    
 	    if ( Server->TraceOn )
 	    {
-		snprintf( TraceBuf, sizeof TraceBuf - 1, "\n\n-----> C= %s SERVER: sd [%d]\n", ( (TraceUser) ? TraceUser : "Null username" ), Server->conn->sd );
+		snprintf( TraceBuf, sizeof TraceBuf - 1, "\n\n-----> C= %d %s SERVER: sd [%d]\n", time( 0 ), ( (TraceUser) ? TraceUser : "Null username" ), Server->conn->sd );
 		write( Tracefd, TraceBuf, strlen( TraceBuf ) );
 		write( Tracefd, Server->ReadBuf, status );
 	    }
@@ -1080,7 +1102,7 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server )
 	    
 		if ( Client->TraceOn )
 		{
-		    snprintf( TraceBuf, sizeof TraceBuf - 1, "\n\n-----> C= %s CLIENT: sd [%d]\n", ( (TraceUser) ? TraceUser : "Null username" ), Client->conn->sd );
+		    snprintf( TraceBuf, sizeof TraceBuf - 1, "\n\n-----> C= %d %s CLIENT: sd [%d]\n", time( 0 ), ( (TraceUser) ? TraceUser : "Null username" ), Client->conn->sd );
 		    write( Tracefd, TraceBuf, strlen( TraceBuf ) );
 		    write( Tracefd, Client->ReadBuf, status );
 		}
@@ -1200,10 +1222,13 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server )
 		status = IMAP_Line_Read( Server );
 		if ( Server->TraceOn )
 		{
-		    snprintf( TraceBuf, sizeof TraceBuf - 1, "\n\n-----> C= %s SERVER: sd [%d]\n", ( (TraceUser) ? TraceUser : "Null username" ), Server->conn->sd );
+		    snprintf( TraceBuf, sizeof TraceBuf - 1, "\n\n-----> C= %d %s SERVER: sd [%d]\n", time( 0 ), ( (TraceUser) ? TraceUser : "Null username" ), Server->conn->sd );
 		    write( Tracefd, TraceBuf, strlen( TraceBuf ) );
 		    write( Tracefd, Server->ReadBuf, status );
 		}
+
+		if ( Server->ReadBuf[0] != '+' )
+		    Client->LiteralBytesRemaining = 0;
 
 		for ( ; ; )
 		{
@@ -1219,7 +1244,6 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server )
 		    break;
 		}
 	    }
-	
 
 	    while ( Client->LiteralBytesRemaining )
 	    {
@@ -1233,7 +1257,7 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server )
 
 		if ( Client->TraceOn )
 		{
-		    snprintf( TraceBuf, sizeof TraceBuf - 1, "\n\n-----> C= %s CLIENT: sd [%d]\n", ( (TraceUser) ? TraceUser : "Null username" ), Client->conn->sd );
+		    snprintf( TraceBuf, sizeof TraceBuf - 1, "\n\n-----> C= %d %s CLIENT: sd [%d]\n", time( 0 ), ( (TraceUser) ? TraceUser : "Null username" ), Client->conn->sd );
 		    write( Tracefd, TraceBuf, strlen( TraceBuf ) );
 		    write( Tracefd, Client->ReadBuf, status );
 		}
