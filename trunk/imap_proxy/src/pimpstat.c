@@ -1,24 +1,22 @@
 /*
-**
-**      Copyright (c) 2002 University of Pittsburgh
-**
-**                      All Rights Reserved
-**
-** Permission to use, copy, modify, and distribute this software and its 
-** documentation for any purpose and without fee is hereby granted, 
-** provided that the above copyright notice appears in all copies and that
-** both that copyright notice and this permission notice appear in 
-** supporting documentation, and that the name of the University of
-** Pittsburgh not be used in advertising or publicity pertaining to
-** distribution of this software without specific written prior permission.  
 ** 
-** THE UNIVERSITY OF PITTSBURGH DISCLAIMS ALL WARRANTIES WITH REGARD TO
-** THIS SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND
-** FITNESS, IN NO EVENT SHALL THE UNIVERSITY OF PITTSBURGH BE LIABLE FOR
-** ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER
-** RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF
-** CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
-** CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+**               Copyright (c) 2002,2003 Dave McMurtrie
+**
+** This file is part of imapproxy.
+**
+** imapproxy is free software; you can redistribute it and/or modify
+** it under the terms of the GNU General Public License as published by
+** the Free Software Foundation; either version 2 of the License, or
+** (at your option) any later version.
+**
+** imapproxy is distributed in the hope that it will be useful,
+** but WITHOUT ANY WARRANTY; without even the implied warranty of
+** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+** GNU General Public License for more details.
+**
+** You should have received a copy of the GNU General Public License
+** along with imapproxy; if not, write to the Free Software
+** Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 **
 **
 **  Facility:
@@ -27,20 +25,30 @@
 **
 **  Abstract:
 **
-**	Pitt's IMap Proxy STATistical display tool.
+**	Polling Imap Mail Proxy STATistical display tool.
 **
 **  Authors:
 **
-**      Dave McMurtrie (dgm@pitt.edu)
+**      Dave McMurtrie <davemcmurtrie@hotmail.com>
 **
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/pimpstat.c,v $
-**      $Id: pimpstat.c,v 1.3 2003/01/27 13:49:36 dgm Exp $
+**      $Id: pimpstat.c,v 1.6 2003/05/20 19:08:02 dgm Exp $
 **      
 **  Modification History:
 **
 **      $Log: pimpstat.c,v $
+**      Revision 1.6  2003/05/20 19:08:02  dgm
+**      Comment changes only.
+**
+**      Revision 1.5  2003/05/15 11:33:22  dgm
+**      Patch by Ken Murchison <ken@oceana.com> to clean up build process:
+**      Conditionally include <sys/param.h> instead of defining MAXPATHLEN.
+**
+**      Revision 1.4  2003/05/13 11:41:02  dgm
+**      Patches by Ken Murchison <ken@oceana.com> to clean up build process.
+**
 **      Revision 1.3  2003/01/27 13:49:36  dgm
 **      Added patch by Frode Nordahl <frode@powertech.no> to allow
 **      compilation on Linux platforms.
@@ -68,7 +76,7 @@
 #include <strings.h>
 #include <signal.h>
 
-#ifdef LINUX
+#if HAVE_SYS_PARAM_H
 #include <sys/param.h>
 #endif
 
@@ -93,7 +101,7 @@ ProxyConfig_Struct PC_Struct;
  *
  * Returns:	nada
  *
- * Authors:	dgm
+ * Authors:	Dave McMurtrie <davemcmurtrie@hotmail.com>
  *
  * Notes:
  *--
@@ -116,7 +124,7 @@ static void Exit( int ExitCode )
  *
  * Returns:	nada
  *
- * Authors:	dgm
+ * Authors:	Dave McMurtrie <davemcmurtrie@hotmail.com>
  *
  * Notes:
  *--
@@ -317,7 +325,7 @@ int main( int argc, char *argv[] )
  *
  * Returns:     nada
  * 
- * Authors:     dgm
+ * Authors:     Dave McMurtrie <davemcmurtrie@hotmail.com>
  * 
  * Notes:
  *--
@@ -327,4 +335,22 @@ void Usage( void )
     printf("Usage: pimpstat [-f config filename] [-h]\n");
     return;
 }
+
+/*
+ *                            _________
+ *                           /        |
+ *                          /         |
+ *                         /    ______|
+ *                        /    /       ________
+ *                       |    |        |      /
+ *                       |    |        |_____/
+ *                       |    |        ______
+ *                       |    |        |     \
+ *                       |    |        |______\
+ *                        \    \_______
+ *                         \           |
+ *                          \          |
+ *                           \_________|
+ */
+
 

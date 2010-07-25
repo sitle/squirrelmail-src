@@ -1,24 +1,22 @@
 /*
-**
-**      Copyright (c) 2002 University of Pittsburgh
-**
-**                      All Rights Reserved
-**
-** Permission to use, copy, modify, and distribute this software and its 
-** documentation for any purpose and without fee is hereby granted, 
-** provided that the above copyright notice appears in all copies and that
-** both that copyright notice and this permission notice appear in 
-** supporting documentation, and that the name of the University of
-** Pittsburgh not be used in advertising or publicity pertaining to
-** distribution of this software without specific written prior permission.  
 ** 
-** THE UNIVERSITY OF PITTSBURGH DISCLAIMS ALL WARRANTIES WITH REGARD TO
-** THIS SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND
-** FITNESS, IN NO EVENT SHALL THE UNIVERSITY OF PITTSBURGH BE LIABLE FOR
-** ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER
-** RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF
-** CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
-** CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+**               Copyright (c) 2002,2003 Dave McMurtrie
+**
+** This file is part of imapproxy.
+**
+** imapproxy is free software; you can redistribute it and/or modify
+** it under the terms of the GNU General Public License as published by
+** the Free Software Foundation; either version 2 of the License, or
+** (at your option) any later version.
+**
+** imapproxy is distributed in the hope that it will be useful,
+** but WITHOUT ANY WARRANTY; without even the implied warranty of
+** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+** GNU General Public License for more details.
+**
+** You should have received a copy of the GNU General Public License
+** along with imapproxy; if not, write to the Free Software
+** Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 **
 **
 **  Facility:
@@ -31,16 +29,22 @@
 **
 **  Authors:
 **
-**	$Author: dgm $
+**	Author: Dave McMurtrie <davemcmurtrie@hotmail.com>
 **
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/icc.c,v $
-**	$Id: icc.c,v 1.3 2002/12/17 14:23:12 dgm Exp $
+**	$Id: icc.c,v 1.5 2003/05/20 18:46:49 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: icc.c,v $
+**	Revision 1.5  2003/05/20 18:46:49  dgm
+**	Comment changes only.
+**
+**	Revision 1.4  2003/05/06 12:11:12  dgm
+**	Applied patches by Ken Murchison <ken@oceana.com> to include SSL support.
+**
 **	Revision 1.3  2002/12/17 14:23:12  dgm
 **	Added support for global configuration structure.
 **
@@ -89,7 +93,7 @@ static void _ICC_Recycle( unsigned int );
  *
  * Returns:	nada
  *	
- * Authors:	dgm
+ * Authors:	Dave McMurtrie <davemcmurtrie@hotmail.com>
  *--
  */
 static void _ICC_Recycle( unsigned int Expiration )
@@ -121,7 +125,7 @@ static void _ICC_Recycle( unsigned int Expiration )
 	     * If the last logout time is non-zero, and it's been logged 
 	     * out for longer than our default expiration time, free it.
 	     * Note that this allows for the logouttime to be explicitly
-	     * set to 1 (such as in the Get_Server_sd code) if we want to
+	     * set to 1 (such as in the Get_Server_conn code) if we want to
 	     * reap a connection before waiting the normal expiration
 	     * cycle.
 	     */
@@ -129,9 +133,17 @@ static void _ICC_Recycle( unsigned int Expiration )
 		 ( ( CurrentTime - HashEntry->logouttime ) > 
 		   Expiration ) )
 	    {
-		syslog(LOG_INFO, "Expiring server sd [%d]", HashEntry->server_sd);
+		syslog(LOG_INFO, "Expiring server sd [%d]", HashEntry->server_conn->sd);
 		/* Close the server socket. */
-		close( HashEntry->server_sd );
+#if HAVE_LIBSSL
+		if ( HashEntry->server_conn->tls )
+		{
+		    SSL_shutdown( HashEntry->server_conn->tls );
+		    SSL_free( HashEntry->server_conn->tls );
+		}
+#endif
+		close( HashEntry->server_conn->sd );
+		free( HashEntry->server_conn );
 		
 		/*
 		 * This was being counted as a "retained" connection.  It was
@@ -181,7 +193,7 @@ static void _ICC_Recycle( unsigned int Expiration )
  *
  * Returns:	nada
  *
- * Authors:	dgm
+ * Authors:	Dave McMurtrie <davemcmurtrie@hotmail.com>
  *--
  */
 extern void ICC_Recycle( unsigned int Expiration )
@@ -203,7 +215,7 @@ extern void ICC_Recycle( unsigned int Expiration )
  *
  * Returns:	nada
  *
- * Authors:	dgm
+ * Authors:	Dave McMurtrie <davemcmurtrie@hotmail.com>
  *
  * Notes:       Relies on global copy of ProxyConfig_Struct "PC_Struct" for
  *              expiration time.
@@ -232,10 +244,10 @@ extern void ICC_Recycle_Loop( void )
  *		
  * Returns:	nada
  *
- * Authors:	dgm
+ * Authors:	Dave McMurtrie <davemcmurtrie@hotmail.com>
  *--
  */
-extern void ICC_Logout( char *Username, int sd )
+extern void ICC_Logout( char *Username, ICD_Struct *conn )
 {
     char *fn = "ICC_Logout()";
     unsigned int HashIndex;
@@ -260,7 +272,7 @@ extern void ICC_Logout( char *Username, int sd )
 	  HashEntry = HashEntry->next )
     {
 	if ( ( strcmp( Username, HashEntry->username ) == 0 ) &&
-	     ( HashEntry->server_sd == sd ) )
+	     ( HashEntry->server_conn->sd == conn->sd ) )
 	{
 	    ICC_Active = HashEntry;
 	}
@@ -270,7 +282,7 @@ extern void ICC_Logout( char *Username, int sd )
     {
 	UnLockMutex( &mp );
 	
-	syslog(LOG_WARNING, "%s: Cannot find ICC for '%s' on server sd %d to set logout time.", fn, Username, sd );
+	syslog(LOG_WARNING, "%s: Cannot find ICC for '%s' on server sd %d to set logout time.", fn, Username, conn->sd );
 	return;
     }
     
@@ -278,7 +290,7 @@ extern void ICC_Logout( char *Username, int sd )
 
     UnLockMutex( &mp );
     
-    syslog(LOG_INFO, "LOGOUT: '%s' from server sd [%d]", Username, sd );
+    syslog(LOG_INFO, "LOGOUT: '%s' from server sd [%d]", Username, conn->sd );
     
     return;
 }

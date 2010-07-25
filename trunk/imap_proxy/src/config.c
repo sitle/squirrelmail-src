@@ -1,24 +1,22 @@
 /*
-**
-**      Copyright (c) 2002 University of Pittsburgh
-**
-**                      All Rights Reserved
-**
-** Permission to use, copy, modify, and distribute this software and its 
-** documentation for any purpose and without fee is hereby granted, 
-** provided that the above copyright notice appears in all copies and that
-** both that copyright notice and this permission notice appear in 
-** supporting documentation, and that the name of the University of
-** Pittsburgh not be used in advertising or publicity pertaining to
-** distribution of this software without specific written prior permission.  
 ** 
-** THE UNIVERSITY OF PITTSBURGH DISCLAIMS ALL WARRANTIES WITH REGARD TO
-** THIS SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND
-** FITNESS, IN NO EVENT SHALL THE UNIVERSITY OF PITTSBURGH BE LIABLE FOR
-** ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER
-** RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF
-** CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
-** CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+**               Copyright (c) 2002,2003 Dave McMurtrie
+**
+** This file is part of imapproxy.
+**
+** imapproxy is free software; you can redistribute it and/or modify
+** it under the terms of the GNU General Public License as published by
+** the Free Software Foundation; either version 2 of the License, or
+** (at your option) any later version.
+**
+** imapproxy is distributed in the hope that it will be useful,
+** but WITHOUT ANY WARRANTY; without even the implied warranty of
+** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+** GNU General Public License for more details.
+**
+** You should have received a copy of the GNU General Public License
+** along with imapproxy; if not, write to the Free Software
+** Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 **
 **
 **  Facility:
@@ -32,16 +30,23 @@
 **
 **  Authors:
 **
-**      Dave McMurtrie (dgm@pitt.edu)
+**      Dave McMurtrie <davemcmurtrie@hotmail.com>
 **
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/config.c,v $
-**      $Id: config.c,v 1.4 2003/04/16 12:13:34 dgm Exp $
+**      $Id: config.c,v 1.6 2003/05/20 18:42:04 dgm Exp $
 **      
 **  Modification History:
 **
 **      $Log: config.c,v $
+**      Revision 1.6  2003/05/20 18:42:04  dgm
+**      comment changes only.
+**
+**      Revision 1.5  2003/05/06 12:10:37  dgm
+**      Applied patches by Ken Murchison to include additional config options
+**      for SSL support.
+**
 **      Revision 1.4  2003/04/16 12:13:34  dgm
 **      Added commodore logo ascii-art comment at the end.
 **      Added support for syslog configuration options.
@@ -126,7 +131,7 @@ struct Config_Struct ConfigTable[ 100 ];
  *
  * Returns:     nada -- exit()s on errors.
  *
- * Authors:     dgm
+ * Authors:     Dave McMurtrie <davemcmurtrie@hotmail.com>
  *
  * Notes:
  *--
@@ -179,7 +184,7 @@ static void SetStringValue( char *String,
  *
  * Returns:     nada -- exit()s on failure.
  *
- * Authors:     dgm
+ * Authors:     Dave McMurtrie <davemcmurtrie@hotmail.com>
  *
  * Notes:
  *--
@@ -217,7 +222,7 @@ static void SetNumericValue( char *StringValue,
  *
  * Returns:	nada.  exit()s on any error.
  *
- * Authors:	dgm
+ * Authors:	Dave McMurtrie <davemcmurtrie@hotmail.com>
  *
  * Notes:       Sets values in global ProxyConfig_Struct PC_Struct.
  *--
@@ -277,6 +282,18 @@ extern void SetConfigOptions( char *ConfigFile )
 
     ADD_TO_TABLE( "syslog_prioritymask", SetStringValue,
 		  &PC_Struct.syslog_prioritymask, index );
+    
+    ADD_TO_TABLE( "tls_ca_file", SetStringValue,
+		  &PC_Struct.tls_ca_file, index );
+    
+    ADD_TO_TABLE( "tls_ca_path", SetStringValue,
+		  &PC_Struct.tls_ca_path, index );
+    
+    ADD_TO_TABLE( "tls_cert_file", SetStringValue,
+		  &PC_Struct.tls_cert_file, index );
+    
+    ADD_TO_TABLE( "tls_key_file", SetStringValue,
+		  &PC_Struct.tls_key_file, index );
     
 
     ConfigTable[index].Keyword[0] = '\0';

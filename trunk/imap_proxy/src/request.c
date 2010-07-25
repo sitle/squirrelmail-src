@@ -1,24 +1,22 @@
 /*
-**
-**      Copyright (c) 2002 University of Pittsburgh
-**
-**                      All Rights Reserved
-**
-** Permission to use, copy, modify, and distribute this software and its 
-** documentation for any purpose and without fee is hereby granted, 
-** provided that the above copyright notice appears in all copies and that
-** both that copyright notice and this permission notice appear in 
-** supporting documentation, and that the name of the University of
-** Pittsburgh not be used in advertising or publicity pertaining to
-** distribution of this software without specific written prior permission.  
 ** 
-** THE UNIVERSITY OF PITTSBURGH DISCLAIMS ALL WARRANTIES WITH REGARD TO
-** THIS SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND
-** FITNESS, IN NO EVENT SHALL THE UNIVERSITY OF PITTSBURGH BE LIABLE FOR
-** ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER
-** RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF
-** CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
-** CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+**               Copyright (c) 2002,2003 Dave McMurtrie
+**
+** This file is part of imapproxy.
+**
+** imapproxy is free software; you can redistribute it and/or modify
+** it under the terms of the GNU General Public License as published by
+** the Free Software Foundation; either version 2 of the License, or
+** (at your option) any later version.
+**
+** imapproxy is distributed in the hope that it will be useful,
+** but WITHOUT ANY WARRANTY; without even the implied warranty of
+** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+** GNU General Public License for more details.
+**
+** You should have received a copy of the GNU General Public License
+** along with imapproxy; if not, write to the Free Software
+** Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 **
 **
 **  Facility:
@@ -36,16 +34,34 @@
 **
 **  Authors:
 **
-**	$Author: dgm $
+**	Dave McMurtrie <davemcmurtrie@hotmail.com>
 **
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/request.c,v $
-**	$Id: request.c,v 1.9 2003/02/20 12:57:26 dgm Exp $
+**	$Id: request.c,v 1.14 2003/05/20 19:11:25 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: request.c,v $
+**	Revision 1.14  2003/05/20 19:11:25  dgm
+**	Comment changes only.
+**
+**	Revision 1.13  2003/05/15 11:35:39  dgm
+**	Patch by Ken Murchison <ken@oceana.com> to clean up build process:
+**	conditionally include sys/param.h instead of defining MAXPATHLEN.
+**
+**	Revision 1.12  2003/05/13 11:41:26  dgm
+**	Patches by Ken Murchison <ken@oceana.com> to clean up build process.
+**
+**	Revision 1.11  2003/05/08 17:20:43  dgm
+**	Added code to send untagged server responses back to clients
+**	on LOGOUT.
+**
+**	Revision 1.10  2003/05/06 12:11:47  dgm
+**	Applied patches by Ken Murchison <ken@oceana.com> to include SSL
+**	support.
+**
 **	Revision 1.9  2003/02/20 12:57:26  dgm
 **	Raw_Proxy() sends UNSELECT instead of CLOSE if the server supports it.
 **
@@ -93,13 +109,19 @@
 #include <sys/socket.h>
 #include <sys/uio.h>
 #include <poll.h>
+#if HAVE_UNISTD_H
 #include <unistd.h>
+#endif
 #include <fcntl.h>
-#include <sys/param.h>
 #include <netdb.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <syslog.h>
+#if HAVE_SYS_PARAM_H
+#include <sys/param.h>
+#endif
+
+#include <openssl/evp.h>
 
 /*
  * There are a few global variables that we care about.  Make sure we know
@@ -149,7 +171,7 @@ static int Raw_Proxy( ITD_Struct *, ITD_Struct * );
  * Returns:	0 on success
  *		-1 on failure
  *
- * Authors:     dgm
+ * Authors:     Dave McMurtrie <davemcmurtrie@hotmail.com>
  *--
  */
 static int cmd_newlog( ITD_Struct *itd, char *Tag )
@@ -168,9 +190,9 @@ static int cmd_newlog( ITD_Struct *itd, char *Tag )
 	syslog(LOG_ERR, "%s: ftruncate() failed: %s", fn, strerror( errno ) );
 	snprintf( SendBuf, BufLen, "%s NO internal server error\r\n", Tag );
 
-	if ( send( itd->sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+	if ( IMAP_Write( itd->conn, SendBuf, strlen(SendBuf) ) == -1 )
 	{
-	    syslog(LOG_WARNING, "%s: send() failed: %s", fn, strerror(errno) );
+	    syslog(LOG_WARNING, "%s: IMAP_Write() failed: %s", fn, strerror(errno) );
 	    return( -1 );
 	}
 	
@@ -187,9 +209,9 @@ static int cmd_newlog( ITD_Struct *itd, char *Tag )
 	syslog(LOG_ERR, "%s: lseek() failed: %s", fn, strerror( errno ) );
 	snprintf( SendBuf, BufLen, "%s NO internal server error\r\n", Tag );
 	
-	if ( send( itd->sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+	if ( IMAP_Write( itd->conn, SendBuf, strlen(SendBuf) ) == -1 )
 	{
-	    syslog(LOG_WARNING, "%s: send() failed: %s", fn, strerror(errno) );
+	    syslog(LOG_WARNING, "%s: IMAP_Write() failed: %s", fn, strerror(errno) );
 	    return( -1 );
 	}
 	
@@ -198,9 +220,9 @@ static int cmd_newlog( ITD_Struct *itd, char *Tag )
 
     snprintf( SendBuf, BufLen, "%s OK Completed\r\n", Tag );
     
-    if ( send( itd->sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+    if ( IMAP_Write( itd->conn, SendBuf, strlen(SendBuf) ) == -1 )
     {
-	syslog(LOG_WARNING, "%s: send() failed: %s", fn, strerror(errno) );
+	syslog(LOG_WARNING, "%s: IMAP_Write() failed: %s", fn, strerror(errno) );
 	return( -1 );
     }
     
@@ -219,7 +241,7 @@ static int cmd_newlog( ITD_Struct *itd, char *Tag )
  * Returns:	0 on success.
  *		-1 on failure.
  *
- * Authors:	dgm
+ * Authors:	Dave McMurtrie <davemcmurtrie@hotmail.com>
  *
  * Notes:	Always key to remember that we don't take out a mutex
  *		anywhere that we update these global counters.  There's
@@ -246,9 +268,9 @@ static int cmd_resetcounters( ITD_Struct *itd, char *Tag )
     
     snprintf( SendBuf, BufLen, "%s OK Completed\r\n", Tag );
     
-    if ( send( itd->sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+    if ( IMAP_Write( itd->conn, SendBuf, strlen(SendBuf) ) == -1 )
     {
-	syslog(LOG_WARNING, "%s: send() failed: %s", fn, strerror(errno) );
+	syslog(LOG_WARNING, "%s: IMAP_Write() failed: %s", fn, strerror(errno) );
 	return( -1 );
     }
     
@@ -268,7 +290,7 @@ static int cmd_resetcounters( ITD_Struct *itd, char *Tag )
  * Returns:	0 on success
  *		-1 on failure
  *
- * Authors:     dgm
+ * Authors:     Dave McMurtrie <davemcmurtrie@hotmail.com>
  *--
  */
 static int cmd_dumpicc( ITD_Struct *itd, char *Tag )
@@ -289,13 +311,13 @@ static int cmd_dumpicc( ITD_Struct *itd, char *Tag )
 	
 	while ( HashEntry )
 	{
-	    snprintf( SendBuf, BufLen, "* %d %s %s\r\n", HashEntry->server_sd,
+	    snprintf( SendBuf, BufLen, "* %d %s %s\r\n", HashEntry->server_conn->sd,
 		      HashEntry->username,
 		      ( ( HashEntry->logouttime ) ? "Cached" : "Active" ) );
-	    if ( send( itd->sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+	    if ( IMAP_Write( itd->conn, SendBuf, strlen(SendBuf) ) == -1 )
 	    {
 		UnLockMutex( &mp );
-		syslog(LOG_WARNING, "%s: send() failed: %s", fn, strerror(errno) );
+		syslog(LOG_WARNING, "%s: IMAP_Write() failed: %s", fn, strerror(errno) );
 		return( -1 );
 	    }
 	    HashEntry = HashEntry->next;
@@ -305,9 +327,9 @@ static int cmd_dumpicc( ITD_Struct *itd, char *Tag )
     UnLockMutex( &mp );
     
     snprintf( SendBuf, BufLen, "%s OK Completed\r\n", Tag );
-    if ( send( itd->sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+    if ( IMAP_Write( itd->conn, SendBuf, strlen(SendBuf) ) == -1 )
     {
-	syslog(LOG_WARNING, "%s: send() failed: %s", fn, strerror(errno) );
+	syslog(LOG_WARNING, "%s: IMAP_Write() failed: %s", fn, strerror(errno) );
 	return( -1 );
     }
     
@@ -329,7 +351,7 @@ static int cmd_dumpicc( ITD_Struct *itd, char *Tag )
  * Returns:	0 on success
  *		-1 on failure
  *
- * Authors:     dgm
+ * Authors:     Dave McMurtrie <davemcmurtrie@hotmail.com>
  *--
  */
 static int cmd_trace( ITD_Struct *itd, char *Tag, char *Username )
@@ -360,9 +382,9 @@ static int cmd_trace( ITD_Struct *itd, char *Tag, char *Username )
 	
 	memset( TraceUser, 0, sizeof TraceUser );
 	snprintf( SendBuf, BufLen, "%s OK Tracing disabled\r\n", Tag );
-	if ( send( itd->sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+	if ( IMAP_Write( itd->conn, SendBuf, strlen(SendBuf) ) == -1 )
 	{
-	    syslog(LOG_WARNING, "%s: send() failed: %s", fn, strerror(errno) );
+	    syslog(LOG_WARNING, "%s: IMAP_Write() failed: %s", fn, strerror(errno) );
 	    UnLockMutex( &trace );
 	    return( -1 );
 	}
@@ -376,9 +398,9 @@ static int cmd_trace( ITD_Struct *itd, char *Tag, char *Username )
 	/* guarantee no runaway strings */
 	TraceUser[sizeof TraceUser - 1] = '\0';
 	snprintf( SendBuf, BufLen, "%s BAD Tracing already enabled for user %s\r\n", Tag, TraceUser );
-	if ( send( itd->sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+	if ( IMAP_Write( itd->conn, SendBuf, strlen(SendBuf) ) == -1 )
 	{
-	    syslog(LOG_WARNING, "%s: send() failed: %s", fn, strerror(errno) );
+	    syslog(LOG_WARNING, "%s: IMAP_Write() failed: %s", fn, strerror(errno) );
 	    UnLockMutex( &trace );
 	    return( -1 );
 	}
@@ -391,9 +413,9 @@ static int cmd_trace( ITD_Struct *itd, char *Tag, char *Username )
     strncpy( TraceUser, Username, sizeof TraceUser - 1 );
     
     snprintf( SendBuf, BufLen, "%s OK Tracing enabled\r\n", Tag );
-    if ( send( itd->sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+    if ( IMAP_Write( itd->conn, SendBuf, strlen(SendBuf) ) == -1 )
     {
-	syslog(LOG_WARNING, "%s: send() failed: %s", fn, strerror(errno) );
+	syslog(LOG_WARNING, "%s: IMAP_Write() failed: %s", fn, strerror(errno) );
 	UnLockMutex( &trace );
 	return( -1 );
     }
@@ -417,7 +439,7 @@ static int cmd_trace( ITD_Struct *itd, char *Tag, char *Username )
  * Returns:	0 on success
  *		-1 on failure
  *
- * Authors:     dgm
+ * Authors:     Dave McMurtrie <davemcmurtrie@hotmail.com>
  *--
  */
 static int cmd_noop( ITD_Struct *itd, char *Tag )
@@ -429,9 +451,9 @@ static int cmd_noop( ITD_Struct *itd, char *Tag )
     SendBuf[BUFSIZE - 1] = '\0';
     
     snprintf( SendBuf, BufLen, "%s OK Completed\r\n", Tag );
-    if ( send( itd->sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+    if ( IMAP_Write( itd->conn, SendBuf, strlen(SendBuf) ) == -1 )
     {
-	syslog(LOG_WARNING, "%s: send() failed: %s", fn, strerror(errno) );
+	syslog(LOG_WARNING, "%s: IMAP_Write() failed: %s", fn, strerror(errno) );
 	return( -1 );
     }
     
@@ -450,7 +472,7 @@ static int cmd_noop( ITD_Struct *itd, char *Tag )
  * Returns:	0 on success
  *		-1 on failure
  *
- * Authors:     dgm
+ * Authors:     Dave McMurtrie <davemcmurtrie@hotmail.com>
  *--
  */
 static int cmd_logout( ITD_Struct *itd, char *Tag )
@@ -463,9 +485,9 @@ static int cmd_logout( ITD_Struct *itd, char *Tag )
     
     snprintf( SendBuf, BufLen, "* BYE LOGOUT received\r\n%s OK Completed\r\n",
 	      Tag );
-    if ( send( itd->sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+    if ( IMAP_Write( itd->conn, SendBuf, strlen(SendBuf) ) == -1 )
     {
-	syslog(LOG_WARNING, "%s: send() to client failed on sd [%d]: %s", fn, itd->sd, strerror(errno) );
+	syslog(LOG_WARNING, "%s: IMAP_Write() to client failed on sd [%d]: %s", fn, itd->conn->sd, strerror(errno) );
 	return( -1 );
     }
     
@@ -484,7 +506,7 @@ static int cmd_logout( ITD_Struct *itd, char *Tag )
  * Returns:	0 on success
  *		-1 on failure
  *
- * Authors:     dgm
+ * Authors:     Dave McMurtrie <davemcmurtrie@hotmail.com>
  *--
  */
 static int cmd_capability( ITD_Struct *itd, char *Tag )
@@ -496,9 +518,9 @@ static int cmd_capability( ITD_Struct *itd, char *Tag )
     SendBuf[BUFSIZE - 1] = '\0';
     
     snprintf( SendBuf, BufLen, "%s%s OK Completed\r\n",Capability, Tag );
-    if ( send( itd->sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+    if ( IMAP_Write( itd->conn, SendBuf, strlen(SendBuf) ) == -1 )
     {
-	syslog(LOG_WARNING, "%s: send() failed: %s", fn, strerror(errno) );
+	syslog(LOG_WARNING, "%s: IMAP_Write() failed: %s", fn, strerror(errno) );
 	return( -1 );
     }
     
@@ -518,7 +540,7 @@ static int cmd_capability( ITD_Struct *itd, char *Tag )
  *              1 on success after authentication (we caught a logout)
  *              -1 on failure	
  *
- * Authors:	dgm
+ * Authors:	Dave McMurtrie <davemcmurtrie@hotmail.com>
  *
  * Notes:
  *--
@@ -532,7 +554,7 @@ static int cmd_authenticate_login( ITD_Struct *Client,
     char EncodedUsername[BUFSIZE];
     char Password[MAXPASSWDLEN];
     char EncodedPassword[BUFSIZE];
-    int sd;
+    ICD_Struct *conn;
     int rc;
     ITD_Struct Server;
     int BytesRead;
@@ -552,11 +574,11 @@ static int cmd_authenticate_login( ITD_Struct *Client,
      */
     snprintf( Username, BufLen, "Username:" );
     
-    to64frombits( EncodedUsername, Username, strlen( Username ) );
+    EVP_EncodeBlock( EncodedUsername, Username, strlen( Username ) );
     
     snprintf( SendBuf, BufLen, "+ %s\r\n", EncodedUsername );
     
-    if ( send( Client->sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+    if ( IMAP_Write( Client->conn, SendBuf, strlen(SendBuf) ) == -1 )
     {
 	syslog(LOG_ERR, "%s: Unable to send base64 encoded username prompt to client: %s", fn, strerror(errno) );
 	return( -1 );
@@ -570,7 +592,7 @@ static int cmd_authenticate_login( ITD_Struct *Client,
     
     if ( BytesRead == -1 )
     {
-	syslog( LOG_NOTICE, "%s: Failed to read base64 encoded username from client on socket %d", fn, Client->sd );
+	syslog( LOG_NOTICE, "%s: Failed to read base64 encoded username from client on socket %d", fn, Client->conn->sd );
 	return( -1 );
     }
     
@@ -581,7 +603,7 @@ static int cmd_authenticate_login( ITD_Struct *Client,
     if ( Client->MoreData ||
 	 BytesRead > BufLen )
     {
-	syslog( LOG_NOTICE, "%s: Base64 encoded username sent from client on sd %d is too large.", fn, Client->sd );
+	syslog( LOG_NOTICE, "%s: Base64 encoded username sent from client on sd %d is too large.", fn, Client->conn->sd );
 	return( -1 );
     }
     
@@ -590,9 +612,8 @@ static int cmd_authenticate_login( ITD_Struct *Client,
      */
     memcpy( (void *)EncodedUsername, (const void *)Client->ReadBuf, 
 	    BytesRead - 2 );
-    EncodedUsername[BytesRead - 2] = '\0';
     
-    rc = from64tobits( Username, EncodedUsername );
+    rc = EVP_DecodeBlock( Username, EncodedUsername, BytesRead - 2 );
     Username[rc] = '\0';
     
     /*
@@ -600,11 +621,11 @@ static int cmd_authenticate_login( ITD_Struct *Client,
      */
     snprintf( Password, BufLen, "Password:" );
     
-    to64frombits( EncodedPassword, Password, strlen( Password ) );
+    EVP_EncodeBlock( EncodedPassword, Password, strlen( Password ) );
     
     snprintf( SendBuf, BufLen, "+ %s\r\n", EncodedPassword );
     
-    if ( send( Client->sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+    if ( IMAP_Write( Client->conn, SendBuf, strlen(SendBuf) ) == -1 )
     {
         syslog(LOG_ERR, "%s: Unable to send base64 encoded password prompt to 
 client: %s", fn, strerror(errno) );
@@ -615,25 +636,24 @@ client: %s", fn, strerror(errno) );
     
     if ( BytesRead == -1 )
     {
-        syslog( LOG_NOTICE, "%s: Failed to read base64 encoded password from client on socket %d", fn, Client->sd );
+        syslog( LOG_NOTICE, "%s: Failed to read base64 encoded password from client on socket %d", fn, Client->conn->sd );
 	return( -1 );
     }
     
     if ( Client->MoreData ||
 	 BytesRead > BufLen )
     {
-	syslog( LOG_NOTICE, "%s: Base64 encoded password sent from client on sd %d is too large.", fn, Client->sd );
+	syslog( LOG_NOTICE, "%s: Base64 encoded password sent from client on sd %d is too large.", fn, Client->conn->sd );
 	return( -1 );
     }
     
     memcpy( (void *)EncodedPassword, (const void *)Client->ReadBuf, 
 	    BytesRead - 2 );
-    EncodedPassword[BytesRead - 2] = '\0';
 
-    rc = from64tobits( Password, EncodedPassword );
+    rc = EVP_DecodeBlock( Password, EncodedPassword, BytesRead - 2 );
     Password[rc] = '\0';
     
-    if ( getpeername( Client->sd, (struct sockaddr *)&cli_addr, &addrlen ) < 0 )
+    if ( getpeername( Client->conn->sd, (struct sockaddr *)&cli_addr, &addrlen ) < 0 )
     {
 	syslog( LOG_WARNING, "AUTH_LOGIN: failed: getpeername() failed for client sd: %s", Username, strerror( errno ) );
 	return( -1 );
@@ -649,11 +669,11 @@ client: %s", fn, strerror(errno) );
     
 
     /*
-     * Tell Get_Server_sd() to send the password as a string literal if
+     * Tell Get_Server_conn() to send the password as a string literal if
      * he needs to login.  This is just in case there are any special
      * characters in the password that we decoded.
      */
-    sd = Get_Server_sd( Username, Password, hostaddr, LITERAL_PASSWORD );
+    conn = Get_Server_conn( Username, Password, hostaddr, LITERAL_PASSWORD );
     
     /*
      * all the code from here to the end is basically identical to that
@@ -662,11 +682,11 @@ client: %s", fn, strerror(errno) );
     
     memset( Password, 0, MAXPASSWDLEN );
     
-    if ( sd == -1 )
+    if ( conn == NULL )
     {
 	snprintf( SendBuf, BufLen, "%s NO AUTHENTICATE failed\r\n", Tag );
 	
-	if ( send( Client->sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+	if ( IMAP_Write( Client->conn, SendBuf, strlen(SendBuf) ) == -1 )
 	{
 	    syslog( LOG_ERR, "%s: Unable to send failure message back to client: %s", fn, strerror( errno ) );
 	    return( -1 );
@@ -674,13 +694,13 @@ client: %s", fn, strerror(errno) );
 	return( 0 );
     }
     
-    Server.sd = sd;
+    Server.conn = conn;
     
     snprintf( SendBuf, BufLen, "%s OK User authenticated\r\n", Tag );
-    if ( send( Client->sd, SendBuf, strlen( SendBuf ), 0 ) == -1 )
+    if ( IMAP_Write( Client->conn, SendBuf, strlen( SendBuf ) ) == -1 )
     {
 	IMAPCount->InUseServerConnections--;
-	close( Server.sd );
+	close( Server.conn->sd );
 	syslog( LOG_ERR, "%s: Unable to send successful authentication message back to client: %s -- closing connection.", fn, strerror( errno ) );
 	return( -1 );
     }
@@ -705,7 +725,7 @@ client: %s", fn, strerror(errno) );
     Client->TraceOn = 0;
     Server.TraceOn = 0;
     
-    ICC_Logout( Username, Server.sd );
+    ICC_Logout( Username, Server.conn );
     
     return( rc );
 }
@@ -730,7 +750,7 @@ client: %s", fn, strerror(errno) );
  *              1 on success after authentication (we caught a logout)
  *		-1 on failure
  *
- * Authors:     dgm
+ * Authors:     Dave McMurtrie <davemcmurtrie@hotmail.com>
  *
  * Note:        Not too many things are really considered "failure" in the
  *              context of this routine, because returning failure would
@@ -754,7 +774,7 @@ static int cmd_login( ITD_Struct *Client,
     unsigned int BufLen = BUFSIZE - 1;
     ITD_Struct Server;
     int rc;
-    int sd;
+    ICD_Struct *conn;
     char TraceFileName[ MAXPATHLEN ];
     struct sockaddr_in cli_addr;
     int addrlen;
@@ -764,7 +784,7 @@ static int cmd_login( ITD_Struct *Client,
 
     addrlen = sizeof( struct sockaddr_in );
 
-    if ( getpeername( Client->sd, (struct sockaddr *)&cli_addr, &addrlen ) < 0 )
+    if ( getpeername( Client->conn->sd, (struct sockaddr *)&cli_addr, &addrlen ) < 0 )
     {
 	syslog(LOG_INFO, "LOGIN: '%s' failed: getpeername() failed for client sd: %s", Username, strerror( errno ) );
 	return( -1 );
@@ -778,7 +798,7 @@ static int cmd_login( ITD_Struct *Client,
 	return( -1 );
     }
     
-    sd = Get_Server_sd( Username, Password, hostaddr, LiteralLogin );
+    conn = Get_Server_conn( Username, Password, hostaddr, LiteralLogin );
 
     /*
      * wipe out the passwd so we don't have it sitting in memory somewhere.
@@ -786,7 +806,7 @@ static int cmd_login( ITD_Struct *Client,
     memset( Password, 0, passlen );
     
         
-    if ( sd == -1 )
+    if ( conn == NULL )
     {
 	/*
 	 * All logging is done in Get_Server_sd, so don't bother to
@@ -794,7 +814,7 @@ static int cmd_login( ITD_Struct *Client,
 	 */
 	snprintf( SendBuf, BufLen, "%s NO LOGIN failed\r\n", Tag );
 	
-	if ( send( Client->sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+	if ( IMAP_Write( Client->conn, SendBuf, strlen(SendBuf) ) == -1 )
 	{
 	    syslog(LOG_ERR, "%s: Unable to send failure message back to client: %s", fn, strerror(errno) );
 	    return( -1 );
@@ -802,21 +822,21 @@ static int cmd_login( ITD_Struct *Client,
 	return( 0 );
     }
     
-    Server.sd = sd;
+    Server.conn = conn;
 
     /*
      * Send a success message back to the client
      * and go into raw proxy mode.
      */
     snprintf( SendBuf, BufLen, "%s OK User logged in\r\n", Tag );
-    if ( send( Client->sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+    if ( IMAP_Write( Client->conn, SendBuf, strlen(SendBuf) ) == -1 )
     {
 	/*
 	 * This really sux.  We successfully logged the user in, but now
 	 * we can't communicate with the client...
 	 */
 	IMAPCount->InUseServerConnections--;
-	close( Server.sd );
+	close( Server.conn->sd );
 	syslog(LOG_ERR, "%s: Unable to send successful login message back to client: %s -- closing connection.", fn, strerror(errno) );
 	return( -1 );
     }
@@ -850,7 +870,7 @@ static int cmd_login( ITD_Struct *Client,
     Server.TraceOn = 0;
     
     /* update the logout time for this cached connection */
-    ICC_Logout( Username, Server.sd );
+    ICC_Logout( Username, Server.conn );
     
     return( rc );
 }
@@ -870,7 +890,7 @@ static int cmd_login( ITD_Struct *Client,
  * Returns:	1 if we caught a logout
  *		-1 on failure
  *
- * Authors:	dgm
+ * Authors:	Dave McMurtrie <davemcmurtrie@hotmail.com>
  *--
  */
 static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server )
@@ -878,7 +898,7 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server )
     char *fn = "Raw_Proxy()";
     struct pollfd fds[2];
     nfds_t nfds;
-    int status;
+    int status, pending;
     unsigned int FailCount;
     int BytesSent;
     char *CP;
@@ -894,8 +914,8 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server )
     /*
      * Set up our fds structs.
      */
-    fds[ SERVER ].fd = Server->sd;
-    fds[ CLIENT ].fd = Client->sd;
+    fds[ SERVER ].fd = Server->conn->sd;
+    fds[ CLIENT ].fd = Client->conn->sd;
     
     fds[ SERVER ].events = POLLIN;
     fds[ CLIENT ].events = POLLIN;
@@ -905,10 +925,19 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server )
      */
     for ( ; ; )
     {
+	pending = 0;
 	fds[ SERVER ].revents = 0;
 	fds[ CLIENT ].revents = 0;
 	
-	status = poll( fds, nfds, POLL_TIMEOUT );
+#if HAVE_LIBSSL
+	if ( Server->conn->tls )
+	{
+	    /* See is we have any buffered input */
+	    pending = SSL_pending( Server->conn->tls );
+	}
+#endif
+
+	status = ( pending ? 1 : poll( fds, nfds, POLL_TIMEOUT ) );
 	
 	/*
 	 * poll returns a non-negative value on success.
@@ -930,7 +959,7 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server )
 	     * cmd_login() will return our -1 to Handle_Request
 	     * and HandleRequest will close the client-side socket.
 	     */
-	    syslog( LOG_WARNING, "%s: poll() timed out. server sd [%d]. client sd [%d].", fn, Server->sd, Client->sd );
+	    syslog( LOG_WARNING, "%s: poll() timed out. server sd [%d]. client sd [%d].", fn, Server->conn->sd, Client->conn->sd );
 	    return( -1 );
 	}
 	
@@ -978,19 +1007,19 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server )
 	 * server is allowed to send unsolicited data and the client has to
 	 * be able to deal with it.
 	 */
-	if ( fds[ SERVER ].revents )
+	if ( pending || fds[ SERVER ].revents )
 	{
 	    for ( ; ; )
 	    {
-		status = recv( Server->sd, Server->ReadBuf, 
-			       sizeof Server->ReadBuf, 0 );
+		status = IMAP_Read( Server->conn, Server->ReadBuf, 
+			       sizeof Server->ReadBuf );
 		
 		if ( status == -1 )
 		{
 		    if ( errno == EINTR )
 			continue;
 		    
-		    syslog(LOG_WARNING, "%s: recv() failed reading from IMAP server on sd [%d]: %s", fn, Server->sd, strerror( errno ) );
+		    syslog(LOG_WARNING, "%s: IMAP_Read() failed reading from IMAP server on sd [%d]: %s", fn, Server->conn->sd, strerror( errno ) );
 		    return( -1 );
 		}
 		break;
@@ -999,13 +1028,13 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server )
 	    if ( status == 0 )
 	    {
 		/* the server closed the connection, dammit */
-		syslog(LOG_ERR, "%s: IMAP server unexpectedly closed the connection on sd %d", fn, Server->sd );
+		syslog(LOG_ERR, "%s: IMAP server unexpectedly closed the connection on sd %d", fn, Server->conn->sd );
 		return( -1 );
 	    }
 	    
 	    if ( Server->TraceOn )
 	    {
-		snprintf( TraceBuf, sizeof TraceBuf - 1, "\n\n-----> C= %s SERVER: sd [%d]\n", ( (TraceUser) ? TraceUser : "Null username" ), Server->sd );
+		snprintf( TraceBuf, sizeof TraceBuf - 1, "\n\n-----> C= %s SERVER: sd [%d]\n", ( (TraceUser) ? TraceUser : "Null username" ), Server->conn->sd );
 		write( Tracefd, TraceBuf, strlen( TraceBuf ) );
 		write( Tracefd, Server->ReadBuf, status );
 	    }
@@ -1013,18 +1042,18 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server )
 	    /* whatever we read from the server, ship off to the client */
 	    for ( ; ; )
 	    {
-		BytesSent = send( Client->sd, Server->ReadBuf, status, 0 );
+		BytesSent = IMAP_Write( Client->conn, Server->ReadBuf, status );
 		
 		if ( BytesSent == -1 )
 		{
 		    if ( errno == EINTR )
 			continue;
 		    
-		    syslog(LOG_ERR, "%s: send() failed sending data to client on sd [%d]: %s", fn, Client->sd, strerror( errno ) );
+		    syslog(LOG_ERR, "%s: IMAP_Write() failed sending data to client on sd [%d]: %s", fn, Client->conn->sd, strerror( errno ) );
 		    return( -1 );
 		}
 		break;
-	    }  /* end of infinite for loop for send() to client */
+	    }  /* end of infinite for loop for IMAP_Write() to client */
 	}          /* end of if conditional -- were there server sd events? */
 	
 	
@@ -1045,13 +1074,13 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server )
 		
 		if ( status == -1 )
 		{
-		    syslog(LOG_NOTICE, "%s: Failed to read line from client on socket %d", fn, Client->sd );
+		    syslog(LOG_NOTICE, "%s: Failed to read line from client on socket %d", fn, Client->conn->sd );
 		    return( -1 );
 		}
 	    
 		if ( Client->TraceOn )
 		{
-		    snprintf( TraceBuf, sizeof TraceBuf - 1, "\n\n-----> C= %s CLIENT: sd [%d]\n", ( (TraceUser) ? TraceUser : "Null username" ), Client->sd );
+		    snprintf( TraceBuf, sizeof TraceBuf - 1, "\n\n-----> C= %s CLIENT: sd [%d]\n", ( (TraceUser) ? TraceUser : "Null username" ), Client->conn->sd );
 		    write( Tracefd, TraceBuf, strlen( TraceBuf ) );
 		    write( Tracefd, Client->ReadBuf, status );
 		}
@@ -1070,21 +1099,52 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server )
 			/*
 			 * Since we want to potentially reuse this server
 			 * connection, we want to return it to an unselected 
-			 * state.  Use UNSELECT if the server supports it,
-			 * otherwise use CLOSE.
-			 *
-			 * This may not be entirely necessary, so don't go
-			 * crazy trying to check return codes, etc...  Also,
-			 * make a half-hearted attempt to eat whatever the
-			 * server sends back.
+			 * state.  Use UNSELECT if the server supports it.
+			 * Otherwise, EXAMINE a null mailbox.
 			 */
 			snprintf( SendBuf, sizeof SendBuf - 1,
-				  "C64 %s\r\n", ( (PC_Struct.support_unselect) ? "UNSELECT" : "CLOSE" ) );
+				  "C64 %s\r\n", ( (PC_Struct.support_unselect) ? "UNSELECT" : "EXAMINE \"\"" ) );
 			
-			send( Server->sd, SendBuf,
-			      strlen(SendBuf), 0 );
-			recv( Server->sd, Server->ReadBuf, 
-			      sizeof Server->ReadBuf, 0 );
+			IMAP_Write( Server->conn, SendBuf,
+				    strlen(SendBuf) );
+			/*
+			 * To be more correct, we should send any untagged
+			 * data back to the client before we're done.
+			 */
+			for( ;; )
+			{
+			    /*
+			     * If the server wants to send a literal for
+			     * some reason, bag it...
+			     */
+			    if ( Server->LiteralBytesRemaining )
+				break;
+			    
+			    status = IMAP_Line_Read( Server );
+			    
+			    /*
+			     * If there's an error reading from the server,
+			     * we'll catch it when (if) we try to reuse this
+			     * connection.
+			     */
+			    if ( ( status == -1 ) || ( status == 0 ) )
+				break;
+			    
+			    /*
+			     * If it's not untagged data, we're done.
+			     */
+			    if ( Server->ReadBuf[0] != '*' )
+				break;
+
+			    BytesSent = IMAP_Write( Client->conn, 
+						    Server->ReadBuf, status );
+			    if ( BytesSent == -1 )
+			    {
+				syslog( LOG_ERR, "%s: IMAP_Write() failed sending data to client on sd [%d]: %s", fn, Client->conn->sd, strerror( errno ) );
+			    }
+			    
+			}
+
 			memset( Server->ReadBuf, 0, sizeof Server->ReadBuf );
 			
 			return( 1 );
@@ -1097,13 +1157,13 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server )
 		 */
 		for ( ; ; )
 		{
-		    BytesSent = send( Server->sd, Client->ReadBuf, status, 0 );
+		    BytesSent = IMAP_Write( Server->conn, Client->ReadBuf, status );
 		    if ( BytesSent == -1 )
 		    {
 			if ( errno == EINTR )
 			    continue;
 			
-			syslog(LOG_ERR, "%s: send() failed sending data to client on sd [%d]: %s", fn, Client->sd, strerror( errno ) );
+			syslog(LOG_ERR, "%s: IMAP_Write() failed sending data to client on sd [%d]: %s", fn, Client->conn->sd, strerror( errno ) );
 			return( -1 );
 		    }
 		    break;
@@ -1140,20 +1200,20 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server )
 		status = IMAP_Line_Read( Server );
 		if ( Server->TraceOn )
 		{
-		    snprintf( TraceBuf, sizeof TraceBuf - 1, "\n\n-----> C= %s SERVER: sd [%d]\n", ( (TraceUser) ? TraceUser : "Null username" ), Server->sd );
+		    snprintf( TraceBuf, sizeof TraceBuf - 1, "\n\n-----> C= %s SERVER: sd [%d]\n", ( (TraceUser) ? TraceUser : "Null username" ), Server->conn->sd );
 		    write( Tracefd, TraceBuf, strlen( TraceBuf ) );
 		    write( Tracefd, Server->ReadBuf, status );
 		}
 
 		for ( ; ; )
 		{
-		    BytesSent = send( Client->sd, Server->ReadBuf, status, 0 );
+		    BytesSent = IMAP_Write( Client->conn, Server->ReadBuf, status );
 		    if ( BytesSent == -1 )
 		    {
 			if ( errno == EINTR )
 			    continue;
 			
-			syslog(LOG_ERR, "%s: send() failed sending data to client on sd [%d]: %s", fn, Client->sd, strerror( errno ) );
+			syslog(LOG_ERR, "%s: IMAP_Write() failed sending data to client on sd [%d]: %s", fn, Client->conn->sd, strerror( errno ) );
 			return( -1 );
 		    } 
 		    break;
@@ -1167,13 +1227,13 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server )
 		
 		if ( status == -1 )
 		{
-		    syslog(LOG_NOTICE, "%s: Failed to read string literal from client on socket %d", fn, Client->sd );
+		    syslog(LOG_NOTICE, "%s: Failed to read string literal from client on socket %d", fn, Client->conn->sd );
 		    return( -1 );
 		}
 
 		if ( Client->TraceOn )
 		{
-		    snprintf( TraceBuf, sizeof TraceBuf - 1, "\n\n-----> C= %s CLIENT: sd [%d]\n", ( (TraceUser) ? TraceUser : "Null username" ), Client->sd );
+		    snprintf( TraceBuf, sizeof TraceBuf - 1, "\n\n-----> C= %s CLIENT: sd [%d]\n", ( (TraceUser) ? TraceUser : "Null username" ), Client->conn->sd );
 		    write( Tracefd, TraceBuf, strlen( TraceBuf ) );
 		    write( Tracefd, Client->ReadBuf, status );
 		}
@@ -1181,13 +1241,13 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server )
 		/* send any literal data back to the server */
 		for ( ; ; )
 		{
-		    BytesSent = send( Server->sd, Client->ReadBuf, status, 0 );
+		    BytesSent = IMAP_Write( Server->conn, Client->ReadBuf, status );
 		    if ( BytesSent == -1 )
 		    {
 			if ( errno == EINTR )
 			    continue;
 			
-			syslog(LOG_ERR, "%s: send() failed sending data to client on sd [%d]: %s", fn, Client->sd, strerror( errno ) );
+			syslog(LOG_ERR, "%s: IMAP_Write() failed sending data to client on sd [%d]: %s", fn, Client->conn->sd, strerror( errno ) );
 			return( -1 );
 		    }
 		    break;
@@ -1217,7 +1277,7 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server )
  *
  * Returns:	nada
  *
- * Authors:	dgm
+ * Authors:	Dave McMurtrie <davemcmurtrie@hotmail.com>
  *
  * Notes:	This function actually only handles unauthenticated
  *		traffic from an imap client.  As such it can only make sense
@@ -1237,6 +1297,7 @@ extern void HandleRequest( int clientsd )
 {
     char *fn = "HandleRequest";
     ITD_Struct Client;
+    ICD_Struct conn;
     char *Tag;
     char *Command;
     char *Username;
@@ -1264,15 +1325,17 @@ extern void HandleRequest( int clientsd )
     
     /* initialize the client ITD */
     memset( &Client, 0, sizeof( ITD_Struct ) );
-    Client.sd = clientsd;
+    memset( &conn, 0, sizeof( ICD_Struct ) );
+    Client.conn = &conn;
+    Client.conn->sd = clientsd;
 
 
     /* send the banner to the client */
-    if ( send( Client.sd, Banner, BannerLen, 0 ) == -1 )
+    if ( IMAP_Write( Client.conn, Banner, BannerLen ) == -1 )
     {
-	syslog(LOG_ERR, "%s: send() failed: %s.  Closing client connection.", fn, strerror( errno ) );
+	syslog(LOG_ERR, "%s: IMAP_Write() failed: %s.  Closing client connection.", fn, strerror( errno ) );
 	IMAPCount->CurrentClientConnections--;
-	close( Client.sd );
+	close( Client.conn->sd );
 	return;
     }
     
@@ -1280,7 +1343,7 @@ extern void HandleRequest( int clientsd )
     /* set up our poll fd structs */
     nfds = 1;
     
-    fds[ 0 ].fd = Client.sd;
+    fds[ 0 ].fd = Client.conn->sd;
     fds[ 0 ].events = POLLIN;
     
     /* start a command loop */
@@ -1299,7 +1362,7 @@ extern void HandleRequest( int clientsd )
 	     */
 	    syslog(LOG_ERR, "%s: no data received from client for %d minutes.  Closing client connection.", fn, POLL_TIMEOUT_MINUTES );
 	    IMAPCount->CurrentClientConnections--;
-	    close( Client.sd );
+	    close( Client.conn->sd );
 	    return;
 	}
 	
@@ -1321,7 +1384,7 @@ extern void HandleRequest( int clientsd )
 		{
 		    syslog(LOG_ERR, "%s: poll() returned EAGAIN.  Exceeded retry limit.  Closing client connection.", fn );
 		    IMAPCount->CurrentClientConnections--;
-		    close( Client.sd );
+		    close( Client.conn->sd );
 		    return;
 		}
 		
@@ -1333,7 +1396,7 @@ extern void HandleRequest( int clientsd )
 	    /* anything else, we're really jacked about it. */
 	    syslog(LOG_ERR, "%s: poll() failed: %s -- Closing connection.", fn, strerror( errno ) );
 	    IMAPCount->CurrentClientConnections--;
-	    close( Client.sd );
+	    close( Client.conn->sd );
 	    return;
 	}
 	
@@ -1344,7 +1407,7 @@ extern void HandleRequest( int clientsd )
 	if ( BytesRead == -1 )
 	{
 	    IMAPCount->CurrentClientConnections--;
-	    close( Client.sd );
+	    close( Client.conn->sd );
 	    return;
 	}
 	
@@ -1352,7 +1415,7 @@ extern void HandleRequest( int clientsd )
 	{
 	    syslog( LOG_WARNING, "%s: Too much data read from unauthenticated client.  Dropping the connection.", fn );
 	    IMAPCount->CurrentClientConnections--;
-	    close( Client.sd );
+	    close( Client.conn->sd );
 	    return;
 	}
 	
@@ -1367,10 +1430,10 @@ extern void HandleRequest( int clientsd )
 	     ( Tag[0] == '*' && !Tag[1] ) )
 	{
 	    snprintf( SendBuf, BufLen, "* BAD Invalid tag\r\n" );
-	    if ( send( Client.sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+	    if ( IMAP_Write( Client.conn, SendBuf, strlen(SendBuf) ) == -1 )
 	    {
 		IMAPCount->CurrentClientConnections--;
-		close( Client.sd );
+		close( Client.conn->sd );
 		return;
 	    }
 	    continue;
@@ -1382,10 +1445,10 @@ extern void HandleRequest( int clientsd )
 	{
 	    /* Tag with no command */
 	    snprintf( SendBuf, BufLen, "%s BAD Null command\r\n", Tag );
-	    if ( send( Client.sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+	    if ( IMAP_Write( Client.conn, SendBuf, strlen(SendBuf) ) == -1 )
 	    {
 		IMAPCount->CurrentClientConnections--;
-		close( Client.sd );
+		close( Client.conn->sd );
 		return;
 	    }
 	    continue;
@@ -1412,10 +1475,10 @@ extern void HandleRequest( int clientsd )
 	    if ( !AuthMech )
 	    {
 		snprintf( SendBuf, BufLen, "%s BAD Missing required argument to Authenticate\r\n", Tag );
-		if ( send( Client.sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+		if ( IMAP_Write( Client.conn, SendBuf, strlen(SendBuf) ) == -1 )
 		{
 		    IMAPCount->CurrentClientConnections--;
-		    close( Client.sd );
+		    close( Client.conn->sd );
 		    return;
 		}
 		continue;
@@ -1440,7 +1503,7 @@ extern void HandleRequest( int clientsd )
 		}
 		
 		IMAPCount->CurrentClientConnections--;
-		close( Client.sd );
+		close( Client.conn->sd );
 		return;
 	    }
 	    else
@@ -1449,10 +1512,10 @@ extern void HandleRequest( int clientsd )
 		 * an auth mechanism we can't handle.
 		 */
 		snprintf( SendBuf, BufLen, "%s NO no mechanism available\r\n", Tag, Command );
-		if ( send( Client.sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+		if ( IMAP_Write( Client.conn, SendBuf, strlen(SendBuf) ) == -1 )
 		{
 		    IMAPCount->CurrentClientConnections--;
-		    close( Client.sd );
+		    close( Client.conn->sd );
 		    return;
 		}
 		continue;
@@ -1463,7 +1526,7 @@ extern void HandleRequest( int clientsd )
 	{
 	    cmd_logout( &Client, S_Tag );
 	    IMAPCount->CurrentClientConnections--;
-	    close( Client.sd );
+	    close( Client.conn->sd );
 	    return;
 	}
 	else if ( ! strcasecmp( (const char *)Command, "P_TRACE" ) )
@@ -1499,10 +1562,10 @@ extern void HandleRequest( int clientsd )
 	    {
 		/* no username -- complain back to the client */
 		snprintf( SendBuf, BufLen, "%s BAD Missing required argument to Login\r\n", Tag );
-		if ( send( Client.sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+		if ( IMAP_Write( Client.conn, SendBuf, strlen(SendBuf) ) == -1 )
 		{
 		    IMAPCount->CurrentClientConnections--;
-		    close( Client.sd );
+		    close( Client.conn->sd );
 		    return;
 		}
 		continue;
@@ -1530,10 +1593,10 @@ extern void HandleRequest( int clientsd )
 		    Client.MoreData = 0;
 		    
 		    snprintf( SendBuf, BufLen, "%s NO LOGIN failed\r\n", Tag );
-		    if ( send( Client.sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+		    if ( IMAP_Write( Client.conn, SendBuf, strlen(SendBuf) ) == -1 )
 		    {
 			IMAPCount->CurrentClientConnections--;
-			close( Client.sd );
+			close( Client.conn->sd );
 			return;
 		    }
 		    continue;
@@ -1546,10 +1609,10 @@ extern void HandleRequest( int clientsd )
 		if ( ! Client.NonSyncLiteral )
 		{
 		    sprintf( SendBuf, "+ go ahead\r\n" );
-		    if ( send( Client.sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+		    if ( IMAP_Write( Client.conn, SendBuf, strlen(SendBuf) ) == -1 )
 		    {
 			IMAPCount->CurrentClientConnections--;
-			close( Client.sd );
+			close( Client.conn->sd );
 			return;
 		    }
 		}
@@ -1562,10 +1625,10 @@ extern void HandleRequest( int clientsd )
 		    {
 			syslog( LOG_NOTICE, "%s: Failed to read string literal from client on login." );
 			snprintf( SendBuf, BufLen, "%s NO LOGIN failed\r\n", Tag );
-			if ( send( Client.sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+			if ( IMAP_Write( Client.conn, SendBuf, strlen(SendBuf) ) == -1 )
 			{
 			    IMAPCount->CurrentClientConnections--;
-			    close( Client.sd );
+			    close( Client.conn->sd );
 			    return;
 			}
 			continue;
@@ -1603,10 +1666,10 @@ extern void HandleRequest( int clientsd )
 		{
 		    /* no password -- complain back to the client */
 		    snprintf( SendBuf, BufLen, "%s BAD Missing required argument to Login\r\n", Tag );
-		    if ( send( Client.sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+		    if ( IMAP_Write( Client.conn, SendBuf, strlen(SendBuf) ) == -1 )
 		    {
 			IMAPCount->CurrentClientConnections--;
-			close( Client.sd );
+			close( Client.conn->sd );
 			return;
 		    }
 		    continue;
@@ -1653,7 +1716,7 @@ extern void HandleRequest( int clientsd )
 	     * close the client side socket.
 	     */
 	    IMAPCount->CurrentClientConnections--;
-	    close( Client.sd );
+	    close( Client.conn->sd );
 	    return;
 	    
 	}
@@ -1665,10 +1728,10 @@ extern void HandleRequest( int clientsd )
 	     * log in first.
 	     */
 	    snprintf( SendBuf, BufLen, "%s BAD Please login first\r\n", Tag, Command );
-	    if ( send( Client.sd, SendBuf, strlen(SendBuf), 0 ) == -1 )
+	    if ( IMAP_Write( Client.conn, SendBuf, strlen(SendBuf) ) == -1 )
 	    {
 		IMAPCount->CurrentClientConnections--;
-		close( Client.sd );
+		close( Client.conn->sd );
 		return;
 	    }
 	    continue;
@@ -1681,7 +1744,7 @@ extern void HandleRequest( int clientsd )
     
     /* should never reach this code */
     IMAPCount->CurrentClientConnections--;
-    close( Client.sd );
+    close( Client.conn->sd );
     return;
 }
 

@@ -1,6 +1,6 @@
 #This is imapproxy rpm spec file
 
-%define ver	1.1.5
+%define ver	1.2
 %define rel	1
 %define prefix	/usr/local
 
@@ -8,7 +8,7 @@ Summary:	Imapproxy Daemon
 Name:		up-imapproxy
 Version:	%ver
 Release:	%rel
-Copyright:	University of Pittsburgh
+Copyright:	Dave McMurtrie
 Group:		Networking/Daemons
 Source0:	ftp://ftp.pitt.edu/users/d/g/dgm/up-imapproxy-%{ver}.tar.gz
 Source1:	imapproxy.conf

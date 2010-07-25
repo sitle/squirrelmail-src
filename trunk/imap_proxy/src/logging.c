@@ -1,24 +1,22 @@
 /*
-**
-**      Copyright (c) 2003 University of Pittsburgh
-**
-**                      All Rights Reserved
-**
-** Permission to use, copy, modify, and distribute this software and its 
-** documentation for any purpose and without fee is hereby granted, 
-** provided that the above copyright notice appears in all copies and that
-** both that copyright notice and this permission notice appear in 
-** supporting documentation, and that the name of the University of
-** Pittsburgh not be used in advertising or publicity pertaining to
-** distribution of this software without specific written prior permission.  
 ** 
-** THE UNIVERSITY OF PITTSBURGH DISCLAIMS ALL WARRANTIES WITH REGARD TO
-** THIS SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND
-** FITNESS, IN NO EVENT SHALL THE UNIVERSITY OF PITTSBURGH BE LIABLE FOR
-** ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER
-** RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF
-** CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
-** CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+**               Copyright (c) 2002,2003 Dave McMurtrie
+**
+** This file is part of imapproxy.
+**
+** imapproxy is free software; you can redistribute it and/or modify
+** it under the terms of the GNU General Public License as published by
+** the Free Software Foundation; either version 2 of the License, or
+** (at your option) any later version.
+**
+** imapproxy is distributed in the hope that it will be useful,
+** but WITHOUT ANY WARRANTY; without even the implied warranty of
+** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+** GNU General Public License for more details.
+**
+** You should have received a copy of the GNU General Public License
+** along with imapproxy; if not, write to the Free Software
+** Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 **
 **
 **  Facility:
@@ -31,16 +29,19 @@
 **
 **  Authors:
 **
-**      Dave McMurtrie  <dgm@pitt.edu>
+**      Dave McMurtrie  <davemcmurtrie@hotmail.com>
 **
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/logging.c,v $
-**      $Id: logging.c,v 1.1 2003/04/16 12:14:31 dgm Exp $
+**      $Id: logging.c,v 1.2 2003/05/20 19:01:49 dgm Exp $
 **      
 **  Modification History:
 **
 **      $Log: logging.c,v $
+**      Revision 1.2  2003/05/20 19:01:49  dgm
+**      Comment changes only.
+**
 **      Revision 1.1  2003/04/16 12:14:31  dgm
 **      Initial revision
 **
@@ -117,7 +118,7 @@ extern ProxyConfig_Struct PC_Struct;
  *
  * Returns:      nada.  Exits on any failure.
  *
- * Authors:      Dave McMurtrie  <dgm@pitt.edu>
+ * Authors:      Dave McMurtrie  <davemcmurtrie@hotmail.com>
  *
  * Notes:        If nothing is set in the configfile, it will default
  *               to LOG_MAIL facility and no logmask.

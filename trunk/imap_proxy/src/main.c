@@ -1,24 +1,22 @@
 /*
-**
-**      Copyright (c) 2002 University of Pittsburgh
-**
-**                      All Rights Reserved
-**
-** Permission to use, copy, modify, and distribute this software and its 
-** documentation for any purpose and without fee is hereby granted, 
-** provided that the above copyright notice appears in all copies and that
-** both that copyright notice and this permission notice appear in 
-** supporting documentation, and that the name of the University of
-** Pittsburgh not be used in advertising or publicity pertaining to
-** distribution of this software without specific written prior permission.  
 ** 
-** THE UNIVERSITY OF PITTSBURGH DISCLAIMS ALL WARRANTIES WITH REGARD TO
-** THIS SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND
-** FITNESS, IN NO EVENT SHALL THE UNIVERSITY OF PITTSBURGH BE LIABLE FOR
-** ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER
-** RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF
-** CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
-** CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+**               Copyright (c) 2002,2003 Dave McMurtrie
+**
+** This file is part of imapproxy.
+**
+** imapproxy is free software; you can redistribute it and/or modify
+** it under the terms of the GNU General Public License as published by
+** the Free Software Foundation; either version 2 of the License, or
+** (at your option) any later version.
+**
+** imapproxy is distributed in the hope that it will be useful,
+** but WITHOUT ANY WARRANTY; without even the implied warranty of
+** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+** GNU General Public License for more details.
+**
+** You should have received a copy of the GNU General Public License
+** along with imapproxy; if not, write to the Free Software
+** Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 **
 **
 **  Facility:
@@ -33,16 +31,33 @@
 **
 **  Authors:
 **
-**	Dave McMurtrie (dgm@pitt.edu)
+**	Dave McMurtrie <davemcmurtrie@hotmail.com>
 **
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/main.c,v $
-**	$Id: main.c,v 1.9 2003/04/16 12:15:52 dgm Exp $
+**	$Id: main.c,v 1.14 2003/05/20 19:04:23 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: main.c,v $
+**	Revision 1.14  2003/05/20 19:04:23  dgm
+**	Comment changes only.
+**
+**	Revision 1.13  2003/05/15 11:34:34  dgm
+**	Patch by Ken Murchison <ken@oceana.com> to clean up build process:
+**	Conditionally include sys/param.h instead of defining MAXPATHLEN.
+**
+**	Revision 1.12  2003/05/13 14:19:00  dgm
+**	Changed all uses of AF_INET constant to PF_INET.
+**
+**	Revision 1.11  2003/05/13 11:40:16  dgm
+**	Patches by Ken Murchison <ken@oceana.com> to clean up build process.
+**
+**	Revision 1.10  2003/05/06 12:12:21  dgm
+**	Applied patches by Ken Murchison <ken@oceana.com> to include SSL
+**	support.
+**
 **	Revision 1.9  2003/04/16 12:15:52  dgm
 **	Added support for syslog configuration.
 **	Removed a few ifdef LINUXs by always storing tcp service port as
@@ -83,7 +98,7 @@
 */
 
 
-static char *rcsId = "$Id: main.c,v 1.9 2003/04/16 12:15:52 dgm Exp $";
+static char *rcsId = "$Id: main.c,v 1.14 2003/05/20 19:04:23 dgm Exp $";
 static char *rcsSource = "$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/main.c,v $";
 static char *rcsAuthor = "$Author: dgm $";
 
@@ -93,7 +108,9 @@ static char *rcsAuthor = "$Author: dgm $";
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#if HAVE_UNISTD_H
 #include <unistd.h>
+#endif
 #include <fcntl.h>
 #include <sys/socket.h>
 #include <sys/uio.h>
@@ -109,7 +126,7 @@ static char *rcsAuthor = "$Author: dgm $";
 #include <syslog.h>
 #include <signal.h>
 
-#ifdef LINUX
+#if HAVE_SYS_PARAM_H
 #include <sys/param.h>
 #endif
 
@@ -133,6 +150,15 @@ pthread_mutex_t trace;               /* mutex used for username tracing */
 char TraceUser[MAXUSERNAMELEN];      /* username we want to trace */
 int Tracefd;                         /* fd of our trace file (always open) */
 ProxyConfig_Struct PC_Struct;        /* Global configuration data */
+
+#if HAVE_LIBSSL
+SSL_CTX *tls_ctx;
+static int verify_depth = 5;
+static int verify_error = X509_V_OK;
+
+static int verify_callback( int, X509_STORE_CTX *);
+static int set_cert_stuff( SSL_CTX *, const char *, const char * );
+#endif
 
 /*
  * Internal Prototypes
@@ -267,6 +293,52 @@ int main( int argc, char *argv[] )
 	syslog(LOG_ERR, "%s: Failed to get banner string and capability from imap server.  Exiting.", fn);
 	exit( 1 );
     }
+
+    if ( PC_Struct.login_disabled )
+    {
+#if HAVE_LIBSSL
+	if ( PC_Struct.support_starttls )
+	{
+	    /* Initialize SSL_CTX */
+	    SSL_library_init();
+	    SSL_load_error_strings();
+	    tls_ctx = SSL_CTX_new( TLSv1_client_method() );
+	    if ( tls_ctx == NULL )
+	    {
+		syslog(LOG_ERR, "%s: Failed to create new SSL_CTX.  Exiting.", fn);
+		exit( 1 );
+	    }
+
+	    /* Work around all known bugs */
+	    SSL_CTX_set_options( tls_ctx, SSL_OP_ALL );
+
+	    if ( ! SSL_CTX_load_verify_locations( tls_ctx,
+						  PC_Struct.tls_ca_file,
+						  PC_Struct.tls_ca_path ) ||
+		 ! SSL_CTX_set_default_verify_paths( tls_ctx ) )
+	    {
+		syslog(LOG_ERR, "%s: Failed to load CA data.  Exiting.", fn);
+		exit( 1 );
+	    }
+
+	    if ( ! set_cert_stuff( tls_ctx,
+				   PC_Struct.tls_cert_file,
+				   PC_Struct.tls_key_file ) )
+	    {
+		syslog(LOG_ERR, "%s: Failed to load cert/key data.  Exiting.", fn);
+		exit( 1 );
+	    }
+
+	    SSL_CTX_set_verify(tls_ctx, SSL_VERIFY_NONE, verify_callback);
+	}
+	else
+#endif /* HAVE_LIBSSL */
+	{
+	    /* We're screwed!  We won't be able to login without SASL */
+	    syslog(LOG_ERR, "%s: IMAP server has LOGINDISABLED and we can't do STARTTLS.  Exiting.", fn);
+	    exit( 1 );
+	}
+    }
     
     /* detach from our parent if necessary */
     if (! (getppid() == 1) )
@@ -299,13 +371,13 @@ int main( int argc, char *argv[] )
     }
 
     memset( (char *) &srvaddr, 0, sizeof srvaddr );
-    srvaddr.sin_family = AF_INET;
+    srvaddr.sin_family = PF_INET;
     srvaddr.sin_addr.s_addr = htonl(INADDR_ANY);
 
     syslog(LOG_INFO, "%s: Binding to tcp port %d", fn, PC_Struct.listen_port );
     srvaddr.sin_port = htons(PC_Struct.listen_port);
 
-    listensd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+    listensd = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
     if ( listensd == -1 )
     {
 	syslog(LOG_ERR, "%s: socket() failed: %s", fn, strerror(errno));
@@ -450,7 +522,7 @@ int main( int argc, char *argv[] )
  *
  * Returns:	nada
  * 
- * Authors:	dgm
+ * Authors:	Dave McMurtrie <davemcmurtrie@hotmail.com>
  * 
  * Notes:
  *--
@@ -472,7 +544,7 @@ void Usage( void )
  *
  * Returns:	nada -- exits on error
  * 
- * Authors:	dgm
+ * Authors:	Dave McMurtrie <davemcmurtrie@hotmail.com>
  * 
  * Notes:       relies on global copy of ProxyConfig_Struct "PC_Struct"
  *--
@@ -555,7 +627,7 @@ static void ServerInit( void )
      * fill in the address family, the host address, and the
      * service port of our global socket address structure
      */
-    ISD.srv.sin_family = AF_INET;
+    ISD.srv.sin_family = PF_INET;
     memcpy( &ISD.srv.sin_addr.s_addr, ISD.host.h_addr, ISD.host.h_length );
     ISD.srv.sin_port = ISD.serv.s_port;
 }
@@ -575,7 +647,7 @@ static void ServerInit( void )
  * Returns:	0 on success
  *              -1 on failure
  *
- * Authors:	dgm
+ * Authors:	Dave McMurtrie <davemcmurtrie@hotmail.com>
  *
  * Notes:       All AUTH mechanisms will be stripped from the capability
  *              string.  AUTH=LOGIN will be added.
@@ -588,6 +660,7 @@ static int SetBannerAndCapability( void )
 {
     int sd;
     ITD_Struct itd;
+    ICD_Struct conn;
     int BytesRead;
     char *fn = "SetBannerAndCapability()";
     char *CP;
@@ -595,7 +668,7 @@ static int SetBannerAndCapability( void )
     /* initialize some stuff */
     memset( &itd, 0, sizeof itd );
 
-    sd = socket( AF_INET, SOCK_STREAM, IPPROTO_TCP );
+    sd = socket( PF_INET, SOCK_STREAM, IPPROTO_TCP );
     if ( sd == -1 )
     {
 	syslog(LOG_ERR, "%s: socket() failed: %s", fn, strerror(errno) );
@@ -609,7 +682,9 @@ static int SetBannerAndCapability( void )
 	return(-1);
     }
     
-    itd.sd = sd;
+    memset( &conn, 0, sizeof ( ICD_Struct ) );
+    itd.conn = &conn;
+    itd.conn->sd = sd;
     
     /*
      * The first thing we get back from the server should be the
@@ -618,7 +693,7 @@ static int SetBannerAndCapability( void )
     BytesRead = IMAP_Line_Read( &itd );
     if ( BytesRead == -1 )
     {
-	close( itd.sd );
+	close( itd.conn->sd );
 	return( -1 );
     }
     
@@ -626,7 +701,7 @@ static int SetBannerAndCapability( void )
     if ( sizeof Banner < BytesRead )
     {
 	syslog(LOG_ERR, "%s: Storing %d byte banner string from IMAP server would cause buffer overflow.", fn, BytesRead );
-	close( itd.sd );
+	close( itd.conn->sd );
 	return( -1 );
     }
     
@@ -641,16 +716,16 @@ static int SetBannerAndCapability( void )
     if ( strncasecmp( Banner, IMAP_UNTAGGED_OK, strlen(IMAP_UNTAGGED_OK)) )
     {
 	syslog(LOG_ERR, "%s: Unexpected response from imap server on initial connection: %s", fn, Banner);
-	close( itd.sd );
+	close( itd.conn->sd );
 	return( -1 );
     }
 
 
     /* Now we send a CAPABILITY command to the server. */
-    if ( send( sd, "1 CAPABILITY\r\n", strlen("1 CAPABILITY\r\n"), 0 ) == -1 )
+    if ( IMAP_Write( itd.conn, "1 CAPABILITY\r\n", strlen("1 CAPABILITY\r\n") ) == -1 )
     {
-	syslog(LOG_ERR, "%s: send() failed: %s", fn, strerror(errno) );
-	close( itd.sd );
+	syslog(LOG_ERR, "%s: IMAP_Write() failed: %s", fn, strerror(errno) );
+	close( itd.conn->sd );
 	return( -1 );
     }
     
@@ -668,7 +743,7 @@ static int SetBannerAndCapability( void )
     BytesRead = IMAP_Line_Read( &itd );
     if ( BytesRead == -1 )
     {
-	close( itd.sd );
+	close( itd.conn->sd );
 	return( -1 );
     }
     
@@ -679,7 +754,7 @@ static int SetBannerAndCapability( void )
     if ( sizeof Capability < BytesRead )
     {
 	syslog(LOG_ERR, "%s: Storing %d byte capability string from IMAP server would cause buffer overflow.", fn, BytesRead );
-	close( itd.sd );
+	close( itd.conn->sd );
 	return( -1 );
     }
 
@@ -695,7 +770,7 @@ static int SetBannerAndCapability( void )
     if ( !CP )
     {
 	syslog( LOG_ERR, "%s: No tokens found in capability string sent from IMAP server.", fn);
-	close( itd.sd );
+	close( itd.conn->sd );
 	return( -1 );
     }
     
@@ -705,6 +780,16 @@ static int SetBannerAndCapability( void )
      * initially assume that the server doesn't support UNSELECT.
      */
     PC_Struct.support_unselect = UNSELECT_NOT_SUPPORTED;
+
+    /*
+     * initially assume that the server doesn't support STARTTLS.
+     */
+    PC_Struct.support_starttls = STARTTLS_NOT_SUPPORTED;
+
+    /*
+     * initially assume that the server doesn't disable LOGIN.
+     */
+    PC_Struct.login_disabled = LOGIN_NOT_DISABLED;
 
     for( ; ; )
     {
@@ -726,6 +811,26 @@ static int SetBannerAndCapability( void )
 	     ( strncasecmp( CP, "AUTH=LOGIN", strlen( "AUTH=LOGIN" ) ) ) )
 	    continue;
 	
+	/*
+	 * If this token happens to be STARTTLS, we want to discard it
+	 * since we don't support it on the client-side.
+	 */
+	if ( ! strncasecmp( CP, "STARTTLS", strlen( "STARTTLS" ) ) )
+	{
+	    PC_Struct.support_starttls = STARTTLS_SUPPORTED;
+	    continue;
+	}
+	
+	/*
+	 * If this token happens to be LOGINDISABLED, we want to discard it
+	 * since we don't support it on the client-side.
+	 */
+	if ( ! strncasecmp( CP, "LOGINDISABLED", strlen( "LOGINDISABLED" ) ) )
+	{
+	    PC_Struct.login_disabled = LOGIN_DISABLED;
+	    continue;
+	}
+	
 	strcat( Capability, " ");
 	strcat( Capability, CP );
     }
@@ -738,7 +843,7 @@ static int SetBannerAndCapability( void )
     BytesRead = IMAP_Line_Read( &itd );
     if ( BytesRead == -1 )
     {
-	close( itd.sd );
+	close( itd.conn->sd );
 	return( -1 );
     }
     
@@ -746,15 +851,15 @@ static int SetBannerAndCapability( void )
     if ( strncasecmp( itd.ReadBuf, IMAP_TAGGED_OK, strlen(IMAP_TAGGED_OK) ) )
     {
 	syslog(LOG_ERR, "%s: Received non-OK tagged reponse from imap server on CAPABILITY command", fn );
-	close( itd.sd );
+	close( itd.conn->sd );
 	return( -1 );
     }
     
     /* Be nice and logout */
-    if ( send( sd, "2 LOGOUT\r\n", strlen("2 LOGOUT\r\n"), 0 ) == -1 )
+    if ( IMAP_Write( itd.conn, "2 LOGOUT\r\n", strlen("2 LOGOUT\r\n") ) == -1 )
     {
-	syslog(LOG_WARNING, "%s: send() failed on LOGOUT: %s -- Returning success anyway.", fn, strerror(errno) );
-	close( itd.sd );
+	syslog(LOG_WARNING, "%s: IMAP_Write() failed on LOGOUT: %s -- Returning success anyway.", fn, strerror(errno) );
+	close( itd.conn->sd );
 	return( 0 );
     }
     
@@ -765,10 +870,88 @@ static int SetBannerAndCapability( void )
 	syslog(LOG_WARNING, "%s: IMAP_Line_Read() failed on LOGOUT.  Returning success anyway.", fn );
     }
     
-    close( itd.sd );
+    close( itd.conn->sd );
     return( 0 );
 }
     
+
+#if HAVE_LIBSSL
+/* taken from OpenSSL apps/s_cb.c */
+
+static int verify_callback(int ok, X509_STORE_CTX * ctx)
+{
+    char    buf[256];
+    X509   *err_cert;
+    int     err;
+    int     depth;
+
+    syslog(LOG_ERR,"Doing a peer verify");
+
+    err_cert = X509_STORE_CTX_get_current_cert(ctx);
+    err = X509_STORE_CTX_get_error(ctx);
+    depth = X509_STORE_CTX_get_error_depth(ctx);
+
+    X509_NAME_oneline(X509_get_subject_name(err_cert), buf, sizeof(buf));
+    if (ok==0)
+    {
+      syslog(LOG_ERR, "verify error:num=%d:%s", err,
+	     X509_verify_cert_error_string(err));
+      
+	if (verify_depth >= depth) {
+	    ok = 0;
+	    verify_error = X509_V_OK;
+	} else {
+	    ok = 0;
+	    verify_error = X509_V_ERR_CERT_CHAIN_TOO_LONG;
+	}
+    }
+    switch (ctx->error) {
+    case X509_V_ERR_UNABLE_TO_GET_ISSUER_CERT:
+	X509_NAME_oneline(X509_get_issuer_name(ctx->current_cert), buf, sizeof(buf));
+	syslog(LOG_NOTICE, "issuer= %s", buf);
+	break;
+    case X509_V_ERR_CERT_NOT_YET_VALID:
+    case X509_V_ERR_ERROR_IN_CERT_NOT_BEFORE_FIELD:
+	syslog(LOG_NOTICE, "cert not yet valid");
+	break;
+    case X509_V_ERR_CERT_HAS_EXPIRED:
+    case X509_V_ERR_ERROR_IN_CERT_NOT_AFTER_FIELD:
+	syslog(LOG_NOTICE, "cert has expired");
+	break;
+    }
+
+    return (ok);
+}
+
+
+static int set_cert_stuff(SSL_CTX * ctx,
+			  const char *cert_file, const char *key_file)
+{
+    if (cert_file != NULL) {
+	if (SSL_CTX_use_certificate_file(ctx, cert_file,
+					 SSL_FILETYPE_PEM) <= 0) {
+	    syslog(LOG_ERR, "unable to get certificate from '%s'", cert_file);
+	    return (0);
+	}
+	if (key_file == NULL)
+	    key_file = cert_file;
+	if (SSL_CTX_use_PrivateKey_file(ctx, key_file,
+					SSL_FILETYPE_PEM) <= 0) {
+	    syslog(LOG_ERR, "unable to get private key from '%s'", key_file);
+	    return (0);
+	}
+	/* Now we know that a key and cert have been set against
+         * the SSL context */
+	if (!SSL_CTX_check_private_key(ctx)) {
+	    syslog(LOG_ERR,
+		   "Private key does not match the certificate public key");
+	    return (0);
+	}
+    }
+    return (1);
+}
+#endif /* HAVE_LIBSSL */
+
 
 /*
  *                            _________

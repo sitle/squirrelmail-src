@@ -4,6 +4,8 @@
 # Fixed to work with configure script
 # by Devrim SERAL <devrim@gazi.edu.tr>
 
+# Cleaned up by Ken Murchison
+
 ## Tuneables
 
 # Paths
@@ -24,10 +26,9 @@ rpm_prefix = @rpm_prefix@
 CC = @CC@
 CPPFLAGS = @CPPFLAGS@ 
 LDFLAGS = @LDFLAGS@
-OSLIBS = @LIBS@
+LIBS = @LIBS@
 DEFINES = @DEFINES@
-OS = @OS@
-FLAGS = $(CPPFLAGS) @CFLAGS@ -I/usr/include -I./include $(OS)
+FLAGS = $(CPPFLAGS) @CFLAGS@ -I. -I./include
 
 INSTALL = @INSTALL@
 EBIN = $(sbindir)
@@ -35,34 +36,18 @@ MAN =  $(mandir)
 ETC =  /etc
 # ETC =  @sysconfdir@
 
-# Compiler flags 
-#CC = gcc
-#RANLIB = :
-#CFLAGS = -I./include -DLINUX
-#LDLIBS = 
-
-# Man sections
-#MANLIB = 3
-#MANADM = 1m
 
 ## Nothing to change after this point
 
 # Libraries
 
-# Solaris
-#XYD_LIB = -lpthread -lmd5 -lsocket -lnsl
-# Linux
-#XYD_LIB = -lpthread -lnsl -lcrypto
-
-#TAT_LIB = -lcurses
-
-
-XYD_LIB =  $(OSLIBS) 
-TAT_LIB =  @NCURLIB@
+XYD_LIB = $(LIBS)
+TAT_LIB = @LIB_CURSES@
 
 # Object files
 
-XYD_OBJ = ./src/icc.o ./src/main.o ./src/imapcommon.o ./src/request.o ./src/hash.o ./src/becomenonroot.o ./src/config.o ./src/base64.o ./src/logging.o
+XYD_OBJ = ./src/icc.o ./src/main.o ./src/imapcommon.o ./src/request.o \
+	  ./src/hash.o ./src/becomenonroot.o ./src/config.o ./src/logging.o
 TAT_OBJ = ./src/pimpstat.o ./src/config.o
 
 # Final targets
@@ -80,7 +65,7 @@ $(XYD_OBJ) $(TAT_OBJ): $(MAKEFILE) ./include/common.h ./include/imapproxy.h
 	$(CC) $(CFLAGS) $(FLAGS) -c -o $@ $<
 
 $(XYD_BIN): $(XYD_OBJ)
-	$(CC) -o $@ $(XYD_OBJ) $(XYD_LIB)
+	$(CC) -o $@ $(XYD_OBJ) $(LDFLAGS) $(XYD_LIB)
 
 $(TAT_BIN): $(TAT_OBJ)
 	$(CC) -o $@ $(TAT_OBJ) $(TAT_LIB)
@@ -107,4 +92,6 @@ rpm-install: install
 	$(INSTALL) -o root -g sys -m 0755 ./scripts/imapproxy.conf $(rpm_prefix)/etc
 	$(INSTALL) -o root -g sys -m 0755 ./scripts/imapproxy.init $(rpm_prefix)/etc/init.d/imapproxy
 
+pkg:
+	pkgmk -o -r .
 ####
