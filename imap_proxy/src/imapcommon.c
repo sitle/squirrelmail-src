@@ -35,11 +35,24 @@
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/imapcommon.c,v $
-**	$Id: imapcommon.c,v 1.15 2003/05/20 18:49:53 dgm Exp $
+**	$Id: imapcommon.c,v 1.18 2003/10/22 13:39:24 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: imapcommon.c,v $
+**	Revision 1.18  2003/10/22 13:39:24  dgm
+**	Fixed really bad bug in for loop for string literal detection.
+**	Explicitly clear errno prior to calling atol().
+**
+**	Revision 1.17  2003/10/09 12:53:49  dgm
+**	Added source port to syslog messages.  Added ability to send
+**	tcp keepalives.  Added a poll() call in IMAP_Literal_Read() so
+**	read calls can't block forever.
+**
+**	Revision 1.16  2003/07/14 16:37:44  dgm
+**	Applied patch by William Yodlowsky <wyodlows@andromeda.rutgers.edu>
+**	to allow TLS to work without /dev/random.
+**
 **	Revision 1.15  2003/05/20 18:49:53  dgm
 **	Comment changes only.
 **
@@ -116,6 +129,7 @@
 #endif
 #include <fcntl.h>
 #include <syslog.h>
+#include <poll.h>
 
 /*
  * External globals
@@ -130,7 +144,47 @@ extern ProxyConfig_Struct PC_Struct;
 
 #if HAVE_LIBSSL
 extern SSL_CTX *tls_ctx;
-#endif
+
+/*++
+ * Function:	SSLerrmessage
+ *
+ * Purpose:	Obtain reason string for last SSL error
+ *
+ * Parameters:	none
+ *
+ * Returns:	SSL error text
+ *
+ *
+ * Authors:	http://developer.postgresql.org/docs/pgsql/src/backend/libpq/be-secure.c
+ *
+ * Notes:	Some caution is needed here since ERR_reason_error_string will
+ *		return NULL if it doesn't recognize the error code.  We don't
+ *		want to return NULL ever.
+ *
+ *              This function submitted as a patch by William Yodlowsky 
+ *              <wyodlows@andromeda.rutgers.edu>
+ *--
+ */
+static const char *SSLerrmessage( void )
+{
+    unsigned long errcode;
+    const char *errreason;
+    static char errbuf[32];
+    
+    errcode = ERR_get_error();
+    if ( errcode == 0 )
+	return "No SSL error reported";
+
+    errreason = (const char *)ERR_reason_error_string( errcode );
+
+    if (errreason != NULL)
+	return errreason;
+
+    snprintf(errbuf, sizeof( errbuf ) - 1, "SSL error code %lu", errcode);
+    return errbuf;
+}
+
+#endif	/* HAVE_LIBSSL */
 
 
 /*++
@@ -204,6 +258,7 @@ extern void UnLockMutex( pthread_mutex_t *mutex )
  * Parameters:	ptr to username string
  *		ptr to password string
  *              const ptr to client hostname or IP string (for logging only)
+ *              in_port_t, client port number (for logging only)
  *              unsigned char - flag to indicate that the client sent the
  *                              password as a string literal.
  *
@@ -219,6 +274,7 @@ extern void UnLockMutex( pthread_mutex_t *mutex )
 extern ICD_Struct *Get_Server_conn( char *Username, 
 				    char *Password,
 				    const char *ClientAddr,
+				    in_port_t sin_port,
 				    unsigned char LiteralPasswd )
 {
     char *fn = "Get_Server_conn()";
@@ -271,7 +327,7 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 	     */
 	    if ( memcmp( md5pw, ICC_Active->hashedpw, sizeof md5pw ) )
 	    {
-		syslog( LOG_NOTICE, "%s: Unable to reuse server sd [%d] for user '%s' (%s) because password doesn't match.", fn, ICC_Active->server_conn->sd, Username, ClientAddr );
+		syslog( LOG_NOTICE, "%s: Unable to reuse server sd [%d] for user '%s' (%s:%d) because password doesn't match.", fn, ICC_Active->server_conn->sd, Username, ClientAddr, sin_port );
 		ICC_Active->logouttime = 1;
 	    }
 	    else
@@ -303,14 +359,14 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 		
 		if ( !rc )
 		{
-		    syslog(LOG_NOTICE, "%s: Unable to reuse server sd [%d] for user '%s' (%s).  Connection closed by server.", fn, ICC_Active->server_conn->sd, Username, ClientAddr );
+		    syslog(LOG_NOTICE, "%s: Unable to reuse server sd [%d] for user '%s' (%s:%d).  Connection closed by server.", fn, ICC_Active->server_conn->sd, Username, ClientAddr, sin_port );
 		    ICC_Active->logouttime = 1;
 		    continue;
 		}
 	    
 		if ( errno != EWOULDBLOCK )
 		{
-		    syslog(LOG_NOTICE, "%s: Unable to reuse server sd [%d] for user '%s' (%s). IMAP_read() error: %s", fn, ICC_Active->server_conn->sd, Username, ClientAddr, strerror( errno ) );
+		    syslog(LOG_NOTICE, "%s: Unable to reuse server sd [%d] for user '%s' (%s:%d). IMAP_read() error: %s", fn, ICC_Active->server_conn->sd, Username, ClientAddr, sin_port, strerror( errno ) );
 		    ICC_Active->logouttime = 1;
 		    continue;
 		}
@@ -333,7 +389,7 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 		     IMAPCount->PeakInUseServerConnections )
 		    IMAPCount->PeakInUseServerConnections = IMAPCount->InUseServerConnections;
 	    
-		syslog(LOG_INFO, "LOGIN: '%s' (%s) on existing sd [%d]", Username, ClientAddr, ICC_Active->server_conn->sd );
+		syslog(LOG_INFO, "LOGIN: '%s' (%s:%d) on existing sd [%d]", Username, ClientAddr, sin_port, ICC_Active->server_conn->sd );
 		return( ICC_Active->server_conn );
 	    }
 	}
@@ -352,15 +408,20 @@ extern ICD_Struct *Get_Server_conn( char *Username,
     Server.conn->sd = socket( PF_INET, SOCK_STREAM, IPPROTO_TCP );
     if ( Server.conn->sd == -1 )
     {
-	syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: Unable to open server socket: %s", 
-		Username, ClientAddr, strerror( errno ) );
+	syslog(LOG_INFO, "LOGIN: '%s' (%s:%d) failed: Unable to open server socket: %s", Username, ClientAddr, sin_port, strerror( errno ) );
 	goto fail;
+    }
+
+    if ( PC_Struct.send_tcp_keepalives )
+    {
+	int onoff = 1;
+	setsockopt( Server.conn->sd, SOL_SOCKET, SO_KEEPALIVE, &onoff, sizeof onoff );
     }
     
     if ( connect( Server.conn->sd, (struct sockaddr *)&ISD.srv, 
 		  sizeof(ISD.srv) ) == -1 )
     {
-	syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: Unable to connect to IMAP server: %s", Username, ClientAddr, strerror( errno ) );
+	syslog(LOG_INFO, "LOGIN: '%s' (%s:%d) failed: Unable to connect to IMAP server: %s", Username, ClientAddr, sin_port, strerror( errno ) );
 	goto fail;
     }
     
@@ -369,7 +430,7 @@ extern ICD_Struct *Get_Server_conn( char *Username,
     
     if ( IMAP_Line_Read( &Server ) == -1 )
     {
-	syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: No banner line received from IMAP server", Username, ClientAddr );
+	syslog(LOG_INFO, "LOGIN: '%s' (%s:%d) failed: No banner line received from IMAP server", Username, ClientAddr, sin_port );
 	goto fail;
     }
 
@@ -467,8 +528,8 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 	rc = SSL_connect( Server.conn->tls );
 	if ( rc <= 0 )
 	{
-	    syslog(LOG_INFO, "STARTTLS failed: SSL_connect() failed: %d",
-		   SSL_get_error( Server.conn->tls, rc ) );
+	    syslog(LOG_INFO, "STARTTLS failed: SSL_connect() failed, %d: %s",
+		   SSL_get_error( Server.conn->tls, rc ), SSLerrmessage() );
 	    goto fail;
 	}
 
@@ -487,7 +548,7 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 		  Username, strlen( Password ) );
 	if ( IMAP_Write( Server.conn, SendBuf, strlen(SendBuf) ) == -1 )
 	{
-	    syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: IMAP_Write() failed attempting to send LOGIN command to IMAP server: %s", Username, ClientAddr, strerror( errno ) );
+	    syslog(LOG_INFO, "LOGIN: '%s' (%s:%d) failed: IMAP_Write() failed attempting to send LOGIN command to IMAP server: %s", Username, ClientAddr, sin_port, strerror( errno ) );
 	    goto fail;
 	}
 	
@@ -496,13 +557,13 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 	 */
 	if ( ( rc = IMAP_Line_Read( &Server ) ) == -1 )
 	{
-	    syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: Failed to receive go-ahead from IMAP server after sending LOGIN command", Username, ClientAddr );
+	    syslog(LOG_INFO, "LOGIN: '%s' (%s:%d) failed: Failed to receive go-ahead from IMAP server after sending LOGIN command", Username, ClientAddr, sin_port );
 	    goto fail;
 	}
 	
 	if ( Server.ReadBuf[0] != '+' )
 	{
-	    syslog( LOG_INFO, "LOGIN: '%s' (%s) failed: bad response from server after sending string literal specifier", Username, ClientAddr );
+	    syslog( LOG_INFO, "LOGIN: '%s' (%s:%d) failed: bad response from server after sending string literal specifier", Username, ClientAddr, sin_port );
 	    goto fail;
 	}
 	
@@ -513,7 +574,7 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 	
 	if ( IMAP_Write( Server.conn, SendBuf, strlen( SendBuf ) ) == -1 )
 	{
-	    syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: IMAP_Write() failed attempting to send literal password to IMAP server: %s", Username, ClientAddr, strerror( errno ) );
+	    syslog(LOG_INFO, "LOGIN: '%s' (%s:%d) failed: IMAP_Write() failed attempting to send literal password to IMAP server: %s", Username, ClientAddr, sin_port, strerror( errno ) );
 	    goto fail;
 	}
     }
@@ -527,7 +588,7 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 	
 	if ( IMAP_Write( Server.conn, SendBuf, strlen(SendBuf) ) == -1 )
 	{
-	    syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: IMAP_Write() failed attempting to send LOGIN command to IMAP server: %s", Username, ClientAddr, strerror( errno ) );
+	    syslog(LOG_INFO, "LOGIN: '%s' (%s:%d) failed: IMAP_Write() failed attempting to send LOGIN command to IMAP server: %s", Username, ClientAddr, sin_port, strerror( errno ) );
 	    goto fail;
 	}
     }
@@ -552,7 +613,7 @@ extern ICD_Struct *Get_Server_conn( char *Username,
     {
 	if ( ( rc = IMAP_Line_Read( &Server ) ) == -1 )
 	{
-	    syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: No response from IMAP server after sending LOGIN command", Username, ClientAddr );
+	    syslog(LOG_INFO, "LOGIN: '%s' (%s:%d) failed: No response from IMAP server after sending LOGIN command", Username, ClientAddr, sin_port );
 	    goto fail;
 	}
     
@@ -574,7 +635,7 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 	 * no tokens found in server response?  Not likely, but we still
 	 * have to check.
 	 */
-	syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: server response to LOGIN command contained no tokens.", Username, ClientAddr );
+	syslog(LOG_INFO, "LOGIN: '%s' (%s:%d) failed: server response to LOGIN command contained no tokens.", Username, ClientAddr, sin_port );
 	goto fail;
     }
     
@@ -585,7 +646,7 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 	 * non-matching tag read back from the server... Lord knows what this
 	 * is, so we'll fail.
 	 */
-	syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: server response to LOGIN command contained non-matching tag.", Username, ClientAddr );
+	syslog(LOG_INFO, "LOGIN: '%s' (%s:%d) failed: server response to LOGIN command contained non-matching tag.", Username, ClientAddr, sin_port );
 	goto fail;
     }
     
@@ -598,7 +659,7 @@ extern ICD_Struct *Get_Server_conn( char *Username,
     if ( !tokenptr )
     {
 	/* again, not likely but we still have to check... */
-	syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: Malformed server response to LOGIN command", Username, ClientAddr );
+	syslog(LOG_INFO, "LOGIN: '%s' (%s:%d) failed: Malformed server response to LOGIN command", Username, ClientAddr, sin_port );
 	goto fail;
     }
     
@@ -609,7 +670,7 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 	 * server logs to figure out why.  We don't have to break our ass here
 	 * putting the string back together just for the sake of logging.
 	 */
-	syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: non-OK server response to LOGIN command", Username, ClientAddr );
+	syslog(LOG_INFO, "LOGIN: '%s' (%s:%d) failed: non-OK server response to LOGIN command", Username, ClientAddr, sin_port );
 	goto fail;
     }
     
@@ -658,7 +719,7 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 	    if ( IMAPCount->InUseServerConnections >
 		 IMAPCount->PeakInUseServerConnections )
 		IMAPCount->PeakInUseServerConnections = IMAPCount->InUseServerConnections;
-	    syslog(LOG_INFO, "LOGIN: '%s' (%s) on new sd [%d]", Username, ClientAddr, Server.conn->sd );
+	    syslog(LOG_INFO, "LOGIN: '%s' (%s:%d) on new sd [%d]", Username, ClientAddr, sin_port, Server.conn->sd );
 	    return( Server.conn );
 	}
 	
@@ -675,7 +736,7 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 	 */
 	if ( Expiration <= 2 )
 	{
-	    syslog(LOG_INFO, "LOGIN: '%s' (%s) failed: Out of free ICC structs.", Username, ClientAddr );
+	    syslog(LOG_INFO, "LOGIN: '%s' (%s:%d) failed: Out of free ICC structs.", Username, ClientAddr, sin_port );
 	    goto fail;
 	}
 	
@@ -859,6 +920,9 @@ extern int IMAP_Write( ICD_Struct *ICD, const void *buf, int count )
  */
 extern int IMAP_Read( ICD_Struct *ICD, void *buf, int count )
 {
+    char *fn = "IMAP_Read()";
+
+
 #if HAVE_LIBSSL
     if ( ICD->tls )
 	return SSL_read( ICD->tls, buf, count );
@@ -888,6 +952,9 @@ extern int IMAP_Literal_Read( ITD_Struct *ITD )
 {
     char *fn = "IMAP_Literal_Read()";
     int Status, i, j;
+    struct pollfd fds[2];
+    nfds_t nfds;
+    int pollstatus;
 
     /*
      * If there aren't any LiteralBytesRemaining, just return 0.
@@ -929,7 +996,30 @@ extern int IMAP_Literal_Read( ITD_Struct *ITD )
      * No data left in the buffer.  Have to call read.  Read either
      * the number of literal bytes left, or the rest of our buffer --
      * whichever is smaller.
-     */
+     *
+     */    
+    nfds = 1;
+    fds[0].fd = ITD->conn->sd;
+    fds[0].events = POLLIN;
+    fds[0].revents = 0;
+    
+    pollstatus = poll( fds, nfds, POLL_TIMEOUT );
+    if ( !pollstatus )
+    {
+	syslog( LOG_ERR, "%s: poll() for data on sd [%d] timed out.", fn, ITD->conn->sd );
+	return( -1 );
+    }
+    if ( pollstatus < 0 )
+    {
+	syslog( LOG_ERR, "%s: poll() for data on sd [%d] failed: %s.", fn, ITD->conn->sd, strerror( errno ) );
+	return( -1 );
+    }
+    if ( !( fds[0].revents & POLLIN ) )
+    {
+	syslog( LOG_ERR, "%s: poll() for data on sd [%d] returned nothing.", fn, ITD->conn->sd );
+	return( -1 );
+    }    
+    
     Status = IMAP_Read(ITD->conn, &ITD->ReadBuf[ITD->BytesInReadBuffer],
 		  (sizeof ITD->ReadBuf - ITD->BytesInReadBuffer ) );
     
@@ -1077,7 +1167,7 @@ extern int IMAP_Line_Read( ITD_Struct *ITD )
 			LiteralEnd = CP - 2;
 			CP -= 2;
 			
-			for ( ; LiteralEnd >= ITD->ReadBuf; CP-- )
+			for ( ; CP >= ITD->ReadBuf; CP-- )
 			{
 			    if ( *CP == '{' )
 			    {
@@ -1086,53 +1176,58 @@ extern int IMAP_Line_Read( ITD_Struct *ITD )
 			    }
 			}
 			
-			if ( !LiteralStart )
+			if ( LiteralStart )
 			{
-			    /* 
-			     * we have a line ending with } but no beginning
-			     * '{'.
+			    /*
+			     * We found an opening and closing { } pair.  The
+			     * thing in between should be a number specifying
+			     * a byte count.  That would be as much as we needed
+			     * to know if it wasn't for the fact that RFC 2088
+			     * allows for a + sign in the literal specification
+			     * that has a different meaning when a client is
+			     * sending a literal to a server.
 			     */
-			    syslog(LOG_WARNING, "%s: Found line ending with '}' (expected string literal byte specification) but no opening '{' was found.  No action taken.", fn);
-			    return(0);
-			}
-			
-			/*
-			 * We found an opening and closing { } pair.  The
-			 * thing in between should be a number specifying
-			 * a byte count.  That would be as much as we needed
-			 * to know if it wasn't for the fact that RFC 2088
-			 * allows for a + sign in the literal specification
-			 * that has a different meaning when a client is
-			 * sending a literal to a server.
-			 */
-			if ( *(LiteralEnd - 1) == '+' )
-			{
-			    ITD->NonSyncLiteral = 1;
-			}
-			else
-			{
-			    ITD->NonSyncLiteral = 0;
-			}
+			    if ( *(LiteralEnd - 1) == '+' )
+			    {
+				ITD->NonSyncLiteral = 1;
+			    }
+			    else if ( *(LiteralEnd - 1) == '{' )
+			    {
+				/*
+				 * This is a {}.  No clue why any client
+				 * would ever send this, but just pretend
+				 * we never saw it.
+				 */
+				return( ITD->ReadBytesProcessed );
+			    }
+			    else
+			    {
+				ITD->NonSyncLiteral = 0;
+			    }
 			
 
-			/* To grab the number, bump our
-			 * starting char pointer forward a byte and temporarily
-			 * turn the closing '}' into a NULL.  Don't worry about
-			 * the potential '+' sign, atol won't care.
-			 */
-			LiteralStart++;
-			*LiteralEnd = '\0';
-			ITD->LiteralBytesRemaining = atol( LiteralStart );
-			
-			if ( ! ITD->LiteralBytesRemaining && errno )
-			{
-			    syslog(LOG_WARNING, "%s: atol() failed on string '%s': %s.", fn, CP, strerror(errno) );
+			    /* To grab the number, bump our
+			     * starting char pointer forward a byte and temporarily
+			     * turn the closing '}' into a NULL.  Don't worry about
+			     * the potential '+' sign, atol won't care.
+			     */
+			    LiteralStart++;
+			    *LiteralEnd = '\0';
+			    errno = 0;
+			    ITD->LiteralBytesRemaining = atol( LiteralStart );
+			    
+			    if ( ! ITD->LiteralBytesRemaining && errno )
+			    {
+				syslog(LOG_WARNING, "%s: atol() failed on string '%s': %s.", fn, CP, strerror(errno) );
+				*LiteralEnd = '}';
+				return(0);
+			    }
+			    
 			    *LiteralEnd = '}';
-			    return(0);
 			}
-			
-			*LiteralEnd = '}';
 		    }
+		    
+		    
 		    /*
 		     * This looks redundant, huh?
 		     */

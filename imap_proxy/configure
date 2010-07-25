@@ -830,6 +830,7 @@ Optional Packages:
   --with-openssl-inc=DIR  use OpenSSL headers from DIR
   --with-openssl-lib=DIR  use OpenSSL libs from DIR
   --with-krb5=DIR         use Kerberos5 rooted in DIR
+  --with-libwrap=DIR     use libwrap rooted in DIR
 
 Some influential environment variables:
   CC          C compiler command
@@ -2595,6 +2596,11 @@ fi;
 if test -d $with_openssl; then
 	CPPFLAGS="${CPPFLAGS} -I${with_openssl}/include"
 	LDFLAGS="${LDFLAGS} -L${with_openssl}/lib"
+        case "$target_os" in
+        solaris2*)
+                LDFLAGS="${LDFLAGS} -R${with_openssl}/lib"
+                ;;
+        esac
 fi
 
 
@@ -2621,6 +2627,11 @@ fi;
 
 if test -d $with_openssl_lib; then
 	LDFLAGS="${LDFLAGS} -L${with_openssl_lib}"
+        case "$target_os" in
+        solaris2*)
+                LDFLAGS="${LDFLAGS} -R${with_openssl_lib}"
+                ;;
+        esac
 fi
 
 
@@ -2636,6 +2647,170 @@ fi;
 if test -d $with_krb5; then
 	CPPFLAGS="${CPPFLAGS} -I${with_krb5}/include"
 	LDFLAGS="${LDFLAGS} -L${with_krb5}/lib"
+fi
+
+
+
+# Check whether --with-libwrap or --without-libwrap was given.
+if test "${with_libwrap+set}" = set; then
+  withval="$with_libwrap"
+  with_libwrap=$withval
+else
+  with_libwrap=yes
+fi;
+
+if test -d $with_libwrap; then
+        CPPFLAGS="${CPPFLAGS} -I${with_libwrap}/include"
+        LDFLAGS="${LDFLAGS} -L${with_libwrap}/lib"
+fi
+
+
+save_LIBS="$LIBS"
+if test "$with_libwrap" != no; then
+
+echo "$as_me:$LINENO: checking for yp_get_default_domain in -lnsl" >&5
+echo $ECHO_N "checking for yp_get_default_domain in -lnsl... $ECHO_C" >&6
+if test "${ac_cv_lib_nsl_yp_get_default_domain+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lnsl  $LIBS"
+cat >conftest.$ac_ext <<_ACEOF
+#line $LINENO "configure"
+#include "confdefs.h"
+
+/* Override any gcc2 internal prototype to avoid an error.  */
+#ifdef __cplusplus
+extern "C"
+#endif
+/* We use char because int might match the return type of a gcc2
+   builtin and then its argument prototype would still apply.  */
+char yp_get_default_domain ();
+#ifdef F77_DUMMY_MAIN
+#  ifdef __cplusplus
+     extern "C"
+#  endif
+   int F77_DUMMY_MAIN() { return 1; }
+#endif
+int
+main ()
+{
+yp_get_default_domain ();
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext conftest$ac_exeext
+if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
+  (eval $ac_link) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } &&
+         { ac_try='test -s conftest$ac_exeext'
+  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+  (eval $ac_try) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; }; then
+  ac_cv_lib_nsl_yp_get_default_domain=yes
+else
+  echo "$as_me: failed program was:" >&5
+cat conftest.$ac_ext >&5
+ac_cv_lib_nsl_yp_get_default_domain=no
+fi
+rm -f conftest.$ac_objext conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+echo "$as_me:$LINENO: result: $ac_cv_lib_nsl_yp_get_default_domain" >&5
+echo "${ECHO_T}$ac_cv_lib_nsl_yp_get_default_domain" >&6
+if test $ac_cv_lib_nsl_yp_get_default_domain = yes; then
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_LIBNSL 1
+_ACEOF
+
+  LIBS="-lnsl $LIBS"
+
+else
+
+        with_libwrap=no
+        { echo "$as_me:$LINENO: WARNING: nsl library not found!!!  Wrappers will be disabled." >&5
+echo "$as_me: WARNING: nsl library not found!!!  Wrappers will be disabled." >&2;}
+
+fi
+
+  if test "$with_libwrap" != no; then
+
+echo "$as_me:$LINENO: checking for request_init in -lwrap" >&5
+echo $ECHO_N "checking for request_init in -lwrap... $ECHO_C" >&6
+if test "${ac_cv_lib_wrap_request_init+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lwrap  $LIBS"
+cat >conftest.$ac_ext <<_ACEOF
+#line $LINENO "configure"
+#include "confdefs.h"
+
+/* Override any gcc2 internal prototype to avoid an error.  */
+#ifdef __cplusplus
+extern "C"
+#endif
+/* We use char because int might match the return type of a gcc2
+   builtin and then its argument prototype would still apply.  */
+char request_init ();
+#ifdef F77_DUMMY_MAIN
+#  ifdef __cplusplus
+     extern "C"
+#  endif
+   int F77_DUMMY_MAIN() { return 1; }
+#endif
+int
+main ()
+{
+request_init ();
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext conftest$ac_exeext
+if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
+  (eval $ac_link) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } &&
+         { ac_try='test -s conftest$ac_exeext'
+  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+  (eval $ac_try) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; }; then
+  ac_cv_lib_wrap_request_init=yes
+else
+  echo "$as_me: failed program was:" >&5
+cat conftest.$ac_ext >&5
+ac_cv_lib_wrap_request_init=no
+fi
+rm -f conftest.$ac_objext conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+echo "$as_me:$LINENO: result: $ac_cv_lib_wrap_request_init" >&5
+echo "${ECHO_T}$ac_cv_lib_wrap_request_init" >&6
+if test $ac_cv_lib_wrap_request_init = yes; then
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_LIBWRAP 1
+_ACEOF
+
+  LIBS="-lwrap $LIBS"
+
+else
+
+        LIBS="$save_LIBS"
+        { echo "$as_me:$LINENO: WARNING: Wrappers library not found!!!  Wrappers will be disabled." >&5
+echo "$as_me: WARNING: Wrappers library not found!!!  Wrappers will be disabled." >&2;}
+
+fi
+
+  fi
 fi
 
 

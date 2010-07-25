@@ -33,12 +33,22 @@
 **
 **  RCS:
 **
-**      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/include/RCS/imapproxy.h,v $
-**      $Id: imapproxy.h,v 1.13 2003/05/20 19:18:00 dgm Exp $
+**      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/up-imapproxy-1.2.1/include/imapproxy.h,v $
+**      $Id: imapproxy.h,v 1.1 2003/11/14 13:00:48 dgm Exp $
 **      
 **  Modification History:
 **
 **      $Log: imapproxy.h,v $
+**      Revision 1.1  2003/11/14 13:00:48  dgm
+**      Initial revision
+**
+**      Revision 1.15  2003/10/09 15:05:01  dgm
+**      Added tcp keepalive support.
+**
+**      Revision 1.14  2003/07/14 16:41:18  dgm
+**      Applied patch by William Yodlowsky <wyodlows@andromeda.rutgers.edu> to
+**      allow TLS to work on machines without /dev/random.
+**
 **      Revision 1.13  2003/05/20 19:18:00  dgm
 **      Comment changes only.
 **
@@ -100,6 +110,8 @@
 
 #if HAVE_LIBSSL
 #include <openssl/ssl.h>
+#include <openssl/rand.h>
+#include <limits.h>
 #endif
 
 
@@ -200,6 +212,7 @@ struct ProxyConfig
     unsigned int server_port;                 /* port we proxy to */
     unsigned long cache_size;                 /* number of cache slots */
     unsigned long cache_expiration_time;      /* cache exp time in seconds */
+    unsigned int send_tcp_keepalives;         /* flag to send keepalives */
     char *proc_username;                      /* username to run as */
     char *proc_groupname;                     /* groupname to run as */
     char *stat_filename;                      /* mmap()ed stat filename */
@@ -263,7 +276,7 @@ extern int IMAP_Literal_Read( ITD_Struct * );
 extern void HandleRequest( int );
 extern char *memtok( char *, char *, char ** );
 extern int imparse_isatom( const char * );
-extern ICD_Struct *Get_Server_conn( char *, char *, const char *, unsigned char );
+extern ICD_Struct *Get_Server_conn( char *, char *, const char *, in_port_t, unsigned char );
 extern void ICC_Logout( char *, ICD_Struct * );
 extern void ICC_Recycle( unsigned int );
 extern void ICC_Recycle_Loop( void );

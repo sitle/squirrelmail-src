@@ -35,11 +35,17 @@
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/config.c,v $
-**      $Id: config.c,v 1.6 2003/05/20 18:42:04 dgm Exp $
+**      $Id: config.c,v 1.8 2003/10/23 06:18:58 dgm Exp $
 **      
 **  Modification History:
 **
 **      $Log: config.c,v $
+**      Revision 1.8  2003/10/23 06:18:58  dgm
+**      Fixed bug in SetBooleanValue doing upcase of Value.
+**
+**      Revision 1.7  2003/10/09 12:36:08  dgm
+**      Added the ability to set boolean configuration options.
+**
 **      Revision 1.6  2003/05/20 18:42:04  dgm
 **      comment changes only.
 **
@@ -70,9 +76,11 @@
 
 #include <errno.h>
 #include <string.h>
+#include <strings.h>
 #include <syslog.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <ctype.h>
 #include "common.h"
 #include "imapproxy.h"
 
@@ -88,7 +96,7 @@ extern ProxyConfig_Struct PC_Struct;
  */
 static void SetStringValue( char *, char **, unsigned int );
 static void SetNumericValue( char *, int *, unsigned int );
-
+static void SetBooleanValue( char *, unsigned int *, unsigned int );
 
 
 /*
@@ -212,6 +220,80 @@ static void SetNumericValue( char *StringValue,
 }
 
 
+
+
+/*++
+ * Function:    SetBooleanValue
+ *
+ * Purpose:     Common routine to assign true/false (or yes/no) values in
+ *              the config options struct. 
+ *
+ * Parameters:  ptr to string value from configfile (yes, no, true, false)
+ *              ptr to unsigned int -- where to store the boolean value (1/0)
+ *              unsigned int -- Config file line number
+ *
+ * Returns:     nada -- exit()s on errors.
+ *
+ * Authors:     Dave McMurtrie <davemcmurtrie@hotmail.com>
+ *
+ * Notes:       This function is not case sensitive.
+ *              It will parse any of y, yes, true and store it as 1.
+ *              It will parse any of n, no, false and store it as 0.
+ *
+ *              Major note -- the Value passed into here will be upcased.
+ *--
+ */
+static void SetBooleanValue( char *Value,
+			     unsigned int *StoredValue,
+			     unsigned int linenum )
+{
+    char *fn = "SetBooleanValue()";
+    char *CP;
+    
+    /*
+     * Upcase for ease of comparison
+     */
+    CP = Value;
+    while( *CP )
+    {
+	*CP = toupper( *CP );
+	CP++;
+    }
+    
+    if ( ( ( Value[0] == 'Y' ) && ( Value[1] == '\0' ) ) ||
+	 ( ( Value[0] == 'Y' ) && ( Value[1] == 'E' ) && ( Value[2] == 'S' ) ) )
+    {
+	*StoredValue = 1;
+	return;
+    }
+    
+    if ( ( ( Value[0] == 'N' ) && ( Value[1] == '\0' ) ) ||
+	 ( ( Value[0] == 'N' ) && ( Value[1] == 'O' ) ) )
+    {
+	*StoredValue = 0;
+	return;
+    }
+
+    if ( !strcmp( "TRUE", Value ) )
+    {
+	*StoredValue = 1;
+	return;
+    }
+    
+    if ( !strcmp( "FALSE", Value ) )
+    {
+	*StoredValue = 0;
+	return;
+    }
+    
+    syslog( LOG_WARNING, "%s: Invalid boolean value '%s' specified at line %d of config file.  Defaulting to FALSE.", fn, Value, linenum );
+    *StoredValue = 0;
+    return;
+}
+
+
+
+
 /*++
  * Function:	SetConfigOptions
  *
@@ -294,7 +376,9 @@ extern void SetConfigOptions( char *ConfigFile )
     
     ADD_TO_TABLE( "tls_key_file", SetStringValue,
 		  &PC_Struct.tls_key_file, index );
-    
+
+    ADD_TO_TABLE( "send_tcp_keepalives", SetBooleanValue,
+		  &PC_Struct.send_tcp_keepalives, index );
 
     ConfigTable[index].Keyword[0] = '\0';
     

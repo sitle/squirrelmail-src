@@ -1,3 +1,66 @@
+2003-11-07  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* Version 1.2.1 released.
+	
+2003-10-23  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* config.c: Fixed bug in SetBooleanValue doing upcase of Value.
+	
+2003-10-22  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* imapcommon.c: Fixed for loop for string literal detection.
+	  explicitly clear errno prior to atol() call.
+	
+2003-10-10  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* main.c: Applied patch by Ken Murchison <ken@oceana.com> to
+	  discard "SASL" capability if advertised by a server.
+	
+2003-10-09  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* config.c: Added the ability to handle boolean config file options.
+
+	* imapcommon.c: Added source port number to syslog messages.
+	  Added the ability to send tcp keepalives.  Added a poll() call
+	  in IMAP_Literal_Read() so read calls can't block forever.
+
+	* main.c: Changes to allow configurable tcp keelalive support.
+	  Added retry logic for the initial socket connection to the
+	  real imap server (patch submitted by Gary Mills 
+	  <mills@cc.UManitoba.CA>).
+
+	* request.c: Bugfix by Geoffrey Hort <g.hort@unsw.edu.au> submitted
+	  to set TotalClientLogins to 0 in cmd_resetcounters.  Changes to
+	  allow syslogging of the client source port.  Added timestamps
+	  to protocol log entries.
+
+	* README: Pruned some things from here and added to 
+	  README.known_issues.
+
+	* README.known_issues: Newly added to the distribution.
+	
+2003-07-14  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* main.c: Applied patch by Gary Windham
+	  <windhamg@email.arizona.edu> to add tcp wrappers support.
+
+	* imapproxy.spec: Applied patch by William Hooper 
+	  <whooper@freeshell.org> to enhance rpm support.
+
+	* main.c, imapcommon.c, imapproxy.h: Applied patch by William
+	  Yodlowsky <wyodlows@andromeda.rutgers.edu>
+	  to allow TLS to work on machines without /dev/random.
+
+	* request.c: Removed erroneous newline from syslog() call to
+	  prevent compiler warning.
+	
+2003-07-07  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* request.c: Applied patch by Gary Windham
+	  <windhamg@email.arizona.edu> so Raw_Proxy() correctly deals
+	  with string literals when the server responds with a NO or BAD
+	  instead of a +.
+	
 2003-05-22  Dave McMurtrie  <davemcmurtrie@hotmail.com>
 
 	* Version 1.2 released.

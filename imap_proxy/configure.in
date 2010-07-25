@@ -77,6 +77,32 @@ if test -d $with_krb5; then
 fi
 
 
+dnl Set location of libwrap, the access control library
+AC_ARG_WITH(libwrap, [  --with-libwrap=DIR     use libwrap rooted in DIR],
+        with_libwrap=$withval, with_libwrap=yes)
+
+if test -d $with_libwrap; then
+        CPPFLAGS="${CPPFLAGS} -I${with_libwrap}/include"
+        LDFLAGS="${LDFLAGS} -L${with_libwrap}/lib"
+fi
+
+
+dnl Check for libwrap
+save_LIBS="$LIBS"
+if test "$with_libwrap" != no; then
+  AC_CHECK_LIB(nsl, yp_get_default_domain, , [
+        with_libwrap=no
+        AC_WARN([nsl library not found!!!  Wrappers will be disabled.])
+  ])
+  if test "$with_libwrap" != no; then
+     AC_CHECK_LIB(wrap, request_init, , [
+        LIBS="$save_LIBS"
+        AC_WARN([Wrappers library not found!!!  Wrappers will be disabled.])
+     ])
+  fi
+fi
+
+
 dnl Check for crypto library
 AC_CHECK_LIB(crypto, EVP_DigestInit, ,
 	AC_ERROR([Can't compile without OpenSSL crypto library!!!])
