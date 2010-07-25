@@ -35,11 +35,14 @@
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/config.c,v $
-**      $Id: config.c,v 1.10 2004/02/24 14:57:47 dgm Exp $
+**      $Id: config.c,v 1.11 2004/10/11 18:01:29 dgm Exp $
 **      
 **  Modification History:
 **
 **      $Log: config.c,v $
+**      Revision 1.11  2004/10/11 18:01:29  dgm
+**      Added foreground mode configuration option.
+**
 **      Revision 1.10  2004/02/24 14:57:47  dgm
 **      Added new config option 'enable_select_cache'.
 **
@@ -392,6 +395,10 @@ extern void SetConfigOptions( char *ConfigFile )
 
     ADD_TO_TABLE( "enable_select_cache", SetBooleanValue,
 		  &PC_Struct.enable_select_cache, index );
+
+    ADD_TO_TABLE( "foreground_mode", SetBooleanValue,
+		  &PC_Struct.foreground_mode, index );
+    
 
     ConfigTable[index].Keyword[0] = '\0';
     

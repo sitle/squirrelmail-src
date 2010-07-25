@@ -36,11 +36,14 @@
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/main.c,v $
-**	$Id: main.c,v 1.19 2004/02/24 15:17:20 dgm Exp $
+**	$Id: main.c,v 1.20 2004/10/11 18:23:19 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: main.c,v $
+**	Revision 1.20  2004/10/11 18:23:19  dgm
+**	Added foreground_mode option.
+**
 **	Revision 1.19  2004/02/24 15:17:20  dgm
 **	Added ParseBannerAndCapability() function to allow for
 **	parsing the banner string and capability strings.  Can
@@ -130,7 +133,7 @@
 */
 
 
-static char *rcsId = "$Id: main.c,v 1.19 2004/02/24 15:17:20 dgm Exp $";
+static char *rcsId = "$Id: main.c,v 1.20 2004/10/11 18:23:19 dgm Exp $";
 static char *rcsSource = "$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/main.c,v $";
 static char *rcsAuthor = "$Author: dgm $";
 
@@ -353,8 +356,10 @@ int main( int argc, char *argv[] )
     ServerInit();
 
     /* detach from our parent if necessary */
-    if (! (getppid() == 1) )
+    if (! (getppid() == 1) && ( ! PC_Struct.foreground_mode ) )
     {
+	syslog( LOG_INFO, "%s: Configured to run in background mode.", fn );
+	
 	if ( (pid = fork()) < 0)
 	{
 	    syslog(LOG_ERR, "%s: initial call to fork() failed: %s", fn, strerror(errno));
@@ -381,6 +386,11 @@ int main( int argc, char *argv[] )
 	    exit( 0 );
 	}
     }
+    else
+    {
+	syslog( LOG_INFO, "%s: Configured to run in foreground mode.", fn );
+    }
+    
 
     SetBannerAndCapability();
     

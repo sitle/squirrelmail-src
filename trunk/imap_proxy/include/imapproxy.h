@@ -34,11 +34,14 @@
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/include/RCS/imapproxy.h,v $
-**      $Id: imapproxy.h,v 1.18 2004/03/11 15:17:58 dgm Exp $
+**      $Id: imapproxy.h,v 1.19 2004/10/11 18:00:42 dgm Exp $
 **      
 **  Modification History:
 **
 **      $Log: imapproxy.h,v $
+**      Revision 1.19  2004/10/11 18:00:42  dgm
+**      Added foreground_mode configuration option.
+**
 **      Revision 1.18  2004/03/11 15:17:58  dgm
 **      SELECT_BUF_SIZE size changed from 1024 to BUFSIZE which is
 **      currently 4096
@@ -243,6 +246,7 @@ struct ProxyConfig
     unsigned long cache_expiration_time;      /* cache exp time in seconds */
     unsigned int send_tcp_keepalives;         /* flag to send keepalives */
     unsigned int enable_select_cache;         /* flag to enable select cache */
+    unsigned int foreground_mode;             /* flag to enable fg mode */
     char *proc_username;                      /* username to run as */
     char *proc_groupname;                     /* groupname to run as */
     char *stat_filename;                      /* mmap()ed stat filename */
