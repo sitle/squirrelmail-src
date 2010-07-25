@@ -33,14 +33,16 @@
 **
 **  RCS:
 **
-**      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/up-imapproxy-1.2.1/include/imapproxy.h,v $
-**      $Id: imapproxy.h,v 1.1 2003/11/14 13:00:48 dgm Exp $
+**      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/include/RCS/imapproxy.h,v $
+**      $Id: imapproxy.h,v 1.16 2003/11/14 15:06:14 dgm Exp dgm $
 **      
 **  Modification History:
 **
 **      $Log: imapproxy.h,v $
-**      Revision 1.1  2003/11/14 13:00:48  dgm
-**      Initial revision
+**      Revision 1.16  2003/11/14 15:06:14  dgm
+**      Patch by Geoffrey Hort <g.hort@unsw.edu.au> to include listen_address
+**      config option.  Also, I changed the default buffer size from
+**      1024 to 4096.
 **
 **      Revision 1.15  2003/10/09 15:05:01  dgm
 **      Added tcp keepalive support.
@@ -121,13 +123,19 @@
 #define PGM                     "in.imapproxyd"
 #define IMAP_UNTAGGED_OK        "* OK "           /* untagged OK response    */
 #define IMAP_TAGGED_OK          "1 OK "           /* tagged OK response      */
-#define BUFSIZE                 1024              /* default buffer size     */
+#define BUFSIZE                 4096              /* default buffer size     */
 #define MAX_CONN_BACKLOG        5                 /* tcp connection backlog  */
 #define MAXTAGLEN               256               /* max IMAP tag length     */
+#define MAXMAILBOXNAME          512               /* max mailbox name length */
 #define MAXUSERNAMELEN          64                /* max username length     */
 #define MAXPASSWDLEN            64                /* max passwd length       */
 #define POLL_TIMEOUT_MINUTES    30                /* Poll timeout in minutes */
 #define POLL_TIMEOUT            (POLL_TIMEOUT_MINUTES * 60000)
+#define SELECT_BUF_SIZE         1024              /* max length of a SELECT  */
+						  /* string we can cache     */
+#define SELECT_CACHE_EXP        10                /* # of seconds before we  */
+                                                  /* expire a SELECT cache   */
+#define SELECT_STATUS_BUF_SIZE  256               /* size of select status   */
 
 #ifndef DEFAULT_CONFIG_FILE
 #define DEFAULT_CONFIG_FILE     "/etc/imapproxy.conf"
@@ -156,6 +164,18 @@ struct IMAPServerDescriptor
 
 
 /*
+ * IMAPSelectCaches provide for caching of SELECT output from an IMAP server
+ */
+struct IMAPSelectCache
+{
+    time_t ISCTime;
+    char MailboxName[ MAXMAILBOXNAME ];
+    char SelectString[ SELECT_BUF_SIZE ];
+    char SelectStatus[ SELECT_STATUS_BUF_SIZE ];
+};
+
+
+/*
  * IMAPConnectionDescriptors contain the info needed to communicate on an
  * IMAP connection.
  */
@@ -165,6 +185,7 @@ struct IMAPConnectionDescriptor
 #if HAVE_LIBSSL
     SSL *tls;                        /* TLS connection context               */
 #endif
+    struct IMAPSelectCache ISC;      /* Cached SELECT data                   */
 };
 
 
@@ -208,11 +229,13 @@ struct IMAPConnectionContext
 struct ProxyConfig
 {
     unsigned int listen_port;                 /* port we bind to */
+    char *listen_addr;                        /* address we bind to */
     char *server_hostname;                    /* server we proxy to */
     unsigned int server_port;                 /* port we proxy to */
     unsigned long cache_size;                 /* number of cache slots */
     unsigned long cache_expiration_time;      /* cache exp time in seconds */
     unsigned int send_tcp_keepalives;         /* flag to send keepalives */
+    unsigned int enable_select_cache;         /* flag to enable select cache */
     char *proc_username;                      /* username to run as */
     char *proc_groupname;                     /* groupname to run as */
     char *stat_filename;                      /* mmap()ed stat filename */
@@ -254,6 +277,9 @@ struct IMAPCounter
     unsigned long TotalClientLogins;
     unsigned long TotalServerConnectionsCreated;
     unsigned long TotalServerConnectionsReused;
+    unsigned long TotalSelectCommands;
+    unsigned long SelectCacheHits;
+    unsigned long SelectCacheMisses;
 };
 
    
@@ -264,7 +290,7 @@ typedef struct IMAPConnectionDescriptor ICD_Struct;
 typedef struct IMAPConnectionContext ICC_Struct;
 typedef struct IMAPCounter IMAPCounter_Struct;
 typedef struct ProxyConfig ProxyConfig_Struct;
-
+typedef struct IMAPSelectCache ISC_Struct;
 
 /*
  * Function prototypes for external entry points.
@@ -284,6 +310,9 @@ extern void LockMutex( pthread_mutex_t * );
 extern void UnLockMutex( pthread_mutex_t * );
 extern void SetConfigOptions( char * );
 extern void SetLogOptions( void );
+extern int Handle_Select_Command( ITD_Struct *, ITD_Struct *, ISC_Struct *, char *, int );
+extern unsigned int Is_Safe_Command( char *Command );
+extern void Invalidate_Cache_Entry( ISC_Struct * );
 
 #endif /* __IMAPPROXY_H */
 

@@ -34,7 +34,7 @@
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/pimpstat.c,v $
-**      $Id: pimpstat.c,v 1.6 2003/05/20 19:08:02 dgm Exp $
+**      $Id: pimpstat.c,v 1.6 2003/05/20 19:08:02 dgm Exp dgm $
 **      
 **  Modification History:
 **
@@ -142,17 +142,19 @@ int main( int argc, char *argv[] )
     int fd;
     char *fn = "pimpstat";
     int i, rc;
-    char ccc[DIGITS+1];
-    char pcc[DIGITS+1];
-    char asc[DIGITS+1];
-    char psc[DIGITS+1];
-    char rsc[DIGITS+1];
-    char prsc[DIGITS+1];
-    char tcca[DIGITS+1];
-    char tcl[DIGITS+1];
-    char tscc[DIGITS+1];
-    char tscr[DIGITS+1];
-    char ssrr[DIGITS+4];
+    char ccc[DIGITS+1];  /* current client conns */
+    char pcc[DIGITS+1];  /* peak client conns */
+    char asc[DIGITS+1];  /* active server conns */
+    char psc[DIGITS+1];  /* peak server conns */
+    char rsc[DIGITS+1];  /* retained (cached) server conns */
+    char prsc[DIGITS+1]; /* peak retained (cached) server conns */
+    char tcca[DIGITS+1]; /* total client connections accepted */
+    char tcl[DIGITS+1];  /* total client logins */
+    char tscc[DIGITS+1]; /* total server conns created */
+    char tscr[DIGITS+1]; /* total server conns reused */
+    char ssrr[DIGITS+4]; /* server socket reuse ration */
+    char tsch[DIGITS+1]; /* total select cache hits */
+    char tscm[DIGITS+1]; /* total select cache misses */
     float Ratio;
     char stimebuf[64];
     char ctimebuf[64];
@@ -236,13 +238,24 @@ int main( int argc, char *argv[] )
     mvaddstr( 13, 2, "CACHED SERVER CONNECTIONS" );
     mvaddstr( 15, 5, "current:");
     mvaddstr( 15, 40, "peak:" );
-    mvaddstr( 17, 2, "TOTALS" );
+    mvaddstr( 17, 2, "CONNECTION TOTALS" );
     mvaddstr( 19, 5, "client connections accepted:" );
     mvaddstr( 20, 5, "client logins:" );
     mvaddstr( 21, 5, "server connections created:" );
     mvaddstr( 22, 5, "server connection reuses:" );
     mvaddstr( 23, 5, "client login to server login ratio:" );
-    mvaddstr( 25, 2, "CTRL-C to quit." );
+    if ( PC_Struct.enable_select_cache )
+    {
+	mvaddstr( 25, 2, "SELECT CACHE TOTALS" );
+	mvaddstr( 27, 5, "hit:" );
+	mvaddstr( 27, 40, "miss:" );
+    }
+    else
+    {
+	mvaddstr( 25, 2, "SELECT CACHE NOT ENABLED" );
+    }
+    
+    mvaddstr( 29, 2, "CTRL-C to quit." );
 
     for ( ; ; )
     {
@@ -294,6 +307,8 @@ int main( int argc, char *argv[] )
 	snprintf( tcl, DIGITS, "%9d", IMAPCount->TotalClientLogins );
 	snprintf( tscr, DIGITS, "%9d", IMAPCount->TotalServerConnectionsReused );
 	snprintf( tscc, DIGITS, "%9d", IMAPCount->TotalServerConnectionsCreated );
+	snprintf( tsch, DIGITS, "%9d", IMAPCount->SelectCacheHits );
+	snprintf( tscm, DIGITS, "%9d", IMAPCount->SelectCacheMisses );
 	
 	mvaddstr( 2, 31, stimebuf );
 	mvaddstr( 3, 31, ctimebuf );
@@ -308,7 +323,12 @@ int main( int argc, char *argv[] )
 	mvaddstr( 21, 46, tscc );
 	mvaddstr( 22, 46, tscr );
 	mvaddstr( 23, 42, ssrr );
-	
+	if ( PC_Struct.enable_select_cache )
+	{
+	    mvaddstr( 27, 14, tsch );
+	    mvaddstr( 27, 46, tscm );
+	}
+	   
 	refresh();
 	
         sleep( 1 );

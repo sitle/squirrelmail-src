@@ -1,3 +1,22 @@
+2003-11-14  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+
+	* imapproxy.h: Included patches by Geoffrey Hort <g.hort@unsw.edu.au>
+	  to allow configurable listen address.
+
+	* imapproxy.h: Changed default buffer size from 1024 to 4096.
+
+	* imapproxy.conf: Patch by Geoffrey Hort <g.hort@unsw.edu.au> to
+	  include default listen_address config option.
+
+	* config.c: Patch by Geoffrey Hort <g.hort@unsw.edu.au> to allow
+	  configurable listen address.
+
+	* main.c: Patch by Geoffrey Hort <g.hort@unsw.edu.au> to allow
+	  configurable listen address.
+
+	* main.c: Updated prior patch (2003-10-10) by Ken Murchison.  The
+	  token we're discarding is now "SASL-IR" instead of "SASL".
+	
 2003-11-07  Dave McMurtrie  <davemcmurtrie@hotmail.com>
 
 	* Version 1.2.1 released.
