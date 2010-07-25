@@ -9,7 +9,6 @@ or hostile words to:
 
 dgm@pitt.edu
 
-
 If you want to subscribe to the imapproxy-info mailing list, visit:
 
 http://lists.pitt.edu/mailman/listinfo/imapproxy-info
@@ -18,27 +17,39 @@ http://lists.pitt.edu/mailman/listinfo/imapproxy-info
 KNOWN ISSUES
 ##############################################################################
 
-Currently, this server will only build correctly on Solaris platforms.  The
-largest reason is because the md5 routines used for internal storage of
-user passwords is Solaris specific.  There are other smaller dependencies,
-though.
+Though this should now build on Solaris and Linux, it's still
+Makefile based and hence, quite hokey.  It's still better than before when
+it only built on Solaris.
 
-Also note that the proxy server only supports LOGIN, not AUTHENTICATE.
+I'm working to autoconf this whole thing, but I've been a little busy lately.
 
+Also note that the proxy server only supports LOGIN, not AUTHENTICATE.  I
+want to change this, also.
 
 ##############################################################################
 HOW TO BUILD
 ##############################################################################
 
-To build the proxy server on a Solaris platform, just run "make" in
-this directory.  "make install" will attempt to install the following files:
+By default, Makefile will only work on solaris platforms.  Use Makefile.linux
+for others.  Again, once this is autoconf'd it shouldn't be as ugly to build.
+
+After you're sure that you're using the correct Makefile, just run "make" 
+in this directory to build the proxy server.
+
+"make install" will attempt to install the following files:
 
 /usr/local/sbin/in.imapproxyd
 /usr/local/sbin/pimpstat
+
+"make install-conf" will attempt to install the sample configuration file:
+
+/etc/imapproxy.conf
+
+"make install-init" will attempt to install the startup script and symlinks:
+
 /etc/init.d/imapproxy
 /etc/rc2.d/S99imapproxy
 /etc/rc0.d/K10imapproxy
-/etc/imapproxy.conf
 
 
 After you successfully build the proxy server, you'll need to edit the
@@ -47,7 +58,7 @@ server looks at /etc/imapproxy.conf as his default configuration file.  You
 can change this at runtime by supplying the -f argument to
 /usr/local/sbin/in.imapproxyd.
 
-/usr/local/bin/pimpstat is the Pitt IMap Proxy Statistical tool.  It's a little
+/usr/local/sbin/pimpstat is the Pitt IMap Proxy Statistical tool.  It's a
 curses-based application that you can use to monitor the proxy server.  It's
 aware of the same global configuration file as the proxy server, and can also
 be told to look at a different configuration file by supplying it as a 

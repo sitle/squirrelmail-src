@@ -38,11 +38,15 @@
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/main.c,v $
-**	$Id: main.c,v 1.5 2002/12/17 14:25:14 dgm Exp $
+**	$Id: main.c,v 1.6 2003/01/27 13:58:18 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: main.c,v $
+**	Revision 1.6  2003/01/27 13:58:18  dgm
+**	patch by Frode Nordahl <frode@powertech.no> to allow
+**	compilation on Linux platforms.
+**
 **	Revision 1.5  2002/12/17 14:25:14  dgm
 **	Added support for global configuration structure.
 **	Modified supported command line arguments.
@@ -66,7 +70,7 @@
 */
 
 
-static char *rcsId = "$Id: main.c,v 1.5 2002/12/17 14:25:14 dgm Exp $";
+static char *rcsId = "$Id: main.c,v 1.6 2003/01/27 13:58:18 dgm Exp $";
 static char *rcsSource = "$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/main.c,v $";
 static char *rcsAuthor = "$Author: dgm $";
 
@@ -91,6 +95,10 @@ static char *rcsAuthor = "$Author: dgm $";
 #include <pwd.h>
 #include <syslog.h>
 #include <signal.h>
+
+#ifdef LINUX
+#include <sys/param.h>
+#endif
 
 
 /*
@@ -281,7 +289,11 @@ int main( int argc, char *argv[] )
     srvaddr.sin_addr.s_addr = htonl(INADDR_ANY);
 
     syslog(LOG_INFO, "%s: Binding to tcp port %d", fn, PC_Struct.listen_port );
+#ifndef LINUX
     srvaddr.sin_port = PC_Struct.listen_port;
+#else
+    srvaddr.sin_port = htons(PC_Struct.listen_port);
+#endif
 
     listensd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     if ( listensd == -1 )
@@ -527,7 +539,11 @@ static void ServerInit( void )
     
     syslog(LOG_INFO, "%s: Proxying to IMAP port %d", 
 	   fn, PC_Struct.server_port );
+#ifndef LINUX
     ISD.serv.s_port = PC_Struct.server_port;
+#else
+    ISD.serv.s_port = htons(PC_Struct.server_port);
+#endif
         
     /* 
      * fill in the address family, the host address, and the

@@ -37,11 +37,15 @@
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/config.c,v $
-**      $Id: config.c,v 1.1 2002/12/17 14:26:49 dgm Exp $
+**      $Id: config.c,v 1.2 2003/01/27 13:59:15 dgm Exp $
 **      
 **  Modification History:
 **
 **      $Log: config.c,v $
+**      Revision 1.2  2003/01/27 13:59:15  dgm
+**      Patch by Gary Mills <mills@cc.UManitoba.CA> to allow compilation
+**      using Sun's cc instead of gcc.
+**
 **      Revision 1.1  2002/12/17 14:26:49  dgm
 **      Initial revision
 **
@@ -188,8 +192,7 @@ static void SetNumericValue( char *StringValue,
     if ( ( ! *Value ) &&
 	 ( errno == EINVAL ) )
     {
-	syslog( LOG_ERR, "%s: numeric value specified at line %d
-              of config file is invalid -- Exiting.", fn, linenum );
+	syslog( LOG_ERR, "%s: numeric value specified at line %d of config file is invalid -- Exiting.", fn, linenum );
 	exit( 1 );
     }
 
@@ -312,7 +315,7 @@ extern void SetConfigOptions( char *ConfigFile )
 	
 	Value = CP;
 	
-	for (i = 0; ConfigTable[i].Keyword; i++ )
+	for (i = 0; ConfigTable[i].Keyword[0] != '\0'; i++ )
 	{
 	    if ( ! strcasecmp( (const char *)Keyword, ConfigTable[i].Keyword ) )
 	    {

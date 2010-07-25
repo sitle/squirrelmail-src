@@ -5,7 +5,7 @@
 
 # Paths
 
-INSTALL = /usr/ucb/install
+INSTALL = /usr/bin/install
 EBIN = /usr/local/sbin
 MAN = /usr/local/man/man
 ETC = /etc
@@ -13,7 +13,7 @@ ETC = /etc
 # Compiler flags 
 CC = gcc
 RANLIB = :
-CFLAGS = -I./include
+CFLAGS = -I./include -DLINUX
 LDLIBS = 
 
 # Man sections
@@ -25,9 +25,9 @@ MANADM = 1m
 # Libraries
 
 # Solaris
-XYD_LIB = -lpthread -lmd5 -lsocket -lnsl
+#XYD_LIB = -lpthread -lmd5 -lsocket -lnsl
 # Linux
-#XYD_LIB = -lpthread -lnsl -lcrypto
+XYD_LIB = -lpthread -lnsl -lcrypto
 
 TAT_LIB = -lcurses
 

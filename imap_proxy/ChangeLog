@@ -1,3 +1,28 @@
+2003-01-27  Dave McMurtrie  <dgm@pitt.edu>
+
+	* Version 1.1.2 released.
+
+	* Makefile: added patches by Gary Mills <mills@cc.UManitoba.CA>
+
+	* Makefile: added patches for linux support by 
+	  Frode Nordahl <frode@powertech.no>
+
+	* config.c: added patch by Gary Mills <mills@cc.UManitoba.CA> so it
+	  will compile properly using Sun's cc.
+
+	* imapcommon.c: added patch for linux support by
+	  Frode Nordahl <frode@powertech.no>
+
+	* main.c: added patch for linux support by
+	  Frode Nordahl <frode@powertech.no>
+
+	* pimpstat.c: added patch for linux support by
+	  Frode Nordahl <frode@powertech.no>
+
+2003-01-23  Dave McMurtrie  <dgm@pitt.edu>
+
+	* imapcommon.c: NonSyncLiteral flag was not being cleared properly.
+	
 2003-01-22  Dave McMurtrie  <dgm@pitt.edu>
 
 	* Version 1.1.1 released.
