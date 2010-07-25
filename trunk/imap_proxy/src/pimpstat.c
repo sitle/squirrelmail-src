@@ -34,11 +34,14 @@
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/pimpstat.c,v $
-**      $Id: pimpstat.c,v 1.6 2003/05/20 19:08:02 dgm Exp dgm $
+**      $Id: pimpstat.c,v 1.7 2004/02/24 14:56:10 dgm Exp $
 **      
 **  Modification History:
 **
 **      $Log: pimpstat.c,v $
+**      Revision 1.7  2004/02/24 14:56:10  dgm
+**      Added SELECT cache stuff.
+**
 **      Revision 1.6  2003/05/20 19:08:02  dgm
 **      Comment changes only.
 **

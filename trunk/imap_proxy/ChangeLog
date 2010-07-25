@@ -1,3 +1,23 @@
+2004-02-24  Dave McMurtrie  <davemcmurtrie@hotmail.com>
+	* config.c: Added 'enable_select_cache' config option.
+
+	* pimpstat.c: Added SELECT cache stuff.
+
+	* icc.c: Send LOGOUT to imap server before closing a connection.
+
+	* select.c: newly added to the distribution.  Source file containing
+	  routines to allow SELECT caching.
+
+	* main.c: Added new function ParseBannerAndCapability.  Added SELECT
+	  caching stuff.
+
+	* request.c: Added support for SELECT caching.
+
+	* imapproxy.h: Added support for SELECT caching.
+
+	* imapproxy.conf: Added 'enable_select_cache' option to the default
+	  configuration file.
+	
 2003-11-14  Dave McMurtrie  <davemcmurtrie@hotmail.com>
 
 	* imapproxy.h: Included patches by Geoffrey Hort <g.hort@unsw.edu.au>

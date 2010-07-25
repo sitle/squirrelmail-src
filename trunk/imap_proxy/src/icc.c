@@ -34,11 +34,14 @@
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/icc.c,v $
-**	$Id: icc.c,v 1.5 2003/05/20 18:46:49 dgm Exp dgm $
+**	$Id: icc.c,v 1.6 2004/02/24 15:14:44 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: icc.c,v $
+**	Revision 1.6  2004/02/24 15:14:44  dgm
+**	Send LOGOUT to server when closing a connection.
+**
 **	Revision 1.5  2003/05/20 18:46:49  dgm
 **	Comment changes only.
 **

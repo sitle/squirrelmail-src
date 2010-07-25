@@ -39,11 +39,14 @@
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/request.c,v $
-**	$Id: request.c,v 1.17 2003/10/09 14:11:13 dgm Exp dgm $
+**	$Id: request.c,v 1.18 2004/02/24 15:19:06 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: request.c,v $
+**	Revision 1.18  2004/02/24 15:19:06  dgm
+**	Added support for SELECT caching.
+**
 **	Revision 1.17  2003/10/09 14:11:13  dgm
 **	bugfix: set TotalClientLogins to zero in cmd_resetcounters, submitted
 **	by Geoffrey Hort <g.hort@unsw.edu.au>.  Changes to allow syslogging of the

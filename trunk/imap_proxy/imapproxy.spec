@@ -1,6 +1,6 @@
 #This is imapproxy rpm spec file
 
-%define ver	1.2.1rel
+%define ver	1.2.2rc1
 %define rel	1
 %define prefix	/usr/local
 

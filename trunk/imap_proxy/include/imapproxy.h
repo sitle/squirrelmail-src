@@ -34,11 +34,14 @@
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/include/RCS/imapproxy.h,v $
-**      $Id: imapproxy.h,v 1.16 2003/11/14 15:06:14 dgm Exp dgm $
+**      $Id: imapproxy.h,v 1.17 2004/02/24 15:21:01 dgm Exp $
 **      
 **  Modification History:
 **
 **      $Log: imapproxy.h,v $
+**      Revision 1.17  2004/02/24 15:21:01  dgm
+**      Added support for SELECT caching.
+**
 **      Revision 1.16  2003/11/14 15:06:14  dgm
 **      Patch by Geoffrey Hort <g.hort@unsw.edu.au> to include listen_address
 **      config option.  Also, I changed the default buffer size from
