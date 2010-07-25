@@ -1,0 +1,23 @@
+up-imapproxy now supports SSL/TLS between the proxy server and the real
+IMAP server.  It does not support SSL/TLS between a client (usually webmail)
+and the proxy server.  The idea here is that you can run the imap proxy on
+the same machine as your webserver.  If you're using SSL/TLS to your webserver,
+the webserver can then send plaintext auth to the proxy without the password
+ever crossing the network, then the proxy can use SSL/TLS to the IMAP server.
+
+The proxy will only use SSL if the real imap server forces it to do so by
+advertising LOGINDISABLED in the capability string.
+This brings up the obvious point that if the server advertises LOGINDISABLED
+and the proxy isn't built with SSL support, things aren't going to work.
+
+There are four configuration file options that you'll have to set in order
+for SSL to work.  They are tls_ca_file, tls_ca_path, tls_cert_file and
+tls_key_file.
+
+I haven't had time to write my own ssl tuturial (and I might never) but you
+can find a wealth of information here:
+
+http://www.sendmail.org/~ca/email/starttls.html
+
+If anyone wants to contribute to this project by submitting some good
+documentation about configuring up-imapproxy with SSL, it would be appreciated.
