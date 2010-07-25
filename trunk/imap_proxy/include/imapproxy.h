@@ -34,11 +34,15 @@
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/include/RCS/imapproxy.h,v $
-**      $Id: imapproxy.h,v 1.17 2004/02/24 15:21:01 dgm Exp $
+**      $Id: imapproxy.h,v 1.18 2004/03/11 15:17:58 dgm Exp $
 **      
 **  Modification History:
 **
 **      $Log: imapproxy.h,v $
+**      Revision 1.18  2004/03/11 15:17:58  dgm
+**      SELECT_BUF_SIZE size changed from 1024 to BUFSIZE which is
+**      currently 4096
+**
 **      Revision 1.17  2004/02/24 15:21:01  dgm
 **      Added support for SELECT caching.
 **
@@ -134,7 +138,7 @@
 #define MAXPASSWDLEN            64                /* max passwd length       */
 #define POLL_TIMEOUT_MINUTES    30                /* Poll timeout in minutes */
 #define POLL_TIMEOUT            (POLL_TIMEOUT_MINUTES * 60000)
-#define SELECT_BUF_SIZE         1024              /* max length of a SELECT  */
+#define SELECT_BUF_SIZE         BUFSIZE           /* max length of a SELECT  */
 						  /* string we can cache     */
 #define SELECT_CACHE_EXP        10                /* # of seconds before we  */
                                                   /* expire a SELECT cache   */
