@@ -2,6 +2,10 @@ Michael Faurot <mfaurot at atww.org> submitted some helpful information
 for people building and installing up-imapproxy on Debian Linux systems.
 I've included his information here, exactly as he submitted it.
 
+It's now worth noting that there's an official Debian package for up-imapproxy
+(courtesy of Jose Luis Tallon) so you might want to save yourself some time 
+and effort and just apt-get that.
+
 
 o)	On a Debian system that uses UW IMAP you'll need to rename
 	/etc/rc2.d/S99rmnologin to something like S98rmnologin.  Then be
