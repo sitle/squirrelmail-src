@@ -35,11 +35,14 @@
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/config.c,v $
-**      $Id: config.c,v 1.14 2005/06/15 12:12:26 dgm Exp $
+**      $Id: config.c,v 1.15 2005/07/06 12:17:44 dgm Exp $
 **      
 **  Modification History:
 **
 **      $Log: config.c,v $
+**      Revision 1.15  2005/07/06 12:17:44  dgm
+**      Add enable_admin_commands to ConfigTable.
+**
 **      Revision 1.14  2005/06/15 12:12:26  dgm
 **      Patch by Dave Steinberg and Jarno Huuskonen to add chroot_directory
 **      config option.
@@ -416,6 +419,9 @@ extern void SetConfigOptions( char *ConfigFile )
 
     ADD_TO_TABLE( "force_tls", SetBooleanValue,
 		  &PC_Struct.force_tls, index );
+
+    ADD_TO_TABLE( "enable_admin_commands", SetBooleanValue,
+		  &PC_Struct.enable_admin_commands, index );
     
     ConfigTable[index].Keyword[0] = '\0';
     

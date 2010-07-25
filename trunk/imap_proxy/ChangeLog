@@ -1,3 +1,18 @@
+2005-07-05  Dave McMurtrie  <davemcmurtrie@gmail.com>
+
+	* main.c: Add logging of enable_admin_commands config setting.
+
+	* imapproxy.h: Add enable_admin_commands to struct ProxyConfig.
+
+	* config.c: Add enable_admin_commands to ConfigTable.
+
+	* request.c: Added support for enable_admin_commands config option.
+	
+2005-06-22  Dave McMurtrie  <davemcmurtrie@gmail.com>
+
+	* main.c: Made initial imap server connection and DNS lookup
+	  more robust.
+	
 2005-06-14  Dave McMurtrie  <davemcmurtrie@gmail.com>
 
 	* imapproxy.spec: Patch by William Hooper to remove obsolete Copyright

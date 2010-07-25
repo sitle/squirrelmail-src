@@ -36,11 +36,17 @@
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/main.c,v $
-**	$Id: main.c,v 1.25 2005/06/15 12:05:25 dgm Exp $
+**	$Id: main.c,v 1.27 2005/07/06 11:49:40 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: main.c,v $
+**	Revision 1.27  2005/07/06 11:49:40  dgm
+**	Add support for enable_admin_commands config option.
+**
+**	Revision 1.26  2005/06/22 14:39:04  dgm
+**	Made initial imap server connection and DNS lookup more robust.
+**
 **	Revision 1.25  2005/06/15 12:05:25  dgm
 **	Included config.h.
 **
@@ -151,7 +157,7 @@
 */
 
 
-static char *rcsId = "$Id: main.c,v 1.25 2005/06/15 12:05:25 dgm Exp $";
+static char *rcsId = "$Id: main.c,v 1.27 2005/07/06 11:49:40 dgm Exp $";
 static char *rcsSource = "$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/main.c,v $";
 static char *rcsAuthor = "$Author: dgm $";
 
@@ -322,6 +328,15 @@ int main( int argc, char *argv[] )
     else
 	syslog( LOG_INFO, "%s: SELECT caching is disabled", fn );
 	
+    /*
+     * Just for logging purposes, are the admin commands enabled or not?
+     */
+     if ( PC_Struct.enable_admin_commands )
+	 syslog( LOG_INFO, "%s: Internal admin commands are enabled", fn );
+     else
+	 syslog( LOG_INFO, "%s: Internal admin commands are disabled", fn );
+     
+
 #ifdef HAVE_LIBWRAP
     /*
      * Set our tcpd service name
@@ -751,12 +766,19 @@ static void ServerInit( void )
     syslog( LOG_INFO, "%s: proxying to IMAP server '%s'.", fn, 
 	    PC_Struct.server_hostname );
     
-    hp = gethostbyname( PC_Struct.server_hostname );
-    
-    if ( !hp )
+    for( ;; )
     {
-	syslog(LOG_ERR, "%s: gethostbyname() failed to resolve hostname of remote IMAP server: %s", fn, strerror(errno) );
-	exit(1);
+	hp = gethostbyname( PC_Struct.server_hostname );
+	
+	if ( !hp )
+	{
+	    syslog(LOG_ERR, "%s: gethostbyname() failed to resolve hostname of remote IMAP server: %s -- retrying", fn, strerror(errno) );
+	    sleep( 15 );
+	}
+	else
+	{
+	    break;
+	}
     }
 
     memcpy( &ISD.host, hp, sizeof(struct hostent) );
@@ -947,22 +969,17 @@ static void SetBannerAndCapability( void )
 	    exit( 1 );
 	}
 	
+	
 	if ( connect( sd, (struct sockaddr *)&ISD.srv, sizeof(ISD.srv) ) == -1 )
 	{
-	    syslog(LOG_ERR, "%s: connect() to imap server on socket [%d] failed: %s", fn, sd, strerror(errno));
+	    syslog(LOG_ERR, "%s: connect() to imap server on socket [%d] failed: %s -- retrying", fn, sd, strerror(errno));
 	    close( sd );
 	    
-	    if ( errno == ECONNREFUSED && ++NumRef < 10 )
-	    {
-		sleep( 60 );    /* IMAP server may not be started yet. */
-		continue;
-	    }
-	    syslog( LOG_ERR, "%s: unable to connect() to imap server and retry limit exceeded -- exiting.", fn );
-	    exit( 1 );
+	    sleep( 15 );    /* IMAP server may not be started yet. */
 	}
 	break;  /* Success */
     }
-
+    
     
     memset( &conn, 0, sizeof ( ICD_Struct ) );
     itd.conn = &conn;

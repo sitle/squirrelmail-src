@@ -34,11 +34,14 @@
 **  RCS:
 **
 **      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/include/RCS/imapproxy.h,v $
-**      $Id: imapproxy.h,v 1.23 2005/06/15 12:13:40 dgm Exp $
+**      $Id: imapproxy.h,v 1.24 2005/07/06 11:51:25 dgm Exp $
 **      
 **  Modification History:
 **
 **      $Log: imapproxy.h,v $
+**      Revision 1.24  2005/07/06 11:51:25  dgm
+**      Added enable_admin_commands to struct ProxyConfig
+**
 **      Revision 1.23  2005/06/15 12:13:40  dgm
 **      Changed all long int values to int.  Changed logouttime in
 **      IMAPConnectionContext to time_t.  Added atoui function
@@ -276,6 +279,7 @@ struct ProxyConfig
     char *tls_cert_file;                      /* file with client cert */
     char *tls_key_file;                       /* file with client priv key */
     unsigned int force_tls;                   /* flag to force TLS */
+    unsigned int enable_admin_commands;       /* flag to enable admin cmds */
     unsigned char support_unselect;           /* unselect support flag */
     unsigned char support_starttls;           /* starttls support flag */
     unsigned char login_disabled;             /* login disabled flag */
