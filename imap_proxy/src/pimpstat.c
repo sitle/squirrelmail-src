@@ -33,12 +33,15 @@
 **
 **  RCS:
 **
-**      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/pimpstat.c,v $
-**      $Id: pimpstat.c,v 1.8 2005/06/15 12:11:36 dgm Exp $
+**      $Source: /afs/andrew.cmu.edu/usr18/dave64/work/IMAP_Proxy/src/RCS/pimpstat.c,v $
+**      $Id: pimpstat.c,v 1.9 2006/02/17 01:42:37 dave64 Exp $
 **      
 **  Modification History:
 **
 **      $Log: pimpstat.c,v $
+**      Revision 1.9  2006/02/17 01:42:37  dave64
+**      Spelling correction (Connectsions) by Matt Selsky.
+**
 **      Revision 1.8  2005/06/15 12:11:36  dgm
 **      Patch by Mathew Anderson to add -c flag and behavior.
 **
@@ -359,7 +362,7 @@ int main( int argc, char *argv[] )
 	/*
 	 * We only get here if command is non-zero.
 	 */
-	printf( " %d Current Client Connections\n %d Peak Client Connections\n %d In Use Connections\n %d Peak In Use Connections\n %d Retained Server Connections\n %d Peak Retained Server Connections\n %d Total Client Connectsions\n %d Total Client Logins\n %d Total Reused Connections\n %d Total Created Connections\n %d Cache Hits\n %d Cache Misses\n", IMAPCount->CurrentClientConnections,
+	printf( " %d Current Client Connections\n %d Peak Client Connections\n %d In Use Connections\n %d Peak In Use Connections\n %d Retained Server Connections\n %d Peak Retained Server Connections\n %d Total Client Connections\n %d Total Client Logins\n %d Total Reused Connections\n %d Total Created Connections\n %d Cache Hits\n %d Cache Misses\n", IMAPCount->CurrentClientConnections,
 		IMAPCount->PeakClientConnections, 
 		IMAPCount->InUseServerConnections,
 		IMAPCount->PeakInUseServerConnections,

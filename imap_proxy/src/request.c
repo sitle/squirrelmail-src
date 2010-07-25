@@ -38,12 +38,15 @@
 **
 **  RCS:
 **
-**	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/request.c,v $
-**	$Id: request.c,v 1.21 2005/07/06 11:53:19 dgm Exp $
+**	$Source: /afs/andrew.cmu.edu/usr18/dave64/work/IMAP_Proxy/src/RCS/request.c,v $
+**	$Id: request.c,v 1.22 2006/02/16 18:38:36 dave64 Exp $
 **      
 **  Modification History:
 **
 **	$Log: request.c,v $
+**	Revision 1.22  2006/02/16 18:38:36  dave64
+**	Patch to add internal version command by Matt Selsky.
+**
 **	Revision 1.21  2005/07/06 11:53:19  dgm
 **	Added support for enable_admin_commands config option.
 **
@@ -184,6 +187,7 @@ static int cmd_trace( ITD_Struct *, char *, char * );
 static int cmd_dumpicc( ITD_Struct *, char * );
 static int cmd_newlog( ITD_Struct *, char * );
 static int cmd_resetcounters( ITD_Struct *, char * );
+static int cmd_version( ITD_Struct *, char * );
 static int Raw_Proxy( ITD_Struct *, ITD_Struct *, ISC_Struct * );
 
 
@@ -404,6 +408,58 @@ static int cmd_dumpicc( ITD_Struct *itd, char *Tag )
 	return( -1 );
     }
     
+    return( 0 );
+}
+
+
+
+/*++
+ * Function:	cmd_version
+ *
+ * Purpose:	Show the IMAP Proxy version string.
+ *
+ * Parameters:	ptr to ITD_Struct for client connection.
+ *              char ptr to Tag sent with this command.
+ *
+ * Returns:	0 on success
+ *		-1 on failure
+ *
+ * Authors:     Matt Selsky <selsky@columbia.edu>
+ *--
+ */
+static int cmd_version( ITD_Struct *itd, char *Tag )
+{
+    char *fn = "cmd_version";
+    char SendBuf[BUFSIZE];
+    unsigned int BufLen = BUFSIZE - 1;
+    
+    SendBuf[BUFSIZE - 1] = '\0';
+
+    if ( ! PC_Struct.enable_admin_commands )
+    {
+	snprintf( SendBuf, BufLen, "%s BAD Unrecognized command\r\n", Tag );
+	if ( IMAP_Write( itd->conn, SendBuf, strlen( SendBuf ) ) == -1 )
+	{
+	    syslog( LOG_WARNING, "%s: IMAP_Write() failed: %s", fn, strerror( errno ) );
+	    return( -1 );
+	}
+	return( 0 );
+    }
+
+    snprintf( SendBuf, BufLen, "* %s\r\n", IMAP_PROXY_VERSION );
+    if ( IMAP_Write( itd->conn, SendBuf, strlen(SendBuf) ) == -1 )
+    {
+	syslog(LOG_WARNING, "%s: IMAP_Write() failed: %s", fn, strerror(errno) );
+	return( -1 );
+    }
+
+    snprintf( SendBuf, BufLen, "%s OK Completed\r\n", Tag );
+    if ( IMAP_Write( itd->conn, SendBuf, strlen(SendBuf) ) == -1 )
+    {
+	syslog(LOG_WARNING, "%s: IMAP_Write() failed: %s", fn, strerror(errno) );
+	return( -1 );
+    }
+
     return( 0 );
 }
 
@@ -1430,7 +1486,7 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server,
  *		of the following IMAP commands (rfc 2060):  NOOP, CAPABILITY,
  *		AUTHENTICATE, LOGIN, and LOGOUT.  Also, it handles the
  *              commands that are internal to the proxy server such as
- *              P_TRACE, P_NEWLOG, P_DUMPICC and P_RESETCOUNTERS.
+ *              P_TRACE, P_NEWLOG, P_DUMPICC, P_RESETCOUNTERS and P_VERSION.
  *
  *              None of these commands should ever have the need to send
  *              a boatload of data, so we avoid some error checking and
@@ -1753,6 +1809,18 @@ extern void HandleRequest( int clientsd )
 		return;
 	    }
 	    cmd_newlog( &Client, S_Tag );
+	    continue;
+	}
+	else if ( ! strcasecmp( (const char *)Command, "P_VERSION" ) )
+	{
+	    if ( Client.LiteralBytesRemaining )
+	    {
+		syslog( LOG_ERR, "%s: Unexpected literal specifier read from client on socket %d as part of P_VERSION command -- disconnecting client", fn, Client.conn->sd );
+		IMAPCount->CurrentClientConnections--;
+		close( Client.conn->sd );
+		return;
+	    }
+	    cmd_version( &Client, S_Tag );
 	    continue;
 	}
 	else if ( ! strcasecmp( (const char *)Command, "LOGIN" ) )

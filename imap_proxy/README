@@ -8,7 +8,7 @@ mailing list and post your bug there.
 
 If you want to subscribe to the imapproxy-info mailing list, visit:
 
-http://lists.pitt.edu/mailman/listinfo/imapproxy-info
+http://lists.andrew.cmu.edu/mailman/listinfo/imapproxy-info
 
 For some Debian specific issues that have come up, read the file README.debian.
 
@@ -225,6 +225,10 @@ P_RESETCOUNTERS
 This allows you to reset the internal counters that pimpstat reports on
 without having to restart the server.  These are the counters that are mmap()ed
 to the file configured as "stat_filename" in the configuration file.
+
+P_VERSION
+-------
+This is used to show the version number of the IMAP proxy.
 
 
 Happy proxying,

@@ -1,3 +1,17 @@
+2006-02-16  Dave McMurtrie  <davemcmurtrie@gmail.com>
+
+	* pimpstat.c: Patch by Matt Selsky to fix spelling error.
+
+	* main.c: Fixed string format bug (Debian DSA 852-1) found by
+	  Steve Kemp.  Added version string to startup log message.
+
+	* common.h: Patch by Matt Selsky to add a version string.
+
+	* request.c: Patch by Matt Selsky to add cmd_version function.
+
+	* README: Patch by Matt Selsky to add info about p_version command.
+          Updated the imapproxy-info mailing list URL.
+
 2005-08-31  Dave McMurtrie  <davemcmurtrie@gmail.com>
 
         * Version 1.2.4 released.

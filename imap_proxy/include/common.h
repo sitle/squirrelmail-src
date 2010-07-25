@@ -34,12 +34,15 @@
 **
 **  RCS:
 **
-**      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/include/RCS/common.h,v $
-**      $Id: common.h,v 1.3 2003/05/20 19:14:10 dgm Exp $
+**      $Source: /afs/andrew.cmu.edu/usr18/dave64/work/IMAP_Proxy/include/RCS/common.h,v $
+**      $Id: common.h,v 1.4 2006/02/16 18:32:30 dave64 Exp $
 **      
 **  Modification History:
 **
 **      $Log: common.h,v $
+**      Revision 1.4  2006/02/16 18:32:30  dave64
+**      Added IMAP_PROXY_VERSION patch by Matt Selsky.
+**
 **      Revision 1.3  2003/05/20 19:14:10  dgm
 **      Comment changes only.
 **
@@ -57,6 +60,7 @@
 
 
 #define HASH_TABLE_SIZE         1024
+#define IMAP_PROXY_VERSION      "1.2.5rc1"
 
 /*
  * Misc. function prototypes.
