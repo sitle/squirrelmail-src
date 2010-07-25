@@ -1,3 +1,18 @@
+2006-10-03  Dave McMurtrie  <davemcmurtrie@gmail.com>
+
+	* common.h: Updated version string to 1.2.5rc2.
+
+	* main.c: Patch by Matt Selsky to log ssl peer verify at Debug
+	  level instead of err level.
+
+	* Makefile.in: Patch by Matt Selsky to set the permissions on
+	  the configuration files to 755 instead of 644.
+
+2006-08-15  Dave McMurtrie  <davemcmurtrie@gmail.com>
+
+	* imapcommon.c: No longer exit() from IMAP_Line_Read() on
+	  failed sanity check.
+
 2006-02-16  Dave McMurtrie  <davemcmurtrie@gmail.com>
 
 	* pimpstat.c: Patch by Matt Selsky to fix spelling error.

@@ -36,11 +36,19 @@
 **  RCS:
 **
 **	$Source: /afs/andrew.cmu.edu/usr18/dave64/work/IMAP_Proxy/src/RCS/main.c,v $
-**	$Id: main.c,v 1.29 2006/02/16 18:43:42 dave64 Exp $
+**	$Id: main.c,v 1.31 2006/10/03 12:13:09 dave64 Exp $
 **      
 **  Modification History:
 **
 **	$Log: main.c,v $
+**	Revision 1.31  2006/10/03 12:13:09  dave64
+**	Patch by Matt Selsky to log ssl peer verify at debug level instead
+**	of err level.
+**
+**	Revision 1.30  2006/04/13 12:39:15  dave64
+**	Patch by Ramiro Morales to prevent bad file descriptor error
+**	on startup.
+**
 **	Revision 1.29  2006/02/16 18:43:42  dave64
 **	Added IMAP_PROXY_VERSION string to startup log message.
 **
@@ -163,7 +171,7 @@
 */
 
 
-static char *rcsId = "$Id: main.c,v 1.29 2006/02/16 18:43:42 dave64 Exp $";
+static char *rcsId = "$Id: main.c,v 1.31 2006/10/03 12:13:09 dave64 Exp $";
 static char *rcsSource = "$Source: /afs/andrew.cmu.edu/usr18/dave64/work/IMAP_Proxy/src/RCS/main.c,v $";
 static char *rcsAuthor = "$Author: dave64 $";
 
@@ -983,7 +991,10 @@ static void SetBannerAndCapability( void )
 	    
 	    sleep( 15 );    /* IMAP server may not be started yet. */
 	}
-	break;  /* Success */
+	else
+	{
+	    break;  /* Success */
+	}
     }
     
     
@@ -1121,7 +1132,7 @@ static int verify_callback(int ok, X509_STORE_CTX * ctx)
     int     err;
     int     depth;
 
-    syslog(LOG_ERR,"Doing a peer verify");
+    syslog(LOG_DEBUG,"Doing a peer verify");
 
     err_cert = X509_STORE_CTX_get_current_cert(ctx);
     err = X509_STORE_CTX_get_error(ctx);

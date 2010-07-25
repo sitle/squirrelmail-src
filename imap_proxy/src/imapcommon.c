@@ -34,12 +34,15 @@
 **
 **  RCS:
 **
-**	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/imapcommon.c,v $
-**	$Id: imapcommon.c,v 1.21 2005/06/15 12:06:31 dgm Exp $
+**	$Source: /afs/andrew.cmu.edu/usr18/dave64/work/IMAP_Proxy/src/RCS/imapcommon.c,v $
+**	$Id: imapcommon.c,v 1.22 2006/08/15 13:13:08 dave64 Exp $
 **      
 **  Modification History:
 **
 **	$Log: imapcommon.c,v $
+**	Revision 1.22  2006/08/15 13:13:08  dave64
+**	No longer exit() from IMAP_Line_Read.  Just return failure.
+**
 **	Revision 1.21  2005/06/15 12:06:31  dgm
 **	Added missing include directive for openssl/err.h.
 **	atoui function added to replace calls to atoi.
@@ -1197,11 +1200,6 @@ extern int IMAP_Literal_Read( ITD_Struct *ITD )
  * Notes:	caller must be certain that the IMAPTransactionDescriptor
  *		is initialized to zero on the first call.
  *
- *
- *		Callers must check RemainingLiteralBytes after calling this
- *		function.  If this is set and a caller ignores it, it will
- *		play havoc...  Actually, it will exit() and kill the entire
- *              process.
  *--
  */
 extern int IMAP_Line_Read( ITD_Struct *ITD )
@@ -1219,8 +1217,14 @@ extern int IMAP_Line_Read( ITD_Struct *ITD )
      */
     if ( ITD->LiteralBytesRemaining )
     {
-	syslog(LOG_ERR, "%s: Sanity check failed! Literal bytestream has not been fully processed (%d bytes remain) and line-oriented read function was called again.  Exiting!", fn, ITD->LiteralBytesRemaining);
-	exit(1);
+      syslog(LOG_ERR, "%s: Sanity check failed! Literal bytestream has not been fully processed (%d bytes remain) and line-oriented read function was called again.", fn, ITD->LiteralBytesRemaining );
+      /*
+       * Previous behavior was to exit, but that was wrong.  This sanity
+       * check only affects a single connection and should not kill the entire
+       * process.
+       * Just return failure and let the caller deal with it.
+       */
+      return( -1 );
     }
     
 
