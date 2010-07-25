@@ -36,11 +36,17 @@
 **  RCS:
 **
 **	$Source: /afs/andrew.cmu.edu/usr18/dave64/work/IMAP_Proxy/src/RCS/main.c,v $
-**	$Id: main.c,v 1.31 2006/10/03 12:13:09 dave64 Exp $
+**	$Id: main.c,v 1.33 2007/05/31 12:10:59 dave64 Exp $
 **      
 **  Modification History:
 **
 **	$Log: main.c,v $
+**	Revision 1.33  2007/05/31 12:10:59  dave64
+**	Applied ipv6 patch by Antonio Querubin.
+**
+**	Revision 1.32  2007/05/31 11:46:42  dave64
+**	Applied OpenSSL threads patch by Jan Grant.
+**
 **	Revision 1.31  2006/10/03 12:13:09  dave64
 **	Patch by Matt Selsky to log ssl peer verify at debug level instead
 **	of err level.
@@ -171,7 +177,7 @@
 */
 
 
-static char *rcsId = "$Id: main.c,v 1.31 2006/10/03 12:13:09 dave64 Exp $";
+static char *rcsId = "$Id: main.c,v 1.33 2007/05/31 12:10:59 dave64 Exp $";
 static char *rcsSource = "$Source: /afs/andrew.cmu.edu/usr18/dave64/work/IMAP_Proxy/src/RCS/main.c,v $";
 static char *rcsAuthor = "$Author: dave64 $";
 
@@ -266,9 +272,9 @@ int main( int argc, char *argv[] )
     char f_randfile[ PATH_MAX ];
     int listensd;                      /* socket descriptor we'll bind to */
     int clientsd;                      /* incoming socket descriptor */
-    int addrlen;                       
-    struct sockaddr_in srvaddr;
-    struct sockaddr_in cliaddr;
+    int sockaddrlen;                       
+    struct sockaddr_storage srvaddr;
+    struct sockaddr_storage cliaddr;
     pthread_t ThreadId;                /* thread id of each incoming conn */
     pthread_t RecycleThread;           /* used just for the recycle thread */
     pthread_attr_t attr;               /* generic thread attribute struct */
@@ -284,6 +290,8 @@ int main( int argc, char *argv[] )
 #ifdef HAVE_LIBWRAP
     struct request_info r;             /* request struct for libwrap */
 #endif
+    struct addrinfo aihints, *ai;
+    int gaierrnum;
 
     flag = 1;
     ConfigFile[0] = '\0';
@@ -459,6 +467,9 @@ int main( int argc, char *argv[] )
 	{
 	    /* Initialize SSL_CTX */
 	    SSL_library_init();
+
+	    /* Set up OpenSSL thread protection */
+	    ssl_thread_setup(fn);
 	    
             /* Need to seed PRNG, too! */
             if ( RAND_egd( ( RAND_file_name( f_randfile, sizeof( f_randfile ) ) == f_randfile ) ? f_randfile : "/.rnd" ) ) 
@@ -507,32 +518,30 @@ int main( int argc, char *argv[] )
 	}
     }
     
-    memset( (char *) &srvaddr, 0, sizeof srvaddr );
-    srvaddr.sin_family = PF_INET;
-    if ( !PC_Struct.listen_addr )
-    {
-	srvaddr.sin_addr.s_addr = htonl(INADDR_ANY);
-    }
-    else 
-    {
-	srvaddr.sin_addr.s_addr = inet_addr( PC_Struct.listen_addr ); 
-	if ( srvaddr.sin_addr.s_addr  == -1 )
+    memset( &aihints, 0, sizeof aihints );
+    aihints.ai_family = AF_UNSPEC;
+    aihints.ai_socktype = SOCK_STREAM;
+    aihints.ai_flags = AI_PASSIVE;
+
+    if ( ( gaierrnum = getaddrinfo( PC_Struct.listen_addr,
+				    PC_Struct.listen_port,
+				    &aihints, &ai ) ) )
 	{
 	    syslog( LOG_ERR, "%s: bad bind address: '%s' specified in config file.  Exiting.", fn, PC_Struct.listen_addr );
 	    exit( 1 );
 	}
-    }
-    
 
-    syslog(LOG_INFO, "%s: Binding to tcp %s:%d", fn, PC_Struct.listen_addr ?
-	   PC_Struct.listen_addr : "*", PC_Struct.listen_port );
-    srvaddr.sin_port = htons(PC_Struct.listen_port);
+    syslog( LOG_INFO, "%s: Binding to tcp %s:%s", fn,
+	    PC_Struct.listen_addr ? PC_Struct.listen_addr : "*",
+	    PC_Struct.listen_port );
 
-    listensd = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
+    for ( ; ai != NULL; ai = ai->ai_next )
+    {
+	listensd = socket( ai->ai_family, ai->ai_socktype, ai->ai_protocol );
     if ( listensd == -1 )
     {
-	syslog(LOG_ERR, "%s: socket() failed: %s", fn, strerror(errno));
-	exit( 1 );
+	    syslog(LOG_WARNING, "%s: socket() failed: %s", fn, strerror(errno));
+	    continue;
     }
 
     setsockopt(listensd, SOL_SOCKET, SO_REUSEADDR, (void *)&flag, 
@@ -549,11 +558,18 @@ int main( int argc, char *argv[] )
 	setsockopt( listensd, SOL_SOCKET, SO_KEEPALIVE, (void *)&lingerstruct.l_onoff, sizeof lingerstruct.l_onoff );
     }
 
-	    
-    if ( bind(listensd, (struct sockaddr *)&srvaddr, sizeof( srvaddr ) ) < 0 )
+	memcpy( &srvaddr, ai->ai_addr, ai->ai_addrlen );
+	if ( bind( listensd, (struct sockaddr *)&srvaddr, ai->ai_addrlen ) < 0 )
     {
-	syslog(LOG_ERR, "%s: bind() failed: %s", fn, strerror(errno) );
-	exit( 1 );
+	    syslog(LOG_WARNING, "%s: bind() failed: %s", fn, strerror(errno) );
+	    continue;
+	}
+	else break;
+    }
+    if ( ai == NULL )
+    {
+	syslog( LOG_ERR, "%s: no useable addresses to bind to", fn );
+	exit( EXIT_FAILURE);
     }
 
     /*
@@ -638,10 +654,11 @@ int main( int argc, char *argv[] )
     {
 	/*
 	 * Bug fixed by Gary Mills <mills@cc.UManitoba.CA>.  I forgot
-	 * to initialize addrlen.
+	 * to initialize sockaddrlen.
 	 */
-	addrlen = sizeof cliaddr;
-	clientsd = accept( listensd, (struct sockaddr *)&cliaddr, &addrlen );
+	sockaddrlen = sizeof cliaddr;
+	clientsd = accept( listensd, (struct sockaddr *)&cliaddr,
+			   &sockaddrlen );
 	if ( clientsd == -1 )
 	{
 	    syslog(LOG_WARNING, "%s: accept() failed: %s -- retrying", 
@@ -724,10 +741,11 @@ void Usage( void )
 static void ServerInit( void ) 
 {
     char *fn = "ServerInit()";
-    struct hostent *hp;
     struct rlimit rl;
     int rc;
     struct passwd *pw;
+    struct addrinfo aihints, *ai;
+    int gaierrnum, sd;
 
     
     /* open the global trace file and make proc_username own it */
@@ -780,13 +798,19 @@ static void ServerInit( void )
     syslog( LOG_INFO, "%s: proxying to IMAP server '%s'.", fn, 
 	    PC_Struct.server_hostname );
     
+    memset( &aihints, 0, sizeof aihints );
+    aihints.ai_family = AF_UNSPEC;
+    aihints.ai_socktype = SOCK_STREAM;
+
     for( ;; )
     {
-	hp = gethostbyname( PC_Struct.server_hostname );
-	
-	if ( !hp )
+	if ( ( gaierrnum = getaddrinfo( PC_Struct.server_hostname,
+					PC_Struct.server_port,
+					&aihints, &ai ) ) )
 	{
-	    syslog(LOG_ERR, "%s: gethostbyname() failed to resolve hostname of remote IMAP server: %s -- retrying", fn, strerror(errno) );
+	    syslog( LOG_ERR,
+		    "%s: getaddrinfo() failed to resolve hostname of remote IMAP server: %s -- retrying",
+		    fn, gai_strerror( gaierrnum ) );
 	    sleep( 15 );
 	}
 	else
@@ -795,19 +819,30 @@ static void ServerInit( void )
 	}
     }
 
-    memcpy( &ISD.host, hp, sizeof(struct hostent) );
-    
-    syslog(LOG_INFO, "%s: Proxying to IMAP port %d", 
+    syslog(LOG_INFO, "%s: Proxying to IMAP port %s", 
 	   fn, PC_Struct.server_port );
-    ISD.serv.s_port = htons(PC_Struct.server_port);
         
     /* 
      * fill in the address family, the host address, and the
      * service port of our global socket address structure
      */
-    ISD.srv.sin_family = PF_INET;
-    memcpy( &ISD.srv.sin_addr.s_addr, ISD.host.h_addr, ISD.host.h_length );
-    ISD.srv.sin_port = ISD.serv.s_port;
+    ISD.airesults = ai;
+    ISD.srv = NULL;
+    for ( ; ai != NULL; ai = ai->ai_next )
+    {
+        if ( ( sd = socket( ai->ai_family, ai->ai_socktype, ai->ai_protocol ) )
+	     < 0 ) continue;
+	if ( connect( sd, (struct sockaddr *)ai->ai_addr, ai->ai_addrlen ) )
+		continue;
+	close( sd );
+	ISD.srv = ai;
+	break;
+    }
+    if ( ai == NULL )
+    {
+	syslog( LOG_ERR, "%s: %s -- exiting", fn, strerror( errno ) );
+	exit( EXIT_FAILURE );
+    }
 }
 
 
@@ -975,7 +1010,8 @@ static void SetBannerAndCapability( void )
 
     for ( ;; )
     {
-	sd = socket( PF_INET, SOCK_STREAM, IPPROTO_TCP );
+	sd = socket( ISD.srv->ai_family, ISD.srv->ai_socktype,
+		     ISD.srv->ai_protocol );
 	if ( sd == -1 )
 	{
 	    syslog(LOG_ERR, "%s: socket() failed: %s -- exiting", fn, 
@@ -983,9 +1019,8 @@ static void SetBannerAndCapability( void )
 	    exit( 1 );
 	}
 	
-	
-	if ( connect( sd, (struct sockaddr *)&ISD.srv, sizeof(ISD.srv) ) == -1 )
-	{
+	if ( connect( sd, (struct sockaddr *)ISD.srv->ai_addr, 
+		      ISD.srv->ai_addrlen ) == -1 ) 	{
 	    syslog(LOG_ERR, "%s: connect() to imap server on socket [%d] failed: %s -- retrying", fn, sd, strerror(errno));
 	    close( sd );
 	    

@@ -1,3 +1,24 @@
+2007-05-31  Dave McMurtrie  <davemcmurtrie@gmail.com>
+	* main.c: Applied OpenSSL threads patch by Jan Grant.  Applied ipv6
+	  patch by Antonio Querubin.
+
+	* imapproxy.h: Applied OpenSSL threads patch by Jan Grant.  Applied
+	  ipv6 patch by Antonio Querubin.
+
+	* threads.c: New file, from OpenSSL threads patch by Jan Grant.
+
+	* Makefile.in: Applied OpenSSL threads patch by Jan Grant.
+
+	* imapcommon.c: Applied patch by Matt Selsky to prevent compilation
+	  errors due to missing md5.h include directive.  Applied ipv6 patch
+	  by Antonio Querubin.
+
+	* config.c: Applied ipv6 patch by Antonio Querubin.
+
+	* request.c: Applied ipv6 patch by Antonio Querubin.
+
+	* common.h: Updated version string to 1.2.6rc1
+
 2007-01-30  Dave McMurtrie  <davemcmurtrie@gmail.com>
 
 	* Version 1.2.5 released.
