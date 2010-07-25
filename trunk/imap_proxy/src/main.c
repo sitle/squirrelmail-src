@@ -38,11 +38,16 @@
 **  RCS:
 **
 **	$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/main.c,v $
-**	$Id: main.c,v 1.8 2003/02/20 12:55:03 dgm Exp $
+**	$Id: main.c,v 1.9 2003/04/16 12:15:52 dgm Exp $
 **      
 **  Modification History:
 **
 **	$Log: main.c,v $
+**	Revision 1.9  2003/04/16 12:15:52  dgm
+**	Added support for syslog configuration.
+**	Removed a few ifdef LINUXs by always storing tcp service port as
+**	network short.
+**
 **	Revision 1.8  2003/02/20 12:55:03  dgm
 **	SetBannerAndCapability() now checks to see if the server supports
 **	UNSELECT and sets a flag in the global proxy config struct.
@@ -78,7 +83,7 @@
 */
 
 
-static char *rcsId = "$Id: main.c,v 1.8 2003/02/20 12:55:03 dgm Exp $";
+static char *rcsId = "$Id: main.c,v 1.9 2003/04/16 12:15:52 dgm Exp $";
 static char *rcsSource = "$Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/main.c,v $";
 static char *rcsAuthor = "$Author: dgm $";
 
@@ -115,7 +120,6 @@ static char *rcsAuthor = "$Author: dgm $";
  * single time we want to connect to the imap server.  We do it once and 
  * store it globally.
  */
-char *Pgm = "in.imapproxyd";         /* for the usage string */
 char Banner[BUFSIZE];                /* banner line returned from IMAP svr */
 unsigned int BannerLen;
 char Capability[BUFSIZE];            /* IMAP capability line from server */
@@ -204,6 +208,8 @@ int main( int argc, char *argv[] )
     }
     
     SetConfigOptions( ConfigFile );
+    SetLogOptions();
+    
 
     /*
      * Initialize some stuff.
@@ -291,17 +297,13 @@ int main( int argc, char *argv[] )
 	    exit( 0 );
 	}
     }
-    
+
     memset( (char *) &srvaddr, 0, sizeof srvaddr );
     srvaddr.sin_family = AF_INET;
     srvaddr.sin_addr.s_addr = htonl(INADDR_ANY);
 
     syslog(LOG_INFO, "%s: Binding to tcp port %d", fn, PC_Struct.listen_port );
-#ifndef LINUX
-    srvaddr.sin_port = PC_Struct.listen_port;
-#else
     srvaddr.sin_port = htons(PC_Struct.listen_port);
-#endif
 
     listensd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     if ( listensd == -1 )
@@ -455,7 +457,7 @@ int main( int argc, char *argv[] )
  */
 void Usage( void )
 {
-    printf("Usage: %s [-f config filename] [-h]\n", Pgm );
+    printf("Usage: %s [-f config filename] [-h]\n", PGM );
     return;
 }
 
@@ -547,11 +549,7 @@ static void ServerInit( void )
     
     syslog(LOG_INFO, "%s: Proxying to IMAP port %d", 
 	   fn, PC_Struct.server_port );
-#ifndef LINUX
-    ISD.serv.s_port = PC_Struct.server_port;
-#else
     ISD.serv.s_port = htons(PC_Struct.server_port);
-#endif
         
     /* 
      * fill in the address family, the host address, and the
