@@ -34,11 +34,14 @@
 **  RCS:
 **
 **      $Source: /afs/andrew.cmu.edu/usr18/dave64/work/IMAP_Proxy/include/RCS/imapproxy.h,v $
-**      $Id: imapproxy.h,v 1.27 2007/11/15 11:11:46 dave64 Exp $
+**      $Id: imapproxy.h,v 1.28 2008/10/20 13:22:19 dave64 Exp $
 **      
 **  Modification History:
 **
 **      $Log: imapproxy.h,v $
+**      Revision 1.28  2008/10/20 13:22:19  dave64
+**      Applied patch by Michael M. Slusarz to support XPROXYREUSE.
+**
 **      Revision 1.27  2007/11/15 11:11:46  dave64
 **      Added pidfile support patch by Jose Luis Tallón.
 **
@@ -229,6 +232,7 @@ struct IMAPConnectionDescriptor
     SSL *tls;                        /* TLS connection context               */
 #endif
     struct IMAPSelectCache ISC;      /* Cached SELECT data                   */
+    unsigned int reused;             /* Was the connection reused?           */
 };
 
 

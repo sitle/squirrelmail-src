@@ -185,6 +185,31 @@ commands are disabled by default.
 
 
 ##############################################################################
+NEW STATUS RESPONSE:
+##############################################################################
+
+Upon a successful LOGIN or AUTHENTICATION, if imapproxy reused an existing
+connection an untagged IMAP response with the status response XPROXYREUSE
+will be issued.  This status response indicates to a client that any previous
+initialization does not need to be performed again.
+
+Examples:
+---------
+1. Login without an active cached connection.
+
+C: a001 LOGIN user password
+S: [... untagged response(s) from remote IMAP server ...]
+S: a001 OK User logged in
+
+2. Login with an active cached connection.
+
+C: a001 LOGIN user password
+S: [... untagged response(s) from remote IMAP server ...]
+S: * OK [XPROXYREUSE] IMAP connection reused by imapproxy
+S: a001 OK User logged in
+
+
+##############################################################################
 ADDITIONAL COMMANDS:
 ##############################################################################
 
@@ -199,36 +224,104 @@ usage of these commands by username so they're not implemented by default.
 If you secure the listen_port, you can then set the enable_admin_commands
 option in imapproxy.conf to enable the use of these commands.
 
-P_NEWLOG
---------
+These commands are available only until you log into the remote IMAP server.
+
+If these commands are available, the string 'XIMAPPROXY' will be listed in
+the CAPABILITY string before login/authentication (see RFC 3501 [6.1.1]).
+
+These commands are prefixed with 'X' to comply with RFC 3501 [6.5.1].
+
+
+XPROXY_NEWLOG
+-------------
 Since the protocol log file is held open as long as the server is running,
 it's difficult to clear the logfile.  This command was added to take care of
-that for you.  It doesn't accept any arguments.
+that for you.
 
-P_DUMPICC
----------
+Usage:
+  <tag> XPROXY_NEWLOG
+
+Example:
+C: a001 XPROXY_NEWLOG
+S: a001 OK Logfile cleared
+
+
+XPROXY_DUMPICC
+--------------
 The Dump ICC command allows you to display the internal data structures of the
 proxy server.  It can tell you how many connections you currently have open,
 what users they're for, and the status of the connections (active or cached).
 Use this sparingly if the proxy server is extremely busy.
 
-P_TRACE
--------
+Usage:
+  <tag> XPROXY_DUMPICC
+
+Untagged response(s) (1 for each cached connection):
+  * XPROXY_DUMPICC <#> <user> <status>
+
+  <#> = socket descriptor of IMAP connection to backend server
+  <user> = Username of connection
+  <status> = Either 'Active' or 'Cached'
+
+Example:
+C: a001 XPROXY_DUMPICC
+S: * XPROXY_DUMPICC 1 foo Cached
+S: * XPROXY_DUMPICC 2 foo2 Active
+S: a001 OK Completed
+
+
+XPROXY_TRACE
+------------
 This is used to turn on or off protocol logging.  If issued without any
 arguments, it will disable protocol logging.  If issued with a username
 argument, it will turn on logging for that particular user.  Protocol log
 output will show up in the file configured as "protocol_log_filename" in the
 configuration file.
 
-P_RESETCOUNTERS
----------------
+Usage:
+  <tag> XPROXY_TRACE [user]
+
+  [user] = (OPTIONAL) Username to log
+
+Examples:
+C: a001 XPROXY_TRACE
+S: a001 OK Tracing disabled
+
+C: a001 XPROXY_TRACE foo
+S: a001 OK Tracing enabled for user foo
+
+
+XPROXY_RESETCOUNTERS
+--------------------
 This allows you to reset the internal counters that pimpstat reports on
 without having to restart the server.  These are the counters that are mmap()ed
 to the file configured as "stat_filename" in the configuration file.
 
-P_VERSION
--------
+Usage:
+  <tag> XPROXY_RESETCOUNTERS
+
+Example:
+C: a001 XPROXY_RESETCOUNTERS
+S: a001 OK Counters reset
+
+
+XPROXY_VERSION
+--------------
 This is used to show the version number of the IMAP proxy.
+
+Usage:
+  <tag> XPROXY_VERSION
+
+Untagged response(s) (1 for each cached connection):
+  * XPROXY_VERSION <version>
+
+  <version> = Current version number of imapproxy.
+
+Example:
+C: a001 XPROXY_VERSION
+S: * XPROXY_VERSION 1.2.6
+S: a001 OK Completed
+
 
 
 Happy proxying,

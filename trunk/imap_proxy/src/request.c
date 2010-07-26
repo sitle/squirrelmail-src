@@ -39,11 +39,17 @@
 **  RCS:
 **
 **	$Source: /afs/andrew.cmu.edu/usr18/dave64/work/IMAP_Proxy/src/RCS/request.c,v $
-**	$Id: request.c,v 1.23 2007/05/31 12:11:24 dave64 Exp $
+**	$Id: request.c,v 1.24 2008/10/20 13:48:55 dave64 Exp $
 **      
 **  Modification History:
 **
 **	$Log: request.c,v $
+**	Revision 1.24  2008/10/20 13:48:55  dave64
+**	Fixed buffer overflow condition when doing AUTH LOGIN.
+**	Applied patch by Michael M. Slusarz to make internal
+**	commands RFC compliant (prepend with X instead of P_).
+**	Added support for XPROXYREUSE response.
+**
 **	Revision 1.23  2007/05/31 12:11:24  dave64
 **	Applied ipv6 patch by Antonio Querubin.
 **
@@ -269,7 +275,7 @@ static int cmd_newlog( ITD_Struct *itd, char *Tag )
 	return( -1 );
     }
 
-    snprintf( SendBuf, BufLen, "%s OK Completed\r\n", Tag );
+    snprintf( SendBuf, BufLen, "%s OK Logfile cleared\r\n", Tag );
     
     if ( IMAP_Write( itd->conn, SendBuf, strlen(SendBuf) ) == -1 )
     {
@@ -333,7 +339,7 @@ static int cmd_resetcounters( ITD_Struct *itd, char *Tag )
     IMAPCount->TotalServerConnectionsReused = 0;
     IMAPCount->TotalClientLogins = 0;
     
-    snprintf( SendBuf, BufLen, "%s OK Completed\r\n", Tag );
+    snprintf( SendBuf, BufLen, "%s OK Counters reset\r\n", Tag );
     
     if ( IMAP_Write( itd->conn, SendBuf, strlen(SendBuf) ) == -1 )
     {
@@ -389,7 +395,7 @@ static int cmd_dumpicc( ITD_Struct *itd, char *Tag )
 	
 	while ( HashEntry )
 	{
-	    snprintf( SendBuf, BufLen, "* %d %s %s\r\n", HashEntry->server_conn->sd,
+	    snprintf( SendBuf, BufLen, "* XPROXY_DUMPICC %d %s %s\r\n", HashEntry->server_conn->sd,
 		      HashEntry->username,
 		      ( ( HashEntry->logouttime ) ? "Cached" : "Active" ) );
 	    if ( IMAP_Write( itd->conn, SendBuf, strlen(SendBuf) ) == -1 )
@@ -449,7 +455,7 @@ static int cmd_version( ITD_Struct *itd, char *Tag )
 	return( 0 );
     }
 
-    snprintf( SendBuf, BufLen, "* %s\r\n", IMAP_PROXY_VERSION );
+    snprintf( SendBuf, BufLen, "* XPROXY_VERSION %s\r\n", IMAP_PROXY_VERSION );
     if ( IMAP_Write( itd->conn, SendBuf, strlen(SendBuf) ) == -1 )
     {
 	syslog(LOG_WARNING, "%s: IMAP_Write() failed: %s", fn, strerror(errno) );
@@ -554,7 +560,8 @@ static int cmd_trace( ITD_Struct *itd, char *Tag, char *Username )
     strncpy( TraceUser, Username, sizeof TraceUser - 1 );
     TraceUser[ sizeof TraceUser - 1 ] = '\0';
     
-    snprintf( SendBuf, BufLen, "%s OK Tracing enabled\r\n", Tag );
+    snprintf( SendBuf, BufLen, "%s OK Tracing enabled for user %s.\r\n",
+		    Tag, TraceUser );
     if ( IMAP_Write( itd->conn, SendBuf, strlen(SendBuf) ) == -1 )
     {
 	syslog(LOG_WARNING, "%s: IMAP_Write() failed: %s", fn, strerror(errno) );
@@ -714,7 +721,7 @@ static int cmd_authenticate_login( ITD_Struct *Client,
      * avoid allocating additional buffers.  Keep this in mind for future
      * code modification...
      */
-    snprintf( Username, BufLen, "Username:" );
+    snprintf( Username, MAXUSERNAMELEN - 1, "Username:" );
     
     EVP_EncodeBlock( EncodedUsername, Username, strlen( Username ) );
     
@@ -751,13 +758,14 @@ static int cmd_authenticate_login( ITD_Struct *Client,
      * Easy, but not perfect sanity check.  If the client sent enough data
      * to fill our entire buffer, we're not even going to bother looking at it.
      */
-    if ( Client->MoreData ||
-	 BytesRead > BufLen )
+    if ( ( Client->MoreData ) ||
+	 ( BytesRead > BufLen ) ||
+	 ( BytesRead > MAXUSERNAMELEN - 1 ) )
     {
 	syslog( LOG_NOTICE, "%s: Base64 encoded username sent from client on sd %d is too large.", fn, Client->conn->sd );
 	return( -1 );
     }
-    
+
     /*
      * copy BytesRead -2 so we don't include the CRLF.
      */
@@ -796,8 +804,9 @@ static int cmd_authenticate_login( ITD_Struct *Client,
 	return( -1 );
     }
     
-    if ( Client->MoreData ||
-	 BytesRead > BufLen )
+    if ( ( Client->MoreData ) ||
+	 ( BytesRead > BufLen ) ||
+	 ( BytesRead > MAXPASSWDLEN -1 ) )
     {
 	syslog( LOG_NOTICE, "%s: Base64 encoded password sent from client on sd %d is too large.", fn, Client->conn->sd );
 	return( -1 );
@@ -854,6 +863,20 @@ static int cmd_authenticate_login( ITD_Struct *Client,
     }
     
     Server.conn = conn;
+
+    /*
+     * If the connection has been reused, send a status response indicating
+     * this.
+     */
+    if (Server.conn->reused == 1)
+    {
+	sprintf( SendBuf, "* OK [XPROXYREUSE] IMAP connection reused by imapproxy\r\n" );
+	if ( IMAP_Write( Client->conn, SendBuf, strlen(SendBuf) ) == -1 )
+	{
+	    syslog(LOG_ERR, "%s: IMAP_Write() failed: %s", fn, strerror(errno) );
+	    return( -1 );
+	}
+    }
     
     snprintf( SendBuf, BufLen, "%s OK User authenticated\r\n", Tag );
     if ( IMAP_Write( Client->conn, SendBuf, strlen( SendBuf ) ) == -1 )
@@ -984,6 +1007,20 @@ static int cmd_login( ITD_Struct *Client,
     }
     
     Server.conn = conn;
+
+    /*
+     * If the connection has been reused, send a status response indicating
+     * this.
+     */
+    if (Server.conn->reused == 1)
+    {
+	sprintf( SendBuf, "* OK [XPROXYREUSE] IMAP connection reused by imapproxy\r\n" );
+	if ( IMAP_Write( Client->conn, SendBuf, strlen(SendBuf) ) == -1 )
+	{
+	    syslog(LOG_ERR, "%s: IMAP_Write() failed: %s", fn, strerror(errno) );
+	    return( -1 );
+	}
+    }
 
     /*
      * Send a success message back to the client
@@ -1491,7 +1528,8 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server,
  *		of the following IMAP commands (rfc 2060):  NOOP, CAPABILITY,
  *		AUTHENTICATE, LOGIN, and LOGOUT.  Also, it handles the
  *              commands that are internal to the proxy server such as
- *              P_TRACE, P_NEWLOG, P_DUMPICC, P_RESETCOUNTERS and P_VERSION.
+ *              XPROXY_TRACE, XPROXY_NEWLOG, XPROXY_DUMPICC,
+ *              XPROXY_RESETCOUNTERS and XPROXY_VERSION.
  *
  *              None of these commands should ever have the need to send
  *              a boatload of data, so we avoid some error checking and
@@ -1767,7 +1805,7 @@ extern void HandleRequest( int clientsd )
 	    close( Client.conn->sd );
 	    return;
 	}
-	else if ( ! strcasecmp( (const char *)Command, "P_TRACE" ) )
+	else if ( ! strcasecmp( (const char *)Command, "XPROXY_TRACE" ) )
 	{
 	    if ( Client.LiteralBytesRemaining )
 	    {
@@ -1780,7 +1818,7 @@ extern void HandleRequest( int clientsd )
 	    cmd_trace( &Client, S_Tag, Username );
 	    continue;
 	}
-	else if ( ! strcasecmp( (const char *)Command, "P_DUMPICC" ) )
+	else if ( ! strcasecmp( (const char *)Command, "XPROXY_DUMPICC" ) )
 	{
 	    if ( Client.LiteralBytesRemaining )
 	    {
@@ -1792,7 +1830,7 @@ extern void HandleRequest( int clientsd )
 	    cmd_dumpicc( &Client, S_Tag );
 	    continue;
 	}
-	else if ( ! strcasecmp( (const char *)Command, "P_RESETCOUNTERS" ) )
+	else if ( ! strcasecmp( (const char *)Command, "XPROXY_RESETCOUNTERS" ) )
 	{
 	    if ( Client.LiteralBytesRemaining )
 	    {
@@ -1804,7 +1842,7 @@ extern void HandleRequest( int clientsd )
 	    cmd_resetcounters( &Client, S_Tag );
 	    continue;
 	}
-	else if ( ! strcasecmp( (const char *)Command, "P_NEWLOG" ) )
+	else if ( ! strcasecmp( (const char *)Command, "XPROXY_NEWLOG" ) )
 	{
 	    if ( Client.LiteralBytesRemaining )
 	    {
@@ -1816,7 +1854,7 @@ extern void HandleRequest( int clientsd )
 	    cmd_newlog( &Client, S_Tag );
 	    continue;
 	}
-	else if ( ! strcasecmp( (const char *)Command, "P_VERSION" ) )
+	else if ( ! strcasecmp( (const char *)Command, "XPROXY_VERSION" ) )
 	{
 	    if ( Client.LiteralBytesRemaining )
 	    {
