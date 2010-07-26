@@ -173,10 +173,11 @@ config.sub
 configure
 install-sh
 mkinstalldirs
-scripts/rc.pimpdaddy
-scripts/pimpdaddy
 scripts/imapproxy.init
 EOF
+# FIXME: If we ever distribute these, they belong in the list above
+# scripts/rc.pimpdaddy
+# scripts/pimpdaddy
 
 
 # cd
