@@ -35,11 +35,14 @@
 **  RCS:
 **
 **	$Source: /afs/andrew.cmu.edu/usr18/dave64/work/IMAP_Proxy/src/RCS/imapcommon.c,v $
-**	$Id: imapcommon.c,v 1.24 2007/05/31 12:09:46 dave64 Exp $
+**	$Id: imapcommon.c,v 1.25 2008/10/20 13:23:04 dave64 Exp $
 **      
 **  Modification History:
 **
 **	$Log: imapcommon.c,v $
+**	Revision 1.25  2008/10/20 13:23:04  dave64
+**	Applied patch by Michael M. Slusarz to support XPROXYREUSE.
+**
 **	Revision 1.24  2007/05/31 12:09:46  dave64
 **	Applied ipv6 patch by Antonio Querubin.
 **
@@ -505,6 +508,10 @@ extern ICD_Struct *Get_Server_conn( char *Username,
 			"LOGIN: '%s' (%s:%s) on existing sd [%d]",
 			Username, ClientAddr, portstr,
 			ICC_Active->server_conn->sd );
+
+		/* Set the ICD as 'reused' */
+		ICC_Active->server_conn->reused = 1;
+
 		return( ICC_Active->server_conn );
 	    }
 	}
@@ -520,6 +527,10 @@ extern ICD_Struct *Get_Server_conn( char *Username,
      */
     Server.conn = ( ICD_Struct * ) malloc( sizeof ( ICD_Struct ) );
     memset( Server.conn, 0, sizeof ( ICD_Struct ) );
+
+    /* As a new connection, the ICD is not 'reused' */
+    Server.conn->reused = 0;
+
     Server.conn->sd = socket( ISD.srv->ai_family, ISD.srv->ai_socktype, 
 			      ISD.srv->ai_protocol );
     if ( Server.conn->sd == -1 )

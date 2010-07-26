@@ -1,3 +1,27 @@
+2008-10-20  Dave McMurtrie  <davemcmurtrie@gmail.com>
+	* request.c: Fixed buffer overflow condition when doing AUTH LOGIN.
+	  Applied patch by Michael M. Slusarz to make internal
+	  commands RFC compliant (prepend with X instead of P_).  Added
+	  support for XPROXYREUSE response.
+	  
+	* README: Applied patch by Michael M. Slusarz to describe new
+	  internal command names (prepended with X instead of P_).
+
+	* imapcommon.c: Applied patch by Michael M. Slusarz to support
+	  XPROXYREUSE.
+
+	* main.c: Applied patch by Michael M. Slusarz to add XIMAPPROXY
+	  to capability string returned by imapproxy to clients.
+
+	* imapproxy.h: Applied patch by Michael M. Slusarz to support
+	  XPROXYREUSE.
+
+	* common.h: Updated version to 1.2.7rc1
+
+2008-03-05  Dave McMurtrie  <davemcmurtrie@gmail.com>
+
+	* main.c: Applied patch by Noel B to disable IDLE capability.
+
 2008-01-28  Dave McMurtrie  <davemcmurtrie@gmail.com>
 
 	* Version 1.2.6 released.

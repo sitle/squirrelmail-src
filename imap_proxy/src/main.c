@@ -36,11 +36,18 @@
 **  RCS:
 **
 **	$Source: /afs/andrew.cmu.edu/usr18/dave64/work/IMAP_Proxy/src/RCS/main.c,v $
-**	$Id: main.c,v 1.34 2007/11/15 11:14:16 dave64 Exp $
+**	$Id: main.c,v 1.36 2008/10/20 13:47:49 dave64 Exp $
 **      
 **  Modification History:
 **
-**	$Log: main.c,v $
+**      $Log: main.c,v $
+**      Revision 1.36  2008/10/20 13:47:49  dave64
+**      Applied patch by Michael M. Slusarz to add XIMAPPROXY
+**      to capability string returned by imapproxy to clients.
+**
+**      Revision 1.35  2008/03/05 13:12:07  dave64
+**      Applied patch by Noel B to disable IDLE capability.
+**
 **	Revision 1.34  2007/11/15 11:14:16  dave64
 **	Patch by Jose Luis Tallón to add pidfile support and
 **	enhance daemon behavior.
@@ -181,7 +188,7 @@
 */
 
 
-static char *rcsId = "$Id: main.c,v 1.34 2007/11/15 11:14:16 dave64 Exp $";
+static char *rcsId = "$Id: main.c,v 1.36 2008/10/20 13:47:49 dave64 Exp $";
 static char *rcsSource = "$Source: /afs/andrew.cmu.edu/usr18/dave64/work/IMAP_Proxy/src/RCS/main.c,v $";
 static char *rcsAuthor = "$Author: dave64 $";
 
@@ -264,7 +271,7 @@ char *service;
  */
 static void SetBannerAndCapability( void );
 static int ParseBannerAndCapability( char *, unsigned int,
-				      char *, unsigned int );
+				      char *, unsigned int, unsigned int );
 static void ServerInit( void );
 static void Daemonize( const char* );
 static void Usage( void );
@@ -943,10 +950,14 @@ void Daemonize( const char* pidfile )
 static int ParseBannerAndCapability( char *DestBuf,
 				      unsigned int DestBufSize,
 				      char *SourceBuf,
-				      unsigned int SourceBufSize )
+				      unsigned int SourceBufSize,
+				      unsigned int capability )
 {
     char *fn = "ParseBannerAndCapability";
     char *CP;
+    char *bracket;
+    unsigned int CPlen;
+    unsigned int inCap = 0;
     
     if ( SourceBufSize >= DestBufSize )
     {
@@ -994,57 +1005,117 @@ static int ParseBannerAndCapability( char *DestBuf,
 	if ( !CP )
 	    break;
 
-	if ( !strncasecmp( CP, "UNSELECT", strlen( "UNSELECT" ) ) )
-	{
-	    PC_Struct.support_unselect = UNSELECT_SUPPORTED;
-	}
-	
 	/*
-	 * If this token happens to be an auth mechanism, we want to
-	 * discard it unless it's an auth mechanism we can support.
+	 * Don't parse CAPABILITY extensions until we know we are either in
+	 * a CAPABILITY untagged response or a CAPABILTY status response. 
 	 */
-	if ( ! strncasecmp( CP, "AUTH=", strlen( "AUTH=" ) ) &&
-	     ( strncasecmp( CP, "AUTH=LOGIN", strlen( "AUTH=LOGIN" ) ) ) )
+	if ( ( capability &&
+	       !strncasecmp( CP, "CAPABILITY", strlen( "CAPABILITY" ) ) ) ||
+	     ( !capability &&
+	       !strncasecmp( CP, "[CAPABILITY", strlen( "[CAPABILITY" ) ) ) )
 	{
-	    continue;
+	    /*
+	     * Indicate that we are now in CAPABILITY data
+	     */
+	    inCap = 1;
 	}
-	
-	/*
-	 * If this token happens to be SASL-IR, we want to discard it
-	 * since we don't support any auth mechs that can use it.
-	 */
-	if ( !strncasecmp( CP, "SASL-IR", strlen( "SASL-IR" ) ) )
+	else if ( inCap )
 	{
-	    continue;
-	}
+	    /*
+	     * If we are in a CAPABILITY status response, we keep processing
+	     * until we see a ']' character.
+	     */
+	    if ( capability == 0 )
+	    {	
+		CPlen = strlen( CP );
+		bracket = memchr( CP, ']', CPlen );
 
-	/*
-	 * If this token happens to be STARTTLS, we want to discard it
-	 * since we don't support it on the client-side.
-	 */
-	if ( ! strncasecmp( CP, "STARTTLS", strlen( "STARTTLS" ) ) )
-	{
-	    PC_Struct.support_starttls = STARTTLS_SUPPORTED;
-	    continue;
-	}
+		if ( bracket )
+		{
+	 	    inCap = 0;
+
+		    /*
+		     * Add the XIMAPPROXY capability string at the end of the 
+		     * CAPABILITY listing.
+		     */
+		    strcat( DestBuf, " " );
+		    CP[CPlen - 1] = '\0';
+		    strcat( DestBuf, CP );
+		    strcat( DestBuf, " XIMAPPROXY]" );
+
+		    continue;
+		}
+	    }
+
+	    if ( !strncasecmp( CP, "UNSELECT", strlen( "UNSELECT" ) ) )
+	    {
+	        PC_Struct.support_unselect = UNSELECT_SUPPORTED;
+	    }
 	
-	/*
-	 * If this token happens to be LOGINDISABLED, we want to discard it
-	 * since we don't support it on the client-side.
-	 */
-	if ( ! strncasecmp( CP, "LOGINDISABLED", strlen( "LOGINDISABLED" ) ) )
-	{
-	    PC_Struct.login_disabled = LOGIN_DISABLED;
-	    continue;
+	    /*
+	     * If this token happens to be an auth mechanism, we want to
+	     * discard it unless it's an auth mechanism we can support.
+	     */
+	    if ( ! strncasecmp( CP, "AUTH=", strlen( "AUTH=" ) ) &&
+	         ( strncasecmp( CP, "AUTH=LOGIN", strlen( "AUTH=LOGIN" ) ) ) )
+	    {
+	        continue;
+	    }
+
+	    /*
+	     * If this token happens to be SASL-IR, we want to discard it
+	     * since we don't support any auth mechs that can use it.
+	     */
+	    if ( ! strncasecmp( CP, "SASL-IR", strlen( "SASL-IR" ) ) )
+	    {
+	        continue;
+	    }
+
+	    /*
+	     * If this token is IDLE, discard it.
+	     *
+	     */
+	    if ( ! strncasecmp( CP, "IDLE", strlen( "IDLE" ) ) )
+	    {
+	      continue;
+	    }
+
+	    /*
+	     * If this token happens to be STARTTLS, we want to discard it
+	     * since we don't support it on the client-side.
+	     */
+	    if ( ! strncasecmp( CP, "STARTTLS", strlen( "STARTTLS" ) ) )
+	    {
+	        PC_Struct.support_starttls = STARTTLS_SUPPORTED;
+	        continue;
+	    }
+	
+	    /*
+	     * If this token happens to be LOGINDISABLED, we want to discard it
+	     * since we don't support it on the client-side.
+	     */
+	    if ( ! strncasecmp( CP, "LOGINDISABLED", strlen( "LOGINDISABLED" ) ) )
+	    {
+	        PC_Struct.login_disabled = LOGIN_DISABLED;
+	        continue;
+	    }
 	}
 	
 	strcat( DestBuf, " ");
 	strcat( DestBuf, CP );
     }
     
-    
+    /*
+     * Add a 'XIMAPPROXY' CAPABILITY response to indicate that the
+     * current connection is handled by imapproxy.
+     */
+    if ( capability == 1 )
+    {
+	strcat( DestBuf, " XIMAPPROXY" );
+    }
+
     strcat( DestBuf, "\r\n" );
-    
+
     return( strlen( DestBuf ) );
 }
 
@@ -1129,7 +1200,7 @@ static void SetBannerAndCapability( void )
     
 
     BannerLen = ParseBannerAndCapability( Banner, sizeof Banner - 1,
-					  itd.ReadBuf, BytesRead );
+					  itd.ReadBuf, BytesRead, 0 );
     
     /*
      * See if the string we got back starts with "* OK" by comparing the
@@ -1179,8 +1250,7 @@ static void SetBannerAndCapability( void )
     }
     
     CapabilityLen = ParseBannerAndCapability( Capability, sizeof Capability - 1,
-					      itd.ReadBuf, BytesRead );
-    
+					      itd.ReadBuf, BytesRead, 1 );
     
     /* Now read the tagged response and make sure it's OK */
     BytesRead = IMAP_Line_Read( &itd );
