@@ -1,3 +1,23 @@
+2009-10-16  Dave McMurtrie  <davemcmurtrie@gmail.com>
+	* main.c: Applied patch by Jose Luis Tallon to fix compiler warnings.
+          Applied patch by Jose Luis Tallon to provide for default config
+	  options.  Applied patch by Jose Luis Tallon to improve server
+	  connect retry logic.
+
+	* request.c: Applied patch by Jose Luis Tallon to fix compiler
+          warnings.
+
+	* select.c: Applied patch by Jose Luis Tallon to fix broken syslog
+          call.
+
+	* config.c: Applied patch by Jose Luis Tallon to provide for default
+	  config options.  Applied patch by Jose Luis Tallon to improve server
+	  connect retry logic. 
+
+	* imapproxy.h: Applied patch by Jose Luis Tallon to provide for default
+	  config options.  Applied patch by Jose Luis Tallon to improve server
+	  connect retry logic.
+
 2009-01-12  Dave McMurtrie  <davemcmurtrie@gmail.com>
 	* main.c: Applied patch by Michael M. Slusarz to add XIMAPPROXY
 	  to capability string (fixed patch).

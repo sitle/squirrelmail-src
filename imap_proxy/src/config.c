@@ -35,11 +35,17 @@
 **  RCS:
 **
 **      $Source: /afs/andrew.cmu.edu/usr18/dave64/work/IMAP_Proxy/src/RCS/config.c,v $
-**      $Id: config.c,v 1.16 2007/05/31 12:08:32 dave64 Exp $
+**      $Id: config.c,v 1.18 2009/10/16 14:34:49 dave64 Exp $
 **      
 **  Modification History:
 **
 **      $Log: config.c,v $
+**      Revision 1.18  2009/10/16 14:34:49  dave64
+**      Applied patch by Jose Luis Tallon to improve server connect retry logic.
+**
+**      Revision 1.17  2009/10/16 14:29:03  dave64
+**      Applied patch by Jose Luis Tallon to allow for default config options.
+**
 **      Revision 1.16  2007/05/31 12:08:32  dave64
 **      Applied ipv6 patch by Antonio Querubin.
 **
@@ -124,7 +130,6 @@ extern ProxyConfig_Struct PC_Struct;
 static void SetStringValue( char *, char **, unsigned int );
 static void SetNumericValue( char *, int *, unsigned int );
 static void SetBooleanValue( char *, unsigned int *, unsigned int );
-
 
 /*
  * An array of Config_Structs will need to be allocated, one for
@@ -320,7 +325,25 @@ static void SetBooleanValue( char *Value,
 }
 
 
+/*++
+ * Function:	SetDefaultConfigValues
+ *
+ * Purpose:	Set global configuration default values
+ *
+ * Parameters:	pointer to global config struct
+ *
+ * Returns:	nada.
+ *
+ * Authors:	Jose Luis Tallon <jltallon@adv-solutions.net>
+ *--
+ */
+void SetDefaultConfigValues(ProxyConfig_Struct *PC_Struct)
+{
+    PC_Struct->server_connect_retries = DEFAULT_SERVER_CONNECT_RETRIES;
+    PC_Struct->server_connect_delay = DEFAULT_SERVER_CONNECT_DELAY;
 
+    return;
+}
 
 /*++
  * Function:	SetConfigOptions
@@ -371,6 +394,11 @@ extern void SetConfigOptions( char *ConfigFile )
 
     ADD_TO_TABLE( "server_port", SetStringValue, 
 		  &PC_Struct.server_port, index );
+
+    ADD_TO_TABLE( "connect_retries", SetNumericValue,
+		  &PC_Struct.server_connect_retries, index );
+    ADD_TO_TABLE( "connect_delay", SetNumericValue,
+		  &PC_Struct.server_connect_delay, index );
 
     ADD_TO_TABLE( "cache_size", SetNumericValue, 
 		  &PC_Struct.cache_size, index );

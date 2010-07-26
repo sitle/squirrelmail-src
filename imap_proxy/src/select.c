@@ -33,12 +33,15 @@
 **
 **  RCS:
 **
-**      $Source: /afs/pitt.edu/usr12/dgm/work/IMAP_Proxy/src/RCS/select.c,v $
-**      $Id: select.c,v 1.4 2005/06/15 12:11:12 dgm Exp $
+**      $Source: /afs/andrew.cmu.edu/usr18/dave64/work/IMAP_Proxy/src/RCS/select.c,v $
+**      $Id: select.c,v 1.5 2009/10/16 14:22:38 dave64 Exp $
 **      
 **  Modification History:
 **  
 **      $Log: select.c,v $
+**      Revision 1.5  2009/10/16 14:22:38  dave64
+**      Applied patch by Jose Luis Tallon to fix broken syslog call
+**
 **      Revision 1.4  2005/06/15 12:11:12  dgm
 **      Remove unused variables.
 **
@@ -349,7 +352,8 @@ static int Populate_Select_Cache( ITD_Struct *Server,
     {
 	if ( Server->LiteralBytesRemaining )
 	{
-	    syslog( LOG_ERR, "%s: Server response to SELECT command contains unexpected literal data on sd [%d].", fn );
+	    syslog( LOG_ERR, "%s: Server response to SELECT command contains unexpected literal data on sd [%d].",
+	        fn, Server->conn );
 	    /*
 	     * Must eat the literal.
 	     */
