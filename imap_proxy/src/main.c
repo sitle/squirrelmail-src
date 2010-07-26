@@ -36,11 +36,14 @@
 **  RCS:
 **
 **	$Source: /afs/andrew.cmu.edu/usr18/dave64/work/IMAP_Proxy/src/RCS/main.c,v $
-**	$Id: main.c,v 1.36 2008/10/20 13:47:49 dave64 Exp $
+**	$Id: main.c,v 1.37 2009/01/12 13:13:01 dave64 Exp $
 **      
 **  Modification History:
 **
 **      $Log: main.c,v $
+**      Revision 1.37  2009/01/12 13:13:01  dave64
+**      Applied patch by Michael Slusarz to add XIMAPPROXY capability.
+**
 **      Revision 1.36  2008/10/20 13:47:49  dave64
 **      Applied patch by Michael M. Slusarz to add XIMAPPROXY
 **      to capability string returned by imapproxy to clients.
@@ -188,7 +191,7 @@
 */
 
 
-static char *rcsId = "$Id: main.c,v 1.36 2008/10/20 13:47:49 dave64 Exp $";
+static char *rcsId = "$Id: main.c,v 1.37 2009/01/12 13:13:01 dave64 Exp $";
 static char *rcsSource = "$Source: /afs/andrew.cmu.edu/usr18/dave64/work/IMAP_Proxy/src/RCS/main.c,v $";
 static char *rcsAuthor = "$Author: dave64 $";
 
@@ -958,6 +961,7 @@ static int ParseBannerAndCapability( char *DestBuf,
     char *bracket;
     unsigned int CPlen;
     unsigned int inCap = 0;
+    unsigned int endbracket = 0;
     
     if ( SourceBufSize >= DestBufSize )
     {
@@ -1000,6 +1004,20 @@ static int ParseBannerAndCapability( char *DestBuf,
 
     for( ; ; )
     {
+	if (endbracket)
+	{
+	    /*
+	     * Add the XIMAPPROXY capability string at the end of the 
+	     * CAPABILITY listing.
+	     */
+	    endbracket = 0;
+ 	    inCap = 0;
+	    strcat( DestBuf, " " );
+	    strcat( DestBuf, " XIMAPPROXY]" );
+
+	    continue;
+	}
+
 	CP = strtok( NULL, " " );
 	
 	if ( !CP )
@@ -1032,18 +1050,8 @@ static int ParseBannerAndCapability( char *DestBuf,
 
 		if ( bracket )
 		{
-	 	    inCap = 0;
-
-		    /*
-		     * Add the XIMAPPROXY capability string at the end of the 
-		     * CAPABILITY listing.
-		     */
-		    strcat( DestBuf, " " );
+		    endbracket = 1;
 		    CP[CPlen - 1] = '\0';
-		    strcat( DestBuf, CP );
-		    strcat( DestBuf, " XIMAPPROXY]" );
-
-		    continue;
 		}
 	    }
 
@@ -1077,7 +1085,7 @@ static int ParseBannerAndCapability( char *DestBuf,
 	     */
 	    if ( ! strncasecmp( CP, "IDLE", strlen( "IDLE" ) ) )
 	    {
-	      continue;
+	        continue;
 	    }
 
 	    /*
