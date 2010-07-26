@@ -1,3 +1,9 @@
+2009-01-12  Dave McMurtrie  <davemcmurtrie@gmail.com>
+	* main.c: Applied patch by Michael M. Slusarz to add XIMAPPROXY
+	  to capability string (fixed patch).
+
+	* common.h: updated version to 1.2.7rc2
+
 2008-10-20  Dave McMurtrie  <davemcmurtrie@gmail.com>
 	* request.c: Fixed buffer overflow condition when doing AUTH LOGIN.
 	  Applied patch by Michael M. Slusarz to make internal
