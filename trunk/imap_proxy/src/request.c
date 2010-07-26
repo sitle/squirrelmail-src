@@ -39,11 +39,14 @@
 **  RCS:
 **
 **	$Source: /afs/andrew.cmu.edu/usr18/dave64/work/IMAP_Proxy/src/RCS/request.c,v $
-**	$Id: request.c,v 1.24 2008/10/20 13:48:55 dave64 Exp $
+**	$Id: request.c,v 1.25 2009/10/16 14:12:55 dave64 Exp $
 **      
 **  Modification History:
 **
 **	$Log: request.c,v $
+**	Revision 1.25  2009/10/16 14:12:55  dave64
+**	applied patch by Jose Luis Tallon to fix compiler warnings
+**
 **	Revision 1.24  2008/10/20 13:48:55  dave64
 **	Fixed buffer overflow condition when doing AUTH LOGIN.
 **	Applied patch by Michael M. Slusarz to make internal
@@ -524,7 +527,7 @@ static int cmd_trace( ITD_Struct *itd, char *Tag, char *Username )
     
     if ( !Username )
     {
-	snprintf( SendBuf, BufLen, "\n\n-----> C= %d %s PROXY: user tracing disabled. Expect further output until client logout.\n", time( 0 ), TraceUser );
+	snprintf( SendBuf, BufLen, "\n\n-----> C= %d %s PROXY: user tracing disabled. Expect further output until client logout.\n", (int)time(0), TraceUser );
 	write( Tracefd, SendBuf, strlen( SendBuf ) );
 	
 	memset( TraceUser, 0, sizeof TraceUser );
@@ -569,7 +572,7 @@ static int cmd_trace( ITD_Struct *itd, char *Tag, char *Username )
 	return( -1 );
     }
 
-    snprintf( SendBuf, BufLen, "\n\n-----> C= %d %s PROXY: user tracing enabled.\n", time( 0 ), TraceUser );
+    snprintf( SendBuf, BufLen, "\n\n-----> C= %d %s PROXY: user tracing enabled.\n", (int)time(0), TraceUser );
     write( Tracefd, SendBuf, strlen( SendBuf ) );
     
     UnLockMutex( &trace );
@@ -821,7 +824,7 @@ static int cmd_authenticate_login( ITD_Struct *Client,
     if ( getpeername( Client->conn->sd, (struct sockaddr *)&cli_addr, 
 		      &sockaddrlen ) < 0 )
     {
-	syslog( LOG_WARNING, "AUTH_LOGIN: failed: getpeername() failed for client sd: %s", Username, strerror( errno ) );
+	syslog( LOG_WARNING, "AUTH_LOGIN: user '%s' failed: getpeername() failed for client sd: %s", Username, strerror( errno ) );
 	return( -1 );
     }
     
@@ -1234,7 +1237,8 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server,
 	    
 	    if ( Server->TraceOn )
 	    {
-		snprintf( TraceBuf, sizeof TraceBuf - 1, "\n\n-----> C= %d %s SERVER: sd [%d]\n", time( 0 ), ( (TraceUser) ? TraceUser : "Null username" ), Server->conn->sd );
+		snprintf( TraceBuf, sizeof TraceBuf - 1, "\n\n-----> C= %d %s SERVER: sd [%d]\n",
+		    (int)time(0), ( (*TraceUser) ? TraceUser : "Null username" ), Server->conn->sd );
 		write( Tracefd, TraceBuf, strlen( TraceBuf ) );
 		write( Tracefd, Server->ReadBuf, status );
 	    }
@@ -1280,7 +1284,7 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server,
 	    
 		if ( Client->TraceOn )
 		{
-		    snprintf( TraceBuf, sizeof TraceBuf - 1, "\n\n-----> C= %d %s CLIENT: sd [%d]\n", time( 0 ), ( (TraceUser) ? TraceUser : "Null username" ), Client->conn->sd );
+		    snprintf( TraceBuf, sizeof TraceBuf - 1, "\n\n-----> C= %d %s CLIENT: sd [%d]\n", (int)time(0), ( (*TraceUser) ? TraceUser : "Null username" ), Client->conn->sd );
 		    write( Tracefd, TraceBuf, strlen( TraceBuf ) );
 		    write( Tracefd, Client->ReadBuf, status );
 		}
@@ -1442,7 +1446,7 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server,
 		status = IMAP_Line_Read( Server );
 		if ( Server->TraceOn )
 		{
-		    snprintf( TraceBuf, sizeof TraceBuf - 1, "\n\n-----> C= %d %s SERVER: sd [%d]\n", time( 0 ), ( (TraceUser) ? TraceUser : "Null username" ), Server->conn->sd );
+		    snprintf( TraceBuf, sizeof TraceBuf - 1, "\n\n-----> C= %d %s SERVER: sd [%d]\n", (int)time(0), ( (*TraceUser) ? TraceUser : "Null username" ), Server->conn->sd );
 		    write( Tracefd, TraceBuf, strlen( TraceBuf ) );
 		    write( Tracefd, Server->ReadBuf, status );
 		}
@@ -1477,7 +1481,7 @@ static int Raw_Proxy( ITD_Struct *Client, ITD_Struct *Server,
 
 		if ( Client->TraceOn )
 		{
-		    snprintf( TraceBuf, sizeof TraceBuf - 1, "\n\n-----> C= %d %s CLIENT: sd [%d]\n", time( 0 ), ( (TraceUser) ? TraceUser : "Null username" ), Client->conn->sd );
+		    snprintf( TraceBuf, sizeof TraceBuf - 1, "\n\n-----> C= %d %s CLIENT: sd [%d]\n", (int)time(0), ( (*TraceUser) ? TraceUser : "Null username" ), Client->conn->sd );
 		    write( Tracefd, TraceBuf, strlen( TraceBuf ) );
 		    write( Tracefd, Client->ReadBuf, status );
 		}
@@ -1940,7 +1944,7 @@ extern void HandleRequest( int clientsd )
 		    
 		    if ( BytesRead == -1 )
 		    {
-			syslog( LOG_NOTICE, "%s: Failed to read string literal from client on login." );
+			syslog( LOG_NOTICE, "%s: Failed to read string literal from client on login.", fn );
 			snprintf( SendBuf, BufLen, "%s NO LOGIN failed\r\n", Tag );
 			if ( IMAP_Write( Client.conn, SendBuf, strlen(SendBuf) ) == -1 )
 			{

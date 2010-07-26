@@ -34,11 +34,17 @@
 **  RCS:
 **
 **      $Source: /afs/andrew.cmu.edu/usr18/dave64/work/IMAP_Proxy/include/RCS/imapproxy.h,v $
-**      $Id: imapproxy.h,v 1.28 2008/10/20 13:22:19 dave64 Exp $
+**      $Id: imapproxy.h,v 1.30 2009/10/16 14:35:17 dave64 Exp $
 **      
 **  Modification History:
 **
 **      $Log: imapproxy.h,v $
+**      Revision 1.30  2009/10/16 14:35:17  dave64
+**      Applied patch by Jose Luis Tallon to improve server connect retry logic.
+**
+**      Revision 1.29  2009/10/16 14:29:21  dave64
+**      Applied patch by Jose Luis Tallon to allow for default config options.
+**
 **      Revision 1.28  2008/10/20 13:22:19  dave64
 **      Applied patch by Michael M. Slusarz to support XPROXYREUSE.
 **
@@ -196,6 +202,10 @@
 #define LOGIN_DISABLED          1
 #define LOGIN_NOT_DISABLED      0
 
+
+#define DEFAULT_SERVER_CONNECT_RETRIES	10
+#define DEFAULT_SERVER_CONNECT_DELAY	5
+
 /*
  * One IMAPServerDescriptor will be globally allocated such that each thread
  * can save the time of doing host lookups, service lookups, and filling
@@ -279,6 +289,8 @@ struct ProxyConfig
     char *listen_addr;                        /* address we bind to */
     char *server_hostname;                    /* server we proxy to */
     char *server_port;                        /* port we proxy to */
+    unsigned int server_connect_retries;      /* connect retries to IMAP server */
+    unsigned int server_connect_delay;	      /* delay between connection retry rounds */
     unsigned int cache_size;                  /* number of cache slots */
     unsigned int cache_expiration_time;       /* cache exp time in seconds */
     unsigned int send_tcp_keepalives;         /* flag to send keepalives */
@@ -359,6 +371,7 @@ extern void ICC_Recycle( unsigned int );
 extern void ICC_Recycle_Loop( void );
 extern void LockMutex( pthread_mutex_t * );
 extern void UnLockMutex( pthread_mutex_t * );
+extern void SetDefaultConfigValues(ProxyConfig_Struct *);
 extern void SetConfigOptions( char * );
 extern void SetLogOptions( void );
 extern int Handle_Select_Command( ITD_Struct *, ITD_Struct *, ISC_Struct *, char *, int );

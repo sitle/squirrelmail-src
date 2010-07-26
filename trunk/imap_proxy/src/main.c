@@ -36,11 +36,20 @@
 **  RCS:
 **
 **	$Source: /afs/andrew.cmu.edu/usr18/dave64/work/IMAP_Proxy/src/RCS/main.c,v $
-**	$Id: main.c,v 1.37 2009/01/12 13:13:01 dave64 Exp $
+**	$Id: main.c,v 1.40 2009/10/16 14:34:16 dave64 Exp $
 **      
 **  Modification History:
 **
 **      $Log: main.c,v $
+**      Revision 1.40  2009/10/16 14:34:16  dave64
+**      Applied patch by Jose Luis Tallon to improve server connect retry logic.
+**
+**      Revision 1.39  2009/10/16 14:25:31  dave64
+**      Applied patch by Jose Luis Tallon to allow for default config options.
+**
+**      Revision 1.38  2009/10/16 14:09:45  dave64
+**      applied patch by Jose Luis Tallon to fix compiler warnings
+**
 **      Revision 1.37  2009/01/12 13:13:01  dave64
 **      Applied patch by Michael Slusarz to add XIMAPPROXY capability.
 **
@@ -191,7 +200,7 @@
 */
 
 
-static char *rcsId = "$Id: main.c,v 1.37 2009/01/12 13:13:01 dave64 Exp $";
+static char *rcsId = "$Id: main.c,v 1.40 2009/10/16 14:34:16 dave64 Exp $";
 static char *rcsSource = "$Source: /afs/andrew.cmu.edu/usr18/dave64/work/IMAP_Proxy/src/RCS/main.c,v $";
 static char *rcsAuthor = "$Author: dave64 $";
 
@@ -276,6 +285,7 @@ static void SetBannerAndCapability( void );
 static int ParseBannerAndCapability( char *, unsigned int,
 				      char *, unsigned int, unsigned int );
 static void ServerInit( void );
+static int TestServerAlive( struct addrinfo *ai );
 static void Daemonize( const char* );
 static void Usage( void );
 
@@ -362,7 +372,8 @@ int main( int argc, char *argv[] )
 	syslog( LOG_INFO, "%s: Using default configuration file '%s'.",
 		fn, ConfigFile );
     }
-    
+
+    SetDefaultConfigValues(&PC_Struct);
     SetConfigOptions( ConfigFile );
     SetLogOptions();
 
@@ -628,7 +639,7 @@ int main( int argc, char *argv[] )
     pthread_create( &RecycleThread, &attr, (void *)ICC_Recycle_Loop, NULL );
 
     syslog(LOG_INFO, "%s: Launched ICC recycle thread with id %d", 
-	   fn, RecycleThread );
+	   fn, (int)RecycleThread );
 
     /*
      * Now start listening and accepting connections.
@@ -737,10 +748,10 @@ static void ServerInit( void )
 {
     char *fn = "ServerInit()";
     struct rlimit rl;
-    int rc;
+    int rc, retry;
     struct passwd *pw;
     struct addrinfo aihints, *ai;
-    int gaierrnum, sd;
+    int gaierrnum;
 
     
     /* open the global trace file and make proc_username own it */
@@ -820,18 +831,27 @@ static void ServerInit( void )
     /* 
      * fill in the address family, the host address, and the
      * service port of our global socket address structure
+     * Try to connect at least once (<=) before giving up
      */
     ISD.airesults = ai;
     ISD.srv = NULL;
-    for ( ; ai != NULL; ai = ai->ai_next )
+    for ( retry=0; retry <= PC_Struct.server_connect_retries && NULL == ISD.srv; retry++ )
     {
-        if ( ( sd = socket( ai->ai_family, ai->ai_socktype, ai->ai_protocol ) )
-	     < 0 ) continue;
-	if ( connect( sd, (struct sockaddr *)ai->ai_addr, ai->ai_addrlen ) )
-		continue;
-	close( sd );
-	ISD.srv = ai;
-	break;
+        ai = ISD.airesults;
+        for ( ; ai != NULL; ai = ai->ai_next )
+        {
+            if( ! TestServerAlive(ai) )
+            {	/* connect to server succeeded */
+                ISD.srv = ai;
+                break;
+            }
+	}
+	if( ISD.srv )
+	    break;
+        
+	syslog( LOG_INFO, "%s: Connection to server failed. Sleeping %d seconds to retry...", fn,
+	    PC_Struct.server_connect_delay);
+	sleep( PC_Struct.server_connect_delay );
     }
     if ( ai == NULL )
     {
@@ -840,6 +860,31 @@ static void ServerInit( void )
     }
 }
 
+/*++
+ * Function:   TestServerAlive
+ *
+ * Purpose:    Attempt connecting to server
+ *
+ * Parameters: ai -- addrinfo corresponding to resolved server address
+ *
+ * Returns:    0 upon successful connection
+ *
+ * Authors:    Jose Luis Tallon <jltallon@adv-solutions.net>
+ *
+ */
+int TestServerAlive(struct addrinfo *ai)
+{
+ int sd=-1;
+ 
+     if( ( sd=socket(ai->ai_family, ai->ai_socktype, ai->ai_protocol) ) < 0 )
+         return -1;	/* could not create socket */
+
+     if( connect(sd, (struct sockaddr *)ai->ai_addr, ai->ai_addrlen) )
+         return -1;	/* could not connect socket */
+
+     close( sd );
+     return 0;
+}
 
 /*++
  * Function:   Daemonize
@@ -1154,7 +1199,6 @@ static void SetBannerAndCapability( void )
     ICD_Struct conn;
     int BytesRead;
     char *fn = "SetBannerAndCapability()";
-    int NumRef = 0;
 
     /* initialize some stuff */
     memset( &itd, 0, sizeof itd );
