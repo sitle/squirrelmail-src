@@ -53,7 +53,7 @@ if ( -e "config.php" ) {
         print "The file \"config/config.php\" was found, but you don't\n";
         print "have rights to read it.\n";
         print "\n";
-        print "Press any key to continue";
+        print "Press enter to continue";
         $ctu = <STDIN>;
         exit;
     }
@@ -1452,12 +1452,12 @@ sub command_smtp_sitewide_userpass($) {
             }
         } else {
             print "Invalid input. You must set username used for SMTP authentication.\n";
-            print "Click any key to continue\n";
+            print "Press enter to continue\n";
             $tmp = <STDIN>;
         }
     } else {
         print "Invalid input\n";
-        print "Click any key to continue\n";
+        print "Press enter to continue\n";
         $tmp = <STDIN>;
     }
 }
@@ -1999,7 +1999,7 @@ sub command215 {
         print "be immediately deleted\n\n";
         print "If this is not the correct value for your server,\n";
         print "please use option D on the Main Menu to configure your server correctly.\n\n";
-        print "Press any key to continue...\n";
+        print "Press enter to continue...\n";
         $new_delete = <STDIN>;
         $delete_folder = "true";
     } else { 
@@ -3815,7 +3815,7 @@ sub set_defaults {
 
         print "$message";
     }
-    print "\nPress any key to continue...";
+    print "\nPress enter to continue...";
     $tmp = <STDIN>;
 }
 
@@ -4019,7 +4019,7 @@ sub check_imap_folder($) {
     if ($folder_name =~ /[\x80-\xFFFF]/) {
         print "Folder name contains 8bit characters. Configuration utility requires\n";
         print "UTF7-IMAP encoded folder names.\n";
-        print "Press any key to continue...";
+        print "Press enter to continue...";
         my $tmp = <STDIN>;
         return 0;
     } elsif ($folder_name =~ /[&\*\%]/) {
