@@ -3122,16 +3122,18 @@ put squirrelmail-imap_proxy-1.2.8-release_work_area/squirrelmail-imap_proxy-1.2.
                                assigning properties to one of the release files,
                                so click on the .bz2 file and check ALL the platforms.
                      </enum>
+                 <item>Go to the latest STABLE WEBMAIL release package (e.g., navigate
+                       the file manager to stable --> 1.4.21 and click to edit the
+                       properties of the .bz2 file therein.  Update/save its properties
+                       (not sure if you'll have to remove some property and re-add it
+                       to ensure an update really is made).  This ensures that SourceForge
+                       sees this as the "newest" release file, that which will be featured
+                       on our SourceForge summary page (see next step).
                  <item>Verify that SourceForge has *NOT* automatically chosen to
                        display the new release as the official release on the main
                        SquirrelMail project page (it will be too confusing to users
                        who expect the webmail product to be the main download file):
                        <tscreen><url url="http://sourceforge.net/projects/squirrelmail/" name="https://sourceforge.net/projects/squirrelmail/"></tscreen>
-                       Surprisingly, this worked as expected, but there is no indication
-                       of why that would happen.  Perhaps it is due to the lack of a
-                       release notes file in the imap_proxy release directory.  Otherwise,
-                       maybe SourceForge is waiting to change the main/current release file
-                       until later when I've logged off, for maximum frustration value.
              </enum>
     </enum>
 <item><bf/Enable downloading:/ Update the download page for the SquirrelMail website.
