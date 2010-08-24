@@ -3078,6 +3078,61 @@ https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/imap_proxy-re
          <item> Use the script <tt>make-release-imap-proxy</tt> <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/util/make-release-imap-proxy" name="found in SVN"> under the <tt>util/</tt> dir. The only parameter
          is the version to release. It will download the tagged SVN copy, pack it up nicely and upload it to SF.net.
          You will need the following tools: bash, svn, ssh, rsync, tar, gzip, zip, bzip2 and optionally rpmbuild.
+         <item> Create a GPG signature for each of the newly created release packages. Typically, this can be done with:
+             <enum>
+                 <item><tt>gpg -a --detach-sign --output squirrelmail-imap_proxy-X.Y.Z.tar.gz.sig squirrelmail-imap_proxy-X.Y.Z.tar.gz</tt>
+                 <item><tt>gpg -a --detach-sign --output squirrelmail-imap_proxy-X.Y.Z.tar.bz2.sig squirrelmail-imap_proxy-X.Y.Z.tar.bz2</tt>
+                 <item><tt>gpg -a --detach-sign --output squirrelmail-imap_proxy-X.Y.Z.zip.sig squirrelmail-imap_proxy-X.Y.Z.zip</tt>
+             </enum>
+                An example for how to verify that your signature worked would be:
+             <enum>
+                 <item><tt>gpg --verify squirrelmail-imap_proxy-X.Y.Z.tar.gz.sig squirrelmail-imap_proxy-X.Y.Z.tar.gz</tt>
+             </enum>
+         <item> Upload your GPG signatures to Sourceforge.net. See the next step or see <url url="http://apps.sourceforge.net/trac/sourceforge/wiki/Release%20files%20for%20download#Uploadafile" name="sf.net instructions"> or see <url url="http://apps.sourceforge.net/trac/sourceforge/wiki/File%20management%20service" name="sf.net upload protocols">.
+         <item> The make-release-imap-proxy script's upload feature is dated and is currently commented out (even if you get that to work, you still need to upload your GPG signatures and use the instructions below to set the release file properties, etc.).  SourceForge has made changes to their file management and release system more than once recently, not without much frustration for us.  The following steps are how version 1.2.7 was uploaded in August, 2010.
+             <enum>
+                 <item>Since when logged in by sftp, creating directories seems to fail
+                       with a permission denied (sigh), first create the release directory
+                       ahead of time by using web interface at:
+                       <tscreen><url url="https://sourceforge.net/project/admin/explorer.php?group_id=311" name="https://sourceforge.net/project/admin/explorer.php?group_id=311"></tscreen>
+                       For example, click to expand the "imap_proxy" directory and then
+                       click on the "gear" icon next to the "imap_proxy" directory and
+                       select to create a new folder, naming it with the release version
+                       (e.g., 1.2.8).
+                 <item>Now, you can sftp to the release directory (this assumes you are
+                       in the (local) directory where you ran the make-release-imap-proxy
+                       script):
+                       <tscreen>sftp username@frs.sourceforge.net</tscreen>
+                       Once logged in, here are the needed sftp commands:
+<tscreen><verb>
+cd /home/frs/project/s/sq/squirrelmail/imap_proxy/1.2.8
+put squirrelmail-imap_proxy-1.2.8-release_work_area/squirrelmail-imap_proxy-1.2.8.tar.bz2
+put squirrelmail-imap_proxy-1.2.8-release_work_area/squirrelmail-imap_proxy-1.2.8.tar.bz2.sig
+put squirrelmail-imap_proxy-1.2.8-release_work_area/squirrelmail-imap_proxy-1.2.8.tar.gz
+put squirrelmail-imap_proxy-1.2.8-release_work_area/squirrelmail-imap_proxy-1.2.8.tar.gz.sig
+put squirrelmail-imap_proxy-1.2.8-release_work_area/squirrelmail-imap_proxy-1.2.8.zip
+put squirrelmail-imap_proxy-1.2.8-release_work_area/squirrelmail-imap_proxy-1.2.8.zip.sig
+</verb></tscreen>
+                 <item>Now you have to use the web interface to assign properties to the
+                       uploaded files:
+                       <tscreen><url url="https://sourceforge.net/project/admin/explorer.php?group_id=311" name="https://sourceforge.net/project/admin/explorer.php?group_id=311"></tscreen>
+                     <enum>
+                         <item>Navigate to the new release folder (e.g., imap_proxy ==> 1.2.8).
+                         <item>Currently, the interface seems to only support
+                               assigning properties to one of the release files,
+                               so click on the .bz2 file and check ALL the platforms.
+                     </enum>
+                 <item>Verify that SourceForge has *NOT* automatically chosen to
+                       display the new release as the official release on the main
+                       SquirrelMail project page (it will be too confusing to users
+                       who expect the webmail product to be the main download file):
+                       <tscreen><url url="http://sourceforge.net/projects/squirrelmail/" name="https://sourceforge.net/projects/squirrelmail/"></tscreen>
+                       Surprisingly, this worked as expected, but there is no indication
+                       of why that would happen.  Perhaps it is due to the lack of a
+                       release notes file in the imap_proxy release directory.  Otherwise,
+                       maybe SourceForge is waiting to change the main/current release file
+                       until later when I've logged off, for maximum frustration value.
+             </enum>
     </enum>
 </enum>
 
