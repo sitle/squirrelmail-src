@@ -3018,10 +3018,10 @@ put 1.4.20/squirrelmail-1.4.20/doc/ReleaseNotes
 <item><bf/Enable downloading:/ Update the download page for the SquirrelMail website.
     <enum>
         <item> SSH into sciurida
-         <item> Change to the web directory for SquirrelMail (currently /srv/www/www/htdocs).
-         <item> Edit download.php and change the version number as necessary (specifically, you need to update <tt>$stable</tt> and <tt>$stable_svn</tt>).
-         <item> Edit plugin_query.php file and change version number. This file informs pupdate plugin users about new release.
-         <item> Upload the md5 checksums and sha1 checksums that make-release-webmail calculated and your GPG signatures into the <tt>sums/</tt> dir.
+        <item> Change to the web directory for SquirrelMail (currently /srv/www/www/htdocs).
+        <item> Edit download.php and change the version number as necessary (specifically, you need to update <tt>$stable</tt> and <tt>$stable_svn</tt>).
+        <item> Edit plugin_query.php file and change version number. This file informs pupdate plugin users about new release.
+        <item> Upload the md5 checksums and sha1 checksums that make-release-webmail calculated and your GPG signatures into the <tt>sums/</tt> dir.
     </enum>
 <!--<item><bf/Get porting assistance:/ contact our people who know how to make decent .deb and .rpm files
     <enum>
@@ -3133,6 +3133,13 @@ put squirrelmail-imap_proxy-1.2.8-release_work_area/squirrelmail-imap_proxy-1.2.
                        maybe SourceForge is waiting to change the main/current release file
                        until later when I've logged off, for maximum frustration value.
              </enum>
+    </enum>
+<item><bf/Enable downloading:/ Update the download page for the SquirrelMail website.
+    <enum>
+        <item> SSH into sciurida
+        <item> Change to the web directory for SquirrelMail (currently /srv/www/www/htdocs).
+        <item> Edit download.php and change the version number as necessary (specifically, you need to update <tt>$imap_proxy_version</tt> and <tt>$imap_proxy_svn</tt>).
+        <item> Upload the md5 checksums and sha1 checksums that make-release-webmail calculated and your GPG signatures into the <tt>sums/</tt> dir.
     </enum>
 </enum>
 
