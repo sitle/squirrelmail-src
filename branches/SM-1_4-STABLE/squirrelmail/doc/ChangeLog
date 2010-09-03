@@ -4,17 +4,20 @@
 
 Version 1.4.22 - SVN
 --------------------
+  - Fixed system lock-ups caused by a combination of certain rare,
+    malformed message headers and buggy versions of PHP mbstring
+    (#3053349).
 
 Version 1.4.21 - 23 Jul 2010
 ----------------------------
   - Now allow more than one plugin to control the compose form submit action.
   - When sorting by received date, the received date is now shown on the
     message list.
-  - Explicitly disable browser caching for left_main and right_main pages
+  - Explicitly disabled browser caching for left_main and right_main pages
     (#2983134).
-  - Fix error with SpamCop reporting plugin not being able to send report as
-    emails (#1795310).
-  - Fix typo in SpamCop plugin.
+  - Fixed error with SpamCop reporting plugin not being able to send report
+    as emails (#1795310).
+  - Fixed typo in SpamCop plugin.
   - Reduced default time security tokens stay valid from 30 days to 2 days
     (reduces chances of session data growing too large)
   - Several speed enhancements for recent fixes regarding the display of
