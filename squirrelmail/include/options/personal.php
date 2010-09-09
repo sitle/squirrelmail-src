@@ -130,7 +130,7 @@ function load_optpage_data_personal() {
         );
     }
 
-    if ( $tzChangeAllowed ) {
+    if ( $tzChangeAllowed || function_exists('date_default_timezone_set')) {
         $TZ_ARRAY[SMPREF_NONE] = _("Same as server");
         $tzfile = SM_PATH . 'locale/timezones.cfg';
         if ((!is_readable($tzfile)) or (!$fd = fopen($tzfile,'r'))) {

@@ -4,6 +4,9 @@
 
 Version 1.4.22 - SVN
 --------------------
+  - Backported default timezone fix from version 1.5.2; helps mitigate
+    timezone errors in environments where a default has not been set
+    by the administrator.
   - Fixed system lock-ups caused by a combination of certain rare,
     malformed message headers and buggy versions of PHP mbstring
     (#3053349).
