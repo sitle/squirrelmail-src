@@ -114,18 +114,24 @@ require_once(SM_PATH . 'functions/strings.php');
 require_once(SM_PATH . 'config/config.php');
 
 /**
- * Allow disabling of all plugins or all but one plugin
+ * Allow disabling of all plugins or enabling just a select few
  *
- * $disable_plugins (boolean) can be set in config_local.php
+ * $temporary_plugins can be set in config_local.php, and
+ * must be set as an array of plugin names that will be
+ * the only ones activated (overriding the activation from
+ * the main configuration file).  If the list is empty,
+ * all plugins will be disabled.  Examples follow:
  *
- * $enable_only_one_plugin can also be set in config_local.php,
- * and it must be set to the exact directory name of the
- * desired plugin - any others will be disabled, no matter
- * what $disable_plugins is set to
+ * Enable only Preview Pane and TNEF Decoder plugins:
+ * $temporary_plugins = array('tnef_decoder', 'preview_pane');
+ *
+ * Disable all plugins:
+ * $temporary_plugins = array();
  */
-global $disable_plugins, $enable_only_one_plugin;
-if ($disable_plugins) $plugins = array();
-if (!empty($enable_only_one_plugin)) $plugins = array($enable_only_one_plugin);
+global $temporary_plugins;
+if (isset($temporary_plugins)) {
+    $plugins = $temporary_plugins;
+}
 
 /**
  * Detect SSL connections
