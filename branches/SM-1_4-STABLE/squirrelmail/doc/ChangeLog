@@ -12,6 +12,9 @@ Version 1.4.22 - SVN
     (#3053349).
   - Now allow multiple plugins to handle (add links for) a single
     attachment MIME type.
+  - Now allow administrators to disable all plugins or all but one
+    plugin by setting $disable_plugins or $enable_only_one_plugin
+    in config_local.php.
 
 Version 1.4.21 - 23 Jul 2010
 ----------------------------

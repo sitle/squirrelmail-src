@@ -114,6 +114,20 @@ require_once(SM_PATH . 'functions/strings.php');
 require_once(SM_PATH . 'config/config.php');
 
 /**
+ * Allow disabling of all plugins or all but one plugin
+ *
+ * $disable_plugins (boolean) can be set in config_local.php
+ *
+ * $enable_only_one_plugin can also be set in config_local.php,
+ * and it must be set to the exact directory name of the
+ * desired plugin - any others will be disabled, no matter
+ * what $disable_plugins is set to
+ */
+global $disable_plugins, $enable_only_one_plugin;
+if ($disable_plugins) $plugins = array();
+if (!empty($enable_only_one_plugin)) $plugins = array($enable_only_one_plugin);
+
+/**
  * Detect SSL connections
  */
 $is_secure_connection = is_ssl_secured_connection();
