@@ -17,6 +17,8 @@ Version 1.4.22 - SVN
     configuration) by setting $temporary_plugins as an empty array
     (all disabled) or an array with one or more plugin directory names
     in config_local.php.
+  - Backport fix for call_user_func_array not supporting NULL as empty
+    array in PHP 5.3.3
 
 Version 1.4.21 - 23 Jul 2010
 ----------------------------

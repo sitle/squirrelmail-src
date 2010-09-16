@@ -272,7 +272,7 @@ function sqstripslashes(&$array) {
  *               executed will be returned.
  * 
  */ 
-function sq_call_function_suppress_errors($function, $args=NULL) {
+function sq_call_function_suppress_errors($function, $args=array()) {
    $display_errors = ini_get('display_errors');
    ini_set('display_errors', '0');
    $ret = call_user_func_array($function, $args);
