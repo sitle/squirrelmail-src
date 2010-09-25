@@ -293,6 +293,9 @@ function hmac_md5($data, $key='') {
  * @since 1.4.11
  */
 function sqauth_read_password() {
+    global $is_login_verified_hook;
+    if ($is_login_verified_hook) global $key;
+
     sqgetGlobalVar('key',         $key,       SQ_COOKIE);
     sqgetGlobalVar('onetimepad',  $onetimepad,SQ_SESSION);
 

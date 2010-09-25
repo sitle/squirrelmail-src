@@ -19,6 +19,7 @@ Version 1.4.22 - SVN
     in config_local.php.
   - Backport fix for call_user_func_array not supporting NULL as empty
     array in PHP 5.3.3
+  - Fixed sqauth_read_password() for plugins on the login_verified hook.
 
 Version 1.4.21 - 23 Jul 2010
 ----------------------------
