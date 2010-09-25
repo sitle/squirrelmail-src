@@ -114,7 +114,10 @@ if (!sqsession_is_registered('user_is_logged_in')) {
     $username = $login_username;
     sqsession_register ($username, 'username');
     sqsetcookie('key', $key, 0, $base_uri);
+
+    $is_login_verified_hook = TRUE;
     do_hook ('login_verified');
+    $is_login_verified_hook = FALSE;
 
 }
 
