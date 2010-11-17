@@ -7,11 +7,13 @@ change these settings manually.  These settings can be different if
 the IMAP server uses shared folders.
 
 Possible server type values are:
+ other       = Unknown/generic
  bincimap    = Binc IMAP server
  courier     = Courier IMAP server
  cyrus       = Cyrus IMAP server
  dovecot     = Dovecot Secure IMAP server
  exchange    = Microsoft Exchange IMAP server
+ gmail       = Google Mail IMAP server
  hmailserver = hMailServer
  macosx      = Mac OS X Mailserver
  mercury32   = Mercury/32
