@@ -20,6 +20,8 @@ Version 1.4.22 - SVN
   - Backport fix for call_user_func_array not supporting NULL as empty
     array in PHP 5.3.3
   - Fixed sqauth_read_password() for plugins on the login_verified hook.
+  - Added SMTP SASL PLAIN authentication option to configuration tool
+    (core support for such is not new).
 
 Version 1.4.21 - 23 Jul 2010
 ----------------------------
