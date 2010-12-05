@@ -848,7 +848,13 @@ function mail_message_listing_end($num_msgs, $paginator_str, $msg_cnt_str, $colo
 }
 
 function printHeader($mailbox, $sort, $color, $showsort=true) {
-    global $index_order, $internal_date_sort;
+
+    global $index_order, $internal_date_sort, $imap_server_type;
+
+    // gmail doesn't support custom sorting, so we always
+    // hide the sort buttons when using gmail
+    if ($imap_server_type == 'gmail') $showsort = false;
+
     echo html_tag( 'tr' ,'' , 'center', $color[5] );
 
     /* calculate the width of the subject column based on the

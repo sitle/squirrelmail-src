@@ -135,7 +135,8 @@ function get_reference_header($imap_stream, $message) {
 function sqimap_get_sort_order($imap_stream, $sort, $mbxresponse) {
     global  $default_charset, $thread_sort_messages,
             $internal_date_sort, $server_sort_array,
-            $sent_folder, $mailbox, $uid_support;
+            $sent_folder, $mailbox, $uid_support,
+            $imap_server_type;
 
     if (sqsession_is_registered('server_sort_array')) {
         sqsession_unregister('server_sort_array');
@@ -147,7 +148,9 @@ function sqimap_get_sort_order($imap_stream, $sort, $mbxresponse) {
     $sort_test = array();
     $sort_query = '';
 
-    if ($sort == 6) {
+    // gmail does not support sorting I guess, so it always should have default sort
+    //
+    if ($sort == 6 || $imap_server_type == 'gmail') {
         if ($uid_support) {
             if (isset($mbxresponse['UIDNEXT']) && $mbxresponse['UIDNEXT']) {
                 $uidnext = $mbxresponse['UIDNEXT']-1;
