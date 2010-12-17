@@ -473,9 +473,9 @@ function formatAttachments($message, $exclude_id, $mailbox, $id) {
                         $name = $header->getParameter('name');
                         if(trim($name) == '') {
                             if (trim( $header->id ) == '') {
-                                $filename = 'untitled-[' . $ent . ']' ;
+                                $filename = 'untitled-[' . $ent . ']' . '.' . strtolower($header->type1);
                             } else {
-                                $filename = 'cid: ' . $header->id;
+                                $filename = 'cid: ' . $header->id . '.' . strtolower($header->type1);
                             }
                         } else {
                             $filename = $name;
@@ -488,9 +488,9 @@ function formatAttachments($message, $exclude_id, $mailbox, $id) {
                 $filename = $header->getParameter('name');
                 if (!trim($filename)) {
                     if (trim( $header->id ) == '') {
-                        $filename = 'untitled-[' . $ent . ']' ;
+                        $filename = 'untitled-[' . $ent . ']' . '.' . strtolower($header->type1) ;
                     } else {
-                        $filename = 'cid: ' . $header->id;
+                        $filename = 'cid: ' . $header->id . '.' . strtolower($header->type1);
                     }
                 }
             }
