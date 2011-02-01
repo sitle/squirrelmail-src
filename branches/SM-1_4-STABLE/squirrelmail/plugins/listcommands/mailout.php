@@ -54,7 +54,8 @@ html_tag( 'table', '', 'center', $color[0], 'border="0" width="75%"' ) . "\n" .
 
 printf( $out_string, htmlspecialchars($send_to) );
 
-echo '<form method="post" action="../../src/compose.php">';
+echo '<form method="post" action="../../src/compose.php">'.
+     '<input type="hidden" name="smtoken" value="' . sm_generate_security_token() . '" />';
 
 $idents = get_identities();
 
