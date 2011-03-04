@@ -644,6 +644,7 @@ function GenerateRandomString($size, $chars, $flags = 0) {
  * @return string the escaped string
  */
 function quoteimap($str) {
+    // FIXME use this performance improvement (not changing because this is STABLE branch): return str_replace(array('\\', '"'), array('\\\\', '\\"'), $str);
     return preg_replace("/([\"\\\\])/", "\\\\$1", $str);
 }
 
