@@ -107,7 +107,18 @@ class Deliver_SMTP extends Deliver {
             }
         }
 
-        if (( $smtp_auth_mech == 'cram-md5') or ( $smtp_auth_mech == 'digest-md5' )) {
+        // Try authentication by a plugin
+        $smtp_auth_args = array(
+            'auth_mech' => $smtp_auth_mech,
+            'user' => $user,
+            'pass' => $pass,
+            'host' => $host,
+            'port' => $port,
+            'stream' => $stream,
+        );
+        if (boolean_hook_function('smtp_auth', $smtp_auth_args, 1)) {
+            // authentication succeeded
+        } else if (( $smtp_auth_mech == 'cram-md5') or ( $smtp_auth_mech == 'digest-md5' )) {
             // Doing some form of non-plain auth
             if ($smtp_auth_mech == 'cram-md5') {
                 fputs($stream, "AUTH CRAM-MD5\r\n");
