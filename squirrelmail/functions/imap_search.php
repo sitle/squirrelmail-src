@@ -38,9 +38,9 @@ function sqimap_search($imapConnection, $search_where, $search_what, $mailbox,
     $multi_search = explode(' ', $search_what);
     $search_string = '';
 
-    if (strtoupper($languages[$squirrelmail_language]['CHARSET'] == 'ISO-2022-JP')) {
+    if (strtoupper($languages[$squirrelmail_language]['CHARSET']) == 'ISO-2022-JP') {
         foreach($multi_search as $idx=>$search_part) {
-            $multi_search[$idx] = mb_convert_encoding($search_parth, 'JIS', 'auto');
+            $multi_search[$idx] = mb_convert_encoding($search_part, 'JIS', 'auto');
         }
     }
 
