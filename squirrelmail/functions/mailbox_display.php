@@ -117,6 +117,9 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
         }
     }
     $senderName = str_replace('&nbsp;',' ',$senderName);
+    if (substr($senderName, 0, 6) == '&quot;'
+     && substr($senderName, -6) == '&quot;')
+        $senderName = substr(substr($senderName, 0, -6), 6);
     echo html_tag( 'tr','','','','valign="top"') . "\n";
 
     if (isset($msg['FLAG_FLAGGED']) && ($msg['FLAG_FLAGGED'] == true)) {
