@@ -33,7 +33,11 @@ Version 1.4.22 - SVN
   - Allow administrators to configure subfolders of user INBOXes to be
     treated as special folders by adding $subfolders_of_inbox_are_special
     to config_local.php.
-  - Fixed incorrect display of INBOX subfolders under some configurations.
+  - Fixed incorrect display of INBOX subfolders under some configurations
+    (IMPORTANT: You may need to update your configuration so that
+    $default_sub_of_inbox is TRUE if it was FALSE (e.g., Courier IMAP users)
+    and after updating to this version, your special folders are no longer
+    listed at the top of your folder list).
 
 Version 1.4.21 - 23 Jul 2010
 ----------------------------
