@@ -30,6 +30,9 @@ Version 1.4.22 - SVN
   - Added smtp_auth hook (thanks to Emmanuel Dreyfus).
   - Made speed enhancements to threaded message display (thanks to Siim
     Poder) (#3288123).
+  - Allow administrators to configure subfolders of user INBOXes to be
+    treated as special folders by adding $subfolders_of_inbox_are_special
+    to config_local.php.
 
 Version 1.4.21 - 23 Jul 2010
 ----------------------------
