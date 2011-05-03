@@ -1899,7 +1899,7 @@ sub command29 {
 
 # Default sub of inbox 
 sub command210 {
-    print "Some IMAP servers (Cyrus) have all folders as subfolders of INBOX.\n";
+    print "Some IMAP servers have all folders as subfolders of INBOX.\n";
     print "This can cause some confusion in folder creation for users when\n";
     print "they try to create folders and don't put it as a subfolder of INBOX\n";
     print "and get permission errors.  This option asks if you want folders\n";
@@ -3680,7 +3680,7 @@ sub set_defaults {
             $sent_folder                    = "Sent";
             $draft_folder                   = "Drafts";
             $show_prefix_option             = false;
-            $default_sub_of_inbox           = false;
+            $default_sub_of_inbox           = true;
             $show_contain_subfolders_option = false;
             $optional_delimiter             = ".";
             $disp_default_folder_prefix     = $default_folder_prefix;
