@@ -160,6 +160,7 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
     if (is_array($message_highlight_list) && count($message_highlight_list)) {
         $msg['TO'] = parseAddress($msg['TO']);
         $msg['CC'] = parseAddress($msg['CC']);
+        $decoded_addresses = array();
         foreach ($message_highlight_list as $message_highlight_list_part) {
             if (trim($message_highlight_list_part['value']) != '') {
                 $high_val   = strtolower($message_highlight_list_part['value']);
@@ -174,9 +175,12 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
                         case('TO'):
                         case('CC'):
                         case('FROM'):
-                            foreach ($msg[$match_type] as $address) {
-                                $address[0] = decodeHeader($address[0], true, false);
-                                $address[1] = decodeHeader($address[1], true, false);
+                            foreach ($msg[$match_type] as $i => $address) {
+                                if (empty($decoded_addresses[$match_type][$i])) {
+                                    $decoded_addresses[$match_type][$i][0] = decodeHeader($address[0], true, false);
+                                    $decoded_addresses[$match_type][$i][1] = decodeHeader($address[1], true, false);
+                                }
+                                $address = $decoded_addresses[$match_type][$i];
                                 if (strstr('^^' . strtolower($address[0]), $high_val) ||
                                     strstr('^^' . strtolower($address[1]), $high_val)) {
                                     $hlt_color = $message_highlight_list_part['color'];
