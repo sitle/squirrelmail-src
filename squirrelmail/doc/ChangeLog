@@ -33,11 +33,24 @@ Version 1.4.22 - SVN
   - Allow administrators to configure subfolders of user INBOXes to be
     treated as special folders by adding $subfolders_of_inbox_are_special
     to config_local.php.
-  - Fixed incorrect display of INBOX subfolders under some configurations
-    (IMPORTANT: You may need to update your configuration so that
+  - Fixed incorrect display of INBOX subfolders under some configurations.
+    IMPORTANT: You may need to update your configuration so that
     $default_sub_of_inbox is TRUE if it was FALSE (e.g., Courier IMAP users)
     and after updating to this version, your special folders are no longer
-    listed at the top of your folder list).
+    listed at the top of your folder list.  Also, if this change prevents
+    users from logging in with an error such as "ERROR: Could not complete
+    request.  Query: CREATE "Trash" Reason Given: Invalid mailbox name.",
+    you will need to correct the user preference values for the problem
+    folders.  You can do so with commands such as the following for file-
+    based preferences (adjust the data directory location as needed):
+        find /var/lib/squirrelmail/data/ -name *.pref -exec sed --in-place 's/trash_folder=Trash/trash_folder=INBOX.Trash/g' {} \;
+        find /var/lib/squirrelmail/data/ -name *.pref -exec sed --in-place 's/trash_folder=Drafts/trash_folder=INBOX.Drafts/g' {} \;
+        find /var/lib/squirrelmail/data/ -name *.pref -exec sed --in-place 's/trash_folder=Sent/trash_folder=INBOX.Sent/g' {} \;
+    Or, for database-based preferences:
+        UPDATE userprefs SET prefval = 'INBOX.Trash' WHERE prefkey = 'trash_folder' AND prefval = 'Trash';
+        UPDATE userprefs SET prefval = 'INBOX.Drafts' WHERE prefkey = 'draft_folder' AND prefval = 'Drafts';
+        UPDATE userprefs SET prefval = 'INBOX.Sent' WHERE prefkey = 'sent_folder' AND prefval = 'Sent';
+    MAKE SURE to back up your user preferences first!
   - Optimized message highlighting rules; faster message list display
     and faster highlight rules management (thanks to C. Bensend for
     extensive effort helping diagnose)
