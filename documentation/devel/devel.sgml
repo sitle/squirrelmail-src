@@ -2947,57 +2947,59 @@ svn copy -m "Webmail version 1.4.20" \
 https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/branches/SM-1_4-STABLE/squirrelmail \
 https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/webmail-release-1_4_20</verb></tscreen>
          <item> Use the script <tt>make-release-webmail</tt> <url url="http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail/trunk/util/make-release-webmail" name="found in SVN"> under the <tt>util/</tt> dir. The only parameter
-         is the version to release. It will download the tagged SVN copy, pack it up nicely and upload it to SF.net.
+         is the version to release. It will download the tagged SVN copy, pack it up nicely and upload it to SF.net (NOTE: currently, upload functionality is disabled; upload instructions are below).
          You will need the following tools: bash, svn, ssh, rsync, tar, gzip, zip, bzip2 and optionally rpmbuild.
          <item> Create a GPG signature for each of the newly created release packages. Typically, this can be done with:
-             <enum>
-                 <item><tt>gpg -a --detach-sign --output squirrelmail-webmail-X.Y.Z.tar.gz.sig squirrelmail-webmail-X.Y.Z.tar.gz</tt>
-                 <item><tt>gpg -a --detach-sign --output squirrelmail-webmail-X.Y.Z.tar.bz2.sig squirrelmail-webmail-X.Y.Z.tar.bz2</tt>
-                 <item><tt>gpg -a --detach-sign --output squirrelmail-webmail-X.Y.Z.zip.sig squirrelmail-webmail-X.Y.Z.zip</tt>
-             </enum>
+<tscreen><verb>
+gpg -a --detach-sign --output squirrelmail-webmail-X.Y.Z.tar.gz.sig squirrelmail-webmail-X.Y.Z.tar.gz
+gpg -a --detach-sign --output squirrelmail-webmail-X.Y.Z.tar.bz2.sig squirrelmail-webmail-X.Y.Z.tar.bz2
+gpg -a --detach-sign --output squirrelmail-webmail-X.Y.Z.zip.sig squirrelmail-webmail-X.Y.Z.zip
+</verb></tscreen>
                 An example for how to verify that your signature worked would be:
-             <enum>
-                 <item><tt>gpg --verify squirrelmail-webmail-X.Y.Z.tar.gz.sig squirrelmail-webmail-X.Y.Z.tar.gz</tt>
-             </enum>
+             <tscreen>
+                 gpg --verify squirrelmail-webmail-X.Y.Z.tar.gz.sig squirrelmail-webmail-X.Y.Z.tar.gz
+             </tscreen>
          <item> Upload your GPG signatures to Sourceforge.net. See the next step or see <url url="http://apps.sourceforge.net/trac/sourceforge/wiki/Release%20files%20for%20download#Uploadafile" name="sf.net instructions"> or see <url url="http://apps.sourceforge.net/trac/sourceforge/wiki/File%20management%20service" name="sf.net upload protocols">.
-         <item> The make-release-webmail script's upload feature is dated and is currently commented out (even if you get that to work, you still need to upload your GPG signatures and use the instructions below to set the release file properties, etc.).  SourceForge has made changes to their file management and release system more than once recently, not without much frustration for us.  The following steps are how version 1.4.20 was uploaded in March, 2010.
+         <item> The make-release-webmail script's upload feature is dated and is currently commented out (even if you get that to work, you still need to upload your GPG signatures and use the instructions below to set the release file properties, etc.).  SourceForge has made changes to their file management and release system more than once recently, not without much frustration for us.  The following steps are how version 1.4.22 was uploaded in July, 2011.
              <enum>
                  <item>Since when logged in by sftp, creating directories seems to fail
                        with a permission denied (sigh), first create the release directory
                        ahead of time by using web interface at:
-                       <tscreen><url url="https://sourceforge.net/project/admin/explorer.php?group_id=311" name="https://sourceforge.net/project/admin/explorer.php?group_id=311"></tscreen>
-                       For example, click to expand the "stable" directory and then
-                       click on the "gear" icon next to the "stable" directory and
-                       select to create a new folder, naming it with the release version
+                       <tscreen><url url="https://sourceforge.net/projects/squirrelmail/files/" name="https://sourceforge.net/projects/squirrelmail/files/"></tscreen>
+                       For example, click to navigate into the "stable" directory and then
+                       click on the "Add Folder" button, naming it with the release version
                        (e.g., 1.4.20).
                  <item>Now, you can sftp to the release directory (this assumes you are
                        in the (local) directory where you ran the make-release-webmail
                        script):
-                       <tscreen>sftp username@frs.sourceforge.net</tscreen>
+<tscreen><verb>
+cd squirrelmail-webmail-1.4.20-release_work_area
+sftp username@frs.sourceforge.net
+</verb></tscreen>
                        Once logged in, here are the needed sftp commands:
 <tscreen><verb>
 cd /home/frs/project/s/sq/squirrelmail/stable/1.4.20
-put 1.4.20/squirrelmail-1.4.20.tar.bz2
-put 1.4.20/squirrelmail-1.4.20.tar.bz2.sig
-put 1.4.20/squirrelmail-1.4.20.tar.gz
-put 1.4.20/squirrelmail-1.4.20.tar.gz.sig
-put 1.4.20/squirrelmail-1.4.20.zip
-put 1.4.20/squirrelmail-1.4.20.zip.sig
-put 1.4.20/squirrelmail-1.4.20/doc/ReleaseNotes
+put squirrelmail-webmail-1.4.22.tar.bz2
+put squirrelmail-webmail-1.4.22.tar.bz2.sig
+put squirrelmail-webmail-1.4.22.tar.gz
+put squirrelmail-webmail-1.4.22.tar.gz.sig
+put squirrelmail-webmail-1.4.22.zip
+put squirrelmail-webmail-1.4.22.zip.sig
+put squirrelmail-webmail-1.4.22/doc/ReleaseNotes
 </verb></tscreen>
+                 <item>You can now safely delete the <i>squirrelmail-webmail-1.4.20-release_work_area</tt> directory that was created by the make-release-webmail script.
                  <item>Now you have to use the web interface to assign properties to the
                        uploaded files:
-                       <tscreen><url url="https://sourceforge.net/project/admin/explorer.php?group_id=311" name="https://sourceforge.net/project/admin/explorer.php?group_id=311"></tscreen>
+                       <tscreen><url url="https://sourceforge.net/projects/squirrelmail/files/stable/1.4.20/" name="https://sourceforge.net/projects/squirrelmail/files/stable/1.4.20/"></tscreen>
                      <enum>
-                         <item>Navigate to the new release folder (e.g., stable ==> 1.4.20).
-                         <item>Click on the ReleaseNotes file and tick the Release
-                               Notes checkbox.
-                         <item>Currently, the interface seems to only support
-                               assigning properties to one of the release files,
-                               so click on the .bz2 file and check ALL the platforms,
-                               and select the correct release notes file.
-                         <item>Click on each of the .sig files and label it as
-                               "GPG signature".
+                         <item>Click on the "i" icon next to the ReleaseNotes file and
+                               change the file name to "README" and click "Save".
+                               SourceForge no longer requires you to associate release
+                               notes with your files - it does it automatically based
+                               on file name ("README").
+                         <item>Click on the "i" icon next to the .tar.gz file and click
+                               the "Select all" link and then the "Save" button to make
+                               the .tar.gz file the default download for all visitors.
                      </enum>
                  <item>Verify that SourceForge has automatically chosen to display the
                        new release as the official release on the main SquirrelMail
