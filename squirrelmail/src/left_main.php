@@ -103,7 +103,7 @@ function formatMailboxName($imapConnection, $box_array) {
         if (($numMessages > 0) or ($box_array['parent'] == 1)) {
             $urlMailbox = urlencode($real_box);
             $line .= "\n<small>\n" .
-                    '&nbsp;&nbsp;(<a href="empty_trash.php" style="text-decoration:none">'._("Purge").'</a>)' .
+                    '&nbsp;&nbsp;(<a href="empty_trash.php?smtoken=' . sm_generate_security_token() . '" style="text-decoration:none">'._("Purge").'</a>)' .
                     '</small>';
         }
     }
