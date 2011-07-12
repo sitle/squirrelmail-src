@@ -2987,7 +2987,6 @@ put squirrelmail-webmail-1.4.22.zip
 put squirrelmail-webmail-1.4.22.zip.sig
 put squirrelmail-webmail-1.4.22/doc/ReleaseNotes
 </verb></tscreen>
-                 <item>You can now safely delete the <i>squirrelmail-webmail-1.4.20-release_work_area</tt> directory that was created by the make-release-webmail script.
                  <item>Now you have to use the web interface to assign properties to the
                        uploaded files:
                        <tscreen><url url="https://sourceforge.net/projects/squirrelmail/files/stable/1.4.20/" name="https://sourceforge.net/projects/squirrelmail/files/stable/1.4.20/"></tscreen>
@@ -3024,6 +3023,7 @@ put squirrelmail-webmail-1.4.22/doc/ReleaseNotes
         <item> Edit download.php and change the version number as necessary (specifically, you need to update <tt>$stable</tt> and <tt>$stable_svn</tt>).
         <item> Edit plugin_query.php file and change version number. This file informs pupdate plugin users about new release.
         <item> Upload the md5 checksums and sha1 checksums that make-release-webmail calculated and your GPG signatures into the <tt>sums/</tt> dir.
+        <item>You can now safely delete the <tt>squirrelmail-webmail-1.4.20-release_work_area</tt> directory that was created by the make-release-webmail script.
     </enum>
 <!--<item><bf/Get porting assistance:/ contact our people who know how to make decent .deb and .rpm files
     <enum>
