@@ -2951,13 +2951,13 @@ https://squirrelmail.svn.sourceforge.net/svnroot/squirrelmail/tags/webmail-relea
          You will need the following tools: bash, svn, ssh, rsync, tar, gzip, zip, bzip2 and optionally rpmbuild.
          <item> Create a GPG signature for each of the newly created release packages. Typically, this can be done with:
              <enum>
-                 <item><tt>gpg -a --detach-sign --output squirrelmail-X.Y.Z.tar.gz.sig squirrelmail-X.Y.Z.tar.gz</tt>
-                 <item><tt>gpg -a --detach-sign --output squirrelmail-X.Y.Z.tar.bz2.sig squirrelmail-X.Y.Z.tar.bz2</tt>
-                 <item><tt>gpg -a --detach-sign --output squirrelmail-X.Y.Z.zip.sig squirrelmail-X.Y.Z.zip</tt>
+                 <item><tt>gpg -a --detach-sign --output squirrelmail-webmail-X.Y.Z.tar.gz.sig squirrelmail-webmail-X.Y.Z.tar.gz</tt>
+                 <item><tt>gpg -a --detach-sign --output squirrelmail-webmail-X.Y.Z.tar.bz2.sig squirrelmail-webmail-X.Y.Z.tar.bz2</tt>
+                 <item><tt>gpg -a --detach-sign --output squirrelmail-webmail-X.Y.Z.zip.sig squirrelmail-webmail-X.Y.Z.zip</tt>
              </enum>
                 An example for how to verify that your signature worked would be:
              <enum>
-                 <item><tt>gpg --verify squirrelmail-X.Y.Z.tar.gz.sig squirrelmail-X.Y.Z.tar.gz</tt>
+                 <item><tt>gpg --verify squirrelmail-webmail-X.Y.Z.tar.gz.sig squirrelmail-webmail-X.Y.Z.tar.gz</tt>
              </enum>
          <item> Upload your GPG signatures to Sourceforge.net. See the next step or see <url url="http://apps.sourceforge.net/trac/sourceforge/wiki/Release%20files%20for%20download#Uploadafile" name="sf.net instructions"> or see <url url="http://apps.sourceforge.net/trac/sourceforge/wiki/File%20management%20service" name="sf.net upload protocols">.
          <item> The make-release-webmail script's upload feature is dated and is currently commented out (even if you get that to work, you still need to upload your GPG signatures and use the instructions below to set the release file properties, etc.).  SourceForge has made changes to their file management and release system more than once recently, not without much frustration for us.  The following steps are how version 1.4.20 was uploaded in March, 2010.
@@ -3124,11 +3124,10 @@ put squirrelmail-imap_proxy-1.2.8-release_work_area/squirrelmail-imap_proxy-1.2.
                      </enum>
                  <item>Go to the latest STABLE WEBMAIL release package (e.g., navigate
                        the file manager to stable --> 1.4.21 and click to edit the
-                       properties of the .bz2 file therein.  Update/save its properties
-                       (not sure if you'll have to remove some property and re-add it
-                       to ensure an update really is made).  This ensures that SourceForge
-                       sees this as the "newest" release file, that which will be featured
-                       on our SourceForge summary page (see next step).
+                       properties of the .bz2 file therein.  Make sure it is set as
+                       the default download for all platforms.  This ensures that
+                       SourceForge sees this as the "newest" release file, that which
+                       will be featured on our SourceForge summary page (see next step).
                  <item>Verify that SourceForge has *NOT* automatically chosen to
                        display the new release as the official release on the main
                        SquirrelMail project page (it will be too confusing to users
