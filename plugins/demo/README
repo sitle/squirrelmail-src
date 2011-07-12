@@ -1,41 +1,32 @@
-SquirrelMail Demo plugin
-========================
+Demo plugin for SquirrelMail 
+============================
+Version $Id$
 
-This is an example plugin which provides test/sample functions for
-used SquirrelMail hooks. Use of plugin in production environment
-is not recommended.
+Copyright 1999-2011 The SquirrelMail Project Team
 
-Requirements
-------------
- * SquirrelMail 1.4.0 or newer. Plugin is coded according to changes
-   made in SquirrelMail 1.3.3cvs version.
- * Requirements can depend on hooks available in used SquirrelMail 
-   version. Check descriptions of used demo_{hook_name}_do functions.
 
-Changelog
----------
-2005-09-11
- - Fixed renumbering of identities in 1.4.6+/1.5.1+ and added delete
-   action processing.
+Description
+===========
 
-2005-09-03
- - Updated options_identities_renumber and options_identities_process
-   hooks to 1.4.6+ and 1.5.1+ hook layout. Older hook versions are 
-   processed too.
+This plugin provides test/sample code for many of the hook
+points in the SquirrelMail core.  It is primarily intended
+as an aid to plugin authors who can copy the code herein to
+ensure correct hook code and thus focus on other more 
+important plugin functionality.  This plugin should not be
+enabled in a production environment.
 
-2005-08-27
- - Added options_identites_buttons hook.
+Note that the hook code herein is specific to the version
+of SquirrelMail that it is found in and is not necessarily
+cross-version compatible.  Please consult the demo plugin
+in all versions of SquirrelMail that your plugin will target.
 
-2005-08-26
- - Added options_identities_renumber and options_identities_process 
-   hooks. Tested on SM 1.4.4.
- - Added loading_prefs hook.
 
-2005-08-25
- - Added options_identities_top hook with error_box function call.
 
-2005-08-24
- - Added options_identities_table hook.
+License
+=======
 
-2005-08-21
- - Added login_form hook.
+This plugin is released under the GNU General Public
+License (see the file COPYING for details).
+
+
+

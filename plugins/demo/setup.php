@@ -1,127 +1,131 @@
 <?php
-/**
- * Plugin init file
- *
- * Copyright (c) 2005-2006 The SquirrelMail Project Team
- * This file is part of SquirrelMail Demo plugin.
- *
- * Demo plugin is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * Demo plugin is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with Demo plugin; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * @version $Id$
- * @package plugins
- * @subpackage demo
- */
 
 /**
- * Init function
- */
-function squirrelmail_plugin_init_demo() {
-    global $squirrelmail_plugin_hooks;
-    // login page form
-    $squirrelmail_plugin_hooks['login_form']['demo']='demo_login_form';
+  * SquirrelMail Demo Plugin
+  * @copyright 2006-2011 The SquirrelMail Project Team
+  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+  * @version $Id$
+  * @package plugins
+  * @subpackage demo
+  */
 
-    $squirrelmail_plugin_hooks['options_identities_process']['demo']='demo_options_identities_process';
-    $squirrelmail_plugin_hooks['options_identities_top']['demo']='demo_options_identities_top';
-    $squirrelmail_plugin_hooks['options_identities_renumber']['demo']='demo_options_identities_renumber';
-    $squirrelmail_plugin_hooks['options_identities_table']['demo']='demo_options_identities_table';
-    $squirrelmail_plugin_hooks['options_identities_buttons']['demo']='demo_options_identities_buttons';
 
-    $squirrelmail_plugin_hooks['loading_prefs']['demo']='demo_loading_prefs';
-    $squirrelmail_plugin_hooks['loading_constants']['demo']='demo_loading_constants';
 
-    $squirrelmail_plugin_hooks['menuline']['demo']='demo_menuline';
+/**
+  * Register this plugin with SquirrelMail
+  *
+  * @return void
+  *
+  */
+function squirrelmail_plugin_init_demo() 
+{
+//FIXME: put *ALL* SM hooks in here... and put them in the right order
+//FIXME: many hooks have examples in the original demo plugin in trunk/plugins/demo
+
+   global $squirrelmail_plugin_hooks;
+
+//FIXME: this hook not yet implemented below 
+   $squirrelmail_plugin_hooks['login_cookie']['demo']
+      = 'demo_login_cookie';
+
+//FIXME: this hook not yet implemented below 
+   $squirrelmail_plugin_hooks['login_top']['demo']
+      = 'demo_login_top';
+
+//FIXME: this hook not yet implemented below 
+   $squirrelmail_plugin_hooks['login_form']['demo']
+      = 'demo_login_form';
+
+//FIXME: this hook not yet implemented below 
+   $squirrelmail_plugin_hooks['login_bottom']['demo']
+      = 'demo_login_bottom';
+
+   $squirrelmail_plugin_hooks['menuline']['demo']
+      = 'demo_menuline';
+
+   $squirrelmail_plugin_hooks['optpage_register_block']['demo']
+      = 'demo_option_link';
+
+   $squirrelmail_plugin_hooks['configtest']['demo']
+      = 'demo_check_configuration';
 }
 
-/**
- * Show input field in login_form
- * @return string html formated demo input field
- */
-function demo_login_form() {
-    include_once(SM_PATH.'plugins/demo/functions.php');
-    return demo_login_form_do();
-}
+
 
 /**
- * Process Advanced Identities submission
- */
-function demo_options_identities_process(&$args) {
-    include_once(SM_PATH.'plugins/demo/functions.php');
-    demo_options_identities_process_do($args);
+  * Returns info about this plugin
+  *
+  * @return array An array of plugin information.
+  *
+  */
+function demo_info()
+{
+
+   return array(
+             'english_name' => 'Demo',
+             'version' => 'CORE',
+             'summary' => 'This plugin provides test/sample code for many of the hook points in the SquirrelMail core.',
+             'details' => 'This plugin provides test/sample code for many of the hook points in the SquirrelMail core.', 
+             'requires_configuration' => 0,
+             'requires_source_patch' => 0,
+          );
+
 }
 
-/**
- * Add some text before advanced identities forms
- */
-function demo_options_identities_top() {
-    include_once(SM_PATH.'plugins/demo/functions.php');
-    demo_options_identities_top_do();
-}
+
 
 /**
- * Process renumbering of identities
- */
-function demo_options_identities_renumber(&$args) {
-    include_once(SM_PATH.'plugins/demo/functions.php');
-    demo_options_identities_renumber_do($args);
+  * Returns version info about this plugin
+  *
+  */
+function demo_version()
+{
+   $info = demo_info();
+   return $info['version'];
 }
 
-/**
- * Add code to Advanced Identities option form table
- * @return string html formated table rows added to identity table
- */
-function demo_options_identities_table(&$args) {
-    include_once(SM_PATH.'plugins/demo/functions.php');
-    return demo_options_identities_table_do($args);
-}
+
 
 /**
- * Add some text before advanced identities forms
- * @return string html formated form buttons added to identity form
- */
-function demo_options_identities_buttons(&$args) {
-    include_once(SM_PATH.'plugins/demo/functions.php');
-    return demo_options_identities_buttons_do($args);
+  * Add link to menu at top of content pane
+  *
+  * @return void
+  *
+  */
+function demo_menuline() 
+{
+   include_once(SM_PATH . 'plugins/demo/functions.php');
+   demo_menuline_do();
 }
 
-/**
- * Main function attached to loading_prefs hook
- */
-function demo_loading_prefs() {
-    include_once(SM_PATH.'plugins/demo/functions.php');
-    demo_loading_prefs_do();
-}
+
 
 /**
- * Main function attached to loading_prefs hook
- */
-function demo_loading_constants() {
-    include_once(SM_PATH.'plugins/demo/constants.php');
+  * Inserts an option block in the main SM options page
+  *
+  * @return void
+  *
+  */
+function demo_option_link()
+{
+   include_once(SM_PATH . 'plugins/demo/functions.php');
+   demo_option_link_do();
 }
 
-/**
- * Main function attached to loading_prefs hook
- */
-function demo_menuline() {
-    include_once(SM_PATH.'plugins/demo/functions.php');
-    demo_menuline_do();
-}
+
 
 /**
- * Show plugin version
- * @return string plugin version
- */
-function demo_version() {
-    return '1.0cvs';
+  * Validate that this plugin is configured correctly
+  *
+  * @return boolean Whether or not there was a
+  *                 configuration error for this plugin.
+  *
+  */
+function demo_check_configuration()
+{
+   include_once(SM_PATH . 'plugins/demo/functions.php');
+   return demo_check_configuration_do();
 }
+
+
+
