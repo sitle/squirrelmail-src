@@ -47,8 +47,8 @@ Version 1.4.22 - 12 July 2011
     folders.  You can do so with commands such as the following for file-
     based preferences (adjust the data directory location as needed):
         find /var/lib/squirrelmail/data/ -name *.pref -exec sed --in-place 's/trash_folder=Trash/trash_folder=INBOX.Trash/g' {} \;
-        find /var/lib/squirrelmail/data/ -name *.pref -exec sed --in-place 's/trash_folder=Drafts/trash_folder=INBOX.Drafts/g' {} \;
-        find /var/lib/squirrelmail/data/ -name *.pref -exec sed --in-place 's/trash_folder=Sent/trash_folder=INBOX.Sent/g' {} \;
+        find /var/lib/squirrelmail/data/ -name *.pref -exec sed --in-place 's/draft_folder=Drafts/draft_folder=INBOX.Drafts/g' {} \;
+        find /var/lib/squirrelmail/data/ -name *.pref -exec sed --in-place 's/sent_folder=Sent/sent_folder=INBOX.Sent/g' {} \;
     Or, for database-based preferences:
         UPDATE userprefs SET prefval = 'INBOX.Trash' WHERE prefkey = 'trash_folder' AND prefval = 'Trash';
         UPDATE userprefs SET prefval = 'INBOX.Drafts' WHERE prefkey = 'draft_folder' AND prefval = 'Drafts';
