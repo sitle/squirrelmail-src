@@ -40,8 +40,8 @@ the following for file-based preferences (adjust the data
 directory location as needed):
 
    find /var/lib/squirrelmail/data/ -name *.pref -exec sed --in-place 's/trash_folder=Trash/trash_folder=INBOX.Trash/g' {} \;
-   find /var/lib/squirrelmail/data/ -name *.pref -exec sed --in-place 's/trash_folder=Drafts/trash_folder=INBOX.Drafts/g' {} \;
-   find /var/lib/squirrelmail/data/ -name *.pref -exec sed --in-place 's/trash_folder=Sent/trash_folder=INBOX.Sent/g' {} \;
+   find /var/lib/squirrelmail/data/ -name *.pref -exec sed --in-place 's/draft_folder=Drafts/draft_folder=INBOX.Drafts/g' {} \;
+   find /var/lib/squirrelmail/data/ -name *.pref -exec sed --in-place 's/sent_folder=Sent/sent_folder=INBOX.Sent/g' {} \;
 
 Or, for database-based preferences:
 
