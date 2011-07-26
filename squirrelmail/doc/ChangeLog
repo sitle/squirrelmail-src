@@ -64,7 +64,8 @@ Version 1.4.22 - 12 July 2011
   - Fixed XSS holes in generic options inputs, XSS hole in the SquirrelSpell
     plugin, XSS hole in the Index Order page, and added anti-CSRF protection
     to the empty trash feature and the Index Order page (thanks to Nicholas
-    Carlini for finding all these issues). [CVE-2010-4555]
+    Carlini for finding all these issues).
+    [CVE-2011-2752, CVE-2011-2753, CVE-2010-4555]
   - Fixed XSS problem with unsanitized style tags in messages. [CVE-2011-2023]
 
 Version 1.4.21 - 23 Jul 2010
