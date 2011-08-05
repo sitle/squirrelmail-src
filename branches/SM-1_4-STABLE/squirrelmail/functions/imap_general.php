@@ -79,23 +79,23 @@ function sqimap_run_command ($imap_stream, $query, $handle_errors, &$response,
 function sqimap_run_literal_command($imap_stream, $query, $handle_errors, &$response, &$message, $unique_id = false) {
     if ($imap_stream) {
         $sid = sqimap_session_id($unique_id);
-        $command = sprintf("%s {%d}\r\n", $query['command'], strlen($query['literal_args'][0]));
+        $command = sprintf("%s {%d}\r\n", $query['commands'][0], strlen($query['literal_args'][0]));
         fputs($imap_stream, $sid . ' ' . $command);
 
         // TODO: Put in error handling here //
-        $read = sqimap_read_data($imap_stream, $sid, $handle_errors, $response, $message, $query['command']);
+        $read = sqimap_read_data($imap_stream, $sid, $handle_errors, $response, $message, $query['commands'][0]);
         
         $i = 0;
         $cnt = count($query['literal_args']);
         while( $i < $cnt ) {
         	if (($cnt > 1) && ($i < ($cnt - 1))) {
-				$command = sprintf("%s {%d}\r\n", $query['literal_args'][$i], strlen($query['literal_args'][$i+1]));
+				$command = sprintf("%s%s {%d}\r\n", $query['literal_args'][$i], (!empty($query['commands'][$i+1]) ? ' ' . $query['commands'][$i+1] : ''), strlen($query['literal_args'][$i+1]));
 			} else {
 				$command = sprintf("%s\r\n", $query['literal_args'][$i]);
 			}
         	
 			fputs($imap_stream, $command);
-	        $read = sqimap_read_data($imap_stream, $sid, $handle_errors, $response, $message, $query['command']);
+	        $read = sqimap_read_data($imap_stream, $sid, $handle_errors, $response, $message, $query['commands'][0]);
 
 	        $i++;
 	        
@@ -564,8 +564,9 @@ function sqimap_login ($username, $password, $imap_server_address, $imap_port, $
         } else {
             // Original IMAP login code
             if(sq_is8bit($username) || sq_is8bit($password)) {
-                $query['command'] = 'LOGIN';
+                $query['commands'][0] = 'LOGIN';
                 $query['literal_args'][0] = $username;
+                $query['commands'][1] = '';
                 $query['literal_args'][1] = $password;
                 $read = sqimap_run_literal_command($imap_stream, $query, false, $response, $message);
             } else {

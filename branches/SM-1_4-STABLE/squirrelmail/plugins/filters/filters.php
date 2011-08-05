@@ -335,7 +335,7 @@ function filter_search_and_delete($imap, $where, $what, $where_to, $user_scan,
         $read = sqimap_run_command_list($imap, $search_str, true, $response, $message, $uid_support);        
     } else {
     	$lit = array();
-    	$lit['command'] = $search_str . ' ' . $where;
+    	$lit['commands'][] = $search_str . ' ' . $where;
     	$lit['literal_args'][] = $what;
     	
 		$read = sqimap_run_literal_command($imap, $lit, true, $response, $message, $uid_support );
