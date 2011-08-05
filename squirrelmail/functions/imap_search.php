@@ -44,37 +44,66 @@ function sqimap_search($imapConnection, $search_where, $search_what, $mailbox,
         }
     }
 
+    $search_literal = array('commands'=>array(), 'literal_args'=>array());
+    $use_search_literal = FALSE;
     foreach ($multi_search as $string) {
-       $search_string .= $search_where
-                      . ' "'
-                      . str_replace(array('\\', '"'), array('\\\\', '\\"'), $string)
-                      . '" ';
+        //FIXME: why JIS?  shouldn't input be in EUC-JP?  this is copied from DEVEL
+        if (isset($languages[$squirrelmail_language]['CHARSET']) &&
+            strtoupper($languages[$squirrelmail_language]['CHARSET']) == 'ISO-2022-JP')
+            $string = mb_convert_encoding($string, 'JIS', 'auto');
+        if (preg_match('/["\\\\\r\n\x80-\xff]/', $string))
+            $use_search_literal = TRUE;
+        $search_literal['commands'][] = $search_where;
+        $search_literal['literal_args'][] = $string;
+        $search_string .= $search_where
+                       . ' "'
+                       . str_replace(array('\\', '"'), array('\\\\', '\\"'), $string)
+                       . '" ';
     }
 
     $search_string = trim($search_string);
+    $original_search_literal = $search_literal;
 
     /* now use $search_string in the imap search */
     if ($allow_charset_search && isset($languages[$squirrelmail_language]['CHARSET']) &&
         $languages[$squirrelmail_language]['CHARSET']) {
-        $ss = "SEARCH CHARSET "
-            . strtoupper($languages[$squirrelmail_language]['CHARSET'])
-            . " ALL $search_string";
+        if ($use_search_literal) {
+            $search_literal['commands'][0] = 'SEARCH CHARSET '
+                . strtoupper($languages[$squirrelmail_language]['CHARSET'])
+                . ' ALL ' . $search_literal['commands'][0];
+        } else {
+            $ss = "SEARCH CHARSET "
+                . strtoupper($languages[$squirrelmail_language]['CHARSET'])
+                . " ALL $search_string";
+        }
     } else {
-        $ss = "SEARCH ALL $search_string";
+        if ($use_search_literal) {
+            $search_literal['commands'][0] = 'SEARCH ALL ' . $search_literal['commands'][0];
+        } else {
+            $ss = "SEARCH ALL $search_string";
+        }
     }
 
     /* read data back from IMAP */
-    $readin = sqimap_run_command($imapConnection, $ss, false, $result, $message, $uid_support);
+    if ($use_search_literal) {
+        $readin = sqimap_run_literal_command($imapConnection, $search_literal, false, $result, $message, $uid_support);
+    } else {
+        $readin = sqimap_run_command($imapConnection, $ss, false, $result, $message, $uid_support);
+    }
 
     /* try US-ASCII charset if search fails */
     if (isset($languages[$squirrelmail_language]['CHARSET'])
         && strtolower($result) == 'no') {
-        $ss = "SEARCH CHARSET \"US-ASCII\" ALL $search_string";
-        if (empty($search_lit)) {
-            $readin = sqimap_run_command($imapConnection, $ss, false, $result, $message, $uid_support);
+        if ($use_search_literal) {
+            $original_search_literal['commands'][0] = 'SEARCH CHARSET "US-ASCII" ALL '
+                                                    . $original_search_literal['commands'][0];
         } else {
-            $search_lit['command'] = $ss;
-            $readin = sqimap_run_literal_command($imapConnection, $search_lit, false, $result, $message, $uid_support);
+            $ss = "SEARCH CHARSET \"US-ASCII\" ALL $search_string";
+        }
+        if ($use_search_literal) {
+            $readin = sqimap_run_literal_command($imapConnection, $search_literal, false, $result, $message, $uid_support);
+        } else {
+            $readin = sqimap_run_command($imapConnection, $ss, false, $result, $message, $uid_support);
         }
     }
 
