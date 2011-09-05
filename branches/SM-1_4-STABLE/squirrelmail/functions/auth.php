@@ -364,6 +364,12 @@ function get_smtp_user(&$user, &$pass) {
     // first array value and the new password is the 
     // second array value e.g., return array($myuser, $mypass);
     //
+    // NOTE: there is another hook in class/deliver/Deliver_SMTP.class.php
+    // called "smtp_authenticate" that allows a plugin to run its own
+    // custom authentication routine - this hook here is thus slightly
+    // mis-named but is too old to change.  Be careful that you do not
+    // confuse your hook names.
+    //
     $ret = do_hook_function('smtp_auth', array($user, $pass));
     if (!empty($ret[0]))
         $user = $ret[0];
