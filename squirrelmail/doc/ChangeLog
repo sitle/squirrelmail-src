@@ -6,6 +6,8 @@ Version 1.4.23 - SVN
 --------------------
   - Added capability to issue SEARCH commands in literal format (so that
     non-ASCII search terms are handled RFC-correctly).
+  - Fixed hook name clash: new "smtp_auth" hook added in version 1.4.22
+    has been renamed to "smtp_authenticate"
 
 Version 1.4.22 - 12 July 2011
 -----------------------------
