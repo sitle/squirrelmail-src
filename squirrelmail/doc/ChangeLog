@@ -10,6 +10,8 @@ Version 1.4.23 - SVN
     has been renamed to "smtp_authenticate"
   - Added SASL PLAIN mechanism for IMAP logins, backported from version
     1.5.2.
+  - Prevent syslog warning in call_user_func_array() call when no
+    arguments given. Patch from Jean-Philippe Guerard (#3309935).
 
 Version 1.4.22 - 12 July 2011
 -----------------------------

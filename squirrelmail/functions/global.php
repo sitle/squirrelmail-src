@@ -275,7 +275,11 @@ function sqstripslashes(&$array) {
 function sq_call_function_suppress_errors($function, $args=array()) {
    $display_errors = ini_get('display_errors');
    ini_set('display_errors', '0');
-   $ret = call_user_func_array($function, $args);
+   if ( is_null( $args ) ) {
+     $ret = call_user_func($function);
+   } else {
+     $ret = call_user_func_array($function, $args);
+   }
    ini_set('display_errors', $display_errors);
    return $ret;
 }
