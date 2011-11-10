@@ -8,10 +8,12 @@ Version 1.4.23 - SVN
     non-ASCII search terms are handled RFC-correctly).
   - Fixed hook name clash: new "smtp_auth" hook added in version 1.4.22
     has been renamed to "smtp_authenticate"
-  - Added SASL PLAIN mechanism for IMAP logins, backported from version
+  - Added SASL PLAIN mechanism for IMAP logins; backported from version
     1.5.2.
   - Prevent syslog warning in call_user_func_array() call when no
     arguments given. Patch from Jean-Philippe Guerard (#3309935).
+  - Changed the read_body_menu_top hook from concat_hook_function to
+    do_hook_function (plugin authors please note)
 
 Version 1.4.22 - 12 July 2011
 -----------------------------
