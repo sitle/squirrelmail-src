@@ -665,7 +665,7 @@ function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_resp
     $s .= $topbar_delimiter;
     $s .= makeComposeLink($comp_action_uri, _("Reply All"));
     $s .= '</small></td></tr></table>';
-    $ret = concat_hook_function('read_body_menu_top', $s);
+    $ret = do_hook_function('read_body_menu_top', $s);
     if($ret != '') {
         $s = $ret;
     }
