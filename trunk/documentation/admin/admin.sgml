@@ -2674,6 +2674,18 @@ In order to provide a free web mail sign up you can try one of these third party
 solutions (listed in no particular order):
 
 <enum>
+  <item>The <url url="http://squirrelmail.org/plugin_view.php?id=3" name="Vadmin"> plugin.
+    <itemize>
+      <item>The excellent Vadmin plugin was created to meet the needs of system
+            administrators, and allows you to create new accounts and manage
+            accounts, or even provide a full control panel for you and
+            lower-priveleged administrators. It requires a specific configuration
+            or software to be running on the mail server
+            (<url url="http://untroubled.org/vmailmgr/" name="VMailMgr"> or a
+            SQL backend system are currently supported, but you may add your own
+            backend to interface with other types of setups). Please note that
+            this is a third-party plugin and not a part of SquirrelMail itself.
+    </itemize>
   <item><url url="http://inter7.com/index.php?page=vpopmail" name="vpopmail">,
         <url url="http://inter7.com/index.php?page=vqregister" name="vqregister">,
         and <url url="http://inter7.com/index.php?page=vqsignup" name="vqsignup">.
@@ -2689,7 +2701,7 @@ solutions (listed in no particular order):
             (LDAP / MySQL / System users / other special local delivery program)
             - you need to write appropriate scripts that automate user
             management (for SQL-based setups, you can use the Vadmin plugin
-            (mentioned below) as long as you use Vadmin version 3.0 or better).
+            (mentioned above) as long as you use Vadmin version 3.0 or better).
       <item>WARNING! inter7.com might require using other browsers than
             Microsoft Internet Explorer (typically <url
             url="http://mozilla.com/firefox/" name="Firefox">).
@@ -2702,18 +2714,6 @@ solutions (listed in no particular order):
             IMAP server. For Cyrus, you would also need the autocreate patch.
             Setup can be customized for different MTAs (like Exim and Postfix).
             Note that UoA-Signup is a bit old and might not be supported.
-    </itemize>
-  <item>The <url url="http://squirrelmail.org/plugin_view.php?id=3" name="Vadmin"> plugin.
-    <itemize>
-      <item>The excellent Vadmin plugin was created to meet the needs of system
-            administrators, and allows you to create new accounts and manage
-            accounts, or even provide a full control panel for you and
-            lower-priveleged administrators. It requires a specific configuration
-            or software to be running on the mail server
-            (<url url="http://untroubled.org/vmailmgr/" name="VMailMgr"> or a
-            SQL backend system are currently supported, but you may add your own
-            backend to interface with other types of setups). Please note that
-            this is a third-party plugin and not a part of SquirrelMail itself.
     </itemize>
   <item><url url="http://hmailserver.com/forum/viewtopic.php?t=904" name="hMailServer">
     <itemize>
