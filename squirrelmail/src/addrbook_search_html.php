@@ -102,18 +102,18 @@ function addr_display_result($res, $includesource = true) {
             "}\n" .
             "//-->\n" .
             "</script>\n";
-        $chk_all = '<a href="#" onClick="CheckAll(\'T\');">' . _("All") . '</a>&nbsp;<font color="'.$color[9].'">'._("To").'</font>'.
+        $chk_all = '<a href="#" onClick="CheckAll(\'T\');">' . _("All") . '</a>&nbsp;<font color="'.$color[6].'">'._("To").'</font>'.
             '&nbsp;&nbsp;'.
-            '<a href="#" onClick="CheckAll(\'C\');">' . _("All") . '</a>&nbsp;<font color="'.$color[9].'">'._("Cc").'</font>'.
+            '<a href="#" onClick="CheckAll(\'C\');">' . _("All") . '</a>&nbsp;<font color="'.$color[6].'">'._("Cc").'</font>'.
             '&nbsp;&nbsp;'.
-            '<a href="#" onClick="CheckAll(\'B\');">' . _("All") . '</a>';
+            '<a href="#" onClick="CheckAll(\'B\');">' . _("All") . '</a>&nbsp;<font color="'.$color[6].'">'._("Bcc").'</font>';
     } else {
         // check_all links are implemented only in JavaScript. disable links in js=off environment.
         $chk_all = '';
     }
     echo html_tag( 'table', '', 'center', '', 'border="0" width="98%"' ) .
     html_tag( 'tr', '', '', $color[9] ) .
-    html_tag( 'th', '&nbsp;' . $chk_all, 'left' ) .
+    html_tag( 'th', '&nbsp;' . $chk_all, 'left', '', ' style="white-space: nowrap;" ' ) .
     html_tag( 'th', '&nbsp;' . _("Name"), 'left' ) .
     html_tag( 'th', '&nbsp;' . _("E-mail"), 'left' ) .
     html_tag( 'th', '&nbsp;' . _("Info"), 'left' );
