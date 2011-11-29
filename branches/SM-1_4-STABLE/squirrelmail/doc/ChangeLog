@@ -11,9 +11,11 @@ Version 1.4.23 - SVN
   - Added SASL PLAIN mechanism for IMAP logins; backported from version
     1.5.2.
   - Prevent syslog warning in call_user_func_array() call when no
-    arguments given. Patch from Jean-Philippe Guerard (#3309935).
+    arguments given.  Patch from Jean-Philippe Guerard (#3309935).
   - Changed the read_body_menu_top hook from concat_hook_function to
     do_hook_function (plugin authors please note)
+  - Always ensure that the Reply-To header is a full email address in
+    outgoing messages (makes the Verify Reply-To plugin obsolete)
 
 Version 1.4.22 - 12 July 2011
 -----------------------------
@@ -35,7 +37,7 @@ Version 1.4.22 - 12 July 2011
   - Fixed sqauth_read_password() for plugins on the login_verified hook.
   - Added SMTP SASL PLAIN authentication option to configuration tool
     (core support for such is not new).
-  - Gmail doens't support standard search commands; removed sort buttons.
+  - Gmail doesn't support standard search commands; removed sort buttons.
   - Forced addition of a file suffix to attachments that lack a filename
     (helps forwarded messages avoid spam filters) (thanks to Petr
     Kletecka) (#3139004).

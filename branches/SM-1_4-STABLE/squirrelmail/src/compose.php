@@ -1580,6 +1580,7 @@ function deliverMessage(&$composeMessage, $draft=false) {
     }
     if ($reply_to) {
         $rfc822_header->reply_to = $rfc822_header->parseAddress($reply_to,true);
+        if (!$rfc822_header->reply_to[0]->host) $rfc822_header->reply_to[0]->host = $domain;
     }
     /* Receipt: On Read */
     if (isset($request_mdn) && $request_mdn) {
