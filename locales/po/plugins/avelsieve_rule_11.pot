@@ -1,0 +1,157 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-05-29 11:16+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid ""
+"RBLs are lists of Internet addresses, that have been verified to send SPAM "
+"messages."
+msgstr ""
+
+msgid "Place Messages that are marked in these black lists in the Junk Folder"
+msgstr ""
+
+msgid "Not considered as SPAM"
+msgstr ""
+
+msgid "Considered as SPAM"
+msgstr ""
+
+msgid "Temporary Failure during RBL Check"
+msgstr ""
+
+msgid "Check for Validity of Sender's Email Address"
+msgstr ""
+
+msgid "Sender Address Verification"
+msgstr ""
+
+msgid "Sender Address is valid"
+msgstr ""
+
+msgid "Sender Address does not exist"
+msgstr ""
+
+msgid "Unable to verify Sender Address (Permanent Error)"
+msgstr ""
+
+msgid "Unable to verify Sender Address (Temporary Error)"
+msgstr ""
+
+msgid "Perform Additional Verification Tests"
+msgstr ""
+
+msgid "Forged Header"
+msgstr ""
+
+msgid "Message Header is Valid"
+msgstr ""
+
+msgid "Message Header is Forged"
+msgstr ""
+
+msgid "Temporary Failure during Check of Message Header"
+msgstr ""
+
+msgid "File messages in Junk folder, if the sender address does not exist."
+msgstr ""
+
+msgid ""
+"Strict mode: Also file messages in Junk when the sender does not accept any "
+"answers."
+msgstr ""
+
+msgid ""
+"Spamhaus tracks the Internet's Spammers, Spam Gangs and Spam Services, "
+"provides dependable realtime anti-spam protection for Internet networks, and "
+"works with Law Enforcement to identify and pursue spammers worldwide."
+msgstr ""
+
+msgid ""
+"SpamCop is the premier service for reporting spam. SpamCop determines the "
+"origin of unwanted email and reports it to the relevant Internet service "
+"providers. By reporting spam, you have a positive impact on the problem. "
+"Reporting unsolicited email also helps feed spam filtering systems, "
+"including, but not limited to, SpamCop\\'s own service."
+msgstr ""
+
+msgid ""
+"The CBL takes its source data from very large spamtraps/mail "
+"infrastructures, and only lists IPs exhibiting characteristics which are "
+"specific to open proxies of various sorts (HTTP, socks, AnalogX, wingate "
+"etc) which have been abused to send spam, worms/viruses that do their own "
+"direct mail transmission, or some types of trojan-horse or \"stealth\" "
+"spamware, without doing open proxy tests of any kind. In other words, the "
+"CBL only lists IPs that have attempted to send email to one of our servers "
+"in such a way as to indicate that the sending IP is infected."
+msgstr ""
+
+msgid ""
+"SURBLs differ from most other RBLs in that they're used to detect spam based "
+"on message body URIs (usually web sites). Unlike most other RBLs, SURBLs are "
+"not meant to identify spam senders by their message headers or connection IP "
+"addresses. Instead they allow you to identify messages by the spam sites "
+"mentioned in their message bodies."
+msgstr ""
+
+msgid ""
+"URIBL lists domains that appear in spam, NOT where they were sent from. This "
+"test contains all of the lists of URIBL: black, grey and red."
+msgstr ""
+
+msgid ""
+"Sender Address Verification (SAV) is a mechanism whereby the mail system "
+"checks if it can reach the sender of a message via the address that appears "
+"in the message envelope. If the server of the organization that the sender "
+"address belongs to responds to the check by saying that the address does not "
+"exist then Sender Address Verification fails.<br/<br/>WARNING: some "
+"organisations transmit automatic messages with an inexistent sender address "
+"(so called &quot;noreply&quot; addresses). These message will trigger an "
+"address verification failure and will end up in your Junk folder."
+msgstr ""
+
+msgid ""
+"Strict mode: In the normal mode of behaviour only a non existent sender "
+"results in Sender Address Verification failure. In strict mode, Sender "
+"Address Verification <strong>also</strong> fails for those cases where the "
+"remote server cannot accept a message for other permanent reasons besides "
+"the sender not existing."
+msgstr ""
+
+msgid ""
+"An aggretate listing of various &quot;safe&quot; checks from SORBS, Spam and "
+"Open Relay Blocking System (SORBS)"
+msgstr ""
+
+msgid ""
+"The Spamhaus PBL is a DNSBL database of end-user IP address ranges which "
+"should not be delivering unauthenticated SMTP email to any Internet mail "
+"server except those provided for specifically by an ISP for that customer"
+"\\'s use. The PBL helps networks enforce their Acceptable Use Policy for "
+"dynamic and non-MTA customer IP ranges."
+msgstr ""
+
+msgid ""
+"The Spamhaus Exploits Block List (XBL) is a realtime database of IP "
+"addresses of illegal 3rd party exploits, including open proxies (HTTP, "
+"socks, AnalogX, wingate, etc), worms/viruses with built-in spam engines, and "
+"other types of trojan-horse exploits."
+msgstr ""
+
+msgid ""
+"This test checks if a message header is forged. For instance, the IP "
+"addresses are fake."
+msgstr ""
