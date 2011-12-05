@@ -1,13 +1,14 @@
-# LANGUAGE (xx_XX) empty_folders Translation (SquirrelMail plugin)
-# Copyright (c) 1999-2009 The SquirrelMail Project Team
+# LANGUAGE (xx_XX) SquirrelMail empty_folders Plugin Translation
+# Copyright (c) 1999-2011 The Squirrelmail Project Team
 # This file is distributed under the same license as the SquirrelMail package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # $Id$
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: empty_folders 1.2\n"
-"POT-Creation-Date: 2005-11-12 16:57+0200\n"
+"Project-Id-Version: empty_folders 2.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-07-16 20:22-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -15,34 +16,198 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: functions.php:57
+msgid "The trash folder has been emptied"
+msgstr ""
+
+msgid "The trash folder could not be emptied"
+msgstr ""
+
+msgid "Folder has been emptied"
+msgstr ""
+
+msgid "Folder could not be emptied"
+msgstr ""
+
+msgid "Empty"
+msgstr ""
+
 msgid "empty"
 msgstr ""
 
-#: functions.php:142
-msgid "Empty Link"
+msgid "Empty Trash"
 msgstr ""
 
-#: functions.php:181
+#, php-format
+msgid "Empty (%d) Messages"
+msgstr ""
+
+msgid "Purge"
+msgstr ""
+
+msgid "purge"
+msgstr ""
+
+msgid "Purge All"
+msgstr ""
+
+msgid "purge all"
+msgstr ""
+
+msgid "Purge Trash"
+msgstr ""
+
+#, php-format
+msgid "Purge All (%d)"
+msgstr ""
+
+#, php-format
+msgid "Purge (%d) Messages"
+msgstr ""
+
+#, php-format
+msgid "Purge All (%d) Messages"
+msgstr ""
+
+msgid "Delete All"
+msgstr ""
+
+msgid "delete all"
+msgstr ""
+
+#, php-format
+msgid "Delete All (%d)"
+msgstr ""
+
+#, php-format
+msgid "Delete (%d) Messages"
+msgstr ""
+
+#, php-format
+msgid "Delete All (%d) Messages"
+msgstr ""
+
+msgid "This will permanently remove ALL messages from this folder.\\n\\nAre you sure you want to continue?"
+msgstr ""
+
+#, php-format
+msgid "This will permanently remove ALL %d messages from this folder.\\n\\nAre you sure you want to continue?"
+msgstr ""
+
+msgid "This will delete ALL messages in this folder.\\n\\nAre you sure you want to continue?"
+msgstr ""
+
+#, php-format
+msgid "This will delete ALL %d messages in this folder.\\n\\nAre you sure you want to continue?"
+msgstr ""
+
+msgid "Purge ALL messages in this folder - are you sure?"
+msgstr ""
+
+#, php-format
+msgid "Purge ALL %d messages in this folder - are you sure?"
+msgstr ""
+
+msgid "Delete ALL messages in this folder - are you sure?"
+msgstr ""
+
+#, php-format
+msgid "Delete ALL %d messages in this folder - are you sure?"
+msgstr ""
+
+msgid "Permanently remove ALL messages from this folder"
+msgstr ""
+
+#, php-format
+msgid "Permanently remove ALL %d messages from this folder"
+msgstr ""
+
+msgid "Permanently remove all messages from this folder"
+msgstr ""
+
+#, php-format
+msgid "Permanently remove all %d messages from this folder"
+msgstr ""
+
+msgid "Purge ALL messages in this folder"
+msgstr ""
+
+#, php-format
+msgid "Purge ALL %d messages in this folder"
+msgstr ""
+
+msgid "Purge all messages in this folder"
+msgstr ""
+
+#, php-format
+msgid "Purge all %d messages in this folder"
+msgstr ""
+
+msgid "Delete ALL messages in this folder"
+msgstr ""
+
+#, php-format
+msgid "Delete ALL %d messages in this folder"
+msgstr ""
+
+msgid "Delete all messages in this folder"
+msgstr ""
+
+#, php-format
+msgid "Delete all %d messages in this folder"
+msgstr ""
+
+msgid "Move ALL messages from this folder to the trash"
+msgstr ""
+
+#, php-format
+msgid "Move ALL %d messages from this folder to the trash"
+msgstr ""
+
+msgid "Move all messages from this folder to the trash"
+msgstr ""
+
+#, php-format
+msgid "Move all %d messages from this folder to the trash"
+msgstr ""
+
+msgid "Links/Buttons That Empty Folders"
+msgstr ""
+
+msgid "Links That Empty Folders"
+msgstr ""
+
+msgid "Buttons That Empty Folders"
+msgstr ""
+
+msgid "Empty links next to the folder name move all messages in the folder to the trash."
+msgstr ""
+
+msgid "Confirm empty"
+msgstr ""
+
 msgid "Toggle Special Folders"
 msgstr ""
 
-#: functions.php:182
 msgid "Toggle All"
 msgstr ""
 
-#: functions.php:188
-msgid "Link behavior"
+msgid "Purge links next to the folder name remove all messages from the folder permanently."
 msgstr ""
 
-#: functions.php:192
-msgid "Move to Trash"
+msgid "Confirm purge"
 msgstr ""
 
-#: functions.php:196
-msgid "Expunge"
+msgid "Delete All buttons on message list page move all messages from the folder to the trash."
 msgstr ""
 
-#: functions.php:201
+msgid "Confirm deletion"
+msgstr ""
+
+msgid "Purge buttons on the message list page remove all messages from the folder permanently."
+msgstr ""
+
+msgid "Show \"Purge\" button in trash folder"
+msgstr ""
+
 msgid "Save"
 msgstr ""
