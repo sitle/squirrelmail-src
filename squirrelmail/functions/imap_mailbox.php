@@ -664,7 +664,7 @@ function sqimap_mailbox_list($imap_stream, $force=false) {
 
             /* Another workaround for literals */
 
-            if (isset($read[1]) && substr($read[1],-3) == "}\r\n") {
+            if (isset($read[1]) && substr($read[0],-3) == "}\r\n") {
                 if (preg_match('/^(\* [A-Z]+.*)\{[0-9]+\}([ \n\r\t]*)$/',
                      $read[0], $regs)) {
                     $read[0] = $regs[1] . '"' . addslashes(trim($read[1])) . '"' . $regs[2];
