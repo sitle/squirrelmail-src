@@ -650,31 +650,34 @@ function sqimap_mailbox_list($imap_stream, $force=false) {
            * Note: according RFC2060 an imap server may provide \NoSelect flags in the LSUB response.
            * in other words, we cannot rely on it.
          */
-        $sorted_list_ary = array();
-        for ($i=0; $i < count($sorted_lsub_ary); $i++) {
-            if (substr($sorted_lsub_ary[$i], -1) == $delimiter) {
-                $mbx = substr($sorted_lsub_ary[$i], 0, strlen($sorted_lsub_ary[$i])-1);
-            }
-            else {
-                $mbx = $sorted_lsub_ary[$i];
-            }
-
-            $read = sqimap_run_command ($imap_stream, "LIST \"\" \"$mbx\"",
+        if ($noselect_fix_enable) {
+            $list_args = "LIST \"$folder_prefix\" \"*%\"";
+        } else {
+            $list_args = "LIST \"$folder_prefix\" \"*\"";
+        }
+        /* LIST array */
+        $list_ary = sqimap_run_command ($imap_stream, $list_args,
                                         true, $response, $message);
-
-            /* Another workaround for literals */
-
-            if (isset($read[1]) && substr($read[0],-3) == "}\r\n") {
+        $sorted_list_ary = array();
+        for ($i = 0, $cnt = count($list_ary);$i < $cnt; $i++) {
+            /*
+             * Workaround for mailboxes returned as literal
+             * Doesn't work if the mailbox name is multiple lines
+             * (larger then fgets buffer)
+             */
+            if (isset($list_ary[$i + 1]) && substr($list_ary[$i],-3) == "}\r\n") {
                 if (preg_match('/^(\* [A-Z]+.*)\{[0-9]+\}([ \n\r\t]*)$/',
-                     $read[0], $regs)) {
-                    $read[0] = $regs[1] . '"' . addslashes(trim($read[1])) . '"' . $regs[2];
+                     $list_ary[$i], $regs)) {
+                        $i++;
+                        $list_ary[$i] = $regs[1] . '"' . addslashes(trim($list_ary[$i])) . '"' . $regs[2];
                 }
             }
+            $temp_mailbox_name = find_mailbox_name($list_ary[$i]);
 
-            if (isset($read[0])) {
-                $sorted_list_ary[$i] = $read[0];
-            } else {
-                $sorted_list_ary[$i] = '';
+            // is_numeric() because before PHP 4.2.0, bad return
+            // value is NULL; whereas in newer versions, it's FALSE
+            if (is_numeric($key = array_search($temp_mailbox_name, $sorted_lsub_ary))) {
+                $sorted_list_ary[$key] = $list_ary[$i];
             }
         }
 
