@@ -1,14 +1,14 @@
-# LANGUAGE (xx_XX) mark_read Translation (SquirrelMail plugin)
-# Copyright (c) 2004-2009 The SquirrelMail Project Team
+# LANGUAGE (xx_XX) SquirrelMail mark_read Plugin Translation
+# Copyright (c) 2004-2011 The Squirrelmail Project Team
 # This file is distributed under the same license as the SquirrelMail package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # $Id$
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: mark_read 1.4.2\n"
+"Project-Id-Version: mark_read 2.0.1\n"
 "Report-Msgid-Bugs-To: Paul Lesniewski <paul@squirrelmail.org>\n"
-"POT-Creation-Date: 2007-10-26 06:57+0200\n"
+"POT-Creation-Date: 2008-07-16 20:22-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -16,88 +16,174 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: functions.php:60 functions.php:162 functions.php:341
+msgid "All messages in folder have been marked as read"
+msgstr ""
+
+msgid "Messages could not be marked as read"
+msgstr ""
+
+msgid "All messages in folder have been marked as unread"
+msgstr ""
+
+msgid "Messages could not be marked as unread"
+msgstr ""
+
 msgid "read"
 msgstr ""
 
-#: functions.php:61 functions.php:164 functions.php:342
+msgid "Read"
+msgstr ""
+
+msgid "read all"
+msgstr ""
+
+msgid "Read All"
+msgstr ""
+
+msgid "read all messages"
+msgstr ""
+
+msgid "Read All Messages"
+msgstr ""
+
+#, php-format
+msgid "read all (%d)"
+msgstr ""
+
+#, php-format
+msgid "Read All (%d)"
+msgstr ""
+
+#, php-format
+msgid "read all (%d) messages"
+msgstr ""
+
+#, php-format
+msgid "Read All (%d) Messages"
+msgstr ""
+
 msgid "unread"
 msgstr ""
 
-#: functions.php:111
-msgid "mark all messages in this folder as read"
+msgid "Unread"
 msgstr ""
 
-#: functions.php:113
-msgid "mark all messages in this folder as unread"
+msgid "unread all"
 msgstr ""
 
-#: functions.php:162
-msgid "mark all messages in the above folders as read"
+msgid "Unread All"
 msgstr ""
 
-#: functions.php:164
-msgid "mark all messages in the above folders as unread"
+msgid "unread all messages"
 msgstr ""
 
-#: functions.php:165
-msgid "mark all folders"
+msgid "Unread All Messages"
 msgstr ""
 
-#: functions.php:294
-msgid "Mark Read Link"
+#, php-format
+msgid "unread all (%d)"
 msgstr ""
 
-#: functions.php:297
-msgid ""
-"Select all Folders, which you want to appear with a mark as read-/unread-"
-"link:"
+#, php-format
+msgid "Unread All (%d)"
 msgstr ""
 
-#: functions.php:336
+#, php-format
+msgid "unread all (%d) messages"
+msgstr ""
+
+#, php-format
+msgid "Unread All (%d) Messages"
+msgstr ""
+
+msgid "This will mark ALL messages in this folder as having been read.\\n\\nAre you sure you want to continue?"
+msgstr ""
+
+msgid "This will mark ALL messages in this folder as NOT having been read.\\n\\nAre you sure you want to continue?"
+msgstr ""
+
+#, php-format
+msgid "This will mark ALL %d messages in this folder as having been read.\\n\\nAre you sure you want to continue?"
+msgstr ""
+
+#, php-format
+msgid "This will mark ALL %d messages in this folder as NOT having been read.\\n\\nAre you sure you want to continue?"
+msgstr ""
+
+msgid "Mark ALL messages in this folder as read - are you sure?"
+msgstr ""
+
+msgid "Mark ALL messages in this folder as unread - are you sure?"
+msgstr ""
+
+#, php-format
+msgid "Mark ALL %d messages in this folder as read - are you sure?"
+msgstr ""
+
+#, php-format
+msgid "Mark ALL %d messages in this folder as unread - are you sure?"
+msgstr ""
+
+msgid "Mark all messages in this folder as read"
+msgstr ""
+
+msgid "Mark all messages in this folder as having been read"
+msgstr ""
+
+#, php-format
+msgid "Mark all %d messages in this folder as read"
+msgstr ""
+
+#, php-format
+msgid "Mark all %d messages in this folder as having been read"
+msgstr ""
+
+msgid "Mark all messages in this folder as unread"
+msgstr ""
+
+msgid "Mark all messages in this folder as having been unread"
+msgstr ""
+
+#, php-format
+msgid "Mark all %d messages in this folder as unread"
+msgstr ""
+
+#, php-format
+msgid "Mark all %d messages in this folder as having been unread"
+msgstr ""
+
+msgid "Mark-As-Read Links/Buttons"
+msgstr ""
+
+msgid "Mark-As-Read Links"
+msgstr ""
+
+msgid "Mark-As-Read Buttons"
+msgstr ""
+
+msgid "Read links next to the folder name mark all messages in the folders as having been read."
+msgstr ""
+
+msgid "Confirm read"
+msgstr ""
+
 msgid "Toggle Special Folders"
 msgstr ""
 
-#: functions.php:337
 msgid "Toggle All"
 msgstr ""
 
-#: functions.php:339
-msgid "Display links"
+msgid "Unread links next to the folder name mark all messages in the folders as having been unread."
 msgstr ""
 
-#: functions.php:340 functions.php:355 functions.php:364
-msgid "none"
+msgid "Confirm unread"
 msgstr ""
 
-#: functions.php:343
-msgid "read/unread"
+msgid "Read buttons on the message list page mark all messages in the folder as having been read."
 msgstr ""
 
-#: functions.php:347
-msgid "upper"
+msgid "Unread buttons on the message list page mark all messages in the folder as having been unread."
 msgstr ""
 
-#: functions.php:349
-msgid "lower"
-msgstr ""
-
-#: functions.php:352
-msgid "shortened"
-msgstr ""
-
-#: functions.php:354
-msgid "brackets"
-msgstr ""
-
-#: functions.php:363
-msgid "seperator"
-msgstr ""
-
-#: functions.php:380
-msgid "Display 'mark all folders' link below the folder list"
-msgstr ""
-
-#: functions.php:384
 msgid "Save"
 msgstr ""
