@@ -1,0 +1,316 @@
+# LANGUAGE (xx_XX) SquirrelMail Server Settings Plugin Translation 
+# Copyright (c) 2008-2011 The Squirrelmail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# $Id$
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: server_settings 1.0\n"
+"Report-Msgid-Bugs-To: Paul Lesniewski <paul@squirrelmail.org>\n"
+"POT-Creation-Date: 2009-05-15 04:36-0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: functions.php:100
+#, php-format
+msgid ""
+"Cannot find requested option widget (\"%s\") in Server Settings plugin "
+"update value function"
+msgstr ""
+
+#: functions.php:346
+#, php-format
+msgid "Cannot find requested option widget (\"%s\") in Server Settings plugin"
+msgstr ""
+
+#: functions.php:487
+msgid ""
+"Server Settings plugin is misconfigured; $server_settings_option_pages is "
+"not an array"
+msgstr ""
+
+#: init.php:99 options.php:108
+msgid "TITLE"
+msgstr ""
+
+#: init.php:101
+msgid "DESCRIPTION"
+msgstr ""
+
+#: init.php:132 init.php:145
+msgid "MENU_LINK"
+msgstr ""
+
+#: options.php:48
+#, php-format
+msgid ""
+"The Server Settings plugin is misconfigured (page index \"%s\" not found)"
+msgstr ""
+
+#: options.php:94
+msgid "The Server Settings plugin is misconfigured (cannot find page title)"
+msgstr ""
+
+#: options.php:162
+msgid ""
+"The Server Settings plugin is misconfigured (cannot find page title or "
+"widgets list is empty)"
+msgstr ""
+
+#: options.php:189
+msgid "section"
+msgstr ""
+
+#: options.php:294
+msgid "caption"
+msgstr ""
+
+#: options.php:296
+msgid "yes_text"
+msgstr ""
+
+#: options.php:298
+msgid "no_text"
+msgstr ""
+
+#: options.php:300
+msgid "trailing_text"
+msgstr ""
+
+#: options.php:302
+msgid "comment"
+msgstr ""
+
+#: options.php:312
+msgid "posvals"
+msgstr ""
+
+#: options.php:384
+#, php-format
+msgid ""
+"The Server Settings plugin is misconfigured (\"%s\" widget save function \"%s"
+"\" not found)"
+msgstr ""
+
+#: setup.php:67
+msgid "Spam Controls"
+msgstr ""
+
+#: setup.php:68
+msgid "Manage the settings that control anti-spam efforts on the server."
+msgstr ""
+
+#: setup.php:69
+msgid "Manage the settings that control how your email is protected from spam."
+msgstr ""
+
+#: setup.php:70
+msgid "Whitelist and Blacklist"
+msgstr ""
+
+#: setup.php:71
+msgid "Whitelist/Blacklist"
+msgstr ""
+
+#: setup.php:72
+msgid "Manage the senders whom you have either whitelisted or blacklisted."
+msgstr ""
+
+#: setup.php:73
+msgid "Whitelisted Senders"
+msgstr ""
+
+#: setup.php:74
+msgid "Blacklisted Senders"
+msgstr ""
+
+#: setup.php:75
+msgid "Whitelist"
+msgstr ""
+
+#: setup.php:76
+msgid "Manage your sender whitelist."
+msgstr ""
+
+#: setup.php:77
+msgid "Blacklist"
+msgstr ""
+
+#: setup.php:78
+msgid "Manage your sender blacklist."
+msgstr ""
+
+#: setup.php:79
+msgid "Spam Detection"
+msgstr ""
+
+#: setup.php:80
+msgid "Required Score"
+msgstr ""
+
+#: setup.php:81
+msgid ""
+"The required score is the level of confidence that a message is spam at "
+"which you want the message to actually be tagged as such."
+msgstr ""
+
+#: setup.php:82
+msgid "1 - Extremely Strict"
+msgstr ""
+
+#: setup.php:83
+msgid "3 - Strict"
+msgstr ""
+
+#: setup.php:84
+msgid "5 - Average"
+msgstr ""
+
+#: setup.php:85
+msgid "8 - Loose"
+msgstr ""
+
+#: setup.php:86
+msgid "10 - Extremely Loose"
+msgstr ""
+
+#: setup.php:87
+msgid "Real-time Blacklist Scoring"
+msgstr ""
+
+#: setup.php:88
+msgid ""
+"The real-time blacklist score is the number of \"spam points\" that a "
+"message is given when it contains any links that are found in real-time "
+"blacklist testing."
+msgstr ""
+
+#: setup.php:89
+msgid "Acceptable Languages"
+msgstr ""
+
+#: setup.php:90
+msgid ""
+"When a message is received in one of the selected languages, it is "
+"considered more likely not to be spam; messages in all other languages are "
+"usually spam"
+msgstr ""
+
+#: setup.php:91
+msgid "All languages are acceptable"
+msgstr ""
+
+#: setup.php:92
+msgid "Western languages, especially English"
+msgstr ""
+
+#: setup.php:93
+msgid "Japanese"
+msgstr ""
+
+#: setup.php:94
+msgid "Korean"
+msgstr ""
+
+#: setup.php:95
+msgid "Cyrillic languages"
+msgstr ""
+
+#: setup.php:96
+msgid "Thai"
+msgstr ""
+
+#: setup.php:97
+msgid "Chinese"
+msgstr ""
+
+#: setup.php:98
+msgid "Spam Report Subject"
+msgstr ""
+
+#: setup.php:99
+msgid ""
+"When a message is tagged as spam, how should its subject be changed?  You "
+"can set this as blank so the subject is not changed or set it to something "
+"such as \"[SPAM]\"."
+msgstr ""
+
+#: setup.php:100
+msgid "Spam Report Format"
+msgstr ""
+
+#: setup.php:101
+msgid ""
+"When a message is tagged as spam, should it be preserved as-is in an "
+"attachment to the spam report, attached as only a plain text email, or "
+"should it be left unaltered?"
+msgstr ""
+
+#: setup.php:102
+msgid "Leave unaltered"
+msgstr ""
+
+#: setup.php:103
+msgid "Attach to spam report"
+msgstr ""
+
+#: setup.php:104
+msgid "Attach as a text message"
+msgstr ""
+
+#: setup.php:105
+msgid "Mail Forwarding"
+msgstr ""
+
+#: setup.php:106
+msgid ""
+"Set up other email addresses to which your incoming messages will be "
+"forwarded."
+msgstr ""
+
+#: setup.php:107
+msgid "Forward Incoming Messages To These Addresses"
+msgstr ""
+
+#: setup.php:108
+msgid "(separate multiple addresses with commas)"
+msgstr ""
+
+#: setup.php:109
+msgid ""
+"(separate multiple addresses with commas;<br />enter your own address herein "
+"to keep copies of messages in this account)"
+msgstr ""
+
+#: setup.php:110
+msgid ""
+"(separate multiple addresses with commas; enter your own address herein to "
+"keep copies of messages in this account)"
+msgstr ""
+
+#: setup.php:111
+msgid "Autoresponder"
+msgstr ""
+
+#: setup.php:112
+msgid ""
+"Set up an auto-reply message for you incoming email.  This can be useful "
+"when you are away on vacation."
+msgstr ""
+
+#: setup.php:113
+msgid "Enable Auto-Reply To Sender"
+msgstr ""
+
+#: setup.php:114
+msgid "Subject"
+msgstr ""
+
+#: setup.php:115
+msgid "Message"
+msgstr ""
