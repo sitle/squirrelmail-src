@@ -1,0 +1,91 @@
+# LANGUAGE (xx_XX) SquirrelMail One-Time Password Plugin Translation
+# Copyright (c) 2008-2011 The Squirrelmail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# $Id$
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: otp 1.0\n"
+"Report-Msgid-Bugs-To: Paul Lesniewski <paul@squirrelmail.org>\n"
+"POT-Creation-Date: 2008-12-19 16:09-0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Manage One-Time Passwords"
+msgstr ""
+
+msgid "You can create passwords for one-time use when logging into your account via untrusted computers."
+msgstr ""
+
+#, php-format
+msgid "Username = %s Password = %s"
+msgstr ""
+
+msgid "ERROR: Password verification failed - please try again"
+msgstr ""
+
+msgid "When using a computer you don't trust (such as one in an Internet cafe), there is an increased risk that your username and/or password could be stolen. To help avoid this problem, you can create temporary usernames and passwords here that only work once each."
+msgstr ""
+
+msgid "You will need to use these username/password pairs in the order they are created and displayed here - you cannot use the last one before you use the first one, and each credential pair must be kept together - you cannot use a password with any other username except the one it is listed with."
+msgstr ""
+
+msgid "Each credential pair must be kept together - you cannot use a password with any other username except the one it is listed with."
+msgstr ""
+
+msgid "When using a computer you don't trust (such as one in an Internet cafe), there is an increased risk that your password could be stolen. To help avoid this problem, you can create temporary passwords here that only work once each."
+msgstr ""
+
+msgid "You will need to use the passwords in the order they are created and displayed here - you cannot use the last one before you use the first one."
+msgstr ""
+
+msgid "However, while you are logged in with temporary credentials, you cannot view other ones, nor can you create more.  Please log in with your real username and password if you need to do so."
+msgstr ""
+
+msgid "However, while you are logged in with a temporary password, you cannot view other temporary passowrds, nor can you create more.  Please log in with your real password if you need to do so."
+msgstr ""
+
+msgid "Please be careful about who can see your screen when you are viewing this page."
+msgstr ""
+
+msgid "Allow logins using temporary credentials"
+msgstr ""
+
+msgid "Allow logins using temporary passwords"
+msgstr ""
+
+msgid "Current credentials"
+msgstr ""
+
+msgid "Current passwords"
+msgstr ""
+
+msgid "Verify real password"
+msgstr ""
+
+msgid "Number of credential pairs to create"
+msgstr ""
+
+msgid "Number of passwords to create"
+msgstr ""
+
+msgid "The One-Time Password plugin's apache.conf is misconfigured: the cryptographic hash phrase has not been changed from its default value"
+msgstr ""
+
+msgid "Could not find cryptographic hash phrase."
+msgstr ""
+
+msgid "Could not find cryptographic algorithm."
+msgstr ""
+
+#, php-format
+msgid "The One-Time Password plugin is misconfigured: %s"
+msgstr ""
+
+msgid "An algorithm other than 'rc4_builtin' specified, but mcrypt support not found."
+msgstr ""
