@@ -1,0 +1,1915 @@
+# LANGUAGE (xx_XX) SquirrelMail Server Settings Backend Plugin Translation
+# Copyright (c) 2008-2011 The Squirrelmail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# $Id$
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: server_settings_backend 2.0\n"
+"Report-Msgid-Bugs-To: Paul Lesniewski <paul@squirrelmail.org>\n"
+"POT-Creation-Date: 2010-06-11 05:39-0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: file_functions.php:71
+#, php-format
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a directory listing "
+"from the server (malformed backend configuration)"
+msgstr ""
+
+#: file_functions.php:103
+#, php-format
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a directory listing "
+"from the server (\"%s\" lookup unknown)"
+msgstr ""
+
+#: file_functions.php:116
+#, php-format
+msgid ""
+"Cannot retrieve a directory listing from a non-file-based backend type (\"%s"
+"\")"
+msgstr ""
+
+#: file_functions.php:140
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a directory listing "
+"from the server (SSL-FTP connection not possible when no SSL support is "
+"built into PHP)"
+msgstr ""
+
+#: file_functions.php:147
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a directory listing "
+"from the server (FTP host is misconfigured)"
+msgstr ""
+
+#: file_functions.php:170
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a directory listing "
+"from the server (no FTP support is built into PHP)"
+msgstr ""
+
+#: file_functions.php:177
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a directory listing "
+"from the server (missing FTP host)"
+msgstr ""
+
+#: file_functions.php:208
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a directory listing "
+"from the server (file access method is misconfigured)"
+msgstr ""
+
+#: file_functions.php:212
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a directory listing "
+"from the server (SUID_LOCATION is misconfigured)"
+msgstr ""
+
+#: file_functions.php:234
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a directory listing "
+"from the server (master password is misconfigured)"
+msgstr ""
+
+#: file_functions.php:238
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a directory listing "
+"from the server (master username is misconfigured)"
+msgstr ""
+
+#: file_functions.php:265
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a directory listing "
+"from the server (missing access type)"
+msgstr ""
+
+#: file_functions.php:291
+msgid ""
+"Unknown error in Server Settings Backend plugin, function "
+"retrieve_directory_listing()"
+msgstr ""
+
+#: file_functions.php:367
+#, php-format
+msgid ""
+"Misconfiguration encountered when attempting to determine the existence of a "
+"path on the server (malformed backend configuration)"
+msgstr ""
+
+#: file_functions.php:399
+#, php-format
+msgid ""
+"Misconfiguration encountered when attempting to determine the existence of a "
+"path on the server (\"%s\" lookup unknown)"
+msgstr ""
+
+#: file_functions.php:412
+#, php-format
+msgid ""
+"Cannot determine the existence of a path on a non-file-based backend type "
+"(\"%s\")"
+msgstr ""
+
+#: file_functions.php:436
+msgid ""
+"Misconfiguration encountered when attempting to determine the existence of a "
+"path on the server (SSL-FTP connection not possible when no SSL support is "
+"built into PHP)"
+msgstr ""
+
+#: file_functions.php:443
+msgid ""
+"Misconfiguration encountered when attempting to determine the existence of a "
+"path on the server (FTP host is misconfigured)"
+msgstr ""
+
+#: file_functions.php:466
+msgid ""
+"Misconfiguration encountered when attempting to determine the existence of a "
+"path on the server (no FTP support is built into PHP)"
+msgstr ""
+
+#: file_functions.php:473
+msgid ""
+"Misconfiguration encountered when attempting to determine the existence of a "
+"path on the server (missing FTP host)"
+msgstr ""
+
+#: file_functions.php:504
+msgid ""
+"Misconfiguration encountered when attempting to determine the existence of a "
+"path on the server (file access method is misconfigured)"
+msgstr ""
+
+#: file_functions.php:508
+msgid ""
+"Misconfiguration encountered when attempting to determine the existence of a "
+"path on the server (SUID_LOCATION is misconfigured)"
+msgstr ""
+
+#: file_functions.php:530
+msgid ""
+"Misconfiguration encountered when attempting to determine the existence of a "
+"path on the server (master password is misconfigured)"
+msgstr ""
+
+#: file_functions.php:534
+msgid ""
+"Misconfiguration encountered when attempting to determine the existence of a "
+"path on the server (master username is misconfigured)"
+msgstr ""
+
+#: file_functions.php:561
+msgid ""
+"Misconfiguration encountered when attempting to determine the existence of a "
+"path on the server (missing access type)"
+msgstr ""
+
+#: file_functions.php:587
+msgid "Unknown error in Server Settings Backend plugin, function path_exists()"
+msgstr ""
+
+#: file_functions.php:654
+#, php-format
+msgid ""
+"Misconfiguration encountered when attempting to create a directory on the "
+"server (malformed backend configuration)"
+msgstr ""
+
+#: file_functions.php:686
+#, php-format
+msgid ""
+"Misconfiguration encountered when attempting to create a directory on the "
+"server (\"%s\" lookup unknown)"
+msgstr ""
+
+#: file_functions.php:699
+#, php-format
+msgid "Cannot create a directory on a non-file-based backend type (\"%s\")"
+msgstr ""
+
+#: file_functions.php:723
+msgid ""
+"Misconfiguration encountered when attempting to create a directory on the "
+"server (SSL-FTP connection not possible when no SSL support is built into "
+"PHP)"
+msgstr ""
+
+#: file_functions.php:730
+msgid ""
+"Misconfiguration encountered when attempting to create a directory on the "
+"server (FTP host is misconfigured)"
+msgstr ""
+
+#: file_functions.php:753
+msgid ""
+"Misconfiguration encountered when attempting to create a directory on the "
+"server (no FTP support is built into PHP)"
+msgstr ""
+
+#: file_functions.php:760
+msgid ""
+"Misconfiguration encountered when attempting to create a directory on the "
+"server (missing FTP host)"
+msgstr ""
+
+#: file_functions.php:791
+msgid ""
+"Misconfiguration encountered when attempting to create a directory on the "
+"server (file access method is misconfigured)"
+msgstr ""
+
+#: file_functions.php:795
+msgid ""
+"Misconfiguration encountered when attempting to create a directory on the "
+"server (SUID_LOCATION is misconfigured)"
+msgstr ""
+
+#: file_functions.php:817
+msgid ""
+"Misconfiguration encountered when attempting to create a directory on the "
+"server (master password is misconfigured)"
+msgstr ""
+
+#: file_functions.php:821
+msgid ""
+"Misconfiguration encountered when attempting to create a directory on the "
+"server (master username is misconfigured)"
+msgstr ""
+
+#: file_functions.php:848
+msgid ""
+"Misconfiguration encountered when attempting to create a directory on the "
+"server (missing access type)"
+msgstr ""
+
+#: file_functions.php:874
+msgid ""
+"Unknown error in Server Settings Backend plugin, function create_directory()"
+msgstr ""
+
+#: file_functions.php:942
+#, php-format
+msgid ""
+"Misconfiguration encountered when attempting to change the permissions of a "
+"file or directory on the server (malformed backend configuration)"
+msgstr ""
+
+#: file_functions.php:974
+#, php-format
+msgid ""
+"Misconfiguration encountered when attempting to change the permissions of a "
+"file or directory on the server (\"%s\" lookup unknown)"
+msgstr ""
+
+#: file_functions.php:987
+#, php-format
+msgid ""
+"Cannot change the permissions of a file or directory on a non-file-based "
+"backend type (\"%s\")"
+msgstr ""
+
+#: file_functions.php:1011
+msgid ""
+"Misconfiguration encountered when attempting to change the permissions of a "
+"file or directory on the server (SSL-FTP connection not possible when no SSL "
+"support is built into PHP)"
+msgstr ""
+
+#: file_functions.php:1018
+msgid ""
+"Misconfiguration encountered when attempting to change the permissions of a "
+"file or directory on the server (FTP host is misconfigured)"
+msgstr ""
+
+#: file_functions.php:1041
+msgid ""
+"Misconfiguration encountered when attempting to change the permissions of a "
+"file or directory on the server (no FTP support is built into PHP)"
+msgstr ""
+
+#: file_functions.php:1048
+msgid ""
+"Misconfiguration encountered when attempting to change the permissions of a "
+"file or directory on the server (missing FTP host)"
+msgstr ""
+
+#: file_functions.php:1078
+msgid ""
+"Misconfiguration encountered when attempting to change the permissions of a "
+"file or directory on the server (file access method is misconfigured)"
+msgstr ""
+
+#: file_functions.php:1082
+msgid ""
+"Misconfiguration encountered when attempting to change the permissions of a "
+"file or directory on the server (SUID_LOCATION is misconfigured)"
+msgstr ""
+
+#: file_functions.php:1104
+msgid ""
+"Misconfiguration encountered when attempting to change the permissions of a "
+"file or directory on the server (master password is misconfigured)"
+msgstr ""
+
+#: file_functions.php:1108
+msgid ""
+"Misconfiguration encountered when attempting to change the permissions of a "
+"file or directory on the server (master username is misconfigured)"
+msgstr ""
+
+#: file_functions.php:1135
+msgid ""
+"Misconfiguration encountered when attempting to change the permissions of a "
+"file or directory on the server (missing access type)"
+msgstr ""
+
+#: file_functions.php:1161
+msgid ""
+"Unknown error in Server Settings Backend plugin, function change_permissions"
+"()"
+msgstr ""
+
+#: file_functions.php:1233
+#, php-format
+msgid ""
+"Misconfiguration encountered when attempting to delete a file or directory "
+"from the server (malformed backend configuration)"
+msgstr ""
+
+#: file_functions.php:1265
+#, php-format
+msgid ""
+"Misconfiguration encountered when attempting to delete a file or directory "
+"from the server (\"%s\" lookup unknown)"
+msgstr ""
+
+#: file_functions.php:1278
+#, php-format
+msgid ""
+"Cannot delete a file or directory from a non-file-based backend type (\"%s\")"
+msgstr ""
+
+#: file_functions.php:1302
+msgid ""
+"Misconfiguration encountered when attempting to delete a file or directory "
+"from the server (SSL-FTP connection not possible when no SSL support is "
+"built into PHP)"
+msgstr ""
+
+#: file_functions.php:1309
+msgid ""
+"Misconfiguration encountered when attempting to delete a file or directory "
+"from the server (FTP host is misconfigured)"
+msgstr ""
+
+#: file_functions.php:1332
+msgid ""
+"Misconfiguration encountered when attempting to delete a file or directory "
+"from the server (no FTP support is built into PHP)"
+msgstr ""
+
+#: file_functions.php:1339
+msgid ""
+"Misconfiguration encountered when attempting to delete a file or directory "
+"from the server (missing FTP host)"
+msgstr ""
+
+#: file_functions.php:1370
+msgid ""
+"Misconfiguration encountered when attempting to delete a file or directory "
+"from the server (file access method is misconfigured)"
+msgstr ""
+
+#: file_functions.php:1374
+msgid ""
+"Misconfiguration encountered when attempting to delete a file or directory "
+"from the server (SUID_LOCATION is misconfigured)"
+msgstr ""
+
+#: file_functions.php:1396
+msgid ""
+"Misconfiguration encountered when attempting to delete a file or directory "
+"from the server (master password is misconfigured)"
+msgstr ""
+
+#: file_functions.php:1400
+msgid ""
+"Misconfiguration encountered when attempting to delete a file or directory "
+"from the server (master username is misconfigured)"
+msgstr ""
+
+#: file_functions.php:1427
+msgid ""
+"Misconfiguration encountered when attempting to delete a file or directory "
+"from the server (missing access type)"
+msgstr ""
+
+#: file_functions.php:1452
+msgid ""
+"Unknown error in Server Settings Backend plugin, function "
+"delete_file_or_directory()"
+msgstr ""
+
+#: file_functions.php:1525
+#, php-format
+msgid ""
+"Misconfiguration encountered when attempting to create a file on the server "
+"(malformed backend configuration)"
+msgstr ""
+
+#: file_functions.php:1558
+#, php-format
+msgid ""
+"Misconfiguration encountered when attempting to create a file on the server "
+"(\"%s\" lookup unknown)"
+msgstr ""
+
+#: file_functions.php:1571
+#, php-format
+msgid "Cannot create a file on a non-file-based backend type (\"%s\")"
+msgstr ""
+
+#: file_functions.php:1598
+msgid ""
+"Misconfiguration encountered when attempting to create a file on the server "
+"(SSL-FTP connection not possible when no SSL support is built into PHP)"
+msgstr ""
+
+#: file_functions.php:1605
+msgid ""
+"Misconfiguration encountered when attempting to create a file on the server "
+"(FTP host is misconfigured)"
+msgstr ""
+
+#: file_functions.php:1628
+msgid ""
+"Misconfiguration encountered when attempting to create a file on the server "
+"(no FTP support is built into PHP)"
+msgstr ""
+
+#: file_functions.php:1636
+msgid ""
+"Misconfiguration encountered when attempting to create a file on the server "
+"(missing FTP host or mode is unknown)"
+msgstr ""
+
+#: file_functions.php:1672
+msgid ""
+"Misconfiguration encountered when attempting to create a file on the server "
+"(file access method is misconfigured)"
+msgstr ""
+
+#: file_functions.php:1676
+msgid ""
+"Misconfiguration encountered when attempting to create a file on the server "
+"(SUID_LOCATION is misconfigured)"
+msgstr ""
+
+#: file_functions.php:1698
+msgid ""
+"Misconfiguration encountered when attempting to create a file on the server "
+"(master password is misconfigured)"
+msgstr ""
+
+#: file_functions.php:1702
+msgid ""
+"Misconfiguration encountered when attempting to create a file on the server "
+"(master username is misconfigured)"
+msgstr ""
+
+#: file_functions.php:1729
+msgid ""
+"Misconfiguration encountered when attempting to create a file on the server "
+"(missing access type)"
+msgstr ""
+
+#: file_functions.php:1760
+msgid "Unknown error in Server Settings Backend plugin, function create_file()"
+msgstr ""
+
+#: file_functions.php:1820
+#, php-format
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a file from the "
+"server (malformed backend configuration)"
+msgstr ""
+
+#: file_functions.php:1852
+#, php-format
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a file from the "
+"server (\"%s\" lookup unknown)"
+msgstr ""
+
+#: file_functions.php:1865
+#, php-format
+msgid "Cannot retrieve a file from a non-file-based backend type (\"%s\")"
+msgstr ""
+
+#: file_functions.php:1892
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a file from the "
+"server (SSL-FTP connection not possible when no SSL support is built into "
+"PHP)"
+msgstr ""
+
+#: file_functions.php:1899
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a file from the "
+"server (FTP host is misconfigured)"
+msgstr ""
+
+#: file_functions.php:1922
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a file from the "
+"server (no FTP support is built into PHP)"
+msgstr ""
+
+#: file_functions.php:1930
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a file from the "
+"server (missing FTP host or mode is unknown)"
+msgstr ""
+
+#: file_functions.php:1970
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a file from the "
+"server (file access method is misconfigured)"
+msgstr ""
+
+#: file_functions.php:1974
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a file from the "
+"server (SUID_LOCATION is misconfigured)"
+msgstr ""
+
+#: file_functions.php:1996
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a file from the "
+"server (master password is misconfigured)"
+msgstr ""
+
+#: file_functions.php:2000
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a file from the "
+"server (master username is misconfigured)"
+msgstr ""
+
+#: file_functions.php:2027
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a file from the "
+"server (missing access type)"
+msgstr ""
+
+#: file_functions.php:2061
+msgid "Unknown error in Server Settings Backend plugin, function get_file()"
+msgstr ""
+
+#: file_functions.php:2135
+#, php-format
+msgid ""
+"Misconfiguration encountered when attempting to move or rename a file or "
+"directory on the server (malformed backend configuration)"
+msgstr ""
+
+#: file_functions.php:2169
+#, php-format
+msgid ""
+"Misconfiguration encountered when attempting to move or rename a file or "
+"directory on the server (\"%s\" lookup unknown)"
+msgstr ""
+
+#: file_functions.php:2182
+#, php-format
+msgid ""
+"Cannot move or rename a file or directory on a non-file-based backend type "
+"(\"%s\")"
+msgstr ""
+
+#: file_functions.php:2206
+msgid ""
+"Misconfiguration encountered when attempting to move or rename a file or "
+"directory on the server (SSL-FTP connection not possible when no SSL support "
+"is built into PHP)"
+msgstr ""
+
+#: file_functions.php:2213
+msgid ""
+"Misconfiguration encountered when attempting to move or rename a file or "
+"directory on the server (FTP host is misconfigured)"
+msgstr ""
+
+#: file_functions.php:2236
+msgid ""
+"Misconfiguration encountered when attempting to move or rename a file or "
+"directory on the server (no FTP support is built into PHP)"
+msgstr ""
+
+#: file_functions.php:2243
+msgid ""
+"Misconfiguration encountered when attempting to move or rename a file or "
+"directory on the server (missing FTP host)"
+msgstr ""
+
+#: file_functions.php:2274
+msgid ""
+"Misconfiguration encountered when attempting to move or rename a file or "
+"directory on the server (file access method is misconfigured)"
+msgstr ""
+
+#: file_functions.php:2278
+msgid ""
+"Misconfiguration encountered when attempting to move or rename a file or "
+"directory on the server (SUID_LOCATION is misconfigured)"
+msgstr ""
+
+#: file_functions.php:2300
+msgid ""
+"Misconfiguration encountered when attempting to move or rename a file or "
+"directory on the server (master password is misconfigured)"
+msgstr ""
+
+#: file_functions.php:2304
+msgid ""
+"Misconfiguration encountered when attempting to move or rename a file or "
+"directory on the server (master username is misconfigured)"
+msgstr ""
+
+#: file_functions.php:2331
+msgid ""
+"Misconfiguration encountered when attempting to move or rename a file or "
+"directory on the server (missing access type)"
+msgstr ""
+
+#: file_functions.php:2358
+msgid ""
+"Unknown error in Server Settings Backend plugin, function "
+"move_file_or_directory()"
+msgstr ""
+
+#: file_functions.php:2453
+#, php-format
+msgid ""
+"Misconfiguration encountered when attempting to copy a file or directory on "
+"the server (malformed backend configuration)"
+msgstr ""
+
+#: file_functions.php:2487
+#, php-format
+msgid ""
+"Misconfiguration encountered when attempting to copy a file or directory on "
+"the server (\"%s\" lookup unknown)"
+msgstr ""
+
+#: file_functions.php:2500
+#, php-format
+msgid ""
+"Cannot copy a file or directory on a non-file-based backend type (\"%s\")"
+msgstr ""
+
+#: file_functions.php:2527
+msgid ""
+"Misconfiguration encountered when attempting to copy a file or directory on "
+"the server (SSL-FTP connection not possible when no SSL support is built "
+"into PHP)"
+msgstr ""
+
+#: file_functions.php:2534
+msgid ""
+"Misconfiguration encountered when attempting to copy a file or directory on "
+"the server (FTP host is misconfigured)"
+msgstr ""
+
+#: file_functions.php:2557
+msgid ""
+"Misconfiguration encountered when attempting to copy a file or directory on "
+"the server (no FTP support is built into PHP)"
+msgstr ""
+
+#: file_functions.php:2565
+msgid ""
+"Misconfiguration encountered when attempting to copy a file or directory on "
+"the server (missing FTP host or mode is unknown)"
+msgstr ""
+
+#: file_functions.php:2594 file_functions.php:2989
+#: local_file_functions.php:260 local_file_functions.php:2626
+#, php-format
+msgid "File or directory \"%s\" already exists; cannot overwrite"
+msgstr ""
+
+#: file_functions.php:2596 file_functions.php:2991 ftp_functions.php:296
+#: ftp_functions.php:1744 local_file_functions.php:262
+#: local_file_functions.php:2628
+msgid "File or directory already exists; cannot overwrite"
+msgstr ""
+
+#: file_functions.php:2644 file_functions.php:3042
+#, php-format
+msgid "\"%s\" is not a file or a directory; cannot copy"
+msgstr ""
+
+#: file_functions.php:2646 file_functions.php:3044
+msgid "Cannot copy entities other than files or directories"
+msgstr ""
+
+#: file_functions.php:2675 file_functions.php:2822 file_functions.php:3073
+#: file_functions.php:3231 file_functions.php:3672 file_functions.php:3793
+#: file_functions.php:4086 file_functions.php:4223 file_functions.php:4647
+#: file_functions.php:4740 file_functions.php:4911 file_functions.php:5007
+#, php-format
+msgid "Error attempting to read \"%s\""
+msgstr ""
+
+#: file_functions.php:2677 file_functions.php:2824 file_functions.php:3075
+#: file_functions.php:3233 file_functions.php:3674 file_functions.php:3795
+#: file_functions.php:4088 file_functions.php:4225 file_functions.php:4649
+#: file_functions.php:4742 file_functions.php:4913 file_functions.php:5009
+msgid "Error attempting to read file"
+msgstr ""
+
+#: file_functions.php:2724 file_functions.php:3125 file_functions.php:3862
+#: file_functions.php:4305 file_functions.php:4768 file_functions.php:5035
+#, php-format
+msgid "Error attempting to obtain directory listing: \"%s\""
+msgstr ""
+
+#: file_functions.php:2726 file_functions.php:3127 file_functions.php:3864
+#: file_functions.php:4307 file_functions.php:4770 file_functions.php:5037
+msgid "Error attempting to obtain directory listing"
+msgstr ""
+
+#: file_functions.php:2745 file_functions.php:3149
+#, php-format
+msgid "Could not create target directory \"%s\""
+msgstr ""
+
+#: file_functions.php:2747 file_functions.php:3151
+msgid "Could not create target directory"
+msgstr ""
+
+#: file_functions.php:2792 file_functions.php:3198
+#, php-format
+msgid "Error occurred copying subdirectory \"%s\""
+msgstr ""
+
+#: file_functions.php:2794 file_functions.php:3200
+msgid "Error occurred copying subdirectory"
+msgstr ""
+
+#: file_functions.php:2862 file_functions.php:3276
+#, php-format
+msgid "Error attempting to write \"%s\""
+msgstr ""
+
+#: file_functions.php:2864 file_functions.php:3278
+msgid "Error attempting to write file"
+msgstr ""
+
+#: file_functions.php:2897
+msgid ""
+"Misconfiguration encountered when attempting to copy a file or directory on "
+"the server (file access method is misconfigured)"
+msgstr ""
+
+#: file_functions.php:2901
+msgid ""
+"Misconfiguration encountered when attempting to copy a file or directory on "
+"the server (SUID_LOCATION is misconfigured)"
+msgstr ""
+
+#: file_functions.php:2923
+msgid ""
+"Misconfiguration encountered when attempting to copy a file or directory on "
+"the server (master password is misconfigured)"
+msgstr ""
+
+#: file_functions.php:2927
+msgid ""
+"Misconfiguration encountered when attempting to copy a file or directory on "
+"the server (master username is misconfigured)"
+msgstr ""
+
+#: file_functions.php:2954
+msgid ""
+"Misconfiguration encountered when attempting to copy a file or directory on "
+"the server (missing access type)"
+msgstr ""
+
+#: file_functions.php:3304
+msgid ""
+"Unknown error in Server Settings Backend plugin, function "
+"copy_file_or_directory()"
+msgstr ""
+
+#: file_functions.php:3442
+msgid ""
+"Misconfiguration encountered when attempting to archive a file or directory "
+"on the server (no ZLIB support is built into PHP)"
+msgstr ""
+
+#: file_functions.php:3447
+msgid "Unknown archive type"
+msgstr ""
+
+#: file_functions.php:3455
+#, php-format
+msgid ""
+"Misconfiguration encountered when attempting to archive a file or directory "
+"on the server (malformed backend configuration)"
+msgstr ""
+
+#: file_functions.php:3488
+#, php-format
+msgid ""
+"Misconfiguration encountered when attempting to archive a file or directory "
+"on the server (\"%s\" lookup unknown)"
+msgstr ""
+
+#: file_functions.php:3540
+#, php-format
+msgid ""
+"Cannot archive a file or directory on a non-file-based backend type (\"%s\")"
+msgstr ""
+
+#: file_functions.php:3567
+msgid ""
+"Misconfiguration encountered when attempting to archive a file or directory "
+"on the server (SSL-FTP connection not possible when no SSL support is built "
+"into PHP)"
+msgstr ""
+
+#: file_functions.php:3574
+msgid ""
+"Misconfiguration encountered when attempting to archive a file or directory "
+"on the server (FTP host is misconfigured)"
+msgstr ""
+
+#: file_functions.php:3597
+msgid ""
+"Misconfiguration encountered when attempting to archive a file or directory "
+"on the server (no FTP support is built into PHP)"
+msgstr ""
+
+#: file_functions.php:3605
+msgid ""
+"Misconfiguration encountered when attempting to archive a file or directory "
+"on the server (missing FTP host or mode is unknown)"
+msgstr ""
+
+#: file_functions.php:3641 file_functions.php:4055
+#, php-format
+msgid "\"%s\" is not a file or a directory; cannot archive"
+msgstr ""
+
+#: file_functions.php:3643 file_functions.php:4057
+msgid "Cannot archive entities other than files or directories"
+msgstr ""
+
+#: file_functions.php:3763 file_functions.php:4190
+#, php-format
+msgid "Error occurred archiving subdirectory \"%s\""
+msgstr ""
+
+#: file_functions.php:3765 file_functions.php:4192
+msgid "Error occurred archiving subdirectory"
+msgstr ""
+
+#: file_functions.php:3901 file_functions.php:4344
+msgid "Error obtaining temporary archive file"
+msgstr ""
+
+#: file_functions.php:3913 file_functions.php:3929 file_functions.php:4356
+#: file_functions.php:4372
+msgid "Error writing to archive file"
+msgstr ""
+
+#: file_functions.php:3960
+msgid ""
+"Misconfiguration encountered when attempting to archive a file or directory "
+"on the server (file access method is misconfigured)"
+msgstr ""
+
+#: file_functions.php:3964
+msgid ""
+"Misconfiguration encountered when attempting to archive a file or directory "
+"on the server (SUID_LOCATION is misconfigured)"
+msgstr ""
+
+#: file_functions.php:3986
+msgid ""
+"Misconfiguration encountered when attempting to archive a file or directory "
+"on the server (master password is misconfigured)"
+msgstr ""
+
+#: file_functions.php:3990
+msgid ""
+"Misconfiguration encountered when attempting to archive a file or directory "
+"on the server (master username is misconfigured)"
+msgstr ""
+
+#: file_functions.php:4017
+msgid ""
+"Misconfiguration encountered when attempting to archive a file or directory "
+"on the server (missing access type)"
+msgstr ""
+
+#: file_functions.php:4396
+msgid ""
+"Unknown error in Server Settings Backend plugin, function create_archive()"
+msgstr ""
+
+#: file_functions.php:4483
+#, php-format
+msgid ""
+"Misconfiguration encountered when attempting to calculate the size of a file "
+"or directory on the server (malformed backend configuration)"
+msgstr ""
+
+#: file_functions.php:4516
+#, php-format
+msgid ""
+"Misconfiguration encountered when attempting to calculate the size of a file "
+"or directory on the server (\"%s\" lookup unknown)"
+msgstr ""
+
+#: file_functions.php:4529
+#, php-format
+msgid ""
+"Cannot calculate the size of a file or directory on a non-file-based backend "
+"type (\"%s\")"
+msgstr ""
+
+#: file_functions.php:4556
+msgid ""
+"Misconfiguration encountered when attempting to calculate the size of a file "
+"or directory on the server (SSL-FTP connection not possible when no SSL "
+"support is built into PHP)"
+msgstr ""
+
+#: file_functions.php:4563
+msgid ""
+"Misconfiguration encountered when attempting to calculate the size of a file "
+"or directory on the server (FTP host is misconfigured)"
+msgstr ""
+
+#: file_functions.php:4586
+msgid ""
+"Misconfiguration encountered when attempting to calculate the size of a file "
+"or directory on the server (no FTP support is built into PHP)"
+msgstr ""
+
+#: file_functions.php:4594
+msgid ""
+"Misconfiguration encountered when attempting to calculate the size of a file "
+"or directory on the server (missing FTP host or mode is unknown)"
+msgstr ""
+
+#: file_functions.php:4703 file_functions.php:4968
+#, php-format
+msgid "Error occurred calculating size of subdirectory \"%s\""
+msgstr ""
+
+#: file_functions.php:4705 file_functions.php:4970
+msgid "Error occurred calculating size of subdirectory"
+msgstr ""
+
+#: file_functions.php:4799
+msgid ""
+"Misconfiguration encountered when attempting to calculate the size of a file "
+"or directory on the server (file access method is misconfigured)"
+msgstr ""
+
+#: file_functions.php:4803
+msgid ""
+"Misconfiguration encountered when attempting to calculate the size of a file "
+"or directory on the server (SUID_LOCATION is misconfigured)"
+msgstr ""
+
+#: file_functions.php:4825
+msgid ""
+"Misconfiguration encountered when attempting to calculate the size of a file "
+"or directory on the server (master password is misconfigured)"
+msgstr ""
+
+#: file_functions.php:4829
+msgid ""
+"Misconfiguration encountered when attempting to calculate the size of a file "
+"or directory on the server (master username is misconfigured)"
+msgstr ""
+
+#: file_functions.php:4856
+msgid ""
+"Misconfiguration encountered when attempting to calculate the size of a file "
+"or directory on the server (missing access type)"
+msgstr ""
+
+#: file_functions.php:5059
+msgid ""
+"Unknown error in Server Settings Backend plugin, function calculate_size()"
+msgstr ""
+
+#: ftp_backend.php:114
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a setting from the "
+"server (SSL-FTP connection not possible when no SSL support is built into "
+"PHP)"
+msgstr ""
+
+#: ftp_backend.php:124
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a setting from the "
+"server (FTP host is misconfigured)"
+msgstr ""
+
+#: ftp_backend.php:130
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a setting from the "
+"server (FTP remote file name is misconfigured)"
+msgstr ""
+
+#: ftp_backend.php:136 local_file_backend.php:111
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a setting from the "
+"server (parsing pattern is misconfigured)"
+msgstr ""
+
+#: ftp_backend.php:159
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a setting from the "
+"server (no FTP support is built into PHP)"
+msgstr ""
+
+#: ftp_backend.php:169
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a setting from the "
+"server (missing FTP host, file name, parsing pattern or mode is unknown)"
+msgstr ""
+
+#: ftp_backend.php:226 functions.php:230 local_file_backend.php:231
+#: sql_backend.php:178
+msgid ""
+"Unknown error in Server Settings Backend plugin, function "
+"retrieve_server_setting()"
+msgstr ""
+
+#: ftp_backend.php:370
+msgid ""
+"Misconfiguration encountered when attempting to store a setting on the "
+"server (SSL-FTP connection not possible when no SSL support is built into "
+"PHP)"
+msgstr ""
+
+#: ftp_backend.php:377
+msgid ""
+"Misconfiguration encountered when attempting to store a setting on the "
+"server (FTP host is misconfigured)"
+msgstr ""
+
+#: ftp_backend.php:383
+msgid ""
+"Misconfiguration encountered when attempting to store a setting on the "
+"server (FTP remote file name is misconfigured)"
+msgstr ""
+
+#: ftp_backend.php:389 local_file_backend.php:370
+msgid ""
+"Misconfiguration encountered when attempting to store a setting on the "
+"server (parsing pattern is misconfigured)"
+msgstr ""
+
+#: ftp_backend.php:395 local_file_backend.php:374
+msgid ""
+"Misconfiguration encountered when attempting to store a setting on the "
+"server (new setting template is misconfigured)"
+msgstr ""
+
+#: ftp_backend.php:418
+msgid ""
+"Misconfiguration encountered when attempting to store a setting on the "
+"server (no FTP support is built into PHP)"
+msgstr ""
+
+#: ftp_backend.php:428
+msgid ""
+"Misconfiguration encountered when attempting to store a setting on the "
+"server (missing FTP host, file name, parsing pattern or mode is unknown)"
+msgstr ""
+
+#: ftp_backend.php:482
+msgid ""
+"Unknown error encountered when attempting to store a setting on the server "
+"(unhandled return type getting old value from FTP server)"
+msgstr ""
+
+#: ftp_backend.php:525 functions.php:403 functions.php:784
+#: local_file_backend.php:539 sql_backend.php:514
+msgid ""
+"Unknown error in Server Settings Backend plugin, function put_server_setting"
+"()"
+msgstr ""
+
+#: ftp_functions.php:124
+msgid "FTP error when attempting to retrieve a setting from the server"
+msgstr ""
+
+#: ftp_functions.php:256 ftp_functions.php:508 ftp_functions.php:746
+#: ftp_functions.php:1676
+#, php-format
+msgid "Failed to change to directory \"%s\" on FTP host \"%s\""
+msgstr ""
+
+#: ftp_functions.php:258 ftp_functions.php:510 ftp_functions.php:748
+#: ftp_functions.php:1678 ftp_functions.php:1948
+msgid "Unable to change directories on FTP server"
+msgstr ""
+
+#: ftp_functions.php:294 ftp_functions.php:1742
+#, php-format
+msgid ""
+"File or directory \"%s\" already exists on FTP host \"%s\"; cannot overwrite"
+msgstr ""
+
+#: ftp_functions.php:357 local_file_functions.php:387
+msgid "File error when attempting to write to a temporary file"
+msgstr ""
+
+#: ftp_functions.php:381
+msgid "FTP error when attempting to store a file on the server"
+msgstr ""
+
+#: ftp_functions.php:572
+#, php-format
+msgid "Could not retrieve file \"%s\" in directory \"%s\" on FTP host \"%s\""
+msgstr ""
+
+#: ftp_functions.php:574
+msgid "FTP error when attempting to retrieve file"
+msgstr ""
+
+#: ftp_functions.php:782
+#, php-format
+msgid "Failed to delete file or directory \"%s\" from FTP host \"%s\""
+msgstr ""
+
+#: ftp_functions.php:784 local_file_functions.php:1211
+msgid "Error deleting file or directory"
+msgstr ""
+
+#: ftp_functions.php:917 ftp_functions.php:953 ftp_functions.php:1123
+#: ftp_functions.php:1162
+#, php-format
+msgid "Failed to retrieve file list of \"%s\" from FTP host \"%s\""
+msgstr ""
+
+#: ftp_functions.php:919 ftp_functions.php:955 ftp_functions.php:1125
+#: ftp_functions.php:1164 local_file_functions.php:1769
+msgid "Error retrieving file list"
+msgstr ""
+
+#: ftp_functions.php:1387 ftp_functions.php:1413
+#, php-format
+msgid "Failed to change permissions on \"%s\" on FTP host \"%s\""
+msgstr ""
+
+#: ftp_functions.php:1389 ftp_functions.php:1415 local_file_functions.php:2123
+msgid "Error changing permissions"
+msgstr ""
+
+#: ftp_functions.php:1537
+#, php-format
+msgid "Failed to create directory on FTP host \"%s\""
+msgstr ""
+
+#: ftp_functions.php:1539 local_file_functions.php:2361
+msgid "Error creating directory"
+msgstr ""
+
+#: ftp_functions.php:1713
+#, php-format
+msgid "File \"%s\" not found in directory \"%s\" on FTP host \"%s\""
+msgstr ""
+
+#: ftp_functions.php:1715
+msgid "File not found"
+msgstr ""
+
+#: ftp_functions.php:1769
+#, php-format
+msgid ""
+"Could not rename file or directory \"%s\" in directory \"%s\" on FTP host \"%"
+"s\" to \"%s\""
+msgstr ""
+
+#: ftp_functions.php:1771
+msgid "FTP error when attempting to rename file or directory"
+msgstr ""
+
+#: ftp_functions.php:1861
+#, php-format
+msgid ""
+"Could not connect to FTP host \"%s\" on port \"%s\" (connecting with \"%s\")"
+msgstr ""
+
+#: ftp_functions.php:1863
+msgid "Unable to connect to FTP server"
+msgstr ""
+
+#: ftp_functions.php:1886
+#, php-format
+msgid ""
+"Failed FTP login to host \"%s\" with username \"%s\" and password \"%s\""
+msgstr ""
+
+#: ftp_functions.php:1888
+msgid "Unable to login to FTP server"
+msgstr ""
+
+#: ftp_functions.php:1911
+#, php-format
+msgid "Failed to execute PASV command on FTP host \"%s\" (set to \"%s\")"
+msgstr ""
+
+#: ftp_functions.php:1913
+msgid "Unable to call PASV command on FTP server"
+msgstr ""
+
+#: ftp_functions.php:1946
+#, php-format
+msgid ""
+"Failed to change to directory \"%s\" on FTP host \"%s\" (current directory "
+"is \"%s\")"
+msgstr ""
+
+#: functions.php:119 functions.php:306
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a setting from the "
+"server (malformed backend configuration)"
+msgstr ""
+
+#: functions.php:149
+#, php-format
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a setting from the "
+"server (\"%s\" custom backend function unknown)"
+msgstr ""
+
+#: functions.php:172
+#, php-format
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a setting from the "
+"server (\"%s\" lookup unknown)"
+msgstr ""
+
+#: functions.php:349
+#, php-format
+msgid ""
+"Misconfiguration encountered when attempting to store a setting on the "
+"server (\"%s\" lookup unknown)"
+msgstr ""
+
+#: functions.php:472
+msgid ""
+"Misconfiguration encountered when attempting to initialize autoresponder "
+"(malformed backend configuration)"
+msgstr ""
+
+#: functions.php:506
+#, php-format
+msgid ""
+"Misconfiguration encountered when attempting to initialize autoresponder (\"%"
+"s\" lookup unknown)"
+msgstr ""
+
+#: functions.php:541
+msgid ""
+"Misconfiguration encountered when attempting to initialize autoresponder "
+"(file access method is misconfigured)"
+msgstr ""
+
+#: functions.php:554
+msgid ""
+"Misconfiguration encountered when attempting to initialize autoresponder "
+"(SUID_LOCATION is misconfigured)"
+msgstr ""
+
+#: functions.php:571
+msgid ""
+"Misconfiguration encountered when attempting to initialize autoresponder "
+"(master password is misconfigured)"
+msgstr ""
+
+#: functions.php:575
+msgid ""
+"Misconfiguration encountered when attempting to initialize autoresponder "
+"(master username is misconfigured)"
+msgstr ""
+
+#: functions.php:611 local_file_functions.php:431 local_file_functions.php:702
+#: local_file_functions.php:1251 local_file_functions.php:1545
+#: local_file_functions.php:1882 local_file_functions.php:2164
+#: local_file_functions.php:2404 local_file_functions.php:2695
+#, php-format
+msgid "Could not establish pipe to command \"%s\""
+msgstr ""
+
+#: functions.php:613
+msgid ""
+"Error establishing connection when attempting to initialize autoresponder"
+msgstr ""
+
+#: functions.php:628 local_file_functions.php:450 local_file_functions.php:721
+#: local_file_functions.php:1268 local_file_functions.php:1564
+#: local_file_functions.php:1901 local_file_functions.php:2181
+#: local_file_functions.php:2421 local_file_functions.php:2712
+#, php-format
+msgid "Could not send master username \"%s\" to pipe command \"%s\""
+msgstr ""
+
+#: functions.php:630
+msgid ""
+"Unable to send master username when attempting to initialize autoresponder"
+msgstr ""
+
+#: functions.php:647 local_file_functions.php:469 local_file_functions.php:740
+#: local_file_functions.php:1287 local_file_functions.php:1583
+#: local_file_functions.php:1920 local_file_functions.php:2200
+#: local_file_functions.php:2440 local_file_functions.php:2731
+#, php-format
+msgid "Could not send master password \"%s\" to pipe command \"%s\""
+msgstr ""
+
+#: functions.php:649
+msgid ""
+"Unable to send master password when attempting to initialize autoresponder"
+msgstr ""
+
+#: functions.php:666 local_file_functions.php:488 local_file_functions.php:759
+#: local_file_functions.php:1306 local_file_functions.php:1602
+#: local_file_functions.php:1939 local_file_functions.php:2219
+#: local_file_functions.php:2459 local_file_functions.php:2750
+#, php-format
+msgid "Could not send password \"%s\" to pipe command \"%s\""
+msgstr ""
+
+#: functions.php:668
+msgid "Unable to send password when attempting to initialize autoresponder"
+msgstr ""
+
+#: functions.php:694
+#, php-format
+msgid "Unable to initialize autoresponder using command \"%s\""
+msgstr ""
+
+#: functions.php:696
+#, php-format
+msgid "Unable to initialize autoresponder (%s)"
+msgstr ""
+
+#: functions.php:717
+msgid ""
+"Misconfiguration encountered when attempting to initialize autoresponder "
+"(vacation program is misconfigured)"
+msgstr ""
+
+#: functions.php:725
+msgid ""
+"Misconfiguration encountered when attempting to initialize autoresponder "
+"(vacation interval flag is misconfigured)"
+msgstr ""
+
+#: functions.php:767
+#, php-format
+msgid "Error initializing autoresponder (%d): %s"
+msgstr ""
+
+#: functions.php:769
+msgid "Error initializing autoresponder"
+msgstr ""
+
+#: functions.php:1137
+msgid "Could not open temporary local file"
+msgstr ""
+
+#: functions.php:1151
+msgid "Could not close temporary local file"
+msgstr ""
+
+#: functions.php:1167
+msgid "Could not delete temporary local file"
+msgstr ""
+
+#: functions.php:1260 local_file_functions.php:1488
+#, php-format
+msgid "Unable to read file \"%s\""
+msgstr ""
+
+#: local_file_backend.php:103
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a setting from the "
+"server (file access method is misconfigured)"
+msgstr ""
+
+#: local_file_backend.php:107
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a setting from the "
+"server (file name is misconfigured)"
+msgstr ""
+
+#: local_file_backend.php:115
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a setting from the "
+"server (SUID_LOCATION is misconfigured)"
+msgstr ""
+
+#: local_file_backend.php:137
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a setting from the "
+"server (master password is misconfigured)"
+msgstr ""
+
+#: local_file_backend.php:141
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a setting from the "
+"server (master username is misconfigured)"
+msgstr ""
+
+#: local_file_backend.php:170
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a setting from the "
+"server (missing file name, access type, SUID binary, or parsing pattern)"
+msgstr ""
+
+#: local_file_backend.php:362
+msgid ""
+"Misconfiguration encountered when attempting to store a setting on the "
+"server (file access method is misconfigured)"
+msgstr ""
+
+#: local_file_backend.php:366
+msgid ""
+"Misconfiguration encountered when attempting to store a setting on the "
+"server (file name is misconfigured)"
+msgstr ""
+
+#: local_file_backend.php:378
+msgid ""
+"Misconfiguration encountered when attempting to store a setting on the "
+"server (SUID_LOCATION is misconfigured)"
+msgstr ""
+
+#: local_file_backend.php:400
+msgid ""
+"Misconfiguration encountered when attempting to store a setting on the "
+"server (master password is misconfigured)"
+msgstr ""
+
+#: local_file_backend.php:404
+msgid ""
+"Misconfiguration encountered when attempting to store a setting on the "
+"server (master username is misconfigured)"
+msgstr ""
+
+#: local_file_backend.php:433
+msgid ""
+"Misconfiguration encountered when attempting to store a setting on the "
+"server (missing file name, access type, SUID binary, or parsing pattern)"
+msgstr ""
+
+#: local_file_backend.php:492
+msgid ""
+"Unknown error encountered when attempting to store a setting on the server "
+"(unhandled return type getting old value from local file)"
+msgstr ""
+
+#: local_file_functions.php:138
+#, php-format
+msgid ""
+"Unable to read file \"%s\" when attempting to retrieve a setting from the "
+"server"
+msgstr ""
+
+#: local_file_functions.php:140
+msgid ""
+"Unable to read file when attempting to retrieve a setting from the server"
+msgstr ""
+
+#: local_file_functions.php:312 local_file_functions.php:345
+#, php-format
+msgid "Could not write to file \"%s\""
+msgstr ""
+
+#: local_file_functions.php:314 local_file_functions.php:347
+msgid "Could not write to file"
+msgstr ""
+
+#: local_file_functions.php:329
+#, php-format
+msgid "Could not open file \"%s\""
+msgstr ""
+
+#: local_file_functions.php:331
+msgid "Could not open file"
+msgstr ""
+
+#: local_file_functions.php:385
+#, php-format
+msgid "File error when attempting to write to temporary file \"%s\""
+msgstr ""
+
+#: local_file_functions.php:433
+msgid ""
+"Error establishing connection when attempting to store a file on the server"
+msgstr ""
+
+#: local_file_functions.php:452
+msgid ""
+"Unable to send master username when attempting to store a file on the server"
+msgstr ""
+
+#: local_file_functions.php:471
+msgid ""
+"Unable to send master password when attempting to store a file on the server"
+msgstr ""
+
+#: local_file_functions.php:490
+msgid "Unable to send password when attempting to store a file on the server"
+msgstr ""
+
+#: local_file_functions.php:521
+#, php-format
+msgid "Unable to put file using command \"%s\""
+msgstr ""
+
+#: local_file_functions.php:523
+#, php-format
+msgid "Unable to store file on server (%s)"
+msgstr ""
+
+#: local_file_functions.php:539 local_file_functions.php:849
+#: local_file_functions.php:1356 local_file_functions.php:1665
+#: local_file_functions.php:2032 local_file_functions.php:2265
+#: local_file_functions.php:2504 local_file_functions.php:2796
+#, php-format
+msgid "Unknown file access type \"%s\""
+msgstr ""
+
+#: local_file_functions.php:704
+msgid "Error establishing connection when attempting to inspect file"
+msgstr ""
+
+#: local_file_functions.php:723
+msgid "Unable to send master username when attempting to inspect file"
+msgstr ""
+
+#: local_file_functions.php:742
+msgid "Unable to send master password when attempting to inspect file"
+msgstr ""
+
+#: local_file_functions.php:761
+msgid "Unable to send password when attempting to inspect file"
+msgstr ""
+
+#: local_file_functions.php:797
+#, php-format
+msgid "Unable to retrieve path information from command \"%s\""
+msgstr ""
+
+#: local_file_functions.php:799
+#, php-format
+msgid "Unable to retrieve path information (%s)"
+msgstr ""
+
+#: local_file_functions.php:1012
+#, php-format
+msgid "Could not stat \"%s\""
+msgstr ""
+
+#: local_file_functions.php:1014
+msgid "Could not stat file/directory"
+msgstr ""
+
+#: local_file_functions.php:1209
+#, php-format
+msgid "Error deleting file or directory \"%s\""
+msgstr ""
+
+#: local_file_functions.php:1253
+msgid ""
+"Error establishing connection when attempting to delete file or directory"
+msgstr ""
+
+#: local_file_functions.php:1270
+msgid ""
+"Unable to send master username when attempting to delete file or directory"
+msgstr ""
+
+#: local_file_functions.php:1289
+msgid ""
+"Unable to send master password when attempting to delete file or directory"
+msgstr ""
+
+#: local_file_functions.php:1308
+msgid "Unable to send password when attempting to delete file or directory"
+msgstr ""
+
+#: local_file_functions.php:1337
+#, php-format
+msgid "Unable to delete file or directory using command \"%s\""
+msgstr ""
+
+#: local_file_functions.php:1339
+#, php-format
+msgid "Unable to delete file or directory (%s)"
+msgstr ""
+
+#: local_file_functions.php:1469
+#, php-format
+msgid "Unable to find file \"%s\""
+msgstr ""
+
+#: local_file_functions.php:1471
+msgid "Unable to find file"
+msgstr ""
+
+#: local_file_functions.php:1490
+msgid "Unable to read file"
+msgstr ""
+
+#: local_file_functions.php:1547
+msgid "Error establishing connection when attempting to retrieve file"
+msgstr ""
+
+#: local_file_functions.php:1566
+msgid "Unable to send master username when attempting to retrieve file"
+msgstr ""
+
+#: local_file_functions.php:1585
+msgid "Unable to send master password when attempting to retrieve file"
+msgstr ""
+
+#: local_file_functions.php:1604
+msgid "Unable to send password when attempting to retrieve file"
+msgstr ""
+
+#: local_file_functions.php:1638
+#, php-format
+msgid "Unable to retrieve file from command \"%s\""
+msgstr ""
+
+#: local_file_functions.php:1640
+#, php-format
+msgid "Unable to retrieve file (%s)"
+msgstr ""
+
+#: local_file_functions.php:1767
+#, php-format
+msgid "Failed to retrieve file list of \"%s\""
+msgstr ""
+
+#: local_file_functions.php:1816
+#, php-format
+msgid "Error retrieving information about file or directory \"%s\" in \"%s\""
+msgstr ""
+
+#: local_file_functions.php:1818
+msgid "Error retrieving information about file or directory"
+msgstr ""
+
+#: local_file_functions.php:1884
+msgid ""
+"Error establishing connection when attempting to retrieve directory listing"
+msgstr ""
+
+#: local_file_functions.php:1903
+msgid ""
+"Unable to send master username when attempting to retrieve directory listing"
+msgstr ""
+
+#: local_file_functions.php:1922
+msgid ""
+"Unable to send master password when attempting to retrieve directory listing"
+msgstr ""
+
+#: local_file_functions.php:1941
+msgid "Unable to send password when attempting to retrieve directory listing"
+msgstr ""
+
+#: local_file_functions.php:1978
+#, php-format
+msgid "Unable to retrieve directory listing from command \"%s\""
+msgstr ""
+
+#: local_file_functions.php:1980
+#, php-format
+msgid "Unable to retrieve directory listing (%s)"
+msgstr ""
+
+#: local_file_functions.php:2121
+#, php-format
+msgid "Failed to change permissions on \"%s\""
+msgstr ""
+
+#: local_file_functions.php:2166
+msgid ""
+"Error establishing connection when attempting to change permissions on file "
+"or directory"
+msgstr ""
+
+#: local_file_functions.php:2183
+msgid ""
+"Unable to send master username when attempting to change permissions on file "
+"or directory"
+msgstr ""
+
+#: local_file_functions.php:2202
+msgid ""
+"Unable to send master password when attempting to change permissions on file "
+"or directory"
+msgstr ""
+
+#: local_file_functions.php:2221
+msgid ""
+"Unable to send password when attempting to change permissions on file or "
+"directory"
+msgstr ""
+
+#: local_file_functions.php:2246
+#, php-format
+msgid "Unable to change permissions on file or directory using command \"%s\""
+msgstr ""
+
+#: local_file_functions.php:2248
+#, php-format
+msgid "Unable to change permissions on file or directory (%s)"
+msgstr ""
+
+#: local_file_functions.php:2359
+#, php-format
+msgid "Failed to create directory \"%s\""
+msgstr ""
+
+#: local_file_functions.php:2406
+msgid "Error establishing connection when attempting to create directory"
+msgstr ""
+
+#: local_file_functions.php:2423
+msgid "Unable to send master username when attempting to create directory"
+msgstr ""
+
+#: local_file_functions.php:2442
+msgid "Unable to send master password when attempting to create directory"
+msgstr ""
+
+#: local_file_functions.php:2461
+msgid "Unable to send password when attempting to create directory"
+msgstr ""
+
+#: local_file_functions.php:2486
+#, php-format
+msgid "Unable to create directory using command \"%s\""
+msgstr ""
+
+#: local_file_functions.php:2488
+#, php-format
+msgid "Unable to create directory (%s)"
+msgstr ""
+
+#: local_file_functions.php:2604
+#, php-format
+msgid "Cannot move: \"%s\" was not found"
+msgstr ""
+
+#: local_file_functions.php:2606
+msgid "Cannot move: File or directory not found"
+msgstr ""
+
+#: local_file_functions.php:2652
+#, php-format
+msgid "Could not rename \"%s\" to \"%s\""
+msgstr ""
+
+#: local_file_functions.php:2654
+msgid "Error when attempting to rename file or directory"
+msgstr ""
+
+#: local_file_functions.php:2697
+msgid ""
+"Error establishing connection when attempting to rename file or directory"
+msgstr ""
+
+#: local_file_functions.php:2714
+msgid ""
+"Unable to send master username when attempting to rename file or directory"
+msgstr ""
+
+#: local_file_functions.php:2733
+msgid ""
+"Unable to send master password when attempting to rename file or directory"
+msgstr ""
+
+#: local_file_functions.php:2752
+msgid "Unable to send password when attempting to rename file or directory"
+msgstr ""
+
+#: local_file_functions.php:2777
+#, php-format
+msgid "Unable to rename file or directory using command \"%s\""
+msgstr ""
+
+#: local_file_functions.php:2779
+#, php-format
+msgid "Unable to rename file or directory (%s)"
+msgstr ""
+
+#: sql_backend.php:86
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a setting from the "
+"server (SQL lookup DSN is misconfigured)"
+msgstr ""
+
+#: sql_backend.php:113
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a setting from the "
+"server (SQL lookup QUERY is misconfigured)"
+msgstr ""
+
+#: sql_backend.php:140
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a setting from the "
+"server (missing SQL lookup query or DSN)"
+msgstr ""
+
+#: sql_backend.php:153
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a setting from the "
+"server (supposedly serialized setting returned array of values from database)"
+msgstr ""
+
+#: sql_backend.php:160
+msgid ""
+"Misconfiguration encountered when attempting to retrieve a setting from the "
+"server (supposedly concatenated setting returned array of values from "
+"database)"
+msgstr ""
+
+#: sql_backend.php:289
+msgid ""
+"Misconfiguration encountered when attempting to store a setting on the "
+"server (SQL lookup DSN is misconfigured)"
+msgstr ""
+
+#: sql_backend.php:421
+msgid ""
+"Misconfiguration encountered when attempting to store a setting on the "
+"server (SQL lookup PRE_SAVE_QUERY is misconfigured)"
+msgstr ""
+
+#: sql_backend.php:433
+msgid ""
+"Misconfiguration encountered when attempting to store a setting on the "
+"server (SQL lookup SAVE_QUERY is misconfigured)"
+msgstr ""
+
+#: sql_backend.php:460
+msgid ""
+"Misconfiguration encountered when attempting to store a setting on the "
+"server (missing SQL lookup query or DSN)"
+msgstr ""
+
+#: sql_functions.php:76 sql_functions.php:208
+#, php-format
+msgid "Could not complete query to database (%s): %s"
+msgstr ""
+
+#: sql_functions.php:78 sql_functions.php:210
+msgid "Could not query database"
+msgstr ""
+
+#: sql_functions.php:292
+#, php-format
+msgid "Could not connect to database (DSN: %s): %s"
+msgstr ""
+
+#: sql_functions.php:294
+msgid "Could not connect to database"
+msgstr ""
+
+#: sql_functions.php:363
+#, php-format
+msgid "Unknown database abstraction layer: \"%s\""
+msgstr ""
+
+#: sql_functions.php:391
+msgid "Could not find Pear DB or MDB2 library"
+msgstr ""
