@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vadmin 3.0\n"
 "Report-Msgid-Bugs-To: SquirrelMail Internationalization <squirrelmail-i18n@lists.sourceforge.net>\n"
-"POT-Creation-Date: 2009-03-02 08:02-0800\n"
+"POT-Creation-Date: 2011-12-09 23:27-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -16,15 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Subject"
-msgstr ""
-
 #, php-format
 msgid "Could not load function file for storage type %s"
-msgstr ""
-
-#, php-format
-msgid "No such module '%s' for level '%s'"
 msgstr ""
 
 msgid "Admin"
@@ -33,7 +26,9 @@ msgstr ""
 msgid "Administrator Interface"
 msgstr ""
 
-msgid "Access the administrator interface to set up and configure users, mailboxes, and other domain settings."
+msgid ""
+"Access the administrator interface to set up and configure users, mailboxes, "
+"and other domain settings."
 msgstr ""
 
 msgid "Change Password"
@@ -45,36 +40,27 @@ msgstr ""
 msgid "Autoresponder"
 msgstr ""
 
-msgid "Set up an auto-reply message for you incoming email. This can be useful, for example, for notifying your correspondents that you are on vacation."
+msgid ""
+"Set up an auto-reply message for you incoming email. This can be useful, for "
+"example, for notifying your correspondents that you are on vacation."
 msgstr ""
 
 msgid "Mail Forwarding"
 msgstr ""
 
-msgid "Set up other email addresses to which your incoming messages will be forwarded."
+msgid ""
+"Set up other email addresses to which your incoming messages will be "
+"forwarded."
 msgstr ""
 
 msgid "autoresponder&nbsp;on"
 msgstr ""
 
-#, php-format
-msgid "%s already exists!"
+msgid "Subject"
 msgstr ""
 
 #, php-format
-msgid "Failed to create %s!"
-msgstr ""
-
-#, php-format
-msgid "Could not open %s for writing"
-msgstr ""
-
-#, php-format
-msgid "Could not write data in %s!"
-msgstr ""
-
-#, php-format
-msgid "Vadmin is misconfigured: No writing permissions to %s"
+msgid "No such module '%s' for level '%s'"
 msgstr ""
 
 #, php-format
@@ -153,7 +139,11 @@ msgstr ""
 msgid "Never"
 msgstr ""
 
-msgid "You have attempted an action that was flagged by the system as violating the security measures in place. Your access has been denied. If you believe it was an error on our part, please try your action again, or e-mail your system administrator."
+msgid ""
+"You have attempted an action that was flagged by the system as violating the "
+"security measures in place. Your access has been denied. If you believe it "
+"was an error on our part, please try your action again, or e-mail your "
+"system administrator."
 msgstr ""
 
 #, php-format
@@ -161,14 +151,20 @@ msgid "VADMIN SYSTEM ERROR: %s"
 msgstr ""
 
 #, php-format
-msgid "<strong>SYSTEM ERROR: %s</strong>. We apologize for the inconvenience, but your request cannot be completed at this time. Please contact your system administrator if the problem persists."
+msgid ""
+"<strong>SYSTEM ERROR: %s</strong>. We apologize for the inconvenience, but "
+"your request cannot be completed at this time. Please contact your system "
+"administrator if the problem persists."
 msgstr ""
 
 msgid "SYSTEM ERROR"
 msgstr ""
 
 #, php-format
-msgid "<strong>Error: %s</strong>. Please return to the previous page and try to correct your input. If you need assistance or believe this is a software error, please contact your system administrator."
+msgid ""
+"<strong>Error: %s</strong>. Please return to the previous page and try to "
+"correct your input. If you need assistance or believe this is a software "
+"error, please contact your system administrator."
 msgstr ""
 
 msgid "Input Error"
@@ -190,7 +186,9 @@ msgstr ""
 msgid "Make your selection:"
 msgstr ""
 
-msgid "Vadmin's apache.conf is misconfigured: CRYPTO_HASH_LINE has not been changed from its default value"
+msgid ""
+"Vadmin's apache.conf is misconfigured: CRYPTO_HASH_LINE has not been changed "
+"from its default value"
 msgstr ""
 
 msgid "Could not find CRYPTO_HASH_LINE! "
@@ -203,7 +201,9 @@ msgstr ""
 msgid "Vamin is misconfigured: %s"
 msgstr ""
 
-msgid "An algorithm other than 'rc4_builtin' specified, but mcrypt support not found."
+msgid ""
+"An algorithm other than 'rc4_builtin' specified, but mcrypt support not "
+"found."
 msgstr ""
 
 #, php-format
@@ -229,19 +229,23 @@ msgid "Could not connect to mangement interface"
 msgstr ""
 
 #, php-format
-msgid "Could not query domain list!"
+msgid "%s already exists!"
 msgstr ""
 
 #, php-format
-msgid "No virtual domains defined in %s!"
+msgid "Failed to create %s!"
 msgstr ""
 
 #, php-format
-msgid "Could not query domain password!"
+msgid "Could not open %s for writing"
 msgstr ""
 
 #, php-format
-msgid "Bad domain password query!"
+msgid "Could not write data in %s!"
+msgstr ""
+
+#, php-format
+msgid "Vadmin is misconfigured: No writing permissions to %s"
 msgstr ""
 
 #, php-format
@@ -256,7 +260,9 @@ msgstr ""
 msgid "Cannot find user \"%s\""
 msgstr ""
 
-msgid "The stored password file was invalid and has been removed. Please contact your systems administrator."
+msgid ""
+"The stored password file was invalid and has been removed. Please contact "
+"your systems administrator."
 msgstr ""
 
 #, php-format
@@ -400,7 +406,127 @@ msgid "No attribute specified"
 msgstr ""
 
 #, php-format
+msgid "Could not query domain list!"
+msgstr ""
+
+#, php-format
+msgid "No virtual domains defined in %s!"
+msgstr ""
+
+#, php-format
+msgid "Could not query domain password!"
+msgstr ""
+
+#, php-format
+msgid "Bad domain password query!"
+msgstr ""
+
+#, php-format
 msgid "Could not find virtual domains file %s!"
+msgstr ""
+
+msgid ""
+"Sorry, but this service is not available at this time. Please try again "
+"later, or notify somebody in charge that this feature is not working."
+msgstr ""
+
+#, php-format
+msgid "No such user or alias exists: %s"
+msgstr ""
+
+#, php-format
+msgid "No such user exists: %s"
+msgstr ""
+
+msgid "Forward mail to (separate by commas):"
+msgstr ""
+
+msgid "Change Forwarding"
+msgstr ""
+
+msgid "Change mail forwarding"
+msgstr ""
+
+msgid "Did not find mail forwarding list"
+msgstr ""
+
+#, php-format
+msgid "Error: %s"
+msgstr ""
+
+msgid "Mail forwarding not changed"
+msgstr ""
+
+#, php-format
+msgid "Updated forwarding to '%s'"
+msgstr ""
+
+msgid "Mail forwarding changed successfully"
+msgstr ""
+
+msgid "No change requested"
+msgstr ""
+
+#, php-format
+msgid "Invalid request, handler for '%s' does not exist"
+msgstr ""
+
+msgid "Your autoresponder settings"
+msgstr ""
+
+msgid "Your autoresponder is enabled"
+msgstr ""
+
+msgid "Message"
+msgstr ""
+
+msgid "Disable autoresponder"
+msgstr ""
+
+msgid ""
+"I am currently away from my email. I will respond to your message when I "
+"return."
+msgstr ""
+
+msgid "Your autoresponder is not enabled"
+msgstr ""
+
+msgid "Enable autoresponder"
+msgstr ""
+
+msgid "Please provide an autoresponse message. It cannot be an empty string."
+msgstr ""
+
+msgid "Old Password"
+msgstr ""
+
+msgid "New Password"
+msgstr ""
+
+msgid "Repeat Password"
+msgstr ""
+
+msgid "Change your password"
+msgstr ""
+
+msgid "Your old password did not match"
+msgstr ""
+
+msgid "New password did not match repeat password"
+msgstr ""
+
+msgid "New password is the same as old one"
+msgstr ""
+
+msgid "Password changed successfully"
+msgstr ""
+
+msgid ""
+"Your password was changed successfully. Next time you log in, please use "
+"your new password."
+msgstr ""
+
+msgid "Password changed"
 msgstr ""
 
 msgid "Error:"
@@ -461,7 +587,9 @@ msgstr ""
 msgid "End of listing"
 msgstr ""
 
-msgid "Please note that active status is only based on webmail usage and does not account for usage of any other email clients."
+msgid ""
+"Please note that active status is only based on webmail usage and does not "
+"account for usage of any other email clients."
 msgstr ""
 
 #, php-format
@@ -485,14 +613,6 @@ msgstr ""
 
 #, php-format
 msgid "Quick user listing for %s"
-msgstr ""
-
-#, php-format
-msgid "No such user or alias exists: %s"
-msgstr ""
-
-#, php-format
-msgid "No such user exists: %s"
 msgstr ""
 
 #, php-format
@@ -572,7 +692,9 @@ msgstr ""
 msgid "Total logins"
 msgstr ""
 
-msgid "These statistics are only for webmail usage and do not account for usage of other email clients."
+msgid ""
+"These statistics are only for webmail usage and do not account for usage of "
+"other email clients."
 msgstr ""
 
 msgid "No prefs file found; user may never have logged in before"
@@ -600,61 +722,94 @@ msgstr ""
 msgid "Delete this account"
 msgstr ""
 
-msgid "Click here if you wish to delete this account. This will also delete any and all user files associated with it -- mailbox files, webmail preferences, etc."
+msgid ""
+"Click here if you wish to delete this account. This will also delete any and "
+"all user files associated with it -- mailbox files, webmail preferences, etc."
 msgstr ""
 
 msgid "Delete this alias"
 msgstr ""
 
-msgid "Click here if you wish to delete this alias. This will not delete any user files associated with whatever real account it is associated with, it will only remove the alias."
+msgid ""
+"Click here if you wish to delete this alias. This will not delete any user "
+"files associated with whatever real account it is associated with, it will "
+"only remove the alias."
 msgstr ""
 
 msgid "Description of fields"
 msgstr ""
 
-msgid "This is where you put full name of this user or some other information to help you better identify your users and aliases."
+msgid ""
+"This is where you put full name of this user or some other information to "
+"help you better identify your users and aliases."
 msgstr ""
 
-msgid "This is a Maildir-format style mailbox. If you wish to change this user to an alias without a mailbox, then you will need to leave this setting blank. Please don't change setting unless you know what you are doing, as this can prevent users from accessing their mailboxes."
+msgid ""
+"This is a Maildir-format style mailbox. If you wish to change this user to "
+"an alias without a mailbox, then you will need to leave this setting blank. "
+"Please don't change setting unless you know what you are doing, as this can "
+"prevent users from accessing their mailboxes."
 msgstr ""
 
-msgid "Since users' passwords are encrypted, it is impossible to see what it is in this listing. Leave it saying 'encrypted' or blank to keep the old value, or type in a new value to change this user's mailbox access password."
+msgid ""
+"Since users' passwords are encrypted, it is impossible to see what it is in "
+"this listing. Leave it saying 'encrypted' or blank to keep the old value, or "
+"type in a new value to change this user's mailbox access password."
 msgstr ""
 
 msgid "A '-' means that password for this user is not set."
 msgstr ""
 
-msgid "If you want to limit the availability of this mailbox by some amount of time, put in the number of days this box should be active."
+msgid ""
+"If you want to limit the availability of this mailbox by some amount of "
+"time, put in the number of days this box should be active."
 msgstr ""
 
 msgid "A '-' means there is no time limit on this box."
 msgstr ""
 
-msgid "The absolute limit of how many mebibytes this user may have in his or her mailbox. If this limit is ever reached, the system will not accept any more messages for this user."
+msgid ""
+"The absolute limit of how many mebibytes this user may have in his or her "
+"mailbox. If this limit is ever reached, the system will not accept any more "
+"messages for this user."
 msgstr ""
 
 msgid "A '-' means unlimited storage space."
 msgstr ""
 
-msgid "This sets the size of user's mailbox in mebibytes. If this level is reached, the user is notified that his or her mailbox is at its limits and should be cleaned. The system will still accept messages until Hard Quota limit is reached. Soft Quota should be less than Hard Quota."
+msgid ""
+"This sets the size of user's mailbox in mebibytes. If this level is reached, "
+"the user is notified that his or her mailbox is at its limits and should be "
+"cleaned. The system will still accept messages until Hard Quota limit is "
+"reached. Soft Quota should be less than Hard Quota."
 msgstr ""
 
 msgid "A '-' means no limits are set on this user's mailbox."
 msgstr ""
 
-msgid "This limits the maximum size of any one message that this user is trying to receive in mebibytes. If a message arrives which is larger than the limit specified here, then it will be discarded."
+msgid ""
+"This limits the maximum size of any one message that this user is trying to "
+"receive in mebibytes. If a message arrives which is larger than the limit "
+"specified here, then it will be discarded."
 msgstr ""
 
 msgid "A '-' means no limits on message sizes."
 msgstr ""
 
-msgid "This limits how many messages a user can have in his or her mailbox. If more messages accumulate than the amount allows, any incoming messages will be discarded until the user cleans the mailbox."
+msgid ""
+"This limits how many messages a user can have in his or her mailbox. If more "
+"messages accumulate than the amount allows, any incoming messages will be "
+"discarded until the user cleans the mailbox."
 msgstr ""
 
 msgid "A '-' means no limits."
 msgstr ""
 
-msgid "This specifies the forwarding addresses for this user or alias. You may put in as  many as you want, separating them by commas (comma-space is OK). Leave blank if you don't want to forward any copies, although for aliases, this should not be left blank."
+msgid ""
+"This specifies the forwarding addresses for this user or alias. You may put "
+"in as  many as you want, separating them by commas (comma-space is OK). "
+"Leave blank if you don't want to forward any copies, although for aliases, "
+"this should not be left blank."
 msgstr ""
 
 #, php-format
@@ -695,7 +850,9 @@ msgstr ""
 msgid "Setting administrator privileges"
 msgstr ""
 
-msgid "This is currently not working due to a bug in include files provided by vmailmgr."
+msgid ""
+"This is currently not working due to a bug in include files provided by "
+"vmailmgr."
 msgstr ""
 
 msgid "The password has been changed."
@@ -709,10 +866,6 @@ msgid "Changed to '%s'"
 msgstr ""
 
 msgid "Changing Mailbox"
-msgstr ""
-
-#, php-format
-msgid "Error: %s"
 msgstr ""
 
 #, php-format
@@ -851,7 +1004,11 @@ msgstr ""
 msgid "Confirm - Allow Insecure Passwords"
 msgstr ""
 
-msgid "Specify a file containing one user per line or paste in a user list here.  If passwords are included, specify the character that separates them from each username.  If passwords are not given, they will be automatically generated."
+msgid ""
+"Specify a file containing one user per line or paste in a user list here.  "
+"If passwords are included, specify the character that separates them from "
+"each username.  If passwords are not given, they will be automatically "
+"generated."
 msgstr ""
 
 msgid "Creating Multiple Users"
@@ -927,7 +1084,9 @@ msgstr ""
 msgid "Passwords may only contain the following characters: %s"
 msgstr ""
 
-msgid "As a superuser, you may go back to the previous screen and choose to submit user data while ignoring most password integrity limits"
+msgid ""
+"As a superuser, you may go back to the previous screen and choose to submit "
+"user data while ignoring most password integrity limits"
 msgstr ""
 
 msgid "Create new users"
@@ -947,7 +1106,9 @@ msgstr ""
 msgid "User name must be between %d and %d characters in length."
 msgstr ""
 
-msgid " (You may go back to the previous screen and choose to submit user data while ignoring most password integrity limits)"
+msgid ""
+" (You may go back to the previous screen and choose to submit user data "
+"while ignoring most password integrity limits)"
 msgstr ""
 
 msgid "Customize this account"
@@ -958,7 +1119,10 @@ msgid "Account %s created"
 msgstr ""
 
 #, php-format
-msgid "User <strong>%s</strong> has been successfully created and is ready to be used. If you would like to adjust settings for this newly created account, then please click the button below."
+msgid ""
+"User <strong>%s</strong> has been successfully created and is ready to be "
+"used. If you would like to adjust settings for this newly created account, "
+"then please click the button below."
 msgstr ""
 
 #, php-format
@@ -977,7 +1141,10 @@ msgid "Alias %s created"
 msgstr ""
 
 #, php-format
-msgid "Alias <strong>%s</strong> has been successfully created and is ready to be used. If you would like to adjust settings for this newly created alias, then please click the button below."
+msgid ""
+"Alias <strong>%s</strong> has been successfully created and is ready to be "
+"used. If you would like to adjust settings for this newly created alias, "
+"then please click the button below."
 msgstr ""
 
 msgid "User created"
@@ -1005,11 +1172,17 @@ msgid "Confirm action"
 msgstr ""
 
 #, php-format
-msgid "<strong>WARNING:</strong> You are about to delete user or alias <strong>%s</strong>. If it's a real user, this will delete his/her mailbox including all stored messages, and clear any webmail preferences this user has. Proceed?"
+msgid ""
+"<strong>WARNING:</strong> You are about to delete user or alias <strong>%s</"
+"strong>. If it's a real user, this will delete his/her mailbox including all "
+"stored messages, and clear any webmail preferences this user has. Proceed?"
 msgstr ""
 
 #, php-format
-msgid "<strong>WARNING:</strong> You are about to delete user <strong>%s</strong>. This will delete his/her mailbox including all stored messages, and clear any webmail preferences this user has. Proceed?"
+msgid ""
+"<strong>WARNING:</strong> You are about to delete user <strong>%s</strong>. "
+"This will delete his/her mailbox including all stored messages, and clear "
+"any webmail preferences this user has. Proceed?"
 msgstr ""
 
 msgid "No, cancel"
@@ -1040,10 +1213,16 @@ msgstr ""
 msgid "Accounts to be deleted:"
 msgstr ""
 
-msgid "<strong>WARNING:</strong> You are about to delete multiple users or aliases. If any are real users, their mailboxes will be deleted, including all stored messages, and any webmail preferences they have."
+msgid ""
+"<strong>WARNING:</strong> You are about to delete multiple users or aliases. "
+"If any are real users, their mailboxes will be deleted, including all stored "
+"messages, and any webmail preferences they have."
 msgstr ""
 
-msgid "<strong>WARNING:</strong> You are about to delete multiple users. Their mailboxes will be deleted, including all stored messages, and any webmail preferences they have."
+msgid ""
+"<strong>WARNING:</strong> You are about to delete multiple users. Their "
+"mailboxes will be deleted, including all stored messages, and any webmail "
+"preferences they have."
 msgstr ""
 
 msgid "Confirm Deleting Multiple Accounts"
@@ -1072,50 +1251,129 @@ msgstr ""
 msgid "Accounts that have been deleted:"
 msgstr ""
 
-#, php-format
-msgid "Invalid request, handler for '%s' does not exist"
+msgid "Maximum number of mailboxes"
 msgstr ""
 
-msgid "Delete"
+msgid "Maximum user quota limit (MiB)"
 msgstr ""
 
-msgid "Add"
+msgid "Maximum user soft quota limit (MiB)"
 msgstr ""
 
-msgid "Editing instructions"
+msgid "Maximum user message size limit (MiB)"
 msgstr ""
 
-msgid "To delete a cross-administrator, press the 'Delete' key next to the username. To add a cross-administrator, put in the full username into the field for the domain to which you wish to add one, and press 'Add'. The term 'full username' means both the username and the domain name, e.g.: joe@domain.com."
+msgid "Maximum user message count limit"
 msgstr ""
 
-msgid "Listing cross-admins for all configured domains"
+msgid "Maxium login page image size (KiB)"
 msgstr ""
 
-#, php-format
-msgid "Listing cross-admins for %s"
+msgid "Field Description"
 msgstr ""
 
-msgid "Choose a cross-admin to view"
+msgid "Current value"
 msgstr ""
 
-msgid "Cross-admin:"
-msgstr ""
-
-msgid "Instructions"
-msgstr ""
-
-msgid "To edit a cross-admin, select the admin's username from the drop-down dialog box and then click 'Edit'. To add a new one, provide the full username in the text box and click the 'Add' button next to it. The 'full' username means both the user's name and the domain, e.g.: joe@domain.com."
-msgstr ""
-
-msgid "No cross-admins found. You should add some first."
+msgid "Set these limits"
 msgstr ""
 
 #, php-format
-msgid "Viewing domains for %s"
+msgid "Set domain limits for %s"
+msgstr ""
+
+msgid "Result"
 msgstr ""
 
 #, php-format
-msgid "Viewing Cross-administrator %s"
+msgid "%s is not an integer. Ignored"
+msgstr ""
+
+#, php-format
+msgid "%d is over the master limit of %d. Maximum setting of %d used"
+msgstr ""
+
+msgid "OK, set to unlimited"
+msgstr ""
+
+#, php-format
+msgid "OK, set to %d"
+msgstr ""
+
+msgid "No change"
+msgstr ""
+
+#, php-format
+msgid "Recording domain limits for %s"
+msgstr ""
+
+msgid "Proceed"
+msgstr ""
+
+msgid "Email administration"
+msgstr ""
+
+msgid "Manage email accounts in this domain"
+msgstr ""
+
+msgid "Set domain limits"
+msgstr ""
+
+msgid ""
+"Set limits for this domain: maximum number of users, maximum quotas, etc."
+msgstr ""
+
+msgid "Configure cross-admins"
+msgstr ""
+
+msgid "Edit cross-administrators"
+msgstr ""
+
+msgid "Set up domain templates"
+msgstr ""
+
+msgid "Set up some templates for new domains"
+msgstr ""
+
+msgid "Show admin link in menu bar"
+msgstr ""
+
+#, php-format
+msgid "Domain Administration: %s"
+msgstr ""
+
+msgid "Search for username"
+msgstr ""
+
+msgid ""
+"Use an asterisk (*) as a wildcard character to search for more than one user."
+msgstr ""
+
+msgid "List all cross-admins by domain"
+msgstr ""
+
+msgid "Show a listing of ALL cross-admins on this system sorted by the domain"
+msgstr ""
+
+msgid "List cross-admins in a specific domain"
+msgstr ""
+
+msgid "Lists all cross-admins in a domain you specify"
+msgstr ""
+
+msgid "List domains belonging to each cross-admin"
+msgstr ""
+
+msgid "This lets you list all domians belonging to a certain cross-admin"
+msgstr ""
+
+msgid "Cross-admins administration menu"
+msgstr ""
+
+msgid "List cross-admins for a domain"
+msgstr ""
+
+msgid "Choose a domain:"
 msgstr ""
 
 msgid "The default login image"
@@ -1164,6 +1422,9 @@ msgstr ""
 msgid "Users may control mail forwarding"
 msgstr ""
 
+msgid "Track webmail usage"
+msgstr ""
+
 msgid "Set these features"
 msgstr ""
 
@@ -1174,16 +1435,10 @@ msgstr ""
 msgid "Action taken"
 msgstr ""
 
-msgid "Result"
-msgstr ""
-
 msgid "Enabled"
 msgstr ""
 
 msgid "Disabled"
-msgstr ""
-
-msgid "No change"
 msgstr ""
 
 msgid "Changing password change settings"
@@ -1195,6 +1450,9 @@ msgstr ""
 msgid "Changing mail forwarding settings"
 msgstr ""
 
+msgid "Changing webmail usage tracking settings"
+msgstr ""
+
 #, php-format
 msgid "Setting webmail features for %s"
 msgstr ""
@@ -1202,16 +1460,16 @@ msgstr ""
 msgid "This option requires domain password"
 msgstr ""
 
-msgid "To let users change passwords, configure an autoresponder, and/or control mail forwarding, there will need to be a copy of the system password saved on the disk."
+msgid ""
+"To let users change passwords, configure an autoresponder, and/or control "
+"mail forwarding, there will need to be a copy of the system password saved "
+"on the disk."
 msgstr ""
 
 msgid "Save domain password"
 msgstr ""
 
 msgid "Domain password required"
-msgstr ""
-
-msgid "Proceed"
 msgstr ""
 
 msgid "Manage users"
@@ -1236,9 +1494,6 @@ msgid "Customize this domain"
 msgstr ""
 
 msgid "Change the look of your domain and set account defaults"
-msgstr ""
-
-msgid "Show admin link in menu bar"
 msgstr ""
 
 #, php-format
@@ -1282,7 +1537,9 @@ msgstr ""
 msgid "Mailbox Limit Reached"
 msgstr ""
 
-msgid "Cannot add any more real users, please delete some or ask your administrator for a higher mailbox quota"
+msgid ""
+"Cannot add any more real users, please delete some or ask your administrator "
+"for a higher mailbox quota"
 msgstr ""
 
 msgid "Create a new user"
@@ -1330,237 +1587,55 @@ msgstr ""
 msgid "Customize your domain"
 msgstr ""
 
-msgid "Use an asterisk (*) as a wildcard character to search for more than one user."
+msgid "Delete"
 msgstr ""
 
-msgid "Maximum number of mailboxes"
+msgid "Add"
 msgstr ""
 
-msgid "Maximum user quota limit (MiB)"
+msgid "Editing instructions"
 msgstr ""
 
-msgid "Maximum user soft quota limit (MiB)"
+msgid ""
+"To delete a cross-administrator, press the 'Delete' key next to the "
+"username. To add a cross-administrator, put in the full username into the "
+"field for the domain to which you wish to add one, and press 'Add'. The term "
+"'full username' means both the username and the domain name, e.g.: "
+"joe@domain.com."
 msgstr ""
 
-msgid "Maximum user message size limit (MiB)"
-msgstr ""
-
-msgid "Maximum user message count limit"
-msgstr ""
-
-msgid "Maxium login page image size (KiB)"
-msgstr ""
-
-msgid "Field Description"
-msgstr ""
-
-msgid "Current value"
-msgstr ""
-
-msgid "Set these limits"
+msgid "Listing cross-admins for all configured domains"
 msgstr ""
 
 #, php-format
-msgid "Set domain limits for %s"
+msgid "Listing cross-admins for %s"
+msgstr ""
+
+msgid "Choose a cross-admin to view"
+msgstr ""
+
+msgid "Cross-admin:"
+msgstr ""
+
+msgid "Instructions"
+msgstr ""
+
+msgid ""
+"To edit a cross-admin, select the admin's username from the drop-down dialog "
+"box and then click 'Edit'. To add a new one, provide the full username in "
+"the text box and click the 'Add' button next to it. The 'full' username "
+"means both the user's name and the domain, e.g.: joe@domain.com."
+msgstr ""
+
+msgid "No cross-admins found. You should add some first."
 msgstr ""
 
 #, php-format
-msgid "%s is not an integer. Ignored"
+msgid "Viewing domains for %s"
 msgstr ""
 
 #, php-format
-msgid "%d is over the master limit of %d. Maximum setting of %d used"
-msgstr ""
-
-msgid "OK, set to unlimited"
-msgstr ""
-
-#, php-format
-msgid "OK, set to %d"
-msgstr ""
-
-#, php-format
-msgid "Recording domain limits for %s"
-msgstr ""
-
-msgid "<strong>Password</strong> is the same as your <em>mailbox password</em> you used during login procedure. You are asked to type it in second time as an extra security precaution."
-msgstr ""
-
-msgid "<strong>Password</strong> is the <em>system password</em> corresponding to the domain you have selected. Once you type it in, it will be stored on the server in an encrypted format until you sign out of the vadmin interface."
-msgstr ""
-
-#, php-format
-msgid "Domain: %s"
-msgstr ""
-
-msgid "Domain"
-msgstr ""
-
-msgid "Log in"
-msgstr ""
-
-msgid "Administrator Login"
-msgstr ""
-
-#, php-format
-msgid "Domain '%s' doesn't seem to be configured as a virtual domain"
-msgstr ""
-
-#, php-format
-msgid "Sorry, domain password for %s is not stored within the system. Please contact your systems administrator."
-msgstr ""
-
-msgid "The password you provided is incorrect."
-msgstr ""
-
-msgid "The password you provided did not verify."
-msgstr ""
-
-#, php-format
-msgid "Domain %s is not enabled for administration using this interface. Please ask your administrator to configure it first."
-msgstr ""
-
-msgid "There is no stored password for this domain. Your admin will have to first finish all needed configuration for this domain, and only then you will be able to log in and administer users. Please contact the person in charge and remind them about this problem."
-msgstr ""
-
-msgid "Cannot continue"
-msgstr ""
-
-msgid "You will need to store the domain password on the server before you can proceed. It will be stored in an encrypted format, so it's not easily hijacked. Please provide the password in the form below. If you don't know the password, please contact the people who do so they can set it up to be stored on the server."
-msgstr ""
-
-msgid "Domain Password:"
-msgstr ""
-
-msgid "Store Password"
-msgstr ""
-
-#, php-format
-msgid "Need domain password for '%s'"
-msgstr ""
-
-msgid "The password you provided did not validate."
-msgstr ""
-
-msgid "Sorry, but you cannot login over a clear-text HTTP connection. Please sign out and login using a secure HTTPS server instead. This is for your own protection. Thank you!"
-msgstr ""
-
-msgid "Secure connection required"
-msgstr ""
-
-msgid "Cannot log in at this time"
-msgstr ""
-
-#, php-format
-msgid "Domain <strong>'%s'</strong> is currently not enabled for administration using this interface. If you would like to enable it, then click the button below, otherwise return to the previous page and choose a different domain."
-msgstr ""
-
-msgid "Use this template"
-msgstr ""
-
-msgid "Domain not enabled"
-msgstr ""
-
-#, php-format
-msgid "Enable %s"
-msgstr ""
-
-#, php-format
-msgid "%s is not enabled"
-msgstr ""
-
-#, php-format
-msgid "Sorry, the domain name you supplied, %s, is not configured among the virtual domains on this system"
-msgstr ""
-
-#, php-format
-msgid "Domain <strong>'%s'</strong> enabled successfully. Click the 'Admin' link at the top and log in again to access the domain."
-msgstr ""
-
-msgid "Domain enabled successfully"
-msgstr ""
-
-msgid "Logged out"
-msgstr ""
-
-msgid "You have been logged out of the administrator interface. You may still use your mailbox, but you will need to re-login to the this interface if you wish to administer users again."
-msgstr ""
-
-msgid "Log back in"
-msgstr ""
-
-msgid "Logged Out"
-msgstr ""
-
-msgid "Email administration"
-msgstr ""
-
-msgid "Manage email accounts in this domain"
-msgstr ""
-
-msgid "Set domain limits"
-msgstr ""
-
-msgid "Set limits for this domain: maximum number of users, maximum quotas, etc."
-msgstr ""
-
-msgid "Configure cross-admins"
-msgstr ""
-
-msgid "Edit cross-administrators"
-msgstr ""
-
-msgid "Set up domain templates"
-msgstr ""
-
-msgid "Set up some templates for new domains"
-msgstr ""
-
-#, php-format
-msgid "Domain Administration: %s"
-msgstr ""
-
-msgid "Search for username"
-msgstr ""
-
-msgid "List all cross-admins by domain"
-msgstr ""
-
-msgid "Show a listing of ALL cross-admins on this system sorted by the domain"
-msgstr ""
-
-msgid "List cross-admins in a specific domain"
-msgstr ""
-
-msgid "Lists all cross-admins in a domain you specify"
-msgstr ""
-
-msgid "List domains belonging to each cross-admin"
-msgstr ""
-
-msgid "This lets you list all domians belonging to a certain cross-admin"
-msgstr ""
-
-msgid "Cross-admins administration menu"
-msgstr ""
-
-msgid "List cross-admins for a domain"
-msgstr ""
-
-msgid "Choose a domain:"
-msgstr ""
-
-msgid "List users"
-msgstr ""
-
-msgid "List accounts in this domain"
-msgstr ""
-
-#, php-format
-msgid "Vadmin Plugin: %s"
-msgstr ""
-
-msgid "Real user or Alias?"
+msgid "Viewing Cross-administrator %s"
 msgstr ""
 
 msgid "Domain Creation Templates"
@@ -1570,7 +1645,9 @@ msgstr ""
 msgid "Template '%s' processed"
 msgstr ""
 
-msgid "No domain templates are currently defined. Please click the button below to create one"
+msgid ""
+"No domain templates are currently defined. Please click the button below to "
+"create one"
 msgstr ""
 
 msgid "Create a New Template"
@@ -1625,90 +1702,165 @@ msgstr ""
 msgid "Delete template"
 msgstr ""
 
-msgid "Domain templates let you specify a set of default parameters that can be applied to the domains you enable. These parameters include limits, restrictions, and some preferences as well"
+msgid ""
+"Domain templates let you specify a set of default parameters that can be "
+"applied to the domains you enable. These parameters include limits, "
+"restrictions, and some preferences as well"
 msgstr ""
 
 msgid "Please provide a template name"
 msgstr ""
 
-msgid "Your autoresponder settings"
+msgid "Logged out"
 msgstr ""
 
-msgid "Your autoresponder is enabled"
+msgid ""
+"You have been logged out of the administrator interface. You may still use "
+"your mailbox, but you will need to re-login to the this interface if you "
+"wish to administer users again."
 msgstr ""
 
-msgid "Message"
+msgid "Log back in"
 msgstr ""
 
-msgid "Disable autoresponder"
+msgid "Logged Out"
 msgstr ""
 
-msgid "I am currently away from my email. I will respond to your message when I return."
+msgid ""
+"<strong>Password</strong> is the same as your <em>mailbox password</em> you "
+"used during login procedure. You are asked to type it in second time as an "
+"extra security precaution."
 msgstr ""
 
-msgid "Your autoresponder is not enabled"
-msgstr ""
-
-msgid "Enable autoresponder"
-msgstr ""
-
-msgid "Please provide an autoresponse message. It cannot be an empty string."
-msgstr ""
-
-msgid "Sorry, but this service is not available at this time. Please try again later, or notify somebody in charge that this feature is not working."
-msgstr ""
-
-msgid "Forward mail to (separate by commas):"
-msgstr ""
-
-msgid "Change Forwarding"
-msgstr ""
-
-msgid "Change mail forwarding"
-msgstr ""
-
-msgid "Did not find mail forwarding list"
-msgstr ""
-
-msgid "Mail forwarding not changed"
+msgid ""
+"<strong>Password</strong> is the <em>system password</em> corresponding to "
+"the domain you have selected. Once you type it in, it will be stored on the "
+"server in an encrypted format until you sign out of the vadmin interface."
 msgstr ""
 
 #, php-format
-msgid "Updated forwarding to '%s'"
+msgid "Domain: %s"
 msgstr ""
 
-msgid "Mail forwarding changed successfully"
+msgid "Domain"
 msgstr ""
 
-msgid "No change requested"
+msgid "Log in"
 msgstr ""
 
-msgid "Old Password"
+msgid "Administrator Login"
 msgstr ""
 
-msgid "New Password"
+#, php-format
+msgid "Domain '%s' doesn't seem to be configured as a virtual domain"
 msgstr ""
 
-msgid "Repeat Password"
+#, php-format
+msgid ""
+"Sorry, domain password for %s is not stored within the system. Please "
+"contact your systems administrator."
 msgstr ""
 
-msgid "Change your password"
+msgid "The password you provided is incorrect."
 msgstr ""
 
-msgid "Your old password did not match"
+msgid "The password you provided did not verify."
 msgstr ""
 
-msgid "New password did not match repeat password"
+#, php-format
+msgid ""
+"Domain %s is not enabled for administration using this interface. Please ask "
+"your administrator to configure it first."
 msgstr ""
 
-msgid "New password is the same as old one"
+msgid ""
+"There is no stored password for this domain. Your admin will have to first "
+"finish all needed configuration for this domain, and only then you will be "
+"able to log in and administer users. Please contact the person in charge and "
+"remind them about this problem."
 msgstr ""
 
-msgid "Password changed successfully"
+msgid "Cannot continue"
 msgstr ""
 
-msgid "Your password was changed successfully. Next time you log in, please use your new password."
+msgid ""
+"You will need to store the domain password on the server before you can "
+"proceed. It will be stored in an encrypted format, so it's not easily "
+"hijacked. Please provide the password in the form below. If you don't know "
+"the password, please contact the people who do so they can set it up to be "
+"stored on the server."
 msgstr ""
 
-msgid "Password changed"
+msgid "Domain Password:"
+msgstr ""
+
+msgid "Store Password"
+msgstr ""
+
+#, php-format
+msgid "Need domain password for '%s'"
+msgstr ""
+
+msgid "The password you provided did not validate."
+msgstr ""
+
+msgid ""
+"Sorry, but you cannot login over a clear-text HTTP connection. Please sign "
+"out and login using a secure HTTPS server instead. This is for your own "
+"protection. Thank you!"
+msgstr ""
+
+msgid "Secure connection required"
+msgstr ""
+
+msgid "Cannot log in at this time"
+msgstr ""
+
+#, php-format
+msgid ""
+"Domain <strong>'%s'</strong> is currently not enabled for administration "
+"using this interface. If you would like to enable it, then click the button "
+"below, otherwise return to the previous page and choose a different domain."
+msgstr ""
+
+msgid "Use this template"
+msgstr ""
+
+msgid "Domain not enabled"
+msgstr ""
+
+#, php-format
+msgid "Enable %s"
+msgstr ""
+
+#, php-format
+msgid "%s is not enabled"
+msgstr ""
+
+#, php-format
+msgid ""
+"Sorry, the domain name you supplied, %s, is not configured among the virtual "
+"domains on this system"
+msgstr ""
+
+#, php-format
+msgid ""
+"Domain <strong>'%s'</strong> enabled successfully. Click the 'Admin' link at "
+"the top and log in again to access the domain."
+msgstr ""
+
+msgid "Domain enabled successfully"
+msgstr ""
+
+msgid "List users"
+msgstr ""
+
+msgid "List accounts in this domain"
+msgstr ""
+
+#, php-format
+msgid "Vadmin Plugin: %s"
+msgstr ""
+
+msgid "Real user or Alias?"
 msgstr ""
