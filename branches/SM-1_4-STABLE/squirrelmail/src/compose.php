@@ -1088,6 +1088,12 @@ function showInputForm ($session, $values=false) {
     // to do; SquirrelMail itself will add the final "return true".
     // Onsubmit text is enclosed inside of double quotes, so plugins
     // need to quote accordingly.
+    //
+    // Also, plugin authors should try to retain compatibility with
+    // the Compose Extras plugin by resetting its compose submit
+    // counter when preventing form submit.  Use this code:
+    // if (your-code-here) { submit_count = 0; return false; }
+    //
     if ($javascript_on) {
         if (empty($compose_onsubmit))
             $compose_onsubmit = array();
