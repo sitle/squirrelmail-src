@@ -8,7 +8,7 @@
 #    SM_LOCALES_PATH (required) - path to SquirrelMail locales HEAD cvs
 #    SM_DEBUG (optional) - if set, script does not remove string locations from pot
 #                          WARNING: don't commit pot with locations into cvs.
-#    SM_LANG_PHP (optional) - if set, xgettext uses -L php option instead of -C.
+#    SM_LANG_C (optional) - if set, xgettext uses -C option instead of -L php.
 #
 # Philipe Mingo <mingo@rotedic.com>
 # Tomas Kuliavas <tokul@users.sourceforge.net>
@@ -32,10 +32,10 @@ fi
 
 # Allows controlling language option
 # (gettext v.0.10.40 = -C, gettext 0.11+ = -L php).
-if [ $SM_LANG_PHP ] ; then
-    XGETTEXT_OPTIONS="${XGETTEXT_OPTIONS} -L php";
-else
+if [ $SM_LANG_C ] ; then
     XGETTEXT_OPTIONS="${XGETTEXT_OPTIONS} -C";
+else
+    XGETTEXT_OPTIONS="${XGETTEXT_OPTIONS} -L php";
 fi
 
 if [ ! ${SM_STABLE_PATH} ] ;
