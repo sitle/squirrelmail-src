@@ -85,7 +85,7 @@ function attachSelectedMessages($msg, $imapConnection) {
                     $filename = "untitled-".$message->entity_id;
                 else
                     $filename = $subject;
-                $filename .= '.msg';
+                $filename .= '.eml';
                 $filename = decodeHeader($filename, false, false);
 
                 // figure out a subject for new message
