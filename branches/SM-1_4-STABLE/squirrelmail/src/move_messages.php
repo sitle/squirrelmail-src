@@ -86,7 +86,6 @@ function attachSelectedMessages($msg, $imapConnection) {
                 else
                     $filename = $subject;
                 $filename .= '.eml';
-                $filename = decodeHeader($filename, false, false);
 
                 // figure out a subject for new message
                 //
