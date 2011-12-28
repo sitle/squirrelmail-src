@@ -19,6 +19,11 @@ Version 1.4.23 - SVN
   - Fixed issue with Noselect mailboxes being clickable in folder list
   - Made performance improvements in mailbox listing
   - Attachment filename extensions changed from ".msg" to ".eml"
+  - Unified address book searches somewhat: file-backed address books now
+    search in each field individually; database-backed address books now
+    search in fields other than first/last name (nickname, email); LDAP-
+    backed address books now search in common name fields as well as by
+    email address (cn, sn, givenname, mail)
 
 Version 1.4.22 - 12 July 2011
 -----------------------------
