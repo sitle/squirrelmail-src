@@ -272,7 +272,8 @@ class abook_ldap_server extends addressbook_backend {
             /* Undo sanitizing of * symbol */
             $expr = str_replace('\2a','*',$expr);
         }
-        $expression = "cn=$expr";
+        $expr = preg_replace('/\*+/', '*', $expr); // LDAP chokes on more than one *
+        $expression = "(|(cn=$expr)(sn=$expr)(givenname=$expr)(mail=$expr))";
 
         /* Make sure connection is there */
         if(!$this->open()) {
