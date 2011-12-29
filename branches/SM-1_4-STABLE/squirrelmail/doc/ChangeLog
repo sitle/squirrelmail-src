@@ -24,6 +24,12 @@ Version 1.4.23 - SVN
     search in fields other than first/last name (nickname, email); LDAP-
     backed address books now search in common name fields as well as by
     email address (cn, sn, givenname, mail)
+  - You may now enable LDAP-backed address books to be listed (using
+    the "List all" button on the address search screen accessed via
+    the "Addresses" button on the compose screen) by adding
+    "$ldap_abook_allow_listing = TRUE;" (without quotes) to
+    config/config_local.php (previously, this required editing of a
+    file).
 
 Version 1.4.22 - 12 July 2011
 -----------------------------
