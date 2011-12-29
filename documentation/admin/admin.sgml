@@ -2393,14 +2393,34 @@ set, if the Custom Charset plugin is installed.
 <sect1>Personal and shared address books<label id="addressbooks">
 <p>
 SquirrelMail supports multiple address book backends. Backends can be
-configured to provide address books that store entries visible to one user
-or to group of users or to all users that use same SquirrelMail installation.
+configured to provide access to address books that store entries visible
+to one user or to group of users or to all users that use the same
+SquirrelMail installation.
 
-SquirrelMail supports own flat file format, database supported by PHP Pear
-DB libraries and LDAP.
+SquirrelMail comes with support for address books in its own flat file format,
+any database supported by the PHP Pear DB abstraction layer (see <url
+url="http://pear.php.net/manual/en/package.database.db.intro-dsn.php">)
+and LDAP.
 
-LDAP address books are readonly and listing of addresses is available only
-when users search for address.
+LDAP address books are read-only in SquirrelMail versions until 1.5.2. In
+version 1.5.2 and up, you can configure a writeable LDAP address book. The
+listing of addresses in a LDAP directory is available only when users search
+for addresses unless the <tt>listing</tt> configuration attribute is set for
+the LDAP server in SquirrelMail 1.5.2 and above or you add the following to
+the <tt>config/config_local.php</tt> file in SquirrelMail versions 1.4.23 to
+(but not including) 1.5.0:
+
+<tscreen><verb>
+$ldap_abook_allow_listing = TRUE;
+</verb></tscreen>
+
+In earlier versions, you'd need to make a small change to the
+<tt>functions/abook_ldap_server.php</tt> file in the <tt>list_addr()</tt>
+function near the bottom of the file (see instructions in the comments for
+that function). NOTE: you should exercise caution enabling the listing of
+large or public LDAP address book backends. Also note that the <tt>maxrows</tt>
+configuration setting for the LDAP server will limit the number of entries
+that are returned when listing it.
 
 Global address book is address book that can be shared between users. Global
 address books can be configured in SquirrelMail since 1.4.4 version. Before
