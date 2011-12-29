@@ -365,15 +365,27 @@ class abook_ldap_server extends addressbook_backend {
     /**
      * List all entries present in LDAP server
      *
-     * If you run a tiny LDAP server and you want the "List All" button
-     * to show EVERYONE, disable first return call and enable the second one.
-     * Remember that maxrows setting might limit list of returned entries.
+     * If you run a small-sized LDAP server and you want the "List all"
+     * button (found on the address book search screen that is accessed
+     * via the "Addresses" button on the compose screen) to show all
+     * addresses in the directory, add the following to config/config_local.php
      *
-     * Careful with this -- it could get quite large for big sites.
+     *    $ldap_abook_allow_listing = TRUE;
+     *
+     * Remember that the "maxrows" configuration setting for the LDAP
+     * server backend might limit list of returned entries.
+     *
+     * NOTE: You should exercise caution enabling the listing of large
+     *       or public LDAP address book backends.
+     *
      * @return array all entries in ldap server
+     *
      */
      function list_addr() {
-         return array();
-         // return $this->search('*');
+         global $ldap_abook_allow_listing;
+         if ($ldap_abook_allow_listing)
+            return $this->search('*');
+         else
+            return array();
      }
 }
