@@ -34,7 +34,7 @@
  * Unicode Standard, and to make copies of this file in any form for
  * internal or external distribution as long as this notice remains
  ************************************************************************
- * @copyright (c) 2004-2009 The SquirrelMail Project Team
+ * @copyright (c) 2004-2012 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package decode

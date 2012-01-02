@@ -29,7 +29,7 @@
  *  <li>johab ?
  * </ul>
  * 
- * @copyright (c) 2004-2009 The SquirrelMail Project Team
+ * @copyright (c) 2004-2012 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package decode
