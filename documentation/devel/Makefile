@@ -1,7 +1,7 @@
 #! /bin/make -f
 # $Id$
 #
-# Copyright (c) 2005-2008 The SquirrelMail Project Team
+# Copyright (c) 2005-2012 The SquirrelMail Project Team
 # This file is part of SquirrelMail webmail interface documentation.
 #
 # SquirrelMail is free software; you can redistribute it and/or modify
