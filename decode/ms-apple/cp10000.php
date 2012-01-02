@@ -3,7 +3,7 @@
  * decode/cp10000.php
  * $Id$
  *
- * Copyright (c) 2003-2009 The SquirrelMail Project Team
+ * Copyright (c) 2003-2012 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This file contains cp10000 (MacRoman) decoding function that 
