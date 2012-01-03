@@ -2932,7 +2932,7 @@ about the plugin and what it does.
          <item> Update the ReleaseNotes, keeping the same general format.
          <item> Compose a three to eight line message you'll post to mailinglists and forums. Include links. (While you're at it, make a simple HTML version of it as well, you'll need it later) Be BRIEF. Keep this message in your editor or on file for later on.
     </enum>
-<item><bf/Gearing up:/ Update the version number strings at 3 places:
+<item><bf/Gearing up:/ Update the version number strings in three places:
     <enum>
          <item> Variables in <tt>functions/strings.php</tt> (<tt>$version = '1.4.20', $SQM_INTERNAL_VERSION=array(1,4,20)</tt>).
          <item> <tt>doc/ChangeLog</tt>
@@ -3010,7 +3010,7 @@ put squirrelmail-webmail-1.4.22/doc/ReleaseNotes
 <item><bf/Defrosting:/ Prepare SVN for continued development
     <enum>
          <item> Go back to your regular SVN development directory.
-         <item> Update the version number variable in functions/strings.php by incrementing the incremental release number by 1 and adding <tt>' [SVN]'</tt> after it (<tt>$version = '1.4.21 [SVN]';</tt>). Also, don't forget to update the <tt>$SQM_INTERNAL_VERSION</tt> array!
+         <item> Update the version number variable in functions/strings.php by incrementing the incremental release number by one and adding <tt>' [SVN]'</tt> after it (<tt>$version = '1.4.21 [SVN]';</tt>). Also, don't forget to update the <tt>$SQM_INTERNAL_VERSION</tt> array!
          <item> Add a new section in doc/ChangeLog for the new release, followed by <tt>' - SVN'</tt>
          <item> Archive the doc/ReleaseNotes for this release like this:
          <tscreen>svn copy doc/ReleaseNotes doc/release_notes_archive/X.Y/Notes-X.Y.Z.txt</tscreen>
@@ -3070,8 +3070,24 @@ put squirrelmail-webmail-1.4.22/doc/ReleaseNotes
 <p>
 
 <enum>
+<item><bf/Teamwork:/ Before beginning, coordinate the release with other members of the admin list to ensure proper time for verification and testing of release components (RPM, etc).
+<item><bf/Usual sanity:/ Check the code over to make sure we are absolutely ready.
+<item><bf/Documentation:/ Update Release Documents
+    <enum>
+         <item> Compose a three to eight line message you'll post to mailinglists and forums. Include links. (While you're at it, make a simple HTML version of it as well, you'll need it later) Be BRIEF. Keep this message in your editor or on file for later on.
+    </enum>
+<item><bf/Gearing up:/ Update the version number strings in three places (this should just involve removing <tt>" [SVN]"</tt> from each):
+    <enum>
+         <item><tt>include/common.h</tt>:
+            <tscreen><verb>#define IMAP_PROXY_VERSION      "1.2.8"</verb></tscreen>
+         <item><tt>imapproxy.spec</tt>:
+            <tscreen><verb>%define ver    1.2.8</verb></tscreen>
+         <item><tt>pkginfo</tt>:
+            <tscreen><verb>VERSION=1.2.8</verb></tscreen>
+    </enum>
 <item><bf/SVN packaging:/
     <enum>
+         <item> Commit final changes to Subversion (include/common.h, imapproxy.spec, pkginfo)
          <item> Tag SVN with the release number in the format imap_proxy-release-X_Y_Z (imap_proxy-release-1_2_8). Example:
             <tscreen><verb>
 svn copy -m "IMAP Proxy version 1.2.8" \
@@ -3137,12 +3153,30 @@ put squirrelmail-imap_proxy-1.2.8-release_work_area/squirrelmail-imap_proxy-1.2.
                        <tscreen><url url="http://sourceforge.net/projects/squirrelmail/" name="https://sourceforge.net/projects/squirrelmail/"></tscreen>
              </enum>
     </enum>
+<item><bf/Defrosting:/ Prepare SVN for continued development
+    <enum>
+         <item> Go back to your regular SVN development directory.
+         <item> Update the version number strings in three places by incrementing the incremental release number by one and adding <tt>" [SVN]"</tt> after it
+            <enum>
+               <item><tt>include/common.h</tt>:
+                  <tscreen><verb>#define IMAP_PROXY_VERSION      "1.2.9 [SVN]"</verb></tscreen>
+               <item><tt>imapproxy.spec</tt>:
+                  <tscreen><verb>%define ver    1.2.9 [SVN]</verb></tscreen>
+               <item><tt>pkginfo</tt>:
+                  <tscreen><verb>VERSION=1.2.9 [SVN]</verb></tscreen>
+            </enum>
+         <item> Commit these changes to SVN with a note saying that it is ready for continued development.
+    </enum>
 <item><bf/Enable downloading:/ Update the download page for the SquirrelMail website.
     <enum>
         <item> SSH into sciurida
         <item> Change to the web directory for SquirrelMail (currently /srv/www/www/htdocs).
         <item> Edit download.php and change the version number as necessary (specifically, you need to update <tt>$imap_proxy_version</tt> and <tt>$imap_proxy_svn</tt>).
         <item> Upload the md5 checksums and sha1 checksums that make-release-webmail calculated and your GPG signatures into the <tt>sums/</tt> dir.
+    </enum>
+<item><bf/Blatant yelling:/ Announce the release to the World.
+    <enum>
+         <item> FIXME/TODO.....
     </enum>
 </enum>
 
