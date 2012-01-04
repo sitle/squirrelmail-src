@@ -68,8 +68,10 @@ if ($my_language != $squirrelmail_language) {
 
 set_up_language($my_language);
 
-$output = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Frameset//EN\">\n".
-          "<html><head>\n" .
+$output = ($browser_rendering_mode === 'standards' || $browser_rendering_mode === 'almost'
+       ? '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">'
+       : /* "quirks" */ '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">').
+          "\n<html><head>\n" .
           "<meta name=\"robots\" content=\"noindex,nofollow\">\n" .
           "<title>$org_title</title>\n".
           "</head>";
