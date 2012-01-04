@@ -360,6 +360,9 @@ $only_secure_cookies = 'true'           if ( !$only_secure_cookies );
 $disable_security_tokens = 'false'      if ( !$disable_security_tokens );
 $check_referrer = ''                    if ( !$check_referrer );
 
+# Added in 1.4.23
+$browser_rendering_mode = 'quirks'      if ( !$browser_rendering_mode );
+
 if ( $ARGV[0] eq '--install-plugin' ) {
     print "Activating plugin " . $ARGV[1] . "\n";
     if ( -d "../plugins/" . $ARGV[1]) {
@@ -556,6 +559,7 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
         print "16. Only secure cookies if poss. : $WHT$only_secure_cookies$NRM\n";
         print "17. Disable secure forms         : $WHT$disable_security_tokens$NRM\n";
         print "18. Page referal requirement     : $WHT$check_referrer$NRM\n";
+        print "19. Browser rendering mode       : $WHT$browser_rendering_mode$NRM\n";
         print "\n";
         print "R   Return to Main Menu\n";
     } elsif ( $menu == 5 ) {
@@ -775,6 +779,7 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
             elsif ( $command == 16 ) { $only_secure_cookies      = command316(); }
             elsif ( $command == 17 ) { $disable_security_tokens  = command317(); }
             elsif ( $command == 18 ) { $check_referrer           = command318(); }
+            elsif ( $command == 19 ) { $browser_rendering_mode   = command319(); }
         } elsif ( $menu == 5 ) {
             if ( $command == 1 ) { command41(); }
             elsif ( $command == 2 ) { $theme_css = command42(); }
@@ -2536,6 +2541,37 @@ sub command318 {
 
 
 
+# browser_rendering_mode (since 1.4.23)
+sub command319 {
+    print "This option allows you to control the browser rendering mode for pages\n";
+    print "that SquirrelMail generates.  SquirrelMail has long rendered in \"quirks\"\n";
+    print "mode, but can usually work fine in \"standards\" mode.  However, it is\n";
+    print "possible that some third party plugins may break in \"standards\" mode.\n";
+    print "It's also possible to use \"almost standards\" mode if you so desire.\n";
+
+    $input = "";
+    while ( $input ne "quirks" && $input ne "almost" && $input ne "standards" ) {
+        print "\n";
+        print "Enter one of the following:\n";
+        print "\n";
+        print $WHT . "quirks" . $NRM . "    - Traditional SquirrelMail quirks mode\n";
+        print $WHT . "almost" . $NRM . "    - Almost standards mode\n";
+        print $WHT . "standards" . $NRM . " - Standards mode\n";
+        print "\n";
+
+        print "Browser rendering mode? [$WHT$browser_rendering_mode$NRM]: ";
+        $input = <STDIN>;
+        chomp($input);
+        if ( $input eq "" && ($browser_rendering_mode eq "quirks"
+         || $browser_rendering_mode eq "almost" || $browser_rendering_mode eq "standards" )) {
+            $input = $browser_rendering_mode;
+        }
+    }
+    return $input;
+}
+
+
+
 ####################################################################################
 #### THEMES ####
 sub command41 {
@@ -3586,6 +3622,7 @@ sub save_data {
 
     # string
         print CF "\$check_referrer          = '$check_referrer';\n";
+        print CF "\$browser_rendering_mode  = '$browser_rendering_mode';\n";
 
         print CF "\n";
         print CF "\$config_location_base    = '$config_location_base';\n";

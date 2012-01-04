@@ -24,13 +24,17 @@ function displayHtmlHeader( $title = 'SquirrelMail', $xtra = '', $do_hook = TRUE
     if ( !sqgetGlobalVar('base_uri', $base_uri, SQ_SESSION) ) {
         global $base_uri;
     }
-    global $theme_css, $custom_css, $pageheader_sent;
+    global $theme_css, $custom_css, $pageheader_sent, $browser_rendering_mode;
 
     // prevent clickjack attempts
 // FIXME: should we use DENY instead?  We can also make this a configurable value, including giving the admin the option of removing this entirely in case they WANT to be framed by an external domain
     header('X-Frame-Options: SAMEORIGIN');
 
-    echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">' .
+    echo ($browser_rendering_mode === 'standards'
+       ? '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">'
+       : ($browser_rendering_mode === 'almost'
+         ? '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">'
+         : /* "quirks" */ '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">')) .
          "\n\n" . html_tag( 'html' ,'' , '', '', '' ) . "\n<head>\n" .
          "<meta name=\"robots\" content=\"noindex,nofollow\">\n" .
          "<meta http-equiv=\"x-dns-prefetch-control\" content=\"off\">\n";

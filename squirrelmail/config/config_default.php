@@ -722,6 +722,21 @@ $disable_security_tokens = false;
  */
 $check_referrer = '';
 
+/**
+ * Rendering Mode (quirks/(almost) standards)
+ * 
+ * Control browser rendering mode (affects
+ * the DOCTYPE at the top of all pages):
+ *
+ * "quirks"    = quirks mode
+ * "almost"    = almost standards mode
+ * "standards" = standards mode
+ *
+ * @global string $browser_rendering_mode
+ * @since 1.4.23
+ */
+$browser_rendering_mode = 'quirks';
+
 
 /**
  * Themes
