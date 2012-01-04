@@ -68,6 +68,7 @@ if ($my_language != $squirrelmail_language) {
 
 set_up_language($my_language);
 
+global $browser_rendering_mode;
 $output = ($browser_rendering_mode === 'standards' || $browser_rendering_mode === 'almost'
        ? '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">'
        : /* "quirks" */ '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">').
