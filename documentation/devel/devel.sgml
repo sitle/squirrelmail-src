@@ -1777,6 +1777,15 @@ global $compose_onsubmit;
 $compose_onsubmit[] = ' if (somevar == \'no\') { alert(\\"Sorry\\"); return false; }';
 </verb></tscreen>
 
+Also, plugin authors should try to retain compatibility with the Compose Extras
+plugin by resetting its compose submit counter when preventing form submit.  Use
+this JavaScript code:
+
+<tscreen><verb>
+global $compose_onsubmit;
+$compose_onsubmit[] = ' if (your-code-goes-here) { submit_count = 0; return false; }';
+</verb></tscreen>
+
 Any other form tag additions by a plugin (beside <tt/onsubmit/ event code) can
 currently be echoed directly to the browser.
 
