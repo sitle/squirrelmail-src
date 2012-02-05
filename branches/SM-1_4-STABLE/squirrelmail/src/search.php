@@ -243,6 +243,8 @@ function printSearchMessages($msgs,$mailbox, $cnt, $imapConnection, $where, $wha
         $msg_cnt_str = get_msgcnt_str(1, $cnt, $cnt);
         $toggle_all = get_selectall_link(1, $sort);
 
+        do_hook('search_index_before');
+
         $safe_name = preg_replace("/[^0-9A-Za-z_]/", '_', $mailbox);
         $form_name = "FormMsgs" . $safe_name;
         echo '<form name="' . $form_name . '" method="post" action="move_messages.php">' ."\n" .
