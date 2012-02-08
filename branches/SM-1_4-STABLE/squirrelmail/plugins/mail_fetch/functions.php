@@ -92,15 +92,20 @@ function validate_mail_fetch_server_address($requested_address) {
     return '';
 }
 
-function hex2bin( $data ) {
-    /* Original code by josh@superfork.com */
+/** 
+ * hex2bin() only exists since PHP 5.4
+ */
+if ( ! function_exists('hex2bin') ) {
+    function hex2bin( $data ) {
+        /* Original code by josh@superfork.com */
 
-    $len = strlen($data);
-    $newdata = '';
-    for( $i=0; $i < $len; $i += 2 ) {
-        $newdata .= pack( "C", hexdec( substr( $data, $i, 2) ) );
+        $len = strlen($data);
+        $newdata = '';
+        for( $i=0; $i < $len; $i += 2 ) {
+            $newdata .= pack( "C", hexdec( substr( $data, $i, 2) ) );
+        }
+        return $newdata;
     }
-    return $newdata;
 }
 
 function mf_keyED( $txt ) {
