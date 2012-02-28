@@ -2280,7 +2280,7 @@ sub command39 {
     if ( ( $new_edit =~ /^y\n/i ) || ( ( $new_edit =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
         $edit_identity = "true";
         $edit_name = "true";
-        $hide_auth_header = "false";
+        $hide_auth_header = command39b();
     } else {
         $edit_identity = "false";
         $edit_name = command39a();
@@ -2312,23 +2312,24 @@ sub command39a {
 }
 
 sub command39b {
-    print $NRM;
-    print "\nSquirrelMail adds username information to every outgoing\n";
-    print "email in order to prevent possible sender forging when\n";
-    print "users are allowed to change their email and/or full name.\n";
-    print "\n";
-    print "You can remove user information from this header (y) if you\n";
-    print "think that it violates privacy or security.\n";
-    print "\n";
-    print "Note: SquirrelMail will refuse to remove that information\n";
-    print "from the email headers if users are allowed to change their\n";
-    print "identities, regardless of what you have set here.\n";
-    print "\n";
-    print "Note: If you have defined a header encryption key in your SMTP\n";
-    print "or Sendmail settings (see the \"Server Settings\" option page),\n";
-    print "this setting is ignored because all user information in outgoing\n";
-    print "messages is encoded.\n";
-    print "\n";
+    print "$NRM";
+    print "\nSquirrelMail adds username information to every outgoing email in
+order to prevent possible sender forging by users that are allowed
+to change their email and/or full name.
+
+You can remove user information from this header (y) if you think
+that it violates privacy or security.
+
+Note: If users are allowed to change their email addresses, this 
+setting will make it difficult to determine who sent what where.
+Use at your own risk.
+
+Note: If you have defined a header encryption key in your SMTP or
+Sendmail settings (see the \"Server Settings\" option page), this
+setting is ignored because all user information in outgoing messages
+is encoded.
+
+";
 
     if ( lc($hide_auth_header) eq "true" ) {
         $default_value = "y";
