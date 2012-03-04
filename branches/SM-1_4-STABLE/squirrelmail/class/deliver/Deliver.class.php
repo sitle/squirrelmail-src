@@ -563,7 +563,7 @@ class Deliver {
      * @return string $header
      */
     function prepareRFC822_Header(&$rfc822_header, $reply_rfc822_header, &$raw_length) {
-        global $domain, $version, $username, $encode_header_key, $edit_identity, $hide_auth_header;
+        global $domain, $version, $username, $encode_header_key, $hide_auth_header;
 
         if (! isset($hide_auth_header)) $hide_auth_header=false;
 
