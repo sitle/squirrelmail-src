@@ -3293,8 +3293,18 @@ put squirrelmail-imap_proxy-1.2.8-release_work_area/squirrelmail-imap_proxy-1.2.
 
 <sect1>Updating Copyright Dates
 <p>
-Every year, the copyright dates should be updated.  Here is an example bash script
-that can be used for that purpose.
+Every year, the copyright dates should be updated.  This action
+should be taken against most of the repository:
+<enum>
+   <item>STABLE (svnroot/squirrelmail/branches/SM-1_4-STABLE/squirrelmail)
+   <item>DEVEL (svnroot/squirrelmail/trunk/squirrelmail)
+   <item>IMAP Proxy (svnroot/squirrelmail/trunk/imap_proxy)
+   <item>DOCUMENTATION (svnroot/squirrelmail/trunk/documentation)
+   <item>DECODE (svnroot/squirrelmail/trunk/decode)
+   <item>UTIL (svnroot/squirrelmail/trunk/util)
+   <item>LOCALES (svnroot/squirrelmail/trunk/locales)
+</enum>
+Below is an example bash script that can be used for that purpose.  
 <tscreen><verb>
 #!/bin/bash
 
