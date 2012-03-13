@@ -3301,7 +3301,7 @@ that can be used for that purpose.
 update_copyrights()
 {
 
-   if [ -z $1 ] || [ ! -d $1 ]; then
+   if [[ -z $1 ]] || [[ ! -d $1 ]]; then
       echo
       echo "Error: update_copyrights() expects valid directory, got $1"
       echo
@@ -3312,26 +3312,58 @@ update_copyrights()
 
    for file in `ls`; do
 
-      if [ -d $file ]; then
+      # recurse directories
+      #
+      if [[ -d $file ]]; then
          echo "Traversing $PWD/$file"
          update_copyrights $file
          cd ..
+
+      # we have a file, but what kind?
+      #
       else
-         echo "   Updating $file"
 
-         # this line can be used to update copyrights
-         # explicitly from just last year to this year
+         # skip binary compiled translations, help files, image files, etc
          #
-         #`sed -i "s/\(copyright .*\)-$last_year\( The SquirrelMail\)/\1-$this_year\2/i" $file`
+         if [[ $file =~ '(\.mo)|(\.hlp)|(\.png)|(\.gif)|(\.jpg)$' ]]; then
 
-         `sed -i "s/\(copyright .*\)-2[0-9][0-9][0-9]\( The SquirrelMail\)/\1-$this_year\2/i" $file`
+            echo "   Skipping $file"
+
+
+         # restrict the search/replace to top 10 lines of translation files
+         #
+         elif [[ $file =~ '\.po$' ]]; then
+
+            echo "   Updating $file (only in first 10 lines)"
+
+            # this line can be used to update copyrights
+            # explicitly from just last year to this year
+            #
+            #`sed -i "1,10 s/\(copyright .*\)-$last_year\( The SquirrelMail\)/\1-$this_year\2/i" $file`
+
+            `sed -i "1,10 s/\(copyright .*\)-2[0-9][0-9][0-9]\( The SquirrelMail\)/\1-$this_year\2/i" $file`
+
+
+         # all other files
+         #
+         else
+
+            echo "   Updating $file"
+
+            # this line can be used to update copyrights
+            # explicitly from just last year to this year
+            #
+            #`sed -i "s/\(copyright .*\)-$last_year\( The SquirrelMail\)/\1-$this_year\2/i" $file`
+
+            `sed -i "s/\(copyright .*\)-2[0-9][0-9][0-9]\( The SquirrelMail\)/\1-$this_year\2/i" $file`
+         fi
       fi
 
    done
 
 }
 
-if [ -z $1 ] || [ ! -d $1 ]; then
+if [[ -z $1 ]] || [[ ! -d $1 ]]; then
    echo
    echo "Usage: $0 [directory]"
 else
