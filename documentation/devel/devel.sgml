@@ -3304,7 +3304,11 @@ should be taken against most of the repository:
    <item>UTIL (svnroot/squirrelmail/trunk/util)
    <item>LOCALES (svnroot/squirrelmail/trunk/locales)
 </enum>
-Below is an example bash script that can be used for that purpose.  
+Also, make sure to update the <tt>define</tt> statement in
+<tt>trunk/squirrelmail/include/constants.php</tt> around line 28 that defines
+<tt>SM_COPYRIGHT</tt>.
+<p>Below is an example bash script that can be used to update all of the paths
+that are listed above (you have to run it against each one).  
 <tscreen><verb>
 #!/bin/bash
 
