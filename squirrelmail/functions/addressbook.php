@@ -666,7 +666,7 @@ class addressbook_backend {
         return false;
     }
 
-    function lookup($value, $field) {
+    function lookup($value, $field=SM_ABOOK_FIELD_NICKNAME) {
         $this->set_error('lookup not implemented');
         return false;
     }
