@@ -1702,10 +1702,13 @@ function deliverMessage(&$composeMessage, $draft=false) {
         $succes = $deliver->finalizeStream($stream);
     }
     if (!$succes) {
-        $msg  = _("Message not sent.") .' '.  _("Server replied:") .
-            "\n<blockquote>\n" . $deliver->dlv_msg . '<br />' .
-            $deliver->dlv_ret_nr . ' ' .
-            $deliver->dlv_server_msg . "</blockquote>\n\n";
+        $msg = _("Message not sent.") . ' ' . _("Server replied:")
+             . "\n<blockquote>\n"
+             . (isset($deliver->dlv_msg) ? $deliver->dlv_msg : '')
+             . '<br />'
+             . (isset($deliver->dlv_ret_nr) ? $deliver->dlv_ret_nr . ' ' : '')
+             . (isset($deliver->dlv_server_msg) ? $deliver->dlv_server_msg : '')
+             . "</blockquote>\n\n";
         plain_error_message($msg, $color);
     } else {
         unset ($deliver);
