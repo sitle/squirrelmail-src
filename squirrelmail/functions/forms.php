@@ -25,7 +25,7 @@ function addInputField($type, $name = null, $value = null, $attributes = '') {
     return '<input type="'.$type.'"'.
         ($name  !== null ? ' name="'.htmlspecialchars($name).'"'   : '').
         ($value !== null ? ' value="'.htmlspecialchars($value).'"' : '').
-        $attributes . " />\n";
+        ' ' . $attributes . " />\n";
 }
 
 /**
