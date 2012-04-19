@@ -1277,6 +1277,42 @@ just one example using Apache's Redirect directive:
 The plugin API changed substantially in version 1.5.2.  At the least,
 you should NOT copy your old plugins when making this kind of upgrade.
 
+<sect2>Upgrading to 1.4.22 (or greater) from any earlier version of the 1.4 release series
+<p>
+Due to a fix made that standardizes the folder list display, administrators
+who had their configuration file set to work around this issue in the past
+will need to update their configuration. This will commonly affect those
+using Courier IMAP, but could affect others as well.
+
+If you have <tt>$default_sub_of_inbox</tt> set to <tt>FALSE</tt> in your main
+configuration (or, using the configuration tool, see <tt>"3. Folder Defaults"
+===> "12. Default Sub. of INBOX"</tt>), and you find after upgrade that your
+special folders (e.g., Trash, Drafts, Sent) are no longer listed at the top of
+your folder list, please change that value to <tt>TRUE</tt>.
+
+Also, if you find that this upgrade prevents users from logging in with an
+error such as <tt>"ERROR: Could not complete request. Query: CREATE "Trash"
+Reason Given: Invalid mailbox name."</tt>, you will need to correct the user
+preference values for the problem folders. You can do so with commands such
+as the following for file-based preferences (adjust the data directory location
+as needed):
+
+<tscreen><verb>
+   find /var/lib/squirrelmail/data/ -name *.pref -exec sed --in-place 's/trash_folder=Trash/trash_folder=INBOX.Trash/g' {} \;
+   find /var/lib/squirrelmail/data/ -name *.pref -exec sed --in-place 's/draft_folder=Drafts/draft_folder=INBOX.Drafts/g' {} \;
+   find /var/lib/squirrelmail/data/ -name *.pref -exec sed --in-place 's/sent_folder=Sent/sent_folder=INBOX.Sent/g' {} \;
+</verb></tscreen>
+
+Or, for database-based preferences:
+
+<tscreen><verb>
+   UPDATE userprefs SET prefval = 'INBOX.Trash' WHERE prefkey = 'trash_folder' AND prefval = 'Trash';
+   UPDATE userprefs SET prefval = 'INBOX.Drafts' WHERE prefkey = 'draft_folder' AND prefval = 'Drafts';
+   UPDATE userprefs SET prefval = 'INBOX.Sent' WHERE prefkey = 'sent_folder' AND prefval = 'Sent';
+</verb></tscreen>
+
+MAKE SURE to back up your user preferences before doing any of the above!
+
 <sect2>Upgrading from the 1.2 release series to the 1.4 release series
 <p>
 Several layout changes were made and there were other changes that require
