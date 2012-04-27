@@ -165,6 +165,7 @@ $mbx_response=sqimap_mailbox_select($imapConnection, $mailbox);
 $location = set_url_var($location,'composenew',0,false);
 $location = set_url_var($location,'composesession',0,false);
 $location = set_url_var($location,'session',0,false);
+$location = set_url_var($location,'preselected',NULL,false,true);
 
 // make sure that cache is not used
 $location = set_url_var($location,'use_mailbox_cache',0,false);
