@@ -1,0 +1,184 @@
+# French (fr_FR) local_autorespond_forward Translation (SquirrelMail plugin)
+# Copyright (c) 2007-2012 The SquirrelMail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
+# Nicolas P. M. Legrand <nicolas.legrand@obspm.fr>, 2011.
+# $Id:$
+msgid ""
+msgstr ""
+"Project-Id-Version: local_autorespond_forward 3.0.1\n"
+"Report-Msgid-Bugs-To: Paul Lesniewski <paul@squirrelmail.org>\n"
+"POT-Creation-Date: 2007-10-27 11:58+0200\n"
+"PO-Revision-Date: 2011-12-06 21:09-0700\n"
+"Last-Translator: Nicolas P. M. Legrand <nicolas.legrand@obspm.fr>\n"
+"Language-Team: French <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Autoresponder / Mail Forwarding"
+msgstr "Autorépondeur / Transfert de courrier"
+
+msgid "Set up an auto-reply message and optionally forward your incoming email to other addresses. This can be useful when you are away on vacation."
+msgstr "Créez un message d'autoréponse et en option transférez vos messages entrants vers d'autres adresses. Cela peut-être utile lorsque vous partez en vacances."
+
+msgid "Autoresponder"
+msgstr "Autorépondeur"
+
+msgid "Set up an auto-reply message for you incoming email. This can be useful when you are away on vacation."
+msgstr "Créez un message d'autoréponse pour vos messages entrants vers d'autres adresses. Cela peut-être utile lorsque vous partez en vacances."
+
+msgid "Mail Forwarding"
+msgstr "Transfert de courrier"
+
+msgid "Set up other email addresses to which your incoming messages will be forwarded."
+msgstr "Enregistrez les adresses emails vers lesquels vos messages entrants seront transférées"
+
+msgid "Bad characters in list of forwarding addresses"
+msgstr "Caractères interdits dans la liste d'adresses de transfert"
+
+msgid "Forwarding has not been activated (no addresses given)"
+msgstr "Le transfert n'a pas été activé (pas d'adresses données)"
+
+msgid "Forwarding has been activated"
+msgstr "Le transfert a été activé"
+
+msgid "Forwarding has been deactivated"
+msgstr "Le transfert a été désactivé"
+
+msgid "Autoresponder has been deactivated"
+msgstr "L'autorépondeur a été désactivé"
+
+msgid "Autoresponder has not been activated (message is empty)"
+msgstr "L'autorépondeur a été activé (le message est vide)"
+
+msgid "Autoresponder has been activated"
+msgstr "L'autorépondeur a été activé"
+
+msgid "Autoresponder has been initialized"
+msgstr "L'autorépondeur a été initialisé"
+
+msgid "Autoresponder has been re-initialized"
+msgstr "L'autorépondeur a été réinitialisé"
+
+msgid "Messages will be saved in this account (no forwarding is active)"
+msgstr "Les messages seront sauvegardés dans ce compte (pas de transfert actif)"
+
+msgid "Messages will be saved in this account (no forwarding or auto-reply is active)"
+msgstr "Les messages seront sauvegardés dans cet compte (pas de transfert ou d'autoréponse actifs)"
+
+msgid "Error: Could not bind to LDAP server"
+msgstr "Erreur : Impossible de s'accrocher à la branche du serveur LDAP"
+
+#, php-format
+msgid "Error: Could not find FTP server for %s in LDAP server"
+msgstr "Erreur : Pas de serveur FTP pour %s dans le serveur LDAP"
+
+msgid "Error: Could not connect to LDAP server"
+msgstr "Erreur : Impossible de se connecter au serveur LDAP"
+
+msgid "Error: Unable to connect to FTP server. Please try again later"
+msgstr "Erreur : Impossible de se connecter au serveur FTP. Merci de réessayer plus tard."
+
+msgid "Error: Unable to log in to FTP server. Please contact your system administrator"
+msgstr "Erreur : Impossible de se connecter au serveur FTP"
+
+msgid "Error: Unable to switch to passive FTP mode. Please contact your system administrator"
+msgstr "Erreur : Impossible de passer en FTP passif. Veuillez contacter votre administrateur système"
+
+msgid "Error: Unable to establish connection. Please contact your system administrator"
+msgstr "Erreur : impossible d'établir la connection. Merci de contacter votre administrateur système"
+
+msgid "Error: Unable to send password. Please contact your system administrator"
+msgstr "Erreur : Impossible d'envoyer le mot de passe. Veuillez contacter votre administrateur système"
+
+#, php-format
+msgid "Error: Unable to handle list request (%s)"
+msgstr "Erreur : Impossible de gérer la requête de listage (%s)"
+
+msgid "Error: Unable to upload file. Please contact your system administrator"
+msgstr "Erreur : Impossible d'uploader le fichier. Veuillez contacter votre administrateur système"
+
+#, php-format
+msgid "Error: Unable to handle upload request (%s)"
+msgstr "Erreur: Impossible de gérer la requête d'upload (%s)"
+
+msgid "Error: unable to download file. Please contact your system administrator"
+msgstr "Erreu: Impossible de télécharger le fichier. Veuillez contacter votre administrateur système"
+
+#, php-format
+msgid "Error: Unable to handle download request (%s)"
+msgstr "Erreur : Impossible de gérer la requête de téléchargement (%s)"
+
+msgid "Error: unable to delete file. Please contact your system administrator"
+msgstr "Erreur : Impossible de supprimer le fichier. Veuillez consulter votre administrateur système"
+
+#, php-format
+msgid "Error: Unable to handle delete request (%s)"
+msgstr "Erreur : Impossible de gérer la requête de suppression (%s)"
+
+#, php-format
+msgid "Error: Unable to handle init request (%s); you might need to configure with --enable-vacation"
+msgstr "Erreur : Impossible de gérer la requête d'initialisation (%s); vous pouvez avoir besoin de la configurer avec --enable-vacation"
+
+#, php-format
+msgid "Error: Unable to handle init request (%s)"
+msgstr "Erreur : Impossible de gérer la requête d'initialisation (%s)"
+
+#, php-format
+msgid "An error occurred initializing the autoresponder: %s"
+msgstr "Une erreur est survenu lors de l'initialisation de l'autorépondeur : %s"
+
+#, php-format
+msgid "Unknown action: %s"
+msgstr "Action inconnue : %s"
+
+msgid "An error occurred attempting to read temp file; check permissions on attachments directory"
+msgstr "Une erreur est survenue en cherchant à lire le fichier temp ; vérifiez les permissions sur le répertoire des pièces attachées"
+
+msgid "An error occurred attempting to create temp file; check permissions on attachments directory"
+msgstr "Une erreur est survenue en cherchant à lire le fichier temp ; vérifiez les permissions sur le répertoire des pièces attachées"
+
+msgid "Options - Autoresponder / Mail Forwarding"
+msgstr "Options - Autorépondeur / Transfert de courrier"
+
+msgid "Options - Autoresponder"
+msgstr "Options - Autorépondeur"
+
+msgid "Options - Mail Forwarding"
+msgstr "Options - Transfert de courrier"
+
+msgid "ERROR:"
+msgstr "ERREUR :"
+
+msgid "Settings Saved"
+msgstr "Paramètres sauvegardés"
+
+msgid "Enable auto-reply to sender"
+msgstr "Activer l'autoréponse pour l'expéditeur"
+
+msgid "Send from:"
+msgstr "Envoyé par :"
+
+msgid "Subject:"
+msgstr "Sujet :"
+
+msgid "Message:"
+msgstr "Message :"
+
+msgid "Forward incoming messages to addresses listed below"
+msgstr "Transférer les messages entrants aux adresses listées ci-dessous"
+
+msgid "Forwarding email addresses (one address per line):"
+msgstr "Transférez les adresses emails (une adresse par ligne) :"
+
+msgid "Keep copies of incoming messages in this account"
+msgstr "Conserver les copies des messages entrant sur ce compte"
+
+msgid "(must have at least one forwarding address to disable)"
+msgstr "(Il doit y avoir au moins une adresse de transfert pour désactiver cette option)"
+
+msgid "(must have at least one forwarding address or an active auto-reply to disable)"
+msgstr "(Il doit y avoir au moins une une adresse de transfert ou une autoréponse active pour désactiver cette option)"
+
+msgid "Submit"
+msgstr "Soumettre"
