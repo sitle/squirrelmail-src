@@ -4,6 +4,8 @@
 
 Version 1.4.23 - SVN
 --------------------
+  - Added option that allows users to have replies to their own
+    messages sent to the recipient of the previous message (#3520988).
   - Added capability to issue SEARCH commands in literal format (so that
     non-ASCII search terms are handled RFC-correctly).
   - Fixed hook name clash: new "smtp_auth" hook added in version 1.4.22

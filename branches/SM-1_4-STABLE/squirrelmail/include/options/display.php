@@ -264,6 +264,13 @@ function load_optpage_data_display() {
     );
 
     $optvals[SMOPT_GRP_MESSAGE][] = array(
+        'name'    => 'do_not_reply_to_self',
+        'caption' => _("Send Replies To My Own Messages To Previous Recipient"),
+        'type'    => SMOPT_TYPE_BOOLEAN,
+        'refresh' => SMOPT_REFRESH_NONE
+    );
+
+    $optvals[SMOPT_GRP_MESSAGE][] = array(
         'name'    => 'include_self_reply_all',
         'caption' => _("Include Me in CC when I Reply All"),
         'type'    => SMOPT_TYPE_BOOLEAN,
