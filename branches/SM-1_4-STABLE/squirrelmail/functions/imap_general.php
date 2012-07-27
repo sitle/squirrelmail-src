@@ -463,13 +463,14 @@ function sqimap_read_data ($imap_stream, $tag_uid, $handle_errors,
        and merge the $res array IF they are seperated and
        IF it was a FETCH response. */
 
-//    if (isset($res[1]) && is_array($res[1]) && isset($res[1][0])
-//        && preg_match('/^\* \d+ FETCH/', $res[1][0])) {
-//        $result = array();
-//        foreach($res as $index=>$value) {
-//            $result = array_merge($result, $res["$index"]);
-//        }
-//    }
+    if (isset($res[1]) && is_array($res[1]) && isset($res[1][0])
+        && preg_match('/^\* \d+ FETCH/', $res[1][0])) {
+        $result = array();
+        foreach($res as $index=>$value) {
+            $result = array_merge($result, $res["$index"]);
+        }
+        return $result;
+    }
 
     return $res[0];
 }
