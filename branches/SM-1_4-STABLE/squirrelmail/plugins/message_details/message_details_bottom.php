@@ -85,7 +85,7 @@ $messageheader = true;
 $messageheaderstart=false;
 $boundaries = array();
 $entities = array();
-session_unregister("entities");
+sqsession_unregister("entities");
 $pre = '<b>';
 $end = '</b>';
 $entStr = '';
