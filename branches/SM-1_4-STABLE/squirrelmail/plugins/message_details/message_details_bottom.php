@@ -215,7 +215,7 @@ for ($i=1; $i < $count; $i++) {
 			$entities["$entStr"]['contenttype']=$reg[2].'/'.$reg[3];
 		    }	
    		} else if (!$nameset && preg_match("/^.*(name=\s*)\"(.*)\".*/i",$line,$reg)) {
-		    $name = htmlspecialchars($reg[2]);
+		    $name = sm_encode_html_special_chars($reg[2]);
 		    $content[$content_indx]['name'] = decodeHeader($name);
 		    $nameset = true;
 		    if (isset($entities["$entStr"])) {
@@ -246,7 +246,7 @@ for ($i=1; $i < $count; $i++) {
         }
     } 	
 */
-    $line = htmlspecialchars($line);
+    $line = sm_encode_html_special_chars($line);
     $message_body .= "$pre"."$line"."$end".'<br />'."\r\n";
 }
 

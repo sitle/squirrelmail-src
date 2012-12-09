@@ -272,7 +272,7 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
 
     echo "<body text=\"$color[8]\" bgcolor=\"$color[4]\" link=\"$color[7]\" vlink=\"$color[7]\" alink=\"$color[7]\" $onload>\n\n";
     /** Here is the header and wrapping table **/
-    $shortBoxName = htmlspecialchars(imap_utf7_decode_local(
+    $shortBoxName = sm_encode_html_special_chars(imap_utf7_decode_local(
                       readShortMailboxName($mailbox, $delimiter)));
     if ( $shortBoxName == 'INBOX' ) {
         $shortBoxName = _("INBOX");

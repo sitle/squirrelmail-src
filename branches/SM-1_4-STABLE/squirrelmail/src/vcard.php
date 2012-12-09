@@ -97,14 +97,14 @@ if ($vcard_nice['version'] == '2.1') {
 } else {
     echo '<tr><td align="center">' .
          sprintf(_("vCard Version %s is not supported. Some information might not be converted correctly."),
-                 htmlspecialchars($vcard_nice['version'])) .
+                 sm_encode_html_special_chars($vcard_nice['version'])) .
          "</td></tr>\n";
     $vcard_nice['firstname'] = '';
     $vcard_nice['lastname'] = '';
 }
 
 foreach ($vcard_nice as $k => $v) {
-    $v = htmlspecialchars($v);
+    $v = sm_encode_html_special_chars($v);
     $v = trim($v);
     $vcard_safe[$k] = trim(nl2br($v));
 }
@@ -166,44 +166,44 @@ echo '</table>' .
      '<select name="addaddr[label]">';
 
 if (isset($vcard_nice['url'])) {
-    echo '<option value="' . htmlspecialchars($vcard_nice['url']) .
+    echo '<option value="' . sm_encode_html_special_chars($vcard_nice['url']) .
         '">' . _("Web Page") . "</option>\n";
 }
 if (isset($vcard_nice['adr'])) {
-    echo '<option value="' . htmlspecialchars($vcard_nice['adr']) .
+    echo '<option value="' . sm_encode_html_special_chars($vcard_nice['adr']) .
         '">' . _("Address") . "</option>\n";
 }
 if (isset($vcard_nice['title'])) {
-    echo '<option value="' . htmlspecialchars($vcard_nice['title']) .
+    echo '<option value="' . sm_encode_html_special_chars($vcard_nice['title']) .
         '">' . _("Title") . "</option>\n";
 }
 if (isset($vcard_nice['org'])) {
-    echo '<option value="' . htmlspecialchars($vcard_nice['org']) .
+    echo '<option value="' . sm_encode_html_special_chars($vcard_nice['org']) .
         '">' . _("Organization / Department") . "</option>\n";
 }
 if (isset($vcard_nice['title'])) {
-    echo '<option value="' . htmlspecialchars($vcard_nice['title']) .
-        '; ' . htmlspecialchars($vcard_nice['org']) .
+    echo '<option value="' . sm_encode_html_special_chars($vcard_nice['title']) .
+        '; ' . sm_encode_html_special_chars($vcard_nice['org']) .
         '">' . _("Title &amp; Org. / Dept.") . "</option>\n";
 }
 if (isset($vcard_nice['tel;work'])) {
-    echo '<option value="' . htmlspecialchars($vcard_nice['tel;work']) .
+    echo '<option value="' . sm_encode_html_special_chars($vcard_nice['tel;work']) .
         '">' . _("Work Phone") . "</option>\n";
 }
 if (isset($vcard_nice['tel;home'])) {
-    echo '<option value="' . htmlspecialchars($vcard_nice['tel;home']) .
+    echo '<option value="' . sm_encode_html_special_chars($vcard_nice['tel;home']) .
         '">' . _("Home Phone") . "</option>\n";
 }
 if (isset($vcard_nice['tel;cell'])) {
-    echo '<option value="' . htmlspecialchars($vcard_nice['tel;cell']) .
+    echo '<option value="' . sm_encode_html_special_chars($vcard_nice['tel;cell']) .
         '">' . _("Cellular Phone") . "</option>\n";
 }
 if (isset($vcard_nice['tel;fax'])) {
-    echo '<option value="' . htmlspecialchars($vcard_nice['tel;fax']) .
+    echo '<option value="' . sm_encode_html_special_chars($vcard_nice['tel;fax']) .
         '">' . _("Fax") . "</option>\n";
 }
 if (isset($vcard_nice['note'])) {
-    echo '<option value="' . htmlspecialchars($vcard_nice['note']) .
+    echo '<option value="' . sm_encode_html_special_chars($vcard_nice['note']) .
         '">' . _("Note") . "</option>\n";
 }
 echo '</select>';
@@ -212,7 +212,7 @@ echo '</select>';
 <tr><td colspan="2" align="center">
 <?php
 echo '<input name="addaddr[email]" type="hidden" value="' .
-        htmlspecialchars(!empty($vcard_nice['email;internet'])?$vcard_nice['email;internet']:'') . '" />' .
+        sm_encode_html_special_chars(!empty($vcard_nice['email;internet'])?$vcard_nice['email;internet']:'') . '" />' .
      '<input name="addaddr[firstname]" type="hidden" value="' .
         $vcard_safe['firstname'] . '" />' .
      '<input name="addaddr[lastname]" type="hidden" value="' .

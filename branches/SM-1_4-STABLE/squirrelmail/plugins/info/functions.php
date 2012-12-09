@@ -30,7 +30,7 @@ function imap_test($imap_stream, $string) {
     $sid = sqimap_session_id();
     $results = array();
     $query = "$sid ".trim($string)."\r\n";
-    print "<tr><td>".htmlspecialchars($query)."</td></tr>";
+    print "<tr><td>".sm_encode_html_special_chars($query)."</td></tr>";
     fputs ($imap_stream, $query);
     $response = sqimap_read_data_list($imap_stream, $sid, false, $responses, $message);
     array_push($response, $message);
@@ -43,7 +43,7 @@ function print_response($response) {
             print_response($value);
         }
         else {
-            print htmlspecialchars($value)."<br>\n";
+            print sm_encode_html_special_chars($value)."<br>\n";
         }
     }
 }

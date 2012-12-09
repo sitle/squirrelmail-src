@@ -23,8 +23,8 @@
  */
 function addInputField($type, $name = null, $value = null, $attributes = '') {
     return '<input type="'.$type.'"'.
-        ($name  !== null ? ' name="'.htmlspecialchars($name).'"'   : '').
-        ($value !== null ? ' value="'.htmlspecialchars($value).'"' : '').
+        ($name  !== null ? ' name="'.sm_encode_html_special_chars($name).'"'   : '').
+        ($value !== null ? ' value="'.sm_encode_html_special_chars($value).'"' : '').
         ' ' . $attributes . " />\n";
 }
 
@@ -89,16 +89,16 @@ function addSelect($name, $values, $default = null, $usekeys = false)
     if(count($values) == 1) {
         $k = key($values); $v = array_pop($values);
         return addHidden($name, ($usekeys ? $k:$v)).
-            htmlspecialchars($v) . "\n";
+            sm_encode_html_special_chars($v) . "\n";
     }
 
-    $ret = '<select name="'.htmlspecialchars($name) . "\">\n";
+    $ret = '<select name="'.sm_encode_html_special_chars($name) . "\">\n";
     foreach ($values as $k => $v) {
         if(!$usekeys) $k = $v;
         $ret .= '<option value="' .
-            htmlspecialchars( $k ) . '"' .
+            sm_encode_html_special_chars( $k ) . '"' .
             (($default == $k) ? ' selected="selected"' : '') .
-            '>' . htmlspecialchars($v) ."</option>\n";
+            '>' . sm_encode_html_special_chars($v) ."</option>\n";
     }
     $ret .= "</select>\n";
 
@@ -123,9 +123,9 @@ function addReset($value) {
  * Textarea form element.
  */
 function addTextArea($name, $text = '', $cols = 40, $rows = 10, $attr = '') {
-    return '<textarea name="'.htmlspecialchars($name).'" '.
+    return '<textarea name="'.sm_encode_html_special_chars($name).'" '.
         'rows="'.(int)$rows .'" cols="'.(int)$cols.'" '.
-        $attr . '>'.htmlspecialchars($text) ."</textarea>\n";
+        $attr . '>'.sm_encode_html_special_chars($text) ."</textarea>\n";
 }
 
 /**
@@ -156,7 +156,7 @@ function addForm($action, $method = 'post', $name = '', $enctype = '', $charset 
         $enctype = ' enctype="'.$enctype.'"';
     }
     if($charset) {
-        $charset = ' accept-charset="'.htmlspecialchars($charset).'"';
+        $charset = ' accept-charset="'.sm_encode_html_special_chars($charset).'"';
     }
 
     $form_string = '<form action="'. $action .'" method="'. $method .'"'.

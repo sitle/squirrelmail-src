@@ -174,7 +174,7 @@ if ($composenew) {
 
 do_hook('right_main_after_header');
 if (isset($note)) {
-    echo html_tag( 'div', '<b>' . htmlspecialchars($note) .'</b>', 'center' ) . "<br />\n";
+    echo html_tag( 'div', '<b>' . sm_encode_html_special_chars($note) .'</b>', 'center' ) . "<br />\n";
 }
 
 if ( sqgetGlobalVar('just_logged_in', $just_logged_in, SQ_SESSION) ) {

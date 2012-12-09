@@ -337,7 +337,7 @@ class Deliver_SMTP extends Deliver {
         }
 
         $this->dlv_msg = $message;
-        $this->dlv_server_msg = nl2br(htmlspecialchars($server_msg));
+        $this->dlv_server_msg = nl2br(sm_encode_html_special_chars($server_msg));
 
         return true;
     }

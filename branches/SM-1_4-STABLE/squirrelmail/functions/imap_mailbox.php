@@ -254,7 +254,7 @@ function sqimap_mailbox_select ($imap_stream, $mailbox) {
     if (strstr($mailbox, '../') || substr($mailbox, 0, 1) == '/') {
         global $color;
         include_once(SM_PATH . 'functions/display_messages.php');
-        error_box(sprintf(_("Invalid mailbox name: %s"),htmlspecialchars($mailbox)),$color);
+        error_box(sprintf(_("Invalid mailbox name: %s"),sm_encode_html_special_chars($mailbox)),$color);
         sqimap_logout($imap_stream);
         die('</body></html>');
     }
@@ -555,16 +555,16 @@ function sqimap_mailbox_option_list($imap_stream, $show_selected = 0, $folder_sk
                     $box2 = $boxes_part['formatted'];
                     break;
                   default:  /* default, long names, style = 0 */
-                    $box2 = str_replace(' ', '&nbsp;', htmlspecialchars(imap_utf7_decode_local($boxes_part['unformatted-disp'])));
+                    $box2 = str_replace(' ', '&nbsp;', sm_encode_html_special_chars(imap_utf7_decode_local($boxes_part['unformatted-disp'])));
                     break;
                 }
             }
             $box2 = str_replace(array('<','>'), array('&lt;','&gt;') , $box2);
 
             if ($show_selected != 0 && in_array($lowerbox, $show_selected) ) {
-                $mbox_options .= '<option value="' . htmlspecialchars($box) .'" selected="selected">'.$box2.'</option>' . "\n";
+                $mbox_options .= '<option value="' . sm_encode_html_special_chars($box) .'" selected="selected">'.$box2.'</option>' . "\n";
             } else {
-                $mbox_options .= '<option value="' . htmlspecialchars($box) .'">'.$box2.'</option>' . "\n";
+                $mbox_options .= '<option value="' . sm_encode_html_special_chars($box) .'">'.$box2.'</option>' . "\n";
             }
         }
     }

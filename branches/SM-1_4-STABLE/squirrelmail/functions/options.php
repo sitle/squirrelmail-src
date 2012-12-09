@@ -305,7 +305,7 @@ class SquirrelOption {
     }
 
     function createWidget_Info() {
-        $result = htmlspecialchars($this->value) . "\n";
+        $result = sm_encode_html_special_chars($this->value) . "\n";
         return $result;
     }
 
@@ -341,9 +341,9 @@ class SquirrelOption {
         $result = "<input type=\"" 
                 . ($password ? 'password' : 'text') 
                 . "\" name=\"new_$this->name\" value=\""
-                . htmlspecialchars($this->value)
+                . sm_encode_html_special_chars($this->value)
                 . "\" size=\"$width\" $this->script /> " 
-                . htmlspecialchars($this->trailing_text) . "\n";
+                . sm_encode_html_special_chars($this->trailing_text) . "\n";
         return $result;
     }
 
@@ -384,14 +384,14 @@ class SquirrelOption {
             foreach ($this->possible_values as $real_value => $disp_value) {
                 $result .= "\n" . '<input type="radio" name="new_' . $this->name 
                          . '" id="new_' . $this->name . '_' 
-                         . ($this->htmlencoded ? $real_value : htmlspecialchars($real_value))
+                         . ($this->htmlencoded ? $real_value : sm_encode_html_special_chars($real_value))
                          . '" value="'
-                         . ($this->htmlencoded ? $real_value : htmlspecialchars($real_value))
+                         . ($this->htmlencoded ? $real_value : sm_encode_html_special_chars($real_value))
                          . '"' . ($real_value == $this->value ? ' checked="checked"' : '')
                          . ' /> <label for="new_' . $this->name . '_'
-                         . ($this->htmlencoded ? $real_value : htmlspecialchars($real_value))
+                         . ($this->htmlencoded ? $real_value : sm_encode_html_special_chars($real_value))
                          . '">'
-                         . ($this->htmlencoded ? $disp_value : htmlspecialchars($disp_value))
+                         . ($this->htmlencoded ? $disp_value : sm_encode_html_special_chars($disp_value))
                          . '</label>';
                 if ($this->size != SMOPT_SIZE_TINY)
                     $result .= '<br />';
@@ -437,7 +437,7 @@ class SquirrelOption {
         foreach ($this->possible_values as $real_value => $disp_value) {
             /* Start the next new option string. */
             $new_option = '<option value="' .
-                ($this->htmlencoded ? $real_value : htmlspecialchars($real_value)) . '"';
+                ($this->htmlencoded ? $real_value : sm_encode_html_special_chars($real_value)) . '"';
 
             // multiple select lists have possibly more than one default selection
             if ($multiple_select) {
@@ -455,13 +455,13 @@ class SquirrelOption {
             }
 
             /* Add the display value to our option string. */
-            $new_option .= '>' . ($this->htmlencoded ? $disp_value : htmlspecialchars($disp_value)) . "</option>\n";
+            $new_option .= '>' . ($this->htmlencoded ? $disp_value : sm_encode_html_special_chars($disp_value)) . "</option>\n";
             /* And add the new option string to our select tag. */
             $result .= $new_option;
         }
 
         /* Close the select tag and return our happy result. */
-        $result .= '</select>' . htmlspecialchars($this->trailing_text) . "\n";
+        $result .= '</select>' . sm_encode_html_special_chars($this->trailing_text) . "\n";
         return $result;
     }
 
@@ -520,7 +520,7 @@ class SquirrelOption {
 
             } else {
                 /* Start the next new option string. */
-                $new_option = '<option value="' . htmlspecialchars($real_value) . '"';
+                $new_option = '<option value="' . sm_encode_html_special_chars($real_value) . '"';
 
                 // multiple select lists have possibly more than one default selection
                 if ($multiple_select) {
@@ -538,13 +538,13 @@ class SquirrelOption {
                 }
 
                 /* Add the display value to our option string. */
-                $new_option .= '>' . htmlspecialchars($disp_value) . "</option>\n";
+                $new_option .= '>' . sm_encode_html_special_chars($disp_value) . "</option>\n";
             }
             /* And add the new option string to our select tag. */
             $result .= $new_option;
         }
         /* Close the select tag and return our happy result. */
-        $result .= '</select>' . htmlspecialchars($this->trailing_text) . "\n";
+        $result .= '</select>' . sm_encode_html_special_chars($this->trailing_text) . "\n";
         return $result;
     }
 
@@ -560,7 +560,7 @@ class SquirrelOption {
         }
         $result = "<textarea name=\"new_$this->name\" rows=\"$rows\" "
                 . "cols=\"$cols\" $this->script>"
-                . htmlspecialchars($this->value) . "</textarea>\n";
+                . sm_encode_html_special_chars($this->value) . "</textarea>\n";
         return ($result);
     }
 
@@ -628,7 +628,7 @@ class SquirrelOption {
                     . '" id="new_' . $this->name . '" value="' . SMPREF_YES
                     . "\" $yes_chk " . $this->script . ' />&nbsp;'
                     . '<label for="new_' . $this->name . '">' 
-                    . htmlspecialchars($this->trailing_text) . '</label>';
+                    . sm_encode_html_special_chars($this->trailing_text) . '</label>';
         }
 
         // radio buttons...
@@ -639,13 +639,13 @@ class SquirrelOption {
             $yes_option = '<input type="radio" name="new_' . $this->name 
                         . '" id="new_' . $this->name . '_yes"'
                         . ' value="' . SMPREF_YES . "\"$yes_chk $this->script />&nbsp;"
-                        . '<label for="new_' . $this->name . '_yes">' . (!empty($this->yes_text) ? htmlspecialchars($this->yes_text) : _("Yes")) . '</label>';
+                        . '<label for="new_' . $this->name . '_yes">' . (!empty($this->yes_text) ? sm_encode_html_special_chars($this->yes_text) : _("Yes")) . '</label>';
 
             /* Build the no choice. */
             $no_option = '<input type="radio" name="new_' . $this->name
                        . '" id="new_' . $this->name . '_no"'
                        . ' value="' . SMPREF_NO . "\"$no_chk $this->script />&nbsp;"
-                       . '<label for="new_' . $this->name . '_no">' . (!empty($this->no_text) ? htmlspecialchars($this->no_text) : _("No")) . '</label>';
+                       . '<label for="new_' . $this->name . '_no">' . (!empty($this->no_text) ? sm_encode_html_special_chars($this->no_text) : _("No")) . '</label>';
     
             /* Build the combined "boolean widget". */
             $result = "$yes_option&nbsp;&nbsp;&nbsp;&nbsp;$no_option";
@@ -657,7 +657,7 @@ class SquirrelOption {
 
     function createWidget_Hidden() {
         $result = '<input type="hidden" name="new_' . $this->name
-                . '" value="' . htmlspecialchars($this->value)
+                . '" value="' . sm_encode_html_special_chars($this->value)
                 . '" ' . $this->script . ' />';
         return ($result);
     }
@@ -733,7 +733,7 @@ class SquirrelOption {
 
                     // Start the next new option string.
                     //
-                    $result .= '<option value="' . htmlspecialchars($value) . '"';
+                    $result .= '<option value="' . sm_encode_html_special_chars($value) . '"';
 
                     // having a selected item in the edit list doesn't have
                     // any meaning, but maybe someone will think of a way to
@@ -748,7 +748,7 @@ class SquirrelOption {
 
                     // Add the display value to our option string.
                     //
-                    $result .= '>' . htmlspecialchars($value) . "</option>\n";
+                    $result .= '>' . sm_encode_html_special_chars($value) . "</option>\n";
 
                 }
 
@@ -783,8 +783,8 @@ class SquirrelOption {
                     else $bgcolor = 4;
 
                     $result .= '<tr bgcolor="' . $color[$bgcolor] . '">'
-                             . '<td width="1%"><input type="checkbox" name="new_' . $this->name . '[' . ($index++) . ']" id="' . $this->name . '_list_item_' . $key . '" value="' . htmlspecialchars($value) . '"></td>'
-                             . '<td><label for="' . $this->name . '_list_item_' . $key . '">' . htmlspecialchars($value) . '</label></td>'
+                             . '<td width="1%"><input type="checkbox" name="new_' . $this->name . '[' . ($index++) . ']" id="' . $this->name . '_list_item_' . $key . '" value="' . sm_encode_html_special_chars($value) . '"></td>'
+                             . '<td><label for="' . $this->name . '_list_item_' . $key . '">' . sm_encode_html_special_chars($value) . '</label></td>'
                              . "</tr>\n";
 
                 }
@@ -821,9 +821,9 @@ class SquirrelOption {
     function createWidget_Submit() {
 
         $result = "<input type=\"submit\" name=\"$this->name\" value=\""
-                . htmlspecialchars($this->comment)
+                . sm_encode_html_special_chars($this->comment)
                 . "\" $this->script />" 
-                . htmlspecialchars($this->trailing_text) . "\n";
+                . sm_encode_html_special_chars($this->trailing_text) . "\n";
 
         return $result;
 
@@ -953,7 +953,7 @@ function create_optmode_element($optmode) {
 function create_hidden_element($name, $value) {
     $result = '<input type="hidden" '
             . 'name="' . $name . '" '
-            . 'value="' . htmlspecialchars($value) . '" />';
+            . 'value="' . sm_encode_html_special_chars($value) . '" />';
     return ($result);
 }
 

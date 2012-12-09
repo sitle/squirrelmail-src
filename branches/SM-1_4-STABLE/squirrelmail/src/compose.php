@@ -1236,7 +1236,7 @@ function showInputForm ($session, $values=false) {
             if (isset($identity) && $identity == $nr) {
                 echo ' selected="selected"';
             }
-            echo '>' . htmlspecialchars(
+            echo '>' . sm_encode_html_special_chars(
                     $data['full_name'] . ' <' .
                     $data['email_address'] . '>') .
                 "</option>\n";
@@ -1303,10 +1303,10 @@ function showInputForm ($session, $values=false) {
             } else {
                 echo "\n\n".($prefix_sig==true? "-- \n":'').decodeHeader($signature,false,false,true);
             }
-            echo "\n\n".htmlspecialchars(decodeHeader($body,false,false,true));
+            echo "\n\n".sm_encode_html_special_chars(decodeHeader($body,false,false,true));
         }
         else {
-            echo "\n\n".htmlspecialchars(decodeHeader($body,false,false,true));
+            echo "\n\n".sm_encode_html_special_chars(decodeHeader($body,false,false,true));
             if ($default_charset == 'iso-2022-jp') {
                 echo "\n\n".($prefix_sig==true? "-- \n":'').mb_convert_encoding($signature, 'EUC-JP');
             }else{
@@ -1314,7 +1314,7 @@ function showInputForm ($session, $values=false) {
             }
         }
     } else {
-        echo htmlspecialchars(decodeHeader($body,false,false,true));
+        echo sm_encode_html_special_chars(decodeHeader($body,false,false,true));
     }
     echo '</textarea><br />' . "\n" .
         '      </td>' . "\n" .
@@ -1763,7 +1763,7 @@ function deliverMessage(&$composeMessage, $draft=false) {
             return $succes;
         } else {
             $msg  = '<br />'.sprintf(_("Error: Draft folder %s does not exist."),
-                htmlspecialchars($draft_folder));
+                sm_encode_html_special_chars($draft_folder));
             plain_error_message($msg, $color);
             return false;
         }

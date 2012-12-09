@@ -82,8 +82,8 @@ if (!$words){
 	  $msg .= "</td><td valign=\"top\">\n";
 	}
 	$msg .= '<input type="checkbox" name="words_ary[]" '
-	   . 'value="' . htmlspecialchars($words_ary[$j]) . '" /> '
-	   . htmlspecialchars($words_ary[$j])."<br>\n";
+	   . 'value="' . sm_encode_html_special_chars($words_ary[$j]) . '" /> '
+	   . sm_encode_html_special_chars($words_ary[$j])."<br>\n";
       }
       $msg .= '</td></tr></table></td></tr>'
 	 . "<tr bgcolor=\"$color[0]\" align=\"center\"><td>"

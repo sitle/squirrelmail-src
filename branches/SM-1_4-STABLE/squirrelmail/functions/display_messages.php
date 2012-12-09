@@ -32,7 +32,7 @@ function error_message($message, $mailbox, $sort, $startMessage, $color) {
     }
     
     $string .= sprintf (_("Click here to return to %s"),
-                  htmlspecialchars(imap_utf7_decode_local($mailbox))).
+                  sm_encode_html_special_chars(imap_utf7_decode_local($mailbox))).
               '</a></td></tr>';
     error_box($string, $color);
 }

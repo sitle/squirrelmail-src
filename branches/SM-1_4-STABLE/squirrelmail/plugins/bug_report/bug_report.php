@@ -163,7 +163,7 @@ if (isset($warning) && $warning) {
     $body_top .= "----------------------------------------------\n";
 }
 
-$body = htmlspecialchars($body_top . $body);
+$body = sm_encode_html_special_chars($body_top . $body);
 
 ?>
     <br />

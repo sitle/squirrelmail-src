@@ -118,7 +118,7 @@ header('Expires: Sat, 1 Jan 2000 00:00:00 GMT');
 
 do_hook('login_cookie');
 
-$loginname_value = (sqGetGlobalVar('loginname', $loginname) ? htmlspecialchars($loginname) : '');
+$loginname_value = (sqGetGlobalVar('loginname', $loginname) ? sm_encode_html_special_chars($loginname) : '');
 
 /* Output the javascript onload function. */
 

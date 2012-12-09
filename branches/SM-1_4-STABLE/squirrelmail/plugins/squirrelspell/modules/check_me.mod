@@ -95,7 +95,7 @@ if( check_php_version ( 4, 3 ) ) {
     $spell_proc = @proc_open($sqspell_command, $descriptorspec, $pipes);
     if ( ! is_resource ( $spell_proc ) ) {
         error_box ( sprintf(_("Could not run the spellchecker command (%s)."),
-            htmlspecialchars($sqspell_command) ) , $color );
+            sm_encode_html_special_chars($sqspell_command) ) , $color );
         // close html tags and abort script.
         echo "</body></html>";
         exit();
@@ -133,14 +133,14 @@ if( check_php_version ( 4, 3 ) ) {
     $fp = @fopen($floc, 'w');
     if ( ! is_resource ($fp) ) {
         error_box ( sprintf(_("Could not open temporary file '%s'."),
-            htmlspecialchars($floc) ) , $color );
+            sm_encode_html_special_chars($floc) ) , $color );
         // failed to open temp file. abort script.
         echo "</body></html>";
         exit();
     }
     if ( ! @fwrite($fp, $sqspell_new_text) ) {
         error_box ( sprintf(_("Error while writing to temporary file '%s'."),
-            htmlspecialchars($floc) ) , $color );
+            sm_encode_html_special_chars($floc) ) , $color );
         // close file descriptor
         fclose($fp);
         // failed writing to temp file. abort script.
@@ -159,7 +159,7 @@ if ($sqspell_exitcode){
   $msg= "<div align='center'>"
      . sprintf(_("I tried to execute '%s', but it returned:"),
                $sqspell_command) . "<pre>"
-     . htmlspecialchars(join("\n", $sqspell_output)) . '</pre>'
+     . sm_encode_html_special_chars(join("\n", $sqspell_output)) . '</pre>'
      . '<form onsubmit="return false">'
      . '<input type="submit" value="  ' . _("Close")
      . '  " onclick="self.close()" /></form></div>';

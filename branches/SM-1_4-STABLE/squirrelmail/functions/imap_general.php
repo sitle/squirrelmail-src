@@ -367,7 +367,7 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
         $cmd = explode(' ',$query);
         $cmd = strtolower($cmd[0]);
         if ($query != '' &&  $cmd != 'login') {
-            $string .= ("Query:") . ' '. htmlspecialchars($query)
+            $string .= ("Query:") . ' '. sm_encode_html_special_chars($query)
             . '<br />' . "</font><br />\n";
         }
         error_box($string,$color);
@@ -399,9 +399,9 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
                 _("ERROR: Could not complete request.") .
                 "</b><br />\n" .
                 _("Query:") . ' ' .
-                htmlspecialchars($query) . '<br />' .
+                sm_encode_html_special_chars($query) . '<br />' .
                 _("Reason Given:") . ' ' .
-                htmlspecialchars($message) . "</font><br />\n";
+                sm_encode_html_special_chars($message) . "</font><br />\n";
             error_box($string,$color);
             echo '</body></html>';
             exit;
@@ -414,9 +414,9 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
             _("ERROR: Bad or malformed request.") .
             "</b><br />\n" .
             _("Query:") . ' '.
-            htmlspecialchars($query) . '<br />' .
+            sm_encode_html_special_chars($query) . '<br />' .
             _("Server responded:") . ' ' .
-            htmlspecialchars($message) . "</font><br />\n";
+            sm_encode_html_special_chars($message) . "</font><br />\n";
         error_box($string,$color);
         echo '</body></html>';
         exit;
@@ -427,9 +427,9 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
             _("ERROR: IMAP server closed the connection.") .
             "</b><br />\n" .
             _("Query:") . ' '.
-            htmlspecialchars($query) . '<br />' .
+            sm_encode_html_special_chars($query) . '<br />' .
             _("Server responded:") . ' ' .
-            htmlspecialchars($message) . "</font><br />\n";
+            sm_encode_html_special_chars($message) . "</font><br />\n";
         error_box($string,$color);
         echo '</body></html>';
         exit;
@@ -440,9 +440,9 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
             _("ERROR: Unknown IMAP response.") .
             "</b><br />\n" .
             _("Query:") . ' '.
-            htmlspecialchars($query) . '<br />' .
+            sm_encode_html_special_chars($query) . '<br />' .
             _("Server responded:") . ' ' .
-            htmlspecialchars($message) . "</font><br />\n";
+            sm_encode_html_special_chars($message) . "</font><br />\n";
         error_box($string,$color);
        /* the error is displayed but because we don't know the reponse we
           return the result anyway */
@@ -654,7 +654,7 @@ function sqimap_login ($username, $password, $imap_server_address, $imap_port, $
         if (!$hide) {
             if ($response != 'NO') {
                 /* "BAD" and anything else gets reported here. */
-                $message = htmlspecialchars($message);
+                $message = sm_encode_html_special_chars($message);
                 set_up_language($squirrelmail_language, true);
                 require_once(SM_PATH . 'functions/display_messages.php');
                 if ($response == 'BAD') {
@@ -665,7 +665,7 @@ function sqimap_login ($username, $password, $imap_server_address, $imap_port, $
                 if (isset($read) && is_array($read)) {
                     $string .= '<br />' . _("Read data:") . "<br />\n";
                     foreach ($read as $line) {
-                        $string .= htmlspecialchars($line) . "<br />\n";
+                        $string .= sm_encode_html_special_chars($line) . "<br />\n";
                     }
                 }
                 error_box($string,$color);

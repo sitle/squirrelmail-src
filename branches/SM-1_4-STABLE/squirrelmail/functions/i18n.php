@@ -171,7 +171,7 @@ function sq_setlocale($category,$locale) {
  * @param string $string Text to be decoded
  * @param boolean $force_decode converts string to html without $charset!=$default_charset check.
  * Argument is available since 1.4.5 and 1.5.1.
- * @param boolean $save_html disables htmlspecialchars() in order to preserve
+ * @param boolean $save_html disables sm_encode_html_special_chars() in order to preserve
  *  html formating. Use with care. Available since 1.4.6 and 1.5.1
  * @return string decoded string
  */
@@ -184,7 +184,7 @@ function charset_decode ($charset, $string, $force_decode=false, $save_html=fals
     }
 
     /* All HTML special characters are 7 bit and can be replaced first */
-    if (! $save_html) $string = htmlspecialchars ($string);
+    if (! $save_html) $string = sm_encode_html_special_chars ($string);
     $charset = strtolower($charset);
 
     set_my_charset();
@@ -214,7 +214,7 @@ function charset_decode ($charset, $string, $force_decode=false, $save_html=fals
  * @since 1.4.4 and 1.5.1
  * @param string $string
  * @param string $charset
- * @param boolean $htmlencode keep htmlspecialchars encoding
+ * @param boolean $htmlencode keep sm_encode_html_special_chars encoding
  * @return string
  */
 function charset_encode($string,$charset,$htmlencode=true) {
@@ -258,7 +258,7 @@ function charset_encode($string,$charset,$htmlencode=true) {
  * @param string $in_charset initial charset
  * @param string $string string that has to be converted
  * @param string $out_charset final charset
- * @param boolean $htmlencode keep htmlspecialchars encoding
+ * @param boolean $htmlencode keep sm_encode_html_special_chars encoding
  * @return string converted string
  */
 function charset_convert($in_charset,$string,$out_charset,$htmlencode=true) {

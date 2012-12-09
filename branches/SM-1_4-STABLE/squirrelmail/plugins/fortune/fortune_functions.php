@@ -30,7 +30,7 @@ function fortune_show() {
     if (!$exist) {
         $sMsg = sprintf(_("%s is not found."),$fortune_location);
     } else {
-        $sMsg = htmlspecialchars(shell_exec($fortune_location . ' -s'));
+        $sMsg = sm_encode_html_special_chars(shell_exec($fortune_location . ' -s'));
     }
     
     

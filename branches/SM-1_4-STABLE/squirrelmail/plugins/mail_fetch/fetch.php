@@ -34,7 +34,7 @@ sqgetGlobalVar('delimiter',  $delimiter,  SQ_SESSION);
 function Mail_Fetch_Status($msg) {
     echo html_tag( 'table',
              html_tag( 'tr',
-                 html_tag( 'td', htmlspecialchars( $msg ) , 'left' )
+                 html_tag( 'td', sm_encode_html_special_chars( $msg ) , 'left' )
                      ),
                    '', '', 'width="90%"' );
     flush();
@@ -82,7 +82,7 @@ if (! sqgetGlobalVar('server_to_fetch', $server_to_fetch, SQ_POST) ) {
         '<option value="all" selected>..' . _("All") . "...\n";
     for ($i=0;$i<$mailfetch_server_number;$i++) {
         echo "<option value=\"$i\">" .
-            htmlspecialchars((($mailfetch_alias_[$i]=='')?$mailfetch_server_[$i]:$mailfetch_alias_[$i])) .
+            sm_encode_html_special_chars((($mailfetch_alias_[$i]=='')?$mailfetch_server_[$i]:$mailfetch_alias_[$i])) .
             '</option>' . "\n";
     }
     echo            '</select>' .
@@ -94,7 +94,7 @@ if (! sqgetGlobalVar('server_to_fetch', $server_to_fetch, SQ_POST) ) {
         if ($mailfetch_pass_[$i]=='') {
             echo html_tag( 'tr',
                      html_tag( 'td', _("Password for") . ' <b>' .
-                         htmlspecialchars((($mailfetch_alias_[$i]=='')?$mailfetch_server_[$i]:$mailfetch_alias_[$i])) .
+                         sm_encode_html_special_chars((($mailfetch_alias_[$i]=='')?$mailfetch_server_[$i]:$mailfetch_alias_[$i])) .
                          '</b>: &nbsp; &nbsp; ',
                          'right' ) .
                      html_tag( 'td', '<input type="password" name="pass_' . $i . '">', 'left' )
@@ -137,7 +137,7 @@ for ($i_loop=$i_start;$i_loop<$i_stop;$i_loop++) {
         html_tag( 'table',
             html_tag( 'tr',
                 html_tag( 'td', '<b>' . _("Fetching from ") .
-                    htmlspecialchars((($mailfetch_alias_[$i_loop] == '')?$mailfetch_server:$mailfetch_alias_[$i_loop])) .
+                    sm_encode_html_special_chars((($mailfetch_alias_[$i_loop] == '')?$mailfetch_server:$mailfetch_alias_[$i_loop])) .
                     '</b>',
                 'center' ) ,
             '', $color[9] ) ,
@@ -227,7 +227,7 @@ for ($i_loop=$i_start;$i_loop<$i_stop;$i_loop++) {
             }
             $Count = $pop3->login($mailfetch_user, $mailfetch_pass);
             if (($Count == false || $Count == -1) && $pop3->ERROR != '') {
-                Mail_Fetch_Status(_("Login Failed:") . ' ' . htmlspecialchars($pop3->ERROR) );
+                Mail_Fetch_Status(_("Login Failed:") . ' ' . sm_encode_html_special_chars($pop3->ERROR) );
                 Mail_Fetch_Status(_("Saving UIDL"));
                 setPref($data_dir,$username,"mailfetch_uidl_$i_loop", $mailfetch_uidl[$i-1]);
 
@@ -266,7 +266,7 @@ for ($i_loop=$i_start;$i_loop<$i_stop;$i_loop++) {
                 if( $pop3->delete($i) ) {
                     Mail_Fetch_Status(sprintf(_("Message %d deleted from remote server!"), $i));
                 } else {
-                    Mail_Fetch_Status(_("Delete failed:") . htmlspecialchars($pop3->ERROR) );
+                    Mail_Fetch_Status(_("Delete failed:") . sm_encode_html_special_chars($pop3->ERROR) );
                 }
             }
         } else {

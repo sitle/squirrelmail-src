@@ -156,7 +156,7 @@ else if (strpos($variables_order, 'G') === FALSE
  || strpos($variables_order, 'P') === FALSE
  || strpos($variables_order, 'C') === FALSE
  || strpos($variables_order, 'S') === FALSE) {
-    do_err('Your variables_order setting is insufficient for SquirrelMail to function.  It needs at least "GPCS", but you have it set to "' . htmlspecialchars($variables_order) . '"', true);
+    do_err('Your variables_order setting is insufficient for SquirrelMail to function.  It needs at least "GPCS", but you have it set to "' . sm_encode_html_special_chars($variables_order) . '"', true);
 } else {
     echo $IND . "variables_order OK: $variables_order.<br />\n";
 }
@@ -179,7 +179,7 @@ if (!check_php_version(5)) {
     else if (strpos($gpc_order, 'G') === FALSE
      || strpos($gpc_order, 'P') === FALSE
      || strpos($gpc_order, 'C') === FALSE) {
-        do_err('Your gpc_order setting is insufficient for SquirrelMail to function.  It needs to be set to "GPC", but you have it set to "' . htmlspecialchars($gpc_order) . '"', true);
+        do_err('Your gpc_order setting is insufficient for SquirrelMail to function.  It needs to be set to "GPC", but you have it set to "' . sm_encode_html_special_chars($gpc_order) . '"', true);
     } else {
         echo $IND . "gpc_order OK: $gpc_order.<br />\n";
     }
@@ -310,7 +310,7 @@ if (isset($plugins[0])) {
     ob_end_clean();
     // if plugins output more than newlines and spacing, stop script execution.
     if (!empty($output)) {
-        $plugin_load_error = 'Some output is produced when plugins are loaded. Usually this means there is an error in one of the plugin setup or configuration files. The output was: '.htmlspecialchars($output);
+        $plugin_load_error = 'Some output is produced when plugins are loaded. Usually this means there is an error in one of the plugin setup or configuration files. The output was: '.sm_encode_html_special_chars($output);
         do_err($plugin_load_error);
     }
     /**
@@ -354,9 +354,9 @@ if ( $squirrelmail_default_language != 'en_US' ) {
     echo $IND . "Default language OK.<br />\n";
 }
 
-echo $IND . "Base URL detected as: <tt>" . htmlspecialchars($test_location) .
+echo $IND . "Base URL detected as: <tt>" . sm_encode_html_special_chars($test_location) .
     "</tt> (location base " . (empty($config_location_base) ? 'autodetected' : 'set to <tt>' .
-    htmlspecialchars($config_location_base)."</tt>") . ")<br />\n";
+    sm_encode_html_special_chars($config_location_base)."</tt>") . ")<br />\n";
 
 /* check outgoing mail */
 
@@ -386,20 +386,20 @@ if($useSendmail) {
             $errorNumber, $errorString);
     if(!$stream) {
         do_err("Error connecting to SMTP server \"$smtpServerAddress:$smtpPort\".".
-                "Server error: ($errorNumber) ".htmlspecialchars($errorString));
+                "Server error: ($errorNumber) ".sm_encode_html_special_chars($errorString));
     }
 
     // check for SMTP code; should be 2xx to allow us access
     $smtpline = fgets($stream, 1024);
     if(((int) $smtpline{0}) > 3) {
         do_err("Error connecting to SMTP server. Server error: ".
-                htmlspecialchars($smtpline));
+                sm_encode_html_special_chars($smtpline));
     }
 
     fputs($stream, 'QUIT');
     fclose($stream);
     echo $IND . 'SMTP server OK (<tt><small>'.
-            trim(htmlspecialchars($smtpline))."</small></tt>)<br />\n";
+            trim(sm_encode_html_special_chars($smtpline))."</small></tt>)<br />\n";
 
     /* POP before SMTP */
     if($pop_before_smtp) {
@@ -407,13 +407,13 @@ if($useSendmail) {
         $stream = fsockopen($pop_before_smtp_host, 110, $err_no, $err_str);
         if (!$stream) {
             do_err("Error connecting to POP Server ($pop_before_smtp_host:110) "
-                . $err_no . ' : ' . htmlspecialchars($err_str));
+                . $err_no . ' : ' . sm_encode_html_special_chars($err_str));
         }
 
         $tmp = fgets($stream, 1024);
         if (substr($tmp, 0, 3) != '+OK') {
             do_err("Error connecting to POP Server ($pop_before_smtp_host:110)"
-                . ' '.htmlspecialchars($tmp));
+                . ' '.sm_encode_html_special_chars($tmp));
         }
         fputs($stream, 'QUIT');
         fclose($stream);
@@ -432,24 +432,24 @@ $stream = fsockopen( ($use_imap_tls?'tls://':'').$imapServerAddress, $imapPort,
 if(!$stream) {
     do_err("Error connecting to IMAP server \"$imapServerAddress:$imapPort\".".
             "Server error: ($errorNumber) ".
-            htmlspecialchars($errorString));
+            sm_encode_html_special_chars($errorString));
 }
 
 /** Is the first response 'OK'? */
 $imapline = fgets($stream, 1024);
 if(substr($imapline, 0,4) != '* OK') {
     do_err('Error connecting to IMAP server. Server error: '.
-            htmlspecialchars($imapline));
+            sm_encode_html_special_chars($imapline));
 }
 
 echo $IND . 'IMAP server ready (<tt><small>'.
-    htmlspecialchars(trim($imapline))."</small></tt>)<br />\n";
+    sm_encode_html_special_chars(trim($imapline))."</small></tt>)<br />\n";
 
 /** Check capabilities */
 fputs($stream, "A001 CAPABILITY\r\n");
 $capline = fgets($stream, 1024);
 
-echo $IND . 'Capabilities: <tt>'.htmlspecialchars($capline)."</tt><br />\n";
+echo $IND . 'Capabilities: <tt>'.sm_encode_html_special_chars($capline)."</tt><br />\n";
 
 if($imap_auth_mech == 'login' && stristr($capline, 'LOGINDISABLED') !== FALSE) {
     do_err('Your server doesn\'t allow plaintext logins. '.
@@ -581,7 +581,7 @@ if(!empty($addrbook_dsn) || !empty($prefs_dsn) || !empty($addrbook_global_dsn)) 
 
             $dbh = DB::connect($dsn, true);
             if (DB::isError($dbh)) {
-                do_err('Database error: '. htmlspecialchars(DB::errorMessage($dbh)) .
+                do_err('Database error: '. sm_encode_html_special_chars(DB::errorMessage($dbh)) .
                         ' in ' .$type .' DSN.');
             }
             $dbh->disconnect();

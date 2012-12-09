@@ -159,8 +159,8 @@ if ($allowsound == "true") {
             if ($fname == $media) {
                 echo 'selected="selected" ';
             }
-            echo 'value="' . htmlspecialchars($fname) . '">' .
-                htmlspecialchars($entry) . "</option>\n";
+            echo 'value="' . sm_encode_html_special_chars($fname) . '">' .
+                sm_encode_html_special_chars($entry) . "</option>\n";
         }
     }
     $d->close();
@@ -174,8 +174,8 @@ if ($allowsound == "true") {
             html_tag( 'tr', "\n" .
                 html_tag( 'td', _("Current File:"), 'right', '', 'nowrap' ) .
                     html_tag( 'td', '<input type="hidden" value="' .
-                        htmlspecialchars($media) . '" name="media_default">' .
-                        htmlspecialchars($media_output) . '', 'left' )
+                        sm_encode_html_special_chars($media) . '" name="media_default">' .
+                        sm_encode_html_special_chars($media_output) . '', 'left' )
              ) . "\n";
 }
 echo html_tag( 'tr', "\n" .
