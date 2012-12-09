@@ -174,7 +174,7 @@ function sti_input( $title, $name, $data, $bgcolor ) {
     $str = '';
     $str .= '<tr' . $bgcolor . ">\n";
     $str .= '  <td style="white-space: nowrap;text-align:right;">' . $title . ' </td>' . "\n";
-    $str .= '  <td> <input type="text" name="' . $name . '" size="50" value="'. htmlspecialchars($data) . '"> </td>' . "\n";
+    $str .= '  <td> <input type="text" name="' . $name . '" size="50" value="'. sm_encode_html_special_chars($data) . '"> </td>' . "\n";
     $str .= '</tr>';
 
     return $str;
@@ -185,7 +185,7 @@ function sti_textarea( $title, $name, $data, $bgcolor ) {
     $str = '';
     $str .= '<tr' . $bgcolor . ">\n";
     $str .= '  <td style="white-space: nowrap;text-align:right;">' . $title . ' </td>' . "\n";
-    $str .= '  <td> <textarea name="' . $name . '" cols="50" rows="5">'. htmlspecialchars($data) . '</textarea> </td>' . "\n";
+    $str .= '  <td> <textarea name="' . $name . '" cols="50" rows="5">'. sm_encode_html_special_chars($data) . '</textarea> </td>' . "\n";
     $str .= '</tr>';
 
     return $str;

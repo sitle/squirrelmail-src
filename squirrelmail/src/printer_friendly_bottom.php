@@ -131,7 +131,7 @@ echo '<body text="#000000" bgcolor="#FFFFFF" link="#000000" vlink="#000000" alin
      ) . "\n" .
      html_tag( 'tr',
          html_tag( 'td', _("Date").':&nbsp;', 'left' ) .
-         html_tag( 'td', htmlspecialchars($date), 'left' )
+         html_tag( 'td', sm_encode_html_special_chars($date), 'left' )
      ) . "\n" .
      html_tag( 'tr',
          html_tag( 'td', _("To").':&nbsp;', 'left','','valign="top"' ) .
@@ -280,7 +280,7 @@ function pf_show_attachments($message, $exclude_id, $mailbox, $id) {
             html_tag( 'td',show_readable_size($header->size), 'left') .
             '</tr><tr>' .
             html_tag( 'td',_("Type:"), 'right') .
-            html_tag( 'td',htmlspecialchars($type0).'/'.htmlspecialchars($type1), 'left') . 
+            html_tag( 'td',sm_encode_html_special_chars($type0).'/'.sm_encode_html_special_chars($type1), 'left') . 
             '</tr>';
         if (! empty($description)) {
             $attachments .= $description;

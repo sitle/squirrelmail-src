@@ -345,7 +345,7 @@ if(sqgetGlobalVar('REQUEST_METHOD', $req_method, SQ_SERVER) && $req_method == 'P
                                  html_tag( 'tr',
                                      html_tag( 'td',
                                                "\n". '<strong><font color="' . $color[2] .
-                                               '">' . _("ERROR") . ': ' . htmlspecialchars($abook->error) . '</font></strong>' ."\n",
+                                               '">' . _("ERROR") . ': ' . sm_encode_html_special_chars($abook->error) . '</font></strong>' ."\n",
                                                'center' )
                                            ),
                                        'center', '', 'width="100%"' );
@@ -400,7 +400,7 @@ if (!empty($formerror)) {
             html_tag( 'tr',
                 html_tag( 'td',
                     "\n". '<br /><strong><font color="' . $color[2] .
-                    '">' . _("ERROR") . ': ' . htmlspecialchars($formerror) . '</font></strong>' ."\n",
+                    '">' . _("ERROR") . ': ' . sm_encode_html_special_chars($formerror) . '</font></strong>' ."\n",
                     'center' )
                 ),
             'center', '', 'width="100%"' );
@@ -412,7 +412,7 @@ if ($showaddrlist) {
     /* Get and sort address list */
     $alist = $abook->list_addr();
     if(!is_array($alist)) {
-        $abook->error = htmlspecialchars($abook->error);
+        $abook->error = sm_encode_html_special_chars($abook->error);
         plain_error_message($abook->error, $color);
         exit;
     }
@@ -522,8 +522,8 @@ if ($showaddrlist) {
                             '&nbsp;' ,
                             'center', '', 'valign="top" width="1%"' );
                 }
-                echo html_tag( 'td', '&nbsp;<label for="' . $row['backend'] . '_' . urlencode($row['nickname']) . '">' . htmlspecialchars($row['nickname']) . '</label>&nbsp;', 'left', '', 'valign="top" width="10%" nowrap' ) . 
-                    html_tag( 'td', '&nbsp;<label for="' . $row['backend'] . '_' . urlencode($row['nickname']) . '">' . htmlspecialchars($row['lastname']) . ' ' . htmlspecialchars($row['firstname']) . '</label>&nbsp;', 'left', '', 'valign="top" width="10%" nowrap' ) .
+                echo html_tag( 'td', '&nbsp;<label for="' . $row['backend'] . '_' . urlencode($row['nickname']) . '">' . sm_encode_html_special_chars($row['nickname']) . '</label>&nbsp;', 'left', '', 'valign="top" width="10%" nowrap' ) . 
+                    html_tag( 'td', '&nbsp;<label for="' . $row['backend'] . '_' . urlencode($row['nickname']) . '">' . sm_encode_html_special_chars($row['lastname']) . ' ' . sm_encode_html_special_chars($row['firstname']) . '</label>&nbsp;', 'left', '', 'valign="top" width="10%" nowrap' ) .
                     html_tag( 'td', '', 'left', '', 'valign="top" width="10%" nowrap' ) . '&nbsp;';
             } else {
                 echo html_tag( 'tr', '', '', $tr_bgcolor);
@@ -538,16 +538,16 @@ if ($showaddrlist) {
                             '&nbsp;' ,
                             'center', '', 'valign="top" width="1%"' );
                 }
-                echo html_tag( 'td', '&nbsp;<label for="' . $row['backend'] . '_' . urlencode($row['nickname']) . '">' . htmlspecialchars($row['nickname']) . '</label>&nbsp;', 'left', '', 'valign="top" width="10%" nowrap' ) .
-                    html_tag( 'td', '&nbsp;<label for="' . $row['backend'] . '_' . urlencode($row['nickname']) . '">' . htmlspecialchars($row['name']) . '</label>&nbsp;', 'left', '', 'valign="top" width="10%" nowrap' ) .
+                echo html_tag( 'td', '&nbsp;<label for="' . $row['backend'] . '_' . urlencode($row['nickname']) . '">' . sm_encode_html_special_chars($row['nickname']) . '</label>&nbsp;', 'left', '', 'valign="top" width="10%" nowrap' ) .
+                    html_tag( 'td', '&nbsp;<label for="' . $row['backend'] . '_' . urlencode($row['nickname']) . '">' . sm_encode_html_special_chars($row['name']) . '</label>&nbsp;', 'left', '', 'valign="top" width="10%" nowrap' ) .
                     html_tag( 'td', '', 'left', '', 'valign="top" width="10%" nowrap' ) . '&nbsp;';
             }
             $email = $abook->full_address($row);
             echo addHidden($row['backend'] . ':' . $row['nickname'], rawurlencode($email))
                . makeComposeLink('src/compose.php?send_to='.rawurlencode($email),
-                    htmlspecialchars($row['email'])).
+                    sm_encode_html_special_chars($row['email'])).
                 '&nbsp;</td>'."\n".
-                html_tag( 'td', '&nbsp;<label for="' . $row['backend'] . '_' . urlencode($row['nickname']) . '">' . htmlspecialchars($row['label']) . '</label>&nbsp;', 'left', '', 'valign="top" width="10%"' );
+                html_tag( 'td', '&nbsp;<label for="' . $row['backend'] . '_' . urlencode($row['nickname']) . '">' . sm_encode_html_special_chars($row['label']) . '</label>&nbsp;', 'left', '', 'valign="top" width="10%"' );
 
             // add extra column if third party backend needs it
             if ($abook->add_extra_field) {

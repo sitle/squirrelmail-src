@@ -136,15 +136,15 @@ function addr_display_result($res, $includesource = true) {
         echo html_tag( 'tr', '', '', $tr_bgcolor, 'nowrap' ) .
         html_tag( 'td',
              '<input type="checkbox" name="send_to_search[T' . $line . ']" value = "' .
-             htmlspecialchars($email) . '" />&nbsp;' . _("To") . '&nbsp;' .
+             sm_encode_html_special_chars($email) . '" />&nbsp;' . _("To") . '&nbsp;' .
              '<input type="checkbox" name="send_to_search[C' . $line . ']" value = "' .
-             htmlspecialchars($email) . '" />&nbsp;' . _("Cc") . '&nbsp;' .
+             sm_encode_html_special_chars($email) . '" />&nbsp;' . _("Cc") . '&nbsp;' .
              '<input type="checkbox" name="send_to_search[B' . $line . ']" value = "' .
-             htmlspecialchars($email) . '" />&nbsp;' . _("Bcc") . '&nbsp;' ,
+             sm_encode_html_special_chars($email) . '" />&nbsp;' . _("Bcc") . '&nbsp;' ,
         'center', '', 'width="5%" nowrap' ) .
-        html_tag( 'td', '&nbsp;' . htmlspecialchars($row['lastname']) . ' ' . htmlspecialchars($row['firstname']) . '&nbsp;', 'left', '', 'nowrap' ) .
-        html_tag( 'td', '&nbsp;' . htmlspecialchars($row['email']) . '&nbsp;', 'left', '', 'nowrap' ) .
-        html_tag( 'td', '&nbsp;' . htmlspecialchars($row['label']) . '&nbsp;', 'left', '', 'nowrap' );
+        html_tag( 'td', '&nbsp;' . sm_encode_html_special_chars($row['lastname']) . ' ' . sm_encode_html_special_chars($row['firstname']) . '&nbsp;', 'left', '', 'nowrap' ) .
+        html_tag( 'td', '&nbsp;' . sm_encode_html_special_chars($row['email']) . '&nbsp;', 'left', '', 'nowrap' ) .
+        html_tag( 'td', '&nbsp;' . sm_encode_html_special_chars($row['label']) . '&nbsp;', 'left', '', 'nowrap' );
             } else {
         echo html_tag( 'tr', '', '', $tr_bgcolor, 'nowrap' ) .
         html_tag( 'td',
@@ -155,9 +155,9 @@ function addr_display_result($res, $includesource = true) {
             addCheckBox('send_to_search[B'.$line.']', FALSE, $email).
             '&nbsp;' . _("Bcc") . '&nbsp;' ,
         'center', '', 'width="5%" nowrap' ) .
-        html_tag( 'td', '&nbsp;' . htmlspecialchars($row['name']) . '&nbsp;', 'left', '', 'nowrap' ) .
-        html_tag( 'td', '&nbsp;' . htmlspecialchars($row['email']) . '&nbsp;', 'left', '', 'nowrap' ) .
-        html_tag( 'td', '&nbsp;' . htmlspecialchars($row['label']) . '&nbsp;', 'left', '', 'nowrap' );
+        html_tag( 'td', '&nbsp;' . sm_encode_html_special_chars($row['name']) . '&nbsp;', 'left', '', 'nowrap' ) .
+        html_tag( 'td', '&nbsp;' . sm_encode_html_special_chars($row['email']) . '&nbsp;', 'left', '', 'nowrap' ) .
+        html_tag( 'td', '&nbsp;' . sm_encode_html_special_chars($row['label']) . '&nbsp;', 'left', '', 'nowrap' );
             }
 
          if ($includesource) {

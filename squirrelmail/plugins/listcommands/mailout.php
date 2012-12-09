@@ -39,7 +39,7 @@ case 'unsubscribe':
     $out_string = _("This will send a message to %s requesting that you will be unsubscribed from this list. It will try to unsubscribe the adress below.");
     break;
 default:
-    error_box(sprintf(_("Unknown action: %s"),htmlspecialchars($action)), $color);
+    error_box(sprintf(_("Unknown action: %s"),sm_encode_html_special_chars($action)), $color);
     exit;
 }
 
@@ -52,7 +52,7 @@ html_tag( 'table', '', 'center', $color[0], 'border="0" width="75%"' ) . "\n" .
     html_tag( 'td', '', 'left' );
 
 
-printf( $out_string, htmlspecialchars($send_to) );
+printf( $out_string, sm_encode_html_special_chars($send_to) );
 
 echo '<form method="post" action="../../src/compose.php">'.
      '<input type="hidden" name="smtoken" value="' . sm_generate_security_token() . '" />';
@@ -65,20 +65,20 @@ if (count($idents) > 1) {
     echo '<select name="identity">';
     foreach($idents as $nr=>$data) {
         echo '<option value="' . $nr . '">' .
-            htmlspecialchars(
+            sm_encode_html_special_chars(
                 $data['full_name'].' <'.
                 $data['email_address'] . ">\n");
     }
     echo '</select>' . "\n" ;
 } else {
-    echo htmlspecialchars('"'.$idents[0]['full_name'].'" <'.$idents[0]['email_address'].'>');
+    echo sm_encode_html_special_chars('"'.$idents[0]['full_name'].'" <'.$idents[0]['email_address'].'>');
 }
 
 echo '<br /><br />'
-. '<input type="hidden" name="send_to" value="' . htmlspecialchars($send_to) . '">'
-. '<input type="hidden" name="subject" value="' . htmlspecialchars($subject) . '">'
-. '<input type="hidden" name="body" value="' . htmlspecialchars($body) . '">'
-. '<input type="hidden" name="mailbox" value="' . htmlspecialchars($mailbox) . '">'
+. '<input type="hidden" name="send_to" value="' . sm_encode_html_special_chars($send_to) . '">'
+. '<input type="hidden" name="subject" value="' . sm_encode_html_special_chars($subject) . '">'
+. '<input type="hidden" name="body" value="' . sm_encode_html_special_chars($body) . '">'
+. '<input type="hidden" name="mailbox" value="' . sm_encode_html_special_chars($mailbox) . '">'
 . '<input type="submit" name="send" value="' . _("Send Mail") . '"><br /><br />'
 . '</form></td></tr></table></body></html>';
 

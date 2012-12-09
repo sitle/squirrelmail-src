@@ -238,7 +238,7 @@ function printSearchMessages($msgs,$mailbox, $cnt, $imapConnection, $where, $wha
             $showbox = imap_utf7_decode_local($mailbox);
         }
         echo html_tag( 'div', '<b><big>' . _("Folder:") . ' '.
-            htmlspecialchars($showbox) .'</big></b>','center') . "\n";
+            sm_encode_html_special_chars($showbox) .'</big></b>','center') . "\n";
 
         $msg_cnt_str = get_msgcnt_str(1, $cnt, $cnt);
         $toggle_all = get_selectall_link(1, $sort);
@@ -248,7 +248,7 @@ function printSearchMessages($msgs,$mailbox, $cnt, $imapConnection, $where, $wha
         $safe_name = preg_replace("/[^0-9A-Za-z_]/", '_', $mailbox);
         $form_name = "FormMsgs" . $safe_name;
         echo '<form name="' . $form_name . '" method="post" action="move_messages.php">' ."\n" .
-             '<input type="hidden" name="mailbox" value="'.htmlspecialchars($mailbox).'">' . "\n" .
+             '<input type="hidden" name="mailbox" value="'.sm_encode_html_special_chars($mailbox).'">' . "\n" .
              '<input type="hidden" name="startMessage" value="1">' . "\n" .
              addHidden('smtoken', sm_generate_security_token()) . "\n";
 
@@ -373,9 +373,9 @@ if ($saved_count > 0) {
         } else {
             echo html_tag( 'tr', '', '', $color[4] );
         }
-        echo html_tag( 'td', htmlspecialchars(imap_utf7_decode_local($saved_attributes['saved_folder'][$i + 1])), 'left', '', 'width="35%"' )
-        . html_tag( 'td', htmlspecialchars($saved_attributes['saved_what'][$i + 1]), 'left' )
-        . html_tag( 'td', htmlspecialchars($saved_attributes['saved_where'][$i + 1]), 'center' )
+        echo html_tag( 'td', sm_encode_html_special_chars(imap_utf7_decode_local($saved_attributes['saved_folder'][$i + 1])), 'left', '', 'width="35%"' )
+        . html_tag( 'td', sm_encode_html_special_chars($saved_attributes['saved_what'][$i + 1]), 'left' )
+        . html_tag( 'td', sm_encode_html_special_chars($saved_attributes['saved_where'][$i + 1]), 'center' )
         . html_tag( 'td', '', 'right' )
         .   '<a href="search.php'
         .     '?mailbox=' . urlencode($saved_attributes['saved_folder'][$i + 1])
@@ -422,9 +422,9 @@ if ($recent_count > 0) {
             }
             if (isset($attributes['search_what'][$i]) &&
                 !empty($attributes['search_what'][$i])) {
-            echo html_tag( 'td', htmlspecialchars(imap_utf7_decode_local($attributes['search_folder'][$i])), 'left', '', 'width="35%"' )
-               . html_tag( 'td', htmlspecialchars($attributes['search_what'][$i]), 'left' )
-               . html_tag( 'td', htmlspecialchars($attributes['search_where'][$i]), 'center' )
+            echo html_tag( 'td', sm_encode_html_special_chars(imap_utf7_decode_local($attributes['search_folder'][$i])), 'left', '', 'width="35%"' )
+               . html_tag( 'td', sm_encode_html_special_chars($attributes['search_what'][$i]), 'left' )
+               . html_tag( 'td', sm_encode_html_special_chars($attributes['search_where'][$i]), 'center' )
                . html_tag( 'td', '', 'right' )
                .   "<a href=\"search.php?count=$i&amp;submit=save&amp;smtoken=" . sm_generate_security_token() . '">'
                .     _("save")

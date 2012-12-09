@@ -39,7 +39,7 @@ if (sizeof($words_ary)){
      * Remove word by word...
      */
     $lang_words=str_replace("$words_ary[$i]\n", "", $lang_words);
-    $msg .= '<li>' . htmlspecialchars($words_ary[$i]) . "</li>\n";
+    $msg .= '<li>' . sm_encode_html_special_chars($words_ary[$i]) . "</li>\n";
   }
   $new_words_ary=split("\n", $lang_words);
   /**

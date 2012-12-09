@@ -786,7 +786,7 @@ function sqimap_get_small_header_list($imap_stream, $msg_list, $show_num=false) 
                  _("ERROR: Could not complete request.") .
                  '</b><br />' .
                  _("Unknown response from IMAP server:") . ' 1.' .
-                 htmlspecialchars($read) . "</font><br />\n";
+                 sm_encode_html_special_chars($read) . "</font><br />\n";
                  break;
         }
         $i = strpos($read,'(',$i_space+5);

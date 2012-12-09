@@ -110,10 +110,10 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
             if ($senderNames_part[1]) {
                 $senderName .= decodeHeader($senderNames_part[1]);
             } else {
-                $senderName .= htmlspecialchars($senderNames_part[0]);
+                $senderName .= sm_encode_html_special_chars($senderNames_part[0]);
             }
 
-            $senderFrom .= htmlspecialchars($senderNames_part[0]);
+            $senderFrom .= sm_encode_html_special_chars($senderNames_part[0]);
         }
     }
     $senderName = str_replace('&nbsp;',' ',$senderName);
@@ -530,8 +530,8 @@ function showMessagesForMailbox($imapConnection, $mailbox, $num_msgs,
     $form_name = "FormMsgs" . $safe_name;
     echo '<form name="' . $form_name . '" method="post" action="move_messages.php">' ."\n" .
         '<input type="hidden" name="smtoken" value="'.sm_generate_security_token().'">' . "\n" .
-        '<input type="hidden" name="mailbox" value="'.htmlspecialchars($mailbox).'">' . "\n" .
-        '<input type="hidden" name="startMessage" value="'.htmlspecialchars($start_msg).'">' . "\n";
+        '<input type="hidden" name="mailbox" value="'.sm_encode_html_special_chars($mailbox).'">' . "\n" .
+        '<input type="hidden" name="startMessage" value="'.sm_encode_html_special_chars($start_msg).'">' . "\n";
     
     echo '<table border="0" width="100%" cellpadding="0" cellspacing="0">';
     echo '<tr><td>';

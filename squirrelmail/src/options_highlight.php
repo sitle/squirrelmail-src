@@ -179,11 +179,11 @@ if ($mhl_count > 0) {
                         $links,
                     'left', $color[4], 'width="20%" nowrap' ) .
                     html_tag( 'td',
-                        htmlspecialchars($message_highlight_list[$i]['name']) ,
+                        sm_encode_html_special_chars($message_highlight_list[$i]['name']) ,
                     'left' ) .
                     html_tag( 'td',
                         $match_type . ' = ' .
-                        htmlspecialchars($message_highlight_list[$i]['value']) ,
+                        sm_encode_html_special_chars($message_highlight_list[$i]['value']) ,
                     'left' ) ,
                 '', '#' . $message_highlight_list[$i]['color'] ) . "\n";
     }

@@ -74,11 +74,11 @@ if (sizeof($use_langs)){
   $lang_array = explode( ',', $lang_string );
   $dsp_string = '';
   foreach( $lang_array as $a) {
-    $dsp_string .= _(htmlspecialchars(trim($a))) . _(", ");
+    $dsp_string .= _(sm_encode_html_special_chars(trim($a))) . _(", ");
   }
   $dsp_string = substr( $dsp_string, 0, -2 );
   $msg = '<p>'
-    . sprintf(_("Settings adjusted to: %s with %s as default dictionary."), '<strong>'.$dsp_string.'</strong>', '<strong>'._(htmlspecialchars($lang_default)).'</strong>')
+    . sprintf(_("Settings adjusted to: %s with %s as default dictionary."), '<strong>'.$dsp_string.'</strong>', '<strong>'._(sm_encode_html_special_chars($lang_default)).'</strong>')
     . '</p>';
 } else {
   /**

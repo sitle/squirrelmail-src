@@ -64,7 +64,7 @@ if (substr($old, 0, strlen($folder_prefix)) == $folder_prefix) {
 
 if (strpos($displayable_old, $delimiter)) {
     $old_name = substr($displayable_old, strrpos($displayable_old, $delimiter)+1);
-    $parent = htmlspecialchars(substr($displayable_old, 
+    $parent = sm_encode_html_special_chars(substr($displayable_old, 
                                       0, 
                                       strrpos($displayable_old, $delimiter))
             . ' ' . $delimiter);

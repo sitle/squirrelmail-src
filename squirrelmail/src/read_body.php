@@ -458,7 +458,7 @@ function formatEnvheader($mailbox, $passed_id, $passed_ent_id, $message,
     $env[_("Cc")] = formatRecipientString($header->cc, "cc");
     $env[_("Bcc")] = formatRecipientString($header->bcc, "bcc");
     if ($default_use_priority) {
-        $env[_("Priority")] = htmlspecialchars(getPriorityStr($header->priority));
+        $env[_("Priority")] = sm_encode_html_special_chars(getPriorityStr($header->priority));
     }
     if ($show_xmailer_default) {
         $env[_("Mailer")] = decodeHeader($header->xmailer);

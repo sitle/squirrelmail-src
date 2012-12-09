@@ -43,7 +43,7 @@ function mime_structure ($bodystructure, $flags=array()) {
          '<center>';
         $errormessage  = _("SquirrelMail could not decode the bodystructure of the message");
         $errormessage .= '<br />'._("The bodystructure provided by your IMAP server:").'<br /><br />';
-        $errormessage .= '<table><tr><td>' . htmlspecialchars($read) . '</td></tr></table>';
+        $errormessage .= '<table><tr><td>' . sm_encode_html_special_chars($read) . '</td></tr></table>';
         plain_error_message( $errormessage, $color );
         echo '</body></html>';
         exit;
@@ -546,7 +546,7 @@ function formatAttachments($message, $exclude_id, $mailbox, $id) {
             '<a href="'.$defaultlink.'">'.decodeHeader($display_filename).'</a>&nbsp;</td>' .
             '<td><small><b>' . show_readable_size($header->size) .
             '</b>&nbsp;&nbsp;</small></td>' .
-            '<td><small>[ '.htmlspecialchars($type0).'/'.htmlspecialchars($type1).' ]&nbsp;</small></td>' .
+            '<td><small>[ '.sm_encode_html_special_chars($type0).'/'.sm_encode_html_special_chars($type1).' ]&nbsp;</small></td>' .
             '<td><small>';
         $attachments .= '<b>' . $description . '</b>';
         $attachments .= '</small></td><td><small>&nbsp;';
@@ -677,7 +677,7 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true,$decide=false) {
             $iLastMatch = $i;
             $j = $i;
             if ($htmlsave) {
-                $ret .= htmlspecialchars($res[1]);
+                $ret .= sm_encode_html_special_chars($res[1]);
             } else {
                 $ret .= $res[1];
             }
@@ -702,7 +702,7 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true,$decide=false) {
                         $replace = charset_decode($res[2],$replace);
                     } elseif ($htmlsave) {
                         // string is not converted, but still sanitized
-                        $replace = htmlspecialchars($replace);
+                        $replace = sm_encode_html_special_chars($replace);
                     }
                     $ret.= $replace;
                     break;
@@ -718,7 +718,7 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true,$decide=false) {
                         $replace = charset_decode($res[2], $replace);
                     } elseif ($htmlsave) {
                         // string is not converted, but still sanizited
-                        $replace = htmlspecialchars($replace);
+                        $replace = sm_encode_html_special_chars($replace);
                     }
                     $ret .= $replace;
                     break;
@@ -737,7 +737,7 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true,$decide=false) {
         }
 
         if (!$encoded && $htmlsave) {
-            $ret .= htmlspecialchars($chunk);
+            $ret .= sm_encode_html_special_chars($chunk);
         } else {
             $ret .= $chunk;
         }

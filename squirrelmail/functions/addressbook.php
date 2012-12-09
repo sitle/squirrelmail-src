@@ -154,7 +154,7 @@ function addressbook_init($showerr = true, $onlylocal = false) {
      * display address book init errors.
      */
     if ($abook_init_error!='' && $showerr) {
-        $abook_init_error = htmlspecialchars($abook_init_error);
+        $abook_init_error = sm_encode_html_special_chars($abook_init_error);
         error_box($abook_init_error,$color);
     }
 

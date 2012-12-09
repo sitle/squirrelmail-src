@@ -75,7 +75,7 @@ print "<center><table width=\"95%\" border=\"1\" bgcolor=\"".$color[3]."\">\n";
 print "<tr><td bgcolor=\"".$color[4]."\"><b>Server Capability response:</b><br>\n";
 
 foreach($caps_array[0] as $value) {
-    print htmlspecialchars($value);
+    print sm_encode_html_special_chars($value);
 }
 
 print "</td></tr><tr><td>\n";
@@ -94,8 +94,8 @@ if (!isset($submit) || $submit == 'default') {
     }
 }
 else {
-    print 'folder_prefix = ' . htmlspecialchars($folder_prefix) . "<br>\n".
-          'default_charset = ' . htmlspecialchars($default_charset) . "\n";
+    print 'folder_prefix = ' . sm_encode_html_special_chars($folder_prefix) . "<br>\n".
+          'default_charset = ' . sm_encode_html_special_chars($default_charset) . "\n";
 }
 
 print "<br></td></tr></table></center><br>\n";
