@@ -3801,7 +3801,7 @@ Site URL: http://dbmail.org/
 Bejy
 ----
 HTTP and email server written in Java. User information is stored in database.
-SELECT response is in rfc 2060 format.
+SELECT response is in RFC 2060 format.
 
 Tested v.1.4.1.58b
 
@@ -3844,7 +3844,7 @@ PERMANENTFLAGS (\Answered \Flagged \Deleted \Seen)
 NAMESPACE (("" "/")) NIL NIL
 
 Supports TLS and SSL encryption, SASL CRAM-MD5 and DIGEST-MD5 authentication.
-Includes SIEVE (rfc3028) support.
+Includes SIEVE (RFC 3028) support.
 
 Site URL: http://process.com/tcpip/pmdf.html
 
@@ -4026,7 +4026,7 @@ squirrelmail-users@lists.sourceforge.net
 
 <tscreen><verb>
 In order to get correct folder deletion across the board for all
-different RFC2060 compliant IMAP servers, deleting of folders
+different RFC 2060 compliant IMAP servers, deleting of folders
 needed to work by deleting subfolders (inferiors) first, working
 up to the top folder that is desired to be deleted.
 
@@ -4093,11 +4093,15 @@ ones we use a lot:
   <item><url url="http://faqs.org/rfcs/rfc2683.html" name="RFC 2683"> -
         IMAP4 Implementation Recommendations
   <item><url url="http://faqs.org/rfcs/rfc2822.html" name="RFC 2822"> -
-        Format of an email message (sendmail) (obsoletes RFC 822)
+        Internet Message Format (obsoletes RFC 822)
   <item><url url="http://faqs.org/rfcs/rfc2831.html" name="RFC 2831"> -
         Using Digest Authentication as a SASL Mechanism (digest-md5)
+  <item><url url="http://www.faqs.org/rfcs/rfc3028.html" name="RFC 3028"> -
+        Sieve: A Mail Filtering Language (implemented in the Avelsieve plugin)
   <item><url url="http://faqs.org/rfcs/rfc3501.html" name="RFC 3501"> -
         IMAP version 4rev1 (obsoletes RFC 1730 and RFC 2060)
+  <item><url url="http://www.faqs.org/rfcs/rfc6851.html" name="RFC 6851"> -
+        IMAP4 MOVE Extension
 </itemize>
 
 </article>
