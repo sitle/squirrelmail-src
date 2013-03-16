@@ -917,6 +917,12 @@ $theme[50]['NAME'] = 'Techno Blue';
 $theme[51]['PATH'] = SM_PATH . 'themes/turquoise.php';
 $theme[51]['NAME'] = 'Turquoise';
 
+$theme[52]['PATH'] = SM_PATH . 'themes/solarized_light.php';
+$theme[52]['NAME'] = 'Solarized Light';
+
+$theme[53]['PATH'] = SM_PATH . 'themes/solarized_dark.php';
+$theme[53]['NAME'] = 'Solarized Dark';
+
 /**
  * LDAP server(s)
  *   Array of arrays with LDAP server parameters. See
