@@ -7,7 +7,7 @@
  *
  * @copyright 1999-2012 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
- * @version $Id: functions.php 13893 2010-01-25 02:47:41Z pdontthink $
+ * @version $Id$
  * @package plugins
  * @subpackage mail_fetch
  */
