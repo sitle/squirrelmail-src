@@ -520,7 +520,7 @@ function formatEnvheader($mailbox, $passed_id, $passed_ent_id, $message,
     echo '</table>';
 }
 
-function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_response) {
+function formatMenuBar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_response) {
     global $base_uri, $draft_folder, $where, $what, $color, $sort,
            $startMessage, $PHP_SELF, $save_as_draft,
            $enable_forward_as_attachment;
