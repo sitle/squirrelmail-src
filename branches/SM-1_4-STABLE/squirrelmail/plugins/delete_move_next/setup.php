@@ -251,7 +251,7 @@ function delete_move_next_moveNextForm($next) {
 
     echo '<tr>'.
          "<td bgcolor=\"$color[9]\" width=\"100%\" align=\"center\">".
-           "<form action=\"" . $base_uri . "src/read_body.php?mailbox=$urlMailbox&amp;sort=$sort&amp;startMessage=$startMessage&amp;passed_id=$next\" method=\"post\"><small>".
+           "<form style=\"display:inline; margin:0\" action=\"" . $base_uri . "src/read_body.php?mailbox=$urlMailbox&amp;sort=$sort&amp;startMessage=$startMessage&amp;passed_id=$next\" method=\"post\"><small>".
             "<input type=\"hidden\" name=\"show_more\" value=\"0\">".
             "<input type=\"hidden\" name=\"move_id\" value=\"$passed_id\">".
             "<input type=\"hidden\" name=\"smtoken\" value=\"" . sm_generate_security_token() . "\">".
@@ -276,7 +276,7 @@ function delete_move_next_moveRightMainForm() {
 
     echo '<tr>' .
             "<td bgcolor=\"$color[9]\" width=\"100%\" align=\"center\">".
-            "<form action=\"" . $base_uri . "src/right_main.php?mailbox=$urlMailbox&amp;sort=$sort&amp;startMessage=$startMessage\" method=\"post\"><small>" .
+            "<form style=\"display:inline; margin:0\" action=\"" . $base_uri . "src/right_main.php?mailbox=$urlMailbox&amp;sort=$sort&amp;startMessage=$startMessage\" method=\"post\"><small>" .
             "<input type=\"hidden\" name=\"move_id\" value=\"$passed_id\">".
             "<input type=\"hidden\" name=\"smtoken\" value=\"" . sm_generate_security_token() . "\">".
             _("Move to:") .
