@@ -1386,6 +1386,7 @@ function showInputForm ($session, $values=false) {
         global $username, $attachment_dir;
         $hashed_attachment_dir = getHashedDir($username, $attachment_dir);
         if (!empty($attach_array)) {
+            $attachment_count = 0;
             foreach ($attach_array as $key => $attachment) {
                 $attached_file = $attachment->att_local_name;
                 if ($attachment->att_local_name || $attachment->body_part) {
@@ -1395,11 +1396,11 @@ function showInputForm ($session, $values=false) {
 
                     $s_a[] = '<table bgcolor="'.$color[0].
                         '" border="0"><tr><td>'.
-                        addCheckBox('delete[]', FALSE, $key).
-                        "</td><td>\n" . $attached_filename .
-                        '</td><td>-</td><td> ' . $type . '</td><td>('.
+                        addCheckBox('delete[]', FALSE, $key, 'id="delete' . ++$attachment_count . '"').
+                        "</td><td><label for='delete" . $attachment_count . "'>\n" . $attached_filename .
+                        '</label></td><td><label for="delete' . $attachment_count . '">-</label></td><td><label for="delete' . $attachment_count . '"> ' . $type . '</label></td><td><label for="delete' . $attachment_count . '">('.
                         show_readable_size( filesize( $hashed_attachment_dir . '/' . $attached_file ) ) .
-                        ')</td></tr></table>'."\n";
+                        ')</label></td></tr></table>'."\n";
                 }
             }
         }
