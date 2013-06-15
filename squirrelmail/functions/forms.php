@@ -23,7 +23,8 @@
  */
 function addInputField($type, $name = null, $value = null, $attributes = '') {
     return '<input type="'.$type.'"'.
-        ($name  !== null ? ' name="'.sm_encode_html_special_chars($name).'"'   : '').
+        ($name !== null ? ' name="'.sm_encode_html_special_chars($name).'"' : '').
+        ($name !== null && strpos($attributes, 'id="') === FALSE ? ' id="'.sm_encode_html_special_chars(strtr($name, '[]', '__')).'"' : '').
         ($value !== null ? ' value="'.sm_encode_html_special_chars($value).'"' : '').
         ' ' . $attributes . " />\n";
 }
@@ -92,7 +93,9 @@ function addSelect($name, $values, $default = null, $usekeys = false)
             sm_encode_html_special_chars($v) . "\n";
     }
 
-    $ret = '<select name="'.sm_encode_html_special_chars($name) . "\">\n";
+    $ret = '<select name="'.sm_encode_html_special_chars($name)
+         . ($name !== null ? '" id="'.sm_encode_html_special_chars(strtr($name, '[]', '__')).'"' : '"')
+         . ">\n";
     foreach ($values as $k => $v) {
         if(!$usekeys) $k = $v;
         $ret .= '<option value="' .
@@ -124,6 +127,7 @@ function addReset($value) {
  */
 function addTextArea($name, $text = '', $cols = 40, $rows = 10, $attr = '') {
     return '<textarea name="'.sm_encode_html_special_chars($name).'" '.
+        ($name !== null && strpos($attr, 'id="') === FALSE ? 'id="'.sm_encode_html_special_chars(strtr($name, '[]', '__')).'" ' : ' ').
         'rows="'.(int)$rows .'" cols="'.(int)$cols.'" '.
         $attr . '>'.sm_encode_html_special_chars($text) ."</textarea>\n";
 }
