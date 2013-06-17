@@ -931,7 +931,6 @@ class Rfc822Header {
             $i=0;
             foreach($address as $argument) {
                 $match = $this->findAddress($argument, true);
-                $last = end($match);
                 if ($match[1]) {
                     return $i;
                 } else {
