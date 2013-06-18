@@ -89,7 +89,7 @@ if( !sqgetGlobalVar('confirmed', $tmp, SQ_POST) ) {
 }
 
 // first, validate security token
-sm_validate_security_token($submitted_token, 3600, TRUE);
+sm_validate_security_token($submitted_token, -1, TRUE);
 
 $imap_stream = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
 

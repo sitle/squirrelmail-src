@@ -157,7 +157,7 @@ if (!sqgetGlobalVar('smtoken',$submitted_token, SQ_POST)) {
 /* end of get globals */
 
 // security check
-sm_validate_security_token($submitted_token, 3600, TRUE);
+sm_validate_security_token($submitted_token, -1, TRUE);
 
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
 $mbx_response=sqimap_mailbox_select($imapConnection, $mailbox);

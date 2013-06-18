@@ -232,7 +232,7 @@ if ( !@is_file( $optpage_file ) ) {
 // security check before saving anything...
 //FIXME: what about SMOPT_MODE_LINK??
 if ($optmode == SMOPT_MODE_SUBMIT) {
-   sm_validate_security_token($submitted_token, 3600, TRUE);
+   sm_validate_security_token($submitted_token, -1, TRUE);
 }
 
 // set empty error message

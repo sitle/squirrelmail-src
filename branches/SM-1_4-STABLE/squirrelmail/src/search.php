@@ -321,7 +321,7 @@ if (empty($submit) && !empty($what)) {
 
 // need to verify security token if user wants to do anything
 if (!empty($submit)) {
-    sm_validate_security_token($submitted_token, 3600, TRUE);
+    sm_validate_security_token($submitted_token, -1, TRUE);
 }
 
 if ($submit == _("Search") && !empty($what)) {
