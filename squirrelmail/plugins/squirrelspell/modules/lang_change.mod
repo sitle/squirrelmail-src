@@ -19,7 +19,7 @@
 if (!sqgetGlobalVar('smtoken',$submitted_token, SQ_POST)) {
     $submitted_token = '';
 }
-sm_validate_security_token($submitted_token, 3600, TRUE);
+sm_validate_security_token($submitted_token, -1, TRUE);
 
 global $SQSPELL_APP_DEFAULT;
 

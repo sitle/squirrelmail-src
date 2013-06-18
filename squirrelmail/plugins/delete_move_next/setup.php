@@ -299,7 +299,7 @@ function delete_move_next_unread() {
     }
 
     // first, validate security token
-    sm_validate_security_token($submitted_token, 3600, TRUE);
+    sm_validate_security_token($submitted_token, -1, TRUE);
 
     sqimap_toggle_flag($imapConnection, $unread_id, '\\Seen', false, true);
 }
@@ -314,7 +314,7 @@ function delete_move_next_delete() {
     }
 
     // first, validate security token
-    sm_validate_security_token($submitted_token, 3600, TRUE);
+    sm_validate_security_token($submitted_token, -1, TRUE);
 
     sqimap_msgs_list_delete($imapConnection, $mailbox, $delete_id);
     if ($auto_expunge) {
@@ -334,7 +334,7 @@ function delete_move_next_move() {
     }
 
     // first, validate security token
-    sm_validate_security_token($submitted_token, 3600, TRUE);
+    sm_validate_security_token($submitted_token, -1, TRUE);
 
     // Move message
     sqimap_msgs_list_move($imapConnection, $move_id, $targetMailbox);

@@ -39,7 +39,7 @@ if (!sqgetGlobalVar('smtoken',$submitted_token, SQ_POST)) {
 /* end globals */
 
 // first, validate security token
-sm_validate_security_token($submitted_token, 3600, TRUE);
+sm_validate_security_token($submitted_token, -1, TRUE);
 
 $location = get_location();
 

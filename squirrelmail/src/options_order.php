@@ -78,7 +78,7 @@ displayPageHeader($color, 'None');
     } else if ($method == 'remove' && $num > 0) {
 
         // first do a security check
-        sm_validate_security_token($submitted_token, 3600, TRUE);
+        sm_validate_security_token($submitted_token, -1, TRUE);
 
         for ($i=1; $i < 8; $i++) {
             removePref($data_dir, $username, "order$i"); 
@@ -97,7 +97,7 @@ displayPageHeader($color, 'None');
     } else if ($method == 'add' && $add) {
 
         // first do a security check
-        sm_validate_security_token($submitted_token, 3600, TRUE);
+        sm_validate_security_token($submitted_token, -1, TRUE);
 
         /* User should not be able to insert PHP-code here */
         $add = str_replace ('<?', '..', $add);
