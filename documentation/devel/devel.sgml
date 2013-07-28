@@ -3311,6 +3311,13 @@ Also, make sure to update the <tt>define</tt> statement in
 that are listed above (you have to run it against each one).  
 <tscreen><verb>
 #!/bin/bash
+#
+# This script updates the copyright notices in SquirrelMail.
+#
+# Copyright 2010-2013 The SquirrelMail Project Team
+# License   http://opensource.org/licenses/gpl-license.php GNU Public License
+# Version   $Id$
+#
 
 update_copyrights()
 {
