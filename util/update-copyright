@@ -1,0 +1,89 @@
+#!/bin/bash
+#
+# This script updates the copyright notices in SquirrelMail.
+#
+# Copyright 2010-2013 The SquirrelMail Project Team
+# License   http://opensource.org/licenses/gpl-license.php GNU Public License
+# Version   $Id$
+#
+
+update_copyrights()
+{
+
+   if [[ -z $1 ]] || [[ ! -d $1 ]]; then
+      echo
+      echo "Error: update_copyrights() expects valid directory, got $1"
+      echo
+      exit 1;
+   fi
+
+   cd $1
+
+   for file in `ls`; do
+
+      # recurse directories
+      #
+      if [[ -d $file ]]; then
+         echo "Traversing $PWD/$file"
+         update_copyrights $file
+         cd ..
+
+      # we have a file, but what kind?
+      #
+      else
+
+         # skip binary compiled translations, help files, image files, etc
+         #
+         if [[ $file =~ '(\.mo)|(\.hlp)|(\.png)|(\.gif)|(\.jpg)$' ]]; then
+
+            echo "   Skipping $file"
+
+
+         # restrict the search/replace to top 10 lines of translation files
+         #
+         elif [[ $file =~ '\.po$' ]]; then
+
+            echo "   Updating $file (only in first 10 lines)"
+
+            # this line can be used to update copyrights
+            # explicitly from just last year to this year
+            #
+            #`sed -i "1,10 s/\(copyright .*\)-$last_year\( The SquirrelMail\)/\1-$this_year\2/i" $file`
+
+            `sed -i "1,10 s/\(copyright .*\)-2[0-9][0-9][0-9]\( The SquirrelMail\)/\1-$this_year\2/i" $file`
+
+
+         # all other files
+         #
+         else
+
+            echo "   Updating $file"
+
+            # this line can be used to update copyrights
+            # explicitly from just last year to this year
+            #
+            #`sed -i "s/\(copyright .*\)-$last_year\( The SquirrelMail\)/\1-$this_year\2/i" $file`
+
+            `sed -i "s/\(copyright .*\)-2[0-9][0-9][0-9]\( The SquirrelMail\)/\1-$this_year\2/i" $file`
+         fi
+      fi
+
+   done
+
+}
+
+if [[ -z $1 ]] || [[ ! -d $1 ]]; then
+   echo
+   echo "Usage: $0 [directory]"
+else
+   this_year=`date +%Y`
+   last_year=$((this_year - 1))
+   echo
+   echo "Updating Copyrights from $last_year to $this_year"
+   echo
+   update_copyrights $1
+fi
+
+echo
+echo "Done"
+echo
