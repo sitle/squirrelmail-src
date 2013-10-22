@@ -28,13 +28,14 @@ define('SMOPT_TYPE_COMMENT', 7);
 define('SMOPT_TYPE_FLDRLIST', 8);
 define('SMOPT_TYPE_FLDRLIST_MULTI', 9);
 define('SMOPT_TYPE_EDIT_LIST', 10);
-define('SMOPT_TYPE_STRLIST_MULTI', 11);
-define('SMOPT_TYPE_BOOLEAN_CHECKBOX', 12);
-define('SMOPT_TYPE_BOOLEAN_RADIO', 13);
-define('SMOPT_TYPE_STRLIST_RADIO', 14);
-define('SMOPT_TYPE_SUBMIT', 15);
-define('SMOPT_TYPE_INFO', 16);
-define('SMOPT_TYPE_PASSWORD', 17);
+define('SMOPT_TYPE_EDIT_LIST_ASSOCIATIVE', 11);
+define('SMOPT_TYPE_STRLIST_MULTI', 12);
+define('SMOPT_TYPE_BOOLEAN_CHECKBOX', 13);
+define('SMOPT_TYPE_BOOLEAN_RADIO', 14);
+define('SMOPT_TYPE_STRLIST_RADIO', 15);
+define('SMOPT_TYPE_SUBMIT', 16);
+define('SMOPT_TYPE_INFO', 17);
+define('SMOPT_TYPE_PASSWORD', 18);
 
 /* Define constants for the layout scheme for edit lists. */
 define('SMOPT_EDIT_LIST_LAYOUT_LIST', 0);
@@ -86,6 +87,7 @@ class SquirrelOption {
     var $no_text;
     var $use_add_widget;
     var $use_delete_widget;
+    var $poss_value_folders;
 
     /* The name of the Save Function for this option. */
     var $save_function;
@@ -118,6 +120,7 @@ class SquirrelOption {
         $this->no_text = '';
         $this->use_add_widget = TRUE;
         $this->use_delete_widget = TRUE;
+        $this->poss_value_folders = '';
 
         /* Check for a current value. */
         if (isset($GLOBALS[$name])) {
@@ -148,7 +151,8 @@ class SquirrelOption {
     function is_multiple_valued() {
         return ($this->type == SMOPT_TYPE_FLDRLIST_MULTI
              || $this->type == SMOPT_TYPE_STRLIST_MULTI
-             || $this->type == SMOPT_TYPE_EDIT_LIST);
+             || $this->type == SMOPT_TYPE_EDIT_LIST
+             || $this->type == SMOPT_TYPE_EDIT_LIST_ASSOCIATIVE);
     }
 
     /* Set the value for this option. */
@@ -194,6 +198,13 @@ class SquirrelOption {
     /* Set the "use delete widget" value for this option. */
     function setUseDeleteWidget($use_delete_widget) {
         $this->use_delete_widget = $use_delete_widget;
+    }
+
+    /* Set the "poss value folders" value for this option.
+       See the associative edit list widget, which uses this
+       to offer folder list selection for the values */
+    function setPossValueFolders($poss_value_folders) {
+        $this->poss_value_folders = $poss_value_folders;
     }
 
     /* Set the layout type for this option. */
@@ -273,6 +284,9 @@ class SquirrelOption {
                 break;
             case SMOPT_TYPE_EDIT_LIST:
                 $result = $this->createWidget_EditList();
+                break;
+            case SMOPT_TYPE_EDIT_LIST_ASSOCIATIVE:
+                $result = $this->createWidget_EditListAssociative();
                 break;
             case SMOPT_TYPE_STRLIST_MULTI:
                 $result = $this->createWidget_StrList(TRUE);
@@ -668,7 +682,7 @@ class SquirrelOption {
     }
 
     /**
-     * Creates an edit list
+     * Creates a (non-associative) edit list
      *
      * Note that multiple layout types are supported for this widget.
      * $this->layout_type must be one of the SMOPT_EDIT_LIST_LAYOUT_*
@@ -717,7 +731,8 @@ class SquirrelOption {
                              . '" size="38" /><br />';
                 $result .= '<select name="new_' . $this->name
                     . '[]" multiple="multiple" size="' . $height . '"'
-                    . ($javascript_on ? ' onchange="if (typeof(window.addinput_' . $this->name . ') == \'undefined\') { var f = document.forms.length; var i = 0; var pos = -1; while( pos == -1 && i < f ) { var e = document.forms[i].elements.length; var j = 0; while( pos == -1 && j < e ) { if ( document.forms[i].elements[j].type == \'text\' && document.forms[i].elements[j].name == \'add_' . $this->name . '\' ) { pos = j; } j++; } i++; } if( pos >= 0 ) { window.addinput_' . $this->name . ' = document.forms[i-1].elements[pos]; } } for (x = 0; x < this.length; x++) { if (this.options[x].selected) { window.addinput_' . $this->name . '.value = this.options[x].text; break; } }"' : '')
+                    . ($javascript_on ? ' onchange="if (typeof(window.addinput_' . $this->name . ') == \'undefined\') { var f = document.forms.length; var i = 0; var pos = -1; while( pos == -1 && i < f ) { var e = document.forms[i].elements.length; var j = 0; while( pos == -1 && j < e ) { if ( document.forms[i].elements[j].type == \'text\' && document.forms[i].elements[j].name == \'add_' . $this->name . '\' ) { pos = j; i=f-1; j=e-1; } j++; } i++; } if( pos >= 0 ) { window.addinput_' . $this->name . ' = document.forms[i-1].elements[pos]; } } for (x = 0; x < this.length; x++) { if (this.options[x].selected) { window.addinput_' . $this->name . '.value = this.options[x].text; break; } }"' : '')
+// NOTE: i=f-1; j=e-1 is in lieu of break 2
                     . ' ' . $this->script . ">\n";
 
 
@@ -777,14 +792,302 @@ class SquirrelOption {
                     $color[12] = '#EAEAEA';
                 $index = 0;
 
+                if (is_array($this->value))
+                    $selected = $this->value;
+                else
+                    $selected = array($this->value);
+
                 foreach ($this->possible_values as $key => $value) {
 
                     if ($bgcolor == 4) $bgcolor = 12;
                     else $bgcolor = 4;
 
                     $result .= '<tr bgcolor="' . $color[$bgcolor] . '">'
-                             . '<td width="1%"><input type="checkbox" name="new_' . $this->name . '[' . ($index++) . ']" id="' . $this->name . '_list_item_' . $key . '" value="' . sm_encode_html_special_chars($value) . '"></td>'
-                             . '<td><label for="' . $this->name . '_list_item_' . $key . '">' . sm_encode_html_special_chars($value) . '</label></td>'
+                             . '<td width="1%"><input type="checkbox" name="new_'
+                             . $this->name . '[' . ($index++) . ']" id="' . $this->name
+                             . '_list_item_' . $key . '" value="'
+                             . sm_encode_html_special_chars($value);
+
+                    // having a selected item in the edit list doesn't have
+                    // any meaning, but maybe someone will think of a way to
+                    // use it, so we might as well put the code in
+                    //
+                    foreach ($selected as $default) {
+                        if ((string)$default == (string)$value) {
+                            $result .= '" checked="checked';
+                            break;
+                        }
+                    }
+
+                    $result .= '"></td>'
+                             . '<td><label for="' . $this->name . '_list_item_' . $key
+                             . '">' . sm_encode_html_special_chars($value) . '</label></td>'
+                             . "</tr>\n";
+
+                }
+
+                $result .= '</table>';
+
+                if (!empty($this->possible_values) && $this->use_delete_widget)
+                    $result .= '<input type="checkbox" name="delete_' 
+                        . $this->name . '" id="delete_' . $this->name 
+                        . '" value="1" />&nbsp;<label for="delete_' . $this->name . '">'
+                        . _("Delete Selected") . '</label>';
+
+                $result .= '</td></tr></table>';
+
+                break;
+
+
+            default:
+                $result = '<font color="' . $color[2] . '">'
+                        . sprintf(_("Edit List Layout Type '%s' Not Found"), $this->layout_type)
+                        . '</font>';
+        }
+
+        return $result;
+
+    }
+
+    /**
+     * Creates an associative edit list
+     *
+     * Note that multiple layout types are supported for this widget.
+     * $this->layout_type must be one of the SMOPT_EDIT_LIST_LAYOUT_*
+     * constants.
+     *
+     * @return string html formated list of edit fields and
+     *                their associated controls
+     */
+    function createWidget_EditListAssociative() {
+
+        switch ($this->size) {
+            case SMOPT_SIZE_TINY:
+                $height = 3;
+                break;
+            case SMOPT_SIZE_SMALL:
+                $height = 8;
+                break;
+            case SMOPT_SIZE_MEDIUM:
+                $height = 15;
+                break;
+            case SMOPT_SIZE_LARGE:
+                $height = 25;
+                break;
+            case SMOPT_SIZE_HUGE:
+                $height = 40;
+                break;
+            case SMOPT_SIZE_NORMAL:
+            default:
+                $height = 5;
+        }
+
+
+        // ensure correct format of current value(s)
+        //
+        if (empty($this->possible_values)) $this->possible_values = array();
+        if (!is_array($this->possible_values)) $this->possible_values = array($this->possible_values);
+
+
+        global $javascript_on, $color;
+
+        switch ($this->layout_type) {
+            case SMOPT_EDIT_LIST_LAYOUT_SELECT:
+                $result = '';
+                if ($this->use_add_widget) {
+//FIXME implement poss_key_folders here? probably not worth the trouble, is there a use case?
+                    $result .= _("Add") . '&nbsp;<input name="add_' . $this->name 
+                             . '_key" size="22" /> ';
+// FIXME: shall we allow these "poss value folders" (folder list selection for edit list values) for NON-Associative EDIT_LIST widgets?
+                    if ($this->poss_value_folders) {
+                        $result .= '<select name="add_' . $this->name . '_value">';
+
+                        /* Add each possible value to the select list. */
+                        foreach ($this->poss_value_folders as $real_value => $disp_value) {
+
+                            if ( is_array($disp_value) ) {
+                                /* For folder list, we passed in the array of boxes.. */
+                                $new_option = sqimap_mailbox_option_list(0, 0, 0, $disp_value);
+
+                            } else {
+                                /* Start the next new option string. */
+                                $new_option = '<option value="' . sm_encode_html_special_chars($real_value) . '"';
+
+                                /* Add the display value to our option string. */
+                                $new_option .= '>' . sm_encode_html_special_chars($disp_value) . "</option>\n";
+                            }
+                            /* And add the new option string to our select tag. */
+                            $result .= $new_option;
+                        }
+                        /* Close the select tag and return our happy result. */
+                        $result .= '</select>';
+                    }
+                    else
+                        $result .= '<input name="add_' . $this->name
+                                 . '_value" size="12" /><br />';
+                }
+                $result .= '<select name="new_' . $this->name
+                    . '[]" multiple="multiple" size="' . $height . '"'
+// FIXME: this can be fooled by having the delimiter " = " in a key value - in general, we may want to use a different delimiter other than " = "
+                    . ($javascript_on ? ' onchange="if (typeof(window.addinput_key_' . $this->name . ') == \'undefined\') { var f = document.forms.length; var i = 0; var pos = -1; while( pos == -1 && i < f ) { var e = document.forms[i].elements.length; var j = 0; while( pos == -1 && j < e ) { if ( document.forms[i].elements[j].type == \'text\' && document.forms[i].elements[j].name == \'add_' . $this->name . '_key\' ) { pos = j; j=e-1; i=f-1; } j++; } i++; } if( pos >= 0 ) { window.addinput_key_' . $this->name . ' = document.forms[i-1].elements[pos]; } } if (typeof(window.addinput_value_' . $this->name . ') == \'undefined\') { var f = document.forms.length; var i = 0; var pos = -1; while( pos == -1 && i < f ) { var e = document.forms[i].elements.length; var j = 0; while( pos == -1 && j < e ) { if ( document.forms[i].elements[j].type == \'text\' && document.forms[i].elements[j].name == \'add_' . $this->name . '_value\' ) { pos = j; j=e-1; i=f-1; } j++; } i++; } if( pos >= 0 ) { window.addinput_value_' . $this->name . ' = document.forms[i-1].elements[pos]; } } for (x = 0; x < this.length; x++) { if (this.options[x].selected) { pos = this.options[x].text.indexOf(\' = \'); if (pos > -1) { window.addinput_key_' . $this->name . '.value = this.options[x].text.substr(0, pos); if (typeof(window.addinput_value_' . $this->name . ') != \'undefined\') window.addinput_value_' . $this->name . '.value = this.options[x].text.substr(pos + 3); } break; } }"' : '')
+// NOTE: i=f-1; j=e-1 is in lieu of break 2
+                    . ' ' . $this->script . ">\n";
+
+
+                if (is_array($this->value))
+                    $selected = $this->value;
+                else
+                    $selected = array($this->value);
+
+
+                // Add each possible value to the select list.
+                //
+                foreach ($this->possible_values as $key => $value) {
+
+                    // Start the next new option string.
+                    //
+                    $result .= '<option value="' . urlencode($key) . '"';
+
+                    // having a selected item in the edit list doesn't have
+                    // any meaning, but maybe someone will think of a way to
+                    // use it, so we might as well put the code in
+                    //
+                    foreach ($selected as $default) {
+                        if ((string)$default == (string)$key) {
+                            $result .= ' selected="selected"';
+                            break;
+                        }
+                    }
+
+                    // Add the display value to our option string.
+                    //
+                    $result .= '>' . sm_encode_html_special_chars($key) . ' = ';
+                    if ($this->poss_value_folders) {
+                        foreach ($this->poss_value_folders as $real_value => $disp_value) {
+                            if ( is_array($disp_value) ) {
+                                foreach ($disp_value as $folder_info) {
+                                    if ($value == $folder_info['unformatted']) {
+                                        $result .= sm_encode_html_special_chars(str_replace('&nbsp;', '', $folder_info['formatted']));
+                                        break 2;
+                                    }
+                                }
+                            }
+                            else
+                                if ($value == $disp_value) {
+                                    $result .= sm_encode_html_special_chars($disp_value);
+                                    break;
+                                }
+                        }
+                    }
+                    else
+                        $result .= sm_encode_html_special_chars($value);
+                    $result .= "</option>\n";
+
+                }
+
+                $result .= '</select>';
+                if (!empty($this->possible_values) && $this->use_delete_widget)
+                    $result .= '<br /><input type="checkbox" name="delete_' 
+                             . $this->name . '" id="delete_' . $this->name 
+                             . '" value="1" />&nbsp;<label for="delete_'
+                             . $this->name . '">' . _("Delete Selected")
+                             . '</label>';
+
+                break;
+
+
+
+            case SMOPT_EDIT_LIST_LAYOUT_LIST:
+                $result = '<table width="80%" cellpadding="1" cellspacing="0" border="0" bgcolor="'
+                        . $color[0] . '"><tr><td>';
+                if ($this->use_add_widget) {
+//FIXME implement poss_key_folders here? probably not worth the trouble, is there a use case?
+                    $result .= _("Add") . '&nbsp;<input name="add_' . $this->name 
+                             . '_key" size="22" /> ';
+                    if ($this->poss_value_folders) {
+                        $result .= '<select name="add_' . $this->name . '_value">';
+
+                        /* Add each possible value to the select list. */
+                        foreach ($this->poss_value_folders as $real_value => $disp_value) {
+
+                            if ( is_array($disp_value) ) {
+                                /* For folder list, we passed in the array of boxes.. */
+                                $new_option = sqimap_mailbox_option_list(0, 0, 0, $disp_value);
+
+                            } else {
+                                /* Start the next new option string. */
+                                $new_option = '<option value="' . sm_encode_html_special_chars($real_value) . '"';
+
+                                /* Add the display value to our option string. */
+                                $new_option .= '>' . sm_encode_html_special_chars($disp_value) . "</option>\n";
+                            }
+                            /* And add the new option string to our select tag. */
+                            $result .= $new_option;
+                        }
+                        /* Close the select tag and return our happy result. */
+                        $result .= '</select>';
+                    }
+                    else
+                        $result .= '<input name="add_' . $this->name
+                                 . '_value" size="12" /><br />';
+                }
+                $result .= '<table width="100%" cellpadding="1" cellspacing="0" border="0" bgcolor="' . $color[5] . '">';
+
+                $bgcolor = 4;
+                if (!isset($color[12]))
+                    $color[12] = '#EAEAEA';
+
+                if (is_array($this->value))
+                    $selected = $this->value;
+                else
+                    $selected = array($this->value);
+
+                foreach ($this->possible_values as $key => $value) {
+
+                    if ($bgcolor == 4) $bgcolor = 12;
+                    else $bgcolor = 4;
+
+                    $result .= '<tr bgcolor="' . $color[$bgcolor] . '">'
+                             . '<td width="1%"><input type="checkbox" name="new_'
+                             . $this->name . '[' . urlencode($key) . ']" id="'
+                             . $this->name . '_list_item_' . urlencode($key)
+                             . '" value="' . sm_encode_html_special_chars($value);
+
+                    // having a selected item in the edit list doesn't have
+                    // any meaning, but maybe someone will think of a way to
+                    // use it, so we might as well put the code in
+                    //
+                    foreach ($selected as $default) {
+                        if ((string)$default == (string)$key) {
+                            $result .= '" checked="checked';
+                            break;
+                        }
+                    }
+
+                    $result .= '"></td>'
+                             . '<td><label for="' . $this->name . '_list_item_'
+                             . urlencode($key) . '">'
+                             . sm_encode_html_special_chars($key) . ' = ';
+                    if ($this->poss_value_folders) {
+                        foreach ($this->poss_value_folders as $real_value => $disp_value) {
+                            if ( is_array($disp_value) ) {
+                                foreach ($disp_value as $folder_info) {
+                                    if ($value == $folder_info['unformatted']) {
+                                        $result .= sm_encode_html_special_chars(str_replace('&nbsp;', '', $folder_info['formatted']));
+                                        break 2;
+                                    }
+                                }
+                            }
+                            else
+                                if ($value == $disp_value) {
+                                    $result .= sm_encode_html_special_chars($disp_value);
+                                    break;
+                                }
+                        }
+                    }
+                    else
+                        $result .= sm_encode_html_special_chars($value);
+                    $result .= '</label></td>'
                              . "</tr>\n";
 
                 }
@@ -838,7 +1141,9 @@ class SquirrelOption {
 
         // edit lists have a lot going on, so we'll always process them
         //
-        if ($this->type == SMOPT_TYPE_EDIT_LIST) return TRUE;
+        if ($this->type == SMOPT_TYPE_EDIT_LIST
+         || $this->type == SMOPT_TYPE_EDIT_LIST_ASSOCIATIVE)
+            return TRUE;
 
         return ($this->value != $this->new_value);
     }
@@ -896,6 +1201,51 @@ function save_option($option) {
          && is_array($option->new_value)
          && sqGetGlobalVar('delete_' . $option->name, $ignore, SQ_POST))
             $option->possible_values = array_diff($option->possible_values, $option->new_value);
+
+        // save full list (stored in "possible_values")
+        //
+        setPref($data_dir, $username, $option->name, serialize($option->possible_values));
+
+    // associative edit lists are handled similar to
+    // non-associative ones
+    //
+    } else if ($option->type == SMOPT_TYPE_EDIT_LIST_ASSOCIATIVE) {
+
+        if (empty($option->possible_values)) $option->possible_values = array();
+        if (!is_array($option->possible_values)) $option->possible_values = array($option->possible_values);
+
+        // add element if given
+        //
+        $new_element_key = '';
+        $new_element_value = '';
+        $retrieve_key = sqGetGlobalVar('add_' . $option->name . '_key', $new_element_key, SQ_POST);
+        $retrieve_value = sqGetGlobalVar('add_' . $option->name . '_value', $new_element_value, SQ_POST);
+
+        if ((isset($option->use_add_widget) && $option->use_add_widget)
+         && ($retrieve_key || $retrieve_value)) {
+            $new_element_key = trim($new_element_key);
+            $new_element_value = trim($new_element_value);
+            if ($option->poss_value_folders && empty($new_element_key))
+                $new_element_value = '';
+            if (!empty($new_element_key) || !empty($new_element_value)) {
+                if (empty($new_element_key)) $new_element_key = '0';
+                $option->possible_values[$new_element_key] = $new_element_value;
+            }
+        }
+
+        // delete selected elements if needed
+        //
+        if ((isset($option->use_delete_widget) && $option->use_delete_widget)
+         && is_array($option->new_value)
+         && sqGetGlobalVar('delete_' . $option->name, $ignore, SQ_POST)) {
+
+            if ($option->layout_type == SMOPT_EDIT_LIST_LAYOUT_SELECT) {
+                foreach ($option->new_value as $key)
+                    unset($option->possible_values[urldecode($key)]);
+            }
+            else
+                $option->possible_values = array_diff($option->possible_values, $option->new_value);
+        }
 
         // save full list (stored in "possible_values")
         //
@@ -1016,6 +1366,11 @@ function create_option_groups($optgrps, $optvals) {
             /* If provided, set the use_delete_widget value for this option. */
             if (isset($optset['use_delete_widget'])) {
                 $next_option->setUseDeleteWidget($optset['use_delete_widget']);
+            }
+
+            /* If provided, set the poss_value_folders value for this option. */
+            if (isset($optset['poss_value_folders'])) {
+                $next_option->setPossValueFolders($optset['poss_value_folders']);
             }
 
             /* If provided, set the layout type for this option. */
