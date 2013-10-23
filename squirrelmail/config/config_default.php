@@ -737,6 +737,18 @@ $check_referrer = '';
  */
 $browser_rendering_mode = 'quirks';
 
+/**
+ * Security Image Type
+ *
+ * Switches between using a transparent image
+ * and one that states "this image has been
+ * removed for security reasons"
+ *
+ * @global bool $use_transparent_security_image
+ * @since 1.5.2 and 1.4.23
+ */
+$use_transparent_security_image = true;
+
 
 /**
  * Themes
