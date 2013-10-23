@@ -1715,7 +1715,9 @@ function sq_fix_url($attname, &$attvalue, $message, $id, $mailbox,$sQuote = '"')
         $view_unsafe_images = false;
     }
 
-    $secremoveimg = '../images/' . _("sec_remove_eng.png");
+    global $use_transparent_security_image;
+    if ($use_transparent_security_image) $secremoveimg = '../images/spacer.png';
+    else $secremoveimg = '../images/' . _("sec_remove_eng.png");
 
     /**
      * Replace empty src tags with the blank image.  src is only used
@@ -1929,7 +1931,10 @@ function sq_fixstyle($body, $pos, $message, $id, $mailbox){
      * and change it to .bodyclass so we can just assign it to a <div>
      */
     $content = preg_replace("|body(\s*\{.*?\})|si", ".bodyclass\\1", $content);
-    $secremoveimg = '../images/' . _("sec_remove_eng.png");
+
+    global $use_transparent_security_image;
+    if ($use_transparent_security_image) $secremoveimg = '../images/spacer.png';
+    else $secremoveimg = '../images/' . _("sec_remove_eng.png");
 
     // first check for 8bit sequences and disallowed control characters
     if (preg_match('/[\16-\37\200-\377]+/',$content)) {
@@ -2353,7 +2358,10 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX', $take_mailto_links 
                 )
             );
 
-    $secremoveimg = "../images/" . _("sec_remove_eng.png");
+    global $use_transparent_security_image;
+    if ($use_transparent_security_image) $secremoveimg = '../images/spacer.png';
+    else $secremoveimg = '../images/' . _("sec_remove_eng.png");
+
     $bad_attvals = Array(
             "/.*/" =>
             Array(

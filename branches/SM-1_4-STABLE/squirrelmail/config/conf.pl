@@ -362,6 +362,7 @@ $check_referrer = ''                    if ( !$check_referrer );
 
 # Added in 1.4.23
 $browser_rendering_mode = 'quirks'      if ( !$browser_rendering_mode );
+$use_transparent_security_image = 'true' if ( !$use_transparent_security_image );
 
 if ( $ARGV[0] eq '--install-plugin' ) {
     print "Activating plugin " . $ARGV[1] . "\n";
@@ -560,6 +561,7 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
         print "17. Disable secure forms         : $WHT$disable_security_tokens$NRM\n";
         print "18. Page referal requirement     : $WHT$check_referrer$NRM\n";
         print "19. Browser rendering mode       : $WHT$browser_rendering_mode$NRM\n";
+        print "20. Security image               : $WHT" . (lc($use_transparent_security_image) eq 'true' ? 'Transparent' : 'Textual') . "$NRM\n";
         print "\n";
         print "R   Return to Main Menu\n";
     } elsif ( $menu == 5 ) {
@@ -780,6 +782,7 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
             elsif ( $command == 17 ) { $disable_security_tokens  = command317(); }
             elsif ( $command == 18 ) { $check_referrer           = command318(); }
             elsif ( $command == 19 ) { $browser_rendering_mode   = command319(); }
+            elsif ( $command == 20 ) { $use_transparent_security_image = command320(); }
         } elsif ( $menu == 5 ) {
             if ( $command == 1 ) { command41(); }
             elsif ( $command == 2 ) { $theme_css = command42(); }
@@ -2573,6 +2576,34 @@ sub command319 {
 
 
 
+# use_transparent_security_image (since 1.4.23)
+sub command320 {
+    print "When HTML messages are being displayed, SquirrelMail's default behavior\n";
+    print "is to remove all remote images and replace them with a local one.\n";
+    print "\n";
+    print "This option allows you to specify whether the local image should contain\n";
+    print "text that indicates to the user that \"this image has been removed for\n";
+    print "security reasons\" (translated into most languages), or if it should be\n";
+    print "transparent.\n";
+    print "\n";
+
+    if ( lc($use_transparent_security_image) eq 'true' ) {
+        $default_value = "y";
+    } else {
+        $default_value = "n";
+    }
+    print "Use transparent security image? (y/n) [$WHT$default_value$NRM]: $WHT";
+    $use_transparent_security_image = <STDIN>;
+    if ( ( $use_transparent_security_image =~ /^y\n/i ) || ( ( $use_transparent_security_image =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
+        $use_transparent_security_image = 'true';
+    } else {
+        $use_transparent_security_image = 'false';
+    }
+    return $use_transparent_security_image;
+}
+
+
+
 ####################################################################################
 #### THEMES ####
 sub command41 {
@@ -3624,6 +3655,9 @@ sub save_data {
     # string
         print CF "\$check_referrer          = '$check_referrer';\n";
         print CF "\$browser_rendering_mode  = '$browser_rendering_mode';\n";
+
+    # boolean
+        print CF "\$use_transparent_security_image = $use_transparent_security_image;\n";
 
         print CF "\n";
         print CF "\$config_location_base    = '$config_location_base';\n";
