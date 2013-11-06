@@ -937,8 +937,10 @@ function sqimap_get_small_header_list($imap_stream, $msg_list, $show_num=false) 
         }
         $messages[$msgi]['RECEIVED_TIME_STAMP'] = getTimeStamp($tmpinternal_date);
         $messages[$msgi]['RECEIVED_DATE_STRING'] = getDateString($messages[$msgi]['RECEIVED_TIME_STAMP']);
+        $messages[$msgi]['RECEIVED_DATE_STRING_FULL'] = getDateString($messages[$msgi]['RECEIVED_TIME_STAMP'], TRUE);
         $messages[$msgi]['TIME_STAMP'] = getTimeStamp($tmpdate);
         $messages[$msgi]['DATE_STRING'] = getDateString($messages[$msgi]['TIME_STAMP']);
+        $messages[$msgi]['DATE_STRING_FULL'] = getDateString($messages[$msgi]['TIME_STAMP'], TRUE);
         $messages[$msgi]['FROM'] = $from; //parseAddress($from);
         $messages[$msgi]['SUBJECT'] = $subject;
 //        if (handleAsSent($mailbox)) {

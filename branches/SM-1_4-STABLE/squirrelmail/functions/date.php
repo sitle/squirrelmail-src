@@ -331,10 +331,17 @@ function getLongDateString( $stamp, $fallback = '' ) {
  * of the form: "14:23" or "Jun 14, 2003" depending
  * on whether the stamp is "today" or not.
  *
- * @param int stamp the timestamp
+ * @param int $stamp The timestamp
+ * @param boolean $return_full_date_and_time When TRUE,
+ *                                           ignore all
+ *                                           user settings
+ *                                           and use full
+ *                                           date and time
+ *                                           (OPTIONAL;
+ *                                           default FALSE)
  * @return string the date string
  */
-function getDateString( $stamp ) {
+function getDateString( $stamp, $return_full_date_and_time=FALSE ) {
 
     global $invert_time, $hour_format, $show_full_date;
 
@@ -362,7 +369,13 @@ function getDateString( $stamp ) {
     }
     $nextmid = $midnight + 86400;
 
-    if (($show_full_date == 1) || ($nextmid < $stamp)) {
+    if ($return_full_date_and_time) {
+        if ( $hour_format == SMPREF_TIME_12HR ) {
+            $date_format = _("D, M j, Y g:i a");
+        } else {
+            $date_format = _("D, M j, Y H:i");
+        }
+    } else if (($show_full_date == 1) || ($nextmid < $stamp)) {
         $date_format = _("M j, Y");
     } else if ($midnight < $stamp) {
         /* Today */
