@@ -237,8 +237,10 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
                 // show internal date if using it to sort
                 if ($internal_date_sort && ($sort == 0 || $sort == 1)) {
                     $date_string = $msg['RECEIVED_DATE_STRING'] . '';
+                    $date_title_string = $msg['RECEIVED_DATE_STRING_FULL'] . '';
                 } else {
                     $date_string = $msg['DATE_STRING'] . '';
+                    $date_title_string = $msg['DATE_STRING_FULL'] . '';
                 }
                 if ($date_string == '') {
                     $date_string = _("Unknown date");
@@ -248,7 +250,7 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
                                $fontstr_end . $flag_end . $bold_end,
                                'center',
                                $hlt_color,
-                               'nowrap' );
+                               'nowrap title="' . $date_title_string . '"' );
                 break;
             case 4: /* subject */
                 $td_str = $bold;
