@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: SquirrelMail HEAD\n"
 "Report-Msgid-Bugs-To: SquirrelMail Internationalization <squirrelmail-"
 "i18n@lists.sourceforge.net>\n"
-"POT-Creation-Date: 2010-09-14 10:48+0200\n"
+"POT-Creation-Date: 2013-11-06 01:13-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -30,6 +30,9 @@ msgstr ""
 msgid "Cc"
 msgstr ""
 
+msgid "Bcc"
+msgstr ""
+
 msgid "Name"
 msgstr ""
 
@@ -40,9 +43,6 @@ msgid "Info"
 msgstr ""
 
 msgid "Source"
-msgstr ""
-
-msgid "Bcc"
 msgstr ""
 
 msgid "Use Addresses"
@@ -545,6 +545,7 @@ msgid "Other:"
 msgstr ""
 
 #. i18n: This is an example on how to write a color in RGB, literally meaning "For example: 63aa7f".
+#. i18n: This is an example on how to write a color in RGB, literally meaning "For example: 63aa7f".
 msgid "Ex: 63aa7f"
 msgstr ""
 
@@ -630,6 +631,7 @@ msgstr ""
 msgid "Some of your preference changes were not applied."
 msgstr ""
 
+#. i18n: The %s represents the name of the option page saving the options
 #. i18n: The %s represents the name of the option page saving the options
 #, php-format
 msgid "Successfully Saved Options: %s"
@@ -978,10 +980,12 @@ msgid "Address book is read-only"
 msgstr ""
 
 #. i18n: don't use html formating in translation
+#. i18n: don't use html formating in translation
 #, php-format
 msgid "User \"%s\" already exists"
 msgstr ""
 
+#. i18n: don't use html formating in translation
 #. i18n: don't use html formating in translation
 #, php-format
 msgid "User \"%s\" does not exist"
@@ -1361,6 +1365,7 @@ msgid "Unknown date"
 msgstr ""
 
 #. i18n: "A" is short for "Answered". Make sure that two icon strings aren't translated to the same character (only in 1.5).
+#. i18n: "A" is short for "Answered". Make sure that two icon strings aren't translated to the same character (only in 1.5).
 msgid "A"
 msgstr ""
 
@@ -1591,6 +1596,9 @@ msgid "Show HTML Version by Default"
 msgstr ""
 
 msgid "Enable Forward as Attachment"
+msgstr ""
+
+msgid "Send Replies To My Own Messages To Previous Recipient"
 msgstr ""
 
 msgid "Include Me in CC when I Reply All"
@@ -2116,6 +2124,9 @@ msgid "PHP session name"
 msgstr ""
 
 msgid "Location base"
+msgstr ""
+
+msgid "Use transparent security image"
 msgstr ""
 
 msgid "Message of the Day"
@@ -3946,9 +3957,6 @@ msgstr ""
 msgid "Welcome to %s. Please supply your full name and email address."
 msgstr ""
 
-msgid "Read Receipt"
-msgstr ""
-
 msgid "deleted"
 msgstr ""
 
@@ -4263,6 +4271,10 @@ msgid "Copy"
 msgstr ""
 
 msgid "unavailable"
+msgstr ""
+
+#, php-format
+msgid "Associative Edit List Layout Type '%s' Not Found"
 msgstr ""
 
 msgid "KiB"
@@ -4980,10 +4992,10 @@ msgstr ""
 msgid "New Mail Options"
 msgstr ""
 
+#, php-format
 msgid ""
-"Based on the Folder Preferences option &quot;Enable Unread Message "
-"Notification&quot;, you can be notified when new messages arrive in your "
-"account."
+"Based on the Folder Preferences option %s, you can be notified when new "
+"messages arrive in your account."
 msgstr ""
 
 #, php-format
@@ -5198,6 +5210,9 @@ msgstr ""
 msgid "Send Read Receipt Now"
 msgstr ""
 
+msgid "Read Receipt"
+msgstr ""
+
 msgid "Viewing HTML formatted email"
 msgstr ""
 
@@ -5247,6 +5262,9 @@ msgid "OR"
 msgstr ""
 
 msgid "Reset"
+msgstr ""
+
+msgid "Add Rule"
 msgstr ""
 
 msgid "Reorder indexes"
