@@ -363,6 +363,7 @@ $check_referrer = ''                    if ( !$check_referrer );
 # Added in 1.4.23
 $browser_rendering_mode = 'quirks'      if ( !$browser_rendering_mode );
 $use_transparent_security_image = 'true' if ( !$use_transparent_security_image );
+$check_mail_mechanism = 'meta'          if ( !$check_mail_mechanism );
 
 if ( $ARGV[0] eq '--install-plugin' ) {
     print "Activating plugin " . $ARGV[1] . "\n";
@@ -562,6 +563,7 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
         print "18. Page referal requirement     : $WHT$check_referrer$NRM\n";
         print "19. Browser rendering mode       : $WHT$browser_rendering_mode$NRM\n";
         print "20. Security image               : $WHT" . (lc($use_transparent_security_image) eq 'true' ? 'Transparent' : 'Textual') . "$NRM\n";
+        print "21. Auto check mail mechanism    : $WHT$check_mail_mechanism$NRM\n";
         print "\n";
         print "R   Return to Main Menu\n";
     } elsif ( $menu == 5 ) {
@@ -783,6 +785,7 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
             elsif ( $command == 18 ) { $check_referrer           = command318(); }
             elsif ( $command == 19 ) { $browser_rendering_mode   = command319(); }
             elsif ( $command == 20 ) { $use_transparent_security_image = command320(); }
+            elsif ( $command == 21 ) { $check_mail_mechanism     = command321(); }
         } elsif ( $menu == 5 ) {
             if ( $command == 1 ) { command41(); }
             elsif ( $command == 2 ) { $theme_css = command42(); }
@@ -2604,6 +2607,44 @@ sub command320 {
 
 
 
+# check_mail_mechanism (since 1.4.23)
+sub command321 {
+    print "You can choose the \"check mail\" refresh mechanism used when the user\n";
+    print "has configured SquirrelMail to automatically refresh the folder list\n";
+    print "by going to:\n";
+    print "Options --> Folder Preferences --> Auto Refresh Folder List\n";
+    print "\n";
+    print "The JavaScript mechanisms both try to detect whether or not the server\n";
+    print "is responding before refreshing in order to avoid a failed page request\n";
+    print "(and thus a blank screen and broken refresh cycle). The META tag is\n";
+    print "incapable of doing such.\n";
+    print "\n";
+    print "Note that a META tag will *always* be used regardless of this setting\n";
+    print "for users that have disabled JavaScript support.\n";
+
+    $input = "";
+    while ( $input ne "meta" && $input ne "basic" && $input ne "advanced" ) {
+        print "\n";
+        print "Enter one of the following:\n";
+        print "\n";
+        print $WHT . "meta" . $NRM . "     - META tag (works regardless of JavaScript)\n";
+        print $WHT . "basic" . $NRM . "    - JavaScript (most compatible; slightly fallible)\n";
+        print $WHT . "advanced" . $NRM . " - JavaScript (less compatible; most accurate)\n";
+        print "\n";
+
+        print "Check mail mechanism? [$WHT$check_mail_mechanism$NRM]: ";
+        $input = <STDIN>;
+        chomp($input);
+        if ( $input eq "" && ($check_mail_mechanism eq "meta"
+         || $check_mail_mechanism eq "basic" || $check_mail_mechanism eq "advanced" )) {
+            $input = $check_mail_mechanism;
+        }
+    }
+    return $input;
+}
+
+
+
 ####################################################################################
 #### THEMES ####
 sub command41 {
@@ -3658,6 +3699,9 @@ sub save_data {
 
     # boolean
         print CF "\$use_transparent_security_image = $use_transparent_security_image;\n";
+
+    # string
+        print CF "\$check_mail_mechanism  = '$check_mail_mechanism';\n";
 
         print CF "\n";
         print CF "\$config_location_base    = '$config_location_base';\n";

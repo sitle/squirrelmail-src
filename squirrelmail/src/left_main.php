@@ -21,6 +21,8 @@ define('PAGE_NAME', 'left_main');
  */
 define('SM_PATH','../');
 
+$script_libs = array();
+
 /* SquirrelMail required files. */
 require_once(SM_PATH . 'include/validate.php');
 require_once(SM_PATH . 'functions/imap.php');
@@ -313,14 +315,22 @@ $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 1
 /**
  * Using stristr since older preferences may contain "None" and "none".
  */
+$xtra = '';
 if (isset($left_refresh) && ($left_refresh != '') &&
     !stristr($left_refresh, 'none')){
-    $xtra =  "\n<meta http-equiv=\"REFRESH\" content=\"$left_refresh;URL=left_main.php\">\n";
-} else {
-    $xtra = '';
+    if ($javascript_on
+     && ($check_mail_mechanism === 'basic' || $check_mail_mechanism === 'advanced')) {
+        $script_libs[] = SM_SCRIPT_LIB_REMOTE_REQUEST;
+        $script_libs[] = SM_SCRIPT_LIB_RELOAD_PAGE;
+        // NB: we could use $script_libs instead of $xtra - they both do the same thing for adding free-form extra script tags
+        // FIXME: the "advanced" version of the JavaScript check mail feature could be triggered by browser detection (brief testing shows that at least IE 8 doesn't like the advanced version).... but for now, just let admin decide in system settings
+        $xtra = "\n<script language=\"JavaScript\" type=\"text/javascript\">\n<!--\nvar base_uri = '" . $base_uri . "';\nvar reload_interval = " . $left_refresh . ";\nvar use_advanced_page_reload = " . ($check_mail_mechanism === 'advanced' ? "true;\n" : "false;\n") . "// -->\n</script>\n";
+    } else {
+        $xtra =  "\n<meta http-equiv=\"REFRESH\" content=\"$left_refresh;URL=left_main.php\">\n";
+    }
 }
 
-displayHtmlHeader( $org_title, $xtra );
+displayHtmlHeader( $org_title, $xtra, TRUE, $script_libs );
 
 /* If requested and not yet complete, attempt to autocreate folders. */
 if ($auto_create_special && !$auto_create_done) {

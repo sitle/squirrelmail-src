@@ -60,5 +60,10 @@ define('SM_ABOOK_FIELD_LASTNAME', 2);
 define('SM_ABOOK_FIELD_EMAIL', 3);
 define('SM_ABOOK_FIELD_LABEL', 4);
 
+/* Define constants for script libraries. */
+define('SM_SCRIPT_LIB_REMOTE_REQUEST', 'remote_request.js');
+define('SM_SCRIPT_LIB_RELOAD_PAGE', 'reload_page.js');
+define('SM_SCRIPT_LIB_COMMON', 'common.js');
+
 do_hook('loading_constants');
 

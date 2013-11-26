@@ -49,6 +49,18 @@ Version 1.4.23 - SVN
   - Full date and time is used as "title" (mouseover) text for dates
     shown on the message list screen
   - Custom Stylesheets are now sorted on the Display Preferences page
+  - $xtra in the displayHtmlHeader function is now available in the
+    global scope so that plugins can modify it during the generic_header
+    hook
+  - Added some generic client-side (JavaScript) libraries (including
+    an asynchronous server request mechansim). See the new /scripts
+    directory (plugin authors can refer to the plugin documentation
+    for how to use them)
+  - Added optional JavaScript folder list refresh ("check mail")
+    mechanisms that try to avoid refreshing if server is not responding -
+    see the $check_mail_mechanism setting in config/config.php or the
+    "4. General Options ==> "21. Auto check mail mechanism" setting in
+    the configuration tool.
 
 Version 1.4.22 - 12 July 2011
 -----------------------------
