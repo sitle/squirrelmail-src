@@ -18,8 +18,38 @@ require_once(SM_PATH . 'functions/imap_mailbox.php');
 require_once(SM_PATH . 'functions/global.php');
 
 /* Always set up the language before calling these functions */
-function displayHtmlHeader( $title = 'SquirrelMail', $xtra = '', $do_hook = TRUE ) {
-    global $squirrelmail_language;
+/**
+ * @param array $script_libs_param A list of strings, which each point to
+ *                                 a script to be added to the <head> of
+ *                                 the page being built. Each string can
+ *                                 be:
+ *                                  - One of the pre-defined SM_SCRIPT_LIB_XXX
+ *                                    constants (see functions/constants.php)
+ *                                    that correspond to libraries that come
+ *                                    with SquirrelMail
+ *                                  - A path to a custom script (say, in a
+ *                                    plugin directory) (detected by the
+ *                                    existence of at least one path separator
+ *                                    in the string) - the script is assumed
+ *                                    to be and is included as JavaScript
+ *                                  - A full tag ("<script>", "<style>" or
+ *                                    other) that will be placed verbatim in
+ *                                    the page header (detected by the presence
+ *                                    of a "<" character at the beginning of
+ *                                    the string). NOTE that $xtra provides the
+ *                                    same function, without needing the string
+ *                                    to start with "<"
+ */
+function displayHtmlHeader($title='SquirrelMail', $xtra_param='', $do_hook=TRUE, $script_libs_param=array()) {
+    global $squirrelmail_language, $xtra, $script_libs;
+
+    // $script_libs and $xtra are globalized to allow plugins to
+    // modify them on the generic_header hook, but we also want to
+    // respect the values passed in from the function args, thus:
+    $xtra = $xtra_param;
+    $script_libs = $script_libs_param;
+    if (!is_array($script_libs))
+        $script_libs = array($script_libs);
 
     if ( !sqgetGlobalVar('base_uri', $base_uri, SQ_SESSION) ) {
         global $base_uri;
@@ -74,6 +104,20 @@ function displayHtmlHeader( $title = 'SquirrelMail', $xtra = '', $do_hook = TRUE
     }
 
     echo "\n<title>$title</title>$xtra\n";
+
+    // output <script> tags as needed (use array_unique so
+    // more than one plugin can ask for the same library)
+    // 
+    // usage of $script_libs is discussed in the docs for this function above
+    // 
+    foreach (array_unique($script_libs) as $item) {
+        if ($item{0} === '<')
+            echo $item . "\n";
+        else if (strpos($item, '/') !== FALSE || strpos($item, '\\') !== FALSE)
+            echo '<script language="JavaScript" type="text/javascript" src="' . $item . '"></script>' . "\n";
+        else
+            echo '<script language="JavaScript" type="text/javascript" src="' . $base_uri . 'scripts/' . $item . '"></script>' . "\n";
+    }
 
     /* work around IE6's scrollbar bug */
     echo <<<ECHO

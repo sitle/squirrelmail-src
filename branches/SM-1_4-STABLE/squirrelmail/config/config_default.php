@@ -749,6 +749,21 @@ $browser_rendering_mode = 'quirks';
  */
 $use_transparent_security_image = true;
 
+/**
+ * Check Mail Mechanism (META/(advanced) JavaScript)
+ * 
+ * Determine the mechanism used to refresh the folder
+ * list (when user has enabled such in their preferences)
+ *
+ * "meta"     = META tag
+ * "basic"    = JavaScript (most compatible; slightly fallible)
+ * "advanced" = JavaScript (less compatible; most accurate)
+ *
+ * @global string $check_mail_mechanism
+ * @since 1.4.23
+ */
+$check_mail_mechanism = 'meta';
+
 
 /**
  * Themes
