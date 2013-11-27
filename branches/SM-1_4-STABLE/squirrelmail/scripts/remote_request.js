@@ -19,7 +19,7 @@
   * @package squirrelmail
   * @since 1.4.23
   *
-  * EXAMPLE: send_request("POST", "src/squirrelmail_rpc.php", "delete_id=32323&startMessage=10", "parseStandardSquirrelMailResponse", true, 0, "", false, "", false);
+  * EXAMPLE: sm_send_request("POST", "src/squirrelmail_rpc.php", "delete_id=32323&startMessage=10", "parseStandardSquirrelMailResponse", true, 0, "", false, "", false);
   *
   */
 //FIXME: we could provide a minimized version of this (currently this is 10.5k)
@@ -42,7 +42,7 @@ var debug = 0;
   * @since 1.4.23
   *
   */
-function get_xml_http_object()
+function sm_get_xml_http_object()
 {
 
    if (debug >= 3) alert("Attempting to get XMLHttp object...");
@@ -124,14 +124,14 @@ function get_xml_http_object()
   * @since 1.4.23
   *
   */
-function send_request(method, uri, content, result_function, result_in_xml,
-                      max_wait, error_function, show_server_side_error_alert,
-                      timeout_message, make_query_unique)
+function sm_send_request(method, uri, content, result_function, result_in_xml,
+                         max_wait, error_function, show_server_side_error_alert,
+                         timeout_message, make_query_unique)
 {
 
    // grab request object, check if not supported
    //
-   var xml_http_request = get_xml_http_object();
+   var xml_http_request = sm_get_xml_http_object();
    if (xml_http_request == null)
    {
       if (debug >= 1) alert("Sorry, your browser is not compatible with this page");

@@ -75,11 +75,11 @@ function reload_later(interval_seconds)
 function check_server_and_reload()
 {
    if (use_advanced_page_reload)
-      send_request("GET", window.location.href, "", "replace_document", false,
-                   reload_request_timeout, "server_or_connect_error", false, "", false);
+      sm_send_request("GET", window.location.href, "", "replace_document", false,
+                      reload_request_timeout, "server_or_connect_error", false, "", false);
    else
-      send_request("GET", base_uri + "images/spacer.png", "", "reload_now", false,
-                   reload_request_timeout, "server_or_connect_error", false, "", true);
+      sm_send_request("GET", base_uri + "images/spacer.png", "", "reload_now", false,
+                      reload_request_timeout, "server_or_connect_error", false, "", true);
 }
 
 
