@@ -151,7 +151,7 @@ sqgetGlobalVar('markUnread',      $markUnread,      SQ_POST);
 sqgetGlobalVar('attache',         $attache,         SQ_POST);
 sqgetGlobalVar('location',        $location,        SQ_POST);
 
-if (!sqgetGlobalVar('smtoken',$submitted_token, SQ_POST)) {
+if (!sqgetGlobalVar('smtoken',$submitted_token, SQ_FORM)) {
     $submitted_token = '';
 }
 /* end of get globals */
