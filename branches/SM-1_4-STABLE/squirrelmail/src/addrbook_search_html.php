@@ -47,7 +47,7 @@ sqgetGlobalVar('backend',   $backend,   SQ_POST);
  * Insert hidden data
  */
 function addr_insert_hidden() {
-    global $body, $subject, $send_to, $send_to_cc, $send_to_bcc, $mailbox,
+    global $body, $subject, $send_to, $send_to_cc, $send_to_bcc, $mailbox, $action,
            $mailprio, $request_mdn, $request_dr, $identity, $session, $composeMessage;
 
    if (substr($body, 0, 1) == "\r") {
@@ -60,6 +60,7 @@ function addr_insert_hidden() {
        echo addHidden('attachments', serialize($composeMessage->entities));
 
    echo addHidden('session', $session).
+        addHidden('smaction', $action).
         addHidden('subject', $subject).
         addHidden('send_to', $send_to).
         addHidden('send_to_bcc', $send_to_bcc).
