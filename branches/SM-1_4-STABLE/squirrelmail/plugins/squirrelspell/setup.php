@@ -36,15 +36,17 @@ function squirrelmail_plugin_init_squirrelspell() {
  * @return void
  */
 function squirrelspell_optpage_register_block() {
-  global $optpage_blocks, $javascript_on;
+  global $optpage_blocks, $javascript_on, $squirrelmail_language;
   if ($javascript_on) {
-    /**
-     * The browser checks out.
-     * Register Squirrelspell with the $optionpages array.
-     */
+    // this is a hack to avoid having to change the strings
+    // in all our translations for this misspelled word
+    if (strpos($squirrelmail_language, 'en_') === 0)
+        $name = 'Spell Checker Options';
+    else
+        $name = _("SpellChecker Options");
     $optpage_blocks[] =
       array(
-        'name' => _("SpellChecker Options"),
+        'name' => $name,
         'url'  => '../plugins/squirrelspell/sqspell_options.php',
         'desc' => _("Here you may set up how your personal dictionary is stored, edit it, or choose which languages should be available to you when spell-checking."),
         'js'   => TRUE);

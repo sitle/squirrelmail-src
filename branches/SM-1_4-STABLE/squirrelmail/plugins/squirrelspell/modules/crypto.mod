@@ -72,4 +72,3 @@ sqspell_makePage( _("Personal Dictionary Crypto Settings"), null, $msg);
  * vim: syntax=php
  */
 
-?>

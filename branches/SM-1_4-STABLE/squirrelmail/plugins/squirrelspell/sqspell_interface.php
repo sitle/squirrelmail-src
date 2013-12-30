@@ -57,4 +57,3 @@ if (!isset($MOD) || !$MOD){
 /* Include the module. */
 require_once(SM_PATH . $SQSPELL_DIR . "modules/$MOD.mod");
 
-?>

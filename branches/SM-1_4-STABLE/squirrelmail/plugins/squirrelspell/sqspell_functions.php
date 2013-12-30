@@ -55,12 +55,19 @@ function sqspell_makePage($title, $scriptsrc, $body){
    * starting page.
    */
   if ($MOD != "options_main"){
+    // this is a hack to avoid having to change the strings
+    // in all our translations for this misspelled word
+    global $squirrelmail_language;
+    if (strpos($squirrelmail_language, 'en_') === 0)
+        $text = 'Back to &quot;Spell Checker Options&quot; page';
+    else
+        $text = _("Back to &quot;SpellChecker Options&quot; page");
     echo html_tag( 'tr', "\n" .
                 html_tag( 'td', '<hr />', 'left' )
             ) . "\n"
       . html_tag( 'tr', "\n" .
             html_tag( 'td', '<a href="sqspell_options.php">'
-                . _("Back to &quot;SpellChecker Options&quot; page")
+                . $text
                 . '</a>',
             'center' )
         ) . "\n";

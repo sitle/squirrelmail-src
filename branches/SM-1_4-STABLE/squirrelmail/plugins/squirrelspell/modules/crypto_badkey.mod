@@ -16,7 +16,7 @@
  * @subpackage squirrelspell
  */
 
-global $SCRIPT_NAME;
+global $SCRIPT_NAME, $squirrelmail_language;
 
 $delete_words = $_POST['delete_words'];
 if(isset($_POST['old_key'])) {
@@ -43,9 +43,13 @@ if ($delete_words=='ON'){
      * The _("Your....") has to be on one line. Otherwise xgettext borks
      * on getting the strings.
      */
-    $msg = '<p>'
-       . _("Your personal dictionary was erased. Please close this window and click \"Check Spelling\" button again to start your spellcheck over.")
-       . '</p> '
+    // this is a hack to avoid having to change the strings
+    // in all our translations for this misspelled word
+    if (strpos($squirrelmail_language, 'en_') === 0)
+        $msg = '<p>Your personal dictionary was erased. Please close this window and click the "Check Spelling" button again to start your spell check over.';
+    else
+        $msg = '<p>' . _("Your personal dictionary was erased. Please close this window and click \"Check Spelling\" button again to start your spellcheck over.");
+    $msg .= '</p> '
        . '<p align="center"><form>'
        . '<input type="button" value=" '
        . _("Close this Window") . ' " onclick="self.close()">'
@@ -77,9 +81,13 @@ if ($old_key){
        . '</p>';
     sqspell_makePage(_("Successful re-encryption"), null, $msg);
   } else {
-    $msg = '<p>'
-        . _("Your personal dictionary was re-encrypted successfully. Please close this window and click \"Check Spelling\" button again to start your spellcheck over.")
-        . '</p><form><p align="center"><input type="button" value=" '
+    // this is a hack to avoid having to change the strings
+    // in all our translations for this misspelled word
+    if (strpos($squirrelmail_language, 'en_') === 0)
+        $msg = '<p>Your personal dictionary was re-encrypted successfully. Please close this window and click the "Check Spelling" button again to start your spell check over.';
+    else
+        $msg = '<p>' . _("Your personal dictionary was re-encrypted successfully. Please close this window and click \"Check Spelling\" button again to start your spellcheck over.");
+    $msg .= '</p><form><p align="center"><input type="button" value=" '
         . _("Close this Window") . ' "'
         . 'onclick="self.close()" /></p></form>';
     sqspell_makeWindow(null, _("Dictionary re-encrypted"), null, $msg);
@@ -94,4 +102,3 @@ if ($old_key){
  * End:
  * vim: syntax=php
  */
-?>
