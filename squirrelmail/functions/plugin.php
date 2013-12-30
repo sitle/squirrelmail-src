@@ -170,6 +170,7 @@ function boolean_hook_function($name,$parm=NULL,$priority=0,$tie=false) {
  * offending browser.
  * *** THIS IS A TEST FOR JAVASCRIPT SUPPORT ***
  * FIXME: This function needs to have its name changed!
+ * FIXME: The test in this function is outdated - plenty more browsers support JavaScript, newer browser versions (Mozilla at least) exist, and moreover, we shouldn't be doing user-agent testing - should be trusting our $use_javascript global -- REMOVE THIS FUNCTION IF NOT BEING USED ANYWHERE ELSE
  *
  * @return bool whether this browser properly supports JavaScript
  */
