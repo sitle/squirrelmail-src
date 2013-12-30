@@ -60,7 +60,10 @@ Version 1.4.23 - SVN
     mechanisms that try to avoid refreshing if server is not responding -
     see the $check_mail_mechanism setting in config/config.php or the
     "4. General Options ==> "21. Auto check mail mechanism" setting in
-    the configuration tool.
+    the configuration tool.  (If you do not update your configuration,
+    you will get messages in your logs:  "PHP Notice:  Undefined variable:
+    check_mail_mechanism in /path/to/squirrelmail/src/left_main.php on
+    line 322...")
 
 Version 1.4.22 - 12 July 2011
 -----------------------------
