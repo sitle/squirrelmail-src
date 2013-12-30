@@ -27,8 +27,6 @@ function squirrelmail_plugin_init_squirrelspell() {
       'squirrelspell_setup';
   $squirrelmail_plugin_hooks['optpage_register_block']['squirrelspell'] =
       'squirrelspell_optpage_register_block';
-  $squirrelmail_plugin_hooks['options_link_and_description']['squirrelspell'] =
-      'squirrelspell_options';
 }
 
 /**
@@ -38,11 +36,8 @@ function squirrelmail_plugin_init_squirrelspell() {
  * @return void
  */
 function squirrelspell_optpage_register_block() {
-  global $optpage_blocks;
-  /**
-   * soupNazi checks if this browser is capable of using the plugin.
-   */
-  if (!soupNazi()) {
+  global $optpage_blocks, $javascript_on;
+  if ($javascript_on) {
     /**
      * The browser checks out.
      * Register Squirrelspell with the $optionpages array.
@@ -63,27 +58,11 @@ function squirrelspell_optpage_register_block() {
  * @return void
  */
 function squirrelspell_setup() {
-  /**
-   * Check if this browser is capable of displaying SquirrelSpell
-   * correctly.
-   */
-  if (!soupNazi()) {
-    /**
-     * Some people may choose to disable javascript even though their
-     * browser is capable of using it. So these freaks don't complain,
-     * use document.write() so the "Check Spelling" button is not
-     * displayed if js is off in the browser.
-     */
-    echo "<script type=\"text/javascript\">\n".
-      "<!--\n".
-      'document.write("<input type=\"button\" value=\"'.
-      _("Check Spelling").
-      '\" name=\"check_spelling\" onclick=\"window.open(\'../plugins/squirrelspell/sqspell_'.
-      'interface.php\', \'sqspell\', \'status=yes,width=550,height=370,'.
-      'resizable=yes\')\" />");' . "\n".
-      "//-->\n".
-      "</script>\n";
-  }
+    global $javascript_on;
+    if ($javascript_on) {
+        echo '<input type="button" value="'
+           . _("Check Spelling")
+           . '" name="check_spelling" onclick="window.open(\'../plugins/squirrelspell/sqspell_interface.php\', \'sqspell\', \'status=yes,width=550,height=370,resizable=yes\')" />';
+    }
 }
 
-?>
