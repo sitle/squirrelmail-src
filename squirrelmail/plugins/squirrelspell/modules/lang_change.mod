@@ -84,8 +84,15 @@ if (sizeof($use_langs)){
   /**
    * No dictionaries selected. Use system default.
    */
+  // this is a hack to avoid having to change the strings
+  // in all our translations for this misspelled word
+  global $squirrelmail_language;
+  if (strpos($squirrelmail_language, 'en_') === 0)
+      $text = 'Using %s dictionary (system default) for spell check.';
+  else
+      $text = _("Using %s dictionary (system default) for spellcheck." );
   $msg = '<p>'
-    . sprintf(_("Using %s dictionary (system default) for spellcheck." ), '<strong>'.$SQSPELL_APP_DEFAULT.'</strong>')
+    . sprintf($text, '<strong>'.$SQSPELL_APP_DEFAULT.'</strong>')
     . '</p>';
   $lang_string = $SQSPELL_APP_DEFAULT;
 }

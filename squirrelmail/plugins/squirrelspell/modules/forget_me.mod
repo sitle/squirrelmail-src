@@ -91,4 +91,3 @@ if (sizeof($words_ary)){
  * End:
  * vim: syntax=php
  */
-?>

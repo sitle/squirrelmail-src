@@ -39,8 +39,14 @@ if (sizeof($langs)==1){
    * then manually submit the form.
    */
   $onload="sqspell_init(false)";
-  $msg .= _("Please choose which dictionary you would like to use to spellcheck this message:")
-    . '</p><p align="center">'
+  // this is a hack to avoid having to change the strings
+  // in all our translations for this misspelled word
+  global $squirrelmail_language;
+  if (strpos($squirrelmail_language, 'en_') === 0)
+    $msg .= 'Please choose which dictionary you would like to use to spell check this message:';
+  else
+    $msg .= _("Please choose which dictionary you would like to use to spellcheck this message:");
+  $msg .= '</p><p align="center">'
     . '<select name="sqspell_use_app">';
   for ($i=0; $i<sizeof($langs); $i++){
     $msg .= "<option";
@@ -64,4 +70,3 @@ sqspell_makeWindow($onload, _("SquirrelSpell Initiating"), "init.js", $msg);
  * vim: syntax=php
  */
 
-?>

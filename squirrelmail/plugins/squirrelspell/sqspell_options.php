@@ -55,4 +55,3 @@ if(!isset($MOD) || !$MOD) {
 /* Load the stuff already. */
 require_once(SM_PATH . $SQSPELL_DIR . "modules/$MOD.mod");
 
-?>

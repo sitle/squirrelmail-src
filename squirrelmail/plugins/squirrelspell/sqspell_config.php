@@ -34,4 +34,3 @@ $SQSPELL_WORDS_FILE =
 
 $SQSPELL_EREG = 'ereg';
 
-?>

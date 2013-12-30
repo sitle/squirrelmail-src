@@ -16,11 +16,15 @@
  * @subpackage squirrelspell
  */
 
-global $SQSPELL_APP;
+global $SQSPELL_APP, $squirrelmail_language;
 
-$msg = '<p>'
-  . _("Please check any available international dictionaries which you would like to use when spellchecking:")
-  . '</p>'
+// this is a hack to avoid having to change the strings
+// in all our translations for this misspelled word
+if (strpos($squirrelmail_language, 'en_') === 0)
+    $msg = '<p>Please check any available international dictionaries which you would like to use when spell checking:';
+else
+    $msg = '<p>' . _("Please check any available international dictionaries which you would like to use when spellchecking:");
+$msg .= '</p>'
   . '<form method="post">'
   . '<input type="hidden" name="MOD" value="lang_change" />'
   . '<input type="hidden" name="smtoken" value="' . sm_generate_security_token() . '" />'
@@ -58,4 +62,3 @@ sqspell_makePage(_("Add International Dictionaries"), null, $msg);
  * vim: syntax=php
  */
 
-?>
