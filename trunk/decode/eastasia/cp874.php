@@ -2,7 +2,7 @@
 /**
  * decode/cp874.php
  *
- * Copyright (c) 2005-2013 The SquirrelMail Project Team
+ * Copyright (c) 2005-2014 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This file contains cp874 decoding function that is needed to read
