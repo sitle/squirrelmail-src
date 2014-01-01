@@ -4,7 +4,7 @@
  * ----------------------
  * All SquirrelSpell-wide functions are in this file.
  *
- * Copyright (c) 1999-2013 The SquirrelMail Project Team
+ * Copyright (c) 1999-2014 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * @author Konstantin Riabitsev <icon@duke.edu>
