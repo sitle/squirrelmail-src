@@ -2,11 +2,16 @@
 #
 # This script updates the copyright notices in SquirrelMail.
 #
-# Copyright 2010-2013 The SquirrelMail Project Team
+# Copyright 2010-2014 The SquirrelMail Project Team
+# Author    Paul Lesniewski <paul@squirrelmail.org>
 # License   http://opensource.org/licenses/gpl-license.php GNU Public License
 # Version   $Id$
 #
 
+
+# ----------------------------------------
+# sub update_copyrights()
+#
 update_copyrights()
 {
 
@@ -71,6 +76,12 @@ update_copyrights()
    done
 
 }
+
+
+# ----------------------------------------
+# MAIN
+# ----------------------------------------
+
 
 if [[ -z $1 ]] || [[ ! -d $1 ]]; then
    echo
