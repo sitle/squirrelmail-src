@@ -19,7 +19,7 @@
   *                                  method of page refresh
   * string base_uri The SquirrelMail base_uri
   *
-  * @copyright &copy; 1999-2013 The SquirrelMail Project Team
+  * @copyright &copy; 1999-2014 The SquirrelMail Project Team
   * @license http://opensource.org/licenses/gpl-license.php GNU Public License
   * @version $Id$
   * @package squirrelmail

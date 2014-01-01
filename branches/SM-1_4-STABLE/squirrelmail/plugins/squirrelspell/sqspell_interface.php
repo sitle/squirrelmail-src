@@ -4,7 +4,7 @@
  *
  * Main wrapper for the pop-up.
  *
- * Copyright (c) 1999-2013 The SquirrelMail Project Team
+ * Copyright (c) 1999-2014 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This is a main wrapper for the pop-up window interface of
