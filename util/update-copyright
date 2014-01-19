@@ -39,7 +39,7 @@ update_copyrights()
 
          # skip binary compiled translations, help files, image files, etc
          #
-         if [[ $file =~ '(\.mo)|(\.hlp)|(\.png)|(\.gif)|(\.jpg)$' ]]; then
+         if [[ $file =~ '(\.mo$)|(\.hlp$)|(\.png$)|(\.gif$)|(\.jpg$)' ]]; then
 
             echo "   Skipping $file"
 
