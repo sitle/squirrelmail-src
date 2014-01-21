@@ -479,7 +479,7 @@ function sqimap_read_data ($imap_stream, $tag_uid, $handle_errors,
  * Logs the user into the IMAP server.  If $hide is set, no error messages
  * will be displayed.  This function returns the IMAP connection handle.
  */
-function sqimap_login ($username, $password, $imap_server_address, $imap_port, $hide, $ssl_options=array()) {
+function sqimap_login ($username, $password, $imap_server_address, $imap_port, $hide, $stream_options=array()) {
     global $color, $squirrelmail_language, $onetimepad, $use_imap_tls, $imap_auth_mech,
            $sqimap_capabilities, $display_imap_login_error;
 
@@ -519,7 +519,7 @@ function sqimap_login ($username, $password, $imap_server_address, $imap_port, $
     if (($use_imap_tls == true) and (check_php_version(4,3)) and (extension_loaded('openssl'))) {
         if (function_exists('stream_socket_client')) {
             $server_address = 'ssl://' . $imap_server_address . ':' . $imap_port;
-            $ssl_context = @stream_context_create($ssl_options);
+            $ssl_context = @stream_context_create($stream_options);
             $connect_timeout = ini_get('default_socket_timeout');
             // null timeout is broken
             if ($connect_timeout == 0)

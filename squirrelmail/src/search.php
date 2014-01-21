@@ -287,8 +287,8 @@ $perbox_count = array ();
 $recent_count = getPref($data_dir, $username, 'search_memory', 0);
 
 /*  get mailbox names  */
-global $imapSslOptions; // in case not defined in config
-$imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0, $imapSslOptions);
+global $imap_stream_options; // in case not defined in config
+$imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0, $imap_stream_options);
 $boxes = sqimap_mailbox_list($imapConnection);
 
 /*  set current mailbox to INBOX if none was selected or if page

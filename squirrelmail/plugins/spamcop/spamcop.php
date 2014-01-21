@@ -70,14 +70,14 @@ if(! sqgetGlobalVar('composesession', $composesession, SQ_SESSION) ) {
     $composesession = 0;
     sqsession_register($composesession, 'composesession');
 }
-global $imapSslOptions; // in case not defined in config
+global $imap_stream_options; // in case not defined in config
 /* END GLOBALS */
 
     
     displayPageHeader($color, $mailbox);
 
     $imap_stream = sqimap_login($username, $key, $imapServerAddress, 
-       $imapPort, 0, $imapSslOptions);
+       $imapPort, 0, $imap_stream_options);
     sqimap_mailbox_select($imap_stream, $mailbox);
 
     if ($spamcop_method == 'quick_email' || 
