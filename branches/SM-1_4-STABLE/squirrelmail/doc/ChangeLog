@@ -65,10 +65,15 @@ Version 1.4.23 - SVN
     check_mail_mechanism in /path/to/squirrelmail/src/left_main.php on
     line 322...")
   - Added advanced control over the SSL context used when connecting
-    to the SMTP and IMAP servers over SSL/TLS (Thanks to Emmanuel
+    to the SMTP and IMAP servers over SSL/TLS (thanks to Emmanuel
     Dreyfus).  You can take a look at $imapSslOptions and $smtpSslOptions
     in config_local.example.php in SquirrelMail version 1.5.2 for more
     information.
+  - Added ability to show login error from the IMAP server instead of
+    traditional "Unknown user or password incorrect" (thanks to Alain
+    Williams).  See $display_imap_login_error in the configuration
+    file or "4.  General Options ==> 22. Display login error from IMAP"
+    in the configuration tool.
 
 Version 1.4.22 - 12 July 2011
 -----------------------------
