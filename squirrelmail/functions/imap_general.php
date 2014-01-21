@@ -479,7 +479,7 @@ function sqimap_read_data ($imap_stream, $tag_uid, $handle_errors,
  * Logs the user into the IMAP server.  If $hide is set, no error messages
  * will be displayed.  This function returns the IMAP connection handle.
  */
-function sqimap_login ($username, $password, $imap_server_address, $imap_port, $hide) {
+function sqimap_login ($username, $password, $imap_server_address, $imap_port, $hide, $ssl_options=array()) {
     global $color, $squirrelmail_language, $onetimepad, $use_imap_tls, $imap_auth_mech,
            $sqimap_capabilities;
 
@@ -512,12 +512,27 @@ function sqimap_login ($username, $password, $imap_server_address, $imap_port, $
     $imap_server_address = sqimap_get_user_server($imap_server_address, $username);
         $host=$imap_server_address;
 
-        if (($use_imap_tls == true) and (check_php_version(4,3)) and (extension_loaded('openssl'))) {
-          /* Use TLS by prefixing "tls://" to the hostname */
-          $imap_server_address = 'tls://' . $imap_server_address;
+    // NB: Using "ssl://" ensures the highest possible TLS version
+    // will be negotiated with the server (whereas "tls://" only
+    // uses TLS version 1.0)
+    //
+    if (($use_imap_tls == true) and (check_php_version(4,3)) and (extension_loaded('openssl'))) {
+        if (function_exists('stream_socket_client')) {
+            $server_address = 'ssl://' . $imap_server_address . ':' . $imap_port;
+            if (!empty($ssl_options))
+                $ssl_options = array('ssl' => $ssl_options);
+            $ssl_context = @stream_context_create($ssl_options);
+            $connect_timeout = ini_get('default_socket_timeout');
+            // null timeout is broken
+            if ($connect_timeout == 0)
+                $connect_timeout = 15;
+            $imap_stream = @stream_socket_client($server_address, $error_number, $error_string, $connect_timeout, STREAM_CLIENT_CONNECT, $ssl_context);
+        } else {
+            $imap_stream = @fsockopen('ssl://' . $imap_server_address, $imap_port, $error_number, $error_string, 15);
         }
-
-    $imap_stream = @fsockopen($imap_server_address, $imap_port, $error_number, $error_string, 15);
+    } else {
+        $imap_stream = @fsockopen($imap_server_address, $imap_port, $error_number, $error_string, 15);
+    }
 
     /* Do some error correction */
     if (!$imap_stream) {

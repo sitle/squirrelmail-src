@@ -29,6 +29,7 @@ sqgetGlobalVar('username',   $username,   SQ_SESSION);
 sqgetGlobalVar('key',        $key,        SQ_COOKIE);
 sqgetGlobalVar('onetimepad', $onetimepad, SQ_SESSION);
 sqgetGlobalVar('delimiter',  $delimiter,  SQ_SESSION);
+global $imapSslOptions; // in case not defined in config
 /* end globals */
 
 function Mail_Fetch_Status($msg) {
@@ -151,7 +152,7 @@ for ($i_loop=$i_start;$i_loop<$i_stop;$i_loop++) {
     }
 
     Mail_Fetch_Status(_("Opening IMAP server"));
-    $imap_stream = sqimap_login($username, $key, $imapServerAddress, $imapPort, 10);
+    $imap_stream = sqimap_login($username, $key, $imapServerAddress, $imapPort, 10, $imapSslOptions);
 
     // check if destination folder is not set, is not subscribed and is not \noselect folder
     if($mailfetch_subfolder == '' || 

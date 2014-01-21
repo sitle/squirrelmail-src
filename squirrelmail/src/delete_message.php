@@ -56,7 +56,8 @@ if (isset($_GET['startMessage'])) {
 // first, validate security token
 sm_validate_security_token($submitted_token, -1, TRUE);
 
-$imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
+global $imapSslOptions; // in case not defined in config
+$imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0, $imapSslOptions);
 
 sqimap_mailbox_select($imapConnection, $mailbox);
 

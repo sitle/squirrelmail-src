@@ -159,7 +159,8 @@ if (!sqgetGlobalVar('smtoken',$submitted_token, SQ_FORM)) {
 // security check
 sm_validate_security_token($submitted_token, -1, TRUE);
 
-$imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
+global $imapSslOptions; // in case not defined in config
+$imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0, $imapSslOptions);
 $mbx_response=sqimap_mailbox_select($imapConnection, $mailbox);
 
 $location = set_url_var($location,'composenew',0,false);

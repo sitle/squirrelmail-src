@@ -64,6 +64,11 @@ Version 1.4.23 - SVN
     you will get messages in your logs:  "PHP Notice:  Undefined variable:
     check_mail_mechanism in /path/to/squirrelmail/src/left_main.php on
     line 322...")
+  - Added advanced control over the SSL context used when connecting
+    to the SMTP and IMAP servers over SSL/TLS (Thanks to Emmanuel
+    Dreyfus).  You can take a look at $imapSslOptions and $smtpSslOptions
+    in config_local.example.php in SquirrelMail version 1.5.2 for more
+    information.
 
 Version 1.4.22 - 12 July 2011
 -----------------------------
