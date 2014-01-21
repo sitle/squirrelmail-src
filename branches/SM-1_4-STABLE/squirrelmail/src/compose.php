@@ -691,7 +691,7 @@ exit();
 function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $session='') {
     global $editor_size, $default_use_priority, $body, $idents,
         $use_signature, $composesession, $data_dir, $username,
-        $username, $key, $imapServerAddress, $imapPort, $imapSslOptions,
+        $username, $key, $imapServerAddress, $imapPort, $imap_stream_options,
         $composeMessage, $body_quote, $strip_sigs, $do_not_reply_to_self;
     global $languages, $squirrelmail_language, $default_charset;
 
@@ -707,7 +707,7 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
 
     if ($passed_id) {
         $imapConnection = sqimap_login($username, $key, $imapServerAddress,
-                $imapPort, 0, $imapSslOptions);
+                $imapPort, 0, $imap_stream_options);
 
         sqimap_mailbox_select($imapConnection, $mailbox);
         $message = sqimap_get_message($imapConnection, $passed_id, $mailbox);
@@ -1608,7 +1608,7 @@ function deliverMessage(&$composeMessage, $draft=false) {
         $username, $popuser, $usernamedata, $identity, $idents, $data_dir,
         $request_mdn, $request_dr, $default_charset, $color, $useSendmail,
         $domain, $action, $default_move_to_sent, $move_to_sent;
-    global $imapServerAddress, $imapPort, $imapSslOptions, $sent_folder, $key;
+    global $imapServerAddress, $imapPort, $imap_stream_options, $sent_folder, $key;
 
     $rfc822_header = $composeMessage->rfc822_header;
 
@@ -1723,7 +1723,7 @@ function deliverMessage(&$composeMessage, $draft=false) {
     if (!$useSendmail && !$draft) {
         require_once(SM_PATH . 'class/deliver/Deliver_SMTP.class.php');
         $deliver = new Deliver_SMTP();
-        global $smtpServerAddress, $smtpPort, $smtpSslOptions,
+        global $smtpServerAddress, $smtpPort, $smtp_stream_options,
                $pop_before_smtp, $pop_before_smtp_host;
 
         $authPop = (isset($pop_before_smtp) && $pop_before_smtp) ? true : false;
@@ -1736,7 +1736,7 @@ function deliverMessage(&$composeMessage, $draft=false) {
         get_smtp_user($user, $pass);
 
         $stream = $deliver->initStream($composeMessage,$domain,0,
-                $smtpServerAddress, $smtpPort, $user, $pass, $authPop, $pop_before_smtp_host, $smtpSslOptions);
+                $smtpServerAddress, $smtpPort, $user, $pass, $authPop, $pop_before_smtp_host, $smtp_stream_options);
     } elseif (!$draft) {
         require_once(SM_PATH . 'class/deliver/Deliver_SendMail.class.php');
         global $sendmail_path, $sendmail_args;
@@ -1753,7 +1753,7 @@ function deliverMessage(&$composeMessage, $draft=false) {
     } elseif ($draft) {
         global $draft_folder;
         $imap_stream = sqimap_login($username, $key, $imapServerAddress,
-                $imapPort, 0, $imapSslOptions);
+                $imapPort, 0, $imap_stream_options);
         if (sqimap_mailbox_exists ($imap_stream, $draft_folder)) {
             require_once(SM_PATH . 'class/deliver/Deliver_IMAP.class.php');
             $imap_deliver = new Deliver_IMAP();
@@ -1785,7 +1785,7 @@ function deliverMessage(&$composeMessage, $draft=false) {
         plain_error_message($msg, $color);
     } else {
         unset ($deliver);
-        $imap_stream = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0, $imapSslOptions);
+        $imap_stream = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0, $imap_stream_options);
 
 
         // mark original message as having been replied to if applicable

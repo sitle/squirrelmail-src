@@ -42,8 +42,8 @@ if (! sqgetGlobalVar('passed_ent_id', $passed_ent_id, SQ_GET) ||
 /* end globals */
 
 $pf_cleandisplay = getPref($data_dir, $username, 'pf_cleandisplay', false);
-global $imapSslOptions; // in case not defined in config
-$imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0, $imapSslOptions);
+global $imap_stream_options; // in case not defined in config
+$imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0, $imap_stream_options);
 $mbx_response = sqimap_mailbox_select($imapConnection, $mailbox);
 if (isset($messages[$mbx_response['UIDVALIDITY']][$passed_id])) {
     $message = $messages[$mbx_response['UIDVALIDITY']][$passed_id];

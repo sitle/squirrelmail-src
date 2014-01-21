@@ -91,8 +91,8 @@ if ( isset($success) && $success ) {
 
 echo "\n<br />";
 
-global $imapSslOptions; // in case not defined in config
-$imapConnection = sqimap_login ($username, $key, $imapServerAddress, $imapPort, 0, $imapSslOptions);
+global $imap_stream_options; // in case not defined in config
+$imapConnection = sqimap_login ($username, $key, $imapServerAddress, $imapPort, 0, $imap_stream_options);
 
 // force retrieval of a non cached folderlist
 $boxes = sqimap_mailbox_list($imapConnection,true);

@@ -121,7 +121,7 @@ function spamcop_options() {
 // When we send the email, we optionally trash it then too
 function spamcop_while_sending() {
    global $mailbox, $spamcop_delete, $auto_expunge, 
-      $username, $key, $imapServerAddress, $imapPort, $imapSslOptions;
+      $username, $key, $imapServerAddress, $imapPort, $imap_stream_options;
 
    // load sqgetGlobalVar()
    include_once(SM_PATH . 'functions/global.php');
@@ -129,7 +129,7 @@ function spamcop_while_sending() {
    // check if compose.php is called by spamcop plugin
    if (sqgetGlobalVar('spamcop_is_composing' , $spamcop_is_composing)) {
        if ($spamcop_delete) {
-           $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0, $imapSslOptions);
+           $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0, $imap_stream_options);
            sqimap_mailbox_select($imapConnection, $mailbox);
            sqimap_msgs_list_delete($imapConnection, $mailbox, $spamcop_is_composing);
            if ($auto_expunge)
