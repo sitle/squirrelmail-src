@@ -75,7 +75,8 @@ if ($folder_prefix && (substr($subfolder, 0, strlen($folder_prefix)) != $folder_
     $subfolder_orig = $subfolder;
 }
 
-$imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
+global $imapSslOptions; // in case not defined in config
+$imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0, $imapSslOptions);
 
 if (trim($subfolder_orig) == '') {
     sqimap_mailbox_create ($imapConnection, $folder_prefix.$folder_name, $folder_type);

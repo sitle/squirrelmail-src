@@ -49,7 +49,8 @@ if (!isset($mailbox) || !isset($mailbox[0]) || $mailbox[0] == '') {
     exit(0);
 }
 
-$imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
+global $imapSslOptions; // in case not defined in config
+$imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0, $imapSslOptions);
 
 if ($method == 'sub') {
     if($no_list_for_subscribe && $imap_server_type == 'cyrus') {

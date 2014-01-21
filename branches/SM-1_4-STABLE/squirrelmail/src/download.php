@@ -48,7 +48,8 @@ set_my_charset();
 
 global $uid_support;
 
-$imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
+global $imapSslOptions; // in case not defined in config
+$imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0, $imapSslOptions);
 $mbx_response =  sqimap_mailbox_select($imapConnection, $mailbox);
 
 $message = '';

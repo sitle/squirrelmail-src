@@ -61,7 +61,8 @@ $new_name = imap_utf7_encode_local($new_name);
 
 if ($old_name <> $new_name) {
 
-    $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
+    global $imapSslOptions; // in case not defined in config
+    $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0, $imapSslOptions);
 
     if (strpos($orig, $delimiter)) {
         $old_dir = substr($orig, 0, strrpos($orig, $delimiter));

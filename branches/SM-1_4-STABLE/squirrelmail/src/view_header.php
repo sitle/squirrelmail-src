@@ -133,8 +133,9 @@ sqgetGlobalVar('username',   $username,     SQ_SESSION);
 sqgetGlobalVar('onetimepad', $onetimepad,   SQ_SESSION);
 sqgetGlobalVar('delimiter',  $delimiter,    SQ_SESSION);
 
-$imapConnection = sqimap_login($username, $key, $imapServerAddress, 
-                               $imapPort, 0);
+global $imapSslOptions; // in case not defined in config
+$imapConnection = sqimap_login($username, $key, $imapServerAddress,
+                               $imapPort, 0, $imapSslOptions);
 $mbx_response = sqimap_mailbox_select($imapConnection, $mailbox, false, false, true);
 
 $header = parse_viewheader($imapConnection,$passed_id, $passed_ent_id); 

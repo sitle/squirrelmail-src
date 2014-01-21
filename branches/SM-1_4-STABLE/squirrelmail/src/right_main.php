@@ -95,7 +95,8 @@ if ( !sqgetGlobalVar('composenew', $composenew, SQ_GET) ) {
 
 /* Open a connection on the imap port (143) */
 
-$imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
+global $imapSslOptions; // in case not defined in config
+$imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0, $imapSslOptions);
 
 if (isset($PG_SHOWALL)) {
     if ($PG_SHOWALL) {

@@ -41,7 +41,8 @@ if (!sqgetGlobalVar('smtoken',$submitted_token, SQ_FORM))
     $submitted_token = '';
 sm_validate_security_token($submitted_token, -1, TRUE);
 
-$imap_stream = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
+global $imapSslOptions; // in case not defined in config
+$imap_stream = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0, $imapSslOptions);
 
 sqimap_mailbox_list($imap_stream);
 

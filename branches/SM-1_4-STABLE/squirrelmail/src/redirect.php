@@ -102,7 +102,8 @@ if (!sqsession_is_registered('user_is_logged_in')) {
         $login_username = strtolower($login_username);
     }
 
-    $imapConnection = sqimap_login($login_username, $key, $imapServerAddress, $imapPort, 0);
+    global $imapSslOptions; // in case not defined in config
+    $imapConnection = sqimap_login($login_username, $key, $imapServerAddress, $imapPort, 0, $imapSslOptions);
 
     $sqimap_capabilities = sqimap_capability($imapConnection);
     sqsession_register($sqimap_capabilities, 'sqimap_capabilities');

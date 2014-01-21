@@ -38,7 +38,8 @@ sqgetGlobalVar('ent_id', $ent_id, SQ_GET);
 sqgetGlobalVar('startMessage', $startMessage, SQ_GET);
 /* end globals */
 
-$imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
+global $imapSslOptions; // in case not defined in config
+$imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0, $imapSslOptions);
 sqimap_mailbox_select($imapConnection, $mailbox);
 
 

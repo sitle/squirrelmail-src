@@ -55,7 +55,8 @@ for($i = 0; $i <= 9; $i++){
 
 /* END GLOBALS */
 
-$imap_stream = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
+global $imapSslOptions; // in case not defined in config
+$imap_stream = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0, $imapSslOptions);
 $caps_array = get_caps($imap_stream);
 $list = array (
                'TEST_0',

@@ -69,7 +69,7 @@ function mail_fetch_login() {
     require_once (SM_PATH . 'plugins/mail_fetch/class.POP3.php');
     require_once (SM_PATH . 'plugins/mail_fetch/functions.php');
 
-    global $data_dir, $imapServerAddress, $imapPort;
+    global $data_dir, $imapServerAddress, $imapPort, $imapSslOptions;
         
     sqgetGlobalVar('username', $username, SQ_SESSION);
     sqgetGlobalVar('key',      $key,      SQ_COOKIE);
@@ -123,7 +123,7 @@ function mail_fetch_login() {
                 continue;
             }
 
-            $imap_stream = sqimap_login($username, $key, $imapServerAddress, $imapPort, 10);
+            $imap_stream = sqimap_login($username, $key, $imapServerAddress, $imapPort, 10, $imapSslOptions);
 
             $Count = $pop3->login($mailfetch_user, $mailfetch_pass);
             if (($Count == false || $Count == -1) && $pop3->ERROR != '') {

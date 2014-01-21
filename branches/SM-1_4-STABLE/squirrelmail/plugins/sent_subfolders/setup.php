@@ -102,14 +102,14 @@ function sent_subfolders_load_prefs() {
  * Adds sent_subfolders options in folder preferences
  */
 function sent_subfolders_optpage_loadhook_folders() {
-    global $optpage_data, $imapServerAddress, $imapPort;
+    global $optpage_data, $imapServerAddress, $imapPort, $imapSslOptions;
 
     sqgetGlobalVar('username', $username, SQ_SESSION);
     sqgetGlobalVar('key', $key, SQ_COOKIE);
 
     /* Get some imap data we need later. */
     $imapConnection =
-        sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
+        sqimap_login($username, $key, $imapServerAddress, $imapPort, 0, $imapSslOptions);
     $boxes = sqimap_mailbox_list($imapConnection);
     sqimap_logout($imapConnection);
 
@@ -191,7 +191,7 @@ function save_option_sent_subfolders_setting($option) {
 function sent_subfolders_update_sentfolder() {
     global $sent_folder, $auto_create_special, $auto_create_done;
     global $sent_subfolders_base, $sent_subfolders_setting;
-    global $data_dir, $imapServerAddress, $imapPort;
+    global $data_dir, $imapServerAddress, $imapPort, $imapSslOptions;
     global $use_sent_subfolders, $move_to_sent, $imap_server_type;
 
     sqgetGlobalVar('username', $username, SQ_SESSION);
@@ -259,7 +259,7 @@ function sent_subfolders_update_sentfolder() {
             if ($sent_folder != 'none') {
                 /* Create the imap connection. */
                 $ic = sqimap_login
-                ($username, $key, $imapServerAddress, $imapPort, 10);
+                ($username, $key, $imapServerAddress, $imapPort, 10, $imapSslOptions);
 
                 /* Auto-create the year folder, if it does not yet exist.
                    (only for monthly/quarterly modes */

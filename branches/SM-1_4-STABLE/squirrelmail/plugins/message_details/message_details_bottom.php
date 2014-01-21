@@ -33,6 +33,7 @@ sqgetGlobalVar('mailbox', $mailbox, SQ_GET);
 sqgetGlobalVar('username', $username, SQ_SESSION);
 sqgetGlobalVar('key', $key, SQ_COOKIE);
 sqgetGlobalVar('onetimepad', $onetimepad, SQ_SESSION);
+global $imapSslOptions; // in case not defined in config
 
 /**
  * Calculates id of MIME entity
@@ -71,7 +72,7 @@ function CalcEntity($entString, $direction) {
     return ($result);
 }
 
-$imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
+$imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0, $imapSslOptions);
 $read = sqimap_mailbox_select($imapConnection, $mailbox);
 if (!empty($passed_ent_id))
     $body = sqimap_run_command($imapConnection, "FETCH $passed_id BODY[$passed_ent_id]",true, $response, $readmessage, $uid_support);
