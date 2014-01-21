@@ -481,7 +481,7 @@ function sqimap_read_data ($imap_stream, $tag_uid, $handle_errors,
  */
 function sqimap_login ($username, $password, $imap_server_address, $imap_port, $hide, $ssl_options=array()) {
     global $color, $squirrelmail_language, $onetimepad, $use_imap_tls, $imap_auth_mech,
-           $sqimap_capabilities;
+           $sqimap_capabilities, $display_imap_login_error;
 
     // Note/TODO: This hack grabs the $authz argument from the session
     $authz = '';
@@ -702,7 +702,29 @@ function sqimap_login ($username, $password, $imap_server_address, $imap_port, $
                 sqsession_destroy();
                 /* terminate the session nicely */
                 sqimap_logout($imap_stream);
-                logout_error( _("Unknown user or password incorrect.") );
+
+                // determine what error message to show to the user
+                //
+                $fail_msg = _("Unknown user or password incorrect.");
+                if ($display_imap_login_error) {
+                    // See if there is an error message from the server
+                    // Skip any rfc5530 response code: '[something]' at the
+                    // start of the message
+                    if (!empty($message)
+                     && $message{0} == '['
+                     && ($end = strstr($message, ']'))
+                     && $end != ']') {
+                        $message = substr($end, 1);
+                    }
+                    // Remove surrounding spaces and if there
+                    // is anything left, display that as the
+                    // error message:
+                    $message = trim($message);
+                    if (strlen($message))
+                        $fail_msg = _($message);
+                }
+
+                logout_error($fail_msg);
                 exit;
             }
         } else {
