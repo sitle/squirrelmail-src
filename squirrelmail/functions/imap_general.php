@@ -519,8 +519,6 @@ function sqimap_login ($username, $password, $imap_server_address, $imap_port, $
     if (($use_imap_tls == true) and (check_php_version(4,3)) and (extension_loaded('openssl'))) {
         if (function_exists('stream_socket_client')) {
             $server_address = 'ssl://' . $imap_server_address . ':' . $imap_port;
-            if (!empty($ssl_options))
-                $ssl_options = array('ssl' => $ssl_options);
             $ssl_context = @stream_context_create($ssl_options);
             $connect_timeout = ini_get('default_socket_timeout');
             // null timeout is broken
