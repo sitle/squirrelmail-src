@@ -449,7 +449,7 @@ class Deliver {
      * @param string  $pass     password to log into the SMTP server with
      * @param boolean $authpop  whether or not to use POP-before-SMTP authorization
      * @param string  $pop_host host name or IP to connect to for POP-before-SMTP authorization
-     * @param array   $ssl_options SSL context options (OPTIONAL), see http://www.php.net/manual/context.ssl.php
+     * @param array   $ssl_options SSL context options (OPTIONAL), see http://www.php.net/manual/context.php and especially http://www.php.net/manual/context.ssl.php
      *
      * @return handle $stream file handle resource to SMTP stream
      */
