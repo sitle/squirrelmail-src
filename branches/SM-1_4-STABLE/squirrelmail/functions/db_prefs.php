@@ -161,9 +161,10 @@ class dbPrefs {
     function getKey($user, $key, $default = '') {
         global $prefs_cache;
 
-        $result = do_hook_function('get_pref_override', array($user, $key));
-//FIXME: testing below for !$result means that a plugin cannot fetch its own pref value of 0, '0', '', FALSE, or anything else that evaluates to boolean FALSE.
-        if (!$result) {
+        $result = NULL;
+        $result = do_hook_function('get_pref_override', array($user, $key, $default));
+// FIXME: ideally, we'd have a better way to determine if the return value from the hook above should be respected, even if it is NULL, but this is as good as it gets for now... previously the test was more weak: if (!$result)
+        if (is_null($result)) {
             cachePrefValues($user);
 
             if (isset($prefs_cache[$key])) {
