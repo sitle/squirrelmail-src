@@ -695,6 +695,9 @@ Alias /squirrelmail /usr/local/squirrelmail/www
 &lt;Directory /usr/local/squirrelmail/www/*&gt;
   Deny from all
 &lt;/Directory&gt;
+&lt;Directory /usr/local/squirrelmail/www/scripts&gt;
+  Allow from all
+&lt;/Directory&gt;
 &lt;Directory /usr/local/squirrelmail/www/images&gt;
   Allow from all
 &lt;/Directory&gt;
