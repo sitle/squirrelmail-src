@@ -33,7 +33,7 @@
 //    2 = verbose...
 //    3 = too verbose
 //
-var debug = 3;
+var debug = 0;
 
 
 
@@ -42,7 +42,7 @@ var debug = 3;
 //    0 = alert popup
 //    1 = JavaScript console (browser must support console.log)
 //
-var debug_output_target = 1;
+var debug_output_target = 0;
 
 
 
