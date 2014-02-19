@@ -27,12 +27,40 @@
 
 
 // debug levels:
+//
 //    0 = off
 //    1 = basic error reporting only
 //    2 = verbose...
 //    3 = too verbose
 //
-var debug = 0;
+var debug = 3;
+
+
+
+// debug output target
+//
+//    0 = alert popup
+//    1 = JavaScript console (browser must support console.log)
+//
+var debug_output_target = 1;
+
+
+
+/**
+  * Sends debug message to console or alert popup
+  *
+  * @param string  message  The debug output
+  *
+  * @since 1.4.23
+  *
+  */
+function debug_print(message)
+{
+   if (debug_output_target == 1)
+      console.log(message);
+   else
+      alert(message);
+}
 
 
 
@@ -45,7 +73,7 @@ var debug = 0;
 function sm_get_xml_http_object()
 {
 
-   if (debug >= 3) alert("Attempting to get XMLHttp object...");
+   if (debug >= 3) debug_print("Attempting to get XMLHttp object...");
    var xml_http_object = null;
 
    // Internet Explorer, always the odd one out
@@ -60,14 +88,14 @@ function sm_get_xml_http_object()
       try
       {
          xml_http_object = new ActiveXObject("Msxml2.XMLHTTP")
-         if (debug >= 3) alert("Got IE XMLHTTP version 2");
+         if (debug >= 3) debug_print("Got IE XMLHTTP version 2");
       }
       catch(e)
       {
          try
          {
             xml_http_object = new ActiveXObject("Microsoft.XMLHTTP")
-            if (debug >= 3) alert("Got IE XMLHTTP version 1");
+            if (debug >= 3) debug_print("Got IE XMLHTTP version 1");
          }
          catch(e) {}
       }
@@ -78,7 +106,7 @@ function sm_get_xml_http_object()
    if (xml_http_object == null && window.XMLHttpRequest)
    {
       xml_http_object = new XMLHttpRequest();
-      if (debug >= 3) alert("Got standard XMLHttpRequest");
+      if (debug >= 3) debug_print("Got standard XMLHttpRequest");
       if (xml_http_object.overrideMimeType)
       {
          xml_http_object.overrideMimeType("text/xml");
@@ -134,7 +162,7 @@ function sm_send_request(method, uri, content, result_function, result_in_xml,
    var xml_http_request = sm_get_xml_http_object();
    if (xml_http_request == null)
    {
-      if (debug >= 1) alert("Sorry, your browser is not compatible with this page");
+      if (debug >= 1) debug_print("Sorry, your browser is not compatible with this page");
       return;
    }
 
@@ -157,7 +185,7 @@ function sm_send_request(method, uri, content, result_function, result_in_xml,
    //
    xml_http_request.open(method, uri, true);
    xml_http_request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-   if (debug >= 3) alert("The request has been set up...");
+   if (debug >= 3) debug_print("The request has been set up...");
 
 
    // set up response handling
@@ -171,7 +199,7 @@ function sm_send_request(method, uri, content, result_function, result_in_xml,
       try
       {
 
-         if (debug >= 3) alert("Request state has changed... " + xml_http_request.readyState);
+         if (debug >= 3) debug_print("Request state has changed... " + xml_http_request.readyState);
          if (xml_http_request.readyState == 4)
          {
 
@@ -182,7 +210,7 @@ function sm_send_request(method, uri, content, result_function, result_in_xml,
                clearTimeout(eval(timer_name));
             }
 
-            if (debug >= 2) alert("Request has finished.  Status: " + xml_http_request.status + " - " + xml_http_request.statusText);
+            if (debug >= 2) debug_print("Request has finished.  Status: " + xml_http_request.status + " - " + xml_http_request.statusText);
             response_string = xml_http_request.responseText;
             response_xml = xml_http_request.responseXML;
             switch (xml_http_request.status)
@@ -191,12 +219,12 @@ function sm_send_request(method, uri, content, result_function, result_in_xml,
                // page-not-found error
                //
                case 404:
-                  if (debug >= 1) alert("Error: Not Found. The requested URI " + uri + " could not be found.");
+                  if (debug >= 1) debug_print("Error: Not Found. The requested URI " + uri + " could not be found.");
                   // NB: you can get single header by using xml_http_request.getResponseHeader('header name')
-                  if (debug >= 3) alert("Response headers:\n\n" + xml_http_request.getAllResponseHeaders());
+                  if (debug >= 3) debug_print("Response headers:\n\n" + xml_http_request.getAllResponseHeaders());
                   if (error_function != "")
                   {
-                     if (debug >= 3) alert("Calling error handler: " + error_function);
+                     if (debug >= 3) debug_print("Calling error handler: " + error_function);
                      eval(error_function + "(xml_http_request.status, xml_http_request.statusText);");
                   }
                   break;
@@ -205,10 +233,10 @@ function sm_send_request(method, uri, content, result_function, result_in_xml,
                // handle server-side errors
                //
                case 500:
-                  if (debug >= 1 || show_server_side_error_alert) alert("Error: Server Error " + xml_http_request.status + " - " + xml_http_request.statusText + " - " + response_string);
+                  if (debug >= 1 || show_server_side_error_alert) debug_print("Error: Server Error " + xml_http_request.status + " - " + xml_http_request.statusText + " - " + response_string);
                   if (error_function != "")
                   {
-                     if (debug >= 3) alert("Calling error handler: " + error_function);
+                     if (debug >= 3) debug_print("Calling error handler: " + error_function);
                      eval(error_function + "(xml_http_request.status, xml_http_request.statusText);");
                   }
                   break;
@@ -223,11 +251,11 @@ function sm_send_request(method, uri, content, result_function, result_in_xml,
 //                  //
 //                  if (response_string.indexOf("Administration") > -1 || response_string.indexOf("Debug:") > -1)
 //                  {
-//                     if (debug >= 3) alert("Application error: " + response_string);
-//                     //alert(response_string);
+//                     if (debug >= 3) debug_print("Application error: " + response_string);
+//                     //debug_print(response_string);
 //                     if (error_function != "")
 //                     {
-//                        if (debug >= 3) alert("Calling error handler: " + error_function);
+//                        if (debug >= 3) debug_print("Calling error handler: " + error_function);
 //                        eval(error_function + "(xml_http_request.status, xml_http_request.statusText);");
 //                     }
 //                  }
@@ -235,7 +263,7 @@ function sm_send_request(method, uri, content, result_function, result_in_xml,
 //                  // no errors occurred; call the target result function
 //                  else
                   {
-                     if (debug >= 3) alert("Request succeeded; calling request handler: " + result_function);
+                     if (debug >= 3) debug_print("Request succeeded; calling request handler: " + result_function);
                      if (result_in_xml)
                         eval(result_function + "(response_xml);");
                      else
@@ -247,10 +275,10 @@ function sm_send_request(method, uri, content, result_function, result_in_xml,
                // any other conditions...
                //
                default:
-                  if (debug >= 1) alert("Error: " + xml_http_request.status + " - " + xml_http_request.statusText);
+                  if (debug >= 1) debug_print("Error: " + xml_http_request.status + " - " + xml_http_request.statusText);
                   if (error_function != "")
                   {
-                     if (debug >= 3) alert("Calling error handler: " + error_function);
+                     if (debug >= 3) debug_print("Calling error handler: " + error_function);
                      eval(error_function + "(xml_http_request.status, xml_http_request.statusText);");
                   }
                   break;
@@ -261,16 +289,16 @@ function sm_send_request(method, uri, content, result_function, result_in_xml,
       catch(e)
       {
          // NB: Attention developers - if you give a non-existent callback, you'll land here
-         if (debug >= 1) alert("Sorry, there was a problem accessing the server or invalid response callback: " + e.description);
+         if (debug >= 1) debug_print("Sorry, there was a problem accessing the server or invalid response callback: " + e.description);
          if (error_function != "")
          {
-            if (debug >= 3) alert("Calling error handler: " + error_function);
+            if (debug >= 3) debug_print("Calling error handler: " + error_function);
             eval(error_function + "(0, e.description);");
          }
       }
    }
 
-   if (debug >= 3) alert("Launching request...");
+   if (debug >= 3) debug_print("Launching request...");
    xml_http_request.send(content);
 
    // turn on timeout timer if needed
@@ -278,7 +306,7 @@ function sm_send_request(method, uri, content, result_function, result_in_xml,
    if (max_wait > 0)
    {
       if (timeout_message != "")
-         display_message = " alert(\"" + timeout_message.replace(/"/g, '\\"') + "\"); ";
+         display_message = " debug_print(\"" + timeout_message.replace(/"/g, '\\"') + "\"); ";
       else
          display_message = "";
 
