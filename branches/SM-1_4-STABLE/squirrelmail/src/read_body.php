@@ -901,9 +901,9 @@ if ($attachmentsdisplay) {
    echo concat_hook_function('attachments_top', $hook_args);
    echo '        </td></tr>';
    echo '        <tr><td>';
-   echo '          <table width="100%" cellpadding="2" cellspacing="2" align="center"'.' border="0" bgcolor="'.$color[0].'"><tr><td>';
+   echo '          <table width="100%" cellpadding="2" cellspacing="2" align="center"'.' border="0" bgcolor="'.$color[0].'">';
    echo              $attachmentsdisplay;
-   echo '          </td></tr></table>';
+   echo '          </table>';
    echo '       </td></tr></table>';
    echo '    </td></tr></table>';
    echo '  </td></tr>';
