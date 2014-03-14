@@ -897,7 +897,7 @@ if ($attachmentsdisplay) {
    echo '       <table width="100%" cellpadding="0" cellspacing="0" align="center" border="0" bgcolor="'.$color[4].'">';
    echo '        <tr>' . html_tag( 'td', '', 'left', $color[9] );
    echo '           <b>' . _("Attachments") . ':</b>';
-   $hook_args = array($message, $mailbox);
+   $hook_args = array($message, $mailbox, $passed_id);
    echo concat_hook_function('attachments_top', $hook_args);
    echo '        </td></tr>';
    echo '        <tr><td>';
