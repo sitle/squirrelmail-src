@@ -68,7 +68,7 @@ function do_hook ($name) {
  */
 function do_hook_function($name,$parm=NULL) {
     global $squirrelmail_plugin_hooks;
-    $ret = '';
+    $ret = NULL;
 
     if (isset($squirrelmail_plugin_hooks[$name])
           && is_array($squirrelmail_plugin_hooks[$name])) {
