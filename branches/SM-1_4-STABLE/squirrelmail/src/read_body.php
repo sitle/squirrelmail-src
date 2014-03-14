@@ -666,7 +666,7 @@ function formatMenuBar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_resp
     $s .= makeComposeLink($comp_action_uri, _("Reply All"));
     $s .= '</small></td></tr></table>';
     $ret = do_hook_function('read_body_menu_top', $s);
-    if($ret != '') {
+    if(!is_null($ret)) {
         $s = $ret;
     }
     echo $s;
