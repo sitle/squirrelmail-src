@@ -927,14 +927,14 @@ class Rfc822Header {
      * but it no longer appears to return an array - an
      * integer instead):
      *
-     * Inspects the TO and CC headers of the message
-     * represented by this object, looking for the
-     * address(es) given by $address
+     * Inspects the TO and CC (or FROM) headers of the
+     * message represented by this object, looking for
+     * the address(es) given by $address
      *
      * If $address is a string:
      *    Serves as a test (returns boolean) as to
      *    whether or not the given address is found
-     *    anywhere in the TO or CC headers
+     *    anywhere in the TO or CC (or FROM) headers
      *
      * If $address is an array:
      *    Looks through this list of addresses and
@@ -942,17 +942,22 @@ class Rfc822Header {
      *    if the array is given with keys of a
      *    different type) of the *last* matching
      *    $address found in this message's
-     *    TO or CC headers, unless there is an exact
-     *    match (meaning that the "personal
+     *    TO or CC (or FROM) headers, unless there
+     *    is an exact match (meaning that the "personal
      *    information" in addition to the email
      *    address also matches), in which case that
      *    index (the first one found) is returned
      *
      * @param mixed $address Address(es) to search for in this
-     *                       message's TO and CC headers - please
-     *                       see above how the format of this
-     *                       argument affects the return value
-     *                       of this function
+     *                       message's TO and CC (or FROM)
+     *                       headers - please see above how the
+     *                       format of this argument affects the
+     *                       return value of this function
+     * @param boolean $use_from When TRUE, this function will ONLY
+     *                          search the FROM headers and NOT the
+     *                          TO and CC headers, when FALSE, ONLY
+     *                          the TO and CC headers are searched
+     *                          (OPTIONAL; default is FALSE)
      * @param boolean $recurs FOR INTERNAL USE ONLY
      *
      * @return mixed Boolean when $address is a scalar,
@@ -966,12 +971,12 @@ class Rfc822Header {
      *
      * @since 1.3.2
      */
-    function findAddress($address, $recurs = false) {
+    function findAddress($address, $use_from=FALSE, $recurs=FALSE) {
         $result = false;
         if (is_array($address)) {
             $i=0;
             foreach($address as $argument) {
-                $match = $this->findAddress($argument, true);
+                $match = $this->findAddress($argument, $use_from, true);
                 if ($match[1]) {
                     return $i;
                 } else {
@@ -982,33 +987,51 @@ class Rfc822Header {
                 ++$i;
             }
         } else {
-            if (!is_array($this->cc)) $this->cc = array();
-            if (!is_array($this->to)) $this->to = array();
             $srch_addr = $this->parseAddress($address);
             $results = array();
-            foreach ($this->to as $to) {
-                if (strtolower($to->host) == strtolower($srch_addr->host)) {
-                    if (strtolower($to->mailbox) == strtolower($srch_addr->mailbox)) {
-                        $results[] = $srch_addr;
-                        if (strtolower($to->personal) == strtolower($srch_addr->personal)) {
-                            if ($recurs) {
-                                return array($results, true);
-                            } else {
-                                return true;
+            if ($use_from) {
+                if (!is_array($this->from)) $this->from = array();
+                foreach ($this->from as $from) {
+                    if (strtolower($from->host) == strtolower($srch_addr->host)) {
+                        if (strtolower($from->mailbox) == strtolower($srch_addr->mailbox)) {
+                            $results[] = $srch_addr;
+                            if (strtolower($from->personal) == strtolower($srch_addr->personal)) {
+                                if ($recurs) {
+                                    return array($results, true);
+                                } else {
+                                    return true;
+                                }
                             }
                         }
                     }
                 }
-            }
-            foreach ($this->cc as $cc) {
-                if (strtolower($cc->host) == strtolower($srch_addr->host)) {
-                    if (strtolower($cc->mailbox) == strtolower($srch_addr->mailbox)) {
-                        $results[] = $srch_addr;
-                        if (strtolower($cc->personal) == strtolower($srch_addr->personal)) {
-                            if ($recurs) {
-                                return array($results, true);
-                            } else {
-                                return true;
+            } else {
+                if (!is_array($this->cc)) $this->cc = array();
+                if (!is_array($this->to)) $this->to = array();
+                foreach ($this->to as $to) {
+                    if (strtolower($to->host) == strtolower($srch_addr->host)) {
+                        if (strtolower($to->mailbox) == strtolower($srch_addr->mailbox)) {
+                            $results[] = $srch_addr;
+                            if (strtolower($to->personal) == strtolower($srch_addr->personal)) {
+                                if ($recurs) {
+                                    return array($results, true);
+                                } else {
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                }
+                foreach ($this->cc as $cc) {
+                    if (strtolower($cc->host) == strtolower($srch_addr->host)) {
+                        if (strtolower($cc->mailbox) == strtolower($srch_addr->mailbox)) {
+                            $results[] = $srch_addr;
+                            if (strtolower($cc->personal) == strtolower($srch_addr->personal)) {
+                                if ($recurs) {
+                                    return array($results, true);
+                                } else {
+                                    return true;
+                                }
                             }
                         }
                     }
