@@ -816,7 +816,13 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
                 $send_to = decodeHeader($orig_header->getAddr_s('to'),false,false,true);
                 $send_to_cc = decodeHeader($orig_header->getAddr_s('cc'),false,false,true);
                 $send_to_bcc = decodeHeader($orig_header->getAddr_s('bcc'),false,false,true);
-                // FIXME: ident support?
+                $identity = 0;
+                if (count($idents) > 1) {
+                    $identity_match = $orig_header->findAddress($identities, TRUE);
+                    if ($identity_match !== FALSE) {
+                        $identity = $identity_match;
+                    }
+                }
                 $subject = decodeHeader($orig_header->subject,false,false,true);
                 /* remember the references and in-reply-to headers in case of an reply */
                 $composeMessage->rfc822_header->more_headers['References'] = $orig_header->references;
