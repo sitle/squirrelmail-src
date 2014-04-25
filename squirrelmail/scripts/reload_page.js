@@ -119,7 +119,7 @@ function replace_document(new_document_source)
   */
 function reload_now()
 {
-   window.location.reload(true);
+   window.location.reload(false);
 }
 
 
