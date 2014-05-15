@@ -136,6 +136,9 @@ function sm_get_xml_http_object()
   * @param int  max_wait  If the request should time out (cancel itself) after a certain
   *                       time, this is the desired number of seconds (set to zero not to
   *                       use this functionality)
+  * @param int  minimum_response_size  When set to anything greater than zero, the
+  *                                    response size must be equal to or greater than this,
+  *                                    otherwise an error will be triggered (code 599)
   * @param string  error_function  The name of the function that will be called if any
   *                                error occurs (beside timeout). It will be called with
   *                                two parameters: the error code and error message (note
@@ -153,8 +156,9 @@ function sm_get_xml_http_object()
   *
   */
 function sm_send_request(method, uri, content, result_function, result_in_xml,
-                         max_wait, error_function, show_server_side_error_alert,
-                         timeout_message, make_query_unique)
+                         max_wait, minimum_response_size, error_function,
+                         show_server_side_error_alert, timeout_message,
+                         make_query_unique)
 {
 
    // grab request object, check if not supported
@@ -262,6 +266,12 @@ function sm_send_request(method, uri, content, result_function, result_in_xml,
 //
 //                  // no errors occurred; call the target result function
 //                  else
+                  if (minimum_response_size > 0 && response_string.length < minimum_response_size)
+                  {
+                     if (debug >= 3) debug_print("Calling error handler: " + error_function);
+                     eval(error_function + "(599, 'Response size too small');");
+                  }
+                  else
                   {
                      if (debug >= 3) debug_print("Request succeeded; calling request handler: " + result_function);
                      if (result_in_xml)
