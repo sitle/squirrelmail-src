@@ -225,6 +225,9 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
             case 2: /* from */
                 $from_xtra = '';
                 $from_xtra = 'title="' . $senderFrom . '"';
+                if (trim($senderName) == '') {
+                    $senderName = '(' . _("unknown") . ')';
+                }
                 echo html_tag( 'td',
                     html_tag('label',
                                $italic . $bold . $flag . $fontstr . sm_truncate_string($senderName, $truncate_sender, '...', TRUE) .
@@ -253,6 +256,9 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
                                'nowrap title="' . $date_title_string . '"' );
                 break;
             case 4: /* subject */
+                if (trim($subject) == '') {
+                    $subject = '(' . _("unknown") . ')';
+                }
                 $td_str = $bold;
                 if ($thread_sort_messages == 1) {
                     if (isset($indent_array[$msg['ID']])) {
