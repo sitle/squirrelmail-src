@@ -376,6 +376,13 @@ class abook_database extends addressbook_backend {
             return false;
         }
 
+        // NB: if you want to check for some unwanted characters
+        //     or other problems, do so here like this:
+        // TODO: Should pull all validation code out into a separate function
+        //if (strpos($userdata['nickname'], ' ')) {
+        //    return $this->set_error(_("Nickname contains illegal characters"));
+        //}
+
         /* See if user exist already */
         $ret = $this->lookup($userdata['nickname']);
         if (!empty($ret)) {
@@ -456,6 +463,13 @@ class abook_database extends addressbook_backend {
         if (!$this->open()) {
             return false;
         }
+
+        // NB: if you want to check for some unwanted characters
+        //     or other problems, do so here like this:
+        // TODO: Should pull all validation code out into a separate function
+        //if (strpos($userdata['nickname'], ' ')) {
+        //    return $this->set_error(_("Nickname contains illegal characters"));
+        //}
 
          /* See if user exist */
         $ret = $this->lookup($alias);
