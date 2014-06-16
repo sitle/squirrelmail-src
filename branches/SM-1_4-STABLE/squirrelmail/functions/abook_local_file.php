@@ -404,6 +404,14 @@ class abook_local_file extends addressbook_backend {
         if(!$this->writeable) {
             return $this->set_error(_("Address book is read-only"));
         }
+
+        // NB: if you want to check for some unwanted characters
+        //     or other problems, do so here like this:
+        // TODO: Should pull all validation code out into a separate function
+        //if (strpos($userdata['nickname'], ' ')) {
+        //    return $this->set_error(_("Nickname contains illegal characters"));
+        //}
+
         /* See if user exists already */
         $ret = $this->lookup($userdata['nickname']);
         if(!empty($ret)) {
@@ -506,6 +514,13 @@ class abook_local_file extends addressbook_backend {
         if(!$this->writeable) {
             return $this->set_error(_("Address book is read-only"));
         }
+
+        // NB: if you want to check for some unwanted characters
+        //     or other problems, do so here like this:
+        // TODO: Should pull all validation code out into a separate function
+        //if (strpos($userdata['nickname'], ' ')) {
+        //    return $this->set_error(_("Nickname contains illegal characters"));
+        //}
 
         /* See if user exists */
         $ret = $this->lookup($alias);

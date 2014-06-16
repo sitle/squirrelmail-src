@@ -520,11 +520,6 @@ class AddressBook {
             $userdata['nickname'] = $userdata['email'];
         }
 
-        if (preg_match('/[ :|#"!]/', $userdata['nickname'])) {
-            $this->error = _("Nickname contains illegal characters");
-            return false;
-        }
-
         /* Check that specified backend accept new entries */
         if (!$this->backends[$bnum]->writeable) {
             $this->error = _("Address book is read-only");
@@ -601,11 +596,6 @@ class AddressBook {
         }
         if (empty($userdata['email'])) {
             $this->error = _("E-mail address is missing");
-            return false;
-        }
-
-        if (preg_match('/[: |#"!]/', $userdata['nickname'])) {
-            $this->error = _("Nickname contains illegal characters");
             return false;
         }
 
