@@ -370,7 +370,7 @@ function filter_search_and_delete($imap, $where, $what, $where_to, $user_scan,
                     // if errors occurred, don't try to filter again during this session
                     sqsession_register(TRUE, 'filters_error');
                     global $color;
-                    error_box(_("A problem occurred filtering messages. Check filter folders and account quota if applicable. Filtering is disabled for the remainder of this login session."), $color);
+                    error_box(_("A problem occurred filtering messages. Check filter settings and account quota if applicable. Filtering is disabled for the remainder of this login session."), $color);
                     // we stil return info about what was successfully
                     // filtered before this error occurred
                     return $del_id;
