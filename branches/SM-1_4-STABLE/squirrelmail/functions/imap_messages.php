@@ -44,7 +44,7 @@ function sqimap_msgs_list_copy($imap_stream, $id, $mailbox) {
  * Moves a set of messages ($id) to another mailbox ($mailbox)
  * 
  * @param int    $imap_stream   The resource ID for the IMAP socket
- * @param mixed  $id            A string or array of messages to copy
+ * @param mixed  $id            A string or array of messages to move
  * @param string $mailbox       The destination mailbox
  * @param bool   $handle_errors Show error messages in case of a NO, BAD, or BYE response
  *
@@ -1176,7 +1176,7 @@ function sqimap_toggle_flag($imap_stream, $id, $flag, $set, $handle_errors) {
     global $uid_support;
     $msgs_id = sqimap_message_list_squisher($id);
     $set_string = ($set ? '+' : '-');
-    $read = sqimap_run_command ($imap_stream, "STORE $msgs_id ".$set_string."FLAGS ($flag)", $handle_errors, $response, $message, $uid_support);
+    return sqimap_run_command ($imap_stream, "STORE $msgs_id ".$set_string."FLAGS ($flag)", $handle_errors, $response, $message, $uid_support);
 }
 
 
