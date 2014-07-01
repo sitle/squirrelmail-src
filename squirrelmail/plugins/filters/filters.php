@@ -184,6 +184,12 @@ function start_filters() {
            $imap_general, $filters, $imap_stream, $imapConnection,
            $UseSeparateImapConnection, $AllowSpamFilters;
 
+    // if there were filtering errors previously during
+    // this login session, we won't try again
+    sqgetGlobalVar('filters_error', $filters_error, SQ_SESSION, FALSE);
+    if ($filters_error)
+        return;
+
     sqgetGlobalVar('username', $username, SQ_SESSION);
     sqgetGlobalVar('key',      $key,      SQ_COOKIE);
 
@@ -360,6 +366,14 @@ function filter_search_and_delete($imap, $where, $what, $where_to, $user_scan,
                 $id = trim($ids[$j]);
                 if (sqimap_msgs_list_move($imap, $id, $where_to)) {
                     $del_id[] = $id;
+                } else {
+                    // if errors occurred, don't try to filter again during this session
+                    sqsession_register(TRUE, 'filters_error');
+                    global $color;
+                    error_box(_("A problem occurred filtering messages. Check filter folders and account quota if applicable. Filtering is disabled for the remainder of this login session."), $color);
+                    // we stil return info about what was successfully
+                    // filtered before this error occurred
+                    return $del_id;
                 }
             }
         }
@@ -476,7 +490,13 @@ function spam_filters($imap_stream) {
     }
     // Lookie!  It's spam!  Yum!
     if (count($aSpamIds) && sqimap_mailbox_exists($imap_stream, $filters_spam_folder)) {
-        sqimap_msgs_list_move($imap_stream, $aSpamIds, $filters_spam_folder);
+        if (!sqimap_msgs_list_move($imap_stream, $aSpamIds, $filters_spam_folder)) {
+            // if errors occurred, don't try to filter again during this session
+            sqsession_register(TRUE, 'filters_error');
+            global $color;
+            error_box(_("A problem occurred filtering messages. Check filter folders and account quota if applicable. Filtering is disabled for the remainder of this login session."), $color);
+            return;
+        }
         sqimap_mailbox_expunge($imap_stream, 'INBOX', true, $aSpamIds);
     }
 
