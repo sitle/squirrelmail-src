@@ -393,6 +393,9 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
     case 'NO':
         /* ignore this error from M$ exchange, it is not fatal (aka bug) */
         if (strstr($message, 'command resulted in') === false) {
+            sqsession_register('NO', 'IMAP_FATAL_ERROR_TYPE');
+            sqsession_register($query, 'IMAP_FATAL_ERROR_QUERY');
+            sqsession_register($message, 'IMAP_FATAL_ERROR_MESSAGE');
             set_up_language($squirrelmail_language);
             require_once(SM_PATH . 'functions/display_messages.php');
             $string = "<b><font color=\"$color[2]\">\n" .
@@ -408,6 +411,9 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
         }
         break;
     case 'BAD':
+        sqsession_register('BAD', 'IMAP_FATAL_ERROR_TYPE');
+        sqsession_register($query, 'IMAP_FATAL_ERROR_QUERY');
+        sqsession_register($message, 'IMAP_FATAL_ERROR_MESSAGE');
         set_up_language($squirrelmail_language);
         require_once(SM_PATH . 'functions/display_messages.php');
         $string = "<b><font color=\"$color[2]\">\n" .
@@ -421,6 +427,9 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
         echo '</body></html>';
         exit;
     case 'BYE':
+        sqsession_register('BYE', 'IMAP_FATAL_ERROR_TYPE');
+        sqsession_register($query, 'IMAP_FATAL_ERROR_QUERY');
+        sqsession_register($message, 'IMAP_FATAL_ERROR_MESSAGE');
         set_up_language($squirrelmail_language);
         require_once(SM_PATH . 'functions/display_messages.php');
         $string = "<b><font color=\"$color[2]\">\n" .
@@ -434,6 +443,9 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
         echo '</body></html>';
         exit;
     default:
+        sqsession_register('UNKNOWN', 'IMAP_FATAL_ERROR_TYPE');
+        sqsession_register($query, 'IMAP_FATAL_ERROR_QUERY');
+        sqsession_register($message, 'IMAP_FATAL_ERROR_MESSAGE');
         set_up_language($squirrelmail_language);
         require_once(SM_PATH . 'functions/display_messages.php');
         $string = "<b><font color=\"$color[2]\">\n" .
