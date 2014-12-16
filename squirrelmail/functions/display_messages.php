@@ -110,7 +110,9 @@ function logout_error( $errString, $errTitle = '' ) {
          '<font color="'.$color[2].'"><b>'.
          '<a href="'.$logout_link.'" target="'.$frame_top.'">'.
          _("Go to the login page") . '</a></b></font></td></tr>'.
-         '</table></td></tr></table></center></body></html>';
+         '</table></td></tr></table></center>'.
+         '<!-- logout_error -->'.
+         '</body></html>';
 }
 
 function error_box($string, $color) {
@@ -154,7 +156,8 @@ function error_box($string, $color) {
          '</td></tr><tr><td>'.
          '<table cellpadding="1" cellspacing="5" align="center" border="0">'.
          '<tr>' . html_tag( 'td', $string."\n", 'left') . '</tr></table>'.
-         '</td></tr></table></td></tr></table>';
+         '</td></tr></table></td></tr></table>'.
+         '<!-- error_box -->';
 }
 
 /**

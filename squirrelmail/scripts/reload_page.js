@@ -76,11 +76,13 @@ function check_server_and_reload()
 {
    if (use_advanced_page_reload)
       sm_send_request("GET", window.location.href, "", "replace_document", false,
-                      reload_request_timeout, 1000, "server_or_connect_error", false, "", false);
+                      reload_request_timeout, 1000, "<!-- logout_error -->",
+                      "server_or_connect_error", false, "", false);
    else
       // images/spacer.png is exactly 68 bytes in size
       sm_send_request("GET", base_uri + "images/spacer.png", "", "reload_now", false,
-                      reload_request_timeout, 68, "server_or_connect_error", false, "", true);
+                      reload_request_timeout, 68, "", "server_or_connect_error",
+                      false, "", true);
 }
 
 
