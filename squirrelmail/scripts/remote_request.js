@@ -141,7 +141,8 @@ function sm_get_xml_http_object()
   *                                    otherwise an error will be triggered (code 599)
   *                                    (set to a negative number to skip response size test)
   * @param int  good_string  When not empty, if the response includes this string,
-  *                          the response is always considered to be valid.
+  *                          the response is always considered to be valid (all other
+  *                          tests are skipped).
   * @param string  error_function  The name of the function that will be called if any
   *                                error occurs (beside timeout). It will be called with
   *                                two parameters: the error code and error message (note
