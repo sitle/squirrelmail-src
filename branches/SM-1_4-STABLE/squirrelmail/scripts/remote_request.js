@@ -139,6 +139,9 @@ function sm_get_xml_http_object()
   * @param int  minimum_response_size  When set to anything greater than zero, the
   *                                    response size must be equal to or greater than this,
   *                                    otherwise an error will be triggered (code 599)
+  *                                    (set to a negative number to skip response size test)
+  * @param int  good_string  When not empty, if the response includes this string,
+  *                          the response is always considered to be valid.
   * @param string  error_function  The name of the function that will be called if any
   *                                error occurs (beside timeout). It will be called with
   *                                two parameters: the error code and error message (note
@@ -156,7 +159,7 @@ function sm_get_xml_http_object()
   *
   */
 function sm_send_request(method, uri, content, result_function, result_in_xml,
-                         max_wait, minimum_response_size, error_function,
+                         max_wait, minimum_response_size, good_string, error_function,
                          show_server_side_error_alert, timeout_message,
                          make_query_unique)
 {
@@ -250,6 +253,12 @@ function sm_send_request(method, uri, content, result_function, result_in_xml,
                //
                case 200:
 
+                  request_is_known_ok = false;
+                  if (good_string != '' && response_string.indexOf(good_string) > -1)
+                  {
+                     request_is_known_ok = true;
+                  }
+
 // FIXME: do we want to do something else here for application-generated errors or skip that and deal with it when the caller evaluates the returned contents? (yeah, for now, that's fine)
 //                  // alert custom error or debug messages
 //                  //
@@ -266,7 +275,7 @@ function sm_send_request(method, uri, content, result_function, result_in_xml,
 //
 //                  // no errors occurred; call the target result function
 //                  else
-                  if (minimum_response_size > 0 && response_string.length < minimum_response_size)
+                  if (!request_is_known_ok && minimum_response_size > 0 && response_string.length < minimum_response_size)
                   {
                      if (debug >= 3) debug_print("Calling error handler: " + error_function);
                      eval(error_function + "(599, 'Response size too small');");
