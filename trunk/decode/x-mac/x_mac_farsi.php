@@ -3,7 +3,7 @@
  * functions/decode/x-mac-farsi.php
  * $Id$
  *
- * Copyright (c) 2003-2014 The SquirrelMail Project Team
+ * Copyright (c) 2003-2015 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * Original data taken from:

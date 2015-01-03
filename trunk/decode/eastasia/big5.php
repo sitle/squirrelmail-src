@@ -30,7 +30,7 @@
  * specifically excludes the right to re-distribute this file directly
  * to third parties or other organizations whether for profit or not.
  *
- * @copyright (c) 2003-2014 The SquirrelMail Project Team
+ * @copyright (c) 2003-2015 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package decode
