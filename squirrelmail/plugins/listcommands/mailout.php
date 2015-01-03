@@ -2,7 +2,7 @@
 /**
  * mailout.php
  *
- * Copyright (c) 1999-2014 The SquirrelMail Project Team
+ * Copyright (c) 1999-2015 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * $Id$

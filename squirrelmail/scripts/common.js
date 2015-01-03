@@ -4,7 +4,7 @@
   * This file contains a set of general-purpose library
   * functions.
   *
-  * @copyright &copy; 1999-2014 The SquirrelMail Project Team
+  * @copyright &copy; 1999-2015 The SquirrelMail Project Team
   * @license http://opensource.org/licenses/gpl-license.php GNU Public License
   * @version $Id$
   * @package squirrelmail
