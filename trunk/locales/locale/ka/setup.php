@@ -2,7 +2,7 @@
 /**
  * Language configuration file
  *
- * Copyright (c) 2006-2014 The SquirrelMail Project Team
+ * Copyright (c) 2006-2015 The SquirrelMail Project Team
  *
  * This file is part of SquirrelMail webmail interface. It is distributed
  * together with other translation files and is used to enable 
