@@ -400,9 +400,9 @@ We recommend the following PHP settings:
 <sect2>Install IMAP server
 <p>
 What IMAP server you can use depends on what the other components in your
-email system are and how they were installed and configured.  The IMAP server
+email system are and how they were installed and configured. The IMAP server
 needs to understand and be compatible with how messages are stored on your
-system.  
+system.
 
 If you use Unix or Linux with a standard sendmail <url
 url="http://wikipedia.org/wiki/Mail_transfer_agent" name="MTA"> server, you
@@ -427,12 +427,12 @@ of /var is a good place for these).
 
 The data directory is where SquirrelMail user preferences are stored - even
 when you have configured SquirrelMail to store user preferences in a database,
-some plugins might still need to use this directory.  The attachment directory
+some plugins might still need to use this directory. The attachment directory
 is used mainly for temporary storage of file uploads that will become email
 attachments.
 
 Both of these directories should be writable (not readable) by the web server
-and no one else (except you).  In a Unix or Linux environment, that means that
+and no one else (except you). In a Unix or Linux environment, that means that
 they should be owned by the root user if possible (otherwise whatever user you
 log in as), their group should be the same as that that the web server runs as
 (e.g. "www-data", "apache", "nobody", "wheel", etc.), and their permissions
@@ -445,11 +445,11 @@ directories.
 <sect2>Directory access considerations
 <p>
 Only a small subset of the SquirrelMail source code needs to be directly
-accessible to users' browsers.  The rest of the source code is used internally
-by SquirrelMail.  Leaving the entire source tree open to outside access is
+accessible to users' browsers. The rest of the source code is used internally
+by SquirrelMail. Leaving the entire source tree open to outside access is
 not a problem or vulnerability, but some attackers have been known to snoop
 for old versions of SquirrelMail by trying to inspect things such as the
-ChangeLog file.  If you want to employ the maximum level of protection against
+ChangeLog file. If you want to employ the maximum level of protection against
 snoops and would-be attackers, you can make use of the <tt>.htaccess</tt> files that
 come with the SquirrelMail source code by adding
 "<tt>AllowOverride AuthConfig</tt>" to the <tt>Directory</tt> settings for
@@ -471,14 +471,14 @@ the "Data Directory" and "Attachment Directory" settings).
 <sect2>Check your SquirrelMail configuration
 <p>
 Browse to <tt>http://example.com/squirrelmail/src/configtest.php</tt>
-to test your configuration for common errors.  You'll need to adjust the
+to test your configuration for common errors. You'll need to adjust the
 "<tt>example.com</tt>" and "<tt>squirrelmail</tt>" parts to match the location where you
-installed it.  Note that in SquirrelMail versions 1.5.0 and up, if you are
+installed it. Note that in SquirrelMail versions 1.5.0 and up, if you are
 accessing <tt>configtest.php</tt> from any place other than the machine where
 SquirrelMail is installed, you'll need to make sure
 <tt>$allow_remote_configtest</tt> is enabled in your configuration file to
 do so (or see "<tt>11. Tweaks</tt>" ==> "<tt>7. Allow remote configtest</tt>"
-in the configuration utility).  If you do that, be sure to disable it again
+in the configuration utility). If you do that, be sure to disable it again
 when you are finished.
 
 <sect2>Log into SquirrelMail
@@ -490,28 +490,28 @@ have it installed.
 <sect1>Installing SquirrelMail on Unix and Linux systems
 <p>
 This chapter covers the installation of SquirrelMail and related packages on
-a generic Unix or Linux system.  It does not cover the installation of the
+a generic Unix or Linux system. It does not cover the installation of the
 operating system or any other tools required for a fully functional email
 system.
 
 Any version numbers used in these examples are specific to the time when this
-documentation was written.  You should generally use the most up to date
-versions of all software involved.  That is, if there are newer versions of
+documentation was written. You should generally use the most up to date
+versions of all software involved. That is, if there are newer versions of
 these packages available now, you'll probably want to substitute the newer
-numbers in the examples below.  Make sure that you are not using old, obsolete
+numbers in the examples below. Make sure that you are not using old, obsolete
 or vulnerable software!
 
 This guide uses the UW IMAP server, because it is a simple (and ubiquitous)
 example and because it can be used in most generic email system setups where
-incoming mail is stored in the <tt>/var/spool/mail</tt> directory.  If you are
-planning to offer webmail on a system with a large number of users or where 
+incoming mail is stored in the <tt>/var/spool/mail</tt> directory. If you are
+planning to offer webmail on a system with a large number of users or where
 users have large mailboxes, consider planning a better email system design
 and using different IMAP server software.
 
 PLEASE NOTE that before you begin installing such things as a web server, PHP
 or an IMAP server, you should check whether or not your system already has
-such software installed.  Many server-class systems come with that kind of
-software ready to go.  Also note that these installation instructions use
+such software installed. Many server-class systems come with that kind of
+software ready to go. Also note that these installation instructions use
 generic compilation commands that should work on most any system, however your
 system may have more graceful (and even easier) ways to install software,
 like the <tt>apt-get</tt> tool in systems such as Debian and the <tt>yum</tt>
@@ -615,7 +615,7 @@ Compile UW IMAP:
 </verb></tscreen>
 
 Replace "<tt>port-name</tt>" above with the name that matches your system.
-Check the file "<tt>Makefile</tt>" for possible values.  If you haven't
+Check the file "<tt>Makefile</tt>" for possible values. If you haven't
 installed OpenSSL libraries and headers, use "<tt>SSLTYPE=none</tt>" instead
 of "<tt>SSLTYPE=unix</tt>".
 
@@ -675,7 +675,7 @@ Select the "D" option and then configure SquirrelMail with the "uw" preset.
 Also make sure to set the data and attachment directory settings
 ("<tt>/usr/local/squirrelmail/data</tt>" and
 "<tt>/usr/local/squirrelmail/temp</tt>" respectively) under
-"<tt>4. General Options</tt>".  Make any other changes as you see fit,
+"<tt>4. General Options</tt>". Make any other changes as you see fit,
 select "S" to save and then "Q" to quit.
 
 <sect2>Configure access to SquirrelMail in Apache<label id="apache_configuration">
@@ -928,15 +928,15 @@ further configure SquirrelMail.
 After you have uploaded <tt>config.php</tt> to the SquirrelMail
 <tt>config/</tt> directory, go to
 <tt>http://example.com/squirrelmail/src/configtest.php</tt>
-and check if the configuration is correct so far.  You'll need to
+and check if the configuration is correct so far. You'll need to
 adjust the "<tt>example.com</tt>" and "<tt>squirrelmail</tt>" parts to match the
-location where you installed it.  Note that in SquirrelMail versions
+location where you installed it. Note that in SquirrelMail versions
 1.5.0 and up, if you are accessing <tt>configtest.php</tt> from any place other
 than the machine where SquirrelMail is installed, you'll need to make
 sure <tt>$allow_remote_configtest</tt> is enabled in your configuration
 file to do so (or see
 "<tt>11. Tweaks</tt>" ==> "<tt>7. Allow remote configtest</tt>" in
-the configuration utility).  If you do that, be sure to disable it
+the configuration utility). If you do that, be sure to disable it
 again when you are finished.
 
 Every time you change your configuration file, it is a good idea
@@ -948,8 +948,8 @@ make sure it is working correctly and accepting connections.
 <p>
 Go to
 <tt>http://example.com/squirrelmail/src/login.php</tt> and try logging
-in.  You'll need to adjust the "<tt>example.com</tt>" and "<tt>squirrelmail</tt>" parts to
-match the location where you installed it.  You should use a user name
+in. You'll need to adjust the "<tt>example.com</tt>" and "<tt>squirrelmail</tt>" parts to
+match the location where you installed it. You should use a user name
 and password that are known to work with your IMAP server.
 
 <sect1>Prepackaged SquirrelMail installs
@@ -985,10 +985,10 @@ This chapter discusses upgrading an existing SquirrelMail installation.
 <sect1>Check requirements
 <p>
 The system requirements may have been changed between your previous
-version and this version of SquirrelMail.  The requirements won't change
+version and this version of SquirrelMail. The requirements won't change
 (much) between stable releases but may change significantly between
-different series (e.g. between 1.2.x and 1.4.x).  Most notably, you need
-at least PHP version 4.1.0.  The <tt/ReleaseNotes/ file is a good source for
+different series (e.g. between 1.2.x and 1.4.x). Most notably, you need
+at least PHP version 4.1.0. The <tt/ReleaseNotes/ file is a good source for
 information about changed requirements.
 
 Also make sure to review the last section in this guide that details
@@ -1013,7 +1013,7 @@ Make sure that you are in the directory that contains your SquirrelMail
 installation (in our exmaple, <tt>/usr/share/</tt>) and then unarchive the new
 SquirrelMail version you just downloaded (in our example, we'll assume
 you downloaded the <tt>squirrelmail-1.4.17.tar.gz</tt> distribution package;
-unpacking any other package is very similar).  In a Linux-like environment,
+unpacking any other package is very similar). In a Linux-like environment,
 that would look like this:
 
 <verb>
@@ -1022,7 +1022,7 @@ that would look like this:
 </verb>
 
 Of course, this assumes you placed the new version you downloaded into the
-<tt>/usr/share/</tt> directory before you executed these commands.  You should now
+<tt>/usr/share/</tt> directory before you executed these commands. You should now
 have a new directory called "<tt>squirrelmail-1.4.17</tt>" right next to your old
 one (in this example "<tt>squirrelmail-1.4.8</tt>").
 
@@ -1040,25 +1040,25 @@ The important files to copy are:
 
 <sect2>Configuration files
 <p>
-If at all possible, start the configuration process from scratch.  This
+If at all possible, start the configuration process from scratch. This
 way, you are much less prone to miss new configuration options or transfer
-any incompatible settings from one version to the next.  That said, when
+any incompatible settings from one version to the next. That said, when
 upgrading between minor versions (e.g., within the 1.4 release series as
 in this example), copying your configuration files from the old installation
-to the new one should be perfectly acceptable.  If you do so, it would be
+to the new one should be perfectly acceptable. If you do so, it would be
 a good idea to run the configuration utility once as well as view the
 configuration test page to make sure that everything is OK.
 
 Again, we'll start from the directory that contains your SquirrelMail
 installation(s), and these commands apply to Linux-like environments.
-  
+
 <verb>
   $ cd /usr/share/
   $ cp -p squirrelmail-1.4.8/config/config.php squirrelmail-1.4.17/config/
 </verb>
 
 If you have a local configuration file, copy that too:
-  
+
 <verb>
   $ cp -p squirrelmail-1.4.8/config/config_local.php squirrelmail-1.4.17/config/
 </verb>
@@ -1072,29 +1072,29 @@ create that file for you.
 <p>
 Like SquirrelMail, plugins are frequently updated with feature and security
 improvements as well as to make them compatible with new SquirrelMail
-releases.  It is suggested that you download new versions of your plugins at
+releases. It is suggested that you download new versions of your plugins at
 the same time you download your SquirrelMail installation, and that you
 install your plugins fresh (it's easy, don't panic!).
 
 PLEASE NOTE: You should not try to replace plugins that are already included
-in the SquirrelMail package.  Sometimes third party plugins are brought into
+in the SquirrelMail package. Sometimes third party plugins are brought into
 the SquirrelMail core, so take a peek at your new installation's plugins
-directory to see what is already there.  You only need to download or copy
+directory to see what is already there. You only need to download or copy
 your previous installation of third party plugins that are not in your new
 SquirrelMail package by default.
 
 If you decide to copy plugin installations from your old installation, you
 can copy an entire plugin directory from the old installation to the new
 one (this example uses the Email Footer plugin):
-  
+
 <verb>
   $ cp -Rp squirrelmail-1.4.8/plugins/email_footer squirrelmail-1.4.17/plugins/
 </verb>
 
 If you have configured any plugins so that their configuration files are
 stored in the main SquirrelMail <tt>config/</tt> directory, you'll want to copy
-those files, too.  Again, using the Email Footer example:
-  
+those files, too. Again, using the Email Footer example:
+
 <verb>
   $ cp -p squirrelmail-1.4.8/config/config_email_footer.php squirrelmail-1.4.17/config/
 </verb>
@@ -1102,12 +1102,12 @@ those files, too.  Again, using the Email Footer example:
 <sect2>Skins
 <p>
 Skins (template sets) are handled the same as plugins are (and are only
-part of SquirrelMail versions 1.5.2 and up).  As skins are updated regularly,
+part of SquirrelMail versions 1.5.2 and up). As skins are updated regularly,
 it's always best to just download and install the newest versions of your
 skins when you download your SquirrelMail upgrade package.
 
 PLEASE NOTE: As with plugins, you should not try to replace skins that are
-already included in the SquirrelMail package.  You only need to download or
+already included in the SquirrelMail package. You only need to download or
 copy your previous installation of third party skins that are not in your
 new SquirrelMail package by default.
 
@@ -1123,7 +1123,7 @@ new one (this example uses the Default Smarty skin pack):
 <p>
 Here again, we recommend that you simply download and install your
 desired language translations from the newest locales pack on the
-SquirrelMail website.  If, however, you want to copy what you had
+SquirrelMail website. If, however, you want to copy what you had
 before, it's easiest to simply move the <tt>locale/</tt> directory in the new
 installation out of the way and copy the old one into its place:
 
@@ -1144,7 +1144,7 @@ SquirrelMail <tt>themes</tt> directory:
 <sect2>Preferences
 <p>
 Chances are that, as long as you followed our installation recommendations,
-you don't need to make any changes for your user preferences.  That is,
+you don't need to make any changes for your user preferences. That is,
 if you have preferences stored in a database or you have moved your
 preference file storage outside the SquirrelMail directory (such as
 <tt>/var/lib/squirrelmail/data/</tt>) as explained in our installation documents,
@@ -1184,11 +1184,11 @@ SquirrelMail version 1.0.5.
 Although not strictly necessary for minor upgrades, we STRONGLY
 recommend that you run <tt>config/conf.pl</tt> to see the new
 configuration options available with the new version, as well as
-to verify that all of your old options are set properly.  In SquirrelMail
+to verify that all of your old options are set properly. In SquirrelMail
 versions 1.5.2 and above, this also ensures that your plugins are
 properly registered with SquirrelMail.
 
-Always save your options, even if you haven't changed anything.  This
+Always save your options, even if you haven't changed anything. This
 will ensure that any problems with your configuration that have been
 automatically detected and fixed are not lost.
 
@@ -1200,12 +1200,12 @@ configuration utility and run theme detection command.
 <p>
 You should browse to <tt>http://example.com/squirrelmail/src/configtest.php</tt>
 (adjust the address to suit your system) and confirm that there are no
-configuration problems.  Note that in versions 1.5.0 and up, if you are
+configuration problems. Note that in versions 1.5.0 and up, if you are
 accessing configtest.php from any place other than the machine where
 SquirrelMail is installed, you'll need to make sure
 <tt>$allow_remote_configtest</tt> is enabled in your configuration file to do so
 (or see "<tt>11. Tweaks</tt>" ==> "<tt>7. Allow remote configtest</tt>" in
-the configuration utility).  If you do that, be sure to disable it again when
+the configuration utility). If you do that, be sure to disable it again when
 you are finished.
 
 <sect1>Verify that the new installation works
@@ -1217,9 +1217,9 @@ everything is working as expected.
 <p>
 Once you've finished upgrading, you may want to keep an archived copy
 of your old installation just in case something goes wrong with the new
-one.  You can simply move the whole directory somewhere else outside
+one. You can simply move the whole directory somewhere else outside
 of your web server's document root or compress the directory into an
-archive file for storage elsewhere.  Here's how to create a zip file
+archive file for storage elsewhere. Here's how to create a zip file
 of your old installation in a Linux-like environment:
 
 <verb>
@@ -1241,9 +1241,9 @@ to known security exploits.
 <label id="point_web_server_to_squirrelmail">
 <p>
 In this guide, we assumed that your installation directories looked
-like "<tt>squirrelmail-1.4.17</tt>".  Most of the time, you'll want to allow
+like "<tt>squirrelmail-1.4.17</tt>". Most of the time, you'll want to allow
 your users to type in "<tt>squirrelmail</tt>" (or just "<tt>webmail</tt>"
-or "<tt>mail</tt>") without needing to know the version number.  Of course,
+or "<tt>mail</tt>") without needing to know the version number. Of course,
 you can simply change the name of the SquirrelMail installation directory:
 
 <verb>
@@ -1265,7 +1265,7 @@ directory doesn't necessarily need to be in the same place the "<tt>mail</tt>" l
 is.
 
 You can also configure most any web server to point to your installation
-directory from any incoming address you desire.  There are several
+directory from any incoming address you desire. There are several
 redirection and address re-writing tools for most web servers, so this is
 just one example using Apache's Redirect directive:
 
@@ -1277,7 +1277,7 @@ just one example using Apache's Redirect directive:
 
 <sect2>Upgrading from the 1.4 release series to the 1.5 release series
 <p>
-The plugin API changed substantially in version 1.5.2.  At the least,
+The plugin API changed substantially in version 1.5.2. At the least,
 you should NOT copy your old plugins when making this kind of upgrade.
 
 <sect2>Upgrading to 1.4.22 (or greater) from any earlier version of the 1.4 release series
@@ -1319,12 +1319,12 @@ MAKE SURE to back up your user preferences before doing any of the above!
 <sect2>Upgrading from the 1.2 release series to the 1.4 release series
 <p>
 Several layout changes were made and there were other changes that require
-plugin updates.  At the least, you should NOT copy your old plugins when
+plugin updates. At the least, you should NOT copy your old plugins when
 making this kind of upgrade.
 
 <sect2>Upgrading from any version older than 1.4.4 to version 1.4.4 or later
 <p>
-Translations were removed from the main SquirrelMail package.  Unless
+Translations were removed from the main SquirrelMail package. Unless
 you copy the translations from your old installation, you will now need
 to visit the SquirrelMail download page and also get a copy of the our
 locales package.
@@ -1340,7 +1340,7 @@ and 1.5.x).
 <p>
 The names used by some translations were changed starting in version 1.2.2.
 In most cases, you won't see any problems due to this change, however,
-the Norwegian Nynorsk (<tt>no_NO_ny</tt>) translation might need to be fixed.  If
+the Norwegian Nynorsk (<tt>no_NO_ny</tt>) translation might need to be fixed. If
 you decide to retain the same preferences from your old installation, any
 users who have a "<tt>language</tt>" preference set to "<tt>no_NO_ny</tt>" will need to
 have it manually changed to "<tt>nn_NO</tt>".
@@ -1348,7 +1348,7 @@ have it manually changed to "<tt>nn_NO</tt>".
 <sect2>Upgrading from any version older than 1.0.5 to version 1.0.5 or later
 <p>
 Some important security upgrades were made to the preferences system
-in version 1.0.5.  It is NOT recommended that you retain user preferences
+in version 1.0.5. It is NOT recommended that you retain user preferences
 when upgrading from versions older than 1.0.5.
 
 <sect>Configuring SquirrelMail<label id="configuring">
@@ -1746,7 +1746,7 @@ CREATE TABLE "userprefs" (
 );
 
 -- Note: "user" is a reserved keyword in PostgreSQL and it could cause
---       problems when it is used as a column name as above.  SquirrelMail
+--       problems when it is used as a column name as above. SquirrelMail
 --       knows about this issue and should work OK with "user", but if you
 --       decide to change it to something else (such as "username"), you'll
 --       also need to change the SquirrelMail config variable $prefs_user_field
@@ -2838,7 +2838,7 @@ SquirrelMail doesn't store any passwords. It's the IMAP server's responsibility
 to take care of that, and the IMAP server can choose from a number of different
 backends, such as SQL or LDAP database for instance, to perform that task.
 Fortunately, there are several SquirrelMail plugins that, depending on how your
-system is set up, can be used as a change password interface. 
+system is set up, can be used as a change password interface.
 
 It you're using SquirrelMail 1.5, try the included <tt/change_password/ plugin
 first. If it doesn't work, or if you're running some other SquirrelMail
@@ -2964,7 +2964,7 @@ The default preference file (frequently named <tt/default_pref/) AND the default
 data directory (frequently <tt>/var/lib/squirrelmail/data/</tt>) must be owned
 by same user that owns other SquirrelMail scripts. The default preference file
 and the default data directory must be readable and writable by the user that
-the web server runs as.  The user that the web server runs as and the owner of
+the web server runs as. The user that the web server runs as and the owner of
 the SquirrelMail scripts may be different (e.g. in Debian, SquirrelMail is
 owned by root, but the web server runs as www-data).
 
@@ -3096,7 +3096,7 @@ Some quota setups can ignore files placed in Trash folder.
 <sect1>How can I diagnose blank pages?<label id="blankpage">
 <p>
 Under some circumstances, a page request can result in nothing more than
-a blank page.  In most cases, this happens after the installation of a
+a blank page. In most cases, this happens after the installation of a
 plugin, but it can happen elsewhere as well. This problem is typically caused
 by fatal PHP errors that are simply not being shown on screen.
 
@@ -3147,7 +3147,7 @@ Some more common causes of blank pages are:
           came with your new plugin, including its <tt/README/ and
           <tt/INSTALL/ files.
     <item>You are attempting to view a folder with a very large number
-          of messages in it (perhaps as many as 10,000).  In this case,
+          of messages in it (perhaps as many as 10,000). In this case,
           you may hit the maximum PHP execution time limit or maximum
           memory limit. If you find such errors, you may want to
           review our <ref id="optimization" name="optimization tips">
@@ -3455,19 +3455,19 @@ order to post to it.
 
 <tabular ca="lccc">
 <bf/Mailing list/|<bf/Description/|<bf/Subscribe/|<bf/Archives/@
-SquirrelMail Announcement Mailing List|Very low traffic, moderated, announcements only.|<url url="http://lists.sourceforge.net/mailman/listinfo/squirrelmail-announce" name="Subscribe">|<url url="http://sourceforge.net/mailarchive/forum.php?forum_name=squirrelmail-announce" name="S"> <url url="http://marc.info/?l=squirrelmail-announce" name="M"> <url url="http://dir.gmane.org/gmane.mail.squirrelmail.announce" name="G"> <url url="http://old.nabble.com/squirrelmail-announce-f4373.html" name="N">@
+SquirrelMail Announcement Mailing List|Very low traffic, moderated, announcements only.|<url url="http://lists.sourceforge.net/mailman/listinfo/squirrelmail-announce" name="Subscribe">|<url url="http://sourceforge.net/mailarchive/forum.php?forum_name=squirrelmail-announce" name="S"> <url url="http://marc.info/?l=squirrelmail-announce" name="M"> <url url="http://dir.gmane.org/gmane.mail.squirrelmail.announce" name="G"> <url url="http://squirrelmail.5843.n7.nabble.com/squirrelmail-announce-f24927.html" name="N">@
 SquirrelMail CVS Mailing List (legacy name)|Messages are sent for every change in the SquirrelMail source code repository.|<url url="http://lists.sourceforge.net/mailman/listinfo/squirrelmail-cvs" name="Subscribe">|<url url="http://sourceforge.net/mailarchive/forum.php?forum_name=squirrelmail-cvs" name="S"> <url url="http://marc.info/?l=squirrelmail-cvs" name="M"> <url url="http://dir.gmane.org/gmane.mail.squirrelmail.cvs" name="G"> N@
-SquirrelMail Webmail Development Mailing List|For discussing the development of and submitting patches for SquirrelMail Webmail.|<url url="http://lists.sourceforge.net/mailman/listinfo/squirrelmail-devel" name="Subscribe">|<url url="http://sourceforge.net/mailarchive/forum.php?forum_name=squirrelmail-devel" name="S"> <url url="http://marc.info/?l=squirrelmail-devel" name="M"> <url url="http://dir.gmane.org/gmane.mail.squirrelmail.devel" name="G"> <url url="http://old.nabble.com/squirrelmail-devel-f4374.html" name="N">@
-SquirrelMail IMAP Proxy Mailing List|For discussing both the development and use of SquirrelMail IMAP Proxy.|<url url="http://lists.sourceforge.net/mailman/listinfo/squirrelmail-imapproxy" name="Subscribe">|<url url="http://sourceforge.net/mailarchive/forum.php?forum_name=squirrelmail-imapproxy" name="S"> <url url="http://marc.info/?l=squirrelmail-imapproxy" name="M"> <url url="http://dir.gmane.org/gmane.mail.squirrelmail.imapproxy" name="G"> N <url url="http://lists.andrew.cmu.edu/pipermail/imapproxy-info/" name="L">@
-SquirrelMail Internationalization Mailing List|Questions and discussions concerning translations, character sets, etc.|<url url="http://lists.sourceforge.net/mailman/listinfo/squirrelmail-i18n" name="Subscribe">|<url url="http://sourceforge.net/mailarchive/forum.php?forum_name=squirrelmail-i18n" name="S"> <url url="http://marc.info/?l=squirrelmail-i18n" name="M"> <url url="http://dir.gmane.org/gmane.mail.squirrelmail.internationalization" name="G"> <url url="http://old.nabble.com/squirrelmail-i18n-f4375.html" name="N">@
-SquirrelMail Webmail Plugins Mailing List|For help with using and developing SquirrelMail Webmail plugins.|<url url="http://lists.sourceforge.net/mailman/listinfo/squirrelmail-plugins" name="Subscribe">|<url url="http://sourceforge.net/mailarchive/forum.php?forum_name=squirrelmail-plugins" name="S"> <url url="http://marc.info/?l=squirrelmail-plugins" name="M"> <url url="http://dir.gmane.org/gmane.mail.squirrelmail.plugins" name="G"> <url url="http://old.nabble.com/squirrelmail-plugins-f4377.html" name="N">@
-SquirrelMail Spanish Mailing List|This list is inactive, but the archives still exist.|Inactive|<url url="http://sourceforge.net/mailarchive/forum.php?forum_name=squirrelmail-lang-es" name="S"> <url url="http://marc.info/?l=squirrelmail-lang-es" name="M"> G <url url="http://old.nabble.com/squirrelmail-lang-es-f4376.html" name="N">@
+SquirrelMail Webmail Development Mailing List|For discussing the development of and submitting patches for SquirrelMail Webmail.|<url url="http://lists.sourceforge.net/mailman/listinfo/squirrelmail-devel" name="Subscribe">|<url url="http://sourceforge.net/mailarchive/forum.php?forum_name=squirrelmail-devel" name="S"> <url url="http://marc.info/?l=squirrelmail-devel" name="M"> <url url="http://dir.gmane.org/gmane.mail.squirrelmail.devel" name="G"> <url url="http://squirrelmail.5843.n7.nabble.com/squirrelmail-devel-f13447.html" name="N">@
+SquirrelMail IMAP Proxy Mailing List|For discussing both the development and use of SquirrelMail IMAP Proxy.|<url url="http://lists.sourceforge.net/mailman/listinfo/squirrelmail-imapproxy" name="Subscribe">|<url url="http://sourceforge.net/mailarchive/forum.php?forum_name=squirrelmail-imapproxy" name="S"> M <url url="http://dir.gmane.org/gmane.mail.squirrelmail.imapproxy" name="G"> N@
+SquirrelMail Internationalization Mailing List|Questions and discussions concerning translations, character sets, etc.|<url url="http://lists.sourceforge.net/mailman/listinfo/squirrelmail-i18n" name="Subscribe">|<url url="http://sourceforge.net/mailarchive/forum.php?forum_name=squirrelmail-i18n" name="S"> <url url="http://marc.info/?l=squirrelmail-i18n" name="M"> <url url="http://dir.gmane.org/gmane.mail.squirrelmail.internationalization" name="G"> <url url="http://squirrelmail.5843.n7.nabble.com/squirrelmail-i18n-f23471.html" name="N">@
+SquirrelMail Webmail Plugins Mailing List|For help with using and developing SquirrelMail Webmail plugins.|<url url="http://lists.sourceforge.net/mailman/listinfo/squirrelmail-plugins" name="Subscribe">|<url url="http://sourceforge.net/mailarchive/forum.php?forum_name=squirrelmail-plugins" name="S"> <url url="http://marc.info/?l=squirrelmail-plugins" name="M"> <url url="http://dir.gmane.org/gmane.mail.squirrelmail.plugins" name="G"> <url url="http://squirrelmail.5843.n7.nabble.com/squirrelmail-plugins-f17196.html" name="N">@
+SquirrelMail Spanish Mailing List|This list is inactive, but the archives still exist.|Inactive|S <url url="http://marc.info/?l=squirrelmail-lang-es" name="M"> G <url url="http://squirrelmail.5843.n7.nabble.com/squirrelmail-lang-es-f24967.html" name="N">@
 SquirrelMail Stable Series Mailing List|This list is inactive, but the archives still exist.|Inactive|<url url="http://sourceforge.net/mailarchive/forum.php?forum_name=squirrelmail-stable" name="S"> <url url="http://marc.info/?l=squirrelmail-stable" name="M"> G N@
-SquirrelMail Webmail Users Mailing List (legacy name)|Despite its name, this list is intended for supporting administrators and not end users. This is the main SquirrelMail Webmail list, dealing mostly with administrating SquirrelMail Webmail and general feedback.|<url url="http://lists.sourceforge.net/mailman/listinfo/squirrelmail-users" name="Subscribe">|<url url="http://sourceforge.net/mailarchive/forum.php?forum_name=squirrelmail-users" name="S"> <url url="http://marc.info/?l=squirrelmail-users" name="M"> <url url="http://dir.gmane.org/gmane.mail.squirrelmail.user" name="G"> <url url="http://old.nabble.com/squirrelmail-users-f4380.html" name="N">
+SquirrelMail Webmail Users Mailing List (legacy name)|Despite its name, this list is intended for supporting administrators and not end users. This is the main SquirrelMail Webmail list, dealing mostly with administrating SquirrelMail Webmail and general feedback.|<url url="http://lists.sourceforge.net/mailman/listinfo/squirrelmail-users" name="Subscribe">|<url url="http://sourceforge.net/mailarchive/forum.php?forum_name=squirrelmail-users" name="S"> <url url="http://marc.info/?l=squirrelmail-users" name="M"> <url url="http://dir.gmane.org/gmane.mail.squirrelmail.user" name="G"> <url url="http://squirrelmail.5843.n7.nabble.com/squirrelmail-users-f3.html" name="N">
 </tabular>
 
-Legend: S = SourceForge, M = MARC, G = Gmane, L = Legacy, N = Nabble
-(there's also an <url url="http://old.nabble.com/SquirrelMail-f4372.html"
+Legend: S = SourceForge, M = MARC, G = Gmane, N = Nabble
+(there's also an <url url="http://squirrelmail.5843.n7.nabble.com/"
 name="all-in-one"> interface for all list archives at Nabble).
 
 The subscription interface for <url
