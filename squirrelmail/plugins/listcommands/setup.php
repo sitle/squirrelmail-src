@@ -48,6 +48,7 @@ function plugin_listcommands_menu() {
 
         /* proto = {mailto,href} */
         $aActionKeys = array_keys($actions);
+        // note that we only use the first cmd/action, ignore the rest
         $proto = array_shift($aActionKeys);
         $act   = array_shift($actions);
 
@@ -59,7 +60,17 @@ function plugin_listcommands_menu() {
             } else {
                 $url = "plugins/listcommands/mailout.php?action=$cmd&amp;";
             }
-            $url .= 'send_to=' . urlencode($act);
+
+            // if things like subject are given, peel them off and give
+            // them to src/compose.php as is (not encoded)
+            if (strpos($act, '?') > 0) {
+               list($act, $parameters) = explode('?', $act, 2);
+               $parameters = '&amp;' . $parameters;
+            } else {
+               $parameters = '';
+            }
+
+            $url .= 'send_to=' . urlencode($act) . $parameters;
 
             $output[] = makeComposeLink($url, $fieldsdescr[$cmd]);
 
