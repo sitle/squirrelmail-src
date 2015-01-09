@@ -27,6 +27,7 @@ sqgetGlobalVar('send_to', $send_to, SQ_GET);
 sqgetGlobalVar('subject', $subject, SQ_GET);
 sqgetGlobalVar('body',    $body,    SQ_GET);
 sqgetGlobalVar('action',  $action,  SQ_GET);
+sqgetGlobalVar('identity',  $identity,  SQ_GET);
 
 switch ( $action ) {
 case 'help':
@@ -64,8 +65,10 @@ echo html_tag('p', '', 'center' ) . _("From:") . ' ';
 if (count($idents) > 1) {
     echo '<select name="identity">';
     foreach($idents as $nr=>$data) {
-        echo '<option value="' . $nr . '">' .
-            sm_encode_html_special_chars(
+        echo '<option '
+           . ($identity == $nr ? ' selected="selected" ' : '')
+           . 'value="' . $nr . '">'
+           . sm_encode_html_special_chars(
                 $data['full_name'].' <'.
                 $data['email_address'] . ">\n");
     }
