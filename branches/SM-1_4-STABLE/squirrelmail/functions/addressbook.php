@@ -350,7 +350,7 @@ class AddressBook {
      * nickname optionally prepended.
      */
 
-    function full_address($row) {
+    static function full_address($row) {
         global $data_dir, $username;
         $addrsrch_fullname = getPref($data_dir, $username, 'addrsrch_fullname', 'fullname');
 
