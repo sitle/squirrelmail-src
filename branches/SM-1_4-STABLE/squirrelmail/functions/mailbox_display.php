@@ -204,13 +204,12 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
     if (!isset($hlt_color)) {
         $hlt_color = $color_string;
     }
-    if ($checkall == 1 || in_array($msg['ID'], $preselected))
+    if ($checkall == 1 || (isset($msg['ID']) && in_array($msg['ID'], $preselected)))
         $checked = ' checked="checked"';
     else
         $checked = '';
     $col = 0;
     $msg['SUBJECT'] = decodeHeader($msg['SUBJECT']);
-//    $subject = processSubject($msg['SUBJECT'], $indent_array[$msg['ID']]);
     $subject = sm_truncate_string(str_replace('&nbsp;',' ',$msg['SUBJECT']), $truncate_subject, '...', TRUE);
     if (sizeof($index_order)) {
         foreach ($index_order as $index_order_part) {
