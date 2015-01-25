@@ -204,7 +204,7 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
     if (!isset($hlt_color)) {
         $hlt_color = $color_string;
     }
-    if ($checkall == 1 || (isset($msg['ID']) && in_array($msg['ID'], $preselected)))
+    if ($checkall == 1 || in_array($msg['ID'], $preselected))
         $checked = ' checked="checked"';
     else
         $checked = '';
