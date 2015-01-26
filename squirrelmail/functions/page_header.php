@@ -19,7 +19,15 @@ require_once(SM_PATH . 'functions/global.php');
 
 /* Always set up the language before calling these functions */
 /**
- * @param array $script_libs_param A list of strings, which each point to
+ * @param string $title This is placed directly in the HTML <title> tag,
+ *                      so should be sanitized and ready to go
+ * @param boolean $xtra_param Any additional HTML code that should be
+ *                            included in the <head> tag - this is also
+ *                            sent to the browser as-is, so should be pre-
+ *                            sanitized
+ * @param boolean $do_hook When TRUE, the "generic_header" hook is fired
+ *                         herein.
+ * @param array $script_libs_param A list of strings which each point to
  *                                 a script to be added to the <head> of
  *                                 the page being built. Each string can
  *                                 be:
