@@ -32,7 +32,7 @@ if ( ! sqgetGlobalVar('mailbox',$mailbox,SQ_GET) ||
     $passed_id= (int) $passed_id;
     $view_unsafe_images = (bool) $_GET['view_unsafe_images'];
 /* end globals */
-    displayHtmlHeader( _("Printer Friendly"), '', false, true );
+    displayHtmlHeader( _("Printer Friendly"), '', false );
     echo '<frameset rows="60, *">' . "\n";
     echo '<frame src="printer_friendly_top.php" name="top_frame" '
         . 'scrolling="no" noresize="noresize" frameborder="0" />' . "\n";
